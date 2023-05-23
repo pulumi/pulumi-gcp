@@ -99,12 +99,16 @@ public class TenantDefaultSupportedIdpConfig extends com.pulumi.resources.Custom
     /**
      * OAuth client secret
      * 
+     * ***
+     * 
      */
     @Export(name="clientSecret", type=String.class, parameters={})
     private Output<String> clientSecret;
 
     /**
      * @return OAuth client secret
+     * 
+     * ***
      * 
      */
     public Output<String> clientSecret() {

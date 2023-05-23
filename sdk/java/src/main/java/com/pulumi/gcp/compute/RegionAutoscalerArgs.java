@@ -43,6 +43,9 @@ public final class RegionAutoscalerArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * A description of a scaling schedule.
+     * 
+     * ***
+     * 
      * (Optional)
      * An optional description of this resource.
      * 
@@ -52,6 +55,9 @@ public final class RegionAutoscalerArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return A description of a scaling schedule.
+     * 
+     * ***
+     * 
      * (Optional)
      * An optional description of this resource.
      * 
@@ -192,6 +198,9 @@ public final class RegionAutoscalerArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param description A description of a scaling schedule.
+         * 
+         * ***
+         * 
          * (Optional)
          * An optional description of this resource.
          * 
@@ -205,6 +214,9 @@ public final class RegionAutoscalerArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param description A description of a scaling schedule.
+         * 
+         * ***
+         * 
          * (Optional)
          * An optional description of this resource.
          * 

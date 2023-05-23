@@ -24,6 +24,9 @@ class LiteReservationArgs:
                equivalent to 1 MiB/s of published messages or 2 MiB/s of subscribed
                messages.
         :param pulumi.Input[str] name: Name of the reservation.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the pubsub lite reservation.
@@ -55,6 +58,9 @@ class LiteReservationArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the reservation.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -98,6 +104,9 @@ class _LiteReservationState:
         """
         Input properties used for looking up and filtering LiteReservation resources.
         :param pulumi.Input[str] name: Name of the reservation.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the pubsub lite reservation.
@@ -119,6 +128,9 @@ class _LiteReservationState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the reservation.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -221,6 +233,9 @@ class LiteReservation(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Name of the reservation.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the pubsub lite reservation.
@@ -332,6 +347,9 @@ class LiteReservation(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Name of the reservation.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region of the pubsub lite reservation.
@@ -354,6 +372,9 @@ class LiteReservation(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Name of the reservation.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

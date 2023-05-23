@@ -104,6 +104,8 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         /// <summary>
         /// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+        /// 
+        /// - - -
         /// </summary>
         [Input("workerConfig")]
         public Input<Inputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigGetArgs>? WorkerConfig { get; set; }

@@ -16,6 +16,9 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         /// <summary>
         /// Specifies some of the values in a certificate that are related to the subject.
         /// Structure is documented below.
+        /// 
+        /// 
+        /// &lt;a name="nested_x509_config"&gt;&lt;/a&gt;The `x509_config` block supports:
         /// </summary>
         public readonly Outputs.AuthorityConfigSubjectConfig SubjectConfig;
         /// <summary>

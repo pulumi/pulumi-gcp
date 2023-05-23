@@ -209,6 +209,8 @@ class SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs:
                  kms_key_name: pulumi.Input[str]):
         """
         :param pulumi.Input[str] kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination secret.
+               
+               - - -
         """
         pulumi.set(__self__, "kms_key_name", kms_key_name)
 
@@ -217,6 +219,8 @@ class SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs:
     def kms_key_name(self) -> pulumi.Input[str]:
         """
         Describes the Cloud KMS encryption key that will be used to protect destination secret.
+
+        - - -
         """
         return pulumi.get(self, "kms_key_name")
 

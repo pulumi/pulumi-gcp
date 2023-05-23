@@ -107,6 +107,8 @@ type Repository struct {
 
 	// Resource name of the repository, of the form `{{repo}}`.
 	// The repo name may contain slashes. eg, `name/with/slash`
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -152,6 +154,8 @@ func GetRepository(ctx *pulumi.Context,
 type repositoryState struct {
 	// Resource name of the repository, of the form `{{repo}}`.
 	// The repo name may contain slashes. eg, `name/with/slash`
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -169,6 +173,8 @@ type repositoryState struct {
 type RepositoryState struct {
 	// Resource name of the repository, of the form `{{repo}}`.
 	// The repo name may contain slashes. eg, `name/with/slash`
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -190,6 +196,8 @@ func (RepositoryState) ElementType() reflect.Type {
 type repositoryArgs struct {
 	// Resource name of the repository, of the form `{{repo}}`.
 	// The repo name may contain slashes. eg, `name/with/slash`
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -204,6 +212,8 @@ type repositoryArgs struct {
 type RepositoryArgs struct {
 	// Resource name of the repository, of the form `{{repo}}`.
 	// The repo name may contain slashes. eg, `name/with/slash`
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -303,6 +313,8 @@ func (o RepositoryOutput) ToRepositoryOutputWithContext(ctx context.Context) Rep
 
 // Resource name of the repository, of the form `{{repo}}`.
 // The repo name may contain slashes. eg, `name/with/slash`
+//
+// ***
 func (o RepositoryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

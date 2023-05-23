@@ -17,12 +17,16 @@ public final class GetTopicPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The name of the Cloud Pub/Sub Topic.
      * 
+     * ***
+     * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
      * @return The name of the Cloud Pub/Sub Topic.
+     * 
+     * ***
      * 
      */
     public String name() {
@@ -73,6 +77,8 @@ public final class GetTopicPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param name The name of the Cloud Pub/Sub Topic.
+         * 
+         * ***
          * 
          * @return builder
          * 

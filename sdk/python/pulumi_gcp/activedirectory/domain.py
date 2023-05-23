@@ -25,6 +25,9 @@ class DomainArgs:
         The set of arguments for constructing a Domain resource.
         :param pulumi.Input[str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
                https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+               
+               
+               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
                e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
         :param pulumi.Input[str] reserved_ip_range: The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger.
@@ -55,6 +58,9 @@ class DomainArgs:
         """
         The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
         https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+
+
+        - - -
         """
         return pulumi.get(self, "domain_name")
 
@@ -160,6 +166,9 @@ class _DomainState:
                If CIDR subnets overlap between networks, domain creation will fail.
         :param pulumi.Input[str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
                https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+               
+               
+               - - -
         :param pulumi.Input[str] fqdn: The fully-qualified domain name of the exposed domain used by clients to connect to the service.
                Similar to what would be chosen for an Active Directory set up on an internal network.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels that can contain user-provided metadata
@@ -222,6 +231,9 @@ class _DomainState:
         """
         The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
         https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+
+
+        - - -
         """
         return pulumi.get(self, "domain_name")
 
@@ -357,6 +369,9 @@ class Domain(pulumi.CustomResource):
                If CIDR subnets overlap between networks, domain creation will fail.
         :param pulumi.Input[str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
                https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+               
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels that can contain user-provided metadata
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: Locations where domain needs to be provisioned. [regions][compute/docs/regions-zones/]
                e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
@@ -479,6 +494,9 @@ class Domain(pulumi.CustomResource):
                If CIDR subnets overlap between networks, domain creation will fail.
         :param pulumi.Input[str] domain_name: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
                https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+               
+               
+               - - -
         :param pulumi.Input[str] fqdn: The fully-qualified domain name of the exposed domain used by clients to connect to the service.
                Similar to what would be chosen for an Active Directory set up on an internal network.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels that can contain user-provided metadata
@@ -529,6 +547,9 @@ class Domain(pulumi.CustomResource):
         """
         The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
         https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+
+
+        - - -
         """
         return pulumi.get(self, "domain_name")
 

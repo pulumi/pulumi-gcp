@@ -98,12 +98,16 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The project ID associated with the Apigee organization.
      * 
+     * ***
+     * 
      */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
     /**
      * @return The project ID associated with the Apigee organization.
+     * 
+     * ***
      * 
      */
     public Output<String> projectId() {
@@ -337,6 +341,8 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param projectId The project ID associated with the Apigee organization.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -347,6 +353,8 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param projectId The project ID associated with the Apigee organization.
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -48,6 +48,8 @@ type TargetSSLProxy struct {
 	pulumi.CustomResourceState
 
 	// A reference to the BackendService resource.
+	//
+	// ***
 	BackendService pulumi.StringOutput `pulumi:"backendService"`
 	// A reference to the CertificateMap resource uri that identifies a certificate map
 	// associated with the given target proxy. This field can only be set for global target proxies.
@@ -120,6 +122,8 @@ func GetTargetSSLProxy(ctx *pulumi.Context,
 // Input properties used for looking up and filtering TargetSSLProxy resources.
 type targetSSLProxyState struct {
 	// A reference to the BackendService resource.
+	//
+	// ***
 	BackendService *string `pulumi:"backendService"`
 	// A reference to the CertificateMap resource uri that identifies a certificate map
 	// associated with the given target proxy. This field can only be set for global target proxies.
@@ -161,6 +165,8 @@ type targetSSLProxyState struct {
 
 type TargetSSLProxyState struct {
 	// A reference to the BackendService resource.
+	//
+	// ***
 	BackendService pulumi.StringPtrInput
 	// A reference to the CertificateMap resource uri that identifies a certificate map
 	// associated with the given target proxy. This field can only be set for global target proxies.
@@ -206,6 +212,8 @@ func (TargetSSLProxyState) ElementType() reflect.Type {
 
 type targetSSLProxyArgs struct {
 	// A reference to the BackendService resource.
+	//
+	// ***
 	BackendService string `pulumi:"backendService"`
 	// A reference to the CertificateMap resource uri that identifies a certificate map
 	// associated with the given target proxy. This field can only be set for global target proxies.
@@ -242,6 +250,8 @@ type targetSSLProxyArgs struct {
 // The set of arguments for constructing a TargetSSLProxy resource.
 type TargetSSLProxyArgs struct {
 	// A reference to the BackendService resource.
+	//
+	// ***
 	BackendService pulumi.StringInput
 	// A reference to the CertificateMap resource uri that identifies a certificate map
 	// associated with the given target proxy. This field can only be set for global target proxies.
@@ -363,6 +373,8 @@ func (o TargetSSLProxyOutput) ToTargetSSLProxyOutputWithContext(ctx context.Cont
 }
 
 // A reference to the BackendService resource.
+//
+// ***
 func (o TargetSSLProxyOutput) BackendService() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetSSLProxy) pulumi.StringOutput { return v.BackendService }).(pulumi.StringOutput)
 }

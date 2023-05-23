@@ -87,6 +87,9 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// The ID of the default GCP resource location for the Project. The location must be one of the available GCP
         /// resource locations.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("locationId")]
         public Output<string> LocationId { get; private set; } = null!;
@@ -147,6 +150,9 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// The ID of the default GCP resource location for the Project. The location must be one of the available GCP
         /// resource locations.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("locationId", required: true)]
         public Input<string> LocationId { get; set; } = null!;
@@ -169,6 +175,9 @@ namespace Pulumi.Gcp.Firebase
         /// <summary>
         /// The ID of the default GCP resource location for the Project. The location must be one of the available GCP
         /// resource locations.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("locationId")]
         public Input<string>? LocationId { get; set; }

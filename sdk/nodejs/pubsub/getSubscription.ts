@@ -37,6 +37,8 @@ export function getSubscription(args: GetSubscriptionArgs, opts?: pulumi.InvokeO
 export interface GetSubscriptionArgs {
     /**
      * The name of the Cloud Pub/Sub Subscription.
+     *
+     * - - -
      */
     name: string;
     /**
@@ -96,6 +98,8 @@ export function getSubscriptionOutput(args: GetSubscriptionOutputArgs, opts?: pu
 export interface GetSubscriptionOutputArgs {
     /**
      * The name of the Cloud Pub/Sub Subscription.
+     *
+     * - - -
      */
     name: pulumi.Input<string>;
     /**

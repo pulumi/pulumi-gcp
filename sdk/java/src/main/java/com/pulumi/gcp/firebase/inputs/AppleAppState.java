@@ -50,12 +50,16 @@ public final class AppleAppState extends com.pulumi.resources.ResourceArgs {
     /**
      * The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
      * 
+     * ***
+     * 
      */
     @Import(name="bundleId")
     private @Nullable Output<String> bundleId;
 
     /**
      * @return The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> bundleId() {
@@ -223,6 +227,8 @@ public final class AppleAppState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param bundleId The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -233,6 +239,8 @@ public final class AppleAppState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bundleId The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
+         * 
+         * ***
          * 
          * @return builder
          * 

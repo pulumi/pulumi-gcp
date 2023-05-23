@@ -49,6 +49,8 @@ func LookupAppConnector(ctx *pulumi.Context, args *LookupAppConnectorArgs, opts 
 // A collection of arguments for invoking getAppConnector.
 type LookupAppConnectorArgs struct {
 	// The name of the App Connector.
+	//
+	// ***
 	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -87,6 +89,8 @@ func LookupAppConnectorOutput(ctx *pulumi.Context, args LookupAppConnectorOutput
 // A collection of arguments for invoking getAppConnector.
 type LookupAppConnectorOutputArgs struct {
 	// The name of the App Connector.
+	//
+	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

@@ -49,12 +49,16 @@ public final class AiFeatureStoreEntityTypeFeatureState extends com.pulumi.resou
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
      * 
+     * ***
+     * 
      */
     @Import(name="entitytype")
     private @Nullable Output<String> entitytype;
 
     /**
      * @return The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> entitytype() {
@@ -212,6 +216,8 @@ public final class AiFeatureStoreEntityTypeFeatureState extends com.pulumi.resou
         /**
          * @param entitytype The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -222,6 +228,8 @@ public final class AiFeatureStoreEntityTypeFeatureState extends com.pulumi.resou
 
         /**
          * @param entitytype The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entitytype}.
+         * 
+         * ***
          * 
          * @return builder
          * 

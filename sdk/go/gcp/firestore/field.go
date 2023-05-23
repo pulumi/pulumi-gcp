@@ -156,6 +156,8 @@ type Field struct {
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrOutput `pulumi:"database"`
 	// The id of the field to configure.
+	//
+	// ***
 	Field pulumi.StringOutput `pulumi:"field"`
 	// The single field index configuration for this field.
 	// Creating an index configuration for this field will override any inherited configuration with the
@@ -214,6 +216,8 @@ type fieldState struct {
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database *string `pulumi:"database"`
 	// The id of the field to configure.
+	//
+	// ***
 	Field *string `pulumi:"field"`
 	// The single field index configuration for this field.
 	// Creating an index configuration for this field will override any inherited configuration with the
@@ -238,6 +242,8 @@ type FieldState struct {
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrInput
 	// The id of the field to configure.
+	//
+	// ***
 	Field pulumi.StringPtrInput
 	// The single field index configuration for this field.
 	// Creating an index configuration for this field will override any inherited configuration with the
@@ -266,6 +272,8 @@ type fieldArgs struct {
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database *string `pulumi:"database"`
 	// The id of the field to configure.
+	//
+	// ***
 	Field string `pulumi:"field"`
 	// The single field index configuration for this field.
 	// Creating an index configuration for this field will override any inherited configuration with the
@@ -288,6 +296,8 @@ type FieldArgs struct {
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrInput
 	// The id of the field to configure.
+	//
+	// ***
 	Field pulumi.StringInput
 	// The single field index configuration for this field.
 	// Creating an index configuration for this field will override any inherited configuration with the
@@ -401,6 +411,8 @@ func (o FieldOutput) Database() pulumi.StringPtrOutput {
 }
 
 // The id of the field to configure.
+//
+// ***
 func (o FieldOutput) Field() pulumi.StringOutput {
 	return o.ApplyT(func(v *Field) pulumi.StringOutput { return v.Field }).(pulumi.StringOutput)
 }

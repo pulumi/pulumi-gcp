@@ -77,6 +77,8 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The ID of the project in which the instance belongs.
+        /// 
+        /// &gt; **Note** This datasource performs client-side sorting to provide consistent ordering of the databases.
         /// </summary>
         [Input("project")]
         public string? Project { get; set; }
@@ -97,6 +99,8 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The ID of the project in which the instance belongs.
+        /// 
+        /// &gt; **Note** This datasource performs client-side sorting to provide consistent ordering of the databases.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

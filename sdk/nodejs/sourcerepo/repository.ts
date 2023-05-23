@@ -85,6 +85,9 @@ export class Repository extends pulumi.CustomResource {
     /**
      * Resource name of the repository, of the form `{{repo}}`.
      * The repo name may contain slashes. eg, `name/with/slash`
+     *
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -145,6 +148,9 @@ export interface RepositoryState {
     /**
      * Resource name of the repository, of the form `{{repo}}`.
      * The repo name may contain slashes. eg, `name/with/slash`
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -175,6 +181,9 @@ export interface RepositoryArgs {
     /**
      * Resource name of the repository, of the form `{{repo}}`.
      * The repo name may contain slashes. eg, `name/with/slash`
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**

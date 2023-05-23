@@ -773,6 +773,19 @@ class Authority(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A CertificateAuthority represents an individual Certificate Authority. A
+        CertificateAuthority can be used to create Certificates.
+
+        To get more information about CertificateAuthority, see:
+
+        * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/certificate-authority-service)
+
+        > **Warning:** On newer versions of the provider, you must explicitly set `deletion_protection=false`
+        (and run `pulumi up` to write the field to state) in order to destroy a CertificateAuthority.
+        It is recommended to not set this field (or set it to true) until you're ready to destroy.
+
         ## Example Usage
         ### Privateca Certificate Authority Basic
 
@@ -1047,6 +1060,19 @@ class Authority(pulumi.CustomResource):
                  args: AuthorityArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A CertificateAuthority represents an individual Certificate Authority. A
+        CertificateAuthority can be used to create Certificates.
+
+        To get more information about CertificateAuthority, see:
+
+        * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/certificate-authority-service)
+
+        > **Warning:** On newer versions of the provider, you must explicitly set `deletion_protection=false`
+        (and run `pulumi up` to write the field to state) in order to destroy a CertificateAuthority.
+        It is recommended to not set this field (or set it to true) until you're ready to destroy.
+
         ## Example Usage
         ### Privateca Certificate Authority Basic
 

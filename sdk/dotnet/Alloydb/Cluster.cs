@@ -10,6 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Alloydb
 {
     /// <summary>
+    /// A managed alloydb cluster.
+    /// 
+    /// To get more information about Cluster, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters/create)
+    /// * How-to Guides
+    ///     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+    /// 
+    /// &gt; **Warning:** All arguments including the following potentially sensitive
+    /// values will be stored in the raw state as plain text: `initial_user.password`.
+    /// Read more about sensitive data in state.
+    /// 
     /// ## Example Usage
     /// ### Alloydb Cluster Basic
     /// 
@@ -125,6 +137,9 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// The location where the alloydb cluster should reside.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -256,6 +271,9 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// The location where the alloydb cluster should reside.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -362,6 +380,9 @@ namespace Pulumi.Gcp.Alloydb
 
         /// <summary>
         /// The location where the alloydb cluster should reside.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

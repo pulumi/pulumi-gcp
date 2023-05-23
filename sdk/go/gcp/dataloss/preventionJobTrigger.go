@@ -476,6 +476,7 @@ type PreventionJobTrigger struct {
 	// The creation timestamp of an inspectTemplate. Set by the server.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A description of the job trigger.
+	//
 	// (Optional)
 	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -488,21 +489,27 @@ type PreventionJobTrigger struct {
 	LastRunTime pulumi.StringOutput `pulumi:"lastRunTime"`
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
 	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
 	// (Required)
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
 	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
 	// (Required)
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
 	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
 	// (Required)
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
 	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
 	// (Required)
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
 	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
 	// (Required)
 	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
 	// or `projects/project-id/storedInfoTypes/432452342`.
+	//
 	// (Required)
 	// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
 	// For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
@@ -510,10 +517,13 @@ type PreventionJobTrigger struct {
 	// field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
 	// For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
 	// timestamp property does not exist or its value is empty or invalid.
+	//
 	// (Required)
 	// The name of the Datastore kind.
+	//
 	// (Required)
 	// Name of a BigQuery field to be returned with the findings.
+	//
 	// (Required)
 	// Name describing the field.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -570,6 +580,7 @@ type preventionJobTriggerState struct {
 	// The creation timestamp of an inspectTemplate. Set by the server.
 	CreateTime *string `pulumi:"createTime"`
 	// A description of the job trigger.
+	//
 	// (Optional)
 	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
 	Description *string `pulumi:"description"`
@@ -582,21 +593,27 @@ type preventionJobTriggerState struct {
 	LastRunTime *string `pulumi:"lastRunTime"`
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
 	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
 	// (Required)
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
 	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
 	// (Required)
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
 	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
 	// (Required)
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
 	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
 	// (Required)
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
 	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
 	// (Required)
 	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
 	// or `projects/project-id/storedInfoTypes/432452342`.
+	//
 	// (Required)
 	// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
 	// For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
@@ -604,10 +621,13 @@ type preventionJobTriggerState struct {
 	// field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
 	// For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
 	// timestamp property does not exist or its value is empty or invalid.
+	//
 	// (Required)
 	// The name of the Datastore kind.
+	//
 	// (Required)
 	// Name of a BigQuery field to be returned with the findings.
+	//
 	// (Required)
 	// Name describing the field.
 	Name *string `pulumi:"name"`
@@ -630,6 +650,7 @@ type PreventionJobTriggerState struct {
 	// The creation timestamp of an inspectTemplate. Set by the server.
 	CreateTime pulumi.StringPtrInput
 	// A description of the job trigger.
+	//
 	// (Optional)
 	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
 	Description pulumi.StringPtrInput
@@ -642,21 +663,27 @@ type PreventionJobTriggerState struct {
 	LastRunTime pulumi.StringPtrInput
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
 	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
 	// (Required)
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
 	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
 	// (Required)
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
 	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
 	// (Required)
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
 	// at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
 	// (Required)
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
 	// listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+	//
 	// (Required)
 	// Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
 	// or `projects/project-id/storedInfoTypes/432452342`.
+	//
 	// (Required)
 	// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
 	// For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
@@ -664,10 +691,13 @@ type PreventionJobTriggerState struct {
 	// field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
 	// For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
 	// timestamp property does not exist or its value is empty or invalid.
+	//
 	// (Required)
 	// The name of the Datastore kind.
+	//
 	// (Required)
 	// Name of a BigQuery field to be returned with the findings.
+	//
 	// (Required)
 	// Name describing the field.
 	Name pulumi.StringPtrInput
@@ -691,6 +721,7 @@ func (PreventionJobTriggerState) ElementType() reflect.Type {
 
 type preventionJobTriggerArgs struct {
 	// A description of the job trigger.
+	//
 	// (Optional)
 	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
 	Description *string `pulumi:"description"`
@@ -714,6 +745,7 @@ type preventionJobTriggerArgs struct {
 // The set of arguments for constructing a PreventionJobTrigger resource.
 type PreventionJobTriggerArgs struct {
 	// A description of the job trigger.
+	//
 	// (Optional)
 	// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
 	Description pulumi.StringPtrInput
@@ -828,6 +860,7 @@ func (o PreventionJobTriggerOutput) CreateTime() pulumi.StringOutput {
 }
 
 // A description of the job trigger.
+//
 // (Optional)
 // A short description of where the data is coming from. Will be stored once in the job. 256 max length.
 func (o PreventionJobTriggerOutput) Description() pulumi.StringPtrOutput {
@@ -852,21 +885,27 @@ func (o PreventionJobTriggerOutput) LastRunTime() pulumi.StringOutput {
 
 // Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
 // at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+//
 // (Required)
 // Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
 // at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+//
 // (Required)
 // Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
 // at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+//
 // (Required)
 // Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
 // at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+//
 // (Required)
 // Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
 // listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+//
 // (Required)
 // Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
 // or `projects/project-id/storedInfoTypes/432452342`.
+//
 // (Required)
 // Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
 // For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
@@ -874,10 +913,13 @@ func (o PreventionJobTriggerOutput) LastRunTime() pulumi.StringOutput {
 // field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
 // For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
 // timestamp property does not exist or its value is empty or invalid.
+//
 // (Required)
 // The name of the Datastore kind.
+//
 // (Required)
 // Name of a BigQuery field to be returned with the findings.
+//
 // (Required)
 // Name describing the field.
 func (o PreventionJobTriggerOutput) Name() pulumi.StringOutput {

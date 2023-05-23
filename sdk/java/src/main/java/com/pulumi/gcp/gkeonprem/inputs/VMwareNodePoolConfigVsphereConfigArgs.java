@@ -39,6 +39,8 @@ public final class VMwareNodePoolConfigVsphereConfigArgs extends com.pulumi.reso
      * Tags to apply to VMs.
      * Structure is documented below.
      * 
+     * &lt;a name=&#34;nested_tags&#34;&gt;&lt;/a&gt;The `tags` block contains:
+     * 
      */
     @Import(name="tags")
     private @Nullable Output<List<VMwareNodePoolConfigVsphereConfigTagArgs>> tags;
@@ -47,6 +49,8 @@ public final class VMwareNodePoolConfigVsphereConfigArgs extends com.pulumi.reso
      * @return (Output)
      * Tags to apply to VMs.
      * Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_tags&#34;&gt;&lt;/a&gt;The `tags` block contains:
      * 
      */
     public Optional<Output<List<VMwareNodePoolConfigVsphereConfigTagArgs>>> tags() {
@@ -106,6 +110,8 @@ public final class VMwareNodePoolConfigVsphereConfigArgs extends com.pulumi.reso
          * Tags to apply to VMs.
          * Structure is documented below.
          * 
+         * &lt;a name=&#34;nested_tags&#34;&gt;&lt;/a&gt;The `tags` block contains:
+         * 
          * @return builder
          * 
          */
@@ -119,6 +125,8 @@ public final class VMwareNodePoolConfigVsphereConfigArgs extends com.pulumi.reso
          * Tags to apply to VMs.
          * Structure is documented below.
          * 
+         * &lt;a name=&#34;nested_tags&#34;&gt;&lt;/a&gt;The `tags` block contains:
+         * 
          * @return builder
          * 
          */
@@ -130,6 +138,8 @@ public final class VMwareNodePoolConfigVsphereConfigArgs extends com.pulumi.reso
          * @param tags (Output)
          * Tags to apply to VMs.
          * Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_tags&#34;&gt;&lt;/a&gt;The `tags` block contains:
          * 
          * @return builder
          * 

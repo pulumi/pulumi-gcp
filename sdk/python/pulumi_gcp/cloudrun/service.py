@@ -39,6 +39,7 @@ class ServiceArgs:
                connections for the revision, use the "run.googleapis.com/cloudsql-instances"
                annotation key.
                Structure is documented below.
+               
                (Optional)
                Metadata associated with this Service, including name, namespace, labels,
                and annotations.
@@ -111,6 +112,7 @@ class ServiceArgs:
         connections for the revision, use the "run.googleapis.com/cloudsql-instances"
         annotation key.
         Structure is documented below.
+
         (Optional)
         Metadata associated with this Service, including name, namespace, labels,
         and annotations.
@@ -207,6 +209,7 @@ class _ServiceState:
                connections for the revision, use the "run.googleapis.com/cloudsql-instances"
                annotation key.
                Structure is documented below.
+               
                (Optional)
                Metadata associated with this Service, including name, namespace, labels,
                and annotations.
@@ -284,6 +287,7 @@ class _ServiceState:
         connections for the revision, use the "run.googleapis.com/cloudsql-instances"
         annotation key.
         Structure is documented below.
+
         (Optional)
         Metadata associated with this Service, including name, namespace, labels,
         and annotations.
@@ -578,6 +582,7 @@ class Service(pulumi.CustomResource):
                connections for the revision, use the "run.googleapis.com/cloudsql-instances"
                annotation key.
                Structure is documented below.
+               
                (Optional)
                Metadata associated with this Service, including name, namespace, labels,
                and annotations.
@@ -865,6 +870,7 @@ class Service(pulumi.CustomResource):
                connections for the revision, use the "run.googleapis.com/cloudsql-instances"
                annotation key.
                Structure is documented below.
+               
                (Optional)
                Metadata associated with this Service, including name, namespace, labels,
                and annotations.
@@ -931,6 +937,7 @@ class Service(pulumi.CustomResource):
         connections for the revision, use the "run.googleapis.com/cloudsql-instances"
         annotation key.
         Structure is documented below.
+
         (Optional)
         Metadata associated with this Service, including name, namespace, labels,
         and annotations.

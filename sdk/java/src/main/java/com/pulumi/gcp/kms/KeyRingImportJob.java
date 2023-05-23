@@ -84,12 +84,16 @@ public class KeyRingImportJob extends com.pulumi.resources.CustomResource {
     /**
      * It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
      * 
+     * ***
+     * 
      */
     @Export(name="importJobId", type=String.class, parameters={})
     private Output<String> importJobId;
 
     /**
      * @return It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
+     * 
+     * ***
      * 
      */
     public Output<String> importJobId() {

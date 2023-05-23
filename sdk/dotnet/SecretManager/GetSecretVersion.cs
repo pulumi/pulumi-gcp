@@ -12,6 +12,8 @@ namespace Pulumi.Gcp.SecretManager
     public static class GetSecretVersion
     {
         /// <summary>
+        /// Get the value and metadata from a Secret Manager secret version. For more information see the official documentation datasource.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -38,6 +40,8 @@ namespace Pulumi.Gcp.SecretManager
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretVersionResult>("gcp:secretmanager/getSecretVersion:getSecretVersion", args ?? new GetSecretVersionArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get the value and metadata from a Secret Manager secret version. For more information see the official documentation datasource.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

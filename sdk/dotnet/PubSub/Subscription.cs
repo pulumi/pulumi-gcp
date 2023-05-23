@@ -376,6 +376,9 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// A reference to a Topic resource.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("topic")]
         public Output<string> Topic { get; private set; } = null!;
@@ -576,6 +579,9 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// A reference to a Topic resource.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("topic", required: true)]
         public Input<string> Topic { get; set; } = null!;
@@ -738,6 +744,9 @@ namespace Pulumi.Gcp.PubSub
 
         /// <summary>
         /// A reference to a Topic resource.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("topic")]
         public Input<string>? Topic { get; set; }

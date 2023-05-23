@@ -81,6 +81,8 @@ public final class GlobalNetworkEndpointGroupArgs extends com.pulumi.resources.R
      * Type of network endpoints in this network endpoint group.
      * Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
      * 
+     * ***
+     * 
      */
     @Import(name="networkEndpointType", required=true)
     private Output<String> networkEndpointType;
@@ -88,6 +90,8 @@ public final class GlobalNetworkEndpointGroupArgs extends com.pulumi.resources.R
     /**
      * @return Type of network endpoints in this network endpoint group.
      * Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
+     * 
+     * ***
      * 
      */
     public Output<String> networkEndpointType() {
@@ -222,6 +226,8 @@ public final class GlobalNetworkEndpointGroupArgs extends com.pulumi.resources.R
          * @param networkEndpointType Type of network endpoints in this network endpoint group.
          * Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -233,6 +239,8 @@ public final class GlobalNetworkEndpointGroupArgs extends com.pulumi.resources.R
         /**
          * @param networkEndpointType Type of network endpoints in this network endpoint group.
          * Possible values are: `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`.
+         * 
+         * ***
          * 
          * @return builder
          * 

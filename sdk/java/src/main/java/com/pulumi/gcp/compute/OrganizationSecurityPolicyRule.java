@@ -120,6 +120,7 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
     }
     /**
      * A description of the rule.
+     * 
      * (Optional)
      * A description of the rule.
      * 
@@ -129,6 +130,7 @@ public class OrganizationSecurityPolicyRule extends com.pulumi.resources.CustomR
 
     /**
      * @return A description of the rule.
+     * 
      * (Optional)
      * A description of the rule.
      * 

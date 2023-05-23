@@ -36,6 +36,11 @@ class PolicyArgs:
                to by one or more attestors, that all pod creations will be allowed,
                or that all pod creations will be denied. There can be at most one
                admission rule per cluster spec.
+               
+               Identifier format: `{{location}}.{{clusterId}}`.
+               A location is either a compute zone (e.g. `us-central1-a`) or a region
+               (e.g. `us-central1`).
+               Structure is documented below.
         :param pulumi.Input[str] description: A descriptive comment.
         :param pulumi.Input[str] global_policy_evaluation_mode: Controls the evaluation of a Google-maintained global admission policy
                for common system-level images. Images not covered by the global
@@ -94,6 +99,11 @@ class PolicyArgs:
         to by one or more attestors, that all pod creations will be allowed,
         or that all pod creations will be denied. There can be at most one
         admission rule per cluster spec.
+
+        Identifier format: `{{location}}.{{clusterId}}`.
+        A location is either a compute zone (e.g. `us-central1-a`) or a region
+        (e.g. `us-central1`).
+        Structure is documented below.
         """
         return pulumi.get(self, "cluster_admission_rules")
 
@@ -162,6 +172,11 @@ class _PolicyState:
                to by one or more attestors, that all pod creations will be allowed,
                or that all pod creations will be denied. There can be at most one
                admission rule per cluster spec.
+               
+               Identifier format: `{{location}}.{{clusterId}}`.
+               A location is either a compute zone (e.g. `us-central1-a`) or a region
+               (e.g. `us-central1`).
+               Structure is documented below.
         :param pulumi.Input['PolicyDefaultAdmissionRuleArgs'] default_admission_rule: Default admission rule for a cluster without a per-cluster admission
                rule.
                Structure is documented below.
@@ -210,6 +225,11 @@ class _PolicyState:
         to by one or more attestors, that all pod creations will be allowed,
         or that all pod creations will be denied. There can be at most one
         admission rule per cluster spec.
+
+        Identifier format: `{{location}}.{{clusterId}}`.
+        A location is either a compute zone (e.g. `us-central1-a`) or a region
+        (e.g. `us-central1`).
+        Structure is documented below.
         """
         return pulumi.get(self, "cluster_admission_rules")
 
@@ -369,6 +389,11 @@ class Policy(pulumi.CustomResource):
                to by one or more attestors, that all pod creations will be allowed,
                or that all pod creations will be denied. There can be at most one
                admission rule per cluster spec.
+               
+               Identifier format: `{{location}}.{{clusterId}}`.
+               A location is either a compute zone (e.g. `us-central1-a`) or a region
+               (e.g. `us-central1`).
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['PolicyDefaultAdmissionRuleArgs']] default_admission_rule: Default admission rule for a cluster without a per-cluster admission
                rule.
                Structure is documented below.
@@ -530,6 +555,11 @@ class Policy(pulumi.CustomResource):
                to by one or more attestors, that all pod creations will be allowed,
                or that all pod creations will be denied. There can be at most one
                admission rule per cluster spec.
+               
+               Identifier format: `{{location}}.{{clusterId}}`.
+               A location is either a compute zone (e.g. `us-central1-a`) or a region
+               (e.g. `us-central1`).
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['PolicyDefaultAdmissionRuleArgs']] default_admission_rule: Default admission rule for a cluster without a per-cluster admission
                rule.
                Structure is documented below.
@@ -573,6 +603,11 @@ class Policy(pulumi.CustomResource):
         to by one or more attestors, that all pod creations will be allowed,
         or that all pod creations will be denied. There can be at most one
         admission rule per cluster spec.
+
+        Identifier format: `{{location}}.{{clusterId}}`.
+        A location is either a compute zone (e.g. `us-central1-a`) or a region
+        (e.g. `us-central1`).
+        Structure is documented below.
         """
         return pulumi.get(self, "cluster_admission_rules")
 

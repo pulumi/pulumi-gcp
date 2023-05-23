@@ -2539,6 +2539,8 @@ type KeystoresAliasesSelfSignedCertSubject struct {
 	// Two-letter country code. Example, IN for India, US for United States of America.
 	CountryCode *string `pulumi:"countryCode"`
 	// Email address. Max 255 characters.
+	//
+	// ***
 	Email *string `pulumi:"email"`
 	// City or town name. Maximum length is 128 characters.
 	Locality *string `pulumi:"locality"`
@@ -2567,6 +2569,8 @@ type KeystoresAliasesSelfSignedCertSubjectArgs struct {
 	// Two-letter country code. Example, IN for India, US for United States of America.
 	CountryCode pulumi.StringPtrInput `pulumi:"countryCode"`
 	// Email address. Max 255 characters.
+	//
+	// ***
 	Email pulumi.StringPtrInput `pulumi:"email"`
 	// City or town name. Maximum length is 128 characters.
 	Locality pulumi.StringPtrInput `pulumi:"locality"`
@@ -2666,6 +2670,8 @@ func (o KeystoresAliasesSelfSignedCertSubjectOutput) CountryCode() pulumi.String
 }
 
 // Email address. Max 255 characters.
+//
+// ***
 func (o KeystoresAliasesSelfSignedCertSubjectOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeystoresAliasesSelfSignedCertSubject) *string { return v.Email }).(pulumi.StringPtrOutput)
 }
@@ -2735,6 +2741,8 @@ func (o KeystoresAliasesSelfSignedCertSubjectPtrOutput) CountryCode() pulumi.Str
 }
 
 // Email address. Max 255 characters.
+//
+// ***
 func (o KeystoresAliasesSelfSignedCertSubjectPtrOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KeystoresAliasesSelfSignedCertSubject) *string {
 		if v == nil {

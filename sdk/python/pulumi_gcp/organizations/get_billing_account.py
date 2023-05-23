@@ -118,6 +118,8 @@ def get_billing_account(billing_account: Optional[str] = None,
     :param str billing_account: The name of the billing account in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
     :param str display_name: The display name of the billing account.
     :param bool open: `true` if the billing account is open, `false` if the billing account is closed.
+           
+           > **NOTE:** One of `billing_account` or `display_name` must be specified.
     """
     __args__ = dict()
     __args__['billingAccount'] = billing_account
@@ -159,5 +161,7 @@ def get_billing_account_output(billing_account: Optional[pulumi.Input[Optional[s
     :param str billing_account: The name of the billing account in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
     :param str display_name: The display name of the billing account.
     :param bool open: `true` if the billing account is open, `false` if the billing account is closed.
+           
+           > **NOTE:** One of `billing_account` or `display_name` must be specified.
     """
     ...

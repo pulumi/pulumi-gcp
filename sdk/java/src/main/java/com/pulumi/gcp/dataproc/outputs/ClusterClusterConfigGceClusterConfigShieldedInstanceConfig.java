@@ -14,6 +14,8 @@ public final class ClusterClusterConfigGceClusterConfigShieldedInstanceConfig {
     /**
      * @return Defines whether instances have integrity monitoring enabled.
      * 
+     * ***
+     * 
      */
     private @Nullable Boolean enableIntegrityMonitoring;
     /**
@@ -30,6 +32,8 @@ public final class ClusterClusterConfigGceClusterConfigShieldedInstanceConfig {
     private ClusterClusterConfigGceClusterConfigShieldedInstanceConfig() {}
     /**
      * @return Defines whether instances have integrity monitoring enabled.
+     * 
+     * ***
      * 
      */
     public Optional<Boolean> enableIntegrityMonitoring() {

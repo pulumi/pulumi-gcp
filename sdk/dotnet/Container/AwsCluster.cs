@@ -225,6 +225,7 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The number of the Fleet host project where this cluster will be registered.
+        /// 
         /// (Optional)
         /// The project for the resource
         /// </summary>
@@ -375,6 +376,7 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The number of the Fleet host project where this cluster will be registered.
+        /// 
         /// (Optional)
         /// The project for the resource
         /// </summary>
@@ -475,6 +477,7 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The number of the Fleet host project where this cluster will be registered.
+        /// 
         /// (Optional)
         /// The project for the resource
         /// </summary>

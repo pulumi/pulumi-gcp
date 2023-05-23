@@ -29,6 +29,9 @@ class TargetGrpcProxyArgs:
                means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] url_map: URL to the UrlMap resource that defines the mapping from URL to
@@ -79,6 +82,9 @@ class TargetGrpcProxyArgs:
         means the first character must be a lowercase letter, and all
         following characters must be a dash, lowercase letter, or digit,
         except the last character, which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -165,6 +171,9 @@ class _TargetGrpcProxyState:
                means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -255,6 +264,9 @@ class _TargetGrpcProxyState:
         means the first character must be a lowercase letter, and all
         following characters must be a dash, lowercase letter, or digit,
         except the last character, which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -386,6 +398,9 @@ class TargetGrpcProxy(pulumi.CustomResource):
                means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] url_map: URL to the UrlMap resource that defines the mapping from URL to
@@ -518,6 +533,9 @@ class TargetGrpcProxy(pulumi.CustomResource):
                means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -592,6 +610,9 @@ class TargetGrpcProxy(pulumi.CustomResource):
         means the first character must be a lowercase letter, and all
         following characters must be a dash, lowercase letter, or digit,
         except the last character, which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

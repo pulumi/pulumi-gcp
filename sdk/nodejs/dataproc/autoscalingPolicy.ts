@@ -102,6 +102,9 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
      * The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 50 characters.
+     *
+     *
+     * - - -
      */
     public readonly policyId!: pulumi.Output<string>;
     /**
@@ -180,6 +183,9 @@ export interface AutoscalingPolicyState {
      * The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 50 characters.
+     *
+     *
+     * - - -
      */
     policyId?: pulumi.Input<string>;
     /**
@@ -217,6 +223,9 @@ export interface AutoscalingPolicyArgs {
      * The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
      * and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
      * 3 and 50 characters.
+     *
+     *
+     * - - -
      */
     policyId: pulumi.Input<string>;
     /**

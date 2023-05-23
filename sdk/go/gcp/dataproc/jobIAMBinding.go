@@ -164,6 +164,8 @@ type JobIAMBinding struct {
 	// The role that should be applied. Only one
 	// `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	//
+	// `dataproc.JobIAMPolicy` only:
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
@@ -219,6 +221,8 @@ type jobIAMBindingState struct {
 	// The role that should be applied. Only one
 	// `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	//
+	// `dataproc.JobIAMPolicy` only:
 	Role *string `pulumi:"role"`
 }
 
@@ -237,6 +241,8 @@ type JobIAMBindingState struct {
 	// The role that should be applied. Only one
 	// `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	//
+	// `dataproc.JobIAMPolicy` only:
 	Role pulumi.StringPtrInput
 }
 
@@ -257,6 +263,8 @@ type jobIAMBindingArgs struct {
 	// The role that should be applied. Only one
 	// `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	//
+	// `dataproc.JobIAMPolicy` only:
 	Role string `pulumi:"role"`
 }
 
@@ -274,6 +282,8 @@ type JobIAMBindingArgs struct {
 	// The role that should be applied. Only one
 	// `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	//
+	// `dataproc.JobIAMPolicy` only:
 	Role pulumi.StringInput
 }
 
@@ -396,6 +406,8 @@ func (o JobIAMBindingOutput) Region() pulumi.StringOutput {
 // The role that should be applied. Only one
 // `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`.
+//
+// `dataproc.JobIAMPolicy` only:
 func (o JobIAMBindingOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *JobIAMBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }

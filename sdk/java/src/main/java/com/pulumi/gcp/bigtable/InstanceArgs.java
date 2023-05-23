@@ -24,6 +24,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
      * to default to the backend value. See structure below.
      * 
+     * ***
+     * 
      */
     @Import(name="clusters")
     private @Nullable Output<List<InstanceClusterArgs>> clusters;
@@ -32,6 +34,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * @return A block of cluster configuration options. This can be specified at least once, and up
      * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
      * to default to the backend value. See structure below.
+     * 
+     * ***
      * 
      */
     public Optional<Output<List<InstanceClusterArgs>>> clusters() {
@@ -104,12 +108,16 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
      * 
+     * ***
+     * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
      * @return A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+     * 
+     * ***
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -183,6 +191,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
          * to default to the backend value. See structure below.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -196,6 +206,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
          * to default to the backend value. See structure below.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -207,6 +219,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @param clusters A block of cluster configuration options. This can be specified at least once, and up
          * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
          * to default to the backend value. See structure below.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -299,6 +313,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param labels A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -309,6 +325,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+         * 
+         * ***
          * 
          * @return builder
          * 

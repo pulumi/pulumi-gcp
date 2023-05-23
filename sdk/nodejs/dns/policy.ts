@@ -119,6 +119,9 @@ export class Policy extends pulumi.CustomResource {
     public readonly enableLogging!: pulumi.Output<boolean | undefined>;
     /**
      * User assigned name for this policy.
+     *
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -196,6 +199,9 @@ export interface PolicyState {
     enableLogging?: pulumi.Input<boolean>;
     /**
      * User assigned name for this policy.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -239,6 +245,9 @@ export interface PolicyArgs {
     enableLogging?: pulumi.Input<boolean>;
     /**
      * User assigned name for this policy.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**

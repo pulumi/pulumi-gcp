@@ -40,12 +40,16 @@ public final class SyncAuthorizationArgs extends com.pulumi.resources.ResourceAr
     /**
      * Name of the Apigee organization.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Name of the Apigee organization.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -120,6 +124,8 @@ public final class SyncAuthorizationArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param name Name of the Apigee organization.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -130,6 +136,8 @@ public final class SyncAuthorizationArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param name Name of the Apigee organization.
+         * 
+         * ***
          * 
          * @return builder
          * 

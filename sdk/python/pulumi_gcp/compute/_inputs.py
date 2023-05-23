@@ -3516,7 +3516,6 @@ class BackendServiceIamBindingConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -3550,9 +3549,6 @@ class BackendServiceIamBindingConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -3569,7 +3565,6 @@ class BackendServiceIamMemberConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -3603,9 +3598,6 @@ class BackendServiceIamMemberConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -4252,6 +4244,8 @@ class DiskAsyncReplicationSecondaryDiskArgs:
         """
         :param pulumi.Input[str] disk: The secondary disk.
         :param pulumi.Input[str] state: Output-only. Status of replication on the secondary disk.
+               
+               - - -
         """
         pulumi.set(__self__, "disk", disk)
         if state is not None:
@@ -4274,6 +4268,8 @@ class DiskAsyncReplicationSecondaryDiskArgs:
     def state(self) -> Optional[pulumi.Input[str]]:
         """
         Output-only. Status of replication on the secondary disk.
+
+        - - -
         """
         return pulumi.get(self, "state")
 
@@ -4848,6 +4844,8 @@ class FirewallPolicyRuleMatchArgs:
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+               
+               <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
         """
         pulumi.set(__self__, "layer4_configs", layer4_configs)
         if dest_address_groups is not None:
@@ -4954,6 +4952,8 @@ class FirewallPolicyRuleMatchArgs:
     def src_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+
+        <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
         """
         return pulumi.get(self, "src_ip_ranges")
 
@@ -4988,6 +4988,8 @@ class FirewallPolicyRuleMatchLayer4ConfigArgs:
         """
         :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+               
+               - - -
         """
         pulumi.set(__self__, "ip_protocol", ip_protocol)
         if ports is not None:
@@ -5010,6 +5012,8 @@ class FirewallPolicyRuleMatchLayer4ConfigArgs:
     def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+
+        - - -
         """
         return pulumi.get(self, "ports")
 
@@ -5321,46 +5325,58 @@ class HealthCheckHttp2HealthCheckArgs:
         :param pulumi.Input[str] host: The value of the host header in the HTTP health check request.
                If left empty (default value), the public IP on behalf of which this health
                check is performed will be used.
+               
                (Optional)
                The value of the host header in the HTTPS health check request.
                If left empty (default value), the public IP on behalf of which this health
                check is performed will be used.
+               
                (Optional)
                The value of the host header in the HTTP2 health check request.
                If left empty (default value), the public IP on behalf of which this health
                check is performed will be used.
         :param pulumi.Input[int] port: The TCP port number for the HTTP health check request.
                The default value is 80.
+               
                (Optional)
                The TCP port number for the HTTPS health check request.
                The default value is 443.
+               
                (Optional)
                The TCP port number for the TCP health check request.
                The default value is 443.
+               
                (Optional)
                The TCP port number for the SSL health check request.
                The default value is 443.
+               
                (Optional)
                The TCP port number for the HTTP2 health check request.
                The default value is 443.
+               
                (Optional)
                The port number for the health check request.
                Must be specified if portName and portSpecification are not set
                or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
         :param pulumi.Input[str] port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
+               
                (Optional)
                Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
+               
                (Optional)
                Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
+               
                (Optional)
                Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
+               
                (Optional)
                Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
+               
                (Optional)
                Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
@@ -5385,21 +5401,25 @@ class HealthCheckHttp2HealthCheckArgs:
                backend.
                Default value is `NONE`.
                Possible values are: `NONE`, `PROXY_V1`.
+               
                (Optional)
                Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
                Possible values are: `NONE`, `PROXY_V1`.
+               
                (Optional)
                Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
                Possible values are: `NONE`, `PROXY_V1`.
+               
                (Optional)
                Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
                Possible values are: `NONE`, `PROXY_V1`.
+               
                (Optional)
                Specifies the type of proxy header to append before sending data to the
                backend.
@@ -5407,27 +5427,33 @@ class HealthCheckHttp2HealthCheckArgs:
                Possible values are: `NONE`, `PROXY_V1`.
         :param pulumi.Input[str] request_path: The request path of the HTTP health check request.
                The default value is /.
+               
                (Optional)
                The request path of the HTTPS health check request.
                The default value is /.
+               
                (Optional)
                The request path of the HTTP2 health check request.
                The default value is /.
         :param pulumi.Input[str] response: The bytes to match against the beginning of the response data. If left empty
                (the default value), any response will indicate health. The response data
                can only be ASCII.
+               
                (Optional)
                The bytes to match against the beginning of the response data. If left empty
                (the default value), any response will indicate health. The response data
                can only be ASCII.
+               
                (Optional)
                The bytes to match against the beginning of the response data. If left empty
                (the default value), any response will indicate health. The response data
                can only be ASCII.
+               
                (Optional)
                The bytes to match against the beginning of the response data. If left empty
                (the default value), any response will indicate health. The response data
                can only be ASCII.
+               
                (Optional)
                The bytes to match against the beginning of the response data. If left empty
                (the default value), any response will indicate health. The response data
@@ -5455,10 +5481,12 @@ class HealthCheckHttp2HealthCheckArgs:
         The value of the host header in the HTTP health check request.
         If left empty (default value), the public IP on behalf of which this health
         check is performed will be used.
+
         (Optional)
         The value of the host header in the HTTPS health check request.
         If left empty (default value), the public IP on behalf of which this health
         check is performed will be used.
+
         (Optional)
         The value of the host header in the HTTP2 health check request.
         If left empty (default value), the public IP on behalf of which this health
@@ -5476,18 +5504,23 @@ class HealthCheckHttp2HealthCheckArgs:
         """
         The TCP port number for the HTTP health check request.
         The default value is 80.
+
         (Optional)
         The TCP port number for the HTTPS health check request.
         The default value is 443.
+
         (Optional)
         The TCP port number for the TCP health check request.
         The default value is 443.
+
         (Optional)
         The TCP port number for the SSL health check request.
         The default value is 443.
+
         (Optional)
         The TCP port number for the HTTP2 health check request.
         The default value is 443.
+
         (Optional)
         The port number for the health check request.
         Must be specified if portName and portSpecification are not set
@@ -5505,18 +5538,23 @@ class HealthCheckHttp2HealthCheckArgs:
         """
         Port name as defined in InstanceGroup#NamedPort#name. If both port and
         port_name are defined, port takes precedence.
+
         (Optional)
         Port name as defined in InstanceGroup#NamedPort#name. If both port and
         port_name are defined, port takes precedence.
+
         (Optional)
         Port name as defined in InstanceGroup#NamedPort#name. If both port and
         port_name are defined, port takes precedence.
+
         (Optional)
         Port name as defined in InstanceGroup#NamedPort#name. If both port and
         port_name are defined, port takes precedence.
+
         (Optional)
         Port name as defined in InstanceGroup#NamedPort#name. If both port and
         port_name are defined, port takes precedence.
+
         (Optional)
         Port name as defined in InstanceGroup#NamedPort#name. If both port and
         port_name are defined, port takes precedence.
@@ -5563,21 +5601,25 @@ class HealthCheckHttp2HealthCheckArgs:
         backend.
         Default value is `NONE`.
         Possible values are: `NONE`, `PROXY_V1`.
+
         (Optional)
         Specifies the type of proxy header to append before sending data to the
         backend.
         Default value is `NONE`.
         Possible values are: `NONE`, `PROXY_V1`.
+
         (Optional)
         Specifies the type of proxy header to append before sending data to the
         backend.
         Default value is `NONE`.
         Possible values are: `NONE`, `PROXY_V1`.
+
         (Optional)
         Specifies the type of proxy header to append before sending data to the
         backend.
         Default value is `NONE`.
         Possible values are: `NONE`, `PROXY_V1`.
+
         (Optional)
         Specifies the type of proxy header to append before sending data to the
         backend.
@@ -5596,9 +5638,11 @@ class HealthCheckHttp2HealthCheckArgs:
         """
         The request path of the HTTP health check request.
         The default value is /.
+
         (Optional)
         The request path of the HTTPS health check request.
         The default value is /.
+
         (Optional)
         The request path of the HTTP2 health check request.
         The default value is /.
@@ -5616,18 +5660,22 @@ class HealthCheckHttp2HealthCheckArgs:
         The bytes to match against the beginning of the response data. If left empty
         (the default value), any response will indicate health. The response data
         can only be ASCII.
+
         (Optional)
         The bytes to match against the beginning of the response data. If left empty
         (the default value), any response will indicate health. The response data
         can only be ASCII.
+
         (Optional)
         The bytes to match against the beginning of the response data. If left empty
         (the default value), any response will indicate health. The response data
         can only be ASCII.
+
         (Optional)
         The bytes to match against the beginning of the response data. If left empty
         (the default value), any response will indicate health. The response data
         can only be ASCII.
+
         (Optional)
         The bytes to match against the beginning of the response data. If left empty
         (the default value), any response will indicate health. The response data
@@ -6231,6 +6279,10 @@ class ImageIamBindingConditionArgs:
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
         :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -6266,6 +6318,10 @@ class ImageIamBindingConditionArgs:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
 
@@ -6284,6 +6340,10 @@ class ImageIamMemberConditionArgs:
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
         :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -6319,6 +6379,10 @@ class ImageIamMemberConditionArgs:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
 
@@ -8768,6 +8832,8 @@ class InstanceGroupManagerAllInstancesConfigArgs:
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: ), The label key-value pairs that you want to patch onto the instance.
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: ), The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
         """
         if labels is not None:
@@ -8780,6 +8846,8 @@ class InstanceGroupManagerAllInstancesConfigArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         ), The label key-value pairs that you want to patch onto the instance.
+
+        - - -
         """
         return pulumi.get(self, "labels")
 
@@ -8845,6 +8913,8 @@ class InstanceGroupManagerInstanceLifecyclePolicyArgs:
                  force_update_on_repair: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] force_update_on_repair: ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
+               
+               - - -
         """
         if force_update_on_repair is not None:
             pulumi.set(__self__, "force_update_on_repair", force_update_on_repair)
@@ -8854,6 +8924,8 @@ class InstanceGroupManagerInstanceLifecyclePolicyArgs:
     def force_update_on_repair(self) -> Optional[pulumi.Input[str]]:
         """
         ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
+
+        - - -
         """
         return pulumi.get(self, "force_update_on_repair")
 
@@ -9351,6 +9423,9 @@ class InstanceGroupManagerVersionArgs:
         :param pulumi.Input[str] instance_template: The full URL to an instance template from which all new instances of this version will be created. It is recommended to reference instance templates through their unique id (`self_link_unique` attribute).
         :param pulumi.Input[str] name: Version name.
         :param pulumi.Input['InstanceGroupManagerVersionTargetSizeArgs'] target_size: The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+               
+               > Exactly one `version` you specify must not have a `target_size` specified. During a rolling update, the instance group manager will fulfill the `target_size`
+               constraints of every other `version`, and any remaining instances will be provisioned with the version where `target_size` is unset.
         """
         pulumi.set(__self__, "instance_template", instance_template)
         if name is not None:
@@ -9387,6 +9462,9 @@ class InstanceGroupManagerVersionArgs:
     def target_size(self) -> Optional[pulumi.Input['InstanceGroupManagerVersionTargetSizeArgs']]:
         """
         The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+
+        > Exactly one `version` you specify must not have a `target_size` specified. During a rolling update, the instance group manager will fulfill the `target_size`
+        constraints of every other `version`, and any remaining instances will be provisioned with the version where `target_size` is unset.
         """
         return pulumi.get(self, "target_size")
 
@@ -9522,6 +9600,10 @@ class InstanceIAMBindingConditionArgs:
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
         :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -9557,6 +9639,10 @@ class InstanceIAMBindingConditionArgs:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
 
@@ -9575,6 +9661,10 @@ class InstanceIAMMemberConditionArgs:
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
         :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -9610,6 +9700,10 @@ class InstanceIAMMemberConditionArgs:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
 
@@ -9969,11 +10063,15 @@ class InstanceNetworkInterfaceIpv6AccessConfigArgs:
         :param pulumi.Input[str] network_tier: The [networking tier][network-tier] used for configuring this instance.
                This field can take the following values: PREMIUM, FIXED_STANDARD or STANDARD. If this field is
                not specified, it is assumed to be PREMIUM.
+               
+               <a name="nested_ipv6_access_config"></a>The `ipv6_access_config` block supports:
+               
                subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
         :param pulumi.Input[str] public_ptr_domain_name: The DNS domain name for the public PTR record.
                To set this field on an instance, you must be verified as the owner of the domain.
                See [the docs](https://cloud.google.com/compute/docs/instances/create-ptr-record) for how
                to become verified as a domain owner.
+               
                records for the external IPv6 ranges..
         """
         pulumi.set(__self__, "network_tier", network_tier)
@@ -9991,6 +10089,9 @@ class InstanceNetworkInterfaceIpv6AccessConfigArgs:
         The [networking tier][network-tier] used for configuring this instance.
         This field can take the following values: PREMIUM, FIXED_STANDARD or STANDARD. If this field is
         not specified, it is assumed to be PREMIUM.
+
+        <a name="nested_ipv6_access_config"></a>The `ipv6_access_config` block supports:
+
         subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
         """
         return pulumi.get(self, "network_tier")
@@ -10025,6 +10126,7 @@ class InstanceNetworkInterfaceIpv6AccessConfigArgs:
         To set this field on an instance, you must be verified as the owner of the domain.
         See [the docs](https://cloud.google.com/compute/docs/instances/create-ptr-record) for how
         to become verified as a domain owner.
+
         records for the external IPv6 ranges..
         """
         return pulumi.get(self, "public_ptr_domain_name")
@@ -10658,6 +10760,14 @@ class InstanceTemplateDiskArgs:
                /dev/  tree of a Linux operating system running within the instance. If not
                specified, the server chooses a default device name to apply to this disk.
         :param pulumi.Input['InstanceTemplateDiskDiskEncryptionKeyArgs'] disk_encryption_key: Encrypts or decrypts a disk using a customer-supplied encryption key.
+               
+               If you are creating a new disk, this field encrypts the new disk using an encryption key that you provide. If you are attaching an existing disk that is already encrypted, this field decrypts the disk using the customer-supplied encryption key.
+               
+               If you encrypt a disk using a customer-supplied key, you must provide the same key again when you attempt to use this resource at a later time. For example, you must provide the key when you create a snapshot or an image from the disk or when you attach the disk to a virtual machine instance.
+               
+               If you do not provide an encryption key, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
+               
+               Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt disks in a managed instance group. Structure documented below.
         :param pulumi.Input[str] disk_name: Name of the disk. When not provided, this defaults
                to the name of the instance.
         :param pulumi.Input[int] disk_size_gb: The size of the image in gigabytes. If not
@@ -10688,6 +10798,11 @@ class InstanceTemplateDiskArgs:
         :param pulumi.Input['InstanceTemplateDiskSourceImageEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption
                key of the source image. Required if the source image is protected by a
                customer-supplied encryption key.
+               
+               Instance templates do not store customer-supplied encryption keys, so you
+               cannot create disks for instances in a managed instance group if the source
+               images are encrypted with your own keys. Structure
+               documented below.
         :param pulumi.Input[str] source_snapshot: The source snapshot to create this disk.
                > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
         :param pulumi.Input['InstanceTemplateDiskSourceSnapshotEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption
@@ -10775,6 +10890,14 @@ class InstanceTemplateDiskArgs:
     def disk_encryption_key(self) -> Optional[pulumi.Input['InstanceTemplateDiskDiskEncryptionKeyArgs']]:
         """
         Encrypts or decrypts a disk using a customer-supplied encryption key.
+
+        If you are creating a new disk, this field encrypts the new disk using an encryption key that you provide. If you are attaching an existing disk that is already encrypted, this field decrypts the disk using the customer-supplied encryption key.
+
+        If you encrypt a disk using a customer-supplied key, you must provide the same key again when you attempt to use this resource at a later time. For example, you must provide the key when you create a snapshot or an image from the disk or when you attach the disk to a virtual machine instance.
+
+        If you do not provide an encryption key, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
+
+        Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt disks in a managed instance group. Structure documented below.
         """
         return pulumi.get(self, "disk_encryption_key")
 
@@ -10915,6 +11038,11 @@ class InstanceTemplateDiskArgs:
         The customer-supplied encryption
         key of the source image. Required if the source image is protected by a
         customer-supplied encryption key.
+
+        Instance templates do not store customer-supplied encryption keys, so you
+        cannot create disks for instances in a managed instance group if the source
+        images are encrypted with your own keys. Structure
+        documented below.
         """
         return pulumi.get(self, "source_image_encryption_key")
 
@@ -11455,6 +11583,9 @@ class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
         :param pulumi.Input[str] network_tier: The [networking tier][network-tier] used for configuring
                this instance template. This field can take the following values: PREMIUM,
                STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+               
+               <a name="nested_ipv6_access_config"></a>The `ipv6_access_config` block supports:
+               
                subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
         """
         pulumi.set(__self__, "network_tier", network_tier)
@@ -11472,6 +11603,9 @@ class InstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
         The [networking tier][network-tier] used for configuring
         this instance template. This field can take the following values: PREMIUM,
         STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+
+        <a name="nested_ipv6_access_config"></a>The `ipv6_access_config` block supports:
+
         subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
         """
         return pulumi.get(self, "network_tier")
@@ -11887,6 +12021,11 @@ class InstanceTemplateServiceAccountArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: A list of service scopes. Both OAuth2 URLs and gcloud
                short names are supported. To allow full access to all Cloud APIs, use the
                `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+               
+               The [service accounts documentation](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam)
+               explains that access scopes are the legacy method of specifying permissions for your instance.
+               If you are following best practices and using IAM roles to grant permissions to service accounts,
+               then you can define this field as an empty list.
         :param pulumi.Input[str] email: The service account e-mail address. If not given, the
                default Google Compute Engine service account is used.
         """
@@ -11901,6 +12040,11 @@ class InstanceTemplateServiceAccountArgs:
         A list of service scopes. Both OAuth2 URLs and gcloud
         short names are supported. To allow full access to all Cloud APIs, use the
         `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+
+        The [service accounts documentation](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam)
+        explains that access scopes are the legacy method of specifying permissions for your instance.
+        If you are following best practices and using IAM roles to grant permissions to service accounts,
+        then you can define this field as an empty list.
         """
         return pulumi.get(self, "scopes")
 
@@ -12265,6 +12409,8 @@ class NetworkFirewallPolicyRuleMatchArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_threat_intelligences: Name of the Google Cloud Threat Intelligence list.
+               
+               The `layer4_configs` block supports:
         """
         pulumi.set(__self__, "layer4_configs", layer4_configs)
         if dest_address_groups is not None:
@@ -12427,6 +12573,8 @@ class NetworkFirewallPolicyRuleMatchArgs:
     def src_threat_intelligences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Name of the Google Cloud Threat Intelligence list.
+
+        The `layer4_configs` block supports:
         """
         return pulumi.get(self, "src_threat_intelligences")
 
@@ -12443,6 +12591,8 @@ class NetworkFirewallPolicyRuleMatchLayer4ConfigArgs:
         """
         :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+               
+               - - -
         """
         pulumi.set(__self__, "ip_protocol", ip_protocol)
         if ports is not None:
@@ -12465,6 +12615,8 @@ class NetworkFirewallPolicyRuleMatchLayer4ConfigArgs:
     def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+
+        - - -
         """
         return pulumi.get(self, "ports")
 
@@ -12893,6 +13045,9 @@ class OrganizationSecurityPolicyRuleMatchConfigArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
                Structure is documented below.
+               
+               
+               <a name="nested_layer4_config"></a>The `layer4_config` block supports:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: Destination IP address range in CIDR format. Required for
                EGRESS rules.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: Source IP address range in CIDR format. Required for
@@ -12910,6 +13065,9 @@ class OrganizationSecurityPolicyRuleMatchConfigArgs:
         """
         Pairs of IP protocols and ports that the rule should match.
         Structure is documented below.
+
+
+        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
         """
         return pulumi.get(self, "layer4_configs")
 
@@ -12961,6 +13119,8 @@ class OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs:
                applies to connections through any port.
                Example inputs include: ["22"], ["80","443"], and
                ["12345-12349"].
+               
+               - - -
         """
         pulumi.set(__self__, "ip_protocol", ip_protocol)
         if ports is not None:
@@ -12992,6 +13152,8 @@ class OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs:
         applies to connections through any port.
         Example inputs include: ["22"], ["80","443"], and
         ["12345-12349"].
+
+        - - -
         """
         return pulumi.get(self, "ports")
 
@@ -13148,6 +13310,8 @@ class PacketMirroringMirroredResourcesInstanceArgs:
                  url: pulumi.Input[str]):
         """
         :param pulumi.Input[str] url: The URL of the instances where this rule should be active.
+               
+               - - -
         """
         pulumi.set(__self__, "url", url)
 
@@ -13156,6 +13320,8 @@ class PacketMirroringMirroredResourcesInstanceArgs:
     def url(self) -> pulumi.Input[str]:
         """
         The URL of the instances where this rule should be active.
+
+        - - -
         """
         return pulumi.get(self, "url")
 
@@ -15515,7 +15681,6 @@ class RegionBackendServiceIamBindingConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -15549,9 +15714,6 @@ class RegionBackendServiceIamBindingConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -15568,7 +15730,6 @@ class RegionBackendServiceIamMemberConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -15602,9 +15763,6 @@ class RegionBackendServiceIamMemberConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -16509,46 +16667,58 @@ class RegionHealthCheckHttp2HealthCheckArgs:
         :param pulumi.Input[str] host: The value of the host header in the HTTP health check request.
                If left empty (default value), the public IP on behalf of which this health
                check is performed will be used.
+               
                (Optional)
                The value of the host header in the HTTPS health check request.
                If left empty (default value), the public IP on behalf of which this health
                check is performed will be used.
+               
                (Optional)
                The value of the host header in the HTTP2 health check request.
                If left empty (default value), the public IP on behalf of which this health
                check is performed will be used.
         :param pulumi.Input[int] port: The TCP port number for the HTTP health check request.
                The default value is 80.
+               
                (Optional)
                The TCP port number for the HTTPS health check request.
                The default value is 443.
+               
                (Optional)
                The TCP port number for the TCP health check request.
                The default value is 80.
+               
                (Optional)
                The TCP port number for the SSL health check request.
                The default value is 443.
+               
                (Optional)
                The TCP port number for the HTTP2 health check request.
                The default value is 443.
+               
                (Optional)
                The port number for the health check request.
                Must be specified if portName and portSpecification are not set
                or if port_specification is USE_FIXED_PORT. Valid values are 1 through 65535.
         :param pulumi.Input[str] port_name: Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
+               
                (Optional)
                Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
+               
                (Optional)
                Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
+               
                (Optional)
                Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
+               
                (Optional)
                Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
+               
                (Optional)
                Port name as defined in InstanceGroup#NamedPort#name. If both port and
                port_name are defined, port takes precedence.
@@ -16573,21 +16743,25 @@ class RegionHealthCheckHttp2HealthCheckArgs:
                backend.
                Default value is `NONE`.
                Possible values are: `NONE`, `PROXY_V1`.
+               
                (Optional)
                Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
                Possible values are: `NONE`, `PROXY_V1`.
+               
                (Optional)
                Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
                Possible values are: `NONE`, `PROXY_V1`.
+               
                (Optional)
                Specifies the type of proxy header to append before sending data to the
                backend.
                Default value is `NONE`.
                Possible values are: `NONE`, `PROXY_V1`.
+               
                (Optional)
                Specifies the type of proxy header to append before sending data to the
                backend.
@@ -16595,27 +16769,33 @@ class RegionHealthCheckHttp2HealthCheckArgs:
                Possible values are: `NONE`, `PROXY_V1`.
         :param pulumi.Input[str] request_path: The request path of the HTTP health check request.
                The default value is /.
+               
                (Optional)
                The request path of the HTTPS health check request.
                The default value is /.
+               
                (Optional)
                The request path of the HTTP2 health check request.
                The default value is /.
         :param pulumi.Input[str] response: The bytes to match against the beginning of the response data. If left empty
                (the default value), any response will indicate health. The response data
                can only be ASCII.
+               
                (Optional)
                The bytes to match against the beginning of the response data. If left empty
                (the default value), any response will indicate health. The response data
                can only be ASCII.
+               
                (Optional)
                The bytes to match against the beginning of the response data. If left empty
                (the default value), any response will indicate health. The response data
                can only be ASCII.
+               
                (Optional)
                The bytes to match against the beginning of the response data. If left empty
                (the default value), any response will indicate health. The response data
                can only be ASCII.
+               
                (Optional)
                The bytes to match against the beginning of the response data. If left empty
                (the default value), any response will indicate health. The response data
@@ -16643,10 +16823,12 @@ class RegionHealthCheckHttp2HealthCheckArgs:
         The value of the host header in the HTTP health check request.
         If left empty (default value), the public IP on behalf of which this health
         check is performed will be used.
+
         (Optional)
         The value of the host header in the HTTPS health check request.
         If left empty (default value), the public IP on behalf of which this health
         check is performed will be used.
+
         (Optional)
         The value of the host header in the HTTP2 health check request.
         If left empty (default value), the public IP on behalf of which this health
@@ -16664,18 +16846,23 @@ class RegionHealthCheckHttp2HealthCheckArgs:
         """
         The TCP port number for the HTTP health check request.
         The default value is 80.
+
         (Optional)
         The TCP port number for the HTTPS health check request.
         The default value is 443.
+
         (Optional)
         The TCP port number for the TCP health check request.
         The default value is 80.
+
         (Optional)
         The TCP port number for the SSL health check request.
         The default value is 443.
+
         (Optional)
         The TCP port number for the HTTP2 health check request.
         The default value is 443.
+
         (Optional)
         The port number for the health check request.
         Must be specified if portName and portSpecification are not set
@@ -16693,18 +16880,23 @@ class RegionHealthCheckHttp2HealthCheckArgs:
         """
         Port name as defined in InstanceGroup#NamedPort#name. If both port and
         port_name are defined, port takes precedence.
+
         (Optional)
         Port name as defined in InstanceGroup#NamedPort#name. If both port and
         port_name are defined, port takes precedence.
+
         (Optional)
         Port name as defined in InstanceGroup#NamedPort#name. If both port and
         port_name are defined, port takes precedence.
+
         (Optional)
         Port name as defined in InstanceGroup#NamedPort#name. If both port and
         port_name are defined, port takes precedence.
+
         (Optional)
         Port name as defined in InstanceGroup#NamedPort#name. If both port and
         port_name are defined, port takes precedence.
+
         (Optional)
         Port name as defined in InstanceGroup#NamedPort#name. If both port and
         port_name are defined, port takes precedence.
@@ -16751,21 +16943,25 @@ class RegionHealthCheckHttp2HealthCheckArgs:
         backend.
         Default value is `NONE`.
         Possible values are: `NONE`, `PROXY_V1`.
+
         (Optional)
         Specifies the type of proxy header to append before sending data to the
         backend.
         Default value is `NONE`.
         Possible values are: `NONE`, `PROXY_V1`.
+
         (Optional)
         Specifies the type of proxy header to append before sending data to the
         backend.
         Default value is `NONE`.
         Possible values are: `NONE`, `PROXY_V1`.
+
         (Optional)
         Specifies the type of proxy header to append before sending data to the
         backend.
         Default value is `NONE`.
         Possible values are: `NONE`, `PROXY_V1`.
+
         (Optional)
         Specifies the type of proxy header to append before sending data to the
         backend.
@@ -16784,9 +16980,11 @@ class RegionHealthCheckHttp2HealthCheckArgs:
         """
         The request path of the HTTP health check request.
         The default value is /.
+
         (Optional)
         The request path of the HTTPS health check request.
         The default value is /.
+
         (Optional)
         The request path of the HTTP2 health check request.
         The default value is /.
@@ -16804,18 +17002,22 @@ class RegionHealthCheckHttp2HealthCheckArgs:
         The bytes to match against the beginning of the response data. If left empty
         (the default value), any response will indicate health. The response data
         can only be ASCII.
+
         (Optional)
         The bytes to match against the beginning of the response data. If left empty
         (the default value), any response will indicate health. The response data
         can only be ASCII.
+
         (Optional)
         The bytes to match against the beginning of the response data. If left empty
         (the default value), any response will indicate health. The response data
         can only be ASCII.
+
         (Optional)
         The bytes to match against the beginning of the response data. If left empty
         (the default value), any response will indicate health. The response data
         can only be ASCII.
+
         (Optional)
         The bytes to match against the beginning of the response data. If left empty
         (the default value), any response will indicate health. The response data
@@ -17392,6 +17594,8 @@ class RegionInstanceGroupManagerAllInstancesConfigArgs:
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: ), The label key-value pairs that you want to patch onto the instance.
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: ), The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
         """
         if labels is not None:
@@ -17404,6 +17608,8 @@ class RegionInstanceGroupManagerAllInstancesConfigArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         ), The label key-value pairs that you want to patch onto the instance.
+
+        - - -
         """
         return pulumi.get(self, "labels")
 
@@ -17993,6 +18199,9 @@ class RegionInstanceGroupManagerVersionArgs:
         :param pulumi.Input[str] instance_template: The full URL to an instance template from which all new instances of this version will be created.
         :param pulumi.Input[str] name: Version name.
         :param pulumi.Input['RegionInstanceGroupManagerVersionTargetSizeArgs'] target_size: The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+               
+               > Exactly one `version` you specify must not have a `target_size` specified. During a rolling update, the instance group manager will fulfill the `target_size`
+               constraints of every other `version`, and any remaining instances will be provisioned with the version where `target_size` is unset.
         """
         pulumi.set(__self__, "instance_template", instance_template)
         if name is not None:
@@ -18029,6 +18238,9 @@ class RegionInstanceGroupManagerVersionArgs:
     def target_size(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerVersionTargetSizeArgs']]:
         """
         The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+
+        > Exactly one `version` you specify must not have a `target_size` specified. During a rolling update, the instance group manager will fulfill the `target_size`
+        constraints of every other `version`, and any remaining instances will be provisioned with the version where `target_size` is unset.
         """
         return pulumi.get(self, "target_size")
 
@@ -18185,6 +18397,14 @@ class RegionInstanceTemplateDiskArgs:
                /dev/  tree of a Linux operating system running within the instance. If not
                specified, the server chooses a default device name to apply to this disk.
         :param pulumi.Input['RegionInstanceTemplateDiskDiskEncryptionKeyArgs'] disk_encryption_key: Encrypts or decrypts a disk using a customer-supplied encryption key.
+               
+               If you are creating a new disk, this field encrypts the new disk using an encryption key that you provide. If you are attaching an existing disk that is already encrypted, this field decrypts the disk using the customer-supplied encryption key.
+               
+               If you encrypt a disk using a customer-supplied key, you must provide the same key again when you attempt to use this resource at a later time. For example, you must provide the key when you create a snapshot or an image from the disk or when you attach the disk to a virtual machine instance.
+               
+               If you do not provide an encryption key, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
+               
+               Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt disks in a managed instance group. Structure documented below.
         :param pulumi.Input[str] disk_name: Name of the disk. When not provided, this defaults
                to the name of the instance.
         :param pulumi.Input[int] disk_size_gb: The size of the image in gigabytes. If not
@@ -18215,6 +18435,11 @@ class RegionInstanceTemplateDiskArgs:
         :param pulumi.Input['RegionInstanceTemplateDiskSourceImageEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption
                key of the source image. Required if the source image is protected by a
                customer-supplied encryption key.
+               
+               Instance templates do not store customer-supplied encryption keys, so you
+               cannot create disks for instances in a managed instance group if the source
+               images are encrypted with your own keys. Structure
+               documented below.
         :param pulumi.Input[str] source_snapshot: The source snapshot to create this disk.
                > **Note:** Either `source`, `source_image`, or `source_snapshot` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
         :param pulumi.Input['RegionInstanceTemplateDiskSourceSnapshotEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption
@@ -18302,6 +18527,14 @@ class RegionInstanceTemplateDiskArgs:
     def disk_encryption_key(self) -> Optional[pulumi.Input['RegionInstanceTemplateDiskDiskEncryptionKeyArgs']]:
         """
         Encrypts or decrypts a disk using a customer-supplied encryption key.
+
+        If you are creating a new disk, this field encrypts the new disk using an encryption key that you provide. If you are attaching an existing disk that is already encrypted, this field decrypts the disk using the customer-supplied encryption key.
+
+        If you encrypt a disk using a customer-supplied key, you must provide the same key again when you attempt to use this resource at a later time. For example, you must provide the key when you create a snapshot or an image from the disk or when you attach the disk to a virtual machine instance.
+
+        If you do not provide an encryption key, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
+
+        Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt disks in a managed instance group. Structure documented below.
         """
         return pulumi.get(self, "disk_encryption_key")
 
@@ -18442,6 +18675,11 @@ class RegionInstanceTemplateDiskArgs:
         The customer-supplied encryption
         key of the source image. Required if the source image is protected by a
         customer-supplied encryption key.
+
+        Instance templates do not store customer-supplied encryption keys, so you
+        cannot create disks for instances in a managed instance group if the source
+        images are encrypted with your own keys. Structure
+        documented below.
         """
         return pulumi.get(self, "source_image_encryption_key")
 
@@ -18962,6 +19200,9 @@ class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
         :param pulumi.Input[str] network_tier: The [networking tier][network-tier] used for configuring
                this instance template. This field can take the following values: PREMIUM,
                STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+               
+               <a name="nested_ipv6_access_config"></a>The `ipv6_access_config` block supports:
+               
                subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
         """
         pulumi.set(__self__, "network_tier", network_tier)
@@ -18979,6 +19220,9 @@ class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfigArgs:
         The [networking tier][network-tier] used for configuring
         this instance template. This field can take the following values: PREMIUM,
         STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+
+        <a name="nested_ipv6_access_config"></a>The `ipv6_access_config` block supports:
+
         subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
         """
         return pulumi.get(self, "network_tier")
@@ -19398,6 +19642,11 @@ class RegionInstanceTemplateServiceAccountArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: A list of service scopes. Both OAuth2 URLs and gcloud
                short names are supported. To allow full access to all Cloud APIs, use the
                `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+               
+               The [service accounts documentation](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam)
+               explains that access scopes are the legacy method of specifying permissions for your instance.
+               If you are following best practices and using IAM roles to grant permissions to service accounts,
+               then you can define this field as an empty list.
         :param pulumi.Input[str] email: The service account e-mail address. If not given, the
                default Google Compute Engine service account is used.
         """
@@ -19412,6 +19661,11 @@ class RegionInstanceTemplateServiceAccountArgs:
         A list of service scopes. Both OAuth2 URLs and gcloud
         short names are supported. To allow full access to all Cloud APIs, use the
         `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+
+        The [service accounts documentation](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam)
+        explains that access scopes are the legacy method of specifying permissions for your instance.
+        If you are following best practices and using IAM roles to grant permissions to service accounts,
+        then you can define this field as an empty list.
         """
         return pulumi.get(self, "scopes")
 
@@ -19805,6 +20059,8 @@ class RegionNetworkFirewallPolicyRuleMatchArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
         :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the <code>srcSecureTag</code> are INEFFECTIVE, and there is no <code>srcIpRange</code>, this rule will be ignored. Maximum number of source tag values allowed is 256.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_threat_intelligences: Name of the Google Cloud Threat Intelligence list.
+               
+               The `layer4_configs` block supports:
         """
         pulumi.set(__self__, "layer4_configs", layer4_configs)
         if dest_address_groups is not None:
@@ -19967,6 +20223,8 @@ class RegionNetworkFirewallPolicyRuleMatchArgs:
     def src_threat_intelligences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         Name of the Google Cloud Threat Intelligence list.
+
+        The `layer4_configs` block supports:
         """
         return pulumi.get(self, "src_threat_intelligences")
 
@@ -19983,6 +20241,8 @@ class RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs:
         """
         :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+               
+               - - -
         """
         pulumi.set(__self__, "ip_protocol", ip_protocol)
         if ports is not None:
@@ -20005,6 +20265,8 @@ class RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs:
     def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+
+        - - -
         """
         return pulumi.get(self, "ports")
 
@@ -25477,6 +25739,8 @@ class ReservationSpecificReservationInstancePropertiesLocalSsdArgs:
                  interface: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] disk_size_gb: The size of the disk in base-2 GB.
+               
+               - - -
         :param pulumi.Input[str] interface: The disk interface to use for attaching this disk.
                Default value is `SCSI`.
                Possible values are: `SCSI`, `NVME`.
@@ -25490,6 +25754,8 @@ class ReservationSpecificReservationInstancePropertiesLocalSsdArgs:
     def disk_size_gb(self) -> pulumi.Input[int]:
         """
         The size of the disk in base-2 GB.
+
+        - - -
         """
         return pulumi.get(self, "disk_size_gb")
 
@@ -26699,6 +26965,8 @@ class SecurityPolicyAdaptiveProtectionConfigArgs:
                  layer7_ddos_defense_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs']] = None):
         """
         :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs'] auto_deploy_config: ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+               
+               <a name="nested_layer_7_ddos_defense_config"></a>The `layer_7_ddos_defense_config` block supports:
         :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs'] layer7_ddos_defense_config: Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
         """
         if auto_deploy_config is not None:
@@ -26711,6 +26979,8 @@ class SecurityPolicyAdaptiveProtectionConfigArgs:
     def auto_deploy_config(self) -> Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs']]:
         """
         ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+
+        <a name="nested_layer_7_ddos_defense_config"></a>The `layer_7_ddos_defense_config` block supports:
         """
         return pulumi.get(self, "auto_deploy_config")
 
@@ -27336,6 +27606,8 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
         :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs']]] request_query_params: Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs']]] request_uris: Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_rule_ids: A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+               
+               <a name="nested_field_params"></a>The `request_header`, `request_cookie`, `request_uri` and `request_query_param` blocks support:
         """
         pulumi.set(__self__, "target_rule_set", target_rule_set)
         if request_cookies is not None:
@@ -27414,6 +27686,8 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
     def target_rule_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+
+        <a name="nested_field_params"></a>The `request_header`, `request_cookie`, `request_uri` and `request_query_param` blocks support:
         """
         return pulumi.get(self, "target_rule_ids")
 
@@ -27429,6 +27703,12 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs:
                  value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] operator: You can specify an exact match or a partial match by using a field operator and a field value.
+               
+               * EQUALS: The operator matches if the field value equals the specified value.
+               * STARTS_WITH: The operator matches if the field value starts with the specified value.
+               * ENDS_WITH: The operator matches if the field value ends with the specified value.
+               * CONTAINS: The operator matches if the field value contains the specified value.
+               * EQUALS_ANY: The operator matches if the field value is any value.
         :param pulumi.Input[str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
                The field value must be given if the field `operator` is not "EQUALS_ANY", and cannot be given if the field `operator` is "EQUALS_ANY".
         """
@@ -27441,6 +27721,12 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs:
     def operator(self) -> pulumi.Input[str]:
         """
         You can specify an exact match or a partial match by using a field operator and a field value.
+
+        * EQUALS: The operator matches if the field value equals the specified value.
+        * STARTS_WITH: The operator matches if the field value starts with the specified value.
+        * ENDS_WITH: The operator matches if the field value ends with the specified value.
+        * CONTAINS: The operator matches if the field value contains the specified value.
+        * EQUALS_ANY: The operator matches if the field value is any value.
         """
         return pulumi.get(self, "operator")
 
@@ -27469,6 +27755,12 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs:
                  value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] operator: You can specify an exact match or a partial match by using a field operator and a field value.
+               
+               * EQUALS: The operator matches if the field value equals the specified value.
+               * STARTS_WITH: The operator matches if the field value starts with the specified value.
+               * ENDS_WITH: The operator matches if the field value ends with the specified value.
+               * CONTAINS: The operator matches if the field value contains the specified value.
+               * EQUALS_ANY: The operator matches if the field value is any value.
         :param pulumi.Input[str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
                The field value must be given if the field `operator` is not "EQUALS_ANY", and cannot be given if the field `operator` is "EQUALS_ANY".
         """
@@ -27481,6 +27773,12 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs:
     def operator(self) -> pulumi.Input[str]:
         """
         You can specify an exact match or a partial match by using a field operator and a field value.
+
+        * EQUALS: The operator matches if the field value equals the specified value.
+        * STARTS_WITH: The operator matches if the field value starts with the specified value.
+        * ENDS_WITH: The operator matches if the field value ends with the specified value.
+        * CONTAINS: The operator matches if the field value contains the specified value.
+        * EQUALS_ANY: The operator matches if the field value is any value.
         """
         return pulumi.get(self, "operator")
 
@@ -27509,6 +27807,12 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs:
                  value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] operator: You can specify an exact match or a partial match by using a field operator and a field value.
+               
+               * EQUALS: The operator matches if the field value equals the specified value.
+               * STARTS_WITH: The operator matches if the field value starts with the specified value.
+               * ENDS_WITH: The operator matches if the field value ends with the specified value.
+               * CONTAINS: The operator matches if the field value contains the specified value.
+               * EQUALS_ANY: The operator matches if the field value is any value.
         :param pulumi.Input[str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
                The field value must be given if the field `operator` is not "EQUALS_ANY", and cannot be given if the field `operator` is "EQUALS_ANY".
         """
@@ -27521,6 +27825,12 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs:
     def operator(self) -> pulumi.Input[str]:
         """
         You can specify an exact match or a partial match by using a field operator and a field value.
+
+        * EQUALS: The operator matches if the field value equals the specified value.
+        * STARTS_WITH: The operator matches if the field value starts with the specified value.
+        * ENDS_WITH: The operator matches if the field value ends with the specified value.
+        * CONTAINS: The operator matches if the field value contains the specified value.
+        * EQUALS_ANY: The operator matches if the field value is any value.
         """
         return pulumi.get(self, "operator")
 
@@ -27549,6 +27859,12 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs:
                  value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] operator: You can specify an exact match or a partial match by using a field operator and a field value.
+               
+               * EQUALS: The operator matches if the field value equals the specified value.
+               * STARTS_WITH: The operator matches if the field value starts with the specified value.
+               * ENDS_WITH: The operator matches if the field value ends with the specified value.
+               * CONTAINS: The operator matches if the field value contains the specified value.
+               * EQUALS_ANY: The operator matches if the field value is any value.
         :param pulumi.Input[str] value: A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
                The field value must be given if the field `operator` is not "EQUALS_ANY", and cannot be given if the field `operator` is "EQUALS_ANY".
         """
@@ -27561,6 +27877,12 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUriArgs:
     def operator(self) -> pulumi.Input[str]:
         """
         You can specify an exact match or a partial match by using a field operator and a field value.
+
+        * EQUALS: The operator matches if the field value equals the specified value.
+        * STARTS_WITH: The operator matches if the field value starts with the specified value.
+        * ENDS_WITH: The operator matches if the field value ends with the specified value.
+        * CONTAINS: The operator matches if the field value contains the specified value.
+        * EQUALS_ANY: The operator matches if the field value is any value.
         """
         return pulumi.get(self, "operator")
 
@@ -27605,9 +27927,22 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
                If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also
                exceed this 'ban_threshold'. Structure is documented below.
         :param pulumi.Input[str] enforce_on_key: Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to "ALL".
+               
+               * ALL: A single rate limit threshold is applied to all the requests matching this rule.
+               * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+               * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+               * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL.
+               * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+               * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
+               * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+               * REGION_CODE: The country/region from which the request originates.
         :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs']]] enforce_on_key_configs: ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
+               
+               **Note:** To avoid the conflict between `enforce_on_key` and `enforce_on_key_configs`, the field `enforce_on_key` needs to be set to an empty string.
         :param pulumi.Input[str] enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
         :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs'] exceed_redirect_options: Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
+               
+               <a name="nested_threshold"></a>The `{ban/rate_limit}_threshold` block supports:
         """
         pulumi.set(__self__, "conform_action", conform_action)
         pulumi.set(__self__, "exceed_action", exceed_action)
@@ -27694,6 +28029,15 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     def enforce_on_key(self) -> Optional[pulumi.Input[str]]:
         """
         Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to "ALL".
+
+        * ALL: A single rate limit threshold is applied to all the requests matching this rule.
+        * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+        * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+        * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL.
+        * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+        * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
+        * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+        * REGION_CODE: The country/region from which the request originates.
         """
         return pulumi.get(self, "enforce_on_key")
 
@@ -27706,6 +28050,8 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     def enforce_on_key_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs']]]]:
         """
         ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, enforce_on_key must be set to an empty string. Structure is documented below.
+
+        **Note:** To avoid the conflict between `enforce_on_key` and `enforce_on_key_configs`, the field `enforce_on_key` needs to be set to an empty string.
         """
         return pulumi.get(self, "enforce_on_key_configs")
 
@@ -27730,6 +28076,8 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     def exceed_redirect_options(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs']]:
         """
         Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
+
+        <a name="nested_threshold"></a>The `{ban/rate_limit}_threshold` block supports:
         """
         return pulumi.get(self, "exceed_redirect_options")
 
@@ -27783,6 +28131,15 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs:
         """
         :param pulumi.Input[str] enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER: Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE: Name of the HTTP cookie whose value is taken as the key value.
         :param pulumi.Input[str] enforce_on_key_type: Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to "ALL".
+               
+               * ALL: A single rate limit threshold is applied to all the requests matching this rule.
+               * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+               * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+               * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL.
+               * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+               * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
+               * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+               * REGION_CODE: The country/region from which the request originates.
         """
         if enforce_on_key_name is not None:
             pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
@@ -27806,6 +28163,15 @@ class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs:
     def enforce_on_key_type(self) -> Optional[pulumi.Input[str]]:
         """
         Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to "ALL".
+
+        * ALL: A single rate limit threshold is applied to all the requests matching this rule.
+        * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+        * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+        * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL.
+        * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+        * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
+        * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+        * REGION_CODE: The country/region from which the request originates.
         """
         return pulumi.get(self, "enforce_on_key_type")
 
@@ -27896,6 +28262,9 @@ class SecurityPolicyRuleRedirectOptionsArgs:
                  target: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Type of redirect action.
+               
+               * EXTERNAL_302: Redirect to an external address, configured in 'target'.
+               * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
         :param pulumi.Input[str] target: External redirection target when "EXTERNAL_302" is set in 'type'.
         """
         pulumi.set(__self__, "type", type)
@@ -27907,6 +28276,9 @@ class SecurityPolicyRuleRedirectOptionsArgs:
     def type(self) -> pulumi.Input[str]:
         """
         Type of redirect action.
+
+        * EXTERNAL_302: Redirect to an external address, configured in 'target'.
+        * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
         """
         return pulumi.get(self, "type")
 
@@ -28407,6 +28779,10 @@ class SubnetworkIAMBindingConditionArgs:
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
         :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -28442,6 +28818,10 @@ class SubnetworkIAMBindingConditionArgs:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
 
@@ -28460,6 +28840,10 @@ class SubnetworkIAMMemberConditionArgs:
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
         :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -28495,6 +28879,10 @@ class SubnetworkIAMMemberConditionArgs:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
 

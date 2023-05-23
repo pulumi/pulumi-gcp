@@ -134,12 +134,16 @@ public final class RegionPerInstanceConfigArgs extends com.pulumi.resources.Reso
     /**
      * The region instance group manager this instance config is part of.
      * 
+     * ***
+     * 
      */
     @Import(name="regionInstanceGroupManager", required=true)
     private Output<String> regionInstanceGroupManager;
 
     /**
      * @return The region instance group manager this instance config is part of.
+     * 
+     * ***
      * 
      */
     public Output<String> regionInstanceGroupManager() {
@@ -349,6 +353,8 @@ public final class RegionPerInstanceConfigArgs extends com.pulumi.resources.Reso
         /**
          * @param regionInstanceGroupManager The region instance group manager this instance config is part of.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -359,6 +365,8 @@ public final class RegionPerInstanceConfigArgs extends com.pulumi.resources.Reso
 
         /**
          * @param regionInstanceGroupManager The region instance group manager this instance config is part of.
+         * 
+         * ***
          * 
          * @return builder
          * 

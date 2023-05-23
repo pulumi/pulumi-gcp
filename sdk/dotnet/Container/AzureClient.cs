@@ -93,6 +93,10 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The Azure Active Directory Tenant ID.
+        /// 
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("tenantId")]
         public Output<string> TenantId { get; private set; } = null!;
@@ -175,6 +179,10 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The Azure Active Directory Tenant ID.
+        /// 
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("tenantId", required: true)]
         public Input<string> TenantId { get; set; } = null!;
@@ -225,6 +233,10 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The Azure Active Directory Tenant ID.
+        /// 
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }

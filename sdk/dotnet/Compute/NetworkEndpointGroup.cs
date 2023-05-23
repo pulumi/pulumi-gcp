@@ -146,6 +146,9 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The network to which all network endpoints in the NEG belong.
         /// Uses "default" project network if unspecified.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
@@ -271,6 +274,9 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The network to which all network endpoints in the NEG belong.
         /// Uses "default" project network if unspecified.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
@@ -346,6 +352,9 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The network to which all network endpoints in the NEG belong.
         /// Uses "default" project network if unspecified.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }

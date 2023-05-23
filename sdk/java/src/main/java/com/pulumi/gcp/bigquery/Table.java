@@ -429,12 +429,32 @@ public class Table extends com.pulumi.resources.CustomResource {
     /**
      * A JSON schema for the table.
      * 
+     * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
+     * string will create a diff, even if the JSON itself hasn&#39;t changed.
+     * If the API returns a different value for the same schema, e.g. it
+     * switched the order of values or replaced `STRUCT` field type with `RECORD`
+     * field type, we currently cannot suppress the recurring diff this causes.
+     * As a workaround, we recommend using the schema as returned by the API.
+     * 
+     * ~&gt;**NOTE:**  When setting `schema` for `external_data_configuration`, please use
+     * `external_data_configuration.schema` documented below.
+     * 
      */
     @Export(name="schema", type=String.class, parameters={})
     private Output<String> schema;
 
     /**
      * @return A JSON schema for the table.
+     * 
+     * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
+     * string will create a diff, even if the JSON itself hasn&#39;t changed.
+     * If the API returns a different value for the same schema, e.g. it
+     * switched the order of values or replaced `STRUCT` field type with `RECORD`
+     * field type, we currently cannot suppress the recurring diff this causes.
+     * As a workaround, we recommend using the schema as returned by the API.
+     * 
+     * ~&gt;**NOTE:**  When setting `schema` for `external_data_configuration`, please use
+     * `external_data_configuration.schema` documented below.
      * 
      */
     public Output<String> schema() {

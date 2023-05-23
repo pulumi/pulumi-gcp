@@ -36,6 +36,8 @@ type EgressPolicy struct {
 	pulumi.CustomResourceState
 
 	// The name of the Service Perimeter to add this resource to.
+	//
+	// ***
 	EgressPolicyName pulumi.StringOutput `pulumi:"egressPolicyName"`
 	// A GCP resource that is inside of the service perimeter.
 	Resource pulumi.StringOutput `pulumi:"resource"`
@@ -77,6 +79,8 @@ func GetEgressPolicy(ctx *pulumi.Context,
 // Input properties used for looking up and filtering EgressPolicy resources.
 type egressPolicyState struct {
 	// The name of the Service Perimeter to add this resource to.
+	//
+	// ***
 	EgressPolicyName *string `pulumi:"egressPolicyName"`
 	// A GCP resource that is inside of the service perimeter.
 	Resource *string `pulumi:"resource"`
@@ -84,6 +88,8 @@ type egressPolicyState struct {
 
 type EgressPolicyState struct {
 	// The name of the Service Perimeter to add this resource to.
+	//
+	// ***
 	EgressPolicyName pulumi.StringPtrInput
 	// A GCP resource that is inside of the service perimeter.
 	Resource pulumi.StringPtrInput
@@ -95,6 +101,8 @@ func (EgressPolicyState) ElementType() reflect.Type {
 
 type egressPolicyArgs struct {
 	// The name of the Service Perimeter to add this resource to.
+	//
+	// ***
 	EgressPolicyName string `pulumi:"egressPolicyName"`
 	// A GCP resource that is inside of the service perimeter.
 	Resource string `pulumi:"resource"`
@@ -103,6 +111,8 @@ type egressPolicyArgs struct {
 // The set of arguments for constructing a EgressPolicy resource.
 type EgressPolicyArgs struct {
 	// The name of the Service Perimeter to add this resource to.
+	//
+	// ***
 	EgressPolicyName pulumi.StringInput
 	// A GCP resource that is inside of the service perimeter.
 	Resource pulumi.StringInput
@@ -196,6 +206,8 @@ func (o EgressPolicyOutput) ToEgressPolicyOutputWithContext(ctx context.Context)
 }
 
 // The name of the Service Perimeter to add this resource to.
+//
+// ***
 func (o EgressPolicyOutput) EgressPolicyName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EgressPolicy) pulumi.StringOutput { return v.EgressPolicyName }).(pulumi.StringOutput)
 }

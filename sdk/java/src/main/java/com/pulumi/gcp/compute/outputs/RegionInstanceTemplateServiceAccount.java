@@ -23,6 +23,11 @@ public final class RegionInstanceTemplateServiceAccount {
      * short names are supported. To allow full access to all Cloud APIs, use the
      * `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
      * 
+     * The [service accounts documentation](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam)
+     * explains that access scopes are the legacy method of specifying permissions for your instance.
+     * If you are following best practices and using IAM roles to grant permissions to service accounts,
+     * then you can define this field as an empty list.
+     * 
      */
     private List<String> scopes;
 
@@ -39,6 +44,11 @@ public final class RegionInstanceTemplateServiceAccount {
      * @return A list of service scopes. Both OAuth2 URLs and gcloud
      * short names are supported. To allow full access to all Cloud APIs, use the
      * `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+     * 
+     * The [service accounts documentation](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam)
+     * explains that access scopes are the legacy method of specifying permissions for your instance.
+     * If you are following best practices and using IAM roles to grant permissions to service accounts,
+     * then you can define this field as an empty list.
      * 
      */
     public List<String> scopes() {

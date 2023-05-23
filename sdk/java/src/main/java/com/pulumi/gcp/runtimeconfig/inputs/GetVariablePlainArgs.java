@@ -32,12 +32,16 @@ public final class GetVariablePlainArgs extends com.pulumi.resources.InvokeArgs 
     /**
      * The name of the RuntimeConfig resource containing this variable.
      * 
+     * ***
+     * 
      */
     @Import(name="parent", required=true)
     private String parent;
 
     /**
      * @return The name of the RuntimeConfig resource containing this variable.
+     * 
+     * ***
      * 
      */
     public String parent() {
@@ -100,6 +104,8 @@ public final class GetVariablePlainArgs extends com.pulumi.resources.InvokeArgs 
 
         /**
          * @param parent The name of the RuntimeConfig resource containing this variable.
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -32,6 +32,8 @@ type GetWebAppConfigArgs struct {
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// the id of the firebase web app
+	//
+	// ***
 	WebAppId string `pulumi:"webAppId"`
 }
 
@@ -85,6 +87,8 @@ type GetWebAppConfigOutputArgs struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	// the id of the firebase web app
+	//
+	// ***
 	WebAppId pulumi.StringInput `pulumi:"webAppId"`
 }
 

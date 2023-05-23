@@ -17,6 +17,8 @@ public final class ClusterNodePoolNodeConfigSandboxConfigArgs extends com.pulumi
      * Which sandbox to use for pods in the node pool.
      * Accepted values are:
      * 
+     * * `&#34;gvisor&#34;`: Pods run within a gVisor sandbox.
+     * 
      */
     @Import(name="sandboxType", required=true)
     private Output<String> sandboxType;
@@ -24,6 +26,8 @@ public final class ClusterNodePoolNodeConfigSandboxConfigArgs extends com.pulumi
     /**
      * @return Which sandbox to use for pods in the node pool.
      * Accepted values are:
+     * 
+     * * `&#34;gvisor&#34;`: Pods run within a gVisor sandbox.
      * 
      */
     public Output<String> sandboxType() {
@@ -58,6 +62,8 @@ public final class ClusterNodePoolNodeConfigSandboxConfigArgs extends com.pulumi
          * @param sandboxType Which sandbox to use for pods in the node pool.
          * Accepted values are:
          * 
+         * * `&#34;gvisor&#34;`: Pods run within a gVisor sandbox.
+         * 
          * @return builder
          * 
          */
@@ -69,6 +75,8 @@ public final class ClusterNodePoolNodeConfigSandboxConfigArgs extends com.pulumi
         /**
          * @param sandboxType Which sandbox to use for pods in the node pool.
          * Accepted values are:
+         * 
+         * * `&#34;gvisor&#34;`: Pods run within a gVisor sandbox.
          * 
          * @return builder
          * 

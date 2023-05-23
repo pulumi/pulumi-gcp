@@ -127,12 +127,16 @@ public final class BackupPlanArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The region of the Backup Plan.
      * 
+     * ***
+     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The region of the Backup Plan.
+     * 
+     * ***
      * 
      */
     public Output<String> location() {
@@ -364,6 +368,8 @@ public final class BackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The region of the Backup Plan.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -374,6 +380,8 @@ public final class BackupPlanArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The region of the Backup Plan.
+         * 
+         * ***
          * 
          * @return builder
          * 

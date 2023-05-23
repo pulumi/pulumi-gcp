@@ -36,6 +36,8 @@ export function getAppGateway(args: GetAppGatewayArgs, opts?: pulumi.InvokeOptio
 export interface GetAppGatewayArgs {
     /**
      * The name of the App Gateway.
+     *
+     * - - -
      */
     name: string;
     /**
@@ -93,6 +95,8 @@ export function getAppGatewayOutput(args: GetAppGatewayOutputArgs, opts?: pulumi
 export interface GetAppGatewayOutputArgs {
     /**
      * The name of the App Gateway.
+     *
+     * - - -
      */
     name: pulumi.Input<string>;
     /**

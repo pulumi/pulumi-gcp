@@ -95,6 +95,9 @@ export class Repository extends pulumi.CustomResource {
     public readonly gitRemoteSettings!: pulumi.Output<outputs.dataform.RepositoryGitRemoteSettings | undefined>;
     /**
      * The repository's name.
+     *
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -147,6 +150,9 @@ export interface RepositoryState {
     gitRemoteSettings?: pulumi.Input<inputs.dataform.RepositoryGitRemoteSettings>;
     /**
      * The repository's name.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -171,6 +177,9 @@ export interface RepositoryArgs {
     gitRemoteSettings?: pulumi.Input<inputs.dataform.RepositoryGitRemoteSettings>;
     /**
      * The repository's name.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**

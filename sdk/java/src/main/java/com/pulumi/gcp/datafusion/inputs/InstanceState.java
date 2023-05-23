@@ -440,6 +440,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      *   pipelines at low cost.
      *   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
      * 
+     * ***
+     * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
@@ -456,6 +458,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      *   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
      *   pipelines at low cost.
      *   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> type() {
@@ -1140,6 +1144,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          *   pipelines at low cost.
          *   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -1160,6 +1166,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          *   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
          *   pipelines at low cost.
          *   Possible values are: `BASIC`, `ENTERPRISE`, `DEVELOPER`.
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -116,6 +116,9 @@ export class Route extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The network that this route applies to.
+     *
+     *
+     * - - -
      */
     public readonly network!: pulumi.Output<string>;
     /**
@@ -277,6 +280,9 @@ export interface RouteState {
     name?: pulumi.Input<string>;
     /**
      * The network that this route applies to.
+     *
+     *
+     * - - -
      */
     network?: pulumi.Input<string>;
     /**
@@ -382,6 +388,9 @@ export interface RouteArgs {
     name?: pulumi.Input<string>;
     /**
      * The network that this route applies to.
+     *
+     *
+     * - - -
      */
     network: pulumi.Input<string>;
     /**

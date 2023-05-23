@@ -104,6 +104,10 @@ export class User extends pulumi.CustomResource {
      * The deletion policy for the user.
      * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
+     *
+     * Possible values are: `ABANDON`.
+     *
+     * - - -
      */
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -195,6 +199,10 @@ export interface UserState {
      * The deletion policy for the user.
      * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
+     *
+     * Possible values are: `ABANDON`.
+     *
+     * - - -
      */
     deletionPolicy?: pulumi.Input<string>;
     /**
@@ -243,6 +251,10 @@ export interface UserArgs {
      * The deletion policy for the user.
      * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
+     *
+     * Possible values are: `ABANDON`.
+     *
+     * - - -
      */
     deletionPolicy?: pulumi.Input<string>;
     /**

@@ -30,6 +30,9 @@ class MetricDescriptorArgs:
         The set of arguments for constructing a MetricDescriptor resource.
         :param pulumi.Input[str] description: A detailed description of the metric, which can be used in documentation.
         :param pulumi.Input[str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
+               
+               
+               - - -
         :param pulumi.Input[str] metric_kind: Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metricKind and valueType might not be supported.
                Possible values are: `METRIC_KIND_UNSPECIFIED`, `GAUGE`, `DELTA`, `CUMULATIVE`.
         :param pulumi.Input[str] type: The metric type, including its DNS name prefix. The type is not URL-encoded. All service defined metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must have only upper and lower-case letters, digits, '/' and underscores '_' are allowed. Additionally, the maximum number of characters allowed for the relative_metric_name is 100. All user-defined metric types have the DNS name custom.googleapis.com, external.googleapis.com, or logging.googleapis.com/user/.
@@ -94,6 +97,9 @@ class MetricDescriptorArgs:
     def display_name(self) -> pulumi.Input[str]:
         """
         A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
+
+
+        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -239,6 +245,9 @@ class _MetricDescriptorState:
         Input properties used for looking up and filtering MetricDescriptor resources.
         :param pulumi.Input[str] description: A detailed description of the metric, which can be used in documentation.
         :param pulumi.Input[str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
+               
+               
+               - - -
         :param pulumi.Input[Sequence[pulumi.Input['MetricDescriptorLabelArgs']]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
                Structure is documented below.
         :param pulumi.Input[str] launch_stage: The launch stage of the metric definition.
@@ -314,6 +323,9 @@ class _MetricDescriptorState:
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
         A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
+
+
+        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -552,6 +564,9 @@ class MetricDescriptor(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A detailed description of the metric, which can be used in documentation.
         :param pulumi.Input[str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
+               
+               
+               - - -
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricDescriptorLabelArgs']]]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
                Structure is documented below.
         :param pulumi.Input[str] launch_stage: The launch stage of the metric definition.
@@ -744,6 +759,9 @@ class MetricDescriptor(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A detailed description of the metric, which can be used in documentation.
         :param pulumi.Input[str] display_name: A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
+               
+               
+               - - -
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MetricDescriptorLabelArgs']]]] labels: The set of labels that can be used to describe a specific instance of this metric type. In order to delete a label, the entire resource must be deleted, then created with the desired labels.
                Structure is documented below.
         :param pulumi.Input[str] launch_stage: The launch stage of the metric definition.
@@ -808,6 +826,9 @@ class MetricDescriptor(pulumi.CustomResource):
     def display_name(self) -> pulumi.Output[str]:
         """
         A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
+
+
+        - - -
         """
         return pulumi.get(self, "display_name")
 

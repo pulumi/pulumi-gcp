@@ -89,6 +89,8 @@ type NodePool struct {
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling NodePoolAutoscalingPtrOutput `pulumi:"autoscaling"`
 	// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+	//
+	// ***
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -101,6 +103,8 @@ type NodePool struct {
 	// The resource URLs of the managed instance groups associated with this node pool.
 	InstanceGroupUrls pulumi.StringArrayOutput `pulumi:"instanceGroupUrls"`
 	// The location (region or zone) of the cluster.
+	//
+	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// List of instance group URLs which have been assigned to this node pool.
 	ManagedInstanceGroupUrls pulumi.StringArrayOutput `pulumi:"managedInstanceGroupUrls"`
@@ -133,10 +137,16 @@ type NodePool struct {
 	// be in the region of their regional cluster or in the same region as their
 	// cluster's zone for zonal clusters. If unspecified, the cluster-level
 	// `nodeLocations` will be used.
+	//
+	// > Note: `nodeLocations` will not revert to the cluster's default set of zones
+	// upon being unset. You must manually reconcile the list of zones with your
+	// cluster.
 	NodeLocations pulumi.StringArrayOutput `pulumi:"nodeLocations"`
 	Operation     pulumi.StringOutput      `pulumi:"operation"`
 	// Specifies a custom placement policy for the
 	// nodes.
+	//
+	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	PlacementPolicy NodePoolPlacementPolicyPtrOutput `pulumi:"placementPolicy"`
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
@@ -189,6 +199,8 @@ type nodePoolState struct {
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling *NodePoolAutoscaling `pulumi:"autoscaling"`
 	// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+	//
+	// ***
 	Cluster *string `pulumi:"cluster"`
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -201,6 +213,8 @@ type nodePoolState struct {
 	// The resource URLs of the managed instance groups associated with this node pool.
 	InstanceGroupUrls []string `pulumi:"instanceGroupUrls"`
 	// The location (region or zone) of the cluster.
+	//
+	// ***
 	Location *string `pulumi:"location"`
 	// List of instance group URLs which have been assigned to this node pool.
 	ManagedInstanceGroupUrls []string `pulumi:"managedInstanceGroupUrls"`
@@ -233,10 +247,16 @@ type nodePoolState struct {
 	// be in the region of their regional cluster or in the same region as their
 	// cluster's zone for zonal clusters. If unspecified, the cluster-level
 	// `nodeLocations` will be used.
+	//
+	// > Note: `nodeLocations` will not revert to the cluster's default set of zones
+	// upon being unset. You must manually reconcile the list of zones with your
+	// cluster.
 	NodeLocations []string `pulumi:"nodeLocations"`
 	Operation     *string  `pulumi:"operation"`
 	// Specifies a custom placement policy for the
 	// nodes.
+	//
+	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	PlacementPolicy *NodePoolPlacementPolicy `pulumi:"placementPolicy"`
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
@@ -258,6 +278,8 @@ type NodePoolState struct {
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling NodePoolAutoscalingPtrInput
 	// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+	//
+	// ***
 	Cluster pulumi.StringPtrInput
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -270,6 +292,8 @@ type NodePoolState struct {
 	// The resource URLs of the managed instance groups associated with this node pool.
 	InstanceGroupUrls pulumi.StringArrayInput
 	// The location (region or zone) of the cluster.
+	//
+	// ***
 	Location pulumi.StringPtrInput
 	// List of instance group URLs which have been assigned to this node pool.
 	ManagedInstanceGroupUrls pulumi.StringArrayInput
@@ -302,10 +326,16 @@ type NodePoolState struct {
 	// be in the region of their regional cluster or in the same region as their
 	// cluster's zone for zonal clusters. If unspecified, the cluster-level
 	// `nodeLocations` will be used.
+	//
+	// > Note: `nodeLocations` will not revert to the cluster's default set of zones
+	// upon being unset. You must manually reconcile the list of zones with your
+	// cluster.
 	NodeLocations pulumi.StringArrayInput
 	Operation     pulumi.StringPtrInput
 	// Specifies a custom placement policy for the
 	// nodes.
+	//
+	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	PlacementPolicy NodePoolPlacementPolicyPtrInput
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
@@ -331,6 +361,8 @@ type nodePoolArgs struct {
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling *NodePoolAutoscaling `pulumi:"autoscaling"`
 	// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+	//
+	// ***
 	Cluster string `pulumi:"cluster"`
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -341,6 +373,8 @@ type nodePoolArgs struct {
 	// ignore subsqeuent changes to this field.
 	InitialNodeCount *int `pulumi:"initialNodeCount"`
 	// The location (region or zone) of the cluster.
+	//
+	// ***
 	Location *string `pulumi:"location"`
 	// Node management configuration, wherein auto-repair and
 	// auto-upgrade is configured. Structure is documented below.
@@ -371,9 +405,15 @@ type nodePoolArgs struct {
 	// be in the region of their regional cluster or in the same region as their
 	// cluster's zone for zonal clusters. If unspecified, the cluster-level
 	// `nodeLocations` will be used.
+	//
+	// > Note: `nodeLocations` will not revert to the cluster's default set of zones
+	// upon being unset. You must manually reconcile the list of zones with your
+	// cluster.
 	NodeLocations []string `pulumi:"nodeLocations"`
 	// Specifies a custom placement policy for the
 	// nodes.
+	//
+	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	PlacementPolicy *NodePoolPlacementPolicy `pulumi:"placementPolicy"`
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
@@ -396,6 +436,8 @@ type NodePoolArgs struct {
 	// the size of the node pool to the current cluster usage. Structure is documented below.
 	Autoscaling NodePoolAutoscalingPtrInput
 	// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+	//
+	// ***
 	Cluster pulumi.StringInput
 	// The initial number of nodes for the pool. In
 	// regional or multi-zonal clusters, this is the number of nodes per zone. Changing
@@ -406,6 +448,8 @@ type NodePoolArgs struct {
 	// ignore subsqeuent changes to this field.
 	InitialNodeCount pulumi.IntPtrInput
 	// The location (region or zone) of the cluster.
+	//
+	// ***
 	Location pulumi.StringPtrInput
 	// Node management configuration, wherein auto-repair and
 	// auto-upgrade is configured. Structure is documented below.
@@ -436,9 +480,15 @@ type NodePoolArgs struct {
 	// be in the region of their regional cluster or in the same region as their
 	// cluster's zone for zonal clusters. If unspecified, the cluster-level
 	// `nodeLocations` will be used.
+	//
+	// > Note: `nodeLocations` will not revert to the cluster's default set of zones
+	// upon being unset. You must manually reconcile the list of zones with your
+	// cluster.
 	NodeLocations pulumi.StringArrayInput
 	// Specifies a custom placement policy for the
 	// nodes.
+	//
+	// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 	PlacementPolicy NodePoolPlacementPolicyPtrInput
 	// The ID of the project in which to create the node pool. If blank,
 	// the provider-configured project will be used.
@@ -549,6 +599,8 @@ func (o NodePoolOutput) Autoscaling() NodePoolAutoscalingPtrOutput {
 }
 
 // The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+//
+// ***
 func (o NodePoolOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
 }
@@ -570,6 +622,8 @@ func (o NodePoolOutput) InstanceGroupUrls() pulumi.StringArrayOutput {
 }
 
 // The location (region or zone) of the cluster.
+//
+// ***
 func (o NodePoolOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -629,6 +683,10 @@ func (o NodePoolOutput) NodeCount() pulumi.IntOutput {
 // be in the region of their regional cluster or in the same region as their
 // cluster's zone for zonal clusters. If unspecified, the cluster-level
 // `nodeLocations` will be used.
+//
+// > Note: `nodeLocations` will not revert to the cluster's default set of zones
+// upon being unset. You must manually reconcile the list of zones with your
+// cluster.
 func (o NodePoolOutput) NodeLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodePool) pulumi.StringArrayOutput { return v.NodeLocations }).(pulumi.StringArrayOutput)
 }
@@ -639,6 +697,8 @@ func (o NodePoolOutput) Operation() pulumi.StringOutput {
 
 // Specifies a custom placement policy for the
 // nodes.
+//
+// <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
 func (o NodePoolOutput) PlacementPolicy() NodePoolPlacementPolicyPtrOutput {
 	return o.ApplyT(func(v *NodePool) NodePoolPlacementPolicyPtrOutput { return v.PlacementPolicy }).(NodePoolPlacementPolicyPtrOutput)
 }

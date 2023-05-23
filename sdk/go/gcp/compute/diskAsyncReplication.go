@@ -68,6 +68,8 @@ type DiskAsyncReplication struct {
 	// The primary disk (source of replication).
 	PrimaryDisk pulumi.StringOutput `pulumi:"primaryDisk"`
 	// The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+	//
+	// The `secondaryDisk` block includes:
 	SecondaryDisk DiskAsyncReplicationSecondaryDiskOutput `pulumi:"secondaryDisk"`
 }
 
@@ -109,6 +111,8 @@ type diskAsyncReplicationState struct {
 	// The primary disk (source of replication).
 	PrimaryDisk *string `pulumi:"primaryDisk"`
 	// The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+	//
+	// The `secondaryDisk` block includes:
 	SecondaryDisk *DiskAsyncReplicationSecondaryDisk `pulumi:"secondaryDisk"`
 }
 
@@ -116,6 +120,8 @@ type DiskAsyncReplicationState struct {
 	// The primary disk (source of replication).
 	PrimaryDisk pulumi.StringPtrInput
 	// The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+	//
+	// The `secondaryDisk` block includes:
 	SecondaryDisk DiskAsyncReplicationSecondaryDiskPtrInput
 }
 
@@ -127,6 +133,8 @@ type diskAsyncReplicationArgs struct {
 	// The primary disk (source of replication).
 	PrimaryDisk string `pulumi:"primaryDisk"`
 	// The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+	//
+	// The `secondaryDisk` block includes:
 	SecondaryDisk DiskAsyncReplicationSecondaryDisk `pulumi:"secondaryDisk"`
 }
 
@@ -135,6 +143,8 @@ type DiskAsyncReplicationArgs struct {
 	// The primary disk (source of replication).
 	PrimaryDisk pulumi.StringInput
 	// The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+	//
+	// The `secondaryDisk` block includes:
 	SecondaryDisk DiskAsyncReplicationSecondaryDiskInput
 }
 
@@ -231,6 +241,8 @@ func (o DiskAsyncReplicationOutput) PrimaryDisk() pulumi.StringOutput {
 }
 
 // The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+//
+// The `secondaryDisk` block includes:
 func (o DiskAsyncReplicationOutput) SecondaryDisk() DiskAsyncReplicationSecondaryDiskOutput {
 	return o.ApplyT(func(v *DiskAsyncReplication) DiskAsyncReplicationSecondaryDiskOutput { return v.SecondaryDisk }).(DiskAsyncReplicationSecondaryDiskOutput)
 }

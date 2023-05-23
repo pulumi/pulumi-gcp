@@ -33,12 +33,16 @@ public final class VMwareClusterLoadBalancerVipConfigArgs extends com.pulumi.res
     /**
      * The VIP which you previously set aside for ingress traffic into this cluster.
      * 
+     * &lt;a name=&#34;nested_f5_config&#34;&gt;&lt;/a&gt;The `f5_config` block supports:
+     * 
      */
     @Import(name="ingressVip")
     private @Nullable Output<String> ingressVip;
 
     /**
      * @return The VIP which you previously set aside for ingress traffic into this cluster.
+     * 
+     * &lt;a name=&#34;nested_f5_config&#34;&gt;&lt;/a&gt;The `f5_config` block supports:
      * 
      */
     public Optional<Output<String>> ingressVip() {
@@ -94,6 +98,8 @@ public final class VMwareClusterLoadBalancerVipConfigArgs extends com.pulumi.res
         /**
          * @param ingressVip The VIP which you previously set aside for ingress traffic into this cluster.
          * 
+         * &lt;a name=&#34;nested_f5_config&#34;&gt;&lt;/a&gt;The `f5_config` block supports:
+         * 
          * @return builder
          * 
          */
@@ -104,6 +110,8 @@ public final class VMwareClusterLoadBalancerVipConfigArgs extends com.pulumi.res
 
         /**
          * @param ingressVip The VIP which you previously set aside for ingress traffic into this cluster.
+         * 
+         * &lt;a name=&#34;nested_f5_config&#34;&gt;&lt;/a&gt;The `f5_config` block supports:
          * 
          * @return builder
          * 

@@ -39,6 +39,8 @@ class TargetPoolArgs:
                target pool.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE. Changing
                this forces a new resource to be created.
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: Where the target pool resides. Defaults to project
@@ -139,6 +141,8 @@ class TargetPoolArgs:
         """
         A unique name for the resource, required by GCE. Changing
         this forces a new resource to be created.
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -216,6 +220,8 @@ class _TargetPoolState:
                target pool.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE. Changing
                this forces a new resource to be created.
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: Where the target pool resides. Defaults to project
@@ -319,6 +325,8 @@ class _TargetPoolState:
         """
         A unique name for the resource, required by GCE. Changing
         this forces a new resource to be created.
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -437,6 +445,8 @@ class TargetPool(pulumi.CustomResource):
                target pool.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE. Changing
                this forces a new resource to be created.
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: Where the target pool resides. Defaults to project
@@ -562,6 +572,8 @@ class TargetPool(pulumi.CustomResource):
                target pool.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE. Changing
                this forces a new resource to be created.
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: Where the target pool resides. Defaults to project
@@ -640,6 +652,8 @@ class TargetPool(pulumi.CustomResource):
         """
         A unique name for the resource, required by GCE. Changing
         this forces a new resource to be created.
+
+        - - -
         """
         return pulumi.get(self, "name")
 

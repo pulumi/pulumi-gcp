@@ -67,6 +67,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * KRM-style labels for the resource.
+     * 
      * (Optional)
      * KRM-style labels for the resource. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
      * 
@@ -76,6 +77,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return KRM-style labels for the resource.
+     * 
      * (Optional)
      * KRM-style labels for the resource. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
      * 
@@ -268,6 +270,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels KRM-style labels for the resource.
+         * 
          * (Optional)
          * KRM-style labels for the resource. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
          * 
@@ -281,6 +284,7 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels KRM-style labels for the resource.
+         * 
          * (Optional)
          * KRM-style labels for the resource. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
          * 

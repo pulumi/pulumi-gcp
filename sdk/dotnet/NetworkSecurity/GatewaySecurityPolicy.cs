@@ -198,6 +198,9 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
         /// gatewaySecurityPolicy should match the pattern:(^a-z?$).
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -291,6 +294,9 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
         /// gatewaySecurityPolicy should match the pattern:(^a-z?$).
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -340,6 +346,9 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// <summary>
         /// Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
         /// gatewaySecurityPolicy should match the pattern:(^a-z?$).
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

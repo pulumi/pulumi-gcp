@@ -130,6 +130,8 @@ type Document struct {
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrOutput `pulumi:"database"`
 	// The client-assigned document ID to use for this document during creation.
+	//
+	// ***
 	DocumentId pulumi.StringOutput `pulumi:"documentId"`
 	// The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
 	Fields pulumi.StringOutput `pulumi:"fields"`
@@ -190,6 +192,8 @@ type documentState struct {
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database *string `pulumi:"database"`
 	// The client-assigned document ID to use for this document during creation.
+	//
+	// ***
 	DocumentId *string `pulumi:"documentId"`
 	// The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
 	Fields *string `pulumi:"fields"`
@@ -213,6 +217,8 @@ type DocumentState struct {
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrInput
 	// The client-assigned document ID to use for this document during creation.
+	//
+	// ***
 	DocumentId pulumi.StringPtrInput
 	// The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
 	Fields pulumi.StringPtrInput
@@ -238,6 +244,8 @@ type documentArgs struct {
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database *string `pulumi:"database"`
 	// The client-assigned document ID to use for this document during creation.
+	//
+	// ***
 	DocumentId string `pulumi:"documentId"`
 	// The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
 	Fields string `pulumi:"fields"`
@@ -253,6 +261,8 @@ type DocumentArgs struct {
 	// The Firestore database id. Defaults to `"(default)"`.
 	Database pulumi.StringPtrInput
 	// The client-assigned document ID to use for this document during creation.
+	//
+	// ***
 	DocumentId pulumi.StringInput
 	// The document's [fields](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents) formated as a json string.
 	Fields pulumi.StringInput
@@ -364,6 +374,8 @@ func (o DocumentOutput) Database() pulumi.StringPtrOutput {
 }
 
 // The client-assigned document ID to use for this document during creation.
+//
+// ***
 func (o DocumentOutput) DocumentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.DocumentId }).(pulumi.StringOutput)
 }

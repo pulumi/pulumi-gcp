@@ -19,6 +19,8 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
         public readonly string Path;
         /// <summary>
         /// The StorageClass name that PVs will be created with.
+        /// 
+        /// - - -
         /// </summary>
         public readonly string StorageClass;
 

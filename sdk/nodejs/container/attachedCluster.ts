@@ -202,6 +202,10 @@ export class AttachedCluster extends pulumi.CustomResource {
     public readonly platformVersion!: pulumi.Output<string>;
     /**
      * The number of the Fleet host project where this cluster will be registered.
+     *
+     * - - -
+     *
+     *
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
@@ -402,6 +406,10 @@ export interface AttachedClusterState {
     platformVersion?: pulumi.Input<string>;
     /**
      * The number of the Fleet host project where this cluster will be registered.
+     *
+     * - - -
+     *
+     *
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
@@ -504,6 +512,10 @@ export interface AttachedClusterArgs {
     platformVersion: pulumi.Input<string>;
     /**
      * The number of the Fleet host project where this cluster will be registered.
+     *
+     * - - -
+     *
+     *
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;

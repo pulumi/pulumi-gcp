@@ -47,6 +47,8 @@ export interface GetBillingAccountArgs {
     displayName?: string;
     /**
      * `true` if the billing account is open, `false` if the billing account is closed.
+     *
+     * > **NOTE:** One of `billingAccount` or `displayName` must be specified.
      */
     open?: boolean;
 }
@@ -107,6 +109,8 @@ export interface GetBillingAccountOutputArgs {
     displayName?: pulumi.Input<string>;
     /**
      * `true` if the billing account is open, `false` if the billing account is closed.
+     *
+     * > **NOTE:** One of `billingAccount` or `displayName` must be specified.
      */
     open?: pulumi.Input<boolean>;
 }

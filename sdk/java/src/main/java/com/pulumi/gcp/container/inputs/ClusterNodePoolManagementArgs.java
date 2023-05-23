@@ -18,12 +18,16 @@ public final class ClusterNodePoolManagementArgs extends com.pulumi.resources.Re
     /**
      * Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
      * 
+     * This block also contains several computed attributes, documented below.
+     * 
      */
     @Import(name="autoRepair")
     private @Nullable Output<Boolean> autoRepair;
 
     /**
      * @return Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
+     * 
+     * This block also contains several computed attributes, documented below.
      * 
      */
     public Optional<Output<Boolean>> autoRepair() {
@@ -73,6 +77,8 @@ public final class ClusterNodePoolManagementArgs extends com.pulumi.resources.Re
         /**
          * @param autoRepair Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
          * 
+         * This block also contains several computed attributes, documented below.
+         * 
          * @return builder
          * 
          */
@@ -83,6 +89,8 @@ public final class ClusterNodePoolManagementArgs extends com.pulumi.resources.Re
 
         /**
          * @param autoRepair Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
+         * 
+         * This block also contains several computed attributes, documented below.
          * 
          * @return builder
          * 

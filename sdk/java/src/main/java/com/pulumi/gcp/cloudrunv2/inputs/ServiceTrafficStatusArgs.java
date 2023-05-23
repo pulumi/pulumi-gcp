@@ -33,6 +33,7 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
 
     /**
      * The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+     * 
      * (Optional)
      * Revision to which to send this portion of traffic, if traffic allocation is by revision.
      * 
@@ -42,6 +43,7 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+     * 
      * (Optional)
      * Revision to which to send this portion of traffic, if traffic allocation is by revision.
      * 
@@ -150,6 +152,7 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param revision The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+         * 
          * (Optional)
          * Revision to which to send this portion of traffic, if traffic allocation is by revision.
          * 
@@ -163,6 +166,7 @@ public final class ServiceTrafficStatusArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param revision The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+         * 
          * (Optional)
          * Revision to which to send this portion of traffic, if traffic allocation is by revision.
          * 

@@ -51,12 +51,16 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
      * 
+     * ***
+     * 
      */
     @Import(name="gatewayId", required=true)
     private Output<String> gatewayId;
 
     /**
      * @return Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
+     * 
+     * ***
      * 
      */
     public Output<String> gatewayId() {
@@ -186,6 +190,8 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param gatewayId Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -196,6 +202,8 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param gatewayId Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
+         * 
+         * ***
          * 
          * @return builder
          * 

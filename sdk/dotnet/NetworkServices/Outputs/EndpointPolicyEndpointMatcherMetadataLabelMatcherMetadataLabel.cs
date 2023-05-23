@@ -19,6 +19,8 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         public readonly string LabelName;
         /// <summary>
         /// Required. Label value presented as value corresponding to the above key, in xDS Node Metadata.
+        /// 
+        /// - - -
         /// </summary>
         public readonly string LabelValue;
 

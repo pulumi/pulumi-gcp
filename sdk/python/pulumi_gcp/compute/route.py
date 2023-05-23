@@ -32,6 +32,9 @@ class RouteArgs:
         :param pulumi.Input[str] dest_range: The destination range of outgoing packets that this route applies to.
                Only IPv4 is supported.
         :param pulumi.Input[str] network: The network that this route applies to.
+               
+               
+               - - -
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property
                when you create the resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -125,6 +128,9 @@ class RouteArgs:
     def network(self) -> pulumi.Input[str]:
         """
         The network that this route applies to.
+
+
+        - - -
         """
         return pulumi.get(self, "network")
 
@@ -335,6 +341,9 @@ class _RouteState:
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
         :param pulumi.Input[str] network: The network that this route applies to.
+               
+               
+               - - -
         :param pulumi.Input[str] next_hop_gateway: URL to a gateway that should handle matching packets.
                Currently, you can only specify the internet gateway, using a full or
                partial valid URL:
@@ -458,6 +467,9 @@ class _RouteState:
     def network(self) -> Optional[pulumi.Input[str]]:
         """
         The network that this route applies to.
+
+
+        - - -
         """
         return pulumi.get(self, "network")
 
@@ -723,6 +735,9 @@ class Route(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
         :param pulumi.Input[str] network: The network that this route applies to.
+               
+               
+               - - -
         :param pulumi.Input[str] next_hop_gateway: URL to a gateway that should handle matching packets.
                Currently, you can only specify the internet gateway, using a full or
                partial valid URL:
@@ -931,6 +946,9 @@ class Route(pulumi.CustomResource):
                characters must be a dash, lowercase letter, or digit, except the
                last character, which cannot be a dash.
         :param pulumi.Input[str] network: The network that this route applies to.
+               
+               
+               - - -
         :param pulumi.Input[str] next_hop_gateway: URL to a gateway that should handle matching packets.
                Currently, you can only specify the internet gateway, using a full or
                partial valid URL:
@@ -1032,6 +1050,9 @@ class Route(pulumi.CustomResource):
     def network(self) -> pulumi.Output[str]:
         """
         The network that this route applies to.
+
+
+        - - -
         """
         return pulumi.get(self, "network")
 

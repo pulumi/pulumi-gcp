@@ -87,6 +87,9 @@ namespace Pulumi.Gcp.Tags
 
         /// <summary>
         /// The TagValue of the TagBinding. Must be of the form tagValues/456.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("tagValue")]
         public Output<string> TagValue { get; private set; } = null!;
@@ -145,6 +148,9 @@ namespace Pulumi.Gcp.Tags
 
         /// <summary>
         /// The TagValue of the TagBinding. Must be of the form tagValues/456.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("tagValue", required: true)]
         public Input<string> TagValue { get; set; } = null!;
@@ -171,6 +177,9 @@ namespace Pulumi.Gcp.Tags
 
         /// <summary>
         /// The TagValue of the TagBinding. Must be of the form tagValues/456.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("tagValue")]
         public Input<string>? TagValue { get; set; }

@@ -68,6 +68,8 @@ namespace Pulumi.Gcp.Dataproc.Inputs
 
         /// <summary>
         /// Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
+        /// 
+        /// - - -
         /// </summary>
         [Input("shieldedInstanceConfig")]
         public Input<Inputs.ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs>? ShieldedInstanceConfig { get; set; }

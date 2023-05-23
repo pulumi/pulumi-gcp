@@ -183,7 +183,7 @@ import javax.annotation.Nullable;
  *  $ pulumi import gcp:storage/bucket:Bucket image-store tf-test-project/image-store-bucket
  * ```
  * 
- *  `false` in state. If you&#39;ve set it to `true` in config, run `terraform apply` to update the value set in state. If you delete this resource before updating the value, objects in the bucket will not be destroyed.
+ *  `false` in state. If you&#39;ve set it to `true` in config, run `pulumi up` to update the value set in state. If you delete this resource before updating the value, objects in the bucket will not be destroyed.
  * 
  */
 @ResourceType(type="gcp:storage/bucket:Bucket")
@@ -307,12 +307,16 @@ public class Bucket extends com.pulumi.resources.CustomResource {
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
      * 
+     * ***
+     * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
      * @return The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
+     * 
+     * ***
      * 
      */
     public Output<String> location() {

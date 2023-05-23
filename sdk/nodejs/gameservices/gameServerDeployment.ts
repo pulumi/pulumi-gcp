@@ -72,6 +72,9 @@ export class GameServerDeployment extends pulumi.CustomResource {
 
     /**
      * A unique id for the deployment.
+     *
+     *
+     * - - -
      */
     public readonly deploymentId!: pulumi.Output<string>;
     /**
@@ -142,6 +145,9 @@ export class GameServerDeployment extends pulumi.CustomResource {
 export interface GameServerDeploymentState {
     /**
      * A unique id for the deployment.
+     *
+     *
+     * - - -
      */
     deploymentId?: pulumi.Input<string>;
     /**
@@ -177,6 +183,9 @@ export interface GameServerDeploymentState {
 export interface GameServerDeploymentArgs {
     /**
      * A unique id for the deployment.
+     *
+     *
+     * - - -
      */
     deploymentId: pulumi.Input<string>;
     /**

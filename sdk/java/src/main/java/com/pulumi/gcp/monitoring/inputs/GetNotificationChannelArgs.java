@@ -68,12 +68,20 @@ public final class GetNotificationChannelArgs extends com.pulumi.resources.Invok
     /**
      * The type of the notification channel.
      * 
+     * ***
+     * 
+     * Other optional fields include:
+     * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
      * @return The type of the notification channel.
+     * 
+     * ***
+     * 
+     * Other optional fields include:
      * 
      */
     public Optional<Output<String>> type() {
@@ -193,6 +201,10 @@ public final class GetNotificationChannelArgs extends com.pulumi.resources.Invok
         /**
          * @param type The type of the notification channel.
          * 
+         * ***
+         * 
+         * Other optional fields include:
+         * 
          * @return builder
          * 
          */
@@ -203,6 +215,10 @@ public final class GetNotificationChannelArgs extends com.pulumi.resources.Invok
 
         /**
          * @param type The type of the notification channel.
+         * 
+         * ***
+         * 
+         * Other optional fields include:
          * 
          * @return builder
          * 

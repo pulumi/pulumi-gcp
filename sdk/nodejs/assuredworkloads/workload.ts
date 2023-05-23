@@ -119,6 +119,10 @@ export class Workload extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * The organization for the resource
+     *
+     *
+     *
+     * - - -
      */
     public readonly organization!: pulumi.Output<string>;
     /**
@@ -232,6 +236,10 @@ export interface WorkloadState {
     name?: pulumi.Input<string>;
     /**
      * The organization for the resource
+     *
+     *
+     *
+     * - - -
      */
     organization?: pulumi.Input<string>;
     /**
@@ -278,6 +286,10 @@ export interface WorkloadArgs {
     location: pulumi.Input<string>;
     /**
      * The organization for the resource
+     *
+     *
+     *
+     * - - -
      */
     organization: pulumi.Input<string>;
     /**

@@ -158,6 +158,8 @@ type Network struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Set the order that Firewall Rules and Firewall Policies are evaluated.
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
@@ -243,6 +245,8 @@ type networkState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// Set the order that Firewall Rules and Firewall Policies are evaluated.
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
@@ -300,6 +304,8 @@ type NetworkState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// Set the order that Firewall Rules and Firewall Policies are evaluated.
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
@@ -358,6 +364,8 @@ type networkArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// Set the order that Firewall Rules and Firewall Policies are evaluated.
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
@@ -411,6 +419,8 @@ type NetworkArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// Set the order that Firewall Rules and Firewall Policies are evaluated.
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
@@ -573,6 +583,8 @@ func (o NetworkOutput) Mtu() pulumi.IntOutput {
 // first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the last
 // character, which cannot be a dash.
+//
+// ***
 func (o NetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

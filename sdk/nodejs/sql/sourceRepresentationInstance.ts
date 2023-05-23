@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * A source representation instance is a Cloud SQL instance that represents
+ * the source database server to the Cloud SQL replica. It is visible in the
+ * Cloud Console and appears the same as a regular Cloud SQL instance, but it
+ * contains no data, requires no configuration or maintenance, and does not
+ * affect billing. You cannot update the source representation instance.
+ *
+ * > **Warning:** All arguments including the following potentially sensitive
+ * values will be stored in the raw state as plain text: `on_premises_configuration.password`.
+ * Read more about sensitive data in state.
+ *
  * ## Example Usage
  * ### Sql Source Representation Instance Basic
  *
@@ -106,6 +116,9 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
     public readonly dumpFilePath!: pulumi.Output<string | undefined>;
     /**
      * The externally accessible IPv4 address for the source database server.
+     *
+     *
+     * - - -
      */
     public readonly host!: pulumi.Output<string>;
     /**
@@ -217,6 +230,9 @@ export interface SourceRepresentationInstanceState {
     dumpFilePath?: pulumi.Input<string>;
     /**
      * The externally accessible IPv4 address for the source database server.
+     *
+     *
+     * - - -
      */
     host?: pulumi.Input<string>;
     /**
@@ -276,6 +292,9 @@ export interface SourceRepresentationInstanceArgs {
     dumpFilePath?: pulumi.Input<string>;
     /**
      * The externally accessible IPv4 address for the source database server.
+     *
+     *
+     * - - -
      */
     host: pulumi.Input<string>;
     /**

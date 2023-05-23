@@ -50,12 +50,16 @@ public final class ProjectMetadataItemState extends com.pulumi.resources.Resourc
     /**
      * The value to set for the given metadata key.
      * 
+     * ***
+     * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
      * @return The value to set for the given metadata key.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> value() {
@@ -135,6 +139,8 @@ public final class ProjectMetadataItemState extends com.pulumi.resources.Resourc
         /**
          * @param value The value to set for the given metadata key.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -145,6 +151,8 @@ public final class ProjectMetadataItemState extends com.pulumi.resources.Resourc
 
         /**
          * @param value The value to set for the given metadata key.
+         * 
+         * ***
          * 
          * @return builder
          * 

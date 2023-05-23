@@ -51,6 +51,8 @@ func LookupTopic(ctx *pulumi.Context, args *LookupTopicArgs, opts ...pulumi.Invo
 // A collection of arguments for invoking getTopic.
 type LookupTopicArgs struct {
 	// The name of the Cloud Pub/Sub Topic.
+	//
+	// ***
 	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -86,6 +88,8 @@ func LookupTopicOutput(ctx *pulumi.Context, args LookupTopicOutputArgs, opts ...
 // A collection of arguments for invoking getTopic.
 type LookupTopicOutputArgs struct {
 	// The name of the Cloud Pub/Sub Topic.
+	//
+	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

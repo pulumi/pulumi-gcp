@@ -112,6 +112,8 @@ type SecurityScanConfig struct {
 	// Structure is documented below.
 	Schedule SecurityScanConfigSchedulePtrOutput `pulumi:"schedule"`
 	// The starting URLs from which the scanner finds site pages.
+	//
+	// ***
 	StartingUrls pulumi.StringArrayOutput `pulumi:"startingUrls"`
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
@@ -183,6 +185,8 @@ type securityScanConfigState struct {
 	// Structure is documented below.
 	Schedule *SecurityScanConfigSchedule `pulumi:"schedule"`
 	// The starting URLs from which the scanner finds site pages.
+	//
+	// ***
 	StartingUrls []string `pulumi:"startingUrls"`
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
@@ -220,6 +224,8 @@ type SecurityScanConfigState struct {
 	// Structure is documented below.
 	Schedule SecurityScanConfigSchedulePtrInput
 	// The starting URLs from which the scanner finds site pages.
+	//
+	// ***
 	StartingUrls pulumi.StringArrayInput
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
@@ -258,6 +264,8 @@ type securityScanConfigArgs struct {
 	// Structure is documented below.
 	Schedule *SecurityScanConfigSchedule `pulumi:"schedule"`
 	// The starting URLs from which the scanner finds site pages.
+	//
+	// ***
 	StartingUrls []string `pulumi:"startingUrls"`
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
@@ -293,6 +301,8 @@ type SecurityScanConfigArgs struct {
 	// Structure is documented below.
 	Schedule SecurityScanConfigSchedulePtrInput
 	// The starting URLs from which the scanner finds site pages.
+	//
+	// ***
 	StartingUrls pulumi.StringArrayInput
 	// Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	// Each value may be one of: `APP_ENGINE`, `COMPUTE`.
@@ -440,6 +450,8 @@ func (o SecurityScanConfigOutput) Schedule() SecurityScanConfigSchedulePtrOutput
 }
 
 // The starting URLs from which the scanner finds site pages.
+//
+// ***
 func (o SecurityScanConfigOutput) StartingUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SecurityScanConfig) pulumi.StringArrayOutput { return v.StartingUrls }).(pulumi.StringArrayOutput)
 }

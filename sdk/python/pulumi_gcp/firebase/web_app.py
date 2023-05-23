@@ -20,6 +20,9 @@ class WebAppArgs:
         """
         The set of arguments for constructing a WebApp resource.
         :param pulumi.Input[str] display_name: The user-assigned display name of the App.
+               
+               
+               - - -
         :param pulumi.Input[str] deletion_policy: Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
                This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -36,6 +39,9 @@ class WebAppArgs:
     def display_name(self) -> pulumi.Input[str]:
         """
         The user-assigned display name of the App.
+
+
+        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -87,6 +93,9 @@ class _WebAppState:
         :param pulumi.Input[str] deletion_policy: Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
                This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
         :param pulumi.Input[str] display_name: The user-assigned display name of the App.
+               
+               
+               - - -
         :param pulumi.Input[str] name: The fully qualified resource name of the App, for example:
                projects/projectId/webApps/appId
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -148,6 +157,9 @@ class _WebAppState:
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
         The user-assigned display name of the App.
+
+
+        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -261,6 +273,9 @@ class WebApp(pulumi.CustomResource):
         :param pulumi.Input[str] deletion_policy: Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
                This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
         :param pulumi.Input[str] display_name: The user-assigned display name of the App.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -399,6 +414,9 @@ class WebApp(pulumi.CustomResource):
         :param pulumi.Input[str] deletion_policy: Set to 'ABANDON' to allow the WebApp to be untracked from terraform state rather than deleted upon 'terraform destroy'.
                This is useful becaue the WebApp may be serving traffic. Set to 'DELETE' to delete the WebApp. Default to 'ABANDON'
         :param pulumi.Input[str] display_name: The user-assigned display name of the App.
+               
+               
+               - - -
         :param pulumi.Input[str] name: The fully qualified resource name of the App, for example:
                projects/projectId/webApps/appId
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -447,6 +465,9 @@ class WebApp(pulumi.CustomResource):
     def display_name(self) -> pulumi.Output[str]:
         """
         The user-assigned display name of the App.
+
+
+        - - -
         """
         return pulumi.get(self, "display_name")
 

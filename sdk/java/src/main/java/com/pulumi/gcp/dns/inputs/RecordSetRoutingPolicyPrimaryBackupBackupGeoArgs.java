@@ -20,6 +20,7 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs extends com.
     /**
      * The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
      * Structure is document below.
+     * 
      * Structure is document below.
      * 
      */
@@ -29,6 +30,7 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs extends com.
     /**
      * @return The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
      * Structure is document below.
+     * 
      * Structure is document below.
      * 
      */
@@ -87,6 +89,7 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs extends com.
         /**
          * @param healthCheckedTargets The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
          * Structure is document below.
+         * 
          * Structure is document below.
          * 
          * @return builder
@@ -100,6 +103,7 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs extends com.
         /**
          * @param healthCheckedTargets The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
          * Structure is document below.
+         * 
          * Structure is document below.
          * 
          * @return builder

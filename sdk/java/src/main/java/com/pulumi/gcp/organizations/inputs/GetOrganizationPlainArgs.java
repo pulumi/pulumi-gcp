@@ -17,12 +17,16 @@ public final class GetOrganizationPlainArgs extends com.pulumi.resources.InvokeA
     /**
      * The domain name of the Organization.
      * 
+     * &gt; **NOTE:** One of `organization` or `domain` must be specified.
+     * 
      */
     @Import(name="domain")
     private @Nullable String domain;
 
     /**
      * @return The domain name of the Organization.
+     * 
+     * &gt; **NOTE:** One of `organization` or `domain` must be specified.
      * 
      */
     public Optional<String> domain() {
@@ -71,6 +75,8 @@ public final class GetOrganizationPlainArgs extends com.pulumi.resources.InvokeA
 
         /**
          * @param domain The domain name of the Organization.
+         * 
+         * &gt; **NOTE:** One of `organization` or `domain` must be specified.
          * 
          * @return builder
          * 

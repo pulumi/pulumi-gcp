@@ -204,6 +204,10 @@ export class Connection extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+     *
+     *
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -305,6 +309,10 @@ export interface ConnectionState {
     location?: pulumi.Input<string>;
     /**
      * Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+     *
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -347,6 +355,10 @@ export interface ConnectionArgs {
     location: pulumi.Input<string>;
     /**
      * Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+     *
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**

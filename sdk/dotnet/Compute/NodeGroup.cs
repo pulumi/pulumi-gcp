@@ -202,6 +202,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The URL of the node template to which this node group belongs.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("nodeTemplate")]
         public Output<string> NodeTemplate { get; private set; } = null!;
@@ -325,6 +328,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The URL of the node template to which this node group belongs.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("nodeTemplate", required: true)]
         public Input<string> NodeTemplate { get; set; } = null!;
@@ -410,6 +416,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The URL of the node template to which this node group belongs.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("nodeTemplate")]
         public Input<string>? NodeTemplate { get; set; }

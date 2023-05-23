@@ -16,6 +16,8 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// The time when cluster will be auto-deleted.
         /// A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         /// Example: "2014-10-02T15:01:23.045123456Z".
+        /// 
+        /// - - -
         /// </summary>
         [Input("autoDeleteTime")]
         public Input<string>? AutoDeleteTime { get; set; }

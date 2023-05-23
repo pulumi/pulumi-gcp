@@ -20,6 +20,8 @@ namespace Pulumi.Gcp.Memcache.Inputs
 
         /// <summary>
         /// Memory size in Mebibytes for each memcache node.
+        /// 
+        /// - - -
         /// </summary>
         [Input("memorySizeMb", required: true)]
         public Input<int> MemorySizeMb { get; set; } = null!;

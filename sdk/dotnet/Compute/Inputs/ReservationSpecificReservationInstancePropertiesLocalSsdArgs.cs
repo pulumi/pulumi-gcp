@@ -14,6 +14,8 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         /// <summary>
         /// The size of the disk in base-2 GB.
+        /// 
+        /// - - -
         /// </summary>
         [Input("diskSizeGb", required: true)]
         public Input<int> DiskSizeGb { get; set; } = null!;

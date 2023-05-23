@@ -23,6 +23,10 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
      * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      * 
+     * Possible values are: `ABANDON`.
+     * 
+     * ***
+     * 
      */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
@@ -31,6 +35,10 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
      * @return The deletion policy for the user.
      * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
+     * 
+     * Possible values are: `ABANDON`.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -198,6 +206,10 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
          * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
          * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
          * 
+         * Possible values are: `ABANDON`.
+         * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -210,6 +222,10 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
          * @param deletionPolicy The deletion policy for the user.
          * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
          * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
+         * 
+         * Possible values are: `ABANDON`.
+         * 
+         * ***
          * 
          * @return builder
          * 

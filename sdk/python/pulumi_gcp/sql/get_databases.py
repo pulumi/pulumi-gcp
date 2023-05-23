@@ -83,12 +83,14 @@ def get_databases(instance: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    qa = gcp.sql.get_databases(instance=google_sql_database_instance["main"]["name"])
+    qa = gcp.sql.get_databases(instance=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
     ```
 
 
     :param str instance: The name of the Cloud SQL database instance in which the database belongs.
     :param str project: The ID of the project in which the instance belongs.
+           
+           > **Note** This datasource performs client-side sorting to provide consistent ordering of the databases.
     """
     __args__ = dict()
     __args__['instance'] = instance
@@ -115,11 +117,13 @@ def get_databases_output(instance: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    qa = gcp.sql.get_databases(instance=google_sql_database_instance["main"]["name"])
+    qa = gcp.sql.get_databases(instance=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
     ```
 
 
     :param str instance: The name of the Cloud SQL database instance in which the database belongs.
     :param str project: The ID of the project in which the instance belongs.
+           
+           > **Note** This datasource performs client-side sorting to provide consistent ordering of the databases.
     """
     ...

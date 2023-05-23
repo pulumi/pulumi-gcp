@@ -115,12 +115,16 @@ public final class RealmState extends com.pulumi.resources.ResourceArgs {
     /**
      * GCP region of the Realm.
      * 
+     * ***
+     * 
      */
     @Import(name="realmId")
     private @Nullable Output<String> realmId;
 
     /**
      * @return GCP region of the Realm.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> realmId() {
@@ -312,6 +316,8 @@ public final class RealmState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param realmId GCP region of the Realm.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -322,6 +328,8 @@ public final class RealmState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param realmId GCP region of the Realm.
+         * 
+         * ***
          * 
          * @return builder
          * 

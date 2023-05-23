@@ -143,6 +143,9 @@ export class NetworkPeeringRoutesConfig extends pulumi.CustomResource {
     public readonly importCustomRoutes!: pulumi.Output<boolean>;
     /**
      * The name of the primary network for the peering.
+     *
+     *
+     * - - -
      */
     public readonly network!: pulumi.Output<string>;
     /**
@@ -212,6 +215,9 @@ export interface NetworkPeeringRoutesConfigState {
     importCustomRoutes?: pulumi.Input<boolean>;
     /**
      * The name of the primary network for the peering.
+     *
+     *
+     * - - -
      */
     network?: pulumi.Input<string>;
     /**
@@ -239,6 +245,9 @@ export interface NetworkPeeringRoutesConfigArgs {
     importCustomRoutes: pulumi.Input<boolean>;
     /**
      * The name of the primary network for the peering.
+     *
+     *
+     * - - -
      */
     network: pulumi.Input<string>;
     /**

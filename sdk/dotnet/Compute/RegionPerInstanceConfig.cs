@@ -202,6 +202,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The region instance group manager this instance config is part of.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("regionInstanceGroupManager")]
         public Output<string> RegionInstanceGroupManager { get; private set; } = null!;
@@ -310,6 +313,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The region instance group manager this instance config is part of.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("regionInstanceGroupManager", required: true)]
         public Input<string> RegionInstanceGroupManager { get; set; } = null!;
@@ -380,6 +386,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The region instance group manager this instance config is part of.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("regionInstanceGroupManager")]
         public Input<string>? RegionInstanceGroupManager { get; set; }

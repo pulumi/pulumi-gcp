@@ -294,12 +294,16 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
     /**
      * User-provided metadata, in key/value pairs.
      * 
+     * One of the following is required:
+     * 
      */
     @Export(name="metadata", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> metadata;
 
     /**
      * @return User-provided metadata, in key/value pairs.
+     * 
+     * One of the following is required:
      * 
      */
     public Output<Optional<Map<String,String>>> metadata() {
@@ -353,6 +357,8 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      * A path to the data you want to upload. Must be defined
      * if `content` is not.
      * 
+     * ***
+     * 
      */
     @Export(name="source", type=AssetOrArchive.class, parameters={})
     private Output</* @Nullable */ AssetOrArchive> source;
@@ -360,6 +366,8 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
     /**
      * @return A path to the data you want to upload. Must be defined
      * if `content` is not.
+     * 
+     * ***
      * 
      */
     public Output<Optional<AssetOrArchive>> source() {

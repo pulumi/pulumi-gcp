@@ -71,6 +71,8 @@ public final class NetworkFirewallPolicyRuleMatch {
     /**
      * @return Name of the Google Cloud Threat Intelligence list.
      * 
+     * The `layer4_configs` block supports:
+     * 
      */
     private @Nullable List<String> srcThreatIntelligences;
 
@@ -154,6 +156,8 @@ public final class NetworkFirewallPolicyRuleMatch {
     }
     /**
      * @return Name of the Google Cloud Threat Intelligence list.
+     * 
+     * The `layer4_configs` block supports:
      * 
      */
     public List<String> srcThreatIntelligences() {

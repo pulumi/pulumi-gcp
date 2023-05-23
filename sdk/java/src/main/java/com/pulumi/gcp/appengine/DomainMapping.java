@@ -83,12 +83,16 @@ public class DomainMapping extends com.pulumi.resources.CustomResource {
     /**
      * Relative name of the domain serving the application. Example: example.com.
      * 
+     * ***
+     * 
      */
     @Export(name="domainName", type=String.class, parameters={})
     private Output<String> domainName;
 
     /**
      * @return Relative name of the domain serving the application. Example: example.com.
+     * 
+     * ***
      * 
      */
     public Output<String> domainName() {

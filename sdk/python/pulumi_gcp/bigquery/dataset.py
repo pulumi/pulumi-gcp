@@ -35,6 +35,9 @@ class DatasetArgs:
         :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
                underscores (_). The maximum length is 1,024 characters.
+               
+               
+               - - -
         :param pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]] accesses: An array of objects that define dataset access for one or more entities.
                Structure is documented below.
         :param pulumi.Input[str] default_collation: Defines the default collation specification of future tables created
@@ -52,8 +55,30 @@ class DatasetArgs:
                Structure is documented below.
         :param pulumi.Input[int] default_partition_expiration_ms: The default partition expiration for all partitioned tables in
                the dataset, in milliseconds.
+               
+               Once this property is set, all newly-created partitioned tables in
+               the dataset will have an `expirationMs` property in the `timePartitioning`
+               settings set to this value, and changing the value will only
+               affect new tables, not existing ones. The storage in a partition will
+               have an expiration time of its partition time plus this value.
+               Setting this property overrides the use of `defaultTableExpirationMs`
+               for partitioned tables: only one of `defaultTableExpirationMs` and
+               `defaultPartitionExpirationMs` will be used for any new partitioned
+               table. If you provide an explicit `timePartitioning.expirationMs` when
+               creating or updating a partitioned table, that value takes precedence
+               over the default partition expiration time indicated by this property.
         :param pulumi.Input[int] default_table_expiration_ms: The default lifetime of all tables in the dataset, in milliseconds.
                The minimum value is 3600000 milliseconds (one hour).
+               
+               Once this property is set, all newly-created tables in the dataset
+               will have an `expirationTime` property set to the creation time plus
+               the value in this property, and changing the value will only affect
+               new tables, not existing ones. When the `expirationTime` for a given
+               table is reached, that table will be deleted automatically.
+               If a table's `expirationTime` is modified or removed before the
+               table expires, or if you provide an explicit `expirationTime` when
+               creating a table, that value takes precedence over the default
+               expiration time indicated by this property.
         :param pulumi.Input[bool] delete_contents_on_destroy: If set to `true`, delete all the tables in the
                dataset when destroying the resource; otherwise,
                destroying the resource will fail if tables are present.
@@ -66,6 +91,14 @@ class DatasetArgs:
                organize and group your datasets
         :param pulumi.Input[str] location: The geographic location where the dataset should reside.
                See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
+               
+               There are two types of locations, regional or multi-regional. A regional
+               location is a specific geographic place, such as Tokyo, and a multi-regional
+               location is a large geographic area, such as the United States, that
+               contains at least two geographic places.
+               
+               The default value is multi-regional location `US`.
+               Changing this forces a new resource to be created.
         :param pulumi.Input[str] max_time_travel_hours: Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -105,6 +138,9 @@ class DatasetArgs:
         A unique ID for this dataset, without the project name. The ID
         must contain only letters (a-z, A-Z), numbers (0-9), or
         underscores (_). The maximum length is 1,024 characters.
+
+
+        - - -
         """
         return pulumi.get(self, "dataset_id")
 
@@ -166,6 +202,18 @@ class DatasetArgs:
         """
         The default partition expiration for all partitioned tables in
         the dataset, in milliseconds.
+
+        Once this property is set, all newly-created partitioned tables in
+        the dataset will have an `expirationMs` property in the `timePartitioning`
+        settings set to this value, and changing the value will only
+        affect new tables, not existing ones. The storage in a partition will
+        have an expiration time of its partition time plus this value.
+        Setting this property overrides the use of `defaultTableExpirationMs`
+        for partitioned tables: only one of `defaultTableExpirationMs` and
+        `defaultPartitionExpirationMs` will be used for any new partitioned
+        table. If you provide an explicit `timePartitioning.expirationMs` when
+        creating or updating a partitioned table, that value takes precedence
+        over the default partition expiration time indicated by this property.
         """
         return pulumi.get(self, "default_partition_expiration_ms")
 
@@ -179,6 +227,16 @@ class DatasetArgs:
         """
         The default lifetime of all tables in the dataset, in milliseconds.
         The minimum value is 3600000 milliseconds (one hour).
+
+        Once this property is set, all newly-created tables in the dataset
+        will have an `expirationTime` property set to the creation time plus
+        the value in this property, and changing the value will only affect
+        new tables, not existing ones. When the `expirationTime` for a given
+        table is reached, that table will be deleted automatically.
+        If a table's `expirationTime` is modified or removed before the
+        table expires, or if you provide an explicit `expirationTime` when
+        creating a table, that value takes precedence over the default
+        expiration time indicated by this property.
         """
         return pulumi.get(self, "default_table_expiration_ms")
 
@@ -257,6 +315,14 @@ class DatasetArgs:
         """
         The geographic location where the dataset should reside.
         See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
+
+        There are two types of locations, regional or multi-regional. A regional
+        location is a specific geographic place, such as Tokyo, and a multi-regional
+        location is a large geographic area, such as the United States, that
+        contains at least two geographic places.
+
+        The default value is multi-regional location `US`.
+        Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "location")
 
@@ -320,6 +386,9 @@ class _DatasetState:
         :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
                underscores (_). The maximum length is 1,024 characters.
+               
+               
+               - - -
         :param pulumi.Input[str] default_collation: Defines the default collation specification of future tables created
                in the dataset. If a table is created in this dataset without table-level
                default collation, then the table inherits the dataset default collation,
@@ -335,8 +404,30 @@ class _DatasetState:
                Structure is documented below.
         :param pulumi.Input[int] default_partition_expiration_ms: The default partition expiration for all partitioned tables in
                the dataset, in milliseconds.
+               
+               Once this property is set, all newly-created partitioned tables in
+               the dataset will have an `expirationMs` property in the `timePartitioning`
+               settings set to this value, and changing the value will only
+               affect new tables, not existing ones. The storage in a partition will
+               have an expiration time of its partition time plus this value.
+               Setting this property overrides the use of `defaultTableExpirationMs`
+               for partitioned tables: only one of `defaultTableExpirationMs` and
+               `defaultPartitionExpirationMs` will be used for any new partitioned
+               table. If you provide an explicit `timePartitioning.expirationMs` when
+               creating or updating a partitioned table, that value takes precedence
+               over the default partition expiration time indicated by this property.
         :param pulumi.Input[int] default_table_expiration_ms: The default lifetime of all tables in the dataset, in milliseconds.
                The minimum value is 3600000 milliseconds (one hour).
+               
+               Once this property is set, all newly-created tables in the dataset
+               will have an `expirationTime` property set to the creation time plus
+               the value in this property, and changing the value will only affect
+               new tables, not existing ones. When the `expirationTime` for a given
+               table is reached, that table will be deleted automatically.
+               If a table's `expirationTime` is modified or removed before the
+               table expires, or if you provide an explicit `expirationTime` when
+               creating a table, that value takes precedence over the default
+               expiration time indicated by this property.
         :param pulumi.Input[bool] delete_contents_on_destroy: If set to `true`, delete all the tables in the
                dataset when destroying the resource; otherwise,
                destroying the resource will fail if tables are present.
@@ -352,6 +443,14 @@ class _DatasetState:
                milliseconds since the epoch.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside.
                See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
+               
+               There are two types of locations, regional or multi-regional. A regional
+               location is a specific geographic place, such as Tokyo, and a multi-regional
+               location is a large geographic area, such as the United States, that
+               contains at least two geographic places.
+               
+               The default value is multi-regional location `US`.
+               Changing this forces a new resource to be created.
         :param pulumi.Input[str] max_time_travel_hours: Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -427,6 +526,9 @@ class _DatasetState:
         A unique ID for this dataset, without the project name. The ID
         must contain only letters (a-z, A-Z), numbers (0-9), or
         underscores (_). The maximum length is 1,024 characters.
+
+
+        - - -
         """
         return pulumi.get(self, "dataset_id")
 
@@ -475,6 +577,18 @@ class _DatasetState:
         """
         The default partition expiration for all partitioned tables in
         the dataset, in milliseconds.
+
+        Once this property is set, all newly-created partitioned tables in
+        the dataset will have an `expirationMs` property in the `timePartitioning`
+        settings set to this value, and changing the value will only
+        affect new tables, not existing ones. The storage in a partition will
+        have an expiration time of its partition time plus this value.
+        Setting this property overrides the use of `defaultTableExpirationMs`
+        for partitioned tables: only one of `defaultTableExpirationMs` and
+        `defaultPartitionExpirationMs` will be used for any new partitioned
+        table. If you provide an explicit `timePartitioning.expirationMs` when
+        creating or updating a partitioned table, that value takes precedence
+        over the default partition expiration time indicated by this property.
         """
         return pulumi.get(self, "default_partition_expiration_ms")
 
@@ -488,6 +602,16 @@ class _DatasetState:
         """
         The default lifetime of all tables in the dataset, in milliseconds.
         The minimum value is 3600000 milliseconds (one hour).
+
+        Once this property is set, all newly-created tables in the dataset
+        will have an `expirationTime` property set to the creation time plus
+        the value in this property, and changing the value will only affect
+        new tables, not existing ones. When the `expirationTime` for a given
+        table is reached, that table will be deleted automatically.
+        If a table's `expirationTime` is modified or removed before the
+        table expires, or if you provide an explicit `expirationTime` when
+        creating a table, that value takes precedence over the default
+        expiration time indicated by this property.
         """
         return pulumi.get(self, "default_table_expiration_ms")
 
@@ -591,6 +715,14 @@ class _DatasetState:
         """
         The geographic location where the dataset should reside.
         See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
+
+        There are two types of locations, regional or multi-regional. A regional
+        location is a specific geographic place, such as Tokyo, and a multi-regional
+        location is a large geographic area, such as the United States, that
+        contains at least two geographic places.
+
+        The default value is multi-regional location `US`.
+        Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "location")
 
@@ -830,6 +962,9 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
                underscores (_). The maximum length is 1,024 characters.
+               
+               
+               - - -
         :param pulumi.Input[str] default_collation: Defines the default collation specification of future tables created
                in the dataset. If a table is created in this dataset without table-level
                default collation, then the table inherits the dataset default collation,
@@ -845,8 +980,30 @@ class Dataset(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[int] default_partition_expiration_ms: The default partition expiration for all partitioned tables in
                the dataset, in milliseconds.
+               
+               Once this property is set, all newly-created partitioned tables in
+               the dataset will have an `expirationMs` property in the `timePartitioning`
+               settings set to this value, and changing the value will only
+               affect new tables, not existing ones. The storage in a partition will
+               have an expiration time of its partition time plus this value.
+               Setting this property overrides the use of `defaultTableExpirationMs`
+               for partitioned tables: only one of `defaultTableExpirationMs` and
+               `defaultPartitionExpirationMs` will be used for any new partitioned
+               table. If you provide an explicit `timePartitioning.expirationMs` when
+               creating or updating a partitioned table, that value takes precedence
+               over the default partition expiration time indicated by this property.
         :param pulumi.Input[int] default_table_expiration_ms: The default lifetime of all tables in the dataset, in milliseconds.
                The minimum value is 3600000 milliseconds (one hour).
+               
+               Once this property is set, all newly-created tables in the dataset
+               will have an `expirationTime` property set to the creation time plus
+               the value in this property, and changing the value will only affect
+               new tables, not existing ones. When the `expirationTime` for a given
+               table is reached, that table will be deleted automatically.
+               If a table's `expirationTime` is modified or removed before the
+               table expires, or if you provide an explicit `expirationTime` when
+               creating a table, that value takes precedence over the default
+               expiration time indicated by this property.
         :param pulumi.Input[bool] delete_contents_on_destroy: If set to `true`, delete all the tables in the
                dataset when destroying the resource; otherwise,
                destroying the resource will fail if tables are present.
@@ -859,6 +1016,14 @@ class Dataset(pulumi.CustomResource):
                organize and group your datasets
         :param pulumi.Input[str] location: The geographic location where the dataset should reside.
                See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
+               
+               There are two types of locations, regional or multi-regional. A regional
+               location is a specific geographic place, such as Tokyo, and a multi-regional
+               location is a large geographic area, such as the United States, that
+               contains at least two geographic places.
+               
+               The default value is multi-regional location `US`.
+               Changing this forces a new resource to be created.
         :param pulumi.Input[str] max_time_travel_hours: Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1136,6 +1301,9 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
                underscores (_). The maximum length is 1,024 characters.
+               
+               
+               - - -
         :param pulumi.Input[str] default_collation: Defines the default collation specification of future tables created
                in the dataset. If a table is created in this dataset without table-level
                default collation, then the table inherits the dataset default collation,
@@ -1151,8 +1319,30 @@ class Dataset(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[int] default_partition_expiration_ms: The default partition expiration for all partitioned tables in
                the dataset, in milliseconds.
+               
+               Once this property is set, all newly-created partitioned tables in
+               the dataset will have an `expirationMs` property in the `timePartitioning`
+               settings set to this value, and changing the value will only
+               affect new tables, not existing ones. The storage in a partition will
+               have an expiration time of its partition time plus this value.
+               Setting this property overrides the use of `defaultTableExpirationMs`
+               for partitioned tables: only one of `defaultTableExpirationMs` and
+               `defaultPartitionExpirationMs` will be used for any new partitioned
+               table. If you provide an explicit `timePartitioning.expirationMs` when
+               creating or updating a partitioned table, that value takes precedence
+               over the default partition expiration time indicated by this property.
         :param pulumi.Input[int] default_table_expiration_ms: The default lifetime of all tables in the dataset, in milliseconds.
                The minimum value is 3600000 milliseconds (one hour).
+               
+               Once this property is set, all newly-created tables in the dataset
+               will have an `expirationTime` property set to the creation time plus
+               the value in this property, and changing the value will only affect
+               new tables, not existing ones. When the `expirationTime` for a given
+               table is reached, that table will be deleted automatically.
+               If a table's `expirationTime` is modified or removed before the
+               table expires, or if you provide an explicit `expirationTime` when
+               creating a table, that value takes precedence over the default
+               expiration time indicated by this property.
         :param pulumi.Input[bool] delete_contents_on_destroy: If set to `true`, delete all the tables in the
                dataset when destroying the resource; otherwise,
                destroying the resource will fail if tables are present.
@@ -1168,6 +1358,14 @@ class Dataset(pulumi.CustomResource):
                milliseconds since the epoch.
         :param pulumi.Input[str] location: The geographic location where the dataset should reside.
                See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
+               
+               There are two types of locations, regional or multi-regional. A regional
+               location is a specific geographic place, such as Tokyo, and a multi-regional
+               location is a large geographic area, such as the United States, that
+               contains at least two geographic places.
+               
+               The default value is multi-regional location `US`.
+               Changing this forces a new resource to be created.
         :param pulumi.Input[str] max_time_travel_hours: Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1222,6 +1420,9 @@ class Dataset(pulumi.CustomResource):
         A unique ID for this dataset, without the project name. The ID
         must contain only letters (a-z, A-Z), numbers (0-9), or
         underscores (_). The maximum length is 1,024 characters.
+
+
+        - - -
         """
         return pulumi.get(self, "dataset_id")
 
@@ -1258,6 +1459,18 @@ class Dataset(pulumi.CustomResource):
         """
         The default partition expiration for all partitioned tables in
         the dataset, in milliseconds.
+
+        Once this property is set, all newly-created partitioned tables in
+        the dataset will have an `expirationMs` property in the `timePartitioning`
+        settings set to this value, and changing the value will only
+        affect new tables, not existing ones. The storage in a partition will
+        have an expiration time of its partition time plus this value.
+        Setting this property overrides the use of `defaultTableExpirationMs`
+        for partitioned tables: only one of `defaultTableExpirationMs` and
+        `defaultPartitionExpirationMs` will be used for any new partitioned
+        table. If you provide an explicit `timePartitioning.expirationMs` when
+        creating or updating a partitioned table, that value takes precedence
+        over the default partition expiration time indicated by this property.
         """
         return pulumi.get(self, "default_partition_expiration_ms")
 
@@ -1267,6 +1480,16 @@ class Dataset(pulumi.CustomResource):
         """
         The default lifetime of all tables in the dataset, in milliseconds.
         The minimum value is 3600000 milliseconds (one hour).
+
+        Once this property is set, all newly-created tables in the dataset
+        will have an `expirationTime` property set to the creation time plus
+        the value in this property, and changing the value will only affect
+        new tables, not existing ones. When the `expirationTime` for a given
+        table is reached, that table will be deleted automatically.
+        If a table's `expirationTime` is modified or removed before the
+        table expires, or if you provide an explicit `expirationTime` when
+        creating a table, that value takes precedence over the default
+        expiration time indicated by this property.
         """
         return pulumi.get(self, "default_table_expiration_ms")
 
@@ -1338,6 +1561,14 @@ class Dataset(pulumi.CustomResource):
         """
         The geographic location where the dataset should reside.
         See [official docs](https://cloud.google.com/bigquery/docs/dataset-locations).
+
+        There are two types of locations, regional or multi-regional. A regional
+        location is a specific geographic place, such as Tokyo, and a multi-regional
+        location is a large geographic area, such as the United States, that
+        contains at least two geographic places.
+
+        The default value is multi-regional location `US`.
+        Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "location")
 

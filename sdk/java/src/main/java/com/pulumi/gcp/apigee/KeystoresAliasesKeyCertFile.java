@@ -57,12 +57,16 @@ public class KeystoresAliasesKeyCertFile extends com.pulumi.resources.CustomReso
     /**
      * Cert content
      * 
+     * ***
+     * 
      */
     @Export(name="cert", type=String.class, parameters={})
     private Output<String> cert;
 
     /**
      * @return Cert content
+     * 
+     * ***
      * 
      */
     public Output<String> cert() {

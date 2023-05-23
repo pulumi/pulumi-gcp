@@ -21,6 +21,11 @@ class IAMPolicyArgs:
         :param pulumi.Input[str] policy_data: The `organizations_get_iam_policy` data source that represents
                the IAM policy that will be applied to the project. The policy will be
                merged with any existing policy applied to the project.
+               
+               Changing this updates the policy.
+               
+               Deleting this removes all policies from the project, locking out users without
+               organization-level access.
         :param pulumi.Input[str] project: The project id of the target project. This is not
                inferred from the provider.
         """
@@ -34,6 +39,11 @@ class IAMPolicyArgs:
         The `organizations_get_iam_policy` data source that represents
         the IAM policy that will be applied to the project. The policy will be
         merged with any existing policy applied to the project.
+
+        Changing this updates the policy.
+
+        Deleting this removes all policies from the project, locking out users without
+        organization-level access.
         """
         return pulumi.get(self, "policy_data")
 
@@ -67,6 +77,11 @@ class _IAMPolicyState:
         :param pulumi.Input[str] policy_data: The `organizations_get_iam_policy` data source that represents
                the IAM policy that will be applied to the project. The policy will be
                merged with any existing policy applied to the project.
+               
+               Changing this updates the policy.
+               
+               Deleting this removes all policies from the project, locking out users without
+               organization-level access.
         :param pulumi.Input[str] project: The project id of the target project. This is not
                inferred from the provider.
         """
@@ -96,6 +111,11 @@ class _IAMPolicyState:
         The `organizations_get_iam_policy` data source that represents
         the IAM policy that will be applied to the project. The policy will be
         merged with any existing policy applied to the project.
+
+        Changing this updates the policy.
+
+        Deleting this removes all policies from the project, locking out users without
+        organization-level access.
         """
         return pulumi.get(self, "policy_data")
 
@@ -306,6 +326,11 @@ class IAMPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] policy_data: The `organizations_get_iam_policy` data source that represents
                the IAM policy that will be applied to the project. The policy will be
                merged with any existing policy applied to the project.
+               
+               Changing this updates the policy.
+               
+               Deleting this removes all policies from the project, locking out users without
+               organization-level access.
         :param pulumi.Input[str] project: The project id of the target project. This is not
                inferred from the provider.
         """
@@ -548,6 +573,11 @@ class IAMPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] policy_data: The `organizations_get_iam_policy` data source that represents
                the IAM policy that will be applied to the project. The policy will be
                merged with any existing policy applied to the project.
+               
+               Changing this updates the policy.
+               
+               Deleting this removes all policies from the project, locking out users without
+               organization-level access.
         :param pulumi.Input[str] project: The project id of the target project. This is not
                inferred from the provider.
         """
@@ -575,6 +605,11 @@ class IAMPolicy(pulumi.CustomResource):
         The `organizations_get_iam_policy` data source that represents
         the IAM policy that will be applied to the project. The policy will be
         merged with any existing policy applied to the project.
+
+        Changing this updates the policy.
+
+        Deleting this removes all policies from the project, locking out users without
+        organization-level access.
         """
         return pulumi.get(self, "policy_data")
 

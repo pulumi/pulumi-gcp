@@ -20,6 +20,8 @@ public final class IndexFieldArgs extends com.pulumi.resources.ResourceArgs {
      * be specified.
      * Possible values are: `CONTAINS`.
      * 
+     * ***
+     * 
      */
     @Import(name="arrayConfig")
     private @Nullable Output<String> arrayConfig;
@@ -28,6 +30,8 @@ public final class IndexFieldArgs extends com.pulumi.resources.ResourceArgs {
      * @return Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
      * be specified.
      * Possible values are: `CONTAINS`.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> arrayConfig() {
@@ -99,6 +103,8 @@ public final class IndexFieldArgs extends com.pulumi.resources.ResourceArgs {
          * be specified.
          * Possible values are: `CONTAINS`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -111,6 +117,8 @@ public final class IndexFieldArgs extends com.pulumi.resources.ResourceArgs {
          * @param arrayConfig Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
          * be specified.
          * Possible values are: `CONTAINS`.
+         * 
+         * ***
          * 
          * @return builder
          * 

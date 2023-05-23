@@ -270,12 +270,16 @@ public class MachineImage extends com.pulumi.resources.CustomResource {
     /**
      * The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
      * 
+     * ***
+     * 
      */
     @Export(name="sourceInstance", type=String.class, parameters={})
     private Output<String> sourceInstance;
 
     /**
      * @return The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
+     * 
+     * ***
      * 
      */
     public Output<String> sourceInstance() {

@@ -71,6 +71,8 @@ type Api struct {
 	pulumi.CustomResourceState
 
 	// Identifier to assign to the API. Must be unique within scope of the parent resource(project)
+	//
+	// ***
 	ApiId pulumi.StringOutput `pulumi:"apiId"`
 	// Creation timestamp in RFC3339 text format.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -121,6 +123,8 @@ func GetApi(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Api resources.
 type apiState struct {
 	// Identifier to assign to the API. Must be unique within scope of the parent resource(project)
+	//
+	// ***
 	ApiId *string `pulumi:"apiId"`
 	// Creation timestamp in RFC3339 text format.
 	CreateTime *string `pulumi:"createTime"`
@@ -140,6 +144,8 @@ type apiState struct {
 
 type ApiState struct {
 	// Identifier to assign to the API. Must be unique within scope of the parent resource(project)
+	//
+	// ***
 	ApiId pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreateTime pulumi.StringPtrInput
@@ -163,6 +169,8 @@ func (ApiState) ElementType() reflect.Type {
 
 type apiArgs struct {
 	// Identifier to assign to the API. Must be unique within scope of the parent resource(project)
+	//
+	// ***
 	ApiId string `pulumi:"apiId"`
 	// A user-visible name for the API.
 	DisplayName *string `pulumi:"displayName"`
@@ -179,6 +187,8 @@ type apiArgs struct {
 // The set of arguments for constructing a Api resource.
 type ApiArgs struct {
 	// Identifier to assign to the API. Must be unique within scope of the parent resource(project)
+	//
+	// ***
 	ApiId pulumi.StringInput
 	// A user-visible name for the API.
 	DisplayName pulumi.StringPtrInput
@@ -280,6 +290,8 @@ func (o ApiOutput) ToApiOutputWithContext(ctx context.Context) ApiOutput {
 }
 
 // Identifier to assign to the API. Must be unique within scope of the parent resource(project)
+//
+// ***
 func (o ApiOutput) ApiId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Api) pulumi.StringOutput { return v.ApiId }).(pulumi.StringOutput)
 }

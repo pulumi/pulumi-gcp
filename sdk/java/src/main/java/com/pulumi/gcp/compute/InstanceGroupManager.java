@@ -402,28 +402,28 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.statefulDisks);
     }
     /**
-     * ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      * 
      */
     @Export(name="statefulExternalIps", type=List.class, parameters={InstanceGroupManagerStatefulExternalIp.class})
     private Output</* @Nullable */ List<InstanceGroupManagerStatefulExternalIp>> statefulExternalIps;
 
     /**
-     * @return ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * @return External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      * 
      */
     public Output<Optional<List<InstanceGroupManagerStatefulExternalIp>>> statefulExternalIps() {
         return Codegen.optional(this.statefulExternalIps);
     }
     /**
-     * ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      * 
      */
     @Export(name="statefulInternalIps", type=List.class, parameters={InstanceGroupManagerStatefulInternalIp.class})
     private Output</* @Nullable */ List<InstanceGroupManagerStatefulInternalIp>> statefulInternalIps;
 
     /**
-     * @return ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * @return Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      * 
      */
     public Output<Optional<List<InstanceGroupManagerStatefulInternalIp>>> statefulInternalIps() {
@@ -482,12 +482,16 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
     /**
      * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
      * 
+     * ***
+     * 
      */
     @Export(name="updatePolicy", type=InstanceGroupManagerUpdatePolicy.class, parameters={})
     private Output<InstanceGroupManagerUpdatePolicy> updatePolicy;
 
     /**
      * @return The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
+     * 
+     * ***
      * 
      */
     public Output<InstanceGroupManagerUpdatePolicy> updatePolicy() {
@@ -553,6 +557,8 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
      * The zone that instances in this group should be created
      * in.
      * 
+     * ***
+     * 
      */
     @Export(name="zone", type=String.class, parameters={})
     private Output<String> zone;
@@ -560,6 +566,8 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
     /**
      * @return The zone that instances in this group should be created
      * in.
+     * 
+     * ***
      * 
      */
     public Output<String> zone() {

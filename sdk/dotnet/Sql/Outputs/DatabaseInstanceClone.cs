@@ -23,6 +23,8 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly ImmutableArray<string> DatabaseNames;
         /// <summary>
         /// The timestamp of the point in time that should be restored.
+        /// 
+        /// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         public readonly string? PointInTime;
         /// <summary>

@@ -43,12 +43,16 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     /**
      * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
      * 
+     * ***
+     * 
      */
     @Import(name="cluster")
     private @Nullable Output<String> cluster;
 
     /**
      * @return The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> cluster() {
@@ -100,12 +104,16 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     /**
      * The location (region or zone) of the cluster.
      * 
+     * ***
+     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The location (region or zone) of the cluster.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -260,6 +268,10 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
      * cluster&#39;s zone for zonal clusters. If unspecified, the cluster-level
      * `node_locations` will be used.
      * 
+     * &gt; Note: `node_locations` will not revert to the cluster&#39;s default set of zones
+     * upon being unset. You must manually reconcile the list of zones with your
+     * cluster.
+     * 
      */
     @Import(name="nodeLocations")
     private @Nullable Output<List<String>> nodeLocations;
@@ -269,6 +281,10 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
      * be in the region of their regional cluster or in the same region as their
      * cluster&#39;s zone for zonal clusters. If unspecified, the cluster-level
      * `node_locations` will be used.
+     * 
+     * &gt; Note: `node_locations` will not revert to the cluster&#39;s default set of zones
+     * upon being unset. You must manually reconcile the list of zones with your
+     * cluster.
      * 
      */
     public Optional<Output<List<String>>> nodeLocations() {
@@ -286,6 +302,8 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
      * Specifies a custom placement policy for the
      * nodes.
      * 
+     * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+     * 
      */
     @Import(name="placementPolicy")
     private @Nullable Output<NodePoolPlacementPolicyArgs> placementPolicy;
@@ -293,6 +311,8 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Specifies a custom placement policy for the
      * nodes.
+     * 
+     * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
      * 
      */
     public Optional<Output<NodePoolPlacementPolicyArgs>> placementPolicy() {
@@ -426,6 +446,8 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param cluster The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -436,6 +458,8 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param cluster The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -511,6 +535,8 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location (region or zone) of the cluster.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -521,6 +547,8 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The location (region or zone) of the cluster.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -735,6 +763,10 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * cluster&#39;s zone for zonal clusters. If unspecified, the cluster-level
          * `node_locations` will be used.
          * 
+         * &gt; Note: `node_locations` will not revert to the cluster&#39;s default set of zones
+         * upon being unset. You must manually reconcile the list of zones with your
+         * cluster.
+         * 
          * @return builder
          * 
          */
@@ -749,6 +781,10 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * cluster&#39;s zone for zonal clusters. If unspecified, the cluster-level
          * `node_locations` will be used.
          * 
+         * &gt; Note: `node_locations` will not revert to the cluster&#39;s default set of zones
+         * upon being unset. You must manually reconcile the list of zones with your
+         * cluster.
+         * 
          * @return builder
          * 
          */
@@ -761,6 +797,10 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * be in the region of their regional cluster or in the same region as their
          * cluster&#39;s zone for zonal clusters. If unspecified, the cluster-level
          * `node_locations` will be used.
+         * 
+         * &gt; Note: `node_locations` will not revert to the cluster&#39;s default set of zones
+         * upon being unset. You must manually reconcile the list of zones with your
+         * cluster.
          * 
          * @return builder
          * 
@@ -782,6 +822,8 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
          * @param placementPolicy Specifies a custom placement policy for the
          * nodes.
          * 
+         * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+         * 
          * @return builder
          * 
          */
@@ -793,6 +835,8 @@ public final class NodePoolState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param placementPolicy Specifies a custom placement policy for the
          * nodes.
+         * 
+         * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
          * 
          * @return builder
          * 

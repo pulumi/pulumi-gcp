@@ -16,12 +16,16 @@ public final class PacketMirroringMirroredResourcesInstanceArgs extends com.pulu
     /**
      * The URL of the instances where this rule should be active.
      * 
+     * ***
+     * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
      * @return The URL of the instances where this rule should be active.
+     * 
+     * ***
      * 
      */
     public Output<String> url() {
@@ -55,6 +59,8 @@ public final class PacketMirroringMirroredResourcesInstanceArgs extends com.pulu
         /**
          * @param url The URL of the instances where this rule should be active.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -65,6 +71,8 @@ public final class PacketMirroringMirroredResourcesInstanceArgs extends com.pulu
 
         /**
          * @param url The URL of the instances where this rule should be active.
+         * 
+         * ***
          * 
          * @return builder
          * 

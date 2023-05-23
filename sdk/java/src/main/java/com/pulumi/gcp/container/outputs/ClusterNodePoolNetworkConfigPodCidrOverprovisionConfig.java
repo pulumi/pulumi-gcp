@@ -12,12 +12,16 @@ public final class ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig {
     /**
      * @return Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
      * 
+     * &lt;a name=&#34;nested_cluster_telemetry&#34;&gt;&lt;/a&gt;The `cluster_telemetry` block supports
+     * 
      */
     private Boolean disabled;
 
     private ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig() {}
     /**
      * @return Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+     * 
+     * &lt;a name=&#34;nested_cluster_telemetry&#34;&gt;&lt;/a&gt;The `cluster_telemetry` block supports
      * 
      */
     public Boolean disabled() {

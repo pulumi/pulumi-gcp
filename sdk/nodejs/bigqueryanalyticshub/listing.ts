@@ -134,14 +134,17 @@ export class Listing extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * Name of the data provider.
+     *
      * (Required)
      * Name of the listing publisher.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Email or URL of the primary point of contact of the listing.
+     *
      * (Optional)
      * Email or URL of the data provider.
+     *
      * (Optional)
      * Email or URL of the listing publisher.
      */
@@ -275,14 +278,17 @@ export interface ListingState {
     location?: pulumi.Input<string>;
     /**
      * Name of the data provider.
+     *
      * (Required)
      * Name of the listing publisher.
      */
     name?: pulumi.Input<string>;
     /**
      * Email or URL of the primary point of contact of the listing.
+     *
      * (Optional)
      * Email or URL of the data provider.
+     *
      * (Optional)
      * Email or URL of the listing publisher.
      */
@@ -351,8 +357,10 @@ export interface ListingArgs {
     location: pulumi.Input<string>;
     /**
      * Email or URL of the primary point of contact of the listing.
+     *
      * (Optional)
      * Email or URL of the data provider.
+     *
      * (Optional)
      * Email or URL of the listing publisher.
      */

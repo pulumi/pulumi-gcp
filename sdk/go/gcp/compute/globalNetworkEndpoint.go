@@ -85,6 +85,8 @@ type GlobalNetworkEndpoint struct {
 	// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
 	Fqdn pulumi.StringPtrOutput `pulumi:"fqdn"`
 	// The global network endpoint group this endpoint is part of.
+	//
+	// ***
 	GlobalNetworkEndpointGroup pulumi.StringOutput `pulumi:"globalNetworkEndpointGroup"`
 	// IPv4 address external endpoint.
 	IpAddress pulumi.StringPtrOutput `pulumi:"ipAddress"`
@@ -134,6 +136,8 @@ type globalNetworkEndpointState struct {
 	// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
 	Fqdn *string `pulumi:"fqdn"`
 	// The global network endpoint group this endpoint is part of.
+	//
+	// ***
 	GlobalNetworkEndpointGroup *string `pulumi:"globalNetworkEndpointGroup"`
 	// IPv4 address external endpoint.
 	IpAddress *string `pulumi:"ipAddress"`
@@ -149,6 +153,8 @@ type GlobalNetworkEndpointState struct {
 	// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
 	Fqdn pulumi.StringPtrInput
 	// The global network endpoint group this endpoint is part of.
+	//
+	// ***
 	GlobalNetworkEndpointGroup pulumi.StringPtrInput
 	// IPv4 address external endpoint.
 	IpAddress pulumi.StringPtrInput
@@ -168,6 +174,8 @@ type globalNetworkEndpointArgs struct {
 	// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
 	Fqdn *string `pulumi:"fqdn"`
 	// The global network endpoint group this endpoint is part of.
+	//
+	// ***
 	GlobalNetworkEndpointGroup string `pulumi:"globalNetworkEndpointGroup"`
 	// IPv4 address external endpoint.
 	IpAddress *string `pulumi:"ipAddress"`
@@ -184,6 +192,8 @@ type GlobalNetworkEndpointArgs struct {
 	// This can only be specified when networkEndpointType of the NEG is INTERNET_FQDN_PORT.
 	Fqdn pulumi.StringPtrInput
 	// The global network endpoint group this endpoint is part of.
+	//
+	// ***
 	GlobalNetworkEndpointGroup pulumi.StringInput
 	// IPv4 address external endpoint.
 	IpAddress pulumi.StringPtrInput
@@ -288,6 +298,8 @@ func (o GlobalNetworkEndpointOutput) Fqdn() pulumi.StringPtrOutput {
 }
 
 // The global network endpoint group this endpoint is part of.
+//
+// ***
 func (o GlobalNetworkEndpointOutput) GlobalNetworkEndpointGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalNetworkEndpoint) pulumi.StringOutput { return v.GlobalNetworkEndpointGroup }).(pulumi.StringOutput)
 }

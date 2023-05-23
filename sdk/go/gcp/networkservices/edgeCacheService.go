@@ -384,10 +384,13 @@ type EdgeCacheService struct {
 	pulumi.CustomResourceState
 
 	// A human-readable description of the hostRule.
+	//
 	// (Optional)
 	// A human-readable description of the resource.
+	//
 	// (Optional)
 	// A human-readable description of the routeRule.
+	//
 	// (Optional)
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -463,10 +466,13 @@ func GetEdgeCacheService(ctx *pulumi.Context,
 // Input properties used for looking up and filtering EdgeCacheService resources.
 type edgeCacheServiceState struct {
 	// A human-readable description of the hostRule.
+	//
 	// (Optional)
 	// A human-readable description of the resource.
+	//
 	// (Optional)
 	// A human-readable description of the routeRule.
+	//
 	// (Optional)
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
@@ -511,10 +517,13 @@ type edgeCacheServiceState struct {
 
 type EdgeCacheServiceState struct {
 	// A human-readable description of the hostRule.
+	//
 	// (Optional)
 	// A human-readable description of the resource.
+	//
 	// (Optional)
 	// A human-readable description of the routeRule.
+	//
 	// (Optional)
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
@@ -563,10 +572,13 @@ func (EdgeCacheServiceState) ElementType() reflect.Type {
 
 type edgeCacheServiceArgs struct {
 	// A human-readable description of the hostRule.
+	//
 	// (Optional)
 	// A human-readable description of the resource.
+	//
 	// (Optional)
 	// A human-readable description of the routeRule.
+	//
 	// (Optional)
 	// A human-readable description of the resource.
 	Description *string `pulumi:"description"`
@@ -608,10 +620,13 @@ type edgeCacheServiceArgs struct {
 // The set of arguments for constructing a EdgeCacheService resource.
 type EdgeCacheServiceArgs struct {
 	// A human-readable description of the hostRule.
+	//
 	// (Optional)
 	// A human-readable description of the resource.
+	//
 	// (Optional)
 	// A human-readable description of the routeRule.
+	//
 	// (Optional)
 	// A human-readable description of the resource.
 	Description pulumi.StringPtrInput
@@ -738,10 +753,13 @@ func (o EdgeCacheServiceOutput) ToEdgeCacheServiceOutputWithContext(ctx context.
 }
 
 // A human-readable description of the hostRule.
+//
 // (Optional)
 // A human-readable description of the resource.
+//
 // (Optional)
 // A human-readable description of the routeRule.
+//
 // (Optional)
 // A human-readable description of the resource.
 func (o EdgeCacheServiceOutput) Description() pulumi.StringPtrOutput {

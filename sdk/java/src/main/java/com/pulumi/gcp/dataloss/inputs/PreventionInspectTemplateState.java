@@ -66,18 +66,23 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
     /**
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
      * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
      * (Required)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
      * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
      * (Required)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
      * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
      * (Required)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
      * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
      * (Required)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
      * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
      * (Required)
      * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
      * or `projects/project-id/storedInfoTypes/432452342`.
@@ -89,18 +94,23 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
     /**
      * @return Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
      * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
      * (Required)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
      * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
      * (Required)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
      * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
      * (Required)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
      * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
      * (Required)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
      * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
      * (Required)
      * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
      * or `projects/project-id/storedInfoTypes/432452342`.
@@ -117,6 +127,8 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
      * 
+     * ***
+     * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
@@ -127,6 +139,8 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
      * * `projects/{{project}}/locations/{{location}}`
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> parent() {
@@ -229,18 +243,23 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
         /**
          * @param name Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
          * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * 
          * (Required)
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
          * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * 
          * (Required)
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
          * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * 
          * (Required)
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
          * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * 
          * (Required)
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
          * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * 
          * (Required)
          * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
          * or `projects/project-id/storedInfoTypes/432452342`.
@@ -256,18 +275,23 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
         /**
          * @param name Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
          * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * 
          * (Required)
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
          * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * 
          * (Required)
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
          * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * 
          * (Required)
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
          * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * 
          * (Required)
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
          * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * 
          * (Required)
          * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
          * or `projects/project-id/storedInfoTypes/432452342`.
@@ -286,6 +310,8 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
          * * `organizations/{{organization_id}}`
          * * `organizations/{{organization_id}}/locations/{{location}}`
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -300,6 +326,8 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
          * * `projects/{{project}}/locations/{{location}}`
          * * `organizations/{{organization_id}}`
          * * `organizations/{{organization_id}}/locations/{{location}}`
+         * 
+         * ***
          * 
          * @return builder
          * 

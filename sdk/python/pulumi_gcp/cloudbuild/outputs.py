@@ -155,6 +155,8 @@ class BitbucketServerConfigSecrets(dict):
         :param str read_access_token_version_name: The resource name for the read access token's secret version.
         :param str webhook_secret_version_name: Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed.
                Changing this field will result in deleting/ recreating the resource.
+               
+               - - -
         """
         pulumi.set(__self__, "admin_access_token_version_name", admin_access_token_version_name)
         pulumi.set(__self__, "read_access_token_version_name", read_access_token_version_name)
@@ -182,6 +184,8 @@ class BitbucketServerConfigSecrets(dict):
         """
         Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed.
         Changing this field will result in deleting/ recreating the resource.
+
+        - - -
         """
         return pulumi.get(self, "webhook_secret_version_name")
 
@@ -710,6 +714,9 @@ class TriggerBuildArtifactsObjects(dict):
         :param Sequence['TriggerBuildArtifactsObjectsTimingArgs'] timings: (Output)
                Output only. Stores timing information for pushing all artifact objects.
                Structure is documented below.
+               
+               
+               <a name="nested_timing"></a>The `timing` block contains:
         """
         if location is not None:
             pulumi.set(__self__, "location", location)
@@ -743,6 +750,9 @@ class TriggerBuildArtifactsObjects(dict):
         (Output)
         Output only. Stores timing information for pushing all artifact objects.
         Structure is documented below.
+
+
+        <a name="nested_timing"></a>The `timing` block contains:
         """
         return pulumi.get(self, "timings")
 
@@ -2979,6 +2989,8 @@ class GetTriggerBuildArtifactObjectResult(dict):
                  timings: Sequence['outputs.GetTriggerBuildArtifactObjectTimingResult']):
         """
         :param str location: The Cloud Build location for the trigger.
+               
+               - - -
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "paths", paths)
@@ -2989,6 +3001,8 @@ class GetTriggerBuildArtifactObjectResult(dict):
     def location(self) -> str:
         """
         The Cloud Build location for the trigger.
+
+        - - -
         """
         return pulumi.get(self, "location")
 

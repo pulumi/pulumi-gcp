@@ -16,6 +16,8 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
         /// <summary>
         /// Specifies the nodes operating system (default: LINUX).
         /// Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+        /// 
+        /// - - -
         /// </summary>
         public readonly string? Effect;
         /// <summary>

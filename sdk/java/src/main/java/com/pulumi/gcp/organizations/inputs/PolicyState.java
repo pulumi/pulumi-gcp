@@ -39,12 +39,16 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      * 
+     * ***
+     * 
      */
     @Import(name="constraint")
     private @Nullable Output<String> constraint;
 
     /**
      * @return The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> constraint() {
@@ -99,12 +103,22 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     /**
      * A restore policy is a constraint to restore the default policy. Structure is documented below.
      * 
+     * &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
+     * effectively be unset. This is represented in the UI as the constraint being &#39;Inherited&#39;.
+     * 
+     * ***
+     * 
      */
     @Import(name="restorePolicy")
     private @Nullable Output<PolicyRestorePolicyArgs> restorePolicy;
 
     /**
      * @return A restore policy is a constraint to restore the default policy. Structure is documented below.
+     * 
+     * &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
+     * effectively be unset. This is represented in the UI as the constraint being &#39;Inherited&#39;.
+     * 
+     * ***
      * 
      */
     public Optional<Output<PolicyRestorePolicyArgs>> restorePolicy() {
@@ -198,6 +212,8 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param constraint The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -208,6 +224,8 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param constraint The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -282,6 +300,11 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param restorePolicy A restore policy is a constraint to restore the default policy. Structure is documented below.
          * 
+         * &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
+         * effectively be unset. This is represented in the UI as the constraint being &#39;Inherited&#39;.
+         * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -292,6 +315,11 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param restorePolicy A restore policy is a constraint to restore the default policy. Structure is documented below.
+         * 
+         * &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
+         * effectively be unset. This is represented in the UI as the constraint being &#39;Inherited&#39;.
+         * 
+         * ***
          * 
          * @return builder
          * 

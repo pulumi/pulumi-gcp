@@ -18,8 +18,11 @@ public final class ClusterTpuConfigArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+     * 
      * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+     * 
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * 
      * not.
      * 
      */
@@ -28,8 +31,11 @@ public final class ClusterTpuConfigArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+     * 
      * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+     * 
      * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+     * 
      * not.
      * 
      */
@@ -79,8 +85,11 @@ public final class ClusterTpuConfigArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param enabled Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+         * 
          * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+         * 
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         * 
          * not.
          * 
          * @return builder
@@ -93,8 +102,11 @@ public final class ClusterTpuConfigArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param enabled Enable Binary Authorization for this cluster. Deprecated in favor of `evaluation_mode`.
+         * 
          * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+         * 
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         * 
          * not.
          * 
          * @return builder

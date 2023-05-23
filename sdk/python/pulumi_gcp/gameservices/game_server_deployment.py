@@ -22,6 +22,9 @@ class GameServerDeploymentArgs:
         """
         The set of arguments for constructing a GameServerDeployment resource.
         :param pulumi.Input[str] deployment_id: A unique id for the deployment.
+               
+               
+               - - -
         :param pulumi.Input[str] description: Human readable description of the game server deployment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server deployment. Each label is a
                key-value pair.
@@ -44,6 +47,9 @@ class GameServerDeploymentArgs:
     def deployment_id(self) -> pulumi.Input[str]:
         """
         A unique id for the deployment.
+
+
+        - - -
         """
         return pulumi.get(self, "deployment_id")
 
@@ -114,6 +120,9 @@ class _GameServerDeploymentState:
         """
         Input properties used for looking up and filtering GameServerDeployment resources.
         :param pulumi.Input[str] deployment_id: A unique id for the deployment.
+               
+               
+               - - -
         :param pulumi.Input[str] description: Human readable description of the game server deployment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server deployment. Each label is a
                key-value pair.
@@ -143,6 +152,9 @@ class _GameServerDeploymentState:
     def deployment_id(self) -> Optional[pulumi.Input[str]]:
         """
         A unique id for the deployment.
+
+
+        - - -
         """
         return pulumi.get(self, "deployment_id")
 
@@ -267,6 +279,9 @@ class GameServerDeployment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] deployment_id: A unique id for the deployment.
+               
+               
+               - - -
         :param pulumi.Input[str] description: Human readable description of the game server deployment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server deployment. Each label is a
                key-value pair.
@@ -378,6 +393,9 @@ class GameServerDeployment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] deployment_id: A unique id for the deployment.
+               
+               
+               - - -
         :param pulumi.Input[str] description: Human readable description of the game server deployment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server deployment. Each label is a
                key-value pair.
@@ -406,6 +424,9 @@ class GameServerDeployment(pulumi.CustomResource):
     def deployment_id(self) -> pulumi.Output[str]:
         """
         A unique id for the deployment.
+
+
+        - - -
         """
         return pulumi.get(self, "deployment_id")
 

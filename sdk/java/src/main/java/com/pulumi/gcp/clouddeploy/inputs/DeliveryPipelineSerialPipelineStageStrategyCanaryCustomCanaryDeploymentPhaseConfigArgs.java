@@ -66,12 +66,16 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
     /**
      * Whether to run verify tests after the deployment.
      * 
+     * ***
+     * 
      */
     @Import(name="verify")
     private @Nullable Output<Boolean> verify;
 
     /**
      * @return Whether to run verify tests after the deployment.
+     * 
+     * ***
      * 
      */
     public Optional<Output<Boolean>> verify() {
@@ -181,6 +185,8 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
         /**
          * @param verify Whether to run verify tests after the deployment.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -191,6 +197,8 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
 
         /**
          * @param verify Whether to run verify tests after the deployment.
+         * 
+         * ***
          * 
          * @return builder
          * 

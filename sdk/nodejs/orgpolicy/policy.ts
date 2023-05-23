@@ -142,6 +142,10 @@ export class Policy extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The parent of the resource.
+     *
+     *
+     *
+     * - - -
      */
     public readonly parent!: pulumi.Output<string>;
     /**
@@ -189,6 +193,10 @@ export interface PolicyState {
     name?: pulumi.Input<string>;
     /**
      * The parent of the resource.
+     *
+     *
+     *
+     * - - -
      */
     parent?: pulumi.Input<string>;
     /**
@@ -207,6 +215,10 @@ export interface PolicyArgs {
     name?: pulumi.Input<string>;
     /**
      * The parent of the resource.
+     *
+     *
+     *
+     * - - -
      */
     parent: pulumi.Input<string>;
     /**

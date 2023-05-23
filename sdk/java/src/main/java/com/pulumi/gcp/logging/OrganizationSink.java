@@ -114,6 +114,13 @@ public class OrganizationSink extends com.pulumi.resources.CustomResource {
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
      * 
+     * - `storage.googleapis.com/[GCS_BUCKET]`
+     * - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
+     * - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
+     * - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+     * 
+     * The writer associated with the sink must have access to write to the above resource.
+     * 
      */
     @Export(name="destination", type=String.class, parameters={})
     private Output<String> destination;
@@ -121,6 +128,13 @@ public class OrganizationSink extends com.pulumi.resources.CustomResource {
     /**
      * @return The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+     * 
+     * - `storage.googleapis.com/[GCS_BUCKET]`
+     * - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
+     * - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
+     * - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+     * 
+     * The writer associated with the sink must have access to write to the above resource.
      * 
      */
     public Output<String> destination() {

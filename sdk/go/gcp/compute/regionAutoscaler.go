@@ -159,6 +159,9 @@ type RegionAutoscaler struct {
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// A description of a scaling schedule.
+	//
+	// ***
+	//
 	// (Optional)
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -224,6 +227,9 @@ type regionAutoscalerState struct {
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// A description of a scaling schedule.
+	//
+	// ***
+	//
 	// (Optional)
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
@@ -255,6 +261,9 @@ type RegionAutoscalerState struct {
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// A description of a scaling schedule.
+	//
+	// ***
+	//
 	// (Optional)
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
@@ -288,6 +297,9 @@ type regionAutoscalerArgs struct {
 	// Structure is documented below.
 	AutoscalingPolicy RegionAutoscalerAutoscalingPolicy `pulumi:"autoscalingPolicy"`
 	// A description of a scaling schedule.
+	//
+	// ***
+	//
 	// (Optional)
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
@@ -316,6 +328,9 @@ type RegionAutoscalerArgs struct {
 	// Structure is documented below.
 	AutoscalingPolicy RegionAutoscalerAutoscalingPolicyInput
 	// A description of a scaling schedule.
+	//
+	// ***
+	//
 	// (Optional)
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
@@ -437,6 +452,9 @@ func (o RegionAutoscalerOutput) CreationTimestamp() pulumi.StringOutput {
 }
 
 // A description of a scaling schedule.
+//
+// ***
+//
 // (Optional)
 // An optional description of this resource.
 func (o RegionAutoscalerOutput) Description() pulumi.StringPtrOutput {

@@ -19,12 +19,16 @@ public final class VMwareClusterNetworkConfigHostConfigArgs extends com.pulumi.r
     /**
      * DNS search domains.
      * 
+     * &lt;a name=&#34;nested_control_plane_v2_config&#34;&gt;&lt;/a&gt;The `control_plane_v2_config` block supports:
+     * 
      */
     @Import(name="dnsSearchDomains")
     private @Nullable Output<List<String>> dnsSearchDomains;
 
     /**
      * @return DNS search domains.
+     * 
+     * &lt;a name=&#34;nested_control_plane_v2_config&#34;&gt;&lt;/a&gt;The `control_plane_v2_config` block supports:
      * 
      */
     public Optional<Output<List<String>>> dnsSearchDomains() {
@@ -90,6 +94,8 @@ public final class VMwareClusterNetworkConfigHostConfigArgs extends com.pulumi.r
         /**
          * @param dnsSearchDomains DNS search domains.
          * 
+         * &lt;a name=&#34;nested_control_plane_v2_config&#34;&gt;&lt;/a&gt;The `control_plane_v2_config` block supports:
+         * 
          * @return builder
          * 
          */
@@ -101,6 +107,8 @@ public final class VMwareClusterNetworkConfigHostConfigArgs extends com.pulumi.r
         /**
          * @param dnsSearchDomains DNS search domains.
          * 
+         * &lt;a name=&#34;nested_control_plane_v2_config&#34;&gt;&lt;/a&gt;The `control_plane_v2_config` block supports:
+         * 
          * @return builder
          * 
          */
@@ -110,6 +118,8 @@ public final class VMwareClusterNetworkConfigHostConfigArgs extends com.pulumi.r
 
         /**
          * @param dnsSearchDomains DNS search domains.
+         * 
+         * &lt;a name=&#34;nested_control_plane_v2_config&#34;&gt;&lt;/a&gt;The `control_plane_v2_config` block supports:
          * 
          * @return builder
          * 

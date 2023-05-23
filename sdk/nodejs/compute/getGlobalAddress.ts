@@ -42,6 +42,8 @@ export function getGlobalAddress(args: GetGlobalAddressArgs, opts?: pulumi.Invok
 export interface GetGlobalAddressArgs {
     /**
      * A unique name for the resource, required by GCE.
+     *
+     * - - -
      */
     name: string;
     /**
@@ -114,6 +116,8 @@ export function getGlobalAddressOutput(args: GetGlobalAddressOutputArgs, opts?: 
 export interface GetGlobalAddressOutputArgs {
     /**
      * A unique name for the resource, required by GCE.
+     *
+     * - - -
      */
     name: pulumi.Input<string>;
     /**

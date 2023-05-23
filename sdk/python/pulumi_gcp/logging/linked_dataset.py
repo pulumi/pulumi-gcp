@@ -25,6 +25,9 @@ class LinkedDatasetArgs:
         """
         The set of arguments for constructing a LinkedDataset resource.
         :param pulumi.Input[str] bucket: The bucket to which the linked dataset is attached.
+               
+               
+               - - -
         :param pulumi.Input[str] link_id: The id of the linked dataset.
         :param pulumi.Input[Sequence[pulumi.Input['LinkedDatasetBigqueryDatasetArgs']]] bigquery_datasets: The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along
                with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery
@@ -50,6 +53,9 @@ class LinkedDatasetArgs:
     def bucket(self) -> pulumi.Input[str]:
         """
         The bucket to which the linked dataset is attached.
+
+
+        - - -
         """
         return pulumi.get(self, "bucket")
 
@@ -140,6 +146,9 @@ class _LinkedDatasetState:
                Views corresponding to the LogViews in the bucket.
                Structure is documented below.
         :param pulumi.Input[str] bucket: The bucket to which the linked dataset is attached.
+               
+               
+               - - -
         :param pulumi.Input[str] create_time: Output only. The creation timestamp of the link. A timestamp in RFC3339 UTC "Zulu" format,
                with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z"
                and "2014-10-02T15:01:23.045123456Z".
@@ -190,6 +199,9 @@ class _LinkedDatasetState:
     def bucket(self) -> Optional[pulumi.Input[str]]:
         """
         The bucket to which the linked dataset is attached.
+
+
+        - - -
         """
         return pulumi.get(self, "bucket")
 
@@ -358,6 +370,9 @@ class LinkedDataset(pulumi.CustomResource):
                Views corresponding to the LogViews in the bucket.
                Structure is documented below.
         :param pulumi.Input[str] bucket: The bucket to which the linked dataset is attached.
+               
+               
+               - - -
         :param pulumi.Input[str] description: Describes this link. The maximum length of the description is 8000 characters.
         :param pulumi.Input[str] link_id: The id of the linked dataset.
         :param pulumi.Input[str] location: The location of the linked dataset.
@@ -497,6 +512,9 @@ class LinkedDataset(pulumi.CustomResource):
                Views corresponding to the LogViews in the bucket.
                Structure is documented below.
         :param pulumi.Input[str] bucket: The bucket to which the linked dataset is attached.
+               
+               
+               - - -
         :param pulumi.Input[str] create_time: Output only. The creation timestamp of the link. A timestamp in RFC3339 UTC "Zulu" format,
                with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z"
                and "2014-10-02T15:01:23.045123456Z".
@@ -539,6 +557,9 @@ class LinkedDataset(pulumi.CustomResource):
     def bucket(self) -> pulumi.Output[str]:
         """
         The bucket to which the linked dataset is attached.
+
+
+        - - -
         """
         return pulumi.get(self, "bucket")
 

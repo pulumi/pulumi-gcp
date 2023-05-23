@@ -23,6 +23,9 @@ namespace Pulumi.Gcp.Firebase
     {
         /// <summary>
         /// The app_id of name of the Firebase androidApp.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("appId", required: true)]
         public string AppId { get; set; } = null!;
@@ -44,6 +47,9 @@ namespace Pulumi.Gcp.Firebase
     {
         /// <summary>
         /// The app_id of name of the Firebase androidApp.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;

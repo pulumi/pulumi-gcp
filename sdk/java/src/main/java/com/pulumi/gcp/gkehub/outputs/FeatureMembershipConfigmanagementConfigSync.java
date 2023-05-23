@@ -22,6 +22,8 @@ public final class FeatureMembershipConfigmanagementConfigSync {
     /**
      * @return (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
      * 
+     * Use either `git` or `oci` config option.
+     * 
      */
     private @Nullable FeatureMembershipConfigmanagementConfigSyncOci oci;
     /**
@@ -45,6 +47,8 @@ public final class FeatureMembershipConfigmanagementConfigSync {
     }
     /**
      * @return (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+     * 
+     * Use either `git` or `oci` config option.
      * 
      */
     public Optional<FeatureMembershipConfigmanagementConfigSyncOci> oci() {

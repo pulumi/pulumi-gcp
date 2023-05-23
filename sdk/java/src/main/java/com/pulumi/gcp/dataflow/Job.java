@@ -20,6 +20,155 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Creates a job on Dataflow, which is an implementation of Apache Beam running on Google Compute Engine. For more information see
+ * the official documentation for
+ * [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataflow.Job;
+ * import com.pulumi.gcp.dataflow.JobArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var bigDataJob = new Job(&#34;bigDataJob&#34;, JobArgs.builder()        
+ *             .parameters(Map.ofEntries(
+ *                 Map.entry(&#34;baz&#34;, &#34;qux&#34;),
+ *                 Map.entry(&#34;foo&#34;, &#34;bar&#34;)
+ *             ))
+ *             .tempGcsLocation(&#34;gs://my-bucket/tmp_dir&#34;)
+ *             .templateGcsPath(&#34;gs://my-bucket/templates/template_file&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Streaming Job
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.dataflow.Job;
+ * import com.pulumi.gcp.dataflow.JobArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var topic = new Topic(&#34;topic&#34;);
+ * 
+ *         var bucket1 = new Bucket(&#34;bucket1&#34;, BucketArgs.builder()        
+ *             .location(&#34;US&#34;)
+ *             .forceDestroy(true)
+ *             .build());
+ * 
+ *         var bucket2 = new Bucket(&#34;bucket2&#34;, BucketArgs.builder()        
+ *             .location(&#34;US&#34;)
+ *             .forceDestroy(true)
+ *             .build());
+ * 
+ *         var pubsubStream = new Job(&#34;pubsubStream&#34;, JobArgs.builder()        
+ *             .templateGcsPath(&#34;gs://my-bucket/templates/template_file&#34;)
+ *             .tempGcsLocation(&#34;gs://my-bucket/tmp_dir&#34;)
+ *             .enableStreamingEngine(true)
+ *             .parameters(Map.ofEntries(
+ *                 Map.entry(&#34;inputFilePattern&#34;, bucket1.url().applyValue(url -&gt; String.format(&#34;%s/*.json&#34;, url))),
+ *                 Map.entry(&#34;outputTopic&#34;, topic.id())
+ *             ))
+ *             .transformNameMapping(Map.ofEntries(
+ *                 Map.entry(&#34;name&#34;, &#34;test_job&#34;),
+ *                 Map.entry(&#34;env&#34;, &#34;test&#34;)
+ *             ))
+ *             .onDelete(&#34;cancel&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ## Note on &#34;destroy&#34; / &#34;apply&#34;
+ * 
+ * There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other Google resources.
+ * 
+ * The Dataflow resource is considered &#39;existing&#39; while it is in a nonterminal state.  If it reaches a terminal state (e.g. &#39;FAILED&#39;, &#39;COMPLETE&#39;, &#39;CANCELLED&#39;), it will be recreated on the next &#39;apply&#39;.  This is as expected for jobs which run continuously, but may surprise users who use this resource for other kinds of Dataflow jobs.
+ * 
+ * A Dataflow job which is &#39;destroyed&#39; may be &#34;cancelled&#34; or &#34;drained&#34;.  If &#34;cancelled&#34;, the job terminates - any data written remains where it is, but no new data will be processed.  If &#34;drained&#34;, no new data will enter the pipeline, but any data currently in the pipeline will finish being processed.  The default is &#34;drain&#34;. When `on_delete` is set to `&#34;drain&#34;` in the configuration, you may experience a long wait for your `pulumi destroy` to complete.
+ * 
+ * You can potentially short-circuit the wait by setting `skip_wait_on_job_termination` to `true`, but beware that unless you take active steps to ensure that the job `name` parameter changes between instances, the name will conflict and the launch of the new job will fail. One way to do this is with a random_id resource, for example:
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.RandomId;
+ * import com.pulumi.random.RandomIdArgs;
+ * import com.pulumi.gcp.dataflow.FlexTemplateJob;
+ * import com.pulumi.gcp.dataflow.FlexTemplateJobArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var bigDataJobSubscriptionId = config.get(&#34;bigDataJobSubscriptionId&#34;).orElse(&#34;projects/myproject/subscriptions/messages&#34;);
+ *         var bigDataJobNameSuffix = new RandomId(&#34;bigDataJobNameSuffix&#34;, RandomIdArgs.builder()        
+ *             .byteLength(4)
+ *             .keepers(Map.ofEntries(
+ *                 Map.entry(&#34;region&#34;, var_.region()),
+ *                 Map.entry(&#34;subscription_id&#34;, bigDataJobSubscriptionId)
+ *             ))
+ *             .build());
+ * 
+ *         var bigDataJob = new FlexTemplateJob(&#34;bigDataJob&#34;, FlexTemplateJobArgs.builder()        
+ *             .region(var_.region())
+ *             .containerSpecGcsPath(&#34;gs://my-bucket/templates/template.json&#34;)
+ *             .skipWaitOnJobTermination(true)
+ *             .parameters(Map.of(&#34;inputSubscription&#34;, bigDataJobSubscriptionId))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * Dataflow jobs can be imported using the job `id` e.g.
@@ -292,12 +441,16 @@ public class Job extends com.pulumi.resources.CustomResource {
     /**
      * A writeable location on GCS for the Dataflow job to dump its temporary data.
      * 
+     * ***
+     * 
      */
     @Export(name="tempGcsLocation", type=String.class, parameters={})
     private Output<String> tempGcsLocation;
 
     /**
      * @return A writeable location on GCS for the Dataflow job to dump its temporary data.
+     * 
+     * ***
      * 
      */
     public Output<String> tempGcsLocation() {

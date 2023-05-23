@@ -54,6 +54,9 @@ class CertificateManaged(dict):
                Detailed state of the latest authorization attempt for each domain
                specified for this Managed Certificate.
                Structure is documented below.
+               
+               
+               <a name="nested_provisioning_issue"></a>The `provisioning_issue` block contains:
         :param Sequence[str] dns_authorizations: Authorizations that will be used for performing domain authorization
         :param Sequence[str] domains: The domains for which a managed SSL certificate will be generated.
                Wildcard domains are only supported with DNS challenge resolution
@@ -82,6 +85,9 @@ class CertificateManaged(dict):
         Detailed state of the latest authorization attempt for each domain
         specified for this Managed Certificate.
         Structure is documented below.
+
+
+        <a name="nested_provisioning_issue"></a>The `provisioning_issue` block contains:
         """
         return pulumi.get(self, "authorization_attempt_infos")
 
@@ -151,6 +157,9 @@ class CertificateManagedAuthorizationAttemptInfo(dict):
                Human readable explanation about the issue. Provided to help address
                the configuration issues.
                Not guaranteed to be stable. For programmatic access use `reason` field.
+               
+               <a name="nested_authorization_attempt_info"></a>The `authorization_attempt_info` block contains:
+               
                (Output)
                Human readable explanation for reaching the state. Provided to help
                address the configuration issues.
@@ -161,6 +170,7 @@ class CertificateManagedAuthorizationAttemptInfo(dict):
                Reason for failure of the authorization attempt for the domain.
         :param str state: (Output)
                A state of this Managed Certificate.
+               
                (Output)
                State of the domain for managed certificate issuance.
         """
@@ -181,6 +191,9 @@ class CertificateManagedAuthorizationAttemptInfo(dict):
         Human readable explanation about the issue. Provided to help address
         the configuration issues.
         Not guaranteed to be stable. For programmatic access use `reason` field.
+
+        <a name="nested_authorization_attempt_info"></a>The `authorization_attempt_info` block contains:
+
         (Output)
         Human readable explanation for reaching the state. Provided to help
         address the configuration issues.
@@ -212,6 +225,7 @@ class CertificateManagedAuthorizationAttemptInfo(dict):
         """
         (Output)
         A state of this Managed Certificate.
+
         (Output)
         State of the domain for managed certificate issuance.
         """
@@ -228,6 +242,9 @@ class CertificateManagedProvisioningIssue(dict):
                Human readable explanation about the issue. Provided to help address
                the configuration issues.
                Not guaranteed to be stable. For programmatic access use `reason` field.
+               
+               <a name="nested_authorization_attempt_info"></a>The `authorization_attempt_info` block contains:
+               
                (Output)
                Human readable explanation for reaching the state. Provided to help
                address the configuration issues.
@@ -248,6 +265,9 @@ class CertificateManagedProvisioningIssue(dict):
         Human readable explanation about the issue. Provided to help address
         the configuration issues.
         Not guaranteed to be stable. For programmatic access use `reason` field.
+
+        <a name="nested_authorization_attempt_info"></a>The `authorization_attempt_info` block contains:
+
         (Output)
         Human readable explanation for reaching the state. Provided to help
         address the configuration issues.
@@ -493,6 +513,9 @@ class DnsAuthorizationDnsResourceRecord(dict):
         :param str name: Name of the resource; provided by the client when the resource is created.
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
+               
+               
+               - - -
         :param str type: (Output)
                Type of the DNS Resource Record.
         """
@@ -519,6 +542,9 @@ class DnsAuthorizationDnsResourceRecord(dict):
         Name of the resource; provided by the client when the resource is created.
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         and all following characters must be a dash, underscore, letter or digit.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

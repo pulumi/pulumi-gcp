@@ -64,6 +64,8 @@ type LookupSnapshotArgs struct {
 	// If multiple compute snapshot match, either adjust the filter or specify `mostRecent`. One of `name` or `filter` must be provided.
 	Filter *string `pulumi:"filter"`
 	// If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match.
+	//
+	// ***
 	MostRecent *bool `pulumi:"mostRecent"`
 	// The name of the compute snapshot. One of `name` or `filter` must be provided.
 	Name *string `pulumi:"name"`
@@ -117,6 +119,8 @@ type LookupSnapshotOutputArgs struct {
 	// If multiple compute snapshot match, either adjust the filter or specify `mostRecent`. One of `name` or `filter` must be provided.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
 	// If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match.
+	//
+	// ***
 	MostRecent pulumi.BoolPtrInput `pulumi:"mostRecent"`
 	// The name of the compute snapshot. One of `name` or `filter` must be provided.
 	Name pulumi.StringPtrInput `pulumi:"name"`

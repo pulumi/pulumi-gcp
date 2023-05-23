@@ -73,6 +73,8 @@ type OauthIdpConfig struct {
 	pulumi.CustomResourceState
 
 	// The client id of an OAuth client.
+	//
+	// ***
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
 	// The client secret of the OAuth client, to enable OIDC code flow.
 	ClientSecret pulumi.StringPtrOutput `pulumi:"clientSecret"`
@@ -125,6 +127,8 @@ func GetOauthIdpConfig(ctx *pulumi.Context,
 // Input properties used for looking up and filtering OauthIdpConfig resources.
 type oauthIdpConfigState struct {
 	// The client id of an OAuth client.
+	//
+	// ***
 	ClientId *string `pulumi:"clientId"`
 	// The client secret of the OAuth client, to enable OIDC code flow.
 	ClientSecret *string `pulumi:"clientSecret"`
@@ -143,6 +147,8 @@ type oauthIdpConfigState struct {
 
 type OauthIdpConfigState struct {
 	// The client id of an OAuth client.
+	//
+	// ***
 	ClientId pulumi.StringPtrInput
 	// The client secret of the OAuth client, to enable OIDC code flow.
 	ClientSecret pulumi.StringPtrInput
@@ -165,6 +171,8 @@ func (OauthIdpConfigState) ElementType() reflect.Type {
 
 type oauthIdpConfigArgs struct {
 	// The client id of an OAuth client.
+	//
+	// ***
 	ClientId string `pulumi:"clientId"`
 	// The client secret of the OAuth client, to enable OIDC code flow.
 	ClientSecret *string `pulumi:"clientSecret"`
@@ -184,6 +192,8 @@ type oauthIdpConfigArgs struct {
 // The set of arguments for constructing a OauthIdpConfig resource.
 type OauthIdpConfigArgs struct {
 	// The client id of an OAuth client.
+	//
+	// ***
 	ClientId pulumi.StringInput
 	// The client secret of the OAuth client, to enable OIDC code flow.
 	ClientSecret pulumi.StringPtrInput
@@ -288,6 +298,8 @@ func (o OauthIdpConfigOutput) ToOauthIdpConfigOutputWithContext(ctx context.Cont
 }
 
 // The client id of an OAuth client.
+//
+// ***
 func (o OauthIdpConfigOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OauthIdpConfig) pulumi.StringOutput { return v.ClientId }).(pulumi.StringOutput)
 }

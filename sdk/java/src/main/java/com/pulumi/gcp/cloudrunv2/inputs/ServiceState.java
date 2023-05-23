@@ -26,6 +26,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * KRM-style annotations for the resource.
+     * 
      * (Optional)
      * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. This field follows Kubernetes annotations&#39; namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
      * 
@@ -35,6 +36,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return KRM-style annotations for the resource.
+     * 
      * (Optional)
      * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. This field follows Kubernetes annotations&#39; namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
      * 
@@ -171,6 +173,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * KRM-style labels for the resource.
+     * 
      * (Optional)
      * Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
      * 
@@ -180,6 +183,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return KRM-style labels for the resource.
+     * 
      * (Optional)
      * Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
      * 
@@ -471,6 +475,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param annotations KRM-style annotations for the resource.
+         * 
          * (Optional)
          * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. This field follows Kubernetes annotations&#39; namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
          * 
@@ -484,6 +489,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param annotations KRM-style annotations for the resource.
+         * 
          * (Optional)
          * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. This field follows Kubernetes annotations&#39; namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
          * 
@@ -681,6 +687,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels KRM-style labels for the resource.
+         * 
          * (Optional)
          * Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
          * 
@@ -694,6 +701,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels KRM-style labels for the resource.
+         * 
          * (Optional)
          * Map of string keys and values that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. Those labels are read-only, and user changes will not be preserved.
          * 

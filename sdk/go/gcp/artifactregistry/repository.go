@@ -250,6 +250,8 @@ type Repository struct {
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 	// You can only create alpha formats if you are a member of the
 	// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+	//
+	// ***
 	Format pulumi.StringOutput `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -338,6 +340,8 @@ type repositoryState struct {
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 	// You can only create alpha formats if you are a member of the
 	// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+	//
+	// ***
 	Format *string `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -392,6 +396,8 @@ type RepositoryState struct {
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 	// You can only create alpha formats if you are a member of the
 	// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+	//
+	// ***
 	Format pulumi.StringPtrInput
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -448,6 +454,8 @@ type repositoryArgs struct {
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 	// You can only create alpha formats if you are a member of the
 	// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+	//
+	// ***
 	Format string `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -496,6 +504,8 @@ type RepositoryArgs struct {
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 	// You can only create alpha formats if you are a member of the
 	// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+	//
+	// ***
 	Format pulumi.StringInput
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -640,6 +650,8 @@ func (o RepositoryOutput) DockerConfig() RepositoryDockerConfigPtrOutput {
 // can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 // You can only create alpha formats if you are a member of the
 // [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+//
+// ***
 func (o RepositoryOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Format }).(pulumi.StringOutput)
 }

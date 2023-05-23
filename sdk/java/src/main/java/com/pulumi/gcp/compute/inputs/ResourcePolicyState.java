@@ -92,6 +92,8 @@ public final class ResourcePolicyState extends com.pulumi.resources.ResourceArgs
      * must be a dash, lowercase letter, or digit, except the last character,
      * which cannot be a dash.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -104,6 +106,8 @@ public final class ResourcePolicyState extends com.pulumi.resources.ResourceArgs
      * first character must be a lowercase letter, and all following characters
      * must be a dash, lowercase letter, or digit, except the last character,
      * which cannot be a dash.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -303,6 +307,8 @@ public final class ResourcePolicyState extends com.pulumi.resources.ResourceArgs
          * must be a dash, lowercase letter, or digit, except the last character,
          * which cannot be a dash.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -319,6 +325,8 @@ public final class ResourcePolicyState extends com.pulumi.resources.ResourceArgs
          * first character must be a lowercase letter, and all following characters
          * must be a dash, lowercase letter, or digit, except the last character,
          * which cannot be a dash.
+         * 
+         * ***
          * 
          * @return builder
          * 

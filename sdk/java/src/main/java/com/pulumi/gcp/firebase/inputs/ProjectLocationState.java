@@ -19,6 +19,8 @@ public final class ProjectLocationState extends com.pulumi.resources.ResourceArg
      * The ID of the default GCP resource location for the Project. The location must be one of the available GCP
      * resource locations.
      * 
+     * ***
+     * 
      */
     @Import(name="locationId")
     private @Nullable Output<String> locationId;
@@ -26,6 +28,8 @@ public final class ProjectLocationState extends com.pulumi.resources.ResourceArg
     /**
      * @return The ID of the default GCP resource location for the Project. The location must be one of the available GCP
      * resource locations.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> locationId() {
@@ -78,6 +82,8 @@ public final class ProjectLocationState extends com.pulumi.resources.ResourceArg
          * @param locationId The ID of the default GCP resource location for the Project. The location must be one of the available GCP
          * resource locations.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -89,6 +95,8 @@ public final class ProjectLocationState extends com.pulumi.resources.ResourceArg
         /**
          * @param locationId The ID of the default GCP resource location for the Project. The location must be one of the available GCP
          * resource locations.
+         * 
+         * ***
          * 
          * @return builder
          * 

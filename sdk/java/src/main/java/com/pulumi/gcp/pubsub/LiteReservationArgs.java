@@ -19,12 +19,16 @@ public final class LiteReservationArgs extends com.pulumi.resources.ResourceArgs
     /**
      * Name of the reservation.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Name of the reservation.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -112,6 +116,8 @@ public final class LiteReservationArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param name Name of the reservation.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -122,6 +128,8 @@ public final class LiteReservationArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param name Name of the reservation.
+         * 
+         * ***
          * 
          * @return builder
          * 

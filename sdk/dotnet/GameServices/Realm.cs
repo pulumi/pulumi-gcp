@@ -100,6 +100,9 @@ namespace Pulumi.Gcp.GameServices
 
         /// <summary>
         /// GCP region of the Realm.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("realmId")]
         public Output<string> RealmId { get; private set; } = null!;
@@ -191,6 +194,9 @@ namespace Pulumi.Gcp.GameServices
 
         /// <summary>
         /// GCP region of the Realm.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("realmId", required: true)]
         public Input<string> RealmId { get; set; } = null!;
@@ -258,6 +264,9 @@ namespace Pulumi.Gcp.GameServices
 
         /// <summary>
         /// GCP region of the Realm.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("realmId")]
         public Input<string>? RealmId { get; set; }

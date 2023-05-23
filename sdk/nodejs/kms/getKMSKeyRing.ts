@@ -42,6 +42,8 @@ export interface GetKMSKeyRingArgs {
     /**
      * The Google Cloud Platform location for the KeyRing.
      * A full list of valid locations can be found by running `gcloud kms locations list`.
+     *
+     * - - -
      */
     location: string;
     /**
@@ -100,6 +102,8 @@ export interface GetKMSKeyRingOutputArgs {
     /**
      * The Google Cloud Platform location for the KeyRing.
      * A full list of valid locations can be found by running `gcloud kms locations list`.
+     *
+     * - - -
      */
     location: pulumi.Input<string>;
     /**

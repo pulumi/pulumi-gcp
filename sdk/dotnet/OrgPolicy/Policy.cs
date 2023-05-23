@@ -179,6 +179,10 @@ namespace Pulumi.Gcp.OrgPolicy
 
         /// <summary>
         /// The parent of the resource.
+        /// 
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -243,6 +247,10 @@ namespace Pulumi.Gcp.OrgPolicy
 
         /// <summary>
         /// The parent of the resource.
+        /// 
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -269,6 +277,10 @@ namespace Pulumi.Gcp.OrgPolicy
 
         /// <summary>
         /// The parent of the resource.
+        /// 
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }

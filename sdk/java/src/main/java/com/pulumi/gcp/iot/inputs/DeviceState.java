@@ -263,12 +263,16 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the device registry where this device should be created.
      * 
+     * ***
+     * 
      */
     @Import(name="registry")
     private @Nullable Output<String> registry;
 
     /**
      * @return The name of the device registry where this device should be created.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> registry() {
@@ -695,6 +699,8 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param registry The name of the device registry where this device should be created.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -705,6 +711,8 @@ public final class DeviceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param registry The name of the device registry where this device should be created.
+         * 
+         * ***
          * 
          * @return builder
          * 

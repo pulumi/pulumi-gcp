@@ -41,12 +41,16 @@ public final class LinkedDatasetArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The bucket to which the linked dataset is attached.
      * 
+     * ***
+     * 
      */
     @Import(name="bucket", required=true)
     private Output<String> bucket;
 
     /**
      * @return The bucket to which the linked dataset is attached.
+     * 
+     * ***
      * 
      */
     public Output<String> bucket() {
@@ -185,6 +189,8 @@ public final class LinkedDatasetArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param bucket The bucket to which the linked dataset is attached.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -195,6 +201,8 @@ public final class LinkedDatasetArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param bucket The bucket to which the linked dataset is attached.
+         * 
+         * ***
          * 
          * @return builder
          * 

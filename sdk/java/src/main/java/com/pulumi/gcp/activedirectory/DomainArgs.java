@@ -55,6 +55,8 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
      * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
      * https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
      * 
+     * ***
+     * 
      */
     @Import(name="domainName", required=true)
     private Output<String> domainName;
@@ -62,6 +64,8 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
      * https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+     * 
+     * ***
      * 
      */
     public Output<String> domainName() {
@@ -225,6 +229,8 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
          * @param domainName The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
          * https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -236,6 +242,8 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param domainName The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
          * https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+         * 
+         * ***
          * 
          * @return builder
          * 

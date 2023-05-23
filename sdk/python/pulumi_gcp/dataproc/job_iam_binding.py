@@ -27,6 +27,8 @@ class JobIAMBindingArgs:
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+               
+               `dataproc.JobIAMPolicy` only:
         :param pulumi.Input[str] project: The project in which the job belongs. If it
                is not provided, the provider will use a default.
         :param pulumi.Input[str] region: The region in which the job belongs. If it
@@ -67,6 +69,8 @@ class JobIAMBindingArgs:
         The role that should be applied. Only one
         `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
+
+        `dataproc.JobIAMPolicy` only:
         """
         return pulumi.get(self, "role")
 
@@ -130,6 +134,8 @@ class _JobIAMBindingState:
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+               
+               `dataproc.JobIAMPolicy` only:
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -218,6 +224,8 @@ class _JobIAMBindingState:
         The role that should be applied. Only one
         `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
+
+        `dataproc.JobIAMPolicy` only:
         """
         return pulumi.get(self, "role")
 
@@ -319,6 +327,8 @@ class JobIAMBinding(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+               
+               `dataproc.JobIAMPolicy` only:
         """
         ...
     @overload
@@ -473,6 +483,8 @@ class JobIAMBinding(pulumi.CustomResource):
         :param pulumi.Input[str] role: The role that should be applied. Only one
                `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
+               
+               `dataproc.JobIAMPolicy` only:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -535,6 +547,8 @@ class JobIAMBinding(pulumi.CustomResource):
         The role that should be applied. Only one
         `dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
+
+        `dataproc.JobIAMPolicy` only:
         """
         return pulumi.get(self, "role")
 

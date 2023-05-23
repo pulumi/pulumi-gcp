@@ -184,12 +184,16 @@ public class AiTensorboard extends com.pulumi.resources.CustomResource {
     /**
      * User provided name of this Tensorboard.
      * 
+     * ***
+     * 
      */
     @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
      * @return User provided name of this Tensorboard.
+     * 
+     * ***
      * 
      */
     public Output<String> displayName() {

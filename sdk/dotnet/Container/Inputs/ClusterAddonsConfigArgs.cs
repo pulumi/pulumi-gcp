@@ -21,6 +21,20 @@ namespace Pulumi.Gcp.Container.Inputs
         /// <summary>
         /// .
         /// The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
+        /// 
+        /// 
+        /// This example `addons_config` disables two addons:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
+        /// &lt;a name="nested_binary_authorization"&gt;&lt;/a&gt;The `binary_authorization` block supports:
         /// </summary>
         [Input("configConnectorConfig")]
         public Input<Inputs.ClusterAddonsConfigConfigConnectorConfigArgs>? ConfigConnectorConfig { get; set; }
@@ -29,6 +43,9 @@ namespace Pulumi.Gcp.Container.Inputs
         /// .
         /// The status of the NodeLocal DNSCache addon. It is disabled by default.
         /// Set `enabled = true` to enable.
+        /// 
+        /// **Enabling/Disabling NodeLocal DNSCache in an existing cluster is a disruptive operation.
+        /// All cluster nodes running GKE 1.15 and higher are recreated.**
         /// </summary>
         [Input("dnsCacheConfig")]
         public Input<Inputs.ClusterAddonsConfigDnsCacheConfigArgs>? DnsCacheConfig { get; set; }

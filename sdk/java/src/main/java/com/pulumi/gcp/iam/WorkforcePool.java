@@ -188,12 +188,16 @@ public class WorkforcePool extends com.pulumi.resources.CustomResource {
     /**
      * Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
      * 
+     * ***
+     * 
      */
     @Export(name="parent", type=String.class, parameters={})
     private Output<String> parent;
 
     /**
      * @return Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
+     * 
+     * ***
      * 
      */
     public Output<String> parent() {

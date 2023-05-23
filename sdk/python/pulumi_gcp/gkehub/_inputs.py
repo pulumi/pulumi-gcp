@@ -151,6 +151,8 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
         """
         :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncGitArgs'] git: (Optional) Structure is documented below.
         :param pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArgs'] oci: (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+               
+               Use either `git` or `oci` config option.
         :param pulumi.Input[bool] prevent_drift: Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
         :param pulumi.Input[str] source_format: Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
         """
@@ -180,6 +182,8 @@ class FeatureMembershipConfigmanagementConfigSyncArgs:
     def oci(self) -> Optional[pulumi.Input['FeatureMembershipConfigmanagementConfigSyncOciArgs']]:
         """
         (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+
+        Use either `git` or `oci` config option.
         """
         return pulumi.get(self, "oci")
 

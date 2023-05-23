@@ -142,12 +142,16 @@ public class UrlList extends com.pulumi.resources.CustomResource {
     /**
      * The location of the url lists.
      * 
+     * ***
+     * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
      * @return The location of the url lists.
+     * 
+     * ***
      * 
      */
     public Output<String> location() {

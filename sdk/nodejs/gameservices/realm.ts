@@ -101,6 +101,9 @@ export class Realm extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * GCP region of the Realm.
+     *
+     *
+     * - - -
      */
     public readonly realmId!: pulumi.Output<string>;
     /**
@@ -186,6 +189,9 @@ export interface RealmState {
     project?: pulumi.Input<string>;
     /**
      * GCP region of the Realm.
+     *
+     *
+     * - - -
      */
     realmId?: pulumi.Input<string>;
     /**
@@ -219,6 +225,9 @@ export interface RealmArgs {
     project?: pulumi.Input<string>;
     /**
      * GCP region of the Realm.
+     *
+     *
+     * - - -
      */
     realmId: pulumi.Input<string>;
     /**

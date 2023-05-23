@@ -19,6 +19,9 @@ export function getAndroidApp(args: GetAndroidAppArgs, opts?: pulumi.InvokeOptio
 export interface GetAndroidAppArgs {
     /**
      * The appId of name of the Firebase androidApp.
+     *
+     *
+     * - - -
      */
     appId: string;
     /**
@@ -80,6 +83,9 @@ export function getAndroidAppOutput(args: GetAndroidAppOutputArgs, opts?: pulumi
 export interface GetAndroidAppOutputArgs {
     /**
      * The appId of name of the Firebase androidApp.
+     *
+     *
+     * - - -
      */
     appId: pulumi.Input<string>;
     /**

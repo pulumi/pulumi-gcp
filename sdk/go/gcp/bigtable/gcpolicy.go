@@ -187,6 +187,10 @@ type GCPolicy struct {
 	ColumnFamily pulumi.StringOutput `pulumi:"columnFamily"`
 	// The deletion policy for the GC policy.
 	// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+	//
+	// Possible values are: `ABANDON`.
+	//
+	// ***
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
 	GcRules pulumi.StringPtrOutput `pulumi:"gcRules"`
@@ -246,6 +250,10 @@ type gcpolicyState struct {
 	ColumnFamily *string `pulumi:"columnFamily"`
 	// The deletion policy for the GC policy.
 	// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+	//
+	// Possible values are: `ABANDON`.
+	//
+	// ***
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
 	GcRules *string `pulumi:"gcRules"`
@@ -268,6 +276,10 @@ type GCPolicyState struct {
 	ColumnFamily pulumi.StringPtrInput
 	// The deletion policy for the GC policy.
 	// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+	//
+	// Possible values are: `ABANDON`.
+	//
+	// ***
 	DeletionPolicy pulumi.StringPtrInput
 	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
 	GcRules pulumi.StringPtrInput
@@ -294,6 +306,10 @@ type gcpolicyArgs struct {
 	ColumnFamily string `pulumi:"columnFamily"`
 	// The deletion policy for the GC policy.
 	// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+	//
+	// Possible values are: `ABANDON`.
+	//
+	// ***
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
 	GcRules *string `pulumi:"gcRules"`
@@ -317,6 +333,10 @@ type GCPolicyArgs struct {
 	ColumnFamily pulumi.StringInput
 	// The deletion policy for the GC policy.
 	// Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+	//
+	// Possible values are: `ABANDON`.
+	//
+	// ***
 	DeletionPolicy pulumi.StringPtrInput
 	// Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `maxAge` and `maxVersion`. Conflicts with `mode`, `maxAge` and `maxVersion`.
 	GcRules pulumi.StringPtrInput
@@ -428,6 +448,10 @@ func (o GCPolicyOutput) ColumnFamily() pulumi.StringOutput {
 
 // The deletion policy for the GC policy.
 // Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+//
+// Possible values are: `ABANDON`.
+//
+// ***
 func (o GCPolicyOutput) DeletionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GCPolicy) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }

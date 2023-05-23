@@ -109,6 +109,8 @@ class DatabaseInstanceClone(dict):
         :param str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
         :param Sequence[str] database_names: (SQL Server only, use with `point_in_time`) Clone only the specified databases from the source instance. Clone all databases if empty.
         :param str point_in_time: The timestamp of the point in time that should be restored.
+               
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         pulumi.set(__self__, "source_instance_name", source_instance_name)
         if allocated_ip_range is not None:
@@ -147,6 +149,8 @@ class DatabaseInstanceClone(dict):
     def point_in_time(self) -> Optional[str]:
         """
         The timestamp of the point in time that should be restored.
+
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "point_in_time")
 
@@ -1160,6 +1164,8 @@ class DatabaseInstanceSettingsInsightsConfig(dict):
         """
         :param bool query_insights_enabled: True if Query Insights feature is enabled.
         :param int query_plans_per_minute: Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+               
+               The optional `settings.password_validation_policy` subblock for instances declares [Password Validation Policy](https://cloud.google.com/sql/docs/postgres/built-in-authentication) configuration. It contains:
         :param int query_string_length: Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
         :param bool record_application_tags: True if Query Insights will record application tags from query when enabled.
         :param bool record_client_address: True if Query Insights will record client address when enabled.
@@ -1188,6 +1194,8 @@ class DatabaseInstanceSettingsInsightsConfig(dict):
     def query_plans_per_minute(self) -> Optional[int]:
         """
         Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+
+        The optional `settings.password_validation_policy` subblock for instances declares [Password Validation Policy](https://cloud.google.com/sql/docs/postgres/built-in-authentication) configuration. It contains:
         """
         return pulumi.get(self, "query_plans_per_minute")
 
@@ -1424,6 +1432,10 @@ class DatabaseInstanceSettingsLocationPreference(dict):
         :param str follow_gae_application: A GAE application whose zone to remain
                in. Must be in the same region as this instance.
         :param str secondary_zone: The preferred Compute Engine zone for the secondary/failover.
+               
+               The optional `settings.maintenance_window` subblock for instances declares a one-hour
+               [maintenance window](https://cloud.google.com/sql/docs/instance-settings?hl=en#maintenance-window-2ndgen)
+               when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time. It supports:
         :param str zone: The preferred compute engine
                [zone](https://cloud.google.com/compute/docs/zones?hl=en).
         """
@@ -1448,6 +1460,10 @@ class DatabaseInstanceSettingsLocationPreference(dict):
     def secondary_zone(self) -> Optional[str]:
         """
         The preferred Compute Engine zone for the secondary/failover.
+
+        The optional `settings.maintenance_window` subblock for instances declares a one-hour
+        [maintenance window](https://cloud.google.com/sql/docs/instance-settings?hl=en#maintenance-window-2ndgen)
+        when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time. It supports:
         """
         return pulumi.get(self, "secondary_zone")
 
@@ -1489,6 +1505,8 @@ class DatabaseInstanceSettingsMaintenanceWindow(dict):
         :param int hour: Hour of day (`0-23`), ignored if `day` not set
         :param str update_track: Receive updates earlier (`canary`) or later
                (`stable`)
+               
+               The optional `settings.insights_config` subblock for instances declares Query Insights([MySQL](https://cloud.google.com/sql/docs/mysql/using-query-insights), [PostgreSQL](https://cloud.google.com/sql/docs/postgres/using-query-insights)) configuration. It contains:
         """
         if day is not None:
             pulumi.set(__self__, "day", day)
@@ -1519,6 +1537,8 @@ class DatabaseInstanceSettingsMaintenanceWindow(dict):
         """
         Receive updates earlier (`canary`) or later
         (`stable`)
+
+        The optional `settings.insights_config` subblock for instances declares Query Insights([MySQL](https://cloud.google.com/sql/docs/mysql/using-query-insights), [PostgreSQL](https://cloud.google.com/sql/docs/postgres/using-query-insights)) configuration. It contains:
         """
         return pulumi.get(self, "update_track")
 
@@ -1559,6 +1579,9 @@ class DatabaseInstanceSettingsPasswordValidationPolicy(dict):
                  reuse_interval: Optional[int] = None):
         """
         :param bool enable_password_policy: Enables or disable the password validation policy.
+               
+               The optional `replica_configuration` block must have `master_instance_name` set
+               to work, cannot be updated, and supports:
         :param str complexity: Checks if the password is a combination of lowercase, uppercase, numeric, and non-alphanumeric characters.
         :param bool disallow_username_substring: Prevents the use of the username in the password.
         :param int min_length: Specifies the minimum number of characters that the password must have.
@@ -1582,6 +1605,9 @@ class DatabaseInstanceSettingsPasswordValidationPolicy(dict):
     def enable_password_policy(self) -> bool:
         """
         Enables or disable the password validation policy.
+
+        The optional `replica_configuration` block must have `master_instance_name` set
+        to work, cannot be updated, and supports:
         """
         return pulumi.get(self, "enable_password_policy")
 
@@ -3647,6 +3673,8 @@ class GetDatabasesDatabaseResult(dict):
         """
         :param str instance: The name of the Cloud SQL database instance in which the database belongs.
         :param str project: The ID of the project in which the instance belongs.
+               
+               > **Note** This datasource performs client-side sorting to provide consistent ordering of the databases.
         """
         pulumi.set(__self__, "charset", charset)
         pulumi.set(__self__, "collation", collation)
@@ -3689,6 +3717,8 @@ class GetDatabasesDatabaseResult(dict):
     def project(self) -> str:
         """
         The ID of the project in which the instance belongs.
+
+        > **Note** This datasource performs client-side sorting to provide consistent ordering of the databases.
         """
         return pulumi.get(self, "project")
 

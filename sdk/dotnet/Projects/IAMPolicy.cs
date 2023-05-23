@@ -291,6 +291,11 @@ namespace Pulumi.Gcp.Projects
         /// The `gcp.organizations.getIAMPolicy` data source that represents
         /// the IAM policy that will be applied to the project. The policy will be
         /// merged with any existing policy applied to the project.
+        /// 
+        /// Changing this updates the policy.
+        /// 
+        /// Deleting this removes all policies from the project, locking out users without
+        /// organization-level access.
         /// </summary>
         [Output("policyData")]
         public Output<string> PolicyData { get; private set; } = null!;
@@ -352,6 +357,11 @@ namespace Pulumi.Gcp.Projects
         /// The `gcp.organizations.getIAMPolicy` data source that represents
         /// the IAM policy that will be applied to the project. The policy will be
         /// merged with any existing policy applied to the project.
+        /// 
+        /// Changing this updates the policy.
+        /// 
+        /// Deleting this removes all policies from the project, locking out users without
+        /// organization-level access.
         /// </summary>
         [Input("policyData", required: true)]
         public Input<string> PolicyData { get; set; } = null!;
@@ -381,6 +391,11 @@ namespace Pulumi.Gcp.Projects
         /// The `gcp.organizations.getIAMPolicy` data source that represents
         /// the IAM policy that will be applied to the project. The policy will be
         /// merged with any existing policy applied to the project.
+        /// 
+        /// Changing this updates the policy.
+        /// 
+        /// Deleting this removes all policies from the project, locking out users without
+        /// organization-level access.
         /// </summary>
         [Input("policyData")]
         public Input<string>? PolicyData { get; set; }

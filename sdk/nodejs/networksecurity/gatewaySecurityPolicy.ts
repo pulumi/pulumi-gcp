@@ -168,6 +168,9 @@ export class GatewaySecurityPolicy extends pulumi.CustomResource {
     /**
      * Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
      * gatewaySecurityPolicy should match the pattern:(^a-z?$).
+     *
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -249,6 +252,9 @@ export interface GatewaySecurityPolicyState {
     /**
      * Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
      * gatewaySecurityPolicy should match the pattern:(^a-z?$).
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -288,6 +294,9 @@ export interface GatewaySecurityPolicyArgs {
     /**
      * Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}
      * gatewaySecurityPolicy should match the pattern:(^a-z?$).
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**

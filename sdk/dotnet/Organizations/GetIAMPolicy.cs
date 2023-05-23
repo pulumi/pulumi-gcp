@@ -180,6 +180,9 @@ namespace Pulumi.Gcp.Organizations
         /// A nested configuration block (described below)
         /// defining a binding to be included in the policy document. Multiple
         /// `binding` arguments are supported.
+        /// 
+        /// Each document configuration must have one or more `binding` blocks, which
+        /// each accept the following arguments:
         /// </summary>
         public List<Inputs.GetIAMPolicyBindingArgs> Bindings
         {
@@ -214,6 +217,9 @@ namespace Pulumi.Gcp.Organizations
         /// A nested configuration block (described below)
         /// defining a binding to be included in the policy document. Multiple
         /// `binding` arguments are supported.
+        /// 
+        /// Each document configuration must have one or more `binding` blocks, which
+        /// each accept the following arguments:
         /// </summary>
         public InputList<Inputs.GetIAMPolicyBindingInputArgs> Bindings
         {

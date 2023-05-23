@@ -28,6 +28,19 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Region Backend Service defines a regionally-scoped group of virtual
+ * machines that will serve traffic for load balancing.
+ * 
+ * To get more information about RegionBackendService, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices)
+ * * How-to Guides
+ *     * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
+ * 
+ * &gt; **Warning:** All arguments including the following potentially sensitive
+ * values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`.
+ * Read more about sensitive data in state.
+ * 
  * ## Example Usage
  * ### Region Backend Service Basic
  * 
@@ -830,6 +843,8 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
@@ -842,6 +857,8 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {

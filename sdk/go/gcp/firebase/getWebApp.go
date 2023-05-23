@@ -23,6 +23,8 @@ func LookupWebApp(ctx *pulumi.Context, args *LookupWebAppArgs, opts ...pulumi.In
 // A collection of arguments for invoking getWebApp.
 type LookupWebAppArgs struct {
 	// The appIp of name of the Firebase webApp.
+	//
+	// ***
 	AppId string `pulumi:"appId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -61,6 +63,8 @@ func LookupWebAppOutput(ctx *pulumi.Context, args LookupWebAppOutputArgs, opts .
 // A collection of arguments for invoking getWebApp.
 type LookupWebAppOutputArgs struct {
 	// The appIp of name of the Firebase webApp.
+	//
+	// ***
 	AppId pulumi.StringInput `pulumi:"appId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

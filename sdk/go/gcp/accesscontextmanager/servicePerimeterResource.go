@@ -96,6 +96,8 @@ type ServicePerimeterResource struct {
 	pulumi.CustomResourceState
 
 	// The name of the Service Perimeter to add this resource to.
+	//
+	// ***
 	PerimeterName pulumi.StringOutput `pulumi:"perimeterName"`
 	// A GCP resource that is inside of the service perimeter.
 	// Currently only projects are allowed.
@@ -139,6 +141,8 @@ func GetServicePerimeterResource(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ServicePerimeterResource resources.
 type servicePerimeterResourceState struct {
 	// The name of the Service Perimeter to add this resource to.
+	//
+	// ***
 	PerimeterName *string `pulumi:"perimeterName"`
 	// A GCP resource that is inside of the service perimeter.
 	// Currently only projects are allowed.
@@ -148,6 +152,8 @@ type servicePerimeterResourceState struct {
 
 type ServicePerimeterResourceState struct {
 	// The name of the Service Perimeter to add this resource to.
+	//
+	// ***
 	PerimeterName pulumi.StringPtrInput
 	// A GCP resource that is inside of the service perimeter.
 	// Currently only projects are allowed.
@@ -161,6 +167,8 @@ func (ServicePerimeterResourceState) ElementType() reflect.Type {
 
 type servicePerimeterResourceArgs struct {
 	// The name of the Service Perimeter to add this resource to.
+	//
+	// ***
 	PerimeterName string `pulumi:"perimeterName"`
 	// A GCP resource that is inside of the service perimeter.
 	// Currently only projects are allowed.
@@ -171,6 +179,8 @@ type servicePerimeterResourceArgs struct {
 // The set of arguments for constructing a ServicePerimeterResource resource.
 type ServicePerimeterResourceArgs struct {
 	// The name of the Service Perimeter to add this resource to.
+	//
+	// ***
 	PerimeterName pulumi.StringInput
 	// A GCP resource that is inside of the service perimeter.
 	// Currently only projects are allowed.
@@ -266,6 +276,8 @@ func (o ServicePerimeterResourceOutput) ToServicePerimeterResourceOutputWithCont
 }
 
 // The name of the Service Perimeter to add this resource to.
+//
+// ***
 func (o ServicePerimeterResourceOutput) PerimeterName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePerimeterResource) pulumi.StringOutput { return v.PerimeterName }).(pulumi.StringOutput)
 }

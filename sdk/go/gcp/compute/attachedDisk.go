@@ -92,8 +92,14 @@ type AttachedDisk struct {
 	// system running within the instance. This name can be used to
 	// reference the device for mounting, resizing, and so on, from within
 	// the instance.
+	//
+	// If not specified, the server chooses a default device name to apply
+	// to this disk, in the form persistent-disks-x, where x is a number
+	// assigned by Google Compute Engine.
 	DeviceName pulumi.StringOutput `pulumi:"deviceName"`
 	// `name` or `selfLink` of the disk that will be attached.
+	//
+	// ***
 	Disk pulumi.StringOutput `pulumi:"disk"`
 	// `name` or `selfLink` of the compute instance that the disk will be attached to.
 	// If the `selfLink` is provided then `zone` and `project` are extracted from the
@@ -103,6 +109,10 @@ type AttachedDisk struct {
 	// The mode in which to attach this disk, either READ_WRITE or
 	// READ_ONLY. If not specified, the default is to attach the disk in
 	// READ_WRITE mode.
+	//
+	// Possible values:
+	// "READ_ONLY"
+	// "READ_WRITE"
 	Mode pulumi.StringPtrOutput `pulumi:"mode"`
 	// The project that the referenced compute instance is a part of. If `instance` is referenced by its
 	// `selfLink` the project defined in the link will take precedence.
@@ -152,8 +162,14 @@ type attachedDiskState struct {
 	// system running within the instance. This name can be used to
 	// reference the device for mounting, resizing, and so on, from within
 	// the instance.
+	//
+	// If not specified, the server chooses a default device name to apply
+	// to this disk, in the form persistent-disks-x, where x is a number
+	// assigned by Google Compute Engine.
 	DeviceName *string `pulumi:"deviceName"`
 	// `name` or `selfLink` of the disk that will be attached.
+	//
+	// ***
 	Disk *string `pulumi:"disk"`
 	// `name` or `selfLink` of the compute instance that the disk will be attached to.
 	// If the `selfLink` is provided then `zone` and `project` are extracted from the
@@ -163,6 +179,10 @@ type attachedDiskState struct {
 	// The mode in which to attach this disk, either READ_WRITE or
 	// READ_ONLY. If not specified, the default is to attach the disk in
 	// READ_WRITE mode.
+	//
+	// Possible values:
+	// "READ_ONLY"
+	// "READ_WRITE"
 	Mode *string `pulumi:"mode"`
 	// The project that the referenced compute instance is a part of. If `instance` is referenced by its
 	// `selfLink` the project defined in the link will take precedence.
@@ -178,8 +198,14 @@ type AttachedDiskState struct {
 	// system running within the instance. This name can be used to
 	// reference the device for mounting, resizing, and so on, from within
 	// the instance.
+	//
+	// If not specified, the server chooses a default device name to apply
+	// to this disk, in the form persistent-disks-x, where x is a number
+	// assigned by Google Compute Engine.
 	DeviceName pulumi.StringPtrInput
 	// `name` or `selfLink` of the disk that will be attached.
+	//
+	// ***
 	Disk pulumi.StringPtrInput
 	// `name` or `selfLink` of the compute instance that the disk will be attached to.
 	// If the `selfLink` is provided then `zone` and `project` are extracted from the
@@ -189,6 +215,10 @@ type AttachedDiskState struct {
 	// The mode in which to attach this disk, either READ_WRITE or
 	// READ_ONLY. If not specified, the default is to attach the disk in
 	// READ_WRITE mode.
+	//
+	// Possible values:
+	// "READ_ONLY"
+	// "READ_WRITE"
 	Mode pulumi.StringPtrInput
 	// The project that the referenced compute instance is a part of. If `instance` is referenced by its
 	// `selfLink` the project defined in the link will take precedence.
@@ -208,8 +238,14 @@ type attachedDiskArgs struct {
 	// system running within the instance. This name can be used to
 	// reference the device for mounting, resizing, and so on, from within
 	// the instance.
+	//
+	// If not specified, the server chooses a default device name to apply
+	// to this disk, in the form persistent-disks-x, where x is a number
+	// assigned by Google Compute Engine.
 	DeviceName *string `pulumi:"deviceName"`
 	// `name` or `selfLink` of the disk that will be attached.
+	//
+	// ***
 	Disk string `pulumi:"disk"`
 	// `name` or `selfLink` of the compute instance that the disk will be attached to.
 	// If the `selfLink` is provided then `zone` and `project` are extracted from the
@@ -219,6 +255,10 @@ type attachedDiskArgs struct {
 	// The mode in which to attach this disk, either READ_WRITE or
 	// READ_ONLY. If not specified, the default is to attach the disk in
 	// READ_WRITE mode.
+	//
+	// Possible values:
+	// "READ_ONLY"
+	// "READ_WRITE"
 	Mode *string `pulumi:"mode"`
 	// The project that the referenced compute instance is a part of. If `instance` is referenced by its
 	// `selfLink` the project defined in the link will take precedence.
@@ -235,8 +275,14 @@ type AttachedDiskArgs struct {
 	// system running within the instance. This name can be used to
 	// reference the device for mounting, resizing, and so on, from within
 	// the instance.
+	//
+	// If not specified, the server chooses a default device name to apply
+	// to this disk, in the form persistent-disks-x, where x is a number
+	// assigned by Google Compute Engine.
 	DeviceName pulumi.StringPtrInput
 	// `name` or `selfLink` of the disk that will be attached.
+	//
+	// ***
 	Disk pulumi.StringInput
 	// `name` or `selfLink` of the compute instance that the disk will be attached to.
 	// If the `selfLink` is provided then `zone` and `project` are extracted from the
@@ -246,6 +292,10 @@ type AttachedDiskArgs struct {
 	// The mode in which to attach this disk, either READ_WRITE or
 	// READ_ONLY. If not specified, the default is to attach the disk in
 	// READ_WRITE mode.
+	//
+	// Possible values:
+	// "READ_ONLY"
+	// "READ_WRITE"
 	Mode pulumi.StringPtrInput
 	// The project that the referenced compute instance is a part of. If `instance` is referenced by its
 	// `selfLink` the project defined in the link will take precedence.
@@ -347,11 +397,17 @@ func (o AttachedDiskOutput) ToAttachedDiskOutputWithContext(ctx context.Context)
 // system running within the instance. This name can be used to
 // reference the device for mounting, resizing, and so on, from within
 // the instance.
+//
+// If not specified, the server chooses a default device name to apply
+// to this disk, in the form persistent-disks-x, where x is a number
+// assigned by Google Compute Engine.
 func (o AttachedDiskOutput) DeviceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttachedDisk) pulumi.StringOutput { return v.DeviceName }).(pulumi.StringOutput)
 }
 
 // `name` or `selfLink` of the disk that will be attached.
+//
+// ***
 func (o AttachedDiskOutput) Disk() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttachedDisk) pulumi.StringOutput { return v.Disk }).(pulumi.StringOutput)
 }
@@ -367,6 +423,10 @@ func (o AttachedDiskOutput) Instance() pulumi.StringOutput {
 // The mode in which to attach this disk, either READ_WRITE or
 // READ_ONLY. If not specified, the default is to attach the disk in
 // READ_WRITE mode.
+//
+// Possible values:
+// "READ_ONLY"
+// "READ_WRITE"
 func (o AttachedDiskOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AttachedDisk) pulumi.StringPtrOutput { return v.Mode }).(pulumi.StringPtrOutput)
 }

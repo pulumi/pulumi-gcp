@@ -32,9 +32,27 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.authDomain);
     }
 
+    /**
+     * The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+     * Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
+     * instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted by the provider, but will be rejected by the API.
+     * To create a Cloud Firestore database without creating an App Engine application, use the
+     * `gcp.firestore.Database`
+     * resource instead.
+     * 
+     */
     @Import(name="databaseType")
     private @Nullable Output<String> databaseType;
 
+    /**
+     * @return The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+     * Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
+     * instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted by the provider, but will be rejected by the API.
+     * To create a Cloud Firestore database without creating an App Engine application, use the
+     * `gcp.firestore.Database`
+     * resource instead.
+     * 
+     */
     public Optional<Output<String>> databaseType() {
         return Optional.ofNullable(this.databaseType);
     }
@@ -171,11 +189,33 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
             return authDomain(Output.of(authDomain));
         }
 
+        /**
+         * @param databaseType The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+         * Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
+         * instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted by the provider, but will be rejected by the API.
+         * To create a Cloud Firestore database without creating an App Engine application, use the
+         * `gcp.firestore.Database`
+         * resource instead.
+         * 
+         * @return builder
+         * 
+         */
         public Builder databaseType(@Nullable Output<String> databaseType) {
             $.databaseType = databaseType;
             return this;
         }
 
+        /**
+         * @param databaseType The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+         * Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
+         * instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted by the provider, but will be rejected by the API.
+         * To create a Cloud Firestore database without creating an App Engine application, use the
+         * `gcp.firestore.Database`
+         * resource instead.
+         * 
+         * @return builder
+         * 
+         */
         public Builder databaseType(String databaseType) {
             return databaseType(Output.of(databaseType));
         }

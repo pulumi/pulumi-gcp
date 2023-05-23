@@ -104,6 +104,9 @@ namespace Pulumi.Gcp.Logging
 
         /// <summary>
         /// The bucket to which the linked dataset is attached.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
@@ -216,6 +219,9 @@ namespace Pulumi.Gcp.Logging
 
         /// <summary>
         /// The bucket to which the linked dataset is attached.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
@@ -269,6 +275,9 @@ namespace Pulumi.Gcp.Logging
 
         /// <summary>
         /// The bucket to which the linked dataset is attached.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }

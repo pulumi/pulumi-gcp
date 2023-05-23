@@ -110,6 +110,10 @@ type Job struct {
 	// The config of hive job
 	HiveConfig JobHiveConfigPtrOutput `pulumi:"hiveConfig"`
 	// The list of labels (key/value pairs) to add to the job.
+	//
+	// * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+	//
+	// * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The config of pag job.
 	PigConfig JobPigConfigPtrOutput `pulumi:"pigConfig"`
@@ -182,6 +186,10 @@ type jobState struct {
 	// The config of hive job
 	HiveConfig *JobHiveConfig `pulumi:"hiveConfig"`
 	// The list of labels (key/value pairs) to add to the job.
+	//
+	// * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+	//
+	// * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
 	Labels map[string]string `pulumi:"labels"`
 	// The config of pag job.
 	PigConfig *JobPigConfig `pulumi:"pigConfig"`
@@ -223,6 +231,10 @@ type JobState struct {
 	// The config of hive job
 	HiveConfig JobHiveConfigPtrInput
 	// The list of labels (key/value pairs) to add to the job.
+	//
+	// * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+	//
+	// * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
 	Labels pulumi.StringMapInput
 	// The config of pag job.
 	PigConfig JobPigConfigPtrInput
@@ -264,6 +276,10 @@ type jobArgs struct {
 	// The config of hive job
 	HiveConfig *JobHiveConfig `pulumi:"hiveConfig"`
 	// The list of labels (key/value pairs) to add to the job.
+	//
+	// * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+	//
+	// * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
 	Labels map[string]string `pulumi:"labels"`
 	// The config of pag job.
 	PigConfig *JobPigConfig `pulumi:"pigConfig"`
@@ -300,6 +316,10 @@ type JobArgs struct {
 	// The config of hive job
 	HiveConfig JobHiveConfigPtrInput
 	// The list of labels (key/value pairs) to add to the job.
+	//
+	// * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+	//
+	// * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
 	Labels pulumi.StringMapInput
 	// The config of pag job.
 	PigConfig JobPigConfigPtrInput
@@ -440,6 +460,10 @@ func (o JobOutput) HiveConfig() JobHiveConfigPtrOutput {
 }
 
 // The list of labels (key/value pairs) to add to the job.
+//
+// * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+//
+// * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
 func (o JobOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }

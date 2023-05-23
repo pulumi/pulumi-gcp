@@ -75,6 +75,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      * The name of the cluster, unique within the project and
      * zone.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -82,6 +84,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The name of the cluster, unique within the project and
      * zone.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -244,6 +248,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          * @param name The name of the cluster, unique within the project and
          * zone.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -255,6 +261,8 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The name of the cluster, unique within the project and
          * zone.
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -87,6 +87,9 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// A reference to the zone where the machine resides.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -186,6 +189,9 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// A reference to the zone where the machine resides.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -253,6 +259,9 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// A reference to the zone where the machine resides.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

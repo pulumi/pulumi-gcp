@@ -185,6 +185,9 @@ public class RegionAutoscaler extends com.pulumi.resources.CustomResource {
     }
     /**
      * A description of a scaling schedule.
+     * 
+     * ***
+     * 
      * (Optional)
      * An optional description of this resource.
      * 
@@ -194,6 +197,9 @@ public class RegionAutoscaler extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A description of a scaling schedule.
+     * 
+     * ***
+     * 
      * (Optional)
      * An optional description of this resource.
      * 

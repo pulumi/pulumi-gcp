@@ -17,6 +17,18 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Adds a trust between Active Directory domains
+ * 
+ * To get more information about DomainTrust, see:
+ * 
+ * * [API documentation](https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains/attachTrust)
+ * * How-to Guides
+ *     * [Active Directory Trust](https://cloud.google.com/managed-microsoft-ad/docs/create-one-way-trust)
+ * 
+ * &gt; **Warning:** All arguments including the following potentially sensitive
+ * values will be stored in the raw state as plain text: `trust_handshake_secret`.
+ * Read more about sensitive data in state.
+ * 
  * ## Example Usage
  * ### Active Directory Domain Trust Basic
  * ```java
@@ -76,6 +88,8 @@ public class DomainTrust extends com.pulumi.resources.CustomResource {
      * The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
      * https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
      * 
+     * ***
+     * 
      */
     @Export(name="domain", type=String.class, parameters={})
     private Output<String> domain;
@@ -83,6 +97,8 @@ public class DomainTrust extends com.pulumi.resources.CustomResource {
     /**
      * @return The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
      * https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+     * 
+     * ***
      * 
      */
     public Output<String> domain() {

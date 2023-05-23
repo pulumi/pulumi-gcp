@@ -17,12 +17,16 @@ public final class GetConfigPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The name of the Runtime Configurator configuration.
      * 
+     * ***
+     * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
      * @return The name of the Runtime Configurator configuration.
+     * 
+     * ***
      * 
      */
     public String name() {
@@ -73,6 +77,8 @@ public final class GetConfigPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param name The name of the Runtime Configurator configuration.
+         * 
+         * ***
          * 
          * @return builder
          * 

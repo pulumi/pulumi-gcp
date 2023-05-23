@@ -23,6 +23,8 @@ namespace Pulumi.Gcp.Eventarc.Outputs
         public readonly string? Operator;
         /// <summary>
         /// Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
+        /// 
+        /// - - -
         /// </summary>
         public readonly string Value;
 

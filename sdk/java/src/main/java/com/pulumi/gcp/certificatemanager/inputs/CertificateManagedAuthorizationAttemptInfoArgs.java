@@ -20,6 +20,9 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
      * Human readable explanation about the issue. Provided to help address
      * the configuration issues.
      * Not guaranteed to be stable. For programmatic access use `reason` field.
+     * 
+     * &lt;a name=&#34;nested_authorization_attempt_info&#34;&gt;&lt;/a&gt;The `authorization_attempt_info` block contains:
+     * 
      * (Output)
      * Human readable explanation for reaching the state. Provided to help
      * address the configuration issues.
@@ -34,6 +37,9 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
      * Human readable explanation about the issue. Provided to help address
      * the configuration issues.
      * Not guaranteed to be stable. For programmatic access use `reason` field.
+     * 
+     * &lt;a name=&#34;nested_authorization_attempt_info&#34;&gt;&lt;/a&gt;The `authorization_attempt_info` block contains:
+     * 
      * (Output)
      * Human readable explanation for reaching the state. Provided to help
      * address the configuration issues.
@@ -81,6 +87,7 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
     /**
      * (Output)
      * A state of this Managed Certificate.
+     * 
      * (Output)
      * State of the domain for managed certificate issuance.
      * 
@@ -91,6 +98,7 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
     /**
      * @return (Output)
      * A state of this Managed Certificate.
+     * 
      * (Output)
      * State of the domain for managed certificate issuance.
      * 
@@ -131,6 +139,9 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
          * Human readable explanation about the issue. Provided to help address
          * the configuration issues.
          * Not guaranteed to be stable. For programmatic access use `reason` field.
+         * 
+         * &lt;a name=&#34;nested_authorization_attempt_info&#34;&gt;&lt;/a&gt;The `authorization_attempt_info` block contains:
+         * 
          * (Output)
          * Human readable explanation for reaching the state. Provided to help
          * address the configuration issues.
@@ -149,6 +160,9 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
          * Human readable explanation about the issue. Provided to help address
          * the configuration issues.
          * Not guaranteed to be stable. For programmatic access use `reason` field.
+         * 
+         * &lt;a name=&#34;nested_authorization_attempt_info&#34;&gt;&lt;/a&gt;The `authorization_attempt_info` block contains:
+         * 
          * (Output)
          * Human readable explanation for reaching the state. Provided to help
          * address the configuration issues.
@@ -210,6 +224,7 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
         /**
          * @param state (Output)
          * A state of this Managed Certificate.
+         * 
          * (Output)
          * State of the domain for managed certificate issuance.
          * 
@@ -224,6 +239,7 @@ public final class CertificateManagedAuthorizationAttemptInfoArgs extends com.pu
         /**
          * @param state (Output)
          * A state of this Managed Certificate.
+         * 
          * (Output)
          * State of the domain for managed certificate issuance.
          * 

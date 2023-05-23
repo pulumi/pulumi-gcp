@@ -1711,6 +1711,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  year: Optional[int] = None):
         """
         :param int day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+               
+               - - -
         :param int month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param int year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -1726,6 +1728,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     def day(self) -> Optional[int]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+
+        - - -
         """
         return pulumi.get(self, "day")
 
@@ -2294,6 +2298,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  year: Optional[int] = None):
         """
         :param int day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+               
+               - - -
         :param int month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param int year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -2309,6 +2315,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day(self) -> Optional[int]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+
+        - - -
         """
         return pulumi.get(self, "day")
 
@@ -2863,6 +2871,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  year: Optional[int] = None):
         """
         :param int day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+               
+               - - -
         :param int month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param int year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -2878,6 +2888,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day(self) -> Optional[int]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+
+        - - -
         """
         return pulumi.get(self, "day")
 
@@ -3101,6 +3113,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  year: Optional[int] = None):
         """
         :param int day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+               
+               - - -
         :param int month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param int year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -3116,6 +3130,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day(self) -> Optional[int]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+
+        - - -
         """
         return pulumi.get(self, "day")
 
@@ -3339,6 +3355,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  year: Optional[int] = None):
         """
         :param int day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+               
+               - - -
         :param int month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param int year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -3354,6 +3372,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day(self) -> Optional[int]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+
+        - - -
         """
         return pulumi.get(self, "day")
 
@@ -4893,6 +4913,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  year: Optional[int] = None):
         """
         :param int day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+               
+               - - -
         :param int month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param int year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -4908,6 +4930,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day(self) -> Optional[int]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+
+        - - -
         """
         return pulumi.get(self, "day")
 
@@ -5131,6 +5155,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  year: Optional[int] = None):
         """
         :param int day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+               
+               - - -
         :param int month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param int year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -5146,6 +5172,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day(self) -> Optional[int]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+
+        - - -
         """
         return pulumi.get(self, "day")
 
@@ -5414,6 +5442,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
                  year: Optional[int] = None):
         """
         :param int day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+               
+               - - -
         :param int month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param int year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -5429,6 +5459,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
     def day(self) -> Optional[int]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+
+        - - -
         """
         return pulumi.get(self, "day")
 
@@ -5929,6 +5961,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
                  year: Optional[int] = None):
         """
         :param int day: Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+               
+               - - -
         :param int month: Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
         :param int year: Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
@@ -5944,6 +5978,8 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
     def day(self) -> Optional[int]:
         """
         Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+
+        - - -
         """
         return pulumi.get(self, "day")
 
@@ -10713,6 +10749,8 @@ class PreventionJobTriggerTriggerSchedule(dict):
                A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs.
                This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+               
+               - - -
         """
         if recurrence_period_duration is not None:
             pulumi.set(__self__, "recurrence_period_duration", recurrence_period_duration)
@@ -10725,6 +10763,8 @@ class PreventionJobTriggerTriggerSchedule(dict):
         A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs.
         This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+
+        - - -
         """
         return pulumi.get(self, "recurrence_period_duration")
 

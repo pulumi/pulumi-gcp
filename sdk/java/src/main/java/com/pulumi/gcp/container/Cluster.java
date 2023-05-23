@@ -859,6 +859,10 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
      * describe the various acceptable formats for this field.
      * 
+     * &gt; If you are using the `gcp.container.getEngineVersions` datasource with a regional cluster, ensure that you have provided a `location`
+     * to the datasource. A region can have a different set of supported versions than its corresponding zones, and not all zones in a
+     * region are guaranteed to support the same version.
+     * 
      */
     @Export(name="minMasterVersion", type=String.class, parameters={})
     private Output</* @Nullable */ String> minMasterVersion;
@@ -873,6 +877,10 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * are available. If you intend to specify versions manually,
      * [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
      * describe the various acceptable formats for this field.
+     * 
+     * &gt; If you are using the `gcp.container.getEngineVersions` datasource with a regional cluster, ensure that you have provided a `location`
+     * to the datasource. A region can have a different set of supported versions than its corresponding zones, and not all zones in a
+     * region are guaranteed to support the same version.
      * 
      */
     public Output<Optional<String>> minMasterVersion() {
@@ -924,6 +932,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The name of the cluster, unique within the project and
      * location.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
@@ -931,6 +941,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * @return The name of the cluster, unique within the project and
      * location.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {
@@ -1018,6 +1030,13 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * same region as their cluster&#39;s zone for zonal clusters. If this is specified for
      * a zonal cluster, omit the cluster&#39;s zone.
      * 
+     * &gt; A &#34;multi-zonal&#34; cluster is a zonal cluster with at least one additional zone
+     * defined; in a multi-zonal cluster, the cluster master is only present in a
+     * single zone while nodes are present in each of the primary zone and the node
+     * locations. In contrast, in a regional cluster, cluster master nodes are present
+     * in multiple zones in the region. For that reason, regional clusters should be
+     * preferred.
+     * 
      */
     @Export(name="nodeLocations", type=List.class, parameters={String.class})
     private Output<List<String>> nodeLocations;
@@ -1027,6 +1046,13 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * are located. Nodes must be in the region of their regional cluster or in the
      * same region as their cluster&#39;s zone for zonal clusters. If this is specified for
      * a zonal cluster, omit the cluster&#39;s zone.
+     * 
+     * &gt; A &#34;multi-zonal&#34; cluster is a zonal cluster with at least one additional zone
+     * defined; in a multi-zonal cluster, the cluster master is only present in a
+     * single zone while nodes are present in each of the primary zone and the node
+     * locations. In contrast, in a regional cluster, cluster master nodes are present
+     * in multiple zones in the region. For that reason, regional clusters should be
+     * preferred.
      * 
      */
     public Output<List<String>> nodeLocations() {
@@ -1204,6 +1230,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * )
      * Enable/Disable Protect API features for the cluster. Structure is documented below.
      * 
+     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+     * 
      */
     @Export(name="protectConfig", type=ClusterProtectConfig.class, parameters={})
     private Output<ClusterProtectConfig> protectConfig;
@@ -1211,6 +1239,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * @return )
      * Enable/Disable Protect API features for the cluster. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
      * 
      */
     public Output<ClusterProtectConfig> protectConfig() {

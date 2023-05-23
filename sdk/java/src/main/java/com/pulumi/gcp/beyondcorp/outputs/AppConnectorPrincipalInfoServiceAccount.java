@@ -12,12 +12,16 @@ public final class AppConnectorPrincipalInfoServiceAccount {
     /**
      * @return Email address of the service account.
      * 
+     * ***
+     * 
      */
     private String email;
 
     private AppConnectorPrincipalInfoServiceAccount() {}
     /**
      * @return Email address of the service account.
+     * 
+     * ***
      * 
      */
     public String email() {

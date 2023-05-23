@@ -91,6 +91,8 @@ type Dashboard struct {
 
 	// The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
 	// The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
+	//
+	// ***
 	DashboardJson pulumi.StringOutput `pulumi:"dashboardJson"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -131,6 +133,8 @@ func GetDashboard(ctx *pulumi.Context,
 type dashboardState struct {
 	// The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
 	// The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
+	//
+	// ***
 	DashboardJson *string `pulumi:"dashboardJson"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -140,6 +144,8 @@ type dashboardState struct {
 type DashboardState struct {
 	// The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
 	// The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
+	//
+	// ***
 	DashboardJson pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -153,6 +159,8 @@ func (DashboardState) ElementType() reflect.Type {
 type dashboardArgs struct {
 	// The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
 	// The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
+	//
+	// ***
 	DashboardJson string `pulumi:"dashboardJson"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -163,6 +171,8 @@ type dashboardArgs struct {
 type DashboardArgs struct {
 	// The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
 	// The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
+	//
+	// ***
 	DashboardJson pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -258,6 +268,8 @@ func (o DashboardOutput) ToDashboardOutputWithContext(ctx context.Context) Dashb
 
 // The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
 // The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
+//
+// ***
 func (o DashboardOutput) DashboardJson() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dashboard) pulumi.StringOutput { return v.DashboardJson }).(pulumi.StringOutput)
 }

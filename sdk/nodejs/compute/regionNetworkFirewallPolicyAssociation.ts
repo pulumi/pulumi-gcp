@@ -77,6 +77,10 @@ export class RegionNetworkFirewallPolicyAssociation extends pulumi.CustomResourc
     public readonly firewallPolicy!: pulumi.Output<string>;
     /**
      * The name for an association.
+     *
+     *
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -145,6 +149,10 @@ export interface RegionNetworkFirewallPolicyAssociationState {
     firewallPolicy?: pulumi.Input<string>;
     /**
      * The name for an association.
+     *
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -175,6 +183,10 @@ export interface RegionNetworkFirewallPolicyAssociationArgs {
     firewallPolicy: pulumi.Input<string>;
     /**
      * The name for an association.
+     *
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**

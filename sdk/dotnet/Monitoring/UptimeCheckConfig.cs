@@ -302,6 +302,9 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("timeout")]
         public Output<string> Timeout { get; private set; } = null!;
@@ -439,6 +442,9 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("timeout", required: true)]
         public Input<string> Timeout { get; set; } = null!;
@@ -538,6 +544,9 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Accepted formats https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("timeout")]
         public Input<string>? Timeout { get; set; }

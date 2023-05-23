@@ -54,6 +54,8 @@ public final class CryptoKeyArgs extends com.pulumi.resources.ResourceArgs {
      * The KeyRing that this key belongs to.
      * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}&#39;`.
      * 
+     * ***
+     * 
      */
     @Import(name="keyRing", required=true)
     private Output<String> keyRing;
@@ -61,6 +63,8 @@ public final class CryptoKeyArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The KeyRing that this key belongs to.
      * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}&#39;`.
+     * 
+     * ***
      * 
      */
     public Output<String> keyRing() {
@@ -255,6 +259,8 @@ public final class CryptoKeyArgs extends com.pulumi.resources.ResourceArgs {
          * @param keyRing The KeyRing that this key belongs to.
          * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}&#39;`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -266,6 +272,8 @@ public final class CryptoKeyArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param keyRing The KeyRing that this key belongs to.
          * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}&#39;`.
+         * 
+         * ***
          * 
          * @return builder
          * 

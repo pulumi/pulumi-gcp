@@ -18,12 +18,16 @@ public final class GetRegionSslCertificateArgs extends com.pulumi.resources.Invo
     /**
      * The name of the certificate.
      * 
+     * ***
+     * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
      * @return The name of the certificate.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {
@@ -93,6 +97,8 @@ public final class GetRegionSslCertificateArgs extends com.pulumi.resources.Invo
         /**
          * @param name The name of the certificate.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -103,6 +109,8 @@ public final class GetRegionSslCertificateArgs extends com.pulumi.resources.Invo
 
         /**
          * @param name The name of the certificate.
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -22,6 +22,8 @@ class DiskAsyncReplicationArgs:
         The set of arguments for constructing a DiskAsyncReplication resource.
         :param pulumi.Input[str] primary_disk: The primary disk (source of replication).
         :param pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs'] secondary_disk: The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+               
+               The `secondary_disk` block includes:
         """
         pulumi.set(__self__, "primary_disk", primary_disk)
         pulumi.set(__self__, "secondary_disk", secondary_disk)
@@ -43,6 +45,8 @@ class DiskAsyncReplicationArgs:
     def secondary_disk(self) -> pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs']:
         """
         The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+
+        The `secondary_disk` block includes:
         """
         return pulumi.get(self, "secondary_disk")
 
@@ -60,6 +64,8 @@ class _DiskAsyncReplicationState:
         Input properties used for looking up and filtering DiskAsyncReplication resources.
         :param pulumi.Input[str] primary_disk: The primary disk (source of replication).
         :param pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs'] secondary_disk: The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+               
+               The `secondary_disk` block includes:
         """
         if primary_disk is not None:
             pulumi.set(__self__, "primary_disk", primary_disk)
@@ -83,6 +89,8 @@ class _DiskAsyncReplicationState:
     def secondary_disk(self) -> Optional[pulumi.Input['DiskAsyncReplicationSecondaryDiskArgs']]:
         """
         The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+
+        The `secondary_disk` block includes:
         """
         return pulumi.get(self, "secondary_disk")
 
@@ -132,6 +140,8 @@ class DiskAsyncReplication(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] primary_disk: The primary disk (source of replication).
         :param pulumi.Input[pulumi.InputType['DiskAsyncReplicationSecondaryDiskArgs']] secondary_disk: The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+               
+               The `secondary_disk` block includes:
         """
         ...
     @overload
@@ -221,6 +231,8 @@ class DiskAsyncReplication(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] primary_disk: The primary disk (source of replication).
         :param pulumi.Input[pulumi.InputType['DiskAsyncReplicationSecondaryDiskArgs']] secondary_disk: The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+               
+               The `secondary_disk` block includes:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -243,6 +255,8 @@ class DiskAsyncReplication(pulumi.CustomResource):
     def secondary_disk(self) -> pulumi.Output['outputs.DiskAsyncReplicationSecondaryDisk']:
         """
         The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+
+        The `secondary_disk` block includes:
         """
         return pulumi.get(self, "secondary_disk")
 

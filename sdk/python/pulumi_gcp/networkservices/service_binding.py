@@ -26,6 +26,9 @@ class ServiceBindingArgs:
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the ServiceBinding resource.
         :param pulumi.Input[str] name: Name of the ServiceBinding resource.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -81,6 +84,9 @@ class ServiceBindingArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the ServiceBinding resource.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -118,6 +124,9 @@ class _ServiceBindingState:
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the ServiceBinding resource.
         :param pulumi.Input[str] name: Name of the ServiceBinding resource.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service: The full Service Directory Service name of the format
@@ -180,6 +189,9 @@ class _ServiceBindingState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the ServiceBinding resource.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -287,6 +299,9 @@ class ServiceBinding(pulumi.CustomResource):
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the ServiceBinding resource.
         :param pulumi.Input[str] name: Name of the ServiceBinding resource.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service: The full Service Directory Service name of the format
@@ -409,6 +424,9 @@ class ServiceBinding(pulumi.CustomResource):
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the ServiceBinding resource.
         :param pulumi.Input[str] name: Name of the ServiceBinding resource.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] service: The full Service Directory Service name of the format
@@ -457,6 +475,9 @@ class ServiceBinding(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Name of the ServiceBinding resource.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

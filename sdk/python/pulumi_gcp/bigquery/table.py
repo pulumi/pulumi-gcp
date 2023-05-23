@@ -64,6 +64,16 @@ class TableArgs:
         :param pulumi.Input['TableRangePartitioningArgs'] range_partitioning: If specified, configures range-based
                partitioning for this table. Structure is documented below.
         :param pulumi.Input[str] schema: A JSON schema for the table.
+               
+               ~>**NOTE:** Because this field expects a JSON string, any changes to the
+               string will create a diff, even if the JSON itself hasn't changed.
+               If the API returns a different value for the same schema, e.g. it
+               switched the order of values or replaced `STRUCT` field type with `RECORD`
+               field type, we currently cannot suppress the recurring diff this causes.
+               As a workaround, we recommend using the schema as returned by the API.
+               
+               ~>**NOTE:**  When setting `schema` for `external_data_configuration`, please use
+               `external_data_configuration.schema` documented below.
         :param pulumi.Input['TableTimePartitioningArgs'] time_partitioning: If specified, configures time-based
                partitioning for this table. Structure is documented below.
         :param pulumi.Input['TableViewArgs'] view: If specified, configures this table as a view.
@@ -277,6 +287,16 @@ class TableArgs:
     def schema(self) -> Optional[pulumi.Input[str]]:
         """
         A JSON schema for the table.
+
+        ~>**NOTE:** Because this field expects a JSON string, any changes to the
+        string will create a diff, even if the JSON itself hasn't changed.
+        If the API returns a different value for the same schema, e.g. it
+        switched the order of values or replaced `STRUCT` field type with `RECORD`
+        field type, we currently cannot suppress the recurring diff this causes.
+        As a workaround, we recommend using the schema as returned by the API.
+
+        ~>**NOTE:**  When setting `schema` for `external_data_configuration`, please use
+        `external_data_configuration.schema` documented below.
         """
         return pulumi.get(self, "schema")
 
@@ -376,6 +396,16 @@ class _TableState:
         :param pulumi.Input['TableRangePartitioningArgs'] range_partitioning: If specified, configures range-based
                partitioning for this table. Structure is documented below.
         :param pulumi.Input[str] schema: A JSON schema for the table.
+               
+               ~>**NOTE:** Because this field expects a JSON string, any changes to the
+               string will create a diff, even if the JSON itself hasn't changed.
+               If the API returns a different value for the same schema, e.g. it
+               switched the order of values or replaced `STRUCT` field type with `RECORD`
+               field type, we currently cannot suppress the recurring diff this causes.
+               As a workaround, we recommend using the schema as returned by the API.
+               
+               ~>**NOTE:**  When setting `schema` for `external_data_configuration`, please use
+               `external_data_configuration.schema` documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
@@ -685,6 +715,16 @@ class _TableState:
     def schema(self) -> Optional[pulumi.Input[str]]:
         """
         A JSON schema for the table.
+
+        ~>**NOTE:** Because this field expects a JSON string, any changes to the
+        string will create a diff, even if the JSON itself hasn't changed.
+        If the API returns a different value for the same schema, e.g. it
+        switched the order of values or replaced `STRUCT` field type with `RECORD`
+        field type, we currently cannot suppress the recurring diff this causes.
+        As a workaround, we recommend using the schema as returned by the API.
+
+        ~>**NOTE:**  When setting `schema` for `external_data_configuration`, please use
+        `external_data_configuration.schema` documented below.
         """
         return pulumi.get(self, "schema")
 
@@ -886,6 +926,16 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']] range_partitioning: If specified, configures range-based
                partitioning for this table. Structure is documented below.
         :param pulumi.Input[str] schema: A JSON schema for the table.
+               
+               ~>**NOTE:** Because this field expects a JSON string, any changes to the
+               string will create a diff, even if the JSON itself hasn't changed.
+               If the API returns a different value for the same schema, e.g. it
+               switched the order of values or replaced `STRUCT` field type with `RECORD`
+               field type, we currently cannot suppress the recurring diff this causes.
+               As a workaround, we recommend using the schema as returned by the API.
+               
+               ~>**NOTE:**  When setting `schema` for `external_data_configuration`, please use
+               `external_data_configuration.schema` documented below.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
         :param pulumi.Input[pulumi.InputType['TableTimePartitioningArgs']] time_partitioning: If specified, configures time-based
@@ -1122,6 +1172,16 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TableRangePartitioningArgs']] range_partitioning: If specified, configures range-based
                partitioning for this table. Structure is documented below.
         :param pulumi.Input[str] schema: A JSON schema for the table.
+               
+               ~>**NOTE:** Because this field expects a JSON string, any changes to the
+               string will create a diff, even if the JSON itself hasn't changed.
+               If the API returns a different value for the same schema, e.g. it
+               switched the order of values or replaced `STRUCT` field type with `RECORD`
+               field type, we currently cannot suppress the recurring diff this causes.
+               As a workaround, we recommend using the schema as returned by the API.
+               
+               ~>**NOTE:**  When setting `schema` for `external_data_configuration`, please use
+               `external_data_configuration.schema` documented below.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
@@ -1335,6 +1395,16 @@ class Table(pulumi.CustomResource):
     def schema(self) -> pulumi.Output[str]:
         """
         A JSON schema for the table.
+
+        ~>**NOTE:** Because this field expects a JSON string, any changes to the
+        string will create a diff, even if the JSON itself hasn't changed.
+        If the API returns a different value for the same schema, e.g. it
+        switched the order of values or replaced `STRUCT` field type with `RECORD`
+        field type, we currently cannot suppress the recurring diff this causes.
+        As a workaround, we recommend using the schema as returned by the API.
+
+        ~>**NOTE:**  When setting `schema` for `external_data_configuration`, please use
+        `external_data_configuration.schema` documented below.
         """
         return pulumi.get(self, "schema")
 

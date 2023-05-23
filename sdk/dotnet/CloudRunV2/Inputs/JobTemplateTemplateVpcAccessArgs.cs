@@ -21,6 +21,8 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         /// <summary>
         /// Traffic VPC egress settings.
         /// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+        /// 
+        /// - - -
         /// </summary>
         [Input("egress")]
         public Input<string>? Egress { get; set; }

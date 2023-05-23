@@ -123,12 +123,16 @@ public class TagBinding extends com.pulumi.resources.CustomResource {
     /**
      * The TagValue of the TagBinding. Must be of the form tagValues/456.
      * 
+     * ***
+     * 
      */
     @Export(name="tagValue", type=String.class, parameters={})
     private Output<String> tagValue;
 
     /**
      * @return The TagValue of the TagBinding. Must be of the form tagValues/456.
+     * 
+     * ***
      * 
      */
     public Output<String> tagValue() {

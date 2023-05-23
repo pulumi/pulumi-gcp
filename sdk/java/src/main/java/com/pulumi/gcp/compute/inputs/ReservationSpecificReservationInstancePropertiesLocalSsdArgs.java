@@ -19,12 +19,16 @@ public final class ReservationSpecificReservationInstancePropertiesLocalSsdArgs 
     /**
      * The size of the disk in base-2 GB.
      * 
+     * ***
+     * 
      */
     @Import(name="diskSizeGb", required=true)
     private Output<Integer> diskSizeGb;
 
     /**
      * @return The size of the disk in base-2 GB.
+     * 
+     * ***
      * 
      */
     public Output<Integer> diskSizeGb() {
@@ -78,6 +82,8 @@ public final class ReservationSpecificReservationInstancePropertiesLocalSsdArgs 
         /**
          * @param diskSizeGb The size of the disk in base-2 GB.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -88,6 +94,8 @@ public final class ReservationSpecificReservationInstancePropertiesLocalSsdArgs 
 
         /**
          * @param diskSizeGb The size of the disk in base-2 GB.
+         * 
+         * ***
          * 
          * @return builder
          * 

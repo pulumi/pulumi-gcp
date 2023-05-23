@@ -17,6 +17,8 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
 
         /// <summary>
         /// DNS search domains.
+        /// 
+        /// &lt;a name="nested_control_plane_v2_config"&gt;&lt;/a&gt;The `control_plane_v2_config` block supports:
         /// </summary>
         public InputList<string> DnsSearchDomains
         {

@@ -117,6 +117,8 @@ type Gateway struct {
 	// A user-visible name for the API.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
+	//
+	// ***
 	GatewayId pulumi.StringOutput `pulumi:"gatewayId"`
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -172,6 +174,8 @@ type gatewayState struct {
 	// A user-visible name for the API.
 	DisplayName *string `pulumi:"displayName"`
 	// Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
+	//
+	// ***
 	GatewayId *string `pulumi:"gatewayId"`
 	// Resource labels to represent user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
@@ -193,6 +197,8 @@ type GatewayState struct {
 	// A user-visible name for the API.
 	DisplayName pulumi.StringPtrInput
 	// Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
+	//
+	// ***
 	GatewayId pulumi.StringPtrInput
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapInput
@@ -216,6 +222,8 @@ type gatewayArgs struct {
 	// A user-visible name for the API.
 	DisplayName *string `pulumi:"displayName"`
 	// Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
+	//
+	// ***
 	GatewayId string `pulumi:"gatewayId"`
 	// Resource labels to represent user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
@@ -234,6 +242,8 @@ type GatewayArgs struct {
 	// A user-visible name for the API.
 	DisplayName pulumi.StringPtrInput
 	// Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
+	//
+	// ***
 	GatewayId pulumi.StringInput
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapInput
@@ -348,6 +358,8 @@ func (o GatewayOutput) DisplayName() pulumi.StringOutput {
 }
 
 // Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
+//
+// ***
 func (o GatewayOutput) GatewayId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.GatewayId }).(pulumi.StringOutput)
 }

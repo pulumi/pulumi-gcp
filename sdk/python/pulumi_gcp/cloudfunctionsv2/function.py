@@ -37,6 +37,9 @@ class FunctionArgs:
         :param pulumi.Input[str] location: The location of this cloud function.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must
                be unique globally and match pattern `projects/*/locations/*/functions/*`.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['FunctionServiceConfigArgs'] service_config: Describes the Service being deployed.
@@ -129,6 +132,9 @@ class FunctionArgs:
         """
         A user-defined name of the function. Function names must
         be unique globally and match pattern `projects/*/locations/*/functions/*`.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -191,6 +197,9 @@ class _FunctionState:
         :param pulumi.Input[str] location: The location of this cloud function.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must
                be unique globally and match pattern `projects/*/locations/*/functions/*`.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['FunctionServiceConfigArgs'] service_config: Describes the Service being deployed.
@@ -303,6 +312,9 @@ class _FunctionState:
         """
         A user-defined name of the function. Function names must
         be unique globally and match pattern `projects/*/locations/*/functions/*`.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -595,6 +607,9 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of this cloud function.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must
                be unique globally and match pattern `projects/*/locations/*/functions/*`.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['FunctionServiceConfigArgs']] service_config: Describes the Service being deployed.
@@ -896,6 +911,9 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] location: The location of this cloud function.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must
                be unique globally and match pattern `projects/*/locations/*/functions/*`.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['FunctionServiceConfigArgs']] service_config: Describes the Service being deployed.
@@ -978,6 +996,9 @@ class Function(pulumi.CustomResource):
         """
         A user-defined name of the function. Function names must
         be unique globally and match pattern `projects/*/locations/*/functions/*`.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

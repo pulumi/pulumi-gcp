@@ -126,6 +126,9 @@ def get_iam_policy(audit_configs: Optional[Sequence[pulumi.InputType['GetIAMPoli
     :param Sequence[pulumi.InputType['GetIAMPolicyBindingArgs']] bindings: A nested configuration block (described below)
            defining a binding to be included in the policy document. Multiple
            `binding` arguments are supported.
+           
+           Each document configuration must have one or more `binding` blocks, which
+           each accept the following arguments:
     """
     __args__ = dict()
     __args__['auditConfigs'] = audit_configs
@@ -190,5 +193,8 @@ def get_iam_policy_output(audit_configs: Optional[pulumi.Input[Optional[Sequence
     :param Sequence[pulumi.InputType['GetIAMPolicyBindingArgs']] bindings: A nested configuration block (described below)
            defining a binding to be included in the policy document. Multiple
            `binding` arguments are supported.
+           
+           Each document configuration must have one or more `binding` blocks, which
+           each accept the following arguments:
     """
     ...

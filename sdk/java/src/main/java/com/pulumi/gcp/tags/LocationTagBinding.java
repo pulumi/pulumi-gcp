@@ -149,12 +149,16 @@ public class LocationTagBinding extends com.pulumi.resources.CustomResource {
     /**
      * Location of the resource.
      * 
+     * ***
+     * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output</* @Nullable */ String> location;
 
     /**
      * @return Location of the resource.
+     * 
+     * ***
      * 
      */
     public Output<Optional<String>> location() {

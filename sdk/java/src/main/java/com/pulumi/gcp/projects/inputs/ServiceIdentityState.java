@@ -50,12 +50,16 @@ public final class ServiceIdentityState extends com.pulumi.resources.ResourceArg
     /**
      * The service to generate identity for.
      * 
+     * ***
+     * 
      */
     @Import(name="service")
     private @Nullable Output<String> service;
 
     /**
      * @return The service to generate identity for.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> service() {
@@ -135,6 +139,8 @@ public final class ServiceIdentityState extends com.pulumi.resources.ResourceArg
         /**
          * @param service The service to generate identity for.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -145,6 +151,8 @@ public final class ServiceIdentityState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param service The service to generate identity for.
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -50,12 +50,16 @@ public final class FieldArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The id of the field to configure.
      * 
+     * ***
+     * 
      */
     @Import(name="field", required=true)
     private Output<String> field;
 
     /**
      * @return The id of the field to configure.
+     * 
+     * ***
      * 
      */
     public Output<String> field() {
@@ -193,6 +197,8 @@ public final class FieldArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param field The id of the field to configure.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -203,6 +209,8 @@ public final class FieldArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param field The id of the field to configure.
+         * 
+         * ***
          * 
          * @return builder
          * 

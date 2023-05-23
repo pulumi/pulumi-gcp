@@ -99,6 +99,8 @@ type Client struct {
 	// Identifier of the brand to which this client
 	// is attached to. The format is
 	// `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+	//
+	// ***
 	Brand pulumi.StringOutput `pulumi:"brand"`
 	// The OAuth2 ID of the client.
 	ClientId pulumi.StringOutput `pulumi:"clientId"`
@@ -151,6 +153,8 @@ type clientState struct {
 	// Identifier of the brand to which this client
 	// is attached to. The format is
 	// `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+	//
+	// ***
 	Brand *string `pulumi:"brand"`
 	// The OAuth2 ID of the client.
 	ClientId *string `pulumi:"clientId"`
@@ -165,6 +169,8 @@ type ClientState struct {
 	// Identifier of the brand to which this client
 	// is attached to. The format is
 	// `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+	//
+	// ***
 	Brand pulumi.StringPtrInput
 	// The OAuth2 ID of the client.
 	ClientId pulumi.StringPtrInput
@@ -183,6 +189,8 @@ type clientArgs struct {
 	// Identifier of the brand to which this client
 	// is attached to. The format is
 	// `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+	//
+	// ***
 	Brand string `pulumi:"brand"`
 	// Human-friendly name given to the OAuth client.
 	DisplayName string `pulumi:"displayName"`
@@ -193,6 +201,8 @@ type ClientArgs struct {
 	// Identifier of the brand to which this client
 	// is attached to. The format is
 	// `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+	//
+	// ***
 	Brand pulumi.StringInput
 	// Human-friendly name given to the OAuth client.
 	DisplayName pulumi.StringInput
@@ -288,6 +298,8 @@ func (o ClientOutput) ToClientOutputWithContext(ctx context.Context) ClientOutpu
 // Identifier of the brand to which this client
 // is attached to. The format is
 // `projects/{project_number}/brands/{brand_id}/identityAwareProxyClients/{client_id}`.
+//
+// ***
 func (o ClientOutput) Brand() pulumi.StringOutput {
 	return o.ApplyT(func(v *Client) pulumi.StringOutput { return v.Brand }).(pulumi.StringOutput)
 }

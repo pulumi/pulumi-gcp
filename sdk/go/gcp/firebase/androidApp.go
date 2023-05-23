@@ -84,6 +84,8 @@ type AndroidApp struct {
 	// AndroidApp. Defaults to 'DELETE'.
 	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the AndroidApp.
+	//
+	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// This checksum is computed by the server based on the value of other fields, and it may be sent
 	// with update requests to ensure the client has an up-to-date value before proceeding.
@@ -143,6 +145,8 @@ type androidAppState struct {
 	// AndroidApp. Defaults to 'DELETE'.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the AndroidApp.
+	//
+	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// This checksum is computed by the server based on the value of other fields, and it may be sent
 	// with update requests to ensure the client has an up-to-date value before proceeding.
@@ -171,6 +175,8 @@ type AndroidAppState struct {
 	// AndroidApp. Defaults to 'DELETE'.
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the AndroidApp.
+	//
+	// ***
 	DisplayName pulumi.StringPtrInput
 	// This checksum is computed by the server based on the value of other fields, and it may be sent
 	// with update requests to ensure the client has an up-to-date value before proceeding.
@@ -200,6 +206,8 @@ type androidAppArgs struct {
 	// AndroidApp. Defaults to 'DELETE'.
 	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The user-assigned display name of the AndroidApp.
+	//
+	// ***
 	DisplayName string `pulumi:"displayName"`
 	// Immutable. The canonical package name of the Android app as would appear in the Google Play
 	// Developer Console.
@@ -220,6 +228,8 @@ type AndroidAppArgs struct {
 	// AndroidApp. Defaults to 'DELETE'.
 	DeletionPolicy pulumi.StringPtrInput
 	// The user-assigned display name of the AndroidApp.
+	//
+	// ***
 	DisplayName pulumi.StringInput
 	// Immutable. The canonical package name of the Android app as would appear in the Google Play
 	// Developer Console.
@@ -334,6 +344,8 @@ func (o AndroidAppOutput) DeletionPolicy() pulumi.StringPtrOutput {
 }
 
 // The user-assigned display name of the AndroidApp.
+//
+// ***
 func (o AndroidAppOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

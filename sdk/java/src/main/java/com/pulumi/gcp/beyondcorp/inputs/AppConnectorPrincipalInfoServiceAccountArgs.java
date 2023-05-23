@@ -16,12 +16,16 @@ public final class AppConnectorPrincipalInfoServiceAccountArgs extends com.pulum
     /**
      * Email address of the service account.
      * 
+     * ***
+     * 
      */
     @Import(name="email", required=true)
     private Output<String> email;
 
     /**
      * @return Email address of the service account.
+     * 
+     * ***
      * 
      */
     public Output<String> email() {
@@ -55,6 +59,8 @@ public final class AppConnectorPrincipalInfoServiceAccountArgs extends com.pulum
         /**
          * @param email Email address of the service account.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -65,6 +71,8 @@ public final class AppConnectorPrincipalInfoServiceAccountArgs extends com.pulum
 
         /**
          * @param email Email address of the service account.
+         * 
+         * ***
          * 
          * @return builder
          * 

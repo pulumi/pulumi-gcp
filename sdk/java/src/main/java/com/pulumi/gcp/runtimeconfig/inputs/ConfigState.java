@@ -35,12 +35,16 @@ public final class ConfigState extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the runtime config.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The name of the runtime config.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -116,6 +120,8 @@ public final class ConfigState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The name of the runtime config.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -126,6 +132,8 @@ public final class ConfigState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name The name of the runtime config.
+         * 
+         * ***
          * 
          * @return builder
          * 

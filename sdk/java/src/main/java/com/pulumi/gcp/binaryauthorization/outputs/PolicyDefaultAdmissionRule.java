@@ -15,6 +15,8 @@ public final class PolicyDefaultAdmissionRule {
      * @return The action when a pod creation is denied by the admission rule.
      * Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
      * 
+     * ***
+     * 
      */
     private String enforcementMode;
     /**
@@ -40,6 +42,8 @@ public final class PolicyDefaultAdmissionRule {
     /**
      * @return The action when a pod creation is denied by the admission rule.
      * Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
+     * 
+     * ***
      * 
      */
     public String enforcementMode() {

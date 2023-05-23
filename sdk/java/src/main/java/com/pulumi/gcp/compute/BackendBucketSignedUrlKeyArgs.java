@@ -18,12 +18,16 @@ public final class BackendBucketSignedUrlKeyArgs extends com.pulumi.resources.Re
     /**
      * The backend bucket this signed URL key belongs.
      * 
+     * ***
+     * 
      */
     @Import(name="backendBucket", required=true)
     private Output<String> backendBucket;
 
     /**
      * @return The backend bucket this signed URL key belongs.
+     * 
+     * ***
      * 
      */
     public Output<String> backendBucket() {
@@ -111,6 +115,8 @@ public final class BackendBucketSignedUrlKeyArgs extends com.pulumi.resources.Re
         /**
          * @param backendBucket The backend bucket this signed URL key belongs.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -121,6 +127,8 @@ public final class BackendBucketSignedUrlKeyArgs extends com.pulumi.resources.Re
 
         /**
          * @param backendBucket The backend bucket this signed URL key belongs.
+         * 
+         * ***
          * 
          * @return builder
          * 

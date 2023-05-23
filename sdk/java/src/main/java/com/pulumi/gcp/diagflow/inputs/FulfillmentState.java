@@ -22,12 +22,16 @@ public final class FulfillmentState extends com.pulumi.resources.ResourceArgs {
     /**
      * The human-readable name of the fulfillment, unique within the agent.
      * 
+     * ***
+     * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
      * @return The human-readable name of the fulfillment, unique within the agent.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -149,6 +153,8 @@ public final class FulfillmentState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param displayName The human-readable name of the fulfillment, unique within the agent.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -159,6 +165,8 @@ public final class FulfillmentState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param displayName The human-readable name of the fulfillment, unique within the agent.
+         * 
+         * ***
          * 
          * @return builder
          * 

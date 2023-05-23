@@ -72,6 +72,8 @@ type GameServerDeployment struct {
 	pulumi.CustomResourceState
 
 	// A unique id for the deployment.
+	//
+	// ***
 	DeploymentId pulumi.StringOutput `pulumi:"deploymentId"`
 	// Human readable description of the game server deployment.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -123,6 +125,8 @@ func GetGameServerDeployment(ctx *pulumi.Context,
 // Input properties used for looking up and filtering GameServerDeployment resources.
 type gameServerDeploymentState struct {
 	// A unique id for the deployment.
+	//
+	// ***
 	DeploymentId *string `pulumi:"deploymentId"`
 	// Human readable description of the game server deployment.
 	Description *string `pulumi:"description"`
@@ -143,6 +147,8 @@ type gameServerDeploymentState struct {
 
 type GameServerDeploymentState struct {
 	// A unique id for the deployment.
+	//
+	// ***
 	DeploymentId pulumi.StringPtrInput
 	// Human readable description of the game server deployment.
 	Description pulumi.StringPtrInput
@@ -167,6 +173,8 @@ func (GameServerDeploymentState) ElementType() reflect.Type {
 
 type gameServerDeploymentArgs struct {
 	// A unique id for the deployment.
+	//
+	// ***
 	DeploymentId string `pulumi:"deploymentId"`
 	// Human readable description of the game server deployment.
 	Description *string `pulumi:"description"`
@@ -183,6 +191,8 @@ type gameServerDeploymentArgs struct {
 // The set of arguments for constructing a GameServerDeployment resource.
 type GameServerDeploymentArgs struct {
 	// A unique id for the deployment.
+	//
+	// ***
 	DeploymentId pulumi.StringInput
 	// Human readable description of the game server deployment.
 	Description pulumi.StringPtrInput
@@ -284,6 +294,8 @@ func (o GameServerDeploymentOutput) ToGameServerDeploymentOutputWithContext(ctx 
 }
 
 // A unique id for the deployment.
+//
+// ***
 func (o GameServerDeploymentOutput) DeploymentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GameServerDeployment) pulumi.StringOutput { return v.DeploymentId }).(pulumi.StringOutput)
 }

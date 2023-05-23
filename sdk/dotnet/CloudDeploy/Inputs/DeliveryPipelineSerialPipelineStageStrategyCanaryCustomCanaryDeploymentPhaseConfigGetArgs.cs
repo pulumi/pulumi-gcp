@@ -38,6 +38,8 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
 
         /// <summary>
         /// Whether to run verify tests after the deployment.
+        /// 
+        /// - - -
         /// </summary>
         [Input("verify")]
         public Input<bool>? Verify { get; set; }

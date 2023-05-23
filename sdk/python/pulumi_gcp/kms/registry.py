@@ -44,6 +44,9 @@ class RegistryArgs:
         :param pulumi.Input[Mapping[str, Any]] mqtt_config: Activate or deactivate MQTT.
                The structure is documented below.
         :param pulumi.Input[str] name: A unique name for the resource, required by device registry.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the created registry should reside.
@@ -146,6 +149,9 @@ class RegistryArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         A unique name for the resource, required by device registry.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -224,6 +230,9 @@ class _RegistryState:
         :param pulumi.Input[Mapping[str, Any]] mqtt_config: Activate or deactivate MQTT.
                The structure is documented below.
         :param pulumi.Input[str] name: A unique name for the resource, required by device registry.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the created registry should reside.
@@ -326,6 +335,9 @@ class _RegistryState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         A unique name for the resource, required by device registry.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -500,6 +512,9 @@ class Registry(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] mqtt_config: Activate or deactivate MQTT.
                The structure is documented below.
         :param pulumi.Input[str] name: A unique name for the resource, required by device registry.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the created registry should reside.
@@ -687,6 +702,9 @@ class Registry(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] mqtt_config: Activate or deactivate MQTT.
                The structure is documented below.
         :param pulumi.Input[str] name: A unique name for the resource, required by device registry.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region in which the created registry should reside.
@@ -765,6 +783,9 @@ class Registry(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         A unique name for the resource, required by device registry.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

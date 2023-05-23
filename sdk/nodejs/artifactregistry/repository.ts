@@ -183,6 +183,9 @@ export class Repository extends pulumi.CustomResource {
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+     *
+     *
+     * - - -
      */
     public readonly format!: pulumi.Output<string>;
     /**
@@ -326,6 +329,9 @@ export interface RepositoryState {
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+     *
+     *
+     * - - -
      */
     format?: pulumi.Input<string>;
     /**
@@ -409,6 +415,9 @@ export interface RepositoryArgs {
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+     *
+     *
+     * - - -
      */
     format: pulumi.Input<string>;
     /**

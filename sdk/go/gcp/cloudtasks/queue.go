@@ -118,6 +118,8 @@ type Queue struct {
 	// Structure is documented below.
 	AppEngineRoutingOverride QueueAppEngineRoutingOverridePtrOutput `pulumi:"appEngineRoutingOverride"`
 	// The location of the queue
+	//
+	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The queue name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -178,6 +180,8 @@ type queueState struct {
 	// Structure is documented below.
 	AppEngineRoutingOverride *QueueAppEngineRoutingOverride `pulumi:"appEngineRoutingOverride"`
 	// The location of the queue
+	//
+	// ***
 	Location *string `pulumi:"location"`
 	// The queue name.
 	Name *string `pulumi:"name"`
@@ -207,6 +211,8 @@ type QueueState struct {
 	// Structure is documented below.
 	AppEngineRoutingOverride QueueAppEngineRoutingOverridePtrInput
 	// The location of the queue
+	//
+	// ***
 	Location pulumi.StringPtrInput
 	// The queue name.
 	Name pulumi.StringPtrInput
@@ -240,6 +246,8 @@ type queueArgs struct {
 	// Structure is documented below.
 	AppEngineRoutingOverride *QueueAppEngineRoutingOverride `pulumi:"appEngineRoutingOverride"`
 	// The location of the queue
+	//
+	// ***
 	Location string `pulumi:"location"`
 	// The queue name.
 	Name *string `pulumi:"name"`
@@ -270,6 +278,8 @@ type QueueArgs struct {
 	// Structure is documented below.
 	AppEngineRoutingOverride QueueAppEngineRoutingOverridePtrInput
 	// The location of the queue
+	//
+	// ***
 	Location pulumi.StringInput
 	// The queue name.
 	Name pulumi.StringPtrInput
@@ -388,6 +398,8 @@ func (o QueueOutput) AppEngineRoutingOverride() QueueAppEngineRoutingOverridePtr
 }
 
 // The location of the queue
+//
+// ***
 func (o QueueOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Queue) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

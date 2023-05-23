@@ -80,12 +80,16 @@ public class Api extends com.pulumi.resources.CustomResource {
     /**
      * Identifier to assign to the API. Must be unique within scope of the parent resource(project)
      * 
+     * ***
+     * 
      */
     @Export(name="apiId", type=String.class, parameters={})
     private Output<String> apiId;
 
     /**
      * @return Identifier to assign to the API. Must be unique within scope of the parent resource(project)
+     * 
+     * ***
      * 
      */
     public Output<String> apiId() {

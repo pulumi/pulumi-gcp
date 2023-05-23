@@ -48,6 +48,8 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// the id of the firebase web app
+        /// 
+        /// - - -
         /// </summary>
         [Input("webAppId", required: true)]
         public string WebAppId { get; set; } = null!;
@@ -69,6 +71,8 @@ namespace Pulumi.Gcp.Firebase
 
         /// <summary>
         /// the id of the firebase web app
+        /// 
+        /// - - -
         /// </summary>
         [Input("webAppId", required: true)]
         public Input<string> WebAppId { get; set; } = null!;

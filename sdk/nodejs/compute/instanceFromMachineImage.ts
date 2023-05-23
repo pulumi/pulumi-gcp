@@ -206,6 +206,8 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
     /**
      * Name or self link of a machine
      * image to create the instance based on.
+     *
+     * - - -
      */
     public readonly sourceMachineImage!: pulumi.Output<string>;
     /**
@@ -219,6 +221,12 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
     /**
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.
+     *
+     * In addition to these, most* arguments from `gcp.compute.Instance` are supported
+     * as a way to override the properties in the machine image. All exported attributes
+     * from `gcp.compute.Instance` are likewise exported here.
+     *
+     * > **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "bootDisk", "attachedDisk", and "scratchDisk" fields.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -468,6 +476,8 @@ export interface InstanceFromMachineImageState {
     /**
      * Name or self link of a machine
      * image to create the instance based on.
+     *
+     * - - -
      */
     sourceMachineImage?: pulumi.Input<string>;
     /**
@@ -481,6 +491,12 @@ export interface InstanceFromMachineImageState {
     /**
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.
+     *
+     * In addition to these, most* arguments from `gcp.compute.Instance` are supported
+     * as a way to override the properties in the machine image. All exported attributes
+     * from `gcp.compute.Instance` are likewise exported here.
+     *
+     * > **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "bootDisk", "attachedDisk", and "scratchDisk" fields.
      */
     zone?: pulumi.Input<string>;
 }
@@ -595,6 +611,8 @@ export interface InstanceFromMachineImageArgs {
     /**
      * Name or self link of a machine
      * image to create the instance based on.
+     *
+     * - - -
      */
     sourceMachineImage: pulumi.Input<string>;
     /**
@@ -604,6 +622,12 @@ export interface InstanceFromMachineImageArgs {
     /**
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.
+     *
+     * In addition to these, most* arguments from `gcp.compute.Instance` are supported
+     * as a way to override the properties in the machine image. All exported attributes
+     * from `gcp.compute.Instance` are likewise exported here.
+     *
+     * > **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "bootDisk", "attachedDisk", and "scratchDisk" fields.
      */
     zone?: pulumi.Input<string>;
 }

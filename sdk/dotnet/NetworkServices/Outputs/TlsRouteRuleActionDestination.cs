@@ -19,6 +19,8 @@ namespace Pulumi.Gcp.NetworkServices.Outputs
         public readonly string? ServiceName;
         /// <summary>
         /// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
+        /// 
+        /// - - -
         /// </summary>
         public readonly int? Weight;
 

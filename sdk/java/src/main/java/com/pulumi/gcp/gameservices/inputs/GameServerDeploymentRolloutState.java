@@ -22,6 +22,8 @@ public final class GameServerDeploymentRolloutState extends com.pulumi.resources
      * applied by default to all realms and clusters. For example,
      * `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
      * 
+     * ***
+     * 
      */
     @Import(name="defaultGameServerConfig")
     private @Nullable Output<String> defaultGameServerConfig;
@@ -30,6 +32,8 @@ public final class GameServerDeploymentRolloutState extends com.pulumi.resources
      * @return This field points to the game server config that is
      * applied by default to all realms and clusters. For example,
      * `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> defaultGameServerConfig() {
@@ -141,6 +145,8 @@ public final class GameServerDeploymentRolloutState extends com.pulumi.resources
          * applied by default to all realms and clusters. For example,
          * `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -153,6 +159,8 @@ public final class GameServerDeploymentRolloutState extends com.pulumi.resources
          * @param defaultGameServerConfig This field points to the game server config that is
          * applied by default to all realms and clusters. For example,
          * `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -25,6 +25,9 @@ class TaxonomyArgs:
                It must: contain only unicode letters, numbers, underscores, dashes
                and spaces; not start or end with spaces; and be at most 200 bytes
                long when encoded in UTF-8.
+               
+               
+               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] activated_policy_types: A list of policy types that are activated for this taxonomy. If not set,
                defaults to an empty list.
                Each value may be one of: `POLICY_TYPE_UNSPECIFIED`, `FINE_GRAINED_ACCESS_CONTROL`.
@@ -53,6 +56,9 @@ class TaxonomyArgs:
         It must: contain only unicode letters, numbers, underscores, dashes
         and spaces; not start or end with spaces; and be at most 200 bytes
         long when encoded in UTF-8.
+
+
+        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -135,6 +141,9 @@ class _TaxonomyState:
                It must: contain only unicode letters, numbers, underscores, dashes
                and spaces; not start or end with spaces; and be at most 200 bytes
                long when encoded in UTF-8.
+               
+               
+               - - -
         :param pulumi.Input[str] name: Resource name of this taxonomy, whose format is:
                "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -190,6 +199,9 @@ class _TaxonomyState:
         It must: contain only unicode letters, numbers, underscores, dashes
         and spaces; not start or end with spaces; and be at most 200 bytes
         long when encoded in UTF-8.
+
+
+        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -289,6 +301,9 @@ class Taxonomy(pulumi.CustomResource):
                It must: contain only unicode letters, numbers, underscores, dashes
                and spaces; not start or end with spaces; and be at most 200 bytes
                long when encoded in UTF-8.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Taxonomy location region.
@@ -399,6 +414,9 @@ class Taxonomy(pulumi.CustomResource):
                It must: contain only unicode letters, numbers, underscores, dashes
                and spaces; not start or end with spaces; and be at most 200 bytes
                long when encoded in UTF-8.
+               
+               
+               - - -
         :param pulumi.Input[str] name: Resource name of this taxonomy, whose format is:
                "projects/{project}/locations/{region}/taxonomies/{taxonomy}".
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -445,6 +463,9 @@ class Taxonomy(pulumi.CustomResource):
         It must: contain only unicode letters, numbers, underscores, dashes
         and spaces; not start or end with spaces; and be at most 200 bytes
         long when encoded in UTF-8.
+
+
+        - - -
         """
         return pulumi.get(self, "display_name")
 

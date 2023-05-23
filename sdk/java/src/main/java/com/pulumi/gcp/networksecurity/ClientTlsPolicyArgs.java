@@ -86,12 +86,16 @@ public final class ClientTlsPolicyArgs extends com.pulumi.resources.ResourceArgs
     /**
      * Name of the ClientTlsPolicy resource.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Name of the ClientTlsPolicy resource.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -269,6 +273,8 @@ public final class ClientTlsPolicyArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param name Name of the ClientTlsPolicy resource.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -279,6 +285,8 @@ public final class ClientTlsPolicyArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param name Name of the ClientTlsPolicy resource.
+         * 
+         * ***
          * 
          * @return builder
          * 

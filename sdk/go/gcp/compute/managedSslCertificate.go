@@ -81,6 +81,8 @@ type ManagedSslCertificate struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// These are in the same namespace as the managed SSL certificates.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -150,6 +152,8 @@ type managedSslCertificateState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// These are in the same namespace as the managed SSL certificates.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -185,6 +189,8 @@ type ManagedSslCertificateState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// These are in the same namespace as the managed SSL certificates.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -220,6 +226,8 @@ type managedSslCertificateArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// These are in the same namespace as the managed SSL certificates.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -248,6 +256,8 @@ type ManagedSslCertificateArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// These are in the same namespace as the managed SSL certificates.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -380,6 +390,8 @@ func (o ManagedSslCertificateOutput) Managed() ManagedSslCertificateManagedPtrOu
 // first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the last
 // character, which cannot be a dash.
+//
+// These are in the same namespace as the managed SSL certificates.
 func (o ManagedSslCertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ManagedSslCertificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

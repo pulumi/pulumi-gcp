@@ -106,6 +106,8 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
      * A user-defined name of the function. Function names must
      * be unique globally and match pattern `projects/*{@literal /}locations/*{@literal /}functions/*`.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -113,6 +115,8 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return A user-defined name of the function. Function names must
      * be unique globally and match pattern `projects/*{@literal /}locations/*{@literal /}functions/*`.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -301,6 +305,8 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
          * @param name A user-defined name of the function. Function names must
          * be unique globally and match pattern `projects/*{@literal /}locations/*{@literal /}functions/*`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -312,6 +318,8 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name A user-defined name of the function. Function names must
          * be unique globally and match pattern `projects/*{@literal /}locations/*{@literal /}functions/*`.
+         * 
+         * ***
          * 
          * @return builder
          * 

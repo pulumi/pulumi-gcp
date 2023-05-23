@@ -409,6 +409,8 @@ public class ResourcePolicy extends com.pulumi.resources.CustomResource {
      * must be a dash, lowercase letter, or digit, except the last character,
      * which cannot be a dash.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
@@ -421,6 +423,8 @@ public class ResourcePolicy extends com.pulumi.resources.CustomResource {
      * first character must be a lowercase letter, and all following characters
      * must be a dash, lowercase letter, or digit, except the last character,
      * which cannot be a dash.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {

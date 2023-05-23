@@ -199,18 +199,23 @@ export class PreventionInspectTemplate extends pulumi.CustomResource {
     /**
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
      * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     *
      * (Required)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
      * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     *
      * (Required)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
      * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     *
      * (Required)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
      * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     *
      * (Required)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
      * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     *
      * (Required)
      * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
      * or `projects/project-id/storedInfoTypes/432452342`.
@@ -222,6 +227,9 @@ export class PreventionInspectTemplate extends pulumi.CustomResource {
      * * `projects/{{project}}/locations/{{location}}`
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
+     *
+     *
+     * - - -
      */
     public readonly parent!: pulumi.Output<string>;
 
@@ -279,18 +287,23 @@ export interface PreventionInspectTemplateState {
     /**
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
      * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     *
      * (Required)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
      * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     *
      * (Required)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
      * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     *
      * (Required)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
      * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     *
      * (Required)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
      * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     *
      * (Required)
      * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
      * or `projects/project-id/storedInfoTypes/432452342`.
@@ -302,6 +315,9 @@ export interface PreventionInspectTemplateState {
      * * `projects/{{project}}/locations/{{location}}`
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
+     *
+     *
+     * - - -
      */
     parent?: pulumi.Input<string>;
 }
@@ -329,6 +345,9 @@ export interface PreventionInspectTemplateArgs {
      * * `projects/{{project}}/locations/{{location}}`
      * * `organizations/{{organization_id}}`
      * * `organizations/{{organization_id}}/locations/{{location}}`
+     *
+     *
+     * - - -
      */
     parent: pulumi.Input<string>;
 }

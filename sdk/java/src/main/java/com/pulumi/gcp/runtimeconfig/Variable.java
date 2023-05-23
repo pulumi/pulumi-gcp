@@ -166,6 +166,8 @@ public class Variable extends com.pulumi.resources.CustomResource {
      * it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
      * is specified, it must be base64 encoded and less than 4096 bytes in length.
      * 
+     * ***
+     * 
      */
     @Export(name="text", type=String.class, parameters={})
     private Output</* @Nullable */ String> text;
@@ -175,6 +177,8 @@ public class Variable extends com.pulumi.resources.CustomResource {
      * Exactly one of `text` or `variable` must be specified. If `text` is specified,
      * it must be a valid UTF-8 string and less than 4096 bytes in length. If `value`
      * is specified, it must be base64 encoded and less than 4096 bytes in length.
+     * 
+     * ***
      * 
      */
     public Output<Optional<String>> text() {

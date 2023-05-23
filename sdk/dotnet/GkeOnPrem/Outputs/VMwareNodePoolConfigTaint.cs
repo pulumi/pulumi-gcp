@@ -16,6 +16,8 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
         /// <summary>
         /// Available taint effects.
         /// Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+        /// 
+        /// &lt;a name="nested_vsphere_config"&gt;&lt;/a&gt;The `vsphere_config` block contains:
         /// </summary>
         public readonly string? Effect;
         /// <summary>

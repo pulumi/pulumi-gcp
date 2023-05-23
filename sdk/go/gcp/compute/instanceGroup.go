@@ -134,6 +134,8 @@ type InstanceGroup struct {
 	// The number of instances in the group.
 	Size pulumi.IntOutput `pulumi:"size"`
 	// The zone that this instance group should be created in.
+	//
+	// ***
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -193,6 +195,8 @@ type instanceGroupState struct {
 	// The number of instances in the group.
 	Size *int `pulumi:"size"`
 	// The zone that this instance group should be created in.
+	//
+	// ***
 	Zone *string `pulumi:"zone"`
 }
 
@@ -224,6 +228,8 @@ type InstanceGroupState struct {
 	// The number of instances in the group.
 	Size pulumi.IntPtrInput
 	// The zone that this instance group should be created in.
+	//
+	// ***
 	Zone pulumi.StringPtrInput
 }
 
@@ -255,6 +261,8 @@ type instanceGroupArgs struct {
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The zone that this instance group should be created in.
+	//
+	// ***
 	Zone *string `pulumi:"zone"`
 }
 
@@ -283,6 +291,8 @@ type InstanceGroupArgs struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The zone that this instance group should be created in.
+	//
+	// ***
 	Zone pulumi.StringPtrInput
 }
 
@@ -424,6 +434,8 @@ func (o InstanceGroupOutput) Size() pulumi.IntOutput {
 }
 
 // The zone that this instance group should be created in.
+//
+// ***
 func (o InstanceGroupOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroup) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

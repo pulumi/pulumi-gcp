@@ -98,12 +98,16 @@ public final class WorkstationState extends com.pulumi.resources.ResourceArgs {
     /**
      * The location where the workstation parent resources reside.
      * 
+     * ***
+     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The location where the workstation parent resources reside.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -365,6 +369,8 @@ public final class WorkstationState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location where the workstation parent resources reside.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -375,6 +381,8 @@ public final class WorkstationState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The location where the workstation parent resources reside.
+         * 
+         * ***
          * 
          * @return builder
          * 

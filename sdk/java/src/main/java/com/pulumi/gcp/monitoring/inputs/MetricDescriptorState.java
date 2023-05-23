@@ -36,12 +36,16 @@ public final class MetricDescriptorState extends com.pulumi.resources.ResourceAr
     /**
      * A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example &#34;Request count&#34;.
      * 
+     * ***
+     * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
      * @return A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example &#34;Request count&#34;.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -301,6 +305,8 @@ public final class MetricDescriptorState extends com.pulumi.resources.ResourceAr
         /**
          * @param displayName A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example &#34;Request count&#34;.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -311,6 +317,8 @@ public final class MetricDescriptorState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param displayName A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example &#34;Request count&#34;.
+         * 
+         * ***
          * 
          * @return builder
          * 

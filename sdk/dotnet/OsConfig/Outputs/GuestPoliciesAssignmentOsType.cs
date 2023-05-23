@@ -15,6 +15,8 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     {
         /// <summary>
         /// Targets VM instances with OS Inventory enabled and having the following OS architecture.
+        /// 
+        /// - - -
         /// </summary>
         public readonly string? OsArchitecture;
         /// <summary>

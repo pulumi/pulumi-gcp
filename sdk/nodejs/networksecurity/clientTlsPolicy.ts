@@ -125,6 +125,9 @@ export class ClientTlsPolicy extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string | undefined>;
     /**
      * Name of the ClientTlsPolicy resource.
+     *
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -215,6 +218,9 @@ export interface ClientTlsPolicyState {
     location?: pulumi.Input<string>;
     /**
      * Name of the ClientTlsPolicy resource.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -261,6 +267,9 @@ export interface ClientTlsPolicyArgs {
     location?: pulumi.Input<string>;
     /**
      * Name of the ClientTlsPolicy resource.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**

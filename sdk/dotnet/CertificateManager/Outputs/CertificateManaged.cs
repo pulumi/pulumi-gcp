@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
         /// Detailed state of the latest authorization attempt for each domain
         /// specified for this Managed Certificate.
         /// Structure is documented below.
+        /// 
+        /// 
+        /// &lt;a name="nested_provisioning_issue"&gt;&lt;/a&gt;The `provisioning_issue` block contains:
         /// </summary>
         public readonly ImmutableArray<Outputs.CertificateManagedAuthorizationAttemptInfo> AuthorizationAttemptInfos;
         /// <summary>

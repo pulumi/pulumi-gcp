@@ -14,6 +14,8 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     /**
      * @return Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn&#39;t significant.
      * 
+     * ***
+     * 
      */
     private @Nullable Integer day;
     /**
@@ -30,6 +32,8 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue() {}
     /**
      * @return Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn&#39;t significant.
+     * 
+     * ***
      * 
      */
     public Optional<Integer> day() {

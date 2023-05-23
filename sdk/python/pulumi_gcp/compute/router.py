@@ -26,6 +26,9 @@ class RouterArgs:
         """
         The set of arguments for constructing a Router resource.
         :param pulumi.Input[str] network: A reference to the network to which this router belongs.
+               
+               
+               - - -
         :param pulumi.Input['RouterBgpArgs'] bgp: BGP information specific to this router.
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource.
@@ -60,6 +63,9 @@ class RouterArgs:
     def network(self) -> pulumi.Input[str]:
         """
         A reference to the network to which this router belongs.
+
+
+        - - -
         """
         return pulumi.get(self, "network")
 
@@ -175,6 +181,9 @@ class _RouterState:
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: A reference to the network to which this router belongs.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the router resides.
@@ -271,6 +280,9 @@ class _RouterState:
     def network(self) -> Optional[pulumi.Input[str]]:
         """
         A reference to the network to which this router belongs.
+
+
+        - - -
         """
         return pulumi.get(self, "network")
 
@@ -411,6 +423,9 @@ class Router(pulumi.CustomResource):
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: A reference to the network to which this router belongs.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the router resides.
@@ -570,6 +585,9 @@ class Router(pulumi.CustomResource):
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: A reference to the network to which this router belongs.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the router resides.
@@ -642,6 +660,9 @@ class Router(pulumi.CustomResource):
     def network(self) -> pulumi.Output[str]:
         """
         A reference to the network to which this router belongs.
+
+
+        - - -
         """
         return pulumi.get(self, "network")
 

@@ -18,12 +18,28 @@ public final class GetAccountArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The Google service account ID. This be one of:
      * 
+     * * The name of the service account within the project (e.g. `my-service`)
+     * 
+     * * The fully-qualified path to a service account resource (e.g.
+     * `projects/my-project/serviceAccounts/...`)
+     * 
+     * * The email address of the service account (e.g.
+     * `my-service@my-project.iam.gserviceaccount.com`)
+     * 
      */
     @Import(name="accountId", required=true)
     private Output<String> accountId;
 
     /**
      * @return The Google service account ID. This be one of:
+     * 
+     * * The name of the service account within the project (e.g. `my-service`)
+     * 
+     * * The fully-qualified path to a service account resource (e.g.
+     * `projects/my-project/serviceAccounts/...`)
+     * 
+     * * The email address of the service account (e.g.
+     * `my-service@my-project.iam.gserviceaccount.com`)
      * 
      */
     public Output<String> accountId() {
@@ -75,6 +91,14 @@ public final class GetAccountArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param accountId The Google service account ID. This be one of:
          * 
+         * * The name of the service account within the project (e.g. `my-service`)
+         * 
+         * * The fully-qualified path to a service account resource (e.g.
+         * `projects/my-project/serviceAccounts/...`)
+         * 
+         * * The email address of the service account (e.g.
+         * `my-service@my-project.iam.gserviceaccount.com`)
+         * 
          * @return builder
          * 
          */
@@ -85,6 +109,14 @@ public final class GetAccountArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param accountId The Google service account ID. This be one of:
+         * 
+         * * The name of the service account within the project (e.g. `my-service`)
+         * 
+         * * The fully-qualified path to a service account resource (e.g.
+         * `projects/my-project/serviceAccounts/...`)
+         * 
+         * * The email address of the service account (e.g.
+         * `my-service@my-project.iam.gserviceaccount.com`)
          * 
          * @return builder
          * 

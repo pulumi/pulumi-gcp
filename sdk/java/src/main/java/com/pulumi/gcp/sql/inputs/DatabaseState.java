@@ -86,6 +86,8 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
      * The name of the Cloud SQL instance. This does not include the project
      * ID.
      * 
+     * ***
+     * 
      */
     @Import(name="instance")
     private @Nullable Output<String> instance;
@@ -93,6 +95,8 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The name of the Cloud SQL instance. This does not include the project
      * ID.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> instance() {
@@ -267,6 +271,8 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
          * @param instance The name of the Cloud SQL instance. This does not include the project
          * ID.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -278,6 +284,8 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param instance The name of the Cloud SQL instance. This does not include the project
          * ID.
+         * 
+         * ***
          * 
          * @return builder
          * 

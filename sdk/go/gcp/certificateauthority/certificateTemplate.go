@@ -45,6 +45,7 @@ type CertificateTemplate struct {
 	// Output only. The time at which this CertificateTemplate was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. A human-readable description of scenarios this template is intended for.
+	//
 	// (Optional)
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -101,6 +102,7 @@ type certificateTemplateState struct {
 	// Output only. The time at which this CertificateTemplate was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Optional. A human-readable description of scenarios this template is intended for.
+	//
 	// (Optional)
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
@@ -126,6 +128,7 @@ type CertificateTemplateState struct {
 	// Output only. The time at which this CertificateTemplate was created.
 	CreateTime pulumi.StringPtrInput
 	// Optional. A human-readable description of scenarios this template is intended for.
+	//
 	// (Optional)
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput
@@ -153,6 +156,7 @@ func (CertificateTemplateState) ElementType() reflect.Type {
 
 type certificateTemplateArgs struct {
 	// Optional. A human-readable description of scenarios this template is intended for.
+	//
 	// (Optional)
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
@@ -175,6 +179,7 @@ type certificateTemplateArgs struct {
 // The set of arguments for constructing a CertificateTemplate resource.
 type CertificateTemplateArgs struct {
 	// Optional. A human-readable description of scenarios this template is intended for.
+	//
 	// (Optional)
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput
@@ -287,6 +292,7 @@ func (o CertificateTemplateOutput) CreateTime() pulumi.StringOutput {
 }
 
 // Optional. A human-readable description of scenarios this template is intended for.
+//
 // (Optional)
 // Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o CertificateTemplateOutput) Description() pulumi.StringPtrOutput {

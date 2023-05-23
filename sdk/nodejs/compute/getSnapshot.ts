@@ -51,7 +51,9 @@ export interface GetSnapshotArgs {
      */
     filter?: string;
     /**
-     * If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match.
+     * If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match. 
+     *
+     * - - -
      */
     mostRecent?: boolean;
     /**
@@ -130,7 +132,9 @@ export interface GetSnapshotOutputArgs {
      */
     filter?: pulumi.Input<string>;
     /**
-     * If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match.
+     * If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match. 
+     *
+     * - - -
      */
     mostRecent?: pulumi.Input<boolean>;
     /**

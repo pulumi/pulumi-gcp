@@ -107,6 +107,9 @@ export class EngineModel extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name specified for the model.
+     *
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -185,6 +188,9 @@ export interface EngineModelState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name specified for the model.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -227,6 +233,9 @@ export interface EngineModelArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The name specified for the model.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**

@@ -89,6 +89,8 @@ namespace Pulumi.Gcp.Organizations
 
         /// <summary>
         /// `true` if the billing account is open, `false` if the billing account is closed.
+        /// 
+        /// &gt; **NOTE:** One of `billing_account` or `display_name` must be specified.
         /// </summary>
         [Input("open")]
         public bool? Open { get; set; }
@@ -115,6 +117,8 @@ namespace Pulumi.Gcp.Organizations
 
         /// <summary>
         /// `true` if the billing account is open, `false` if the billing account is closed.
+        /// 
+        /// &gt; **NOTE:** One of `billing_account` or `display_name` must be specified.
         /// </summary>
         [Input("open")]
         public Input<bool>? Open { get; set; }

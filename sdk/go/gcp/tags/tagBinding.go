@@ -102,6 +102,8 @@ type TagBinding struct {
 	// The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// The TagValue of the TagBinding. Must be of the form tagValues/456.
+	//
+	// ***
 	TagValue pulumi.StringOutput `pulumi:"tagValue"`
 }
 
@@ -145,6 +147,8 @@ type tagBindingState struct {
 	// The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
 	Parent *string `pulumi:"parent"`
 	// The TagValue of the TagBinding. Must be of the form tagValues/456.
+	//
+	// ***
 	TagValue *string `pulumi:"tagValue"`
 }
 
@@ -154,6 +158,8 @@ type TagBindingState struct {
 	// The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
 	Parent pulumi.StringPtrInput
 	// The TagValue of the TagBinding. Must be of the form tagValues/456.
+	//
+	// ***
 	TagValue pulumi.StringPtrInput
 }
 
@@ -165,6 +171,8 @@ type tagBindingArgs struct {
 	// The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
 	Parent string `pulumi:"parent"`
 	// The TagValue of the TagBinding. Must be of the form tagValues/456.
+	//
+	// ***
 	TagValue string `pulumi:"tagValue"`
 }
 
@@ -173,6 +181,8 @@ type TagBindingArgs struct {
 	// The full resource name of the resource the TagValue is bound to. E.g. //cloudresourcemanager.googleapis.com/projects/123
 	Parent pulumi.StringInput
 	// The TagValue of the TagBinding. Must be of the form tagValues/456.
+	//
+	// ***
 	TagValue pulumi.StringInput
 }
 
@@ -274,6 +284,8 @@ func (o TagBindingOutput) Parent() pulumi.StringOutput {
 }
 
 // The TagValue of the TagBinding. Must be of the form tagValues/456.
+//
+// ***
 func (o TagBindingOutput) TagValue() pulumi.StringOutput {
 	return o.ApplyT(func(v *TagBinding) pulumi.StringOutput { return v.TagValue }).(pulumi.StringOutput)
 }

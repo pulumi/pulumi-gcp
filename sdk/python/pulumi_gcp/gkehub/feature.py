@@ -24,6 +24,8 @@ class FeatureArgs:
         """
         The set of arguments for constructing a Feature resource.
         :param pulumi.Input[str] location: The location for the resource
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
         :param pulumi.Input[str] name: The full, unique name of this Feature resource
         :param pulumi.Input[str] project: The project for the resource
@@ -44,6 +46,8 @@ class FeatureArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location for the resource
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -119,6 +123,8 @@ class _FeatureState:
         :param pulumi.Input[str] delete_time: Output only. When the Feature resource was deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
         :param pulumi.Input[str] location: The location for the resource
+               
+               - - -
         :param pulumi.Input[str] name: The full, unique name of this Feature resource
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Sequence[pulumi.Input['FeatureResourceStateArgs']]] resource_states: State of the Feature resource itself.
@@ -188,6 +194,8 @@ class _FeatureState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location for the resource
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -352,6 +360,8 @@ class Feature(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
         :param pulumi.Input[str] location: The location for the resource
+               
+               - - -
         :param pulumi.Input[str] name: The full, unique name of this Feature resource
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[pulumi.InputType['FeatureSpecArgs']] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
@@ -503,6 +513,8 @@ class Feature(pulumi.CustomResource):
         :param pulumi.Input[str] delete_time: Output only. When the Feature resource was deleted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
         :param pulumi.Input[str] location: The location for the resource
+               
+               - - -
         :param pulumi.Input[str] name: The full, unique name of this Feature resource
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureResourceStateArgs']]]] resource_states: State of the Feature resource itself.
@@ -555,6 +567,8 @@ class Feature(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location for the resource
+
+        - - -
         """
         return pulumi.get(self, "location")
 

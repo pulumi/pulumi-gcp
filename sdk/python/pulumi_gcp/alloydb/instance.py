@@ -32,6 +32,9 @@ class InstanceArgs:
         :param pulumi.Input[str] cluster: Identifies the alloydb cluster. Must be in the format
                'projects/{project}/locations/{location}/clusters/{cluster_id}'
         :param pulumi.Input[str] instance_id: The ID of the alloydb instance.
+               
+               
+               - - -
         :param pulumi.Input[str] instance_type: The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `depends_on` meta-data attribute.
                Possible values are: `PRIMARY`, `READ_POOL`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
@@ -84,6 +87,9 @@ class InstanceArgs:
     def instance_id(self) -> pulumi.Input[str]:
         """
         The ID of the alloydb instance.
+
+
+        - - -
         """
         return pulumi.get(self, "instance_id")
 
@@ -237,6 +243,9 @@ class _InstanceState:
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Instance.
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         :param pulumi.Input[str] instance_id: The ID of the alloydb instance.
+               
+               
+               - - -
         :param pulumi.Input[str] instance_type: The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `depends_on` meta-data attribute.
                Possible values are: `PRIMARY`, `READ_POOL`.
         :param pulumi.Input[str] ip_address: The IP address for the Instance. This is the connection endpoint for an end-user application.
@@ -379,6 +388,9 @@ class _InstanceState:
     def instance_id(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the alloydb instance.
+
+
+        - - -
         """
         return pulumi.get(self, "instance_id")
 
@@ -594,6 +606,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Instance.
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         :param pulumi.Input[str] instance_id: The ID of the alloydb instance.
+               
+               
+               - - -
         :param pulumi.Input[str] instance_type: The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `depends_on` meta-data attribute.
                Possible values are: `PRIMARY`, `READ_POOL`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the alloydb instance.
@@ -768,6 +783,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Instance.
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance should serve from, per https://cloud.google.com/compute/docs/regions-zones This can ONLY be specified for ZONAL instances. If present for a REGIONAL instance, an error will be thrown. If this is absent for a ZONAL instance, instance is created in a random zone with available capacity.
         :param pulumi.Input[str] instance_id: The ID of the alloydb instance.
+               
+               
+               - - -
         :param pulumi.Input[str] instance_type: The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `depends_on` meta-data attribute.
                Possible values are: `PRIMARY`, `READ_POOL`.
         :param pulumi.Input[str] ip_address: The IP address for the Instance. This is the connection endpoint for an end-user application.
@@ -869,6 +887,9 @@ class Instance(pulumi.CustomResource):
     def instance_id(self) -> pulumi.Output[str]:
         """
         The ID of the alloydb instance.
+
+
+        - - -
         """
         return pulumi.get(self, "instance_id")
 

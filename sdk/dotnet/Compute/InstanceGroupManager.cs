@@ -249,13 +249,13 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.InstanceGroupManagerStatefulDisk>> StatefulDisks { get; private set; } = null!;
 
         /// <summary>
-        /// ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        /// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         /// </summary>
         [Output("statefulExternalIps")]
         public Output<ImmutableArray<Outputs.InstanceGroupManagerStatefulExternalIp>> StatefulExternalIps { get; private set; } = null!;
 
         /// <summary>
-        /// ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        /// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         /// </summary>
         [Output("statefulInternalIps")]
         public Output<ImmutableArray<Outputs.InstanceGroupManagerStatefulInternalIp>> StatefulInternalIps { get; private set; } = null!;
@@ -284,6 +284,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
+        /// 
+        /// - - -
         /// </summary>
         [Output("updatePolicy")]
         public Output<Outputs.InstanceGroupManagerUpdatePolicy> UpdatePolicy { get; private set; } = null!;
@@ -316,6 +318,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The zone that instances in this group should be created
         /// in.
+        /// 
+        /// - - -
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -462,7 +466,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.InstanceGroupManagerStatefulExternalIpArgs>? _statefulExternalIps;
 
         /// <summary>
-        /// ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        /// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         /// </summary>
         public InputList<Inputs.InstanceGroupManagerStatefulExternalIpArgs> StatefulExternalIps
         {
@@ -474,7 +478,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.InstanceGroupManagerStatefulInternalIpArgs>? _statefulInternalIps;
 
         /// <summary>
-        /// ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        /// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         /// </summary>
         public InputList<Inputs.InstanceGroupManagerStatefulInternalIpArgs> StatefulInternalIps
         {
@@ -506,6 +510,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
+        /// 
+        /// - - -
         /// </summary>
         [Input("updatePolicy")]
         public Input<Inputs.InstanceGroupManagerUpdatePolicyArgs>? UpdatePolicy { get; set; }
@@ -544,6 +550,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The zone that instances in this group should be created
         /// in.
+        /// 
+        /// - - -
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
@@ -673,7 +681,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.InstanceGroupManagerStatefulExternalIpGetArgs>? _statefulExternalIps;
 
         /// <summary>
-        /// ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        /// External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         /// </summary>
         public InputList<Inputs.InstanceGroupManagerStatefulExternalIpGetArgs> StatefulExternalIps
         {
@@ -685,7 +693,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.InstanceGroupManagerStatefulInternalIpGetArgs>? _statefulInternalIps;
 
         /// <summary>
-        /// ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+        /// Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         /// </summary>
         public InputList<Inputs.InstanceGroupManagerStatefulInternalIpGetArgs> StatefulInternalIps
         {
@@ -729,6 +737,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
+        /// 
+        /// - - -
         /// </summary>
         [Input("updatePolicy")]
         public Input<Inputs.InstanceGroupManagerUpdatePolicyGetArgs>? UpdatePolicy { get; set; }
@@ -767,6 +777,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The zone that instances in this group should be created
         /// in.
+        /// 
+        /// - - -
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

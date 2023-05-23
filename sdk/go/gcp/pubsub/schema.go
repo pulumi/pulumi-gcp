@@ -113,6 +113,8 @@ type Schema struct {
 	// that is a valid schema definition of the type specified in type.
 	Definition pulumi.StringPtrOutput `pulumi:"definition"`
 	// The ID to use for the schema, which will become the final component of the schema's resource name.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -157,6 +159,8 @@ type schemaState struct {
 	// that is a valid schema definition of the type specified in type.
 	Definition *string `pulumi:"definition"`
 	// The ID to use for the schema, which will become the final component of the schema's resource name.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -173,6 +177,8 @@ type SchemaState struct {
 	// that is a valid schema definition of the type specified in type.
 	Definition pulumi.StringPtrInput
 	// The ID to use for the schema, which will become the final component of the schema's resource name.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -193,6 +199,8 @@ type schemaArgs struct {
 	// that is a valid schema definition of the type specified in type.
 	Definition *string `pulumi:"definition"`
 	// The ID to use for the schema, which will become the final component of the schema's resource name.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -210,6 +218,8 @@ type SchemaArgs struct {
 	// that is a valid schema definition of the type specified in type.
 	Definition pulumi.StringPtrInput
 	// The ID to use for the schema, which will become the final component of the schema's resource name.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -315,6 +325,8 @@ func (o SchemaOutput) Definition() pulumi.StringPtrOutput {
 }
 
 // The ID to use for the schema, which will become the final component of the schema's resource name.
+//
+// ***
 func (o SchemaOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schema) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

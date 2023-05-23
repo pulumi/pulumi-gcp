@@ -47,6 +47,8 @@ public final class BitbucketServerConfigSecretsArgs extends com.pulumi.resources
      * Immutable. The resource name for the webhook secret&#39;s secret version. Once this field has been set, it cannot be changed.
      * Changing this field will result in deleting/ recreating the resource.
      * 
+     * ***
+     * 
      */
     @Import(name="webhookSecretVersionName", required=true)
     private Output<String> webhookSecretVersionName;
@@ -54,6 +56,8 @@ public final class BitbucketServerConfigSecretsArgs extends com.pulumi.resources
     /**
      * @return Immutable. The resource name for the webhook secret&#39;s secret version. Once this field has been set, it cannot be changed.
      * Changing this field will result in deleting/ recreating the resource.
+     * 
+     * ***
      * 
      */
     public Output<String> webhookSecretVersionName() {
@@ -132,6 +136,8 @@ public final class BitbucketServerConfigSecretsArgs extends com.pulumi.resources
          * @param webhookSecretVersionName Immutable. The resource name for the webhook secret&#39;s secret version. Once this field has been set, it cannot be changed.
          * Changing this field will result in deleting/ recreating the resource.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -143,6 +149,8 @@ public final class BitbucketServerConfigSecretsArgs extends com.pulumi.resources
         /**
          * @param webhookSecretVersionName Immutable. The resource name for the webhook secret&#39;s secret version. Once this field has been set, it cannot be changed.
          * Changing this field will result in deleting/ recreating the resource.
+         * 
+         * ***
          * 
          * @return builder
          * 

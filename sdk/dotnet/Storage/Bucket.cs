@@ -146,7 +146,7 @@ namespace Pulumi.Gcp.Storage
     ///  $ pulumi import gcp:storage/bucket:Bucket image-store tf-test-project/image-store-bucket
     /// ```
     /// 
-    ///  `false` in state. If you've set it to `true` in config, run `terraform apply` to update the value set in state. If you delete this resource before updating the value, objects in the bucket will not be destroyed.
+    ///  `false` in state. If you've set it to `true` in config, run `pulumi up` to update the value set in state. If you delete this resource before updating the value, objects in the bucket will not be destroyed.
     /// </summary>
     [GcpResourceType("gcp:storage/bucket:Bucket")]
     public partial class Bucket : global::Pulumi.CustomResource
@@ -203,6 +203,8 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
+        /// 
+        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -396,6 +398,8 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
+        /// 
+        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -539,6 +543,8 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
+        /// 
+        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

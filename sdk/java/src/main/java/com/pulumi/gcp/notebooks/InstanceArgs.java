@@ -264,12 +264,16 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A reference to the zone where the machine resides.
      * 
+     * ***
+     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return A reference to the zone where the machine resides.
+     * 
+     * ***
      * 
      */
     public Output<String> location() {
@@ -969,6 +973,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location A reference to the zone where the machine resides.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -979,6 +985,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location A reference to the zone where the machine resides.
+         * 
+         * ***
          * 
          * @return builder
          * 

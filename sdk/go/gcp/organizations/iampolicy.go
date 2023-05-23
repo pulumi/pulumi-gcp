@@ -345,6 +345,11 @@ type IAMPolicy struct {
 	// The `organizations.getIAMPolicy` data source that represents
 	// the IAM policy that will be applied to the organization. The policy will be
 	// merged with any existing policy applied to the organization.
+	//
+	// Changing this updates the policy.
+	//
+	// Deleting this removes all policies from the organization, locking out users without
+	// organization-level access.
 	PolicyData pulumi.StringOutput `pulumi:"policyData"`
 }
 
@@ -390,6 +395,11 @@ type iampolicyState struct {
 	// The `organizations.getIAMPolicy` data source that represents
 	// the IAM policy that will be applied to the organization. The policy will be
 	// merged with any existing policy applied to the organization.
+	//
+	// Changing this updates the policy.
+	//
+	// Deleting this removes all policies from the organization, locking out users without
+	// organization-level access.
 	PolicyData *string `pulumi:"policyData"`
 }
 
@@ -401,6 +411,11 @@ type IAMPolicyState struct {
 	// The `organizations.getIAMPolicy` data source that represents
 	// the IAM policy that will be applied to the organization. The policy will be
 	// merged with any existing policy applied to the organization.
+	//
+	// Changing this updates the policy.
+	//
+	// Deleting this removes all policies from the organization, locking out users without
+	// organization-level access.
 	PolicyData pulumi.StringPtrInput
 }
 
@@ -414,6 +429,11 @@ type iampolicyArgs struct {
 	// The `organizations.getIAMPolicy` data source that represents
 	// the IAM policy that will be applied to the organization. The policy will be
 	// merged with any existing policy applied to the organization.
+	//
+	// Changing this updates the policy.
+	//
+	// Deleting this removes all policies from the organization, locking out users without
+	// organization-level access.
 	PolicyData string `pulumi:"policyData"`
 }
 
@@ -424,6 +444,11 @@ type IAMPolicyArgs struct {
 	// The `organizations.getIAMPolicy` data source that represents
 	// the IAM policy that will be applied to the organization. The policy will be
 	// merged with any existing policy applied to the organization.
+	//
+	// Changing this updates the policy.
+	//
+	// Deleting this removes all policies from the organization, locking out users without
+	// organization-level access.
 	PolicyData pulumi.StringInput
 }
 
@@ -527,6 +552,11 @@ func (o IAMPolicyOutput) OrgId() pulumi.StringOutput {
 // The `organizations.getIAMPolicy` data source that represents
 // the IAM policy that will be applied to the organization. The policy will be
 // merged with any existing policy applied to the organization.
+//
+// Changing this updates the policy.
+//
+// Deleting this removes all policies from the organization, locking out users without
+// organization-level access.
 func (o IAMPolicyOutput) PolicyData() pulumi.StringOutput {
 	return o.ApplyT(func(v *IAMPolicy) pulumi.StringOutput { return v.PolicyData }).(pulumi.StringOutput)
 }

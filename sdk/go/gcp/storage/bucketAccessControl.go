@@ -102,6 +102,8 @@ type BucketAccessControl struct {
 	// group-example@googlegroups.com.
 	// To refer to all members of the Google Apps for Business domain
 	// example.com, the entity would be domain-example.com.
+	//
+	// ***
 	Entity pulumi.StringOutput `pulumi:"entity"`
 	// The access permission for the entity.
 	// Possible values are: `OWNER`, `READER`, `WRITER`.
@@ -164,6 +166,8 @@ type bucketAccessControlState struct {
 	// group-example@googlegroups.com.
 	// To refer to all members of the Google Apps for Business domain
 	// example.com, the entity would be domain-example.com.
+	//
+	// ***
 	Entity *string `pulumi:"entity"`
 	// The access permission for the entity.
 	// Possible values are: `OWNER`, `READER`, `WRITER`.
@@ -192,6 +196,8 @@ type BucketAccessControlState struct {
 	// group-example@googlegroups.com.
 	// To refer to all members of the Google Apps for Business domain
 	// example.com, the entity would be domain-example.com.
+	//
+	// ***
 	Entity pulumi.StringPtrInput
 	// The access permission for the entity.
 	// Possible values are: `OWNER`, `READER`, `WRITER`.
@@ -220,6 +226,8 @@ type bucketAccessControlArgs struct {
 	// group-example@googlegroups.com.
 	// To refer to all members of the Google Apps for Business domain
 	// example.com, the entity would be domain-example.com.
+	//
+	// ***
 	Entity string `pulumi:"entity"`
 	// The access permission for the entity.
 	// Possible values are: `OWNER`, `READER`, `WRITER`.
@@ -245,6 +253,8 @@ type BucketAccessControlArgs struct {
 	// group-example@googlegroups.com.
 	// To refer to all members of the Google Apps for Business domain
 	// example.com, the entity would be domain-example.com.
+	//
+	// ***
 	Entity pulumi.StringInput
 	// The access permission for the entity.
 	// Possible values are: `OWNER`, `READER`, `WRITER`.
@@ -368,6 +378,8 @@ func (o BucketAccessControlOutput) Email() pulumi.StringOutput {
 // group-example@googlegroups.com.
 // To refer to all members of the Google Apps for Business domain
 // example.com, the entity would be domain-example.com.
+//
+// ***
 func (o BucketAccessControlOutput) Entity() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketAccessControl) pulumi.StringOutput { return v.Entity }).(pulumi.StringOutput)
 }

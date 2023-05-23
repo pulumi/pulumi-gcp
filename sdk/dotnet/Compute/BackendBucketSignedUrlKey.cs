@@ -68,6 +68,9 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The backend bucket this signed URL key belongs.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("backendBucket")]
         public Output<string> BackendBucket { get; private set; } = null!;
@@ -145,6 +148,9 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The backend bucket this signed URL key belongs.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("backendBucket", required: true)]
         public Input<string> BackendBucket { get; set; } = null!;
@@ -190,6 +196,9 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// The backend bucket this signed URL key belongs.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("backendBucket")]
         public Input<string>? BackendBucket { get; set; }

@@ -448,6 +448,18 @@ class Connection(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A connection allows BigQuery connections to external data sources..
+
+        To get more information about Connection, see:
+
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigqueryconnection/rest/v1/projects.locations.connections/create)
+        * How-to Guides
+            * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
+
+        > **Warning:** All arguments including the following potentially sensitive
+        values will be stored in the raw state as plain text: `cloud_sql.credential.password`.
+        Read more about sensitive data in state.
+
         ## Example Usage
         ### Bigquery Connection Cloud Resource
 
@@ -630,6 +642,18 @@ class Connection(pulumi.CustomResource):
                  args: Optional[ConnectionArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A connection allows BigQuery connections to external data sources..
+
+        To get more information about Connection, see:
+
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigqueryconnection/rest/v1/projects.locations.connections/create)
+        * How-to Guides
+            * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
+
+        > **Warning:** All arguments including the following potentially sensitive
+        values will be stored in the raw state as plain text: `cloud_sql.credential.password`.
+        Read more about sensitive data in state.
+
         ## Example Usage
         ### Bigquery Connection Cloud Resource
 

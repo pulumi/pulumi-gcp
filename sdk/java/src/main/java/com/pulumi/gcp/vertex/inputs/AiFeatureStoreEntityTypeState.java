@@ -66,12 +66,16 @@ public final class AiFeatureStoreEntityTypeState extends com.pulumi.resources.Re
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
      * 
+     * ***
+     * 
      */
     @Import(name="featurestore")
     private @Nullable Output<String> featurestore;
 
     /**
      * @return The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> featurestore() {
@@ -275,6 +279,8 @@ public final class AiFeatureStoreEntityTypeState extends com.pulumi.resources.Re
         /**
          * @param featurestore The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -285,6 +291,8 @@ public final class AiFeatureStoreEntityTypeState extends com.pulumi.resources.Re
 
         /**
          * @param featurestore The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
+         * 
+         * ***
          * 
          * @return builder
          * 

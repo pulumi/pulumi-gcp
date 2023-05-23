@@ -339,12 +339,16 @@ public class InstanceGroup extends com.pulumi.resources.CustomResource {
     /**
      * The zone that this instance group should be created in.
      * 
+     * ***
+     * 
      */
     @Export(name="zone", type=String.class, parameters={})
     private Output<String> zone;
 
     /**
      * @return The zone that this instance group should be created in.
+     * 
+     * ***
      * 
      */
     public Output<String> zone() {

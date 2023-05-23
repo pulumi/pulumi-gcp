@@ -45,12 +45,16 @@ public final class GameServerConfigFleetConfigArgs extends com.pulumi.resources.
     /**
      * The name of the FleetConfig.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The name of the FleetConfig.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -118,6 +122,8 @@ public final class GameServerConfigFleetConfigArgs extends com.pulumi.resources.
         /**
          * @param name The name of the FleetConfig.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -128,6 +134,8 @@ public final class GameServerConfigFleetConfigArgs extends com.pulumi.resources.
 
         /**
          * @param name The name of the FleetConfig.
+         * 
+         * ***
          * 
          * @return builder
          * 

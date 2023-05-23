@@ -49,12 +49,16 @@ public final class ServiceBindingArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * Name of the ServiceBinding resource.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Name of the ServiceBinding resource.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -168,6 +172,8 @@ public final class ServiceBindingArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param name Name of the ServiceBinding resource.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -178,6 +184,8 @@ public final class ServiceBindingArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param name Name of the ServiceBinding resource.
+         * 
+         * ***
          * 
          * @return builder
          * 

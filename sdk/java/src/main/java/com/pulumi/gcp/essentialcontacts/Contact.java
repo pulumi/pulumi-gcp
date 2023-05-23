@@ -137,12 +137,16 @@ public class Contact extends com.pulumi.resources.CustomResource {
     /**
      * The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
      * 
+     * ***
+     * 
      */
     @Export(name="parent", type=String.class, parameters={})
     private Output<String> parent;
 
     /**
      * @return The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
+     * 
+     * ***
      * 
      */
     public Output<String> parent() {

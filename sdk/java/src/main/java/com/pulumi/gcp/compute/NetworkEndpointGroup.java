@@ -213,6 +213,8 @@ public class NetworkEndpointGroup extends com.pulumi.resources.CustomResource {
      * The network to which all network endpoints in the NEG belong.
      * Uses &#34;default&#34; project network if unspecified.
      * 
+     * ***
+     * 
      */
     @Export(name="network", type=String.class, parameters={})
     private Output<String> network;
@@ -220,6 +222,8 @@ public class NetworkEndpointGroup extends com.pulumi.resources.CustomResource {
     /**
      * @return The network to which all network endpoints in the NEG belong.
      * Uses &#34;default&#34; project network if unspecified.
+     * 
+     * ***
      * 
      */
     public Output<String> network() {

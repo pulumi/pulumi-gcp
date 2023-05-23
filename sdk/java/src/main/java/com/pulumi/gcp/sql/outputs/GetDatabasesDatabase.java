@@ -21,6 +21,8 @@ public final class GetDatabasesDatabase {
     /**
      * @return The ID of the project in which the instance belongs.
      * 
+     * &gt; **Note** This datasource performs client-side sorting to provide consistent ordering of the databases.
+     * 
      */
     private String project;
     private String selfLink;
@@ -47,6 +49,8 @@ public final class GetDatabasesDatabase {
     }
     /**
      * @return The ID of the project in which the instance belongs.
+     * 
+     * &gt; **Note** This datasource performs client-side sorting to provide consistent ordering of the databases.
      * 
      */
     public String project() {

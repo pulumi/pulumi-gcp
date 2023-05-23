@@ -36,12 +36,16 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
     /**
      * (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
      * 
+     * Use either `git` or `oci` config option.
+     * 
      */
     @Import(name="oci")
     private @Nullable Output<FeatureMembershipConfigmanagementConfigSyncOciArgs> oci;
 
     /**
      * @return (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+     * 
+     * Use either `git` or `oci` config option.
      * 
      */
     public Optional<Output<FeatureMembershipConfigmanagementConfigSyncOciArgs>> oci() {
@@ -129,6 +133,8 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
         /**
          * @param oci (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
          * 
+         * Use either `git` or `oci` config option.
+         * 
          * @return builder
          * 
          */
@@ -139,6 +145,8 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
 
         /**
          * @param oci (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+         * 
+         * Use either `git` or `oci` config option.
          * 
          * @return builder
          * 

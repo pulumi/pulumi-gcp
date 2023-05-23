@@ -12,12 +12,16 @@ public final class ProjectDefaultConfigSignInAnonymous {
     /**
      * @return Whether anonymous user auth is enabled for the project or not.
      * 
+     * &lt;a name=&#34;nested_hash_config&#34;&gt;&lt;/a&gt;The `hash_config` block contains:
+     * 
      */
     private Boolean enabled;
 
     private ProjectDefaultConfigSignInAnonymous() {}
     /**
      * @return Whether anonymous user auth is enabled for the project or not.
+     * 
+     * &lt;a name=&#34;nested_hash_config&#34;&gt;&lt;/a&gt;The `hash_config` block contains:
      * 
      */
     public Boolean enabled() {

@@ -199,6 +199,8 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
+        /// 
+        /// - - -
         /// </summary>
         [Output("schedule")]
         public Output<Outputs.TransferJobSchedule?> Schedule { get; private set; } = null!;
@@ -282,6 +284,8 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
+        /// 
+        /// - - -
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.TransferJobScheduleArgs>? Schedule { get; set; }
@@ -351,6 +355,8 @@ namespace Pulumi.Gcp.Storage
 
         /// <summary>
         /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
+        /// 
+        /// - - -
         /// </summary>
         [Input("schedule")]
         public Input<Inputs.TransferJobScheduleGetArgs>? Schedule { get; set; }

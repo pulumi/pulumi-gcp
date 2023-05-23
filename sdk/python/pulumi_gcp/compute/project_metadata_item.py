@@ -21,6 +21,8 @@ class ProjectMetadataItemArgs:
         The set of arguments for constructing a ProjectMetadataItem resource.
         :param pulumi.Input[str] key: The metadata key to set.
         :param pulumi.Input[str] value: The value to set for the given metadata key.
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         """
@@ -46,6 +48,8 @@ class ProjectMetadataItemArgs:
     def value(self) -> pulumi.Input[str]:
         """
         The value to set for the given metadata key.
+
+        - - -
         """
         return pulumi.get(self, "value")
 
@@ -79,6 +83,8 @@ class _ProjectMetadataItemState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] value: The value to set for the given metadata key.
+               
+               - - -
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -117,6 +123,8 @@ class _ProjectMetadataItemState:
     def value(self) -> Optional[pulumi.Input[str]]:
         """
         The value to set for the given metadata key.
+
+        - - -
         """
         return pulumi.get(self, "value")
 
@@ -165,6 +173,8 @@ class ProjectMetadataItem(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] value: The value to set for the given metadata key.
+               
+               - - -
         """
         ...
     @overload
@@ -255,6 +265,8 @@ class ProjectMetadataItem(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] value: The value to set for the given metadata key.
+               
+               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -287,6 +299,8 @@ class ProjectMetadataItem(pulumi.CustomResource):
     def value(self) -> pulumi.Output[str]:
         """
         The value to set for the given metadata key.
+
+        - - -
         """
         return pulumi.get(self, "value")
 

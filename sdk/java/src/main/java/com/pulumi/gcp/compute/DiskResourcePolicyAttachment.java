@@ -110,12 +110,16 @@ public class DiskResourcePolicyAttachment extends com.pulumi.resources.CustomRes
     /**
      * The name of the disk in which the resource policies are attached to.
      * 
+     * ***
+     * 
      */
     @Export(name="disk", type=String.class, parameters={})
     private Output<String> disk;
 
     /**
      * @return The name of the disk in which the resource policies are attached to.
+     * 
+     * ***
      * 
      */
     public Output<String> disk() {

@@ -34,6 +34,8 @@ public final class EnvReferencesState extends com.pulumi.resources.ResourceArgs 
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
      * 
+     * ***
+     * 
      */
     @Import(name="envId")
     private @Nullable Output<String> envId;
@@ -41,6 +43,8 @@ public final class EnvReferencesState extends com.pulumi.resources.ResourceArgs 
     /**
      * @return The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> envId() {
@@ -145,6 +149,8 @@ public final class EnvReferencesState extends com.pulumi.resources.ResourceArgs 
          * @param envId The Apigee environment group associated with the Apigee environment,
          * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -156,6 +162,8 @@ public final class EnvReferencesState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param envId The Apigee environment group associated with the Apigee environment,
          * in the format `organizations/{{org_name}}/environments/{{env_name}}`.
+         * 
+         * ***
          * 
          * @return builder
          * 

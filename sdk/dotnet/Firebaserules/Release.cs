@@ -140,6 +140,10 @@ namespace Pulumi.Gcp.Firebaserules
 
         /// <summary>
         /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
+        /// 
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("rulesetName")]
         public Output<string> RulesetName { get; private set; } = null!;
@@ -210,6 +214,10 @@ namespace Pulumi.Gcp.Firebaserules
 
         /// <summary>
         /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
+        /// 
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("rulesetName", required: true)]
         public Input<string> RulesetName { get; set; } = null!;
@@ -248,6 +256,10 @@ namespace Pulumi.Gcp.Firebaserules
 
         /// <summary>
         /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
+        /// 
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("rulesetName")]
         public Input<string>? RulesetName { get; set; }

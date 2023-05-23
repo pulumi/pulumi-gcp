@@ -119,6 +119,8 @@ public final class AuthorizedOrgsDescState extends com.pulumi.resources.Resource
      * alphanumeric characters or `_`.
      * After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -129,6 +131,8 @@ public final class AuthorizedOrgsDescState extends com.pulumi.resources.Resource
      * The `authorized_orgs_desc` component must begin with a letter, followed by
      * alphanumeric characters or `_`.
      * After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -342,6 +346,8 @@ public final class AuthorizedOrgsDescState extends com.pulumi.resources.Resource
          * alphanumeric characters or `_`.
          * After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -356,6 +362,8 @@ public final class AuthorizedOrgsDescState extends com.pulumi.resources.Resource
          * The `authorized_orgs_desc` component must begin with a letter, followed by
          * alphanumeric characters or `_`.
          * After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
+         * 
+         * ***
          * 
          * @return builder
          * 

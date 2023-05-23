@@ -27,6 +27,9 @@ class AppProfileArgs:
         """
         The set of arguments for constructing a AppProfile resource.
         :param pulumi.Input[str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
+               
+               
+               - - -
         :param pulumi.Input[str] description: Long form description of the use case for this app profile.
         :param pulumi.Input[bool] ignore_warnings: If true, ignore safety checks when deleting/updating the app profile.
         :param pulumi.Input[str] instance: The name of the instance to create the app profile within.
@@ -61,6 +64,9 @@ class AppProfileArgs:
     def app_profile_id(self) -> pulumi.Input[str]:
         """
         The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
+
+
+        - - -
         """
         return pulumi.get(self, "app_profile_id")
 
@@ -173,6 +179,9 @@ class _AppProfileState:
         """
         Input properties used for looking up and filtering AppProfile resources.
         :param pulumi.Input[str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
+               
+               
+               - - -
         :param pulumi.Input[str] description: Long form description of the use case for this app profile.
         :param pulumi.Input[bool] ignore_warnings: If true, ignore safety checks when deleting/updating the app profile.
         :param pulumi.Input[str] instance: The name of the instance to create the app profile within.
@@ -211,6 +220,9 @@ class _AppProfileState:
     def app_profile_id(self) -> Optional[pulumi.Input[str]]:
         """
         The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
+
+
+        - - -
         """
         return pulumi.get(self, "app_profile_id")
 
@@ -457,6 +469,9 @@ class AppProfile(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
+               
+               
+               - - -
         :param pulumi.Input[str] description: Long form description of the use case for this app profile.
         :param pulumi.Input[bool] ignore_warnings: If true, ignore safety checks when deleting/updating the app profile.
         :param pulumi.Input[str] instance: The name of the instance to create the app profile within.
@@ -666,6 +681,9 @@ class AppProfile(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
+               
+               
+               - - -
         :param pulumi.Input[str] description: Long form description of the use case for this app profile.
         :param pulumi.Input[bool] ignore_warnings: If true, ignore safety checks when deleting/updating the app profile.
         :param pulumi.Input[str] instance: The name of the instance to create the app profile within.
@@ -700,6 +718,9 @@ class AppProfile(pulumi.CustomResource):
     def app_profile_id(self) -> pulumi.Output[str]:
         """
         The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
+
+
+        - - -
         """
         return pulumi.get(self, "app_profile_id")
 

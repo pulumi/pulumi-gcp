@@ -111,12 +111,16 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the job.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The name of the job.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -410,6 +414,8 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The name of the job.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -420,6 +426,8 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name The name of the job.
+         * 
+         * ***
          * 
          * @return builder
          * 

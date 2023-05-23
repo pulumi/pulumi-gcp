@@ -100,6 +100,10 @@ public class AttachedDisk extends com.pulumi.resources.CustomResource {
      * reference the device for mounting, resizing, and so on, from within
      * the instance.
      * 
+     * If not specified, the server chooses a default device name to apply
+     * to this disk, in the form persistent-disks-x, where x is a number
+     * assigned by Google Compute Engine.
+     * 
      */
     @Export(name="deviceName", type=String.class, parameters={})
     private Output<String> deviceName;
@@ -111,6 +115,10 @@ public class AttachedDisk extends com.pulumi.resources.CustomResource {
      * reference the device for mounting, resizing, and so on, from within
      * the instance.
      * 
+     * If not specified, the server chooses a default device name to apply
+     * to this disk, in the form persistent-disks-x, where x is a number
+     * assigned by Google Compute Engine.
+     * 
      */
     public Output<String> deviceName() {
         return this.deviceName;
@@ -118,12 +126,16 @@ public class AttachedDisk extends com.pulumi.resources.CustomResource {
     /**
      * `name` or `self_link` of the disk that will be attached.
      * 
+     * ***
+     * 
      */
     @Export(name="disk", type=String.class, parameters={})
     private Output<String> disk;
 
     /**
      * @return `name` or `self_link` of the disk that will be attached.
+     * 
+     * ***
      * 
      */
     public Output<String> disk() {
@@ -154,6 +166,10 @@ public class AttachedDisk extends com.pulumi.resources.CustomResource {
      * READ_ONLY. If not specified, the default is to attach the disk in
      * READ_WRITE mode.
      * 
+     * Possible values:
+     * &#34;READ_ONLY&#34;
+     * &#34;READ_WRITE&#34;
+     * 
      */
     @Export(name="mode", type=String.class, parameters={})
     private Output</* @Nullable */ String> mode;
@@ -162,6 +178,10 @@ public class AttachedDisk extends com.pulumi.resources.CustomResource {
      * @return The mode in which to attach this disk, either READ_WRITE or
      * READ_ONLY. If not specified, the default is to attach the disk in
      * READ_WRITE mode.
+     * 
+     * Possible values:
+     * &#34;READ_ONLY&#34;
+     * &#34;READ_WRITE&#34;
      * 
      */
     public Output<Optional<String>> mode() {

@@ -25,6 +25,9 @@ class AiFeatureStoreEntityTypeArgs:
         """
         The set of arguments for constructing a AiFeatureStoreEntityType resource.
         :param pulumi.Input[str] featurestore: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
+               
+               
+               - - -
         :param pulumi.Input[str] description: Optional. Description of the EntityType.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this EntityType.
         :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs'] monitoring_config: The default monitoring configuration for all Features under this EntityType.
@@ -52,6 +55,9 @@ class AiFeatureStoreEntityTypeArgs:
     def featurestore(self) -> pulumi.Input[str]:
         """
         The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
+
+
+        - - -
         """
         return pulumi.get(self, "featurestore")
 
@@ -143,6 +149,9 @@ class _AiFeatureStoreEntityTypeState:
         :param pulumi.Input[str] description: Optional. Description of the EntityType.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[str] featurestore: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
+               
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this EntityType.
         :param pulumi.Input['AiFeatureStoreEntityTypeMonitoringConfigArgs'] monitoring_config: The default monitoring configuration for all Features under this EntityType.
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
@@ -216,6 +225,9 @@ class _AiFeatureStoreEntityTypeState:
     def featurestore(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
+
+
+        - - -
         """
         return pulumi.get(self, "featurestore")
 
@@ -414,6 +426,9 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional. Description of the EntityType.
         :param pulumi.Input[str] featurestore: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
+               
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this EntityType.
         :param pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArgs']] monitoring_config: The default monitoring configuration for all Features under this EntityType.
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
@@ -600,6 +615,9 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional. Description of the EntityType.
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[str] featurestore: The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
+               
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this EntityType.
         :param pulumi.Input[pulumi.InputType['AiFeatureStoreEntityTypeMonitoringConfigArgs']] monitoring_config: The default monitoring configuration for all Features under this EntityType.
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
@@ -656,6 +674,9 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
     def featurestore(self) -> pulumi.Output[str]:
         """
         The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
+
+
+        - - -
         """
         return pulumi.get(self, "featurestore")
 

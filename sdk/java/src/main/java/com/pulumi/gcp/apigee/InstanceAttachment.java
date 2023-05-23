@@ -168,6 +168,8 @@ public class InstanceAttachment extends com.pulumi.resources.CustomResource {
      * The Apigee instance associated with the Apigee environment,
      * in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
      * 
+     * ***
+     * 
      */
     @Export(name="instanceId", type=String.class, parameters={})
     private Output<String> instanceId;
@@ -175,6 +177,8 @@ public class InstanceAttachment extends com.pulumi.resources.CustomResource {
     /**
      * @return The Apigee instance associated with the Apigee environment,
      * in the format `organisations/{{org_name}}/instances/{{instance_name}}`.
+     * 
+     * ***
      * 
      */
     public Output<String> instanceId() {

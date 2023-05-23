@@ -237,6 +237,8 @@ type RouterNat struct {
 	// Region where the router and NAT reside.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The name of the Cloud Router in which this NAT will be configured.
+	//
+	// ***
 	Router pulumi.StringOutput `pulumi:"router"`
 	// A list of rules associated with this NAT.
 	// Structure is documented below.
@@ -348,6 +350,8 @@ type routerNatState struct {
 	// Region where the router and NAT reside.
 	Region *string `pulumi:"region"`
 	// The name of the Cloud Router in which this NAT will be configured.
+	//
+	// ***
 	Router *string `pulumi:"router"`
 	// A list of rules associated with this NAT.
 	// Structure is documented below.
@@ -422,6 +426,8 @@ type RouterNatState struct {
 	// Region where the router and NAT reside.
 	Region pulumi.StringPtrInput
 	// The name of the Cloud Router in which this NAT will be configured.
+	//
+	// ***
 	Router pulumi.StringPtrInput
 	// A list of rules associated with this NAT.
 	// Structure is documented below.
@@ -500,6 +506,8 @@ type routerNatArgs struct {
 	// Region where the router and NAT reside.
 	Region *string `pulumi:"region"`
 	// The name of the Cloud Router in which this NAT will be configured.
+	//
+	// ***
 	Router string `pulumi:"router"`
 	// A list of rules associated with this NAT.
 	// Structure is documented below.
@@ -575,6 +583,8 @@ type RouterNatArgs struct {
 	// Region where the router and NAT reside.
 	Region pulumi.StringPtrInput
 	// The name of the Cloud Router in which this NAT will be configured.
+	//
+	// ***
 	Router pulumi.StringInput
 	// A list of rules associated with this NAT.
 	// Structure is documented below.
@@ -771,6 +781,8 @@ func (o RouterNatOutput) Region() pulumi.StringOutput {
 }
 
 // The name of the Cloud Router in which this NAT will be configured.
+//
+// ***
 func (o RouterNatOutput) Router() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterNat) pulumi.StringOutput { return v.Router }).(pulumi.StringOutput)
 }

@@ -408,6 +408,8 @@ public class Function extends com.pulumi.resources.CustomResource {
      * A user-defined name of the function. Function names must
      * be unique globally and match pattern `projects/*{@literal /}locations/*{@literal /}functions/*`.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
@@ -415,6 +417,8 @@ public class Function extends com.pulumi.resources.CustomResource {
     /**
      * @return A user-defined name of the function. Function names must
      * be unique globally and match pattern `projects/*{@literal /}locations/*{@literal /}functions/*`.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {

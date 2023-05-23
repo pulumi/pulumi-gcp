@@ -14,6 +14,8 @@ public final class GetTriggerBuildArtifactObject {
     /**
      * @return The Cloud Build location for the trigger.
      * 
+     * ***
+     * 
      */
     private String location;
     private List<String> paths;
@@ -22,6 +24,8 @@ public final class GetTriggerBuildArtifactObject {
     private GetTriggerBuildArtifactObject() {}
     /**
      * @return The Cloud Build location for the trigger.
+     * 
+     * ***
      * 
      */
     public String location() {

@@ -11,6 +11,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A set of reusable connection configurations to be used as a source or destination for a stream.
+//
+// To get more information about ConnectionProfile, see:
+//
+// * [API documentation](https://cloud.google.com/datastream/docs/reference/rest/v1/projects.locations.connectionProfiles)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/datastream/docs/create-connection-profiles)
+//
+// > **Warning:** All arguments including the following potentially sensitive
+// values will be stored in the raw state as plain text: `oracle_profile.password`, `mysql_profile.password`, `mysql_profile.ssl_config.client_key`, `mysql_profile.ssl_config.client_certificate`, `mysql_profile.ssl_config.ca_certificate`, `postgresql_profile.password`, `forward_ssh_connectivity.password`, `forward_ssh_connectivity.private_key`.
+// Read more about sensitive data in state.
+//
 // ## Example Usage
 // ### Datastream Connection Profile Basic
 //
@@ -259,6 +271,8 @@ type ConnectionProfile struct {
 	// Labels.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the location this connection profile is located in.
+	//
+	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// MySQL database profile.
 	// Structure is documented below.
@@ -332,6 +346,8 @@ type connectionProfileState struct {
 	// Labels.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location this connection profile is located in.
+	//
+	// ***
 	Location *string `pulumi:"location"`
 	// MySQL database profile.
 	// Structure is documented below.
@@ -368,6 +384,8 @@ type ConnectionProfileState struct {
 	// Labels.
 	Labels pulumi.StringMapInput
 	// The name of the location this connection profile is located in.
+	//
+	// ***
 	Location pulumi.StringPtrInput
 	// MySQL database profile.
 	// Structure is documented below.
@@ -408,6 +426,8 @@ type connectionProfileArgs struct {
 	// Labels.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the location this connection profile is located in.
+	//
+	// ***
 	Location string `pulumi:"location"`
 	// MySQL database profile.
 	// Structure is documented below.
@@ -443,6 +463,8 @@ type ConnectionProfileArgs struct {
 	// Labels.
 	Labels pulumi.StringMapInput
 	// The name of the location this connection profile is located in.
+	//
+	// ***
 	Location pulumi.StringInput
 	// MySQL database profile.
 	// Structure is documented below.
@@ -583,6 +605,8 @@ func (o ConnectionProfileOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The name of the location this connection profile is located in.
+//
+// ***
 func (o ConnectionProfileOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

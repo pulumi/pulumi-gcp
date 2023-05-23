@@ -91,6 +91,8 @@ type ProjectLocation struct {
 
 	// The ID of the default GCP resource location for the Project. The location must be one of the available GCP
 	// resource locations.
+	//
+	// ***
 	LocationId pulumi.StringOutput `pulumi:"locationId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -131,6 +133,8 @@ func GetProjectLocation(ctx *pulumi.Context,
 type projectLocationState struct {
 	// The ID of the default GCP resource location for the Project. The location must be one of the available GCP
 	// resource locations.
+	//
+	// ***
 	LocationId *string `pulumi:"locationId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -140,6 +144,8 @@ type projectLocationState struct {
 type ProjectLocationState struct {
 	// The ID of the default GCP resource location for the Project. The location must be one of the available GCP
 	// resource locations.
+	//
+	// ***
 	LocationId pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -153,6 +159,8 @@ func (ProjectLocationState) ElementType() reflect.Type {
 type projectLocationArgs struct {
 	// The ID of the default GCP resource location for the Project. The location must be one of the available GCP
 	// resource locations.
+	//
+	// ***
 	LocationId string `pulumi:"locationId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -163,6 +171,8 @@ type projectLocationArgs struct {
 type ProjectLocationArgs struct {
 	// The ID of the default GCP resource location for the Project. The location must be one of the available GCP
 	// resource locations.
+	//
+	// ***
 	LocationId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -258,6 +268,8 @@ func (o ProjectLocationOutput) ToProjectLocationOutputWithContext(ctx context.Co
 
 // The ID of the default GCP resource location for the Project. The location must be one of the available GCP
 // resource locations.
+//
+// ***
 func (o ProjectLocationOutput) LocationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectLocation) pulumi.StringOutput { return v.LocationId }).(pulumi.StringOutput)
 }

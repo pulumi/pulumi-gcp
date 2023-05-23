@@ -561,6 +561,8 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * Name or self link of a machine
      * image to create the instance based on.
      * 
+     * ***
+     * 
      */
     @Export(name="sourceMachineImage", type=String.class, parameters={})
     private Output<String> sourceMachineImage;
@@ -568,6 +570,8 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
     /**
      * @return Name or self link of a machine
      * image to create the instance based on.
+     * 
+     * ***
      * 
      */
     public Output<String> sourceMachineImage() {
@@ -605,6 +609,12 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      * The zone that the machine should be created in. If not
      * set, the provider zone is used.
      * 
+     * In addition to these, most* arguments from `gcp.compute.Instance` are supported
+     * as a way to override the properties in the machine image. All exported attributes
+     * from `gcp.compute.Instance` are likewise exported here.
+     * 
+     * &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the &#34;boot_disk&#34;, &#34;attached_disk&#34;, and &#34;scratch_disk&#34; fields.
+     * 
      */
     @Export(name="zone", type=String.class, parameters={})
     private Output<String> zone;
@@ -612,6 +622,12 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
     /**
      * @return The zone that the machine should be created in. If not
      * set, the provider zone is used.
+     * 
+     * In addition to these, most* arguments from `gcp.compute.Instance` are supported
+     * as a way to override the properties in the machine image. All exported attributes
+     * from `gcp.compute.Instance` are likewise exported here.
+     * 
+     * &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the &#34;boot_disk&#34;, &#34;attached_disk&#34;, and &#34;scratch_disk&#34; fields.
      * 
      */
     public Output<String> zone() {

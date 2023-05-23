@@ -186,12 +186,16 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
     /**
      * Name of the Google Cloud Threat Intelligence list.
      * 
+     * The `layer4_configs` block supports:
+     * 
      */
     @Import(name="srcThreatIntelligences")
     private @Nullable Output<List<String>> srcThreatIntelligences;
 
     /**
      * @return Name of the Google Cloud Threat Intelligence list.
+     * 
+     * The `layer4_configs` block supports:
      * 
      */
     public Optional<Output<List<String>>> srcThreatIntelligences() {
@@ -577,6 +581,8 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         /**
          * @param srcThreatIntelligences Name of the Google Cloud Threat Intelligence list.
          * 
+         * The `layer4_configs` block supports:
+         * 
          * @return builder
          * 
          */
@@ -588,6 +594,8 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         /**
          * @param srcThreatIntelligences Name of the Google Cloud Threat Intelligence list.
          * 
+         * The `layer4_configs` block supports:
+         * 
          * @return builder
          * 
          */
@@ -597,6 +605,8 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
 
         /**
          * @param srcThreatIntelligences Name of the Google Cloud Threat Intelligence list.
+         * 
+         * The `layer4_configs` block supports:
          * 
          * @return builder
          * 

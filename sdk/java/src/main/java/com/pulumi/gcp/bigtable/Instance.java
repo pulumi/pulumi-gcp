@@ -143,6 +143,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
      * to default to the backend value. See structure below.
      * 
+     * ***
+     * 
      */
     @Export(name="clusters", type=List.class, parameters={InstanceCluster.class})
     private Output<List<InstanceCluster>> clusters;
@@ -151,6 +153,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * @return A block of cluster configuration options. This can be specified at least once, and up
      * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
      * to default to the backend value. See structure below.
+     * 
+     * ***
      * 
      */
     public Output<List<InstanceCluster>> clusters() {
@@ -215,12 +219,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
      * 
+     * ***
+     * 
      */
     @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
      * @return A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+     * 
+     * ***
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

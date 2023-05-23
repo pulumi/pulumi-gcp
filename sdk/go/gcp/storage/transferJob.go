@@ -168,6 +168,8 @@ type TransferJob struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
+	//
+	// ***
 	Schedule TransferJobSchedulePtrOutput `pulumi:"schedule"`
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status pulumi.StringPtrOutput `pulumi:"status"`
@@ -226,6 +228,8 @@ type transferJobState struct {
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
+	//
+	// ***
 	Schedule *TransferJobSchedule `pulumi:"schedule"`
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status *string `pulumi:"status"`
@@ -250,6 +254,8 @@ type TransferJobState struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
+	//
+	// ***
 	Schedule TransferJobSchedulePtrInput
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status pulumi.StringPtrInput
@@ -270,6 +276,8 @@ type transferJobArgs struct {
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
+	//
+	// ***
 	Schedule *TransferJobSchedule `pulumi:"schedule"`
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status *string `pulumi:"status"`
@@ -287,6 +295,8 @@ type TransferJobArgs struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
+	//
+	// ***
 	Schedule TransferJobSchedulePtrInput
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status pulumi.StringPtrInput
@@ -418,6 +428,8 @@ func (o TransferJobOutput) Project() pulumi.StringOutput {
 }
 
 // Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
+//
+// ***
 func (o TransferJobOutput) Schedule() TransferJobSchedulePtrOutput {
 	return o.ApplyT(func(v *TransferJob) TransferJobSchedulePtrOutput { return v.Schedule }).(TransferJobSchedulePtrOutput)
 }

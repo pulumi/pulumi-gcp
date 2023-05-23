@@ -124,12 +124,16 @@ public class Repository extends com.pulumi.resources.CustomResource {
     /**
      * The repository&#39;s name.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
      * @return The repository&#39;s name.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {

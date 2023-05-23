@@ -65,6 +65,8 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+        /// 
+        /// &lt;a name="nested_field_params"&gt;&lt;/a&gt;The `request_header`, `request_cookie`, `request_uri` and `request_query_param` blocks support:
         /// </summary>
         public InputList<string> TargetRuleIds
         {

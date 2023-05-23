@@ -109,12 +109,16 @@ public final class RouterState extends com.pulumi.resources.ResourceArgs {
     /**
      * A reference to the network to which this router belongs.
      * 
+     * ***
+     * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
      * @return A reference to the network to which this router belongs.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> network() {
@@ -322,6 +326,8 @@ public final class RouterState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param network A reference to the network to which this router belongs.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -332,6 +338,8 @@ public final class RouterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param network A reference to the network to which this router belongs.
+         * 
+         * ***
          * 
          * @return builder
          * 

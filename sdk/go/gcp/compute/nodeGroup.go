@@ -205,6 +205,8 @@ type NodeGroup struct {
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL of the node template to which this node group belongs.
+	//
+	// ***
 	NodeTemplate pulumi.StringOutput `pulumi:"nodeTemplate"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -270,6 +272,8 @@ type nodeGroupState struct {
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// The URL of the node template to which this node group belongs.
+	//
+	// ***
 	NodeTemplate *string `pulumi:"nodeTemplate"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -304,6 +308,8 @@ type NodeGroupState struct {
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// The URL of the node template to which this node group belongs.
+	//
+	// ***
 	NodeTemplate pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -340,6 +346,8 @@ type nodeGroupArgs struct {
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// The URL of the node template to which this node group belongs.
+	//
+	// ***
 	NodeTemplate string `pulumi:"nodeTemplate"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -371,6 +379,8 @@ type NodeGroupArgs struct {
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// The URL of the node template to which this node group belongs.
+	//
+	// ***
 	NodeTemplate pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -510,6 +520,8 @@ func (o NodeGroupOutput) Name() pulumi.StringOutput {
 }
 
 // The URL of the node template to which this node group belongs.
+//
+// ***
 func (o NodeGroupOutput) NodeTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.NodeTemplate }).(pulumi.StringOutput)
 }

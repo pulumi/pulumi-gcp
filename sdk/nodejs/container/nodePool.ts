@@ -86,6 +86,8 @@ export class NodePool extends pulumi.CustomResource {
     public readonly autoscaling!: pulumi.Output<outputs.container.NodePoolAutoscaling | undefined>;
     /**
      * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+     *
+     * - - -
      */
     public readonly cluster!: pulumi.Output<string>;
     /**
@@ -104,6 +106,8 @@ export class NodePool extends pulumi.CustomResource {
     public /*out*/ readonly instanceGroupUrls!: pulumi.Output<string[]>;
     /**
      * The location (region or zone) of the cluster.
+     *
+     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -154,12 +158,18 @@ export class NodePool extends pulumi.CustomResource {
      * be in the region of their regional cluster or in the same region as their
      * cluster's zone for zonal clusters. If unspecified, the cluster-level
      * `nodeLocations` will be used.
+     *
+     * > Note: `nodeLocations` will not revert to the cluster's default set of zones
+     * upon being unset. You must manually reconcile the list of zones with your
+     * cluster.
      */
     public readonly nodeLocations!: pulumi.Output<string[]>;
     public /*out*/ readonly operation!: pulumi.Output<string>;
     /**
      * Specifies a custom placement policy for the
      * nodes.
+     *
+     * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
      */
     public readonly placementPolicy!: pulumi.Output<outputs.container.NodePoolPlacementPolicy | undefined>;
     /**
@@ -255,6 +265,8 @@ export interface NodePoolState {
     autoscaling?: pulumi.Input<inputs.container.NodePoolAutoscaling>;
     /**
      * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+     *
+     * - - -
      */
     cluster?: pulumi.Input<string>;
     /**
@@ -273,6 +285,8 @@ export interface NodePoolState {
     instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The location (region or zone) of the cluster.
+     *
+     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -323,12 +337,18 @@ export interface NodePoolState {
      * be in the region of their regional cluster or in the same region as their
      * cluster's zone for zonal clusters. If unspecified, the cluster-level
      * `nodeLocations` will be used.
+     *
+     * > Note: `nodeLocations` will not revert to the cluster's default set of zones
+     * upon being unset. You must manually reconcile the list of zones with your
+     * cluster.
      */
     nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
     operation?: pulumi.Input<string>;
     /**
      * Specifies a custom placement policy for the
      * nodes.
+     *
+     * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
      */
     placementPolicy?: pulumi.Input<inputs.container.NodePoolPlacementPolicy>;
     /**
@@ -363,6 +383,8 @@ export interface NodePoolArgs {
     autoscaling?: pulumi.Input<inputs.container.NodePoolAutoscaling>;
     /**
      * The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+     *
+     * - - -
      */
     cluster: pulumi.Input<string>;
     /**
@@ -377,6 +399,8 @@ export interface NodePoolArgs {
     initialNodeCount?: pulumi.Input<number>;
     /**
      * The location (region or zone) of the cluster.
+     *
+     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -423,11 +447,17 @@ export interface NodePoolArgs {
      * be in the region of their regional cluster or in the same region as their
      * cluster's zone for zonal clusters. If unspecified, the cluster-level
      * `nodeLocations` will be used.
+     *
+     * > Note: `nodeLocations` will not revert to the cluster's default set of zones
+     * upon being unset. You must manually reconcile the list of zones with your
+     * cluster.
      */
     nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Specifies a custom placement policy for the
      * nodes.
+     *
+     * <a name="nestedAutoscaling"></a>The `autoscaling` block supports (either total or per zone limits are required):
      */
     placementPolicy?: pulumi.Input<inputs.container.NodePoolPlacementPolicy>;
     /**

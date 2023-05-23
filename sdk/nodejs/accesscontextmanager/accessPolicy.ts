@@ -108,6 +108,9 @@ export class AccessPolicy extends pulumi.CustomResource {
     public readonly scopes!: pulumi.Output<string | undefined>;
     /**
      * Human readable title. Does not affect behavior.
+     *
+     *
+     * - - -
      */
     public readonly title!: pulumi.Output<string>;
     /**
@@ -178,6 +181,9 @@ export interface AccessPolicyState {
     scopes?: pulumi.Input<string>;
     /**
      * Human readable title. Does not affect behavior.
+     *
+     *
+     * - - -
      */
     title?: pulumi.Input<string>;
     /**
@@ -202,6 +208,9 @@ export interface AccessPolicyArgs {
     scopes?: pulumi.Input<string>;
     /**
      * Human readable title. Does not affect behavior.
+     *
+     *
+     * - - -
      */
     title: pulumi.Input<string>;
 }

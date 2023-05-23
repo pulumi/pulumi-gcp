@@ -128,12 +128,16 @@ public final class TransferJobState extends com.pulumi.resources.ResourceArgs {
     /**
      * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
      * 
+     * ***
+     * 
      */
     @Import(name="schedule")
     private @Nullable Output<TransferJobScheduleArgs> schedule;
 
     /**
      * @return Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
+     * 
+     * ***
      * 
      */
     public Optional<Output<TransferJobScheduleArgs>> schedule() {
@@ -355,6 +359,8 @@ public final class TransferJobState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param schedule Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -365,6 +371,8 @@ public final class TransferJobState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param schedule Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
+         * 
+         * ***
          * 
          * @return builder
          * 

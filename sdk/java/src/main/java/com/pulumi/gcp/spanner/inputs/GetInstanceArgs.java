@@ -32,12 +32,16 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The name of the spanner instance.
      * 
+     * ***
+     * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
      * @return The name of the spanner instance.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {
@@ -109,6 +113,8 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param name The name of the spanner instance.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -119,6 +125,8 @@ public final class GetInstanceArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param name The name of the spanner instance.
+         * 
+         * ***
          * 
          * @return builder
          * 

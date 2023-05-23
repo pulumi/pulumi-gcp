@@ -55,12 +55,16 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
     /**
      * The user-assigned display name of the AndroidApp.
      * 
+     * ***
+     * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
      * @return The user-assigned display name of the AndroidApp.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -248,6 +252,8 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param displayName The user-assigned display name of the AndroidApp.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -258,6 +264,8 @@ public final class AndroidAppState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param displayName The user-assigned display name of the AndroidApp.
+         * 
+         * ***
          * 
          * @return builder
          * 

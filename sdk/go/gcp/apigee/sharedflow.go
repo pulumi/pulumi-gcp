@@ -38,6 +38,8 @@ type Sharedflow struct {
 	pulumi.CustomResourceState
 
 	// Path to the config zip bundle.
+	//
+	// ***
 	ConfigBundle pulumi.StringOutput `pulumi:"configBundle"`
 	// A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
 	// will trigger an update.
@@ -93,6 +95,8 @@ func GetSharedflow(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Sharedflow resources.
 type sharedflowState struct {
 	// Path to the config zip bundle.
+	//
+	// ***
 	ConfigBundle *string `pulumi:"configBundle"`
 	// A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
 	// will trigger an update.
@@ -114,6 +118,8 @@ type sharedflowState struct {
 
 type SharedflowState struct {
 	// Path to the config zip bundle.
+	//
+	// ***
 	ConfigBundle pulumi.StringPtrInput
 	// A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
 	// will trigger an update.
@@ -139,6 +145,8 @@ func (SharedflowState) ElementType() reflect.Type {
 
 type sharedflowArgs struct {
 	// Path to the config zip bundle.
+	//
+	// ***
 	ConfigBundle string `pulumi:"configBundle"`
 	// A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
 	// will trigger an update.
@@ -152,6 +160,8 @@ type sharedflowArgs struct {
 // The set of arguments for constructing a Sharedflow resource.
 type SharedflowArgs struct {
 	// Path to the config zip bundle.
+	//
+	// ***
 	ConfigBundle pulumi.StringInput
 	// A hash of local config bundle in string, user needs to use a Terraform Hash function of their choice. A change in hash
 	// will trigger an update.
@@ -250,6 +260,8 @@ func (o SharedflowOutput) ToSharedflowOutputWithContext(ctx context.Context) Sha
 }
 
 // Path to the config zip bundle.
+//
+// ***
 func (o SharedflowOutput) ConfigBundle() pulumi.StringOutput {
 	return o.ApplyT(func(v *Sharedflow) pulumi.StringOutput { return v.ConfigBundle }).(pulumi.StringOutput)
 }

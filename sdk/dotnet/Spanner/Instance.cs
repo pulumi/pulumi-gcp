@@ -123,6 +123,9 @@ namespace Pulumi.Gcp.Spanner
         /// <summary>
         /// The descriptive name for this instance as it appears in UIs. Must be
         /// unique per project and between 4 and 30 characters in length.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -145,6 +148,8 @@ namespace Pulumi.Gcp.Spanner
         /// A unique identifier for the instance, which cannot be changed after
         /// the instance is created. The name must be between 6 and 30 characters
         /// in length.
+        /// 
+        /// If not provided, a random string starting with `tf-` will be selected.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -236,6 +241,9 @@ namespace Pulumi.Gcp.Spanner
         /// <summary>
         /// The descriptive name for this instance as it appears in UIs. Must be
         /// unique per project and between 4 and 30 characters in length.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -264,6 +272,8 @@ namespace Pulumi.Gcp.Spanner
         /// A unique identifier for the instance, which cannot be changed after
         /// the instance is created. The name must be between 6 and 30 characters
         /// in length.
+        /// 
+        /// If not provided, a random string starting with `tf-` will be selected.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -311,6 +321,9 @@ namespace Pulumi.Gcp.Spanner
         /// <summary>
         /// The descriptive name for this instance as it appears in UIs. Must be
         /// unique per project and between 4 and 30 characters in length.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -339,6 +352,8 @@ namespace Pulumi.Gcp.Spanner
         /// A unique identifier for the instance, which cannot be changed after
         /// the instance is created. The name must be between 6 and 30 characters
         /// in length.
+        /// 
+        /// If not provided, a random string starting with `tf-` will be selected.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -34,12 +34,16 @@ public final class DefaultSupportedIdpConfigArgs extends com.pulumi.resources.Re
     /**
      * OAuth client secret
      * 
+     * ***
+     * 
      */
     @Import(name="clientSecret", required=true)
     private Output<String> clientSecret;
 
     /**
      * @return OAuth client secret
+     * 
+     * ***
      * 
      */
     public Output<String> clientSecret() {
@@ -165,6 +169,8 @@ public final class DefaultSupportedIdpConfigArgs extends com.pulumi.resources.Re
         /**
          * @param clientSecret OAuth client secret
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -175,6 +181,8 @@ public final class DefaultSupportedIdpConfigArgs extends com.pulumi.resources.Re
 
         /**
          * @param clientSecret OAuth client secret
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -35,6 +35,9 @@ class BucketAccessControlArgs:
                group-example@googlegroups.com.
                To refer to all members of the Google Apps for Business domain
                example.com, the entity would be domain-example.com.
+               
+               
+               - - -
         :param pulumi.Input[str] role: The access permission for the entity.
                Possible values are: `OWNER`, `READER`, `WRITER`.
         """
@@ -74,6 +77,9 @@ class BucketAccessControlArgs:
         group-example@googlegroups.com.
         To refer to all members of the Google Apps for Business domain
         example.com, the entity would be domain-example.com.
+
+
+        - - -
         """
         return pulumi.get(self, "entity")
 
@@ -123,6 +129,9 @@ class _BucketAccessControlState:
                group-example@googlegroups.com.
                To refer to all members of the Google Apps for Business domain
                example.com, the entity would be domain-example.com.
+               
+               
+               - - -
         :param pulumi.Input[str] role: The access permission for the entity.
                Possible values are: `OWNER`, `READER`, `WRITER`.
         """
@@ -192,6 +201,9 @@ class _BucketAccessControlState:
         group-example@googlegroups.com.
         To refer to all members of the Google Apps for Business domain
         example.com, the entity would be domain-example.com.
+
+
+        - - -
         """
         return pulumi.get(self, "entity")
 
@@ -286,6 +298,9 @@ class BucketAccessControl(pulumi.CustomResource):
                group-example@googlegroups.com.
                To refer to all members of the Google Apps for Business domain
                example.com, the entity would be domain-example.com.
+               
+               
+               - - -
         :param pulumi.Input[str] role: The access permission for the entity.
                Possible values are: `OWNER`, `READER`, `WRITER`.
         """
@@ -417,6 +432,9 @@ class BucketAccessControl(pulumi.CustomResource):
                group-example@googlegroups.com.
                To refer to all members of the Google Apps for Business domain
                example.com, the entity would be domain-example.com.
+               
+               
+               - - -
         :param pulumi.Input[str] role: The access permission for the entity.
                Possible values are: `OWNER`, `READER`, `WRITER`.
         """
@@ -474,6 +492,9 @@ class BucketAccessControl(pulumi.CustomResource):
         group-example@googlegroups.com.
         To refer to all members of the Google Apps for Business domain
         example.com, the entity would be domain-example.com.
+
+
+        - - -
         """
         return pulumi.get(self, "entity")
 

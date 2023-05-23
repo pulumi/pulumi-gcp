@@ -75,6 +75,9 @@ export class TenantOauthIdpConfig extends pulumi.CustomResource {
 
     /**
      * The client id of an OAuth client.
+     *
+     *
+     * - - -
      */
     public readonly clientId!: pulumi.Output<string>;
     /**
@@ -162,6 +165,9 @@ export class TenantOauthIdpConfig extends pulumi.CustomResource {
 export interface TenantOauthIdpConfigState {
     /**
      * The client id of an OAuth client.
+     *
+     *
+     * - - -
      */
     clientId?: pulumi.Input<string>;
     /**
@@ -201,6 +207,9 @@ export interface TenantOauthIdpConfigState {
 export interface TenantOauthIdpConfigArgs {
     /**
      * The client id of an OAuth client.
+     *
+     *
+     * - - -
      */
     clientId: pulumi.Input<string>;
     /**

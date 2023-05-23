@@ -123,6 +123,8 @@ type AppGateway struct {
 	// Resource labels to represent user provided metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// ID of the AppGateway.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -180,6 +182,8 @@ type appGatewayState struct {
 	// Resource labels to represent user provided metadata.
 	Labels map[string]string `pulumi:"labels"`
 	// ID of the AppGateway.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -209,6 +213,8 @@ type AppGatewayState struct {
 	// Resource labels to represent user provided metadata.
 	Labels pulumi.StringMapInput
 	// ID of the AppGateway.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -239,6 +245,8 @@ type appGatewayArgs struct {
 	// Resource labels to represent user provided metadata.
 	Labels map[string]string `pulumi:"labels"`
 	// ID of the AppGateway.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -262,6 +270,8 @@ type AppGatewayArgs struct {
 	// Resource labels to represent user provided metadata.
 	Labels pulumi.StringMapInput
 	// ID of the AppGateway.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -385,6 +395,8 @@ func (o AppGatewayOutput) Labels() pulumi.StringMapOutput {
 }
 
 // ID of the AppGateway.
+//
+// ***
 func (o AppGatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppGateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

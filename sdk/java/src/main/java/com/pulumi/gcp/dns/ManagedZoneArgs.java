@@ -143,6 +143,8 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
      * User assigned name for this resource.
      * Must be unique within the project.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -150,6 +152,8 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return User assigned name for this resource.
      * Must be unique within the project.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -466,6 +470,8 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
          * @param name User assigned name for this resource.
          * Must be unique within the project.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -477,6 +483,8 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name User assigned name for this resource.
          * Must be unique within the project.
+         * 
+         * ***
          * 
          * @return builder
          * 

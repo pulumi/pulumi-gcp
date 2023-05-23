@@ -83,6 +83,9 @@ export class Tenant extends pulumi.CustomResource {
     public readonly disableAuth!: pulumi.Output<boolean | undefined>;
     /**
      * Human friendly display name of the tenant.
+     *
+     *
+     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -151,6 +154,9 @@ export interface TenantState {
     disableAuth?: pulumi.Input<boolean>;
     /**
      * Human friendly display name of the tenant.
+     *
+     *
+     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -184,6 +190,9 @@ export interface TenantArgs {
     disableAuth?: pulumi.Input<boolean>;
     /**
      * Human friendly display name of the tenant.
+     *
+     *
+     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

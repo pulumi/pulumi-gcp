@@ -263,6 +263,8 @@ type Address struct {
 	// which means the first character must be a lowercase letter, and all
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL of the network in which to reserve the address. This field
 	// can only be used with INTERNAL type with the VPC_PEERING and
@@ -290,6 +292,8 @@ type Address struct {
 	// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
 	//   configure Private Service Connect. Only global internal addresses can use
 	//   this purpose.
+	//
+	// This should only be set when using an Internal address.
 	Purpose pulumi.StringOutput `pulumi:"purpose"`
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -358,6 +362,8 @@ type addressState struct {
 	// which means the first character must be a lowercase letter, and all
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The URL of the network in which to reserve the address. This field
 	// can only be used with INTERNAL type with the VPC_PEERING and
@@ -385,6 +391,8 @@ type addressState struct {
 	// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
 	//   configure Private Service Connect. Only global internal addresses can use
 	//   this purpose.
+	//
+	// This should only be set when using an Internal address.
 	Purpose *string `pulumi:"purpose"`
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -425,6 +433,8 @@ type AddressState struct {
 	// which means the first character must be a lowercase letter, and all
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The URL of the network in which to reserve the address. This field
 	// can only be used with INTERNAL type with the VPC_PEERING and
@@ -452,6 +462,8 @@ type AddressState struct {
 	// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
 	//   configure Private Service Connect. Only global internal addresses can use
 	//   this purpose.
+	//
+	// This should only be set when using an Internal address.
 	Purpose pulumi.StringPtrInput
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -492,6 +504,8 @@ type addressArgs struct {
 	// which means the first character must be a lowercase letter, and all
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The URL of the network in which to reserve the address. This field
 	// can only be used with INTERNAL type with the VPC_PEERING and
@@ -519,6 +533,8 @@ type addressArgs struct {
 	// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
 	//   configure Private Service Connect. Only global internal addresses can use
 	//   this purpose.
+	//
+	// This should only be set when using an Internal address.
 	Purpose *string `pulumi:"purpose"`
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -552,6 +568,8 @@ type AddressArgs struct {
 	// which means the first character must be a lowercase letter, and all
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The URL of the network in which to reserve the address. This field
 	// can only be used with INTERNAL type with the VPC_PEERING and
@@ -579,6 +597,8 @@ type AddressArgs struct {
 	// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
 	//   configure Private Service Connect. Only global internal addresses can use
 	//   this purpose.
+	//
+	// This should only be set when using an Internal address.
 	Purpose pulumi.StringPtrInput
 	// The Region in which the created address should reside.
 	// If it is not provided, the provider region is used.
@@ -719,6 +739,8 @@ func (o AddressOutput) Labels() pulumi.StringMapOutput {
 // which means the first character must be a lowercase letter, and all
 // following characters must be a dash, lowercase letter, or digit,
 // except the last character, which cannot be a dash.
+//
+// ***
 func (o AddressOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -761,6 +783,8 @@ func (o AddressOutput) Project() pulumi.StringOutput {
 //   - PRIVATE_SERVICE_CONNECT for a private network address that is used to
 //     configure Private Service Connect. Only global internal addresses can use
 //     this purpose.
+//
+// This should only be set when using an Internal address.
 func (o AddressOutput) Purpose() pulumi.StringOutput {
 	return o.ApplyT(func(v *Address) pulumi.StringOutput { return v.Purpose }).(pulumi.StringOutput)
 }

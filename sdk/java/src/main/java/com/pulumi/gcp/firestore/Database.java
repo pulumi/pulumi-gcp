@@ -14,6 +14,19 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * A Cloud Firestore Database. Currently only one database is allowed per
+ * Cloud project; this database must have a `database_id` of &#39;(default)&#39;.
+ * 
+ * If you wish to use Firestore with App Engine, use the
+ * `gcp.appengine.Application`
+ * resource instead.
+ * 
+ * To get more information about Database, see:
+ * 
+ * * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/firestore/docs/)
+ * 
  * ## Example Usage
  * 
  * ## Import
@@ -181,6 +194,8 @@ public class Database extends com.pulumi.resources.CustomResource {
      * for information about how to choose.
      * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
      * 
+     * ***
+     * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
@@ -190,6 +205,8 @@ public class Database extends com.pulumi.resources.CustomResource {
      * See https://cloud.google.com/datastore/docs/firestore-or-datastore
      * for information about how to choose.
      * Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
+     * 
+     * ***
      * 
      */
     public Output<String> type() {

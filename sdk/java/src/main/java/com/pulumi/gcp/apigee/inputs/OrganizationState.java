@@ -130,12 +130,16 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     /**
      * The project ID associated with the Apigee organization.
      * 
+     * ***
+     * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
      * @return The project ID associated with the Apigee organization.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -433,6 +437,8 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param projectId The project ID associated with the Apigee organization.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -443,6 +449,8 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param projectId The project ID associated with the Apigee organization.
+         * 
+         * ***
          * 
          * @return builder
          * 

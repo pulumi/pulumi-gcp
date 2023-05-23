@@ -32,6 +32,9 @@ class WorkstationClusterArgs:
         :param pulumi.Input[str] subnetwork: Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
                Must be part of the subnetwork specified for this cluster.
         :param pulumi.Input[str] workstation_cluster_id: ID to use for the workstation cluster.
+               
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
@@ -88,6 +91,9 @@ class WorkstationClusterArgs:
     def workstation_cluster_id(self) -> pulumi.Input[str]:
         """
         ID to use for the workstation cluster.
+
+
+        - - -
         """
         return pulumi.get(self, "workstation_cluster_id")
 
@@ -212,6 +218,9 @@ class _WorkstationClusterState:
                Must be part of the subnetwork specified for this cluster.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         :param pulumi.Input[str] workstation_cluster_id: ID to use for the workstation cluster.
+               
+               
+               - - -
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -424,6 +433,9 @@ class _WorkstationClusterState:
     def workstation_cluster_id(self) -> Optional[pulumi.Input[str]]:
         """
         ID to use for the workstation cluster.
+
+
+        - - -
         """
         return pulumi.get(self, "workstation_cluster_id")
 
@@ -538,6 +550,9 @@ class WorkstationCluster(pulumi.CustomResource):
         :param pulumi.Input[str] subnetwork: Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
                Must be part of the subnetwork specified for this cluster.
         :param pulumi.Input[str] workstation_cluster_id: ID to use for the workstation cluster.
+               
+               
+               - - -
         """
         ...
     @overload
@@ -729,6 +744,9 @@ class WorkstationCluster(pulumi.CustomResource):
                Must be part of the subnetwork specified for this cluster.
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         :param pulumi.Input[str] workstation_cluster_id: ID to use for the workstation cluster.
+               
+               
+               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -875,6 +893,9 @@ class WorkstationCluster(pulumi.CustomResource):
     def workstation_cluster_id(self) -> pulumi.Output[str]:
         """
         ID to use for the workstation cluster.
+
+
+        - - -
         """
         return pulumi.get(self, "workstation_cluster_id")
 

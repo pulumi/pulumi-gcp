@@ -121,6 +121,8 @@ type CryptoKey struct {
 	ImportOnly pulumi.BoolOutput `pulumi:"importOnly"`
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
+	//
+	// ***
 	KeyRing pulumi.StringOutput `pulumi:"keyRing"`
 	// Labels with user-defined metadata to apply to this resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -184,6 +186,8 @@ type cryptoKeyState struct {
 	ImportOnly *bool `pulumi:"importOnly"`
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
+	//
+	// ***
 	KeyRing *string `pulumi:"keyRing"`
 	// Labels with user-defined metadata to apply to this resource.
 	Labels map[string]string `pulumi:"labels"`
@@ -216,6 +220,8 @@ type CryptoKeyState struct {
 	ImportOnly pulumi.BoolPtrInput
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
+	//
+	// ***
 	KeyRing pulumi.StringPtrInput
 	// Labels with user-defined metadata to apply to this resource.
 	Labels pulumi.StringMapInput
@@ -252,6 +258,8 @@ type cryptoKeyArgs struct {
 	ImportOnly *bool `pulumi:"importOnly"`
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
+	//
+	// ***
 	KeyRing string `pulumi:"keyRing"`
 	// Labels with user-defined metadata to apply to this resource.
 	Labels map[string]string `pulumi:"labels"`
@@ -285,6 +293,8 @@ type CryptoKeyArgs struct {
 	ImportOnly pulumi.BoolPtrInput
 	// The KeyRing that this key belongs to.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
+	//
+	// ***
 	KeyRing pulumi.StringInput
 	// Labels with user-defined metadata to apply to this resource.
 	Labels pulumi.StringMapInput
@@ -409,6 +419,8 @@ func (o CryptoKeyOutput) ImportOnly() pulumi.BoolOutput {
 
 // The KeyRing that this key belongs to.
 // Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
+//
+// ***
 func (o CryptoKeyOutput) KeyRing() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.StringOutput { return v.KeyRing }).(pulumi.StringOutput)
 }

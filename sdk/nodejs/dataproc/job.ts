@@ -114,6 +114,10 @@ export class Job extends pulumi.CustomResource {
     public readonly hiveConfig!: pulumi.Output<outputs.dataproc.JobHiveConfig | undefined>;
     /**
      * The list of labels (key/value pairs) to add to the job.
+     *
+     * * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+     *
+     * * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -249,6 +253,10 @@ export interface JobState {
     hiveConfig?: pulumi.Input<inputs.dataproc.JobHiveConfig>;
     /**
      * The list of labels (key/value pairs) to add to the job.
+     *
+     * * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+     *
+     * * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -319,6 +327,10 @@ export interface JobArgs {
     hiveConfig?: pulumi.Input<inputs.dataproc.JobHiveConfig>;
     /**
      * The list of labels (key/value pairs) to add to the job.
+     *
+     * * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+     *
+     * * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -18,12 +18,16 @@ public final class ClusterNodeConfigShieldedInstanceConfigArgs extends com.pulum
     /**
      * Defines if the instance has integrity monitoring enabled.
      * 
+     * Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.  Defaults to `true`.
+     * 
      */
     @Import(name="enableIntegrityMonitoring")
     private @Nullable Output<Boolean> enableIntegrityMonitoring;
 
     /**
      * @return Defines if the instance has integrity monitoring enabled.
+     * 
+     * Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.  Defaults to `true`.
      * 
      */
     public Optional<Output<Boolean>> enableIntegrityMonitoring() {
@@ -33,12 +37,16 @@ public final class ClusterNodeConfigShieldedInstanceConfigArgs extends com.pulum
     /**
      * Defines if the instance has Secure Boot enabled.
      * 
+     * Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.  Defaults to `false`.
+     * 
      */
     @Import(name="enableSecureBoot")
     private @Nullable Output<Boolean> enableSecureBoot;
 
     /**
      * @return Defines if the instance has Secure Boot enabled.
+     * 
+     * Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.  Defaults to `false`.
      * 
      */
     public Optional<Output<Boolean>> enableSecureBoot() {
@@ -73,6 +81,8 @@ public final class ClusterNodeConfigShieldedInstanceConfigArgs extends com.pulum
         /**
          * @param enableIntegrityMonitoring Defines if the instance has integrity monitoring enabled.
          * 
+         * Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.  Defaults to `true`.
+         * 
          * @return builder
          * 
          */
@@ -84,6 +94,8 @@ public final class ClusterNodeConfigShieldedInstanceConfigArgs extends com.pulum
         /**
          * @param enableIntegrityMonitoring Defines if the instance has integrity monitoring enabled.
          * 
+         * Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.  Defaults to `true`.
+         * 
          * @return builder
          * 
          */
@@ -93,6 +105,8 @@ public final class ClusterNodeConfigShieldedInstanceConfigArgs extends com.pulum
 
         /**
          * @param enableSecureBoot Defines if the instance has Secure Boot enabled.
+         * 
+         * Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.  Defaults to `false`.
          * 
          * @return builder
          * 
@@ -104,6 +118,8 @@ public final class ClusterNodeConfigShieldedInstanceConfigArgs extends com.pulum
 
         /**
          * @param enableSecureBoot Defines if the instance has Secure Boot enabled.
+         * 
+         * Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.  Defaults to `false`.
          * 
          * @return builder
          * 

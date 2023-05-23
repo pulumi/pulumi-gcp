@@ -212,6 +212,17 @@ class BucketEncryption(dict):
         :param str default_kms_key_name: The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
                You must pay attention to whether the crypto key is available in the location that this bucket is created in.
                See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
+               
+               > As per [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for customer-managed encryption keys, the IAM policy for the
+               specified key must permit the [automatic Google Cloud Storage service account](https://cloud.google.com/storage/docs/projects#service-accounts) for the bucket's
+               project to use the specified key for encryption and decryption operations.
+               Although the service account email address follows a well-known format, the service account is created on-demand and may not necessarily exist for your project
+               until a relevant action has occurred which triggers its creation.
+               You should use the [`storage_get_project_service_account`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
+               address for the service account when configuring IAM policy on the Cloud KMS key.
+               This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
+               state of the project.
+               You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
         """
         pulumi.set(__self__, "default_kms_key_name", default_kms_key_name)
 
@@ -222,6 +233,17 @@ class BucketEncryption(dict):
         The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
         You must pay attention to whether the crypto key is available in the location that this bucket is created in.
         See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
+
+        > As per [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for customer-managed encryption keys, the IAM policy for the
+        specified key must permit the [automatic Google Cloud Storage service account](https://cloud.google.com/storage/docs/projects#service-accounts) for the bucket's
+        project to use the specified key for encryption and decryption operations.
+        Although the service account email address follows a well-known format, the service account is created on-demand and may not necessarily exist for your project
+        until a relevant action has occurred which triggers its creation.
+        You should use the [`storage_get_project_service_account`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
+        address for the service account when configuring IAM policy on the Cloud KMS key.
+        This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
+        state of the project.
+        You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
         """
         return pulumi.get(self, "default_kms_key_name")
 
@@ -236,6 +258,10 @@ class BucketIAMBindingCondition(dict):
         :param str expression: Textual representation of an expression in Common Expression Language syntax.
         :param str title: A title for the expression, i.e. a short string describing its purpose.
         :param str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -263,6 +289,10 @@ class BucketIAMBindingCondition(dict):
     def description(self) -> Optional[str]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
 
@@ -277,6 +307,10 @@ class BucketIAMMemberCondition(dict):
         :param str expression: Textual representation of an expression in Common Expression Language syntax.
         :param str title: A title for the expression, i.e. a short string describing its purpose.
         :param str description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+               
+               > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+               identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+               consider it to be an entirely different resource and will treat it as such.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -304,6 +338,10 @@ class BucketIAMMemberCondition(dict):
     def description(self) -> Optional[str]:
         """
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+
+        > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+        identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+        consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
 
@@ -1061,6 +1099,8 @@ class TransferJobScheduleScheduleEndDate(dict):
                  year: int):
         """
         :param int day: Day of month. Must be from 1 to 31 and valid for the year and month.
+               
+               <a name="nested_start_time_of_day"></a>The `start_time_of_day` blocks support:
         :param int month: Month of year. Must be from 1 to 12.
         :param int year: Year of date. Must be from 1 to 9999.
         """
@@ -1073,6 +1113,8 @@ class TransferJobScheduleScheduleEndDate(dict):
     def day(self) -> int:
         """
         Day of month. Must be from 1 to 31 and valid for the year and month.
+
+        <a name="nested_start_time_of_day"></a>The `start_time_of_day` blocks support:
         """
         return pulumi.get(self, "day")
 
@@ -1101,6 +1143,8 @@ class TransferJobScheduleScheduleStartDate(dict):
                  year: int):
         """
         :param int day: Day of month. Must be from 1 to 31 and valid for the year and month.
+               
+               <a name="nested_start_time_of_day"></a>The `start_time_of_day` blocks support:
         :param int month: Month of year. Must be from 1 to 12.
         :param int year: Year of date. Must be from 1 to 9999.
         """
@@ -1113,6 +1157,8 @@ class TransferJobScheduleScheduleStartDate(dict):
     def day(self) -> int:
         """
         Day of month. Must be from 1 to 31 and valid for the year and month.
+
+        <a name="nested_start_time_of_day"></a>The `start_time_of_day` blocks support:
         """
         return pulumi.get(self, "day")
 
@@ -1565,6 +1611,8 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials(dict):
                  sas_token: str):
         """
         :param str sas_token: Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+               
+               <a name="nested_schedule_start_end_date"></a>The `schedule_start_date` and `schedule_end_date` blocks support:
         """
         pulumi.set(__self__, "sas_token", sas_token)
 
@@ -1573,6 +1621,8 @@ class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials(dict):
     def sas_token(self) -> str:
         """
         Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+
+        <a name="nested_schedule_start_end_date"></a>The `schedule_start_date` and `schedule_end_date` blocks support:
         """
         return pulumi.get(self, "sas_token")
 
@@ -1870,6 +1920,8 @@ class TransferJobTransferSpecPosixDataSource(dict):
                  root_directory: str):
         """
         :param str root_directory: Root directory path to the filesystem.
+               
+               <a name="nested_aws_s3_data_source"></a>The `aws_s3_data_source` block supports:
         """
         pulumi.set(__self__, "root_directory", root_directory)
 
@@ -1878,6 +1930,8 @@ class TransferJobTransferSpecPosixDataSource(dict):
     def root_directory(self) -> str:
         """
         Root directory path to the filesystem.
+
+        <a name="nested_aws_s3_data_source"></a>The `aws_s3_data_source` block supports:
         """
         return pulumi.get(self, "root_directory")
 

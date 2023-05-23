@@ -31,6 +31,7 @@ class OsPolicyAssignmentArgs:
         :param pulumi.Input[Sequence[pulumi.Input['OsPolicyAssignmentOsPolicyArgs']]] os_policies: Required. List of OS policies to be applied to the VMs.
         :param pulumi.Input['OsPolicyAssignmentRolloutArgs'] rollout: Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
         :param pulumi.Input[str] description: Policy description. Length of the description is limited to 1024 characters.
+               
                (Optional)
                OS policy assignment description. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] name: Resource name.
@@ -103,6 +104,7 @@ class OsPolicyAssignmentArgs:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         Policy description. Length of the description is limited to 1024 characters.
+
         (Optional)
         OS policy assignment description. Length of the description is limited to 1024 characters.
         """
@@ -173,6 +175,7 @@ class _OsPolicyAssignmentState:
         :param pulumi.Input[bool] baseline: Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
         :param pulumi.Input[bool] deleted: Output only. Indicates that this revision deletes the OS policy assignment.
         :param pulumi.Input[str] description: Policy description. Length of the description is limited to 1024 characters.
+               
                (Optional)
                OS policy assignment description. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] etag: The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
@@ -251,6 +254,7 @@ class _OsPolicyAssignmentState:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         Policy description. Length of the description is limited to 1024 characters.
+
         (Optional)
         OS policy assignment description. Length of the description is limited to 1024 characters.
         """
@@ -510,6 +514,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Policy description. Length of the description is limited to 1024 characters.
+               
                (Optional)
                OS policy assignment description. Length of the description is limited to 1024 characters.
         :param pulumi.Input[pulumi.InputType['OsPolicyAssignmentInstanceFilterArgs']] instance_filter: Required. Filter to select VMs.
@@ -694,6 +699,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
         :param pulumi.Input[bool] baseline: Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
         :param pulumi.Input[bool] deleted: Output only. Indicates that this revision deletes the OS policy assignment.
         :param pulumi.Input[str] description: Policy description. Length of the description is limited to 1024 characters.
+               
                (Optional)
                OS policy assignment description. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] etag: The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
@@ -753,6 +759,7 @@ class OsPolicyAssignment(pulumi.CustomResource):
     def description(self) -> pulumi.Output[Optional[str]]:
         """
         Policy description. Length of the description is limited to 1024 characters.
+
         (Optional)
         OS policy assignment description. Length of the description is limited to 1024 characters.
         """

@@ -126,6 +126,9 @@ export class GatewaySecurityPolicyRule extends pulumi.CustomResource {
     public readonly enabled!: pulumi.Output<boolean>;
     /**
      * The name of the gatewat security policy this rule belongs to.
+     *
+     *
+     * - - -
      */
     public readonly gatewaySecurityPolicy!: pulumi.Output<string>;
     /**
@@ -262,6 +265,9 @@ export interface GatewaySecurityPolicyRuleState {
     enabled?: pulumi.Input<boolean>;
     /**
      * The name of the gatewat security policy this rule belongs to.
+     *
+     *
+     * - - -
      */
     gatewaySecurityPolicy?: pulumi.Input<string>;
     /**
@@ -326,6 +332,9 @@ export interface GatewaySecurityPolicyRuleArgs {
     enabled: pulumi.Input<boolean>;
     /**
      * The name of the gatewat security policy this rule belongs to.
+     *
+     *
+     * - - -
      */
     gatewaySecurityPolicy: pulumi.Input<string>;
     /**

@@ -20,6 +20,8 @@ namespace Pulumi.Gcp.Sql.Inputs
 
         /// <summary>
         /// Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+        /// 
+        /// The optional `settings.password_validation_policy` subblock for instances declares [Password Validation Policy](https://cloud.google.com/sql/docs/postgres/built-in-authentication) configuration. It contains:
         /// </summary>
         [Input("queryPlansPerMinute")]
         public Input<int>? QueryPlansPerMinute { get; set; }

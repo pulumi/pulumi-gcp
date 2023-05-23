@@ -113,6 +113,8 @@ namespace Pulumi.Gcp.Tags
     {
         /// <summary>
         /// Location of the resource.
+        /// 
+        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string?> Location { get; private set; } = null!;
@@ -183,6 +185,8 @@ namespace Pulumi.Gcp.Tags
     {
         /// <summary>
         /// Location of the resource.
+        /// 
+        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -209,6 +213,8 @@ namespace Pulumi.Gcp.Tags
     {
         /// <summary>
         /// Location of the resource.
+        /// 
+        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

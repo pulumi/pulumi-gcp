@@ -26,6 +26,8 @@ type AccessApprovalSettingsEnrolledService struct {
 	// The enrollment level of the service.
 	// Default value is `BLOCK_ALL`.
 	// Possible values are: `BLOCK_ALL`.
+	//
+	// ***
 	EnrollmentLevel *string `pulumi:"enrollmentLevel"`
 }
 
@@ -56,6 +58,8 @@ type AccessApprovalSettingsEnrolledServiceArgs struct {
 	// The enrollment level of the service.
 	// Default value is `BLOCK_ALL`.
 	// Possible values are: `BLOCK_ALL`.
+	//
+	// ***
 	EnrollmentLevel pulumi.StringPtrInput `pulumi:"enrollmentLevel"`
 }
 
@@ -128,6 +132,8 @@ func (o AccessApprovalSettingsEnrolledServiceOutput) CloudProduct() pulumi.Strin
 // The enrollment level of the service.
 // Default value is `BLOCK_ALL`.
 // Possible values are: `BLOCK_ALL`.
+//
+// ***
 func (o AccessApprovalSettingsEnrolledServiceOutput) EnrollmentLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessApprovalSettingsEnrolledService) *string { return v.EnrollmentLevel }).(pulumi.StringPtrOutput)
 }
@@ -508,6 +514,8 @@ type ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication struct {
 	// The package name of the application.
 	PackageName string `pulumi:"packageName"`
 	// The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
+	//
+	// ***
 	Sha1Fingerprint string `pulumi:"sha1Fingerprint"`
 }
 
@@ -526,6 +534,8 @@ type ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs struct {
 	// The package name of the application.
 	PackageName pulumi.StringInput `pulumi:"packageName"`
 	// The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
+	//
+	// ***
 	Sha1Fingerprint pulumi.StringInput `pulumi:"sha1Fingerprint"`
 }
 
@@ -586,6 +596,8 @@ func (o ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutput) Packag
 }
 
 // The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
+//
+// ***
 func (o ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationOutput) Sha1Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication) string { return v.Sha1Fingerprint }).(pulumi.StringOutput)
 }
@@ -1235,6 +1247,10 @@ func (o IAMAuditConfigAuditLogConfigArrayOutput) Index(i pulumi.IntInput) IAMAud
 
 type IAMBindingCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -1255,6 +1271,10 @@ type IAMBindingConditionInput interface {
 
 type IAMBindingConditionArgs struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -1340,6 +1360,10 @@ func (o IAMBindingConditionOutput) ToIAMBindingConditionPtrOutputWithContext(ctx
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+// consider it to be an entirely different resource and will treat it as such.
 func (o IAMBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IAMBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1379,6 +1403,10 @@ func (o IAMBindingConditionPtrOutput) Elem() IAMBindingConditionOutput {
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+// consider it to be an entirely different resource and will treat it as such.
 func (o IAMBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IAMBindingCondition) *string {
 		if v == nil {
@@ -1410,6 +1438,10 @@ func (o IAMBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 
 type IAMMemberCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -1430,6 +1462,10 @@ type IAMMemberConditionInput interface {
 
 type IAMMemberConditionArgs struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	//
+	// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+	// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+	// consider it to be an entirely different resource and will treat it as such.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -1515,6 +1551,10 @@ func (o IAMMemberConditionOutput) ToIAMMemberConditionPtrOutputWithContext(ctx c
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+// consider it to be an entirely different resource and will treat it as such.
 func (o IAMMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IAMMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1554,6 +1594,10 @@ func (o IAMMemberConditionPtrOutput) Elem() IAMMemberConditionOutput {
 }
 
 // An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+//
+// > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+// identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+// consider it to be an entirely different resource and will treat it as such.
 func (o IAMMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IAMMemberCondition) *string {
 		if v == nil {
@@ -1726,6 +1770,8 @@ type OrganizationPolicyListPolicy struct {
 	Deny  *OrganizationPolicyListPolicyDeny  `pulumi:"deny"`
 	// If set to true, the values from the effective Policy of the parent resource
 	// are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+	//
+	// The `allow` or `deny` blocks support:
 	InheritFromParent *bool `pulumi:"inheritFromParent"`
 	// The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
 	SuggestedValue *string `pulumi:"suggestedValue"`
@@ -1748,6 +1794,8 @@ type OrganizationPolicyListPolicyArgs struct {
 	Deny  OrganizationPolicyListPolicyDenyPtrInput  `pulumi:"deny"`
 	// If set to true, the values from the effective Policy of the parent resource
 	// are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+	//
+	// The `allow` or `deny` blocks support:
 	InheritFromParent pulumi.BoolPtrInput `pulumi:"inheritFromParent"`
 	// The Google Cloud Console will try to default to a configuration that matches the value specified in this field.
 	SuggestedValue pulumi.StringPtrInput `pulumi:"suggestedValue"`
@@ -1841,6 +1889,8 @@ func (o OrganizationPolicyListPolicyOutput) Deny() OrganizationPolicyListPolicyD
 
 // If set to true, the values from the effective Policy of the parent resource
 // are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+//
+// The `allow` or `deny` blocks support:
 func (o OrganizationPolicyListPolicyOutput) InheritFromParent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OrganizationPolicyListPolicy) *bool { return v.InheritFromParent }).(pulumi.BoolPtrOutput)
 }
@@ -1895,6 +1945,8 @@ func (o OrganizationPolicyListPolicyPtrOutput) Deny() OrganizationPolicyListPoli
 
 // If set to true, the values from the effective Policy of the parent resource
 // are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+//
+// The `allow` or `deny` blocks support:
 func (o OrganizationPolicyListPolicyPtrOutput) InheritFromParent() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OrganizationPolicyListPolicy) *bool {
 		if v == nil {

@@ -319,6 +319,8 @@ type RegionNetworkEndpointGroup struct {
 	// a Google API or a PSC Producer Service Attachment.
 	PscTargetService pulumi.StringPtrOutput `pulumi:"pscTargetService"`
 	// A reference to the region where the Serverless NEGs Reside.
+	//
+	// ***
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -400,6 +402,8 @@ type regionNetworkEndpointGroupState struct {
 	// a Google API or a PSC Producer Service Attachment.
 	PscTargetService *string `pulumi:"pscTargetService"`
 	// A reference to the region where the Serverless NEGs Reside.
+	//
+	// ***
 	Region *string `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -450,6 +454,8 @@ type RegionNetworkEndpointGroupState struct {
 	// a Google API or a PSC Producer Service Attachment.
 	PscTargetService pulumi.StringPtrInput
 	// A reference to the region where the Serverless NEGs Reside.
+	//
+	// ***
 	Region pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -504,6 +510,8 @@ type regionNetworkEndpointGroupArgs struct {
 	// a Google API or a PSC Producer Service Attachment.
 	PscTargetService *string `pulumi:"pscTargetService"`
 	// A reference to the region where the Serverless NEGs Reside.
+	//
+	// ***
 	Region string `pulumi:"region"`
 	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
 	// serverlessDeployment may be set.
@@ -553,6 +561,8 @@ type RegionNetworkEndpointGroupArgs struct {
 	// a Google API or a PSC Producer Service Attachment.
 	PscTargetService pulumi.StringPtrInput
 	// A reference to the region where the Serverless NEGs Reside.
+	//
+	// ***
 	Region pulumi.StringInput
 	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
 	// serverlessDeployment may be set.
@@ -716,6 +726,8 @@ func (o RegionNetworkEndpointGroupOutput) PscTargetService() pulumi.StringPtrOut
 }
 
 // A reference to the region where the Serverless NEGs Reside.
+//
+// ***
 func (o RegionNetworkEndpointGroupOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

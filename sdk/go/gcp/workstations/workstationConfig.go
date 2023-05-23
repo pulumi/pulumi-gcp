@@ -439,6 +439,8 @@ type WorkstationConfig struct {
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the workstation cluster config should reside.
+	//
+	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Full name of this resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -523,6 +525,8 @@ type workstationConfigState struct {
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the workstation cluster config should reside.
+	//
+	// ***
 	Location *string `pulumi:"location"`
 	// Full name of this resource.
 	Name *string `pulumi:"name"`
@@ -570,6 +574,8 @@ type WorkstationConfigState struct {
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels pulumi.StringMapInput
 	// The location where the workstation cluster config should reside.
+	//
+	// ***
 	Location pulumi.StringPtrInput
 	// Full name of this resource.
 	Name pulumi.StringPtrInput
@@ -611,6 +617,8 @@ type workstationConfigArgs struct {
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the workstation cluster config should reside.
+	//
+	// ***
 	Location string `pulumi:"location"`
 	// Directories to persist across workstation sessions.
 	// Structure is documented below.
@@ -645,6 +653,8 @@ type WorkstationConfigArgs struct {
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels pulumi.StringMapInput
 	// The location where the workstation cluster config should reside.
+	//
+	// ***
 	Location pulumi.StringInput
 	// Directories to persist across workstation sessions.
 	// Structure is documented below.
@@ -804,6 +814,8 @@ func (o WorkstationConfigOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location where the workstation cluster config should reside.
+//
+// ***
 func (o WorkstationConfigOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

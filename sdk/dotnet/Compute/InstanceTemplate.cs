@@ -274,6 +274,10 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The machine type to create.
+        /// 
+        /// To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+        /// 
+        /// - - -
         /// </summary>
         [Output("machineType")]
         public Output<string> MachineType { get; private set; } = null!;
@@ -542,6 +546,10 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The machine type to create.
+        /// 
+        /// To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+        /// 
+        /// - - -
         /// </summary>
         [Input("machineType", required: true)]
         public Input<string> MachineType { get; set; } = null!;
@@ -765,6 +773,10 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The machine type to create.
+        /// 
+        /// To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+        /// 
+        /// - - -
         /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }

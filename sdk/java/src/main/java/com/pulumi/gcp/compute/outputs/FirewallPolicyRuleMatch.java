@@ -31,6 +31,8 @@ public final class FirewallPolicyRuleMatch {
     /**
      * @return CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
      * 
+     * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+     * 
      */
     private @Nullable List<String> srcIpRanges;
     private @Nullable List<String> srcRegionCodes;
@@ -71,6 +73,8 @@ public final class FirewallPolicyRuleMatch {
     }
     /**
      * @return CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+     * 
+     * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
      * 
      */
     public List<String> srcIpRanges() {

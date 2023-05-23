@@ -311,6 +311,8 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
      * 
+     * ***
+     * 
      */
     @Export(name="format", type=String.class, parameters={})
     private Output<String> format;
@@ -320,6 +322,8 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+     * 
+     * ***
      * 
      */
     public Output<String> format() {

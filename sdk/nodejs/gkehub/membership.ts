@@ -129,6 +129,9 @@ export class Membership extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The client-provided identifier of the membership.
+     *
+     *
+     * - - -
      */
     public readonly membershipId!: pulumi.Output<string>;
     /**
@@ -207,6 +210,9 @@ export interface MembershipState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The client-provided identifier of the membership.
+     *
+     *
+     * - - -
      */
     membershipId?: pulumi.Input<string>;
     /**
@@ -248,6 +254,9 @@ export interface MembershipArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The client-provided identifier of the membership.
+     *
+     *
+     * - - -
      */
     membershipId: pulumi.Input<string>;
     /**

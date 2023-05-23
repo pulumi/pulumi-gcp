@@ -296,12 +296,16 @@ public class Topic extends com.pulumi.resources.CustomResource {
     /**
      * Name of the topic.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
      * @return Name of the topic.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {

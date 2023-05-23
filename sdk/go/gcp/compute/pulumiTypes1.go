@@ -2132,6 +2132,8 @@ func (o GetBackendServiceConsistentHashArrayOutput) Index(i pulumi.IntInput) Get
 
 type GetBackendServiceConsistentHashHttpCooky struct {
 	// The name of the Backend Service.
+	//
+	// ***
 	Name string                                        `pulumi:"name"`
 	Path string                                        `pulumi:"path"`
 	Ttls []GetBackendServiceConsistentHashHttpCookyTtl `pulumi:"ttls"`
@@ -2150,6 +2152,8 @@ type GetBackendServiceConsistentHashHttpCookyInput interface {
 
 type GetBackendServiceConsistentHashHttpCookyArgs struct {
 	// The name of the Backend Service.
+	//
+	// ***
 	Name pulumi.StringInput                                    `pulumi:"name"`
 	Path pulumi.StringInput                                    `pulumi:"path"`
 	Ttls GetBackendServiceConsistentHashHttpCookyTtlArrayInput `pulumi:"ttls"`
@@ -2207,6 +2211,8 @@ func (o GetBackendServiceConsistentHashHttpCookyOutput) ToGetBackendServiceConsi
 }
 
 // The name of the Backend Service.
+//
+// ***
 func (o GetBackendServiceConsistentHashHttpCookyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceConsistentHashHttpCooky) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2552,6 +2558,8 @@ func (o GetBackendServiceLocalityLbPolicyArrayOutput) Index(i pulumi.IntInput) G
 type GetBackendServiceLocalityLbPolicyCustomPolicy struct {
 	Data string `pulumi:"data"`
 	// The name of the Backend Service.
+	//
+	// ***
 	Name string `pulumi:"name"`
 }
 
@@ -2569,6 +2577,8 @@ type GetBackendServiceLocalityLbPolicyCustomPolicyInput interface {
 type GetBackendServiceLocalityLbPolicyCustomPolicyArgs struct {
 	Data pulumi.StringInput `pulumi:"data"`
 	// The name of the Backend Service.
+	//
+	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -2628,6 +2638,8 @@ func (o GetBackendServiceLocalityLbPolicyCustomPolicyOutput) Data() pulumi.Strin
 }
 
 // The name of the Backend Service.
+//
+// ***
 func (o GetBackendServiceLocalityLbPolicyCustomPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceLocalityLbPolicyCustomPolicy) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2654,6 +2666,8 @@ func (o GetBackendServiceLocalityLbPolicyCustomPolicyArrayOutput) Index(i pulumi
 
 type GetBackendServiceLocalityLbPolicyPolicy struct {
 	// The name of the Backend Service.
+	//
+	// ***
 	Name string `pulumi:"name"`
 }
 
@@ -2670,6 +2684,8 @@ type GetBackendServiceLocalityLbPolicyPolicyInput interface {
 
 type GetBackendServiceLocalityLbPolicyPolicyArgs struct {
 	// The name of the Backend Service.
+	//
+	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -2725,6 +2741,8 @@ func (o GetBackendServiceLocalityLbPolicyPolicyOutput) ToGetBackendServiceLocali
 }
 
 // The name of the Backend Service.
+//
+// ***
 func (o GetBackendServiceLocalityLbPolicyPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackendServiceLocalityLbPolicyPolicy) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -3947,6 +3965,8 @@ func (o GetGlobalForwardingRuleMetadataFilterArrayOutput) Index(i pulumi.IntInpu
 
 type GetGlobalForwardingRuleMetadataFilterFilterLabel struct {
 	// The name of the global forwarding rule.
+	//
+	// ***
 	Name  string `pulumi:"name"`
 	Value string `pulumi:"value"`
 }
@@ -3964,6 +3984,8 @@ type GetGlobalForwardingRuleMetadataFilterFilterLabelInput interface {
 
 type GetGlobalForwardingRuleMetadataFilterFilterLabelArgs struct {
 	// The name of the global forwarding rule.
+	//
+	// ***
 	Name  pulumi.StringInput `pulumi:"name"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
@@ -4020,6 +4042,8 @@ func (o GetGlobalForwardingRuleMetadataFilterFilterLabelOutput) ToGetGlobalForwa
 }
 
 // The name of the global forwarding rule.
+//
+// ***
 func (o GetGlobalForwardingRuleMetadataFilterFilterLabelOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGlobalForwardingRuleMetadataFilterFilterLabel) string { return v.Name }).(pulumi.StringOutput)
 }

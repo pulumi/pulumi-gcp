@@ -18,12 +18,20 @@ public final class KeyRingIAMBindingConditionArgs extends com.pulumi.resources.R
     /**
      * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
+     * &gt; **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+     * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+     * consider it to be an entirely different resource and will treat it as such.
+     * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
      * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+     * 
+     * &gt; **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+     * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+     * consider it to be an entirely different resource and will treat it as such.
      * 
      */
     public Optional<Output<String>> description() {
@@ -89,6 +97,10 @@ public final class KeyRingIAMBindingConditionArgs extends com.pulumi.resources.R
         /**
          * @param description An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          * 
+         * &gt; **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
+         * 
          * @return builder
          * 
          */
@@ -99,6 +111,10 @@ public final class KeyRingIAMBindingConditionArgs extends com.pulumi.resources.R
 
         /**
          * @param description An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         * 
+         * &gt; **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          * 
          * @return builder
          * 

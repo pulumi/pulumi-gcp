@@ -30,6 +30,9 @@ class MetricArgs:
         The set of arguments for constructing a Metric resource.
         :param pulumi.Input[str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
                is used to match log entries.
+               
+               
+               - - -
         :param pulumi.Input[str] bucket_name: The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects
                are supported. The bucket has to be in the same project as the metric.
         :param pulumi.Input['MetricBucketOptionsArgs'] bucket_options: The bucketOptions are required when the logs-based metric is using a DISTRIBUTION value type and it
@@ -88,6 +91,9 @@ class MetricArgs:
         """
         An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
         is used to match log entries.
+
+
+        - - -
         """
         return pulumi.get(self, "filter")
 
@@ -251,6 +257,9 @@ class _MetricState:
         :param pulumi.Input[bool] disabled: If set to True, then this metric is disabled and it does not generate any points.
         :param pulumi.Input[str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
                is used to match log entries.
+               
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] label_extractors: A map from a label key string to an extractor expression which is used to extract data from a log
                entry field and assign as the label value. Each label key specified in the LabelDescriptor must
                have an associated extractor expression in this map. The syntax of the extractor expression is
@@ -354,6 +363,9 @@ class _MetricState:
         """
         An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
         is used to match log entries.
+
+
+        - - -
         """
         return pulumi.get(self, "filter")
 
@@ -594,6 +606,9 @@ class Metric(pulumi.CustomResource):
         :param pulumi.Input[bool] disabled: If set to True, then this metric is disabled and it does not generate any points.
         :param pulumi.Input[str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
                is used to match log entries.
+               
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] label_extractors: A map from a label key string to an extractor expression which is used to extract data from a log
                entry field and assign as the label value. Each label key specified in the LabelDescriptor must
                have an associated extractor expression in this map. The syntax of the extractor expression is
@@ -833,6 +848,9 @@ class Metric(pulumi.CustomResource):
         :param pulumi.Input[bool] disabled: If set to True, then this metric is disabled and it does not generate any points.
         :param pulumi.Input[str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
                is used to match log entries.
+               
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] label_extractors: A map from a label key string to an extractor expression which is used to extract data from a log
                entry field and assign as the label value. Each label key specified in the LabelDescriptor must
                have an associated extractor expression in this map. The syntax of the extractor expression is
@@ -915,6 +933,9 @@ class Metric(pulumi.CustomResource):
         """
         An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
         is used to match log entries.
+
+
+        - - -
         """
         return pulumi.get(self, "filter")
 

@@ -78,12 +78,16 @@ public class GameServerDeployment extends com.pulumi.resources.CustomResource {
     /**
      * A unique id for the deployment.
      * 
+     * ***
+     * 
      */
     @Export(name="deploymentId", type=String.class, parameters={})
     private Output<String> deploymentId;
 
     /**
      * @return A unique id for the deployment.
+     * 
+     * ***
      * 
      */
     public Output<String> deploymentId() {

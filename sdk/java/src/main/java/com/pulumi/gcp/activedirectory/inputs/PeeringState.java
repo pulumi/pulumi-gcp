@@ -77,14 +77,14 @@ public final class PeeringState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Required)
+     * ***
      * 
      */
     @Import(name="peeringId")
     private @Nullable Output<String> peeringId;
 
     /**
-     * @return (Required)
+     * @return - - -
      * 
      */
     public Optional<Output<String>> peeringId() {
@@ -254,7 +254,7 @@ public final class PeeringState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param peeringId (Required)
+         * @param peeringId - - -
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class PeeringState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param peeringId (Required)
+         * @param peeringId - - -
          * 
          * @return builder
          * 

@@ -16,12 +16,16 @@ public final class ServicePerimeterResourceArgs extends com.pulumi.resources.Res
     /**
      * The name of the Service Perimeter to add this resource to.
      * 
+     * ***
+     * 
      */
     @Import(name="perimeterName", required=true)
     private Output<String> perimeterName;
 
     /**
      * @return The name of the Service Perimeter to add this resource to.
+     * 
+     * ***
      * 
      */
     public Output<String> perimeterName() {
@@ -75,6 +79,8 @@ public final class ServicePerimeterResourceArgs extends com.pulumi.resources.Res
         /**
          * @param perimeterName The name of the Service Perimeter to add this resource to.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -85,6 +91,8 @@ public final class ServicePerimeterResourceArgs extends com.pulumi.resources.Res
 
         /**
          * @param perimeterName The name of the Service Perimeter to add this resource to.
+         * 
+         * ***
          * 
          * @return builder
          * 

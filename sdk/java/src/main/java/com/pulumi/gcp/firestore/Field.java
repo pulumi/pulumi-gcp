@@ -200,12 +200,16 @@ public class Field extends com.pulumi.resources.CustomResource {
     /**
      * The id of the field to configure.
      * 
+     * ***
+     * 
      */
     @Export(name="field", type=String.class, parameters={})
     private Output<String> field;
 
     /**
      * @return The id of the field to configure.
+     * 
+     * ***
      * 
      */
     public Output<String> field() {

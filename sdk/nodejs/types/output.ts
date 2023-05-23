@@ -2199,6 +2199,8 @@ export namespace apigee {
         countryCode?: string;
         /**
          * Email address. Max 255 characters.
+         *
+         * - - -
          */
         email?: string;
         /**
@@ -2312,6 +2314,8 @@ export namespace appengine {
         /**
          * Pathname within the host. Must start with a "/". A single "*" can be included at the end of the path.
          * The sum of the lengths of the domain and path may not exceed 100 characters.
+         *
+         * - - -
          */
         service: string;
     }
@@ -2362,6 +2366,8 @@ export namespace appengine {
     export interface EngineSplitTrafficSplit {
         /**
          * Mapping from version IDs within the service to fractional (0.000, 1] allocations of traffic for that version. Each version can be specified only once, but some versions in the service may not have any traffic allocation. Services that have traffic allocated cannot be deleted until either the service is deleted or their traffic allocation is removed. Allocations must sum to 1. Up to two decimal place precision is supported for IP-based splits and up to three decimal places is supported for cookie-based splits.
+         *
+         * - - -
          */
         allocations: {[key: string]: string};
         /**
@@ -2721,6 +2727,8 @@ export namespace appengine {
         host?: string;
         /**
          * The initial delay before starting to execute the checks. Default: "300s"
+         *
+         * - - -
          */
         initialDelay?: string;
         /**
@@ -2852,6 +2860,8 @@ export namespace appengine {
          * The ingress settings for version or service.
          * Default value is `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`.
          * Possible values are: `INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED`, `INGRESS_TRAFFIC_ALLOWED_ALL`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY`, `INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB`.
+         *
+         * - - -
          */
         ingressTrafficAllowed?: string;
     }
@@ -2961,6 +2971,8 @@ export namespace appengine {
     export interface StandardAppVersionEntrypoint {
         /**
          * The format should be a shell command that can be fed to bash -c.
+         *
+         * - - -
          */
         shell: string;
     }
@@ -3291,6 +3303,8 @@ export namespace beyondcorp {
         host: string;
         /**
          * Port of the remote application endpoint.
+         *
+         * - - -
          */
         port: number;
     }
@@ -3329,6 +3343,8 @@ export namespace beyondcorp {
     export interface AppConnectorPrincipalInfoServiceAccount {
         /**
          * Email address of the service account.
+         *
+         * - - -
          */
         email: string;
     }
@@ -3712,6 +3728,10 @@ export namespace bigquery {
     export interface IamBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, this provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -3727,6 +3747,10 @@ export namespace bigquery {
     export interface IamMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, this provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -3870,6 +3894,8 @@ export namespace bigquery {
         datasetId: string;
         /**
          * The ID of the model.
+         *
+         * - - -
          */
         modelId: string;
         /**
@@ -4667,6 +4693,8 @@ export namespace bigqueryanalyticshub {
     export interface ListingBigqueryDataset {
         /**
          * Resource name of the dataset source for this listing. e.g. projects/myproject/datasets/123
+         *
+         * - - -
          */
         dataset: string;
     }
@@ -4740,6 +4768,8 @@ export namespace bigtable {
         days: number;
         /**
          * Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
+         *
+         * -----
          */
         duration: string;
     }
@@ -4747,6 +4777,9 @@ export namespace bigtable {
     export interface GCPolicyMaxVersion {
         /**
          * Number of version before applying the GC policy.
+         *
+         * -----
+         * `gcRules` include 2 fields:
          */
         number: number;
     }
@@ -4762,6 +4795,15 @@ export namespace bigtable {
         clusterId: string;
         /**
          * Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
+         *
+         * > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
+         *
+         * !> **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
+         *
+         * !> **Warning:** Modifying the `storageType`, `zone` or `kmsKeyName` of an existing cluster (by
+         * `clusterId`) will cause the provider to delete/recreate the entire
+         * `gcp.bigtable.Instance` resource. If these values are changing, use a new
+         * `clusterId`.
          */
         kmsKeyName: string;
         /**
@@ -4797,6 +4839,8 @@ export namespace bigtable {
         minNodes: number;
         /**
          * The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
+         *
+         * !> **Warning**: Only one of `autoscalingConfig` or `numNodes` should be set for a cluster. If both are set, `numNodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
          */
         storageTarget: number;
     }
@@ -4907,6 +4951,8 @@ export namespace billing {
          * negative. If units is negative, nanos must be negative or
          * zero. For example $-1.75 is represented as units=-1 and
          * nanos=-750,000,000.
+         *
+         * - - -
          */
         nanos?: number;
         /**
@@ -5128,6 +5174,8 @@ export namespace binaryauthorization {
          * match the structure and any object identifiers encoded in
          * publicKeyPem (i.e. this algorithm must match that of the
          * public key).
+         *
+         * - - -
          */
         signatureAlgorithm?: string;
     }
@@ -5186,6 +5234,8 @@ export namespace binaryauthorization {
         /**
          * The action when a pod creation is denied by the admission rule.
          * Possible values are: `ENFORCED_BLOCK_AND_AUDIT_LOG`, `DRYRUN_AUDIT_LOG_ONLY`.
+         *
+         * - - -
          */
         enforcementMode: string;
         /**
@@ -5228,6 +5278,9 @@ export namespace certificateauthority {
         /**
          * Specifies some of the values in a certificate that are related to the subject.
          * Structure is documented below.
+         *
+         *
+         * <a name="nestedX509Config"></a>The `x509Config` block supports:
          */
         subjectConfig: outputs.certificateauthority.AuthorityConfigSubjectConfig;
         /**
@@ -5551,6 +5604,8 @@ export namespace certificateauthority {
          * The algorithm to use for creating a managed Cloud KMS key for a for a simplified
          * experience. All managed keys will be have their ProtectionLevel as HSM.
          * Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
+         *
+         * - - -
          */
         algorithm?: string;
         /**
@@ -5584,9 +5639,6 @@ export namespace certificateauthority {
     }
 
     export interface CaPoolIamBindingCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         */
         description?: string;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -5599,9 +5651,6 @@ export namespace certificateauthority {
     }
 
     export interface CaPoolIamMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         */
         description?: string;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -6021,6 +6070,9 @@ export namespace certificateauthority {
         /**
          * A PublicKey describes a public key.
          * Structure is documented below.
+         *
+         *
+         * <a name="nestedX509Config"></a>The `x509Config` block supports:
          */
         publicKeys: outputs.certificateauthority.CertificateCertificateDescriptionPublicKey[];
         /**
@@ -6172,8 +6224,10 @@ export namespace certificateauthority {
     export interface CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId {
         /**
          * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         *
          * (Required)
          * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         *
          * (Required)
          * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
          */
@@ -6290,6 +6344,7 @@ export namespace certificateauthority {
         /**
          * Indicates whether or not this extension is critical (i.e., if the client does not know how to
          * handle this extension, the client should consider this to be an error).
+         *
          * (Required)
          * Indicates whether or not the name constraints are marked critical.
          */
@@ -6309,8 +6364,10 @@ export namespace certificateauthority {
     export interface CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId {
         /**
          * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         *
          * (Required)
          * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+         *
          * (Required)
          * An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
          */
@@ -6559,6 +6616,9 @@ export namespace certificateauthority {
         /**
          * A PublicKey describes a public key.
          * Structure is documented below.
+         *
+         *
+         * <a name="nestedX509Config"></a>The `x509Config` block supports:
          */
         publicKey: outputs.certificateauthority.CertificateConfigPublicKey;
         /**
@@ -6907,9 +6967,6 @@ export namespace certificateauthority {
     }
 
     export interface CertificateTemplateIamBindingCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         */
         description?: string;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -6922,9 +6979,6 @@ export namespace certificateauthority {
     }
 
     export interface CertificateTemplateIamMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         */
         description?: string;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -7029,6 +7083,8 @@ export namespace certificateauthority {
     export interface CertificateTemplatePredefinedValuesAdditionalExtensionObjectId {
         /**
          * Required. The parts of an OID path. The most significant parts of the path come first.
+         *
+         * - - -
          */
         objectIdPaths: number[];
     }
@@ -7268,6 +7324,9 @@ export namespace certificatemanager {
          * Detailed state of the latest authorization attempt for each domain
          * specified for this Managed Certificate.
          * Structure is documented below.
+         *
+         *
+         * <a name="nestedProvisioningIssue"></a>The `provisioningIssue` block contains:
          */
         authorizationAttemptInfos: outputs.certificatemanager.CertificateManagedAuthorizationAttemptInfo[];
         /**
@@ -7298,6 +7357,9 @@ export namespace certificatemanager {
          * Human readable explanation about the issue. Provided to help address
          * the configuration issues.
          * Not guaranteed to be stable. For programmatic access use `reason` field.
+         *
+         * <a name="nestedAuthorizationAttemptInfo"></a>The `authorizationAttemptInfo` block contains:
+         *
          * (Output)
          * Human readable explanation for reaching the state. Provided to help
          * address the configuration issues.
@@ -7317,6 +7379,7 @@ export namespace certificatemanager {
         /**
          * (Output)
          * A state of this Managed Certificate.
+         *
          * (Output)
          * State of the domain for managed certificate issuance.
          */
@@ -7329,6 +7392,9 @@ export namespace certificatemanager {
          * Human readable explanation about the issue. Provided to help address
          * the configuration issues.
          * Not guaranteed to be stable. For programmatic access use `reason` field.
+         *
+         * <a name="nestedAuthorizationAttemptInfo"></a>The `authorizationAttemptInfo` block contains:
+         *
          * (Output)
          * Human readable explanation for reaching the state. Provided to help
          * address the configuration issues.
@@ -7414,6 +7480,9 @@ export namespace certificatemanager {
          * Name of the resource; provided by the client when the resource is created.
          * The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
          * and all following characters must be a dash, underscore, letter or digit.
+         *
+         *
+         * - - -
          */
         name: string;
         /**
@@ -7459,6 +7528,8 @@ export namespace cloudasset {
     export interface FolderFeedFeedOutputConfigPubsubDestination {
         /**
          * Destination on Cloud Pubsub topic.
+         *
+         * - - -
          */
         topic: string;
     }
@@ -7535,6 +7606,8 @@ export namespace cloudasset {
     export interface OrganizationFeedFeedOutputConfigPubsubDestination {
         /**
          * Destination on Cloud Pubsub topic.
+         *
+         * - - -
          */
         topic: string;
     }
@@ -7572,6 +7645,8 @@ export namespace cloudasset {
     export interface ProjectFeedFeedOutputConfigPubsubDestination {
         /**
          * Destination on Cloud Pubsub topic.
+         *
+         * - - -
          */
         topic: string;
     }
@@ -7602,6 +7677,8 @@ export namespace cloudbuild {
         /**
          * Immutable. The resource name for the webhook secret's secret version. Once this field has been set, it cannot be changed.
          * Changing this field will result in deleting/ recreating the resource.
+         *
+         * - - -
          */
         webhookSecretVersionName: string;
     }
@@ -7653,6 +7730,8 @@ export namespace cloudbuild {
     export interface GetTriggerBuildArtifactObject {
         /**
          * The Cloud Build location for the trigger.
+         *
+         * - - -
          */
         location: string;
         paths: string[];
@@ -7988,6 +8067,9 @@ export namespace cloudbuild {
          * (Output)
          * Output only. Stores timing information for pushing all artifact objects.
          * Structure is documented below.
+         *
+         *
+         * <a name="nestedTiming"></a>The `timing` block contains:
          */
         timings: outputs.cloudbuild.TriggerBuildArtifactsObjectsTiming[];
     }
@@ -8790,6 +8872,8 @@ export namespace clouddeploy {
         profiles?: string[];
         /**
          * Whether to run verify tests after the deployment.
+         *
+         * - - -
          */
         verify?: boolean;
     }
@@ -9004,6 +9088,10 @@ export namespace cloudfunctions {
         deployedUrl: string;
         /**
          * The URL pointing to the hosted repository where the function is defined. There are supported Cloud Source Repository URLs in the following formats:
+         *
+         * * To refer to a specific commit: `https://source.developers.google.com/projects/*&#47;repos/*&#47;revisions/*&#47;paths/*`
+         * * To refer to a moveable alias (branch): `https://source.developers.google.com/projects/*&#47;repos/*&#47;moveable-aliases/*&#47;paths/*`. To refer to HEAD, use the `master` moveable alias.
+         * * To refer to a specific fixed alias (tag): `https://source.developers.google.com/projects/*&#47;repos/*&#47;fixed-aliases/*&#47;paths/*`
          */
         url: string;
     }
@@ -9592,6 +9680,8 @@ export namespace cloudidentity {
          * If specified, the EntityKey represents an external-identity-mapped group.
          * The namespace must correspond to an identity source created in Admin Console
          * and must be in the form of `identitysources/{identity_source_id}`.
+         *
+         * - - -
          */
         namespace?: string;
     }
@@ -9642,6 +9732,8 @@ export namespace cloudidentity {
         /**
          * The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
          * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
+         *
+         * - - -
          */
         name: string;
     }
@@ -9657,6 +9749,8 @@ export namespace cloudrun {
          * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
          * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
          * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+         *
+         * - - -
          */
         annotations: {[key: string]: string};
         /**
@@ -10714,6 +10808,8 @@ export namespace cloudrun {
          * not specified, the volume defaultMode will be used. This might be in
          * conflict with other options that affect the file mode, like fsGroup, and
          * the result can be other mode bits set.
+         *
+         * - - -
          */
         mode?: number;
         /**
@@ -11224,6 +11320,8 @@ export namespace cloudrunv2 {
         /**
          * Traffic VPC egress settings.
          * Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+         *
+         * - - -
          */
         egress?: string;
     }
@@ -11743,6 +11841,8 @@ export namespace cloudrunv2 {
         medium?: string;
         /**
          * Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+         *
+         * - - -
          */
         sizeLimit?: string;
     }
@@ -11861,6 +11961,7 @@ export namespace cloudrunv2 {
         percent: number;
         /**
          * The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+         *
          * (Optional)
          * Revision to which to send this portion of traffic, if traffic allocation is by revision.
          */
@@ -13422,9 +13523,6 @@ export namespace compute {
     }
 
     export interface BackendServiceIamBindingCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         */
         description?: string;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -13437,9 +13535,6 @@ export namespace compute {
     }
 
     export interface BackendServiceIamMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         */
         description?: string;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -13661,6 +13756,8 @@ export namespace compute {
         disk: string;
         /**
          * Output-only. Status of replication on the secondary disk.
+         *
+         * - - -
          */
         state: string;
     }
@@ -13847,6 +13944,8 @@ export namespace compute {
         srcFqdns?: string[];
         /**
          * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+         *
+         * <a name="nestedLayer4Configs"></a>The `layer4Configs` block supports:
          */
         srcIpRanges?: string[];
         srcRegionCodes?: string[];
@@ -13860,6 +13959,8 @@ export namespace compute {
         ipProtocol: string;
         /**
          * An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+         *
+         * - - -
          */
         ports?: string[];
     }
@@ -14011,6 +14112,8 @@ export namespace compute {
     export interface GetBackendServiceConsistentHashHttpCooky {
         /**
          * The name of the Backend Service.
+         *
+         * - - -
          */
         name: string;
         path: string;
@@ -14037,6 +14140,8 @@ export namespace compute {
         data: string;
         /**
          * The name of the Backend Service.
+         *
+         * - - -
          */
         name: string;
     }
@@ -14044,6 +14149,8 @@ export namespace compute {
     export interface GetBackendServiceLocalityLbPolicyPolicy {
         /**
          * The name of the Backend Service.
+         *
+         * - - -
          */
         name: string;
     }
@@ -14121,6 +14228,8 @@ export namespace compute {
     export interface GetGlobalForwardingRuleMetadataFilterFilterLabel {
         /**
          * The name of the global forwarding rule.
+         *
+         * - - -
          */
         name: string;
         value: string;
@@ -15535,10 +15644,12 @@ export namespace compute {
          * The value of the host header in the HTTP health check request.
          * If left empty (default value), the public IP on behalf of which this health
          * check is performed will be used.
+         *
          * (Optional)
          * The value of the host header in the HTTPS health check request.
          * If left empty (default value), the public IP on behalf of which this health
          * check is performed will be used.
+         *
          * (Optional)
          * The value of the host header in the HTTP2 health check request.
          * If left empty (default value), the public IP on behalf of which this health
@@ -15548,18 +15659,23 @@ export namespace compute {
         /**
          * The TCP port number for the HTTP health check request.
          * The default value is 80.
+         *
          * (Optional)
          * The TCP port number for the HTTPS health check request.
          * The default value is 443.
+         *
          * (Optional)
          * The TCP port number for the TCP health check request.
          * The default value is 443.
+         *
          * (Optional)
          * The TCP port number for the SSL health check request.
          * The default value is 443.
+         *
          * (Optional)
          * The TCP port number for the HTTP2 health check request.
          * The default value is 443.
+         *
          * (Optional)
          * The port number for the health check request.
          * Must be specified if portName and portSpecification are not set
@@ -15569,18 +15685,23 @@ export namespace compute {
         /**
          * Port name as defined in InstanceGroup#NamedPort#name. If both port and
          * portName are defined, port takes precedence.
+         *
          * (Optional)
          * Port name as defined in InstanceGroup#NamedPort#name. If both port and
          * portName are defined, port takes precedence.
+         *
          * (Optional)
          * Port name as defined in InstanceGroup#NamedPort#name. If both port and
          * portName are defined, port takes precedence.
+         *
          * (Optional)
          * Port name as defined in InstanceGroup#NamedPort#name. If both port and
          * portName are defined, port takes precedence.
+         *
          * (Optional)
          * Port name as defined in InstanceGroup#NamedPort#name. If both port and
          * portName are defined, port takes precedence.
+         *
          * (Optional)
          * Port name as defined in InstanceGroup#NamedPort#name. If both port and
          * portName are defined, port takes precedence.
@@ -15611,21 +15732,25 @@ export namespace compute {
          * backend.
          * Default value is `NONE`.
          * Possible values are: `NONE`, `PROXY_V1`.
+         *
          * (Optional)
          * Specifies the type of proxy header to append before sending data to the
          * backend.
          * Default value is `NONE`.
          * Possible values are: `NONE`, `PROXY_V1`.
+         *
          * (Optional)
          * Specifies the type of proxy header to append before sending data to the
          * backend.
          * Default value is `NONE`.
          * Possible values are: `NONE`, `PROXY_V1`.
+         *
          * (Optional)
          * Specifies the type of proxy header to append before sending data to the
          * backend.
          * Default value is `NONE`.
          * Possible values are: `NONE`, `PROXY_V1`.
+         *
          * (Optional)
          * Specifies the type of proxy header to append before sending data to the
          * backend.
@@ -15636,9 +15761,11 @@ export namespace compute {
         /**
          * The request path of the HTTP health check request.
          * The default value is /.
+         *
          * (Optional)
          * The request path of the HTTPS health check request.
          * The default value is /.
+         *
          * (Optional)
          * The request path of the HTTP2 health check request.
          * The default value is /.
@@ -15648,18 +15775,22 @@ export namespace compute {
          * The bytes to match against the beginning of the response data. If left empty
          * (the default value), any response will indicate health. The response data
          * can only be ASCII.
+         *
          * (Optional)
          * The bytes to match against the beginning of the response data. If left empty
          * (the default value), any response will indicate health. The response data
          * can only be ASCII.
+         *
          * (Optional)
          * The bytes to match against the beginning of the response data. If left empty
          * (the default value), any response will indicate health. The response data
          * can only be ASCII.
+         *
          * (Optional)
          * The bytes to match against the beginning of the response data. If left empty
          * (the default value), any response will indicate health. The response data
          * can only be ASCII.
+         *
          * (Optional)
          * The bytes to match against the beginning of the response data. If left empty
          * (the default value), any response will indicate health. The response data
@@ -15847,6 +15978,10 @@ export namespace compute {
     export interface ImageIamBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -15862,6 +15997,10 @@ export namespace compute {
     export interface ImageIamMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -16307,6 +16446,8 @@ export namespace compute {
     export interface InstanceGroupManagerAllInstancesConfig {
         /**
          * ), The label key-value pairs that you want to patch onto the instance.
+         *
+         * - - -
          */
         labels?: {[key: string]: string};
         /**
@@ -16330,6 +16471,8 @@ export namespace compute {
     export interface InstanceGroupManagerInstanceLifecyclePolicy {
         /**
          * ), Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group's update policy type.
+         *
+         * - - -
          */
         forceUpdateOnRepair?: string;
     }
@@ -16478,6 +16621,9 @@ export namespace compute {
         name?: string;
         /**
          * The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+         *
+         * > Exactly one `version` you specify must not have a `targetSize` specified. During a rolling update, the instance group manager will fulfill the `targetSize`
+         * constraints of every other `version`, and any remaining instances will be provisioned with the version where `targetSize` is unset.
          */
         targetSize?: outputs.compute.InstanceGroupManagerVersionTargetSize;
     }
@@ -16520,6 +16666,10 @@ export namespace compute {
     export interface InstanceIAMBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -16535,6 +16685,10 @@ export namespace compute {
     export interface InstanceIAMMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -16654,6 +16808,9 @@ export namespace compute {
          * The [networking tier][network-tier] used for configuring this instance.
          * This field can take the following values: PREMIUM, FIXED_STANDARD or STANDARD. If this field is
          * not specified, it is assumed to be PREMIUM.
+         *
+         * <a name="nestedIpv6AccessConfig"></a>The `ipv6AccessConfig` block supports:
+         *
          * subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
          */
         networkTier: string;
@@ -16662,6 +16819,7 @@ export namespace compute {
          * To set this field on an instance, you must be verified as the owner of the domain.
          * See [the docs](https://cloud.google.com/compute/docs/instances/create-ptr-record) for how
          * to become verified as a domain owner.
+         *
          * records for the external IPv6 ranges..
          */
         publicPtrDomainName?: string;
@@ -16861,6 +17019,14 @@ export namespace compute {
         deviceName: string;
         /**
          * Encrypts or decrypts a disk using a customer-supplied encryption key.
+         *
+         * If you are creating a new disk, this field encrypts the new disk using an encryption key that you provide. If you are attaching an existing disk that is already encrypted, this field decrypts the disk using the customer-supplied encryption key.
+         *
+         * If you encrypt a disk using a customer-supplied key, you must provide the same key again when you attempt to use this resource at a later time. For example, you must provide the key when you create a snapshot or an image from the disk or when you attach the disk to a virtual machine instance.
+         *
+         * If you do not provide an encryption key, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
+         *
+         * Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt disks in a managed instance group. Structure documented below.
          */
         diskEncryptionKey?: outputs.compute.InstanceTemplateDiskDiskEncryptionKey;
         /**
@@ -16921,6 +17087,11 @@ export namespace compute {
          * The customer-supplied encryption
          * key of the source image. Required if the source image is protected by a
          * customer-supplied encryption key.
+         *
+         * Instance templates do not store customer-supplied encryption keys, so you
+         * cannot create disks for instances in a managed instance group if the source
+         * images are encrypted with your own keys. Structure
+         * documented below.
          */
         sourceImageEncryptionKey?: outputs.compute.InstanceTemplateDiskSourceImageEncryptionKey;
         /**
@@ -17090,6 +17261,9 @@ export namespace compute {
          * The [networking tier][network-tier] used for configuring
          * this instance template. This field can take the following values: PREMIUM,
          * STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+         *
+         * <a name="nestedIpv6AccessConfig"></a>The `ipv6AccessConfig` block supports:
+         *
          * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
          */
         networkTier: string;
@@ -17214,6 +17388,11 @@ export namespace compute {
          * A list of service scopes. Both OAuth2 URLs and gcloud
          * short names are supported. To allow full access to all Cloud APIs, use the
          * `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+         *
+         * The [service accounts documentation](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam)
+         * explains that access scopes are the legacy method of specifying permissions for your instance.
+         * If you are following best practices and using IAM roles to grant permissions to service accounts,
+         * then you can define this field as an empty list.
          */
         scopes: string[];
     }
@@ -17358,6 +17537,8 @@ export namespace compute {
         srcSecureTags?: outputs.compute.NetworkFirewallPolicyRuleMatchSrcSecureTag[];
         /**
          * Name of the Google Cloud Threat Intelligence list.
+         *
+         * The `layer4Configs` block supports:
          */
         srcThreatIntelligences?: string[];
     }
@@ -17369,6 +17550,8 @@ export namespace compute {
         ipProtocol: string;
         /**
          * An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+         *
+         * - - -
          */
         ports?: string[];
     }
@@ -17511,6 +17694,9 @@ export namespace compute {
         /**
          * Pairs of IP protocols and ports that the rule should match.
          * Structure is documented below.
+         *
+         *
+         * <a name="nestedLayer4Config"></a>The `layer4Config` block supports:
          */
         layer4Configs: outputs.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4Config[];
         /**
@@ -17536,6 +17722,8 @@ export namespace compute {
          * applies to connections through any port.
          * Example inputs include: ["22"], ["80","443"], and
          * ["12345-12349"].
+         *
+         * - - -
          */
         ports?: string[];
     }
@@ -17585,6 +17773,8 @@ export namespace compute {
     export interface PacketMirroringMirroredResourcesInstance {
         /**
          * The URL of the instances where this rule should be active.
+         *
+         * - - -
          */
         url: string;
     }
@@ -18346,9 +18536,6 @@ export namespace compute {
     }
 
     export interface RegionBackendServiceIamBindingCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         */
         description?: string;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -18361,9 +18548,6 @@ export namespace compute {
     }
 
     export interface RegionBackendServiceIamMemberCondition {
-        /**
-         * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         */
         description?: string;
         /**
          * Textual representation of an expression in Common Expression Language syntax.
@@ -18640,10 +18824,12 @@ export namespace compute {
          * The value of the host header in the HTTP health check request.
          * If left empty (default value), the public IP on behalf of which this health
          * check is performed will be used.
+         *
          * (Optional)
          * The value of the host header in the HTTPS health check request.
          * If left empty (default value), the public IP on behalf of which this health
          * check is performed will be used.
+         *
          * (Optional)
          * The value of the host header in the HTTP2 health check request.
          * If left empty (default value), the public IP on behalf of which this health
@@ -18653,18 +18839,23 @@ export namespace compute {
         /**
          * The TCP port number for the HTTP health check request.
          * The default value is 80.
+         *
          * (Optional)
          * The TCP port number for the HTTPS health check request.
          * The default value is 443.
+         *
          * (Optional)
          * The TCP port number for the TCP health check request.
          * The default value is 80.
+         *
          * (Optional)
          * The TCP port number for the SSL health check request.
          * The default value is 443.
+         *
          * (Optional)
          * The TCP port number for the HTTP2 health check request.
          * The default value is 443.
+         *
          * (Optional)
          * The port number for the health check request.
          * Must be specified if portName and portSpecification are not set
@@ -18674,18 +18865,23 @@ export namespace compute {
         /**
          * Port name as defined in InstanceGroup#NamedPort#name. If both port and
          * portName are defined, port takes precedence.
+         *
          * (Optional)
          * Port name as defined in InstanceGroup#NamedPort#name. If both port and
          * portName are defined, port takes precedence.
+         *
          * (Optional)
          * Port name as defined in InstanceGroup#NamedPort#name. If both port and
          * portName are defined, port takes precedence.
+         *
          * (Optional)
          * Port name as defined in InstanceGroup#NamedPort#name. If both port and
          * portName are defined, port takes precedence.
+         *
          * (Optional)
          * Port name as defined in InstanceGroup#NamedPort#name. If both port and
          * portName are defined, port takes precedence.
+         *
          * (Optional)
          * Port name as defined in InstanceGroup#NamedPort#name. If both port and
          * portName are defined, port takes precedence.
@@ -18716,21 +18912,25 @@ export namespace compute {
          * backend.
          * Default value is `NONE`.
          * Possible values are: `NONE`, `PROXY_V1`.
+         *
          * (Optional)
          * Specifies the type of proxy header to append before sending data to the
          * backend.
          * Default value is `NONE`.
          * Possible values are: `NONE`, `PROXY_V1`.
+         *
          * (Optional)
          * Specifies the type of proxy header to append before sending data to the
          * backend.
          * Default value is `NONE`.
          * Possible values are: `NONE`, `PROXY_V1`.
+         *
          * (Optional)
          * Specifies the type of proxy header to append before sending data to the
          * backend.
          * Default value is `NONE`.
          * Possible values are: `NONE`, `PROXY_V1`.
+         *
          * (Optional)
          * Specifies the type of proxy header to append before sending data to the
          * backend.
@@ -18741,9 +18941,11 @@ export namespace compute {
         /**
          * The request path of the HTTP health check request.
          * The default value is /.
+         *
          * (Optional)
          * The request path of the HTTPS health check request.
          * The default value is /.
+         *
          * (Optional)
          * The request path of the HTTP2 health check request.
          * The default value is /.
@@ -18753,18 +18955,22 @@ export namespace compute {
          * The bytes to match against the beginning of the response data. If left empty
          * (the default value), any response will indicate health. The response data
          * can only be ASCII.
+         *
          * (Optional)
          * The bytes to match against the beginning of the response data. If left empty
          * (the default value), any response will indicate health. The response data
          * can only be ASCII.
+         *
          * (Optional)
          * The bytes to match against the beginning of the response data. If left empty
          * (the default value), any response will indicate health. The response data
          * can only be ASCII.
+         *
          * (Optional)
          * The bytes to match against the beginning of the response data. If left empty
          * (the default value), any response will indicate health. The response data
          * can only be ASCII.
+         *
          * (Optional)
          * The bytes to match against the beginning of the response data. If left empty
          * (the default value), any response will indicate health. The response data
@@ -18944,6 +19150,8 @@ export namespace compute {
     export interface RegionInstanceGroupManagerAllInstancesConfig {
         /**
          * ), The label key-value pairs that you want to patch onto the instance.
+         *
+         * - - -
          */
         labels?: {[key: string]: string};
         /**
@@ -19120,6 +19328,9 @@ export namespace compute {
         name?: string;
         /**
          * The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
+         *
+         * > Exactly one `version` you specify must not have a `targetSize` specified. During a rolling update, the instance group manager will fulfill the `targetSize`
+         * constraints of every other `version`, and any remaining instances will be provisioned with the version where `targetSize` is unset.
          */
         targetSize?: outputs.compute.RegionInstanceGroupManagerVersionTargetSize;
     }
@@ -19177,6 +19388,14 @@ export namespace compute {
         deviceName: string;
         /**
          * Encrypts or decrypts a disk using a customer-supplied encryption key.
+         *
+         * If you are creating a new disk, this field encrypts the new disk using an encryption key that you provide. If you are attaching an existing disk that is already encrypted, this field decrypts the disk using the customer-supplied encryption key.
+         *
+         * If you encrypt a disk using a customer-supplied key, you must provide the same key again when you attempt to use this resource at a later time. For example, you must provide the key when you create a snapshot or an image from the disk or when you attach the disk to a virtual machine instance.
+         *
+         * If you do not provide an encryption key, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
+         *
+         * Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt disks in a managed instance group. Structure documented below.
          */
         diskEncryptionKey?: outputs.compute.RegionInstanceTemplateDiskDiskEncryptionKey;
         /**
@@ -19237,6 +19456,11 @@ export namespace compute {
          * The customer-supplied encryption
          * key of the source image. Required if the source image is protected by a
          * customer-supplied encryption key.
+         *
+         * Instance templates do not store customer-supplied encryption keys, so you
+         * cannot create disks for instances in a managed instance group if the source
+         * images are encrypted with your own keys. Structure
+         * documented below.
          */
         sourceImageEncryptionKey?: outputs.compute.RegionInstanceTemplateDiskSourceImageEncryptionKey;
         /**
@@ -19394,6 +19618,9 @@ export namespace compute {
          * The [networking tier][network-tier] used for configuring
          * this instance template. This field can take the following values: PREMIUM,
          * STANDARD or FIXED_STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+         *
+         * <a name="nestedIpv6AccessConfig"></a>The `ipv6AccessConfig` block supports:
+         *
          * subnet has an external subnet. Only PREMIUM and STANDARD tier is valid for IPv6.
          */
         networkTier: string;
@@ -19521,6 +19748,11 @@ export namespace compute {
          * A list of service scopes. Both OAuth2 URLs and gcloud
          * short names are supported. To allow full access to all Cloud APIs, use the
          * `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+         *
+         * The [service accounts documentation](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam)
+         * explains that access scopes are the legacy method of specifying permissions for your instance.
+         * If you are following best practices and using IAM roles to grant permissions to service accounts,
+         * then you can define this field as an empty list.
          */
         scopes: string[];
     }
@@ -19682,6 +19914,8 @@ export namespace compute {
         srcSecureTags?: outputs.compute.RegionNetworkFirewallPolicyRuleMatchSrcSecureTag[];
         /**
          * Name of the Google Cloud Threat Intelligence list.
+         *
+         * The `layer4Configs` block supports:
          */
         srcThreatIntelligences?: string[];
     }
@@ -19693,6 +19927,8 @@ export namespace compute {
         ipProtocol: string;
         /**
          * An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+         *
+         * - - -
          */
         ports?: string[];
     }
@@ -21410,6 +21646,8 @@ export namespace compute {
     export interface ReservationSpecificReservationInstancePropertiesLocalSsd {
         /**
          * The size of the disk in base-2 GB.
+         *
+         * - - -
          */
         diskSizeGb: number;
         /**
@@ -21851,6 +22089,8 @@ export namespace compute {
     export interface SecurityPolicyAdaptiveProtectionConfig {
         /**
          * ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+         *
+         * <a name="nestedLayer7DdosDefenseConfig"></a>The `layer7DdosDefenseConfig` block supports:
          */
         autoDeployConfig?: outputs.compute.SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig;
         /**
@@ -22055,6 +22295,8 @@ export namespace compute {
         requestUris?: outputs.compute.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri[];
         /**
          * A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+         *
+         * <a name="nestedFieldParams"></a>The `requestHeader`, `requestCookie`, `requestUri` and `requestQueryParam` blocks support:
          */
         targetRuleIds?: string[];
         /**
@@ -22066,6 +22308,12 @@ export namespace compute {
     export interface SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky {
         /**
          * You can specify an exact match or a partial match by using a field operator and a field value.
+         *
+         * * EQUALS: The operator matches if the field value equals the specified value.
+         * * STARTS_WITH: The operator matches if the field value starts with the specified value.
+         * * ENDS_WITH: The operator matches if the field value ends with the specified value.
+         * * CONTAINS: The operator matches if the field value contains the specified value.
+         * * EQUALS_ANY: The operator matches if the field value is any value.
          */
         operator: string;
         /**
@@ -22078,6 +22326,12 @@ export namespace compute {
     export interface SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader {
         /**
          * You can specify an exact match or a partial match by using a field operator and a field value.
+         *
+         * * EQUALS: The operator matches if the field value equals the specified value.
+         * * STARTS_WITH: The operator matches if the field value starts with the specified value.
+         * * ENDS_WITH: The operator matches if the field value ends with the specified value.
+         * * CONTAINS: The operator matches if the field value contains the specified value.
+         * * EQUALS_ANY: The operator matches if the field value is any value.
          */
         operator: string;
         /**
@@ -22090,6 +22344,12 @@ export namespace compute {
     export interface SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam {
         /**
          * You can specify an exact match or a partial match by using a field operator and a field value.
+         *
+         * * EQUALS: The operator matches if the field value equals the specified value.
+         * * STARTS_WITH: The operator matches if the field value starts with the specified value.
+         * * ENDS_WITH: The operator matches if the field value ends with the specified value.
+         * * CONTAINS: The operator matches if the field value contains the specified value.
+         * * EQUALS_ANY: The operator matches if the field value is any value.
          */
         operator: string;
         /**
@@ -22102,6 +22362,12 @@ export namespace compute {
     export interface SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri {
         /**
          * You can specify an exact match or a partial match by using a field operator and a field value.
+         *
+         * * EQUALS: The operator matches if the field value equals the specified value.
+         * * STARTS_WITH: The operator matches if the field value starts with the specified value.
+         * * ENDS_WITH: The operator matches if the field value ends with the specified value.
+         * * CONTAINS: The operator matches if the field value contains the specified value.
+         * * EQUALS_ANY: The operator matches if the field value is any value.
          */
         operator: string;
         /**
@@ -22129,10 +22395,21 @@ export namespace compute {
         conformAction: string;
         /**
          * Determines the key to enforce the rateLimitThreshold on. If not specified, defaults to "ALL".
+         *
+         * * ALL: A single rate limit threshold is applied to all the requests matching this rule.
+         * * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+         * * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+         * * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL.
+         * * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+         * * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
+         * * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+         * * REGION_CODE: The country/region from which the request originates.
          */
         enforceOnKey?: string;
         /**
          * ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforceOnKeyConfigs` is specified, enforceOnKey must be set to an empty string. Structure is documented below.
+         *
+         * **Note:** To avoid the conflict between `enforceOnKey` and `enforceOnKeyConfigs`, the field `enforceOnKey` needs to be set to an empty string.
          */
         enforceOnKeyConfigs?: outputs.compute.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig[];
         /**
@@ -22146,6 +22423,8 @@ export namespace compute {
         exceedAction: string;
         /**
          * Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. Structure is documented below.
+         *
+         * <a name="nestedThreshold"></a>The `{ban/rate_limit}_threshold` block supports:
          */
         exceedRedirectOptions?: outputs.compute.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions;
         /**
@@ -22172,6 +22451,15 @@ export namespace compute {
         enforceOnKeyName?: string;
         /**
          * Determines the key to enforce the rateLimitThreshold on. If not specified, defaults to "ALL".
+         *
+         * * ALL: A single rate limit threshold is applied to all the requests matching this rule.
+         * * IP: The source IP address of the request is the key. Each IP has this limit enforced separately.
+         * * HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL.
+         * * XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key type defaults to ALL.
+         * * HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
+         * * HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes
+         * * SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session.
+         * * REGION_CODE: The country/region from which the request originates.
          */
         enforceOnKeyType?: string;
     }
@@ -22205,6 +22493,9 @@ export namespace compute {
         target?: string;
         /**
          * Type of redirect action.
+         *
+         * * EXTERNAL_302: Redirect to an external address, configured in 'target'.
+         * * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
          */
         type: string;
     }
@@ -22344,6 +22635,10 @@ export namespace compute {
     export interface SubnetworkIAMBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -22359,6 +22654,10 @@ export namespace compute {
     export interface SubnetworkIAMMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -24681,6 +24980,8 @@ export namespace container {
         serviceAddressCidrBlocks: string[];
         /**
          * The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
+         *
+         * - - -
          */
         vpcId: string;
     }
@@ -24848,6 +25149,8 @@ export namespace container {
     export interface AwsNodePoolMaxPodsConstraint {
         /**
          * The maximum number of pods to schedule on a single node.
+         *
+         * - - -
          */
         maxPodsPerNode: number;
     }
@@ -25006,6 +25309,8 @@ export namespace container {
         serviceAddressCidrBlocks: string[];
         /**
          * The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*&#47;resourceGroups/*&#47;providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
+         *
+         * - - -
          */
         virtualNetworkId: string;
     }
@@ -25082,6 +25387,8 @@ export namespace container {
     export interface AzureNodePoolMaxPodsConstraint {
         /**
          * The maximum number of pods to schedule on a single node.
+         *
+         * - - -
          */
         maxPodsPerNode: number;
     }
@@ -25094,12 +25401,23 @@ export namespace container {
         /**
          * .
          * The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
+         *
+         *
+         * This example `addonsConfig` disables two addons:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
+         * <a name="nestedBinaryAuthorization"></a>The `binaryAuthorization` block supports:
          */
         configConnectorConfig: outputs.container.ClusterAddonsConfigConfigConnectorConfig;
         /**
          * .
          * The status of the NodeLocal DNSCache addon. It is disabled by default.
          * Set `enabled = true` to enable.
+         *
+         * **Enabling/Disabling NodeLocal DNSCache in an existing cluster is a disruptive operation.
+         * All cluster nodes running GKE 1.15 and higher are recreated.**
          */
         dnsCacheConfig: outputs.container.ClusterAddonsConfigDnsCacheConfig;
         /**
@@ -25174,8 +25492,19 @@ export namespace container {
     export interface ClusterAddonsConfigConfigConnectorConfig {
         /**
          * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+         *
+         *
+         *
          * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+         *
+         *
+         *
+         *
+         *
+         *
+         *
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         *
          * not.
          */
         enabled: boolean;
@@ -25184,8 +25513,19 @@ export namespace container {
     export interface ClusterAddonsConfigDnsCacheConfig {
         /**
          * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+         *
+         *
+         *
          * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+         *
+         *
+         *
+         *
+         *
+         *
+         *
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         *
          * not.
          */
         enabled: boolean;
@@ -25194,8 +25534,19 @@ export namespace container {
     export interface ClusterAddonsConfigGcePersistentDiskCsiDriverConfig {
         /**
          * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+         *
+         *
+         *
          * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+         *
+         *
+         *
+         *
+         *
+         *
+         *
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         *
          * not.
          */
         enabled: boolean;
@@ -25204,8 +25555,19 @@ export namespace container {
     export interface ClusterAddonsConfigGcpFilestoreCsiDriverConfig {
         /**
          * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+         *
+         *
+         *
          * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+         *
+         *
+         *
+         *
+         *
+         *
+         *
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         *
          * not.
          */
         enabled: boolean;
@@ -25214,8 +25576,19 @@ export namespace container {
     export interface ClusterAddonsConfigGcsFuseCsiDriverConfig {
         /**
          * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+         *
+         *
+         *
          * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+         *
+         *
+         *
+         *
+         *
+         *
+         *
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         *
          * not.
          */
         enabled: boolean;
@@ -25224,8 +25597,19 @@ export namespace container {
     export interface ClusterAddonsConfigGkeBackupAgentConfig {
         /**
          * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+         *
+         *
+         *
          * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+         *
+         *
+         *
+         *
+         *
+         *
+         *
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         *
          * not.
          */
         enabled: boolean;
@@ -25234,6 +25618,8 @@ export namespace container {
     export interface ClusterAddonsConfigHorizontalPodAutoscaling {
         /**
          * Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+         *
+         * <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
          */
         disabled: boolean;
     }
@@ -25241,6 +25627,8 @@ export namespace container {
     export interface ClusterAddonsConfigHttpLoadBalancing {
         /**
          * Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+         *
+         * <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
          */
         disabled: boolean;
     }
@@ -25260,8 +25648,19 @@ export namespace container {
     export interface ClusterAddonsConfigKalmConfig {
         /**
          * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+         *
+         *
+         *
          * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+         *
+         *
+         *
+         *
+         *
+         *
+         *
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         *
          * not.
          */
         enabled: boolean;
@@ -25270,6 +25669,8 @@ export namespace container {
     export interface ClusterAddonsConfigNetworkPolicyConfig {
         /**
          * Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+         *
+         * <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
          */
         disabled: boolean;
     }
@@ -25284,6 +25685,20 @@ export namespace container {
     export interface ClusterBinaryAuthorization {
         /**
          * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+         *
+         *
+         *
+         * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+         *
+         *
+         *
+         *
+         *
+         *
+         *
+         * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         *
+         * not.
          *
          * @deprecated Deprecated in favor of evaluation_mode.
          */
@@ -25353,6 +25768,8 @@ export namespace container {
         minCpuPlatform?: string;
         /**
          * Scopes that are used by NAP and GKE Autopilot when creating node pools. Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+         *
+         * > `monitoring.write` is always enabled regardless of user input.  `monitoring` and `logging.write` may also be enabled depending on the values for `monitoringService` and `loggingService`.
          */
         oauthScopes: string[];
         /**
@@ -25372,6 +25789,8 @@ export namespace container {
     export interface ClusterClusterAutoscalingAutoProvisioningDefaultsManagement {
         /**
          * Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
+         *
+         * This block also contains several computed attributes, documented below.
          */
         autoRepair: boolean;
         /**
@@ -25392,10 +25811,14 @@ export namespace container {
     export interface ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig {
         /**
          * Defines if the instance has integrity monitoring enabled.
+         *
+         * Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.  Defaults to `true`.
          */
         enableIntegrityMonitoring?: boolean;
         /**
          * Defines if the instance has Secure Boot enabled.
+         *
+         * Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.  Defaults to `false`.
          */
         enableSecureBoot?: boolean;
     }
@@ -25498,6 +25921,8 @@ export namespace container {
     export interface ClusterDefaultSnatStatus {
         /**
          * Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+         *
+         * <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
          */
         disabled: boolean;
     }
@@ -25573,6 +25998,8 @@ export namespace container {
     export interface ClusterIpAllocationPolicyPodCidrOverprovisionConfig {
         /**
          * Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+         *
+         * <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
          */
         disabled: boolean;
     }
@@ -25590,6 +26017,11 @@ export namespace container {
          * Time window specified for daily maintenance operations.
          * Specify `startTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM”,
          * where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
+         *
+         * Examples:
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         dailyMaintenanceWindow?: outputs.container.ClusterMaintenancePolicyDailyMaintenanceWindow;
         /**
@@ -25598,6 +26030,20 @@ export namespace container {
         maintenanceExclusions?: outputs.container.ClusterMaintenancePolicyMaintenanceExclusion[];
         /**
          * Time window for recurring maintenance operations.
+         *
+         * Specify `startTime` and `endTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) "Zulu" date format.  The start time's date is
+         * the initial date that the window starts, and the end time is used for calculating duration.  Specify `recurrence` in
+         * [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format, to specify when this recurs.
+         * Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
+         *
+         * Examples:
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         recurringWindow?: outputs.container.ClusterMaintenancePolicyRecurringWindow;
     }
@@ -25620,6 +26066,17 @@ export namespace container {
     export interface ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions {
         /**
          * The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+         *
+         * Specify `startTime` and `endTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) "Zulu" date format.  The start time's date is
+         * the initial date that the window starts, and the end time is used for calculating duration.Specify `recurrence` in
+         * [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format, to specify when this recurs.
+         * Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
+         *
+         * Examples:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         scope: string;
     }
@@ -25634,6 +26091,12 @@ export namespace container {
         clientCertificate: string;
         /**
          * Whether client certificate authorization is enabled for this cluster.  For example:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
+         *
+         * This block also contains several computed attributes, documented below.
          */
         clientCertificateConfig: outputs.container.ClusterMasterAuthClientCertificateConfig;
         clientKey: string;
@@ -25727,10 +26190,18 @@ export namespace container {
         diskType: string;
         /**
          * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         ephemeralStorageConfig?: outputs.container.ClusterNodeConfigEphemeralStorageConfig;
         /**
          * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         ephemeralStorageLocalSsdConfig?: outputs.container.ClusterNodeConfigEphemeralStorageLocalSsdConfig;
         /**
@@ -25740,6 +26211,10 @@ export namespace container {
          * A `machineType` that has more than 16 GiB of memory is also recommended.
          * GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
          * Structure is documented below.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         gcfsConfig?: outputs.container.ClusterNodeConfigGcfsConfig;
         /**
@@ -25753,6 +26228,11 @@ export namespace container {
          * gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
          * GKE node version 1.15.11-gke.15 or later
          * Structure is documented below.
+         *
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         gvnic?: outputs.container.ClusterNodeConfigGvnic;
         /**
@@ -25763,6 +26243,10 @@ export namespace container {
         /**
          * Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
          * Structure is documented below.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         kubeletConfig?: outputs.container.ClusterNodeConfigKubeletConfig;
         /**
@@ -25774,6 +26258,10 @@ export namespace container {
          * Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
          * Note that validations happen all server side. All attributes are optional.
          * Structure is documented below.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         linuxNodeConfig?: outputs.container.ClusterNodeConfigLinuxNodeConfig;
         /**
@@ -25819,6 +26307,8 @@ export namespace container {
          * The set of Google API scopes to be made available
          * on all of the node VMs under the "default" service account.
          * Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+         *
+         * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/access-scopes) for information on migrating off of legacy access scopes.
          */
         oauthScopes: string[];
         /**
@@ -25953,6 +26443,11 @@ export namespace container {
          * as a sequence of decimal numbers, each with optional fraction and a unit suffix,
          * such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
          * "h". The value must be a positive duration.
+         *
+         * > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
+         * value and accepts an invalid `default` value instead. While this remains true,
+         * not specifying the `kubeletConfig` block should be the equivalent of specifying
+         * `none`.
          */
         cpuCfsQuotaPeriod?: string;
         /**
@@ -25988,6 +26483,11 @@ export namespace container {
         /**
          * The type of reservation consumption
          * Accepted values are:
+         *
+         * * `"UNSPECIFIED"`: Default value. This should not be used.
+         * * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
+         * * `"ANY_RESERVATION"`: Consume any reservation available.
+         * * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
          */
         consumeReservationType: string;
         /**
@@ -26004,6 +26504,8 @@ export namespace container {
         /**
          * Which sandbox to use for pods in the node pool.
          * Accepted values are:
+         *
+         * * `"gvisor"`: Pods run within a gVisor sandbox.
          */
         sandboxType: string;
     }
@@ -26011,10 +26513,14 @@ export namespace container {
     export interface ClusterNodeConfigShieldedInstanceConfig {
         /**
          * Defines if the instance has integrity monitoring enabled.
+         *
+         * Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.  Defaults to `true`.
          */
         enableIntegrityMonitoring?: boolean;
         /**
          * Defines if the instance has Secure Boot enabled.
+         *
+         * Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.  Defaults to `false`.
          */
         enableSecureBoot?: boolean;
     }
@@ -26066,6 +26572,8 @@ export namespace container {
         /**
          * The name of the cluster, unique within the project and
          * location.
+         *
+         * - - -
          */
         name: string;
         namePrefix: string;
@@ -26088,6 +26596,13 @@ export namespace container {
          * are located. Nodes must be in the region of their regional cluster or in the
          * same region as their cluster's zone for zonal clusters. If this is specified for
          * a zonal cluster, omit the cluster's zone.
+         *
+         * > A "multi-zonal" cluster is a zonal cluster with at least one additional zone
+         * defined; in a multi-zonal cluster, the cluster master is only present in a
+         * single zone while nodes are present in each of the primary zone and the node
+         * locations. In contrast, in a regional cluster, cluster master nodes are present
+         * in multiple zones in the region. For that reason, regional clusters should be
+         * preferred.
          */
         nodeLocations: string[];
         placementPolicy?: outputs.container.ClusterNodePoolPlacementPolicy;
@@ -26108,6 +26623,10 @@ export namespace container {
     export interface ClusterNodePoolAutoConfigNetworkTags {
         /**
          * ) - List of network tags applied to auto-provisioned node pools.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         tags?: string[];
     }
@@ -26148,6 +26667,8 @@ export namespace container {
     export interface ClusterNodePoolManagement {
         /**
          * Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
+         *
+         * This block also contains several computed attributes, documented below.
          */
         autoRepair?: boolean;
         /**
@@ -26182,6 +26703,8 @@ export namespace container {
     export interface ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig {
         /**
          * Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+         *
+         * <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
          */
         disabled: boolean;
     }
@@ -26208,10 +26731,18 @@ export namespace container {
         diskType: string;
         /**
          * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         ephemeralStorageConfig?: outputs.container.ClusterNodePoolNodeConfigEphemeralStorageConfig;
         /**
          * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         ephemeralStorageLocalSsdConfig?: outputs.container.ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig;
         /**
@@ -26221,6 +26752,10 @@ export namespace container {
          * A `machineType` that has more than 16 GiB of memory is also recommended.
          * GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
          * Structure is documented below.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         gcfsConfig?: outputs.container.ClusterNodePoolNodeConfigGcfsConfig;
         /**
@@ -26234,6 +26769,11 @@ export namespace container {
          * gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
          * GKE node version 1.15.11-gke.15 or later
          * Structure is documented below.
+         *
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         gvnic?: outputs.container.ClusterNodePoolNodeConfigGvnic;
         /**
@@ -26244,6 +26784,10 @@ export namespace container {
         /**
          * Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
          * Structure is documented below.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         kubeletConfig?: outputs.container.ClusterNodePoolNodeConfigKubeletConfig;
         /**
@@ -26255,6 +26799,10 @@ export namespace container {
          * Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
          * Note that validations happen all server side. All attributes are optional.
          * Structure is documented below.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         linuxNodeConfig?: outputs.container.ClusterNodePoolNodeConfigLinuxNodeConfig;
         /**
@@ -26300,6 +26848,8 @@ export namespace container {
          * The set of Google API scopes to be made available
          * on all of the node VMs under the "default" service account.
          * Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+         *
+         * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/access-scopes) for information on migrating off of legacy access scopes.
          */
         oauthScopes: string[];
         /**
@@ -26434,6 +26984,11 @@ export namespace container {
          * as a sequence of decimal numbers, each with optional fraction and a unit suffix,
          * such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
          * "h". The value must be a positive duration.
+         *
+         * > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
+         * value and accepts an invalid `default` value instead. While this remains true,
+         * not specifying the `kubeletConfig` block should be the equivalent of specifying
+         * `none`.
          */
         cpuCfsQuotaPeriod?: string;
         /**
@@ -26469,6 +27024,11 @@ export namespace container {
         /**
          * The type of reservation consumption
          * Accepted values are:
+         *
+         * * `"UNSPECIFIED"`: Default value. This should not be used.
+         * * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
+         * * `"ANY_RESERVATION"`: Consume any reservation available.
+         * * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
          */
         consumeReservationType: string;
         /**
@@ -26485,6 +27045,8 @@ export namespace container {
         /**
          * Which sandbox to use for pods in the node pool.
          * Accepted values are:
+         *
+         * * `"gvisor"`: Pods run within a gVisor sandbox.
          */
         sandboxType: string;
     }
@@ -26492,10 +27054,14 @@ export namespace container {
     export interface ClusterNodePoolNodeConfigShieldedInstanceConfig {
         /**
          * Defines if the instance has integrity monitoring enabled.
+         *
+         * Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.  Defaults to `true`.
          */
         enableIntegrityMonitoring?: boolean;
         /**
          * Defines if the instance has Secure Boot enabled.
+         *
+         * Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.  Defaults to `false`.
          */
         enableSecureBoot?: boolean;
     }
@@ -26593,6 +27159,10 @@ export namespace container {
         enabled: boolean;
         /**
          * Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         filter?: outputs.container.ClusterNotificationConfigPubsubFilter;
         /**
@@ -26661,6 +27231,10 @@ export namespace container {
         privateEndpointSubnetwork?: string;
         /**
          * The external IP address of this cluster's master endpoint.
+         *
+         * !> The Google provider is unable to validate certain configurations of
+         * `privateClusterConfig` when `enablePrivateNodes` is `false`. It's
+         * recommended that you omit the block entirely if the field is not set to `true`.
          */
         publicEndpoint: string;
     }
@@ -26706,6 +27280,12 @@ export namespace container {
     export interface ClusterResourceUsageExportConfig {
         /**
          * Parameters for using BigQuery as the destination of resource usage export.
+         *
+         * * `bigquery_destination.dataset_id` (Required) - The ID of a BigQuery Dataset. For Example:
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         bigqueryDestination: outputs.container.ClusterResourceUsageExportConfigBigqueryDestination;
         /**
@@ -26737,8 +27317,19 @@ export namespace container {
     export interface ClusterTpuConfig {
         /**
          * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+         *
+         *
+         *
          * for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+         *
+         *
+         *
+         *
+         *
+         *
+         *
          * If enabled, pods must be valid under a PodSecurityPolicy to be created.
+         *
          * not.
          */
         enabled: boolean;
@@ -26756,6 +27347,10 @@ export namespace container {
     export interface ClusterWorkloadIdentityConfig {
         /**
          * The workload pool to attach all Kubernetes service accounts to.
+         *
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         workloadPool?: string;
     }
@@ -27592,6 +28187,8 @@ export namespace container {
          * The number of nodes that can be simultaneously unavailable during
          * an upgrade. Increasing `maxUnavailable` raises the number of nodes that can be upgraded in
          * parallel. Can be set to 0 or greater.
+         *
+         * `maxSurge` and `maxUnavailable` must not be negative and at least one of them must be greater than zero.
          */
         maxUnavailable: number;
         /**
@@ -27649,6 +28246,8 @@ export namespace containeranalysis {
         /**
          * The human readable name of this Attestation Authority, for
          * example "qa".
+         *
+         * - - -
          */
         humanReadableName: string;
     }
@@ -27693,6 +28292,8 @@ export namespace containeranalysis {
          * * `openpgp4fpr:74FAF3B861BDA0870C7B6DEF607E48D2A663AEEA`
          * * RFC6920 digest-named SubjectPublicKeyInfo (digest of the DER serialization):
          * * "ni:///sha-256;cD9o9Cq6LG3jD0iKXqEi_vdjJGecm_iXkbqVoScViaU"
+         *
+         * - - -
          */
         publicKeyId: string;
         /**
@@ -28157,6 +28758,9 @@ export namespace datacatalog {
          * (Output)
          * Sample files contained in this fileset, not all files contained in this fileset are represented here.
          * Structure is documented below.
+         *
+         *
+         * <a name="nestedSampleGcsFileSpecs"></a>The `sampleGcsFileSpecs` block contains:
          */
         sampleGcsFileSpecs: outputs.datacatalog.EntryGcsFilesetSpecSampleGcsFileSpec[];
     }
@@ -28214,6 +28818,8 @@ export namespace datacatalog {
         doubleValue?: number;
         /**
          * Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
+         *
+         * - - -
          */
         enumValue?: string;
         /**
@@ -28847,6 +29453,8 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+         *
+         * - - -
          */
         day?: number;
         /**
@@ -29025,6 +29633,8 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionExpressionsConditionsConditionValueDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+         *
+         * - - -
          */
         day?: number;
         /**
@@ -29202,6 +29812,8 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMaxDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+         *
+         * - - -
          */
         day?: number;
         /**
@@ -29274,6 +29886,8 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketMinDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+         *
+         * - - -
          */
         day?: number;
         /**
@@ -29346,6 +29960,8 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfigBucketReplacementValueDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+         *
+         * - - -
          */
         day?: number;
         /**
@@ -29813,6 +30429,8 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigLowerBoundDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+         *
+         * - - -
          */
         day?: number;
         /**
@@ -29885,6 +30503,8 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfigUpperBoundDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+         *
+         * - - -
          */
         day?: number;
         /**
@@ -29969,6 +30589,8 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigNewValueDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+         *
+         * - - -
          */
         day?: number;
         /**
@@ -30127,6 +30749,8 @@ export namespace dataloss {
     export interface PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsConditionValueDateValue {
         /**
          * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+         *
+         * - - -
          */
         day?: number;
         /**
@@ -31503,6 +32127,8 @@ export namespace dataloss {
          * A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs.
          * This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
          * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         *
+         * - - -
          */
         recurrencePeriodDuration?: string;
     }
@@ -31716,6 +32342,8 @@ export namespace dataplex {
         name?: string;
         /**
          * Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
+         *
+         * - - -
          */
         type: string;
     }
@@ -31866,6 +32494,8 @@ export namespace dataplex {
     export interface ZoneResourceSpec {
         /**
          * Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
+         *
+         * - - -
          */
         locationType: string;
     }
@@ -32090,6 +32720,14 @@ export namespace dataproc {
     export interface ClusterClusterConfigAutoscalingConfig {
         /**
          * The autoscaling policy used by the cluster.
+         *
+         * Only resource names including projectid and location (region) are valid. Examples:
+         *
+         * `https://www.googleapis.com/compute/v1/projects/[projectId]/locations/[dataprocRegion]/autoscalingPolicies/[policyId]`
+         * `projects/[projectId]/locations/[dataprocRegion]/autoscalingPolicies/[policyId]`
+         * Note that the policy must be in the same project and Cloud Dataproc region.
+         *
+         * - - -
          */
         policyUri: string;
     }
@@ -32104,6 +32742,8 @@ export namespace dataproc {
     export interface ClusterClusterConfigDataprocMetricConfigMetric {
         /**
          * One or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course.
+         *
+         * - - -
          */
         metricOverrides?: string[];
         /**
@@ -32116,6 +32756,8 @@ export namespace dataproc {
         /**
          * The Cloud KMS key name to use for PD disk encryption for
          * all instances in the cluster.
+         *
+         * - - -
          */
         kmsKeyName: string;
     }
@@ -32164,6 +32806,8 @@ export namespace dataproc {
         serviceAccountScopes: string[];
         /**
          * Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm).
+         *
+         * - - -
          */
         shieldedInstanceConfig: outputs.dataproc.ClusterClusterConfigGceClusterConfigShieldedInstanceConfig;
         /**
@@ -32191,6 +32835,8 @@ export namespace dataproc {
     export interface ClusterClusterConfigGceClusterConfigShieldedInstanceConfig {
         /**
          * Defines whether instances have integrity monitoring enabled.
+         *
+         * - - -
          */
         enableIntegrityMonitoring?: boolean;
         /**
@@ -32213,6 +32859,8 @@ export namespace dataproc {
          * The maximum duration (in seconds) which `script` is
          * allowed to take to execute its action. GCP will default to a predetermined
          * computed value if not set (currently 300).
+         *
+         * - - -
          */
         timeoutSec?: number;
     }
@@ -32222,6 +32870,8 @@ export namespace dataproc {
          * The time when cluster will be auto-deleted.
          * A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
          * Example: "2014-10-02T15:01:23.045123456Z".
+         *
+         * - - -
          */
         autoDeleteTime?: string;
         /**
@@ -32270,6 +32920,19 @@ export namespace dataproc {
     export interface ClusterClusterConfigMasterConfigAccelerator {
         /**
          * The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+         *
+         * > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
+         * zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
+         * if you are trying to use accelerators in a given zone.
+         *
+         * - - -
+         *
+         *
+         * > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
+         * zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
+         * if you are trying to use accelerators in a given zone.
+         *
+         * - - -
          */
         acceleratorCount: number;
         /**
@@ -32285,9 +32948,11 @@ export namespace dataproc {
          * smallest allowed disk size is 10GB. GCP will default to a predetermined
          * computed value if not set (currently 500GB). Note: If SSDs are not
          * attached, it also contains the HDFS data blocks and Hadoop working directories.
+         *
          * in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
          * computed value if not set (currently 500GB). Note: If SSDs are not
          * attached, it also contains the HDFS data blocks and Hadoop working directories.
+         *
          * in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
          * computed value if not set (currently 500GB). Note: If SSDs are not
          * attached, it also contains the HDFS data blocks and Hadoop working directories.
@@ -32296,15 +32961,21 @@ export namespace dataproc {
         /**
          * The disk type of the primary disk attached to each node.
          * One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+         *
          * One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+         *
          * One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
          */
         bootDiskType?: string;
         /**
          * The amount of local SSD disks that will be
          * attached to each master cluster node. Defaults to 0.
+         *
          * attached to each worker cluster node. Defaults to 0.
+         *
          * attached to each preemptible worker node. Defaults to 0.
+         *
+         * - - -
          */
         numLocalSsds: number;
     }
@@ -32312,6 +32983,10 @@ export namespace dataproc {
     export interface ClusterClusterConfigMetastoreConfig {
         /**
          * Resource name of an existing Dataproc Metastore service.
+         *
+         * Only resource names including projectid and location (region) are valid. Examples:
+         *
+         * `projects/[projectId]/locations/[dataprocRegion]/services/[service-name]`
          */
         dataprocMetastoreService: string;
     }
@@ -32344,9 +33019,11 @@ export namespace dataproc {
          * smallest allowed disk size is 10GB. GCP will default to a predetermined
          * computed value if not set (currently 500GB). Note: If SSDs are not
          * attached, it also contains the HDFS data blocks and Hadoop working directories.
+         *
          * in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
          * computed value if not set (currently 500GB). Note: If SSDs are not
          * attached, it also contains the HDFS data blocks and Hadoop working directories.
+         *
          * in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
          * computed value if not set (currently 500GB). Note: If SSDs are not
          * attached, it also contains the HDFS data blocks and Hadoop working directories.
@@ -32355,15 +33032,21 @@ export namespace dataproc {
         /**
          * The disk type of the primary disk attached to each node.
          * One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+         *
          * One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+         *
          * One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
          */
         bootDiskType?: string;
         /**
          * The amount of local SSD disks that will be
          * attached to each master cluster node. Defaults to 0.
+         *
          * attached to each worker cluster node. Defaults to 0.
+         *
          * attached to each preemptible worker node. Defaults to 0.
+         *
+         * - - -
          */
         numLocalSsds: number;
     }
@@ -32450,6 +33133,8 @@ export namespace dataproc {
         /**
          * The Cloud Storage URI of the truststore file used for
          * SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+         *
+         * - - -
          */
         truststoreUri?: string;
     }
@@ -32465,6 +33150,8 @@ export namespace dataproc {
         imageVersion: string;
         /**
          * The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
+         *
+         * - - -
          */
         optionalComponents?: string[];
         /**
@@ -32524,6 +33211,19 @@ export namespace dataproc {
     export interface ClusterClusterConfigWorkerConfigAccelerator {
         /**
          * The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+         *
+         * > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
+         * zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
+         * if you are trying to use accelerators in a given zone.
+         *
+         * - - -
+         *
+         *
+         * > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
+         * zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
+         * if you are trying to use accelerators in a given zone.
+         *
+         * - - -
          */
         acceleratorCount: number;
         /**
@@ -32539,9 +33239,11 @@ export namespace dataproc {
          * smallest allowed disk size is 10GB. GCP will default to a predetermined
          * computed value if not set (currently 500GB). Note: If SSDs are not
          * attached, it also contains the HDFS data blocks and Hadoop working directories.
+         *
          * in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
          * computed value if not set (currently 500GB). Note: If SSDs are not
          * attached, it also contains the HDFS data blocks and Hadoop working directories.
+         *
          * in GB. The smallest allowed disk size is 10GB. GCP will default to a predetermined
          * computed value if not set (currently 500GB). Note: If SSDs are not
          * attached, it also contains the HDFS data blocks and Hadoop working directories.
@@ -32550,15 +33252,21 @@ export namespace dataproc {
         /**
          * The disk type of the primary disk attached to each node.
          * One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+         *
          * One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+         *
          * One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
          */
         bootDiskType?: string;
         /**
          * The amount of local SSD disks that will be
          * attached to each master cluster node. Defaults to 0.
+         *
          * attached to each worker cluster node. Defaults to 0.
+         *
          * attached to each preemptible worker node. Defaults to 0.
+         *
+         * - - -
          */
         numLocalSsds: number;
     }
@@ -32613,6 +33321,10 @@ export namespace dataproc {
     export interface ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig {
         /**
          * Resource name of an existing Dataproc Metastore service.
+         *
+         * Only resource names including projectid and location (region) are valid. Examples:
+         *
+         * `projects/[projectId]/locations/[dataprocRegion]/services/[service-name]`
          */
         dataprocMetastoreService?: string;
     }
@@ -32713,8 +33425,10 @@ export namespace dataproc {
         localSsdCount?: number;
         /**
          * The name of a Compute Engine machine type.
+         *
          * to create for the master. If not specified, GCP will default to a predetermined
          * computed value (currently `n1-standard-4`).
+         *
          * to create for the worker nodes. If not specified, GCP will default to a predetermined
          * computed value (currently `n1-standard-4`).
          */
@@ -32723,9 +33437,11 @@ export namespace dataproc {
          * Minimum CPU platform to be used by this instance. 
          * The instance may be scheduled on the specified or a newer CPU platform.
          * Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
+         *
          * for the master. If not specified, GCP will default to a predetermined computed value
          * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
          * for details about which CPU families are available (and defaulted) for each zone.
+         *
          * for the master. If not specified, GCP will default to a predetermined computed value
          * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
          * for details about which CPU families are available (and defaulted) for each zone.
@@ -32785,6 +33501,8 @@ export namespace dataproc {
         mainJarFileUri?: string;
         /**
          * A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/hadoop/conf/*-site` and classes in user code..
+         *
+         * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
          */
         properties?: {[key: string]: string};
     }
@@ -32841,6 +33559,8 @@ export namespace dataproc {
         continueOnFailure?: boolean;
         /**
          * HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
+         *
+         * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
          */
         jarFileUris?: string[];
         loggingConfig: outputs.dataproc.JobPigConfigLoggingConfig;
@@ -32885,6 +33605,8 @@ export namespace dataproc {
         loggingConfig: outputs.dataproc.JobPrestoConfigLoggingConfig;
         /**
          * The format in which query output will be displayed. See the Presto documentation for supported output formats.
+         *
+         * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
          */
         outputFormat?: string;
         /**
@@ -32931,6 +33653,8 @@ export namespace dataproc {
         mainPythonFileUri: string;
         /**
          * A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/spark/conf/spark-defaults.conf` and classes in user code.
+         *
+         * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
          */
         properties?: {[key: string]: string};
         /**
@@ -32982,6 +33706,8 @@ export namespace dataproc {
         mainJarFileUri?: string;
         /**
          * A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/spark/conf/spark-defaults.conf` and classes in user code.
+         *
+         * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
          */
         properties?: {[key: string]: string};
     }
@@ -32993,6 +33719,8 @@ export namespace dataproc {
     export interface JobSparksqlConfig {
         /**
          * HCFS URIs of jar files to be added to the Spark CLASSPATH.
+         *
+         * * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
          */
         jarFileUris?: string[];
         loggingConfig: outputs.dataproc.JobSparksqlConfigLoggingConfig;
@@ -33031,6 +33759,8 @@ export namespace dataproc {
         /**
          * The type of the backend metastore.
          * Possible values are: `METASTORE_TYPE_UNSPECIFIED`, `DATAPROC_METASTORE`, `BIGQUERY`.
+         *
+         * - - -
          */
         metastoreType: string;
         /**
@@ -33720,6 +34450,8 @@ export namespace dataproc {
         tempBucket?: string;
         /**
          * Optional. The Compute Engine config settings for additional worker instances in a cluster.
+         *
+         * - - -
          */
         workerConfig: outputs.dataproc.WorkflowTemplatePlacementManagedClusterConfigWorkerConfig;
     }
@@ -34390,6 +35122,8 @@ export namespace datastream {
     export interface PrivateConnectionVpcPeeringConfig {
         /**
          * A free subnet for peering. (CIDR of /29)
+         *
+         * - - -
          */
         subnet: string;
         /**
@@ -34699,6 +35433,8 @@ export namespace datastream {
          * table. The BigQuery Service Account associated with your project requires access to this
          * encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
          * See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+         *
+         * - - -
          */
         kmsKeyName?: string;
         /**
@@ -35328,6 +36064,8 @@ export namespace deploymentmanager {
         /**
          * The name of the template to import, as declared in the YAML
          * configuration.
+         *
+         * - - -
          */
         name?: string;
     }
@@ -35346,6 +36084,8 @@ export namespace diagflow {
         /**
          * A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym could be green onions.
          * For KIND_LIST entity types: This collection must contain exactly one synonym equal to value.
+         *
+         * - - -
          */
         synonyms?: string[];
         /**
@@ -35366,6 +36106,8 @@ export namespace diagflow {
     export interface CxEnvironmentVersionConfig {
         /**
          * Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
+         *
+         * - - -
          */
         version: string;
     }
@@ -36378,6 +37120,7 @@ export namespace dns {
         /**
          * The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `healthCheckedTargets` can be set.
          * Structure is document below.
+         *
          * Structure is document below.
          */
         healthCheckedTargets?: outputs.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets;
@@ -36715,6 +37458,8 @@ export namespace eventarc {
         operator?: string;
         /**
          * Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
+         *
+         * - - -
          */
         value: string;
     }
@@ -36806,6 +37551,8 @@ export namespace filestore {
          * DIRECT_PEERING.
          * Default value is `DIRECT_PEERING`.
          * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
+         *
+         * - - -
          */
         connectMode?: string;
         /**
@@ -36933,6 +37680,8 @@ export namespace firebaserules {
         fingerprint?: string;
         /**
          * File name.
+         *
+         * - - -
          */
         name: string;
     }
@@ -36984,6 +37733,8 @@ export namespace firestore {
          * Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
          * be specified.
          * Possible values are: `CONTAINS`.
+         *
+         * - - -
          */
         arrayConfig?: string;
         /**
@@ -37032,6 +37783,8 @@ export namespace folder {
          * The enrollment level of the service.
          * Default value is `BLOCK_ALL`.
          * Possible values are: `BLOCK_ALL`.
+         *
+         * - - -
          */
         enrollmentLevel?: string;
     }
@@ -37070,6 +37823,10 @@ export namespace folder {
     export interface IAMMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -37109,6 +37866,8 @@ export namespace folder {
         /**
          * If set to true, the values from the effective Policy of the parent resource
          * are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+         *
+         * The `allow` or `deny` blocks support:
          */
         inheritFromParent?: boolean;
         /**
@@ -37173,6 +37932,8 @@ export namespace gameservices {
          * If project and location are not specified, the project and location of the
          * GameServerCluster resource are used to generate the full name of the
          * GKE cluster.
+         *
+         * - - -
          */
         cluster: string;
     }
@@ -37190,6 +37951,8 @@ export namespace gameservices {
         fleetSpec: string;
         /**
          * The name of the FleetConfig.
+         *
+         * - - -
          */
         name: string;
     }
@@ -37453,6 +38216,8 @@ export namespace gkehub {
         git?: outputs.gkehub.FeatureMembershipConfigmanagementConfigSyncGit;
         /**
          * (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+         *
+         * Use either `git` or `oci` config option.
          */
         oci?: outputs.gkehub.FeatureMembershipConfigmanagementConfigSyncOci;
         /**
@@ -38311,6 +39076,8 @@ export namespace gkeonprem {
         path: string;
         /**
          * The StorageClass name that PVs will be created with.
+         *
+         * - - -
          */
         storageClass: string;
     }
@@ -38448,6 +39215,8 @@ export namespace gkeonprem {
         /**
          * Specifies the nodes operating system (default: LINUX).
          * Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+         *
+         * - - -
          */
         effect?: string;
         /**
@@ -38568,6 +39337,8 @@ export namespace gkeonprem {
     export interface VMwareClusterControlPlaneNodeAutoResizeConfig {
         /**
          * Whether to enable control plane node auto resizing.
+         *
+         * <a name="nestedVsphereConfig"></a>The `vsphereConfig` block contains:
          */
         enabled: boolean;
     }
@@ -38576,6 +39347,8 @@ export namespace gkeonprem {
         /**
          * (Output)
          * The Vsphere datastore used by the Control Plane Node.
+         *
+         * - - -
          */
         datastore: string;
     }
@@ -38693,6 +39466,8 @@ export namespace gkeonprem {
         avoidBuggyIps: boolean;
         /**
          * If true, prevent IP addresses from being automatically assigned.
+         *
+         * <a name="nestedDataplaneV2"></a>The `dataplaneV2` block supports:
          */
         manualAssign: boolean;
         /**
@@ -38708,6 +39483,8 @@ export namespace gkeonprem {
         controlPlaneVip?: string;
         /**
          * The VIP which you previously set aside for ingress traffic into this cluster.
+         *
+         * <a name="nestedF5Config"></a>The `f5Config` block supports:
          */
         ingressVip?: string;
     }
@@ -38797,6 +39574,8 @@ export namespace gkeonprem {
     export interface VMwareClusterNetworkConfigHostConfig {
         /**
          * DNS search domains.
+         *
+         * <a name="nestedControlPlaneV2Config"></a>The `controlPlaneV2Config` block supports:
          */
         dnsSearchDomains?: string[];
         /**
@@ -38977,6 +39756,8 @@ export namespace gkeonprem {
         /**
          * (Output)
          * The Vsphere datastore used by the Control Plane Node.
+         *
+         * - - -
          */
         datastore: string;
         /**
@@ -39048,6 +39829,8 @@ export namespace gkeonprem {
         /**
          * Available taint effects.
          * Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+         *
+         * <a name="nestedVsphereConfig"></a>The `vsphereConfig` block contains:
          */
         effect?: string;
         /**
@@ -39070,6 +39853,9 @@ export namespace gkeonprem {
          * (Output)
          * Tags to apply to VMs.
          * Structure is documented below.
+         *
+         *
+         * <a name="nestedTags"></a>The `tags` block contains:
          */
         tags: outputs.gkeonprem.VMwareNodePoolConfigVsphereConfigTag[];
     }
@@ -39083,6 +39869,8 @@ export namespace gkeonprem {
         /**
          * (Output)
          * The Vsphere tag name.
+         *
+         * - - -
          */
         tag: string;
     }
@@ -39409,6 +40197,8 @@ export namespace iam {
         /**
          * String indicating the location of the expression for error reporting,
          * e.g. a file name and a position in the file.
+         *
+         * - - -
          */
         location?: string;
         /**
@@ -39471,6 +40261,8 @@ export namespace iam {
         /**
          * String indicating the location of the expression for error reporting,
          * e.g. a file name and a position in the file.
+         *
+         * - - -
          */
         location?: string;
         /**
@@ -39595,6 +40387,10 @@ export namespace iap {
     export interface AppEngineServiceIamBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -39610,6 +40406,10 @@ export namespace iap {
     export interface AppEngineServiceIamMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -39625,6 +40425,10 @@ export namespace iap {
     export interface AppEngineVersionIamBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -39640,6 +40444,10 @@ export namespace iap {
     export interface AppEngineVersionIamMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -39685,6 +40493,10 @@ export namespace iap {
     export interface TunnelInstanceIAMBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -39700,6 +40512,10 @@ export namespace iap {
     export interface TunnelInstanceIAMMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -39715,6 +40531,10 @@ export namespace iap {
     export interface WebBackendServiceIamBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -39730,6 +40550,10 @@ export namespace iap {
     export interface WebBackendServiceIamMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -39745,6 +40569,10 @@ export namespace iap {
     export interface WebIamBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -39760,6 +40588,10 @@ export namespace iap {
     export interface WebIamMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -39775,6 +40607,10 @@ export namespace iap {
     export interface WebTypeAppEngingIamBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -39790,6 +40626,10 @@ export namespace iap {
     export interface WebTypeAppEngingIamMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -39805,6 +40645,10 @@ export namespace iap {
     export interface WebTypeComputeIamBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -39820,6 +40664,10 @@ export namespace iap {
     export interface WebTypeComputeIamMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -39871,6 +40719,9 @@ export namespace identityplatform {
          * (Output)
          * The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
          * Structure is documented below.
+         *
+         *
+         * <a name="nestedSpCertificates"></a>The `spCertificates` block contains:
          */
         spCertificates: outputs.identityplatform.InboundSamlConfigSpConfigSpCertificate[];
         /**
@@ -39882,8 +40733,11 @@ export namespace identityplatform {
     export interface InboundSamlConfigSpConfigSpCertificate {
         /**
          * The IdP's x509 certificate.
+         *
          * (Output)
          * The x509 certificate
+         *
+         * - - -
          */
         x509Certificate: string;
     }
@@ -39919,6 +40773,8 @@ export namespace identityplatform {
     export interface ProjectDefaultConfigSignInAnonymous {
         /**
          * Whether anonymous user auth is enabled for the project or not.
+         *
+         * <a name="nestedHashConfig"></a>The `hashConfig` block contains:
          */
         enabled: boolean;
     }
@@ -40011,6 +40867,9 @@ export namespace identityplatform {
          * (Output)
          * The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
          * Structure is documented below.
+         *
+         *
+         * <a name="nestedSpCertificates"></a>The `spCertificates` block contains:
          */
         spCertificates: outputs.identityplatform.TenantInboundSamlConfigSpConfigSpCertificate[];
         /**
@@ -40022,8 +40881,11 @@ export namespace identityplatform {
     export interface TenantInboundSamlConfigSpConfigSpCertificate {
         /**
          * The x509 certificate
+         *
          * (Output)
          * The x509 certificate
+         *
+         * - - -
          */
         x509Certificate: string;
     }
@@ -40168,6 +41030,10 @@ export namespace kms {
     export interface CryptoKeyIAMBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -40183,6 +41049,10 @@ export namespace kms {
     export interface CryptoKeyIAMMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -40275,6 +41145,10 @@ export namespace kms {
     export interface KeyRingIAMBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -40290,6 +41164,10 @@ export namespace kms {
     export interface KeyRingIAMMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** The provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -40830,6 +41708,8 @@ export namespace memcache {
         cpuCount: number;
         /**
          * Memory size in Mebibytes for each memcache node.
+         *
+         * - - -
          */
         memorySizeMb: number;
     }
@@ -41078,6 +41958,8 @@ export namespace monitoring {
          * a separate rule for the purposes of triggering notifications.
          * Label keys and corresponding values can be used in notifications
          * generated by this condition.
+         *
+         * - - -
          */
         labelExtractors?: {[key: string]: string};
     }
@@ -42231,6 +43113,8 @@ export namespace networkconnectivity {
         ipAddress?: string;
         /**
          * The URI of the virtual machine resource
+         *
+         * - - -
          */
         virtualMachine?: string;
     }
@@ -42278,6 +43162,8 @@ export namespace networkmanagement {
          * that you provide is from the service project. In this case, the
          * network that the IP address resides in is defined in the host
          * project.
+         *
+         * - - -
          */
         projectId?: string;
     }
@@ -42570,6 +43456,8 @@ export namespace networkservices {
          * Defaults to 15 seconds.  The timeout must be a value between 1s and 30s.
          * The readTimeout is capped by the responseTimeout.  All reads of the HTTP connection/stream must be completed by the deadline set by the responseTimeout.
          * If the response headers have already been written to the connection, the response will be truncated and logged.
+         *
+         * <a name="nestedAwsV4Authentication"></a>The `awsV4Authentication` block supports:
          */
         readTimeout?: string;
         /**
@@ -43139,6 +44027,8 @@ export namespace networkservices {
         redirectResponseCode: string;
         /**
          * If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
+         *
+         * - - -
          */
         stripQuery: boolean;
     }
@@ -43171,6 +44061,8 @@ export namespace networkservices {
         labelName: string;
         /**
          * Required. Label value presented as value corresponding to the above key, in xDS Node Metadata.
+         *
+         * - - -
          */
         labelValue: string;
     }
@@ -43266,6 +44158,8 @@ export namespace networkservices {
     export interface GrpcRouteRuleActionRetryPolicy {
         /**
          * Specifies the allowed number of retries.
+         *
+         * - - -
          */
         numRetries?: number;
         /**
@@ -43410,6 +44304,8 @@ export namespace networkservices {
         allowOrigins?: string[];
         /**
          * If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+         *
+         * - - -
          */
         disabled?: boolean;
         /**
@@ -43711,6 +44607,8 @@ export namespace networkservices {
          * If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
          * If weights are specified for any one service name, they need to be specified for all of them.
          * If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+         *
+         * - - -
          */
         weight?: number;
     }
@@ -43755,6 +44653,8 @@ export namespace networkservices {
         serviceName?: string;
         /**
          * Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
+         *
+         * - - -
          */
         weight?: number;
     }
@@ -44335,6 +45235,8 @@ export namespace organizations {
          * The enrollment level of the service.
          * Default value is `BLOCK_ALL`.
          * Possible values are: `BLOCK_ALL`.
+         *
+         * - - -
          */
         enrollmentLevel?: string;
     }
@@ -44444,6 +45346,10 @@ export namespace organizations {
     export interface IAMMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -44488,6 +45394,8 @@ export namespace organizations {
         /**
          * If set to true, the values from the effective Policy of the parent resource
          * are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+         *
+         * The `allow` or `deny` blocks support:
          */
         inheritFromParent?: boolean;
         /**
@@ -44652,6 +45560,8 @@ export namespace osconfig {
     export interface GuestPoliciesAssignmentOsType {
         /**
          * Targets VM instances with OS Inventory enabled and having the following OS architecture.
+         *
+         * - - -
          */
         osArchitecture?: string;
         /**
@@ -45838,6 +46748,8 @@ export namespace osconfig {
         fixed?: number;
         /**
          * Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+         *
+         * - - -
          */
         percent?: number;
     }
@@ -45872,6 +46784,8 @@ export namespace osconfig {
     export interface PatchDeploymentInstanceFilterGroupLabel {
         /**
          * Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
+         *
+         * - - -
          */
         labels: {[key: string]: string};
     }
@@ -46357,6 +47271,8 @@ export namespace projects {
          * The enrollment level of the service.
          * Default value is `BLOCK_ALL`.
          * Possible values are: `BLOCK_ALL`.
+         *
+         * - - -
          */
         enrollmentLevel?: string;
     }
@@ -46398,6 +47314,8 @@ export namespace projects {
         packageName: string;
         /**
          * The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
+         *
+         * - - -
          */
         sha1Fingerprint: string;
     }
@@ -46504,6 +47422,10 @@ export namespace projects {
     export interface IAMBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -46519,6 +47441,10 @@ export namespace projects {
     export interface IAMMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -46547,6 +47473,8 @@ export namespace projects {
         /**
          * If set to true, the values from the effective Policy of the parent resource
          * are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+         *
+         * The `allow` or `deny` blocks support:
          */
         inheritFromParent?: boolean;
         /**
@@ -47244,6 +48172,8 @@ export namespace secretmanager {
     export interface SecretReplicationUserManagedReplicaCustomerManagedEncryption {
         /**
          * Describes the Cloud KMS encryption key that will be used to protect destination secret.
+         *
+         * - - -
          */
         kmsKeyName: string;
     }
@@ -47311,6 +48241,8 @@ export namespace securitycenter {
          * See
          * [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
          * for information on how to write a filter.
+         *
+         * - - -
          */
         filter: string;
     }
@@ -47339,6 +48271,10 @@ export namespace serviceAccount {
     export interface IAMBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -47354,6 +48290,10 @@ export namespace serviceAccount {
     export interface IAMMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -47484,6 +48424,8 @@ export namespace sql {
         databaseNames?: string[];
         /**
          * The timestamp of the point in time that should be restored.
+         *
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
          */
         pointInTime?: string;
         /**
@@ -47737,6 +48679,8 @@ export namespace sql {
         queryInsightsEnabled?: boolean;
         /**
          * Number of query execution plans captured by Insights per minute for all queries combined. Between 0 and 20. Default to 5.
+         *
+         * The optional `settings.password_validation_policy` subblock for instances declares [Password Validation Policy](https://cloud.google.com/sql/docs/postgres/built-in-authentication) configuration. It contains:
          */
         queryPlansPerMinute: number;
         /**
@@ -47809,6 +48753,10 @@ export namespace sql {
         followGaeApplication?: string;
         /**
          * The preferred Compute Engine zone for the secondary/failover.
+         *
+         * The optional `settings.maintenance_window` subblock for instances declares a one-hour
+         * [maintenance window](https://cloud.google.com/sql/docs/instance-settings?hl=en#maintenance-window-2ndgen)
+         * when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time. It supports:
          */
         secondaryZone?: string;
         /**
@@ -47830,6 +48778,8 @@ export namespace sql {
         /**
          * Receive updates earlier (`canary`) or later
          * (`stable`)
+         *
+         * The optional `settings.insights_config` subblock for instances declares Query Insights([MySQL](https://cloud.google.com/sql/docs/mysql/using-query-insights), [PostgreSQL](https://cloud.google.com/sql/docs/postgres/using-query-insights)) configuration. It contains:
          */
         updateTrack?: string;
     }
@@ -47845,6 +48795,9 @@ export namespace sql {
         disallowUsernameSubstring?: boolean;
         /**
          * Enables or disable the password validation policy.
+         *
+         * The optional `replicaConfiguration` block must have `masterInstanceName` set
+         * to work, cannot be updated, and supports:
          */
         enablePasswordPolicy: boolean;
         /**
@@ -48259,6 +49212,8 @@ export namespace sql {
         name: string;
         /**
          * The ID of the project in which the instance belongs.
+         *
+         * > **Note** This datasource performs client-side sorting to provide consistent ordering of the databases.
          */
         project: string;
         selfLink: string;
@@ -48360,6 +49315,17 @@ export namespace storage {
          * The `id` of a Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
          * You must pay attention to whether the crypto key is available in the location that this bucket is created in.
          * See [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for more details.
+         *
+         * > As per [the docs](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) for customer-managed encryption keys, the IAM policy for the
+         * specified key must permit the [automatic Google Cloud Storage service account](https://cloud.google.com/storage/docs/projects#service-accounts) for the bucket's
+         * project to use the specified key for encryption and decryption operations.
+         * Although the service account email address follows a well-known format, the service account is created on-demand and may not necessarily exist for your project
+         * until a relevant action has occurred which triggers its creation.
+         * You should use the [`gcp.storage.getProjectServiceAccount`](https://www.terraform.io/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
+         * address for the service account when configuring IAM policy on the Cloud KMS key.
+         * This data source calls an API which creates the account if required, ensuring your provider applies cleanly and repeatedly irrespective of the
+         * state of the project.
+         * You should take care for race conditions when the same provider manages IAM policy on the Cloud KMS crypto key. See the data source page for more details.
          */
         defaultKmsKeyName: string;
     }
@@ -48367,6 +49333,10 @@ export namespace storage {
     export interface BucketIAMBindingCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -48382,6 +49352,10 @@ export namespace storage {
     export interface BucketIAMMemberCondition {
         /**
          * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         *
+         * > **Warning:** This provider considers the `role` and condition contents (`title`+`description`+`expression`) as the
+         * identifier for the binding. This means that if any part of the condition is changed out-of-band, the provider will
+         * consider it to be an entirely different resource and will treat it as such.
          */
         description?: string;
         /**
@@ -48657,6 +49631,8 @@ export namespace storage {
     export interface TransferJobScheduleScheduleEndDate {
         /**
          * Day of month. Must be from 1 to 31 and valid for the year and month.
+         *
+         * <a name="nestedStartTimeOfDay"></a>The `startTimeOfDay` blocks support:
          */
         day: number;
         /**
@@ -48672,6 +49648,8 @@ export namespace storage {
     export interface TransferJobScheduleScheduleStartDate {
         /**
          * Day of month. Must be from 1 to 31 and valid for the year and month.
+         *
+         * <a name="nestedStartTimeOfDay"></a>The `startTimeOfDay` blocks support:
          */
         day: number;
         /**
@@ -48798,6 +49776,8 @@ export namespace storage {
     export interface TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials {
         /**
          * Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+         *
+         * <a name="nestedScheduleStartEndDate"></a>The `scheduleStartDate` and `scheduleEndDate` blocks support:
          */
         sasToken: string;
     }
@@ -48868,6 +49848,8 @@ export namespace storage {
     export interface TransferJobTransferSpecPosixDataSource {
         /**
          * Root directory path to the filesystem.
+         *
+         * <a name="nestedAwsS3DataSource"></a>The `awsS3DataSource` block supports:
          */
         rootDirectory: string;
     }
@@ -49397,6 +50379,8 @@ export namespace vpcaccess {
     export interface GetConnectorSubnet {
         /**
          * Name of the resource.
+         *
+         * - - -
          */
         name: string;
         projectId: string;

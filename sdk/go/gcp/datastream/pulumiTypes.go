@@ -1704,6 +1704,8 @@ func (o PrivateConnectionErrorArrayOutput) Index(i pulumi.IntInput) PrivateConne
 
 type PrivateConnectionVpcPeeringConfig struct {
 	// A free subnet for peering. (CIDR of /29)
+	//
+	// ***
 	Subnet string `pulumi:"subnet"`
 	// Fully qualified name of the VPC that Datastream will peer to.
 	// Format: projects/{project}/global/{networks}/{name}
@@ -1723,6 +1725,8 @@ type PrivateConnectionVpcPeeringConfigInput interface {
 
 type PrivateConnectionVpcPeeringConfigArgs struct {
 	// A free subnet for peering. (CIDR of /29)
+	//
+	// ***
 	Subnet pulumi.StringInput `pulumi:"subnet"`
 	// Fully qualified name of the VPC that Datastream will peer to.
 	// Format: projects/{project}/global/{networks}/{name}
@@ -1807,6 +1811,8 @@ func (o PrivateConnectionVpcPeeringConfigOutput) ToPrivateConnectionVpcPeeringCo
 }
 
 // A free subnet for peering. (CIDR of /29)
+//
+// ***
 func (o PrivateConnectionVpcPeeringConfigOutput) Subnet() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateConnectionVpcPeeringConfig) string { return v.Subnet }).(pulumi.StringOutput)
 }
@@ -1842,6 +1848,8 @@ func (o PrivateConnectionVpcPeeringConfigPtrOutput) Elem() PrivateConnectionVpcP
 }
 
 // A free subnet for peering. (CIDR of /29)
+//
+// ***
 func (o PrivateConnectionVpcPeeringConfigPtrOutput) Subnet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateConnectionVpcPeeringConfig) *string {
 		if v == nil {
@@ -4510,6 +4518,8 @@ type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsData
 	// table. The BigQuery Service Account associated with your project requires access to this
 	// encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
 	// See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+	//
+	// ***
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// The geographic location where the dataset should reside.
 	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
@@ -4535,6 +4545,8 @@ type StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsData
 	// table. The BigQuery Service Account associated with your project requires access to this
 	// encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
 	// See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+	//
+	// ***
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// The geographic location where the dataset should reside.
 	// See https://cloud.google.com/bigquery/docs/locations for supported locations.
@@ -4630,6 +4642,8 @@ func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsD
 // table. The BigQuery Service Account associated with your project requires access to this
 // encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
 // See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+//
+// ***
 func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate) *string {
 		return v.KmsKeyName
@@ -4683,6 +4697,8 @@ func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsD
 // table. The BigQuery Service Account associated with your project requires access to this
 // encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
 // See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+//
+// ***
 func (o StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplatePtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate) *string {
 		if v == nil {

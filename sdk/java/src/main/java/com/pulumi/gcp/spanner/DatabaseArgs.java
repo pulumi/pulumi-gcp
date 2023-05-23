@@ -95,12 +95,16 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The instance to create the database on.
      * 
+     * ***
+     * 
      */
     @Import(name="instance", required=true)
     private Output<String> instance;
 
     /**
      * @return The instance to create the database on.
+     * 
+     * ***
      * 
      */
     public Output<String> instance() {
@@ -309,6 +313,8 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param instance The instance to create the database on.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -319,6 +325,8 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instance The instance to create the database on.
+         * 
+         * ***
          * 
          * @return builder
          * 

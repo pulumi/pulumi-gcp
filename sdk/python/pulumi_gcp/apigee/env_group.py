@@ -21,6 +21,9 @@ class EnvGroupArgs:
         The set of arguments for constructing a EnvGroup resource.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee environment group,
                in the format `organizations/{{org_name}}`.
+               
+               
+               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: Hostnames of the environment group.
         :param pulumi.Input[str] name: The resource ID of the environment group.
         """
@@ -36,6 +39,9 @@ class EnvGroupArgs:
         """
         The Apigee Organization associated with the Apigee environment group,
         in the format `organizations/{{org_name}}`.
+
+
+        - - -
         """
         return pulumi.get(self, "org_id")
 
@@ -80,6 +86,9 @@ class _EnvGroupState:
         :param pulumi.Input[str] name: The resource ID of the environment group.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee environment group,
                in the format `organizations/{{org_name}}`.
+               
+               
+               - - -
         """
         if hostnames is not None:
             pulumi.set(__self__, "hostnames", hostnames)
@@ -118,6 +127,9 @@ class _EnvGroupState:
         """
         The Apigee Organization associated with the Apigee environment group,
         in the format `organizations/{{org_name}}`.
+
+
+        - - -
         """
         return pulumi.get(self, "org_id")
 
@@ -190,6 +202,9 @@ class EnvGroup(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource ID of the environment group.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee environment group,
                in the format `organizations/{{org_name}}`.
+               
+               
+               - - -
         """
         ...
     @overload
@@ -302,6 +317,9 @@ class EnvGroup(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource ID of the environment group.
         :param pulumi.Input[str] org_id: The Apigee Organization associated with the Apigee environment group,
                in the format `organizations/{{org_name}}`.
+               
+               
+               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -334,6 +352,9 @@ class EnvGroup(pulumi.CustomResource):
         """
         The Apigee Organization associated with the Apigee environment group,
         in the format `organizations/{{org_name}}`.
+
+
+        - - -
         """
         return pulumi.get(self, "org_id")
 

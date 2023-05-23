@@ -19,6 +19,8 @@ public final class VMwareClusterControlPlaneNodeVsphereConfigArgs extends com.pu
      * (Output)
      * The Vsphere datastore used by the Control Plane Node.
      * 
+     * ***
+     * 
      */
     @Import(name="datastore")
     private @Nullable Output<String> datastore;
@@ -26,6 +28,8 @@ public final class VMwareClusterControlPlaneNodeVsphereConfigArgs extends com.pu
     /**
      * @return (Output)
      * The Vsphere datastore used by the Control Plane Node.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> datastore() {
@@ -60,6 +64,8 @@ public final class VMwareClusterControlPlaneNodeVsphereConfigArgs extends com.pu
          * @param datastore (Output)
          * The Vsphere datastore used by the Control Plane Node.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -71,6 +77,8 @@ public final class VMwareClusterControlPlaneNodeVsphereConfigArgs extends com.pu
         /**
          * @param datastore (Output)
          * The Vsphere datastore used by the Control Plane Node.
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -265,6 +265,8 @@ public class CaPool extends com.pulumi.resources.CustomResource {
      * Location of the CaPool. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
      * 
+     * ***
+     * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
@@ -272,6 +274,8 @@ public class CaPool extends com.pulumi.resources.CustomResource {
     /**
      * @return Location of the CaPool. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
+     * 
+     * ***
      * 
      */
     public Output<String> location() {

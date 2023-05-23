@@ -22,6 +22,8 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
      * The GCS path to the Dataflow job Flex
      * Template.
      * 
+     * ***
+     * 
      */
     @Import(name="containerSpecGcsPath", required=true)
     private Output<String> containerSpecGcsPath;
@@ -29,6 +31,8 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
     /**
      * @return The GCS path to the Dataflow job Flex
      * Template.
+     * 
+     * ***
      * 
      */
     public Output<String> containerSpecGcsPath() {
@@ -199,6 +203,8 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
          * @param containerSpecGcsPath The GCS path to the Dataflow job Flex
          * Template.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -210,6 +216,8 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param containerSpecGcsPath The GCS path to the Dataflow job Flex
          * Template.
+         * 
+         * ***
          * 
          * @return builder
          * 

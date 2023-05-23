@@ -443,6 +443,8 @@ public class InterconnectAttachment extends com.pulumi.resources.CustomResource 
      * lowercase letter, and all following characters must be a dash, lowercase
      * letter, or digit, except the last character, which cannot be a dash.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
@@ -454,6 +456,8 @@ public class InterconnectAttachment extends com.pulumi.resources.CustomResource 
      * `a-z?` which means the first character must be a
      * lowercase letter, and all following characters must be a dash, lowercase
      * letter, or digit, except the last character, which cannot be a dash.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {

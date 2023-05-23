@@ -59,6 +59,9 @@ namespace Pulumi.Gcp.GameServices
     {
         /// <summary>
         /// A unique id for the deployment.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("deploymentId")]
         public Output<string> DeploymentId { get; private set; } = null!;
@@ -146,6 +149,9 @@ namespace Pulumi.Gcp.GameServices
     {
         /// <summary>
         /// A unique id for the deployment.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("deploymentId", required: true)]
         public Input<string> DeploymentId { get; set; } = null!;
@@ -192,6 +198,9 @@ namespace Pulumi.Gcp.GameServices
     {
         /// <summary>
         /// A unique id for the deployment.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("deploymentId")]
         public Input<string>? DeploymentId { get; set; }

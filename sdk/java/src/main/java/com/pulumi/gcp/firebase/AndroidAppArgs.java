@@ -38,12 +38,16 @@ public final class AndroidAppArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The user-assigned display name of the AndroidApp.
      * 
+     * ***
+     * 
      */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
 
     /**
      * @return The user-assigned display name of the AndroidApp.
+     * 
+     * ***
      * 
      */
     public Output<String> displayName() {
@@ -171,6 +175,8 @@ public final class AndroidAppArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param displayName The user-assigned display name of the AndroidApp.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -181,6 +187,8 @@ public final class AndroidAppArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param displayName The user-assigned display name of the AndroidApp.
+         * 
+         * ***
          * 
          * @return builder
          * 

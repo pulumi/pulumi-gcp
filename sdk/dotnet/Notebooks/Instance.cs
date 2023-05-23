@@ -273,6 +273,9 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// A reference to the zone where the machine resides.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -344,8 +347,10 @@ namespace Pulumi.Gcp.Notebooks
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a 'PROVISIONED'
-        /// state. If needed you can utilize 'terraform apply -refresh-only' to await the population of this value.
+        /// The proxy endpoint that is used to access the Jupyter notebook.
+        /// Only returned when the resource is in a `PROVISIONED` state. If
+        /// needed you can utilize `pulumi up -refresh-only` to await
+        /// the population of this value.
         /// </summary>
         [Output("proxyUri")]
         public Output<string> ProxyUri { get; private set; } = null!;
@@ -575,6 +580,9 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// A reference to the zone where the machine resides.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -844,6 +852,9 @@ namespace Pulumi.Gcp.Notebooks
 
         /// <summary>
         /// A reference to the zone where the machine resides.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -921,8 +932,10 @@ namespace Pulumi.Gcp.Notebooks
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a 'PROVISIONED'
-        /// state. If needed you can utilize 'terraform apply -refresh-only' to await the population of this value.
+        /// The proxy endpoint that is used to access the Jupyter notebook.
+        /// Only returned when the resource is in a `PROVISIONED` state. If
+        /// needed you can utilize `pulumi up -refresh-only` to await
+        /// the population of this value.
         /// </summary>
         [Input("proxyUri")]
         public Input<string>? ProxyUri { get; set; }

@@ -896,6 +896,8 @@ public final class SqlFunctions {
      * and
      * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetTiersResult> getTiers() {
         return getTiers(GetTiersArgs.Empty, InvokeOptions.Empty);
@@ -905,6 +907,8 @@ public final class SqlFunctions {
      * [official documentation](https://cloud.google.com/sql/)
      * and
      * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetTiersResult> getTiersPlain() {
@@ -916,6 +920,8 @@ public final class SqlFunctions {
      * and
      * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetTiersResult> getTiers(GetTiersArgs args) {
         return getTiers(args, InvokeOptions.Empty);
@@ -925,6 +931,8 @@ public final class SqlFunctions {
      * [official documentation](https://cloud.google.com/sql/)
      * and
      * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetTiersResult> getTiersPlain(GetTiersPlainArgs args) {
@@ -936,6 +944,8 @@ public final class SqlFunctions {
      * and
      * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
      * 
+     * ## Example Usage
+     * 
      */
     public static Output<GetTiersResult> getTiers(GetTiersArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:sql/getTiers:getTiers", TypeShape.of(GetTiersResult.class), args, Utilities.withVersion(options));
@@ -945,6 +955,8 @@ public final class SqlFunctions {
      * [official documentation](https://cloud.google.com/sql/)
      * and
      * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
+     * 
+     * ## Example Usage
      * 
      */
     public static CompletableFuture<GetTiersResult> getTiersPlain(GetTiersPlainArgs args, InvokeOptions options) {

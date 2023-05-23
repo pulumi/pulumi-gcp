@@ -38,12 +38,16 @@ public final class GetSnapshotArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match.
      * 
+     * ***
+     * 
      */
     @Import(name="mostRecent")
     private @Nullable Output<Boolean> mostRecent;
 
     /**
      * @return If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match.
+     * 
+     * ***
      * 
      */
     public Optional<Output<Boolean>> mostRecent() {
@@ -137,6 +141,8 @@ public final class GetSnapshotArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param mostRecent If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -147,6 +153,8 @@ public final class GetSnapshotArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param mostRecent If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match.
+         * 
+         * ***
          * 
          * @return builder
          * 

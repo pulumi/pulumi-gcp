@@ -750,6 +750,8 @@ func (o SecretReplicationUserManagedReplicaArrayOutput) Index(i pulumi.IntInput)
 
 type SecretReplicationUserManagedReplicaCustomerManagedEncryption struct {
 	// Describes the Cloud KMS encryption key that will be used to protect destination secret.
+	//
+	// ***
 	KmsKeyName string `pulumi:"kmsKeyName"`
 }
 
@@ -766,6 +768,8 @@ type SecretReplicationUserManagedReplicaCustomerManagedEncryptionInput interface
 
 type SecretReplicationUserManagedReplicaCustomerManagedEncryptionArgs struct {
 	// Describes the Cloud KMS encryption key that will be used to protect destination secret.
+	//
+	// ***
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
 }
 
@@ -847,6 +851,8 @@ func (o SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput) ToSe
 }
 
 // Describes the Cloud KMS encryption key that will be used to protect destination secret.
+//
+// ***
 func (o SecretReplicationUserManagedReplicaCustomerManagedEncryptionOutput) KmsKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretReplicationUserManagedReplicaCustomerManagedEncryption) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
@@ -876,6 +882,8 @@ func (o SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput) E
 }
 
 // Describes the Cloud KMS encryption key that will be used to protect destination secret.
+//
+// ***
 func (o SecretReplicationUserManagedReplicaCustomerManagedEncryptionPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretReplicationUserManagedReplicaCustomerManagedEncryption) *string {
 		if v == nil {

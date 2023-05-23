@@ -103,6 +103,9 @@ export class MuteConfig extends pulumi.CustomResource {
      * Resource name of the new mute configs's parent. Its format is
      * "organizations/[organizationId]", "folders/[folderId]", or
      * "projects/[projectId]".
+     *
+     *
+     * - - -
      */
     public readonly parent!: pulumi.Output<string>;
     /**
@@ -200,6 +203,9 @@ export interface MuteConfigState {
      * Resource name of the new mute configs's parent. Its format is
      * "organizations/[organizationId]", "folders/[folderId]", or
      * "projects/[projectId]".
+     *
+     *
+     * - - -
      */
     parent?: pulumi.Input<string>;
     /**
@@ -234,6 +240,9 @@ export interface MuteConfigArgs {
      * Resource name of the new mute configs's parent. Its format is
      * "organizations/[organizationId]", "folders/[folderId]", or
      * "projects/[projectId]".
+     *
+     *
+     * - - -
      */
     parent: pulumi.Input<string>;
 }

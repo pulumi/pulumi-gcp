@@ -189,6 +189,10 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The type of the notification channel.
+        /// 
+        /// - - -
+        /// 
+        /// Other optional fields include:
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -241,6 +245,10 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// The type of the notification channel.
+        /// 
+        /// - - -
+        /// 
+        /// Other optional fields include:
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

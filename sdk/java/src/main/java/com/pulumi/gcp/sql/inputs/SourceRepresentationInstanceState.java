@@ -96,12 +96,16 @@ public final class SourceRepresentationInstanceState extends com.pulumi.resource
     /**
      * The externally accessible IPv4 address for the source database server.
      * 
+     * ***
+     * 
      */
     @Import(name="host")
     private @Nullable Output<String> host;
 
     /**
      * @return The externally accessible IPv4 address for the source database server.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> host() {
@@ -351,6 +355,8 @@ public final class SourceRepresentationInstanceState extends com.pulumi.resource
         /**
          * @param host The externally accessible IPv4 address for the source database server.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -361,6 +367,8 @@ public final class SourceRepresentationInstanceState extends com.pulumi.resource
 
         /**
          * @param host The externally accessible IPv4 address for the source database server.
+         * 
+         * ***
          * 
          * @return builder
          * 

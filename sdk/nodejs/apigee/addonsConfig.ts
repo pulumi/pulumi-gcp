@@ -148,6 +148,9 @@ export class AddonsConfig extends pulumi.CustomResource {
     public readonly addonsConfig!: pulumi.Output<outputs.apigee.AddonsConfigAddonsConfig | undefined>;
     /**
      * Name of the Apigee organization.
+     *
+     *
+     * - - -
      */
     public readonly org!: pulumi.Output<string>;
 
@@ -190,6 +193,9 @@ export interface AddonsConfigState {
     addonsConfig?: pulumi.Input<inputs.apigee.AddonsConfigAddonsConfig>;
     /**
      * Name of the Apigee organization.
+     *
+     *
+     * - - -
      */
     org?: pulumi.Input<string>;
 }
@@ -205,6 +211,9 @@ export interface AddonsConfigArgs {
     addonsConfig?: pulumi.Input<inputs.apigee.AddonsConfigAddonsConfig>;
     /**
      * Name of the Apigee organization.
+     *
+     *
+     * - - -
      */
     org: pulumi.Input<string>;
 }

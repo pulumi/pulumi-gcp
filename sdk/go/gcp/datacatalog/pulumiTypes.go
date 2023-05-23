@@ -495,6 +495,8 @@ type EntryGcsFilesetSpec struct {
 	// (Output)
 	// Sample files contained in this fileset, not all files contained in this fileset are represented here.
 	// Structure is documented below.
+	//
+	// <a name="nestedSampleGcsFileSpecs"></a>The `sampleGcsFileSpecs` block contains:
 	SampleGcsFileSpecs []EntryGcsFilesetSpecSampleGcsFileSpec `pulumi:"sampleGcsFileSpecs"`
 }
 
@@ -525,6 +527,8 @@ type EntryGcsFilesetSpecArgs struct {
 	// (Output)
 	// Sample files contained in this fileset, not all files contained in this fileset are represented here.
 	// Structure is documented below.
+	//
+	// <a name="nestedSampleGcsFileSpecs"></a>The `sampleGcsFileSpecs` block contains:
 	SampleGcsFileSpecs EntryGcsFilesetSpecSampleGcsFileSpecArrayInput `pulumi:"sampleGcsFileSpecs"`
 }
 
@@ -623,6 +627,8 @@ func (o EntryGcsFilesetSpecOutput) FilePatterns() pulumi.StringArrayOutput {
 // (Output)
 // Sample files contained in this fileset, not all files contained in this fileset are represented here.
 // Structure is documented below.
+//
+// <a name="nestedSampleGcsFileSpecs"></a>The `sampleGcsFileSpecs` block contains:
 func (o EntryGcsFilesetSpecOutput) SampleGcsFileSpecs() EntryGcsFilesetSpecSampleGcsFileSpecArrayOutput {
 	return o.ApplyT(func(v EntryGcsFilesetSpec) []EntryGcsFilesetSpecSampleGcsFileSpec { return v.SampleGcsFileSpecs }).(EntryGcsFilesetSpecSampleGcsFileSpecArrayOutput)
 }
@@ -674,6 +680,8 @@ func (o EntryGcsFilesetSpecPtrOutput) FilePatterns() pulumi.StringArrayOutput {
 // (Output)
 // Sample files contained in this fileset, not all files contained in this fileset are represented here.
 // Structure is documented below.
+//
+// <a name="nestedSampleGcsFileSpecs"></a>The `sampleGcsFileSpecs` block contains:
 func (o EntryGcsFilesetSpecPtrOutput) SampleGcsFileSpecs() EntryGcsFilesetSpecSampleGcsFileSpecArrayOutput {
 	return o.ApplyT(func(v *EntryGcsFilesetSpec) []EntryGcsFilesetSpecSampleGcsFileSpec {
 		if v == nil {
@@ -1456,6 +1464,8 @@ type TagField struct {
 	// Holds the value for a tag field with double type.
 	DoubleValue *float64 `pulumi:"doubleValue"`
 	// Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
+	//
+	// ***
 	EnumValue *string `pulumi:"enumValue"`
 	// The identifier for this object. Format specified above.
 	FieldName string `pulumi:"fieldName"`
@@ -1490,6 +1500,8 @@ type TagFieldArgs struct {
 	// Holds the value for a tag field with double type.
 	DoubleValue pulumi.Float64PtrInput `pulumi:"doubleValue"`
 	// Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
+	//
+	// ***
 	EnumValue pulumi.StringPtrInput `pulumi:"enumValue"`
 	// The identifier for this object. Format specified above.
 	FieldName pulumi.StringInput `pulumi:"fieldName"`
@@ -1572,6 +1584,8 @@ func (o TagFieldOutput) DoubleValue() pulumi.Float64PtrOutput {
 }
 
 // Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
+//
+// ***
 func (o TagFieldOutput) EnumValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TagField) *string { return v.EnumValue }).(pulumi.StringPtrOutput)
 }

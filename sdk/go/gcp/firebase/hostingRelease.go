@@ -195,6 +195,8 @@ type HostingRelease struct {
 	// The unique identifier for the Release.
 	ReleaseId pulumi.StringOutput `pulumi:"releaseId"`
 	// Required. The ID of the site to which the release belongs.
+	//
+	// ***
 	SiteId pulumi.StringOutput `pulumi:"siteId"`
 	// The type of the release; indicates what happened to the content of the site. There is no need to specify
 	// `DEPLOY` or `ROLLBACK` type if a `versionName` is provided.
@@ -254,6 +256,8 @@ type hostingReleaseState struct {
 	// The unique identifier for the Release.
 	ReleaseId *string `pulumi:"releaseId"`
 	// Required. The ID of the site to which the release belongs.
+	//
+	// ***
 	SiteId *string `pulumi:"siteId"`
 	// The type of the release; indicates what happened to the content of the site. There is no need to specify
 	// `DEPLOY` or `ROLLBACK` type if a `versionName` is provided.
@@ -282,6 +286,8 @@ type HostingReleaseState struct {
 	// The unique identifier for the Release.
 	ReleaseId pulumi.StringPtrInput
 	// Required. The ID of the site to which the release belongs.
+	//
+	// ***
 	SiteId pulumi.StringPtrInput
 	// The type of the release; indicates what happened to the content of the site. There is no need to specify
 	// `DEPLOY` or `ROLLBACK` type if a `versionName` is provided.
@@ -308,6 +314,8 @@ type hostingReleaseArgs struct {
 	// The deploy description when the release was created. The value can be up to 512 characters.
 	Message *string `pulumi:"message"`
 	// Required. The ID of the site to which the release belongs.
+	//
+	// ***
 	SiteId string `pulumi:"siteId"`
 	// The type of the release; indicates what happened to the content of the site. There is no need to specify
 	// `DEPLOY` or `ROLLBACK` type if a `versionName` is provided.
@@ -331,6 +339,8 @@ type HostingReleaseArgs struct {
 	// The deploy description when the release was created. The value can be up to 512 characters.
 	Message pulumi.StringPtrInput
 	// Required. The ID of the site to which the release belongs.
+	//
+	// ***
 	SiteId pulumi.StringInput
 	// The type of the release; indicates what happened to the content of the site. There is no need to specify
 	// `DEPLOY` or `ROLLBACK` type if a `versionName` is provided.
@@ -457,6 +467,8 @@ func (o HostingReleaseOutput) ReleaseId() pulumi.StringOutput {
 }
 
 // Required. The ID of the site to which the release belongs.
+//
+// ***
 func (o HostingReleaseOutput) SiteId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostingRelease) pulumi.StringOutput { return v.SiteId }).(pulumi.StringOutput)
 }

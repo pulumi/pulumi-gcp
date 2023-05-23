@@ -209,6 +209,9 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// The project ID associated with the Apigee organization.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
@@ -335,6 +338,9 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// The project ID associated with the Apigee organization.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
@@ -429,6 +435,9 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// The project ID associated with the Apigee organization.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }

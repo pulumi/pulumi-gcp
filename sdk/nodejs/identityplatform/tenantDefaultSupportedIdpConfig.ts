@@ -78,6 +78,9 @@ export class TenantDefaultSupportedIdpConfig extends pulumi.CustomResource {
     public readonly clientId!: pulumi.Output<string>;
     /**
      * OAuth client secret
+     *
+     *
+     * - - -
      */
     public readonly clientSecret!: pulumi.Output<string>;
     /**
@@ -169,6 +172,9 @@ export interface TenantDefaultSupportedIdpConfigState {
     clientId?: pulumi.Input<string>;
     /**
      * OAuth client secret
+     *
+     *
+     * - - -
      */
     clientSecret?: pulumi.Input<string>;
     /**
@@ -214,6 +220,9 @@ export interface TenantDefaultSupportedIdpConfigArgs {
     clientId: pulumi.Input<string>;
     /**
      * OAuth client secret
+     *
+     *
+     * - - -
      */
     clientSecret: pulumi.Input<string>;
     /**

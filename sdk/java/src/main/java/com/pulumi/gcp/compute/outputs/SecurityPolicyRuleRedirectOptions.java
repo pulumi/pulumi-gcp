@@ -19,6 +19,9 @@ public final class SecurityPolicyRuleRedirectOptions {
     /**
      * @return Type of redirect action.
      * 
+     * * EXTERNAL_302: Redirect to an external address, configured in &#39;target&#39;.
+     * * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
+     * 
      */
     private String type;
 
@@ -32,6 +35,9 @@ public final class SecurityPolicyRuleRedirectOptions {
     }
     /**
      * @return Type of redirect action.
+     * 
+     * * EXTERNAL_302: Redirect to an external address, configured in &#39;target&#39;.
+     * * GOOGLE_RECAPTCHA: Redirect to Google reCAPTCHA.
      * 
      */
     public String type() {

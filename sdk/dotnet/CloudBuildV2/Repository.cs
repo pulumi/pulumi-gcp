@@ -280,6 +280,10 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// Required. Git Clone HTTPS URI.
+        /// 
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("remoteUri")]
         public Output<string> RemoteUri { get; private set; } = null!;
@@ -374,6 +378,10 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// Required. Git Clone HTTPS URI.
+        /// 
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("remoteUri", required: true)]
         public Input<string> RemoteUri { get; set; } = null!;
@@ -436,6 +444,10 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// Required. Git Clone HTTPS URI.
+        /// 
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("remoteUri")]
         public Input<string>? RemoteUri { get; set; }

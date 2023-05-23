@@ -22,6 +22,9 @@ class ServicePerimetersArgs:
         The set of arguments for constructing a ServicePerimeters resource.
         :param pulumi.Input[str] parent: The AccessPolicy this ServicePerimeter lives in.
                Format: accessPolicies/{policy_id}
+               
+               
+               - - -
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]] service_perimeters: The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
                Structure is documented below.
         """
@@ -35,6 +38,9 @@ class ServicePerimetersArgs:
         """
         The AccessPolicy this ServicePerimeter lives in.
         Format: accessPolicies/{policy_id}
+
+
+        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -65,6 +71,9 @@ class _ServicePerimetersState:
         Input properties used for looking up and filtering ServicePerimeters resources.
         :param pulumi.Input[str] parent: The AccessPolicy this ServicePerimeter lives in.
                Format: accessPolicies/{policy_id}
+               
+               
+               - - -
         :param pulumi.Input[Sequence[pulumi.Input['ServicePerimetersServicePerimeterArgs']]] service_perimeters: The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
                Structure is documented below.
         """
@@ -79,6 +88,9 @@ class _ServicePerimetersState:
         """
         The AccessPolicy this ServicePerimeter lives in.
         Format: accessPolicies/{policy_id}
+
+
+        - - -
         """
         return pulumi.get(self, "parent")
 
@@ -183,6 +195,9 @@ class ServicePerimeters(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] parent: The AccessPolicy this ServicePerimeter lives in.
                Format: accessPolicies/{policy_id}
+               
+               
+               - - -
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePerimetersServicePerimeterArgs']]]] service_perimeters: The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
                Structure is documented below.
         """
@@ -314,6 +329,9 @@ class ServicePerimeters(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] parent: The AccessPolicy this ServicePerimeter lives in.
                Format: accessPolicies/{policy_id}
+               
+               
+               - - -
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePerimetersServicePerimeterArgs']]]] service_perimeters: The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
                Structure is documented below.
         """
@@ -331,6 +349,9 @@ class ServicePerimeters(pulumi.CustomResource):
         """
         The AccessPolicy this ServicePerimeter lives in.
         Format: accessPolicies/{policy_id}
+
+
+        - - -
         """
         return pulumi.get(self, "parent")
 

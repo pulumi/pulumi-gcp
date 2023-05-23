@@ -364,6 +364,8 @@ type NotificationConfigStreamingConfig struct {
 	//   See
 	//   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 	//   for information on how to write a filter.
+	//
+	// ***
 	Filter string `pulumi:"filter"`
 }
 
@@ -398,6 +400,8 @@ type NotificationConfigStreamingConfigArgs struct {
 	//   See
 	//   [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 	//   for information on how to write a filter.
+	//
+	// ***
 	Filter pulumi.StringInput `pulumi:"filter"`
 }
 
@@ -497,6 +501,8 @@ func (o NotificationConfigStreamingConfigOutput) ToNotificationConfigStreamingCo
 //     See
 //     [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 //     for information on how to write a filter.
+//
+// ***
 func (o NotificationConfigStreamingConfigOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v NotificationConfigStreamingConfig) string { return v.Filter }).(pulumi.StringOutput)
 }
@@ -544,6 +550,8 @@ func (o NotificationConfigStreamingConfigPtrOutput) Elem() NotificationConfigStr
 //     See
 //     [Filtering notifications](https://cloud.google.com/security-command-center/docs/how-to-api-filter-notifications)
 //     for information on how to write a filter.
+//
+// ***
 func (o NotificationConfigStreamingConfigPtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NotificationConfigStreamingConfig) *string {
 		if v == nil {

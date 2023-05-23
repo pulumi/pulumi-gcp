@@ -68,12 +68,16 @@ public final class WorkerPoolArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * User-defined name of the `WorkerPool`.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return User-defined name of the `WorkerPool`.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -223,6 +227,8 @@ public final class WorkerPoolArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name User-defined name of the `WorkerPool`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -233,6 +239,8 @@ public final class WorkerPoolArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name User-defined name of the `WorkerPool`.
+         * 
+         * ***
          * 
          * @return builder
          * 

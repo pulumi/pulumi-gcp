@@ -764,6 +764,8 @@ type BudgetAmountSpecifiedAmount struct {
 	// negative. If units is negative, nanos must be negative or
 	// zero. For example $-1.75 is represented as units=-1 and
 	// nanos=-750,000,000.
+	//
+	// ***
 	Nanos *int `pulumi:"nanos"`
 	// The whole units of the amount. For example if currencyCode
 	// is "USD", then 1 unit is one US dollar.
@@ -791,6 +793,8 @@ type BudgetAmountSpecifiedAmountArgs struct {
 	// negative. If units is negative, nanos must be negative or
 	// zero. For example $-1.75 is represented as units=-1 and
 	// nanos=-750,000,000.
+	//
+	// ***
 	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
 	// The whole units of the amount. For example if currencyCode
 	// is "USD", then 1 unit is one US dollar.
@@ -886,6 +890,8 @@ func (o BudgetAmountSpecifiedAmountOutput) CurrencyCode() pulumi.StringPtrOutput
 // negative. If units is negative, nanos must be negative or
 // zero. For example $-1.75 is represented as units=-1 and
 // nanos=-750,000,000.
+//
+// ***
 func (o BudgetAmountSpecifiedAmountOutput) Nanos() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BudgetAmountSpecifiedAmount) *int { return v.Nanos }).(pulumi.IntPtrOutput)
 }
@@ -937,6 +943,8 @@ func (o BudgetAmountSpecifiedAmountPtrOutput) CurrencyCode() pulumi.StringPtrOut
 // negative. If units is negative, nanos must be negative or
 // zero. For example $-1.75 is represented as units=-1 and
 // nanos=-750,000,000.
+//
+// ***
 func (o BudgetAmountSpecifiedAmountPtrOutput) Nanos() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BudgetAmountSpecifiedAmount) *int {
 		if v == nil {

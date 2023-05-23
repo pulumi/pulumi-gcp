@@ -23,6 +23,9 @@ class RealmArgs:
         """
         The set of arguments for constructing a Realm resource.
         :param pulumi.Input[str] realm_id: GCP region of the Realm.
+               
+               
+               - - -
         :param pulumi.Input[str] time_zone: Required. Time zone where all realm-specific policies are evaluated. The value of
                this field must be from the IANA time zone database:
                https://www.iana.org/time-zones.
@@ -48,6 +51,9 @@ class RealmArgs:
     def realm_id(self) -> pulumi.Input[str]:
         """
         GCP region of the Realm.
+
+
+        - - -
         """
         return pulumi.get(self, "realm_id")
 
@@ -142,6 +148,9 @@ class _RealmState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] realm_id: GCP region of the Realm.
+               
+               
+               - - -
         :param pulumi.Input[str] time_zone: Required. Time zone where all realm-specific policies are evaluated. The value of
                this field must be from the IANA time zone database:
                https://www.iana.org/time-zones.
@@ -243,6 +252,9 @@ class _RealmState:
     def realm_id(self) -> Optional[pulumi.Input[str]]:
         """
         GCP region of the Realm.
+
+
+        - - -
         """
         return pulumi.get(self, "realm_id")
 
@@ -324,6 +336,9 @@ class Realm(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] realm_id: GCP region of the Realm.
+               
+               
+               - - -
         :param pulumi.Input[str] time_zone: Required. Time zone where all realm-specific policies are evaluated. The value of
                this field must be from the IANA time zone database:
                https://www.iana.org/time-zones.
@@ -450,6 +465,9 @@ class Realm(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] realm_id: GCP region of the Realm.
+               
+               
+               - - -
         :param pulumi.Input[str] time_zone: Required. Time zone where all realm-specific policies are evaluated. The value of
                this field must be from the IANA time zone database:
                https://www.iana.org/time-zones.
@@ -524,6 +542,9 @@ class Realm(pulumi.CustomResource):
     def realm_id(self) -> pulumi.Output[str]:
         """
         GCP region of the Realm.
+
+
+        - - -
         """
         return pulumi.get(self, "realm_id")
 

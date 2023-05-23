@@ -36,6 +36,8 @@ export function getOrganization(args?: GetOrganizationArgs, opts?: pulumi.Invoke
 export interface GetOrganizationArgs {
     /**
      * The domain name of the Organization.
+     *
+     * > **NOTE:** One of `organization` or `domain` must be specified.
      */
     domain?: string;
     /**
@@ -101,6 +103,8 @@ export function getOrganizationOutput(args?: GetOrganizationOutputArgs, opts?: p
 export interface GetOrganizationOutputArgs {
     /**
      * The domain name of the Organization.
+     *
+     * > **NOTE:** One of `organization` or `domain` must be specified.
      */
     domain?: pulumi.Input<string>;
     /**

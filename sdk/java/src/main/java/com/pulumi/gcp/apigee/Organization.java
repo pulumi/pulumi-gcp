@@ -296,12 +296,16 @@ public class Organization extends com.pulumi.resources.CustomResource {
     /**
      * The project ID associated with the Apigee organization.
      * 
+     * ***
+     * 
      */
     @Export(name="projectId", type=String.class, parameters={})
     private Output<String> projectId;
 
     /**
      * @return The project ID associated with the Apigee organization.
+     * 
+     * ***
      * 
      */
     public Output<String> projectId() {

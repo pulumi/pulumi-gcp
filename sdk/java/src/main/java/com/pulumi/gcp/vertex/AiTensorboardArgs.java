@@ -35,12 +35,16 @@ public final class AiTensorboardArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * User provided name of this Tensorboard.
      * 
+     * ***
+     * 
      */
     @Import(name="displayName", required=true)
     private Output<String> displayName;
 
     /**
      * @return User provided name of this Tensorboard.
+     * 
+     * ***
      * 
      */
     public Output<String> displayName() {
@@ -164,6 +168,8 @@ public final class AiTensorboardArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param displayName User provided name of this Tensorboard.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -174,6 +180,8 @@ public final class AiTensorboardArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param displayName User provided name of this Tensorboard.
+         * 
+         * ***
          * 
          * @return builder
          * 

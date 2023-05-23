@@ -229,11 +229,15 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
     public readonly manualScaling!: pulumi.Output<outputs.appengine.FlexibleAppVersionManualScaling | undefined>;
     /**
      * Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
+     *
      * (Required)
      * Unique name for the volume.
+     *
+     *
      * (Required)
      * Endpoints service name which is the name of the "service" resource in the Service Management API.
      * For example "myapi.endpoints.myproject.cloud.goog"
+     *
      * (Required)
      * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
      */
@@ -479,11 +483,15 @@ export interface FlexibleAppVersionState {
     manualScaling?: pulumi.Input<inputs.appengine.FlexibleAppVersionManualScaling>;
     /**
      * Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
+     *
      * (Required)
      * Unique name for the volume.
+     *
+     *
      * (Required)
      * Endpoints service name which is the name of the "service" resource in the Service Management API.
      * For example "myapi.endpoints.myproject.cloud.goog"
+     *
      * (Required)
      * Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
      */

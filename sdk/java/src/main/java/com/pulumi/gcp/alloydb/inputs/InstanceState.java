@@ -131,12 +131,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * The ID of the alloydb instance.
      * 
+     * ***
+     * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
      * @return The ID of the alloydb instance.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -494,6 +498,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param instanceId The ID of the alloydb instance.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -504,6 +510,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceId The ID of the alloydb instance.
+         * 
+         * ***
          * 
          * @return builder
          * 

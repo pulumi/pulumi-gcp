@@ -76,6 +76,8 @@ public final class JobIAMMemberArgs extends com.pulumi.resources.ResourceArgs {
      * `gcp.dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
+     * `gcp.dataproc.JobIAMPolicy` only:
+     * 
      */
     @Import(name="role", required=true)
     private Output<String> role;
@@ -84,6 +86,8 @@ public final class JobIAMMemberArgs extends com.pulumi.resources.ResourceArgs {
      * @return The role that should be applied. Only one
      * `gcp.dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     * 
+     * `gcp.dataproc.JobIAMPolicy` only:
      * 
      */
     public Output<String> role() {
@@ -197,6 +201,8 @@ public final class JobIAMMemberArgs extends com.pulumi.resources.ResourceArgs {
          * `gcp.dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
          * 
+         * `gcp.dataproc.JobIAMPolicy` only:
+         * 
          * @return builder
          * 
          */
@@ -209,6 +215,8 @@ public final class JobIAMMemberArgs extends com.pulumi.resources.ResourceArgs {
          * @param role The role that should be applied. Only one
          * `gcp.dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
          * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+         * 
+         * `gcp.dataproc.JobIAMPolicy` only:
          * 
          * @return builder
          * 

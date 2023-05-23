@@ -130,6 +130,8 @@ export class BucketObject extends pulumi.CustomResource {
     public /*out*/ readonly mediaLink!: pulumi.Output<string>;
     /**
      * User-provided metadata, in key/value pairs.
+     *
+     * One of the following is required:
      */
     public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -148,6 +150,8 @@ export class BucketObject extends pulumi.CustomResource {
     /**
      * A path to the data you want to upload. Must be defined
      * if `content` is not.
+     *
+     * - - -
      */
     public readonly source!: pulumi.Output<pulumi.asset.Asset | pulumi.asset.Archive | undefined>;
     /**
@@ -290,6 +294,8 @@ export interface BucketObjectState {
     mediaLink?: pulumi.Input<string>;
     /**
      * User-provided metadata, in key/value pairs.
+     *
+     * One of the following is required:
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -308,6 +314,8 @@ export interface BucketObjectState {
     /**
      * A path to the data you want to upload. Must be defined
      * if `content` is not.
+     *
+     * - - -
      */
     source?: pulumi.Input<pulumi.asset.Asset | pulumi.asset.Archive>;
     /**
@@ -371,6 +379,8 @@ export interface BucketObjectArgs {
     kmsKeyName?: pulumi.Input<string>;
     /**
      * User-provided metadata, in key/value pairs.
+     *
+     * One of the following is required:
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -380,6 +390,8 @@ export interface BucketObjectArgs {
     /**
      * A path to the data you want to upload. Must be defined
      * if `content` is not.
+     *
+     * - - -
      */
     source?: pulumi.Input<pulumi.asset.Asset | pulumi.asset.Archive>;
     /**

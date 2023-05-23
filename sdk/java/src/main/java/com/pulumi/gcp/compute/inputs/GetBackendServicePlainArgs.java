@@ -17,12 +17,16 @@ public final class GetBackendServicePlainArgs extends com.pulumi.resources.Invok
     /**
      * The name of the Backend Service.
      * 
+     * ***
+     * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
      * @return The name of the Backend Service.
+     * 
+     * ***
      * 
      */
     public String name() {
@@ -71,6 +75,8 @@ public final class GetBackendServicePlainArgs extends com.pulumi.resources.Invok
 
         /**
          * @param name The name of the Backend Service.
+         * 
+         * ***
          * 
          * @return builder
          * 

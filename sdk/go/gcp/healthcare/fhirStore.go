@@ -260,6 +260,8 @@ type FhirStore struct {
 
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
+	//
+	// ***
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
 	// Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
 	// creation. The default value is false, meaning that the API will enforce referential integrity and fail the
@@ -356,6 +358,8 @@ func GetFhirStore(ctx *pulumi.Context,
 type fhirStoreState struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
+	//
+	// ***
 	Dataset *string `pulumi:"dataset"`
 	// Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
 	// creation. The default value is false, meaning that the API will enforce referential integrity and fail the
@@ -421,6 +425,8 @@ type fhirStoreState struct {
 type FhirStoreState struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
+	//
+	// ***
 	Dataset pulumi.StringPtrInput
 	// Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
 	// creation. The default value is false, meaning that the API will enforce referential integrity and fail the
@@ -490,6 +496,8 @@ func (FhirStoreState) ElementType() reflect.Type {
 type fhirStoreArgs struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
+	//
+	// ***
 	Dataset string `pulumi:"dataset"`
 	// Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
 	// creation. The default value is false, meaning that the API will enforce referential integrity and fail the
@@ -554,6 +562,8 @@ type fhirStoreArgs struct {
 type FhirStoreArgs struct {
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
+	//
+	// ***
 	Dataset pulumi.StringInput
 	// Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store
 	// creation. The default value is false, meaning that the API will enforce referential integrity and fail the
@@ -703,6 +713,8 @@ func (o FhirStoreOutput) ToFhirStoreOutputWithContext(ctx context.Context) FhirS
 
 // Identifies the dataset addressed by this request. Must be in the format
 // 'projects/{project}/locations/{location}/datasets/{dataset}'
+//
+// ***
 func (o FhirStoreOutput) Dataset() pulumi.StringOutput {
 	return o.ApplyT(func(v *FhirStore) pulumi.StringOutput { return v.Dataset }).(pulumi.StringOutput)
 }

@@ -111,6 +111,9 @@ export class MetricDescriptor extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string>;
     /**
      * A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
+     *
+     *
+     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -246,6 +249,9 @@ export interface MetricDescriptorState {
     description?: pulumi.Input<string>;
     /**
      * A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
+     *
+     *
+     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -322,6 +328,9 @@ export interface MetricDescriptorArgs {
     description: pulumi.Input<string>;
     /**
      * A concise name for the metric, which can be displayed in user interfaces. Use sentence case without an ending period, for example "Request count".
+     *
+     *
+     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

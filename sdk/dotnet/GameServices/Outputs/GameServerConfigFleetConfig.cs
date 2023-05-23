@@ -25,6 +25,8 @@ namespace Pulumi.Gcp.GameServices.Outputs
         public readonly string FleetSpec;
         /// <summary>
         /// The name of the FleetConfig.
+        /// 
+        /// - - -
         /// </summary>
         public readonly string? Name;
 

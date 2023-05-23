@@ -377,6 +377,9 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         /// <summary>
         /// A user-defined name of the function. Function names must
         /// be unique globally and match pattern `projects/*/locations/*/functions/*`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -496,6 +499,9 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         /// <summary>
         /// A user-defined name of the function. Function names must
         /// be unique globally and match pattern `projects/*/locations/*/functions/*`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -571,6 +577,9 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         /// <summary>
         /// A user-defined name of the function. Function names must
         /// be unique globally and match pattern `projects/*/locations/*/functions/*`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -57,12 +57,16 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
     /**
      * The ID of the connection profile.
      * 
+     * ***
+     * 
      */
     @Import(name="connectionProfileId", required=true)
     private Output<String> connectionProfileId;
 
     /**
      * @return The ID of the connection profile.
+     * 
+     * ***
      * 
      */
     public Output<String> connectionProfileId() {
@@ -246,6 +250,8 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param connectionProfileId The ID of the connection profile.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -256,6 +262,8 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param connectionProfileId The ID of the connection profile.
+         * 
+         * ***
          * 
          * @return builder
          * 
