@@ -358,8 +358,10 @@ var metadata []byte
 
 // Provider returns additional overlaid schema and metadata associated with the gcp package.
 func Provider() tfbridge.ProviderInfo {
-	p := shimv2.NewProvider(google.Provider())
-	p = pf.MuxShimWithPF(context.Background(), p, google.New(""))
+	p := pf.MuxShimWithPF(
+		context.Background(),
+		shimv2.NewProvider(google.Provider()),
+		google.New(version.Version)) // this probably should be TF version but it does not seem to matter
 	prov := tfbridge.ProviderInfo{
 		P:              p,
 		Name:           "google-beta",
