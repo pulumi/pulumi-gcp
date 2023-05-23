@@ -154,6 +154,18 @@ type AccessPolicyIamBinding struct {
 	Etag    pulumi.StringOutput      `pulumi:"etag"`
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// Used to find the parent resource to bind the IAM policy to
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The role that should be applied. Only one
 	// `accesscontextmanager.AccessPolicyIamBinding` can be used per role. Note that custom roles must be of the format
@@ -201,6 +213,18 @@ type accessPolicyIamBindingState struct {
 	Etag    *string  `pulumi:"etag"`
 	Members []string `pulumi:"members"`
 	// Used to find the parent resource to bind the IAM policy to
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Name *string `pulumi:"name"`
 	// The role that should be applied. Only one
 	// `accesscontextmanager.AccessPolicyIamBinding` can be used per role. Note that custom roles must be of the format
@@ -214,6 +238,18 @@ type AccessPolicyIamBindingState struct {
 	Etag    pulumi.StringPtrInput
 	Members pulumi.StringArrayInput
 	// Used to find the parent resource to bind the IAM policy to
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Name pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `accesscontextmanager.AccessPolicyIamBinding` can be used per role. Note that custom roles must be of the format
@@ -229,6 +265,18 @@ type accessPolicyIamBindingArgs struct {
 	Condition *AccessPolicyIamBindingCondition `pulumi:"condition"`
 	Members   []string                         `pulumi:"members"`
 	// Used to find the parent resource to bind the IAM policy to
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Name *string `pulumi:"name"`
 	// The role that should be applied. Only one
 	// `accesscontextmanager.AccessPolicyIamBinding` can be used per role. Note that custom roles must be of the format
@@ -241,6 +289,18 @@ type AccessPolicyIamBindingArgs struct {
 	Condition AccessPolicyIamBindingConditionPtrInput
 	Members   pulumi.StringArrayInput
 	// Used to find the parent resource to bind the IAM policy to
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 	Name pulumi.StringPtrInput
 	// The role that should be applied. Only one
 	// `accesscontextmanager.AccessPolicyIamBinding` can be used per role. Note that custom roles must be of the format
@@ -349,6 +409,18 @@ func (o AccessPolicyIamBindingOutput) Members() pulumi.StringArrayOutput {
 }
 
 // Used to find the parent resource to bind the IAM policy to
+//
+//   - `member/members` - (Required) Identities that will be granted the privilege in `role`.
+//     Each entry can have one of the following values:
+//   - **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+//   - **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+//   - **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+//   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+//   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+//   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+//   - **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+//   - **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+//   - **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 func (o AccessPolicyIamBindingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPolicyIamBinding) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

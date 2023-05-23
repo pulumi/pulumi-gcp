@@ -36,12 +36,16 @@ public final class LiteSubscriptionState extends com.pulumi.resources.ResourceAr
     /**
      * Name of the subscription.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Name of the subscription.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -165,6 +169,8 @@ public final class LiteSubscriptionState extends com.pulumi.resources.ResourceAr
         /**
          * @param name Name of the subscription.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -175,6 +181,8 @@ public final class LiteSubscriptionState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param name Name of the subscription.
+         * 
+         * ***
          * 
          * @return builder
          * 

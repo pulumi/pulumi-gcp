@@ -102,8 +102,13 @@ namespace Pulumi.Gcp.DataCatalog
     {
         /// <summary>
         /// The display name for this field.
+        /// 
         /// (Required)
         /// The display name of the enum value.
+        /// 
+        /// - - -
+        /// 
+        /// 
         /// (Optional)
         /// The display name for this template.
         /// </summary>
@@ -197,8 +202,13 @@ namespace Pulumi.Gcp.DataCatalog
     {
         /// <summary>
         /// The display name for this field.
+        /// 
         /// (Required)
         /// The display name of the enum value.
+        /// 
+        /// - - -
+        /// 
+        /// 
         /// (Optional)
         /// The display name for this template.
         /// </summary>
@@ -253,8 +263,13 @@ namespace Pulumi.Gcp.DataCatalog
     {
         /// <summary>
         /// The display name for this field.
+        /// 
         /// (Required)
         /// The display name of the enum value.
+        /// 
+        /// - - -
+        /// 
+        /// 
         /// (Optional)
         /// The display name for this template.
         /// </summary>

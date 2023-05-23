@@ -69,6 +69,8 @@ public final class GetObjectSignedUrlArgs extends com.pulumi.resources.InvokeArg
      * What Google service account credentials json should be used to sign the URL.
      * This data source checks the following locations for credentials, in order of preference: data source `credentials` attribute, provider `credentials` attribute and finally the GOOGLE_APPLICATION_CREDENTIALS environment variable.
      * 
+     * &gt; **NOTE** the default google credentials configured by `gcloud` sdk or the service account associated with a compute instance cannot be used, because these do not include the private key required to sign the URL. A valid `json` service account credentials key file must be used, as generated via Google cloud console.
+     * 
      */
     @Import(name="credentials")
     private @Nullable Output<String> credentials;
@@ -76,6 +78,8 @@ public final class GetObjectSignedUrlArgs extends com.pulumi.resources.InvokeArg
     /**
      * @return What Google service account credentials json should be used to sign the URL.
      * This data source checks the following locations for credentials, in order of preference: data source `credentials` attribute, provider `credentials` attribute and finally the GOOGLE_APPLICATION_CREDENTIALS environment variable.
+     * 
+     * &gt; **NOTE** the default google credentials configured by `gcloud` sdk or the service account associated with a compute instance cannot be used, because these do not include the private key required to sign the URL. A valid `json` service account credentials key file must be used, as generated via Google cloud console.
      * 
      */
     public Optional<Output<String>> credentials() {
@@ -248,6 +252,8 @@ public final class GetObjectSignedUrlArgs extends com.pulumi.resources.InvokeArg
          * @param credentials What Google service account credentials json should be used to sign the URL.
          * This data source checks the following locations for credentials, in order of preference: data source `credentials` attribute, provider `credentials` attribute and finally the GOOGLE_APPLICATION_CREDENTIALS environment variable.
          * 
+         * &gt; **NOTE** the default google credentials configured by `gcloud` sdk or the service account associated with a compute instance cannot be used, because these do not include the private key required to sign the URL. A valid `json` service account credentials key file must be used, as generated via Google cloud console.
+         * 
          * @return builder
          * 
          */
@@ -259,6 +265,8 @@ public final class GetObjectSignedUrlArgs extends com.pulumi.resources.InvokeArg
         /**
          * @param credentials What Google service account credentials json should be used to sign the URL.
          * This data source checks the following locations for credentials, in order of preference: data source `credentials` attribute, provider `credentials` attribute and finally the GOOGLE_APPLICATION_CREDENTIALS environment variable.
+         * 
+         * &gt; **NOTE** the default google credentials configured by `gcloud` sdk or the service account associated with a compute instance cannot be used, because these do not include the private key required to sign the URL. A valid `json` service account credentials key file must be used, as generated via Google cloud console.
          * 
          * @return builder
          * 

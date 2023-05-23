@@ -14,6 +14,8 @@ type AppConnectionApplicationEndpoint struct {
 	// Hostname or IP address of the remote application endpoint.
 	Host string `pulumi:"host"`
 	// Port of the remote application endpoint.
+	//
+	// ***
 	Port int `pulumi:"port"`
 }
 
@@ -32,6 +34,8 @@ type AppConnectionApplicationEndpointArgs struct {
 	// Hostname or IP address of the remote application endpoint.
 	Host pulumi.StringInput `pulumi:"host"`
 	// Port of the remote application endpoint.
+	//
+	// ***
 	Port pulumi.IntInput `pulumi:"port"`
 }
 
@@ -118,6 +122,8 @@ func (o AppConnectionApplicationEndpointOutput) Host() pulumi.StringOutput {
 }
 
 // Port of the remote application endpoint.
+//
+// ***
 func (o AppConnectionApplicationEndpointOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v AppConnectionApplicationEndpoint) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -157,6 +163,8 @@ func (o AppConnectionApplicationEndpointPtrOutput) Host() pulumi.StringPtrOutput
 }
 
 // Port of the remote application endpoint.
+//
+// ***
 func (o AppConnectionApplicationEndpointPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AppConnectionApplicationEndpoint) *int {
 		if v == nil {
@@ -519,6 +527,8 @@ func (o AppConnectorPrincipalInfoPtrOutput) ServiceAccount() AppConnectorPrincip
 
 type AppConnectorPrincipalInfoServiceAccount struct {
 	// Email address of the service account.
+	//
+	// ***
 	Email string `pulumi:"email"`
 }
 
@@ -535,6 +545,8 @@ type AppConnectorPrincipalInfoServiceAccountInput interface {
 
 type AppConnectorPrincipalInfoServiceAccountArgs struct {
 	// Email address of the service account.
+	//
+	// ***
 	Email pulumi.StringInput `pulumi:"email"`
 }
 
@@ -616,6 +628,8 @@ func (o AppConnectorPrincipalInfoServiceAccountOutput) ToAppConnectorPrincipalIn
 }
 
 // Email address of the service account.
+//
+// ***
 func (o AppConnectorPrincipalInfoServiceAccountOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v AppConnectorPrincipalInfoServiceAccount) string { return v.Email }).(pulumi.StringOutput)
 }
@@ -645,6 +659,8 @@ func (o AppConnectorPrincipalInfoServiceAccountPtrOutput) Elem() AppConnectorPri
 }
 
 // Email address of the service account.
+//
+// ***
 func (o AppConnectorPrincipalInfoServiceAccountPtrOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppConnectorPrincipalInfoServiceAccount) *string {
 		if v == nil {

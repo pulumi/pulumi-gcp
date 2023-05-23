@@ -21,6 +21,7 @@ public final class CertificateTemplateArgs extends com.pulumi.resources.Resource
 
     /**
      * Optional. A human-readable description of scenarios this template is intended for.
+     * 
      * (Optional)
      * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
@@ -30,6 +31,7 @@ public final class CertificateTemplateArgs extends com.pulumi.resources.Resource
 
     /**
      * @return Optional. A human-readable description of scenarios this template is intended for.
+     * 
      * (Optional)
      * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      * 
@@ -176,6 +178,7 @@ public final class CertificateTemplateArgs extends com.pulumi.resources.Resource
 
         /**
          * @param description Optional. A human-readable description of scenarios this template is intended for.
+         * 
          * (Optional)
          * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          * 
@@ -189,6 +192,7 @@ public final class CertificateTemplateArgs extends com.pulumi.resources.Resource
 
         /**
          * @param description Optional. A human-readable description of scenarios this template is intended for.
+         * 
          * (Optional)
          * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
          * 

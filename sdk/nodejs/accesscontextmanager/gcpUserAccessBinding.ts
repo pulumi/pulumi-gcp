@@ -63,6 +63,9 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
      * Required. ID of the parent organization.
+     *
+     *
+     * - - -
      */
     public readonly organizationId!: pulumi.Output<string>;
 
@@ -122,6 +125,9 @@ export interface GcpUserAccessBindingState {
     name?: pulumi.Input<string>;
     /**
      * Required. ID of the parent organization.
+     *
+     *
+     * - - -
      */
     organizationId?: pulumi.Input<string>;
 }
@@ -140,6 +146,9 @@ export interface GcpUserAccessBindingArgs {
     groupKey: pulumi.Input<string>;
     /**
      * Required. ID of the parent organization.
+     *
+     *
+     * - - -
      */
     organizationId: pulumi.Input<string>;
 }

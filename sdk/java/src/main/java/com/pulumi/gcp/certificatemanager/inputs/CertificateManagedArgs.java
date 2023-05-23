@@ -24,6 +24,8 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
      * specified for this Managed Certificate.
      * Structure is documented below.
      * 
+     * &lt;a name=&#34;nested_provisioning_issue&#34;&gt;&lt;/a&gt;The `provisioning_issue` block contains:
+     * 
      */
     @Import(name="authorizationAttemptInfos")
     private @Nullable Output<List<CertificateManagedAuthorizationAttemptInfoArgs>> authorizationAttemptInfos;
@@ -33,6 +35,8 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
      * Detailed state of the latest authorization attempt for each domain
      * specified for this Managed Certificate.
      * Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_provisioning_issue&#34;&gt;&lt;/a&gt;The `provisioning_issue` block contains:
      * 
      */
     public Optional<Output<List<CertificateManagedAuthorizationAttemptInfoArgs>>> authorizationAttemptInfos() {
@@ -141,6 +145,8 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
          * specified for this Managed Certificate.
          * Structure is documented below.
          * 
+         * &lt;a name=&#34;nested_provisioning_issue&#34;&gt;&lt;/a&gt;The `provisioning_issue` block contains:
+         * 
          * @return builder
          * 
          */
@@ -155,6 +161,8 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
          * specified for this Managed Certificate.
          * Structure is documented below.
          * 
+         * &lt;a name=&#34;nested_provisioning_issue&#34;&gt;&lt;/a&gt;The `provisioning_issue` block contains:
+         * 
          * @return builder
          * 
          */
@@ -167,6 +175,8 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
          * Detailed state of the latest authorization attempt for each domain
          * specified for this Managed Certificate.
          * Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_provisioning_issue&#34;&gt;&lt;/a&gt;The `provisioning_issue` block contains:
          * 
          * @return builder
          * 

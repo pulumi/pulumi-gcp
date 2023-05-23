@@ -73,6 +73,8 @@ func LookupAddress(ctx *pulumi.Context, args *LookupAddressArgs, opts ...pulumi.
 // A collection of arguments for invoking getAddress.
 type LookupAddressArgs struct {
 	// A unique name for the resource, required by GCE.
+	//
+	// ***
 	Name string `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
@@ -120,6 +122,8 @@ func LookupAddressOutput(ctx *pulumi.Context, args LookupAddressOutputArgs, opts
 // A collection of arguments for invoking getAddress.
 type LookupAddressOutputArgs struct {
 	// A unique name for the resource, required by GCE.
+	//
+	// ***
 	Name pulumi.StringInput `pulumi:"name"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.

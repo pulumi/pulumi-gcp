@@ -14,6 +14,8 @@ public final class ClusterNodePoolManagement {
     /**
      * @return Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
      * 
+     * This block also contains several computed attributes, documented below.
+     * 
      */
     private @Nullable Boolean autoRepair;
     /**
@@ -25,6 +27,8 @@ public final class ClusterNodePoolManagement {
     private ClusterNodePoolManagement() {}
     /**
      * @return Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
+     * 
+     * This block also contains several computed attributes, documented below.
      * 
      */
     public Optional<Boolean> autoRepair() {

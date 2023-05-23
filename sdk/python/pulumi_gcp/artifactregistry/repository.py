@@ -34,6 +34,9 @@ class RepositoryArgs:
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
                You can only create alpha formats if you are a member of the
                [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+               
+               
+               - - -
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
                "repo1"
         :param pulumi.Input[str] description: The user-provided description of the repository.
@@ -94,6 +97,9 @@ class RepositoryArgs:
         can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         You can only create alpha formats if you are a member of the
         [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+
+
+        - - -
         """
         return pulumi.get(self, "format")
 
@@ -279,6 +285,9 @@ class _RepositoryState:
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
                You can only create alpha formats if you are a member of the
                [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+               
+               
+               - - -
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
                used to encrypt the contents of the Repository. Has the form:
                `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
@@ -384,6 +393,9 @@ class _RepositoryState:
         can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         You can only create alpha formats if you are a member of the
         [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+
+
+        - - -
         """
         return pulumi.get(self, "format")
 
@@ -690,6 +702,9 @@ class Repository(pulumi.CustomResource):
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
                You can only create alpha formats if you are a member of the
                [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+               
+               
+               - - -
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
                used to encrypt the contents of the Repository. Has the form:
                `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
@@ -939,6 +954,9 @@ class Repository(pulumi.CustomResource):
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
                You can only create alpha formats if you are a member of the
                [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+               
+               
+               - - -
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
                used to encrypt the contents of the Repository. Has the form:
                `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
@@ -1022,6 +1040,9 @@ class Repository(pulumi.CustomResource):
         can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         You can only create alpha formats if you are a member of the
         [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+
+
+        - - -
         """
         return pulumi.get(self, "format")
 

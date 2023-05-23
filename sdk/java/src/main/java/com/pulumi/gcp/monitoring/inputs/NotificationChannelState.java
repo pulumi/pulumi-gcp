@@ -177,12 +177,16 @@ public final class NotificationChannelState extends com.pulumi.resources.Resourc
     /**
      * The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as &#34;email&#34;, &#34;slack&#34;, etc...
      * 
+     * ***
+     * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
      * @return The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as &#34;email&#34;, &#34;slack&#34;, etc...
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> type() {
@@ -460,6 +464,8 @@ public final class NotificationChannelState extends com.pulumi.resources.Resourc
         /**
          * @param type The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as &#34;email&#34;, &#34;slack&#34;, etc...
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -470,6 +476,8 @@ public final class NotificationChannelState extends com.pulumi.resources.Resourc
 
         /**
          * @param type The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as &#34;email&#34;, &#34;slack&#34;, etc...
+         * 
+         * ***
          * 
          * @return builder
          * 

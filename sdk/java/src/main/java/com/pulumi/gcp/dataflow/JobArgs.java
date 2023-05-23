@@ -269,12 +269,16 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A writeable location on GCS for the Dataflow job to dump its temporary data.
      * 
+     * ***
+     * 
      */
     @Import(name="tempGcsLocation", required=true)
     private Output<String> tempGcsLocation;
 
     /**
      * @return A writeable location on GCS for the Dataflow job to dump its temporary data.
+     * 
+     * ***
      * 
      */
     public Output<String> tempGcsLocation() {
@@ -724,6 +728,8 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tempGcsLocation A writeable location on GCS for the Dataflow job to dump its temporary data.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -734,6 +740,8 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tempGcsLocation A writeable location on GCS for the Dataflow job to dump its temporary data.
+         * 
+         * ***
          * 
          * @return builder
          * 

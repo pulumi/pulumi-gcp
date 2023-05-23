@@ -89,6 +89,8 @@ type Realm struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// GCP region of the Realm.
+	//
+	// ***
 	RealmId pulumi.StringOutput `pulumi:"realmId"`
 	// Required. Time zone where all realm-specific policies are evaluated. The value of
 	// this field must be from the IANA time zone database:
@@ -147,6 +149,8 @@ type realmState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// GCP region of the Realm.
+	//
+	// ***
 	RealmId *string `pulumi:"realmId"`
 	// Required. Time zone where all realm-specific policies are evaluated. The value of
 	// this field must be from the IANA time zone database:
@@ -171,6 +175,8 @@ type RealmState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// GCP region of the Realm.
+	//
+	// ***
 	RealmId pulumi.StringPtrInput
 	// Required. Time zone where all realm-specific policies are evaluated. The value of
 	// this field must be from the IANA time zone database:
@@ -193,6 +199,8 @@ type realmArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// GCP region of the Realm.
+	//
+	// ***
 	RealmId string `pulumi:"realmId"`
 	// Required. Time zone where all realm-specific policies are evaluated. The value of
 	// this field must be from the IANA time zone database:
@@ -212,6 +220,8 @@ type RealmArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// GCP region of the Realm.
+	//
+	// ***
 	RealmId pulumi.StringInput
 	// Required. Time zone where all realm-specific policies are evaluated. The value of
 	// this field must be from the IANA time zone database:
@@ -340,6 +350,8 @@ func (o RealmOutput) Project() pulumi.StringOutput {
 }
 
 // GCP region of the Realm.
+//
+// ***
 func (o RealmOutput) RealmId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Realm) pulumi.StringOutput { return v.RealmId }).(pulumi.StringOutput)
 }

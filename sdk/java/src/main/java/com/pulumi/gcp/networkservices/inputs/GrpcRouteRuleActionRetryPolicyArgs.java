@@ -20,12 +20,16 @@ public final class GrpcRouteRuleActionRetryPolicyArgs extends com.pulumi.resourc
     /**
      * Specifies the allowed number of retries.
      * 
+     * ***
+     * 
      */
     @Import(name="numRetries")
     private @Nullable Output<Integer> numRetries;
 
     /**
      * @return Specifies the allowed number of retries.
+     * 
+     * ***
      * 
      */
     public Optional<Output<Integer>> numRetries() {
@@ -77,6 +81,8 @@ public final class GrpcRouteRuleActionRetryPolicyArgs extends com.pulumi.resourc
         /**
          * @param numRetries Specifies the allowed number of retries.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -87,6 +93,8 @@ public final class GrpcRouteRuleActionRetryPolicyArgs extends com.pulumi.resourc
 
         /**
          * @param numRetries Specifies the allowed number of retries.
+         * 
+         * ***
          * 
          * @return builder
          * 

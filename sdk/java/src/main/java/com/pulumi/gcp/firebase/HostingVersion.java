@@ -297,12 +297,16 @@ public class HostingVersion extends com.pulumi.resources.CustomResource {
     /**
      * Required. The ID of the site in which to create this Version.
      * 
+     * ***
+     * 
      */
     @Export(name="siteId", type=String.class, parameters={})
     private Output<String> siteId;
 
     /**
      * @return Required. The ID of the site in which to create this Version.
+     * 
+     * ***
      * 
      */
     public Output<String> siteId() {

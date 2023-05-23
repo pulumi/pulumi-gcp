@@ -145,6 +145,8 @@ public class Service extends com.pulumi.resources.CustomResource {
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
      * 
+     * ***
+     * 
      */
     @Export(name="serviceId", type=String.class, parameters={})
     private Output<String> serviceId;
@@ -152,6 +154,8 @@ public class Service extends com.pulumi.resources.CustomResource {
     /**
      * @return The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
+     * 
+     * ***
      * 
      */
     public Output<String> serviceId() {

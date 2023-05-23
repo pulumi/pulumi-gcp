@@ -153,6 +153,17 @@ type InstanceIamMember struct {
 	// (Computed) The etag of the instances's IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name or relative resource id of the instance to manage IAM policies for.
+	//
+	// For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	Member   pulumi.StringOutput `pulumi:"member"`
 	// The project in which the instance belongs. If it
@@ -161,6 +172,8 @@ type InstanceIamMember struct {
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+	//
+	// `bigtable.InstanceIamPolicy` only:
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
@@ -206,6 +219,17 @@ type instanceIamMemberState struct {
 	// (Computed) The etag of the instances's IAM policy.
 	Etag *string `pulumi:"etag"`
 	// The name or relative resource id of the instance to manage IAM policies for.
+	//
+	// For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Instance *string `pulumi:"instance"`
 	Member   *string `pulumi:"member"`
 	// The project in which the instance belongs. If it
@@ -214,6 +238,8 @@ type instanceIamMemberState struct {
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+	//
+	// `bigtable.InstanceIamPolicy` only:
 	Role *string `pulumi:"role"`
 }
 
@@ -222,6 +248,17 @@ type InstanceIamMemberState struct {
 	// (Computed) The etag of the instances's IAM policy.
 	Etag pulumi.StringPtrInput
 	// The name or relative resource id of the instance to manage IAM policies for.
+	//
+	// For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Instance pulumi.StringPtrInput
 	Member   pulumi.StringPtrInput
 	// The project in which the instance belongs. If it
@@ -230,6 +267,8 @@ type InstanceIamMemberState struct {
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+	//
+	// `bigtable.InstanceIamPolicy` only:
 	Role pulumi.StringPtrInput
 }
 
@@ -240,6 +279,17 @@ func (InstanceIamMemberState) ElementType() reflect.Type {
 type instanceIamMemberArgs struct {
 	Condition *InstanceIamMemberCondition `pulumi:"condition"`
 	// The name or relative resource id of the instance to manage IAM policies for.
+	//
+	// For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Instance string `pulumi:"instance"`
 	Member   string `pulumi:"member"`
 	// The project in which the instance belongs. If it
@@ -248,6 +298,8 @@ type instanceIamMemberArgs struct {
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+	//
+	// `bigtable.InstanceIamPolicy` only:
 	Role string `pulumi:"role"`
 }
 
@@ -255,6 +307,17 @@ type instanceIamMemberArgs struct {
 type InstanceIamMemberArgs struct {
 	Condition InstanceIamMemberConditionPtrInput
 	// The name or relative resource id of the instance to manage IAM policies for.
+	//
+	// For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Instance pulumi.StringInput
 	Member   pulumi.StringInput
 	// The project in which the instance belongs. If it
@@ -263,6 +326,8 @@ type InstanceIamMemberArgs struct {
 	// The role that should be applied. Only one
 	// `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+	//
+	// `bigtable.InstanceIamPolicy` only:
 	Role pulumi.StringInput
 }
 
@@ -363,6 +428,17 @@ func (o InstanceIamMemberOutput) Etag() pulumi.StringOutput {
 }
 
 // The name or relative resource id of the instance to manage IAM policies for.
+//
+// For `bigtable.InstanceIamMember` or `bigtable.InstanceIamBinding`:
+//
+//   - `member/members` - (Required) Identities that will be granted the privilege in `role`.
+//     Each entry can have one of the following values:
+//   - **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+//   - **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+//   - **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+//   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+//   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+//   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 func (o InstanceIamMemberOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceIamMember) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
 }
@@ -380,6 +456,8 @@ func (o InstanceIamMemberOutput) Project() pulumi.StringOutput {
 // The role that should be applied. Only one
 // `bigtable.InstanceIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+//
+// `bigtable.InstanceIamPolicy` only:
 func (o InstanceIamMemberOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceIamMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }

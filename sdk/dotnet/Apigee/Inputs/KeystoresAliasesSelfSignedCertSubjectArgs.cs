@@ -26,6 +26,8 @@ namespace Pulumi.Gcp.Apigee.Inputs
 
         /// <summary>
         /// Email address. Max 255 characters.
+        /// 
+        /// - - -
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }

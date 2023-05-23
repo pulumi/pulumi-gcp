@@ -99,12 +99,16 @@ public class ServicePerimeterResource extends com.pulumi.resources.CustomResourc
     /**
      * The name of the Service Perimeter to add this resource to.
      * 
+     * ***
+     * 
      */
     @Export(name="perimeterName", type=String.class, parameters={})
     private Output<String> perimeterName;
 
     /**
      * @return The name of the Service Perimeter to add this resource to.
+     * 
+     * ***
      * 
      */
     public Output<String> perimeterName() {

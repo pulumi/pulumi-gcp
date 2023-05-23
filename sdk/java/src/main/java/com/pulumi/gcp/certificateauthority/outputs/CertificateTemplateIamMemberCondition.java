@@ -11,10 +11,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CertificateTemplateIamMemberCondition {
-    /**
-     * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-     * 
-     */
     private @Nullable String description;
     /**
      * @return Textual representation of an expression in Common Expression Language syntax.
@@ -28,10 +24,6 @@ public final class CertificateTemplateIamMemberCondition {
     private String title;
 
     private CertificateTemplateIamMemberCondition() {}
-    /**
-     * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-     * 
-     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }

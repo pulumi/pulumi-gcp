@@ -264,6 +264,8 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
      * Identifies the dataset addressed by this request. Must be in the format
      * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
      * 
+     * ***
+     * 
      */
     @Export(name="dataset", type=String.class, parameters={})
     private Output<String> dataset;
@@ -271,6 +273,8 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
     /**
      * @return Identifies the dataset addressed by this request. Must be in the format
      * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
+     * 
+     * ***
      * 
      */
     public Output<String> dataset() {

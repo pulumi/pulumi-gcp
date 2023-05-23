@@ -244,11 +244,14 @@ type FlexibleAppVersion struct {
 	// Structure is documented below.
 	ManualScaling FlexibleAppVersionManualScalingPtrOutput `pulumi:"manualScaling"`
 	// Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
+	//
 	// (Required)
 	// Unique name for the volume.
+	//
 	// (Required)
 	// Endpoints service name which is the name of the "service" resource in the Service Management API.
 	// For example "myapi.endpoints.myproject.cloud.goog"
+	//
 	// (Required)
 	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -379,11 +382,14 @@ type flexibleAppVersionState struct {
 	// Structure is documented below.
 	ManualScaling *FlexibleAppVersionManualScaling `pulumi:"manualScaling"`
 	// Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
+	//
 	// (Required)
 	// Unique name for the volume.
+	//
 	// (Required)
 	// Endpoints service name which is the name of the "service" resource in the Service Management API.
 	// For example "myapi.endpoints.myproject.cloud.goog"
+	//
 	// (Required)
 	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name *string `pulumi:"name"`
@@ -474,11 +480,14 @@ type FlexibleAppVersionState struct {
 	// Structure is documented below.
 	ManualScaling FlexibleAppVersionManualScalingPtrInput
 	// Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
+	//
 	// (Required)
 	// Unique name for the volume.
+	//
 	// (Required)
 	// Endpoints service name which is the name of the "service" resource in the Service Management API.
 	// For example "myapi.endpoints.myproject.cloud.goog"
+	//
 	// (Required)
 	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name pulumi.StringPtrInput
@@ -876,11 +885,14 @@ func (o FlexibleAppVersionOutput) ManualScaling() FlexibleAppVersionManualScalin
 }
 
 // Google Compute Engine network where the virtual machines are created. Specify the short name, not the resource path.
+//
 // (Required)
 // Unique name for the volume.
+//
 // (Required)
 // Endpoints service name which is the name of the "service" resource in the Service Management API.
 // For example "myapi.endpoints.myproject.cloud.goog"
+//
 // (Required)
 // Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 func (o FlexibleAppVersionOutput) Name() pulumi.StringOutput {

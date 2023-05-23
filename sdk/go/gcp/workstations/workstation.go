@@ -129,6 +129,8 @@ type Workstation struct {
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the workstation parent resources reside.
+	//
+	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Full name of this resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -201,6 +203,8 @@ type workstationState struct {
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the workstation parent resources reside.
+	//
+	// ***
 	Location *string `pulumi:"location"`
 	// Full name of this resource.
 	Name *string `pulumi:"name"`
@@ -233,6 +237,8 @@ type WorkstationState struct {
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels pulumi.StringMapInput
 	// The location where the workstation parent resources reside.
+	//
+	// ***
 	Location pulumi.StringPtrInput
 	// Full name of this resource.
 	Name pulumi.StringPtrInput
@@ -263,6 +269,8 @@ type workstationArgs struct {
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the workstation parent resources reside.
+	//
+	// ***
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -284,6 +292,8 @@ type WorkstationArgs struct {
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels pulumi.StringMapInput
 	// The location where the workstation parent resources reside.
+	//
+	// ***
 	Location pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -411,6 +421,8 @@ func (o WorkstationOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location where the workstation parent resources reside.
+//
+// ***
 func (o WorkstationOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

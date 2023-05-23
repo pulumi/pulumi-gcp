@@ -33,12 +33,16 @@ public final class DiskAsyncReplicationSecondaryDiskArgs extends com.pulumi.reso
     /**
      * Output-only. Status of replication on the secondary disk.
      * 
+     * ***
+     * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
      * @return Output-only. Status of replication on the secondary disk.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> state() {
@@ -94,6 +98,8 @@ public final class DiskAsyncReplicationSecondaryDiskArgs extends com.pulumi.reso
         /**
          * @param state Output-only. Status of replication on the secondary disk.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -104,6 +110,8 @@ public final class DiskAsyncReplicationSecondaryDiskArgs extends com.pulumi.reso
 
         /**
          * @param state Output-only. Status of replication on the secondary disk.
+         * 
+         * ***
          * 
          * @return builder
          * 

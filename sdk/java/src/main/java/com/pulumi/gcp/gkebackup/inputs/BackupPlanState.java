@@ -153,12 +153,16 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
     /**
      * The region of the Backup Plan.
      * 
+     * ***
+     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The region of the Backup Plan.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -454,6 +458,8 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The region of the Backup Plan.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -464,6 +470,8 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The region of the Backup Plan.
+         * 
+         * ***
          * 
          * @return builder
          * 

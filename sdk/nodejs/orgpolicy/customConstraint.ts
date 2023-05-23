@@ -120,6 +120,9 @@ export class CustomConstraint extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
+     *
+     *
+     * - - -
      */
     public readonly parent!: pulumi.Output<string>;
     /**
@@ -216,6 +219,9 @@ export interface CustomConstraintState {
     name?: pulumi.Input<string>;
     /**
      * The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
+     *
+     *
+     * - - -
      */
     parent?: pulumi.Input<string>;
     /**
@@ -259,6 +265,9 @@ export interface CustomConstraintArgs {
     name?: pulumi.Input<string>;
     /**
      * The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
+     *
+     *
+     * - - -
      */
     parent: pulumi.Input<string>;
     /**

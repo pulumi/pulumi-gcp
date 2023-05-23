@@ -30,6 +30,9 @@ class WorkstationConfigArgs:
         """
         The set of arguments for constructing a WorkstationConfig resource.
         :param pulumi.Input[str] location: The location where the workstation cluster config should reside.
+               
+               
+               - - -
         :param pulumi.Input[str] workstation_cluster_id: The ID of the parent workstation cluster.
         :param pulumi.Input[str] workstation_config_id: The ID to be assigned to the workstation cluster config.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations. This is distinct from labels.
@@ -74,6 +77,9 @@ class WorkstationConfigArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location where the workstation cluster config should reside.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -251,6 +257,9 @@ class _WorkstationConfigState:
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] location: The location where the workstation cluster config should reside.
+               
+               
+               - - -
         :param pulumi.Input[str] name: Full name of this resource.
         :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]] persistent_directories: Directories to persist across workstation sessions.
                Structure is documented below.
@@ -428,6 +437,9 @@ class _WorkstationConfigState:
     def location(self) -> Optional[pulumi.Input[str]]:
         """
         The location where the workstation cluster config should reside.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -789,6 +801,9 @@ class WorkstationConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] location: The location where the workstation cluster config should reside.
+               
+               
+               - - -
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigPersistentDirectoryArgs']]]] persistent_directories: Directories to persist across workstation sessions.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -1160,6 +1175,9 @@ class WorkstationConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] location: The location where the workstation cluster config should reside.
+               
+               
+               - - -
         :param pulumi.Input[str] name: Full name of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigPersistentDirectoryArgs']]]] persistent_directories: Directories to persist across workstation sessions.
                Structure is documented below.
@@ -1285,6 +1303,9 @@ class WorkstationConfig(pulumi.CustomResource):
     def location(self) -> pulumi.Output[str]:
         """
         The location where the workstation cluster config should reside.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 

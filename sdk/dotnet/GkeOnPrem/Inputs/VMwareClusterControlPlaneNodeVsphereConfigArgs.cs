@@ -15,6 +15,8 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
         /// <summary>
         /// (Output)
         /// The Vsphere datastore used by the Control Plane Node.
+        /// 
+        /// - - -
         /// </summary>
         [Input("datastore")]
         public Input<string>? Datastore { get; set; }

@@ -299,6 +299,9 @@ export class Subscription extends pulumi.CustomResource {
     public readonly retryPolicy!: pulumi.Output<outputs.pubsub.SubscriptionRetryPolicy | undefined>;
     /**
      * A reference to a Topic resource.
+     *
+     *
+     * - - -
      */
     public readonly topic!: pulumi.Output<string>;
 
@@ -476,6 +479,9 @@ export interface SubscriptionState {
     retryPolicy?: pulumi.Input<inputs.pubsub.SubscriptionRetryPolicy>;
     /**
      * A reference to a Topic resource.
+     *
+     *
+     * - - -
      */
     topic?: pulumi.Input<string>;
 }
@@ -600,6 +606,9 @@ export interface SubscriptionArgs {
     retryPolicy?: pulumi.Input<inputs.pubsub.SubscriptionRetryPolicy>;
     /**
      * A reference to a Topic resource.
+     *
+     *
+     * - - -
      */
     topic: pulumi.Input<string>;
 }

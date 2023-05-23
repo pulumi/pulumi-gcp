@@ -39,12 +39,16 @@ public final class DataStoreIndexArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * The entity kind which the index applies to.
      * 
+     * ***
+     * 
      */
     @Import(name="kind", required=true)
     private Output<String> kind;
 
     /**
      * @return The entity kind which the index applies to.
+     * 
+     * ***
      * 
      */
     public Output<String> kind() {
@@ -140,6 +144,8 @@ public final class DataStoreIndexArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param kind The entity kind which the index applies to.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -150,6 +156,8 @@ public final class DataStoreIndexArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param kind The entity kind which the index applies to.
+         * 
+         * ***
          * 
          * @return builder
          * 

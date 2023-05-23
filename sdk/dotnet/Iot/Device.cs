@@ -189,6 +189,9 @@ namespace Pulumi.Gcp.Iot
 
         /// <summary>
         /// The name of the device registry where this device should be created.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("registry")]
         public Output<string> Registry { get; private set; } = null!;
@@ -299,6 +302,9 @@ namespace Pulumi.Gcp.Iot
 
         /// <summary>
         /// The name of the device registry where this device should be created.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("registry", required: true)]
         public Input<string> Registry { get; set; } = null!;
@@ -433,6 +439,9 @@ namespace Pulumi.Gcp.Iot
 
         /// <summary>
         /// The name of the device registry where this device should be created.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("registry")]
         public Input<string>? Registry { get; set; }

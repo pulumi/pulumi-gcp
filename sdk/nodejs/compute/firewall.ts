@@ -186,6 +186,9 @@ export class Firewall extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The name or selfLink of the network to attach this firewall to.
+     *
+     *
+     * - - -
      */
     public readonly network!: pulumi.Output<string>;
     /**
@@ -396,6 +399,9 @@ export interface FirewallState {
     name?: pulumi.Input<string>;
     /**
      * The name or selfLink of the network to attach this firewall to.
+     *
+     *
+     * - - -
      */
     network?: pulumi.Input<string>;
     /**
@@ -541,6 +547,9 @@ export interface FirewallArgs {
     name?: pulumi.Input<string>;
     /**
      * The name or selfLink of the network to attach this firewall to.
+     *
+     *
+     * - - -
      */
     network: pulumi.Input<string>;
     /**

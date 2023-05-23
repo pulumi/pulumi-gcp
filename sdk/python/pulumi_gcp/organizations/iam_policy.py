@@ -22,6 +22,11 @@ class IAMPolicyArgs:
         :param pulumi.Input[str] policy_data: The `organizations_get_iam_policy` data source that represents
                the IAM policy that will be applied to the organization. The policy will be
                merged with any existing policy applied to the organization.
+               
+               Changing this updates the policy.
+               
+               Deleting this removes all policies from the organization, locking out users without
+               organization-level access.
         """
         pulumi.set(__self__, "org_id", org_id)
         pulumi.set(__self__, "policy_data", policy_data)
@@ -45,6 +50,11 @@ class IAMPolicyArgs:
         The `organizations_get_iam_policy` data source that represents
         the IAM policy that will be applied to the organization. The policy will be
         merged with any existing policy applied to the organization.
+
+        Changing this updates the policy.
+
+        Deleting this removes all policies from the organization, locking out users without
+        organization-level access.
         """
         return pulumi.get(self, "policy_data")
 
@@ -66,6 +76,11 @@ class _IAMPolicyState:
         :param pulumi.Input[str] policy_data: The `organizations_get_iam_policy` data source that represents
                the IAM policy that will be applied to the organization. The policy will be
                merged with any existing policy applied to the organization.
+               
+               Changing this updates the policy.
+               
+               Deleting this removes all policies from the organization, locking out users without
+               organization-level access.
         """
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
@@ -105,6 +120,11 @@ class _IAMPolicyState:
         The `organizations_get_iam_policy` data source that represents
         the IAM policy that will be applied to the organization. The policy will be
         merged with any existing policy applied to the organization.
+
+        Changing this updates the policy.
+
+        Deleting this removes all policies from the organization, locking out users without
+        organization-level access.
         """
         return pulumi.get(self, "policy_data")
 
@@ -306,6 +326,11 @@ class IAMPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] policy_data: The `organizations_get_iam_policy` data source that represents
                the IAM policy that will be applied to the organization. The policy will be
                merged with any existing policy applied to the organization.
+               
+               Changing this updates the policy.
+               
+               Deleting this removes all policies from the organization, locking out users without
+               organization-level access.
         """
         ...
     @overload
@@ -550,6 +575,11 @@ class IAMPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] policy_data: The `organizations_get_iam_policy` data source that represents
                the IAM policy that will be applied to the organization. The policy will be
                merged with any existing policy applied to the organization.
+               
+               Changing this updates the policy.
+               
+               Deleting this removes all policies from the organization, locking out users without
+               organization-level access.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -583,6 +613,11 @@ class IAMPolicy(pulumi.CustomResource):
         The `organizations_get_iam_policy` data source that represents
         the IAM policy that will be applied to the organization. The policy will be
         merged with any existing policy applied to the organization.
+
+        Changing this updates the policy.
+
+        Deleting this removes all policies from the organization, locking out users without
+        organization-level access.
         """
         return pulumi.get(self, "policy_data")
 

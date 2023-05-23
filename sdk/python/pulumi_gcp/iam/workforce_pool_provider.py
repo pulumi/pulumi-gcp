@@ -32,6 +32,9 @@ class WorkforcePoolProviderArgs:
         :param pulumi.Input[str] provider_id: The ID for the provider, which becomes the final component of the resource name.
                This value must be 4-32 characters, and may contain the characters [a-z0-9-].
                The prefix `gcp-` is reserved for use by Google, and may not be specified.
+               
+               
+               - - -
         :param pulumi.Input[str] workforce_pool_id: The ID to use for the pool, which becomes the final component of the resource name.
                The IDs must be a globally unique string of 6 to 63 lowercase letters, digits, or hyphens.
                It must start with a letter, and cannot have a trailing hyphen.
@@ -129,6 +132,9 @@ class WorkforcePoolProviderArgs:
         The ID for the provider, which becomes the final component of the resource name.
         This value must be 4-32 characters, and may contain the characters [a-z0-9-].
         The prefix `gcp-` is reserved for use by Google, and may not be specified.
+
+
+        - - -
         """
         return pulumi.get(self, "provider_id")
 
@@ -360,6 +366,9 @@ class _WorkforcePoolProviderState:
         :param pulumi.Input[str] provider_id: The ID for the provider, which becomes the final component of the resource name.
                This value must be 4-32 characters, and may contain the characters [a-z0-9-].
                The prefix `gcp-` is reserved for use by Google, and may not be specified.
+               
+               
+               - - -
         :param pulumi.Input['WorkforcePoolProviderSamlArgs'] saml: Represents a SAML identity provider.
                Structure is documented below.
         :param pulumi.Input[str] state: The current state of the provider.
@@ -549,6 +558,9 @@ class _WorkforcePoolProviderState:
         The ID for the provider, which becomes the final component of the resource name.
         This value must be 4-32 characters, and may contain the characters [a-z0-9-].
         The prefix `gcp-` is reserved for use by Google, and may not be specified.
+
+
+        - - -
         """
         return pulumi.get(self, "provider_id")
 
@@ -805,6 +817,9 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         :param pulumi.Input[str] provider_id: The ID for the provider, which becomes the final component of the resource name.
                This value must be 4-32 characters, and may contain the characters [a-z0-9-].
                The prefix `gcp-` is reserved for use by Google, and may not be specified.
+               
+               
+               - - -
         :param pulumi.Input[pulumi.InputType['WorkforcePoolProviderSamlArgs']] saml: Represents a SAML identity provider.
                Structure is documented below.
         :param pulumi.Input[str] workforce_pool_id: The ID to use for the pool, which becomes the final component of the resource name.
@@ -1086,6 +1101,9 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         :param pulumi.Input[str] provider_id: The ID for the provider, which becomes the final component of the resource name.
                This value must be 4-32 characters, and may contain the characters [a-z0-9-].
                The prefix `gcp-` is reserved for use by Google, and may not be specified.
+               
+               
+               - - -
         :param pulumi.Input[pulumi.InputType['WorkforcePoolProviderSamlArgs']] saml: Represents a SAML identity provider.
                Structure is documented below.
         :param pulumi.Input[str] state: The current state of the provider.
@@ -1236,6 +1254,9 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         The ID for the provider, which becomes the final component of the resource name.
         This value must be 4-32 characters, and may contain the characters [a-z0-9-].
         The prefix `gcp-` is reserved for use by Google, and may not be specified.
+
+
+        - - -
         """
         return pulumi.get(self, "provider_id")
 

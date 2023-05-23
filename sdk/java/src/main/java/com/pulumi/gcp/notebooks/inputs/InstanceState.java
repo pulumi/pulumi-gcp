@@ -264,12 +264,16 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     /**
      * A reference to the zone where the machine resides.
      * 
+     * ***
+     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return A reference to the zone where the machine resides.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -439,16 +443,20 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a &#39;PROVISIONED&#39;
-     * state. If needed you can utilize &#39;terraform apply -refresh-only&#39; to await the population of this value.
+     * The proxy endpoint that is used to access the Jupyter notebook.
+     * Only returned when the resource is in a `PROVISIONED` state. If
+     * needed you can utilize `pulumi up -refresh-only` to await
+     * the population of this value.
      * 
      */
     @Import(name="proxyUri")
     private @Nullable Output<String> proxyUri;
 
     /**
-     * @return The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a &#39;PROVISIONED&#39;
-     * state. If needed you can utilize &#39;terraform apply -refresh-only&#39; to await the population of this value.
+     * @return The proxy endpoint that is used to access the Jupyter notebook.
+     * Only returned when the resource is in a `PROVISIONED` state. If
+     * needed you can utilize `pulumi up -refresh-only` to await
+     * the population of this value.
      * 
      */
     public Optional<Output<String>> proxyUri() {
@@ -1003,6 +1011,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location A reference to the zone where the machine resides.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -1013,6 +1023,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location A reference to the zone where the machine resides.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -1244,8 +1256,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyUri The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a &#39;PROVISIONED&#39;
-         * state. If needed you can utilize &#39;terraform apply -refresh-only&#39; to await the population of this value.
+         * @param proxyUri The proxy endpoint that is used to access the Jupyter notebook.
+         * Only returned when the resource is in a `PROVISIONED` state. If
+         * needed you can utilize `pulumi up -refresh-only` to await
+         * the population of this value.
          * 
          * @return builder
          * 
@@ -1256,8 +1270,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyUri The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a &#39;PROVISIONED&#39;
-         * state. If needed you can utilize &#39;terraform apply -refresh-only&#39; to await the population of this value.
+         * @param proxyUri The proxy endpoint that is used to access the Jupyter notebook.
+         * Only returned when the resource is in a `PROVISIONED` state. If
+         * needed you can utilize `pulumi up -refresh-only` to await
+         * the population of this value.
          * 
          * @return builder
          * 

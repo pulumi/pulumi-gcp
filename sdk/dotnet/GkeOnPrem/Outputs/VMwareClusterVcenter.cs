@@ -35,6 +35,8 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
         /// <summary>
         /// (Output)
         /// The Vsphere datastore used by the Control Plane Node.
+        /// 
+        /// - - -
         /// </summary>
         public readonly string? Datastore;
         /// <summary>

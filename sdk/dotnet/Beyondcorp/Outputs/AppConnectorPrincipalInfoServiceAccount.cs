@@ -15,6 +15,8 @@ namespace Pulumi.Gcp.Beyondcorp.Outputs
     {
         /// <summary>
         /// Email address of the service account.
+        /// 
+        /// - - -
         /// </summary>
         public readonly string Email;
 

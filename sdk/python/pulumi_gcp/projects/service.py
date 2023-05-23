@@ -215,7 +215,7 @@ class Service(pulumi.CustomResource):
          $ pulumi import gcp:projects/service:Service my_project your-project-id/iam.googleapis.com
         ```
 
-         Note that unlike other resources that fail if they already exist, `terraform apply` can be successfully used to verify already enabled services. This means that when importing existing resources into Terraform, you can either import the `google_project_service` resources or treat them as new infrastructure and run `terraform apply` to add them to state.
+         Note that unlike other resources that fail if they already exist, `pulumi up` can be successfully used to verify already enabled services. This means that when importing existing resources into Terraform, you can either import the `google_project_service` resources or treat them as new infrastructure and run `pulumi up` to add them to state.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -269,7 +269,7 @@ class Service(pulumi.CustomResource):
          $ pulumi import gcp:projects/service:Service my_project your-project-id/iam.googleapis.com
         ```
 
-         Note that unlike other resources that fail if they already exist, `terraform apply` can be successfully used to verify already enabled services. This means that when importing existing resources into Terraform, you can either import the `google_project_service` resources or treat them as new infrastructure and run `terraform apply` to add them to state.
+         Note that unlike other resources that fail if they already exist, `pulumi up` can be successfully used to verify already enabled services. This means that when importing existing resources into Terraform, you can either import the `google_project_service` resources or treat them as new infrastructure and run `pulumi up` to add them to state.
 
         :param str resource_name: The name of the resource.
         :param ServiceArgs args: The arguments to use to populate this resource's properties.

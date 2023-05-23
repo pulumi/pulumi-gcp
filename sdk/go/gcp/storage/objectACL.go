@@ -78,6 +78,8 @@ type ObjectACL struct {
 	// The name of the bucket the object is stored in.
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
 	// The name of the object to apply the acl to.
+	//
+	// ***
 	Object pulumi.StringOutput `pulumi:"object"`
 	// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
 	PredefinedAcl pulumi.StringPtrOutput `pulumi:"predefinedAcl"`
@@ -124,6 +126,8 @@ type objectACLState struct {
 	// The name of the bucket the object is stored in.
 	Bucket *string `pulumi:"bucket"`
 	// The name of the object to apply the acl to.
+	//
+	// ***
 	Object *string `pulumi:"object"`
 	// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
 	PredefinedAcl *string `pulumi:"predefinedAcl"`
@@ -136,6 +140,8 @@ type ObjectACLState struct {
 	// The name of the bucket the object is stored in.
 	Bucket pulumi.StringPtrInput
 	// The name of the object to apply the acl to.
+	//
+	// ***
 	Object pulumi.StringPtrInput
 	// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
 	PredefinedAcl pulumi.StringPtrInput
@@ -152,6 +158,8 @@ type objectACLArgs struct {
 	// The name of the bucket the object is stored in.
 	Bucket string `pulumi:"bucket"`
 	// The name of the object to apply the acl to.
+	//
+	// ***
 	Object string `pulumi:"object"`
 	// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
 	PredefinedAcl *string `pulumi:"predefinedAcl"`
@@ -165,6 +173,8 @@ type ObjectACLArgs struct {
 	// The name of the bucket the object is stored in.
 	Bucket pulumi.StringInput
 	// The name of the object to apply the acl to.
+	//
+	// ***
 	Object pulumi.StringInput
 	// The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `roleEntity` is not.
 	PredefinedAcl pulumi.StringPtrInput
@@ -266,6 +276,8 @@ func (o ObjectACLOutput) Bucket() pulumi.StringOutput {
 }
 
 // The name of the object to apply the acl to.
+//
+// ***
 func (o ObjectACLOutput) Object() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectACL) pulumi.StringOutput { return v.Object }).(pulumi.StringOutput)
 }

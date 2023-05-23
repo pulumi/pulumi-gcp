@@ -89,10 +89,17 @@ export class AttachedDisk extends pulumi.CustomResource {
      * system running within the instance. This name can be used to
      * reference the device for mounting, resizing, and so on, from within
      * the instance.
+     *
+     * If not specified, the server chooses a default device name to apply
+     * to this disk, in the form persistent-disks-x, where x is a number
+     * assigned by Google Compute Engine.
      */
     public readonly deviceName!: pulumi.Output<string>;
     /**
      * `name` or `selfLink` of the disk that will be attached.
+     *
+     *
+     * - - -
      */
     public readonly disk!: pulumi.Output<string>;
     /**
@@ -106,6 +113,10 @@ export class AttachedDisk extends pulumi.CustomResource {
      * The mode in which to attach this disk, either READ_WRITE or
      * READ_ONLY. If not specified, the default is to attach the disk in
      * READ_WRITE mode.
+     *
+     * Possible values:
+     * "READ_ONLY"
+     * "READ_WRITE"
      */
     public readonly mode!: pulumi.Output<string | undefined>;
     /**
@@ -168,10 +179,17 @@ export interface AttachedDiskState {
      * system running within the instance. This name can be used to
      * reference the device for mounting, resizing, and so on, from within
      * the instance.
+     *
+     * If not specified, the server chooses a default device name to apply
+     * to this disk, in the form persistent-disks-x, where x is a number
+     * assigned by Google Compute Engine.
      */
     deviceName?: pulumi.Input<string>;
     /**
      * `name` or `selfLink` of the disk that will be attached.
+     *
+     *
+     * - - -
      */
     disk?: pulumi.Input<string>;
     /**
@@ -185,6 +203,10 @@ export interface AttachedDiskState {
      * The mode in which to attach this disk, either READ_WRITE or
      * READ_ONLY. If not specified, the default is to attach the disk in
      * READ_WRITE mode.
+     *
+     * Possible values:
+     * "READ_ONLY"
+     * "READ_WRITE"
      */
     mode?: pulumi.Input<string>;
     /**
@@ -209,10 +231,17 @@ export interface AttachedDiskArgs {
      * system running within the instance. This name can be used to
      * reference the device for mounting, resizing, and so on, from within
      * the instance.
+     *
+     * If not specified, the server chooses a default device name to apply
+     * to this disk, in the form persistent-disks-x, where x is a number
+     * assigned by Google Compute Engine.
      */
     deviceName?: pulumi.Input<string>;
     /**
      * `name` or `selfLink` of the disk that will be attached.
+     *
+     *
+     * - - -
      */
     disk: pulumi.Input<string>;
     /**
@@ -226,6 +255,10 @@ export interface AttachedDiskArgs {
      * The mode in which to attach this disk, either READ_WRITE or
      * READ_ONLY. If not specified, the default is to attach the disk in
      * READ_WRITE mode.
+     *
+     * Possible values:
+     * "READ_ONLY"
+     * "READ_WRITE"
      */
     mode?: pulumi.Input<string>;
     /**

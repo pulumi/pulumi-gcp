@@ -93,6 +93,9 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
         /// <summary>
         /// The enrollment level of the service.
         /// Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("dataPolicyType")]
         public Output<string> DataPolicyType { get; private set; } = null!;
@@ -184,6 +187,9 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
         /// <summary>
         /// The enrollment level of the service.
         /// Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("dataPolicyType", required: true)]
         public Input<string> DataPolicyType { get; set; } = null!;
@@ -231,6 +237,9 @@ namespace Pulumi.Gcp.BigQueryDataPolicy
         /// <summary>
         /// The enrollment level of the service.
         /// Possible values are: `COLUMN_LEVEL_SECURITY_POLICY`, `DATA_MASKING_POLICY`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("dataPolicyType")]
         public Input<string>? DataPolicyType { get; set; }

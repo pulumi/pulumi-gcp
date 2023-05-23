@@ -34,10 +34,30 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly string? DiskType;
         /// <summary>
         /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigEphemeralStorageConfig? EphemeralStorageConfig;
         /// <summary>
         /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig? EphemeralStorageLocalSsdConfig;
         /// <summary>
@@ -47,6 +67,16 @@ namespace Pulumi.Gcp.Container.Outputs
         /// A `machine_type` that has more than 16 GiB of memory is also recommended.
         /// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
         /// Structure is documented below.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigGcfsConfig? GcfsConfig;
         /// <summary>
@@ -60,6 +90,17 @@ namespace Pulumi.Gcp.Container.Outputs
         /// gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
         /// GKE node version 1.15.11-gke.15 or later
         /// Structure is documented below.
+        /// 
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigGvnic? Gvnic;
         /// <summary>
@@ -70,6 +111,16 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
         /// Structure is documented below.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigKubeletConfig? KubeletConfig;
         /// <summary>
@@ -81,6 +132,16 @@ namespace Pulumi.Gcp.Container.Outputs
         /// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
         /// Note that validations happen all server side. All attributes are optional.
         /// Structure is documented below.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        /// });
+        /// ```
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigLinuxNodeConfig? LinuxNodeConfig;
         /// <summary>
@@ -126,6 +187,8 @@ namespace Pulumi.Gcp.Container.Outputs
         /// The set of Google API scopes to be made available
         /// on all of the node VMs under the "default" service account.
         /// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+        /// 
+        /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/access-scopes) for information on migrating off of legacy access scopes.
         /// </summary>
         public readonly ImmutableArray<string> OauthScopes;
         /// <summary>

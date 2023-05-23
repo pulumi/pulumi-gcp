@@ -36,6 +36,8 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
      * 
+     * ***
+     * 
      */
     @Import(name="endpointId", required=true)
     private Output<String> endpointId;
@@ -43,6 +45,8 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
+     * 
+     * ***
      * 
      */
     public Output<String> endpointId() {
@@ -171,6 +175,8 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
          * @param endpointId The Resource ID must be 1-63 characters long, including digits,
          * lowercase letters or the hyphen character.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -182,6 +188,8 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param endpointId The Resource ID must be 1-63 characters long, including digits,
          * lowercase letters or the hyphen character.
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -231,12 +231,16 @@ public class AiEndpoint extends com.pulumi.resources.CustomResource {
     /**
      * The location for the resource
      * 
+     * ***
+     * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
      * @return The location for the resource
+     * 
+     * ***
      * 
      */
     public Output<String> location() {

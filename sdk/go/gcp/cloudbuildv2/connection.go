@@ -241,6 +241,8 @@ type Connection struct {
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -299,6 +301,8 @@ type connectionState struct {
 	// The location for the resource
 	Location *string `pulumi:"location"`
 	// Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -326,6 +330,8 @@ type ConnectionState struct {
 	// The location for the resource
 	Location pulumi.StringPtrInput
 	// Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -351,6 +357,8 @@ type connectionArgs struct {
 	// The location for the resource
 	Location string `pulumi:"location"`
 	// Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -369,6 +377,8 @@ type ConnectionArgs struct {
 	// The location for the resource
 	Location pulumi.StringInput
 	// Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -502,6 +512,8 @@ func (o ConnectionOutput) Location() pulumi.StringOutput {
 }
 
 // Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+//
+// ***
 func (o ConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

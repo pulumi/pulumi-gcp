@@ -18,12 +18,16 @@ public final class GetTopicArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The name of the Cloud Pub/Sub Topic.
      * 
+     * ***
+     * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
      * @return The name of the Cloud Pub/Sub Topic.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {
@@ -75,6 +79,8 @@ public final class GetTopicArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param name The name of the Cloud Pub/Sub Topic.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -85,6 +91,8 @@ public final class GetTopicArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param name The name of the Cloud Pub/Sub Topic.
+         * 
+         * ***
          * 
          * @return builder
          * 

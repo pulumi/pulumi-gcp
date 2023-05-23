@@ -127,12 +127,16 @@ public class BackendServiceSignedUrlKey extends com.pulumi.resources.CustomResou
     /**
      * The backend service this signed URL key belongs.
      * 
+     * ***
+     * 
      */
     @Export(name="backendService", type=String.class, parameters={})
     private Output<String> backendService;
 
     /**
      * @return The backend service this signed URL key belongs.
+     * 
+     * ***
      * 
      */
     public Output<String> backendService() {

@@ -143,12 +143,16 @@ public class AppleApp extends com.pulumi.resources.CustomResource {
     /**
      * The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
      * 
+     * ***
+     * 
      */
     @Export(name="bundleId", type=String.class, parameters={})
     private Output<String> bundleId;
 
     /**
      * @return The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
+     * 
+     * ***
      * 
      */
     public Output<String> bundleId() {

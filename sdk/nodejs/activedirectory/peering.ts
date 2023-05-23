@@ -100,7 +100,7 @@ export class Peering extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * (Required)
+     * - - -
      */
     public readonly peeringId!: pulumi.Output<string>;
     /**
@@ -184,7 +184,7 @@ export interface PeeringState {
      */
     name?: pulumi.Input<string>;
     /**
-     * (Required)
+     * - - -
      */
     peeringId?: pulumi.Input<string>;
     /**
@@ -219,7 +219,7 @@ export interface PeeringArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * (Required)
+     * - - -
      */
     peeringId: pulumi.Input<string>;
     /**

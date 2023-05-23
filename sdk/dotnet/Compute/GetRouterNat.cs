@@ -103,6 +103,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the Cloud Router in which this NAT will be configured.
+        /// 
+        /// - - -
         /// </summary>
         [Input("router", required: true)]
         public string Router { get; set; } = null!;
@@ -137,6 +139,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The name of the Cloud Router in which this NAT will be configured.
+        /// 
+        /// - - -
         /// </summary>
         [Input("router", required: true)]
         public Input<string> Router { get; set; } = null!;

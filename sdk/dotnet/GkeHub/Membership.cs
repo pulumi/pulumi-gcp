@@ -137,6 +137,9 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// The client-provided identifier of the membership.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("membershipId")]
         public Output<string> MembershipId { get; private set; } = null!;
@@ -236,6 +239,9 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// The client-provided identifier of the membership.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("membershipId", required: true)]
         public Input<string> MembershipId { get; set; } = null!;
@@ -291,6 +297,9 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// The client-provided identifier of the membership.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("membershipId")]
         public Input<string>? MembershipId { get; set; }

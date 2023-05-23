@@ -231,6 +231,11 @@ export class IAMPolicy extends pulumi.CustomResource {
      * The `gcp.organizations.getIAMPolicy` data source that represents
      * the IAM policy that will be applied to the folder. The policy will be
      * merged with any existing policy applied to the folder.
+     *
+     * Changing this updates the policy.
+     *
+     * Deleting this removes all policies from the folder, locking out users without
+     * folder-level access.
      */
     public readonly policyData!: pulumi.Output<string>;
 
@@ -283,6 +288,11 @@ export interface IAMPolicyState {
      * The `gcp.organizations.getIAMPolicy` data source that represents
      * the IAM policy that will be applied to the folder. The policy will be
      * merged with any existing policy applied to the folder.
+     *
+     * Changing this updates the policy.
+     *
+     * Deleting this removes all policies from the folder, locking out users without
+     * folder-level access.
      */
     policyData?: pulumi.Input<string>;
 }
@@ -299,6 +309,11 @@ export interface IAMPolicyArgs {
      * The `gcp.organizations.getIAMPolicy` data source that represents
      * the IAM policy that will be applied to the folder. The policy will be
      * merged with any existing policy applied to the folder.
+     *
+     * Changing this updates the policy.
+     *
+     * Deleting this removes all policies from the folder, locking out users without
+     * folder-level access.
      */
     policyData: pulumi.Input<string>;
 }

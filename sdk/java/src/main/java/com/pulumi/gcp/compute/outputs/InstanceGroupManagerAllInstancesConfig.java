@@ -14,6 +14,8 @@ public final class InstanceGroupManagerAllInstancesConfig {
     /**
      * @return ), The label key-value pairs that you want to patch onto the instance.
      * 
+     * ***
+     * 
      */
     private @Nullable Map<String,String> labels;
     /**
@@ -25,6 +27,8 @@ public final class InstanceGroupManagerAllInstancesConfig {
     private InstanceGroupManagerAllInstancesConfig() {}
     /**
      * @return ), The label key-value pairs that you want to patch onto the instance.
+     * 
+     * ***
      * 
      */
     public Map<String,String> labels() {

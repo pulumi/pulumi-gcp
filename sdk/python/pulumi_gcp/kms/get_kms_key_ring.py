@@ -97,6 +97,8 @@ def get_kms_key_ring(location: Optional[str] = None,
 
     :param str location: The Google Cloud Platform location for the KeyRing.
            A full list of valid locations can be found by running `gcloud kms locations list`.
+           
+           - - -
     :param str name: The KeyRing's name.
            A KeyRing name must exist within the provided location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
     :param str project: The project in which the resource belongs. If it
@@ -143,6 +145,8 @@ def get_kms_key_ring_output(location: Optional[pulumi.Input[str]] = None,
 
     :param str location: The Google Cloud Platform location for the KeyRing.
            A full list of valid locations can be found by running `gcloud kms locations list`.
+           
+           - - -
     :param str name: The KeyRing's name.
            A KeyRing name must exist within the provided location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
     :param str project: The project in which the resource belongs. If it

@@ -50,11 +50,17 @@ class RouterStatusResult:
     @property
     @pulumi.getter(name="bestRoutes")
     def best_routes(self) -> Sequence['outputs.RouterStatusBestRouteResult']:
+        """
+        List of best `compute#routes` configurations for this router's network. See compute.Route resource for available attributes.
+        """
         return pulumi.get(self, "best_routes")
 
     @property
     @pulumi.getter(name="bestRoutesForRouters")
     def best_routes_for_routers(self) -> Sequence['outputs.RouterStatusBestRoutesForRouterResult']:
+        """
+        List of best `compute#routes` for this specific router. See compute.Route resource for available attributes.
+        """
         return pulumi.get(self, "best_routes_for_routers")
 
     @property

@@ -321,6 +321,9 @@ namespace Pulumi.Gcp.Iam
         /// The ID for the provider, which becomes the final component of the resource name. This
         /// value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
         /// `gcp-` is reserved for use by Google, and may not be specified.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("workloadIdentityPoolProviderId")]
         public Output<string> WorkloadIdentityPoolProviderId { get; private set; } = null!;
@@ -499,6 +502,9 @@ namespace Pulumi.Gcp.Iam
         /// The ID for the provider, which becomes the final component of the resource name. This
         /// value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
         /// `gcp-` is reserved for use by Google, and may not be specified.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("workloadIdentityPoolProviderId", required: true)]
         public Input<string> WorkloadIdentityPoolProviderId { get; set; } = null!;
@@ -658,6 +664,9 @@ namespace Pulumi.Gcp.Iam
         /// The ID for the provider, which becomes the final component of the resource name. This
         /// value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
         /// `gcp-` is reserved for use by Google, and may not be specified.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("workloadIdentityPoolProviderId")]
         public Input<string>? WorkloadIdentityPoolProviderId { get; set; }

@@ -55,6 +55,9 @@ export class EgressPolicy extends pulumi.CustomResource {
 
     /**
      * The name of the Service Perimeter to add this resource to.
+     *
+     *
+     * - - -
      */
     public readonly egressPolicyName!: pulumi.Output<string>;
     /**
@@ -99,6 +102,9 @@ export class EgressPolicy extends pulumi.CustomResource {
 export interface EgressPolicyState {
     /**
      * The name of the Service Perimeter to add this resource to.
+     *
+     *
+     * - - -
      */
     egressPolicyName?: pulumi.Input<string>;
     /**
@@ -113,6 +119,9 @@ export interface EgressPolicyState {
 export interface EgressPolicyArgs {
     /**
      * The name of the Service Perimeter to add this resource to.
+     *
+     *
+     * - - -
      */
     egressPolicyName: pulumi.Input<string>;
     /**

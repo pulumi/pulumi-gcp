@@ -44,6 +44,7 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// Optional. A human-readable description of scenarios this template is intended for.
+        /// 
         /// (Optional)
         /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         /// </summary>
@@ -146,6 +147,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     {
         /// <summary>
         /// Optional. A human-readable description of scenarios this template is intended for.
+        /// 
         /// (Optional)
         /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         /// </summary>
@@ -216,6 +218,7 @@ namespace Pulumi.Gcp.CertificateAuthority
 
         /// <summary>
         /// Optional. A human-readable description of scenarios this template is intended for.
+        /// 
         /// (Optional)
         /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         /// </summary>

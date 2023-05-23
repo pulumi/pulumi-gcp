@@ -103,6 +103,8 @@ public final class AddressGroupState extends com.pulumi.resources.ResourceArgs {
      * The location of the gateway security policy.
      * The default value is `global`.
      * 
+     * ***
+     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
@@ -110,6 +112,8 @@ public final class AddressGroupState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The location of the gateway security policy.
      * The default value is `global`.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -340,6 +344,8 @@ public final class AddressGroupState extends com.pulumi.resources.ResourceArgs {
          * @param location The location of the gateway security policy.
          * The default value is `global`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -351,6 +357,8 @@ public final class AddressGroupState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location of the gateway security policy.
          * The default value is `global`.
+         * 
+         * ***
          * 
          * @return builder
          * 

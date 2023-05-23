@@ -225,6 +225,8 @@ public final class TargetHttpsProxyState extends com.pulumi.resources.ResourceAr
      * A reference to the UrlMap resource that defines the mapping from URL
      * to the BackendService.
      * 
+     * ***
+     * 
      */
     @Import(name="urlMap")
     private @Nullable Output<String> urlMap;
@@ -232,6 +234,8 @@ public final class TargetHttpsProxyState extends com.pulumi.resources.ResourceAr
     /**
      * @return A reference to the UrlMap resource that defines the mapping from URL
      * to the BackendService.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> urlMap() {
@@ -558,6 +562,8 @@ public final class TargetHttpsProxyState extends com.pulumi.resources.ResourceAr
          * @param urlMap A reference to the UrlMap resource that defines the mapping from URL
          * to the BackendService.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -569,6 +575,8 @@ public final class TargetHttpsProxyState extends com.pulumi.resources.ResourceAr
         /**
          * @param urlMap A reference to the UrlMap resource that defines the mapping from URL
          * to the BackendService.
+         * 
+         * ***
          * 
          * @return builder
          * 

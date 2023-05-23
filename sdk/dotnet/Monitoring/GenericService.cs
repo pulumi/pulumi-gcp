@@ -106,6 +106,9 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// An optional service ID to use. If not given, the server will generate a
         /// service ID.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
@@ -199,6 +202,9 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// An optional service ID to use. If not given, the server will generate a
         /// service ID.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("serviceId", required: true)]
         public Input<string> ServiceId { get; set; } = null!;
@@ -260,6 +266,9 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// An optional service ID to use. If not given, the server will generate a
         /// service ID.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }

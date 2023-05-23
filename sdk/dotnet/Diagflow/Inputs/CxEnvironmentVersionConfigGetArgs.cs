@@ -14,6 +14,8 @@ namespace Pulumi.Gcp.Diagflow.Inputs
     {
         /// <summary>
         /// Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
+        /// 
+        /// - - -
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;

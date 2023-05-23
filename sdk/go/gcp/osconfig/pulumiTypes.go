@@ -370,6 +370,8 @@ func (o GuestPoliciesAssignmentGroupLabelArrayOutput) Index(i pulumi.IntInput) G
 
 type GuestPoliciesAssignmentOsType struct {
 	// Targets VM instances with OS Inventory enabled and having the following OS architecture.
+	//
+	// ***
 	OsArchitecture *string `pulumi:"osArchitecture"`
 	// Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
 	OsShortName *string `pulumi:"osShortName"`
@@ -390,6 +392,8 @@ type GuestPoliciesAssignmentOsTypeInput interface {
 
 type GuestPoliciesAssignmentOsTypeArgs struct {
 	// Targets VM instances with OS Inventory enabled and having the following OS architecture.
+	//
+	// ***
 	OsArchitecture pulumi.StringPtrInput `pulumi:"osArchitecture"`
 	// Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
 	OsShortName pulumi.StringPtrInput `pulumi:"osShortName"`
@@ -449,6 +453,8 @@ func (o GuestPoliciesAssignmentOsTypeOutput) ToGuestPoliciesAssignmentOsTypeOutp
 }
 
 // Targets VM instances with OS Inventory enabled and having the following OS architecture.
+//
+// ***
 func (o GuestPoliciesAssignmentOsTypeOutput) OsArchitecture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GuestPoliciesAssignmentOsType) *string { return v.OsArchitecture }).(pulumi.StringPtrOutput)
 }
@@ -12419,6 +12425,8 @@ type OsPolicyAssignmentRolloutDisruptionBudget struct {
 	// Specifies a fixed value.
 	Fixed *int `pulumi:"fixed"`
 	// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+	//
+	// ***
 	Percent *int `pulumi:"percent"`
 }
 
@@ -12437,6 +12445,8 @@ type OsPolicyAssignmentRolloutDisruptionBudgetArgs struct {
 	// Specifies a fixed value.
 	Fixed pulumi.IntPtrInput `pulumi:"fixed"`
 	// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+	//
+	// ***
 	Percent pulumi.IntPtrInput `pulumi:"percent"`
 }
 
@@ -12523,6 +12533,8 @@ func (o OsPolicyAssignmentRolloutDisruptionBudgetOutput) Fixed() pulumi.IntPtrOu
 }
 
 // Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+//
+// ***
 func (o OsPolicyAssignmentRolloutDisruptionBudgetOutput) Percent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentRolloutDisruptionBudget) *int { return v.Percent }).(pulumi.IntPtrOutput)
 }
@@ -12562,6 +12574,8 @@ func (o OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput) Fixed() pulumi.IntPt
 }
 
 // Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+//
+// ***
 func (o OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput) Percent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentRolloutDisruptionBudget) *int {
 		if v == nil {
@@ -12802,6 +12816,8 @@ func (o PatchDeploymentInstanceFilterPtrOutput) Zones() pulumi.StringArrayOutput
 
 type PatchDeploymentInstanceFilterGroupLabel struct {
 	// Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
+	//
+	// ***
 	Labels map[string]string `pulumi:"labels"`
 }
 
@@ -12818,6 +12834,8 @@ type PatchDeploymentInstanceFilterGroupLabelInput interface {
 
 type PatchDeploymentInstanceFilterGroupLabelArgs struct {
 	// Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
+	//
+	// ***
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 }
 
@@ -12873,6 +12891,8 @@ func (o PatchDeploymentInstanceFilterGroupLabelOutput) ToPatchDeploymentInstance
 }
 
 // Compute Engine instance labels that must be present for a VM instance to be targeted by this filter
+//
+// ***
 func (o PatchDeploymentInstanceFilterGroupLabelOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v PatchDeploymentInstanceFilterGroupLabel) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }

@@ -84,6 +84,9 @@ export class AndroidApp extends pulumi.CustomResource {
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
      * The user-assigned display name of the AndroidApp.
+     *
+     *
+     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -174,6 +177,9 @@ export interface AndroidAppState {
     deletionPolicy?: pulumi.Input<string>;
     /**
      * The user-assigned display name of the AndroidApp.
+     *
+     *
+     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -218,6 +224,9 @@ export interface AndroidAppArgs {
     deletionPolicy?: pulumi.Input<string>;
     /**
      * The user-assigned display name of the AndroidApp.
+     *
+     *
+     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

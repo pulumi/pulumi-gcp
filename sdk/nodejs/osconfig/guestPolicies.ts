@@ -243,8 +243,10 @@ export class GuestPolicies extends pulumi.CustomResource {
     /**
      * The name of the package. A package is uniquely identified for conflict validation
      * by checking the package name and the manager(s) that the package targets.
+     *
      * (Required)
      * The name of the repository.
+     *
      * (Required)
      * Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
      * Names are also used to identify resources which helps to determine whether guest policies have conflicts.
@@ -369,8 +371,10 @@ export interface GuestPoliciesState {
     /**
      * The name of the package. A package is uniquely identified for conflict validation
      * by checking the package name and the manager(s) that the package targets.
+     *
      * (Required)
      * The name of the repository.
+     *
      * (Required)
      * Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
      * Names are also used to identify resources which helps to determine whether guest policies have conflicts.

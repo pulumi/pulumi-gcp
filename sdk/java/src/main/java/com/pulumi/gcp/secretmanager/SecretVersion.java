@@ -137,12 +137,16 @@ public class SecretVersion extends com.pulumi.resources.CustomResource {
     /**
      * Secret Manager secret resource
      * 
+     * ***
+     * 
      */
     @Export(name="secret", type=String.class, parameters={})
     private Output<String> secret;
 
     /**
      * @return Secret Manager secret resource
+     * 
+     * ***
      * 
      */
     public Output<String> secret() {

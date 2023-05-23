@@ -155,6 +155,8 @@ namespace Pulumi.Gcp.Dataproc
         /// The role that should be applied. Only one
         /// `gcp.dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// 
+        /// `gcp.dataproc.JobIAMPolicy` only:
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
@@ -237,6 +239,8 @@ namespace Pulumi.Gcp.Dataproc
         /// The role that should be applied. Only one
         /// `gcp.dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// 
+        /// `gcp.dataproc.JobIAMPolicy` only:
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
@@ -287,6 +291,8 @@ namespace Pulumi.Gcp.Dataproc
         /// The role that should be applied. Only one
         /// `gcp.dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// 
+        /// `gcp.dataproc.JobIAMPolicy` only:
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

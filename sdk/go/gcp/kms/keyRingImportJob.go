@@ -49,6 +49,8 @@ type KeyRingImportJob struct {
 	// This is in RFC3339 text format.
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
+	//
+	// ***
 	ImportJobId pulumi.StringOutput `pulumi:"importJobId"`
 	// The wrapping method to be used for incoming key material.
 	// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
@@ -119,6 +121,8 @@ type keyRingImportJobState struct {
 	// This is in RFC3339 text format.
 	ExpireTime *string `pulumi:"expireTime"`
 	// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
+	//
+	// ***
 	ImportJobId *string `pulumi:"importJobId"`
 	// The wrapping method to be used for incoming key material.
 	// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
@@ -149,6 +153,8 @@ type KeyRingImportJobState struct {
 	// This is in RFC3339 text format.
 	ExpireTime pulumi.StringPtrInput
 	// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
+	//
+	// ***
 	ImportJobId pulumi.StringPtrInput
 	// The wrapping method to be used for incoming key material.
 	// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
@@ -175,6 +181,8 @@ func (KeyRingImportJobState) ElementType() reflect.Type {
 
 type keyRingImportJobArgs struct {
 	// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
+	//
+	// ***
 	ImportJobId string `pulumi:"importJobId"`
 	// The wrapping method to be used for incoming key material.
 	// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
@@ -191,6 +199,8 @@ type keyRingImportJobArgs struct {
 // The set of arguments for constructing a KeyRingImportJob resource.
 type KeyRingImportJobArgs struct {
 	// It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
+	//
+	// ***
 	ImportJobId pulumi.StringInput
 	// The wrapping method to be used for incoming key material.
 	// Possible values are: `RSA_OAEP_3072_SHA1_AES_256`, `RSA_OAEP_4096_SHA1_AES_256`.
@@ -306,6 +316,8 @@ func (o KeyRingImportJobOutput) ExpireTime() pulumi.StringOutput {
 }
 
 // It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}
+//
+// ***
 func (o KeyRingImportJobOutput) ImportJobId() pulumi.StringOutput {
 	return o.ApplyT(func(v *KeyRingImportJob) pulumi.StringOutput { return v.ImportJobId }).(pulumi.StringOutput)
 }

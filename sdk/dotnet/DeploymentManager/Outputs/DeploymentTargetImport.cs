@@ -20,6 +20,8 @@ namespace Pulumi.Gcp.DeploymentManager.Outputs
         /// <summary>
         /// The name of the template to import, as declared in the YAML
         /// configuration.
+        /// 
+        /// - - -
         /// </summary>
         public readonly string? Name;
 

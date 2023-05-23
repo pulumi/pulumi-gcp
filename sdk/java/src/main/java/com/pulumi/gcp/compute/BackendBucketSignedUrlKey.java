@@ -88,12 +88,16 @@ public class BackendBucketSignedUrlKey extends com.pulumi.resources.CustomResour
     /**
      * The backend bucket this signed URL key belongs.
      * 
+     * ***
+     * 
      */
     @Export(name="backendBucket", type=String.class, parameters={})
     private Output<String> backendBucket;
 
     /**
      * @return The backend bucket this signed URL key belongs.
+     * 
+     * ***
      * 
      */
     public Output<String> backendBucket() {

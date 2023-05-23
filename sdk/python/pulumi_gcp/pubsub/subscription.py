@@ -34,6 +34,9 @@ class SubscriptionArgs:
         """
         The set of arguments for constructing a Subscription resource.
         :param pulumi.Input[str] topic: A reference to a Topic resource.
+               
+               
+               - - -
         :param pulumi.Input[int] ack_deadline_seconds: This value is the maximum time after a subscriber receives a message
                before the subscriber should acknowledge the message. After message
                delivery but before the ack deadline expires and before the message is
@@ -142,6 +145,9 @@ class SubscriptionArgs:
     def topic(self) -> pulumi.Input[str]:
         """
         A reference to a Topic resource.
+
+
+        - - -
         """
         return pulumi.get(self, "topic")
 
@@ -469,6 +475,9 @@ class _SubscriptionState:
                RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
                Structure is documented below.
         :param pulumi.Input[str] topic: A reference to a Topic resource.
+               
+               
+               - - -
         """
         if ack_deadline_seconds is not None:
             pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
@@ -732,6 +741,9 @@ class _SubscriptionState:
     def topic(self) -> Optional[pulumi.Input[str]]:
         """
         A reference to a Topic resource.
+
+
+        - - -
         """
         return pulumi.get(self, "topic")
 
@@ -976,6 +988,9 @@ class Subscription(pulumi.CustomResource):
                RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
                Structure is documented below.
         :param pulumi.Input[str] topic: A reference to a Topic resource.
+               
+               
+               - - -
         """
         ...
     @overload
@@ -1284,6 +1299,9 @@ class Subscription(pulumi.CustomResource):
                RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
                Structure is documented below.
         :param pulumi.Input[str] topic: A reference to a Topic resource.
+               
+               
+               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1481,6 +1499,9 @@ class Subscription(pulumi.CustomResource):
     def topic(self) -> pulumi.Output[str]:
         """
         A reference to a Topic resource.
+
+
+        - - -
         """
         return pulumi.get(self, "topic")
 

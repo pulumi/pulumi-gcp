@@ -140,12 +140,16 @@ public class Environment extends com.pulumi.resources.CustomResource {
     /**
      * A reference to the zone where the machine resides.
      * 
+     * ***
+     * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
      * @return A reference to the zone where the machine resides.
+     * 
+     * ***
      * 
      */
     public Output<String> location() {

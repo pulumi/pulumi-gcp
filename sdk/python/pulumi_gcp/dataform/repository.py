@@ -25,6 +25,9 @@ class RepositoryArgs:
         :param pulumi.Input['RepositoryGitRemoteSettingsArgs'] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
                Structure is documented below.
         :param pulumi.Input[str] name: The repository's name.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region
@@ -56,6 +59,9 @@ class RepositoryArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The repository's name.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -101,6 +107,9 @@ class _RepositoryState:
         :param pulumi.Input['RepositoryGitRemoteSettingsArgs'] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
                Structure is documented below.
         :param pulumi.Input[str] name: The repository's name.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region
@@ -132,6 +141,9 @@ class _RepositoryState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The repository's name.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -227,6 +239,9 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['RepositoryGitRemoteSettingsArgs']] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
                Structure is documented below.
         :param pulumi.Input[str] name: The repository's name.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region
@@ -340,6 +355,9 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['RepositoryGitRemoteSettingsArgs']] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
                Structure is documented below.
         :param pulumi.Input[str] name: The repository's name.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region
@@ -368,6 +386,9 @@ class Repository(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The repository's name.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

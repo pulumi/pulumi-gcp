@@ -95,6 +95,8 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
      * The name of the cluster, unique within the project and
      * location.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -102,6 +104,8 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
     /**
      * @return The name of the cluster, unique within the project and
      * location.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -168,6 +172,13 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
      * same region as their cluster&#39;s zone for zonal clusters. If this is specified for
      * a zonal cluster, omit the cluster&#39;s zone.
      * 
+     * &gt; A &#34;multi-zonal&#34; cluster is a zonal cluster with at least one additional zone
+     * defined; in a multi-zonal cluster, the cluster master is only present in a
+     * single zone while nodes are present in each of the primary zone and the node
+     * locations. In contrast, in a regional cluster, cluster master nodes are present
+     * in multiple zones in the region. For that reason, regional clusters should be
+     * preferred.
+     * 
      */
     @Import(name="nodeLocations")
     private @Nullable Output<List<String>> nodeLocations;
@@ -177,6 +188,13 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
      * are located. Nodes must be in the region of their regional cluster or in the
      * same region as their cluster&#39;s zone for zonal clusters. If this is specified for
      * a zonal cluster, omit the cluster&#39;s zone.
+     * 
+     * &gt; A &#34;multi-zonal&#34; cluster is a zonal cluster with at least one additional zone
+     * defined; in a multi-zonal cluster, the cluster master is only present in a
+     * single zone while nodes are present in each of the primary zone and the node
+     * locations. In contrast, in a regional cluster, cluster master nodes are present
+     * in multiple zones in the region. For that reason, regional clusters should be
+     * preferred.
      * 
      */
     public Optional<Output<List<String>>> nodeLocations() {
@@ -350,6 +368,8 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
          * @param name The name of the cluster, unique within the project and
          * location.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -361,6 +381,8 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param name The name of the cluster, unique within the project and
          * location.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -445,6 +467,13 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
          * same region as their cluster&#39;s zone for zonal clusters. If this is specified for
          * a zonal cluster, omit the cluster&#39;s zone.
          * 
+         * &gt; A &#34;multi-zonal&#34; cluster is a zonal cluster with at least one additional zone
+         * defined; in a multi-zonal cluster, the cluster master is only present in a
+         * single zone while nodes are present in each of the primary zone and the node
+         * locations. In contrast, in a regional cluster, cluster master nodes are present
+         * in multiple zones in the region. For that reason, regional clusters should be
+         * preferred.
+         * 
          * @return builder
          * 
          */
@@ -459,6 +488,13 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
          * same region as their cluster&#39;s zone for zonal clusters. If this is specified for
          * a zonal cluster, omit the cluster&#39;s zone.
          * 
+         * &gt; A &#34;multi-zonal&#34; cluster is a zonal cluster with at least one additional zone
+         * defined; in a multi-zonal cluster, the cluster master is only present in a
+         * single zone while nodes are present in each of the primary zone and the node
+         * locations. In contrast, in a regional cluster, cluster master nodes are present
+         * in multiple zones in the region. For that reason, regional clusters should be
+         * preferred.
+         * 
          * @return builder
          * 
          */
@@ -471,6 +507,13 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
          * are located. Nodes must be in the region of their regional cluster or in the
          * same region as their cluster&#39;s zone for zonal clusters. If this is specified for
          * a zonal cluster, omit the cluster&#39;s zone.
+         * 
+         * &gt; A &#34;multi-zonal&#34; cluster is a zonal cluster with at least one additional zone
+         * defined; in a multi-zonal cluster, the cluster master is only present in a
+         * single zone while nodes are present in each of the primary zone and the node
+         * locations. In contrast, in a regional cluster, cluster master nodes are present
+         * in multiple zones in the region. For that reason, regional clusters should be
+         * preferred.
          * 
          * @return builder
          * 

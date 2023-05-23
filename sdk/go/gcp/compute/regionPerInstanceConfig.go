@@ -183,6 +183,8 @@ type RegionPerInstanceConfig struct {
 	// Region where the containing instance group manager is located
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The region instance group manager this instance config is part of.
+	//
+	// ***
 	RegionInstanceGroupManager pulumi.StringOutput `pulumi:"regionInstanceGroupManager"`
 	// When true, deleting this config will immediately remove any specified state from the underlying instance.
 	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
@@ -247,6 +249,8 @@ type regionPerInstanceConfigState struct {
 	// Region where the containing instance group manager is located
 	Region *string `pulumi:"region"`
 	// The region instance group manager this instance config is part of.
+	//
+	// ***
 	RegionInstanceGroupManager *string `pulumi:"regionInstanceGroupManager"`
 	// When true, deleting this config will immediately remove any specified state from the underlying instance.
 	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
@@ -280,6 +284,8 @@ type RegionPerInstanceConfigState struct {
 	// Region where the containing instance group manager is located
 	Region pulumi.StringPtrInput
 	// The region instance group manager this instance config is part of.
+	//
+	// ***
 	RegionInstanceGroupManager pulumi.StringPtrInput
 	// When true, deleting this config will immediately remove any specified state from the underlying instance.
 	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
@@ -317,6 +323,8 @@ type regionPerInstanceConfigArgs struct {
 	// Region where the containing instance group manager is located
 	Region *string `pulumi:"region"`
 	// The region instance group manager this instance config is part of.
+	//
+	// ***
 	RegionInstanceGroupManager string `pulumi:"regionInstanceGroupManager"`
 	// When true, deleting this config will immediately remove any specified state from the underlying instance.
 	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
@@ -351,6 +359,8 @@ type RegionPerInstanceConfigArgs struct {
 	// Region where the containing instance group manager is located
 	Region pulumi.StringPtrInput
 	// The region instance group manager this instance config is part of.
+	//
+	// ***
 	RegionInstanceGroupManager pulumi.StringInput
 	// When true, deleting this config will immediately remove any specified state from the underlying instance.
 	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
@@ -490,6 +500,8 @@ func (o RegionPerInstanceConfigOutput) Region() pulumi.StringOutput {
 }
 
 // The region instance group manager this instance config is part of.
+//
+// ***
 func (o RegionPerInstanceConfigOutput) RegionInstanceGroupManager() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionPerInstanceConfig) pulumi.StringOutput { return v.RegionInstanceGroupManager }).(pulumi.StringOutput)
 }

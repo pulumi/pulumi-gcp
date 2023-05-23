@@ -207,12 +207,16 @@ public class Workload extends com.pulumi.resources.CustomResource {
     /**
      * The organization for the resource
      * 
+     * ***
+     * 
      */
     @Export(name="organization", type=String.class, parameters={})
     private Output<String> organization;
 
     /**
      * @return The organization for the resource
+     * 
+     * ***
      * 
      */
     public Output<String> organization() {

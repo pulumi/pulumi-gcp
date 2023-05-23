@@ -121,6 +121,9 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
      * The ID to use for the pool, which becomes the final component of the resource name. This
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
+     *
+     *
+     * - - -
      */
     public readonly workloadIdentityPoolId!: pulumi.Output<string>;
 
@@ -206,6 +209,9 @@ export interface WorkloadIdentityPoolState {
      * The ID to use for the pool, which becomes the final component of the resource name. This
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
+     *
+     *
+     * - - -
      */
     workloadIdentityPoolId?: pulumi.Input<string>;
 }
@@ -237,6 +243,9 @@ export interface WorkloadIdentityPoolArgs {
      * The ID to use for the pool, which becomes the final component of the resource name. This
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
      * `gcp-` is reserved for use by Google, and may not be specified.
+     *
+     *
+     * - - -
      */
     workloadIdentityPoolId: pulumi.Input<string>;
 }

@@ -141,6 +141,9 @@ export class TargetInstance extends pulumi.CustomResource {
      * name is given, the zone will default to the given zone or
      * the provider-default zone and the project will default to the
      * provider-level project.
+     *
+     *
+     * - - -
      */
     public readonly instance!: pulumi.Output<string>;
     /**
@@ -239,6 +242,9 @@ export interface TargetInstanceState {
      * name is given, the zone will default to the given zone or
      * the provider-default zone and the project will default to the
      * provider-level project.
+     *
+     *
+     * - - -
      */
     instance?: pulumi.Input<string>;
     /**
@@ -292,6 +298,9 @@ export interface TargetInstanceArgs {
      * name is given, the zone will default to the given zone or
      * the provider-default zone and the project will default to the
      * provider-level project.
+     *
+     *
+     * - - -
      */
     instance: pulumi.Input<string>;
     /**

@@ -15,6 +15,8 @@ public final class VMwareNodePoolConfigTaint {
      * @return Available taint effects.
      * Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
      * 
+     * &lt;a name=&#34;nested_vsphere_config&#34;&gt;&lt;/a&gt;The `vsphere_config` block contains:
+     * 
      */
     private @Nullable String effect;
     /**
@@ -32,6 +34,8 @@ public final class VMwareNodePoolConfigTaint {
     /**
      * @return Available taint effects.
      * Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+     * 
+     * &lt;a name=&#34;nested_vsphere_config&#34;&gt;&lt;/a&gt;The `vsphere_config` block contains:
      * 
      */
     public Optional<String> effect() {

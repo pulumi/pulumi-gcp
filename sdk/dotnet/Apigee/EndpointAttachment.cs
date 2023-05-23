@@ -98,6 +98,9 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// ID of the endpoint attachment.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("endpointAttachmentId")]
         public Output<string> EndpointAttachmentId { get; private set; } = null!;
@@ -182,6 +185,9 @@ namespace Pulumi.Gcp.Apigee
     {
         /// <summary>
         /// ID of the endpoint attachment.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("endpointAttachmentId", required: true)]
         public Input<string> EndpointAttachmentId { get; set; } = null!;
@@ -221,6 +227,9 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// ID of the endpoint attachment.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("endpointAttachmentId")]
         public Input<string>? EndpointAttachmentId { get; set; }

@@ -134,6 +134,8 @@ type CertificateMapEntry struct {
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// A map entry that is inputted into the cetrificate map
+	//
+	// ***
 	Map pulumi.StringOutput `pulumi:"map"`
 	// A predefined matcher for particular cases, other than SNI selection
 	Matcher pulumi.StringPtrOutput `pulumi:"matcher"`
@@ -206,6 +208,8 @@ type certificateMapEntryState struct {
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
 	// A map entry that is inputted into the cetrificate map
+	//
+	// ***
 	Map *string `pulumi:"map"`
 	// A predefined matcher for particular cases, other than SNI selection
 	Matcher *string `pulumi:"matcher"`
@@ -244,6 +248,8 @@ type CertificateMapEntryState struct {
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput
 	// A map entry that is inputted into the cetrificate map
+	//
+	// ***
 	Map pulumi.StringPtrInput
 	// A predefined matcher for particular cases, other than SNI selection
 	Matcher pulumi.StringPtrInput
@@ -282,6 +288,8 @@ type certificateMapEntryArgs struct {
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
 	// A map entry that is inputted into the cetrificate map
+	//
+	// ***
 	Map string `pulumi:"map"`
 	// A predefined matcher for particular cases, other than SNI selection
 	Matcher *string `pulumi:"matcher"`
@@ -311,6 +319,8 @@ type CertificateMapEntryArgs struct {
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput
 	// A map entry that is inputted into the cetrificate map
+	//
+	// ***
 	Map pulumi.StringInput
 	// A predefined matcher for particular cases, other than SNI selection
 	Matcher pulumi.StringPtrInput
@@ -444,6 +454,8 @@ func (o CertificateMapEntryOutput) Labels() pulumi.StringMapOutput {
 }
 
 // A map entry that is inputted into the cetrificate map
+//
+// ***
 func (o CertificateMapEntryOutput) Map() pulumi.StringOutput {
 	return o.ApplyT(func(v *CertificateMapEntry) pulumi.StringOutput { return v.Map }).(pulumi.StringOutput)
 }

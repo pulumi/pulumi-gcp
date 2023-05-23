@@ -20,8 +20,12 @@ public final class TagTemplateArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The display name for this field.
+     * 
      * (Required)
      * The display name of the enum value.
+     * 
+     * ***
+     * 
      * (Optional)
      * The display name for this template.
      * 
@@ -31,8 +35,12 @@ public final class TagTemplateArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The display name for this field.
+     * 
      * (Required)
      * The display name of the enum value.
+     * 
+     * ***
+     * 
      * (Optional)
      * The display name for this template.
      * 
@@ -151,8 +159,12 @@ public final class TagTemplateArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param displayName The display name for this field.
+         * 
          * (Required)
          * The display name of the enum value.
+         * 
+         * ***
+         * 
          * (Optional)
          * The display name for this template.
          * 
@@ -166,8 +178,12 @@ public final class TagTemplateArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param displayName The display name for this field.
+         * 
          * (Required)
          * The display name of the enum value.
+         * 
+         * ***
+         * 
          * (Optional)
          * The display name for this template.
          * 

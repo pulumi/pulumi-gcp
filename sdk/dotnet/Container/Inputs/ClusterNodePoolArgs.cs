@@ -54,6 +54,8 @@ namespace Pulumi.Gcp.Container.Inputs
         /// <summary>
         /// The name of the cluster, unique within the project and
         /// location.
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -89,6 +91,13 @@ namespace Pulumi.Gcp.Container.Inputs
         /// are located. Nodes must be in the region of their regional cluster or in the
         /// same region as their cluster's zone for zonal clusters. If this is specified for
         /// a zonal cluster, omit the cluster's zone.
+        /// 
+        /// &gt; A "multi-zonal" cluster is a zonal cluster with at least one additional zone
+        /// defined; in a multi-zonal cluster, the cluster master is only present in a
+        /// single zone while nodes are present in each of the primary zone and the node
+        /// locations. In contrast, in a regional cluster, cluster master nodes are present
+        /// in multiple zones in the region. For that reason, regional clusters should be
+        /// preferred.
         /// </summary>
         public InputList<string> NodeLocations
         {

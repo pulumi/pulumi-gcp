@@ -225,6 +225,8 @@ public class JobIAMBinding extends com.pulumi.resources.CustomResource {
      * `gcp.dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
      * 
+     * `gcp.dataproc.JobIAMPolicy` only:
+     * 
      */
     @Export(name="role", type=String.class, parameters={})
     private Output<String> role;
@@ -233,6 +235,8 @@ public class JobIAMBinding extends com.pulumi.resources.CustomResource {
      * @return The role that should be applied. Only one
      * `gcp.dataproc.JobIAMBinding` can be used per role. Note that custom roles must be of the format
      * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     * 
+     * `gcp.dataproc.JobIAMPolicy` only:
      * 
      */
     public Output<String> role() {

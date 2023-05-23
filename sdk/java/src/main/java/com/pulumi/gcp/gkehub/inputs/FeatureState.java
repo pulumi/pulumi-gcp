@@ -68,12 +68,16 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
     /**
      * The location for the resource
      * 
+     * ***
+     * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
      * @return The location for the resource
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> location() {
@@ -269,6 +273,8 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The location for the resource
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -279,6 +285,8 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The location for the resource
+         * 
+         * ***
          * 
          * @return builder
          * 

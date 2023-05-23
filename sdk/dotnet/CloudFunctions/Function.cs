@@ -255,6 +255,8 @@ namespace Pulumi.Gcp.CloudFunctions
         /// <summary>
         /// The runtime in which the function is going to run.
         /// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+        /// 
+        /// - - -
         /// </summary>
         [Output("runtime")]
         public Output<string> Runtime { get; private set; } = null!;
@@ -502,6 +504,8 @@ namespace Pulumi.Gcp.CloudFunctions
         /// <summary>
         /// The runtime in which the function is going to run.
         /// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+        /// 
+        /// - - -
         /// </summary>
         [Input("runtime", required: true)]
         public Input<string> Runtime { get; set; } = null!;
@@ -723,6 +727,8 @@ namespace Pulumi.Gcp.CloudFunctions
         /// <summary>
         /// The runtime in which the function is going to run.
         /// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+        /// 
+        /// - - -
         /// </summary>
         [Input("runtime")]
         public Input<string>? Runtime { get; set; }

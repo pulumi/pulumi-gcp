@@ -176,6 +176,8 @@ public class TargetPool extends com.pulumi.resources.CustomResource {
      * A unique name for the resource, required by GCE. Changing
      * this forces a new resource to be created.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
@@ -183,6 +185,8 @@ public class TargetPool extends com.pulumi.resources.CustomResource {
     /**
      * @return A unique name for the resource, required by GCE. Changing
      * this forces a new resource to be created.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {

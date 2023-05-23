@@ -198,6 +198,8 @@ public class Database extends com.pulumi.resources.CustomResource {
      * The name of the Cloud SQL instance. This does not include the project
      * ID.
      * 
+     * ***
+     * 
      */
     @Export(name="instance", type=String.class, parameters={})
     private Output<String> instance;
@@ -205,6 +207,8 @@ public class Database extends com.pulumi.resources.CustomResource {
     /**
      * @return The name of the Cloud SQL instance. This does not include the project
      * ID.
+     * 
+     * ***
      * 
      */
     public Output<String> instance() {

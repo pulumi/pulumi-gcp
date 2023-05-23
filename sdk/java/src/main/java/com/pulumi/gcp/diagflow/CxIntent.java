@@ -139,12 +139,16 @@ public class CxIntent extends com.pulumi.resources.CustomResource {
     /**
      * The human-readable name of the intent, unique within the agent.
      * 
+     * ***
+     * 
      */
     @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
      * @return The human-readable name of the intent, unique within the agent.
+     * 
+     * ***
      * 
      */
     public Output<String> displayName() {

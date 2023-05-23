@@ -150,6 +150,8 @@ type Router struct {
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A reference to the network to which this router belongs.
+	//
+	// ***
 	Network pulumi.StringOutput `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -210,6 +212,8 @@ type routerState struct {
 	// except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// A reference to the network to which this router belongs.
+	//
+	// ***
 	Network *string `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -239,6 +243,8 @@ type RouterState struct {
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// A reference to the network to which this router belongs.
+	//
+	// ***
 	Network pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -270,6 +276,8 @@ type routerArgs struct {
 	// except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// A reference to the network to which this router belongs.
+	//
+	// ***
 	Network string `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -296,6 +304,8 @@ type RouterArgs struct {
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// A reference to the network to which this router belongs.
+	//
+	// ***
 	Network pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -424,6 +434,8 @@ func (o RouterOutput) Name() pulumi.StringOutput {
 }
 
 // A reference to the network to which this router belongs.
+//
+// ***
 func (o RouterOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }

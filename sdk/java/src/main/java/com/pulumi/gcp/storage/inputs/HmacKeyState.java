@@ -67,12 +67,16 @@ public final class HmacKeyState extends com.pulumi.resources.ResourceArgs {
     /**
      * The email address of the key&#39;s associated service account.
      * 
+     * ***
+     * 
      */
     @Import(name="serviceAccountEmail")
     private @Nullable Output<String> serviceAccountEmail;
 
     /**
      * @return The email address of the key&#39;s associated service account.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> serviceAccountEmail() {
@@ -228,6 +232,8 @@ public final class HmacKeyState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param serviceAccountEmail The email address of the key&#39;s associated service account.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -238,6 +244,8 @@ public final class HmacKeyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param serviceAccountEmail The email address of the key&#39;s associated service account.
+         * 
+         * ***
          * 
          * @return builder
          * 

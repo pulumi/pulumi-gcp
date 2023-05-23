@@ -28,6 +28,9 @@ class CxIntentArgs:
         """
         The set of arguments for constructing a CxIntent resource.
         :param pulumi.Input[str] display_name: The human-readable name of the intent, unique within the agent.
+               
+               
+               - - -
         :param pulumi.Input[str] description: Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
         :param pulumi.Input[bool] is_fallback: Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
                Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
@@ -70,6 +73,9 @@ class CxIntentArgs:
     def display_name(self) -> pulumi.Input[str]:
         """
         The human-readable name of the intent, unique within the agent.
+
+
+        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -201,6 +207,9 @@ class _CxIntentState:
         Input properties used for looking up and filtering CxIntent resources.
         :param pulumi.Input[str] description: Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
         :param pulumi.Input[str] display_name: The human-readable name of the intent, unique within the agent.
+               
+               
+               - - -
         :param pulumi.Input[bool] is_fallback: Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
                Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes.
@@ -259,6 +268,9 @@ class _CxIntentState:
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
         The human-readable name of the intent, unique within the agent.
+
+
+        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -467,6 +479,9 @@ class CxIntent(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
         :param pulumi.Input[str] display_name: The human-readable name of the intent, unique within the agent.
+               
+               
+               - - -
         :param pulumi.Input[bool] is_fallback: Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
                Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes.
@@ -639,6 +654,9 @@ class CxIntent(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
         :param pulumi.Input[str] display_name: The human-readable name of the intent, unique within the agent.
+               
+               
+               - - -
         :param pulumi.Input[bool] is_fallback: Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation.
                Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes.
@@ -688,6 +706,9 @@ class CxIntent(pulumi.CustomResource):
     def display_name(self) -> pulumi.Output[str]:
         """
         The human-readable name of the intent, unique within the agent.
+
+
+        - - -
         """
         return pulumi.get(self, "display_name")
 

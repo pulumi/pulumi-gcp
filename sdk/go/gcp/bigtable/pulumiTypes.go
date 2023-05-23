@@ -16,6 +16,8 @@ type GCPolicyMaxAge struct {
 	// Deprecated: Deprecated in favor of duration
 	Days *int `pulumi:"days"`
 	// Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
+	//
+	// ***
 	Duration *string `pulumi:"duration"`
 }
 
@@ -36,6 +38,8 @@ type GCPolicyMaxAgeArgs struct {
 	// Deprecated: Deprecated in favor of duration
 	Days pulumi.IntPtrInput `pulumi:"days"`
 	// Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
+	//
+	// ***
 	Duration pulumi.StringPtrInput `pulumi:"duration"`
 }
 
@@ -124,6 +128,8 @@ func (o GCPolicyMaxAgeOutput) Days() pulumi.IntPtrOutput {
 }
 
 // Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
+//
+// ***
 func (o GCPolicyMaxAgeOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GCPolicyMaxAge) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
@@ -165,6 +171,8 @@ func (o GCPolicyMaxAgePtrOutput) Days() pulumi.IntPtrOutput {
 }
 
 // Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
+//
+// ***
 func (o GCPolicyMaxAgePtrOutput) Duration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GCPolicyMaxAge) *string {
 		if v == nil {
@@ -176,6 +184,9 @@ func (o GCPolicyMaxAgePtrOutput) Duration() pulumi.StringPtrOutput {
 
 type GCPolicyMaxVersion struct {
 	// Number of version before applying the GC policy.
+	//
+	// ***
+	// `gcRules` include 2 fields:
 	Number int `pulumi:"number"`
 }
 
@@ -192,6 +203,9 @@ type GCPolicyMaxVersionInput interface {
 
 type GCPolicyMaxVersionArgs struct {
 	// Number of version before applying the GC policy.
+	//
+	// ***
+	// `gcRules` include 2 fields:
 	Number pulumi.IntInput `pulumi:"number"`
 }
 
@@ -247,6 +261,9 @@ func (o GCPolicyMaxVersionOutput) ToGCPolicyMaxVersionOutputWithContext(ctx cont
 }
 
 // Number of version before applying the GC policy.
+//
+// ***
+// `gcRules` include 2 fields:
 func (o GCPolicyMaxVersionOutput) Number() pulumi.IntOutput {
 	return o.ApplyT(func(v GCPolicyMaxVersion) int { return v.Number }).(pulumi.IntOutput)
 }
@@ -277,6 +294,15 @@ type InstanceCluster struct {
 	// The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
 	ClusterId string `pulumi:"clusterId"`
 	// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
+	//
+	// > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
+	//
+	// !> **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
+	//
+	// !> **Warning:** Modifying the `storageType`, `zone` or `kmsKeyName` of an existing cluster (by
+	// `clusterId`) will cause the provider to delete/recreate the entire
+	// `bigtable.Instance` resource. If these values are changing, use a new
+	// `clusterId`.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// The number of nodes in your Cloud Bigtable cluster.
 	// Required, with a minimum of `1` for each cluster in an instance.
@@ -307,6 +333,15 @@ type InstanceClusterArgs struct {
 	// The ID of the Cloud Bigtable cluster. Must be 6-30 characters and must only contain hyphens, lowercase letters and numbers.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
+	//
+	// > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
+	//
+	// !> **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
+	//
+	// !> **Warning:** Modifying the `storageType`, `zone` or `kmsKeyName` of an existing cluster (by
+	// `clusterId`) will cause the provider to delete/recreate the entire
+	// `bigtable.Instance` resource. If these values are changing, use a new
+	// `clusterId`.
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// The number of nodes in your Cloud Bigtable cluster.
 	// Required, with a minimum of `1` for each cluster in an instance.
@@ -382,6 +417,15 @@ func (o InstanceClusterOutput) ClusterId() pulumi.StringOutput {
 }
 
 // Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster.
+//
+// > **Note**: Removing the field entirely from the config will cause the provider to default to the backend value.
+//
+// !> **Warning**: Modifying this field will cause the provider to delete/recreate the entire resource.
+//
+// !> **Warning:** Modifying the `storageType`, `zone` or `kmsKeyName` of an existing cluster (by
+// `clusterId`) will cause the provider to delete/recreate the entire
+// `bigtable.Instance` resource. If these values are changing, use a new
+// `clusterId`.
 func (o InstanceClusterOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceCluster) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
 }
@@ -433,6 +477,8 @@ type InstanceClusterAutoscalingConfig struct {
 	// The minimum number of nodes for autoscaling.
 	MinNodes int `pulumi:"minNodes"`
 	// The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
+	//
+	// !> **Warning**: Only one of `autoscalingConfig` or `numNodes` should be set for a cluster. If both are set, `numNodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
 	StorageTarget *int `pulumi:"storageTarget"`
 }
 
@@ -455,6 +501,8 @@ type InstanceClusterAutoscalingConfigArgs struct {
 	// The minimum number of nodes for autoscaling.
 	MinNodes pulumi.IntInput `pulumi:"minNodes"`
 	// The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
+	//
+	// !> **Warning**: Only one of `autoscalingConfig` or `numNodes` should be set for a cluster. If both are set, `numNodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
 	StorageTarget pulumi.IntPtrInput `pulumi:"storageTarget"`
 }
 
@@ -551,6 +599,8 @@ func (o InstanceClusterAutoscalingConfigOutput) MinNodes() pulumi.IntOutput {
 }
 
 // The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
+//
+// !> **Warning**: Only one of `autoscalingConfig` or `numNodes` should be set for a cluster. If both are set, `numNodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
 func (o InstanceClusterAutoscalingConfigOutput) StorageTarget() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceClusterAutoscalingConfig) *int { return v.StorageTarget }).(pulumi.IntPtrOutput)
 }
@@ -610,6 +660,8 @@ func (o InstanceClusterAutoscalingConfigPtrOutput) MinNodes() pulumi.IntPtrOutpu
 }
 
 // The target storage utilization for autoscaling, in GB, for each node in a cluster. This number is limited between 2560 (2.5TiB) and 5120 (5TiB) for a SSD cluster and between 8192 (8TiB) and 16384 (16 TiB) for an HDD cluster. If not set, whatever is already set for the cluster will not change, or if the cluster is just being created, it will use the default value of 2560 for SSD clusters and 8192 for HDD clusters.
+//
+// !> **Warning**: Only one of `autoscalingConfig` or `numNodes` should be set for a cluster. If both are set, `numNodes` is ignored. If none is set, autoscaling will be disabled and sized to the current node count.
 func (o InstanceClusterAutoscalingConfigPtrOutput) StorageTarget() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceClusterAutoscalingConfig) *int {
 		if v == nil {

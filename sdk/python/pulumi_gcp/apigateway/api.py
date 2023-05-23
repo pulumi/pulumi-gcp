@@ -22,6 +22,9 @@ class ApiArgs:
         """
         The set of arguments for constructing a Api resource.
         :param pulumi.Input[str] api_id: Identifier to assign to the API. Must be unique within scope of the parent resource(project)
+               
+               
+               - - -
         :param pulumi.Input[str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] managed_service: Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
@@ -44,6 +47,9 @@ class ApiArgs:
     def api_id(self) -> pulumi.Input[str]:
         """
         Identifier to assign to the API. Must be unique within scope of the parent resource(project)
+
+
+        - - -
         """
         return pulumi.get(self, "api_id")
 
@@ -115,6 +121,9 @@ class _ApiState:
         """
         Input properties used for looking up and filtering Api resources.
         :param pulumi.Input[str] api_id: Identifier to assign to the API. Must be unique within scope of the parent resource(project)
+               
+               
+               - - -
         :param pulumi.Input[str] create_time: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
@@ -144,6 +153,9 @@ class _ApiState:
     def api_id(self) -> Optional[pulumi.Input[str]]:
         """
         Identifier to assign to the API. Must be unique within scope of the parent resource(project)
+
+
+        - - -
         """
         return pulumi.get(self, "api_id")
 
@@ -276,6 +288,9 @@ class Api(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_id: Identifier to assign to the API. Must be unique within scope of the parent resource(project)
+               
+               
+               - - -
         :param pulumi.Input[str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
         :param pulumi.Input[str] managed_service: Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed).
@@ -388,6 +403,9 @@ class Api(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_id: Identifier to assign to the API. Must be unique within scope of the parent resource(project)
+               
+               
+               - - -
         :param pulumi.Input[str] create_time: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
@@ -415,6 +433,9 @@ class Api(pulumi.CustomResource):
     def api_id(self) -> pulumi.Output[str]:
         """
         Identifier to assign to the API. Must be unique within scope of the parent resource(project)
+
+
+        - - -
         """
         return pulumi.get(self, "api_id")
 

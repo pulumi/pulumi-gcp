@@ -19,6 +19,8 @@ namespace Pulumi.Gcp.DataPlex.Outputs
         public readonly string? Name;
         /// <summary>
         /// Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
+        /// 
+        /// - - -
         /// </summary>
         public readonly string Type;
 

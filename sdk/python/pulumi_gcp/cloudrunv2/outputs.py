@@ -1697,6 +1697,8 @@ class JobTemplateTemplateVpcAccess(dict):
         :param str connector: VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
         :param str egress: Traffic VPC egress settings.
                Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+               
+               - - -
         """
         if connector is not None:
             pulumi.set(__self__, "connector", connector)
@@ -1717,6 +1719,8 @@ class JobTemplateTemplateVpcAccess(dict):
         """
         Traffic VPC egress settings.
         Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+
+        - - -
         """
         return pulumi.get(self, "egress")
 
@@ -3504,6 +3508,8 @@ class ServiceTemplateVolumeEmptyDir(dict):
                Default value is `MEMORY`.
                Possible values are: `MEMORY`.
         :param str size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+               
+               - - -
         """
         if medium is not None:
             pulumi.set(__self__, "medium", medium)
@@ -3525,6 +3531,8 @@ class ServiceTemplateVolumeEmptyDir(dict):
     def size_limit(self) -> Optional[str]:
         """
         Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+
+        - - -
         """
         return pulumi.get(self, "size_limit")
 
@@ -3874,6 +3882,7 @@ class ServiceTrafficStatus(dict):
         """
         :param int percent: Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
         :param str revision: The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+               
                (Optional)
                Revision to which to send this portion of traffic, if traffic allocation is by revision.
         :param str tag: Indicates a string to be part of the URI to exclusively reference this target.
@@ -3906,6 +3915,7 @@ class ServiceTrafficStatus(dict):
     def revision(self) -> Optional[str]:
         """
         The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+
         (Optional)
         Revision to which to send this portion of traffic, if traffic allocation is by revision.
         """

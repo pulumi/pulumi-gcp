@@ -134,6 +134,8 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs:
                e.g. when hovered over it in a UI.
         :param pulumi.Input[str] location: String indicating the location of the expression for error reporting,
                e.g. a file name and a position in the file.
+               
+               - - -
         :param pulumi.Input[str] title: Title for the expression, i.e. a short string describing its purpose.
                This can be used e.g. in UIs which allow to enter the expression.
         """
@@ -176,6 +178,8 @@ class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditionArgs:
         """
         String indicating the location of the expression for error reporting,
         e.g. a file name and a position in the file.
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -348,6 +352,8 @@ class DenyPolicyRuleDenyRuleDenialConditionArgs:
                e.g. when hovered over it in a UI.
         :param pulumi.Input[str] location: String indicating the location of the expression for error reporting,
                e.g. a file name and a position in the file.
+               
+               - - -
         :param pulumi.Input[str] title: Title for the expression, i.e. a short string describing its purpose.
                This can be used e.g. in UIs which allow to enter the expression.
         """
@@ -390,6 +396,8 @@ class DenyPolicyRuleDenyRuleDenialConditionArgs:
         """
         String indicating the location of the expression for error reporting,
         e.g. a file name and a position in the file.
+
+        - - -
         """
         return pulumi.get(self, "location")
 

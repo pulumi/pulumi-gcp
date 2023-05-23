@@ -10,6 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Datastream
 {
     /// <summary>
+    /// A set of reusable connection configurations to be used as a source or destination for a stream.
+    /// 
+    /// To get more information about ConnectionProfile, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/datastream/docs/reference/rest/v1/projects.locations.connectionProfiles)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/datastream/docs/create-connection-profiles)
+    /// 
+    /// &gt; **Warning:** All arguments including the following potentially sensitive
+    /// values will be stored in the raw state as plain text: `oracle_profile.password`, `mysql_profile.password`, `mysql_profile.ssl_config.client_key`, `mysql_profile.ssl_config.client_certificate`, `mysql_profile.ssl_config.ca_certificate`, `postgresql_profile.password`, `forward_ssh_connectivity.password`, `forward_ssh_connectivity.private_key`.
+    /// Read more about sensitive data in state.
+    /// 
     /// ## Example Usage
     /// ### Datastream Connection Profile Basic
     /// 
@@ -253,6 +265,9 @@ namespace Pulumi.Gcp.Datastream
 
         /// <summary>
         /// The name of the location this connection profile is located in.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -390,6 +405,9 @@ namespace Pulumi.Gcp.Datastream
 
         /// <summary>
         /// The name of the location this connection profile is located in.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -483,6 +501,9 @@ namespace Pulumi.Gcp.Datastream
 
         /// <summary>
         /// The name of the location this connection profile is located in.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

@@ -27,6 +27,9 @@ class CxPageArgs:
         """
         The set of arguments for constructing a CxPage resource.
         :param pulumi.Input[str] display_name: The human-readable name of the page, unique within the agent.
+               
+               
+               - - -
         :param pulumi.Input['CxPageEntryFulfillmentArgs'] entry_fulfillment: The fulfillment to call when the session is entering the page.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArgs']]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
@@ -82,6 +85,9 @@ class CxPageArgs:
     def display_name(self) -> pulumi.Input[str]:
         """
         The human-readable name of the page, unique within the agent.
+
+
+        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -215,6 +221,9 @@ class _CxPageState:
         """
         Input properties used for looking up and filtering CxPage resources.
         :param pulumi.Input[str] display_name: The human-readable name of the page, unique within the agent.
+               
+               
+               - - -
         :param pulumi.Input['CxPageEntryFulfillmentArgs'] entry_fulfillment: The fulfillment to call when the session is entering the page.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['CxPageEventHandlerArgs']]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
@@ -235,6 +244,7 @@ class _CxPageState:
                If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
         :param pulumi.Input[str] name: (Output)
                The unique identifier of this transition route.
+               
                (Output)
                The unique identifier of this event handler.
         :param pulumi.Input[str] parent: The flow to create a page for.
@@ -277,6 +287,9 @@ class _CxPageState:
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
         The human-readable name of the page, unique within the agent.
+
+
+        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -352,6 +365,7 @@ class _CxPageState:
         """
         (Output)
         The unique identifier of this transition route.
+
         (Output)
         The unique identifier of this event handler.
         """
@@ -515,6 +529,9 @@ class CxPage(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The human-readable name of the page, unique within the agent.
+               
+               
+               - - -
         :param pulumi.Input[pulumi.InputType['CxPageEntryFulfillmentArgs']] entry_fulfillment: The fulfillment to call when the session is entering the page.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageEventHandlerArgs']]]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
@@ -713,6 +730,9 @@ class CxPage(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The human-readable name of the page, unique within the agent.
+               
+               
+               - - -
         :param pulumi.Input[pulumi.InputType['CxPageEntryFulfillmentArgs']] entry_fulfillment: The fulfillment to call when the session is entering the page.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CxPageEventHandlerArgs']]]] event_handlers: Handlers associated with the page to handle events such as webhook errors, no match or no input.
@@ -733,6 +753,7 @@ class CxPage(pulumi.CustomResource):
                If not specified, the agent's default language is used. Many languages are supported. Note: languages must be enabled in the agent before they can be used.
         :param pulumi.Input[str] name: (Output)
                The unique identifier of this transition route.
+               
                (Output)
                The unique identifier of this event handler.
         :param pulumi.Input[str] parent: The flow to create a page for.
@@ -771,6 +792,9 @@ class CxPage(pulumi.CustomResource):
     def display_name(self) -> pulumi.Output[str]:
         """
         The human-readable name of the page, unique within the agent.
+
+
+        - - -
         """
         return pulumi.get(self, "display_name")
 
@@ -826,6 +850,7 @@ class CxPage(pulumi.CustomResource):
         """
         (Output)
         The unique identifier of this transition route.
+
         (Output)
         The unique identifier of this event handler.
         """

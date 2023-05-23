@@ -26,6 +26,9 @@ class DomainTrustArgs:
         The set of arguments for constructing a DomainTrust resource.
         :param pulumi.Input[str] domain: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
                https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+               
+               
+               - - -
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_dns_ip_addresses: The target DNS server IP addresses which can resolve the remote domain involved in the trust.
         :param pulumi.Input[str] target_domain_name: The fully qualified target domain name which will be in trust with the current domain.
         :param pulumi.Input[str] trust_direction: The trust direction, which decides if the current domain is trusted, trusting, or both.
@@ -55,6 +58,9 @@ class DomainTrustArgs:
         """
         The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
         https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+
+
+        - - -
         """
         return pulumi.get(self, "domain")
 
@@ -166,6 +172,9 @@ class _DomainTrustState:
         Input properties used for looking up and filtering DomainTrust resources.
         :param pulumi.Input[str] domain: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
                https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] selective_authentication: Whether the trusted side has forest/domain wide access or selective access to an approved set of resources.
@@ -201,6 +210,9 @@ class _DomainTrustState:
         """
         The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
         https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+
+
+        - - -
         """
         return pulumi.get(self, "domain")
 
@@ -312,6 +324,18 @@ class DomainTrust(pulumi.CustomResource):
                  trust_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Adds a trust between Active Directory domains
+
+        To get more information about DomainTrust, see:
+
+        * [API documentation](https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains/attachTrust)
+        * How-to Guides
+            * [Active Directory Trust](https://cloud.google.com/managed-microsoft-ad/docs/create-one-way-trust)
+
+        > **Warning:** All arguments including the following potentially sensitive
+        values will be stored in the raw state as plain text: `trust_handshake_secret`.
+        Read more about sensitive data in state.
+
         ## Example Usage
         ### Active Directory Domain Trust Basic
 
@@ -348,6 +372,9 @@ class DomainTrust(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
                https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] selective_authentication: Whether the trusted side has forest/domain wide access or selective access to an approved set of resources.
@@ -367,6 +394,18 @@ class DomainTrust(pulumi.CustomResource):
                  args: DomainTrustArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Adds a trust between Active Directory domains
+
+        To get more information about DomainTrust, see:
+
+        * [API documentation](https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains/attachTrust)
+        * How-to Guides
+            * [Active Directory Trust](https://cloud.google.com/managed-microsoft-ad/docs/create-one-way-trust)
+
+        > **Warning:** All arguments including the following potentially sensitive
+        values will be stored in the raw state as plain text: `trust_handshake_secret`.
+        Read more about sensitive data in state.
+
         ## Example Usage
         ### Active Directory Domain Trust Basic
 
@@ -480,6 +519,9 @@ class DomainTrust(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
                https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[bool] selective_authentication: Whether the trusted side has forest/domain wide access or selective access to an approved set of resources.
@@ -512,6 +554,9 @@ class DomainTrust(pulumi.CustomResource):
         """
         The fully qualified domain name. e.g. mydomain.myorganization.com, with the restrictions,
         https://cloud.google.com/managed-microsoft-ad/reference/rest/v1/projects.locations.global.domains.
+
+
+        - - -
         """
         return pulumi.get(self, "domain")
 

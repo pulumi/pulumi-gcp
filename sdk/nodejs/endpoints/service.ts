@@ -99,6 +99,8 @@ export class Service extends pulumi.CustomResource {
     public readonly protocOutputBase64!: pulumi.Output<string | undefined>;
     /**
      * The name of the service.  Usually of the form `$apiname.endpoints.$projectid.cloud.goog`.
+     *
+     * - - -
      */
     public readonly serviceName!: pulumi.Output<string>;
 
@@ -184,6 +186,8 @@ export interface ServiceState {
     protocOutputBase64?: pulumi.Input<string>;
     /**
      * The name of the service.  Usually of the form `$apiname.endpoints.$projectid.cloud.goog`.
+     *
+     * - - -
      */
     serviceName?: pulumi.Input<string>;
 }
@@ -212,6 +216,8 @@ export interface ServiceArgs {
     protocOutputBase64?: pulumi.Input<string>;
     /**
      * The name of the service.  Usually of the form `$apiname.endpoints.$projectid.cloud.goog`.
+     *
+     * - - -
      */
     serviceName: pulumi.Input<string>;
 }

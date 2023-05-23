@@ -80,6 +80,8 @@ public class KeyRing extends com.pulumi.resources.CustomResource {
      * The location for the KeyRing.
      * A full list of valid locations can be found by running `gcloud kms locations list`.
      * 
+     * ***
+     * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
@@ -87,6 +89,8 @@ public class KeyRing extends com.pulumi.resources.CustomResource {
     /**
      * @return The location for the KeyRing.
      * A full list of valid locations can be found by running `gcloud kms locations list`.
+     * 
+     * ***
      * 
      */
     public Output<String> location() {

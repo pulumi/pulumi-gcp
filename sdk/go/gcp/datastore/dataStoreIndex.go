@@ -93,6 +93,8 @@ type DataStoreIndex struct {
 	// The index id.
 	IndexId pulumi.StringOutput `pulumi:"indexId"`
 	// The entity kind which the index applies to.
+	//
+	// ***
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -141,6 +143,8 @@ type dataStoreIndexState struct {
 	// The index id.
 	IndexId *string `pulumi:"indexId"`
 	// The entity kind which the index applies to.
+	//
+	// ***
 	Kind *string `pulumi:"kind"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -158,6 +162,8 @@ type DataStoreIndexState struct {
 	// The index id.
 	IndexId pulumi.StringPtrInput
 	// The entity kind which the index applies to.
+	//
+	// ***
 	Kind pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -177,6 +183,8 @@ type dataStoreIndexArgs struct {
 	// Possible values are: `NONE`, `ALL_ANCESTORS`.
 	Ancestor *string `pulumi:"ancestor"`
 	// The entity kind which the index applies to.
+	//
+	// ***
 	Kind string `pulumi:"kind"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -193,6 +201,8 @@ type DataStoreIndexArgs struct {
 	// Possible values are: `NONE`, `ALL_ANCESTORS`.
 	Ancestor pulumi.StringPtrInput
 	// The entity kind which the index applies to.
+	//
+	// ***
 	Kind pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -302,6 +312,8 @@ func (o DataStoreIndexOutput) IndexId() pulumi.StringOutput {
 }
 
 // The entity kind which the index applies to.
+//
+// ***
 func (o DataStoreIndexOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataStoreIndex) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }

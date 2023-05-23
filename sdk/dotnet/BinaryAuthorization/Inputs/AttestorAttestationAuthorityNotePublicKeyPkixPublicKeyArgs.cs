@@ -25,6 +25,8 @@ namespace Pulumi.Gcp.BinaryAuthorization.Inputs
         /// match the structure and any object identifiers encoded in
         /// publicKeyPem (i.e. this algorithm must match that of the
         /// public key).
+        /// 
+        /// - - -
         /// </summary>
         [Input("signatureAlgorithm")]
         public Input<string>? SignatureAlgorithm { get; set; }

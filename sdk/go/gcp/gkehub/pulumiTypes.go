@@ -372,6 +372,8 @@ type FeatureMembershipConfigmanagementConfigSync struct {
 	// (Optional) Structure is documented below.
 	Git *FeatureMembershipConfigmanagementConfigSyncGit `pulumi:"git"`
 	// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+	//
+	// Use either `git` or `oci` config option.
 	Oci *FeatureMembershipConfigmanagementConfigSyncOci `pulumi:"oci"`
 	// Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
 	PreventDrift *bool `pulumi:"preventDrift"`
@@ -394,6 +396,8 @@ type FeatureMembershipConfigmanagementConfigSyncArgs struct {
 	// (Optional) Structure is documented below.
 	Git FeatureMembershipConfigmanagementConfigSyncGitPtrInput `pulumi:"git"`
 	// (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+	//
+	// Use either `git` or `oci` config option.
 	Oci FeatureMembershipConfigmanagementConfigSyncOciPtrInput `pulumi:"oci"`
 	// Supported from ACM versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
 	PreventDrift pulumi.BoolPtrInput `pulumi:"preventDrift"`
@@ -486,6 +490,8 @@ func (o FeatureMembershipConfigmanagementConfigSyncOutput) Git() FeatureMembersh
 }
 
 // (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+//
+// Use either `git` or `oci` config option.
 func (o FeatureMembershipConfigmanagementConfigSyncOutput) Oci() FeatureMembershipConfigmanagementConfigSyncOciPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *FeatureMembershipConfigmanagementConfigSyncOci {
 		return v.Oci
@@ -537,6 +543,8 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Git() FeatureMembe
 }
 
 // (Optional) Supported from ACM versions 1.12.0 onwards. Structure is documented below.
+//
+// Use either `git` or `oci` config option.
 func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Oci() FeatureMembershipConfigmanagementConfigSyncOciPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSync) *FeatureMembershipConfigmanagementConfigSyncOci {
 		if v == nil {

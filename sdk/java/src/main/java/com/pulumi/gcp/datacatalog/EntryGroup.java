@@ -128,6 +128,8 @@ public class EntryGroup extends com.pulumi.resources.CustomResource {
      * The id of the entry group to create. The id must begin with a letter or underscore,
      * contain only English letters, numbers and underscores, and be at most 64 characters.
      * 
+     * ***
+     * 
      */
     @Export(name="entryGroupId", type=String.class, parameters={})
     private Output<String> entryGroupId;
@@ -135,6 +137,8 @@ public class EntryGroup extends com.pulumi.resources.CustomResource {
     /**
      * @return The id of the entry group to create. The id must begin with a letter or underscore,
      * contain only English letters, numbers and underscores, and be at most 64 characters.
+     * 
+     * ***
      * 
      */
     public Output<String> entryGroupId() {

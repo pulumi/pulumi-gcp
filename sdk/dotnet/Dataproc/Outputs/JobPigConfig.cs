@@ -19,6 +19,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         public readonly bool? ContinueOnFailure;
         /// <summary>
         /// HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
+        /// 
+        /// * `logging_config.driver_log_levels`- (Required) The per-package log levels for the driver. This may include 'root' package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
         /// </summary>
         public readonly ImmutableArray<string> JarFileUris;
         public readonly Outputs.JobPigConfigLoggingConfig? LoggingConfig;

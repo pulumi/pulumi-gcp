@@ -251,6 +251,7 @@ export class Service extends pulumi.CustomResource {
      * connections for the revision, use the "run.googleapis.com/cloudsql-instances"
      * annotation key.
      * Structure is documented below.
+     *
      * (Optional)
      * Metadata associated with this Service, including name, namespace, labels,
      * and annotations.
@@ -353,6 +354,7 @@ export interface ServiceState {
      * connections for the revision, use the "run.googleapis.com/cloudsql-instances"
      * annotation key.
      * Structure is documented below.
+     *
      * (Optional)
      * Metadata associated with this Service, including name, namespace, labels,
      * and annotations.
@@ -416,6 +418,7 @@ export interface ServiceArgs {
      * connections for the revision, use the "run.googleapis.com/cloudsql-instances"
      * annotation key.
      * Structure is documented below.
+     *
      * (Optional)
      * Metadata associated with this Service, including name, namespace, labels,
      * and annotations.

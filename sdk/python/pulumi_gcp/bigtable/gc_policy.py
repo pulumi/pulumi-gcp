@@ -32,6 +32,10 @@ class GCPolicyArgs:
         :param pulumi.Input[str] table: The name of the table.
         :param pulumi.Input[str] deletion_policy: The deletion policy for the GC policy.
                Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+               
+               Possible values are: `ABANDON`.
+               
+               -----
         :param pulumi.Input[str] gc_rules: Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
         :param pulumi.Input['GCPolicyMaxAgeArgs'] max_age: GC policy that applies to all cells older than the given age.
         :param pulumi.Input[Sequence[pulumi.Input['GCPolicyMaxVersionArgs']]] max_versions: GC policy that applies to all versions of a cell except for the most recent.
@@ -96,6 +100,10 @@ class GCPolicyArgs:
         """
         The deletion policy for the GC policy.
         Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+
+        Possible values are: `ABANDON`.
+
+        -----
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -181,6 +189,10 @@ class _GCPolicyState:
         :param pulumi.Input[str] column_family: The name of the column family.
         :param pulumi.Input[str] deletion_policy: The deletion policy for the GC policy.
                Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+               
+               Possible values are: `ABANDON`.
+               
+               -----
         :param pulumi.Input[str] gc_rules: Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input['GCPolicyMaxAgeArgs'] max_age: GC policy that applies to all cells older than the given age.
@@ -226,6 +238,10 @@ class _GCPolicyState:
         """
         The deletion policy for the GC policy.
         Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+
+        Possible values are: `ABANDON`.
+
+        -----
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -460,6 +476,10 @@ class GCPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] column_family: The name of the column family.
         :param pulumi.Input[str] deletion_policy: The deletion policy for the GC policy.
                Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+               
+               Possible values are: `ABANDON`.
+               
+               -----
         :param pulumi.Input[str] gc_rules: Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[pulumi.InputType['GCPolicyMaxAgeArgs']] max_age: GC policy that applies to all cells older than the given age.
@@ -673,6 +693,10 @@ class GCPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] column_family: The name of the column family.
         :param pulumi.Input[str] deletion_policy: The deletion policy for the GC policy.
                Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+               
+               Possible values are: `ABANDON`.
+               
+               -----
         :param pulumi.Input[str] gc_rules: Serialized JSON object to represent a more complex GC policy. Conflicts with `mode`, `max_age` and `max_version`. Conflicts with `mode`, `max_age` and `max_version`.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[pulumi.InputType['GCPolicyMaxAgeArgs']] max_age: GC policy that applies to all cells older than the given age.
@@ -710,6 +734,10 @@ class GCPolicy(pulumi.CustomResource):
         """
         The deletion policy for the GC policy.
         Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+
+        Possible values are: `ABANDON`.
+
+        -----
         """
         return pulumi.get(self, "deletion_policy")
 

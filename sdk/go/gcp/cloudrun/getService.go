@@ -52,6 +52,8 @@ func LookupService(ctx *pulumi.Context, args *LookupServiceArgs, opts ...pulumi.
 // A collection of arguments for invoking getService.
 type LookupServiceArgs struct {
 	// The location of the cloud run instance. eg us-central1
+	//
+	// ***
 	Location string `pulumi:"location"`
 	// The name of the Cloud Run Service.
 	Name string `pulumi:"name"`
@@ -90,6 +92,8 @@ func LookupServiceOutput(ctx *pulumi.Context, args LookupServiceOutputArgs, opts
 // A collection of arguments for invoking getService.
 type LookupServiceOutputArgs struct {
 	// The location of the cloud run instance. eg us-central1
+	//
+	// ***
 	Location pulumi.StringInput `pulumi:"location"`
 	// The name of the Cloud Run Service.
 	Name pulumi.StringInput `pulumi:"name"`

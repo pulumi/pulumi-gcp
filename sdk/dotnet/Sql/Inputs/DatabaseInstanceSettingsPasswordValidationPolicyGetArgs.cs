@@ -26,6 +26,9 @@ namespace Pulumi.Gcp.Sql.Inputs
 
         /// <summary>
         /// Enables or disable the password validation policy.
+        /// 
+        /// The optional `replica_configuration` block must have `master_instance_name` set
+        /// to work, cannot be updated, and supports:
         /// </summary>
         [Input("enablePasswordPolicy", required: true)]
         public Input<bool> EnablePasswordPolicy { get; set; } = null!;

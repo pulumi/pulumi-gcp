@@ -320,6 +320,8 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
      * A reference to the UrlMap resource that defines the mapping from URL
      * to the BackendService.
      * 
+     * ***
+     * 
      */
     @Export(name="urlMap", type=String.class, parameters={})
     private Output<String> urlMap;
@@ -327,6 +329,8 @@ public class TargetHttpsProxy extends com.pulumi.resources.CustomResource {
     /**
      * @return A reference to the UrlMap resource that defines the mapping from URL
      * to the BackendService.
+     * 
+     * ***
      * 
      */
     public Output<String> urlMap() {

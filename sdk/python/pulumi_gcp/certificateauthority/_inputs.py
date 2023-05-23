@@ -163,6 +163,9 @@ class AuthorityConfigArgs:
         """
         :param pulumi.Input['AuthorityConfigSubjectConfigArgs'] subject_config: Specifies some of the values in a certificate that are related to the subject.
                Structure is documented below.
+               
+               
+               <a name="nested_x509_config"></a>The `x509_config` block supports:
         :param pulumi.Input['AuthorityConfigX509ConfigArgs'] x509_config: Describes how some of the technical X.509 fields in a certificate should be populated.
                Structure is documented below.
         """
@@ -175,6 +178,9 @@ class AuthorityConfigArgs:
         """
         Specifies some of the values in a certificate that are related to the subject.
         Structure is documented below.
+
+
+        <a name="nested_x509_config"></a>The `x509_config` block supports:
         """
         return pulumi.get(self, "subject_config")
 
@@ -1277,6 +1283,8 @@ class AuthorityKeySpecArgs:
         :param pulumi.Input[str] algorithm: The algorithm to use for creating a managed Cloud KMS key for a for a simplified
                experience. All managed keys will be have their ProtectionLevel as HSM.
                Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
+               
+               - - -
         :param pulumi.Input[str] cloud_kms_key_version: The resource name for an existing Cloud KMS CryptoKeyVersion in the format
                `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
         """
@@ -1292,6 +1300,8 @@ class AuthorityKeySpecArgs:
         The algorithm to use for creating a managed Cloud KMS key for a for a simplified
         experience. All managed keys will be have their ProtectionLevel as HSM.
         Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
+
+        - - -
         """
         return pulumi.get(self, "algorithm")
 
@@ -1394,7 +1404,6 @@ class CaPoolIamBindingConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -1428,9 +1437,6 @@ class CaPoolIamBindingConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -1447,7 +1453,6 @@ class CaPoolIamMemberConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -1481,9 +1486,6 @@ class CaPoolIamMemberConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -2778,6 +2780,9 @@ class CertificateCertificateDescriptionArgs:
                Describes a list of locations to obtain CRL information, i.e. the DistributionPoint.fullName described by https://tools.ietf.org/html/rfc5280#section-4.2.1.13
         :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionPublicKeyArgs']]] public_keys: A PublicKey describes a public key.
                Structure is documented below.
+               
+               
+               <a name="nested_x509_config"></a>The `x509_config` block supports:
         :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionArgs']]] subject_descriptions: (Output)
                Describes some of the values in a certificate that are related to the subject and lifetime.
                Structure is documented below.
@@ -2884,6 +2889,9 @@ class CertificateCertificateDescriptionArgs:
         """
         A PublicKey describes a public key.
         Structure is documented below.
+
+
+        <a name="nested_x509_config"></a>The `x509_config` block supports:
         """
         return pulumi.get(self, "public_keys")
 
@@ -3384,8 +3392,10 @@ class CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsag
                  object_id_paths: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[int]]] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+               
                (Required)
                An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+               
                (Required)
                An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         """
@@ -3397,8 +3407,10 @@ class CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsag
     def object_id_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
         An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+
         (Required)
         An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+
         (Required)
         An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         """
@@ -3802,6 +3814,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
         """
         :param pulumi.Input[bool] critical: Indicates whether or not this extension is critical (i.e., if the client does not know how to
                handle this extension, the client should consider this to be an error).
+               
                (Required)
                Indicates whether or not the name constraints are marked critical.
         :param pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs']]] obect_ids: (Output)
@@ -3822,6 +3835,7 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
         """
         Indicates whether or not this extension is critical (i.e., if the client does not know how to
         handle this extension, the client should consider this to be an error).
+
         (Required)
         Indicates whether or not the name constraints are marked critical.
         """
@@ -3864,8 +3878,10 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
                  object_id_paths: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[int]]] object_id_paths: An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+               
                (Required)
                An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+               
                (Required)
                An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         """
@@ -3877,8 +3893,10 @@ class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan
     def object_id_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
         """
         An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+
         (Required)
         An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+
         (Required)
         An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
         """
@@ -4721,6 +4739,9 @@ class CertificateConfigArgs:
         """
         :param pulumi.Input['CertificateConfigPublicKeyArgs'] public_key: A PublicKey describes a public key.
                Structure is documented below.
+               
+               
+               <a name="nested_x509_config"></a>The `x509_config` block supports:
         :param pulumi.Input['CertificateConfigSubjectConfigArgs'] subject_config: Specifies some of the values in a certificate that are related to the subject.
                Structure is documented below.
         :param pulumi.Input['CertificateConfigX509ConfigArgs'] x509_config: Describes how some of the technical X.509 fields in a certificate should be populated.
@@ -4736,6 +4757,9 @@ class CertificateConfigArgs:
         """
         A PublicKey describes a public key.
         Structure is documented below.
+
+
+        <a name="nested_x509_config"></a>The `x509_config` block supports:
         """
         return pulumi.get(self, "public_key")
 
@@ -5934,7 +5958,6 @@ class CertificateTemplateIamBindingConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -5968,9 +5991,6 @@ class CertificateTemplateIamBindingConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -5987,7 +6007,6 @@ class CertificateTemplateIamMemberConditionArgs:
         """
         :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
         :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
-        :param pulumi.Input[str] description: An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
@@ -6021,9 +6040,6 @@ class CertificateTemplateIamMemberConditionArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -6362,6 +6378,8 @@ class CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs:
                  object_id_paths: pulumi.Input[Sequence[pulumi.Input[int]]]):
         """
         :param pulumi.Input[Sequence[pulumi.Input[int]]] object_id_paths: Required. The parts of an OID path. The most significant parts of the path come first.
+               
+               - - -
         """
         pulumi.set(__self__, "object_id_paths", object_id_paths)
 
@@ -6370,6 +6388,8 @@ class CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs:
     def object_id_paths(self) -> pulumi.Input[Sequence[pulumi.Input[int]]]:
         """
         Required. The parts of an OID path. The most significant parts of the path come first.
+
+        - - -
         """
         return pulumi.get(self, "object_id_paths")
 

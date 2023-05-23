@@ -66,6 +66,8 @@ type TargetGrpcProxy struct {
 	// means the first character must be a lowercase letter, and all
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -139,6 +141,8 @@ type targetGrpcProxyState struct {
 	// means the first character must be a lowercase letter, and all
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -184,6 +188,8 @@ type TargetGrpcProxyState struct {
 	// means the first character must be a lowercase letter, and all
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -223,6 +229,8 @@ type targetGrpcProxyArgs struct {
 	// means the first character must be a lowercase letter, and all
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -255,6 +263,8 @@ type TargetGrpcProxyArgs struct {
 	// means the first character must be a lowercase letter, and all
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -391,6 +401,8 @@ func (o TargetGrpcProxyOutput) Fingerprint() pulumi.StringOutput {
 // means the first character must be a lowercase letter, and all
 // following characters must be a dash, lowercase letter, or digit,
 // except the last character, which cannot be a dash.
+//
+// ***
 func (o TargetGrpcProxyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetGrpcProxy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

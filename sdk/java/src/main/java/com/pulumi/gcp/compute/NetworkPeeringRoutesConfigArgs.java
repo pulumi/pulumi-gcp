@@ -49,12 +49,16 @@ public final class NetworkPeeringRoutesConfigArgs extends com.pulumi.resources.R
     /**
      * The name of the primary network for the peering.
      * 
+     * ***
+     * 
      */
     @Import(name="network", required=true)
     private Output<String> network;
 
     /**
      * @return The name of the primary network for the peering.
+     * 
+     * ***
      * 
      */
     public Output<String> network() {
@@ -166,6 +170,8 @@ public final class NetworkPeeringRoutesConfigArgs extends com.pulumi.resources.R
         /**
          * @param network The name of the primary network for the peering.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -176,6 +182,8 @@ public final class NetworkPeeringRoutesConfigArgs extends com.pulumi.resources.R
 
         /**
          * @param network The name of the primary network for the peering.
+         * 
+         * ***
          * 
          * @return builder
          * 

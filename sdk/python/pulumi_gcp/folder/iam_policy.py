@@ -22,6 +22,11 @@ class IAMPolicyArgs:
         :param pulumi.Input[str] policy_data: The `organizations_get_iam_policy` data source that represents
                the IAM policy that will be applied to the folder. The policy will be
                merged with any existing policy applied to the folder.
+               
+               Changing this updates the policy.
+               
+               Deleting this removes all policies from the folder, locking out users without
+               folder-level access.
         """
         pulumi.set(__self__, "folder", folder)
         pulumi.set(__self__, "policy_data", policy_data)
@@ -45,6 +50,11 @@ class IAMPolicyArgs:
         The `organizations_get_iam_policy` data source that represents
         the IAM policy that will be applied to the folder. The policy will be
         merged with any existing policy applied to the folder.
+
+        Changing this updates the policy.
+
+        Deleting this removes all policies from the folder, locking out users without
+        folder-level access.
         """
         return pulumi.get(self, "policy_data")
 
@@ -66,6 +76,11 @@ class _IAMPolicyState:
         :param pulumi.Input[str] policy_data: The `organizations_get_iam_policy` data source that represents
                the IAM policy that will be applied to the folder. The policy will be
                merged with any existing policy applied to the folder.
+               
+               Changing this updates the policy.
+               
+               Deleting this removes all policies from the folder, locking out users without
+               folder-level access.
         """
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
@@ -105,6 +120,11 @@ class _IAMPolicyState:
         The `organizations_get_iam_policy` data source that represents
         the IAM policy that will be applied to the folder. The policy will be
         merged with any existing policy applied to the folder.
+
+        Changing this updates the policy.
+
+        Deleting this removes all policies from the folder, locking out users without
+        folder-level access.
         """
         return pulumi.get(self, "policy_data")
 
@@ -303,6 +323,11 @@ class IAMPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] policy_data: The `organizations_get_iam_policy` data source that represents
                the IAM policy that will be applied to the folder. The policy will be
                merged with any existing policy applied to the folder.
+               
+               Changing this updates the policy.
+               
+               Deleting this removes all policies from the folder, locking out users without
+               folder-level access.
         """
         ...
     @overload
@@ -544,6 +569,11 @@ class IAMPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] policy_data: The `organizations_get_iam_policy` data source that represents
                the IAM policy that will be applied to the folder. The policy will be
                merged with any existing policy applied to the folder.
+               
+               Changing this updates the policy.
+               
+               Deleting this removes all policies from the folder, locking out users without
+               folder-level access.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -577,6 +607,11 @@ class IAMPolicy(pulumi.CustomResource):
         The `organizations_get_iam_policy` data source that represents
         the IAM policy that will be applied to the folder. The policy will be
         merged with any existing policy applied to the folder.
+
+        Changing this updates the policy.
+
+        Deleting this removes all policies from the folder, locking out users without
+        folder-level access.
         """
         return pulumi.get(self, "policy_data")
 

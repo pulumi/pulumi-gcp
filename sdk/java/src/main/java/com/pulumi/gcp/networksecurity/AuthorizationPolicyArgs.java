@@ -85,12 +85,16 @@ public final class AuthorizationPolicyArgs extends com.pulumi.resources.Resource
     /**
      * Name of the AuthorizationPolicy resource.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Name of the AuthorizationPolicy resource.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -254,6 +258,8 @@ public final class AuthorizationPolicyArgs extends com.pulumi.resources.Resource
         /**
          * @param name Name of the AuthorizationPolicy resource.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -264,6 +270,8 @@ public final class AuthorizationPolicyArgs extends com.pulumi.resources.Resource
 
         /**
          * @param name Name of the AuthorizationPolicy resource.
+         * 
+         * ***
          * 
          * @return builder
          * 

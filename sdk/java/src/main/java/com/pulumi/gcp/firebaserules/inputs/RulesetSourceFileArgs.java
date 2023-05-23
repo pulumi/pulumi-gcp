@@ -48,12 +48,16 @@ public final class RulesetSourceFileArgs extends com.pulumi.resources.ResourceAr
     /**
      * File name.
      * 
+     * ***
+     * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
      * @return File name.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {
@@ -131,6 +135,8 @@ public final class RulesetSourceFileArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param name File name.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -141,6 +147,8 @@ public final class RulesetSourceFileArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param name File name.
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -70,12 +70,16 @@ public final class GetRegionInstanceGroupPlainArgs extends com.pulumi.resources.
     /**
      * The link to the instance group.  One of `name` or `self_link` must be provided.
      * 
+     * ***
+     * 
      */
     @Import(name="selfLink")
     private @Nullable String selfLink;
 
     /**
      * @return The link to the instance group.  One of `name` or `self_link` must be provided.
+     * 
+     * ***
      * 
      */
     public Optional<String> selfLink() {
@@ -148,6 +152,8 @@ public final class GetRegionInstanceGroupPlainArgs extends com.pulumi.resources.
 
         /**
          * @param selfLink The link to the instance group.  One of `name` or `self_link` must be provided.
+         * 
+         * ***
          * 
          * @return builder
          * 

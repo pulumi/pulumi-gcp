@@ -1194,6 +1194,8 @@ type EdgeCacheOriginTimeout struct {
 	// Defaults to 15 seconds.  The timeout must be a value between 1s and 30s.
 	// The readTimeout is capped by the responseTimeout.  All reads of the HTTP connection/stream must be completed by the deadline set by the responseTimeout.
 	// If the response headers have already been written to the connection, the response will be truncated and logged.
+	//
+	// <a name="nestedAwsV4Authentication"></a>The `awsV4Authentication` block supports:
 	ReadTimeout *string `pulumi:"readTimeout"`
 	// The maximum duration to wait for the last byte of a response to arrive when reading from the HTTP connection/stream.
 	// Defaults to 30 seconds. The timeout must be a value between 1s and 120s.
@@ -1227,6 +1229,8 @@ type EdgeCacheOriginTimeoutArgs struct {
 	// Defaults to 15 seconds.  The timeout must be a value between 1s and 30s.
 	// The readTimeout is capped by the responseTimeout.  All reads of the HTTP connection/stream must be completed by the deadline set by the responseTimeout.
 	// If the response headers have already been written to the connection, the response will be truncated and logged.
+	//
+	// <a name="nestedAwsV4Authentication"></a>The `awsV4Authentication` block supports:
 	ReadTimeout pulumi.StringPtrInput `pulumi:"readTimeout"`
 	// The maximum duration to wait for the last byte of a response to arrive when reading from the HTTP connection/stream.
 	// Defaults to 30 seconds. The timeout must be a value between 1s and 120s.
@@ -1331,6 +1335,8 @@ func (o EdgeCacheOriginTimeoutOutput) MaxAttemptsTimeout() pulumi.StringPtrOutpu
 // Defaults to 15 seconds.  The timeout must be a value between 1s and 30s.
 // The readTimeout is capped by the responseTimeout.  All reads of the HTTP connection/stream must be completed by the deadline set by the responseTimeout.
 // If the response headers have already been written to the connection, the response will be truncated and logged.
+//
+// <a name="nestedAwsV4Authentication"></a>The `awsV4Authentication` block supports:
 func (o EdgeCacheOriginTimeoutOutput) ReadTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeCacheOriginTimeout) *string { return v.ReadTimeout }).(pulumi.StringPtrOutput)
 }
@@ -1396,6 +1402,8 @@ func (o EdgeCacheOriginTimeoutPtrOutput) MaxAttemptsTimeout() pulumi.StringPtrOu
 // Defaults to 15 seconds.  The timeout must be a value between 1s and 30s.
 // The readTimeout is capped by the responseTimeout.  All reads of the HTTP connection/stream must be completed by the deadline set by the responseTimeout.
 // If the response headers have already been written to the connection, the response will be truncated and logged.
+//
+// <a name="nestedAwsV4Authentication"></a>The `awsV4Authentication` block supports:
 func (o EdgeCacheOriginTimeoutPtrOutput) ReadTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheOriginTimeout) *string {
 		if v == nil {
@@ -5336,6 +5344,8 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect struct {
 	// The supported values are:
 	RedirectResponseCode *string `pulumi:"redirectResponseCode"`
 	// If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
+	//
+	// ***
 	StripQuery *bool `pulumi:"stripQuery"`
 }
 
@@ -5367,6 +5377,8 @@ type EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectArgs struct {
 	// The supported values are:
 	RedirectResponseCode pulumi.StringPtrInput `pulumi:"redirectResponseCode"`
 	// If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
+	//
+	// ***
 	StripQuery pulumi.BoolPtrInput `pulumi:"stripQuery"`
 }
 
@@ -5478,6 +5490,8 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectOutput) RedirectRe
 }
 
 // If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
+//
+// ***
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectOutput) StripQuery() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect) *bool { return v.StripQuery }).(pulumi.BoolPtrOutput)
 }
@@ -5562,6 +5576,8 @@ func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput) Redirec
 }
 
 // If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
+//
+// ***
 func (o EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirectPtrOutput) StripQuery() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect) *bool {
 		if v == nil {
@@ -5884,6 +5900,8 @@ type EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel struct {
 	// Required. Label name presented as key in xDS Node Metadata.
 	LabelName string `pulumi:"labelName"`
 	// Required. Label value presented as value corresponding to the above key, in xDS Node Metadata.
+	//
+	// ***
 	LabelValue string `pulumi:"labelValue"`
 }
 
@@ -5902,6 +5920,8 @@ type EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs struct {
 	// Required. Label name presented as key in xDS Node Metadata.
 	LabelName pulumi.StringInput `pulumi:"labelName"`
 	// Required. Label value presented as value corresponding to the above key, in xDS Node Metadata.
+	//
+	// ***
 	LabelValue pulumi.StringInput `pulumi:"labelValue"`
 }
 
@@ -5962,6 +5982,8 @@ func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput) La
 }
 
 // Required. Label value presented as value corresponding to the above key, in xDS Node Metadata.
+//
+// ***
 func (o EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelOutput) LabelValue() pulumi.StringOutput {
 	return o.ApplyT(func(v EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel) string { return v.LabelValue }).(pulumi.StringOutput)
 }
@@ -7029,6 +7051,8 @@ func (o GrpcRouteRuleActionFaultInjectionPolicyDelayPtrOutput) Percentage() pulu
 
 type GrpcRouteRuleActionRetryPolicy struct {
 	// Specifies the allowed number of retries.
+	//
+	// ***
 	NumRetries *int `pulumi:"numRetries"`
 	// Specifies one or more conditions when this retry policy applies.
 	// Each value may be one of: `connect-failure`, `refused-stream`, `cancelled`, `deadline-exceeded`, `resource-exhausted`, `unavailable`.
@@ -7048,6 +7072,8 @@ type GrpcRouteRuleActionRetryPolicyInput interface {
 
 type GrpcRouteRuleActionRetryPolicyArgs struct {
 	// Specifies the allowed number of retries.
+	//
+	// ***
 	NumRetries pulumi.IntPtrInput `pulumi:"numRetries"`
 	// Specifies one or more conditions when this retry policy applies.
 	// Each value may be one of: `connect-failure`, `refused-stream`, `cancelled`, `deadline-exceeded`, `resource-exhausted`, `unavailable`.
@@ -7132,6 +7158,8 @@ func (o GrpcRouteRuleActionRetryPolicyOutput) ToGrpcRouteRuleActionRetryPolicyPt
 }
 
 // Specifies the allowed number of retries.
+//
+// ***
 func (o GrpcRouteRuleActionRetryPolicyOutput) NumRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GrpcRouteRuleActionRetryPolicy) *int { return v.NumRetries }).(pulumi.IntPtrOutput)
 }
@@ -7167,6 +7195,8 @@ func (o GrpcRouteRuleActionRetryPolicyPtrOutput) Elem() GrpcRouteRuleActionRetry
 }
 
 // Specifies the allowed number of retries.
+//
+// ***
 func (o GrpcRouteRuleActionRetryPolicyPtrOutput) NumRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GrpcRouteRuleActionRetryPolicy) *int {
 		if v == nil {
@@ -8071,6 +8101,8 @@ type HttpRouteRuleActionCorsPolicy struct {
 	// Specifies the list of origins that will be allowed to do CORS requests.
 	AllowOrigins []string `pulumi:"allowOrigins"`
 	// If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+	//
+	// ***
 	Disabled *bool `pulumi:"disabled"`
 	// Specifies the content for Access-Control-Expose-Headers header.
 	ExposeHeaders []string `pulumi:"exposeHeaders"`
@@ -8101,6 +8133,8 @@ type HttpRouteRuleActionCorsPolicyArgs struct {
 	// Specifies the list of origins that will be allowed to do CORS requests.
 	AllowOrigins pulumi.StringArrayInput `pulumi:"allowOrigins"`
 	// If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+	//
+	// ***
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// Specifies the content for Access-Control-Expose-Headers header.
 	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
@@ -8211,6 +8245,8 @@ func (o HttpRouteRuleActionCorsPolicyOutput) AllowOrigins() pulumi.StringArrayOu
 }
 
 // If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+//
+// ***
 func (o HttpRouteRuleActionCorsPolicyOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v HttpRouteRuleActionCorsPolicy) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
@@ -8300,6 +8336,8 @@ func (o HttpRouteRuleActionCorsPolicyPtrOutput) AllowOrigins() pulumi.StringArra
 }
 
 // If true, the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
+//
+// ***
 func (o HttpRouteRuleActionCorsPolicyPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HttpRouteRuleActionCorsPolicy) *bool {
 		if v == nil {
@@ -10944,6 +10982,8 @@ type TcpRouteRuleActionDestination struct {
 	// If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
 	// If weights are specified for any one service name, they need to be specified for all of them.
 	// If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+	//
+	// ***
 	Weight *int `pulumi:"weight"`
 }
 
@@ -10965,6 +11005,8 @@ type TcpRouteRuleActionDestinationArgs struct {
 	// If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
 	// If weights are specified for any one service name, they need to be specified for all of them.
 	// If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+	//
+	// ***
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
@@ -11028,6 +11070,8 @@ func (o TcpRouteRuleActionDestinationOutput) ServiceName() pulumi.StringPtrOutpu
 // If only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that backend.
 // If weights are specified for any one service name, they need to be specified for all of them.
 // If weights are unspecified for all services, then, traffic is distributed in equal proportions to all of them.
+//
+// ***
 func (o TcpRouteRuleActionDestinationOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TcpRouteRuleActionDestination) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }
@@ -11332,6 +11376,8 @@ type TlsRouteRuleActionDestination struct {
 	// The URL of a BackendService to route traffic to.
 	ServiceName *string `pulumi:"serviceName"`
 	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
+	//
+	// ***
 	Weight *int `pulumi:"weight"`
 }
 
@@ -11350,6 +11396,8 @@ type TlsRouteRuleActionDestinationArgs struct {
 	// The URL of a BackendService to route traffic to.
 	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
 	// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
+	//
+	// ***
 	Weight pulumi.IntPtrInput `pulumi:"weight"`
 }
 
@@ -11410,6 +11458,8 @@ func (o TlsRouteRuleActionDestinationOutput) ServiceName() pulumi.StringPtrOutpu
 }
 
 // Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
+//
+// ***
 func (o TlsRouteRuleActionDestinationOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TlsRouteRuleActionDestination) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }

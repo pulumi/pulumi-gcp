@@ -114,6 +114,9 @@ export class GameServerDeploymentRollout extends pulumi.CustomResource {
      * This field points to the game server config that is
      * applied by default to all realms and clusters. For example,
      * `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+     *
+     *
+     * - - -
      */
     public readonly defaultGameServerConfig!: pulumi.Output<string>;
     /**
@@ -184,6 +187,9 @@ export interface GameServerDeploymentRolloutState {
      * This field points to the game server config that is
      * applied by default to all realms and clusters. For example,
      * `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+     *
+     *
+     * - - -
      */
     defaultGameServerConfig?: pulumi.Input<string>;
     /**
@@ -218,6 +224,9 @@ export interface GameServerDeploymentRolloutArgs {
      * This field points to the game server config that is
      * applied by default to all realms and clusters. For example,
      * `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+     *
+     *
+     * - - -
      */
     defaultGameServerConfig: pulumi.Input<string>;
     /**

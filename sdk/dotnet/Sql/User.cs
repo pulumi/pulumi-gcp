@@ -114,6 +114,10 @@ namespace Pulumi.Gcp.Sql
         /// The deletion policy for the user.
         /// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
         /// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
+        /// 
+        /// Possible values are: `ABANDON`.
+        /// 
+        /// - - -
         /// </summary>
         [Output("deletionPolicy")]
         public Output<string?> DeletionPolicy { get; private set; } = null!;
@@ -224,6 +228,10 @@ namespace Pulumi.Gcp.Sql
         /// The deletion policy for the user.
         /// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
         /// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
+        /// 
+        /// Possible values are: `ABANDON`.
+        /// 
+        /// - - -
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }
@@ -299,6 +307,10 @@ namespace Pulumi.Gcp.Sql
         /// The deletion policy for the user.
         /// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
         /// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
+        /// 
+        /// Possible values are: `ABANDON`.
+        /// 
+        /// - - -
         /// </summary>
         [Input("deletionPolicy")]
         public Input<string>? DeletionPolicy { get; set; }

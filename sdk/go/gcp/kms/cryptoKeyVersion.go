@@ -81,6 +81,8 @@ type CryptoKeyVersion struct {
 	Attestations CryptoKeyVersionAttestationArrayOutput `pulumi:"attestations"`
 	// The name of the cryptoKey associated with the CryptoKeyVersions.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
+	//
+	// ***
 	CryptoKey pulumi.StringOutput `pulumi:"cryptoKey"`
 	// The time this CryptoKeyVersion key material was generated
 	GenerateTime pulumi.StringOutput `pulumi:"generateTime"`
@@ -133,6 +135,8 @@ type cryptoKeyVersionState struct {
 	Attestations []CryptoKeyVersionAttestation `pulumi:"attestations"`
 	// The name of the cryptoKey associated with the CryptoKeyVersions.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
+	//
+	// ***
 	CryptoKey *string `pulumi:"cryptoKey"`
 	// The time this CryptoKeyVersion key material was generated
 	GenerateTime *string `pulumi:"generateTime"`
@@ -154,6 +158,8 @@ type CryptoKeyVersionState struct {
 	Attestations CryptoKeyVersionAttestationArrayInput
 	// The name of the cryptoKey associated with the CryptoKeyVersions.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
+	//
+	// ***
 	CryptoKey pulumi.StringPtrInput
 	// The time this CryptoKeyVersion key material was generated
 	GenerateTime pulumi.StringPtrInput
@@ -173,6 +179,8 @@ func (CryptoKeyVersionState) ElementType() reflect.Type {
 type cryptoKeyVersionArgs struct {
 	// The name of the cryptoKey associated with the CryptoKeyVersions.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
+	//
+	// ***
 	CryptoKey string `pulumi:"cryptoKey"`
 	// The current state of the CryptoKeyVersion.
 	// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
@@ -183,6 +191,8 @@ type cryptoKeyVersionArgs struct {
 type CryptoKeyVersionArgs struct {
 	// The name of the cryptoKey associated with the CryptoKeyVersions.
 	// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
+	//
+	// ***
 	CryptoKey pulumi.StringInput
 	// The current state of the CryptoKeyVersion.
 	// Possible values are: `PENDING_GENERATION`, `ENABLED`, `DISABLED`, `DESTROYED`, `DESTROY_SCHEDULED`, `PENDING_IMPORT`, `IMPORT_FAILED`.
@@ -290,6 +300,8 @@ func (o CryptoKeyVersionOutput) Attestations() CryptoKeyVersionAttestationArrayO
 
 // The name of the cryptoKey associated with the CryptoKeyVersions.
 // Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
+//
+// ***
 func (o CryptoKeyVersionOutput) CryptoKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKeyVersion) pulumi.StringOutput { return v.CryptoKey }).(pulumi.StringOutput)
 }

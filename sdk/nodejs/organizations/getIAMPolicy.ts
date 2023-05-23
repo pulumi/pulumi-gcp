@@ -71,6 +71,9 @@ export interface GetIAMPolicyArgs {
      * A nested configuration block (described below)
      * defining a binding to be included in the policy document. Multiple
      * `binding` arguments are supported.
+     *
+     * Each document configuration must have one or more `binding` blocks, which
+     * each accept the following arguments:
      */
     bindings?: inputs.organizations.GetIAMPolicyBinding[];
 }
@@ -150,6 +153,9 @@ export interface GetIAMPolicyOutputArgs {
      * A nested configuration block (described below)
      * defining a binding to be included in the policy document. Multiple
      * `binding` arguments are supported.
+     *
+     * Each document configuration must have one or more `binding` blocks, which
+     * each accept the following arguments:
      */
     bindings?: pulumi.Input<pulumi.Input<inputs.organizations.GetIAMPolicyBindingArgs>[]>;
 }

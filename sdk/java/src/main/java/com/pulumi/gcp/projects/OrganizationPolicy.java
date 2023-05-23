@@ -214,12 +214,16 @@ public class OrganizationPolicy extends com.pulumi.resources.CustomResource {
     /**
      * The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
      * 
+     * ***
+     * 
      */
     @Export(name="constraint", type=String.class, parameters={})
     private Output<String> constraint;
 
     /**
      * @return The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+     * 
+     * ***
      * 
      */
     public Output<String> constraint() {
@@ -270,12 +274,22 @@ public class OrganizationPolicy extends com.pulumi.resources.CustomResource {
     /**
      * A restore policy is a constraint to restore the default policy. Structure is documented below.
      * 
+     * &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
+     * effectively be unset. This is represented in the UI as the constraint being &#39;Inherited&#39;.
+     * 
+     * ***
+     * 
      */
     @Export(name="restorePolicy", type=OrganizationPolicyRestorePolicy.class, parameters={})
     private Output</* @Nullable */ OrganizationPolicyRestorePolicy> restorePolicy;
 
     /**
      * @return A restore policy is a constraint to restore the default policy. Structure is documented below.
+     * 
+     * &gt; **Note:** If none of [`boolean_policy`, `list_policy`, `restore_policy`] are defined the policy for a given constraint will
+     * effectively be unset. This is represented in the UI as the constraint being &#39;Inherited&#39;.
+     * 
+     * ***
      * 
      */
     public Output<Optional<OrganizationPolicyRestorePolicy>> restorePolicy() {

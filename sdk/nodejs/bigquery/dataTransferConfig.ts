@@ -7,6 +7,19 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Represents a data transfer configuration. A transfer configuration
+ * contains all metadata needed to perform a data transfer.
+ *
+ * To get more information about Config, see:
+ *
+ * * [API documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/v1/projects.locations.transferConfigs/create)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/bigquery/docs/reference/datatransfer/rest/)
+ *
+ * > **Warning:** All arguments including the following potentially sensitive
+ * values will be stored in the raw state as plain text: `sensitive_params.secret_access_key`.
+ * Read more about sensitive data in state.
+ *
  * ## Example Usage
  * ### Bigquerydatatransfer Config Scheduled Query
  *
@@ -128,11 +141,13 @@ export class DataTransferConfig extends pulumi.CustomResource {
      */
     public readonly notificationPubsubTopic!: pulumi.Output<string | undefined>;
     /**
-     * Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section
-     * for each data source. For example the parameters for Cloud Storage transfers are listed here:
-     * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
-     * parameter that cannot be updated (due to api limitations) [please force recreation of the
-     * resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
+     * Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+     * section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+     * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+     * **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
+     *
+     *
+     * - - -
      */
     public readonly params!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -285,11 +300,13 @@ export interface DataTransferConfigState {
      */
     notificationPubsubTopic?: pulumi.Input<string>;
     /**
-     * Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section
-     * for each data source. For example the parameters for Cloud Storage transfers are listed here:
-     * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
-     * parameter that cannot be updated (due to api limitations) [please force recreation of the
-     * resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
+     * Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+     * section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+     * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+     * **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
+     *
+     *
+     * - - -
      */
     params?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -376,11 +393,13 @@ export interface DataTransferConfigArgs {
      */
     notificationPubsubTopic?: pulumi.Input<string>;
     /**
-     * Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer' section
-     * for each data source. For example the parameters for Cloud Storage transfers are listed here:
-     * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq **NOTE** : If you are attempting to update a
-     * parameter that cannot be updated (due to api limitations) [please force recreation of the
-     * resource](https://www.terraform.io/cli/state/taint#forcing-re-creation-of-resources).
+     * Parameters specific to each data source. For more information see the bq tab in the 'Setting up a data transfer'
+     * section for each data source. For example the parameters for Cloud Storage transfers are listed here:
+     * https://cloud.google.com/bigquery-transfer/docs/cloud-storage-transfer#bq
+     * **NOTE** : If you are attempting to update a parameter that cannot be updated (due to api limitations) please force recreation of the resource.
+     *
+     *
+     * - - -
      */
     params: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

@@ -14,12 +14,16 @@ public final class InstanceGroupManagerInstanceLifecyclePolicy {
     /**
      * @return ), Specifies whether to apply the group&#39;s latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group&#39;s instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group&#39;s update policy type.
      * 
+     * ***
+     * 
      */
     private @Nullable String forceUpdateOnRepair;
 
     private InstanceGroupManagerInstanceLifecyclePolicy() {}
     /**
      * @return ), Specifies whether to apply the group&#39;s latest configuration when repairing a VM. Valid options are: `YES`, `NO`. If `YES` and you updated the group&#39;s instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If `NO` (default), then updates are applied in accordance with the group&#39;s update policy type.
+     * 
+     * ***
      * 
      */
     public Optional<String> forceUpdateOnRepair() {

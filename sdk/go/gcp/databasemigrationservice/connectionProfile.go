@@ -11,6 +11,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A connection profile definition.
+//
+// To get more information about ConnectionProfile, see:
+//
+// * [API documentation](https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles/create)
+// * How-to Guides
+//   - [Database Migration](https://cloud.google.com/database-migration/docs/)
+//
+// > **Warning:** All arguments including the following potentially sensitive
+// values will be stored in the raw state as plain text: `mysql.password`, `mysql.ssl.client_key`, `mysql.ssl.client_certificate`, `mysql.ssl.ca_certificate`, `postgresql.password`, `postgresql.ssl.client_key`, `postgresql.ssl.client_certificate`, `postgresql.ssl.ca_certificate`, `cloudsql.settings.root_password`, `alloydb.settings.initial_user.password`.
+// Read more about sensitive data in state.
+//
 // ## Example Usage
 // ### Database Migration Service Connection Profile Cloudsql
 //
@@ -236,6 +248,8 @@ type ConnectionProfile struct {
 	// Structure is documented below.
 	Cloudsql ConnectionProfileCloudsqlPtrOutput `pulumi:"cloudsql"`
 	// The ID of the connection profile.
+	//
+	// ***
 	ConnectionProfileId pulumi.StringOutput `pulumi:"connectionProfileId"`
 	// Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -304,6 +318,8 @@ type connectionProfileState struct {
 	// Structure is documented below.
 	Cloudsql *ConnectionProfileCloudsql `pulumi:"cloudsql"`
 	// The ID of the connection profile.
+	//
+	// ***
 	ConnectionProfileId *string `pulumi:"connectionProfileId"`
 	// Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
 	CreateTime *string `pulumi:"createTime"`
@@ -341,6 +357,8 @@ type ConnectionProfileState struct {
 	// Structure is documented below.
 	Cloudsql ConnectionProfileCloudsqlPtrInput
 	// The ID of the connection profile.
+	//
+	// ***
 	ConnectionProfileId pulumi.StringPtrInput
 	// Output only. The timestamp when the resource was created. A timestamp in RFC3339 UTC 'Zulu' format, accurate to nanoseconds. Example: '2014-10-02T15:01:23.045123456Z'.
 	CreateTime pulumi.StringPtrInput
@@ -382,6 +400,8 @@ type connectionProfileArgs struct {
 	// Structure is documented below.
 	Cloudsql *ConnectionProfileCloudsql `pulumi:"cloudsql"`
 	// The ID of the connection profile.
+	//
+	// ***
 	ConnectionProfileId string `pulumi:"connectionProfileId"`
 	// The connection profile display name.
 	DisplayName *string `pulumi:"displayName"`
@@ -409,6 +429,8 @@ type ConnectionProfileArgs struct {
 	// Structure is documented below.
 	Cloudsql ConnectionProfileCloudsqlPtrInput
 	// The ID of the connection profile.
+	//
+	// ***
 	ConnectionProfileId pulumi.StringInput
 	// The connection profile display name.
 	DisplayName pulumi.StringPtrInput
@@ -527,6 +549,8 @@ func (o ConnectionProfileOutput) Cloudsql() ConnectionProfileCloudsqlPtrOutput {
 }
 
 // The ID of the connection profile.
+//
+// ***
 func (o ConnectionProfileOutput) ConnectionProfileId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.ConnectionProfileId }).(pulumi.StringOutput)
 }

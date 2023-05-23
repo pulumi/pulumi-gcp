@@ -120,12 +120,16 @@ public final class RegistryArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A unique name for the resource, required by device registry.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return A unique name for the resource, required by device registry.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -368,6 +372,8 @@ public final class RegistryArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name A unique name for the resource, required by device registry.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -378,6 +384,8 @@ public final class RegistryArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name A unique name for the resource, required by device registry.
+         * 
+         * ***
          * 
          * @return builder
          * 

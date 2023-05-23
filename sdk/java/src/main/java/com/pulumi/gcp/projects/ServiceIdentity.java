@@ -114,12 +114,16 @@ public class ServiceIdentity extends com.pulumi.resources.CustomResource {
     /**
      * The service to generate identity for.
      * 
+     * ***
+     * 
      */
     @Export(name="service", type=String.class, parameters={})
     private Output<String> service;
 
     /**
      * @return The service to generate identity for.
+     * 
+     * ***
      * 
      */
     public Output<String> service() {

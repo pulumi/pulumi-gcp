@@ -189,6 +189,8 @@ type Node struct {
 	// permissions to that data.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// The version of Tensorflow running in the Node.
+	//
+	// ***
 	TensorflowVersion pulumi.StringOutput `pulumi:"tensorflowVersion"`
 	// Whether the VPC peering for the node is set up through Service Networking API.
 	// The VPC Peering should be set up before provisioning the node. If this field is set,
@@ -273,6 +275,8 @@ type nodeState struct {
 	// permissions to that data.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// The version of Tensorflow running in the Node.
+	//
+	// ***
 	TensorflowVersion *string `pulumi:"tensorflowVersion"`
 	// Whether the VPC peering for the node is set up through Service Networking API.
 	// The VPC Peering should be set up before provisioning the node. If this field is set,
@@ -323,6 +327,8 @@ type NodeState struct {
 	// permissions to that data.
 	ServiceAccount pulumi.StringPtrInput
 	// The version of Tensorflow running in the Node.
+	//
+	// ***
 	TensorflowVersion pulumi.StringPtrInput
 	// Whether the VPC peering for the node is set up through Service Networking API.
 	// The VPC Peering should be set up before provisioning the node. If this field is set,
@@ -367,6 +373,8 @@ type nodeArgs struct {
 	// Structure is documented below.
 	SchedulingConfig *NodeSchedulingConfig `pulumi:"schedulingConfig"`
 	// The version of Tensorflow running in the Node.
+	//
+	// ***
 	TensorflowVersion string `pulumi:"tensorflowVersion"`
 	// Whether the VPC peering for the node is set up through Service Networking API.
 	// The VPC Peering should be set up before provisioning the node. If this field is set,
@@ -408,6 +416,8 @@ type NodeArgs struct {
 	// Structure is documented below.
 	SchedulingConfig NodeSchedulingConfigPtrInput
 	// The version of Tensorflow running in the Node.
+	//
+	// ***
 	TensorflowVersion pulumi.StringInput
 	// Whether the VPC peering for the node is set up through Service Networking API.
 	// The VPC Peering should be set up before provisioning the node. If this field is set,
@@ -574,6 +584,8 @@ func (o NodeOutput) ServiceAccount() pulumi.StringOutput {
 }
 
 // The version of Tensorflow running in the Node.
+//
+// ***
 func (o NodeOutput) TensorflowVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.TensorflowVersion }).(pulumi.StringOutput)
 }

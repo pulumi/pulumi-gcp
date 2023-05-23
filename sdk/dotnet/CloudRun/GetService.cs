@@ -79,6 +79,8 @@ namespace Pulumi.Gcp.CloudRun
     {
         /// <summary>
         /// The location of the cloud run instance. eg us-central1
+        /// 
+        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -106,6 +108,8 @@ namespace Pulumi.Gcp.CloudRun
     {
         /// <summary>
         /// The location of the cloud run instance. eg us-central1
+        /// 
+        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;

@@ -23,6 +23,8 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly string Name;
         /// <summary>
         /// The ID of the project in which the instance belongs.
+        /// 
+        /// &gt; **Note** This datasource performs client-side sorting to provide consistent ordering of the databases.
         /// </summary>
         public readonly string Project;
         public readonly string SelfLink;

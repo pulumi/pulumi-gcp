@@ -110,6 +110,9 @@ class BackendServiceArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input['BackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the load_balancing_scheme is set
                to INTERNAL_SELF_MANAGED.
@@ -457,6 +460,9 @@ class BackendServiceArgs:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -682,6 +688,9 @@ class _BackendServiceState:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input['BackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the load_balancing_scheme is set
                to INTERNAL_SELF_MANAGED.
@@ -1075,6 +1084,9 @@ class _BackendServiceState:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1410,6 +1422,9 @@ class BackendService(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[pulumi.InputType['BackendServiceOutlierDetectionArgs']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the load_balancing_scheme is set
                to INTERNAL_SELF_MANAGED.
@@ -1743,6 +1758,9 @@ class BackendService(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[pulumi.InputType['BackendServiceOutlierDetectionArgs']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
                This field is applicable only when the load_balancing_scheme is set
                to INTERNAL_SELF_MANAGED.
@@ -2026,6 +2044,9 @@ class BackendService(pulumi.CustomResource):
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

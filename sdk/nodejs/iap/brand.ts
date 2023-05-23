@@ -73,6 +73,9 @@ export class Brand extends pulumi.CustomResource {
 
     /**
      * Application name displayed on OAuth consent screen.
+     *
+     *
+     * - - -
      */
     public readonly applicationTitle!: pulumi.Output<string>;
     /**
@@ -143,6 +146,9 @@ export class Brand extends pulumi.CustomResource {
 export interface BrandState {
     /**
      * Application name displayed on OAuth consent screen.
+     *
+     *
+     * - - -
      */
     applicationTitle?: pulumi.Input<string>;
     /**
@@ -177,6 +183,9 @@ export interface BrandState {
 export interface BrandArgs {
     /**
      * Application name displayed on OAuth consent screen.
+     *
+     *
+     * - - -
      */
     applicationTitle: pulumi.Input<string>;
     /**

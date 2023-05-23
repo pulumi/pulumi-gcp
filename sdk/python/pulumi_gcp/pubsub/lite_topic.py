@@ -26,6 +26,9 @@ class LiteTopicArgs:
         """
         The set of arguments for constructing a LiteTopic resource.
         :param pulumi.Input[str] name: Name of the topic.
+               
+               
+               - - -
         :param pulumi.Input['LiteTopicPartitionConfigArgs'] partition_config: The settings for this topic's partitions.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -57,6 +60,9 @@ class LiteTopicArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the topic.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -154,6 +160,9 @@ class _LiteTopicState:
         """
         Input properties used for looking up and filtering LiteTopic resources.
         :param pulumi.Input[str] name: Name of the topic.
+               
+               
+               - - -
         :param pulumi.Input['LiteTopicPartitionConfigArgs'] partition_config: The settings for this topic's partitions.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -185,6 +194,9 @@ class _LiteTopicState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the topic.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -342,6 +354,9 @@ class LiteTopic(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Name of the topic.
+               
+               
+               - - -
         :param pulumi.Input[pulumi.InputType['LiteTopicPartitionConfigArgs']] partition_config: The settings for this topic's partitions.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -479,6 +494,9 @@ class LiteTopic(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Name of the topic.
+               
+               
+               - - -
         :param pulumi.Input[pulumi.InputType['LiteTopicPartitionConfigArgs']] partition_config: The settings for this topic's partitions.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -508,6 +526,9 @@ class LiteTopic(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Name of the topic.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

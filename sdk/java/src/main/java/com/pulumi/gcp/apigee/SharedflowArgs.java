@@ -18,12 +18,16 @@ public final class SharedflowArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Path to the config zip bundle.
      * 
+     * ***
+     * 
      */
     @Import(name="configBundle", required=true)
     private Output<String> configBundle;
 
     /**
      * @return Path to the config zip bundle.
+     * 
+     * ***
      * 
      */
     public Output<String> configBundle() {
@@ -107,6 +111,8 @@ public final class SharedflowArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param configBundle Path to the config zip bundle.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -117,6 +123,8 @@ public final class SharedflowArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param configBundle Path to the config zip bundle.
+         * 
+         * ***
          * 
          * @return builder
          * 

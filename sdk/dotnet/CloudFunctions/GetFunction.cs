@@ -77,6 +77,8 @@ namespace Pulumi.Gcp.CloudFunctions
     {
         /// <summary>
         /// The name of a Cloud Function.
+        /// 
+        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -105,6 +107,8 @@ namespace Pulumi.Gcp.CloudFunctions
     {
         /// <summary>
         /// The name of a Cloud Function.
+        /// 
+        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

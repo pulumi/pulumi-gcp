@@ -18,6 +18,16 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
+ * Allows creation and management of an App Engine application.
+ * 
+ * &gt; App Engine applications cannot be deleted once they&#39;re created; you have to delete the
+ *    entire project to delete the application. This provider will report the application has been
+ *    successfully deleted; this is a limitation of the provider, and will go away in the future.
+ *    This provider is not able to delete App Engine applications.
+ * 
+ * &gt; **Warning:** All arguments including `iap.oauth2_client_secret` will be stored in the raw
+ * state as plain-text. Read more about sensitive data in state.
+ * 
  * ## Example Usage
  * ```java
  * package generated_program;
@@ -109,9 +119,27 @@ public class Application extends com.pulumi.resources.CustomResource {
     public Output<String> codeBucket() {
         return this.codeBucket;
     }
+    /**
+     * The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+     * Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
+     * instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted by the provider, but will be rejected by the API.
+     * To create a Cloud Firestore database without creating an App Engine application, use the
+     * `gcp.firestore.Database`
+     * resource instead.
+     * 
+     */
     @Export(name="databaseType", type=String.class, parameters={})
     private Output<String> databaseType;
 
+    /**
+     * @return The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+     * Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
+     * instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted by the provider, but will be rejected by the API.
+     * To create a Cloud Firestore database without creating an App Engine application, use the
+     * `gcp.firestore.Database`
+     * resource instead.
+     * 
+     */
     public Output<String> databaseType() {
         return this.databaseType;
     }

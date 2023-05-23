@@ -2170,6 +2170,8 @@ class BareMetalClusterStorageLvpNodeMountsConfigArgs:
         """
         :param pulumi.Input[str] path: The host machine path.
         :param pulumi.Input[str] storage_class: The StorageClass name that PVs will be created with.
+               
+               - - -
         """
         pulumi.set(__self__, "path", path)
         pulumi.set(__self__, "storage_class", storage_class)
@@ -2191,6 +2193,8 @@ class BareMetalClusterStorageLvpNodeMountsConfigArgs:
     def storage_class(self) -> pulumi.Input[str]:
         """
         The StorageClass name that PVs will be created with.
+
+        - - -
         """
         return pulumi.get(self, "storage_class")
 
@@ -2621,6 +2625,8 @@ class BareMetalNodePoolNodePoolConfigTaintArgs:
         """
         :param pulumi.Input[str] effect: Specifies the nodes operating system (default: LINUX).
                Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+               
+               - - -
         :param pulumi.Input[str] key: Key associated with the effect.
         :param pulumi.Input[str] value: Value associated with the effect.
         """
@@ -2637,6 +2643,8 @@ class BareMetalNodePoolNodePoolConfigTaintArgs:
         """
         Specifies the nodes operating system (default: LINUX).
         Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+
+        - - -
         """
         return pulumi.get(self, "effect")
 
@@ -3017,6 +3025,8 @@ class VMwareClusterControlPlaneNodeAutoResizeConfigArgs:
                  enabled: pulumi.Input[bool]):
         """
         :param pulumi.Input[bool] enabled: Whether to enable control plane node auto resizing.
+               
+               <a name="nested_vsphere_config"></a>The `vsphere_config` block contains:
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -3025,6 +3035,8 @@ class VMwareClusterControlPlaneNodeAutoResizeConfigArgs:
     def enabled(self) -> pulumi.Input[bool]:
         """
         Whether to enable control plane node auto resizing.
+
+        <a name="nested_vsphere_config"></a>The `vsphere_config` block contains:
         """
         return pulumi.get(self, "enabled")
 
@@ -3040,6 +3052,8 @@ class VMwareClusterControlPlaneNodeVsphereConfigArgs:
         """
         :param pulumi.Input[str] datastore: (Output)
                The Vsphere datastore used by the Control Plane Node.
+               
+               - - -
         """
         if datastore is not None:
             pulumi.set(__self__, "datastore", datastore)
@@ -3050,6 +3064,8 @@ class VMwareClusterControlPlaneNodeVsphereConfigArgs:
         """
         (Output)
         The Vsphere datastore used by the Control Plane Node.
+
+        - - -
         """
         return pulumi.get(self, "datastore")
 
@@ -3403,6 +3419,8 @@ class VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs:
                This avoids buggy consumer devices mistakenly dropping IPv4 traffic for
                those special IP addresses.
         :param pulumi.Input[bool] manual_assign: If true, prevent IP addresses from being automatically assigned.
+               
+               <a name="nested_dataplane_v2"></a>The `dataplane_v2` block supports:
         """
         pulumi.set(__self__, "addresses", addresses)
         pulumi.set(__self__, "pool", pool)
@@ -3456,6 +3474,8 @@ class VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs:
     def manual_assign(self) -> Optional[pulumi.Input[bool]]:
         """
         If true, prevent IP addresses from being automatically assigned.
+
+        <a name="nested_dataplane_v2"></a>The `dataplane_v2` block supports:
         """
         return pulumi.get(self, "manual_assign")
 
@@ -3472,6 +3492,8 @@ class VMwareClusterLoadBalancerVipConfigArgs:
         """
         :param pulumi.Input[str] control_plane_vip: The VIP which you previously set aside for the Kubernetes API of this cluster.
         :param pulumi.Input[str] ingress_vip: The VIP which you previously set aside for ingress traffic into this cluster.
+               
+               <a name="nested_f5_config"></a>The `f5_config` block supports:
         """
         if control_plane_vip is not None:
             pulumi.set(__self__, "control_plane_vip", control_plane_vip)
@@ -3495,6 +3517,8 @@ class VMwareClusterLoadBalancerVipConfigArgs:
     def ingress_vip(self) -> Optional[pulumi.Input[str]]:
         """
         The VIP which you previously set aside for ingress traffic into this cluster.
+
+        <a name="nested_f5_config"></a>The `f5_config` block supports:
         """
         return pulumi.get(self, "ingress_vip")
 
@@ -3789,6 +3813,8 @@ class VMwareClusterNetworkConfigHostConfigArgs:
                  ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_search_domains: DNS search domains.
+               
+               <a name="nested_control_plane_v2_config"></a>The `control_plane_v2_config` block supports:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: DNS servers.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: NTP servers.
         """
@@ -3804,6 +3830,8 @@ class VMwareClusterNetworkConfigHostConfigArgs:
     def dns_search_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         DNS search domains.
+
+        <a name="nested_control_plane_v2_config"></a>The `control_plane_v2_config` block supports:
         """
         return pulumi.get(self, "dns_search_domains")
 
@@ -4332,6 +4360,8 @@ class VMwareClusterVcenterArgs:
                The name of the vCenter datacenter for the user cluster.
         :param pulumi.Input[str] datastore: (Output)
                The Vsphere datastore used by the Control Plane Node.
+               
+               - - -
         :param pulumi.Input[str] folder: (Output)
                The name of the vCenter folder for the user cluster.
         :param pulumi.Input[str] resource_pool: (Output)
@@ -4409,6 +4439,8 @@ class VMwareClusterVcenterArgs:
         """
         (Output)
         The Vsphere datastore used by the Control Plane Node.
+
+        - - -
         """
         return pulumi.get(self, "datastore")
 
@@ -4640,6 +4672,8 @@ class VMwareNodePoolConfigTaintArgs:
         :param pulumi.Input[str] value: Value associated with the effect.
         :param pulumi.Input[str] effect: Available taint effects.
                Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+               
+               <a name="nested_vsphere_config"></a>The `vsphere_config` block contains:
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -4676,6 +4710,8 @@ class VMwareNodePoolConfigTaintArgs:
         """
         Available taint effects.
         Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+
+        <a name="nested_vsphere_config"></a>The `vsphere_config` block contains:
         """
         return pulumi.get(self, "effect")
 
@@ -4695,6 +4731,9 @@ class VMwareNodePoolConfigVsphereConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['VMwareNodePoolConfigVsphereConfigTagArgs']]] tags: (Output)
                Tags to apply to VMs.
                Structure is documented below.
+               
+               
+               <a name="nested_tags"></a>The `tags` block contains:
         """
         if datastore is not None:
             pulumi.set(__self__, "datastore", datastore)
@@ -4721,6 +4760,9 @@ class VMwareNodePoolConfigVsphereConfigArgs:
         (Output)
         Tags to apply to VMs.
         Structure is documented below.
+
+
+        <a name="nested_tags"></a>The `tags` block contains:
         """
         return pulumi.get(self, "tags")
 
@@ -4739,6 +4781,8 @@ class VMwareNodePoolConfigVsphereConfigTagArgs:
                The Vsphere tag category.
         :param pulumi.Input[str] tag: (Output)
                The Vsphere tag name.
+               
+               - - -
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
@@ -4764,6 +4808,8 @@ class VMwareNodePoolConfigVsphereConfigTagArgs:
         """
         (Output)
         The Vsphere tag name.
+
+        - - -
         """
         return pulumi.get(self, "tag")
 

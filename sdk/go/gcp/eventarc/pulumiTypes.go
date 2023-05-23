@@ -598,6 +598,8 @@ type TriggerMatchingCriteria struct {
 	// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
 	Operator *string `pulumi:"operator"`
 	// Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
+	//
+	// ***
 	Value string `pulumi:"value"`
 }
 
@@ -618,6 +620,8 @@ type TriggerMatchingCriteriaArgs struct {
 	// Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The only allowed value is `match-path-pattern`.
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
+	//
+	// ***
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -683,6 +687,8 @@ func (o TriggerMatchingCriteriaOutput) Operator() pulumi.StringPtrOutput {
 }
 
 // Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
+//
+// ***
 func (o TriggerMatchingCriteriaOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v TriggerMatchingCriteria) string { return v.Value }).(pulumi.StringOutput)
 }

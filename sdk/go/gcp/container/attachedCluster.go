@@ -201,6 +201,9 @@ type AttachedCluster struct {
 	// The platform version for the cluster (e.g. `1.23.0-gke.1`).
 	PlatformVersion pulumi.StringOutput `pulumi:"platformVersion"`
 	// The number of the Fleet host project where this cluster will be registered.
+	//
+	// ***
+	//
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// If set, there are currently changes in flight to the cluster.
@@ -318,6 +321,9 @@ type attachedClusterState struct {
 	// The platform version for the cluster (e.g. `1.23.0-gke.1`).
 	PlatformVersion *string `pulumi:"platformVersion"`
 	// The number of the Fleet host project where this cluster will be registered.
+	//
+	// ***
+	//
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// If set, there are currently changes in flight to the cluster.
@@ -392,6 +398,9 @@ type AttachedClusterState struct {
 	// The platform version for the cluster (e.g. `1.23.0-gke.1`).
 	PlatformVersion pulumi.StringPtrInput
 	// The number of the Fleet host project where this cluster will be registered.
+	//
+	// ***
+	//
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// If set, there are currently changes in flight to the cluster.
@@ -459,6 +468,9 @@ type attachedClusterArgs struct {
 	// The platform version for the cluster (e.g. `1.23.0-gke.1`).
 	PlatformVersion string `pulumi:"platformVersion"`
 	// The number of the Fleet host project where this cluster will be registered.
+	//
+	// ***
+	//
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
@@ -510,6 +522,9 @@ type AttachedClusterArgs struct {
 	// The platform version for the cluster (e.g. `1.23.0-gke.1`).
 	PlatformVersion pulumi.StringInput
 	// The number of the Fleet host project where this cluster will be registered.
+	//
+	// ***
+	//
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 }
@@ -705,6 +720,9 @@ func (o AttachedClusterOutput) PlatformVersion() pulumi.StringOutput {
 }
 
 // The number of the Fleet host project where this cluster will be registered.
+//
+// ***
+//
 // If it is not provided, the provider project is used.
 func (o AttachedClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AttachedCluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)

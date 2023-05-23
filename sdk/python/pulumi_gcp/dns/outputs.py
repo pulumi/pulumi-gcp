@@ -1200,6 +1200,7 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeo(dict):
         :param str location: The location name defined in Google Cloud.
         :param 'RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs' health_checked_targets: The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
                Structure is document below.
+               
                Structure is document below.
         """
         pulumi.set(__self__, "location", location)
@@ -1222,6 +1223,7 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeo(dict):
         """
         The list of targets to be health checked. Note that if DNSSEC is enabled for this zone, only one of `rrdatas` or `health_checked_targets` can be set.
         Structure is document below.
+
         Structure is document below.
         """
         return pulumi.get(self, "health_checked_targets")

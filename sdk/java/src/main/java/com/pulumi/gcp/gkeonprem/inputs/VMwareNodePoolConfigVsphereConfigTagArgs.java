@@ -36,6 +36,8 @@ public final class VMwareNodePoolConfigVsphereConfigTagArgs extends com.pulumi.r
      * (Output)
      * The Vsphere tag name.
      * 
+     * ***
+     * 
      */
     @Import(name="tag")
     private @Nullable Output<String> tag;
@@ -43,6 +45,8 @@ public final class VMwareNodePoolConfigVsphereConfigTagArgs extends com.pulumi.r
     /**
      * @return (Output)
      * The Vsphere tag name.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> tag() {
@@ -101,6 +105,8 @@ public final class VMwareNodePoolConfigVsphereConfigTagArgs extends com.pulumi.r
          * @param tag (Output)
          * The Vsphere tag name.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -112,6 +118,8 @@ public final class VMwareNodePoolConfigVsphereConfigTagArgs extends com.pulumi.r
         /**
          * @param tag (Output)
          * The Vsphere tag name.
+         * 
+         * ***
          * 
          * @return builder
          * 

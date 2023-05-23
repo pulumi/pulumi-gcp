@@ -27,6 +27,9 @@ class RegionPerInstanceConfigArgs:
         """
         The set of arguments for constructing a RegionPerInstanceConfig resource.
         :param pulumi.Input[str] region_instance_group_manager: The region instance group manager this instance config is part of.
+               
+               
+               - - -
         :param pulumi.Input[str] minimal_action: The minimal action to perform on the instance during an update.
                Default is `NONE`. Possible values are:
                * REPLACE
@@ -70,6 +73,9 @@ class RegionPerInstanceConfigArgs:
     def region_instance_group_manager(self) -> pulumi.Input[str]:
         """
         The region instance group manager this instance config is part of.
+
+
+        - - -
         """
         return pulumi.get(self, "region_instance_group_manager")
 
@@ -208,6 +214,9 @@ class _RegionPerInstanceConfigState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the containing instance group manager is located
         :param pulumi.Input[str] region_instance_group_manager: The region instance group manager this instance config is part of.
+               
+               
+               - - -
         :param pulumi.Input[bool] remove_instance_state_on_destroy: When true, deleting this config will immediately remove any specified state from the underlying instance.
                When false, deleting this config will *not* immediately remove any state from the underlying instance.
                State will be removed on the next instance recreation or update.
@@ -318,6 +327,9 @@ class _RegionPerInstanceConfigState:
     def region_instance_group_manager(self) -> Optional[pulumi.Input[str]]:
         """
         The region instance group manager this instance config is part of.
+
+
+        - - -
         """
         return pulumi.get(self, "region_instance_group_manager")
 
@@ -472,6 +484,9 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the containing instance group manager is located
         :param pulumi.Input[str] region_instance_group_manager: The region instance group manager this instance config is part of.
+               
+               
+               - - -
         :param pulumi.Input[bool] remove_instance_state_on_destroy: When true, deleting this config will immediately remove any specified state from the underlying instance.
                When false, deleting this config will *not* immediately remove any state from the underlying instance.
                State will be removed on the next instance recreation or update.
@@ -665,6 +680,9 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the containing instance group manager is located
         :param pulumi.Input[str] region_instance_group_manager: The region instance group manager this instance config is part of.
+               
+               
+               - - -
         :param pulumi.Input[bool] remove_instance_state_on_destroy: When true, deleting this config will immediately remove any specified state from the underlying instance.
                When false, deleting this config will *not* immediately remove any state from the underlying instance.
                State will be removed on the next instance recreation or update.
@@ -748,6 +766,9 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
     def region_instance_group_manager(self) -> pulumi.Output[str]:
         """
         The region instance group manager this instance config is part of.
+
+
+        - - -
         """
         return pulumi.get(self, "region_instance_group_manager")
 

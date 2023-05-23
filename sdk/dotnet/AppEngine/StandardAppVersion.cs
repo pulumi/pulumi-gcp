@@ -249,8 +249,10 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// The identifier for this object. Format specified above.
+        /// 
         /// (Optional)
         /// Name of the library. Example "django".
+        /// 
         /// (Required)
         /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         /// </summary>
@@ -645,8 +647,10 @@ namespace Pulumi.Gcp.AppEngine
 
         /// <summary>
         /// The identifier for this object. Format specified above.
+        /// 
         /// (Optional)
         /// Name of the library. Example "django".
+        /// 
         /// (Required)
         /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         /// </summary>

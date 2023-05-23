@@ -99,6 +99,9 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Name of the ServiceBinding resource.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -189,6 +192,9 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Name of the ServiceBinding resource.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -241,6 +247,9 @@ namespace Pulumi.Gcp.NetworkServices
 
         /// <summary>
         /// Name of the ServiceBinding resource.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

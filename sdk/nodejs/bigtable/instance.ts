@@ -119,6 +119,8 @@ export class Instance extends pulumi.CustomResource {
      * A block of cluster configuration options. This can be specified at least once, and up 
      * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
      * to default to the backend value. See structure below.
+     *
+     * -----
      */
     public readonly clusters!: pulumi.Output<outputs.bigtable.InstanceCluster[]>;
     /**
@@ -142,6 +144,9 @@ export class Instance extends pulumi.CustomResource {
     public readonly instanceType!: pulumi.Output<string | undefined>;
     /**
      * A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+     *
+     *
+     * -----
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -197,6 +202,8 @@ export interface InstanceState {
      * A block of cluster configuration options. This can be specified at least once, and up 
      * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
      * to default to the backend value. See structure below.
+     *
+     * -----
      */
     clusters?: pulumi.Input<pulumi.Input<inputs.bigtable.InstanceCluster>[]>;
     /**
@@ -220,6 +227,9 @@ export interface InstanceState {
     instanceType?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+     *
+     *
+     * -----
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -241,6 +251,8 @@ export interface InstanceArgs {
      * A block of cluster configuration options. This can be specified at least once, and up 
      * to as many as possible within 8 cloud regions. Removing the field entirely from the config will cause the provider
      * to default to the backend value. See structure below.
+     *
+     * -----
      */
     clusters?: pulumi.Input<pulumi.Input<inputs.bigtable.InstanceCluster>[]>;
     /**
@@ -264,6 +276,9 @@ export interface InstanceArgs {
     instanceType?: pulumi.Input<string>;
     /**
      * A set of key/value label pairs to assign to the resource. Label keys must follow the requirements at https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements.
+     *
+     *
+     * -----
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

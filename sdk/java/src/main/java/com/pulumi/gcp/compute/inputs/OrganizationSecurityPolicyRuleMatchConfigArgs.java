@@ -38,6 +38,8 @@ public final class OrganizationSecurityPolicyRuleMatchConfigArgs extends com.pul
      * Pairs of IP protocols and ports that the rule should match.
      * Structure is documented below.
      * 
+     * &lt;a name=&#34;nested_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
+     * 
      */
     @Import(name="layer4Configs", required=true)
     private Output<List<OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs>> layer4Configs;
@@ -45,6 +47,8 @@ public final class OrganizationSecurityPolicyRuleMatchConfigArgs extends com.pul
     /**
      * @return Pairs of IP protocols and ports that the rule should match.
      * Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
      * 
      */
     public Output<List<OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs>> layer4Configs() {
@@ -132,6 +136,8 @@ public final class OrganizationSecurityPolicyRuleMatchConfigArgs extends com.pul
          * @param layer4Configs Pairs of IP protocols and ports that the rule should match.
          * Structure is documented below.
          * 
+         * &lt;a name=&#34;nested_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
+         * 
          * @return builder
          * 
          */
@@ -144,6 +150,8 @@ public final class OrganizationSecurityPolicyRuleMatchConfigArgs extends com.pul
          * @param layer4Configs Pairs of IP protocols and ports that the rule should match.
          * Structure is documented below.
          * 
+         * &lt;a name=&#34;nested_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
+         * 
          * @return builder
          * 
          */
@@ -154,6 +162,8 @@ public final class OrganizationSecurityPolicyRuleMatchConfigArgs extends com.pul
         /**
          * @param layer4Configs Pairs of IP protocols and ports that the rule should match.
          * Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
          * 
          * @return builder
          * 

@@ -48,12 +48,16 @@ public final class GetBillingAccountPlainArgs extends com.pulumi.resources.Invok
     /**
      * `true` if the billing account is open, `false` if the billing account is closed.
      * 
+     * &gt; **NOTE:** One of `billing_account` or `display_name` must be specified.
+     * 
      */
     @Import(name="open")
     private @Nullable Boolean open;
 
     /**
      * @return `true` if the billing account is open, `false` if the billing account is closed.
+     * 
+     * &gt; **NOTE:** One of `billing_account` or `display_name` must be specified.
      * 
      */
     public Optional<Boolean> open() {
@@ -110,6 +114,8 @@ public final class GetBillingAccountPlainArgs extends com.pulumi.resources.Invok
 
         /**
          * @param open `true` if the billing account is open, `false` if the billing account is closed.
+         * 
+         * &gt; **NOTE:** One of `billing_account` or `display_name` must be specified.
          * 
          * @return builder
          * 

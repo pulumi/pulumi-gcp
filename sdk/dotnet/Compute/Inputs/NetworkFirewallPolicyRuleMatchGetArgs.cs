@@ -149,6 +149,8 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// Name of the Google Cloud Threat Intelligence list.
+        /// 
+        /// The `layer4_configs` block supports:
         /// </summary>
         public InputList<string> SrcThreatIntelligences
         {

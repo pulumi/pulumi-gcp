@@ -181,12 +181,16 @@ public class Policy extends com.pulumi.resources.CustomResource {
     /**
      * User assigned name for this policy.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
      * @return User assigned name for this policy.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {

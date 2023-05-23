@@ -34,6 +34,9 @@ export function getVPNGateway(args: GetVPNGatewayArgs, opts?: pulumi.InvokeOptio
 export interface GetVPNGatewayArgs {
     /**
      * The name of the VPN gateway.
+     *
+     *
+     * - - -
      */
     name: string;
     /**
@@ -99,6 +102,9 @@ export function getVPNGatewayOutput(args: GetVPNGatewayOutputArgs, opts?: pulumi
 export interface GetVPNGatewayOutputArgs {
     /**
      * The name of the VPN gateway.
+     *
+     *
+     * - - -
      */
     name: pulumi.Input<string>;
     /**

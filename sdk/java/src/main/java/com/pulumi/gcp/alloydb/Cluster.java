@@ -23,6 +23,18 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A managed alloydb cluster.
+ * 
+ * To get more information about Cluster, see:
+ * 
+ * * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters/create)
+ * * How-to Guides
+ *     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+ * 
+ * &gt; **Warning:** All arguments including the following potentially sensitive
+ * values will be stored in the raw state as plain text: `initial_user.password`.
+ * Read more about sensitive data in state.
+ * 
  * ## Example Usage
  * ### Alloydb Cluster Basic
  * ```java
@@ -293,12 +305,16 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * The location where the alloydb cluster should reside.
      * 
+     * ***
+     * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
      * @return The location where the alloydb cluster should reside.
+     * 
+     * ***
      * 
      */
     public Output<String> location() {

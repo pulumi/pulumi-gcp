@@ -74,6 +74,8 @@ type MonitoredProject struct {
 	// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
 	MetricsScope pulumi.StringOutput `pulumi:"metricsScope"`
 	// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -114,6 +116,8 @@ type monitoredProjectState struct {
 	// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
 	MetricsScope *string `pulumi:"metricsScope"`
 	// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
+	//
+	// ***
 	Name *string `pulumi:"name"`
 }
 
@@ -123,6 +127,8 @@ type MonitoredProjectState struct {
 	// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
 	MetricsScope pulumi.StringPtrInput
 	// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
+	//
+	// ***
 	Name pulumi.StringPtrInput
 }
 
@@ -134,6 +140,8 @@ type monitoredProjectArgs struct {
 	// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
 	MetricsScope string `pulumi:"metricsScope"`
 	// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
+	//
+	// ***
 	Name *string `pulumi:"name"`
 }
 
@@ -142,6 +150,8 @@ type MonitoredProjectArgs struct {
 	// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
 	MetricsScope pulumi.StringInput
 	// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
+	//
+	// ***
 	Name pulumi.StringPtrInput
 }
 
@@ -243,6 +253,8 @@ func (o MonitoredProjectOutput) MetricsScope() pulumi.StringOutput {
 }
 
 // Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
+//
+// ***
 func (o MonitoredProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MonitoredProject) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

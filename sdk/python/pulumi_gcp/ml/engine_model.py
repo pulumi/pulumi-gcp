@@ -32,6 +32,9 @@ class EngineModelArgs:
         :param pulumi.Input[str] description: The description specified for the model when it was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: One or more labels that you can add, to organize your models.
         :param pulumi.Input[str] name: The name specified for the model.
+               
+               
+               - - -
         :param pulumi.Input[bool] online_prediction_console_logging: If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
         :param pulumi.Input[bool] online_prediction_logging: If true, online prediction access logs are sent to StackDriver Logging.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -99,6 +102,9 @@ class EngineModelArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name specified for the model.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -176,6 +182,9 @@ class _EngineModelState:
         :param pulumi.Input[str] description: The description specified for the model when it was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: One or more labels that you can add, to organize your models.
         :param pulumi.Input[str] name: The name specified for the model.
+               
+               
+               - - -
         :param pulumi.Input[bool] online_prediction_console_logging: If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
         :param pulumi.Input[bool] online_prediction_logging: If true, online prediction access logs are sent to StackDriver Logging.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -243,6 +252,9 @@ class _EngineModelState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name specified for the model.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -378,6 +390,9 @@ class EngineModel(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description specified for the model when it was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: One or more labels that you can add, to organize your models.
         :param pulumi.Input[str] name: The name specified for the model.
+               
+               
+               - - -
         :param pulumi.Input[bool] online_prediction_console_logging: If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
         :param pulumi.Input[bool] online_prediction_logging: If true, online prediction access logs are sent to StackDriver Logging.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -517,6 +532,9 @@ class EngineModel(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description specified for the model when it was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: One or more labels that you can add, to organize your models.
         :param pulumi.Input[str] name: The name specified for the model.
+               
+               
+               - - -
         :param pulumi.Input[bool] online_prediction_console_logging: If true, online prediction nodes send stderr and stdout streams to Stackdriver Logging
         :param pulumi.Input[bool] online_prediction_logging: If true, online prediction access logs are sent to StackDriver Logging.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -569,6 +587,9 @@ class EngineModel(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The name specified for the model.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

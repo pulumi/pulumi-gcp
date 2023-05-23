@@ -218,14 +218,14 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      * 
      */
     @Import(name="statefulExternalIps")
     private @Nullable Output<List<InstanceGroupManagerStatefulExternalIpArgs>> statefulExternalIps;
 
     /**
-     * @return ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * @return External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      * 
      */
     public Optional<Output<List<InstanceGroupManagerStatefulExternalIpArgs>>> statefulExternalIps() {
@@ -233,14 +233,14 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      * 
      */
     @Import(name="statefulInternalIps")
     private @Nullable Output<List<InstanceGroupManagerStatefulInternalIpArgs>> statefulInternalIps;
 
     /**
-     * @return ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * @return Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      * 
      */
     public Optional<Output<List<InstanceGroupManagerStatefulInternalIpArgs>>> statefulInternalIps() {
@@ -288,12 +288,16 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
     /**
      * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
      * 
+     * ***
+     * 
      */
     @Import(name="updatePolicy")
     private @Nullable Output<InstanceGroupManagerUpdatePolicyArgs> updatePolicy;
 
     /**
      * @return The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
+     * 
+     * ***
      * 
      */
     public Optional<Output<InstanceGroupManagerUpdatePolicyArgs>> updatePolicy() {
@@ -363,6 +367,8 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
      * The zone that instances in this group should be created
      * in.
      * 
+     * ***
+     * 
      */
     @Import(name="zone")
     private @Nullable Output<String> zone;
@@ -370,6 +376,8 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
     /**
      * @return The zone that instances in this group should be created
      * in.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> zone() {
@@ -690,7 +698,7 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param statefulExternalIps ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+         * @param statefulExternalIps External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
          * 
          * @return builder
          * 
@@ -701,7 +709,7 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param statefulExternalIps ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+         * @param statefulExternalIps External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
          * 
          * @return builder
          * 
@@ -711,7 +719,7 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param statefulExternalIps ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+         * @param statefulExternalIps External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
          * 
          * @return builder
          * 
@@ -721,7 +729,7 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param statefulInternalIps ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+         * @param statefulInternalIps Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
          * 
          * @return builder
          * 
@@ -732,7 +740,7 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param statefulInternalIps ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+         * @param statefulInternalIps Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
          * 
          * @return builder
          * 
@@ -742,7 +750,7 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param statefulInternalIps ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+         * @param statefulInternalIps Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
          * 
          * @return builder
          * 
@@ -816,6 +824,8 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         /**
          * @param updatePolicy The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -826,6 +836,8 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param updatePolicy The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -927,6 +939,8 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
          * @param zone The zone that instances in this group should be created
          * in.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -938,6 +952,8 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         /**
          * @param zone The zone that instances in this group should be created
          * in.
+         * 
+         * ***
          * 
          * @return builder
          * 

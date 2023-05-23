@@ -17,12 +17,16 @@ public final class GetForwardingRulePlainArgs extends com.pulumi.resources.Invok
     /**
      * The name of the forwarding rule.
      * 
+     * ***
+     * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
      * @return The name of the forwarding rule.
+     * 
+     * ***
      * 
      */
     public String name() {
@@ -91,6 +95,8 @@ public final class GetForwardingRulePlainArgs extends com.pulumi.resources.Invok
 
         /**
          * @param name The name of the forwarding rule.
+         * 
+         * ***
          * 
          * @return builder
          * 

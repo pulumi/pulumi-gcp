@@ -150,6 +150,8 @@ type Membership struct {
 	// Labels to apply to this membership.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The client-provided identifier of the membership.
+	//
+	// ***
 	MembershipId pulumi.StringOutput `pulumi:"membershipId"`
 	// The unique identifier of the membership.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -205,6 +207,8 @@ type membershipState struct {
 	// Labels to apply to this membership.
 	Labels map[string]string `pulumi:"labels"`
 	// The client-provided identifier of the membership.
+	//
+	// ***
 	MembershipId *string `pulumi:"membershipId"`
 	// The unique identifier of the membership.
 	Name *string `pulumi:"name"`
@@ -229,6 +233,8 @@ type MembershipState struct {
 	// Labels to apply to this membership.
 	Labels pulumi.StringMapInput
 	// The client-provided identifier of the membership.
+	//
+	// ***
 	MembershipId pulumi.StringPtrInput
 	// The unique identifier of the membership.
 	Name pulumi.StringPtrInput
@@ -257,6 +263,8 @@ type membershipArgs struct {
 	// Labels to apply to this membership.
 	Labels map[string]string `pulumi:"labels"`
 	// The client-provided identifier of the membership.
+	//
+	// ***
 	MembershipId string `pulumi:"membershipId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -280,6 +288,8 @@ type MembershipArgs struct {
 	// Labels to apply to this membership.
 	Labels pulumi.StringMapInput
 	// The client-provided identifier of the membership.
+	//
+	// ***
 	MembershipId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -400,6 +410,8 @@ func (o MembershipOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The client-provided identifier of the membership.
+//
+// ***
 func (o MembershipOutput) MembershipId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Membership) pulumi.StringOutput { return v.MembershipId }).(pulumi.StringOutput)
 }

@@ -33,10 +33,13 @@ class EdgeCacheServiceArgs:
         :param pulumi.Input['EdgeCacheServiceRoutingArgs'] routing: Defines how requests are routed, modified, cached and/or which origin content is filled from.
                Structure is documented below.
         :param pulumi.Input[str] description: A human-readable description of the hostRule.
+               
                (Optional)
                A human-readable description of the resource.
+               
                (Optional)
                A human-readable description of the routeRule.
+               
                (Optional)
                A human-readable description of the resource.
         :param pulumi.Input[bool] disable_http2: Disables HTTP/2.
@@ -102,10 +105,13 @@ class EdgeCacheServiceArgs:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         A human-readable description of the hostRule.
+
         (Optional)
         A human-readable description of the resource.
+
         (Optional)
         A human-readable description of the routeRule.
+
         (Optional)
         A human-readable description of the resource.
         """
@@ -266,10 +272,13 @@ class _EdgeCacheServiceState:
         """
         Input properties used for looking up and filtering EdgeCacheService resources.
         :param pulumi.Input[str] description: A human-readable description of the hostRule.
+               
                (Optional)
                A human-readable description of the resource.
+               
                (Optional)
                A human-readable description of the routeRule.
+               
                (Optional)
                A human-readable description of the resource.
         :param pulumi.Input[bool] disable_http2: Disables HTTP/2.
@@ -331,10 +340,13 @@ class _EdgeCacheServiceState:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         A human-readable description of the hostRule.
+
         (Optional)
         A human-readable description of the resource.
+
         (Optional)
         A human-readable description of the routeRule.
+
         (Optional)
         A human-readable description of the resource.
         """
@@ -796,10 +808,13 @@ class EdgeCacheService(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A human-readable description of the hostRule.
+               
                (Optional)
                A human-readable description of the resource.
+               
                (Optional)
                A human-readable description of the routeRule.
+               
                (Optional)
                A human-readable description of the resource.
         :param pulumi.Input[bool] disable_http2: Disables HTTP/2.
@@ -1178,10 +1193,13 @@ class EdgeCacheService(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A human-readable description of the hostRule.
+               
                (Optional)
                A human-readable description of the resource.
+               
                (Optional)
                A human-readable description of the routeRule.
+               
                (Optional)
                A human-readable description of the resource.
         :param pulumi.Input[bool] disable_http2: Disables HTTP/2.
@@ -1234,10 +1252,13 @@ class EdgeCacheService(pulumi.CustomResource):
     def description(self) -> pulumi.Output[Optional[str]]:
         """
         A human-readable description of the hostRule.
+
         (Optional)
         A human-readable description of the resource.
+
         (Optional)
         A human-readable description of the routeRule.
+
         (Optional)
         A human-readable description of the resource.
         """

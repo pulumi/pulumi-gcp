@@ -15,6 +15,8 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         /// <summary>
         /// The URL of the instances where this rule should be active.
+        /// 
+        /// - - -
         /// </summary>
         public readonly string Url;
 

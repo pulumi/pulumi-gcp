@@ -25,6 +25,8 @@ public final class DomainMappingMetadataArgs extends com.pulumi.resources.Resour
      * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
      * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
      * 
+     * ***
+     * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
@@ -36,6 +38,8 @@ public final class DomainMappingMetadataArgs extends com.pulumi.resources.Resour
      * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
      * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
      * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+     * 
+     * ***
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -202,6 +206,8 @@ public final class DomainMappingMetadataArgs extends com.pulumi.resources.Resour
          * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
          * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -217,6 +223,8 @@ public final class DomainMappingMetadataArgs extends com.pulumi.resources.Resour
          * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
          * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
          * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+         * 
+         * ***
          * 
          * @return builder
          * 

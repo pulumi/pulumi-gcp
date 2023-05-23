@@ -19,6 +19,8 @@ public final class CertificateConfigArgs extends com.pulumi.resources.ResourceAr
      * A PublicKey describes a public key.
      * Structure is documented below.
      * 
+     * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
+     * 
      */
     @Import(name="publicKey", required=true)
     private Output<CertificateConfigPublicKeyArgs> publicKey;
@@ -26,6 +28,8 @@ public final class CertificateConfigArgs extends com.pulumi.resources.ResourceAr
     /**
      * @return A PublicKey describes a public key.
      * Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
      * 
      */
     public Output<CertificateConfigPublicKeyArgs> publicKey() {
@@ -96,6 +100,8 @@ public final class CertificateConfigArgs extends com.pulumi.resources.ResourceAr
          * @param publicKey A PublicKey describes a public key.
          * Structure is documented below.
          * 
+         * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
+         * 
          * @return builder
          * 
          */
@@ -107,6 +113,8 @@ public final class CertificateConfigArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param publicKey A PublicKey describes a public key.
          * Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
          * 
          * @return builder
          * 

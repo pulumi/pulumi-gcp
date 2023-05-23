@@ -218,12 +218,16 @@ public class RegionSslPolicy extends com.pulumi.resources.CustomResource {
     /**
      * The region where the regional SSL policy resides.
      * 
+     * ***
+     * 
      */
     @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
      * @return The region where the regional SSL policy resides.
+     * 
+     * ***
      * 
      */
     public Output<String> region() {

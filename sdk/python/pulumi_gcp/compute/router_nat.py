@@ -43,6 +43,9 @@ class RouterNatArgs:
                Platform, or `MANUAL_ONLY` for only user-allocated NAT IP addresses.
                Possible values are: `MANUAL_ONLY`, `AUTO_ONLY`.
         :param pulumi.Input[str] router: The name of the Cloud Router in which this NAT will be configured.
+               
+               
+               - - -
         :param pulumi.Input[str] source_subnetwork_ip_ranges_to_nat: How NAT should be configured per Subnetwork.
                If `ALL_SUBNETWORKS_ALL_IP_RANGES`, all of the
                IP ranges in every Subnetwork are allowed to Nat.
@@ -148,6 +151,9 @@ class RouterNatArgs:
     def router(self) -> pulumi.Input[str]:
         """
         The name of the Cloud Router in which this NAT will be configured.
+
+
+        - - -
         """
         return pulumi.get(self, "router")
 
@@ -453,6 +459,9 @@ class _RouterNatState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the router and NAT reside.
         :param pulumi.Input[str] router: The name of the Cloud Router in which this NAT will be configured.
+               
+               
+               - - -
         :param pulumi.Input[Sequence[pulumi.Input['RouterNatRuleArgs']]] rules: A list of rules associated with this NAT.
                Structure is documented below.
         :param pulumi.Input[str] source_subnetwork_ip_ranges_to_nat: How NAT should be configured per Subnetwork.
@@ -682,6 +691,9 @@ class _RouterNatState:
     def router(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the Cloud Router in which this NAT will be configured.
+
+
+        - - -
         """
         return pulumi.get(self, "router")
 
@@ -972,6 +984,9 @@ class RouterNat(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the router and NAT reside.
         :param pulumi.Input[str] router: The name of the Cloud Router in which this NAT will be configured.
+               
+               
+               - - -
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatRuleArgs']]]] rules: A list of rules associated with this NAT.
                Structure is documented below.
         :param pulumi.Input[str] source_subnetwork_ip_ranges_to_nat: How NAT should be configured per Subnetwork.
@@ -1263,6 +1278,9 @@ class RouterNat(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the router and NAT reside.
         :param pulumi.Input[str] router: The name of the Cloud Router in which this NAT will be configured.
+               
+               
+               - - -
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterNatRuleArgs']]]] rules: A list of rules associated with this NAT.
                Structure is documented below.
         :param pulumi.Input[str] source_subnetwork_ip_ranges_to_nat: How NAT should be configured per Subnetwork.
@@ -1429,6 +1447,9 @@ class RouterNat(pulumi.CustomResource):
     def router(self) -> pulumi.Output[str]:
         """
         The name of the Cloud Router in which this NAT will be configured.
+
+
+        - - -
         """
         return pulumi.get(self, "router")
 

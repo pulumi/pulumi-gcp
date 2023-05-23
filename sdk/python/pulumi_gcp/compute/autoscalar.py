@@ -32,6 +32,10 @@ class AutoscalarArgs:
                Structure is documented below.
         :param pulumi.Input[str] target: URL of the managed instance group that this autoscaler will scale.
         :param pulumi.Input[str] description: A description of a scaling schedule.
+               
+               - - -
+               
+               
                (Optional)
                An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
@@ -88,6 +92,10 @@ class AutoscalarArgs:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         A description of a scaling schedule.
+
+        - - -
+
+
         (Optional)
         An optional description of this resource.
         """
@@ -160,6 +168,10 @@ class _AutoscalarState:
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: A description of a scaling schedule.
+               
+               - - -
+               
+               
                (Optional)
                An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
@@ -224,6 +236,10 @@ class _AutoscalarState:
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         A description of a scaling schedule.
+
+        - - -
+
+
         (Optional)
         An optional description of this resource.
         """
@@ -469,6 +485,10 @@ class Autoscalar(pulumi.CustomResource):
                on cpuUtilization to 0.6 or 60%.
                Structure is documented below.
         :param pulumi.Input[str] description: A description of a scaling schedule.
+               
+               - - -
+               
+               
                (Optional)
                An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
@@ -707,6 +727,10 @@ class Autoscalar(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: A description of a scaling schedule.
+               
+               - - -
+               
+               
                (Optional)
                An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and match
@@ -760,6 +784,10 @@ class Autoscalar(pulumi.CustomResource):
     def description(self) -> pulumi.Output[Optional[str]]:
         """
         A description of a scaling schedule.
+
+        - - -
+
+
         (Optional)
         An optional description of this resource.
         """

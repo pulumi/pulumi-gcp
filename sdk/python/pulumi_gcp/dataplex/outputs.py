@@ -459,6 +459,8 @@ class AssetResourceSpec(dict):
                  name: Optional[str] = None):
         """
         :param str type: Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
+               
+               - - -
         :param str name: Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
         """
         pulumi.set(__self__, "type", type)
@@ -470,6 +472,8 @@ class AssetResourceSpec(dict):
     def type(self) -> str:
         """
         Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
+
+        - - -
         """
         return pulumi.get(self, "type")
 
@@ -1143,6 +1147,8 @@ class ZoneResourceSpec(dict):
                  location_type: str):
         """
         :param str location_type: Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
+               
+               - - -
         """
         pulumi.set(__self__, "location_type", location_type)
 
@@ -1151,6 +1157,8 @@ class ZoneResourceSpec(dict):
     def location_type(self) -> str:
         """
         Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
+
+        - - -
         """
         return pulumi.get(self, "location_type")
 

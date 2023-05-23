@@ -64,6 +64,7 @@ export class CertificateTemplate extends pulumi.CustomResource {
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Optional. A human-readable description of scenarios this template is intended for.
+     *
      * (Optional)
      * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      */
@@ -155,6 +156,7 @@ export interface CertificateTemplateState {
     createTime?: pulumi.Input<string>;
     /**
      * Optional. A human-readable description of scenarios this template is intended for.
+     *
      * (Optional)
      * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      */
@@ -199,6 +201,7 @@ export interface CertificateTemplateState {
 export interface CertificateTemplateArgs {
     /**
      * Optional. A human-readable description of scenarios this template is intended for.
+     *
      * (Optional)
      * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
      */

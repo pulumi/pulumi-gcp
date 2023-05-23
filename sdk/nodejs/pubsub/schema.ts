@@ -117,6 +117,9 @@ export class Schema extends pulumi.CustomResource {
     public readonly definition!: pulumi.Output<string | undefined>;
     /**
      * The ID to use for the schema, which will become the final component of the schema's resource name.
+     *
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -172,6 +175,9 @@ export interface SchemaState {
     definition?: pulumi.Input<string>;
     /**
      * The ID to use for the schema, which will become the final component of the schema's resource name.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -199,6 +205,9 @@ export interface SchemaArgs {
     definition?: pulumi.Input<string>;
     /**
      * The ID to use for the schema, which will become the final component of the schema's resource name.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**

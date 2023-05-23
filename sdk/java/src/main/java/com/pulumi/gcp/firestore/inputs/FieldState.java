@@ -50,12 +50,16 @@ public final class FieldState extends com.pulumi.resources.ResourceArgs {
     /**
      * The id of the field to configure.
      * 
+     * ***
+     * 
      */
     @Import(name="field")
     private @Nullable Output<String> field;
 
     /**
      * @return The id of the field to configure.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> field() {
@@ -211,6 +215,8 @@ public final class FieldState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param field The id of the field to configure.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -221,6 +227,8 @@ public final class FieldState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param field The id of the field to configure.
+         * 
+         * ***
          * 
          * @return builder
          * 

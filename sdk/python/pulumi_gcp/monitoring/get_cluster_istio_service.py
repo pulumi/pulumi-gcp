@@ -188,6 +188,10 @@ def get_cluster_istio_service(cluster_name: Optional[str] = None,
            If it is not provided, the provider project is used.
     :param str service_name: The name of the Istio service underlying this service.
            Corresponds to the destination_service_name metric label in Istio metrics.
+           
+           - - -
+           
+           Other optional fields include:
     :param str service_namespace: The namespace of the Istio service underlying this service.
            Corresponds to the destination_service_namespace metric label in Istio metrics.
     """
@@ -258,6 +262,10 @@ def get_cluster_istio_service_output(cluster_name: Optional[pulumi.Input[str]] =
            If it is not provided, the provider project is used.
     :param str service_name: The name of the Istio service underlying this service.
            Corresponds to the destination_service_name metric label in Istio metrics.
+           
+           - - -
+           
+           Other optional fields include:
     :param str service_namespace: The namespace of the Istio service underlying this service.
            Corresponds to the destination_service_namespace metric label in Istio metrics.
     """

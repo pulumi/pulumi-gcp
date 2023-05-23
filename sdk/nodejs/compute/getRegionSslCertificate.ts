@@ -37,6 +37,8 @@ export function getRegionSslCertificate(args: GetRegionSslCertificateArgs, opts?
 export interface GetRegionSslCertificateArgs {
     /**
      * The name of the certificate.
+     *
+     * - - -
      */
     name: string;
     /**
@@ -98,6 +100,8 @@ export function getRegionSslCertificateOutput(args: GetRegionSslCertificateOutpu
 export interface GetRegionSslCertificateOutputArgs {
     /**
      * The name of the certificate.
+     *
+     * - - -
      */
     name: pulumi.Input<string>;
     /**

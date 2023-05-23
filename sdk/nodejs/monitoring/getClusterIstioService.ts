@@ -70,6 +70,10 @@ export interface GetClusterIstioServiceArgs {
     /**
      * The name of the Istio service underlying this service.
      * Corresponds to the destinationServiceName metric label in Istio metrics.
+     *
+     * - - -
+     *
+     * Other optional fields include:
      */
     serviceName: string;
     /**
@@ -164,6 +168,10 @@ export interface GetClusterIstioServiceOutputArgs {
     /**
      * The name of the Istio service underlying this service.
      * Corresponds to the destinationServiceName metric label in Istio metrics.
+     *
+     * - - -
+     *
+     * Other optional fields include:
      */
     serviceName: pulumi.Input<string>;
     /**

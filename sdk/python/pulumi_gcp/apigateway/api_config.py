@@ -29,6 +29,9 @@ class ApiConfigArgs:
         """
         The set of arguments for constructing a ApiConfig resource.
         :param pulumi.Input[str] api: The API to attach the config to.
+               
+               
+               - - -
         :param pulumi.Input[str] api_config_id: Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
         :param pulumi.Input[str] api_config_id_prefix: Creates a unique name beginning with the
                specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
@@ -72,6 +75,9 @@ class ApiConfigArgs:
     def api(self) -> pulumi.Input[str]:
         """
         The API to attach the config to.
+
+
+        - - -
         """
         return pulumi.get(self, "api")
 
@@ -214,6 +220,9 @@ class _ApiConfigState:
         """
         Input properties used for looking up and filtering ApiConfig resources.
         :param pulumi.Input[str] api: The API to attach the config to.
+               
+               
+               - - -
         :param pulumi.Input[str] api_config_id: Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
         :param pulumi.Input[str] api_config_id_prefix: Creates a unique name beginning with the
                specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
@@ -264,6 +273,9 @@ class _ApiConfigState:
     def api(self) -> Optional[pulumi.Input[str]]:
         """
         The API to attach the config to.
+
+
+        - - -
         """
         return pulumi.get(self, "api")
 
@@ -478,6 +490,9 @@ class ApiConfig(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api: The API to attach the config to.
+               
+               
+               - - -
         :param pulumi.Input[str] api_config_id: Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
         :param pulumi.Input[str] api_config_id_prefix: Creates a unique name beginning with the
                specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
@@ -627,6 +642,9 @@ class ApiConfig(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api: The API to attach the config to.
+               
+               
+               - - -
         :param pulumi.Input[str] api_config_id: Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
         :param pulumi.Input[str] api_config_id_prefix: Creates a unique name beginning with the
                specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
@@ -670,6 +688,9 @@ class ApiConfig(pulumi.CustomResource):
     def api(self) -> pulumi.Output[str]:
         """
         The API to attach the config to.
+
+
+        - - -
         """
         return pulumi.get(self, "api")
 

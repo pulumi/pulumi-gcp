@@ -220,6 +220,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         /// You can only create alpha formats if you are a member of the
         /// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("format")]
         public Output<string> Format { get; private set; } = null!;
@@ -371,6 +374,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         /// You can only create alpha formats if you are a member of the
         /// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
@@ -483,6 +489,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         /// You can only create alpha formats if you are a member of the
         /// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }

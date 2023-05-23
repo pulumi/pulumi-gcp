@@ -137,6 +137,8 @@ def get_secret_version(project: Optional[str] = None,
                        version: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretVersionResult:
     """
+    Get the value and metadata from a Secret Manager secret version. For more information see the official documentation datasource.
+
     ## Example Usage
 
     ```python
@@ -178,6 +180,8 @@ def get_secret_version_output(project: Optional[pulumi.Input[Optional[str]]] = N
                               version: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretVersionResult]:
     """
+    Get the value and metadata from a Secret Manager secret version. For more information see the official documentation datasource.
+
     ## Example Usage
 
     ```python

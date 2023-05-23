@@ -135,6 +135,8 @@ type AccessLevelCondition struct {
 	pulumi.CustomResourceState
 
 	// The name of the Access Level to add this condition to.
+	//
+	// ***
 	AccessLevel pulumi.StringOutput `pulumi:"accessLevel"`
 	// Device specific restrictions, all restrictions must hold for
 	// the Condition to be true. If not specified, all devices are
@@ -209,6 +211,8 @@ func GetAccessLevelCondition(ctx *pulumi.Context,
 // Input properties used for looking up and filtering AccessLevelCondition resources.
 type accessLevelConditionState struct {
 	// The name of the Access Level to add this condition to.
+	//
+	// ***
 	AccessLevel *string `pulumi:"accessLevel"`
 	// Device specific restrictions, all restrictions must hold for
 	// the Condition to be true. If not specified, all devices are
@@ -252,6 +256,8 @@ type accessLevelConditionState struct {
 
 type AccessLevelConditionState struct {
 	// The name of the Access Level to add this condition to.
+	//
+	// ***
 	AccessLevel pulumi.StringPtrInput
 	// Device specific restrictions, all restrictions must hold for
 	// the Condition to be true. If not specified, all devices are
@@ -299,6 +305,8 @@ func (AccessLevelConditionState) ElementType() reflect.Type {
 
 type accessLevelConditionArgs struct {
 	// The name of the Access Level to add this condition to.
+	//
+	// ***
 	AccessLevel string `pulumi:"accessLevel"`
 	// Device specific restrictions, all restrictions must hold for
 	// the Condition to be true. If not specified, all devices are
@@ -343,6 +351,8 @@ type accessLevelConditionArgs struct {
 // The set of arguments for constructing a AccessLevelCondition resource.
 type AccessLevelConditionArgs struct {
 	// The name of the Access Level to add this condition to.
+	//
+	// ***
 	AccessLevel pulumi.StringInput
 	// Device specific restrictions, all restrictions must hold for
 	// the Condition to be true. If not specified, all devices are
@@ -472,6 +482,8 @@ func (o AccessLevelConditionOutput) ToAccessLevelConditionOutputWithContext(ctx 
 }
 
 // The name of the Access Level to add this condition to.
+//
+// ***
 func (o AccessLevelConditionOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessLevelCondition) pulumi.StringOutput { return v.AccessLevel }).(pulumi.StringOutput)
 }

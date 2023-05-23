@@ -296,6 +296,7 @@ export class Job extends pulumi.CustomResource {
     public /*out*/ readonly generation!: pulumi.Output<string>;
     /**
      * KRM-style labels for the resource.
+     *
      * (Optional)
      * KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
      */
@@ -447,6 +448,7 @@ export interface JobState {
     generation?: pulumi.Input<string>;
     /**
      * KRM-style labels for the resource.
+     *
      * (Optional)
      * KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
      */
@@ -522,6 +524,7 @@ export interface JobArgs {
     clientVersion?: pulumi.Input<string>;
     /**
      * KRM-style labels for the resource.
+     *
      * (Optional)
      * KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
      */

@@ -19,6 +19,8 @@ public final class BareMetalNodePoolNodePoolConfigTaintArgs extends com.pulumi.r
      * Specifies the nodes operating system (default: LINUX).
      * Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
      * 
+     * ***
+     * 
      */
     @Import(name="effect")
     private @Nullable Output<String> effect;
@@ -26,6 +28,8 @@ public final class BareMetalNodePoolNodePoolConfigTaintArgs extends com.pulumi.r
     /**
      * @return Specifies the nodes operating system (default: LINUX).
      * Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> effect() {
@@ -92,6 +96,8 @@ public final class BareMetalNodePoolNodePoolConfigTaintArgs extends com.pulumi.r
          * @param effect Specifies the nodes operating system (default: LINUX).
          * Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -103,6 +109,8 @@ public final class BareMetalNodePoolNodePoolConfigTaintArgs extends com.pulumi.r
         /**
          * @param effect Specifies the nodes operating system (default: LINUX).
          * Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+         * 
+         * ***
          * 
          * @return builder
          * 

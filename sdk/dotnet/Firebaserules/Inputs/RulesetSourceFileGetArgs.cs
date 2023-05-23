@@ -26,6 +26,8 @@ namespace Pulumi.Gcp.Firebaserules.Inputs
 
         /// <summary>
         /// File name.
+        /// 
+        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

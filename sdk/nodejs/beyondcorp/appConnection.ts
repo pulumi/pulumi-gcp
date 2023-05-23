@@ -166,6 +166,7 @@ export class AppConnection extends pulumi.CustomResource {
      * The type of network connectivity used by the AppConnection. Refer to
      * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
      * for a list of possible values.
+     *
      * (Optional)
      * The type of hosting used by the gateway. Refer to
      * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
@@ -258,6 +259,7 @@ export interface AppConnectionState {
      * The type of network connectivity used by the AppConnection. Refer to
      * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
      * for a list of possible values.
+     *
      * (Optional)
      * The type of hosting used by the gateway. Refer to
      * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1
@@ -309,6 +311,7 @@ export interface AppConnectionArgs {
      * The type of network connectivity used by the AppConnection. Refer to
      * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#type
      * for a list of possible values.
+     *
      * (Optional)
      * The type of hosting used by the gateway. Refer to
      * https://cloud.google.com/beyondcorp/docs/reference/rest/v1/projects.locations.appConnections#Type_1

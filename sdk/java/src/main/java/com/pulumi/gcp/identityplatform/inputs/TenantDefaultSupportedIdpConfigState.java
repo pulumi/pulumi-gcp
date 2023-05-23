@@ -34,12 +34,16 @@ public final class TenantDefaultSupportedIdpConfigState extends com.pulumi.resou
     /**
      * OAuth client secret
      * 
+     * ***
+     * 
      */
     @Import(name="clientSecret")
     private @Nullable Output<String> clientSecret;
 
     /**
      * @return OAuth client secret
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> clientSecret() {
@@ -197,6 +201,8 @@ public final class TenantDefaultSupportedIdpConfigState extends com.pulumi.resou
         /**
          * @param clientSecret OAuth client secret
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -207,6 +213,8 @@ public final class TenantDefaultSupportedIdpConfigState extends com.pulumi.resou
 
         /**
          * @param clientSecret OAuth client secret
+         * 
+         * ***
          * 
          * @return builder
          * 

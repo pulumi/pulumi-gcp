@@ -19,6 +19,8 @@ namespace Pulumi.Gcp.Memcache.Outputs
         public readonly int CpuCount;
         /// <summary>
         /// Memory size in Mebibytes for each memcache node.
+        /// 
+        /// - - -
         /// </summary>
         public readonly int MemorySizeMb;
 

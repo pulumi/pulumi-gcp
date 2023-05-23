@@ -144,6 +144,8 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
         /// The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
+        /// 
+        /// - - -
         /// </summary>
         [Output("dashboardJson")]
         public Output<string> DashboardJson { get; private set; } = null!;
@@ -204,6 +206,8 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
         /// The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
+        /// 
+        /// - - -
         /// </summary>
         [Input("dashboardJson", required: true)]
         public Input<string> DashboardJson { get; set; } = null!;
@@ -226,6 +230,8 @@ namespace Pulumi.Gcp.Monitoring
         /// <summary>
         /// The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
         /// The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
+        /// 
+        /// - - -
         /// </summary>
         [Input("dashboardJson")]
         public Input<string>? DashboardJson { get; set; }

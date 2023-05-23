@@ -119,6 +119,9 @@ namespace Pulumi.Gcp.ApiGateway
 
         /// <summary>
         /// Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("gatewayId")]
         public Output<string> GatewayId { get; private set; } = null!;
@@ -209,6 +212,9 @@ namespace Pulumi.Gcp.ApiGateway
 
         /// <summary>
         /// Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("gatewayId", required: true)]
         public Input<string> GatewayId { get; set; } = null!;
@@ -267,6 +273,9 @@ namespace Pulumi.Gcp.ApiGateway
 
         /// <summary>
         /// Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("gatewayId")]
         public Input<string>? GatewayId { get; set; }

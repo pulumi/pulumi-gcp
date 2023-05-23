@@ -74,6 +74,10 @@ export class MonitoredProject extends pulumi.CustomResource {
     public readonly metricsScope!: pulumi.Output<string>;
     /**
      * Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
+     *
+     *
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -121,6 +125,10 @@ export interface MonitoredProjectState {
     metricsScope?: pulumi.Input<string>;
     /**
      * Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
+     *
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
 }
@@ -135,6 +143,10 @@ export interface MonitoredProjectArgs {
     metricsScope: pulumi.Input<string>;
     /**
      * Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
+     *
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
 }

@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Get the value and metadata from a Secret Manager secret version. For more information see the official documentation datasource.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -82,6 +84,8 @@ export interface GetSecretVersionResult {
     readonly version: string;
 }
 /**
+ * Get the value and metadata from a Secret Manager secret version. For more information see the official documentation datasource.
+ *
  * ## Example Usage
  *
  * ```typescript

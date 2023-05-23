@@ -16,12 +16,16 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredent
     /**
      * Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
      * 
+     * &lt;a name=&#34;nested_schedule_start_end_date&#34;&gt;&lt;/a&gt;The `schedule_start_date` and `schedule_end_date` blocks support:
+     * 
      */
     @Import(name="sasToken", required=true)
     private Output<String> sasToken;
 
     /**
      * @return Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+     * 
+     * &lt;a name=&#34;nested_schedule_start_end_date&#34;&gt;&lt;/a&gt;The `schedule_start_date` and `schedule_end_date` blocks support:
      * 
      */
     public Output<String> sasToken() {
@@ -55,6 +59,8 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredent
         /**
          * @param sasToken Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
          * 
+         * &lt;a name=&#34;nested_schedule_start_end_date&#34;&gt;&lt;/a&gt;The `schedule_start_date` and `schedule_end_date` blocks support:
+         * 
          * @return builder
          * 
          */
@@ -65,6 +71,8 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredent
 
         /**
          * @param sasToken Azure shared access signature. See [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
+         * 
+         * &lt;a name=&#34;nested_schedule_start_end_date&#34;&gt;&lt;/a&gt;The `schedule_start_date` and `schedule_end_date` blocks support:
          * 
          * @return builder
          * 

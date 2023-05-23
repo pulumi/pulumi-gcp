@@ -56,6 +56,8 @@ namespace Pulumi.Gcp.RuntimeConfig
 
         /// <summary>
         /// The name of the runtime config.
+        /// 
+        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -122,6 +124,8 @@ namespace Pulumi.Gcp.RuntimeConfig
 
         /// <summary>
         /// The name of the runtime config.
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -150,6 +154,8 @@ namespace Pulumi.Gcp.RuntimeConfig
 
         /// <summary>
         /// The name of the runtime config.
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

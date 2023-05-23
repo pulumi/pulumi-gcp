@@ -15,6 +15,9 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
         /// <summary>
         /// Specifies some of the values in a certificate that are related to the subject.
         /// Structure is documented below.
+        /// 
+        /// 
+        /// &lt;a name="nested_x509_config"&gt;&lt;/a&gt;The `x509_config` block supports:
         /// </summary>
         [Input("subjectConfig", required: true)]
         public Input<Inputs.AuthorityConfigSubjectConfigArgs> SubjectConfig { get; set; } = null!;

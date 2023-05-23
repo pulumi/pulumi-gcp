@@ -16,12 +16,16 @@ public final class DocumentAiProcessorDefaultVersionArgs extends com.pulumi.reso
     /**
      * The processor to set the version on.
      * 
+     * ***
+     * 
      */
     @Import(name="processor", required=true)
     private Output<String> processor;
 
     /**
      * @return The processor to set the version on.
+     * 
+     * ***
      * 
      */
     public Output<String> processor() {
@@ -73,6 +77,8 @@ public final class DocumentAiProcessorDefaultVersionArgs extends com.pulumi.reso
         /**
          * @param processor The processor to set the version on.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -83,6 +89,8 @@ public final class DocumentAiProcessorDefaultVersionArgs extends com.pulumi.reso
 
         /**
          * @param processor The processor to set the version on.
+         * 
+         * ***
          * 
          * @return builder
          * 

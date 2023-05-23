@@ -128,6 +128,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The security policy ID of the association.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("policyId")]
         public Output<string> PolicyId { get; private set; } = null!;
@@ -192,6 +195,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The security policy ID of the association.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("policyId", required: true)]
         public Input<string> PolicyId { get; set; } = null!;
@@ -224,6 +230,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The security policy ID of the association.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("policyId")]
         public Input<string>? PolicyId { get; set; }

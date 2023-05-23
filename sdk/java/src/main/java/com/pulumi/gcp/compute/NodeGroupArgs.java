@@ -118,12 +118,16 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The URL of the node template to which this node group belongs.
      * 
+     * ***
+     * 
      */
     @Import(name="nodeTemplate", required=true)
     private Output<String> nodeTemplate;
 
     /**
      * @return The URL of the node template to which this node group belongs.
+     * 
+     * ***
      * 
      */
     public Output<String> nodeTemplate() {
@@ -363,6 +367,8 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param nodeTemplate The URL of the node template to which this node group belongs.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -373,6 +379,8 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param nodeTemplate The URL of the node template to which this node group belongs.
+         * 
+         * ***
          * 
          * @return builder
          * 

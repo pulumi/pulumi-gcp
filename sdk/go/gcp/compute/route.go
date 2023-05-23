@@ -113,6 +113,8 @@ type Route struct {
 	// last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The network that this route applies to.
+	//
+	// ***
 	Network pulumi.StringOutput `pulumi:"network"`
 	// URL to a gateway that should handle matching packets.
 	// Currently, you can only specify the internet gateway, using a full or
@@ -219,6 +221,8 @@ type routeState struct {
 	// last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The network that this route applies to.
+	//
+	// ***
 	Network *string `pulumi:"network"`
 	// URL to a gateway that should handle matching packets.
 	// Currently, you can only specify the internet gateway, using a full or
@@ -291,6 +295,8 @@ type RouteState struct {
 	// last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The network that this route applies to.
+	//
+	// ***
 	Network pulumi.StringPtrInput
 	// URL to a gateway that should handle matching packets.
 	// Currently, you can only specify the internet gateway, using a full or
@@ -367,6 +373,8 @@ type routeArgs struct {
 	// last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The network that this route applies to.
+	//
+	// ***
 	Network string `pulumi:"network"`
 	// URL to a gateway that should handle matching packets.
 	// Currently, you can only specify the internet gateway, using a full or
@@ -436,6 +444,8 @@ type RouteArgs struct {
 	// last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The network that this route applies to.
+	//
+	// ***
 	Network pulumi.StringInput
 	// URL to a gateway that should handle matching packets.
 	// Currently, you can only specify the internet gateway, using a full or
@@ -599,6 +609,8 @@ func (o RouteOutput) Name() pulumi.StringOutput {
 }
 
 // The network that this route applies to.
+//
+// ***
 func (o RouteOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }

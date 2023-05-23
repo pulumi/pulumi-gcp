@@ -7,6 +7,19 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A Region Backend Service defines a regionally-scoped group of virtual
+ * machines that will serve traffic for load balancing.
+ *
+ * To get more information about RegionBackendService, see:
+ *
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices)
+ * * How-to Guides
+ *     * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
+ *
+ * > **Warning:** All arguments including the following potentially sensitive
+ * values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`.
+ * Read more about sensitive data in state.
+ *
  * ## Example Usage
  *
  * ## Import
@@ -167,6 +180,9 @@ export class RegionBackendService extends pulumi.CustomResource {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
+     *
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -420,6 +436,9 @@ export interface RegionBackendServiceState {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -588,6 +607,9 @@ export interface RegionBackendServiceArgs {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**

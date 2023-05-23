@@ -105,8 +105,13 @@ export class TagTemplate extends pulumi.CustomResource {
 
     /**
      * The display name for this field.
+     *
      * (Required)
      * The display name of the enum value.
+     *
+     * - - -
+     *
+     *
      * (Optional)
      * The display name for this template.
      */
@@ -186,8 +191,13 @@ export class TagTemplate extends pulumi.CustomResource {
 export interface TagTemplateState {
     /**
      * The display name for this field.
+     *
      * (Required)
      * The display name of the enum value.
+     *
+     * - - -
+     *
+     *
      * (Optional)
      * The display name for this template.
      */
@@ -227,8 +237,13 @@ export interface TagTemplateState {
 export interface TagTemplateArgs {
     /**
      * The display name for this field.
+     *
      * (Required)
      * The display name of the enum value.
+     *
+     * - - -
+     *
+     *
      * (Optional)
      * The display name for this template.
      */

@@ -185,12 +185,20 @@ public class Job extends com.pulumi.resources.CustomResource {
     /**
      * The list of labels (key/value pairs) to add to the job.
      * 
+     * * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+     * 
+     * * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+     * 
      */
     @Export(name="labels", type=Map.class, parameters={String.class, String.class})
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
      * @return The list of labels (key/value pairs) to add to the job.
+     * 
+     * * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+     * 
+     * * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
      * 
      */
     public Output<Optional<Map<String,String>>> labels() {

@@ -87,6 +87,8 @@ type MuteConfig struct {
 	// Resource name of the new mute configs's parent. Its format is
 	// "organizations/[organizationId]", "folders/[folderId]", or
 	// "projects/[projectId]".
+	//
+	// ***
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Output only. The most recent time at which the mute config was
 	// updated. This field is set by the server and will be ignored if
@@ -157,6 +159,8 @@ type muteConfigState struct {
 	// Resource name of the new mute configs's parent. Its format is
 	// "organizations/[organizationId]", "folders/[folderId]", or
 	// "projects/[projectId]".
+	//
+	// ***
 	Parent *string `pulumi:"parent"`
 	// Output only. The most recent time at which the mute config was
 	// updated. This field is set by the server and will be ignored if
@@ -190,6 +194,8 @@ type MuteConfigState struct {
 	// Resource name of the new mute configs's parent. Its format is
 	// "organizations/[organizationId]", "folders/[folderId]", or
 	// "projects/[projectId]".
+	//
+	// ***
 	Parent pulumi.StringPtrInput
 	// Output only. The most recent time at which the mute config was
 	// updated. This field is set by the server and will be ignored if
@@ -215,6 +221,8 @@ type muteConfigArgs struct {
 	// Resource name of the new mute configs's parent. Its format is
 	// "organizations/[organizationId]", "folders/[folderId]", or
 	// "projects/[projectId]".
+	//
+	// ***
 	Parent string `pulumi:"parent"`
 }
 
@@ -233,6 +241,8 @@ type MuteConfigArgs struct {
 	// Resource name of the new mute configs's parent. Its format is
 	// "organizations/[organizationId]", "folders/[folderId]", or
 	// "projects/[projectId]".
+	//
+	// ***
 	Parent pulumi.StringInput
 }
 
@@ -366,6 +376,8 @@ func (o MuteConfigOutput) Name() pulumi.StringOutput {
 // Resource name of the new mute configs's parent. Its format is
 // "organizations/[organizationId]", "folders/[folderId]", or
 // "projects/[projectId]".
+//
+// ***
 func (o MuteConfigOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *MuteConfig) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

@@ -72,6 +72,8 @@ export class DiskAsyncReplication extends pulumi.CustomResource {
     public readonly primaryDisk!: pulumi.Output<string>;
     /**
      * The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+     *
+     * The `secondaryDisk` block includes:
      */
     public readonly secondaryDisk!: pulumi.Output<outputs.compute.DiskAsyncReplicationSecondaryDisk>;
 
@@ -116,6 +118,8 @@ export interface DiskAsyncReplicationState {
     primaryDisk?: pulumi.Input<string>;
     /**
      * The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+     *
+     * The `secondaryDisk` block includes:
      */
     secondaryDisk?: pulumi.Input<inputs.compute.DiskAsyncReplicationSecondaryDisk>;
 }
@@ -130,6 +134,8 @@ export interface DiskAsyncReplicationArgs {
     primaryDisk: pulumi.Input<string>;
     /**
      * The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+     *
+     * The `secondaryDisk` block includes:
      */
     secondaryDisk: pulumi.Input<inputs.compute.DiskAsyncReplicationSecondaryDisk>;
 }

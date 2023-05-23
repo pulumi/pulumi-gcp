@@ -112,6 +112,8 @@ type BucketObject struct {
 	// (Computed) A url reference to download this object.
 	MediaLink pulumi.StringOutput `pulumi:"mediaLink"`
 	// User-provided metadata, in key/value pairs.
+	//
+	// One of the following is required:
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// The name of the object. If you're interpolating the name of this object, see `outputName` instead.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -122,6 +124,8 @@ type BucketObject struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// A path to the data you want to upload. Must be defined
 	// if `content` is not.
+	//
+	// ***
 	Source pulumi.AssetOrArchiveOutput `pulumi:"source"`
 	// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
 	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
@@ -204,6 +208,8 @@ type bucketObjectState struct {
 	// (Computed) A url reference to download this object.
 	MediaLink *string `pulumi:"mediaLink"`
 	// User-provided metadata, in key/value pairs.
+	//
+	// One of the following is required:
 	Metadata map[string]string `pulumi:"metadata"`
 	// The name of the object. If you're interpolating the name of this object, see `outputName` instead.
 	Name *string `pulumi:"name"`
@@ -214,6 +220,8 @@ type bucketObjectState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// A path to the data you want to upload. Must be defined
 	// if `content` is not.
+	//
+	// ***
 	Source pulumi.AssetOrArchive `pulumi:"source"`
 	// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
 	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
@@ -254,6 +262,8 @@ type BucketObjectState struct {
 	// (Computed) A url reference to download this object.
 	MediaLink pulumi.StringPtrInput
 	// User-provided metadata, in key/value pairs.
+	//
+	// One of the following is required:
 	Metadata pulumi.StringMapInput
 	// The name of the object. If you're interpolating the name of this object, see `outputName` instead.
 	Name pulumi.StringPtrInput
@@ -264,6 +274,8 @@ type BucketObjectState struct {
 	SelfLink pulumi.StringPtrInput
 	// A path to the data you want to upload. Must be defined
 	// if `content` is not.
+	//
+	// ***
 	Source pulumi.AssetOrArchiveInput
 	// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
 	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
@@ -302,11 +314,15 @@ type bucketObjectArgs struct {
 	// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// User-provided metadata, in key/value pairs.
+	//
+	// One of the following is required:
 	Metadata map[string]string `pulumi:"metadata"`
 	// The name of the object. If you're interpolating the name of this object, see `outputName` instead.
 	Name *string `pulumi:"name"`
 	// A path to the data you want to upload. Must be defined
 	// if `content` is not.
+	//
+	// ***
 	Source pulumi.AssetOrArchive `pulumi:"source"`
 	// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
 	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
@@ -342,11 +358,15 @@ type BucketObjectArgs struct {
 	// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
 	KmsKeyName pulumi.StringPtrInput
 	// User-provided metadata, in key/value pairs.
+	//
+	// One of the following is required:
 	Metadata pulumi.StringMapInput
 	// The name of the object. If you're interpolating the name of this object, see `outputName` instead.
 	Name pulumi.StringPtrInput
 	// A path to the data you want to upload. Must be defined
 	// if `content` is not.
+	//
+	// ***
 	Source pulumi.AssetOrArchiveInput
 	// The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the new bucket object.
 	// Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`. If not provided, this defaults to the bucket's default
@@ -515,6 +535,8 @@ func (o BucketObjectOutput) MediaLink() pulumi.StringOutput {
 }
 
 // User-provided metadata, in key/value pairs.
+//
+// One of the following is required:
 func (o BucketObjectOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.StringMapOutput { return v.Metadata }).(pulumi.StringMapOutput)
 }
@@ -537,6 +559,8 @@ func (o BucketObjectOutput) SelfLink() pulumi.StringOutput {
 
 // A path to the data you want to upload. Must be defined
 // if `content` is not.
+//
+// ***
 func (o BucketObjectOutput) Source() pulumi.AssetOrArchiveOutput {
 	return o.ApplyT(func(v *BucketObject) pulumi.AssetOrArchiveOutput { return v.Source }).(pulumi.AssetOrArchiveOutput)
 }

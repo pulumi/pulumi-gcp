@@ -12,12 +12,16 @@ public final class VMwareClusterControlPlaneNodeAutoResizeConfig {
     /**
      * @return Whether to enable control plane node auto resizing.
      * 
+     * &lt;a name=&#34;nested_vsphere_config&#34;&gt;&lt;/a&gt;The `vsphere_config` block contains:
+     * 
      */
     private Boolean enabled;
 
     private VMwareClusterControlPlaneNodeAutoResizeConfig() {}
     /**
      * @return Whether to enable control plane node auto resizing.
+     * 
+     * &lt;a name=&#34;nested_vsphere_config&#34;&gt;&lt;/a&gt;The `vsphere_config` block contains:
      * 
      */
     public Boolean enabled() {

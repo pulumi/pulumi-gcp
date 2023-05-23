@@ -26,6 +26,9 @@ class NetworkEndpointArgs:
                to a VM in GCE (either the primary IP or as part of an aliased IP
                range).
         :param pulumi.Input[str] network_endpoint_group: The network endpoint group this endpoint is part of.
+               
+               
+               - - -
         :param pulumi.Input[str] instance: The name for a specific VM instance that the IP address belongs to.
                This is required for network endpoints of type GCE_VM_IP_PORT.
                The instance must be in the same zone of network endpoint group.
@@ -66,6 +69,9 @@ class NetworkEndpointArgs:
     def network_endpoint_group(self) -> pulumi.Input[str]:
         """
         The network endpoint group this endpoint is part of.
+
+
+        - - -
         """
         return pulumi.get(self, "network_endpoint_group")
 
@@ -145,6 +151,9 @@ class _NetworkEndpointState:
                to a VM in GCE (either the primary IP or as part of an aliased IP
                range).
         :param pulumi.Input[str] network_endpoint_group: The network endpoint group this endpoint is part of.
+               
+               
+               - - -
         :param pulumi.Input[int] port: Port number of network endpoint.
                **Note** `port` is required unless the Network Endpoint Group is created
                with the type of `GCE_VM_IP`
@@ -198,6 +207,9 @@ class _NetworkEndpointState:
     def network_endpoint_group(self) -> Optional[pulumi.Input[str]]:
         """
         The network endpoint group this endpoint is part of.
+
+
+        - - -
         """
         return pulumi.get(self, "network_endpoint_group")
 
@@ -336,6 +348,9 @@ class NetworkEndpoint(pulumi.CustomResource):
                to a VM in GCE (either the primary IP or as part of an aliased IP
                range).
         :param pulumi.Input[str] network_endpoint_group: The network endpoint group this endpoint is part of.
+               
+               
+               - - -
         :param pulumi.Input[int] port: Port number of network endpoint.
                **Note** `port` is required unless the Network Endpoint Group is created
                with the type of `GCE_VM_IP`
@@ -489,6 +504,9 @@ class NetworkEndpoint(pulumi.CustomResource):
                to a VM in GCE (either the primary IP or as part of an aliased IP
                range).
         :param pulumi.Input[str] network_endpoint_group: The network endpoint group this endpoint is part of.
+               
+               
+               - - -
         :param pulumi.Input[int] port: Port number of network endpoint.
                **Note** `port` is required unless the Network Endpoint Group is created
                with the type of `GCE_VM_IP`
@@ -533,6 +551,9 @@ class NetworkEndpoint(pulumi.CustomResource):
     def network_endpoint_group(self) -> pulumi.Output[str]:
         """
         The network endpoint group this endpoint is part of.
+
+
+        - - -
         """
         return pulumi.get(self, "network_endpoint_group")
 

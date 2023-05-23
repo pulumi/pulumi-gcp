@@ -104,12 +104,16 @@ public class GlobalNetworkEndpoint extends com.pulumi.resources.CustomResource {
     /**
      * The global network endpoint group this endpoint is part of.
      * 
+     * ***
+     * 
      */
     @Export(name="globalNetworkEndpointGroup", type=String.class, parameters={})
     private Output<String> globalNetworkEndpointGroup;
 
     /**
      * @return The global network endpoint group this endpoint is part of.
+     * 
+     * ***
      * 
      */
     public Output<String> globalNetworkEndpointGroup() {

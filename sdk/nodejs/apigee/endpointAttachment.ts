@@ -94,6 +94,9 @@ export class EndpointAttachment extends pulumi.CustomResource {
     public /*out*/ readonly connectionState!: pulumi.Output<string>;
     /**
      * ID of the endpoint attachment.
+     *
+     *
+     * - - -
      */
     public readonly endpointAttachmentId!: pulumi.Output<string>;
     /**
@@ -176,6 +179,9 @@ export interface EndpointAttachmentState {
     connectionState?: pulumi.Input<string>;
     /**
      * ID of the endpoint attachment.
+     *
+     *
+     * - - -
      */
     endpointAttachmentId?: pulumi.Input<string>;
     /**
@@ -208,6 +214,9 @@ export interface EndpointAttachmentState {
 export interface EndpointAttachmentArgs {
     /**
      * ID of the endpoint attachment.
+     *
+     *
+     * - - -
      */
     endpointAttachmentId: pulumi.Input<string>;
     /**

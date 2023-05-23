@@ -7,6 +7,16 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Allows creation and management of an App Engine application.
+ *
+ * > App Engine applications cannot be deleted once they're created; you have to delete the
+ *    entire project to delete the application. This provider will report the application has been
+ *    successfully deleted; this is a limitation of the provider, and will go away in the future.
+ *    This provider is not able to delete App Engine applications.
+ *
+ * > **Warning:** All arguments including `iap.oauth2_client_secret` will be stored in the raw
+ * state as plain-text. Read more about sensitive data in state.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -71,6 +81,14 @@ export class Application extends pulumi.CustomResource {
      * The GCS bucket code is being stored in for this app.
      */
     public /*out*/ readonly codeBucket!: pulumi.Output<string>;
+    /**
+     * The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+     * Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
+     * instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted by the provider, but will be rejected by the API.
+     * To create a Cloud Firestore database without creating an App Engine application, use the
+     * `gcp.firestore.Database`
+     * resource instead.
+     */
     public readonly databaseType!: pulumi.Output<string>;
     /**
      * The GCS bucket content is being stored in for this app.
@@ -184,6 +202,14 @@ export interface ApplicationState {
      * The GCS bucket code is being stored in for this app.
      */
     codeBucket?: pulumi.Input<string>;
+    /**
+     * The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+     * Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
+     * instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted by the provider, but will be rejected by the API.
+     * To create a Cloud Firestore database without creating an App Engine application, use the
+     * `gcp.firestore.Database`
+     * resource instead.
+     */
     databaseType?: pulumi.Input<string>;
     /**
      * The GCS bucket content is being stored in for this app.
@@ -238,6 +264,14 @@ export interface ApplicationArgs {
      * The domain to authenticate users with when using App Engine's User API.
      */
     authDomain?: pulumi.Input<string>;
+    /**
+     * The type of the Cloud Firestore or Cloud Datastore database associated with this application.
+     * Can be `CLOUD_FIRESTORE` or `CLOUD_DATASTORE_COMPATIBILITY` for new
+     * instances.  To support old instances, the value `CLOUD_DATASTORE` is accepted by the provider, but will be rejected by the API.
+     * To create a Cloud Firestore database without creating an App Engine application, use the
+     * `gcp.firestore.Database`
+     * resource instead.
+     */
     databaseType?: pulumi.Input<string>;
     /**
      * A block of optional settings to configure specific App Engine features:

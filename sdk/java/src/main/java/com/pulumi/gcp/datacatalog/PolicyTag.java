@@ -221,12 +221,16 @@ public class PolicyTag extends com.pulumi.resources.CustomResource {
     /**
      * Taxonomy the policy tag is associated with
      * 
+     * ***
+     * 
      */
     @Export(name="taxonomy", type=String.class, parameters={})
     private Output<String> taxonomy;
 
     /**
      * @return Taxonomy the policy tag is associated with
+     * 
+     * ***
      * 
      */
     public Output<String> taxonomy() {

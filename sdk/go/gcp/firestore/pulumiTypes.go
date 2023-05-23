@@ -435,6 +435,8 @@ type IndexField struct {
 	// Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
 	// be specified.
 	// Possible values are: `CONTAINS`.
+	//
+	// ***
 	ArrayConfig *string `pulumi:"arrayConfig"`
 	// Name of the field.
 	FieldPath *string `pulumi:"fieldPath"`
@@ -459,6 +461,8 @@ type IndexFieldArgs struct {
 	// Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
 	// be specified.
 	// Possible values are: `CONTAINS`.
+	//
+	// ***
 	ArrayConfig pulumi.StringPtrInput `pulumi:"arrayConfig"`
 	// Name of the field.
 	FieldPath pulumi.StringPtrInput `pulumi:"fieldPath"`
@@ -522,6 +526,8 @@ func (o IndexFieldOutput) ToIndexFieldOutputWithContext(ctx context.Context) Ind
 // Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
 // be specified.
 // Possible values are: `CONTAINS`.
+//
+// ***
 func (o IndexFieldOutput) ArrayConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IndexField) *string { return v.ArrayConfig }).(pulumi.StringPtrOutput)
 }

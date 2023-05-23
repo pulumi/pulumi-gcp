@@ -50,6 +50,8 @@ export interface GetProjectServiceArgs {
     project?: string;
     /**
      * The name of the Google Platform project service.
+     *
+     * - - -
      */
     service: string;
 }
@@ -108,6 +110,8 @@ export interface GetProjectServiceOutputArgs {
     project?: pulumi.Input<string>;
     /**
      * The name of the Google Platform project service.
+     *
+     * - - -
      */
     service: pulumi.Input<string>;
 }

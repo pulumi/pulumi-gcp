@@ -42,6 +42,8 @@ export function getTrigger(args: GetTriggerArgs, opts?: pulumi.InvokeOptions): P
 export interface GetTriggerArgs {
     /**
      * The Cloud Build location for the trigger.
+     *
+     * - - -
      */
     location: string;
     /**
@@ -118,6 +120,8 @@ export function getTriggerOutput(args: GetTriggerOutputArgs, opts?: pulumi.Invok
 export interface GetTriggerOutputArgs {
     /**
      * The Cloud Build location for the trigger.
+     *
+     * - - -
      */
     location: pulumi.Input<string>;
     /**

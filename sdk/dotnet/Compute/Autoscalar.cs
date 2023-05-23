@@ -270,6 +270,10 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A description of a scaling schedule.
+        /// 
+        /// - - -
+        /// 
+        /// 
         /// (Optional)
         /// An optional description of this resource.
         /// </summary>
@@ -370,6 +374,10 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A description of a scaling schedule.
+        /// 
+        /// - - -
+        /// 
+        /// 
         /// (Optional)
         /// An optional description of this resource.
         /// </summary>
@@ -432,6 +440,10 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A description of a scaling schedule.
+        /// 
+        /// - - -
+        /// 
+        /// 
         /// (Optional)
         /// An optional description of this resource.
         /// </summary>

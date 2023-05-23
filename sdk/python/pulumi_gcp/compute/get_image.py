@@ -302,6 +302,8 @@ def get_image(family: Optional[str] = None,
            the corresponding image. If `family` is specified, it will return the latest image
            that is part of an image family and is not deprecated. If you specify `filter`, your
            filter must return exactly one image. Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
+           
+           - - -
     :param str project: The project in which the resource belongs. If it is not
            provided, the provider project is used. If you are using a
            [public base image][pubimg], be sure to specify the correct Image Project.
@@ -370,6 +372,8 @@ def get_image_output(family: Optional[pulumi.Input[Optional[str]]] = None,
            the corresponding image. If `family` is specified, it will return the latest image
            that is part of an image family and is not deprecated. If you specify `filter`, your
            filter must return exactly one image. Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
+           
+           - - -
     :param str project: The project in which the resource belongs. If it is not
            provided, the provider project is used. If you are using a
            [public base image][pubimg], be sure to specify the correct Image Project.

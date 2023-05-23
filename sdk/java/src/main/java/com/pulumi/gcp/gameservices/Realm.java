@@ -170,12 +170,16 @@ public class Realm extends com.pulumi.resources.CustomResource {
     /**
      * GCP region of the Realm.
      * 
+     * ***
+     * 
      */
     @Export(name="realmId", type=String.class, parameters={})
     private Output<String> realmId;
 
     /**
      * @return GCP region of the Realm.
+     * 
+     * ***
      * 
      */
     public Output<String> realmId() {

@@ -31,6 +31,8 @@ class SecurityPolicyArgs:
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this security policy. Max size is 2048.
         :param pulumi.Input[str] name: The name of the security policy.
+               
+               - - -
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input['SecurityPolicyRecaptchaOptionsConfigArgs'] recaptcha_options_config: [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
@@ -105,6 +107,8 @@ class SecurityPolicyArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the security policy.
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -192,6 +196,8 @@ class _SecurityPolicyState:
         :param pulumi.Input[str] description: An optional description of this security policy. Max size is 2048.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource.
         :param pulumi.Input[str] name: The name of the security policy.
+               
+               - - -
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input['SecurityPolicyRecaptchaOptionsConfigArgs'] recaptcha_options_config: [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
@@ -283,6 +289,8 @@ class _SecurityPolicyState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the security policy.
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -523,6 +531,8 @@ class SecurityPolicy(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this security policy. Max size is 2048.
         :param pulumi.Input[str] name: The name of the security policy.
+               
+               - - -
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['SecurityPolicyRecaptchaOptionsConfigArgs']] recaptcha_options_config: [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
@@ -760,6 +770,8 @@ class SecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this security policy. Max size is 2048.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource.
         :param pulumi.Input[str] name: The name of the security policy.
+               
+               - - -
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['SecurityPolicyRecaptchaOptionsConfigArgs']] recaptcha_options_config: [reCAPTCHA Configuration Options](https://cloud.google.com/armor/docs/configure-security-policies?hl=en#use_a_manual_challenge_to_distinguish_between_human_or_automated_clients). Structure is documented below.
@@ -830,6 +842,8 @@ class SecurityPolicy(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The name of the security policy.
+
+        - - -
         """
         return pulumi.get(self, "name")
 

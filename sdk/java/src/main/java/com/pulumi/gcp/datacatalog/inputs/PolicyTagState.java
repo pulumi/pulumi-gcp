@@ -110,12 +110,16 @@ public final class PolicyTagState extends com.pulumi.resources.ResourceArgs {
     /**
      * Taxonomy the policy tag is associated with
      * 
+     * ***
+     * 
      */
     @Import(name="taxonomy")
     private @Nullable Output<String> taxonomy;
 
     /**
      * @return Taxonomy the policy tag is associated with
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> taxonomy() {
@@ -285,6 +289,8 @@ public final class PolicyTagState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param taxonomy Taxonomy the policy tag is associated with
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -295,6 +301,8 @@ public final class PolicyTagState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param taxonomy Taxonomy the policy tag is associated with
+         * 
+         * ***
          * 
          * @return builder
          * 

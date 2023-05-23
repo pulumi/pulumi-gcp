@@ -25,6 +25,9 @@ class GameServerDeploymentRolloutArgs:
         :param pulumi.Input[str] default_game_server_config: This field points to the game server config that is
                applied by default to all realms and clusters. For example,
                `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+               
+               
+               - - -
         :param pulumi.Input[str] deployment_id: The deployment to rollout the new config to. Only 1 rollout must be associated with each deployment.
         :param pulumi.Input[Sequence[pulumi.Input['GameServerDeploymentRolloutGameServerConfigOverrideArgs']]] game_server_config_overrides: The game_server_config_overrides contains the per game server config
                overrides. The overrides are processed in the order they are listed. As
@@ -48,6 +51,9 @@ class GameServerDeploymentRolloutArgs:
         This field points to the game server config that is
         applied by default to all realms and clusters. For example,
         `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+
+
+        - - -
         """
         return pulumi.get(self, "default_game_server_config")
 
@@ -110,6 +116,9 @@ class _GameServerDeploymentRolloutState:
         :param pulumi.Input[str] default_game_server_config: This field points to the game server config that is
                applied by default to all realms and clusters. For example,
                `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+               
+               
+               - - -
         :param pulumi.Input[str] deployment_id: The deployment to rollout the new config to. Only 1 rollout must be associated with each deployment.
         :param pulumi.Input[Sequence[pulumi.Input['GameServerDeploymentRolloutGameServerConfigOverrideArgs']]] game_server_config_overrides: The game_server_config_overrides contains the per game server config
                overrides. The overrides are processed in the order they are listed. As
@@ -139,6 +148,9 @@ class _GameServerDeploymentRolloutState:
         This field points to the game server config that is
         applied by default to all realms and clusters. For example,
         `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+
+
+        - - -
         """
         return pulumi.get(self, "default_game_server_config")
 
@@ -290,6 +302,9 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
         :param pulumi.Input[str] default_game_server_config: This field points to the game server config that is
                applied by default to all realms and clusters. For example,
                `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+               
+               
+               - - -
         :param pulumi.Input[str] deployment_id: The deployment to rollout the new config to. Only 1 rollout must be associated with each deployment.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GameServerDeploymentRolloutGameServerConfigOverrideArgs']]]] game_server_config_overrides: The game_server_config_overrides contains the per game server config
                overrides. The overrides are processed in the order they are listed. As
@@ -441,6 +456,9 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
         :param pulumi.Input[str] default_game_server_config: This field points to the game server config that is
                applied by default to all realms and clusters. For example,
                `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+               
+               
+               - - -
         :param pulumi.Input[str] deployment_id: The deployment to rollout the new config to. Only 1 rollout must be associated with each deployment.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GameServerDeploymentRolloutGameServerConfigOverrideArgs']]]] game_server_config_overrides: The game_server_config_overrides contains the per game server config
                overrides. The overrides are processed in the order they are listed. As
@@ -470,6 +488,9 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
         This field points to the game server config that is
         applied by default to all realms and clusters. For example,
         `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+
+
+        - - -
         """
         return pulumi.get(self, "default_game_server_config")
 

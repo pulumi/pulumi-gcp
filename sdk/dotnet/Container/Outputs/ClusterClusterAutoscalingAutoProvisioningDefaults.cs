@@ -41,6 +41,8 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly string? MinCpuPlatform;
         /// <summary>
         /// Scopes that are used by NAP and GKE Autopilot when creating node pools. Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+        /// 
+        /// &gt; `monitoring.write` is always enabled regardless of user input.  `monitoring` and `logging.write` may also be enabled depending on the values for `monitoring_service` and `logging_service`.
         /// </summary>
         public readonly ImmutableArray<string> OauthScopes;
         /// <summary>

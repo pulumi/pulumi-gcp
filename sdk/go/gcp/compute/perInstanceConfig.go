@@ -153,6 +153,8 @@ type PerInstanceConfig struct {
 	pulumi.CustomResourceState
 
 	// The instance group manager this instance config is part of.
+	//
+	// ***
 	InstanceGroupManager pulumi.StringOutput `pulumi:"instanceGroupManager"`
 	// The minimal action to perform on the instance during an update.
 	// Default is `NONE`. Possible values are:
@@ -217,6 +219,8 @@ func GetPerInstanceConfig(ctx *pulumi.Context,
 // Input properties used for looking up and filtering PerInstanceConfig resources.
 type perInstanceConfigState struct {
 	// The instance group manager this instance config is part of.
+	//
+	// ***
 	InstanceGroupManager *string `pulumi:"instanceGroupManager"`
 	// The minimal action to perform on the instance during an update.
 	// Default is `NONE`. Possible values are:
@@ -250,6 +254,8 @@ type perInstanceConfigState struct {
 
 type PerInstanceConfigState struct {
 	// The instance group manager this instance config is part of.
+	//
+	// ***
 	InstanceGroupManager pulumi.StringPtrInput
 	// The minimal action to perform on the instance during an update.
 	// Default is `NONE`. Possible values are:
@@ -287,6 +293,8 @@ func (PerInstanceConfigState) ElementType() reflect.Type {
 
 type perInstanceConfigArgs struct {
 	// The instance group manager this instance config is part of.
+	//
+	// ***
 	InstanceGroupManager string `pulumi:"instanceGroupManager"`
 	// The minimal action to perform on the instance during an update.
 	// Default is `NONE`. Possible values are:
@@ -321,6 +329,8 @@ type perInstanceConfigArgs struct {
 // The set of arguments for constructing a PerInstanceConfig resource.
 type PerInstanceConfigArgs struct {
 	// The instance group manager this instance config is part of.
+	//
+	// ***
 	InstanceGroupManager pulumi.StringInput
 	// The minimal action to perform on the instance during an update.
 	// Default is `NONE`. Possible values are:
@@ -440,6 +450,8 @@ func (o PerInstanceConfigOutput) ToPerInstanceConfigOutputWithContext(ctx contex
 }
 
 // The instance group manager this instance config is part of.
+//
+// ***
 func (o PerInstanceConfigOutput) InstanceGroupManager() pulumi.StringOutput {
 	return o.ApplyT(func(v *PerInstanceConfig) pulumi.StringOutput { return v.InstanceGroupManager }).(pulumi.StringOutput)
 }

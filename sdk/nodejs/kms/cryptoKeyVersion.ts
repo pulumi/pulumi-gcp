@@ -81,6 +81,9 @@ export class CryptoKeyVersion extends pulumi.CustomResource {
     /**
      * The name of the cryptoKey associated with the CryptoKeyVersions.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
+     *
+     *
+     * - - -
      */
     public readonly cryptoKey!: pulumi.Output<string>;
     /**
@@ -156,6 +159,9 @@ export interface CryptoKeyVersionState {
     /**
      * The name of the cryptoKey associated with the CryptoKeyVersions.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
+     *
+     *
+     * - - -
      */
     cryptoKey?: pulumi.Input<string>;
     /**
@@ -184,6 +190,9 @@ export interface CryptoKeyVersionArgs {
     /**
      * The name of the cryptoKey associated with the CryptoKeyVersions.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyring}}/cryptoKeys/{{cryptoKey}}'`
+     *
+     *
+     * - - -
      */
     cryptoKey: pulumi.Input<string>;
     /**

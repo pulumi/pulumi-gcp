@@ -4323,6 +4323,8 @@ type JobTemplateTemplateVpcAccess struct {
 	Connector *string `pulumi:"connector"`
 	// Traffic VPC egress settings.
 	// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+	//
+	// ***
 	Egress *string `pulumi:"egress"`
 }
 
@@ -4342,6 +4344,8 @@ type JobTemplateTemplateVpcAccessArgs struct {
 	Connector pulumi.StringPtrInput `pulumi:"connector"`
 	// Traffic VPC egress settings.
 	// Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+	//
+	// ***
 	Egress pulumi.StringPtrInput `pulumi:"egress"`
 }
 
@@ -4429,6 +4433,8 @@ func (o JobTemplateTemplateVpcAccessOutput) Connector() pulumi.StringPtrOutput {
 
 // Traffic VPC egress settings.
 // Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+//
+// ***
 func (o JobTemplateTemplateVpcAccessOutput) Egress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateVpcAccess) *string { return v.Egress }).(pulumi.StringPtrOutput)
 }
@@ -4469,6 +4475,8 @@ func (o JobTemplateTemplateVpcAccessPtrOutput) Connector() pulumi.StringPtrOutpu
 
 // Traffic VPC egress settings.
 // Possible values are: `ALL_TRAFFIC`, `PRIVATE_RANGES_ONLY`.
+//
+// ***
 func (o JobTemplateTemplateVpcAccessPtrOutput) Egress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobTemplateTemplateVpcAccess) *string {
 		if v == nil {
@@ -8915,6 +8923,8 @@ type ServiceTemplateVolumeEmptyDir struct {
 	// Possible values are: `MEMORY`.
 	Medium *string `pulumi:"medium"`
 	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+	//
+	// ***
 	SizeLimit *string `pulumi:"sizeLimit"`
 }
 
@@ -8935,6 +8945,8 @@ type ServiceTemplateVolumeEmptyDirArgs struct {
 	// Possible values are: `MEMORY`.
 	Medium pulumi.StringPtrInput `pulumi:"medium"`
 	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+	//
+	// ***
 	SizeLimit pulumi.StringPtrInput `pulumi:"sizeLimit"`
 }
 
@@ -9023,6 +9035,8 @@ func (o ServiceTemplateVolumeEmptyDirOutput) Medium() pulumi.StringPtrOutput {
 }
 
 // Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+//
+// ***
 func (o ServiceTemplateVolumeEmptyDirOutput) SizeLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateVolumeEmptyDir) *string { return v.SizeLimit }).(pulumi.StringPtrOutput)
 }
@@ -9064,6 +9078,8 @@ func (o ServiceTemplateVolumeEmptyDirPtrOutput) Medium() pulumi.StringPtrOutput 
 }
 
 // Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+//
+// ***
 func (o ServiceTemplateVolumeEmptyDirPtrOutput) SizeLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateVolumeEmptyDir) *string {
 		if v == nil {
@@ -9845,6 +9861,7 @@ type ServiceTrafficStatus struct {
 	// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
 	Percent *int `pulumi:"percent"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+	//
 	// (Optional)
 	// Revision to which to send this portion of traffic, if traffic allocation is by revision.
 	Revision *string `pulumi:"revision"`
@@ -9873,6 +9890,7 @@ type ServiceTrafficStatusArgs struct {
 	// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
 	Percent pulumi.IntPtrInput `pulumi:"percent"`
 	// The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+	//
 	// (Optional)
 	// Revision to which to send this portion of traffic, if traffic allocation is by revision.
 	Revision pulumi.StringPtrInput `pulumi:"revision"`
@@ -9943,6 +9961,7 @@ func (o ServiceTrafficStatusOutput) Percent() pulumi.IntPtrOutput {
 }
 
 // The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+//
 // (Optional)
 // Revision to which to send this portion of traffic, if traffic allocation is by revision.
 func (o ServiceTrafficStatusOutput) Revision() pulumi.StringPtrOutput {

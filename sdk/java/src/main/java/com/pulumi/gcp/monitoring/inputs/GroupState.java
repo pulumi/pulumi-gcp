@@ -37,6 +37,8 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
      * The filter used to determine which monitored resources
      * belong to this group.
      * 
+     * ***
+     * 
      */
     @Import(name="filter")
     private @Nullable Output<String> filter;
@@ -44,6 +46,8 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The filter used to determine which monitored resources
      * belong to this group.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> filter() {
@@ -178,6 +182,8 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
          * @param filter The filter used to determine which monitored resources
          * belong to this group.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -189,6 +195,8 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param filter The filter used to determine which monitored resources
          * belong to this group.
+         * 
+         * ***
          * 
          * @return builder
          * 

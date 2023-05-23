@@ -83,6 +83,8 @@ type Contact struct {
 	// The categories of notifications that the contact will receive communications for.
 	NotificationCategorySubscriptions pulumi.StringArrayOutput `pulumi:"notificationCategorySubscriptions"`
 	// The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
+	//
+	// ***
 	Parent pulumi.StringOutput `pulumi:"parent"`
 }
 
@@ -136,6 +138,8 @@ type contactState struct {
 	// The categories of notifications that the contact will receive communications for.
 	NotificationCategorySubscriptions []string `pulumi:"notificationCategorySubscriptions"`
 	// The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
+	//
+	// ***
 	Parent *string `pulumi:"parent"`
 }
 
@@ -149,6 +153,8 @@ type ContactState struct {
 	// The categories of notifications that the contact will receive communications for.
 	NotificationCategorySubscriptions pulumi.StringArrayInput
 	// The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
+	//
+	// ***
 	Parent pulumi.StringPtrInput
 }
 
@@ -164,6 +170,8 @@ type contactArgs struct {
 	// The categories of notifications that the contact will receive communications for.
 	NotificationCategorySubscriptions []string `pulumi:"notificationCategorySubscriptions"`
 	// The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
+	//
+	// ***
 	Parent string `pulumi:"parent"`
 }
 
@@ -176,6 +184,8 @@ type ContactArgs struct {
 	// The categories of notifications that the contact will receive communications for.
 	NotificationCategorySubscriptions pulumi.StringArrayInput
 	// The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
+	//
+	// ***
 	Parent pulumi.StringInput
 }
 
@@ -287,6 +297,8 @@ func (o ContactOutput) NotificationCategorySubscriptions() pulumi.StringArrayOut
 }
 
 // The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
+//
+// ***
 func (o ContactOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

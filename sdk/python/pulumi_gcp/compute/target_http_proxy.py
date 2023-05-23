@@ -23,6 +23,9 @@ class TargetHttpProxyArgs:
         The set of arguments for constructing a TargetHttpProxy resource.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
+               
+               
+               - - -
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -52,6 +55,9 @@ class TargetHttpProxyArgs:
         """
         A reference to the UrlMap resource that defines the mapping from URL
         to the BackendService.
+
+
+        - - -
         """
         return pulumi.get(self, "url_map")
 
@@ -146,6 +152,9 @@ class _TargetHttpProxyState:
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
+               
+               
+               - - -
         """
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -262,6 +271,9 @@ class _TargetHttpProxyState:
         """
         A reference to the UrlMap resource that defines the mapping from URL
         to the BackendService.
+
+
+        - - -
         """
         return pulumi.get(self, "url_map")
 
@@ -337,6 +349,9 @@ class TargetHttpProxy(pulumi.CustomResource):
                this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
+               
+               
+               - - -
         """
         ...
     @overload
@@ -465,6 +480,9 @@ class TargetHttpProxy(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
+               
+               
+               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -550,6 +568,9 @@ class TargetHttpProxy(pulumi.CustomResource):
         """
         A reference to the UrlMap resource that defines the mapping from URL
         to the BackendService.
+
+
+        - - -
         """
         return pulumi.get(self, "url_map")
 

@@ -79,12 +79,16 @@ public final class TlsInspectionPolicyArgs extends com.pulumi.resources.Resource
     /**
      * Short name of the TlsInspectionPolicy resource to be created.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Short name of the TlsInspectionPolicy resource to be created.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -224,6 +228,8 @@ public final class TlsInspectionPolicyArgs extends com.pulumi.resources.Resource
         /**
          * @param name Short name of the TlsInspectionPolicy resource to be created.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -234,6 +240,8 @@ public final class TlsInspectionPolicyArgs extends com.pulumi.resources.Resource
 
         /**
          * @param name Short name of the TlsInspectionPolicy resource to be created.
+         * 
+         * ***
          * 
          * @return builder
          * 

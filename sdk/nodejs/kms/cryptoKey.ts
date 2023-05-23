@@ -104,6 +104,9 @@ export class CryptoKey extends pulumi.CustomResource {
     /**
      * The KeyRing that this key belongs to.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
+     *
+     *
+     * - - -
      */
     public readonly keyRing!: pulumi.Output<string>;
     /**
@@ -198,6 +201,9 @@ export interface CryptoKeyState {
     /**
      * The KeyRing that this key belongs to.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
+     *
+     *
+     * - - -
      */
     keyRing?: pulumi.Input<string>;
     /**
@@ -251,6 +257,9 @@ export interface CryptoKeyArgs {
     /**
      * The KeyRing that this key belongs to.
      * Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
+     *
+     *
+     * - - -
      */
     keyRing: pulumi.Input<string>;
     /**

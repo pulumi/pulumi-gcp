@@ -124,6 +124,9 @@ export class Snapshot extends pulumi.CustomResource {
     public /*out*/ readonly filesystemUsedBytes!: pulumi.Output<string>;
     /**
      * The resource name of the filestore instance.
+     *
+     *
+     * - - -
      */
     public readonly instance!: pulumi.Output<string>;
     /**
@@ -217,6 +220,9 @@ export interface SnapshotState {
     filesystemUsedBytes?: pulumi.Input<string>;
     /**
      * The resource name of the filestore instance.
+     *
+     *
+     * - - -
      */
     instance?: pulumi.Input<string>;
     /**
@@ -258,6 +264,9 @@ export interface SnapshotArgs {
     description?: pulumi.Input<string>;
     /**
      * The resource name of the filestore instance.
+     *
+     *
+     * - - -
      */
     instance: pulumi.Input<string>;
     /**

@@ -43,6 +43,9 @@ class TopicArgs:
                constraints are in effect.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the topic.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['TopicSchemaSettingsArgs'] schema_settings: Settings for validating messages published against a schema.
@@ -129,6 +132,9 @@ class TopicArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the topic.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -193,6 +199,9 @@ class _TopicState:
                constraints are in effect.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the topic.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['TopicSchemaSettingsArgs'] schema_settings: Settings for validating messages published against a schema.
@@ -279,6 +288,9 @@ class _TopicState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the topic.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -437,6 +449,9 @@ class Topic(pulumi.CustomResource):
                constraints are in effect.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the topic.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['TopicSchemaSettingsArgs']] schema_settings: Settings for validating messages published against a schema.
@@ -619,6 +634,9 @@ class Topic(pulumi.CustomResource):
                constraints are in effect.
                Structure is documented below.
         :param pulumi.Input[str] name: Name of the topic.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['TopicSchemaSettingsArgs']] schema_settings: Settings for validating messages published against a schema.
@@ -687,6 +705,9 @@ class Topic(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Name of the topic.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

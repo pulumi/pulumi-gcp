@@ -77,6 +77,9 @@ export class LiteReservation extends pulumi.CustomResource {
 
     /**
      * Name of the reservation.
+     *
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -133,6 +136,9 @@ export class LiteReservation extends pulumi.CustomResource {
 export interface LiteReservationState {
     /**
      * Name of the reservation.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -158,6 +164,9 @@ export interface LiteReservationState {
 export interface LiteReservationArgs {
     /**
      * Name of the reservation.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**

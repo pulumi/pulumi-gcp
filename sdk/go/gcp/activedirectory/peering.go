@@ -98,7 +98,7 @@ type Peering struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// (Required)
+	// ***
 	PeeringId pulumi.StringOutput `pulumi:"peeringId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -155,7 +155,7 @@ type peeringState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
 	Name *string `pulumi:"name"`
-	// (Required)
+	// ***
 	PeeringId *string `pulumi:"peeringId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -175,7 +175,7 @@ type PeeringState struct {
 	Labels pulumi.StringMapInput
 	// Unique name of the peering in this scope including projects and location using the form: projects/{projectId}/locations/global/peerings/{peeringId}.
 	Name pulumi.StringPtrInput
-	// (Required)
+	// ***
 	PeeringId pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -197,7 +197,7 @@ type peeringArgs struct {
 	DomainResource string `pulumi:"domainResource"`
 	// Resource labels that can contain user-provided metadata
 	Labels map[string]string `pulumi:"labels"`
-	// (Required)
+	// ***
 	PeeringId string `pulumi:"peeringId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -216,7 +216,7 @@ type PeeringArgs struct {
 	DomainResource pulumi.StringInput
 	// Resource labels that can contain user-provided metadata
 	Labels pulumi.StringMapInput
-	// (Required)
+	// ***
 	PeeringId pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -334,7 +334,7 @@ func (o PeeringOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Peering) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// (Required)
+// ***
 func (o PeeringOutput) PeeringId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Peering) pulumi.StringOutput { return v.PeeringId }).(pulumi.StringOutput)
 }

@@ -12,12 +12,16 @@ public final class OrganizationFeedFeedOutputConfigPubsubDestination {
     /**
      * @return Destination on Cloud Pubsub topic.
      * 
+     * ***
+     * 
      */
     private String topic;
 
     private OrganizationFeedFeedOutputConfigPubsubDestination() {}
     /**
      * @return Destination on Cloud Pubsub topic.
+     * 
+     * ***
      * 
      */
     public String topic() {

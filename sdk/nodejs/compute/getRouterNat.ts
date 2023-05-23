@@ -56,6 +56,8 @@ export interface GetRouterNatArgs {
     region?: string;
     /**
      * The name of the Cloud Router in which this NAT will be configured.
+     *
+     * - - -
      */
     router: string;
 }
@@ -132,6 +134,8 @@ export interface GetRouterNatOutputArgs {
     region?: pulumi.Input<string>;
     /**
      * The name of the Cloud Router in which this NAT will be configured.
+     *
+     * - - -
      */
     router: pulumi.Input<string>;
 }

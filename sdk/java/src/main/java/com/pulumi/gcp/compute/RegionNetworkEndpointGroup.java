@@ -559,12 +559,16 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
     /**
      * A reference to the region where the Serverless NEGs Reside.
      * 
+     * ***
+     * 
      */
     @Export(name="region", type=String.class, parameters={})
     private Output<String> region;
 
     /**
      * @return A reference to the region where the Serverless NEGs Reside.
+     * 
+     * ***
      * 
      */
     public Output<String> region() {

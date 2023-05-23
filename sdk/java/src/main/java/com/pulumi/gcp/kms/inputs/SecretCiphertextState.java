@@ -51,6 +51,8 @@ public final class SecretCiphertextState extends com.pulumi.resources.ResourceAr
      * The full name of the CryptoKey that will be used to encrypt the provided plaintext.
      * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}&#39;`
      * 
+     * ***
+     * 
      */
     @Import(name="cryptoKey")
     private @Nullable Output<String> cryptoKey;
@@ -58,6 +60,8 @@ public final class SecretCiphertextState extends com.pulumi.resources.ResourceAr
     /**
      * @return The full name of the CryptoKey that will be used to encrypt the provided plaintext.
      * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}&#39;`
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> cryptoKey() {
@@ -156,6 +160,8 @@ public final class SecretCiphertextState extends com.pulumi.resources.ResourceAr
          * @param cryptoKey The full name of the CryptoKey that will be used to encrypt the provided plaintext.
          * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}&#39;`
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -167,6 +173,8 @@ public final class SecretCiphertextState extends com.pulumi.resources.ResourceAr
         /**
          * @param cryptoKey The full name of the CryptoKey that will be used to encrypt the provided plaintext.
          * Format: `&#39;projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}/cryptoKeys/{{cryptoKey}}&#39;`
+         * 
+         * ***
          * 
          * @return builder
          * 

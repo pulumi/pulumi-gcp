@@ -111,12 +111,16 @@ public class Tenant extends com.pulumi.resources.CustomResource {
     /**
      * Human friendly display name of the tenant.
      * 
+     * ***
+     * 
      */
     @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
      * @return Human friendly display name of the tenant.
+     * 
+     * ***
      * 
      */
     public Output<String> displayName() {

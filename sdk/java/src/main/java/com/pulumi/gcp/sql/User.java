@@ -145,6 +145,10 @@ public class User extends com.pulumi.resources.CustomResource {
      * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
      * 
+     * Possible values are: `ABANDON`.
+     * 
+     * ***
+     * 
      */
     @Export(name="deletionPolicy", type=String.class, parameters={})
     private Output</* @Nullable */ String> deletionPolicy;
@@ -153,6 +157,10 @@ public class User extends com.pulumi.resources.CustomResource {
      * @return The deletion policy for the user.
      * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
      * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
+     * 
+     * Possible values are: `ABANDON`.
+     * 
+     * ***
      * 
      */
     public Output<Optional<String>> deletionPolicy() {

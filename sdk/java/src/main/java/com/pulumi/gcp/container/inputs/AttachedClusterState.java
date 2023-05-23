@@ -313,6 +313,9 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
     /**
      * The number of the Fleet host project where this cluster will be registered.
+     * 
+     * ***
+     * 
      * If it is not provided, the provider project is used.
      * 
      */
@@ -321,6 +324,9 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The number of the Fleet host project where this cluster will be registered.
+     * 
+     * ***
+     * 
      * If it is not provided, the provider project is used.
      * 
      */
@@ -849,6 +855,9 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param project The number of the Fleet host project where this cluster will be registered.
+         * 
+         * ***
+         * 
          * If it is not provided, the provider project is used.
          * 
          * @return builder
@@ -861,6 +870,9 @@ public final class AttachedClusterState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param project The number of the Fleet host project where this cluster will be registered.
+         * 
+         * ***
+         * 
          * If it is not provided, the provider project is used.
          * 
          * @return builder

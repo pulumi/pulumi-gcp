@@ -128,6 +128,8 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -139,6 +141,8 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
      * which means the first character must be a lowercase letter, and all
      * following characters must be a dash, lowercase letter, or digit,
      * except the last character, which cannot be a dash.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -231,6 +235,8 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
      *   configure Private Service Connect. Only global internal addresses can use
      *   this purpose.
      * 
+     * This should only be set when using an Internal address.
+     * 
      */
     @Import(name="purpose")
     private @Nullable Output<String> purpose;
@@ -248,6 +254,8 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
      * * PRIVATE_SERVICE_CONNECT for a private network address that is used to
      *   configure Private Service Connect. Only global internal addresses can use
      *   this purpose.
+     * 
+     * This should only be set when using an Internal address.
      * 
      */
     public Optional<Output<String>> purpose() {
@@ -507,6 +515,8 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
          * following characters must be a dash, lowercase letter, or digit,
          * except the last character, which cannot be a dash.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -522,6 +532,8 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
          * which means the first character must be a lowercase letter, and all
          * following characters must be a dash, lowercase letter, or digit,
          * except the last character, which cannot be a dash.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -640,6 +652,8 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
          *   configure Private Service Connect. Only global internal addresses can use
          *   this purpose.
          * 
+         * This should only be set when using an Internal address.
+         * 
          * @return builder
          * 
          */
@@ -661,6 +675,8 @@ public final class AddressState extends com.pulumi.resources.ResourceArgs {
          * * PRIVATE_SERVICE_CONNECT for a private network address that is used to
          *   configure Private Service Connect. Only global internal addresses can use
          *   this purpose.
+         * 
+         * This should only be set when using an Internal address.
          * 
          * @return builder
          * 

@@ -64,6 +64,9 @@ namespace Pulumi.Gcp.Iap
     {
         /// <summary>
         /// Application name displayed on OAuth consent screen.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("applicationTitle")]
         public Output<string> ApplicationTitle { get; private set; } = null!;
@@ -148,6 +151,9 @@ namespace Pulumi.Gcp.Iap
     {
         /// <summary>
         /// Application name displayed on OAuth consent screen.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("applicationTitle", required: true)]
         public Input<string> ApplicationTitle { get; set; } = null!;
@@ -179,6 +185,9 @@ namespace Pulumi.Gcp.Iap
     {
         /// <summary>
         /// Application name displayed on OAuth consent screen.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("applicationTitle")]
         public Input<string>? ApplicationTitle { get; set; }

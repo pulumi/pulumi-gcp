@@ -134,6 +134,8 @@ type AddressGroup struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location of the gateway security policy.
 	// The default value is `global`.
+	//
+	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Name of the AddressGroup resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -201,6 +203,8 @@ type addressGroupState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the gateway security policy.
 	// The default value is `global`.
+	//
+	// ***
 	Location *string `pulumi:"location"`
 	// Name of the AddressGroup resource.
 	Name *string `pulumi:"name"`
@@ -231,6 +235,8 @@ type AddressGroupState struct {
 	Labels pulumi.StringMapInput
 	// The location of the gateway security policy.
 	// The default value is `global`.
+	//
+	// ***
 	Location pulumi.StringPtrInput
 	// Name of the AddressGroup resource.
 	Name pulumi.StringPtrInput
@@ -261,6 +267,8 @@ type addressGroupArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the gateway security policy.
 	// The default value is `global`.
+	//
+	// ***
 	Location string `pulumi:"location"`
 	// Name of the AddressGroup resource.
 	Name *string `pulumi:"name"`
@@ -284,6 +292,8 @@ type AddressGroupArgs struct {
 	Labels pulumi.StringMapInput
 	// The location of the gateway security policy.
 	// The default value is `global`.
+	//
+	// ***
 	Location pulumi.StringInput
 	// Name of the AddressGroup resource.
 	Name pulumi.StringPtrInput
@@ -411,6 +421,8 @@ func (o AddressGroupOutput) Labels() pulumi.StringMapOutput {
 
 // The location of the gateway security policy.
 // The default value is `global`.
+//
+// ***
 func (o AddressGroupOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *AddressGroup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

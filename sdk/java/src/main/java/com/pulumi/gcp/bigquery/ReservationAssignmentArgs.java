@@ -78,12 +78,16 @@ public final class ReservationAssignmentArgs extends com.pulumi.resources.Resour
     /**
      * The reservation for the resource
      * 
+     * ***
+     * 
      */
     @Import(name="reservation", required=true)
     private Output<String> reservation;
 
     /**
      * @return The reservation for the resource
+     * 
+     * ***
      * 
      */
     public Output<String> reservation() {
@@ -205,6 +209,8 @@ public final class ReservationAssignmentArgs extends com.pulumi.resources.Resour
         /**
          * @param reservation The reservation for the resource
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -215,6 +221,8 @@ public final class ReservationAssignmentArgs extends com.pulumi.resources.Resour
 
         /**
          * @param reservation The reservation for the resource
+         * 
+         * ***
          * 
          * @return builder
          * 

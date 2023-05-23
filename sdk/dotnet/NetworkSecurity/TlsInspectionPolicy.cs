@@ -172,6 +172,9 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// Short name of the TlsInspectionPolicy resource to be created.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -261,6 +264,9 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// Short name of the TlsInspectionPolicy resource to be created.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -312,6 +318,9 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// Short name of the TlsInspectionPolicy resource to be created.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

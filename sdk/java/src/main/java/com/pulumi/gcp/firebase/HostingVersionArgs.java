@@ -36,12 +36,16 @@ public final class HostingVersionArgs extends com.pulumi.resources.ResourceArgs 
     /**
      * Required. The ID of the site in which to create this Version.
      * 
+     * ***
+     * 
      */
     @Import(name="siteId", required=true)
     private Output<String> siteId;
 
     /**
      * @return Required. The ID of the site in which to create this Version.
+     * 
+     * ***
      * 
      */
     public Output<String> siteId() {
@@ -99,6 +103,8 @@ public final class HostingVersionArgs extends com.pulumi.resources.ResourceArgs 
         /**
          * @param siteId Required. The ID of the site in which to create this Version.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -109,6 +115,8 @@ public final class HostingVersionArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param siteId Required. The ID of the site in which to create this Version.
+         * 
+         * ***
          * 
          * @return builder
          * 

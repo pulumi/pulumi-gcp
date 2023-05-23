@@ -55,6 +55,8 @@ func LookupTrigger(ctx *pulumi.Context, args *LookupTriggerArgs, opts ...pulumi.
 // A collection of arguments for invoking getTrigger.
 type LookupTriggerArgs struct {
 	// The Cloud Build location for the trigger.
+	//
+	// ***
 	Location string `pulumi:"location"`
 	// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -109,6 +111,8 @@ func LookupTriggerOutput(ctx *pulumi.Context, args LookupTriggerOutputArgs, opts
 // A collection of arguments for invoking getTrigger.
 type LookupTriggerOutputArgs struct {
 	// The Cloud Build location for the trigger.
+	//
+	// ***
 	Location pulumi.StringInput `pulumi:"location"`
 	// The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`

@@ -23,6 +23,8 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
      * encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
      * See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
      * 
+     * ***
+     * 
      */
     private @Nullable String kmsKeyName;
     /**
@@ -46,6 +48,8 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
      * table. The BigQuery Service Account associated with your project requires access to this
      * encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
      * See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+     * 
+     * ***
      * 
      */
     public Optional<String> kmsKeyName() {

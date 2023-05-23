@@ -25,6 +25,11 @@ public final class ClusterNodeConfigKubeletConfig {
      * such as `&#34;300ms&#34;`. Valid time units are &#34;ns&#34;, &#34;us&#34; (or &#34;µs&#34;), &#34;ms&#34;, &#34;s&#34;, &#34;m&#34;,
      * &#34;h&#34;. The value must be a positive duration.
      * 
+     * &gt; Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
+     * value and accepts an invalid `default` value instead. While this remains true,
+     * not specifying the `kubelet_config` block should be the equivalent of specifying
+     * `none`.
+     * 
      */
     private @Nullable String cpuCfsQuotaPeriod;
     /**
@@ -54,6 +59,11 @@ public final class ClusterNodeConfigKubeletConfig {
      * as a sequence of decimal numbers, each with optional fraction and a unit suffix,
      * such as `&#34;300ms&#34;`. Valid time units are &#34;ns&#34;, &#34;us&#34; (or &#34;µs&#34;), &#34;ms&#34;, &#34;s&#34;, &#34;m&#34;,
      * &#34;h&#34;. The value must be a positive duration.
+     * 
+     * &gt; Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
+     * value and accepts an invalid `default` value instead. While this remains true,
+     * not specifying the `kubelet_config` block should be the equivalent of specifying
+     * `none`.
      * 
      */
     public Optional<String> cpuCfsQuotaPeriod() {

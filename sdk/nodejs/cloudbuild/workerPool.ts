@@ -133,6 +133,9 @@ export class WorkerPool extends pulumi.CustomResource {
     public readonly location!: pulumi.Output<string>;
     /**
      * User-defined name of the `WorkerPool`.
+     *
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -235,6 +238,9 @@ export interface WorkerPoolState {
     location?: pulumi.Input<string>;
     /**
      * User-defined name of the `WorkerPool`.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -282,6 +288,9 @@ export interface WorkerPoolArgs {
     location: pulumi.Input<string>;
     /**
      * User-defined name of the `WorkerPool`.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**

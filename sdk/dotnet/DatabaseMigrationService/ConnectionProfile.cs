@@ -10,6 +10,18 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DatabaseMigrationService
 {
     /// <summary>
+    /// A connection profile definition.
+    /// 
+    /// To get more information about ConnectionProfile, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles/create)
+    /// * How-to Guides
+    ///     * [Database Migration](https://cloud.google.com/database-migration/docs/)
+    /// 
+    /// &gt; **Warning:** All arguments including the following potentially sensitive
+    /// values will be stored in the raw state as plain text: `mysql.password`, `mysql.ssl.client_key`, `mysql.ssl.client_certificate`, `mysql.ssl.ca_certificate`, `postgresql.password`, `postgresql.ssl.client_key`, `postgresql.ssl.client_certificate`, `postgresql.ssl.ca_certificate`, `cloudsql.settings.root_password`, `alloydb.settings.initial_user.password`.
+    /// Read more about sensitive data in state.
+    /// 
     /// ## Example Usage
     /// ### Database Migration Service Connection Profile Cloudsql
     /// 
@@ -246,6 +258,9 @@ namespace Pulumi.Gcp.DatabaseMigrationService
 
         /// <summary>
         /// The ID of the connection profile.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("connectionProfileId")]
         public Output<string> ConnectionProfileId { get; private set; } = null!;
@@ -382,6 +397,9 @@ namespace Pulumi.Gcp.DatabaseMigrationService
 
         /// <summary>
         /// The ID of the connection profile.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("connectionProfileId", required: true)]
         public Input<string> ConnectionProfileId { get; set; } = null!;
@@ -455,6 +473,9 @@ namespace Pulumi.Gcp.DatabaseMigrationService
 
         /// <summary>
         /// The ID of the connection profile.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("connectionProfileId")]
         public Input<string>? ConnectionProfileId { get; set; }

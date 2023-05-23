@@ -26,6 +26,8 @@ namespace Pulumi.Gcp.GameServices.Inputs
 
         /// <summary>
         /// The name of the FleetConfig.
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

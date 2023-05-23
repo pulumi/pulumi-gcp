@@ -138,12 +138,16 @@ public class ServiceBinding extends com.pulumi.resources.CustomResource {
     /**
      * Name of the ServiceBinding resource.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
      * @return Name of the ServiceBinding resource.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {

@@ -105,6 +105,9 @@ export class Queue extends pulumi.CustomResource {
     public readonly appEngineRoutingOverride!: pulumi.Output<outputs.cloudtasks.QueueAppEngineRoutingOverride | undefined>;
     /**
      * The location of the queue
+     *
+     *
+     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -188,6 +191,9 @@ export interface QueueState {
     appEngineRoutingOverride?: pulumi.Input<inputs.cloudtasks.QueueAppEngineRoutingOverride>;
     /**
      * The location of the queue
+     *
+     *
+     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -234,6 +240,9 @@ export interface QueueArgs {
     appEngineRoutingOverride?: pulumi.Input<inputs.cloudtasks.QueueAppEngineRoutingOverride>;
     /**
      * The location of the queue
+     *
+     *
+     * - - -
      */
     location: pulumi.Input<string>;
     /**

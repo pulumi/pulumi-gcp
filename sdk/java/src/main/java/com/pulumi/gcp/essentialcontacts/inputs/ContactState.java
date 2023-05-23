@@ -79,12 +79,16 @@ public final class ContactState extends com.pulumi.resources.ResourceArgs {
     /**
      * The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
      * 
+     * ***
+     * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
     /**
      * @return The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> parent() {
@@ -216,6 +220,8 @@ public final class ContactState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param parent The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -226,6 +232,8 @@ public final class ContactState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param parent The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
+         * 
+         * ***
          * 
          * @return builder
          * 

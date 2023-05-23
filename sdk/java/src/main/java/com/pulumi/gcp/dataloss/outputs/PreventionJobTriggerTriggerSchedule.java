@@ -17,6 +17,8 @@ public final class PreventionJobTriggerTriggerSchedule {
      * This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
      * 
+     * ***
+     * 
      */
     private @Nullable String recurrencePeriodDuration;
 
@@ -26,6 +28,8 @@ public final class PreventionJobTriggerTriggerSchedule {
      * A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs.
      * This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
      * A duration in seconds with up to nine fractional digits, terminated by &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     * ***
      * 
      */
     public Optional<String> recurrencePeriodDuration() {

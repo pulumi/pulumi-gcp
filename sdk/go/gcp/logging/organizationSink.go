@@ -83,6 +83,13 @@ type OrganizationSink struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	//
+	// - `storage.googleapis.com/[GCS_BUCKET]`
+	// - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
+	// - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+	//
+	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringOutput `pulumi:"destination"`
 	// If set to True, then this sink is disabled and it does not export any log entries.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
@@ -145,6 +152,13 @@ type organizationSinkState struct {
 	Description *string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	//
+	// - `storage.googleapis.com/[GCS_BUCKET]`
+	// - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
+	// - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+	//
+	// The writer associated with the sink must have access to write to the above resource.
 	Destination *string `pulumi:"destination"`
 	// If set to True, then this sink is disabled and it does not export any log entries.
 	Disabled *bool `pulumi:"disabled"`
@@ -173,6 +187,13 @@ type OrganizationSinkState struct {
 	Description pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	//
+	// - `storage.googleapis.com/[GCS_BUCKET]`
+	// - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
+	// - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+	//
+	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringPtrInput
 	// If set to True, then this sink is disabled and it does not export any log entries.
 	Disabled pulumi.BoolPtrInput
@@ -205,6 +226,13 @@ type organizationSinkArgs struct {
 	Description *string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	//
+	// - `storage.googleapis.com/[GCS_BUCKET]`
+	// - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
+	// - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+	//
+	// The writer associated with the sink must have access to write to the above resource.
 	Destination string `pulumi:"destination"`
 	// If set to True, then this sink is disabled and it does not export any log entries.
 	Disabled *bool `pulumi:"disabled"`
@@ -231,6 +259,13 @@ type OrganizationSinkArgs struct {
 	Description pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	//
+	// - `storage.googleapis.com/[GCS_BUCKET]`
+	// - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
+	// - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+	//
+	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringInput
 	// If set to True, then this sink is disabled and it does not export any log entries.
 	Disabled pulumi.BoolPtrInput
@@ -348,6 +383,13 @@ func (o OrganizationSinkOutput) Description() pulumi.StringPtrOutput {
 
 // The destination of the sink (or, in other words, where logs are written to). Can be a
 // Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+//
+// - `storage.googleapis.com/[GCS_BUCKET]`
+// - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
+// - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
+// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+//
+// The writer associated with the sink must have access to write to the above resource.
 func (o OrganizationSinkOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v *OrganizationSink) pulumi.StringOutput { return v.Destination }).(pulumi.StringOutput)
 }

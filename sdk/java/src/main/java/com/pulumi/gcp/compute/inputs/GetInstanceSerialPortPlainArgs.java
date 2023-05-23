@@ -33,12 +33,16 @@ public final class GetInstanceSerialPortPlainArgs extends com.pulumi.resources.I
     /**
      * The number of the serial port to read output from. Possible values are 1-4.
      * 
+     * ***
+     * 
      */
     @Import(name="port", required=true)
     private Integer port;
 
     /**
      * @return The number of the serial port to read output from. Possible values are 1-4.
+     * 
+     * ***
      * 
      */
     public Integer port() {
@@ -119,6 +123,8 @@ public final class GetInstanceSerialPortPlainArgs extends com.pulumi.resources.I
 
         /**
          * @param port The number of the serial port to read output from. Possible values are 1-4.
+         * 
+         * ***
          * 
          * @return builder
          * 

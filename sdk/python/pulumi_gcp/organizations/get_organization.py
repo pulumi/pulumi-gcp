@@ -140,6 +140,8 @@ def get_organization(domain: Optional[str] = None,
 
 
     :param str domain: The domain name of the Organization.
+           
+           > **NOTE:** One of `organization` or `domain` must be specified.
     :param str organization: The Organization's numeric ID, including an optional `organizations/` prefix.
     """
     __args__ = dict()
@@ -178,6 +180,8 @@ def get_organization_output(domain: Optional[pulumi.Input[Optional[str]]] = None
 
 
     :param str domain: The domain name of the Organization.
+           
+           > **NOTE:** One of `organization` or `domain` must be specified.
     :param str organization: The Organization's numeric ID, including an optional `organizations/` prefix.
     """
     ...

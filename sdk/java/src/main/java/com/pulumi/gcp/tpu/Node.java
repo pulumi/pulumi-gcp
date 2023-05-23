@@ -334,12 +334,16 @@ public class Node extends com.pulumi.resources.CustomResource {
     /**
      * The version of Tensorflow running in the Node.
      * 
+     * ***
+     * 
      */
     @Export(name="tensorflowVersion", type=String.class, parameters={})
     private Output<String> tensorflowVersion;
 
     /**
      * @return The version of Tensorflow running in the Node.
+     * 
+     * ***
      * 
      */
     public Output<String> tensorflowVersion() {

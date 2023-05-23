@@ -195,12 +195,16 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     /**
      * A reference to the region where the Serverless NEGs Reside.
      * 
+     * ***
+     * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
      * @return A reference to the region where the Serverless NEGs Reside.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> region() {
@@ -522,6 +526,8 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         /**
          * @param region A reference to the region where the Serverless NEGs Reside.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -532,6 +538,8 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
 
         /**
          * @param region A reference to the region where the Serverless NEGs Reside.
+         * 
+         * ***
          * 
          * @return builder
          * 

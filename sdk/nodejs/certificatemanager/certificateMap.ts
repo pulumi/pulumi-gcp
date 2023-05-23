@@ -92,6 +92,9 @@ export class CertificateMap extends pulumi.CustomResource {
     /**
      * A user-defined name of the Certificate Map. Certificate Map names must be unique
      * globally and match the pattern `projects/*&#47;locations/*&#47;certificateMaps/*`.
+     *
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -167,6 +170,9 @@ export interface CertificateMapState {
     /**
      * A user-defined name of the Certificate Map. Certificate Map names must be unique
      * globally and match the pattern `projects/*&#47;locations/*&#47;certificateMaps/*`.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -197,6 +203,9 @@ export interface CertificateMapArgs {
     /**
      * A user-defined name of the Certificate Map. Certificate Map names must be unique
      * globally and match the pattern `projects/*&#47;locations/*&#47;certificateMaps/*`.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**

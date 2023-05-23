@@ -76,12 +76,16 @@ public class Dataset extends com.pulumi.resources.CustomResource {
     /**
      * The location for the Dataset.
      * 
+     * ***
+     * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
      * @return The location for the Dataset.
+     * 
+     * ***
      * 
      */
     public Output<String> location() {

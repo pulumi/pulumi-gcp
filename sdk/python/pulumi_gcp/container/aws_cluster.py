@@ -40,6 +40,7 @@ class AwsClusterArgs:
         :param pulumi.Input['AwsClusterLoggingConfigArgs'] logging_config: (Beta only) Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+               
                (Optional)
                The project for the resource
         """
@@ -185,6 +186,7 @@ class AwsClusterArgs:
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         The number of the Fleet host project where this cluster will be registered.
+
         (Optional)
         The project for the resource
         """
@@ -233,6 +235,7 @@ class _AwsClusterState:
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input['AwsClusterNetworkingArgs'] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+               
                (Optional)
                The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the cluster.
@@ -441,6 +444,7 @@ class _AwsClusterState:
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         The number of the Fleet host project where this cluster will be registered.
+
         (Optional)
         The project for the resource
         """
@@ -633,6 +637,7 @@ class AwsCluster(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[pulumi.InputType['AwsClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+               
                (Optional)
                The project for the resource
         """
@@ -850,6 +855,7 @@ class AwsCluster(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[pulumi.InputType['AwsClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
+               
                (Optional)
                The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. If set, there are currently changes in flight to the cluster.
@@ -992,6 +998,7 @@ class AwsCluster(pulumi.CustomResource):
     def project(self) -> pulumi.Output[str]:
         """
         The number of the Fleet host project where this cluster will be registered.
+
         (Optional)
         The project for the resource
         """

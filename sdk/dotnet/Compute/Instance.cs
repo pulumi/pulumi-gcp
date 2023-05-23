@@ -222,6 +222,12 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The machine type to create.
+        /// 
+        /// **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
+        /// 
+        /// [Custom machine types][custom-vm-types] can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+        /// 
+        /// There is a limit of 6.5 GB per CPU unless you add [extended memory][extended-custom-vm-type]. You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         /// </summary>
         [Output("machineType")]
         public Output<string> MachineType { get; private set; } = null!;
@@ -231,6 +237,15 @@ namespace Pulumi.Gcp.Compute
         /// within the instance. Ssh keys attached in the Cloud Console will be removed.
         /// Add them to your config in order to keep them attached to your instance. A
         /// list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
+        /// 
+        /// &gt; Depending on the OS you choose for your instance, some metadata keys have
+        /// special functionality.  Most linux-based images will run the content of
+        /// `metadata.startup-script` in a shell on every boot.  At a minimum,
+        /// Debian, CentOS, RHEL, SLES, Container-Optimized OS, and Ubuntu images
+        /// support this key.  Windows instances require other keys depending on the format
+        /// of the script and the time you would like it to run - see [this table](https://cloud.google.com/compute/docs/startupscript#providing_a_startup_script_for_windows_instances).
+        /// For the convenience of the users of `metadata.startup-script`,
+        /// we provide a special attribute, `metadata_startup_script`, which is documented below.
         /// </summary>
         [Output("metadata")]
         public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
@@ -274,6 +289,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Networks to attach to the instance. This can
         /// be specified multiple times. Structure is documented below.
+        /// 
+        /// - - -
         /// </summary>
         [Output("networkInterfaces")]
         public Output<ImmutableArray<Outputs.InstanceNetworkInterface>> NetworkInterfaces { get; private set; } = null!;
@@ -516,6 +533,12 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The machine type to create.
+        /// 
+        /// **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
+        /// 
+        /// [Custom machine types][custom-vm-types] can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+        /// 
+        /// There is a limit of 6.5 GB per CPU unless you add [extended memory][extended-custom-vm-type]. You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         /// </summary>
         [Input("machineType", required: true)]
         public Input<string> MachineType { get; set; } = null!;
@@ -528,6 +551,15 @@ namespace Pulumi.Gcp.Compute
         /// within the instance. Ssh keys attached in the Cloud Console will be removed.
         /// Add them to your config in order to keep them attached to your instance. A
         /// list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
+        /// 
+        /// &gt; Depending on the OS you choose for your instance, some metadata keys have
+        /// special functionality.  Most linux-based images will run the content of
+        /// `metadata.startup-script` in a shell on every boot.  At a minimum,
+        /// Debian, CentOS, RHEL, SLES, Container-Optimized OS, and Ubuntu images
+        /// support this key.  Windows instances require other keys depending on the format
+        /// of the script and the time you would like it to run - see [this table](https://cloud.google.com/compute/docs/startupscript#providing_a_startup_script_for_windows_instances).
+        /// For the convenience of the users of `metadata.startup-script`,
+        /// we provide a special attribute, `metadata_startup_script`, which is documented below.
         /// </summary>
         public InputMap<string> Metadata
         {
@@ -571,6 +603,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Networks to attach to the instance. This can
         /// be specified multiple times. Structure is documented below.
+        /// 
+        /// - - -
         /// </summary>
         public InputList<Inputs.InstanceNetworkInterfaceArgs> NetworkInterfaces
         {
@@ -802,6 +836,12 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The machine type to create.
+        /// 
+        /// **Note:** If you want to update this value (resize the VM) after initial creation, you must set `allow_stopping_for_update` to `true`.
+        /// 
+        /// [Custom machine types][custom-vm-types] can be formatted as `custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY_MB`, e.g. `custom-6-20480` for 6 vCPU and 20GB of RAM.
+        /// 
+        /// There is a limit of 6.5 GB per CPU unless you add [extended memory][extended-custom-vm-type]. You must do this explicitly by adding the suffix `-ext`, e.g. `custom-2-15360-ext` for 2 vCPU and 15 GB of memory.
         /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }
@@ -814,6 +854,15 @@ namespace Pulumi.Gcp.Compute
         /// within the instance. Ssh keys attached in the Cloud Console will be removed.
         /// Add them to your config in order to keep them attached to your instance. A
         /// list of default metadata values (e.g. ssh-keys) can be found [here](https://cloud.google.com/compute/docs/metadata/default-metadata-values)
+        /// 
+        /// &gt; Depending on the OS you choose for your instance, some metadata keys have
+        /// special functionality.  Most linux-based images will run the content of
+        /// `metadata.startup-script` in a shell on every boot.  At a minimum,
+        /// Debian, CentOS, RHEL, SLES, Container-Optimized OS, and Ubuntu images
+        /// support this key.  Windows instances require other keys depending on the format
+        /// of the script and the time you would like it to run - see [this table](https://cloud.google.com/compute/docs/startupscript#providing_a_startup_script_for_windows_instances).
+        /// For the convenience of the users of `metadata.startup-script`,
+        /// we provide a special attribute, `metadata_startup_script`, which is documented below.
         /// </summary>
         public InputMap<string> Metadata
         {
@@ -863,6 +912,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Networks to attach to the instance. This can
         /// be specified multiple times. Structure is documented below.
+        /// 
+        /// - - -
         /// </summary>
         public InputList<Inputs.InstanceNetworkInterfaceGetArgs> NetworkInterfaces
         {

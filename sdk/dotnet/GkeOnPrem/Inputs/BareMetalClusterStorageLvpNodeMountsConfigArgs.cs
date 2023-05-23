@@ -20,6 +20,8 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
 
         /// <summary>
         /// The StorageClass name that PVs will be created with.
+        /// 
+        /// - - -
         /// </summary>
         [Input("storageClass", required: true)]
         public Input<string> StorageClass { get; set; } = null!;

@@ -26,6 +26,9 @@ class CertificateMapArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a Certificate Map resource.
         :param pulumi.Input[str] name: A user-defined name of the Certificate Map. Certificate Map names must be unique
                globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -68,6 +71,9 @@ class CertificateMapArgs:
         """
         A user-defined name of the Certificate Map. Certificate Map names must be unique
         globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -110,6 +116,9 @@ class _CertificateMapState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a Certificate Map resource.
         :param pulumi.Input[str] name: A user-defined name of the Certificate Map. Certificate Map names must be unique
                globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] update_time: Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
@@ -188,6 +197,9 @@ class _CertificateMapState:
         """
         A user-defined name of the Certificate Map. Certificate Map names must be unique
         globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -274,6 +286,9 @@ class CertificateMap(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a Certificate Map resource.
         :param pulumi.Input[str] name: A user-defined name of the Certificate Map. Certificate Map names must be unique
                globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -386,6 +401,9 @@ class CertificateMap(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a Certificate Map resource.
         :param pulumi.Input[str] name: A user-defined name of the Certificate Map. Certificate Map names must be unique
                globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] update_time: Update timestamp of a Certificate Map. Timestamp is in RFC3339 UTC "Zulu" format,
@@ -446,6 +464,9 @@ class CertificateMap(pulumi.CustomResource):
         """
         A user-defined name of the Certificate Map. Certificate Map names must be unique
         globally and match the pattern `projects/*/locations/*/certificateMaps/*`.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

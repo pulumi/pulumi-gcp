@@ -21,6 +21,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// Pairs of IP protocols and ports that the rule should match.
         /// Structure is documented below.
+        /// 
+        /// 
+        /// &lt;a name="nested_layer4_config"&gt;&lt;/a&gt;The `layer4_config` block supports:
         /// </summary>
         public readonly ImmutableArray<Outputs.OrganizationSecurityPolicyRuleMatchConfigLayer4Config> Layer4Configs;
         /// <summary>

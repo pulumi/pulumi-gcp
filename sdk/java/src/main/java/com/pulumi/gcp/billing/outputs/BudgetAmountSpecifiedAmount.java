@@ -26,6 +26,8 @@ public final class BudgetAmountSpecifiedAmount {
      * zero. For example $-1.75 is represented as units=-1 and
      * nanos=-750,000,000.
      * 
+     * ***
+     * 
      */
     private @Nullable Integer nanos;
     /**
@@ -51,6 +53,8 @@ public final class BudgetAmountSpecifiedAmount {
      * negative. If units is negative, nanos must be negative or
      * zero. For example $-1.75 is represented as units=-1 and
      * nanos=-750,000,000.
+     * 
+     * ***
      * 
      */
     public Optional<Integer> nanos() {

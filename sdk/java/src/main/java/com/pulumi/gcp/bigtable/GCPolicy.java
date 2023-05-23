@@ -264,6 +264,10 @@ public class GCPolicy extends com.pulumi.resources.CustomResource {
      * The deletion policy for the GC policy.
      * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
      * 
+     * Possible values are: `ABANDON`.
+     * 
+     * ***
+     * 
      */
     @Export(name="deletionPolicy", type=String.class, parameters={})
     private Output</* @Nullable */ String> deletionPolicy;
@@ -271,6 +275,10 @@ public class GCPolicy extends com.pulumi.resources.CustomResource {
     /**
      * @return The deletion policy for the GC policy.
      * Setting ABANDON allows the resource to be abandoned rather than deleted. This is useful for GC policy as it cannot be deleted in a replicated instance.
+     * 
+     * Possible values are: `ABANDON`.
+     * 
+     * ***
      * 
      */
     public Output<Optional<String>> deletionPolicy() {

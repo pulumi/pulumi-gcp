@@ -15,6 +15,8 @@ public final class VMwareClusterControlPlaneNodeVsphereConfig {
      * @return (Output)
      * The Vsphere datastore used by the Control Plane Node.
      * 
+     * ***
+     * 
      */
     private @Nullable String datastore;
 
@@ -22,6 +24,8 @@ public final class VMwareClusterControlPlaneNodeVsphereConfig {
     /**
      * @return (Output)
      * The Vsphere datastore used by the Control Plane Node.
+     * 
+     * ***
      * 
      */
     public Optional<String> datastore() {

@@ -107,12 +107,16 @@ public final class MachineImageArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
      * 
+     * ***
+     * 
      */
     @Import(name="sourceInstance", required=true)
     private Output<String> sourceInstance;
 
     /**
      * @return The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
+     * 
+     * ***
      * 
      */
     public Output<String> sourceInstance() {
@@ -268,6 +272,8 @@ public final class MachineImageArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param sourceInstance The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -278,6 +284,8 @@ public final class MachineImageArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param sourceInstance The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
+         * 
+         * ***
          * 
          * @return builder
          * 

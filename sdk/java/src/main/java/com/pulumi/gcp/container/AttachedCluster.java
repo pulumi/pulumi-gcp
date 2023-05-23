@@ -432,6 +432,9 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * The number of the Fleet host project where this cluster will be registered.
+     * 
+     * ***
+     * 
      * If it is not provided, the provider project is used.
      * 
      */
@@ -440,6 +443,9 @@ public class AttachedCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The number of the Fleet host project where this cluster will be registered.
+     * 
+     * ***
+     * 
      * If it is not provided, the provider project is used.
      * 
      */

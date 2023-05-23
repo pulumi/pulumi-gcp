@@ -92,6 +92,8 @@ type CxWebhook struct {
 	// Indicates whether the webhook is disabled.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// The human-readable name of the webhook, unique within the agent.
+	//
+	// ***
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection pulumi.BoolPtrOutput `pulumi:"enableSpellCorrection"`
@@ -152,6 +154,8 @@ type cxWebhookState struct {
 	// Indicates whether the webhook is disabled.
 	Disabled *bool `pulumi:"disabled"`
 	// The human-readable name of the webhook, unique within the agent.
+	//
+	// ***
 	DisplayName *string `pulumi:"displayName"`
 	// Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection *bool `pulumi:"enableSpellCorrection"`
@@ -181,6 +185,8 @@ type CxWebhookState struct {
 	// Indicates whether the webhook is disabled.
 	Disabled pulumi.BoolPtrInput
 	// The human-readable name of the webhook, unique within the agent.
+	//
+	// ***
 	DisplayName pulumi.StringPtrInput
 	// Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection pulumi.BoolPtrInput
@@ -214,6 +220,8 @@ type cxWebhookArgs struct {
 	// Indicates whether the webhook is disabled.
 	Disabled *bool `pulumi:"disabled"`
 	// The human-readable name of the webhook, unique within the agent.
+	//
+	// ***
 	DisplayName string `pulumi:"displayName"`
 	// Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection *bool `pulumi:"enableSpellCorrection"`
@@ -239,6 +247,8 @@ type CxWebhookArgs struct {
 	// Indicates whether the webhook is disabled.
 	Disabled pulumi.BoolPtrInput
 	// The human-readable name of the webhook, unique within the agent.
+	//
+	// ***
 	DisplayName pulumi.StringInput
 	// Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection pulumi.BoolPtrInput
@@ -352,6 +362,8 @@ func (o CxWebhookOutput) Disabled() pulumi.BoolPtrOutput {
 }
 
 // The human-readable name of the webhook, unique within the agent.
+//
+// ***
 func (o CxWebhookOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxWebhook) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

@@ -119,12 +119,16 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the device registry where this device should be created.
      * 
+     * ***
+     * 
      */
     @Import(name="registry", required=true)
     private Output<String> registry;
 
     /**
      * @return The name of the device registry where this device should be created.
+     * 
+     * ***
      * 
      */
     public Output<String> registry() {
@@ -307,6 +311,8 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param registry The name of the device registry where this device should be created.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -317,6 +323,8 @@ public final class DeviceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param registry The name of the device registry where this device should be created.
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -190,6 +190,8 @@ def get_connector(name: Optional[str] = None,
 
 
     :param str name: Name of the resource.
+           
+           - - -
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param str region: The region in which the resource belongs. If it
@@ -248,6 +250,8 @@ def get_connector_output(name: Optional[pulumi.Input[str]] = None,
 
 
     :param str name: Name of the resource.
+           
+           - - -
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param str region: The region in which the resource belongs. If it

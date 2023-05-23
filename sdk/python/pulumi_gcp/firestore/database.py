@@ -28,6 +28,9 @@ class DatabaseArgs:
                See https://cloud.google.com/datastore/docs/firestore-or-datastore
                for information about how to choose.
                Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
+               
+               
+               - - -
         :param pulumi.Input[str] app_engine_integration_mode: The App Engine integration mode to use for this database.
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] concurrency_mode: The concurrency control mode to use for this database.
@@ -73,6 +76,9 @@ class DatabaseArgs:
         See https://cloud.google.com/datastore/docs/firestore-or-datastore
         for information about how to choose.
         Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
+
+
+        - - -
         """
         return pulumi.get(self, "type")
 
@@ -177,6 +183,9 @@ class _DatabaseState:
                See https://cloud.google.com/datastore/docs/firestore-or-datastore
                for information about how to choose.
                Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
+               
+               
+               - - -
         """
         if app_engine_integration_mode is not None:
             pulumi.set(__self__, "app_engine_integration_mode", app_engine_integration_mode)
@@ -315,6 +324,9 @@ class _DatabaseState:
         See https://cloud.google.com/datastore/docs/firestore-or-datastore
         for information about how to choose.
         Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
+
+
+        - - -
         """
         return pulumi.get(self, "type")
 
@@ -336,6 +348,19 @@ class Database(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A Cloud Firestore Database. Currently only one database is allowed per
+        Cloud project; this database must have a `database_id` of '(default)'.
+
+        If you wish to use Firestore with App Engine, use the
+        `appengine.Application`
+        resource instead.
+
+        To get more information about Database, see:
+
+        * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/firestore/docs/)
+
         ## Example Usage
 
         ## Import
@@ -374,6 +399,9 @@ class Database(pulumi.CustomResource):
                See https://cloud.google.com/datastore/docs/firestore-or-datastore
                for information about how to choose.
                Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
+               
+               
+               - - -
         """
         ...
     @overload
@@ -382,6 +410,19 @@ class Database(pulumi.CustomResource):
                  args: DatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Cloud Firestore Database. Currently only one database is allowed per
+        Cloud project; this database must have a `database_id` of '(default)'.
+
+        If you wish to use Firestore with App Engine, use the
+        `appengine.Application`
+        resource instead.
+
+        To get more information about Database, see:
+
+        * [API documentation](https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/firestore/docs/)
+
         ## Example Usage
 
         ## Import
@@ -495,6 +536,9 @@ class Database(pulumi.CustomResource):
                See https://cloud.google.com/datastore/docs/firestore-or-datastore
                for information about how to choose.
                Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
+               
+               
+               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -597,6 +641,9 @@ class Database(pulumi.CustomResource):
         See https://cloud.google.com/datastore/docs/firestore-or-datastore
         for information about how to choose.
         Possible values are: `FIRESTORE_NATIVE`, `DATASTORE_MODE`.
+
+
+        - - -
         """
         return pulumi.get(self, "type")
 

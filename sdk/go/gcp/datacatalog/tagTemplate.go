@@ -99,8 +99,12 @@ type TagTemplate struct {
 	pulumi.CustomResourceState
 
 	// The display name for this field.
+	//
 	// (Required)
 	// The display name of the enum value.
+	//
+	// ***
+	//
 	// (Optional)
 	// The display name for this template.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
@@ -157,8 +161,12 @@ func GetTagTemplate(ctx *pulumi.Context,
 // Input properties used for looking up and filtering TagTemplate resources.
 type tagTemplateState struct {
 	// The display name for this field.
+	//
 	// (Required)
 	// The display name of the enum value.
+	//
+	// ***
+	//
 	// (Optional)
 	// The display name for this template.
 	DisplayName *string `pulumi:"displayName"`
@@ -181,8 +189,12 @@ type tagTemplateState struct {
 
 type TagTemplateState struct {
 	// The display name for this field.
+	//
 	// (Required)
 	// The display name of the enum value.
+	//
+	// ***
+	//
 	// (Optional)
 	// The display name for this template.
 	DisplayName pulumi.StringPtrInput
@@ -209,8 +221,12 @@ func (TagTemplateState) ElementType() reflect.Type {
 
 type tagTemplateArgs struct {
 	// The display name for this field.
+	//
 	// (Required)
 	// The display name of the enum value.
+	//
+	// ***
+	//
 	// (Optional)
 	// The display name for this template.
 	DisplayName *string `pulumi:"displayName"`
@@ -231,8 +247,12 @@ type tagTemplateArgs struct {
 // The set of arguments for constructing a TagTemplate resource.
 type TagTemplateArgs struct {
 	// The display name for this field.
+	//
 	// (Required)
 	// The display name of the enum value.
+	//
+	// ***
+	//
 	// (Optional)
 	// The display name for this template.
 	DisplayName pulumi.StringPtrInput
@@ -338,8 +358,12 @@ func (o TagTemplateOutput) ToTagTemplateOutputWithContext(ctx context.Context) T
 }
 
 // The display name for this field.
+//
 // (Required)
 // The display name of the enum value.
+//
+// ***
+//
 // (Optional)
 // The display name for this template.
 func (o TagTemplateOutput) DisplayName() pulumi.StringPtrOutput {

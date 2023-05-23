@@ -109,6 +109,9 @@ namespace Pulumi.Gcp.Kms
         /// <summary>
         /// The KeyRing that this key belongs to.
         /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("keyRing")]
         public Output<string> KeyRing { get; private set; } = null!;
@@ -220,6 +223,9 @@ namespace Pulumi.Gcp.Kms
         /// <summary>
         /// The KeyRing that this key belongs to.
         /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("keyRing", required: true)]
         public Input<string> KeyRing { get; set; } = null!;
@@ -299,6 +305,9 @@ namespace Pulumi.Gcp.Kms
         /// <summary>
         /// The KeyRing that this key belongs to.
         /// Format: `'projects/{{project}}/locations/{{location}}/keyRings/{{keyRing}}'`.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("keyRing")]
         public Input<string>? KeyRing { get; set; }

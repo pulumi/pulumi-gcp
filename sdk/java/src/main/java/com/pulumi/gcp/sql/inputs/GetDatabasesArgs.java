@@ -33,12 +33,16 @@ public final class GetDatabasesArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The ID of the project in which the instance belongs.
      * 
+     * &gt; **Note** This datasource performs client-side sorting to provide consistent ordering of the databases.
+     * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
      * @return The ID of the project in which the instance belongs.
+     * 
+     * &gt; **Note** This datasource performs client-side sorting to provide consistent ordering of the databases.
      * 
      */
     public Optional<Output<String>> project() {
@@ -94,6 +98,8 @@ public final class GetDatabasesArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param project The ID of the project in which the instance belongs.
          * 
+         * &gt; **Note** This datasource performs client-side sorting to provide consistent ordering of the databases.
+         * 
          * @return builder
          * 
          */
@@ -104,6 +110,8 @@ public final class GetDatabasesArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param project The ID of the project in which the instance belongs.
+         * 
+         * &gt; **Note** This datasource performs client-side sorting to provide consistent ordering of the databases.
          * 
          * @return builder
          * 

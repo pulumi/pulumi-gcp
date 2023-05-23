@@ -381,6 +381,8 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// The DNS record set type.
+        /// 
+        /// - - -
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -482,6 +484,8 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// The DNS record set type.
+        /// 
+        /// - - -
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -545,6 +549,8 @@ namespace Pulumi.Gcp.Dns
 
         /// <summary>
         /// The DNS record set type.
+        /// 
+        /// - - -
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

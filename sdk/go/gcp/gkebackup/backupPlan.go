@@ -300,6 +300,8 @@ type BackupPlan struct {
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The region of the Backup Plan.
+	//
+	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The full name of the BackupPlan Resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -377,6 +379,8 @@ type backupPlanState struct {
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
 	// The region of the Backup Plan.
+	//
+	// ***
 	Location *string `pulumi:"location"`
 	// The full name of the BackupPlan Resource.
 	Name *string `pulumi:"name"`
@@ -420,6 +424,8 @@ type BackupPlanState struct {
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput
 	// The region of the Backup Plan.
+	//
+	// ***
 	Location pulumi.StringPtrInput
 	// The full name of the BackupPlan Resource.
 	Name pulumi.StringPtrInput
@@ -460,6 +466,8 @@ type backupPlanArgs struct {
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
 	// The region of the Backup Plan.
+	//
+	// ***
 	Location string `pulumi:"location"`
 	// The full name of the BackupPlan Resource.
 	Name *string `pulumi:"name"`
@@ -493,6 +501,8 @@ type BackupPlanArgs struct {
 	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput
 	// The region of the Backup Plan.
+	//
+	// ***
 	Location pulumi.StringInput
 	// The full name of the BackupPlan Resource.
 	Name pulumi.StringPtrInput
@@ -639,6 +649,8 @@ func (o BackupPlanOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The region of the Backup Plan.
+//
+// ***
 func (o BackupPlanOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

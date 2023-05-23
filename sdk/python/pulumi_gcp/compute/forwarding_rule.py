@@ -44,6 +44,13 @@ class ForwardingRuleArgs:
                * If `IPProtocol` is one of TCP, UDP, or SCTP.
                * By internal TCP/UDP load balancers, backend service-based network load
                balancers, and internal and external protocol forwarding.
+               
+               Set this field to true to allow packets addressed to any port or packets
+               lacking destination port information (for example, UDP fragments after the
+               first fragment) to be forwarded to the backends configured with this
+               forwarding rule.
+               The `ports`, `port_range`, and
+               `allPorts` fields are mutually exclusive.
         :param pulumi.Input[bool] allow_global_access: This field is used along with the `backend_service` field for
                internal load balancing or with the `target` field for internal
                TargetInstance.
@@ -67,6 +74,29 @@ class ForwardingRuleArgs:
                `IPAddress` should be set to `0.0.0.0`.
                * When the `target` is a Private Service Connect Google APIs
                bundle, you must specify an `IPAddress`.
+               
+               Otherwise, you can optionally specify an IP address that references an
+               existing static (reserved) IP address resource. When omitted, Google Cloud
+               assigns an ephemeral IP address.
+               Use one of the following formats to specify an IP address while creating a
+               forwarding rule:
+               * IP address number, as in `100.1.2.3`
+               * IPv6 address range, as in `2600:1234::/96`
+               * Full resource URL, as in
+               `https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name`
+               * Partial URL or by name, as in:
+               * `projects/project_id/regions/region/addresses/address-name`
+               * `regions/region/addresses/address-name`
+               * `global/addresses/address-name`
+               * `address-name`
+               
+               The forwarding rule's `target` or `backendService`,
+               and in most cases, also the `loadBalancingScheme`, determine the
+               type of IP address that you can use. For detailed information, see
+               [IP address
+               specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+               When reading an `IPAddress`, the API always returns the IP
+               address number.
         :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies.
                For protocol forwarding, valid
                options are `TCP`, `UDP`, `ESP`,
@@ -99,6 +129,9 @@ class ForwardingRuleArgs:
                For Private Service Connect forwarding rules that forward traffic to Google
                APIs, the forwarding rule name must be a 1-20 characters string with
                lowercase letters and numbers and must start with a letter.
+               
+               
+               - - -
         :param pulumi.Input[str] network: This field is not used for external load balancing.
                For Internal TCP/UDP Load Balancing, this field identifies the network that
                the load balanced IP should belong to for this Forwarding Rule.
@@ -125,10 +158,32 @@ class ForwardingRuleArgs:
                Some products have restrictions on what ports can be used. See
                [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
                for details.
+               
+               Only packets addressed to ports in the specified range will be forwarded to
+               the backends configured with this forwarding rule.
+               The `ports` and `port_range` fields are mutually exclusive.
+               For external forwarding rules, two or more forwarding rules cannot use the
+               same `[IPAddress, IPProtocol]` pair, and cannot have
+               overlapping `portRange`s.
+               For internal forwarding rules within the same VPC network, two or more
+               forwarding rules cannot use the same `[IPAddress, IPProtocol]`
+               pair, and cannot have overlapping `portRange`s.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: This field can only be used:
                * If `IPProtocol` is one of TCP, UDP, or SCTP.
                * By internal TCP/UDP load balancers, backend service-based network load
                balancers, and internal protocol forwarding.
+               
+               You can specify a list of up to five ports by number, separated by commas.
+               The ports can be contiguous or discontiguous. Only packets addressed to
+               these ports will be forwarded to the backends configured with this
+               forwarding rule.
+               For external forwarding rules, two or more forwarding rules cannot use the
+               same `[IPAddress, IPProtocol]` pair, and cannot share any values
+               defined in `ports`.
+               For internal forwarding rules within the same VPC network, two or more
+               forwarding rules cannot use the same `[IPAddress, IPProtocol]`
+               pair, and cannot share any values defined in `ports`.
+               The `ports` and `port_range` fields are mutually exclusive.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
@@ -162,6 +217,8 @@ class ForwardingRuleArgs:
                *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
                *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
                *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+               
+               For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         """
         if all_ports is not None:
             pulumi.set(__self__, "all_ports", all_ports)
@@ -216,6 +273,13 @@ class ForwardingRuleArgs:
         * If `IPProtocol` is one of TCP, UDP, or SCTP.
         * By internal TCP/UDP load balancers, backend service-based network load
         balancers, and internal and external protocol forwarding.
+
+        Set this field to true to allow packets addressed to any port or packets
+        lacking destination port information (for example, UDP fragments after the
+        first fragment) to be forwarded to the backends configured with this
+        forwarding rule.
+        The `ports`, `port_range`, and
+        `allPorts` fields are mutually exclusive.
         """
         return pulumi.get(self, "all_ports")
 
@@ -294,6 +358,29 @@ class ForwardingRuleArgs:
         `IPAddress` should be set to `0.0.0.0`.
         * When the `target` is a Private Service Connect Google APIs
         bundle, you must specify an `IPAddress`.
+
+        Otherwise, you can optionally specify an IP address that references an
+        existing static (reserved) IP address resource. When omitted, Google Cloud
+        assigns an ephemeral IP address.
+        Use one of the following formats to specify an IP address while creating a
+        forwarding rule:
+        * IP address number, as in `100.1.2.3`
+        * IPv6 address range, as in `2600:1234::/96`
+        * Full resource URL, as in
+        `https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name`
+        * Partial URL or by name, as in:
+        * `projects/project_id/regions/region/addresses/address-name`
+        * `regions/region/addresses/address-name`
+        * `global/addresses/address-name`
+        * `address-name`
+
+        The forwarding rule's `target` or `backendService`,
+        and in most cases, also the `loadBalancingScheme`, determine the
+        type of IP address that you can use. For detailed information, see
+        [IP address
+        specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+        When reading an `IPAddress`, the API always returns the IP
+        address number.
         """
         return pulumi.get(self, "ip_address")
 
@@ -381,6 +468,9 @@ class ForwardingRuleArgs:
         For Private Service Connect forwarding rules that forward traffic to Google
         APIs, the forwarding rule name must be a 1-20 characters string with
         lowercase letters and numbers and must start with a letter.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -440,6 +530,16 @@ class ForwardingRuleArgs:
         Some products have restrictions on what ports can be used. See
         [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
         for details.
+
+        Only packets addressed to ports in the specified range will be forwarded to
+        the backends configured with this forwarding rule.
+        The `ports` and `port_range` fields are mutually exclusive.
+        For external forwarding rules, two or more forwarding rules cannot use the
+        same `[IPAddress, IPProtocol]` pair, and cannot have
+        overlapping `portRange`s.
+        For internal forwarding rules within the same VPC network, two or more
+        forwarding rules cannot use the same `[IPAddress, IPProtocol]`
+        pair, and cannot have overlapping `portRange`s.
         """
         return pulumi.get(self, "port_range")
 
@@ -455,6 +555,18 @@ class ForwardingRuleArgs:
         * If `IPProtocol` is one of TCP, UDP, or SCTP.
         * By internal TCP/UDP load balancers, backend service-based network load
         balancers, and internal protocol forwarding.
+
+        You can specify a list of up to five ports by number, separated by commas.
+        The ports can be contiguous or discontiguous. Only packets addressed to
+        these ports will be forwarded to the backends configured with this
+        forwarding rule.
+        For external forwarding rules, two or more forwarding rules cannot use the
+        same `[IPAddress, IPProtocol]` pair, and cannot share any values
+        defined in `ports`.
+        For internal forwarding rules within the same VPC network, two or more
+        forwarding rules cannot use the same `[IPAddress, IPProtocol]`
+        pair, and cannot share any values defined in `ports`.
+        The `ports` and `port_range` fields are mutually exclusive.
         """
         return pulumi.get(self, "ports")
 
@@ -565,6 +677,8 @@ class ForwardingRuleArgs:
         *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
         *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
         *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+
+        For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         """
         return pulumi.get(self, "target")
 
@@ -611,6 +725,13 @@ class _ForwardingRuleState:
                * If `IPProtocol` is one of TCP, UDP, or SCTP.
                * By internal TCP/UDP load balancers, backend service-based network load
                balancers, and internal and external protocol forwarding.
+               
+               Set this field to true to allow packets addressed to any port or packets
+               lacking destination port information (for example, UDP fragments after the
+               first fragment) to be forwarded to the backends configured with this
+               forwarding rule.
+               The `ports`, `port_range`, and
+               `allPorts` fields are mutually exclusive.
         :param pulumi.Input[bool] allow_global_access: This field is used along with the `backend_service` field for
                internal load balancing or with the `target` field for internal
                TargetInstance.
@@ -636,6 +757,29 @@ class _ForwardingRuleState:
                `IPAddress` should be set to `0.0.0.0`.
                * When the `target` is a Private Service Connect Google APIs
                bundle, you must specify an `IPAddress`.
+               
+               Otherwise, you can optionally specify an IP address that references an
+               existing static (reserved) IP address resource. When omitted, Google Cloud
+               assigns an ephemeral IP address.
+               Use one of the following formats to specify an IP address while creating a
+               forwarding rule:
+               * IP address number, as in `100.1.2.3`
+               * IPv6 address range, as in `2600:1234::/96`
+               * Full resource URL, as in
+               `https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name`
+               * Partial URL or by name, as in:
+               * `projects/project_id/regions/region/addresses/address-name`
+               * `regions/region/addresses/address-name`
+               * `global/addresses/address-name`
+               * `address-name`
+               
+               The forwarding rule's `target` or `backendService`,
+               and in most cases, also the `loadBalancingScheme`, determine the
+               type of IP address that you can use. For detailed information, see
+               [IP address
+               specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+               When reading an `IPAddress`, the API always returns the IP
+               address number.
         :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies.
                For protocol forwarding, valid
                options are `TCP`, `UDP`, `ESP`,
@@ -670,6 +814,9 @@ class _ForwardingRuleState:
                For Private Service Connect forwarding rules that forward traffic to Google
                APIs, the forwarding rule name must be a 1-20 characters string with
                lowercase letters and numbers and must start with a letter.
+               
+               
+               - - -
         :param pulumi.Input[str] network: This field is not used for external load balancing.
                For Internal TCP/UDP Load Balancing, this field identifies the network that
                the load balanced IP should belong to for this Forwarding Rule.
@@ -696,10 +843,32 @@ class _ForwardingRuleState:
                Some products have restrictions on what ports can be used. See
                [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
                for details.
+               
+               Only packets addressed to ports in the specified range will be forwarded to
+               the backends configured with this forwarding rule.
+               The `ports` and `port_range` fields are mutually exclusive.
+               For external forwarding rules, two or more forwarding rules cannot use the
+               same `[IPAddress, IPProtocol]` pair, and cannot have
+               overlapping `portRange`s.
+               For internal forwarding rules within the same VPC network, two or more
+               forwarding rules cannot use the same `[IPAddress, IPProtocol]`
+               pair, and cannot have overlapping `portRange`s.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: This field can only be used:
                * If `IPProtocol` is one of TCP, UDP, or SCTP.
                * By internal TCP/UDP load balancers, backend service-based network load
                balancers, and internal protocol forwarding.
+               
+               You can specify a list of up to five ports by number, separated by commas.
+               The ports can be contiguous or discontiguous. Only packets addressed to
+               these ports will be forwarded to the backends configured with this
+               forwarding rule.
+               For external forwarding rules, two or more forwarding rules cannot use the
+               same `[IPAddress, IPProtocol]` pair, and cannot share any values
+               defined in `ports`.
+               For internal forwarding rules within the same VPC network, two or more
+               forwarding rules cannot use the same `[IPAddress, IPProtocol]`
+               pair, and cannot share any values defined in `ports`.
+               The `ports` and `port_range` fields are mutually exclusive.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] psc_connection_id: The PSC connection id of the PSC Forwarding Rule.
@@ -738,6 +907,8 @@ class _ForwardingRuleState:
                *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
                *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
                *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+               
+               For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         """
         if all_ports is not None:
             pulumi.set(__self__, "all_ports", all_ports)
@@ -806,6 +977,13 @@ class _ForwardingRuleState:
         * If `IPProtocol` is one of TCP, UDP, or SCTP.
         * By internal TCP/UDP load balancers, backend service-based network load
         balancers, and internal and external protocol forwarding.
+
+        Set this field to true to allow packets addressed to any port or packets
+        lacking destination port information (for example, UDP fragments after the
+        first fragment) to be forwarded to the backends configured with this
+        forwarding rule.
+        The `ports`, `port_range`, and
+        `allPorts` fields are mutually exclusive.
         """
         return pulumi.get(self, "all_ports")
 
@@ -908,6 +1086,29 @@ class _ForwardingRuleState:
         `IPAddress` should be set to `0.0.0.0`.
         * When the `target` is a Private Service Connect Google APIs
         bundle, you must specify an `IPAddress`.
+
+        Otherwise, you can optionally specify an IP address that references an
+        existing static (reserved) IP address resource. When omitted, Google Cloud
+        assigns an ephemeral IP address.
+        Use one of the following formats to specify an IP address while creating a
+        forwarding rule:
+        * IP address number, as in `100.1.2.3`
+        * IPv6 address range, as in `2600:1234::/96`
+        * Full resource URL, as in
+        `https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name`
+        * Partial URL or by name, as in:
+        * `projects/project_id/regions/region/addresses/address-name`
+        * `regions/region/addresses/address-name`
+        * `global/addresses/address-name`
+        * `address-name`
+
+        The forwarding rule's `target` or `backendService`,
+        and in most cases, also the `loadBalancingScheme`, determine the
+        type of IP address that you can use. For detailed information, see
+        [IP address
+        specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+        When reading an `IPAddress`, the API always returns the IP
+        address number.
         """
         return pulumi.get(self, "ip_address")
 
@@ -1008,6 +1209,9 @@ class _ForwardingRuleState:
         For Private Service Connect forwarding rules that forward traffic to Google
         APIs, the forwarding rule name must be a 1-20 characters string with
         lowercase letters and numbers and must start with a letter.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1067,6 +1271,16 @@ class _ForwardingRuleState:
         Some products have restrictions on what ports can be used. See
         [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
         for details.
+
+        Only packets addressed to ports in the specified range will be forwarded to
+        the backends configured with this forwarding rule.
+        The `ports` and `port_range` fields are mutually exclusive.
+        For external forwarding rules, two or more forwarding rules cannot use the
+        same `[IPAddress, IPProtocol]` pair, and cannot have
+        overlapping `portRange`s.
+        For internal forwarding rules within the same VPC network, two or more
+        forwarding rules cannot use the same `[IPAddress, IPProtocol]`
+        pair, and cannot have overlapping `portRange`s.
         """
         return pulumi.get(self, "port_range")
 
@@ -1082,6 +1296,18 @@ class _ForwardingRuleState:
         * If `IPProtocol` is one of TCP, UDP, or SCTP.
         * By internal TCP/UDP load balancers, backend service-based network load
         balancers, and internal protocol forwarding.
+
+        You can specify a list of up to five ports by number, separated by commas.
+        The ports can be contiguous or discontiguous. Only packets addressed to
+        these ports will be forwarded to the backends configured with this
+        forwarding rule.
+        For external forwarding rules, two or more forwarding rules cannot use the
+        same `[IPAddress, IPProtocol]` pair, and cannot share any values
+        defined in `ports`.
+        For internal forwarding rules within the same VPC network, two or more
+        forwarding rules cannot use the same `[IPAddress, IPProtocol]`
+        pair, and cannot share any values defined in `ports`.
+        The `ports` and `port_range` fields are mutually exclusive.
         """
         return pulumi.get(self, "ports")
 
@@ -1241,6 +1467,8 @@ class _ForwardingRuleState:
         *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
         *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
         *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+
+        For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         """
         return pulumi.get(self, "target")
 
@@ -1353,6 +1581,13 @@ class ForwardingRule(pulumi.CustomResource):
                * If `IPProtocol` is one of TCP, UDP, or SCTP.
                * By internal TCP/UDP load balancers, backend service-based network load
                balancers, and internal and external protocol forwarding.
+               
+               Set this field to true to allow packets addressed to any port or packets
+               lacking destination port information (for example, UDP fragments after the
+               first fragment) to be forwarded to the backends configured with this
+               forwarding rule.
+               The `ports`, `port_range`, and
+               `allPorts` fields are mutually exclusive.
         :param pulumi.Input[bool] allow_global_access: This field is used along with the `backend_service` field for
                internal load balancing or with the `target` field for internal
                TargetInstance.
@@ -1376,6 +1611,29 @@ class ForwardingRule(pulumi.CustomResource):
                `IPAddress` should be set to `0.0.0.0`.
                * When the `target` is a Private Service Connect Google APIs
                bundle, you must specify an `IPAddress`.
+               
+               Otherwise, you can optionally specify an IP address that references an
+               existing static (reserved) IP address resource. When omitted, Google Cloud
+               assigns an ephemeral IP address.
+               Use one of the following formats to specify an IP address while creating a
+               forwarding rule:
+               * IP address number, as in `100.1.2.3`
+               * IPv6 address range, as in `2600:1234::/96`
+               * Full resource URL, as in
+               `https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name`
+               * Partial URL or by name, as in:
+               * `projects/project_id/regions/region/addresses/address-name`
+               * `regions/region/addresses/address-name`
+               * `global/addresses/address-name`
+               * `address-name`
+               
+               The forwarding rule's `target` or `backendService`,
+               and in most cases, also the `loadBalancingScheme`, determine the
+               type of IP address that you can use. For detailed information, see
+               [IP address
+               specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+               When reading an `IPAddress`, the API always returns the IP
+               address number.
         :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies.
                For protocol forwarding, valid
                options are `TCP`, `UDP`, `ESP`,
@@ -1408,6 +1666,9 @@ class ForwardingRule(pulumi.CustomResource):
                For Private Service Connect forwarding rules that forward traffic to Google
                APIs, the forwarding rule name must be a 1-20 characters string with
                lowercase letters and numbers and must start with a letter.
+               
+               
+               - - -
         :param pulumi.Input[str] network: This field is not used for external load balancing.
                For Internal TCP/UDP Load Balancing, this field identifies the network that
                the load balanced IP should belong to for this Forwarding Rule.
@@ -1434,10 +1695,32 @@ class ForwardingRule(pulumi.CustomResource):
                Some products have restrictions on what ports can be used. See
                [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
                for details.
+               
+               Only packets addressed to ports in the specified range will be forwarded to
+               the backends configured with this forwarding rule.
+               The `ports` and `port_range` fields are mutually exclusive.
+               For external forwarding rules, two or more forwarding rules cannot use the
+               same `[IPAddress, IPProtocol]` pair, and cannot have
+               overlapping `portRange`s.
+               For internal forwarding rules within the same VPC network, two or more
+               forwarding rules cannot use the same `[IPAddress, IPProtocol]`
+               pair, and cannot have overlapping `portRange`s.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: This field can only be used:
                * If `IPProtocol` is one of TCP, UDP, or SCTP.
                * By internal TCP/UDP load balancers, backend service-based network load
                balancers, and internal protocol forwarding.
+               
+               You can specify a list of up to five ports by number, separated by commas.
+               The ports can be contiguous or discontiguous. Only packets addressed to
+               these ports will be forwarded to the backends configured with this
+               forwarding rule.
+               For external forwarding rules, two or more forwarding rules cannot use the
+               same `[IPAddress, IPProtocol]` pair, and cannot share any values
+               defined in `ports`.
+               For internal forwarding rules within the same VPC network, two or more
+               forwarding rules cannot use the same `[IPAddress, IPProtocol]`
+               pair, and cannot share any values defined in `ports`.
+               The `ports` and `port_range` fields are mutually exclusive.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: A reference to the region where the regional forwarding rule resides.
@@ -1471,6 +1754,8 @@ class ForwardingRule(pulumi.CustomResource):
                *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
                *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
                *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+               
+               For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         """
         ...
     @overload
@@ -1673,6 +1958,13 @@ class ForwardingRule(pulumi.CustomResource):
                * If `IPProtocol` is one of TCP, UDP, or SCTP.
                * By internal TCP/UDP load balancers, backend service-based network load
                balancers, and internal and external protocol forwarding.
+               
+               Set this field to true to allow packets addressed to any port or packets
+               lacking destination port information (for example, UDP fragments after the
+               first fragment) to be forwarded to the backends configured with this
+               forwarding rule.
+               The `ports`, `port_range`, and
+               `allPorts` fields are mutually exclusive.
         :param pulumi.Input[bool] allow_global_access: This field is used along with the `backend_service` field for
                internal load balancing or with the `target` field for internal
                TargetInstance.
@@ -1698,6 +1990,29 @@ class ForwardingRule(pulumi.CustomResource):
                `IPAddress` should be set to `0.0.0.0`.
                * When the `target` is a Private Service Connect Google APIs
                bundle, you must specify an `IPAddress`.
+               
+               Otherwise, you can optionally specify an IP address that references an
+               existing static (reserved) IP address resource. When omitted, Google Cloud
+               assigns an ephemeral IP address.
+               Use one of the following formats to specify an IP address while creating a
+               forwarding rule:
+               * IP address number, as in `100.1.2.3`
+               * IPv6 address range, as in `2600:1234::/96`
+               * Full resource URL, as in
+               `https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name`
+               * Partial URL or by name, as in:
+               * `projects/project_id/regions/region/addresses/address-name`
+               * `regions/region/addresses/address-name`
+               * `global/addresses/address-name`
+               * `address-name`
+               
+               The forwarding rule's `target` or `backendService`,
+               and in most cases, also the `loadBalancingScheme`, determine the
+               type of IP address that you can use. For detailed information, see
+               [IP address
+               specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+               When reading an `IPAddress`, the API always returns the IP
+               address number.
         :param pulumi.Input[str] ip_protocol: The IP protocol to which this rule applies.
                For protocol forwarding, valid
                options are `TCP`, `UDP`, `ESP`,
@@ -1732,6 +2047,9 @@ class ForwardingRule(pulumi.CustomResource):
                For Private Service Connect forwarding rules that forward traffic to Google
                APIs, the forwarding rule name must be a 1-20 characters string with
                lowercase letters and numbers and must start with a letter.
+               
+               
+               - - -
         :param pulumi.Input[str] network: This field is not used for external load balancing.
                For Internal TCP/UDP Load Balancing, this field identifies the network that
                the load balanced IP should belong to for this Forwarding Rule.
@@ -1758,10 +2076,32 @@ class ForwardingRule(pulumi.CustomResource):
                Some products have restrictions on what ports can be used. See
                [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
                for details.
+               
+               Only packets addressed to ports in the specified range will be forwarded to
+               the backends configured with this forwarding rule.
+               The `ports` and `port_range` fields are mutually exclusive.
+               For external forwarding rules, two or more forwarding rules cannot use the
+               same `[IPAddress, IPProtocol]` pair, and cannot have
+               overlapping `portRange`s.
+               For internal forwarding rules within the same VPC network, two or more
+               forwarding rules cannot use the same `[IPAddress, IPProtocol]`
+               pair, and cannot have overlapping `portRange`s.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ports: This field can only be used:
                * If `IPProtocol` is one of TCP, UDP, or SCTP.
                * By internal TCP/UDP load balancers, backend service-based network load
                balancers, and internal protocol forwarding.
+               
+               You can specify a list of up to five ports by number, separated by commas.
+               The ports can be contiguous or discontiguous. Only packets addressed to
+               these ports will be forwarded to the backends configured with this
+               forwarding rule.
+               For external forwarding rules, two or more forwarding rules cannot use the
+               same `[IPAddress, IPProtocol]` pair, and cannot share any values
+               defined in `ports`.
+               For internal forwarding rules within the same VPC network, two or more
+               forwarding rules cannot use the same `[IPAddress, IPProtocol]`
+               pair, and cannot share any values defined in `ports`.
+               The `ports` and `port_range` fields are mutually exclusive.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] psc_connection_id: The PSC connection id of the PSC Forwarding Rule.
@@ -1800,6 +2140,8 @@ class ForwardingRule(pulumi.CustomResource):
                *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
                *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
                *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+               
+               For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1844,6 +2186,13 @@ class ForwardingRule(pulumi.CustomResource):
         * If `IPProtocol` is one of TCP, UDP, or SCTP.
         * By internal TCP/UDP load balancers, backend service-based network load
         balancers, and internal and external protocol forwarding.
+
+        Set this field to true to allow packets addressed to any port or packets
+        lacking destination port information (for example, UDP fragments after the
+        first fragment) to be forwarded to the backends configured with this
+        forwarding rule.
+        The `ports`, `port_range`, and
+        `allPorts` fields are mutually exclusive.
         """
         return pulumi.get(self, "all_ports")
 
@@ -1918,6 +2267,29 @@ class ForwardingRule(pulumi.CustomResource):
         `IPAddress` should be set to `0.0.0.0`.
         * When the `target` is a Private Service Connect Google APIs
         bundle, you must specify an `IPAddress`.
+
+        Otherwise, you can optionally specify an IP address that references an
+        existing static (reserved) IP address resource. When omitted, Google Cloud
+        assigns an ephemeral IP address.
+        Use one of the following formats to specify an IP address while creating a
+        forwarding rule:
+        * IP address number, as in `100.1.2.3`
+        * IPv6 address range, as in `2600:1234::/96`
+        * Full resource URL, as in
+        `https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name`
+        * Partial URL or by name, as in:
+        * `projects/project_id/regions/region/addresses/address-name`
+        * `regions/region/addresses/address-name`
+        * `global/addresses/address-name`
+        * `address-name`
+
+        The forwarding rule's `target` or `backendService`,
+        and in most cases, also the `loadBalancingScheme`, determine the
+        type of IP address that you can use. For detailed information, see
+        [IP address
+        specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+        When reading an `IPAddress`, the API always returns the IP
+        address number.
         """
         return pulumi.get(self, "ip_address")
 
@@ -1994,6 +2366,9 @@ class ForwardingRule(pulumi.CustomResource):
         For Private Service Connect forwarding rules that forward traffic to Google
         APIs, the forwarding rule name must be a 1-20 characters string with
         lowercase letters and numbers and must start with a letter.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -2041,6 +2416,16 @@ class ForwardingRule(pulumi.CustomResource):
         Some products have restrictions on what ports can be used. See
         [port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#port_specifications)
         for details.
+
+        Only packets addressed to ports in the specified range will be forwarded to
+        the backends configured with this forwarding rule.
+        The `ports` and `port_range` fields are mutually exclusive.
+        For external forwarding rules, two or more forwarding rules cannot use the
+        same `[IPAddress, IPProtocol]` pair, and cannot have
+        overlapping `portRange`s.
+        For internal forwarding rules within the same VPC network, two or more
+        forwarding rules cannot use the same `[IPAddress, IPProtocol]`
+        pair, and cannot have overlapping `portRange`s.
         """
         return pulumi.get(self, "port_range")
 
@@ -2052,6 +2437,18 @@ class ForwardingRule(pulumi.CustomResource):
         * If `IPProtocol` is one of TCP, UDP, or SCTP.
         * By internal TCP/UDP load balancers, backend service-based network load
         balancers, and internal protocol forwarding.
+
+        You can specify a list of up to five ports by number, separated by commas.
+        The ports can be contiguous or discontiguous. Only packets addressed to
+        these ports will be forwarded to the backends configured with this
+        forwarding rule.
+        For external forwarding rules, two or more forwarding rules cannot use the
+        same `[IPAddress, IPProtocol]` pair, and cannot share any values
+        defined in `ports`.
+        For internal forwarding rules within the same VPC network, two or more
+        forwarding rules cannot use the same `[IPAddress, IPProtocol]`
+        pair, and cannot share any values defined in `ports`.
+        The `ports` and `port_range` fields are mutually exclusive.
         """
         return pulumi.get(self, "ports")
 
@@ -2167,6 +2564,8 @@ class ForwardingRule(pulumi.CustomResource):
         *  For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle:
         *  `vpc-sc` - [ APIs that support VPC Service Controls](https://cloud.google.com/vpc-service-controls/docs/supported-products).
         *  `all-apis` - [All supported Google APIs](https://cloud.google.com/vpc/docs/private-service-connect#supported-apis).
+
+        For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
         """
         return pulumi.get(self, "target")
 

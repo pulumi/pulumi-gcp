@@ -170,6 +170,10 @@ export class EnterpriseKey extends pulumi.CustomResource {
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * Human-readable display name of this key. Modifiable by user.
+     *
+     *
+     *
+     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -253,6 +257,10 @@ export interface EnterpriseKeyState {
     createTime?: pulumi.Input<string>;
     /**
      * Human-readable display name of this key. Modifiable by user.
+     *
+     *
+     *
+     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -291,6 +299,10 @@ export interface EnterpriseKeyArgs {
     androidSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyAndroidSettings>;
     /**
      * Human-readable display name of this key. Modifiable by user.
+     *
+     *
+     *
+     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

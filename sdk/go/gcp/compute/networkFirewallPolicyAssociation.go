@@ -75,6 +75,8 @@ type NetworkFirewallPolicyAssociation struct {
 	// The firewall policy ID of the association.
 	FirewallPolicy pulumi.StringOutput `pulumi:"firewallPolicy"`
 	// The name for an association.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -122,6 +124,8 @@ type networkFirewallPolicyAssociationState struct {
 	// The firewall policy ID of the association.
 	FirewallPolicy *string `pulumi:"firewallPolicy"`
 	// The name for an association.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -135,6 +139,8 @@ type NetworkFirewallPolicyAssociationState struct {
 	// The firewall policy ID of the association.
 	FirewallPolicy pulumi.StringPtrInput
 	// The name for an association.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -152,6 +158,8 @@ type networkFirewallPolicyAssociationArgs struct {
 	// The firewall policy ID of the association.
 	FirewallPolicy string `pulumi:"firewallPolicy"`
 	// The name for an association.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -164,6 +172,8 @@ type NetworkFirewallPolicyAssociationArgs struct {
 	// The firewall policy ID of the association.
 	FirewallPolicy pulumi.StringInput
 	// The name for an association.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -267,6 +277,8 @@ func (o NetworkFirewallPolicyAssociationOutput) FirewallPolicy() pulumi.StringOu
 }
 
 // The name for an association.
+//
+// ***
 func (o NetworkFirewallPolicyAssociationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkFirewallPolicyAssociation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

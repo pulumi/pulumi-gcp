@@ -23,6 +23,9 @@ class SyncAuthorizationArgs:
                You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
                The service accounts must have **Apigee Synchronizer Manager** role. See also [Create service accounts](https://cloud.google.com/apigee/docs/hybrid/v1.8/sa-about#create-the-service-accounts).
         :param pulumi.Input[str] name: Name of the Apigee organization.
+               
+               
+               - - -
         """
         pulumi.set(__self__, "identities", identities)
         if name is not None:
@@ -48,6 +51,9 @@ class SyncAuthorizationArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the Apigee organization.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -71,6 +77,9 @@ class _SyncAuthorizationState:
                You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
                The service accounts must have **Apigee Synchronizer Manager** role. See also [Create service accounts](https://cloud.google.com/apigee/docs/hybrid/v1.8/sa-about#create-the-service-accounts).
         :param pulumi.Input[str] name: Name of the Apigee organization.
+               
+               
+               - - -
         """
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
@@ -112,6 +121,9 @@ class _SyncAuthorizationState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the Apigee organization.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -186,6 +198,9 @@ class SyncAuthorization(pulumi.CustomResource):
                You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
                The service accounts must have **Apigee Synchronizer Manager** role. See also [Create service accounts](https://cloud.google.com/apigee/docs/hybrid/v1.8/sa-about#create-the-service-accounts).
         :param pulumi.Input[str] name: Name of the Apigee organization.
+               
+               
+               - - -
         """
         ...
     @overload
@@ -302,6 +317,9 @@ class SyncAuthorization(pulumi.CustomResource):
                You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one.
                The service accounts must have **Apigee Synchronizer Manager** role. See also [Create service accounts](https://cloud.google.com/apigee/docs/hybrid/v1.8/sa-about#create-the-service-accounts).
         :param pulumi.Input[str] name: Name of the Apigee organization.
+               
+               
+               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -337,6 +355,9 @@ class SyncAuthorization(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Name of the Apigee organization.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

@@ -1164,6 +1164,8 @@ type AssetResourceSpec struct {
 	// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
 	Name *string `pulumi:"name"`
 	// Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
+	//
+	// ***
 	Type string `pulumi:"type"`
 }
 
@@ -1182,6 +1184,8 @@ type AssetResourceSpecArgs struct {
 	// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: `projects/{project_number}/buckets/{bucket_id}` `projects/{project_number}/datasets/{dataset_id}`
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
+	//
+	// ***
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -1268,6 +1272,8 @@ func (o AssetResourceSpecOutput) Name() pulumi.StringPtrOutput {
 }
 
 // Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
+//
+// ***
 func (o AssetResourceSpecOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AssetResourceSpec) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1307,6 +1313,8 @@ func (o AssetResourceSpecPtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 // Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
+//
+// ***
 func (o AssetResourceSpecPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AssetResourceSpec) *string {
 		if v == nil {
@@ -3249,6 +3257,8 @@ func (o ZoneIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 
 type ZoneResourceSpec struct {
 	// Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
+	//
+	// ***
 	LocationType string `pulumi:"locationType"`
 }
 
@@ -3265,6 +3275,8 @@ type ZoneResourceSpecInput interface {
 
 type ZoneResourceSpecArgs struct {
 	// Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
+	//
+	// ***
 	LocationType pulumi.StringInput `pulumi:"locationType"`
 }
 
@@ -3346,6 +3358,8 @@ func (o ZoneResourceSpecOutput) ToZoneResourceSpecPtrOutputWithContext(ctx conte
 }
 
 // Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
+//
+// ***
 func (o ZoneResourceSpecOutput) LocationType() pulumi.StringOutput {
 	return o.ApplyT(func(v ZoneResourceSpec) string { return v.LocationType }).(pulumi.StringOutput)
 }
@@ -3375,6 +3389,8 @@ func (o ZoneResourceSpecPtrOutput) Elem() ZoneResourceSpecOutput {
 }
 
 // Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. Possible values: LOCATION_TYPE_UNSPECIFIED, SINGLE_REGION, MULTI_REGION
+//
+// ***
 func (o ZoneResourceSpecPtrOutput) LocationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZoneResourceSpec) *string {
 		if v == nil {

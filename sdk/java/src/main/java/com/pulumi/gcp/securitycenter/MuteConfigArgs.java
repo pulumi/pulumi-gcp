@@ -73,6 +73,8 @@ public final class MuteConfigArgs extends com.pulumi.resources.ResourceArgs {
      * &#34;organizations/[organization_id]&#34;, &#34;folders/[folder_id]&#34;, or
      * &#34;projects/[project_id]&#34;.
      * 
+     * ***
+     * 
      */
     @Import(name="parent", required=true)
     private Output<String> parent;
@@ -81,6 +83,8 @@ public final class MuteConfigArgs extends com.pulumi.resources.ResourceArgs {
      * @return Resource name of the new mute configs&#39;s parent. Its format is
      * &#34;organizations/[organization_id]&#34;, &#34;folders/[folder_id]&#34;, or
      * &#34;projects/[project_id]&#34;.
+     * 
+     * ***
      * 
      */
     public Output<String> parent() {
@@ -190,6 +194,8 @@ public final class MuteConfigArgs extends com.pulumi.resources.ResourceArgs {
          * &#34;organizations/[organization_id]&#34;, &#34;folders/[folder_id]&#34;, or
          * &#34;projects/[project_id]&#34;.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -202,6 +208,8 @@ public final class MuteConfigArgs extends com.pulumi.resources.ResourceArgs {
          * @param parent Resource name of the new mute configs&#39;s parent. Its format is
          * &#34;organizations/[organization_id]&#34;, &#34;folders/[folder_id]&#34;, or
          * &#34;projects/[project_id]&#34;.
+         * 
+         * ***
          * 
          * @return builder
          * 

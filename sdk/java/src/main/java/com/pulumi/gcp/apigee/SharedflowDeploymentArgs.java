@@ -48,12 +48,16 @@ public final class SharedflowDeploymentArgs extends com.pulumi.resources.Resourc
     /**
      * Revision of the Sharedflow to be deployed.
      * 
+     * ***
+     * 
      */
     @Import(name="revision", required=true)
     private Output<String> revision;
 
     /**
      * @return Revision of the Sharedflow to be deployed.
+     * 
+     * ***
      * 
      */
     public Output<String> revision() {
@@ -163,6 +167,8 @@ public final class SharedflowDeploymentArgs extends com.pulumi.resources.Resourc
         /**
          * @param revision Revision of the Sharedflow to be deployed.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -173,6 +179,8 @@ public final class SharedflowDeploymentArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param revision Revision of the Sharedflow to be deployed.
+         * 
+         * ***
          * 
          * @return builder
          * 

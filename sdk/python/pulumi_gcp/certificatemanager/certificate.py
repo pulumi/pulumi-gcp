@@ -36,6 +36,9 @@ class CertificateArgs:
         :param pulumi.Input[str] name: A user-defined name of the certificate. Certificate names must be unique
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] scope: The scope of the certificate.
@@ -124,6 +127,9 @@ class CertificateArgs:
         A user-defined name of the certificate. Certificate names must be unique
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         and all following characters must be a dash, underscore, letter or digit.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -200,6 +206,9 @@ class _CertificateState:
         :param pulumi.Input[str] name: A user-defined name of the certificate. Certificate names must be unique
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] scope: The scope of the certificate.
@@ -288,6 +297,9 @@ class _CertificateState:
         A user-defined name of the certificate. Certificate names must be unique
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         and all following characters must be a dash, underscore, letter or digit.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -356,6 +368,12 @@ class Certificate(pulumi.CustomResource):
                  self_managed: Optional[pulumi.Input[pulumi.InputType['CertificateSelfManagedArgs']]] = None,
                  __props__=None):
         """
+        Certificate represents a HTTP-reachable backend for a Certificate.
+
+        > **Warning:** All arguments including the following potentially sensitive
+        values will be stored in the raw state as plain text: `self_managed.certificate_pem`, `self_managed.private_key_pem`, `self_managed.pem_private_key`.
+        Read more about sensitive data in state.
+
         ## Example Usage
         ### Certificate Manager Google Managed Certificate
 
@@ -452,6 +470,9 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] name: A user-defined name of the certificate. Certificate names must be unique
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] scope: The scope of the certificate.
@@ -472,6 +493,12 @@ class Certificate(pulumi.CustomResource):
                  args: Optional[CertificateArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Certificate represents a HTTP-reachable backend for a Certificate.
+
+        > **Warning:** All arguments including the following potentially sensitive
+        values will be stored in the raw state as plain text: `self_managed.certificate_pem`, `self_managed.private_key_pem`, `self_managed.pem_private_key`.
+        Read more about sensitive data in state.
+
         ## Example Usage
         ### Certificate Manager Google Managed Certificate
 
@@ -631,6 +658,9 @@ class Certificate(pulumi.CustomResource):
         :param pulumi.Input[str] name: A user-defined name of the certificate. Certificate names must be unique
                The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
                and all following characters must be a dash, underscore, letter or digit.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] scope: The scope of the certificate.
@@ -700,6 +730,9 @@ class Certificate(pulumi.CustomResource):
         A user-defined name of the certificate. Certificate names must be unique
         The name must be 1-64 characters long, and match the regular expression [a-zA-Z][a-zA-Z0-9_-]* which means the first character must be a letter,
         and all following characters must be a dash, underscore, letter or digit.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

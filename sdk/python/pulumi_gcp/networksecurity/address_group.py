@@ -27,6 +27,9 @@ class AddressGroupArgs:
         :param pulumi.Input[int] capacity: Capacity of the Address Group.
         :param pulumi.Input[str] location: The location of the gateway security policy.
                The default value is `global`.
+               
+               
+               - - -
         :param pulumi.Input[str] type: The type of the Address Group. Possible values are "IPV4" or "IPV6".
                Possible values are: `IPV4`, `IPV6`.
         :param pulumi.Input[str] description: Free-text description of the resource.
@@ -68,6 +71,9 @@ class AddressGroupArgs:
         """
         The location of the gateway security policy.
         The default value is `global`.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -175,6 +181,9 @@ class _AddressGroupState:
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] location: The location of the gateway security policy.
                The default value is `global`.
+               
+               
+               - - -
         :param pulumi.Input[str] name: Name of the AddressGroup resource.
         :param pulumi.Input[str] parent: The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
         :param pulumi.Input[str] type: The type of the Address Group. Possible values are "IPV4" or "IPV6".
@@ -273,6 +282,9 @@ class _AddressGroupState:
         """
         The location of the gateway security policy.
         The default value is `global`.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 
@@ -409,6 +421,9 @@ class AddressGroup(pulumi.CustomResource):
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] location: The location of the gateway security policy.
                The default value is `global`.
+               
+               
+               - - -
         :param pulumi.Input[str] name: Name of the AddressGroup resource.
         :param pulumi.Input[str] parent: The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
         :param pulumi.Input[str] type: The type of the Address Group. Possible values are "IPV4" or "IPV6".
@@ -559,6 +574,9 @@ class AddressGroup(pulumi.CustomResource):
                An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param pulumi.Input[str] location: The location of the gateway security policy.
                The default value is `global`.
+               
+               
+               - - -
         :param pulumi.Input[str] name: Name of the AddressGroup resource.
         :param pulumi.Input[str] parent: The name of the parent this address group belongs to. Format: organizations/{organization_id} or projects/{project_id}.
         :param pulumi.Input[str] type: The type of the Address Group. Possible values are "IPV4" or "IPV6".
@@ -632,6 +650,9 @@ class AddressGroup(pulumi.CustomResource):
         """
         The location of the gateway security policy.
         The default value is `global`.
+
+
+        - - -
         """
         return pulumi.get(self, "location")
 

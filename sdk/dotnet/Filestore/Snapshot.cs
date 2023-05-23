@@ -145,6 +145,9 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// The resource name of the filestore instance.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("instance")]
         public Output<string> Instance { get; private set; } = null!;
@@ -240,6 +243,9 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// The resource name of the filestore instance.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("instance", required: true)]
         public Input<string> Instance { get; set; } = null!;
@@ -309,6 +315,9 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// The resource name of the filestore instance.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("instance")]
         public Input<string>? Instance { get; set; }

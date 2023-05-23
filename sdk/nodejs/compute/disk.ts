@@ -192,6 +192,9 @@ export class Disk extends pulumi.CustomResource {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
+     *
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -461,6 +464,9 @@ export interface DiskState {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -637,6 +643,9 @@ export interface DiskArgs {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
+     *
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**

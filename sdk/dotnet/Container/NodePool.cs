@@ -81,6 +81,8 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+        /// 
+        /// - - -
         /// </summary>
         [Output("cluster")]
         public Output<string> Cluster { get; private set; } = null!;
@@ -105,6 +107,8 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The location (region or zone) of the cluster.
+        /// 
+        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -173,6 +177,10 @@ namespace Pulumi.Gcp.Container
         /// be in the region of their regional cluster or in the same region as their
         /// cluster's zone for zonal clusters. If unspecified, the cluster-level
         /// `node_locations` will be used.
+        /// 
+        /// &gt; Note: `node_locations` will not revert to the cluster's default set of zones
+        /// upon being unset. You must manually reconcile the list of zones with your
+        /// cluster.
         /// </summary>
         [Output("nodeLocations")]
         public Output<ImmutableArray<string>> NodeLocations { get; private set; } = null!;
@@ -183,6 +191,8 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Specifies a custom placement policy for the
         /// nodes.
+        /// 
+        /// &lt;a name="nested_autoscaling"&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
         /// </summary>
         [Output("placementPolicy")]
         public Output<Outputs.NodePoolPlacementPolicy?> PlacementPolicy { get; private set; } = null!;
@@ -267,6 +277,8 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+        /// 
+        /// - - -
         /// </summary>
         [Input("cluster", required: true)]
         public Input<string> Cluster { get; set; } = null!;
@@ -285,6 +297,8 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The location (region or zone) of the cluster.
+        /// 
+        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -350,6 +364,10 @@ namespace Pulumi.Gcp.Container
         /// be in the region of their regional cluster or in the same region as their
         /// cluster's zone for zonal clusters. If unspecified, the cluster-level
         /// `node_locations` will be used.
+        /// 
+        /// &gt; Note: `node_locations` will not revert to the cluster's default set of zones
+        /// upon being unset. You must manually reconcile the list of zones with your
+        /// cluster.
         /// </summary>
         public InputList<string> NodeLocations
         {
@@ -360,6 +378,8 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Specifies a custom placement policy for the
         /// nodes.
+        /// 
+        /// &lt;a name="nested_autoscaling"&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
         /// </summary>
         [Input("placementPolicy")]
         public Input<Inputs.NodePoolPlacementPolicyArgs>? PlacementPolicy { get; set; }
@@ -406,6 +426,8 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The cluster to create the node pool for. Cluster must be present in `location` provided for clusters. May be specified in the format `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}` or as just the name of the cluster.
+        /// 
+        /// - - -
         /// </summary>
         [Input("cluster")]
         public Input<string>? Cluster { get; set; }
@@ -436,6 +458,8 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// The location (region or zone) of the cluster.
+        /// 
+        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -513,6 +537,10 @@ namespace Pulumi.Gcp.Container
         /// be in the region of their regional cluster or in the same region as their
         /// cluster's zone for zonal clusters. If unspecified, the cluster-level
         /// `node_locations` will be used.
+        /// 
+        /// &gt; Note: `node_locations` will not revert to the cluster's default set of zones
+        /// upon being unset. You must manually reconcile the list of zones with your
+        /// cluster.
         /// </summary>
         public InputList<string> NodeLocations
         {
@@ -526,6 +554,8 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Specifies a custom placement policy for the
         /// nodes.
+        /// 
+        /// &lt;a name="nested_autoscaling"&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
         /// </summary>
         [Input("placementPolicy")]
         public Input<Inputs.NodePoolPlacementPolicyGetArgs>? PlacementPolicy { get; set; }

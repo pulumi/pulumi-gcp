@@ -53,6 +53,8 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
      * the provider-default zone and the project will default to the
      * provider-level project.
      * 
+     * ***
+     * 
      */
     @Import(name="instance")
     private @Nullable Output<String> instance;
@@ -64,6 +66,8 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
      * name is given, the zone will default to the given zone or
      * the provider-default zone and the project will default to the
      * provider-level project.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> instance() {
@@ -262,6 +266,8 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
          * the provider-default zone and the project will default to the
          * provider-level project.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -277,6 +283,8 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
          * name is given, the zone will default to the given zone or
          * the provider-default zone and the project will default to the
          * provider-level project.
+         * 
+         * ***
          * 
          * @return builder
          * 

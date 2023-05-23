@@ -397,6 +397,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * connections for the revision, use the &#34;run.googleapis.com/cloudsql-instances&#34;
      * annotation key.
      * Structure is documented below.
+     * 
      * (Optional)
      * Metadata associated with this Service, including name, namespace, labels,
      * and annotations.
@@ -415,6 +416,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * connections for the revision, use the &#34;run.googleapis.com/cloudsql-instances&#34;
      * annotation key.
      * Structure is documented below.
+     * 
      * (Optional)
      * Metadata associated with this Service, including name, namespace, labels,
      * and annotations.

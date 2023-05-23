@@ -206,11 +206,11 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly statefulDisks!: pulumi.Output<outputs.compute.InstanceGroupManagerStatefulDisk[] | undefined>;
     /**
-     * ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      */
     public readonly statefulExternalIps!: pulumi.Output<outputs.compute.InstanceGroupManagerStatefulExternalIp[] | undefined>;
     /**
-     * ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      */
     public readonly statefulInternalIps!: pulumi.Output<outputs.compute.InstanceGroupManagerStatefulInternalIp[] | undefined>;
     /**
@@ -231,6 +231,8 @@ export class InstanceGroupManager extends pulumi.CustomResource {
     public readonly targetSize!: pulumi.Output<number>;
     /**
      * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
+     *
+     * - - -
      */
     public readonly updatePolicy!: pulumi.Output<outputs.compute.InstanceGroupManagerUpdatePolicy>;
     /**
@@ -255,6 +257,8 @@ export class InstanceGroupManager extends pulumi.CustomResource {
     /**
      * The zone that instances in this group should be created
      * in.
+     *
+     * - - -
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -411,11 +415,11 @@ export interface InstanceGroupManagerState {
      */
     statefulDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatefulDisk>[]>;
     /**
-     * ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      */
     statefulExternalIps?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatefulExternalIp>[]>;
     /**
-     * ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      */
     statefulInternalIps?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatefulInternalIp>[]>;
     /**
@@ -436,6 +440,8 @@ export interface InstanceGroupManagerState {
     targetSize?: pulumi.Input<number>;
     /**
      * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
+     *
+     * - - -
      */
     updatePolicy?: pulumi.Input<inputs.compute.InstanceGroupManagerUpdatePolicy>;
     /**
@@ -460,6 +466,8 @@ export interface InstanceGroupManagerState {
     /**
      * The zone that instances in this group should be created
      * in.
+     *
+     * - - -
      */
     zone?: pulumi.Input<string>;
 }
@@ -529,11 +537,11 @@ export interface InstanceGroupManagerArgs {
      */
     statefulDisks?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatefulDisk>[]>;
     /**
-     * ) External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      */
     statefulExternalIps?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatefulExternalIp>[]>;
     /**
-     * ) Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
+     * Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
      */
     statefulInternalIps?: pulumi.Input<pulumi.Input<inputs.compute.InstanceGroupManagerStatefulInternalIp>[]>;
     /**
@@ -550,6 +558,8 @@ export interface InstanceGroupManagerArgs {
     targetSize?: pulumi.Input<number>;
     /**
      * The update policy for this managed instance group. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/updating-managed-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagers/patch)
+     *
+     * - - -
      */
     updatePolicy?: pulumi.Input<inputs.compute.InstanceGroupManagerUpdatePolicy>;
     /**
@@ -574,6 +584,8 @@ export interface InstanceGroupManagerArgs {
     /**
      * The zone that instances in this group should be created
      * in.
+     *
+     * - - -
      */
     zone?: pulumi.Input<string>;
 }

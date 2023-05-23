@@ -25,6 +25,9 @@ class SourceIamMemberArgs:
         The set of arguments for constructing a SourceIamMember resource.
         :param pulumi.Input[str] organization: The organization whose Cloud Security Command Center the Source
                lives in.
+               
+               
+               - - -
         """
         pulumi.set(__self__, "member", member)
         pulumi.set(__self__, "organization", organization)
@@ -48,6 +51,9 @@ class SourceIamMemberArgs:
         """
         The organization whose Cloud Security Command Center the Source
         lives in.
+
+
+        - - -
         """
         return pulumi.get(self, "organization")
 
@@ -96,6 +102,9 @@ class _SourceIamMemberState:
         Input properties used for looking up and filtering SourceIamMember resources.
         :param pulumi.Input[str] organization: The organization whose Cloud Security Command Center the Source
                lives in.
+               
+               
+               - - -
         """
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
@@ -143,6 +152,9 @@ class _SourceIamMemberState:
         """
         The organization whose Cloud Security Command Center the Source
         lives in.
+
+
+        - - -
         """
         return pulumi.get(self, "organization")
 
@@ -221,6 +233,9 @@ class SourceIamMember(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] organization: The organization whose Cloud Security Command Center the Source
                lives in.
+               
+               
+               - - -
         """
         ...
     @overload
@@ -333,6 +348,9 @@ class SourceIamMember(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] organization: The organization whose Cloud Security Command Center the Source
                lives in.
+               
+               
+               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -367,6 +385,9 @@ class SourceIamMember(pulumi.CustomResource):
         """
         The organization whose Cloud Security Command Center the Source
         lives in.
+
+
+        - - -
         """
         return pulumi.get(self, "organization")
 

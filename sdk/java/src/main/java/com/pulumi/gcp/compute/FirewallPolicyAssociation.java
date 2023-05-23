@@ -103,12 +103,16 @@ public class FirewallPolicyAssociation extends com.pulumi.resources.CustomResour
     /**
      * The name for an association.
      * 
+     * ***
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
      * @return The name for an association.
+     * 
+     * ***
      * 
      */
     public Output<String> name() {

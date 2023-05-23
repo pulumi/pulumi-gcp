@@ -37,6 +37,7 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
 
     /**
      * A description of the job trigger.
+     * 
      * (Optional)
      * A short description of where the data is coming from. Will be stored once in the job. 256 max length.
      * 
@@ -46,6 +47,7 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
 
     /**
      * @return A description of the job trigger.
+     * 
      * (Optional)
      * A short description of where the data is coming from. Will be stored once in the job. 256 max length.
      * 
@@ -104,21 +106,27 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
     /**
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
      * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
      * (Required)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
      * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
      * (Required)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
      * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
      * (Required)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
      * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
      * (Required)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
      * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
      * (Required)
      * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
      * or `projects/project-id/storedInfoTypes/432452342`.
+     * 
      * (Required)
      * Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
      * For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
@@ -126,10 +134,13 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
      * field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
      * For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
      * timestamp property does not exist or its value is empty or invalid.
+     * 
      * (Required)
      * The name of the Datastore kind.
+     * 
      * (Required)
      * Name of a BigQuery field to be returned with the findings.
+     * 
      * (Required)
      * Name describing the field.
      * 
@@ -140,21 +151,27 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
     /**
      * @return Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
      * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
      * (Required)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
      * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
      * (Required)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
      * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
      * (Required)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
      * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
      * (Required)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
      * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+     * 
      * (Required)
      * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
      * or `projects/project-id/storedInfoTypes/432452342`.
+     * 
      * (Required)
      * Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
      * For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
@@ -162,10 +179,13 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
      * field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
      * For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
      * timestamp property does not exist or its value is empty or invalid.
+     * 
      * (Required)
      * The name of the Datastore kind.
+     * 
      * (Required)
      * Name of a BigQuery field to be returned with the findings.
+     * 
      * (Required)
      * Name describing the field.
      * 
@@ -300,6 +320,7 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
 
         /**
          * @param description A description of the job trigger.
+         * 
          * (Optional)
          * A short description of where the data is coming from. Will be stored once in the job. 256 max length.
          * 
@@ -313,6 +334,7 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
 
         /**
          * @param description A description of the job trigger.
+         * 
          * (Optional)
          * A short description of where the data is coming from. Will be stored once in the job. 256 max length.
          * 
@@ -391,21 +413,27 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
         /**
          * @param name Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
          * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * 
          * (Required)
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
          * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * 
          * (Required)
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
          * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * 
          * (Required)
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
          * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * 
          * (Required)
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
          * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * 
          * (Required)
          * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
          * or `projects/project-id/storedInfoTypes/432452342`.
+         * 
          * (Required)
          * Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
          * For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
@@ -413,10 +441,13 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
          * field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
          * For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
          * timestamp property does not exist or its value is empty or invalid.
+         * 
          * (Required)
          * The name of the Datastore kind.
+         * 
          * (Required)
          * Name of a BigQuery field to be returned with the findings.
+         * 
          * (Required)
          * Name describing the field.
          * 
@@ -431,21 +462,27 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
         /**
          * @param name Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
          * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * 
          * (Required)
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
          * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * 
          * (Required)
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
          * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * 
          * (Required)
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed
          * at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * 
          * (Required)
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names
          * listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type.
+         * 
          * (Required)
          * Resource name of the requested StoredInfoType, for example `organizations/433245324/storedInfoTypes/432452342`
          * or `projects/project-id/storedInfoTypes/432452342`.
+         * 
          * (Required)
          * Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
          * For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was
@@ -453,10 +490,13 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
          * field are: INTEGER, DATE, TIMESTAMP, or DATETIME BigQuery column.
          * For Datastore. Valid data types of the timestamp field are: TIMESTAMP. Datastore entity will be scanned if the
          * timestamp property does not exist or its value is empty or invalid.
+         * 
          * (Required)
          * The name of the Datastore kind.
+         * 
          * (Required)
          * Name of a BigQuery field to be returned with the findings.
+         * 
          * (Required)
          * Name describing the field.
          * 

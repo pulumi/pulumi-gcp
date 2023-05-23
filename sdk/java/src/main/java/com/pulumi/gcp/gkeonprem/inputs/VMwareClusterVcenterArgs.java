@@ -85,6 +85,8 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
      * (Output)
      * The Vsphere datastore used by the Control Plane Node.
      * 
+     * ***
+     * 
      */
     @Import(name="datastore")
     private @Nullable Output<String> datastore;
@@ -92,6 +94,8 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
     /**
      * @return (Output)
      * The Vsphere datastore used by the Control Plane Node.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> datastore() {
@@ -256,6 +260,8 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
          * @param datastore (Output)
          * The Vsphere datastore used by the Control Plane Node.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -267,6 +273,8 @@ public final class VMwareClusterVcenterArgs extends com.pulumi.resources.Resourc
         /**
          * @param datastore (Output)
          * The Vsphere datastore used by the Control Plane Node.
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -133,6 +133,8 @@ public final class TagKeyState extends com.pulumi.resources.ResourceArgs {
      * Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
      * The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
      * 
+     * ***
+     * 
      */
     @Import(name="shortName")
     private @Nullable Output<String> shortName;
@@ -140,6 +142,8 @@ public final class TagKeyState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
      * The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> shortName() {
@@ -354,6 +358,8 @@ public final class TagKeyState extends com.pulumi.resources.ResourceArgs {
          * @param shortName Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
          * The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -365,6 +371,8 @@ public final class TagKeyState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param shortName Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
          * The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+         * 
+         * ***
          * 
          * @return builder
          * 

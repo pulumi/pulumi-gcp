@@ -119,6 +119,8 @@ type CxAgent struct {
 	SupportedLanguageCodes pulumi.StringArrayOutput `pulumi:"supportedLanguageCodes"`
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
+	//
+	// ***
 	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
 }
 
@@ -197,6 +199,8 @@ type cxAgentState struct {
 	SupportedLanguageCodes []string `pulumi:"supportedLanguageCodes"`
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
+	//
+	// ***
 	TimeZone *string `pulumi:"timeZone"`
 }
 
@@ -235,6 +239,8 @@ type CxAgentState struct {
 	SupportedLanguageCodes pulumi.StringArrayInput
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
+	//
+	// ***
 	TimeZone pulumi.StringPtrInput
 }
 
@@ -273,6 +279,8 @@ type cxAgentArgs struct {
 	SupportedLanguageCodes []string `pulumi:"supportedLanguageCodes"`
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
+	//
+	// ***
 	TimeZone string `pulumi:"timeZone"`
 }
 
@@ -308,6 +316,8 @@ type CxAgentArgs struct {
 	SupportedLanguageCodes pulumi.StringArrayInput
 	// The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 	// Europe/Paris.
+	//
+	// ***
 	TimeZone pulumi.StringInput
 }
 
@@ -471,6 +481,8 @@ func (o CxAgentOutput) SupportedLanguageCodes() pulumi.StringArrayOutput {
 
 // The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
 // Europe/Paris.
+//
+// ***
 func (o CxAgentOutput) TimeZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *CxAgent) pulumi.StringOutput { return v.TimeZone }).(pulumi.StringOutput)
 }

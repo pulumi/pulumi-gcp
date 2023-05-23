@@ -91,6 +91,10 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The reservation for the resource
+        /// 
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("reservation")]
         public Output<string> Reservation { get; private set; } = null!;
@@ -173,6 +177,10 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The reservation for the resource
+        /// 
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("reservation", required: true)]
         public Input<string> Reservation { get; set; } = null!;
@@ -217,6 +225,10 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The reservation for the resource
+        /// 
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("reservation")]
         public Input<string>? Reservation { get; set; }

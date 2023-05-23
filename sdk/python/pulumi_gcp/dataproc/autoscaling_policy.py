@@ -27,6 +27,9 @@ class AutoscalingPolicyArgs:
         :param pulumi.Input[str] policy_id: The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 50 characters.
+               
+               
+               - - -
         :param pulumi.Input['AutoscalingPolicyBasicAlgorithmArgs'] basic_algorithm: Basic algorithm for autoscaling.
                Structure is documented below.
         :param pulumi.Input[str] location: The  location where the autoscaling policy should reside.
@@ -57,6 +60,9 @@ class AutoscalingPolicyArgs:
         The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         3 and 50 characters.
+
+
+        - - -
         """
         return pulumi.get(self, "policy_id")
 
@@ -150,6 +156,9 @@ class _AutoscalingPolicyState:
         :param pulumi.Input[str] policy_id: The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 50 characters.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['AutoscalingPolicySecondaryWorkerConfigArgs'] secondary_worker_config: Describes how the autoscaler will operate for secondary workers.
@@ -217,6 +226,9 @@ class _AutoscalingPolicyState:
         The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         3 and 50 characters.
+
+
+        - - -
         """
         return pulumi.get(self, "policy_id")
 
@@ -333,6 +345,9 @@ class AutoscalingPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] policy_id: The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 50 characters.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['AutoscalingPolicySecondaryWorkerConfigArgs']] secondary_worker_config: Describes how the autoscaler will operate for secondary workers.
@@ -465,6 +480,9 @@ class AutoscalingPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] policy_id: The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
                3 and 50 characters.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['AutoscalingPolicySecondaryWorkerConfigArgs']] secondary_worker_config: Describes how the autoscaler will operate for secondary workers.
@@ -518,6 +536,9 @@ class AutoscalingPolicy(pulumi.CustomResource):
         The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
         and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
         3 and 50 characters.
+
+
+        - - -
         """
         return pulumi.get(self, "policy_id")
 

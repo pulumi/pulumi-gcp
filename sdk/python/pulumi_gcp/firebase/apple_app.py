@@ -23,6 +23,9 @@ class AppleAppArgs:
         """
         The set of arguments for constructing a AppleApp resource.
         :param pulumi.Input[str] bundle_id: The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
+               
+               
+               - - -
         :param pulumi.Input[str] display_name: The user-assigned display name of the App.
         :param pulumi.Input[str] app_store_id: The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
         :param pulumi.Input[str] deletion_policy: (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
@@ -48,6 +51,9 @@ class AppleAppArgs:
     def bundle_id(self) -> pulumi.Input[str]:
         """
         The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
+
+
+        - - -
         """
         return pulumi.get(self, "bundle_id")
 
@@ -136,6 +142,9 @@ class _AppleAppState:
                This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[str] app_store_id: The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
         :param pulumi.Input[str] bundle_id: The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
+               
+               
+               - - -
         :param pulumi.Input[str] deletion_policy: (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
                destroy'. This is useful because the Apple may be serving traffic. Set to 'DELETE' to delete the Apple. Defaults to
                'DELETE'.
@@ -193,6 +202,9 @@ class _AppleAppState:
     def bundle_id(self) -> Optional[pulumi.Input[str]]:
         """
         The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
+
+
+        - - -
         """
         return pulumi.get(self, "bundle_id")
 
@@ -330,6 +342,9 @@ class AppleApp(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_store_id: The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
         :param pulumi.Input[str] bundle_id: The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
+               
+               
+               - - -
         :param pulumi.Input[str] deletion_policy: (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
                destroy'. This is useful because the Apple may be serving traffic. Set to 'DELETE' to delete the Apple. Defaults to
                'DELETE'.
@@ -464,6 +479,9 @@ class AppleApp(pulumi.CustomResource):
                This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[str] app_store_id: The automatically generated Apple ID assigned to the Apple app by Apple in the Apple App Store.
         :param pulumi.Input[str] bundle_id: The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
+               
+               
+               - - -
         :param pulumi.Input[str] deletion_policy: (Optional) Set to 'ABANDON' to allow the Apple to be untracked from terraform state rather than deleted upon 'terraform
                destroy'. This is useful because the Apple may be serving traffic. Set to 'DELETE' to delete the Apple. Defaults to
                'DELETE'.
@@ -510,6 +528,9 @@ class AppleApp(pulumi.CustomResource):
     def bundle_id(self) -> pulumi.Output[str]:
         """
         The canonical bundle ID of the Apple app as it would appear in the Apple AppStore.
+
+
+        - - -
         """
         return pulumi.get(self, "bundle_id")
 

@@ -26,6 +26,8 @@ public final class ClusterClusterConfigSoftwareConfig {
     /**
      * @return The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
      * 
+     * ***
+     * 
      */
     private @Nullable List<String> optionalComponents;
     /**
@@ -57,6 +59,8 @@ public final class ClusterClusterConfigSoftwareConfig {
     }
     /**
      * @return The set of optional components to activate on the cluster. See [Available Optional Components](https://cloud.google.com/dataproc/docs/concepts/components/overview#available_optional_components).
+     * 
+     * ***
      * 
      */
     public List<String> optionalComponents() {

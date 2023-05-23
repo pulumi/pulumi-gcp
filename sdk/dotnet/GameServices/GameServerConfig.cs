@@ -181,6 +181,7 @@ namespace Pulumi.Gcp.GameServices
         /// <summary>
         /// The labels associated with this game server config. Each label is a
         /// key-value pair.
+        /// 
         /// (Optional)
         /// Set of labels to group by.
         /// </summary>
@@ -195,6 +196,10 @@ namespace Pulumi.Gcp.GameServices
 
         /// <summary>
         /// The name of the FleetConfig.
+        /// 
+        /// - - -
+        /// 
+        /// 
         /// (Required)
         /// The name of the ScalingConfig
         /// </summary>
@@ -299,6 +304,7 @@ namespace Pulumi.Gcp.GameServices
         /// <summary>
         /// The labels associated with this game server config. Each label is a
         /// key-value pair.
+        /// 
         /// (Optional)
         /// Set of labels to group by.
         /// </summary>
@@ -380,6 +386,7 @@ namespace Pulumi.Gcp.GameServices
         /// <summary>
         /// The labels associated with this game server config. Each label is a
         /// key-value pair.
+        /// 
         /// (Optional)
         /// Set of labels to group by.
         /// </summary>
@@ -397,6 +404,10 @@ namespace Pulumi.Gcp.GameServices
 
         /// <summary>
         /// The name of the FleetConfig.
+        /// 
+        /// - - -
+        /// 
+        /// 
         /// (Required)
         /// The name of the ScalingConfig
         /// </summary>

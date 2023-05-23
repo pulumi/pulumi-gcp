@@ -74,6 +74,8 @@ type SourceIamMember struct {
 	Member    pulumi.StringOutput               `pulumi:"member"`
 	// The organization whose Cloud Security Command Center the Source
 	// lives in.
+	//
+	// ***
 	Organization pulumi.StringOutput `pulumi:"organization"`
 	Role         pulumi.StringOutput `pulumi:"role"`
 	Source       pulumi.StringOutput `pulumi:"source"`
@@ -125,6 +127,8 @@ type sourceIamMemberState struct {
 	Member    *string                   `pulumi:"member"`
 	// The organization whose Cloud Security Command Center the Source
 	// lives in.
+	//
+	// ***
 	Organization *string `pulumi:"organization"`
 	Role         *string `pulumi:"role"`
 	Source       *string `pulumi:"source"`
@@ -136,6 +140,8 @@ type SourceIamMemberState struct {
 	Member    pulumi.StringPtrInput
 	// The organization whose Cloud Security Command Center the Source
 	// lives in.
+	//
+	// ***
 	Organization pulumi.StringPtrInput
 	Role         pulumi.StringPtrInput
 	Source       pulumi.StringPtrInput
@@ -150,6 +156,8 @@ type sourceIamMemberArgs struct {
 	Member    string                    `pulumi:"member"`
 	// The organization whose Cloud Security Command Center the Source
 	// lives in.
+	//
+	// ***
 	Organization string `pulumi:"organization"`
 	Role         string `pulumi:"role"`
 	Source       string `pulumi:"source"`
@@ -161,6 +169,8 @@ type SourceIamMemberArgs struct {
 	Member    pulumi.StringInput
 	// The organization whose Cloud Security Command Center the Source
 	// lives in.
+	//
+	// ***
 	Organization pulumi.StringInput
 	Role         pulumi.StringInput
 	Source       pulumi.StringInput
@@ -267,6 +277,8 @@ func (o SourceIamMemberOutput) Member() pulumi.StringOutput {
 
 // The organization whose Cloud Security Command Center the Source
 // lives in.
+//
+// ***
 func (o SourceIamMemberOutput) Organization() pulumi.StringOutput {
 	return o.ApplyT(func(v *SourceIamMember) pulumi.StringOutput { return v.Organization }).(pulumi.StringOutput)
 }

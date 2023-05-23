@@ -102,12 +102,16 @@ public class ObjectACL extends com.pulumi.resources.CustomResource {
     /**
      * The name of the object to apply the acl to.
      * 
+     * ***
+     * 
      */
     @Export(name="object", type=String.class, parameters={})
     private Output<String> object;
 
     /**
      * @return The name of the object to apply the acl to.
+     * 
+     * ***
      * 
      */
     public Output<String> object() {

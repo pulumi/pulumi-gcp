@@ -39,6 +39,9 @@ class CxAgentArgs:
                Another options is to use global location so you don't need to manually configure location settings.
         :param pulumi.Input[str] time_zone: The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
                Europe/Paris.
+               
+               
+               - - -
         :param pulumi.Input[str] avatar_uri: The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted Web Demo integration.
         :param pulumi.Input[str] description: The description of this agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
@@ -117,6 +120,9 @@ class CxAgentArgs:
         """
         The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
         Europe/Paris.
+
+
+        - - -
         """
         return pulumi.get(self, "time_zone")
 
@@ -263,6 +269,9 @@ class _CxAgentState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by this agent (except for the default_language_code).
         :param pulumi.Input[str] time_zone: The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
                Europe/Paris.
+               
+               
+               - - -
         """
         if avatar_uri is not None:
             pulumi.set(__self__, "avatar_uri", avatar_uri)
@@ -461,6 +470,9 @@ class _CxAgentState:
         """
         The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
         Europe/Paris.
+
+
+        - - -
         """
         return pulumi.get(self, "time_zone")
 
@@ -559,6 +571,9 @@ class CxAgent(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by this agent (except for the default_language_code).
         :param pulumi.Input[str] time_zone: The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
                Europe/Paris.
+               
+               
+               - - -
         """
         ...
     @overload
@@ -727,6 +742,9 @@ class CxAgent(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by this agent (except for the default_language_code).
         :param pulumi.Input[str] time_zone: The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
                Europe/Paris.
+               
+               
+               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -864,6 +882,9 @@ class CxAgent(pulumi.CustomResource):
         """
         The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
         Europe/Paris.
+
+
+        - - -
         """
         return pulumi.get(self, "time_zone")
 

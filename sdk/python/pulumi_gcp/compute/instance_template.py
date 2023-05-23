@@ -47,6 +47,10 @@ class InstanceTemplateArgs:
                This can be specified multiple times for multiple disks. Structure is
                documented below.
         :param pulumi.Input[str] machine_type: The machine type to create.
+               
+               To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+               
+               - - -
         :param pulumi.Input['InstanceTemplateAdvancedMachineFeaturesArgs'] advanced_machine_features: Configure Nested Virtualisation and Simultaneous Hyper Threading on this VM. Structure is documented below
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
@@ -166,6 +170,10 @@ class InstanceTemplateArgs:
     def machine_type(self) -> pulumi.Input[str]:
         """
         The machine type to create.
+
+        To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+
+        - - -
         """
         return pulumi.get(self, "machine_type")
 
@@ -527,6 +535,10 @@ class _InstanceTemplateState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to instances
                created from this template.
         :param pulumi.Input[str] machine_type: The machine type to create.
+               
+               To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+               
+               - - -
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[str] metadata_fingerprint: The unique fingerprint of the metadata.
@@ -749,6 +761,10 @@ class _InstanceTemplateState:
     def machine_type(self) -> Optional[pulumi.Input[str]]:
         """
         The machine type to create.
+
+        To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+
+        - - -
         """
         return pulumi.get(self, "machine_type")
 
@@ -1201,6 +1217,10 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to instances
                created from this template.
         :param pulumi.Input[str] machine_type: The machine type to create.
+               
+               To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+               
+               - - -
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[str] metadata_startup_script: An alternative to using the
@@ -1533,6 +1553,10 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to instances
                created from this template.
         :param pulumi.Input[str] machine_type: The machine type to create.
+               
+               To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+               
+               - - -
         :param pulumi.Input[Mapping[str, Any]] metadata: Metadata key/value pairs to make available from
                within instances created from this template.
         :param pulumi.Input[str] metadata_fingerprint: The unique fingerprint of the metadata.
@@ -1695,6 +1719,10 @@ class InstanceTemplate(pulumi.CustomResource):
     def machine_type(self) -> pulumi.Output[str]:
         """
         The machine type to create.
+
+        To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+
+        - - -
         """
         return pulumi.get(self, "machine_type")
 

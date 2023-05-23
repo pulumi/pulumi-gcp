@@ -149,6 +149,15 @@ type AccountIamMember struct {
 	pulumi.CustomResourceState
 
 	// The billing account id.
+	//
+	// For `billing.AccountIamMember` or `billing.AccountIamBinding`:
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	BillingAccountId pulumi.StringOutput                `pulumi:"billingAccountId"`
 	Condition        AccountIamMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the billing account's IAM policy.
@@ -157,6 +166,8 @@ type AccountIamMember struct {
 	// The role that should be applied. Only one
 	// `billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+	//
+	// `billing.AccountIamPolicy` only:
 	Role pulumi.StringOutput `pulumi:"role"`
 }
 
@@ -199,6 +210,15 @@ func GetAccountIamMember(ctx *pulumi.Context,
 // Input properties used for looking up and filtering AccountIamMember resources.
 type accountIamMemberState struct {
 	// The billing account id.
+	//
+	// For `billing.AccountIamMember` or `billing.AccountIamBinding`:
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	BillingAccountId *string                    `pulumi:"billingAccountId"`
 	Condition        *AccountIamMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the billing account's IAM policy.
@@ -207,11 +227,22 @@ type accountIamMemberState struct {
 	// The role that should be applied. Only one
 	// `billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+	//
+	// `billing.AccountIamPolicy` only:
 	Role *string `pulumi:"role"`
 }
 
 type AccountIamMemberState struct {
 	// The billing account id.
+	//
+	// For `billing.AccountIamMember` or `billing.AccountIamBinding`:
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	BillingAccountId pulumi.StringPtrInput
 	Condition        AccountIamMemberConditionPtrInput
 	// (Computed) The etag of the billing account's IAM policy.
@@ -220,6 +251,8 @@ type AccountIamMemberState struct {
 	// The role that should be applied. Only one
 	// `billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+	//
+	// `billing.AccountIamPolicy` only:
 	Role pulumi.StringPtrInput
 }
 
@@ -229,24 +262,46 @@ func (AccountIamMemberState) ElementType() reflect.Type {
 
 type accountIamMemberArgs struct {
 	// The billing account id.
+	//
+	// For `billing.AccountIamMember` or `billing.AccountIamBinding`:
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	BillingAccountId string                     `pulumi:"billingAccountId"`
 	Condition        *AccountIamMemberCondition `pulumi:"condition"`
 	Member           string                     `pulumi:"member"`
 	// The role that should be applied. Only one
 	// `billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+	//
+	// `billing.AccountIamPolicy` only:
 	Role string `pulumi:"role"`
 }
 
 // The set of arguments for constructing a AccountIamMember resource.
 type AccountIamMemberArgs struct {
 	// The billing account id.
+	//
+	// For `billing.AccountIamMember` or `billing.AccountIamBinding`:
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	BillingAccountId pulumi.StringInput
 	Condition        AccountIamMemberConditionPtrInput
 	Member           pulumi.StringInput
 	// The role that should be applied. Only one
 	// `billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+	//
+	// `billing.AccountIamPolicy` only:
 	Role pulumi.StringInput
 }
 
@@ -338,6 +393,15 @@ func (o AccountIamMemberOutput) ToAccountIamMemberOutputWithContext(ctx context.
 }
 
 // The billing account id.
+//
+// For `billing.AccountIamMember` or `billing.AccountIamBinding`:
+//
+//   - `member/members` - (Required) Identities that will be granted the privilege in `role`.
+//     Each entry can have one of the following values:
+//   - **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+//   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+//   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+//   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 func (o AccountIamMemberOutput) BillingAccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountIamMember) pulumi.StringOutput { return v.BillingAccountId }).(pulumi.StringOutput)
 }
@@ -358,6 +422,8 @@ func (o AccountIamMemberOutput) Member() pulumi.StringOutput {
 // The role that should be applied. Only one
 // `billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
 // `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+//
+// `billing.AccountIamPolicy` only:
 func (o AccountIamMemberOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccountIamMember) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }

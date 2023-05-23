@@ -383,12 +383,16 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
     /**
      * A reference to the disk used to create this snapshot.
      * 
+     * ***
+     * 
      */
     @Export(name="sourceDisk", type=String.class, parameters={})
     private Output<String> sourceDisk;
 
     /**
      * @return A reference to the disk used to create this snapshot.
+     * 
+     * ***
      * 
      */
     public Output<String> sourceDisk() {

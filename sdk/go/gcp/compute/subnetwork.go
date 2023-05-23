@@ -298,6 +298,8 @@ type Subnetwork struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The network this subnet belongs to.
 	// Only networks that are in the distributed mode can have subnetworks.
+	//
+	// ***
 	Network pulumi.StringOutput `pulumi:"network"`
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
@@ -413,6 +415,8 @@ type subnetworkState struct {
 	Name *string `pulumi:"name"`
 	// The network this subnet belongs to.
 	// Only networks that are in the distributed mode can have subnetworks.
+	//
+	// ***
 	Network *string `pulumi:"network"`
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
@@ -494,6 +498,8 @@ type SubnetworkState struct {
 	Name pulumi.StringPtrInput
 	// The network this subnet belongs to.
 	// Only networks that are in the distributed mode can have subnetworks.
+	//
+	// ***
 	Network pulumi.StringPtrInput
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
@@ -566,6 +572,8 @@ type subnetworkArgs struct {
 	Name *string `pulumi:"name"`
 	// The network this subnet belongs to.
 	// Only networks that are in the distributed mode can have subnetworks.
+	//
+	// ***
 	Network string `pulumi:"network"`
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
@@ -633,6 +641,8 @@ type SubnetworkArgs struct {
 	Name pulumi.StringPtrInput
 	// The network this subnet belongs to.
 	// Only networks that are in the distributed mode can have subnetworks.
+	//
+	// ***
 	Network pulumi.StringInput
 	// When enabled, VMs in this subnetwork without external IP addresses can
 	// access Google APIs and services by using Private Google Access.
@@ -828,6 +838,8 @@ func (o SubnetworkOutput) Name() pulumi.StringOutput {
 
 // The network this subnet belongs to.
 // Only networks that are in the distributed mode can have subnetworks.
+//
+// ***
 func (o SubnetworkOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
 }

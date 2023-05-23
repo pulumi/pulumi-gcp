@@ -85,6 +85,8 @@ type RegionSslPolicy struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The region where the regional SSL policy resides.
+	//
+	// ***
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -166,6 +168,8 @@ type regionSslPolicyState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The region where the regional SSL policy resides.
+	//
+	// ***
 	Region *string `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -216,6 +220,8 @@ type RegionSslPolicyState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The region where the regional SSL policy resides.
+	//
+	// ***
 	Region pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -263,6 +269,8 @@ type regionSslPolicyArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The region where the regional SSL policy resides.
+	//
+	// ***
 	Region string `pulumi:"region"`
 }
 
@@ -305,6 +313,8 @@ type RegionSslPolicyArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The region where the regional SSL policy resides.
+	//
+	// ***
 	Region pulumi.StringInput
 }
 
@@ -466,6 +476,8 @@ func (o RegionSslPolicyOutput) Project() pulumi.StringOutput {
 }
 
 // The region where the regional SSL policy resides.
+//
+// ***
 func (o RegionSslPolicyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionSslPolicy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

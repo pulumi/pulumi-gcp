@@ -128,6 +128,8 @@ public class GameServerDeploymentRollout extends com.pulumi.resources.CustomReso
      * applied by default to all realms and clusters. For example,
      * `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
      * 
+     * ***
+     * 
      */
     @Export(name="defaultGameServerConfig", type=String.class, parameters={})
     private Output<String> defaultGameServerConfig;
@@ -136,6 +138,8 @@ public class GameServerDeploymentRollout extends com.pulumi.resources.CustomReso
      * @return This field points to the game server config that is
      * applied by default to all realms and clusters. For example,
      * `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
+     * 
+     * ***
      * 
      */
     public Output<String> defaultGameServerConfig() {

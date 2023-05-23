@@ -22,6 +22,10 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
      * reference the device for mounting, resizing, and so on, from within
      * the instance.
      * 
+     * If not specified, the server chooses a default device name to apply
+     * to this disk, in the form persistent-disks-x, where x is a number
+     * assigned by Google Compute Engine.
+     * 
      */
     @Import(name="deviceName")
     private @Nullable Output<String> deviceName;
@@ -33,6 +37,10 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
      * reference the device for mounting, resizing, and so on, from within
      * the instance.
      * 
+     * If not specified, the server chooses a default device name to apply
+     * to this disk, in the form persistent-disks-x, where x is a number
+     * assigned by Google Compute Engine.
+     * 
      */
     public Optional<Output<String>> deviceName() {
         return Optional.ofNullable(this.deviceName);
@@ -41,12 +49,16 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
     /**
      * `name` or `self_link` of the disk that will be attached.
      * 
+     * ***
+     * 
      */
     @Import(name="disk")
     private @Nullable Output<String> disk;
 
     /**
      * @return `name` or `self_link` of the disk that will be attached.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> disk() {
@@ -79,6 +91,10 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
      * READ_ONLY. If not specified, the default is to attach the disk in
      * READ_WRITE mode.
      * 
+     * Possible values:
+     * &#34;READ_ONLY&#34;
+     * &#34;READ_WRITE&#34;
+     * 
      */
     @Import(name="mode")
     private @Nullable Output<String> mode;
@@ -87,6 +103,10 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
      * @return The mode in which to attach this disk, either READ_WRITE or
      * READ_ONLY. If not specified, the default is to attach the disk in
      * READ_WRITE mode.
+     * 
+     * Possible values:
+     * &#34;READ_ONLY&#34;
+     * &#34;READ_WRITE&#34;
      * 
      */
     public Optional<Output<String>> mode() {
@@ -163,6 +183,10 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
          * reference the device for mounting, resizing, and so on, from within
          * the instance.
          * 
+         * If not specified, the server chooses a default device name to apply
+         * to this disk, in the form persistent-disks-x, where x is a number
+         * assigned by Google Compute Engine.
+         * 
          * @return builder
          * 
          */
@@ -178,6 +202,10 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
          * reference the device for mounting, resizing, and so on, from within
          * the instance.
          * 
+         * If not specified, the server chooses a default device name to apply
+         * to this disk, in the form persistent-disks-x, where x is a number
+         * assigned by Google Compute Engine.
+         * 
          * @return builder
          * 
          */
@@ -187,6 +215,8 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param disk `name` or `self_link` of the disk that will be attached.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -198,6 +228,8 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param disk `name` or `self_link` of the disk that will be attached.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -238,6 +270,10 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
          * READ_ONLY. If not specified, the default is to attach the disk in
          * READ_WRITE mode.
          * 
+         * Possible values:
+         * &#34;READ_ONLY&#34;
+         * &#34;READ_WRITE&#34;
+         * 
          * @return builder
          * 
          */
@@ -250,6 +286,10 @@ public final class AttachedDiskState extends com.pulumi.resources.ResourceArgs {
          * @param mode The mode in which to attach this disk, either READ_WRITE or
          * READ_ONLY. If not specified, the default is to attach the disk in
          * READ_WRITE mode.
+         * 
+         * Possible values:
+         * &#34;READ_ONLY&#34;
+         * &#34;READ_WRITE&#34;
          * 
          * @return builder
          * 

@@ -81,12 +81,16 @@ public final class RealmArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * GCP region of the Realm.
      * 
+     * ***
+     * 
      */
     @Import(name="realmId", required=true)
     private Output<String> realmId;
 
     /**
      * @return GCP region of the Realm.
+     * 
+     * ***
      * 
      */
     public Output<String> realmId() {
@@ -230,6 +234,8 @@ public final class RealmArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param realmId GCP region of the Realm.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -240,6 +246,8 @@ public final class RealmArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param realmId GCP region of the Realm.
+         * 
+         * ***
          * 
          * @return builder
          * 

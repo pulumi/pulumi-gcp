@@ -154,12 +154,16 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
      * 
+     * ***
+     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
+     * 
+     * ***
      * 
      */
     public Output<String> location() {
@@ -555,6 +559,8 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param location The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -565,6 +571,8 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param location The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
+         * 
+         * ***
          * 
          * @return builder
          * 

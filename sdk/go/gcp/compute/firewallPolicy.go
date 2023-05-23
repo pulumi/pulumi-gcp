@@ -82,6 +82,8 @@ type FirewallPolicy struct {
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
 	// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	//
+	// ***
 	ShortName pulumi.StringOutput `pulumi:"shortName"`
 }
 
@@ -139,6 +141,8 @@ type firewallPolicyState struct {
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
 	// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	//
+	// ***
 	ShortName *string `pulumi:"shortName"`
 }
 
@@ -162,6 +166,8 @@ type FirewallPolicyState struct {
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
 	// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	//
+	// ***
 	ShortName pulumi.StringPtrInput
 }
 
@@ -175,6 +181,8 @@ type firewallPolicyArgs struct {
 	// The parent of the firewall policy.
 	Parent string `pulumi:"parent"`
 	// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	//
+	// ***
 	ShortName string `pulumi:"shortName"`
 }
 
@@ -185,6 +193,8 @@ type FirewallPolicyArgs struct {
 	// The parent of the firewall policy.
 	Parent pulumi.StringInput
 	// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+	//
+	// ***
 	ShortName pulumi.StringInput
 }
 
@@ -321,6 +331,8 @@ func (o FirewallPolicyOutput) SelfLinkWithId() pulumi.StringOutput {
 }
 
 // User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+//
+// ***
 func (o FirewallPolicyOutput) ShortName() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallPolicy) pulumi.StringOutput { return v.ShortName }).(pulumi.StringOutput)
 }

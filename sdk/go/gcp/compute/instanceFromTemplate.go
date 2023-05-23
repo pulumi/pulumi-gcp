@@ -158,6 +158,8 @@ type InstanceFromTemplate struct {
 	// Name or self link of an instance
 	// template to create the instance based on. It is recommended to reference
 	// instance templates through their unique id (`selfLinkUnique` attribute).
+	//
+	// ***
 	SourceInstanceTemplate pulumi.StringOutput `pulumi:"sourceInstanceTemplate"`
 	// The list of tags attached to the instance.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
@@ -165,6 +167,10 @@ type InstanceFromTemplate struct {
 	TagsFingerprint pulumi.StringOutput `pulumi:"tagsFingerprint"`
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
+	//
+	// In addition to these, all arguments from `compute.Instance` are supported
+	// as a way to override the properties in the template. All exported attributes
+	// from `compute.Instance` are likewise exported here.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -278,6 +284,8 @@ type instanceFromTemplateState struct {
 	// Name or self link of an instance
 	// template to create the instance based on. It is recommended to reference
 	// instance templates through their unique id (`selfLinkUnique` attribute).
+	//
+	// ***
 	SourceInstanceTemplate *string `pulumi:"sourceInstanceTemplate"`
 	// The list of tags attached to the instance.
 	Tags []string `pulumi:"tags"`
@@ -285,6 +293,10 @@ type instanceFromTemplateState struct {
 	TagsFingerprint *string `pulumi:"tagsFingerprint"`
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
+	//
+	// In addition to these, all arguments from `compute.Instance` are supported
+	// as a way to override the properties in the template. All exported attributes
+	// from `compute.Instance` are likewise exported here.
 	Zone *string `pulumi:"zone"`
 }
 
@@ -367,6 +379,8 @@ type InstanceFromTemplateState struct {
 	// Name or self link of an instance
 	// template to create the instance based on. It is recommended to reference
 	// instance templates through their unique id (`selfLinkUnique` attribute).
+	//
+	// ***
 	SourceInstanceTemplate pulumi.StringPtrInput
 	// The list of tags attached to the instance.
 	Tags pulumi.StringArrayInput
@@ -374,6 +388,10 @@ type InstanceFromTemplateState struct {
 	TagsFingerprint pulumi.StringPtrInput
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
+	//
+	// In addition to these, all arguments from `compute.Instance` are supported
+	// as a way to override the properties in the template. All exported attributes
+	// from `compute.Instance` are likewise exported here.
 	Zone pulumi.StringPtrInput
 }
 
@@ -446,11 +464,17 @@ type instanceFromTemplateArgs struct {
 	// Name or self link of an instance
 	// template to create the instance based on. It is recommended to reference
 	// instance templates through their unique id (`selfLinkUnique` attribute).
+	//
+	// ***
 	SourceInstanceTemplate string `pulumi:"sourceInstanceTemplate"`
 	// The list of tags attached to the instance.
 	Tags []string `pulumi:"tags"`
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
+	//
+	// In addition to these, all arguments from `compute.Instance` are supported
+	// as a way to override the properties in the template. All exported attributes
+	// from `compute.Instance` are likewise exported here.
 	Zone *string `pulumi:"zone"`
 }
 
@@ -520,11 +544,17 @@ type InstanceFromTemplateArgs struct {
 	// Name or self link of an instance
 	// template to create the instance based on. It is recommended to reference
 	// instance templates through their unique id (`selfLinkUnique` attribute).
+	//
+	// ***
 	SourceInstanceTemplate pulumi.StringInput
 	// The list of tags attached to the instance.
 	Tags pulumi.StringArrayInput
 	// The zone that the machine should be created in. If not
 	// set, the provider zone is used.
+	//
+	// In addition to these, all arguments from `compute.Instance` are supported
+	// as a way to override the properties in the template. All exported attributes
+	// from `compute.Instance` are likewise exported here.
 	Zone pulumi.StringPtrInput
 }
 
@@ -806,6 +836,8 @@ func (o InstanceFromTemplateOutput) ShieldedInstanceConfig() InstanceFromTemplat
 // Name or self link of an instance
 // template to create the instance based on. It is recommended to reference
 // instance templates through their unique id (`selfLinkUnique` attribute).
+//
+// ***
 func (o InstanceFromTemplateOutput) SourceInstanceTemplate() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.SourceInstanceTemplate }).(pulumi.StringOutput)
 }
@@ -822,6 +854,10 @@ func (o InstanceFromTemplateOutput) TagsFingerprint() pulumi.StringOutput {
 
 // The zone that the machine should be created in. If not
 // set, the provider zone is used.
+//
+// In addition to these, all arguments from `compute.Instance` are supported
+// as a way to override the properties in the template. All exported attributes
+// from `compute.Instance` are likewise exported here.
 func (o InstanceFromTemplateOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceFromTemplate) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

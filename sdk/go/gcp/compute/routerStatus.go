@@ -67,7 +67,9 @@ type RouterStatusArgs struct {
 
 // A collection of values returned by RouterStatus.
 type RouterStatusResult struct {
-	BestRoutes           []RouterStatusBestRoute           `pulumi:"bestRoutes"`
+	// List of best `compute#routes` configurations for this router's network. See compute.Route resource for available attributes.
+	BestRoutes []RouterStatusBestRoute `pulumi:"bestRoutes"`
+	// List of best `compute#routes` for this specific router. See compute.Route resource for available attributes.
 	BestRoutesForRouters []RouterStatusBestRoutesForRouter `pulumi:"bestRoutesForRouters"`
 	// The provider-assigned unique ID for this managed resource.
 	Id   string `pulumi:"id"`
@@ -123,10 +125,12 @@ func (o RouterStatusResultOutput) ToRouterStatusResultOutputWithContext(ctx cont
 	return o
 }
 
+// List of best `compute#routes` configurations for this router's network. See compute.Route resource for available attributes.
 func (o RouterStatusResultOutput) BestRoutes() RouterStatusBestRouteArrayOutput {
 	return o.ApplyT(func(v RouterStatusResult) []RouterStatusBestRoute { return v.BestRoutes }).(RouterStatusBestRouteArrayOutput)
 }
 
+// List of best `compute#routes` for this specific router. See compute.Route resource for available attributes.
 func (o RouterStatusResultOutput) BestRoutesForRouters() RouterStatusBestRoutesForRouterArrayOutput {
 	return o.ApplyT(func(v RouterStatusResult) []RouterStatusBestRoutesForRouter { return v.BestRoutesForRouters }).(RouterStatusBestRoutesForRouterArrayOutput)
 }

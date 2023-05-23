@@ -231,12 +231,16 @@ public class AiIndex extends com.pulumi.resources.CustomResource {
     /**
      * The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
      * 
+     * ***
+     * 
      */
     @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
      * @return The display name of the Index. The name can be up to 128 characters long and can consist of any UTF-8 characters.
+     * 
+     * ***
      * 
      */
     public Output<String> displayName() {

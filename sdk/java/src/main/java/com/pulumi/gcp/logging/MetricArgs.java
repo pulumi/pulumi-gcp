@@ -91,6 +91,8 @@ public final class MetricArgs extends com.pulumi.resources.ResourceArgs {
      * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
      * is used to match log entries.
      * 
+     * ***
+     * 
      */
     @Import(name="filter", required=true)
     private Output<String> filter;
@@ -98,6 +100,8 @@ public final class MetricArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
      * is used to match log entries.
+     * 
+     * ***
      * 
      */
     public Output<String> filter() {
@@ -344,6 +348,8 @@ public final class MetricArgs extends com.pulumi.resources.ResourceArgs {
          * @param filter An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
          * is used to match log entries.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -355,6 +361,8 @@ public final class MetricArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param filter An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-filters) which
          * is used to match log entries.
+         * 
+         * ***
          * 
          * @return builder
          * 

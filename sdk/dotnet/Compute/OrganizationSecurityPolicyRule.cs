@@ -99,6 +99,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A description of the rule.
+        /// 
         /// (Optional)
         /// A description of the rule.
         /// </summary>
@@ -218,6 +219,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A description of the rule.
+        /// 
         /// (Optional)
         /// A description of the rule.
         /// </summary>
@@ -311,6 +313,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A description of the rule.
+        /// 
         /// (Optional)
         /// A description of the rule.
         /// </summary>

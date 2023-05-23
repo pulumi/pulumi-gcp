@@ -205,6 +205,8 @@ type Registry struct {
 	// The structure is documented below.
 	MqttConfig pulumi.MapOutput `pulumi:"mqttConfig"`
 	// A unique name for the resource, required by device registry.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -274,6 +276,8 @@ type registryState struct {
 	// The structure is documented below.
 	MqttConfig map[string]interface{} `pulumi:"mqttConfig"`
 	// A unique name for the resource, required by device registry.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -309,6 +313,8 @@ type RegistryState struct {
 	// The structure is documented below.
 	MqttConfig pulumi.MapInput
 	// A unique name for the resource, required by device registry.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -348,6 +354,8 @@ type registryArgs struct {
 	// The structure is documented below.
 	MqttConfig map[string]interface{} `pulumi:"mqttConfig"`
 	// A unique name for the resource, required by device registry.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -384,6 +392,8 @@ type RegistryArgs struct {
 	// The structure is documented below.
 	MqttConfig pulumi.MapInput
 	// A unique name for the resource, required by device registry.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -520,6 +530,8 @@ func (o RegistryOutput) MqttConfig() pulumi.MapOutput {
 }
 
 // A unique name for the resource, required by device registry.
+//
+// ***
 func (o RegistryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Registry) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

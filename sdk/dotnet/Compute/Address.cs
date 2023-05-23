@@ -239,6 +239,9 @@ namespace Pulumi.Gcp.Compute
         /// which means the first character must be a lowercase letter, and all
         /// following characters must be a dash, lowercase letter, or digit,
         /// except the last character, which cannot be a dash.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -286,6 +289,8 @@ namespace Pulumi.Gcp.Compute
         /// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
         /// configure Private Service Connect. Only global internal addresses can use
         /// this purpose.
+        /// 
+        /// This should only be set when using an Internal address.
         /// </summary>
         [Output("purpose")]
         public Output<string> Purpose { get; private set; } = null!;
@@ -407,6 +412,9 @@ namespace Pulumi.Gcp.Compute
         /// which means the first character must be a lowercase letter, and all
         /// following characters must be a dash, lowercase letter, or digit,
         /// except the last character, which cannot be a dash.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -454,6 +462,8 @@ namespace Pulumi.Gcp.Compute
         /// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
         /// configure Private Service Connect. Only global internal addresses can use
         /// this purpose.
+        /// 
+        /// This should only be set when using an Internal address.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
@@ -537,6 +547,9 @@ namespace Pulumi.Gcp.Compute
         /// which means the first character must be a lowercase letter, and all
         /// following characters must be a dash, lowercase letter, or digit,
         /// except the last character, which cannot be a dash.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -584,6 +597,8 @@ namespace Pulumi.Gcp.Compute
         /// * PRIVATE_SERVICE_CONNECT for a private network address that is used to
         /// configure Private Service Connect. Only global internal addresses can use
         /// this purpose.
+        /// 
+        /// This should only be set when using an Internal address.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }

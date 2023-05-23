@@ -18,6 +18,8 @@ public final class AuthorityConfigArgs extends com.pulumi.resources.ResourceArgs
      * Specifies some of the values in a certificate that are related to the subject.
      * Structure is documented below.
      * 
+     * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
+     * 
      */
     @Import(name="subjectConfig", required=true)
     private Output<AuthorityConfigSubjectConfigArgs> subjectConfig;
@@ -25,6 +27,8 @@ public final class AuthorityConfigArgs extends com.pulumi.resources.ResourceArgs
     /**
      * @return Specifies some of the values in a certificate that are related to the subject.
      * Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
      * 
      */
     public Output<AuthorityConfigSubjectConfigArgs> subjectConfig() {
@@ -77,6 +81,8 @@ public final class AuthorityConfigArgs extends com.pulumi.resources.ResourceArgs
          * @param subjectConfig Specifies some of the values in a certificate that are related to the subject.
          * Structure is documented below.
          * 
+         * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
+         * 
          * @return builder
          * 
          */
@@ -88,6 +94,8 @@ public final class AuthorityConfigArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param subjectConfig Specifies some of the values in a certificate that are related to the subject.
          * Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
          * 
          * @return builder
          * 

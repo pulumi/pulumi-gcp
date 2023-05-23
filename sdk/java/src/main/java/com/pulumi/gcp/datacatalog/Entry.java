@@ -284,12 +284,16 @@ public class Entry extends com.pulumi.resources.CustomResource {
     /**
      * The id of the entry to create.
      * 
+     * ***
+     * 
      */
     @Export(name="entryId", type=String.class, parameters={})
     private Output<String> entryId;
 
     /**
      * @return The id of the entry to create.
+     * 
+     * ***
      * 
      */
     public Output<String> entryId() {

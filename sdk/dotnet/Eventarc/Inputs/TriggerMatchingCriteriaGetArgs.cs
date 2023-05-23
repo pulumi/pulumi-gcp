@@ -26,6 +26,8 @@ namespace Pulumi.Gcp.Eventarc.Inputs
 
         /// <summary>
         /// Required. The value for the attribute. See https://cloud.google.com/eventarc/docs/creating-triggers#trigger-gcloud for available values.
+        /// 
+        /// - - -
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

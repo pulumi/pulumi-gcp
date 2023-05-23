@@ -158,6 +158,8 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * The name of the cluster, unique within the project and
      * zone.
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -234,6 +236,8 @@ export interface ClusterState {
     /**
      * The name of the cluster, unique within the project and
      * zone.
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -276,6 +280,8 @@ export interface ClusterArgs {
     /**
      * The name of the cluster, unique within the project and
      * zone.
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**

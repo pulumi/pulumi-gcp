@@ -60,6 +60,8 @@ type GetBillingAccountArgs struct {
 	// The display name of the billing account.
 	DisplayName *string `pulumi:"displayName"`
 	// `true` if the billing account is open, `false` if the billing account is closed.
+	//
+	// > **NOTE:** One of `billingAccount` or `displayName` must be specified.
 	Open *bool `pulumi:"open"`
 }
 
@@ -96,6 +98,8 @@ type GetBillingAccountOutputArgs struct {
 	// The display name of the billing account.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// `true` if the billing account is open, `false` if the billing account is closed.
+	//
+	// > **NOTE:** One of `billingAccount` or `displayName` must be specified.
 	Open pulumi.BoolPtrInput `pulumi:"open"`
 }
 

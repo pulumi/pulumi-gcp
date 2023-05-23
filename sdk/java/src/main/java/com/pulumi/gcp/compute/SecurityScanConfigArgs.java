@@ -143,12 +143,16 @@ public final class SecurityScanConfigArgs extends com.pulumi.resources.ResourceA
     /**
      * The starting URLs from which the scanner finds site pages.
      * 
+     * ***
+     * 
      */
     @Import(name="startingUrls", required=true)
     private Output<List<String>> startingUrls;
 
     /**
      * @return The starting URLs from which the scanner finds site pages.
+     * 
+     * ***
      * 
      */
     public Output<List<String>> startingUrls() {
@@ -401,6 +405,8 @@ public final class SecurityScanConfigArgs extends com.pulumi.resources.ResourceA
         /**
          * @param startingUrls The starting URLs from which the scanner finds site pages.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -412,6 +418,8 @@ public final class SecurityScanConfigArgs extends com.pulumi.resources.ResourceA
         /**
          * @param startingUrls The starting URLs from which the scanner finds site pages.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -421,6 +429,8 @@ public final class SecurityScanConfigArgs extends com.pulumi.resources.ResourceA
 
         /**
          * @param startingUrls The starting URLs from which the scanner finds site pages.
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -10,6 +10,24 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Projects
 {
     /// <summary>
+    /// Allows creation and management of a Google Cloud Platform project.
+    /// 
+    /// Projects created with this resource must be associated with an Organization.
+    /// See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
+    /// 
+    /// The user or service account that is running this provider when creating a `gcp.organizations.Project`
+    /// resource must have `roles/resourcemanager.projectCreator` on the specified organization. See the
+    /// [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
+    /// doc for more information.
+    /// 
+    /// &gt; This resource reads the specified billing account on every pulumi up and plan operation so you must have permissions on the specified billing account.
+    /// 
+    /// To get more information about projects, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
+    /// * How-to Guides
+    ///     * [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

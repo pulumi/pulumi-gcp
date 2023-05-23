@@ -114,6 +114,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The region where the regional SSL policy resides.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -238,6 +241,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The region where the regional SSL policy resides.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -343,6 +349,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The region where the regional SSL policy resides.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

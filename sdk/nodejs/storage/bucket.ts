@@ -103,7 +103,7 @@ import * as utilities from "../utilities";
  *  $ pulumi import gcp:storage/bucket:Bucket image-store tf-test-project/image-store-bucket
  * ```
  *
- *  `false` in state. If you've set it to `true` in config, run `terraform apply` to update the value set in state. If you delete this resource before updating the value, objects in the bucket will not be destroyed.
+ *  `false` in state. If you've set it to `true` in config, run `pulumi up` to update the value set in state. If you delete this resource before updating the value, objects in the bucket will not be destroyed.
  */
 export class Bucket extends pulumi.CustomResource {
     /**
@@ -169,6 +169,8 @@ export class Bucket extends pulumi.CustomResource {
     public readonly lifecycleRules!: pulumi.Output<outputs.storage.BucketLifecycleRule[] | undefined>;
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
+     *
+     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -327,6 +329,8 @@ export interface BucketState {
     lifecycleRules?: pulumi.Input<pulumi.Input<inputs.storage.BucketLifecycleRule>[]>;
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
+     *
+     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -420,6 +424,8 @@ export interface BucketArgs {
     lifecycleRules?: pulumi.Input<pulumi.Input<inputs.storage.BucketLifecycleRule>[]>;
     /**
      * The [GCS location](https://cloud.google.com/storage/docs/bucket-locations).
+     *
+     * - - -
      */
     location: pulumi.Input<string>;
     /**

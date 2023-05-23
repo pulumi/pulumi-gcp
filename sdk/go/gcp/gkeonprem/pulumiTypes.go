@@ -6499,6 +6499,8 @@ type BareMetalClusterStorageLvpNodeMountsConfig struct {
 	// The host machine path.
 	Path string `pulumi:"path"`
 	// The StorageClass name that PVs will be created with.
+	//
+	// ***
 	StorageClass string `pulumi:"storageClass"`
 }
 
@@ -6517,6 +6519,8 @@ type BareMetalClusterStorageLvpNodeMountsConfigArgs struct {
 	// The host machine path.
 	Path pulumi.StringInput `pulumi:"path"`
 	// The StorageClass name that PVs will be created with.
+	//
+	// ***
 	StorageClass pulumi.StringInput `pulumi:"storageClass"`
 }
 
@@ -6603,6 +6607,8 @@ func (o BareMetalClusterStorageLvpNodeMountsConfigOutput) Path() pulumi.StringOu
 }
 
 // The StorageClass name that PVs will be created with.
+//
+// ***
 func (o BareMetalClusterStorageLvpNodeMountsConfigOutput) StorageClass() pulumi.StringOutput {
 	return o.ApplyT(func(v BareMetalClusterStorageLvpNodeMountsConfig) string { return v.StorageClass }).(pulumi.StringOutput)
 }
@@ -6642,6 +6648,8 @@ func (o BareMetalClusterStorageLvpNodeMountsConfigPtrOutput) Path() pulumi.Strin
 }
 
 // The StorageClass name that PVs will be created with.
+//
+// ***
 func (o BareMetalClusterStorageLvpNodeMountsConfigPtrOutput) StorageClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BareMetalClusterStorageLvpNodeMountsConfig) *string {
 		if v == nil {
@@ -7725,6 +7733,8 @@ func (o BareMetalNodePoolNodePoolConfigNodeConfigArrayOutput) Index(i pulumi.Int
 type BareMetalNodePoolNodePoolConfigTaint struct {
 	// Specifies the nodes operating system (default: LINUX).
 	// Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+	//
+	// ***
 	Effect *string `pulumi:"effect"`
 	// Key associated with the effect.
 	Key *string `pulumi:"key"`
@@ -7746,6 +7756,8 @@ type BareMetalNodePoolNodePoolConfigTaintInput interface {
 type BareMetalNodePoolNodePoolConfigTaintArgs struct {
 	// Specifies the nodes operating system (default: LINUX).
 	// Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+	//
+	// ***
 	Effect pulumi.StringPtrInput `pulumi:"effect"`
 	// Key associated with the effect.
 	Key pulumi.StringPtrInput `pulumi:"key"`
@@ -7806,6 +7818,8 @@ func (o BareMetalNodePoolNodePoolConfigTaintOutput) ToBareMetalNodePoolNodePoolC
 
 // Specifies the nodes operating system (default: LINUX).
 // Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+//
+// ***
 func (o BareMetalNodePoolNodePoolConfigTaintOutput) Effect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BareMetalNodePoolNodePoolConfigTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
 }
@@ -8876,6 +8890,8 @@ func (o VMwareClusterControlPlaneNodePtrOutput) VsphereConfigs() VMwareClusterCo
 
 type VMwareClusterControlPlaneNodeAutoResizeConfig struct {
 	// Whether to enable control plane node auto resizing.
+	//
+	// <a name="nestedVsphereConfig"></a>The `vsphereConfig` block contains:
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -8892,6 +8908,8 @@ type VMwareClusterControlPlaneNodeAutoResizeConfigInput interface {
 
 type VMwareClusterControlPlaneNodeAutoResizeConfigArgs struct {
 	// Whether to enable control plane node auto resizing.
+	//
+	// <a name="nestedVsphereConfig"></a>The `vsphereConfig` block contains:
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -8973,6 +8991,8 @@ func (o VMwareClusterControlPlaneNodeAutoResizeConfigOutput) ToVMwareClusterCont
 }
 
 // Whether to enable control plane node auto resizing.
+//
+// <a name="nestedVsphereConfig"></a>The `vsphereConfig` block contains:
 func (o VMwareClusterControlPlaneNodeAutoResizeConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v VMwareClusterControlPlaneNodeAutoResizeConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -9002,6 +9022,8 @@ func (o VMwareClusterControlPlaneNodeAutoResizeConfigPtrOutput) Elem() VMwareClu
 }
 
 // Whether to enable control plane node auto resizing.
+//
+// <a name="nestedVsphereConfig"></a>The `vsphereConfig` block contains:
 func (o VMwareClusterControlPlaneNodeAutoResizeConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VMwareClusterControlPlaneNodeAutoResizeConfig) *bool {
 		if v == nil {
@@ -9014,6 +9036,8 @@ func (o VMwareClusterControlPlaneNodeAutoResizeConfigPtrOutput) Enabled() pulumi
 type VMwareClusterControlPlaneNodeVsphereConfig struct {
 	// (Output)
 	// The Vsphere datastore used by the Control Plane Node.
+	//
+	// ***
 	Datastore *string `pulumi:"datastore"`
 }
 
@@ -9031,6 +9055,8 @@ type VMwareClusterControlPlaneNodeVsphereConfigInput interface {
 type VMwareClusterControlPlaneNodeVsphereConfigArgs struct {
 	// (Output)
 	// The Vsphere datastore used by the Control Plane Node.
+	//
+	// ***
 	Datastore pulumi.StringPtrInput `pulumi:"datastore"`
 }
 
@@ -9087,6 +9113,8 @@ func (o VMwareClusterControlPlaneNodeVsphereConfigOutput) ToVMwareClusterControl
 
 // (Output)
 // The Vsphere datastore used by the Control Plane Node.
+//
+// ***
 func (o VMwareClusterControlPlaneNodeVsphereConfigOutput) Datastore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareClusterControlPlaneNodeVsphereConfig) *string { return v.Datastore }).(pulumi.StringPtrOutput)
 }
@@ -10156,6 +10184,8 @@ type VMwareClusterLoadBalancerMetalLbConfigAddressPool struct {
 	// those special IP addresses.
 	AvoidBuggyIps *bool `pulumi:"avoidBuggyIps"`
 	// If true, prevent IP addresses from being automatically assigned.
+	//
+	// <a name="nestedDataplaneV2"></a>The `dataplaneV2` block supports:
 	ManualAssign *bool `pulumi:"manualAssign"`
 	// The name of the address pool.
 	Pool string `pulumi:"pool"`
@@ -10182,6 +10212,8 @@ type VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs struct {
 	// those special IP addresses.
 	AvoidBuggyIps pulumi.BoolPtrInput `pulumi:"avoidBuggyIps"`
 	// If true, prevent IP addresses from being automatically assigned.
+	//
+	// <a name="nestedDataplaneV2"></a>The `dataplaneV2` block supports:
 	ManualAssign pulumi.BoolPtrInput `pulumi:"manualAssign"`
 	// The name of the address pool.
 	Pool pulumi.StringInput `pulumi:"pool"`
@@ -10253,6 +10285,8 @@ func (o VMwareClusterLoadBalancerMetalLbConfigAddressPoolOutput) AvoidBuggyIps()
 }
 
 // If true, prevent IP addresses from being automatically assigned.
+//
+// <a name="nestedDataplaneV2"></a>The `dataplaneV2` block supports:
 func (o VMwareClusterLoadBalancerMetalLbConfigAddressPoolOutput) ManualAssign() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VMwareClusterLoadBalancerMetalLbConfigAddressPool) *bool { return v.ManualAssign }).(pulumi.BoolPtrOutput)
 }
@@ -10286,6 +10320,8 @@ type VMwareClusterLoadBalancerVipConfig struct {
 	// The VIP which you previously set aside for the Kubernetes API of this cluster.
 	ControlPlaneVip *string `pulumi:"controlPlaneVip"`
 	// The VIP which you previously set aside for ingress traffic into this cluster.
+	//
+	// <a name="nestedF5Config"></a>The `f5Config` block supports:
 	IngressVip *string `pulumi:"ingressVip"`
 }
 
@@ -10304,6 +10340,8 @@ type VMwareClusterLoadBalancerVipConfigArgs struct {
 	// The VIP which you previously set aside for the Kubernetes API of this cluster.
 	ControlPlaneVip pulumi.StringPtrInput `pulumi:"controlPlaneVip"`
 	// The VIP which you previously set aside for ingress traffic into this cluster.
+	//
+	// <a name="nestedF5Config"></a>The `f5Config` block supports:
 	IngressVip pulumi.StringPtrInput `pulumi:"ingressVip"`
 }
 
@@ -10390,6 +10428,8 @@ func (o VMwareClusterLoadBalancerVipConfigOutput) ControlPlaneVip() pulumi.Strin
 }
 
 // The VIP which you previously set aside for ingress traffic into this cluster.
+//
+// <a name="nestedF5Config"></a>The `f5Config` block supports:
 func (o VMwareClusterLoadBalancerVipConfigOutput) IngressVip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareClusterLoadBalancerVipConfig) *string { return v.IngressVip }).(pulumi.StringPtrOutput)
 }
@@ -10429,6 +10469,8 @@ func (o VMwareClusterLoadBalancerVipConfigPtrOutput) ControlPlaneVip() pulumi.St
 }
 
 // The VIP which you previously set aside for ingress traffic into this cluster.
+//
+// <a name="nestedF5Config"></a>The `f5Config` block supports:
 func (o VMwareClusterLoadBalancerVipConfigPtrOutput) IngressVip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VMwareClusterLoadBalancerVipConfig) *string {
 		if v == nil {
@@ -11296,6 +11338,8 @@ func (o VMwareClusterNetworkConfigDhcpIpConfigPtrOutput) Enabled() pulumi.BoolPt
 
 type VMwareClusterNetworkConfigHostConfig struct {
 	// DNS search domains.
+	//
+	// <a name="nestedControlPlaneV2Config"></a>The `controlPlaneV2Config` block supports:
 	DnsSearchDomains []string `pulumi:"dnsSearchDomains"`
 	// DNS servers.
 	DnsServers []string `pulumi:"dnsServers"`
@@ -11316,6 +11360,8 @@ type VMwareClusterNetworkConfigHostConfigInput interface {
 
 type VMwareClusterNetworkConfigHostConfigArgs struct {
 	// DNS search domains.
+	//
+	// <a name="nestedControlPlaneV2Config"></a>The `controlPlaneV2Config` block supports:
 	DnsSearchDomains pulumi.StringArrayInput `pulumi:"dnsSearchDomains"`
 	// DNS servers.
 	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
@@ -11401,6 +11447,8 @@ func (o VMwareClusterNetworkConfigHostConfigOutput) ToVMwareClusterNetworkConfig
 }
 
 // DNS search domains.
+//
+// <a name="nestedControlPlaneV2Config"></a>The `controlPlaneV2Config` block supports:
 func (o VMwareClusterNetworkConfigHostConfigOutput) DnsSearchDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VMwareClusterNetworkConfigHostConfig) []string { return v.DnsSearchDomains }).(pulumi.StringArrayOutput)
 }
@@ -11440,6 +11488,8 @@ func (o VMwareClusterNetworkConfigHostConfigPtrOutput) Elem() VMwareClusterNetwo
 }
 
 // DNS search domains.
+//
+// <a name="nestedControlPlaneV2Config"></a>The `controlPlaneV2Config` block supports:
 func (o VMwareClusterNetworkConfigHostConfigPtrOutput) DnsSearchDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VMwareClusterNetworkConfigHostConfig) []string {
 		if v == nil {
@@ -12648,6 +12698,8 @@ type VMwareClusterVcenter struct {
 	Datacenter *string `pulumi:"datacenter"`
 	// (Output)
 	// The Vsphere datastore used by the Control Plane Node.
+	//
+	// ***
 	Datastore *string `pulumi:"datastore"`
 	// (Output)
 	// The name of the vCenter folder for the user cluster.
@@ -12682,6 +12734,8 @@ type VMwareClusterVcenterArgs struct {
 	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
 	// (Output)
 	// The Vsphere datastore used by the Control Plane Node.
+	//
+	// ***
 	Datastore pulumi.StringPtrInput `pulumi:"datastore"`
 	// (Output)
 	// The name of the vCenter folder for the user cluster.
@@ -12767,6 +12821,8 @@ func (o VMwareClusterVcenterOutput) Datacenter() pulumi.StringPtrOutput {
 
 // (Output)
 // The Vsphere datastore used by the Control Plane Node.
+//
+// ***
 func (o VMwareClusterVcenterOutput) Datastore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareClusterVcenter) *string { return v.Datastore }).(pulumi.StringPtrOutput)
 }
@@ -13154,6 +13210,8 @@ func (o VMwareNodePoolConfigPtrOutput) VsphereConfigs() VMwareNodePoolConfigVsph
 type VMwareNodePoolConfigTaint struct {
 	// Available taint effects.
 	// Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+	//
+	// <a name="nestedVsphereConfig"></a>The `vsphereConfig` block contains:
 	Effect *string `pulumi:"effect"`
 	// Key associated with the effect.
 	Key string `pulumi:"key"`
@@ -13175,6 +13233,8 @@ type VMwareNodePoolConfigTaintInput interface {
 type VMwareNodePoolConfigTaintArgs struct {
 	// Available taint effects.
 	// Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+	//
+	// <a name="nestedVsphereConfig"></a>The `vsphereConfig` block contains:
 	Effect pulumi.StringPtrInput `pulumi:"effect"`
 	// Key associated with the effect.
 	Key pulumi.StringInput `pulumi:"key"`
@@ -13235,6 +13295,8 @@ func (o VMwareNodePoolConfigTaintOutput) ToVMwareNodePoolConfigTaintOutputWithCo
 
 // Available taint effects.
 // Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+//
+// <a name="nestedVsphereConfig"></a>The `vsphereConfig` block contains:
 func (o VMwareNodePoolConfigTaintOutput) Effect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareNodePoolConfigTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
 }
@@ -13276,6 +13338,8 @@ type VMwareNodePoolConfigVsphereConfig struct {
 	// (Output)
 	// Tags to apply to VMs.
 	// Structure is documented below.
+	//
+	// <a name="nestedTags"></a>The `tags` block contains:
 	Tags []VMwareNodePoolConfigVsphereConfigTag `pulumi:"tags"`
 }
 
@@ -13297,6 +13361,8 @@ type VMwareNodePoolConfigVsphereConfigArgs struct {
 	// (Output)
 	// Tags to apply to VMs.
 	// Structure is documented below.
+	//
+	// <a name="nestedTags"></a>The `tags` block contains:
 	Tags VMwareNodePoolConfigVsphereConfigTagArrayInput `pulumi:"tags"`
 }
 
@@ -13360,6 +13426,8 @@ func (o VMwareNodePoolConfigVsphereConfigOutput) Datastore() pulumi.StringPtrOut
 // (Output)
 // Tags to apply to VMs.
 // Structure is documented below.
+//
+// <a name="nestedTags"></a>The `tags` block contains:
 func (o VMwareNodePoolConfigVsphereConfigOutput) Tags() VMwareNodePoolConfigVsphereConfigTagArrayOutput {
 	return o.ApplyT(func(v VMwareNodePoolConfigVsphereConfig) []VMwareNodePoolConfigVsphereConfigTag { return v.Tags }).(VMwareNodePoolConfigVsphereConfigTagArrayOutput)
 }
@@ -13390,6 +13458,8 @@ type VMwareNodePoolConfigVsphereConfigTag struct {
 	Category *string `pulumi:"category"`
 	// (Output)
 	// The Vsphere tag name.
+	//
+	// ***
 	Tag *string `pulumi:"tag"`
 }
 
@@ -13410,6 +13480,8 @@ type VMwareNodePoolConfigVsphereConfigTagArgs struct {
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// (Output)
 	// The Vsphere tag name.
+	//
+	// ***
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
 }
 
@@ -13472,6 +13544,8 @@ func (o VMwareNodePoolConfigVsphereConfigTagOutput) Category() pulumi.StringPtrO
 
 // (Output)
 // The Vsphere tag name.
+//
+// ***
 func (o VMwareNodePoolConfigVsphereConfigTagOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareNodePoolConfigVsphereConfigTag) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }

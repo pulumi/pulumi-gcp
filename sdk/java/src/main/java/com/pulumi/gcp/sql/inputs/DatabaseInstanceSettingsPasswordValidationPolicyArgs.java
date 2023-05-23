@@ -50,12 +50,18 @@ public final class DatabaseInstanceSettingsPasswordValidationPolicyArgs extends 
     /**
      * Enables or disable the password validation policy.
      * 
+     * The optional `replica_configuration` block must have `master_instance_name` set
+     * to work, cannot be updated, and supports:
+     * 
      */
     @Import(name="enablePasswordPolicy", required=true)
     private Output<Boolean> enablePasswordPolicy;
 
     /**
      * @return Enables or disable the password validation policy.
+     * 
+     * The optional `replica_configuration` block must have `master_instance_name` set
+     * to work, cannot be updated, and supports:
      * 
      */
     public Output<Boolean> enablePasswordPolicy() {
@@ -181,6 +187,9 @@ public final class DatabaseInstanceSettingsPasswordValidationPolicyArgs extends 
         /**
          * @param enablePasswordPolicy Enables or disable the password validation policy.
          * 
+         * The optional `replica_configuration` block must have `master_instance_name` set
+         * to work, cannot be updated, and supports:
+         * 
          * @return builder
          * 
          */
@@ -191,6 +200,9 @@ public final class DatabaseInstanceSettingsPasswordValidationPolicyArgs extends 
 
         /**
          * @param enablePasswordPolicy Enables or disable the password validation policy.
+         * 
+         * The optional `replica_configuration` block must have `master_instance_name` set
+         * to work, cannot be updated, and supports:
          * 
          * @return builder
          * 

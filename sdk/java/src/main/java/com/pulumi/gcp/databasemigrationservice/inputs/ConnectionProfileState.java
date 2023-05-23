@@ -59,12 +59,16 @@ public final class ConnectionProfileState extends com.pulumi.resources.ResourceA
     /**
      * The ID of the connection profile.
      * 
+     * ***
+     * 
      */
     @Import(name="connectionProfileId")
     private @Nullable Output<String> connectionProfileId;
 
     /**
      * @return The ID of the connection profile.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> connectionProfileId() {
@@ -330,6 +334,8 @@ public final class ConnectionProfileState extends com.pulumi.resources.ResourceA
         /**
          * @param connectionProfileId The ID of the connection profile.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -340,6 +346,8 @@ public final class ConnectionProfileState extends com.pulumi.resources.ResourceA
 
         /**
          * @param connectionProfileId The ID of the connection profile.
+         * 
+         * ***
          * 
          * @return builder
          * 

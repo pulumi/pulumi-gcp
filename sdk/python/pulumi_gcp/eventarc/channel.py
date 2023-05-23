@@ -24,6 +24,10 @@ class ChannelArgs:
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[str] name: Required. The resource name of the channel. Must be unique within the location on the project.
+               
+               
+               
+               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] third_party_provider: The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
         """
@@ -66,6 +70,10 @@ class ChannelArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Required. The resource name of the channel. Must be unique within the location on the project.
+
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -119,6 +127,10 @@ class _ChannelState:
         :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Required. The resource name of the channel. Must be unique within the location on the project.
+               
+               
+               
+               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] pubsub_topic: Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
         :param pulumi.Input[str] state: Output only. The state of a Channel. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE, INACTIVE
@@ -202,6 +214,10 @@ class _ChannelState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Required. The resource name of the channel. Must be unique within the location on the project.
+
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -340,6 +356,10 @@ class Channel(pulumi.CustomResource):
         :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Required. The resource name of the channel. Must be unique within the location on the project.
+               
+               
+               
+               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] third_party_provider: The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
         """
@@ -466,6 +486,10 @@ class Channel(pulumi.CustomResource):
         :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Required. The resource name of the channel. Must be unique within the location on the project.
+               
+               
+               
+               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] pubsub_topic: Output only. The name of the Pub/Sub topic created and managed by Eventarc system as a transport for the event delivery. Format: `projects/{project}/topics/{topic_id}`.
         :param pulumi.Input[str] state: Output only. The state of a Channel. Possible values: STATE_UNSPECIFIED, PENDING, ACTIVE, INACTIVE
@@ -527,6 +551,10 @@ class Channel(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Required. The resource name of the channel. Must be unique within the location on the project.
+
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

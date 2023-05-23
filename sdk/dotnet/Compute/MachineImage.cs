@@ -189,6 +189,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("sourceInstance")]
         public Output<string> SourceInstance { get; private set; } = null!;
@@ -283,6 +286,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("sourceInstance", required: true)]
         public Input<string> SourceInstance { get; set; } = null!;
@@ -339,6 +345,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("sourceInstance")]
         public Input<string>? SourceInstance { get; set; }

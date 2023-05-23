@@ -49,6 +49,8 @@ public final class EntryGroupArgs extends com.pulumi.resources.ResourceArgs {
      * The id of the entry group to create. The id must begin with a letter or underscore,
      * contain only English letters, numbers and underscores, and be at most 64 characters.
      * 
+     * ***
+     * 
      */
     @Import(name="entryGroupId", required=true)
     private Output<String> entryGroupId;
@@ -56,6 +58,8 @@ public final class EntryGroupArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The id of the entry group to create. The id must begin with a letter or underscore,
      * contain only English letters, numbers and underscores, and be at most 64 characters.
+     * 
+     * ***
      * 
      */
     public Output<String> entryGroupId() {
@@ -168,6 +172,8 @@ public final class EntryGroupArgs extends com.pulumi.resources.ResourceArgs {
          * @param entryGroupId The id of the entry group to create. The id must begin with a letter or underscore,
          * contain only English letters, numbers and underscores, and be at most 64 characters.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -179,6 +185,8 @@ public final class EntryGroupArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param entryGroupId The id of the entry group to create. The id must begin with a letter or underscore,
          * contain only English letters, numbers and underscores, and be at most 64 characters.
+         * 
+         * ***
          * 
          * @return builder
          * 

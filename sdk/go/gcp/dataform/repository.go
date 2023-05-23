@@ -97,6 +97,8 @@ type Repository struct {
 	// Structure is documented below.
 	GitRemoteSettings RepositoryGitRemoteSettingsPtrOutput `pulumi:"gitRemoteSettings"`
 	// The repository's name.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -138,6 +140,8 @@ type repositoryState struct {
 	// Structure is documented below.
 	GitRemoteSettings *RepositoryGitRemoteSettings `pulumi:"gitRemoteSettings"`
 	// The repository's name.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -151,6 +155,8 @@ type RepositoryState struct {
 	// Structure is documented below.
 	GitRemoteSettings RepositoryGitRemoteSettingsPtrInput
 	// The repository's name.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -168,6 +174,8 @@ type repositoryArgs struct {
 	// Structure is documented below.
 	GitRemoteSettings *RepositoryGitRemoteSettings `pulumi:"gitRemoteSettings"`
 	// The repository's name.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -182,6 +190,8 @@ type RepositoryArgs struct {
 	// Structure is documented below.
 	GitRemoteSettings RepositoryGitRemoteSettingsPtrInput
 	// The repository's name.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -284,6 +294,8 @@ func (o RepositoryOutput) GitRemoteSettings() RepositoryGitRemoteSettingsPtrOutp
 }
 
 // The repository's name.
+//
+// ***
 func (o RepositoryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

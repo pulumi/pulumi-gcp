@@ -676,6 +676,8 @@ class PrivateConnectionVpcPeeringConfigArgs:
                  vpc: pulumi.Input[str]):
         """
         :param pulumi.Input[str] subnet: A free subnet for peering. (CIDR of /29)
+               
+               - - -
         :param pulumi.Input[str] vpc: Fully qualified name of the VPC that Datastream will peer to.
                Format: projects/{project}/global/{networks}/{name}
         """
@@ -687,6 +689,8 @@ class PrivateConnectionVpcPeeringConfigArgs:
     def subnet(self) -> pulumi.Input[str]:
         """
         A free subnet for peering. (CIDR of /29)
+
+        - - -
         """
         return pulumi.get(self, "subnet")
 
@@ -1706,6 +1710,8 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDat
                table. The BigQuery Service Account associated with your project requires access to this
                encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
                See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+               
+               - - -
         """
         pulumi.set(__self__, "location", location)
         if dataset_id_prefix is not None:
@@ -1747,6 +1753,8 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDat
         table. The BigQuery Service Account associated with your project requires access to this
         encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}.
         See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+
+        - - -
         """
         return pulumi.get(self, "kms_key_name")
 

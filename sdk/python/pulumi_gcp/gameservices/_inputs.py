@@ -76,6 +76,8 @@ class GameServerClusterConnectionInfoGkeClusterReferenceArgs:
                If project and location are not specified, the project and location of the
                GameServerCluster resource are used to generate the full name of the
                GKE cluster.
+               
+               - - -
         """
         pulumi.set(__self__, "cluster", cluster)
 
@@ -91,6 +93,8 @@ class GameServerClusterConnectionInfoGkeClusterReferenceArgs:
         If project and location are not specified, the project and location of the
         GameServerCluster resource are used to generate the full name of the
         GKE cluster.
+
+        - - -
         """
         return pulumi.get(self, "cluster")
 
@@ -113,6 +117,8 @@ class GameServerConfigFleetConfigArgs:
                The format of the spec can be found :
                `https://agones.dev/site/docs/reference/fleet/`.
         :param pulumi.Input[str] name: The name of the FleetConfig.
+               
+               - - -
         """
         pulumi.set(__self__, "fleet_spec", fleet_spec)
         if name is not None:
@@ -141,6 +147,8 @@ class GameServerConfigFleetConfigArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the FleetConfig.
+
+        - - -
         """
         return pulumi.get(self, "name")
 

@@ -113,6 +113,9 @@ namespace Pulumi.Gcp.AccessContextManager
         /// Resource name for the Access Level. The short_name component must begin
         /// with a letter and only include alphanumeric and '_'.
         /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -201,6 +204,9 @@ namespace Pulumi.Gcp.AccessContextManager
         /// Resource name for the Access Level. The short_name component must begin
         /// with a letter and only include alphanumeric and '_'.
         /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -251,6 +257,9 @@ namespace Pulumi.Gcp.AccessContextManager
         /// Resource name for the Access Level. The short_name component must begin
         /// with a letter and only include alphanumeric and '_'.
         /// Format: accessPolicies/{policy_id}/accessLevels/{short_name}
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

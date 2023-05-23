@@ -36,12 +36,16 @@ public final class AiFeatureStoreEntityTypeArgs extends com.pulumi.resources.Res
     /**
      * The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
      * 
+     * ***
+     * 
      */
     @Import(name="featurestore", required=true)
     private Output<String> featurestore;
 
     /**
      * @return The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
+     * 
+     * ***
      * 
      */
     public Output<String> featurestore() {
@@ -169,6 +173,8 @@ public final class AiFeatureStoreEntityTypeArgs extends com.pulumi.resources.Res
         /**
          * @param featurestore The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -179,6 +185,8 @@ public final class AiFeatureStoreEntityTypeArgs extends com.pulumi.resources.Res
 
         /**
          * @param featurestore The name of the Featurestore to use, in the format projects/{project}/locations/{location}/featurestores/{featurestore}.
+         * 
+         * ***
          * 
          * @return builder
          * 

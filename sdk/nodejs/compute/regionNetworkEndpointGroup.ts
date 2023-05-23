@@ -253,6 +253,9 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
     public readonly pscTargetService!: pulumi.Output<string | undefined>;
     /**
      * A reference to the region where the Serverless NEGs Reside.
+     *
+     *
+     * - - -
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -381,6 +384,9 @@ export interface RegionNetworkEndpointGroupState {
     pscTargetService?: pulumi.Input<string>;
     /**
      * A reference to the region where the Serverless NEGs Reside.
+     *
+     *
+     * - - -
      */
     region?: pulumi.Input<string>;
     /**
@@ -460,6 +466,9 @@ export interface RegionNetworkEndpointGroupArgs {
     pscTargetService?: pulumi.Input<string>;
     /**
      * A reference to the region where the Serverless NEGs Reside.
+     *
+     *
+     * - - -
      */
     region: pulumi.Input<string>;
     /**

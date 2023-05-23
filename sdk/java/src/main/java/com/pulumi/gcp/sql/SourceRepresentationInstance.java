@@ -17,6 +17,16 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A source representation instance is a Cloud SQL instance that represents
+ * the source database server to the Cloud SQL replica. It is visible in the
+ * Cloud Console and appears the same as a regular Cloud SQL instance, but it
+ * contains no data, requires no configuration or maintenance, and does not
+ * affect billing. You cannot update the source representation instance.
+ * 
+ * &gt; **Warning:** All arguments including the following potentially sensitive
+ * values will be stored in the raw state as plain text: `on_premises_configuration.password`.
+ * Read more about sensitive data in state.
+ * 
  * ## Example Usage
  * ### Sql Source Representation Instance Basic
  * ```java
@@ -183,12 +193,16 @@ public class SourceRepresentationInstance extends com.pulumi.resources.CustomRes
     /**
      * The externally accessible IPv4 address for the source database server.
      * 
+     * ***
+     * 
      */
     @Export(name="host", type=String.class, parameters={})
     private Output<String> host;
 
     /**
      * @return The externally accessible IPv4 address for the source database server.
+     * 
+     * ***
      * 
      */
     public Output<String> host() {

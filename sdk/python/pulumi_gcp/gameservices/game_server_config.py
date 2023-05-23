@@ -34,6 +34,7 @@ class GameServerConfigArgs:
         :param pulumi.Input[str] description: The description of the game server config.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server config. Each label is a
                key-value pair.
+               
                (Optional)
                Set of labels to group by.
         :param pulumi.Input[str] location: Location of the Deployment.
@@ -112,6 +113,7 @@ class GameServerConfigArgs:
         """
         The labels associated with this game server config. Each label is a
         key-value pair.
+
         (Optional)
         Set of labels to group by.
         """
@@ -182,10 +184,15 @@ class _GameServerConfigState:
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server config. Each label is a
                key-value pair.
+               
                (Optional)
                Set of labels to group by.
         :param pulumi.Input[str] location: Location of the Deployment.
         :param pulumi.Input[str] name: The name of the FleetConfig.
+               
+               - - -
+               
+               
                (Required)
                The name of the ScalingConfig
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -268,6 +275,7 @@ class _GameServerConfigState:
         """
         The labels associated with this game server config. Each label is a
         key-value pair.
+
         (Optional)
         Set of labels to group by.
         """
@@ -294,6 +302,10 @@ class _GameServerConfigState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the FleetConfig.
+
+        - - -
+
+
         (Required)
         The name of the ScalingConfig
         """
@@ -448,6 +460,7 @@ class GameServerConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server config. Each label is a
                key-value pair.
+               
                (Optional)
                Set of labels to group by.
         :param pulumi.Input[str] location: Location of the Deployment.
@@ -637,10 +650,15 @@ class GameServerConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server config. Each label is a
                key-value pair.
+               
                (Optional)
                Set of labels to group by.
         :param pulumi.Input[str] location: Location of the Deployment.
         :param pulumi.Input[str] name: The name of the FleetConfig.
+               
+               - - -
+               
+               
                (Required)
                The name of the ScalingConfig
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -703,6 +721,7 @@ class GameServerConfig(pulumi.CustomResource):
         """
         The labels associated with this game server config. Each label is a
         key-value pair.
+
         (Optional)
         Set of labels to group by.
         """
@@ -721,6 +740,10 @@ class GameServerConfig(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The name of the FleetConfig.
+
+        - - -
+
+
         (Required)
         The name of the ScalingConfig
         """

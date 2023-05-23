@@ -68,12 +68,16 @@ public final class TagFieldArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
      * 
+     * ***
+     * 
      */
     @Import(name="enumValue")
     private @Nullable Output<String> enumValue;
 
     /**
      * @return Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> enumValue() {
@@ -245,6 +249,8 @@ public final class TagFieldArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param enumValue Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -255,6 +261,8 @@ public final class TagFieldArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param enumValue Holds the value for a tag field with enum type. This value must be one of the allowed values in the definition of this enum.
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -168,12 +168,16 @@ public class Database extends com.pulumi.resources.CustomResource {
     /**
      * The instance to create the database on.
      * 
+     * ***
+     * 
      */
     @Export(name="instance", type=String.class, parameters={})
     private Output<String> instance;
 
     /**
      * @return The instance to create the database on.
+     * 
+     * ***
      * 
      */
     public Output<String> instance() {

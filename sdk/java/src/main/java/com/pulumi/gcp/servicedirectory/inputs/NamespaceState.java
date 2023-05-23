@@ -75,6 +75,8 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
      * The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
      * 
+     * ***
+     * 
      */
     @Import(name="namespaceId")
     private @Nullable Output<String> namespaceId;
@@ -82,6 +84,8 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The Resource ID must be 1-63 characters long, including digits,
      * lowercase letters or the hyphen character.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> namespaceId() {
@@ -210,6 +214,8 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
          * @param namespaceId The Resource ID must be 1-63 characters long, including digits,
          * lowercase letters or the hyphen character.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -221,6 +227,8 @@ public final class NamespaceState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param namespaceId The Resource ID must be 1-63 characters long, including digits,
          * lowercase letters or the hyphen character.
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -187,6 +187,9 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// A unique name for the resource, required by device registry.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -325,6 +328,9 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// A unique name for the resource, required by device registry.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -431,6 +437,9 @@ namespace Pulumi.Gcp.Kms
 
         /// <summary>
         /// A unique name for the resource, required by device registry.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

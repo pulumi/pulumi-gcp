@@ -14,6 +14,8 @@ namespace Pulumi.Gcp.NetworkServices.Inputs
     {
         /// <summary>
         /// Specifies the allowed number of retries.
+        /// 
+        /// - - -
         /// </summary>
         [Input("numRetries")]
         public Input<int>? NumRetries { get; set; }

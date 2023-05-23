@@ -152,6 +152,9 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// The location where the workstation parent resources reside.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -277,6 +280,9 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// The location where the workstation parent resources reside.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -360,6 +366,9 @@ namespace Pulumi.Gcp.Workstations
 
         /// <summary>
         /// The location where the workstation parent resources reside.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

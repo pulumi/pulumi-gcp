@@ -18,12 +18,16 @@ public final class BackendServiceSignedUrlKeyArgs extends com.pulumi.resources.R
     /**
      * The backend service this signed URL key belongs.
      * 
+     * ***
+     * 
      */
     @Import(name="backendService", required=true)
     private Output<String> backendService;
 
     /**
      * @return The backend service this signed URL key belongs.
+     * 
+     * ***
      * 
      */
     public Output<String> backendService() {
@@ -111,6 +115,8 @@ public final class BackendServiceSignedUrlKeyArgs extends com.pulumi.resources.R
         /**
          * @param backendService The backend service this signed URL key belongs.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -121,6 +127,8 @@ public final class BackendServiceSignedUrlKeyArgs extends com.pulumi.resources.R
 
         /**
          * @param backendService The backend service this signed URL key belongs.
+         * 
+         * ***
          * 
          * @return builder
          * 

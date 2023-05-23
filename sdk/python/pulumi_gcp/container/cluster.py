@@ -176,6 +176,10 @@ class ClusterArgs:
                are available. If you intend to specify versions manually,
                [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
                describe the various acceptable formats for this field.
+               
+               > If you are using the `container_get_engine_versions` datasource with a regional cluster, ensure that you have provided a `location`
+               to the datasource. A region can have a different set of supported versions than its corresponding zones, and not all zones in a
+               region are guaranteed to support the same version.
         :param pulumi.Input['ClusterMonitoringConfigArgs'] monitoring_config: Monitoring configuration for the cluster.
                Structure is documented below.
         :param pulumi.Input[str] monitoring_service: The monitoring service that the cluster
@@ -187,6 +191,8 @@ class ClusterArgs:
                Defaults to `monitoring.googleapis.com/kubernetes`
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                location.
+               
+               - - -
         :param pulumi.Input[str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
@@ -205,6 +211,13 @@ class ClusterArgs:
                are located. Nodes must be in the region of their regional cluster or in the
                same region as their cluster's zone for zonal clusters. If this is specified for
                a zonal cluster, omit the cluster's zone.
+               
+               > A "multi-zonal" cluster is a zonal cluster with at least one additional zone
+               defined; in a multi-zonal cluster, the cluster master is only present in a
+               single zone while nodes are present in each of the primary zone and the node
+               locations. In contrast, in a regional cluster, cluster master nodes are present
+               in multiple zones in the region. For that reason, regional clusters should be
+               preferred.
         :param pulumi.Input['ClusterNodePoolAutoConfigArgs'] node_pool_auto_config: ) Node pool configs that apply to auto-provisioned node pools in
                [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
                [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
@@ -234,6 +247,8 @@ class ClusterArgs:
                is not provided, the provider project is used.
         :param pulumi.Input['ClusterProtectConfigArgs'] protect_config: )
                Enable/Disable Protect API features for the cluster. Structure is documented below.
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterReleaseChannelArgs'] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
@@ -851,6 +866,10 @@ class ClusterArgs:
         are available. If you intend to specify versions manually,
         [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
         describe the various acceptable formats for this field.
+
+        > If you are using the `container_get_engine_versions` datasource with a regional cluster, ensure that you have provided a `location`
+        to the datasource. A region can have a different set of supported versions than its corresponding zones, and not all zones in a
+        region are guaranteed to support the same version.
         """
         return pulumi.get(self, "min_master_version")
 
@@ -895,6 +914,8 @@ class ClusterArgs:
         """
         The name of the cluster, unique within the project and
         location.
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -968,6 +989,13 @@ class ClusterArgs:
         are located. Nodes must be in the region of their regional cluster or in the
         same region as their cluster's zone for zonal clusters. If this is specified for
         a zonal cluster, omit the cluster's zone.
+
+        > A "multi-zonal" cluster is a zonal cluster with at least one additional zone
+        defined; in a multi-zonal cluster, the cluster master is only present in a
+        single zone while nodes are present in each of the primary zone and the node
+        locations. In contrast, in a regional cluster, cluster master nodes are present
+        in multiple zones in the region. For that reason, regional clusters should be
+        preferred.
         """
         return pulumi.get(self, "node_locations")
 
@@ -1107,6 +1135,8 @@ class ClusterArgs:
         """
         )
         Enable/Disable Protect API features for the cluster. Structure is documented below.
+
+        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         """
         return pulumi.get(self, "protect_config")
 
@@ -1415,6 +1445,10 @@ class _ClusterState:
                are available. If you intend to specify versions manually,
                [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
                describe the various acceptable formats for this field.
+               
+               > If you are using the `container_get_engine_versions` datasource with a regional cluster, ensure that you have provided a `location`
+               to the datasource. A region can have a different set of supported versions than its corresponding zones, and not all zones in a
+               region are guaranteed to support the same version.
         :param pulumi.Input['ClusterMonitoringConfigArgs'] monitoring_config: Monitoring configuration for the cluster.
                Structure is documented below.
         :param pulumi.Input[str] monitoring_service: The monitoring service that the cluster
@@ -1426,6 +1460,8 @@ class _ClusterState:
                Defaults to `monitoring.googleapis.com/kubernetes`
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                location.
+               
+               - - -
         :param pulumi.Input[str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
@@ -1444,6 +1480,13 @@ class _ClusterState:
                are located. Nodes must be in the region of their regional cluster or in the
                same region as their cluster's zone for zonal clusters. If this is specified for
                a zonal cluster, omit the cluster's zone.
+               
+               > A "multi-zonal" cluster is a zonal cluster with at least one additional zone
+               defined; in a multi-zonal cluster, the cluster master is only present in a
+               single zone while nodes are present in each of the primary zone and the node
+               locations. In contrast, in a regional cluster, cluster master nodes are present
+               in multiple zones in the region. For that reason, regional clusters should be
+               preferred.
         :param pulumi.Input['ClusterNodePoolAutoConfigArgs'] node_pool_auto_config: ) Node pool configs that apply to auto-provisioned node pools in
                [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
                [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
@@ -1473,6 +1516,8 @@ class _ClusterState:
                is not provided, the provider project is used.
         :param pulumi.Input['ClusterProtectConfigArgs'] protect_config: )
                Enable/Disable Protect API features for the cluster. Structure is documented below.
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterReleaseChannelArgs'] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
@@ -2150,6 +2195,10 @@ class _ClusterState:
         are available. If you intend to specify versions manually,
         [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
         describe the various acceptable formats for this field.
+
+        > If you are using the `container_get_engine_versions` datasource with a regional cluster, ensure that you have provided a `location`
+        to the datasource. A region can have a different set of supported versions than its corresponding zones, and not all zones in a
+        region are guaranteed to support the same version.
         """
         return pulumi.get(self, "min_master_version")
 
@@ -2194,6 +2243,8 @@ class _ClusterState:
         """
         The name of the cluster, unique within the project and
         location.
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -2267,6 +2318,13 @@ class _ClusterState:
         are located. Nodes must be in the region of their regional cluster or in the
         same region as their cluster's zone for zonal clusters. If this is specified for
         a zonal cluster, omit the cluster's zone.
+
+        > A "multi-zonal" cluster is a zonal cluster with at least one additional zone
+        defined; in a multi-zonal cluster, the cluster master is only present in a
+        single zone while nodes are present in each of the primary zone and the node
+        locations. In contrast, in a regional cluster, cluster master nodes are present
+        in multiple zones in the region. For that reason, regional clusters should be
+        preferred.
         """
         return pulumi.get(self, "node_locations")
 
@@ -2415,6 +2473,8 @@ class _ClusterState:
         """
         )
         Enable/Disable Protect API features for the cluster. Structure is documented below.
+
+        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         """
         return pulumi.get(self, "protect_config")
 
@@ -2825,6 +2885,10 @@ class Cluster(pulumi.CustomResource):
                are available. If you intend to specify versions manually,
                [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
                describe the various acceptable formats for this field.
+               
+               > If you are using the `container_get_engine_versions` datasource with a regional cluster, ensure that you have provided a `location`
+               to the datasource. A region can have a different set of supported versions than its corresponding zones, and not all zones in a
+               region are guaranteed to support the same version.
         :param pulumi.Input[pulumi.InputType['ClusterMonitoringConfigArgs']] monitoring_config: Monitoring configuration for the cluster.
                Structure is documented below.
         :param pulumi.Input[str] monitoring_service: The monitoring service that the cluster
@@ -2836,6 +2900,8 @@ class Cluster(pulumi.CustomResource):
                Defaults to `monitoring.googleapis.com/kubernetes`
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                location.
+               
+               - - -
         :param pulumi.Input[str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
@@ -2854,6 +2920,13 @@ class Cluster(pulumi.CustomResource):
                are located. Nodes must be in the region of their regional cluster or in the
                same region as their cluster's zone for zonal clusters. If this is specified for
                a zonal cluster, omit the cluster's zone.
+               
+               > A "multi-zonal" cluster is a zonal cluster with at least one additional zone
+               defined; in a multi-zonal cluster, the cluster master is only present in a
+               single zone while nodes are present in each of the primary zone and the node
+               locations. In contrast, in a regional cluster, cluster master nodes are present
+               in multiple zones in the region. For that reason, regional clusters should be
+               preferred.
         :param pulumi.Input[pulumi.InputType['ClusterNodePoolAutoConfigArgs']] node_pool_auto_config: ) Node pool configs that apply to auto-provisioned node pools in
                [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
                [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
@@ -2883,6 +2956,8 @@ class Cluster(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ClusterProtectConfigArgs']] protect_config: )
                Enable/Disable Protect API features for the cluster. Structure is documented below.
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[pulumi.InputType['ClusterReleaseChannelArgs']] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
@@ -3329,6 +3404,10 @@ class Cluster(pulumi.CustomResource):
                are available. If you intend to specify versions manually,
                [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
                describe the various acceptable formats for this field.
+               
+               > If you are using the `container_get_engine_versions` datasource with a regional cluster, ensure that you have provided a `location`
+               to the datasource. A region can have a different set of supported versions than its corresponding zones, and not all zones in a
+               region are guaranteed to support the same version.
         :param pulumi.Input[pulumi.InputType['ClusterMonitoringConfigArgs']] monitoring_config: Monitoring configuration for the cluster.
                Structure is documented below.
         :param pulumi.Input[str] monitoring_service: The monitoring service that the cluster
@@ -3340,6 +3419,8 @@ class Cluster(pulumi.CustomResource):
                Defaults to `monitoring.googleapis.com/kubernetes`
         :param pulumi.Input[str] name: The name of the cluster, unique within the project and
                location.
+               
+               - - -
         :param pulumi.Input[str] network: The name or self_link of the Google Compute Engine
                network to which the cluster is connected. For Shared VPC, set this to the self link of the
                shared network.
@@ -3358,6 +3439,13 @@ class Cluster(pulumi.CustomResource):
                are located. Nodes must be in the region of their regional cluster or in the
                same region as their cluster's zone for zonal clusters. If this is specified for
                a zonal cluster, omit the cluster's zone.
+               
+               > A "multi-zonal" cluster is a zonal cluster with at least one additional zone
+               defined; in a multi-zonal cluster, the cluster master is only present in a
+               single zone while nodes are present in each of the primary zone and the node
+               locations. In contrast, in a regional cluster, cluster master nodes are present
+               in multiple zones in the region. For that reason, regional clusters should be
+               preferred.
         :param pulumi.Input[pulumi.InputType['ClusterNodePoolAutoConfigArgs']] node_pool_auto_config: ) Node pool configs that apply to auto-provisioned node pools in
                [autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison) clusters and
                [node auto-provisioning](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning)-enabled clusters. Structure is documented below.
@@ -3387,6 +3475,8 @@ class Cluster(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ClusterProtectConfigArgs']] protect_config: )
                Enable/Disable Protect API features for the cluster. Structure is documented below.
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[pulumi.InputType['ClusterReleaseChannelArgs']] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
@@ -3854,6 +3944,10 @@ class Cluster(pulumi.CustomResource):
         are available. If you intend to specify versions manually,
         [the docs](https://cloud.google.com/kubernetes-engine/versioning-and-upgrades#specifying_cluster_version)
         describe the various acceptable formats for this field.
+
+        > If you are using the `container_get_engine_versions` datasource with a regional cluster, ensure that you have provided a `location`
+        to the datasource. A region can have a different set of supported versions than its corresponding zones, and not all zones in a
+        region are guaranteed to support the same version.
         """
         return pulumi.get(self, "min_master_version")
 
@@ -3886,6 +3980,8 @@ class Cluster(pulumi.CustomResource):
         """
         The name of the cluster, unique within the project and
         location.
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -3939,6 +4035,13 @@ class Cluster(pulumi.CustomResource):
         are located. Nodes must be in the region of their regional cluster or in the
         same region as their cluster's zone for zonal clusters. If this is specified for
         a zonal cluster, omit the cluster's zone.
+
+        > A "multi-zonal" cluster is a zonal cluster with at least one additional zone
+        defined; in a multi-zonal cluster, the cluster master is only present in a
+        single zone while nodes are present in each of the primary zone and the node
+        locations. In contrast, in a regional cluster, cluster master nodes are present
+        in multiple zones in the region. For that reason, regional clusters should be
+        preferred.
         """
         return pulumi.get(self, "node_locations")
 
@@ -4043,6 +4146,8 @@ class Cluster(pulumi.CustomResource):
         """
         )
         Enable/Disable Protect API features for the cluster. Structure is documented below.
+
+        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         """
         return pulumi.get(self, "protect_config")
 

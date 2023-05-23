@@ -149,12 +149,16 @@ public class Queue extends com.pulumi.resources.CustomResource {
     /**
      * The location of the queue
      * 
+     * ***
+     * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
      * @return The location of the queue
+     * 
+     * ***
      * 
      */
     public Output<String> location() {

@@ -31,6 +31,10 @@ class ConnectionArgs:
         :param pulumi.Input['ConnectionGithubConfigArgs'] github_config: Configuration for connections to github.com.
         :param pulumi.Input['ConnectionGithubEnterpriseConfigArgs'] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
         :param pulumi.Input[str] name: Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+               
+               
+               
+               - - -
         :param pulumi.Input[str] project: The project for the resource
         """
         pulumi.set(__self__, "location", location)
@@ -112,6 +116,10 @@ class ConnectionArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -158,6 +166,10 @@ class _ConnectionState:
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]] installation_states: Output only. Installation state of the Connection.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+               
+               
+               
+               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. Set to true when the connection is being set up or updated in the background.
         :param pulumi.Input[str] update_time: Output only. Server assigned timestamp for when the connection was updated.
@@ -288,6 +300,10 @@ class _ConnectionState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -461,6 +477,10 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ConnectionGithubEnterpriseConfigArgs']] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+               
+               
+               
+               - - -
         :param pulumi.Input[str] project: The project for the resource
         """
         ...
@@ -660,6 +680,10 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionInstallationStateArgs']]]] installation_states: Output only. Installation state of the Connection.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+               
+               
+               
+               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. Set to true when the connection is being set up or updated in the background.
         :param pulumi.Input[str] update_time: Output only. Server assigned timestamp for when the connection was updated.
@@ -751,6 +775,10 @@ class Connection(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
+
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

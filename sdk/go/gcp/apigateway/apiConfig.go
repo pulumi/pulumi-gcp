@@ -97,6 +97,8 @@ type ApiConfig struct {
 	pulumi.CustomResourceState
 
 	// The API to attach the config to.
+	//
+	// ***
 	Api pulumi.StringOutput `pulumi:"api"`
 	// Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
 	ApiConfigId pulumi.StringOutput `pulumi:"apiConfigId"`
@@ -163,6 +165,8 @@ func GetApiConfig(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ApiConfig resources.
 type apiConfigState struct {
 	// The API to attach the config to.
+	//
+	// ***
 	Api *string `pulumi:"api"`
 	// Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
 	ApiConfigId *string `pulumi:"apiConfigId"`
@@ -198,6 +202,8 @@ type apiConfigState struct {
 
 type ApiConfigState struct {
 	// The API to attach the config to.
+	//
+	// ***
 	Api pulumi.StringPtrInput
 	// Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
 	ApiConfigId pulumi.StringPtrInput
@@ -237,6 +243,8 @@ func (ApiConfigState) ElementType() reflect.Type {
 
 type apiConfigArgs struct {
 	// The API to attach the config to.
+	//
+	// ***
 	Api string `pulumi:"api"`
 	// Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
 	ApiConfigId *string `pulumi:"apiConfigId"`
@@ -269,6 +277,8 @@ type apiConfigArgs struct {
 // The set of arguments for constructing a ApiConfig resource.
 type ApiConfigArgs struct {
 	// The API to attach the config to.
+	//
+	// ***
 	Api pulumi.StringInput
 	// Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
 	ApiConfigId pulumi.StringPtrInput
@@ -386,6 +396,8 @@ func (o ApiConfigOutput) ToApiConfigOutputWithContext(ctx context.Context) ApiCo
 }
 
 // The API to attach the config to.
+//
+// ***
 func (o ApiConfigOutput) Api() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApiConfig) pulumi.StringOutput { return v.Api }).(pulumi.StringOutput)
 }

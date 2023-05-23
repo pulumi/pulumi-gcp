@@ -18,12 +18,16 @@ public final class GetFunctionArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The location in which the resource belongs.
      * 
+     * ***
+     * 
      */
     @Import(name="location", required=true)
     private Output<String> location;
 
     /**
      * @return The location in which the resource belongs.
+     * 
+     * ***
      * 
      */
     public Output<String> location() {
@@ -91,6 +95,8 @@ public final class GetFunctionArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param location The location in which the resource belongs.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -101,6 +107,8 @@ public final class GetFunctionArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param location The location in which the resource belongs.
+         * 
+         * ***
          * 
          * @return builder
          * 

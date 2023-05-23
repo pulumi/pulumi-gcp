@@ -17,6 +17,8 @@ public final class EnvGroupAttachmentArgs extends com.pulumi.resources.ResourceA
      * The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
      * 
+     * ***
+     * 
      */
     @Import(name="envgroupId", required=true)
     private Output<String> envgroupId;
@@ -24,6 +26,8 @@ public final class EnvGroupAttachmentArgs extends com.pulumi.resources.ResourceA
     /**
      * @return The Apigee environment group associated with the Apigee environment,
      * in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
+     * 
+     * ***
      * 
      */
     public Output<String> envgroupId() {
@@ -74,6 +78,8 @@ public final class EnvGroupAttachmentArgs extends com.pulumi.resources.ResourceA
          * @param envgroupId The Apigee environment group associated with the Apigee environment,
          * in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -85,6 +91,8 @@ public final class EnvGroupAttachmentArgs extends com.pulumi.resources.ResourceA
         /**
          * @param envgroupId The Apigee environment group associated with the Apigee environment,
          * in the format `organizations/{{org_name}}/envgroups/{{envgroup_name}}`.
+         * 
+         * ***
          * 
          * @return builder
          * 

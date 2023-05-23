@@ -422,6 +422,8 @@ type SpokeLinkedRouterApplianceInstancesInstance struct {
 	// The IP address on the VM to use for peering.
 	IpAddress *string `pulumi:"ipAddress"`
 	// The URI of the virtual machine resource
+	//
+	// ***
 	VirtualMachine *string `pulumi:"virtualMachine"`
 }
 
@@ -440,6 +442,8 @@ type SpokeLinkedRouterApplianceInstancesInstanceArgs struct {
 	// The IP address on the VM to use for peering.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
 	// The URI of the virtual machine resource
+	//
+	// ***
 	VirtualMachine pulumi.StringPtrInput `pulumi:"virtualMachine"`
 }
 
@@ -500,6 +504,8 @@ func (o SpokeLinkedRouterApplianceInstancesInstanceOutput) IpAddress() pulumi.St
 }
 
 // The URI of the virtual machine resource
+//
+// ***
 func (o SpokeLinkedRouterApplianceInstancesInstanceOutput) VirtualMachine() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SpokeLinkedRouterApplianceInstancesInstance) *string { return v.VirtualMachine }).(pulumi.StringPtrOutput)
 }

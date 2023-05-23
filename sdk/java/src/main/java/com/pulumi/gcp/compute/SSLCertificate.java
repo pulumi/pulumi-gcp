@@ -286,6 +286,8 @@ public class SSLCertificate extends com.pulumi.resources.CustomResource {
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
      * 
+     * These are in the same namespace as the managed SSL certificates.
+     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
@@ -298,6 +300,8 @@ public class SSLCertificate extends com.pulumi.resources.CustomResource {
      * first character must be a lowercase letter, and all following
      * characters must be a dash, lowercase letter, or digit, except the last
      * character, which cannot be a dash.
+     * 
+     * These are in the same namespace as the managed SSL certificates.
      * 
      */
     public Output<String> name() {
@@ -323,6 +327,8 @@ public class SSLCertificate extends com.pulumi.resources.CustomResource {
      * The write-only private key in PEM format.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      * 
+     * ***
+     * 
      */
     @Export(name="privateKey", type=String.class, parameters={})
     private Output<String> privateKey;
@@ -330,6 +336,8 @@ public class SSLCertificate extends com.pulumi.resources.CustomResource {
     /**
      * @return The write-only private key in PEM format.
      * **Note**: This property is sensitive and will not be displayed in the plan.
+     * 
+     * ***
      * 
      */
     public Output<String> privateKey() {

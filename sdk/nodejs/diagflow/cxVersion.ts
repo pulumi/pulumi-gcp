@@ -98,6 +98,9 @@ export class CxVersion extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The human-readable name of the version. Limit of 64 characters.
+     *
+     *
+     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -174,6 +177,9 @@ export interface CxVersionState {
     description?: pulumi.Input<string>;
     /**
      * The human-readable name of the version. Limit of 64 characters.
+     *
+     *
+     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -209,6 +215,9 @@ export interface CxVersionArgs {
     description?: pulumi.Input<string>;
     /**
      * The human-readable name of the version. Limit of 64 characters.
+     *
+     *
+     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

@@ -227,6 +227,9 @@ export class Instance extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * A reference to the zone where the machine resides.
+     *
+     *
+     * - - -
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -276,8 +279,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a 'PROVISIONED'
-     * state. If needed you can utilize 'terraform apply -refresh-only' to await the population of this value.
+     * The proxy endpoint that is used to access the Jupyter notebook.
+     * Only returned when the resource is in a `PROVISIONED` state. If
+     * needed you can utilize `pulumi up -refresh-only` to await
+     * the population of this value.
      */
     public /*out*/ readonly proxyUri!: pulumi.Output<string>;
     /**
@@ -503,6 +508,9 @@ export interface InstanceState {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A reference to the zone where the machine resides.
+     *
+     *
+     * - - -
      */
     location?: pulumi.Input<string>;
     /**
@@ -552,8 +560,10 @@ export interface InstanceState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a 'PROVISIONED'
-     * state. If needed you can utilize 'terraform apply -refresh-only' to await the population of this value.
+     * The proxy endpoint that is used to access the Jupyter notebook.
+     * Only returned when the resource is in a `PROVISIONED` state. If
+     * needed you can utilize `pulumi up -refresh-only` to await
+     * the population of this value.
      */
     proxyUri?: pulumi.Input<string>;
     /**
@@ -685,6 +695,9 @@ export interface InstanceArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A reference to the zone where the machine resides.
+     *
+     *
+     * - - -
      */
     location: pulumi.Input<string>;
     /**

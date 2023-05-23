@@ -35,6 +35,8 @@ export function getGlobalForwardingRule(args: GetGlobalForwardingRuleArgs, opts?
 export interface GetGlobalForwardingRuleArgs {
     /**
      * The name of the global forwarding rule.
+     *
+     * - - -
      */
     name: string;
     /**
@@ -96,6 +98,8 @@ export function getGlobalForwardingRuleOutput(args: GetGlobalForwardingRuleOutpu
 export interface GetGlobalForwardingRuleOutputArgs {
     /**
      * The name of the global forwarding rule.
+     *
+     * - - -
      */
     name: pulumi.Input<string>;
     /**

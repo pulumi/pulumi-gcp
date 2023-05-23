@@ -59,6 +59,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly ImmutableArray<Outputs.NetworkFirewallPolicyRuleMatchSrcSecureTag> SrcSecureTags;
         /// <summary>
         /// Name of the Google Cloud Threat Intelligence list.
+        /// 
+        /// The `layer4_configs` block supports:
         /// </summary>
         public readonly ImmutableArray<string> SrcThreatIntelligences;
 

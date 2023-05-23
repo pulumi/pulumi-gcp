@@ -131,6 +131,8 @@ func (o AuthorityAccessUrlArrayOutput) Index(i pulumi.IntInput) AuthorityAccessU
 type AuthorityConfig struct {
 	// Specifies some of the values in a certificate that are related to the subject.
 	// Structure is documented below.
+	//
+	// <a name="nestedX509Config"></a>The `x509Config` block supports:
 	SubjectConfig AuthorityConfigSubjectConfig `pulumi:"subjectConfig"`
 	// Describes how some of the technical X.509 fields in a certificate should be populated.
 	// Structure is documented below.
@@ -151,6 +153,8 @@ type AuthorityConfigInput interface {
 type AuthorityConfigArgs struct {
 	// Specifies some of the values in a certificate that are related to the subject.
 	// Structure is documented below.
+	//
+	// <a name="nestedX509Config"></a>The `x509Config` block supports:
 	SubjectConfig AuthorityConfigSubjectConfigInput `pulumi:"subjectConfig"`
 	// Describes how some of the technical X.509 fields in a certificate should be populated.
 	// Structure is documented below.
@@ -236,6 +240,8 @@ func (o AuthorityConfigOutput) ToAuthorityConfigPtrOutputWithContext(ctx context
 
 // Specifies some of the values in a certificate that are related to the subject.
 // Structure is documented below.
+//
+// <a name="nestedX509Config"></a>The `x509Config` block supports:
 func (o AuthorityConfigOutput) SubjectConfig() AuthorityConfigSubjectConfigOutput {
 	return o.ApplyT(func(v AuthorityConfig) AuthorityConfigSubjectConfig { return v.SubjectConfig }).(AuthorityConfigSubjectConfigOutput)
 }
@@ -272,6 +278,8 @@ func (o AuthorityConfigPtrOutput) Elem() AuthorityConfigOutput {
 
 // Specifies some of the values in a certificate that are related to the subject.
 // Structure is documented below.
+//
+// <a name="nestedX509Config"></a>The `x509Config` block supports:
 func (o AuthorityConfigPtrOutput) SubjectConfig() AuthorityConfigSubjectConfigPtrOutput {
 	return o.ApplyT(func(v *AuthorityConfig) *AuthorityConfigSubjectConfig {
 		if v == nil {
@@ -2866,6 +2874,8 @@ type AuthorityKeySpec struct {
 	// The algorithm to use for creating a managed Cloud KMS key for a for a simplified
 	// experience. All managed keys will be have their ProtectionLevel as HSM.
 	// Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
+	//
+	// ***
 	Algorithm *string `pulumi:"algorithm"`
 	// The resource name for an existing Cloud KMS CryptoKeyVersion in the format
 	// `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
@@ -2887,6 +2897,8 @@ type AuthorityKeySpecArgs struct {
 	// The algorithm to use for creating a managed Cloud KMS key for a for a simplified
 	// experience. All managed keys will be have their ProtectionLevel as HSM.
 	// Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
+	//
+	// ***
 	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
 	// The resource name for an existing Cloud KMS CryptoKeyVersion in the format
 	// `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`.
@@ -2973,6 +2985,8 @@ func (o AuthorityKeySpecOutput) ToAuthorityKeySpecPtrOutputWithContext(ctx conte
 // The algorithm to use for creating a managed Cloud KMS key for a for a simplified
 // experience. All managed keys will be have their ProtectionLevel as HSM.
 // Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
+//
+// ***
 func (o AuthorityKeySpecOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuthorityKeySpec) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
 }
@@ -3010,6 +3024,8 @@ func (o AuthorityKeySpecPtrOutput) Elem() AuthorityKeySpecOutput {
 // The algorithm to use for creating a managed Cloud KMS key for a for a simplified
 // experience. All managed keys will be have their ProtectionLevel as HSM.
 // Possible values are: `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, `EC_P384_SHA384`.
+//
+// ***
 func (o AuthorityKeySpecPtrOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthorityKeySpec) *string {
 		if v == nil {
@@ -3344,7 +3360,6 @@ func (o AuthoritySubordinateConfigPemIssuerChainPtrOutput) PemCertificates() pul
 }
 
 type CaPoolIamBindingCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -3364,7 +3379,6 @@ type CaPoolIamBindingConditionInput interface {
 }
 
 type CaPoolIamBindingConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -3449,7 +3463,6 @@ func (o CaPoolIamBindingConditionOutput) ToCaPoolIamBindingConditionPtrOutputWit
 	}).(CaPoolIamBindingConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o CaPoolIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CaPoolIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -3488,7 +3501,6 @@ func (o CaPoolIamBindingConditionPtrOutput) Elem() CaPoolIamBindingConditionOutp
 	}).(CaPoolIamBindingConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o CaPoolIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CaPoolIamBindingCondition) *string {
 		if v == nil {
@@ -3519,7 +3531,6 @@ func (o CaPoolIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type CaPoolIamMemberCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -3539,7 +3550,6 @@ type CaPoolIamMemberConditionInput interface {
 }
 
 type CaPoolIamMemberConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -3624,7 +3634,6 @@ func (o CaPoolIamMemberConditionOutput) ToCaPoolIamMemberConditionPtrOutputWithC
 	}).(CaPoolIamMemberConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o CaPoolIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CaPoolIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -3663,7 +3672,6 @@ func (o CaPoolIamMemberConditionPtrOutput) Elem() CaPoolIamMemberConditionOutput
 	}).(CaPoolIamMemberConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o CaPoolIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CaPoolIamMemberCondition) *string {
 		if v == nil {
@@ -7057,6 +7065,8 @@ type CertificateCertificateDescription struct {
 	CrlDistributionPoints []string `pulumi:"crlDistributionPoints"`
 	// A PublicKey describes a public key.
 	// Structure is documented below.
+	//
+	// <a name="nestedX509Config"></a>The `x509Config` block supports:
 	PublicKeys []CertificateCertificateDescriptionPublicKey `pulumi:"publicKeys"`
 	// (Output)
 	// Describes some of the values in a certificate that are related to the subject and lifetime.
@@ -7106,6 +7116,8 @@ type CertificateCertificateDescriptionArgs struct {
 	CrlDistributionPoints pulumi.StringArrayInput `pulumi:"crlDistributionPoints"`
 	// A PublicKey describes a public key.
 	// Structure is documented below.
+	//
+	// <a name="nestedX509Config"></a>The `x509Config` block supports:
 	PublicKeys CertificateCertificateDescriptionPublicKeyArrayInput `pulumi:"publicKeys"`
 	// (Output)
 	// Describes some of the values in a certificate that are related to the subject and lifetime.
@@ -7215,6 +7227,8 @@ func (o CertificateCertificateDescriptionOutput) CrlDistributionPoints() pulumi.
 
 // A PublicKey describes a public key.
 // Structure is documented below.
+//
+// <a name="nestedX509Config"></a>The `x509Config` block supports:
 func (o CertificateCertificateDescriptionOutput) PublicKeys() CertificateCertificateDescriptionPublicKeyArrayOutput {
 	return o.ApplyT(func(v CertificateCertificateDescription) []CertificateCertificateDescriptionPublicKey {
 		return v.PublicKeys
@@ -8253,8 +8267,10 @@ func (o CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUs
 
 type CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectId struct {
 	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	//
 	// (Required)
 	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	//
 	// (Required)
 	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 	ObjectIdPaths []int `pulumi:"objectIdPaths"`
@@ -8273,8 +8289,10 @@ type CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsage
 
 type CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdArgs struct {
 	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	//
 	// (Required)
 	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	//
 	// (Required)
 	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
@@ -8332,8 +8350,10 @@ func (o CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUs
 }
 
 // An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+//
 // (Required)
 // An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+//
 // (Required)
 // An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 func (o CertificateCertificateDescriptionConfigValueKeyUsageUnknownExtendedKeyUsageObectIdOutput) ObjectIdPaths() pulumi.IntArrayOutput {
@@ -8948,6 +8968,7 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArrayOu
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan struct {
 	// Indicates whether or not this extension is critical (i.e., if the client does not know how to
 	// handle this extension, the client should consider this to be an error).
+	//
 	// (Required)
 	// Indicates whether or not the name constraints are marked critical.
 	Critical *bool `pulumi:"critical"`
@@ -8973,6 +8994,7 @@ type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanI
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs struct {
 	// Indicates whether or not this extension is critical (i.e., if the client does not know how to
 	// handle this extension, the client should consider this to be an error).
+	//
 	// (Required)
 	// Indicates whether or not the name constraints are marked critical.
 	Critical pulumi.BoolPtrInput `pulumi:"critical"`
@@ -9037,6 +9059,7 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomS
 
 // Indicates whether or not this extension is critical (i.e., if the client does not know how to
 // handle this extension, the client should consider this to be an error).
+//
 // (Required)
 // Indicates whether or not the name constraints are marked critical.
 func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput) Critical() pulumi.BoolPtrOutput {
@@ -9083,8 +9106,10 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomS
 
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId struct {
 	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	//
 	// (Required)
 	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	//
 	// (Required)
 	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 	ObjectIdPaths []int `pulumi:"objectIdPaths"`
@@ -9103,8 +9128,10 @@ type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanO
 
 type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs struct {
 	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	//
 	// (Required)
 	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+	//
 	// (Required)
 	// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
@@ -9162,8 +9189,10 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomS
 }
 
 // An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+//
 // (Required)
 // An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
+//
 // (Required)
 // An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutput) ObjectIdPaths() pulumi.IntArrayOutput {
@@ -10714,6 +10743,8 @@ func (o CertificateCertificateDescriptionX509DescriptionPolicyIdArrayOutput) Ind
 type CertificateConfig struct {
 	// A PublicKey describes a public key.
 	// Structure is documented below.
+	//
+	// <a name="nestedX509Config"></a>The `x509Config` block supports:
 	PublicKey CertificateConfigPublicKey `pulumi:"publicKey"`
 	// Specifies some of the values in a certificate that are related to the subject.
 	// Structure is documented below.
@@ -10737,6 +10768,8 @@ type CertificateConfigInput interface {
 type CertificateConfigArgs struct {
 	// A PublicKey describes a public key.
 	// Structure is documented below.
+	//
+	// <a name="nestedX509Config"></a>The `x509Config` block supports:
 	PublicKey CertificateConfigPublicKeyInput `pulumi:"publicKey"`
 	// Specifies some of the values in a certificate that are related to the subject.
 	// Structure is documented below.
@@ -10825,6 +10858,8 @@ func (o CertificateConfigOutput) ToCertificateConfigPtrOutputWithContext(ctx con
 
 // A PublicKey describes a public key.
 // Structure is documented below.
+//
+// <a name="nestedX509Config"></a>The `x509Config` block supports:
 func (o CertificateConfigOutput) PublicKey() CertificateConfigPublicKeyOutput {
 	return o.ApplyT(func(v CertificateConfig) CertificateConfigPublicKey { return v.PublicKey }).(CertificateConfigPublicKeyOutput)
 }
@@ -10867,6 +10902,8 @@ func (o CertificateConfigPtrOutput) Elem() CertificateConfigOutput {
 
 // A PublicKey describes a public key.
 // Structure is documented below.
+//
+// <a name="nestedX509Config"></a>The `x509Config` block supports:
 func (o CertificateConfigPtrOutput) PublicKey() CertificateConfigPublicKeyPtrOutput {
 	return o.ApplyT(func(v *CertificateConfig) *CertificateConfigPublicKey {
 		if v == nil {
@@ -13739,7 +13776,6 @@ func (o CertificateRevocationDetailArrayOutput) Index(i pulumi.IntInput) Certifi
 }
 
 type CertificateTemplateIamBindingCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -13759,7 +13795,6 @@ type CertificateTemplateIamBindingConditionInput interface {
 }
 
 type CertificateTemplateIamBindingConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -13844,7 +13879,6 @@ func (o CertificateTemplateIamBindingConditionOutput) ToCertificateTemplateIamBi
 	}).(CertificateTemplateIamBindingConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o CertificateTemplateIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateTemplateIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -13883,7 +13917,6 @@ func (o CertificateTemplateIamBindingConditionPtrOutput) Elem() CertificateTempl
 	}).(CertificateTemplateIamBindingConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o CertificateTemplateIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateTemplateIamBindingCondition) *string {
 		if v == nil {
@@ -13914,7 +13947,6 @@ func (o CertificateTemplateIamBindingConditionPtrOutput) Title() pulumi.StringPt
 }
 
 type CertificateTemplateIamMemberCondition struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description *string `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression string `pulumi:"expression"`
@@ -13934,7 +13966,6 @@ type CertificateTemplateIamMemberConditionInput interface {
 }
 
 type CertificateTemplateIamMemberConditionArgs struct {
-	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Textual representation of an expression in Common Expression Language syntax.
 	Expression pulumi.StringInput `pulumi:"expression"`
@@ -14019,7 +14050,6 @@ func (o CertificateTemplateIamMemberConditionOutput) ToCertificateTemplateIamMem
 	}).(CertificateTemplateIamMemberConditionPtrOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o CertificateTemplateIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateTemplateIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -14058,7 +14088,6 @@ func (o CertificateTemplateIamMemberConditionPtrOutput) Elem() CertificateTempla
 	}).(CertificateTemplateIamMemberConditionOutput)
 }
 
-// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 func (o CertificateTemplateIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateTemplateIamMemberCondition) *string {
 		if v == nil {
@@ -15054,6 +15083,8 @@ func (o CertificateTemplatePredefinedValuesAdditionalExtensionArrayOutput) Index
 
 type CertificateTemplatePredefinedValuesAdditionalExtensionObjectId struct {
 	// Required. The parts of an OID path. The most significant parts of the path come first.
+	//
+	// ***
 	ObjectIdPaths []int `pulumi:"objectIdPaths"`
 }
 
@@ -15070,6 +15101,8 @@ type CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdInput interfa
 
 type CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs struct {
 	// Required. The parts of an OID path. The most significant parts of the path come first.
+	//
+	// ***
 	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
 }
 
@@ -15100,6 +15133,8 @@ func (o CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput) To
 }
 
 // Required. The parts of an OID path. The most significant parts of the path come first.
+//
+// ***
 func (o CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdOutput) ObjectIdPaths() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v CertificateTemplatePredefinedValuesAdditionalExtensionObjectId) []int { return v.ObjectIdPaths }).(pulumi.IntArrayOutput)
 }

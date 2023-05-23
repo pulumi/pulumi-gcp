@@ -723,6 +723,8 @@ public class Certificate extends com.pulumi.resources.CustomResource {
      * Location of the Certificate. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
      * 
+     * ***
+     * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
@@ -730,6 +732,8 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     /**
      * @return Location of the Certificate. A full list of valid locations can be found by
      * running `gcloud privateca locations list`.
+     * 
+     * ***
      * 
      */
     public Output<String> location() {

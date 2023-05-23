@@ -91,12 +91,16 @@ public class DiskAsyncReplication extends com.pulumi.resources.CustomResource {
     /**
      * The secondary disk (target of replication). You can specify only one value. Structure is documented below.
      * 
+     * The `secondary_disk` block includes:
+     * 
      */
     @Export(name="secondaryDisk", type=DiskAsyncReplicationSecondaryDisk.class, parameters={})
     private Output<DiskAsyncReplicationSecondaryDisk> secondaryDisk;
 
     /**
      * @return The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+     * 
+     * The `secondary_disk` block includes:
      * 
      */
     public Output<DiskAsyncReplicationSecondaryDisk> secondaryDisk() {

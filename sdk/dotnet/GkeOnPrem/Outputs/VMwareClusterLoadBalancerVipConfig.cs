@@ -19,6 +19,8 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
         public readonly string? ControlPlaneVip;
         /// <summary>
         /// The VIP which you previously set aside for ingress traffic into this cluster.
+        /// 
+        /// &lt;a name="nested_f5_config"&gt;&lt;/a&gt;The `f5_config` block supports:
         /// </summary>
         public readonly string? IngressVip;
 

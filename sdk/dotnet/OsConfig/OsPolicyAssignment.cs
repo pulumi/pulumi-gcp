@@ -145,6 +145,7 @@ namespace Pulumi.Gcp.OsConfig
 
         /// <summary>
         /// Policy description. Length of the description is limited to 1024 characters.
+        /// 
         /// (Optional)
         /// OS policy assignment description. Length of the description is limited to 1024 characters.
         /// </summary>
@@ -277,6 +278,7 @@ namespace Pulumi.Gcp.OsConfig
     {
         /// <summary>
         /// Policy description. Length of the description is limited to 1024 characters.
+        /// 
         /// (Optional)
         /// OS policy assignment description. Length of the description is limited to 1024 characters.
         /// </summary>
@@ -353,6 +355,7 @@ namespace Pulumi.Gcp.OsConfig
 
         /// <summary>
         /// Policy description. Length of the description is limited to 1024 characters.
+        /// 
         /// (Optional)
         /// OS policy assignment description. Length of the description is limited to 1024 characters.
         /// </summary>

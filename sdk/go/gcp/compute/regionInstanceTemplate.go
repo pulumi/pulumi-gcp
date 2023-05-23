@@ -62,6 +62,10 @@ type RegionInstanceTemplate struct {
 	// created from this template.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The machine type to create.
+	//
+	// To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+	//
+	// ***
 	MachineType pulumi.StringOutput `pulumi:"machineType"`
 	// Metadata key/value pairs to make available from
 	// within instances created from this template.
@@ -179,6 +183,10 @@ type regionInstanceTemplateState struct {
 	// created from this template.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to create.
+	//
+	// To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+	//
+	// ***
 	MachineType *string `pulumi:"machineType"`
 	// Metadata key/value pairs to make available from
 	// within instances created from this template.
@@ -262,6 +270,10 @@ type RegionInstanceTemplateState struct {
 	// created from this template.
 	Labels pulumi.StringMapInput
 	// The machine type to create.
+	//
+	// To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+	//
+	// ***
 	MachineType pulumi.StringPtrInput
 	// Metadata key/value pairs to make available from
 	// within instances created from this template.
@@ -349,6 +361,10 @@ type regionInstanceTemplateArgs struct {
 	// created from this template.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type to create.
+	//
+	// To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+	//
+	// ***
 	MachineType string `pulumi:"machineType"`
 	// Metadata key/value pairs to make available from
 	// within instances created from this template.
@@ -427,6 +443,10 @@ type RegionInstanceTemplateArgs struct {
 	// created from this template.
 	Labels pulumi.StringMapInput
 	// The machine type to create.
+	//
+	// To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+	//
+	// ***
 	MachineType pulumi.StringInput
 	// Metadata key/value pairs to make available from
 	// within instances created from this template.
@@ -623,6 +643,10 @@ func (o RegionInstanceTemplateOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The machine type to create.
+//
+// To create a machine with a [custom type][custom-vm-types] (such as extended memory), format the value like `custom-VCPUS-MEM_IN_MB` like `custom-6-20480` for 6 vCPU and 20GB of RAM.
+//
+// ***
 func (o RegionInstanceTemplateOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionInstanceTemplate) pulumi.StringOutput { return v.MachineType }).(pulumi.StringOutput)
 }

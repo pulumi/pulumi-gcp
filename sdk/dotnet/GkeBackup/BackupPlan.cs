@@ -305,6 +305,9 @@ namespace Pulumi.Gcp.GkeBackup
 
         /// <summary>
         /// The region of the Backup Plan.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -438,6 +441,9 @@ namespace Pulumi.Gcp.GkeBackup
 
         /// <summary>
         /// The region of the Backup Plan.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -532,6 +538,9 @@ namespace Pulumi.Gcp.GkeBackup
 
         /// <summary>
         /// The region of the Backup Plan.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

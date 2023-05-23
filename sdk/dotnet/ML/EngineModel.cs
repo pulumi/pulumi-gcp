@@ -106,6 +106,9 @@ namespace Pulumi.Gcp.ML
 
         /// <summary>
         /// The name specified for the model.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -210,6 +213,9 @@ namespace Pulumi.Gcp.ML
 
         /// <summary>
         /// The name specified for the model.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -276,6 +282,9 @@ namespace Pulumi.Gcp.ML
 
         /// <summary>
         /// The name specified for the model.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

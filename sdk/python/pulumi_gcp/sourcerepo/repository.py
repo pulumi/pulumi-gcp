@@ -23,6 +23,9 @@ class RepositoryArgs:
         The set of arguments for constructing a Repository resource.
         :param pulumi.Input[str] name: Resource name of the repository, of the form `{{repo}}`.
                The repo name may contain slashes. eg, `name/with/slash`
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
@@ -42,6 +45,9 @@ class RepositoryArgs:
         """
         Resource name of the repository, of the form `{{repo}}`.
         The repo name may contain slashes. eg, `name/with/slash`
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -89,6 +95,9 @@ class _RepositoryState:
         Input properties used for looking up and filtering Repository resources.
         :param pulumi.Input[str] name: Resource name of the repository, of the form `{{repo}}`.
                The repo name may contain slashes. eg, `name/with/slash`
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['RepositoryPubsubConfigArgs']]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
@@ -114,6 +123,9 @@ class _RepositoryState:
         """
         Resource name of the repository, of the form `{{repo}}`.
         The repo name may contain slashes. eg, `name/with/slash`
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -233,6 +245,9 @@ class Repository(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Resource name of the repository, of the form `{{repo}}`.
                The repo name may contain slashes. eg, `name/with/slash`
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryPubsubConfigArgs']]]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
@@ -348,6 +363,9 @@ class Repository(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Resource name of the repository, of the form `{{repo}}`.
                The repo name may contain slashes. eg, `name/with/slash`
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryPubsubConfigArgs']]]] pubsub_configs: How this repository publishes a change in the repository through Cloud Pub/Sub.
@@ -373,6 +391,9 @@ class Repository(pulumi.CustomResource):
         """
         Resource name of the repository, of the form `{{repo}}`.
         The repo name may contain slashes. eg, `name/with/slash`
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

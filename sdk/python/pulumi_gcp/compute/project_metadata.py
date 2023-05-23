@@ -19,6 +19,8 @@ class ProjectMetadataArgs:
         """
         The set of arguments for constructing a ProjectMetadata resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A series of key value pairs.
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         """
@@ -31,6 +33,8 @@ class ProjectMetadataArgs:
     def metadata(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
         """
         A series of key value pairs.
+
+        - - -
         """
         return pulumi.get(self, "metadata")
 
@@ -60,6 +64,8 @@ class _ProjectMetadataState:
         """
         Input properties used for looking up and filtering ProjectMetadata resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A series of key value pairs.
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         """
@@ -73,6 +79,8 @@ class _ProjectMetadataState:
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         A series of key value pairs.
+
+        - - -
         """
         return pulumi.get(self, "metadata")
 
@@ -153,6 +161,8 @@ class ProjectMetadata(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A series of key value pairs.
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         """
@@ -260,6 +270,8 @@ class ProjectMetadata(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: A series of key value pairs.
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         """
@@ -276,6 +288,8 @@ class ProjectMetadata(pulumi.CustomResource):
     def metadata(self) -> pulumi.Output[Mapping[str, str]]:
         """
         A series of key value pairs.
+
+        - - -
         """
         return pulumi.get(self, "metadata")
 

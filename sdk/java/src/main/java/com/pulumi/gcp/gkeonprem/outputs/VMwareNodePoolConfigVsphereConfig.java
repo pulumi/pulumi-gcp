@@ -24,6 +24,8 @@ public final class VMwareNodePoolConfigVsphereConfig {
      * Tags to apply to VMs.
      * Structure is documented below.
      * 
+     * &lt;a name=&#34;nested_tags&#34;&gt;&lt;/a&gt;The `tags` block contains:
+     * 
      */
     private @Nullable List<VMwareNodePoolConfigVsphereConfigTag> tags;
 
@@ -40,6 +42,8 @@ public final class VMwareNodePoolConfigVsphereConfig {
      * @return (Output)
      * Tags to apply to VMs.
      * Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_tags&#34;&gt;&lt;/a&gt;The `tags` block contains:
      * 
      */
     public List<VMwareNodePoolConfigVsphereConfigTag> tags() {

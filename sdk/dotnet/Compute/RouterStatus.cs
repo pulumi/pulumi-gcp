@@ -140,7 +140,13 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class RouterStatusResult
     {
+        /// <summary>
+        /// List of best `compute#routes` configurations for this router's network. See gcp.compute.Route resource for available attributes.
+        /// </summary>
         public readonly ImmutableArray<Outputs.RouterStatusBestRouteResult> BestRoutes;
+        /// <summary>
+        /// List of best `compute#routes` for this specific router. See gcp.compute.Route resource for available attributes.
+        /// </summary>
         public readonly ImmutableArray<Outputs.RouterStatusBestRoutesForRouterResult> BestRoutesForRouters;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

@@ -15,17 +15,9 @@ public final class CertificateTemplateIamMemberConditionArgs extends com.pulumi.
 
     public static final CertificateTemplateIamMemberConditionArgs Empty = new CertificateTemplateIamMemberConditionArgs();
 
-    /**
-     * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-     * 
-     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
-    /**
-     * @return An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-     * 
-     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
@@ -86,23 +78,11 @@ public final class CertificateTemplateIamMemberConditionArgs extends com.pulumi.
             $ = new CertificateTemplateIamMemberConditionArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param description An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
-        /**
-         * @param description An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(String description) {
             return description(Output.of(description));
         }

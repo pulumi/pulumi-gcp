@@ -603,12 +603,16 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
     /**
      * The name of the Cloud Router in which this BgpPeer will be configured.
      * 
+     * ***
+     * 
      */
     @Export(name="router", type=String.class, parameters={})
     private Output<String> router;
 
     /**
      * @return The name of the Cloud Router in which this BgpPeer will be configured.
+     * 
+     * ***
      * 
      */
     public Output<String> router() {

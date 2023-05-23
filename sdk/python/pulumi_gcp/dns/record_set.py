@@ -29,6 +29,8 @@ class RecordSetArgs:
                reside.
         :param pulumi.Input[str] name: The DNS name this record set will apply to.
         :param pulumi.Input[str] type: The DNS record set type.
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input['RecordSetRoutingPolicyArgs'] routing_policy: The configuration for steering traffic based on query.
@@ -82,6 +84,8 @@ class RecordSetArgs:
     def type(self) -> pulumi.Input[str]:
         """
         The DNS record set type.
+
+        - - -
         """
         return pulumi.get(self, "type")
 
@@ -170,6 +174,8 @@ class _RecordSetState:
                string (e.g. "first255characters\\"\\"morecharacters").
         :param pulumi.Input[int] ttl: The time-to-live of this record set (seconds).
         :param pulumi.Input[str] type: The DNS record set type.
+               
+               - - -
         """
         if managed_zone is not None:
             pulumi.set(__self__, "managed_zone", managed_zone)
@@ -270,6 +276,8 @@ class _RecordSetState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The DNS record set type.
+
+        - - -
         """
         return pulumi.get(self, "type")
 
@@ -492,6 +500,8 @@ class RecordSet(pulumi.CustomResource):
                string (e.g. "first255characters\\"\\"morecharacters").
         :param pulumi.Input[int] ttl: The time-to-live of this record set (seconds).
         :param pulumi.Input[str] type: The DNS record set type.
+               
+               - - -
         """
         ...
     @overload
@@ -766,6 +776,8 @@ class RecordSet(pulumi.CustomResource):
                string (e.g. "first255characters\\"\\"morecharacters").
         :param pulumi.Input[int] ttl: The time-to-live of this record set (seconds).
         :param pulumi.Input[str] type: The DNS record set type.
+               
+               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -840,6 +852,8 @@ class RecordSet(pulumi.CustomResource):
     def type(self) -> pulumi.Output[str]:
         """
         The DNS record set type.
+
+        - - -
         """
         return pulumi.get(self, "type")
 

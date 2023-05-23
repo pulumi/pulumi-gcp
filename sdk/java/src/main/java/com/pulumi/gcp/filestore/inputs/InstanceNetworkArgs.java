@@ -23,6 +23,8 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
      * Default value is `DIRECT_PEERING`.
      * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
      * 
+     * ***
+     * 
      */
     @Import(name="connectMode")
     private @Nullable Output<String> connectMode;
@@ -33,6 +35,8 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
      * DIRECT_PEERING.
      * Default value is `DIRECT_PEERING`.
      * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> connectMode() {
@@ -144,6 +148,8 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
          * Default value is `DIRECT_PEERING`.
          * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -158,6 +164,8 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
          * DIRECT_PEERING.
          * Default value is `DIRECT_PEERING`.
          * Possible values are: `DIRECT_PEERING`, `PRIVATE_SERVICE_ACCESS`.
+         * 
+         * ***
          * 
          * @return builder
          * 

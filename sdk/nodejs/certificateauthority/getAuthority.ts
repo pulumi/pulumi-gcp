@@ -41,6 +41,8 @@ export function getAuthority(args?: GetAuthorityArgs, opts?: pulumi.InvokeOption
 export interface GetAuthorityArgs {
     /**
      * ID of the certificate authority.
+     *
+     * - - -
      */
     certificateAuthorityId?: string;
     /**
@@ -120,6 +122,8 @@ export function getAuthorityOutput(args?: GetAuthorityOutputArgs, opts?: pulumi.
 export interface GetAuthorityOutputArgs {
     /**
      * ID of the certificate authority.
+     *
+     * - - -
      */
     certificateAuthorityId?: pulumi.Input<string>;
     /**

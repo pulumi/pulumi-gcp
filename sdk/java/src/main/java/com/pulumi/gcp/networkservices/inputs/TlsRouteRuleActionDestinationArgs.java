@@ -34,12 +34,16 @@ public final class TlsRouteRuleActionDestinationArgs extends com.pulumi.resource
     /**
      * Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
      * 
+     * ***
+     * 
      */
     @Import(name="weight")
     private @Nullable Output<Integer> weight;
 
     /**
      * @return Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
+     * 
+     * ***
      * 
      */
     public Optional<Output<Integer>> weight() {
@@ -95,6 +99,8 @@ public final class TlsRouteRuleActionDestinationArgs extends com.pulumi.resource
         /**
          * @param weight Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -105,6 +111,8 @@ public final class TlsRouteRuleActionDestinationArgs extends com.pulumi.resource
 
         /**
          * @param weight Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
+         * 
+         * ***
          * 
          * @return builder
          * 

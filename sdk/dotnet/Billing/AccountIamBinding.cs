@@ -122,6 +122,15 @@ namespace Pulumi.Gcp.Billing
     {
         /// <summary>
         /// The billing account id.
+        /// 
+        /// For `gcp.billing.AccountIamMember` or `gcp.billing.AccountIamBinding`:
+        /// 
+        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
         [Output("billingAccountId")]
         public Output<string> BillingAccountId { get; private set; } = null!;
@@ -142,6 +151,8 @@ namespace Pulumi.Gcp.Billing
         /// The role that should be applied. Only one
         /// `gcp.billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+        /// 
+        /// `gcp.billing.AccountIamPolicy` only:
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
@@ -194,6 +205,15 @@ namespace Pulumi.Gcp.Billing
     {
         /// <summary>
         /// The billing account id.
+        /// 
+        /// For `gcp.billing.AccountIamMember` or `gcp.billing.AccountIamBinding`:
+        /// 
+        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
         [Input("billingAccountId", required: true)]
         public Input<string> BillingAccountId { get; set; } = null!;
@@ -213,6 +233,8 @@ namespace Pulumi.Gcp.Billing
         /// The role that should be applied. Only one
         /// `gcp.billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+        /// 
+        /// `gcp.billing.AccountIamPolicy` only:
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
@@ -227,6 +249,15 @@ namespace Pulumi.Gcp.Billing
     {
         /// <summary>
         /// The billing account id.
+        /// 
+        /// For `gcp.billing.AccountIamMember` or `gcp.billing.AccountIamBinding`:
+        /// 
+        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
         [Input("billingAccountId")]
         public Input<string>? BillingAccountId { get; set; }
@@ -252,6 +283,8 @@ namespace Pulumi.Gcp.Billing
         /// The role that should be applied. Only one
         /// `gcp.billing.AccountIamBinding` can be used per role. Note that custom roles must be of the format
         /// `[projects|organizations]/{parent-name}/roles/{role-name}`. Read more about roles [here](https://cloud.google.com/bigtable/docs/access-control#roles).
+        /// 
+        /// `gcp.billing.AccountIamPolicy` only:
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

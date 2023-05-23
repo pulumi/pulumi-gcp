@@ -24,6 +24,10 @@ class RepositoryArgs:
         The set of arguments for constructing a Repository resource.
         :param pulumi.Input[str] parent_connection: The connection for the resource
         :param pulumi.Input[str] remote_uri: Required. Git Clone HTTPS URI.
+               
+               
+               
+               - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Allows clients to store small amounts of arbitrary data.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Name of the repository.
@@ -57,6 +61,10 @@ class RepositoryArgs:
     def remote_uri(self) -> pulumi.Input[str]:
         """
         Required. Git Clone HTTPS URI.
+
+
+
+        - - -
         """
         return pulumi.get(self, "remote_uri")
 
@@ -135,6 +143,10 @@ class _RepositoryState:
         :param pulumi.Input[str] parent_connection: The connection for the resource
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] remote_uri: Required. Git Clone HTTPS URI.
+               
+               
+               
+               - - -
         :param pulumi.Input[str] update_time: Output only. Server assigned timestamp for when the connection was updated.
         """
         if annotations is not None:
@@ -245,6 +257,10 @@ class _RepositoryState:
     def remote_uri(self) -> Optional[pulumi.Input[str]]:
         """
         Required. Git Clone HTTPS URI.
+
+
+
+        - - -
         """
         return pulumi.get(self, "remote_uri")
 
@@ -403,6 +419,10 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[str] parent_connection: The connection for the resource
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] remote_uri: Required. Git Clone HTTPS URI.
+               
+               
+               
+               - - -
         """
         ...
     @overload
@@ -605,6 +625,10 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[str] parent_connection: The connection for the resource
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] remote_uri: Required. Git Clone HTTPS URI.
+               
+               
+               
+               - - -
         :param pulumi.Input[str] update_time: Output only. Server assigned timestamp for when the connection was updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -683,6 +707,10 @@ class Repository(pulumi.CustomResource):
     def remote_uri(self) -> pulumi.Output[str]:
         """
         Required. Git Clone HTTPS URI.
+
+
+
+        - - -
         """
         return pulumi.get(self, "remote_uri")
 

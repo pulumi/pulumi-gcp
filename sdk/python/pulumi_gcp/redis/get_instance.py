@@ -363,6 +363,8 @@ def get_instance(name: Optional[str] = None,
 
 
     :param str name: The name of a Redis instance.
+           
+           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param str region: The region in which the resource belongs. If it
@@ -434,6 +436,8 @@ def get_instance_output(name: Optional[pulumi.Input[str]] = None,
 
 
     :param str name: The name of a Redis instance.
+           
+           - - -
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.
     :param str region: The region in which the resource belongs. If it

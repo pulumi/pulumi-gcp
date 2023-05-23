@@ -168,6 +168,8 @@ type Policy struct {
 	// below.
 	BooleanPolicy PolicyBooleanPolicyPtrOutput `pulumi:"booleanPolicy"`
 	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+	//
+	// ***
 	Constraint pulumi.StringOutput `pulumi:"constraint"`
 	// (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -176,6 +178,11 @@ type Policy struct {
 	// The numeric ID of the organization to set the policy for.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
 	// A restore policy is a constraint to restore the default policy. Structure is documented below.
+	//
+	// > **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
+	// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
+	//
+	// ***
 	RestorePolicy PolicyRestorePolicyPtrOutput `pulumi:"restorePolicy"`
 	// (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -222,6 +229,8 @@ type policyState struct {
 	// below.
 	BooleanPolicy *PolicyBooleanPolicy `pulumi:"booleanPolicy"`
 	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+	//
+	// ***
 	Constraint *string `pulumi:"constraint"`
 	// (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
 	Etag *string `pulumi:"etag"`
@@ -230,6 +239,11 @@ type policyState struct {
 	// The numeric ID of the organization to set the policy for.
 	OrgId *string `pulumi:"orgId"`
 	// A restore policy is a constraint to restore the default policy. Structure is documented below.
+	//
+	// > **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
+	// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
+	//
+	// ***
 	RestorePolicy *PolicyRestorePolicy `pulumi:"restorePolicy"`
 	// (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
 	UpdateTime *string `pulumi:"updateTime"`
@@ -242,6 +256,8 @@ type PolicyState struct {
 	// below.
 	BooleanPolicy PolicyBooleanPolicyPtrInput
 	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+	//
+	// ***
 	Constraint pulumi.StringPtrInput
 	// (Computed) The etag of the organization policy. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other.
 	Etag pulumi.StringPtrInput
@@ -250,6 +266,11 @@ type PolicyState struct {
 	// The numeric ID of the organization to set the policy for.
 	OrgId pulumi.StringPtrInput
 	// A restore policy is a constraint to restore the default policy. Structure is documented below.
+	//
+	// > **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
+	// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
+	//
+	// ***
 	RestorePolicy PolicyRestorePolicyPtrInput
 	// (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
 	UpdateTime pulumi.StringPtrInput
@@ -266,12 +287,19 @@ type policyArgs struct {
 	// below.
 	BooleanPolicy *PolicyBooleanPolicy `pulumi:"booleanPolicy"`
 	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+	//
+	// ***
 	Constraint string `pulumi:"constraint"`
 	// A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
 	ListPolicy *PolicyListPolicy `pulumi:"listPolicy"`
 	// The numeric ID of the organization to set the policy for.
 	OrgId string `pulumi:"orgId"`
 	// A restore policy is a constraint to restore the default policy. Structure is documented below.
+	//
+	// > **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
+	// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
+	//
+	// ***
 	RestorePolicy *PolicyRestorePolicy `pulumi:"restorePolicy"`
 	// Version of the Policy. Default version is 0.
 	Version *int `pulumi:"version"`
@@ -283,12 +311,19 @@ type PolicyArgs struct {
 	// below.
 	BooleanPolicy PolicyBooleanPolicyPtrInput
 	// The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+	//
+	// ***
 	Constraint pulumi.StringInput
 	// A policy that can define specific values that are allowed or denied for the given constraint. It can also be used to allow or deny all values. Structure is documented below.
 	ListPolicy PolicyListPolicyPtrInput
 	// The numeric ID of the organization to set the policy for.
 	OrgId pulumi.StringInput
 	// A restore policy is a constraint to restore the default policy. Structure is documented below.
+	//
+	// > **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
+	// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
+	//
+	// ***
 	RestorePolicy PolicyRestorePolicyPtrInput
 	// Version of the Policy. Default version is 0.
 	Version pulumi.IntPtrInput
@@ -388,6 +423,8 @@ func (o PolicyOutput) BooleanPolicy() PolicyBooleanPolicyPtrOutput {
 }
 
 // The name of the Constraint the Policy is configuring, for example, `serviceuser.services`. Check out the [complete list of available constraints](https://cloud.google.com/resource-manager/docs/organization-policy/understanding-constraints#available_constraints).
+//
+// ***
 func (o PolicyOutput) Constraint() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Constraint }).(pulumi.StringOutput)
 }
@@ -408,6 +445,11 @@ func (o PolicyOutput) OrgId() pulumi.StringOutput {
 }
 
 // A restore policy is a constraint to restore the default policy. Structure is documented below.
+//
+// > **Note:** If none of [`booleanPolicy`, `listPolicy`, `restorePolicy`] are defined the policy for a given constraint will
+// effectively be unset. This is represented in the UI as the constraint being 'Inherited'.
+//
+// ***
 func (o PolicyOutput) RestorePolicy() PolicyRestorePolicyPtrOutput {
 	return o.ApplyT(func(v *Policy) PolicyRestorePolicyPtrOutput { return v.RestorePolicy }).(PolicyRestorePolicyPtrOutput)
 }

@@ -17,12 +17,16 @@ public final class GetInstancePlainArgs extends com.pulumi.resources.InvokeArgs 
     /**
      * The name of a Redis instance.
      * 
+     * ***
+     * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
      * @return The name of a Redis instance.
+     * 
+     * ***
      * 
      */
     public String name() {
@@ -91,6 +95,8 @@ public final class GetInstancePlainArgs extends com.pulumi.resources.InvokeArgs 
 
         /**
          * @param name The name of a Redis instance.
+         * 
+         * ***
          * 
          * @return builder
          * 

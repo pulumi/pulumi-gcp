@@ -3574,6 +3574,8 @@ type AwsClusterNetworking struct {
 	// All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
 	ServiceAddressCidrBlocks []string `pulumi:"serviceAddressCidrBlocks"`
 	// The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
+	//
+	// ***
 	VpcId string `pulumi:"vpcId"`
 }
 
@@ -3594,6 +3596,8 @@ type AwsClusterNetworkingArgs struct {
 	// All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
 	ServiceAddressCidrBlocks pulumi.StringArrayInput `pulumi:"serviceAddressCidrBlocks"`
 	// The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
+	//
+	// ***
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
 }
 
@@ -3685,6 +3689,8 @@ func (o AwsClusterNetworkingOutput) ServiceAddressCidrBlocks() pulumi.StringArra
 }
 
 // The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
+//
+// ***
 func (o AwsClusterNetworkingOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsClusterNetworking) string { return v.VpcId }).(pulumi.StringOutput)
 }
@@ -3734,6 +3740,8 @@ func (o AwsClusterNetworkingPtrOutput) ServiceAddressCidrBlocks() pulumi.StringA
 }
 
 // The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
+//
+// ***
 func (o AwsClusterNetworkingPtrOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsClusterNetworking) *string {
 		if v == nil {
@@ -5562,6 +5570,8 @@ func (o AwsNodePoolConfigTaintArrayOutput) Index(i pulumi.IntInput) AwsNodePoolC
 
 type AwsNodePoolMaxPodsConstraint struct {
 	// The maximum number of pods to schedule on a single node.
+	//
+	// ***
 	MaxPodsPerNode int `pulumi:"maxPodsPerNode"`
 }
 
@@ -5578,6 +5588,8 @@ type AwsNodePoolMaxPodsConstraintInput interface {
 
 type AwsNodePoolMaxPodsConstraintArgs struct {
 	// The maximum number of pods to schedule on a single node.
+	//
+	// ***
 	MaxPodsPerNode pulumi.IntInput `pulumi:"maxPodsPerNode"`
 }
 
@@ -5659,6 +5671,8 @@ func (o AwsNodePoolMaxPodsConstraintOutput) ToAwsNodePoolMaxPodsConstraintPtrOut
 }
 
 // The maximum number of pods to schedule on a single node.
+//
+// ***
 func (o AwsNodePoolMaxPodsConstraintOutput) MaxPodsPerNode() pulumi.IntOutput {
 	return o.ApplyT(func(v AwsNodePoolMaxPodsConstraint) int { return v.MaxPodsPerNode }).(pulumi.IntOutput)
 }
@@ -5688,6 +5702,8 @@ func (o AwsNodePoolMaxPodsConstraintPtrOutput) Elem() AwsNodePoolMaxPodsConstrai
 }
 
 // The maximum number of pods to schedule on a single node.
+//
+// ***
 func (o AwsNodePoolMaxPodsConstraintPtrOutput) MaxPodsPerNode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AwsNodePoolMaxPodsConstraint) *int {
 		if v == nil {
@@ -7645,6 +7661,8 @@ type AzureClusterNetworking struct {
 	// The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
 	ServiceAddressCidrBlocks []string `pulumi:"serviceAddressCidrBlocks"`
 	// The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
+	//
+	// ***
 	VirtualNetworkId string `pulumi:"virtualNetworkId"`
 }
 
@@ -7665,6 +7683,8 @@ type AzureClusterNetworkingArgs struct {
 	// The IP address range for services in this cluster, in CIDR notation (e.g. `10.96.0.0/14`). All services in the cluster get assigned a unique RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creating a cluster.
 	ServiceAddressCidrBlocks pulumi.StringArrayInput `pulumi:"serviceAddressCidrBlocks"`
 	// The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
+	//
+	// ***
 	VirtualNetworkId pulumi.StringInput `pulumi:"virtualNetworkId"`
 }
 
@@ -7756,6 +7776,8 @@ func (o AzureClusterNetworkingOutput) ServiceAddressCidrBlocks() pulumi.StringAr
 }
 
 // The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
+//
+// ***
 func (o AzureClusterNetworkingOutput) VirtualNetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureClusterNetworking) string { return v.VirtualNetworkId }).(pulumi.StringOutput)
 }
@@ -7805,6 +7827,8 @@ func (o AzureClusterNetworkingPtrOutput) ServiceAddressCidrBlocks() pulumi.Strin
 }
 
 // The Azure Resource Manager (ARM) ID of the VNet associated with your cluster. All components in the cluster (i.e. control plane and node pools) run on a single VNet. Example: `/subscriptions/*/resourceGroups/*/providers/Microsoft.Network/virtualNetworks/*` This field cannot be changed after creation.
+//
+// ***
 func (o AzureClusterNetworkingPtrOutput) VirtualNetworkId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureClusterNetworking) *string {
 		if v == nil {
@@ -8740,6 +8764,8 @@ func (o AzureNodePoolConfigSshConfigPtrOutput) AuthorizedKey() pulumi.StringPtrO
 
 type AzureNodePoolMaxPodsConstraint struct {
 	// The maximum number of pods to schedule on a single node.
+	//
+	// ***
 	MaxPodsPerNode int `pulumi:"maxPodsPerNode"`
 }
 
@@ -8756,6 +8782,8 @@ type AzureNodePoolMaxPodsConstraintInput interface {
 
 type AzureNodePoolMaxPodsConstraintArgs struct {
 	// The maximum number of pods to schedule on a single node.
+	//
+	// ***
 	MaxPodsPerNode pulumi.IntInput `pulumi:"maxPodsPerNode"`
 }
 
@@ -8837,6 +8865,8 @@ func (o AzureNodePoolMaxPodsConstraintOutput) ToAzureNodePoolMaxPodsConstraintPt
 }
 
 // The maximum number of pods to schedule on a single node.
+//
+// ***
 func (o AzureNodePoolMaxPodsConstraintOutput) MaxPodsPerNode() pulumi.IntOutput {
 	return o.ApplyT(func(v AzureNodePoolMaxPodsConstraint) int { return v.MaxPodsPerNode }).(pulumi.IntOutput)
 }
@@ -8866,6 +8896,8 @@ func (o AzureNodePoolMaxPodsConstraintPtrOutput) Elem() AzureNodePoolMaxPodsCons
 }
 
 // The maximum number of pods to schedule on a single node.
+//
+// ***
 func (o AzureNodePoolMaxPodsConstraintPtrOutput) MaxPodsPerNode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AzureNodePoolMaxPodsConstraint) *int {
 		if v == nil {
@@ -8880,10 +8912,30 @@ type ClusterAddonsConfig struct {
 	CloudrunConfig *ClusterAddonsConfigCloudrunConfig `pulumi:"cloudrunConfig"`
 	// .
 	// The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
+	//
+	// This example `addonsConfig` disables two addons:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	// <a name="nestedBinaryAuthorization"></a>The `binaryAuthorization` block supports:
 	ConfigConnectorConfig *ClusterAddonsConfigConfigConnectorConfig `pulumi:"configConnectorConfig"`
 	// .
 	// The status of the NodeLocal DNSCache addon. It is disabled by default.
 	// Set `enabled = true` to enable.
+	//
+	// **Enabling/Disabling NodeLocal DNSCache in an existing cluster is a disruptive operation.
+	// All cluster nodes running GKE 1.15 and higher are recreated.**
 	DnsCacheConfig *ClusterAddonsConfigDnsCacheConfig `pulumi:"dnsCacheConfig"`
 	// .
 	// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enabled.
@@ -8940,10 +8992,30 @@ type ClusterAddonsConfigArgs struct {
 	CloudrunConfig ClusterAddonsConfigCloudrunConfigPtrInput `pulumi:"cloudrunConfig"`
 	// .
 	// The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
+	//
+	// This example `addonsConfig` disables two addons:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	// <a name="nestedBinaryAuthorization"></a>The `binaryAuthorization` block supports:
 	ConfigConnectorConfig ClusterAddonsConfigConfigConnectorConfigPtrInput `pulumi:"configConnectorConfig"`
 	// .
 	// The status of the NodeLocal DNSCache addon. It is disabled by default.
 	// Set `enabled = true` to enable.
+	//
+	// **Enabling/Disabling NodeLocal DNSCache in an existing cluster is a disruptive operation.
+	// All cluster nodes running GKE 1.15 and higher are recreated.**
 	DnsCacheConfig ClusterAddonsConfigDnsCacheConfigPtrInput `pulumi:"dnsCacheConfig"`
 	// .
 	// Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. Defaults to disabled; set `enabled = true` to enabled.
@@ -9068,6 +9140,26 @@ func (o ClusterAddonsConfigOutput) CloudrunConfig() ClusterAddonsConfigCloudrunC
 
 // .
 // The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
+//
+// This example `addonsConfig` disables two addons:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+// <a name="nestedBinaryAuthorization"></a>The `binaryAuthorization` block supports:
 func (o ClusterAddonsConfigOutput) ConfigConnectorConfig() ClusterAddonsConfigConfigConnectorConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigConfigConnectorConfig { return v.ConfigConnectorConfig }).(ClusterAddonsConfigConfigConnectorConfigPtrOutput)
 }
@@ -9075,6 +9167,9 @@ func (o ClusterAddonsConfigOutput) ConfigConnectorConfig() ClusterAddonsConfigCo
 // .
 // The status of the NodeLocal DNSCache addon. It is disabled by default.
 // Set `enabled = true` to enable.
+//
+// **Enabling/Disabling NodeLocal DNSCache in an existing cluster is a disruptive operation.
+// All cluster nodes running GKE 1.15 and higher are recreated.**
 func (o ClusterAddonsConfigOutput) DnsCacheConfig() ClusterAddonsConfigDnsCacheConfigPtrOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigDnsCacheConfig { return v.DnsCacheConfig }).(ClusterAddonsConfigDnsCacheConfigPtrOutput)
 }
@@ -9187,6 +9282,26 @@ func (o ClusterAddonsConfigPtrOutput) CloudrunConfig() ClusterAddonsConfigCloudr
 
 // .
 // The status of the ConfigConnector addon. It is disabled by default; Set `enabled = true` to enable.
+//
+// This example `addonsConfig` disables two addons:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+// <a name="nestedBinaryAuthorization"></a>The `binaryAuthorization` block supports:
 func (o ClusterAddonsConfigPtrOutput) ConfigConnectorConfig() ClusterAddonsConfigConfigConnectorConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigConfigConnectorConfig {
 		if v == nil {
@@ -9199,6 +9314,9 @@ func (o ClusterAddonsConfigPtrOutput) ConfigConnectorConfig() ClusterAddonsConfi
 // .
 // The status of the NodeLocal DNSCache addon. It is disabled by default.
 // Set `enabled = true` to enable.
+//
+// **Enabling/Disabling NodeLocal DNSCache in an existing cluster is a disruptive operation.
+// All cluster nodes running GKE 1.15 and higher are recreated.**
 func (o ClusterAddonsConfigPtrOutput) DnsCacheConfig() ClusterAddonsConfigDnsCacheConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigDnsCacheConfig {
 		if v == nil {
@@ -9479,8 +9597,11 @@ func (o ClusterAddonsConfigCloudrunConfigPtrOutput) LoadBalancerType() pulumi.St
 
 type ClusterAddonsConfigConfigConnectorConfig struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	//
 	// not.
 	Enabled bool `pulumi:"enabled"`
 }
@@ -9498,8 +9619,11 @@ type ClusterAddonsConfigConfigConnectorConfigInput interface {
 
 type ClusterAddonsConfigConfigConnectorConfigArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	//
 	// not.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
@@ -9582,8 +9706,11 @@ func (o ClusterAddonsConfigConfigConnectorConfigOutput) ToClusterAddonsConfigCon
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+//
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
+//
 // not.
 func (o ClusterAddonsConfigConfigConnectorConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigConfigConnectorConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -9614,8 +9741,11 @@ func (o ClusterAddonsConfigConfigConnectorConfigPtrOutput) Elem() ClusterAddonsC
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+//
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
+//
 // not.
 func (o ClusterAddonsConfigConfigConnectorConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigConfigConnectorConfig) *bool {
@@ -9628,8 +9758,11 @@ func (o ClusterAddonsConfigConfigConnectorConfigPtrOutput) Enabled() pulumi.Bool
 
 type ClusterAddonsConfigDnsCacheConfig struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	//
 	// not.
 	Enabled bool `pulumi:"enabled"`
 }
@@ -9647,8 +9780,11 @@ type ClusterAddonsConfigDnsCacheConfigInput interface {
 
 type ClusterAddonsConfigDnsCacheConfigArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	//
 	// not.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
@@ -9731,8 +9867,11 @@ func (o ClusterAddonsConfigDnsCacheConfigOutput) ToClusterAddonsConfigDnsCacheCo
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+//
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
+//
 // not.
 func (o ClusterAddonsConfigDnsCacheConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigDnsCacheConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -9763,8 +9902,11 @@ func (o ClusterAddonsConfigDnsCacheConfigPtrOutput) Elem() ClusterAddonsConfigDn
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+//
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
+//
 // not.
 func (o ClusterAddonsConfigDnsCacheConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigDnsCacheConfig) *bool {
@@ -9777,8 +9919,11 @@ func (o ClusterAddonsConfigDnsCacheConfigPtrOutput) Enabled() pulumi.BoolPtrOutp
 
 type ClusterAddonsConfigGcePersistentDiskCsiDriverConfig struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	//
 	// not.
 	Enabled bool `pulumi:"enabled"`
 }
@@ -9796,8 +9941,11 @@ type ClusterAddonsConfigGcePersistentDiskCsiDriverConfigInput interface {
 
 type ClusterAddonsConfigGcePersistentDiskCsiDriverConfigArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	//
 	// not.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
@@ -9880,8 +10028,11 @@ func (o ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput) ToClusterAddo
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+//
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
+//
 // not.
 func (o ClusterAddonsConfigGcePersistentDiskCsiDriverConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigGcePersistentDiskCsiDriverConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -9912,8 +10063,11 @@ func (o ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput) Elem() Clu
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+//
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
+//
 // not.
 func (o ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigGcePersistentDiskCsiDriverConfig) *bool {
@@ -9926,8 +10080,11 @@ func (o ClusterAddonsConfigGcePersistentDiskCsiDriverConfigPtrOutput) Enabled() 
 
 type ClusterAddonsConfigGcpFilestoreCsiDriverConfig struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	//
 	// not.
 	Enabled bool `pulumi:"enabled"`
 }
@@ -9945,8 +10102,11 @@ type ClusterAddonsConfigGcpFilestoreCsiDriverConfigInput interface {
 
 type ClusterAddonsConfigGcpFilestoreCsiDriverConfigArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	//
 	// not.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
@@ -10029,8 +10189,11 @@ func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput) ToClusterAddonsCon
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+//
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
+//
 // not.
 func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigGcpFilestoreCsiDriverConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -10061,8 +10224,11 @@ func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput) Elem() ClusterA
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+//
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
+//
 // not.
 func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigGcpFilestoreCsiDriverConfig) *bool {
@@ -10075,8 +10241,11 @@ func (o ClusterAddonsConfigGcpFilestoreCsiDriverConfigPtrOutput) Enabled() pulum
 
 type ClusterAddonsConfigGcsFuseCsiDriverConfig struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	//
 	// not.
 	Enabled bool `pulumi:"enabled"`
 }
@@ -10094,8 +10263,11 @@ type ClusterAddonsConfigGcsFuseCsiDriverConfigInput interface {
 
 type ClusterAddonsConfigGcsFuseCsiDriverConfigArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	//
 	// not.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
@@ -10178,8 +10350,11 @@ func (o ClusterAddonsConfigGcsFuseCsiDriverConfigOutput) ToClusterAddonsConfigGc
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+//
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
+//
 // not.
 func (o ClusterAddonsConfigGcsFuseCsiDriverConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigGcsFuseCsiDriverConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -10210,8 +10385,11 @@ func (o ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput) Elem() ClusterAddons
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+//
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
+//
 // not.
 func (o ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigGcsFuseCsiDriverConfig) *bool {
@@ -10224,8 +10402,11 @@ func (o ClusterAddonsConfigGcsFuseCsiDriverConfigPtrOutput) Enabled() pulumi.Boo
 
 type ClusterAddonsConfigGkeBackupAgentConfig struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	//
 	// not.
 	Enabled bool `pulumi:"enabled"`
 }
@@ -10243,8 +10424,11 @@ type ClusterAddonsConfigGkeBackupAgentConfigInput interface {
 
 type ClusterAddonsConfigGkeBackupAgentConfigArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	//
 	// not.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
@@ -10327,8 +10511,11 @@ func (o ClusterAddonsConfigGkeBackupAgentConfigOutput) ToClusterAddonsConfigGkeB
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+//
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
+//
 // not.
 func (o ClusterAddonsConfigGkeBackupAgentConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigGkeBackupAgentConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -10359,8 +10546,11 @@ func (o ClusterAddonsConfigGkeBackupAgentConfigPtrOutput) Elem() ClusterAddonsCo
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+//
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
+//
 // not.
 func (o ClusterAddonsConfigGkeBackupAgentConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigGkeBackupAgentConfig) *bool {
@@ -10373,6 +10563,8 @@ func (o ClusterAddonsConfigGkeBackupAgentConfigPtrOutput) Enabled() pulumi.BoolP
 
 type ClusterAddonsConfigHorizontalPodAutoscaling struct {
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+	//
+	// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
 	Disabled bool `pulumi:"disabled"`
 }
 
@@ -10389,6 +10581,8 @@ type ClusterAddonsConfigHorizontalPodAutoscalingInput interface {
 
 type ClusterAddonsConfigHorizontalPodAutoscalingArgs struct {
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+	//
+	// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
 }
 
@@ -10470,6 +10664,8 @@ func (o ClusterAddonsConfigHorizontalPodAutoscalingOutput) ToClusterAddonsConfig
 }
 
 // Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+//
+// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
 func (o ClusterAddonsConfigHorizontalPodAutoscalingOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigHorizontalPodAutoscaling) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
@@ -10499,6 +10695,8 @@ func (o ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput) Elem() ClusterAddo
 }
 
 // Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+//
+// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
 func (o ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigHorizontalPodAutoscaling) *bool {
 		if v == nil {
@@ -10510,6 +10708,8 @@ func (o ClusterAddonsConfigHorizontalPodAutoscalingPtrOutput) Disabled() pulumi.
 
 type ClusterAddonsConfigHttpLoadBalancing struct {
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+	//
+	// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
 	Disabled bool `pulumi:"disabled"`
 }
 
@@ -10526,6 +10726,8 @@ type ClusterAddonsConfigHttpLoadBalancingInput interface {
 
 type ClusterAddonsConfigHttpLoadBalancingArgs struct {
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+	//
+	// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
 }
 
@@ -10607,6 +10809,8 @@ func (o ClusterAddonsConfigHttpLoadBalancingOutput) ToClusterAddonsConfigHttpLoa
 }
 
 // Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+//
+// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
 func (o ClusterAddonsConfigHttpLoadBalancingOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigHttpLoadBalancing) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
@@ -10636,6 +10840,8 @@ func (o ClusterAddonsConfigHttpLoadBalancingPtrOutput) Elem() ClusterAddonsConfi
 }
 
 // Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+//
+// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
 func (o ClusterAddonsConfigHttpLoadBalancingPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigHttpLoadBalancing) *bool {
 		if v == nil {
@@ -10807,8 +11013,11 @@ func (o ClusterAddonsConfigIstioConfigPtrOutput) Disabled() pulumi.BoolPtrOutput
 
 type ClusterAddonsConfigKalmConfig struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	//
 	// not.
 	Enabled bool `pulumi:"enabled"`
 }
@@ -10826,8 +11035,11 @@ type ClusterAddonsConfigKalmConfigInput interface {
 
 type ClusterAddonsConfigKalmConfigArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	//
 	// not.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
@@ -10910,8 +11122,11 @@ func (o ClusterAddonsConfigKalmConfigOutput) ToClusterAddonsConfigKalmConfigPtrO
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+//
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
+//
 // not.
 func (o ClusterAddonsConfigKalmConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigKalmConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -10942,8 +11157,11 @@ func (o ClusterAddonsConfigKalmConfigPtrOutput) Elem() ClusterAddonsConfigKalmCo
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+//
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
+//
 // not.
 func (o ClusterAddonsConfigKalmConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigKalmConfig) *bool {
@@ -10956,6 +11174,8 @@ func (o ClusterAddonsConfigKalmConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 
 type ClusterAddonsConfigNetworkPolicyConfig struct {
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+	//
+	// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
 	Disabled bool `pulumi:"disabled"`
 }
 
@@ -10972,6 +11192,8 @@ type ClusterAddonsConfigNetworkPolicyConfigInput interface {
 
 type ClusterAddonsConfigNetworkPolicyConfigArgs struct {
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+	//
+	// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
 }
 
@@ -11053,6 +11275,8 @@ func (o ClusterAddonsConfigNetworkPolicyConfigOutput) ToClusterAddonsConfigNetwo
 }
 
 // Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+//
+// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
 func (o ClusterAddonsConfigNetworkPolicyConfigOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterAddonsConfigNetworkPolicyConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
@@ -11082,6 +11306,8 @@ func (o ClusterAddonsConfigNetworkPolicyConfigPtrOutput) Elem() ClusterAddonsCon
 }
 
 // Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+//
+// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
 func (o ClusterAddonsConfigNetworkPolicyConfigPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfigNetworkPolicyConfig) *bool {
 		if v == nil {
@@ -11231,6 +11457,12 @@ func (o ClusterAuthenticatorGroupsConfigPtrOutput) SecurityGroup() pulumi.String
 type ClusterBinaryAuthorization struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 	//
+	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	//
+	// not.
+	//
 	// Deprecated: Deprecated in favor of evaluation_mode.
 	Enabled *bool `pulumi:"enabled"`
 	// Mode of operation for Binary Authorization policy evaluation. Valid values are `DISABLED`
@@ -11252,6 +11484,12 @@ type ClusterBinaryAuthorizationInput interface {
 
 type ClusterBinaryAuthorizationArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+	//
+	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
+	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	//
+	// not.
 	//
 	// Deprecated: Deprecated in favor of evaluation_mode.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
@@ -11340,6 +11578,12 @@ func (o ClusterBinaryAuthorizationOutput) ToClusterBinaryAuthorizationPtrOutputW
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
 //
+// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+//
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+//
+// not.
+//
 // Deprecated: Deprecated in favor of evaluation_mode.
 func (o ClusterBinaryAuthorizationOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterBinaryAuthorization) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
@@ -11377,6 +11621,12 @@ func (o ClusterBinaryAuthorizationPtrOutput) Elem() ClusterBinaryAuthorizationOu
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+//
+// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+//
+// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+//
+// not.
 //
 // Deprecated: Deprecated in favor of evaluation_mode.
 func (o ClusterBinaryAuthorizationPtrOutput) Enabled() pulumi.BoolPtrOutput {
@@ -11648,6 +11898,8 @@ type ClusterClusterAutoscalingAutoProvisioningDefaults struct {
 	// as "Intel Haswell" or "Intel Sandy Bridge".
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// Scopes that are used by NAP and GKE Autopilot when creating node pools. Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+	//
+	// > `monitoring.write` is always enabled regardless of user input.  `monitoring` and `logging.write` may also be enabled depending on the values for `monitoringService` and `loggingService`.
 	OauthScopes []string `pulumi:"oauthScopes"`
 	// The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
 	ServiceAccount *string `pulumi:"serviceAccount"`
@@ -11684,6 +11936,8 @@ type ClusterClusterAutoscalingAutoProvisioningDefaultsArgs struct {
 	// as "Intel Haswell" or "Intel Sandy Bridge".
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
 	// Scopes that are used by NAP and GKE Autopilot when creating node pools. Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+	//
+	// > `monitoring.write` is always enabled regardless of user input.  `monitoring` and `logging.write` may also be enabled depending on the values for `monitoringService` and `loggingService`.
 	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
 	// The Google Cloud Platform Service Account to be used by the node VMs created by GKE Autopilot or NAP.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
@@ -11805,6 +12059,8 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) MinCpuPlatform(
 }
 
 // Scopes that are used by NAP and GKE Autopilot when creating node pools. Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+//
+// > `monitoring.write` is always enabled regardless of user input.  `monitoring` and `logging.write` may also be enabled depending on the values for `monitoringService` and `loggingService`.
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
@@ -11915,6 +12171,8 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) MinCpuPlatfo
 }
 
 // Scopes that are used by NAP and GKE Autopilot when creating node pools. Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+//
+// > `monitoring.write` is always enabled regardless of user input.  `monitoring` and `logging.write` may also be enabled depending on the values for `monitoringService` and `loggingService`.
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaults) []string {
 		if v == nil {
@@ -11956,6 +12214,8 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) UpgradeSetti
 
 type ClusterClusterAutoscalingAutoProvisioningDefaultsManagement struct {
 	// Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
+	//
+	// This block also contains several computed attributes, documented below.
 	AutoRepair *bool `pulumi:"autoRepair"`
 	// Specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
 	AutoUpgrade    *bool                                                                      `pulumi:"autoUpgrade"`
@@ -11975,6 +12235,8 @@ type ClusterClusterAutoscalingAutoProvisioningDefaultsManagementInput interface 
 
 type ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs struct {
 	// Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
+	//
+	// This block also contains several computed attributes, documented below.
 	AutoRepair pulumi.BoolPtrInput `pulumi:"autoRepair"`
 	// Specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
 	AutoUpgrade    pulumi.BoolPtrInput                                                                `pulumi:"autoUpgrade"`
@@ -12059,6 +12321,8 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsManagementOutput) ToClu
 }
 
 // Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
+//
+// This block also contains several computed attributes, documented below.
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsManagementOutput) AutoRepair() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaultsManagement) *bool { return v.AutoRepair }).(pulumi.BoolPtrOutput)
 }
@@ -12099,6 +12363,8 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsManagementPtrOutput) El
 }
 
 // Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
+//
+// This block also contains several computed attributes, documented below.
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsManagementPtrOutput) AutoRepair() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaultsManagement) *bool {
 		if v == nil {
@@ -12236,8 +12502,12 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUpgradeOption
 
 type ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig struct {
 	// Defines if the instance has integrity monitoring enabled.
+	//
+	// Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.  Defaults to `true`.
 	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
 	// Defines if the instance has Secure Boot enabled.
+	//
+	// Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.  Defaults to `false`.
 	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
 }
 
@@ -12254,8 +12524,12 @@ type ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigInpu
 
 type ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigArgs struct {
 	// Defines if the instance has integrity monitoring enabled.
+	//
+	// Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.  Defaults to `true`.
 	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
 	// Defines if the instance has Secure Boot enabled.
+	//
+	// Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.  Defaults to `false`.
 	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
 }
 
@@ -12337,6 +12611,8 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigO
 }
 
 // Defines if the instance has integrity monitoring enabled.
+//
+// Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.  Defaults to `true`.
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig) *bool {
 		return v.EnableIntegrityMonitoring
@@ -12344,6 +12620,8 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigO
 }
 
 // Defines if the instance has Secure Boot enabled.
+//
+// Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.  Defaults to `false`.
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig) *bool {
 		return v.EnableSecureBoot
@@ -12375,6 +12653,8 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigP
 }
 
 // Defines if the instance has integrity monitoring enabled.
+//
+// Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.  Defaults to `true`.
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig) *bool {
 		if v == nil {
@@ -12385,6 +12665,8 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigP
 }
 
 // Defines if the instance has Secure Boot enabled.
+//
+// Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.  Defaults to `false`.
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig) *bool {
 		if v == nil {
@@ -13625,6 +13907,8 @@ func (o ClusterDatabaseEncryptionPtrOutput) State() pulumi.StringPtrOutput {
 
 type ClusterDefaultSnatStatus struct {
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+	//
+	// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
 	Disabled bool `pulumi:"disabled"`
 }
 
@@ -13641,6 +13925,8 @@ type ClusterDefaultSnatStatusInput interface {
 
 type ClusterDefaultSnatStatusArgs struct {
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+	//
+	// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
 }
 
@@ -13722,6 +14008,8 @@ func (o ClusterDefaultSnatStatusOutput) ToClusterDefaultSnatStatusPtrOutputWithC
 }
 
 // Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+//
+// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
 func (o ClusterDefaultSnatStatusOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterDefaultSnatStatus) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
@@ -13751,6 +14039,8 @@ func (o ClusterDefaultSnatStatusPtrOutput) Elem() ClusterDefaultSnatStatusOutput
 }
 
 // Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+//
+// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
 func (o ClusterDefaultSnatStatusPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterDefaultSnatStatus) *bool {
 		if v == nil {
@@ -14501,6 +14791,8 @@ func (o ClusterIpAllocationPolicyPtrOutput) StackType() pulumi.StringPtrOutput {
 
 type ClusterIpAllocationPolicyPodCidrOverprovisionConfig struct {
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+	//
+	// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
 	Disabled bool `pulumi:"disabled"`
 }
 
@@ -14517,6 +14809,8 @@ type ClusterIpAllocationPolicyPodCidrOverprovisionConfigInput interface {
 
 type ClusterIpAllocationPolicyPodCidrOverprovisionConfigArgs struct {
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+	//
+	// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
 }
 
@@ -14598,6 +14892,8 @@ func (o ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput) ToClusterIpAl
 }
 
 // Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+//
+// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
 func (o ClusterIpAllocationPolicyPodCidrOverprovisionConfigOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterIpAllocationPolicyPodCidrOverprovisionConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
@@ -14627,6 +14923,8 @@ func (o ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput) Elem() Clu
 }
 
 // Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+//
+// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
 func (o ClusterIpAllocationPolicyPodCidrOverprovisionConfigPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterIpAllocationPolicyPodCidrOverprovisionConfig) *bool {
 		if v == nil {
@@ -14781,10 +15079,59 @@ type ClusterMaintenancePolicy struct {
 	// Time window specified for daily maintenance operations.
 	// Specify `startTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM”,
 	// where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
+	//
+	// Examples:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	DailyMaintenanceWindow *ClusterMaintenancePolicyDailyMaintenanceWindow `pulumi:"dailyMaintenanceWindow"`
 	// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to three maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
 	MaintenanceExclusions []ClusterMaintenancePolicyMaintenanceExclusion `pulumi:"maintenanceExclusions"`
 	// Time window for recurring maintenance operations.
+	//
+	// Specify `startTime` and `endTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) "Zulu" date format.  The start time's date is
+	// the initial date that the window starts, and the end time is used for calculating duration.  Specify `recurrence` in
+	// [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format, to specify when this recurs.
+	// Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
+	//
+	// Examples:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	RecurringWindow *ClusterMaintenancePolicyRecurringWindow `pulumi:"recurringWindow"`
 }
 
@@ -14803,10 +15150,59 @@ type ClusterMaintenancePolicyArgs struct {
 	// Time window specified for daily maintenance operations.
 	// Specify `startTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM”,
 	// where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
+	//
+	// Examples:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	DailyMaintenanceWindow ClusterMaintenancePolicyDailyMaintenanceWindowPtrInput `pulumi:"dailyMaintenanceWindow"`
 	// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to three maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
 	MaintenanceExclusions ClusterMaintenancePolicyMaintenanceExclusionArrayInput `pulumi:"maintenanceExclusions"`
 	// Time window for recurring maintenance operations.
+	//
+	// Specify `startTime` and `endTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) "Zulu" date format.  The start time's date is
+	// the initial date that the window starts, and the end time is used for calculating duration.  Specify `recurrence` in
+	// [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format, to specify when this recurs.
+	// Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
+	//
+	// Examples:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	RecurringWindow ClusterMaintenancePolicyRecurringWindowPtrInput `pulumi:"recurringWindow"`
 }
 
@@ -14890,6 +15286,24 @@ func (o ClusterMaintenancePolicyOutput) ToClusterMaintenancePolicyPtrOutputWithC
 // Time window specified for daily maintenance operations.
 // Specify `startTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM”,
 // where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
+//
+// Examples:
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterMaintenancePolicyOutput) DailyMaintenanceWindow() ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput {
 	return o.ApplyT(func(v ClusterMaintenancePolicy) *ClusterMaintenancePolicyDailyMaintenanceWindow {
 		return v.DailyMaintenanceWindow
@@ -14904,6 +15318,46 @@ func (o ClusterMaintenancePolicyOutput) MaintenanceExclusions() ClusterMaintenan
 }
 
 // Time window for recurring maintenance operations.
+//
+// Specify `startTime` and `endTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) "Zulu" date format.  The start time's date is
+// the initial date that the window starts, and the end time is used for calculating duration.  Specify `recurrence` in
+// [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format, to specify when this recurs.
+// Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
+//
+// Examples:
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterMaintenancePolicyOutput) RecurringWindow() ClusterMaintenancePolicyRecurringWindowPtrOutput {
 	return o.ApplyT(func(v ClusterMaintenancePolicy) *ClusterMaintenancePolicyRecurringWindow { return v.RecurringWindow }).(ClusterMaintenancePolicyRecurringWindowPtrOutput)
 }
@@ -14935,6 +15389,24 @@ func (o ClusterMaintenancePolicyPtrOutput) Elem() ClusterMaintenancePolicyOutput
 // Time window specified for daily maintenance operations.
 // Specify `startTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM”,
 // where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
+//
+// Examples:
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterMaintenancePolicyPtrOutput) DailyMaintenanceWindow() ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput {
 	return o.ApplyT(func(v *ClusterMaintenancePolicy) *ClusterMaintenancePolicyDailyMaintenanceWindow {
 		if v == nil {
@@ -14955,6 +15427,46 @@ func (o ClusterMaintenancePolicyPtrOutput) MaintenanceExclusions() ClusterMainte
 }
 
 // Time window for recurring maintenance operations.
+//
+// Specify `startTime` and `endTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) "Zulu" date format.  The start time's date is
+// the initial date that the window starts, and the end time is used for calculating duration.  Specify `recurrence` in
+// [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format, to specify when this recurs.
+// Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
+//
+// Examples:
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterMaintenancePolicyPtrOutput) RecurringWindow() ClusterMaintenancePolicyRecurringWindowPtrOutput {
 	return o.ApplyT(func(v *ClusterMaintenancePolicy) *ClusterMaintenancePolicyRecurringWindow {
 		if v == nil {
@@ -15231,6 +15743,27 @@ func (o ClusterMaintenancePolicyMaintenanceExclusionArrayOutput) Index(i pulumi.
 
 type ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions struct {
 	// The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+	//
+	// Specify `startTime` and `endTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) "Zulu" date format.  The start time's date is
+	// the initial date that the window starts, and the end time is used for calculating duration.Specify `recurrence` in
+	// [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format, to specify when this recurs.
+	// Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
+	//
+	// Examples:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Scope string `pulumi:"scope"`
 }
 
@@ -15247,6 +15780,27 @@ type ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsInput interface
 
 type ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs struct {
 	// The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+	//
+	// Specify `startTime` and `endTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) "Zulu" date format.  The start time's date is
+	// the initial date that the window starts, and the end time is used for calculating duration.Specify `recurrence` in
+	// [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format, to specify when this recurs.
+	// Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
+	//
+	// Examples:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Scope pulumi.StringInput `pulumi:"scope"`
 }
 
@@ -15328,6 +15882,30 @@ func (o ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput) ToCl
 }
 
 // The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+//
+// Specify `startTime` and `endTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) "Zulu" date format.  The start time's date is
+// the initial date that the window starts, and the end time is used for calculating duration.Specify `recurrence` in
+// [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format, to specify when this recurs.
+// Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
+//
+// Examples:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsOutput) Scope() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions) string { return v.Scope }).(pulumi.StringOutput)
 }
@@ -15357,6 +15935,30 @@ func (o ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput) E
 }
 
 // The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
+//
+// Specify `startTime` and `endTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) "Zulu" date format.  The start time's date is
+// the initial date that the window starts, and the end time is used for calculating duration.Specify `recurrence` in
+// [RFC5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) RRULE format, to specify when this recurs.
+// Note that GKE may accept other formats, but will return values in UTC, causing a permanent diff.
+//
+// Examples:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsPtrOutput) Scope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions) *string {
 		if v == nil {
@@ -15532,6 +16134,22 @@ func (o ClusterMaintenancePolicyRecurringWindowPtrOutput) StartTime() pulumi.Str
 type ClusterMasterAuth struct {
 	ClientCertificate *string `pulumi:"clientCertificate"`
 	// Whether client certificate authorization is enabled for this cluster.  For example:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	//
+	// This block also contains several computed attributes, documented below.
 	ClientCertificateConfig ClusterMasterAuthClientCertificateConfig `pulumi:"clientCertificateConfig"`
 	ClientKey               *string                                  `pulumi:"clientKey"`
 	ClusterCaCertificate    *string                                  `pulumi:"clusterCaCertificate"`
@@ -15551,6 +16169,22 @@ type ClusterMasterAuthInput interface {
 type ClusterMasterAuthArgs struct {
 	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
 	// Whether client certificate authorization is enabled for this cluster.  For example:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	//
+	// This block also contains several computed attributes, documented below.
 	ClientCertificateConfig ClusterMasterAuthClientCertificateConfigInput `pulumi:"clientCertificateConfig"`
 	ClientKey               pulumi.StringPtrInput                         `pulumi:"clientKey"`
 	ClusterCaCertificate    pulumi.StringPtrInput                         `pulumi:"clusterCaCertificate"`
@@ -15638,6 +16272,25 @@ func (o ClusterMasterAuthOutput) ClientCertificate() pulumi.StringPtrOutput {
 }
 
 // Whether client certificate authorization is enabled for this cluster.  For example:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// This block also contains several computed attributes, documented below.
 func (o ClusterMasterAuthOutput) ClientCertificateConfig() ClusterMasterAuthClientCertificateConfigOutput {
 	return o.ApplyT(func(v ClusterMasterAuth) ClusterMasterAuthClientCertificateConfig { return v.ClientCertificateConfig }).(ClusterMasterAuthClientCertificateConfigOutput)
 }
@@ -15684,6 +16337,25 @@ func (o ClusterMasterAuthPtrOutput) ClientCertificate() pulumi.StringPtrOutput {
 }
 
 // Whether client certificate authorization is enabled for this cluster.  For example:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// This block also contains several computed attributes, documented below.
 func (o ClusterMasterAuthPtrOutput) ClientCertificateConfig() ClusterMasterAuthClientCertificateConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterMasterAuth) *ClusterMasterAuthClientCertificateConfig {
 		if v == nil {
@@ -16718,8 +17390,36 @@ type ClusterNodeConfig struct {
 	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 	DiskType *string `pulumi:"diskType"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	EphemeralStorageConfig *ClusterNodeConfigEphemeralStorageConfig `pulumi:"ephemeralStorageConfig"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	EphemeralStorageLocalSsdConfig *ClusterNodeConfigEphemeralStorageLocalSsdConfig `pulumi:"ephemeralStorageLocalSsdConfig"`
 	// Parameters for the Google Container Filesystem (GCFS).
 	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
@@ -16727,6 +17427,20 @@ type ClusterNodeConfig struct {
 	// A `machineType` that has more than 16 GiB of memory is also recommended.
 	// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
 	// Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	GcfsConfig *ClusterNodeConfigGcfsConfig `pulumi:"gcfsConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
@@ -16736,12 +17450,40 @@ type ClusterNodeConfig struct {
 	// gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
 	// GKE node version 1.15.11-gke.15 or later
 	// Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Gvnic *ClusterNodeConfigGvnic `pulumi:"gvnic"`
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
 	ImageType *string `pulumi:"imageType"`
 	// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	KubeletConfig *ClusterNodeConfigKubeletConfig `pulumi:"kubeletConfig"`
 	// The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
 	// reserved by Kubernetes Core components and cannot be specified.
@@ -16749,6 +17491,20 @@ type ClusterNodeConfig struct {
 	// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Note that validations happen all server side. All attributes are optional.
 	// Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	LinuxNodeConfig *ClusterNodeConfigLinuxNodeConfig `pulumi:"linuxNodeConfig"`
 	// Parameters for the local NVMe SSDs. Structure is documented below.
 	LocalNvmeSsdBlockConfig *ClusterNodeConfigLocalNvmeSsdBlockConfig `pulumi:"localNvmeSsdBlockConfig"`
@@ -16778,6 +17534,8 @@ type ClusterNodeConfig struct {
 	// The set of Google API scopes to be made available
 	// on all of the node VMs under the "default" service account.
 	// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+	//
+	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/access-scopes) for information on migrating off of legacy access scopes.
 	OauthScopes []string `pulumi:"oauthScopes"`
 	// A boolean that represents whether or not the underlying node VMs
 	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
@@ -16839,8 +17597,36 @@ type ClusterNodeConfigArgs struct {
 	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	EphemeralStorageConfig ClusterNodeConfigEphemeralStorageConfigPtrInput `pulumi:"ephemeralStorageConfig"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	EphemeralStorageLocalSsdConfig ClusterNodeConfigEphemeralStorageLocalSsdConfigPtrInput `pulumi:"ephemeralStorageLocalSsdConfig"`
 	// Parameters for the Google Container Filesystem (GCFS).
 	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
@@ -16848,6 +17634,20 @@ type ClusterNodeConfigArgs struct {
 	// A `machineType` that has more than 16 GiB of memory is also recommended.
 	// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
 	// Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	GcfsConfig ClusterNodeConfigGcfsConfigPtrInput `pulumi:"gcfsConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
@@ -16857,12 +17657,40 @@ type ClusterNodeConfigArgs struct {
 	// gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
 	// GKE node version 1.15.11-gke.15 or later
 	// Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Gvnic ClusterNodeConfigGvnicPtrInput `pulumi:"gvnic"`
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
 	// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	KubeletConfig ClusterNodeConfigKubeletConfigPtrInput `pulumi:"kubeletConfig"`
 	// The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
 	// reserved by Kubernetes Core components and cannot be specified.
@@ -16870,6 +17698,20 @@ type ClusterNodeConfigArgs struct {
 	// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Note that validations happen all server side. All attributes are optional.
 	// Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	LinuxNodeConfig ClusterNodeConfigLinuxNodeConfigPtrInput `pulumi:"linuxNodeConfig"`
 	// Parameters for the local NVMe SSDs. Structure is documented below.
 	LocalNvmeSsdBlockConfig ClusterNodeConfigLocalNvmeSsdBlockConfigPtrInput `pulumi:"localNvmeSsdBlockConfig"`
@@ -16899,6 +17741,8 @@ type ClusterNodeConfigArgs struct {
 	// The set of Google API scopes to be made available
 	// on all of the node VMs under the "default" service account.
 	// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+	//
+	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/access-scopes) for information on migrating off of legacy access scopes.
 	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
 	// A boolean that represents whether or not the underlying node VMs
 	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
@@ -17037,11 +17881,45 @@ func (o ClusterNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 }
 
 // Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodeConfigOutput) EphemeralStorageConfig() ClusterNodeConfigEphemeralStorageConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigEphemeralStorageConfig { return v.EphemeralStorageConfig }).(ClusterNodeConfigEphemeralStorageConfigPtrOutput)
 }
 
 // Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodeConfigOutput) EphemeralStorageLocalSsdConfig() ClusterNodeConfigEphemeralStorageLocalSsdConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigEphemeralStorageLocalSsdConfig {
 		return v.EphemeralStorageLocalSsdConfig
@@ -17054,6 +17932,23 @@ func (o ClusterNodeConfigOutput) EphemeralStorageLocalSsdConfig() ClusterNodeCon
 // A `machineType` that has more than 16 GiB of memory is also recommended.
 // GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
 // Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodeConfigOutput) GcfsConfig() ClusterNodeConfigGcfsConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigGcfsConfig { return v.GcfsConfig }).(ClusterNodeConfigGcfsConfigPtrOutput)
 }
@@ -17069,6 +17964,23 @@ func (o ClusterNodeConfigOutput) GuestAccelerators() ClusterNodeConfigGuestAccel
 // gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
 // GKE node version 1.15.11-gke.15 or later
 // Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodeConfigOutput) Gvnic() ClusterNodeConfigGvnicPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigGvnic { return v.Gvnic }).(ClusterNodeConfigGvnicPtrOutput)
 }
@@ -17081,6 +17993,23 @@ func (o ClusterNodeConfigOutput) ImageType() pulumi.StringPtrOutput {
 
 // Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 // Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodeConfigOutput) KubeletConfig() ClusterNodeConfigKubeletConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigKubeletConfig { return v.KubeletConfig }).(ClusterNodeConfigKubeletConfigPtrOutput)
 }
@@ -17094,6 +18023,23 @@ func (o ClusterNodeConfigOutput) Labels() pulumi.StringMapOutput {
 // Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 // Note that validations happen all server side. All attributes are optional.
 // Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodeConfigOutput) LinuxNodeConfig() ClusterNodeConfigLinuxNodeConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigLinuxNodeConfig { return v.LinuxNodeConfig }).(ClusterNodeConfigLinuxNodeConfigPtrOutput)
 }
@@ -17147,6 +18093,8 @@ func (o ClusterNodeConfigOutput) NodeGroup() pulumi.StringPtrOutput {
 // The set of Google API scopes to be made available
 // on all of the node VMs under the "default" service account.
 // Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+//
+// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/access-scopes) for information on migrating off of legacy access scopes.
 func (o ClusterNodeConfigOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
@@ -17283,6 +18231,23 @@ func (o ClusterNodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
 }
 
 // Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodeConfigPtrOutput) EphemeralStorageConfig() ClusterNodeConfigEphemeralStorageConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigEphemeralStorageConfig {
 		if v == nil {
@@ -17293,6 +18258,23 @@ func (o ClusterNodeConfigPtrOutput) EphemeralStorageConfig() ClusterNodeConfigEp
 }
 
 // Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodeConfigPtrOutput) EphemeralStorageLocalSsdConfig() ClusterNodeConfigEphemeralStorageLocalSsdConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigEphemeralStorageLocalSsdConfig {
 		if v == nil {
@@ -17308,6 +18290,23 @@ func (o ClusterNodeConfigPtrOutput) EphemeralStorageLocalSsdConfig() ClusterNode
 // A `machineType` that has more than 16 GiB of memory is also recommended.
 // GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
 // Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodeConfigPtrOutput) GcfsConfig() ClusterNodeConfigGcfsConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigGcfsConfig {
 		if v == nil {
@@ -17333,6 +18332,23 @@ func (o ClusterNodeConfigPtrOutput) GuestAccelerators() ClusterNodeConfigGuestAc
 // gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
 // GKE node version 1.15.11-gke.15 or later
 // Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodeConfigPtrOutput) Gvnic() ClusterNodeConfigGvnicPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigGvnic {
 		if v == nil {
@@ -17355,6 +18371,23 @@ func (o ClusterNodeConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
 
 // Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 // Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodeConfigPtrOutput) KubeletConfig() ClusterNodeConfigKubeletConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigKubeletConfig {
 		if v == nil {
@@ -17378,6 +18411,23 @@ func (o ClusterNodeConfigPtrOutput) Labels() pulumi.StringMapOutput {
 // Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 // Note that validations happen all server side. All attributes are optional.
 // Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodeConfigPtrOutput) LinuxNodeConfig() ClusterNodeConfigLinuxNodeConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigLinuxNodeConfig {
 		if v == nil {
@@ -17471,6 +18521,8 @@ func (o ClusterNodeConfigPtrOutput) NodeGroup() pulumi.StringPtrOutput {
 // The set of Google API scopes to be made available
 // on all of the node VMs under the "default" service account.
 // Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+//
+// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/access-scopes) for information on migrating off of legacy access scopes.
 func (o ClusterNodeConfigPtrOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) []string {
 		if v == nil {
@@ -18577,6 +19629,11 @@ type ClusterNodeConfigKubeletConfig struct {
 	// as a sequence of decimal numbers, each with optional fraction and a unit suffix,
 	// such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
 	// "h". The value must be a positive duration.
+	//
+	// > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
+	// value and accepts an invalid `default` value instead. While this remains true,
+	// not specifying the `kubeletConfig` block should be the equivalent of specifying
+	// `none`.
 	CpuCfsQuotaPeriod *string `pulumi:"cpuCfsQuotaPeriod"`
 	// The CPU management policy on the node. See
 	// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
@@ -18605,6 +19662,11 @@ type ClusterNodeConfigKubeletConfigArgs struct {
 	// as a sequence of decimal numbers, each with optional fraction and a unit suffix,
 	// such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
 	// "h". The value must be a positive duration.
+	//
+	// > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
+	// value and accepts an invalid `default` value instead. While this remains true,
+	// not specifying the `kubeletConfig` block should be the equivalent of specifying
+	// `none`.
 	CpuCfsQuotaPeriod pulumi.StringPtrInput `pulumi:"cpuCfsQuotaPeriod"`
 	// The CPU management policy on the node. See
 	// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
@@ -18701,6 +19763,11 @@ func (o ClusterNodeConfigKubeletConfigOutput) CpuCfsQuota() pulumi.BoolPtrOutput
 // as a sequence of decimal numbers, each with optional fraction and a unit suffix,
 // such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
 // "h". The value must be a positive duration.
+//
+// > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
+// value and accepts an invalid `default` value instead. While this remains true,
+// not specifying the `kubeletConfig` block should be the equivalent of specifying
+// `none`.
 func (o ClusterNodeConfigKubeletConfigOutput) CpuCfsQuotaPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfigKubeletConfig) *string { return v.CpuCfsQuotaPeriod }).(pulumi.StringPtrOutput)
 }
@@ -18756,6 +19823,11 @@ func (o ClusterNodeConfigKubeletConfigPtrOutput) CpuCfsQuota() pulumi.BoolPtrOut
 // as a sequence of decimal numbers, each with optional fraction and a unit suffix,
 // such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
 // "h". The value must be a positive duration.
+//
+// > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
+// value and accepts an invalid `default` value instead. While this remains true,
+// not specifying the `kubeletConfig` block should be the equivalent of specifying
+// `none`.
 func (o ClusterNodeConfigKubeletConfigPtrOutput) CpuCfsQuotaPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigKubeletConfig) *string {
 		if v == nil {
@@ -19076,6 +20148,11 @@ func (o ClusterNodeConfigLocalNvmeSsdBlockConfigPtrOutput) LocalSsdCount() pulum
 type ClusterNodeConfigReservationAffinity struct {
 	// The type of reservation consumption
 	// Accepted values are:
+	//
+	// * `"UNSPECIFIED"`: Default value. This should not be used.
+	// * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
+	// * `"ANY_RESERVATION"`: Consume any reservation available.
+	// * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
 	ConsumeReservationType string `pulumi:"consumeReservationType"`
 	// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
 	Key *string `pulumi:"key"`
@@ -19097,6 +20174,11 @@ type ClusterNodeConfigReservationAffinityInput interface {
 type ClusterNodeConfigReservationAffinityArgs struct {
 	// The type of reservation consumption
 	// Accepted values are:
+	//
+	// * `"UNSPECIFIED"`: Default value. This should not be used.
+	// * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
+	// * `"ANY_RESERVATION"`: Consume any reservation available.
+	// * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
 	ConsumeReservationType pulumi.StringInput `pulumi:"consumeReservationType"`
 	// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
 	Key pulumi.StringPtrInput `pulumi:"key"`
@@ -19183,6 +20265,11 @@ func (o ClusterNodeConfigReservationAffinityOutput) ToClusterNodeConfigReservati
 
 // The type of reservation consumption
 // Accepted values are:
+//
+// * `"UNSPECIFIED"`: Default value. This should not be used.
+// * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
+// * `"ANY_RESERVATION"`: Consume any reservation available.
+// * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
 func (o ClusterNodeConfigReservationAffinityOutput) ConsumeReservationType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeConfigReservationAffinity) string { return v.ConsumeReservationType }).(pulumi.StringOutput)
 }
@@ -19223,6 +20310,11 @@ func (o ClusterNodeConfigReservationAffinityPtrOutput) Elem() ClusterNodeConfigR
 
 // The type of reservation consumption
 // Accepted values are:
+//
+// * `"UNSPECIFIED"`: Default value. This should not be used.
+// * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
+// * `"ANY_RESERVATION"`: Consume any reservation available.
+// * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
 func (o ClusterNodeConfigReservationAffinityPtrOutput) ConsumeReservationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigReservationAffinity) *string {
 		if v == nil {
@@ -19255,6 +20347,8 @@ func (o ClusterNodeConfigReservationAffinityPtrOutput) Values() pulumi.StringArr
 type ClusterNodeConfigSandboxConfig struct {
 	// Which sandbox to use for pods in the node pool.
 	// Accepted values are:
+	//
+	// * `"gvisor"`: Pods run within a gVisor sandbox.
 	SandboxType string `pulumi:"sandboxType"`
 }
 
@@ -19272,6 +20366,8 @@ type ClusterNodeConfigSandboxConfigInput interface {
 type ClusterNodeConfigSandboxConfigArgs struct {
 	// Which sandbox to use for pods in the node pool.
 	// Accepted values are:
+	//
+	// * `"gvisor"`: Pods run within a gVisor sandbox.
 	SandboxType pulumi.StringInput `pulumi:"sandboxType"`
 }
 
@@ -19354,6 +20450,8 @@ func (o ClusterNodeConfigSandboxConfigOutput) ToClusterNodeConfigSandboxConfigPt
 
 // Which sandbox to use for pods in the node pool.
 // Accepted values are:
+//
+// * `"gvisor"`: Pods run within a gVisor sandbox.
 func (o ClusterNodeConfigSandboxConfigOutput) SandboxType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeConfigSandboxConfig) string { return v.SandboxType }).(pulumi.StringOutput)
 }
@@ -19384,6 +20482,8 @@ func (o ClusterNodeConfigSandboxConfigPtrOutput) Elem() ClusterNodeConfigSandbox
 
 // Which sandbox to use for pods in the node pool.
 // Accepted values are:
+//
+// * `"gvisor"`: Pods run within a gVisor sandbox.
 func (o ClusterNodeConfigSandboxConfigPtrOutput) SandboxType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigSandboxConfig) *string {
 		if v == nil {
@@ -19395,8 +20495,12 @@ func (o ClusterNodeConfigSandboxConfigPtrOutput) SandboxType() pulumi.StringPtrO
 
 type ClusterNodeConfigShieldedInstanceConfig struct {
 	// Defines if the instance has integrity monitoring enabled.
+	//
+	// Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.  Defaults to `true`.
 	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
 	// Defines if the instance has Secure Boot enabled.
+	//
+	// Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.  Defaults to `false`.
 	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
 }
 
@@ -19413,8 +20517,12 @@ type ClusterNodeConfigShieldedInstanceConfigInput interface {
 
 type ClusterNodeConfigShieldedInstanceConfigArgs struct {
 	// Defines if the instance has integrity monitoring enabled.
+	//
+	// Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.  Defaults to `true`.
 	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
 	// Defines if the instance has Secure Boot enabled.
+	//
+	// Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.  Defaults to `false`.
 	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
 }
 
@@ -19496,11 +20604,15 @@ func (o ClusterNodeConfigShieldedInstanceConfigOutput) ToClusterNodeConfigShield
 }
 
 // Defines if the instance has integrity monitoring enabled.
+//
+// Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.  Defaults to `true`.
 func (o ClusterNodeConfigShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfigShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
 }
 
 // Defines if the instance has Secure Boot enabled.
+//
+// Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.  Defaults to `false`.
 func (o ClusterNodeConfigShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfigShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
 }
@@ -19530,6 +20642,8 @@ func (o ClusterNodeConfigShieldedInstanceConfigPtrOutput) Elem() ClusterNodeConf
 }
 
 // Defines if the instance has integrity monitoring enabled.
+//
+// Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.  Defaults to `true`.
 func (o ClusterNodeConfigShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigShieldedInstanceConfig) *bool {
 		if v == nil {
@@ -19540,6 +20654,8 @@ func (o ClusterNodeConfigShieldedInstanceConfigPtrOutput) EnableIntegrityMonitor
 }
 
 // Defines if the instance has Secure Boot enabled.
+//
+// Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.  Defaults to `false`.
 func (o ClusterNodeConfigShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfigShieldedInstanceConfig) *bool {
 		if v == nil {
@@ -19833,6 +20949,8 @@ type ClusterNodePool struct {
 	MaxPodsPerNode *int                       `pulumi:"maxPodsPerNode"`
 	// The name of the cluster, unique within the project and
 	// location.
+	//
+	// ***
 	Name       *string `pulumi:"name"`
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Configuration for
@@ -19849,6 +20967,13 @@ type ClusterNodePool struct {
 	// are located. Nodes must be in the region of their regional cluster or in the
 	// same region as their cluster's zone for zonal clusters. If this is specified for
 	// a zonal cluster, omit the cluster's zone.
+	//
+	// > A "multi-zonal" cluster is a zonal cluster with at least one additional zone
+	// defined; in a multi-zonal cluster, the cluster master is only present in a
+	// single zone while nodes are present in each of the primary zone and the node
+	// locations. In contrast, in a regional cluster, cluster master nodes are present
+	// in multiple zones in the region. For that reason, regional clusters should be
+	// preferred.
 	NodeLocations   []string                        `pulumi:"nodeLocations"`
 	PlacementPolicy *ClusterNodePoolPlacementPolicy `pulumi:"placementPolicy"`
 	// Specifies the upgrade settings for NAP created node pools. Structure is documented below.
@@ -19883,6 +21008,8 @@ type ClusterNodePoolArgs struct {
 	MaxPodsPerNode pulumi.IntPtrInput                `pulumi:"maxPodsPerNode"`
 	// The name of the cluster, unique within the project and
 	// location.
+	//
+	// ***
 	Name       pulumi.StringPtrInput `pulumi:"name"`
 	NamePrefix pulumi.StringPtrInput `pulumi:"namePrefix"`
 	// Configuration for
@@ -19899,6 +21026,13 @@ type ClusterNodePoolArgs struct {
 	// are located. Nodes must be in the region of their regional cluster or in the
 	// same region as their cluster's zone for zonal clusters. If this is specified for
 	// a zonal cluster, omit the cluster's zone.
+	//
+	// > A "multi-zonal" cluster is a zonal cluster with at least one additional zone
+	// defined; in a multi-zonal cluster, the cluster master is only present in a
+	// single zone while nodes are present in each of the primary zone and the node
+	// locations. In contrast, in a regional cluster, cluster master nodes are present
+	// in multiple zones in the region. For that reason, regional clusters should be
+	// preferred.
 	NodeLocations   pulumi.StringArrayInput                `pulumi:"nodeLocations"`
 	PlacementPolicy ClusterNodePoolPlacementPolicyPtrInput `pulumi:"placementPolicy"`
 	// Specifies the upgrade settings for NAP created node pools. Structure is documented below.
@@ -19990,6 +21124,8 @@ func (o ClusterNodePoolOutput) MaxPodsPerNode() pulumi.IntPtrOutput {
 
 // The name of the cluster, unique within the project and
 // location.
+//
+// ***
 func (o ClusterNodePoolOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePool) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -20021,6 +21157,13 @@ func (o ClusterNodePoolOutput) NodeCount() pulumi.IntPtrOutput {
 // are located. Nodes must be in the region of their regional cluster or in the
 // same region as their cluster's zone for zonal clusters. If this is specified for
 // a zonal cluster, omit the cluster's zone.
+//
+// > A "multi-zonal" cluster is a zonal cluster with at least one additional zone
+// defined; in a multi-zonal cluster, the cluster master is only present in a
+// single zone while nodes are present in each of the primary zone and the node
+// locations. In contrast, in a regional cluster, cluster master nodes are present
+// in multiple zones in the region. For that reason, regional clusters should be
+// preferred.
 func (o ClusterNodePoolOutput) NodeLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodePool) []string { return v.NodeLocations }).(pulumi.StringArrayOutput)
 }
@@ -20197,6 +21340,20 @@ func (o ClusterNodePoolAutoConfigPtrOutput) NetworkTags() ClusterNodePoolAutoCon
 
 type ClusterNodePoolAutoConfigNetworkTags struct {
 	// ) - List of network tags applied to auto-provisioned node pools.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Tags []string `pulumi:"tags"`
 }
 
@@ -20213,6 +21370,20 @@ type ClusterNodePoolAutoConfigNetworkTagsInput interface {
 
 type ClusterNodePoolAutoConfigNetworkTagsArgs struct {
 	// ) - List of network tags applied to auto-provisioned node pools.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
@@ -20294,6 +21465,23 @@ func (o ClusterNodePoolAutoConfigNetworkTagsOutput) ToClusterNodePoolAutoConfigN
 }
 
 // ) - List of network tags applied to auto-provisioned node pools.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodePoolAutoConfigNetworkTagsOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolAutoConfigNetworkTags) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -20323,6 +21511,23 @@ func (o ClusterNodePoolAutoConfigNetworkTagsPtrOutput) Elem() ClusterNodePoolAut
 }
 
 // ) - List of network tags applied to auto-provisioned node pools.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodePoolAutoConfigNetworkTagsPtrOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterNodePoolAutoConfigNetworkTags) []string {
 		if v == nil {
@@ -20961,6 +22166,8 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput) Enabled() 
 
 type ClusterNodePoolManagement struct {
 	// Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
+	//
+	// This block also contains several computed attributes, documented below.
 	AutoRepair *bool `pulumi:"autoRepair"`
 	// Specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
@@ -20979,6 +22186,8 @@ type ClusterNodePoolManagementInput interface {
 
 type ClusterNodePoolManagementArgs struct {
 	// Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
+	//
+	// This block also contains several computed attributes, documented below.
 	AutoRepair pulumi.BoolPtrInput `pulumi:"autoRepair"`
 	// Specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
 	AutoUpgrade pulumi.BoolPtrInput `pulumi:"autoUpgrade"`
@@ -21062,6 +22271,8 @@ func (o ClusterNodePoolManagementOutput) ToClusterNodePoolManagementPtrOutputWit
 }
 
 // Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
+//
+// This block also contains several computed attributes, documented below.
 func (o ClusterNodePoolManagementOutput) AutoRepair() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolManagement) *bool { return v.AutoRepair }).(pulumi.BoolPtrOutput)
 }
@@ -21096,6 +22307,8 @@ func (o ClusterNodePoolManagementPtrOutput) Elem() ClusterNodePoolManagementOutp
 }
 
 // Specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
+//
+// This block also contains several computed attributes, documented below.
 func (o ClusterNodePoolManagementPtrOutput) AutoRepair() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolManagement) *bool {
 		if v == nil {
@@ -21340,6 +22553,8 @@ func (o ClusterNodePoolNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput
 
 type ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig struct {
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+	//
+	// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
 	Disabled bool `pulumi:"disabled"`
 }
 
@@ -21356,6 +22571,8 @@ type ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigInput interface {
 
 type ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs struct {
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+	//
+	// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
 }
 
@@ -21437,6 +22654,8 @@ func (o ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput) ToClusterN
 }
 
 // Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+//
+// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
 func (o ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
@@ -21466,6 +22685,8 @@ func (o ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput) Elem() 
 }
 
 // Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
+//
+// <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
 func (o ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig) *bool {
 		if v == nil {
@@ -21488,8 +22709,36 @@ type ClusterNodePoolNodeConfig struct {
 	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 	DiskType *string `pulumi:"diskType"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	EphemeralStorageConfig *ClusterNodePoolNodeConfigEphemeralStorageConfig `pulumi:"ephemeralStorageConfig"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	EphemeralStorageLocalSsdConfig *ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig `pulumi:"ephemeralStorageLocalSsdConfig"`
 	// Parameters for the Google Container Filesystem (GCFS).
 	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
@@ -21497,6 +22746,20 @@ type ClusterNodePoolNodeConfig struct {
 	// A `machineType` that has more than 16 GiB of memory is also recommended.
 	// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
 	// Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	GcfsConfig *ClusterNodePoolNodeConfigGcfsConfig `pulumi:"gcfsConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
@@ -21506,12 +22769,40 @@ type ClusterNodePoolNodeConfig struct {
 	// gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
 	// GKE node version 1.15.11-gke.15 or later
 	// Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Gvnic *ClusterNodePoolNodeConfigGvnic `pulumi:"gvnic"`
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
 	ImageType *string `pulumi:"imageType"`
 	// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	KubeletConfig *ClusterNodePoolNodeConfigKubeletConfig `pulumi:"kubeletConfig"`
 	// The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
 	// reserved by Kubernetes Core components and cannot be specified.
@@ -21519,6 +22810,20 @@ type ClusterNodePoolNodeConfig struct {
 	// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Note that validations happen all server side. All attributes are optional.
 	// Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	LinuxNodeConfig *ClusterNodePoolNodeConfigLinuxNodeConfig `pulumi:"linuxNodeConfig"`
 	// Parameters for the local NVMe SSDs. Structure is documented below.
 	LocalNvmeSsdBlockConfig *ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig `pulumi:"localNvmeSsdBlockConfig"`
@@ -21548,6 +22853,8 @@ type ClusterNodePoolNodeConfig struct {
 	// The set of Google API scopes to be made available
 	// on all of the node VMs under the "default" service account.
 	// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+	//
+	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/access-scopes) for information on migrating off of legacy access scopes.
 	OauthScopes []string `pulumi:"oauthScopes"`
 	// A boolean that represents whether or not the underlying node VMs
 	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
@@ -21609,8 +22916,36 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	EphemeralStorageConfig ClusterNodePoolNodeConfigEphemeralStorageConfigPtrInput `pulumi:"ephemeralStorageConfig"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	EphemeralStorageLocalSsdConfig ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrInput `pulumi:"ephemeralStorageLocalSsdConfig"`
 	// Parameters for the Google Container Filesystem (GCFS).
 	// If unspecified, GCFS will not be enabled on the node pool. When enabling this feature you must specify `imageType = "COS_CONTAINERD"` and `nodeVersion` from GKE versions 1.19 or later to use it.
@@ -21618,6 +22953,20 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// A `machineType` that has more than 16 GiB of memory is also recommended.
 	// GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
 	// Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	GcfsConfig ClusterNodePoolNodeConfigGcfsConfigPtrInput `pulumi:"gcfsConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
@@ -21627,12 +22976,40 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
 	// GKE node version 1.15.11-gke.15 or later
 	// Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Gvnic ClusterNodePoolNodeConfigGvnicPtrInput `pulumi:"gvnic"`
 	// The image type to use for this node. Note that changing the image type
 	// will delete and recreate all nodes in the node pool.
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
 	// Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	KubeletConfig ClusterNodePoolNodeConfigKubeletConfigPtrInput `pulumi:"kubeletConfig"`
 	// The Kubernetes labels (key/value pairs) to be applied to each node. The kubernetes.io/ and k8s.io/ prefixes are
 	// reserved by Kubernetes Core components and cannot be specified.
@@ -21640,6 +23017,20 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 	// Note that validations happen all server side. All attributes are optional.
 	// Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	LinuxNodeConfig ClusterNodePoolNodeConfigLinuxNodeConfigPtrInput `pulumi:"linuxNodeConfig"`
 	// Parameters for the local NVMe SSDs. Structure is documented below.
 	LocalNvmeSsdBlockConfig ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrInput `pulumi:"localNvmeSsdBlockConfig"`
@@ -21669,6 +23060,8 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// The set of Google API scopes to be made available
 	// on all of the node VMs under the "default" service account.
 	// Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+	//
+	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/access-scopes) for information on migrating off of legacy access scopes.
 	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
 	// A boolean that represents whether or not the underlying node VMs
 	// are preemptible. See the [official documentation](https://cloud.google.com/container-engine/docs/preemptible-vm)
@@ -21809,6 +23202,23 @@ func (o ClusterNodePoolNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 }
 
 // Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodePoolNodeConfigOutput) EphemeralStorageConfig() ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigEphemeralStorageConfig {
 		return v.EphemeralStorageConfig
@@ -21816,6 +23226,23 @@ func (o ClusterNodePoolNodeConfigOutput) EphemeralStorageConfig() ClusterNodePoo
 }
 
 // Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodePoolNodeConfigOutput) EphemeralStorageLocalSsdConfig() ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig {
 		return v.EphemeralStorageLocalSsdConfig
@@ -21828,6 +23255,23 @@ func (o ClusterNodePoolNodeConfigOutput) EphemeralStorageLocalSsdConfig() Cluste
 // A `machineType` that has more than 16 GiB of memory is also recommended.
 // GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
 // Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodePoolNodeConfigOutput) GcfsConfig() ClusterNodePoolNodeConfigGcfsConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigGcfsConfig { return v.GcfsConfig }).(ClusterNodePoolNodeConfigGcfsConfigPtrOutput)
 }
@@ -21845,6 +23289,23 @@ func (o ClusterNodePoolNodeConfigOutput) GuestAccelerators() ClusterNodePoolNode
 // gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
 // GKE node version 1.15.11-gke.15 or later
 // Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodePoolNodeConfigOutput) Gvnic() ClusterNodePoolNodeConfigGvnicPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigGvnic { return v.Gvnic }).(ClusterNodePoolNodeConfigGvnicPtrOutput)
 }
@@ -21857,6 +23318,23 @@ func (o ClusterNodePoolNodeConfigOutput) ImageType() pulumi.StringPtrOutput {
 
 // Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 // Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodePoolNodeConfigOutput) KubeletConfig() ClusterNodePoolNodeConfigKubeletConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigKubeletConfig { return v.KubeletConfig }).(ClusterNodePoolNodeConfigKubeletConfigPtrOutput)
 }
@@ -21870,6 +23348,23 @@ func (o ClusterNodePoolNodeConfigOutput) Labels() pulumi.StringMapOutput {
 // Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 // Note that validations happen all server side. All attributes are optional.
 // Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodePoolNodeConfigOutput) LinuxNodeConfig() ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigLinuxNodeConfig { return v.LinuxNodeConfig }).(ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput)
 }
@@ -21925,6 +23420,8 @@ func (o ClusterNodePoolNodeConfigOutput) NodeGroup() pulumi.StringPtrOutput {
 // The set of Google API scopes to be made available
 // on all of the node VMs under the "default" service account.
 // Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+//
+// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/access-scopes) for information on migrating off of legacy access scopes.
 func (o ClusterNodePoolNodeConfigOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
@@ -22067,6 +23564,23 @@ func (o ClusterNodePoolNodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
 }
 
 // Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodePoolNodeConfigPtrOutput) EphemeralStorageConfig() ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigEphemeralStorageConfig {
 		if v == nil {
@@ -22077,6 +23591,23 @@ func (o ClusterNodePoolNodeConfigPtrOutput) EphemeralStorageConfig() ClusterNode
 }
 
 // Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodePoolNodeConfigPtrOutput) EphemeralStorageLocalSsdConfig() ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig {
 		if v == nil {
@@ -22092,6 +23623,23 @@ func (o ClusterNodePoolNodeConfigPtrOutput) EphemeralStorageLocalSsdConfig() Clu
 // A `machineType` that has more than 16 GiB of memory is also recommended.
 // GCFS must be enabled in order to use [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming).
 // Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodePoolNodeConfigPtrOutput) GcfsConfig() ClusterNodePoolNodeConfigGcfsConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigGcfsConfig {
 		if v == nil {
@@ -22117,6 +23665,23 @@ func (o ClusterNodePoolNodeConfigPtrOutput) GuestAccelerators() ClusterNodePoolN
 // gVNIC is an alternative to the virtIO-based ethernet driver. GKE nodes must use a Container-Optimized OS node image.
 // GKE node version 1.15.11-gke.15 or later
 // Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodePoolNodeConfigPtrOutput) Gvnic() ClusterNodePoolNodeConfigGvnicPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigGvnic {
 		if v == nil {
@@ -22139,6 +23704,23 @@ func (o ClusterNodePoolNodeConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
 
 // Kubelet configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 // Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodePoolNodeConfigPtrOutput) KubeletConfig() ClusterNodePoolNodeConfigKubeletConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigKubeletConfig {
 		if v == nil {
@@ -22162,6 +23744,23 @@ func (o ClusterNodePoolNodeConfigPtrOutput) Labels() pulumi.StringMapOutput {
 // Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
 // Note that validations happen all server side. All attributes are optional.
 // Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodePoolNodeConfigPtrOutput) LinuxNodeConfig() ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigLinuxNodeConfig {
 		if v == nil {
@@ -22255,6 +23854,8 @@ func (o ClusterNodePoolNodeConfigPtrOutput) NodeGroup() pulumi.StringPtrOutput {
 // The set of Google API scopes to be made available
 // on all of the node VMs under the "default" service account.
 // Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `serviceAccount` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
+//
+// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/access-scopes) for information on migrating off of legacy access scopes.
 func (o ClusterNodePoolNodeConfigPtrOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) []string {
 		if v == nil {
@@ -23361,6 +24962,11 @@ type ClusterNodePoolNodeConfigKubeletConfig struct {
 	// as a sequence of decimal numbers, each with optional fraction and a unit suffix,
 	// such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
 	// "h". The value must be a positive duration.
+	//
+	// > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
+	// value and accepts an invalid `default` value instead. While this remains true,
+	// not specifying the `kubeletConfig` block should be the equivalent of specifying
+	// `none`.
 	CpuCfsQuotaPeriod *string `pulumi:"cpuCfsQuotaPeriod"`
 	// The CPU management policy on the node. See
 	// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
@@ -23389,6 +24995,11 @@ type ClusterNodePoolNodeConfigKubeletConfigArgs struct {
 	// as a sequence of decimal numbers, each with optional fraction and a unit suffix,
 	// such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
 	// "h". The value must be a positive duration.
+	//
+	// > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
+	// value and accepts an invalid `default` value instead. While this remains true,
+	// not specifying the `kubeletConfig` block should be the equivalent of specifying
+	// `none`.
 	CpuCfsQuotaPeriod pulumi.StringPtrInput `pulumi:"cpuCfsQuotaPeriod"`
 	// The CPU management policy on the node. See
 	// [K8S CPU Management Policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/).
@@ -23485,6 +25096,11 @@ func (o ClusterNodePoolNodeConfigKubeletConfigOutput) CpuCfsQuota() pulumi.BoolP
 // as a sequence of decimal numbers, each with optional fraction and a unit suffix,
 // such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
 // "h". The value must be a positive duration.
+//
+// > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
+// value and accepts an invalid `default` value instead. While this remains true,
+// not specifying the `kubeletConfig` block should be the equivalent of specifying
+// `none`.
 func (o ClusterNodePoolNodeConfigKubeletConfigOutput) CpuCfsQuotaPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigKubeletConfig) *string { return v.CpuCfsQuotaPeriod }).(pulumi.StringPtrOutput)
 }
@@ -23540,6 +25156,11 @@ func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) CpuCfsQuota() pulumi.Bo
 // as a sequence of decimal numbers, each with optional fraction and a unit suffix,
 // such as `"300ms"`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m",
 // "h". The value must be a positive duration.
+//
+// > Note: At the time of writing (2020/08/18) the GKE API rejects the `none`
+// value and accepts an invalid `default` value instead. While this remains true,
+// not specifying the `kubeletConfig` block should be the equivalent of specifying
+// `none`.
 func (o ClusterNodePoolNodeConfigKubeletConfigPtrOutput) CpuCfsQuotaPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfigKubeletConfig) *string {
 		if v == nil {
@@ -23860,6 +25481,11 @@ func (o ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigPtrOutput) LocalSsdCount
 type ClusterNodePoolNodeConfigReservationAffinity struct {
 	// The type of reservation consumption
 	// Accepted values are:
+	//
+	// * `"UNSPECIFIED"`: Default value. This should not be used.
+	// * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
+	// * `"ANY_RESERVATION"`: Consume any reservation available.
+	// * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
 	ConsumeReservationType string `pulumi:"consumeReservationType"`
 	// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
 	Key *string `pulumi:"key"`
@@ -23881,6 +25507,11 @@ type ClusterNodePoolNodeConfigReservationAffinityInput interface {
 type ClusterNodePoolNodeConfigReservationAffinityArgs struct {
 	// The type of reservation consumption
 	// Accepted values are:
+	//
+	// * `"UNSPECIFIED"`: Default value. This should not be used.
+	// * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
+	// * `"ANY_RESERVATION"`: Consume any reservation available.
+	// * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
 	ConsumeReservationType pulumi.StringInput `pulumi:"consumeReservationType"`
 	// The label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "compute.googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
 	Key pulumi.StringPtrInput `pulumi:"key"`
@@ -23967,6 +25598,11 @@ func (o ClusterNodePoolNodeConfigReservationAffinityOutput) ToClusterNodePoolNod
 
 // The type of reservation consumption
 // Accepted values are:
+//
+// * `"UNSPECIFIED"`: Default value. This should not be used.
+// * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
+// * `"ANY_RESERVATION"`: Consume any reservation available.
+// * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
 func (o ClusterNodePoolNodeConfigReservationAffinityOutput) ConsumeReservationType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigReservationAffinity) string { return v.ConsumeReservationType }).(pulumi.StringOutput)
 }
@@ -24007,6 +25643,11 @@ func (o ClusterNodePoolNodeConfigReservationAffinityPtrOutput) Elem() ClusterNod
 
 // The type of reservation consumption
 // Accepted values are:
+//
+// * `"UNSPECIFIED"`: Default value. This should not be used.
+// * `"NO_RESERVATION"`: Do not consume from any reserved capacity.
+// * `"ANY_RESERVATION"`: Consume any reservation available.
+// * `"SPECIFIC_RESERVATION"`: Must consume from a specific reservation. Must specify key value fields for specifying the reservations.
 func (o ClusterNodePoolNodeConfigReservationAffinityPtrOutput) ConsumeReservationType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfigReservationAffinity) *string {
 		if v == nil {
@@ -24039,6 +25680,8 @@ func (o ClusterNodePoolNodeConfigReservationAffinityPtrOutput) Values() pulumi.S
 type ClusterNodePoolNodeConfigSandboxConfig struct {
 	// Which sandbox to use for pods in the node pool.
 	// Accepted values are:
+	//
+	// * `"gvisor"`: Pods run within a gVisor sandbox.
 	SandboxType string `pulumi:"sandboxType"`
 }
 
@@ -24056,6 +25699,8 @@ type ClusterNodePoolNodeConfigSandboxConfigInput interface {
 type ClusterNodePoolNodeConfigSandboxConfigArgs struct {
 	// Which sandbox to use for pods in the node pool.
 	// Accepted values are:
+	//
+	// * `"gvisor"`: Pods run within a gVisor sandbox.
 	SandboxType pulumi.StringInput `pulumi:"sandboxType"`
 }
 
@@ -24138,6 +25783,8 @@ func (o ClusterNodePoolNodeConfigSandboxConfigOutput) ToClusterNodePoolNodeConfi
 
 // Which sandbox to use for pods in the node pool.
 // Accepted values are:
+//
+// * `"gvisor"`: Pods run within a gVisor sandbox.
 func (o ClusterNodePoolNodeConfigSandboxConfigOutput) SandboxType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigSandboxConfig) string { return v.SandboxType }).(pulumi.StringOutput)
 }
@@ -24168,6 +25815,8 @@ func (o ClusterNodePoolNodeConfigSandboxConfigPtrOutput) Elem() ClusterNodePoolN
 
 // Which sandbox to use for pods in the node pool.
 // Accepted values are:
+//
+// * `"gvisor"`: Pods run within a gVisor sandbox.
 func (o ClusterNodePoolNodeConfigSandboxConfigPtrOutput) SandboxType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfigSandboxConfig) *string {
 		if v == nil {
@@ -24179,8 +25828,12 @@ func (o ClusterNodePoolNodeConfigSandboxConfigPtrOutput) SandboxType() pulumi.St
 
 type ClusterNodePoolNodeConfigShieldedInstanceConfig struct {
 	// Defines if the instance has integrity monitoring enabled.
+	//
+	// Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.  Defaults to `true`.
 	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
 	// Defines if the instance has Secure Boot enabled.
+	//
+	// Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.  Defaults to `false`.
 	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
 }
 
@@ -24197,8 +25850,12 @@ type ClusterNodePoolNodeConfigShieldedInstanceConfigInput interface {
 
 type ClusterNodePoolNodeConfigShieldedInstanceConfigArgs struct {
 	// Defines if the instance has integrity monitoring enabled.
+	//
+	// Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.  Defaults to `true`.
 	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
 	// Defines if the instance has Secure Boot enabled.
+	//
+	// Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.  Defaults to `false`.
 	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
 }
 
@@ -24280,11 +25937,15 @@ func (o ClusterNodePoolNodeConfigShieldedInstanceConfigOutput) ToClusterNodePool
 }
 
 // Defines if the instance has integrity monitoring enabled.
+//
+// Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.  Defaults to `true`.
 func (o ClusterNodePoolNodeConfigShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
 }
 
 // Defines if the instance has Secure Boot enabled.
+//
+// Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.  Defaults to `false`.
 func (o ClusterNodePoolNodeConfigShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
 }
@@ -24314,6 +25975,8 @@ func (o ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput) Elem() Cluster
 }
 
 // Defines if the instance has integrity monitoring enabled.
+//
+// Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.  Defaults to `true`.
 func (o ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfigShieldedInstanceConfig) *bool {
 		if v == nil {
@@ -24324,6 +25987,8 @@ func (o ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput) EnableIntegrit
 }
 
 // Defines if the instance has Secure Boot enabled.
+//
+// Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.  Defaults to `false`.
 func (o ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfigShieldedInstanceConfig) *bool {
 		if v == nil {
@@ -25418,6 +27083,20 @@ type ClusterNotificationConfigPubsub struct {
 	// Whether or not the notification config is enabled
 	Enabled bool `pulumi:"enabled"`
 	// Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Filter *ClusterNotificationConfigPubsubFilter `pulumi:"filter"`
 	// The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
 	Topic *string `pulumi:"topic"`
@@ -25438,6 +27117,20 @@ type ClusterNotificationConfigPubsubArgs struct {
 	// Whether or not the notification config is enabled
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	Filter ClusterNotificationConfigPubsubFilterPtrInput `pulumi:"filter"`
 	// The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
 	Topic pulumi.StringPtrInput `pulumi:"topic"`
@@ -25526,6 +27219,23 @@ func (o ClusterNotificationConfigPubsubOutput) Enabled() pulumi.BoolOutput {
 }
 
 // Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNotificationConfigPubsubOutput) Filter() ClusterNotificationConfigPubsubFilterPtrOutput {
 	return o.ApplyT(func(v ClusterNotificationConfigPubsub) *ClusterNotificationConfigPubsubFilter { return v.Filter }).(ClusterNotificationConfigPubsubFilterPtrOutput)
 }
@@ -25570,6 +27280,23 @@ func (o ClusterNotificationConfigPubsubPtrOutput) Enabled() pulumi.BoolPtrOutput
 }
 
 // Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNotificationConfigPubsubPtrOutput) Filter() ClusterNotificationConfigPubsubFilterPtrOutput {
 	return o.ApplyT(func(v *ClusterNotificationConfigPubsub) *ClusterNotificationConfigPubsubFilter {
 		if v == nil {
@@ -25897,6 +27624,10 @@ type ClusterPrivateClusterConfig struct {
 	// Subnetwork in cluster's network where master's endpoint will be provisioned.
 	PrivateEndpointSubnetwork *string `pulumi:"privateEndpointSubnetwork"`
 	// The external IP address of this cluster's master endpoint.
+	//
+	// !> The Google provider is unable to validate certain configurations of
+	// `privateClusterConfig` when `enablePrivateNodes` is `false`. It's
+	// recommended that you omit the block entirely if the field is not set to `true`.
 	PublicEndpoint *string `pulumi:"publicEndpoint"`
 }
 
@@ -25941,6 +27672,10 @@ type ClusterPrivateClusterConfigArgs struct {
 	// Subnetwork in cluster's network where master's endpoint will be provisioned.
 	PrivateEndpointSubnetwork pulumi.StringPtrInput `pulumi:"privateEndpointSubnetwork"`
 	// The external IP address of this cluster's master endpoint.
+	//
+	// !> The Google provider is unable to validate certain configurations of
+	// `privateClusterConfig` when `enablePrivateNodes` is `false`. It's
+	// recommended that you omit the block entirely if the field is not set to `true`.
 	PublicEndpoint pulumi.StringPtrInput `pulumi:"publicEndpoint"`
 }
 
@@ -26073,6 +27808,10 @@ func (o ClusterPrivateClusterConfigOutput) PrivateEndpointSubnetwork() pulumi.St
 }
 
 // The external IP address of this cluster's master endpoint.
+//
+// !> The Google provider is unable to validate certain configurations of
+// `privateClusterConfig` when `enablePrivateNodes` is `false`. It's
+// recommended that you omit the block entirely if the field is not set to `true`.
 func (o ClusterPrivateClusterConfigOutput) PublicEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *string { return v.PublicEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -26186,6 +27925,10 @@ func (o ClusterPrivateClusterConfigPtrOutput) PrivateEndpointSubnetwork() pulumi
 }
 
 // The external IP address of this cluster's master endpoint.
+//
+// !> The Google provider is unable to validate certain configurations of
+// `privateClusterConfig` when `enablePrivateNodes` is `false`. It's
+// recommended that you omit the block entirely if the field is not set to `true`.
 func (o ClusterPrivateClusterConfigPtrOutput) PublicEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterPrivateClusterConfig) *string {
 		if v == nil {
@@ -26788,6 +28531,22 @@ func (o ClusterReleaseChannelPtrOutput) Channel() pulumi.StringPtrOutput {
 
 type ClusterResourceUsageExportConfig struct {
 	// Parameters for using BigQuery as the destination of resource usage export.
+	//
+	// * `bigquery_destination.dataset_id` (Required) - The ID of a BigQuery Dataset. For Example:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	BigqueryDestination ClusterResourceUsageExportConfigBigqueryDestination `pulumi:"bigqueryDestination"`
 	// Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
 	// in the cluster to meter network egress traffic.
@@ -26813,6 +28572,22 @@ type ClusterResourceUsageExportConfigInput interface {
 
 type ClusterResourceUsageExportConfigArgs struct {
 	// Parameters for using BigQuery as the destination of resource usage export.
+	//
+	// * `bigquery_destination.dataset_id` (Required) - The ID of a BigQuery Dataset. For Example:
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	BigqueryDestination ClusterResourceUsageExportConfigBigqueryDestinationInput `pulumi:"bigqueryDestination"`
 	// Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
 	// in the cluster to meter network egress traffic.
@@ -26903,6 +28678,25 @@ func (o ClusterResourceUsageExportConfigOutput) ToClusterResourceUsageExportConf
 }
 
 // Parameters for using BigQuery as the destination of resource usage export.
+//
+// * `bigquery_destination.dataset_id` (Required) - The ID of a BigQuery Dataset. For Example:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterResourceUsageExportConfigOutput) BigqueryDestination() ClusterResourceUsageExportConfigBigqueryDestinationOutput {
 	return o.ApplyT(func(v ClusterResourceUsageExportConfig) ClusterResourceUsageExportConfigBigqueryDestination {
 		return v.BigqueryDestination
@@ -26949,6 +28743,25 @@ func (o ClusterResourceUsageExportConfigPtrOutput) Elem() ClusterResourceUsageEx
 }
 
 // Parameters for using BigQuery as the destination of resource usage export.
+//
+// * `bigquery_destination.dataset_id` (Required) - The ID of a BigQuery Dataset. For Example:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterResourceUsageExportConfigPtrOutput) BigqueryDestination() ClusterResourceUsageExportConfigBigqueryDestinationPtrOutput {
 	return o.ApplyT(func(v *ClusterResourceUsageExportConfig) *ClusterResourceUsageExportConfigBigqueryDestination {
 		if v == nil {
@@ -27255,8 +29068,11 @@ func (o ClusterServiceExternalIpsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput
 
 type ClusterTpuConfig struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	//
 	// not.
 	Enabled              bool    `pulumi:"enabled"`
 	Ipv4CidrBlock        *string `pulumi:"ipv4CidrBlock"`
@@ -27276,8 +29092,11 @@ type ClusterTpuConfigInput interface {
 
 type ClusterTpuConfigArgs struct {
 	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+	//
 	// for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+	//
 	// If enabled, pods must be valid under a PodSecurityPolicy to be created.
+	//
 	// not.
 	Enabled              pulumi.BoolInput      `pulumi:"enabled"`
 	Ipv4CidrBlock        pulumi.StringPtrInput `pulumi:"ipv4CidrBlock"`
@@ -27362,8 +29181,11 @@ func (o ClusterTpuConfigOutput) ToClusterTpuConfigPtrOutputWithContext(ctx conte
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+//
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
+//
 // not.
 func (o ClusterTpuConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ClusterTpuConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
@@ -27402,8 +29224,11 @@ func (o ClusterTpuConfigPtrOutput) Elem() ClusterTpuConfigOutput {
 }
 
 // Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+//
 // for autopilot clusters. Resource limits for `cpu` and `memory` must be defined to enable node auto-provisioning for GKE Standard.
+//
 // If enabled, pods must be valid under a PodSecurityPolicy to be created.
+//
 // not.
 func (o ClusterTpuConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterTpuConfig) *bool {
@@ -27571,6 +29396,20 @@ func (o ClusterVerticalPodAutoscalingPtrOutput) Enabled() pulumi.BoolPtrOutput {
 
 type ClusterWorkloadIdentityConfig struct {
 	// The workload pool to attach all Kubernetes service accounts to.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	WorkloadPool *string `pulumi:"workloadPool"`
 }
 
@@ -27587,6 +29426,20 @@ type ClusterWorkloadIdentityConfigInput interface {
 
 type ClusterWorkloadIdentityConfigArgs struct {
 	// The workload pool to attach all Kubernetes service accounts to.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	WorkloadPool pulumi.StringPtrInput `pulumi:"workloadPool"`
 }
 
@@ -27668,6 +29521,23 @@ func (o ClusterWorkloadIdentityConfigOutput) ToClusterWorkloadIdentityConfigPtrO
 }
 
 // The workload pool to attach all Kubernetes service accounts to.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterWorkloadIdentityConfigOutput) WorkloadPool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterWorkloadIdentityConfig) *string { return v.WorkloadPool }).(pulumi.StringPtrOutput)
 }
@@ -27697,6 +29567,23 @@ func (o ClusterWorkloadIdentityConfigPtrOutput) Elem() ClusterWorkloadIdentityCo
 }
 
 // The workload pool to attach all Kubernetes service accounts to.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterWorkloadIdentityConfigPtrOutput) WorkloadPool() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterWorkloadIdentityConfig) *string {
 		if v == nil {
@@ -31267,6 +33154,8 @@ type NodePoolUpgradeSettings struct {
 	// The number of nodes that can be simultaneously unavailable during
 	// an upgrade. Increasing `maxUnavailable` raises the number of nodes that can be upgraded in
 	// parallel. Can be set to 0 or greater.
+	//
+	// `maxSurge` and `maxUnavailable` must not be negative and at least one of them must be greater than zero.
 	MaxUnavailable *int `pulumi:"maxUnavailable"`
 	// The upgrade stragey to be used for upgrading the nodes.
 	Strategy *string `pulumi:"strategy"`
@@ -31294,6 +33183,8 @@ type NodePoolUpgradeSettingsArgs struct {
 	// The number of nodes that can be simultaneously unavailable during
 	// an upgrade. Increasing `maxUnavailable` raises the number of nodes that can be upgraded in
 	// parallel. Can be set to 0 or greater.
+	//
+	// `maxSurge` and `maxUnavailable` must not be negative and at least one of them must be greater than zero.
 	MaxUnavailable pulumi.IntPtrInput `pulumi:"maxUnavailable"`
 	// The upgrade stragey to be used for upgrading the nodes.
 	Strategy pulumi.StringPtrInput `pulumi:"strategy"`
@@ -31392,6 +33283,8 @@ func (o NodePoolUpgradeSettingsOutput) MaxSurge() pulumi.IntPtrOutput {
 // The number of nodes that can be simultaneously unavailable during
 // an upgrade. Increasing `maxUnavailable` raises the number of nodes that can be upgraded in
 // parallel. Can be set to 0 or greater.
+//
+// `maxSurge` and `maxUnavailable` must not be negative and at least one of them must be greater than zero.
 func (o NodePoolUpgradeSettingsOutput) MaxUnavailable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolUpgradeSettings) *int { return v.MaxUnavailable }).(pulumi.IntPtrOutput)
 }
@@ -31451,6 +33344,8 @@ func (o NodePoolUpgradeSettingsPtrOutput) MaxSurge() pulumi.IntPtrOutput {
 // The number of nodes that can be simultaneously unavailable during
 // an upgrade. Increasing `maxUnavailable` raises the number of nodes that can be upgraded in
 // parallel. Can be set to 0 or greater.
+//
+// `maxSurge` and `maxUnavailable` must not be negative and at least one of them must be greater than zero.
 func (o NodePoolUpgradeSettingsPtrOutput) MaxUnavailable() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodePoolUpgradeSettings) *int {
 		if v == nil {

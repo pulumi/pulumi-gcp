@@ -42,6 +42,8 @@ class InstanceGroupArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] zone: The zone that this instance group should be created in.
+               
+               - - -
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -145,6 +147,8 @@ class InstanceGroupArgs:
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
         The zone that this instance group should be created in.
+
+        - - -
         """
         return pulumi.get(self, "zone")
 
@@ -186,6 +190,8 @@ class _InstanceGroupState:
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[int] size: The number of instances in the group.
         :param pulumi.Input[str] zone: The zone that this instance group should be created in.
+               
+               - - -
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -317,6 +323,8 @@ class _InstanceGroupState:
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
         The zone that this instance group should be created in.
+
+        - - -
         """
         return pulumi.get(self, "zone")
 
@@ -415,6 +423,8 @@ class InstanceGroup(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] zone: The zone that this instance group should be created in.
+               
+               - - -
         """
         ...
     @overload
@@ -565,6 +575,8 @@ class InstanceGroup(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[int] size: The number of instances in the group.
         :param pulumi.Input[str] zone: The zone that this instance group should be created in.
+               
+               - - -
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -660,6 +672,8 @@ class InstanceGroup(pulumi.CustomResource):
     def zone(self) -> pulumi.Output[str]:
         """
         The zone that this instance group should be created in.
+
+        - - -
         """
         return pulumi.get(self, "zone")
 

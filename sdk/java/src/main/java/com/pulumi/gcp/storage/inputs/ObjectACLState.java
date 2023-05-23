@@ -34,12 +34,16 @@ public final class ObjectACLState extends com.pulumi.resources.ResourceArgs {
     /**
      * The name of the object to apply the acl to.
      * 
+     * ***
+     * 
      */
     @Import(name="object")
     private @Nullable Output<String> object;
 
     /**
      * @return The name of the object to apply the acl to.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> object() {
@@ -129,6 +133,8 @@ public final class ObjectACLState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param object The name of the object to apply the acl to.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -139,6 +145,8 @@ public final class ObjectACLState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param object The name of the object to apply the acl to.
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -152,6 +152,9 @@ export class MachineImage extends pulumi.CustomResource {
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
+     *
+     *
+     * - - -
      */
     public readonly sourceInstance!: pulumi.Output<string>;
     /**
@@ -235,6 +238,9 @@ export interface MachineImageState {
     selfLink?: pulumi.Input<string>;
     /**
      * The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
+     *
+     *
+     * - - -
      */
     sourceInstance?: pulumi.Input<string>;
     /**
@@ -275,6 +281,9 @@ export interface MachineImageArgs {
     project?: pulumi.Input<string>;
     /**
      * The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
+     *
+     *
+     * - - -
      */
     sourceInstance: pulumi.Input<string>;
 }

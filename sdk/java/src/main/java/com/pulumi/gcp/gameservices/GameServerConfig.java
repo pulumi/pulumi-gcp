@@ -204,6 +204,7 @@ public class GameServerConfig extends com.pulumi.resources.CustomResource {
     /**
      * The labels associated with this game server config. Each label is a
      * key-value pair.
+     * 
      * (Optional)
      * Set of labels to group by.
      * 
@@ -214,6 +215,7 @@ public class GameServerConfig extends com.pulumi.resources.CustomResource {
     /**
      * @return The labels associated with this game server config. Each label is a
      * key-value pair.
+     * 
      * (Optional)
      * Set of labels to group by.
      * 
@@ -237,6 +239,9 @@ public class GameServerConfig extends com.pulumi.resources.CustomResource {
     }
     /**
      * The name of the FleetConfig.
+     * 
+     * ***
+     * 
      * (Required)
      * The name of the ScalingConfig
      * 
@@ -246,6 +251,9 @@ public class GameServerConfig extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The name of the FleetConfig.
+     * 
+     * ***
+     * 
      * (Required)
      * The name of the ScalingConfig
      * 

@@ -111,8 +111,12 @@ import javax.annotation.Nullable;
 public class TagTemplate extends com.pulumi.resources.CustomResource {
     /**
      * The display name for this field.
+     * 
      * (Required)
      * The display name of the enum value.
+     * 
+     * ***
+     * 
      * (Optional)
      * The display name for this template.
      * 
@@ -122,8 +126,12 @@ public class TagTemplate extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The display name for this field.
+     * 
      * (Required)
      * The display name of the enum value.
+     * 
+     * ***
+     * 
      * (Optional)
      * The display name for this template.
      * 

@@ -65,6 +65,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+        /// 
+        /// The `secondary_disk` block includes:
         /// </summary>
         [Output("secondaryDisk")]
         public Output<Outputs.DiskAsyncReplicationSecondaryDisk> SecondaryDisk { get; private set; } = null!;
@@ -123,6 +125,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+        /// 
+        /// The `secondary_disk` block includes:
         /// </summary>
         [Input("secondaryDisk", required: true)]
         public Input<Inputs.DiskAsyncReplicationSecondaryDiskArgs> SecondaryDisk { get; set; } = null!;
@@ -143,6 +147,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The secondary disk (target of replication). You can specify only one value. Structure is documented below.
+        /// 
+        /// The `secondary_disk` block includes:
         /// </summary>
         [Input("secondaryDisk")]
         public Input<Inputs.DiskAsyncReplicationSecondaryDiskGetArgs>? SecondaryDisk { get; set; }

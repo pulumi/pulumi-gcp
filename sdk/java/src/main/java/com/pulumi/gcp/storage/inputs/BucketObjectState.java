@@ -228,12 +228,16 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
     /**
      * User-provided metadata, in key/value pairs.
      * 
+     * One of the following is required:
+     * 
      */
     @Import(name="metadata")
     private @Nullable Output<Map<String,String>> metadata;
 
     /**
      * @return User-provided metadata, in key/value pairs.
+     * 
+     * One of the following is required:
      * 
      */
     public Optional<Output<Map<String,String>>> metadata() {
@@ -291,6 +295,8 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
      * A path to the data you want to upload. Must be defined
      * if `content` is not.
      * 
+     * ***
+     * 
      */
     @Import(name="source")
     private @Nullable Output<AssetOrArchive> source;
@@ -298,6 +304,8 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return A path to the data you want to upload. Must be defined
      * if `content` is not.
+     * 
+     * ***
      * 
      */
     public Optional<Output<AssetOrArchive>> source() {
@@ -671,6 +679,8 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param metadata User-provided metadata, in key/value pairs.
          * 
+         * One of the following is required:
+         * 
          * @return builder
          * 
          */
@@ -681,6 +691,8 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param metadata User-provided metadata, in key/value pairs.
+         * 
+         * One of the following is required:
          * 
          * @return builder
          * 
@@ -758,6 +770,8 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
          * @param source A path to the data you want to upload. Must be defined
          * if `content` is not.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -769,6 +783,8 @@ public final class BucketObjectState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param source A path to the data you want to upload. Must be defined
          * if `content` is not.
+         * 
+         * ***
          * 
          * @return builder
          * 

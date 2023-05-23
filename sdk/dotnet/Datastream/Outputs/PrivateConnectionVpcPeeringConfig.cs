@@ -15,6 +15,8 @@ namespace Pulumi.Gcp.Datastream.Outputs
     {
         /// <summary>
         /// A free subnet for peering. (CIDR of /29)
+        /// 
+        /// - - -
         /// </summary>
         public readonly string Subnet;
         /// <summary>

@@ -65,6 +65,8 @@ export class Config extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The name of the runtime config.
+     *
+     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -111,6 +113,8 @@ export interface ConfigState {
     description?: pulumi.Input<string>;
     /**
      * The name of the runtime config.
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -131,6 +135,8 @@ export interface ConfigArgs {
     description?: pulumi.Input<string>;
     /**
      * The name of the runtime config.
+     *
+     * - - -
      */
     name?: pulumi.Input<string>;
     /**

@@ -65,6 +65,9 @@ namespace Pulumi.Gcp.IdentityPlatform
 
         /// <summary>
         /// OAuth client secret
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("clientSecret")]
         public Output<string> ClientSecret { get; private set; } = null!;
@@ -158,6 +161,9 @@ namespace Pulumi.Gcp.IdentityPlatform
 
         /// <summary>
         /// OAuth client secret
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("clientSecret", required: true)]
         public Input<string> ClientSecret { get; set; } = null!;
@@ -207,6 +213,9 @@ namespace Pulumi.Gcp.IdentityPlatform
 
         /// <summary>
         /// OAuth client secret
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("clientSecret")]
         public Input<string>? ClientSecret { get; set; }

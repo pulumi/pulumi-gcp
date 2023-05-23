@@ -65,6 +65,10 @@ public final class ClusterPrivateClusterConfig {
     /**
      * @return The external IP address of this cluster&#39;s master endpoint.
      * 
+     * !&gt; The Google provider is unable to validate certain configurations of
+     * `private_cluster_config` when `enable_private_nodes` is `false`. It&#39;s
+     * recommended that you omit the block entirely if the field is not set to `true`.
+     * 
      */
     private @Nullable String publicEndpoint;
 
@@ -134,6 +138,10 @@ public final class ClusterPrivateClusterConfig {
     }
     /**
      * @return The external IP address of this cluster&#39;s master endpoint.
+     * 
+     * !&gt; The Google provider is unable to validate certain configurations of
+     * `private_cluster_config` when `enable_private_nodes` is `false`. It&#39;s
+     * recommended that you omit the block entirely if the field is not set to `true`.
      * 
      */
     public Optional<String> publicEndpoint() {

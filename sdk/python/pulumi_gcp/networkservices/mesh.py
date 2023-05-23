@@ -29,6 +29,9 @@ class MeshArgs:
                deployments.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Mesh resource.
         :param pulumi.Input[str] name: Short name of the Mesh resource to be created.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -88,6 +91,9 @@ class MeshArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Short name of the Mesh resource to be created.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -131,6 +137,9 @@ class _MeshState:
                deployments.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Mesh resource.
         :param pulumi.Input[str] name: Short name of the Mesh resource to be created.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
@@ -210,6 +219,9 @@ class _MeshState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Short name of the Mesh resource to be created.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -322,6 +334,9 @@ class Mesh(pulumi.CustomResource):
                deployments.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Mesh resource.
         :param pulumi.Input[str] name: Short name of the Mesh resource to be created.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -448,6 +463,9 @@ class Mesh(pulumi.CustomResource):
                deployments.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Mesh resource.
         :param pulumi.Input[str] name: Short name of the Mesh resource to be created.
+               
+               
+               - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
@@ -508,6 +526,9 @@ class Mesh(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Short name of the Mesh resource to be created.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

@@ -153,6 +153,8 @@ type AuthorizationPolicy struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// Name of the AuthorizationPolicy resource.
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -210,6 +212,8 @@ type authorizationPolicyState struct {
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// Name of the AuthorizationPolicy resource.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -236,6 +240,8 @@ type AuthorizationPolicyState struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// Name of the AuthorizationPolicy resource.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -264,6 +270,8 @@ type authorizationPolicyArgs struct {
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// Name of the AuthorizationPolicy resource.
+	//
+	// ***
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -287,6 +295,8 @@ type AuthorizationPolicyArgs struct {
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// Name of the AuthorizationPolicy resource.
+	//
+	// ***
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -412,6 +422,8 @@ func (o AuthorizationPolicyOutput) Location() pulumi.StringPtrOutput {
 }
 
 // Name of the AuthorizationPolicy resource.
+//
+// ***
 func (o AuthorizationPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthorizationPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

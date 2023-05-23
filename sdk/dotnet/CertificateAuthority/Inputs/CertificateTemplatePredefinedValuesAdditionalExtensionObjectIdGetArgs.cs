@@ -17,6 +17,8 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
 
         /// <summary>
         /// Required. The parts of an OID path. The most significant parts of the path come first.
+        /// 
+        /// - - -
         /// </summary>
         public InputList<int> ObjectIdPaths
         {

@@ -98,6 +98,9 @@ class RegionBackendServiceArgs:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs.
                This field can only be specified when the load balancing scheme is set to INTERNAL.
         :param pulumi.Input['RegionBackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
@@ -402,6 +405,9 @@ class RegionBackendServiceArgs:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -628,6 +634,9 @@ class _RegionBackendServiceState:
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs.
                This field can only be specified when the load balancing scheme is set to INTERNAL.
         :param pulumi.Input['RegionBackendServiceOutlierDetectionArgs'] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
@@ -964,6 +973,9 @@ class _RegionBackendServiceState:
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1143,6 +1155,19 @@ class RegionBackendService(pulumi.CustomResource):
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
+        A Region Backend Service defines a regionally-scoped group of virtual
+        machines that will serve traffic for load balancing.
+
+        To get more information about RegionBackendService, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices)
+        * How-to Guides
+            * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
+
+        > **Warning:** All arguments including the following potentially sensitive
+        values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`.
+        Read more about sensitive data in state.
+
         ## Example Usage
 
         ## Import
@@ -1222,6 +1247,9 @@ class RegionBackendService(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs.
                This field can only be specified when the load balancing scheme is set to INTERNAL.
         :param pulumi.Input[pulumi.InputType['RegionBackendServiceOutlierDetectionArgs']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
@@ -1258,6 +1286,19 @@ class RegionBackendService(pulumi.CustomResource):
                  args: Optional[RegionBackendServiceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Region Backend Service defines a regionally-scoped group of virtual
+        machines that will serve traffic for load balancing.
+
+        To get more information about RegionBackendService, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionBackendServices)
+        * How-to Guides
+            * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
+
+        > **Warning:** All arguments including the following potentially sensitive
+        values will be stored in the raw state as plain text: `iap.oauth2_client_secret`, `iap.oauth2_client_secret_sha256`.
+        Read more about sensitive data in state.
+
         ## Example Usage
 
         ## Import
@@ -1460,6 +1501,9 @@ class RegionBackendService(pulumi.CustomResource):
                first character must be a lowercase letter, and all following
                characters must be a dash, lowercase letter, or digit, except the last
                character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs.
                This field can only be specified when the load balancing scheme is set to INTERNAL.
         :param pulumi.Input[pulumi.InputType['RegionBackendServiceOutlierDetectionArgs']] outlier_detection: Settings controlling eviction of unhealthy hosts from the load balancing pool.
@@ -1705,6 +1749,9 @@ class RegionBackendService(pulumi.CustomResource):
         first character must be a lowercase letter, and all following
         characters must be a dash, lowercase letter, or digit, except the last
         character, which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 

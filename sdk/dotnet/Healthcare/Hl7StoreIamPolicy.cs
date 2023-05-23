@@ -137,6 +137,15 @@ namespace Pulumi.Gcp.Healthcare
         /// `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
         /// `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
         /// project setting will be used as a fallback.
+        /// 
+        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
         [Output("hl7V2StoreId")]
         public Output<string> Hl7V2StoreId { get; private set; } = null!;
@@ -199,6 +208,15 @@ namespace Pulumi.Gcp.Healthcare
         /// `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
         /// `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
         /// project setting will be used as a fallback.
+        /// 
+        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
         [Input("hl7V2StoreId", required: true)]
         public Input<string> Hl7V2StoreId { get; set; } = null!;
@@ -229,6 +247,15 @@ namespace Pulumi.Gcp.Healthcare
         /// `{project_id}/{location_name}/{dataset_name}/{hl7_v2_store_name}` or
         /// `{location_name}/{dataset_name}/{hl7_v2_store_name}`. In the second form, the provider's
         /// project setting will be used as a fallback.
+        /// 
+        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         /// </summary>
         [Input("hl7V2StoreId")]
         public Input<string>? Hl7V2StoreId { get; set; }

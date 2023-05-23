@@ -253,6 +253,8 @@ type Instance struct {
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// A reference to the zone where the machine resides.
+	//
+	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// A reference to a machine type which defines VM kind.
 	MachineType pulumi.StringOutput `pulumi:"machineType"`
@@ -280,8 +282,10 @@ type Instance struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a 'PROVISIONED'
-	// state. If needed you can utilize 'terraform apply -refresh-only' to await the population of this value.
+	// The proxy endpoint that is used to access the Jupyter notebook.
+	// Only returned when the resource is in a `PROVISIONED` state. If
+	// needed you can utilize `pulumi up -refresh-only` to await
+	// the population of this value.
 	ProxyUri pulumi.StringOutput `pulumi:"proxyUri"`
 	// Reservation Affinity for consuming Zonal reservation.
 	// Structure is documented below.
@@ -398,6 +402,8 @@ type instanceState struct {
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
 	// A reference to the zone where the machine resides.
+	//
+	// ***
 	Location *string `pulumi:"location"`
 	// A reference to a machine type which defines VM kind.
 	MachineType *string `pulumi:"machineType"`
@@ -425,8 +431,10 @@ type instanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a 'PROVISIONED'
-	// state. If needed you can utilize 'terraform apply -refresh-only' to await the population of this value.
+	// The proxy endpoint that is used to access the Jupyter notebook.
+	// Only returned when the resource is in a `PROVISIONED` state. If
+	// needed you can utilize `pulumi up -refresh-only` to await
+	// the population of this value.
 	ProxyUri *string `pulumi:"proxyUri"`
 	// Reservation Affinity for consuming Zonal reservation.
 	// Structure is documented below.
@@ -509,6 +517,8 @@ type InstanceState struct {
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput
 	// A reference to the zone where the machine resides.
+	//
+	// ***
 	Location pulumi.StringPtrInput
 	// A reference to a machine type which defines VM kind.
 	MachineType pulumi.StringPtrInput
@@ -536,8 +546,10 @@ type InstanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a 'PROVISIONED'
-	// state. If needed you can utilize 'terraform apply -refresh-only' to await the population of this value.
+	// The proxy endpoint that is used to access the Jupyter notebook.
+	// Only returned when the resource is in a `PROVISIONED` state. If
+	// needed you can utilize `pulumi up -refresh-only` to await
+	// the population of this value.
 	ProxyUri pulumi.StringPtrInput
 	// Reservation Affinity for consuming Zonal reservation.
 	// Structure is documented below.
@@ -624,6 +636,8 @@ type instanceArgs struct {
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
 	// A reference to the zone where the machine resides.
+	//
+	// ***
 	Location string `pulumi:"location"`
 	// A reference to a machine type which defines VM kind.
 	MachineType string `pulumi:"machineType"`
@@ -731,6 +745,8 @@ type InstanceArgs struct {
 	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput
 	// A reference to the zone where the machine resides.
+	//
+	// ***
 	Location pulumi.StringInput
 	// A reference to a machine type which defines VM kind.
 	MachineType pulumi.StringInput
@@ -962,6 +978,8 @@ func (o InstanceOutput) Labels() pulumi.StringMapOutput {
 }
 
 // A reference to the zone where the machine resides.
+//
+// ***
 func (o InstanceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -1022,8 +1040,10 @@ func (o InstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a 'PROVISIONED'
-// state. If needed you can utilize 'terraform apply -refresh-only' to await the population of this value.
+// The proxy endpoint that is used to access the Jupyter notebook.
+// Only returned when the resource is in a `PROVISIONED` state. If
+// needed you can utilize `pulumi up -refresh-only` to await
+// the population of this value.
 func (o InstanceOutput) ProxyUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ProxyUri }).(pulumi.StringOutput)
 }

@@ -100,12 +100,16 @@ public class TargetTCPProxy extends com.pulumi.resources.CustomResource {
     /**
      * A reference to the BackendService resource.
      * 
+     * ***
+     * 
      */
     @Export(name="backendService", type=String.class, parameters={})
     private Output<String> backendService;
 
     /**
      * @return A reference to the BackendService resource.
+     * 
+     * ***
      * 
      */
     public Output<String> backendService() {

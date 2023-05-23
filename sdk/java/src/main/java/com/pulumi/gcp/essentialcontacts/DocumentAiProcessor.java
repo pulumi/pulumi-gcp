@@ -106,12 +106,16 @@ public class DocumentAiProcessor extends com.pulumi.resources.CustomResource {
     /**
      * The location of the resource.
      * 
+     * ***
+     * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
      * @return The location of the resource.
+     * 
+     * ***
      * 
      */
     public Output<String> location() {

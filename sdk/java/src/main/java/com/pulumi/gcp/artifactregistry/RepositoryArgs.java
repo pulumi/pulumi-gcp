@@ -58,6 +58,8 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
      * 
+     * ***
+     * 
      */
     @Import(name="format", required=true)
     private Output<String> format;
@@ -67,6 +69,8 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+     * 
+     * ***
      * 
      */
     public Output<String> format() {
@@ -325,6 +329,8 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
          * You can only create alpha formats if you are a member of the
          * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -338,6 +344,8 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
          * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
          * You can only create alpha formats if you are a member of the
          * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+         * 
+         * ***
          * 
          * @return builder
          * 

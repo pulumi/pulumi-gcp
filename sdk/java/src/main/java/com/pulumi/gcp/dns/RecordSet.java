@@ -495,12 +495,16 @@ public class RecordSet extends com.pulumi.resources.CustomResource {
     /**
      * The DNS record set type.
      * 
+     * ***
+     * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output<String> type;
 
     /**
      * @return The DNS record set type.
+     * 
+     * ***
      * 
      */
     public Output<String> type() {

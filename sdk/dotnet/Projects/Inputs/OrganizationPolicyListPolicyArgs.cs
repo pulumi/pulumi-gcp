@@ -24,6 +24,8 @@ namespace Pulumi.Gcp.Projects.Inputs
         /// <summary>
         /// If set to true, the values from the effective Policy of the parent resource
         /// are inherited, meaning the values set in this Policy are added to the values inherited up the hierarchy.
+        /// 
+        /// The `allow` or `deny` blocks support:
         /// </summary>
         [Input("inheritFromParent")]
         public Input<bool>? InheritFromParent { get; set; }

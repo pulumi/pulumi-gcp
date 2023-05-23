@@ -22,6 +22,8 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
         /// If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
         /// or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+        /// 
+        /// - - -
         /// </summary>
         public InputMap<string> Annotations
         {

@@ -143,12 +143,16 @@ public class CxPage extends com.pulumi.resources.CustomResource {
     /**
      * The human-readable name of the page, unique within the agent.
      * 
+     * ***
+     * 
      */
     @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
      * @return The human-readable name of the page, unique within the agent.
+     * 
+     * ***
      * 
      */
     public Output<String> displayName() {
@@ -241,6 +245,7 @@ public class CxPage extends com.pulumi.resources.CustomResource {
     /**
      * (Output)
      * The unique identifier of this transition route.
+     * 
      * (Output)
      * The unique identifier of this event handler.
      * 
@@ -251,6 +256,7 @@ public class CxPage extends com.pulumi.resources.CustomResource {
     /**
      * @return (Output)
      * The unique identifier of this transition route.
+     * 
      * (Output)
      * The unique identifier of this event handler.
      * 

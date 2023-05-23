@@ -111,12 +111,16 @@ public final class CertificateMapEntryState extends com.pulumi.resources.Resourc
     /**
      * A map entry that is inputted into the cetrificate map
      * 
+     * ***
+     * 
      */
     @Import(name="map")
     private @Nullable Output<String> map;
 
     /**
      * @return A map entry that is inputted into the cetrificate map
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> map() {
@@ -378,6 +382,8 @@ public final class CertificateMapEntryState extends com.pulumi.resources.Resourc
         /**
          * @param map A map entry that is inputted into the cetrificate map
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -388,6 +394,8 @@ public final class CertificateMapEntryState extends com.pulumi.resources.Resourc
 
         /**
          * @param map A map entry that is inputted into the cetrificate map
+         * 
+         * ***
          * 
          * @return builder
          * 

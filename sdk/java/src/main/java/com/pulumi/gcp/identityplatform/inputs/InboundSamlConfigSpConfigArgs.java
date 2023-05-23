@@ -37,6 +37,8 @@ public final class InboundSamlConfigSpConfigArgs extends com.pulumi.resources.Re
      * The IDP&#39;s certificate data to verify the signature in the SAMLResponse issued by the IDP.
      * Structure is documented below.
      * 
+     * &lt;a name=&#34;nested_sp_certificates&#34;&gt;&lt;/a&gt;The `sp_certificates` block contains:
+     * 
      */
     @Import(name="spCertificates")
     private @Nullable Output<List<InboundSamlConfigSpConfigSpCertificateArgs>> spCertificates;
@@ -45,6 +47,8 @@ public final class InboundSamlConfigSpConfigArgs extends com.pulumi.resources.Re
      * @return (Output)
      * The IDP&#39;s certificate data to verify the signature in the SAMLResponse issued by the IDP.
      * Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_sp_certificates&#34;&gt;&lt;/a&gt;The `sp_certificates` block contains:
      * 
      */
     public Optional<Output<List<InboundSamlConfigSpConfigSpCertificateArgs>>> spCertificates() {
@@ -118,6 +122,8 @@ public final class InboundSamlConfigSpConfigArgs extends com.pulumi.resources.Re
          * The IDP&#39;s certificate data to verify the signature in the SAMLResponse issued by the IDP.
          * Structure is documented below.
          * 
+         * &lt;a name=&#34;nested_sp_certificates&#34;&gt;&lt;/a&gt;The `sp_certificates` block contains:
+         * 
          * @return builder
          * 
          */
@@ -131,6 +137,8 @@ public final class InboundSamlConfigSpConfigArgs extends com.pulumi.resources.Re
          * The IDP&#39;s certificate data to verify the signature in the SAMLResponse issued by the IDP.
          * Structure is documented below.
          * 
+         * &lt;a name=&#34;nested_sp_certificates&#34;&gt;&lt;/a&gt;The `sp_certificates` block contains:
+         * 
          * @return builder
          * 
          */
@@ -142,6 +150,8 @@ public final class InboundSamlConfigSpConfigArgs extends com.pulumi.resources.Re
          * @param spCertificates (Output)
          * The IDP&#39;s certificate data to verify the signature in the SAMLResponse issued by the IDP.
          * Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_sp_certificates&#34;&gt;&lt;/a&gt;The `sp_certificates` block contains:
          * 
          * @return builder
          * 

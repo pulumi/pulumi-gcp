@@ -140,6 +140,10 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
      * The name of the router this interface will be attached to.
      * Changing this forces a new interface to be created.
      * 
+     * In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
+     * 
+     * ***
+     * 
      */
     @Import(name="router", required=true)
     private Output<String> router;
@@ -147,6 +151,10 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     /**
      * @return The name of the router this interface will be attached to.
      * Changing this forces a new interface to be created.
+     * 
+     * In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
+     * 
+     * ***
      * 
      */
     public Output<String> router() {
@@ -389,6 +397,10 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
          * @param router The name of the router this interface will be attached to.
          * Changing this forces a new interface to be created.
          * 
+         * In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
+         * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -400,6 +412,10 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param router The name of the router this interface will be attached to.
          * Changing this forces a new interface to be created.
+         * 
+         * In addition to the above required fields, a router interface must have specified either `ip_range` or exactly one of `vpn_tunnel`, `interconnect_attachment` or `subnetwork`, or both.
+         * 
+         * ***
          * 
          * @return builder
          * 

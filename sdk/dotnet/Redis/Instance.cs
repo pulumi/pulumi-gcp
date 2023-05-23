@@ -380,6 +380,9 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// Redis memory size in GiB.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("memorySizeGb")]
         public Output<int> MemorySizeGb { get; private set; } = null!;
@@ -663,6 +666,9 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// Redis memory size in GiB.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("memorySizeGb", required: true)]
         public Input<int> MemorySizeGb { get; set; } = null!;
@@ -908,6 +914,9 @@ namespace Pulumi.Gcp.Redis
 
         /// <summary>
         /// Redis memory size in GiB.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("memorySizeGb")]
         public Input<int>? MemorySizeGb { get; set; }

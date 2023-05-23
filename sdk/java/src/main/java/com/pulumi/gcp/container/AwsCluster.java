@@ -335,6 +335,7 @@ public class AwsCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * The number of the Fleet host project where this cluster will be registered.
+     * 
      * (Optional)
      * The project for the resource
      * 
@@ -344,6 +345,7 @@ public class AwsCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The number of the Fleet host project where this cluster will be registered.
+     * 
      * (Optional)
      * The project for the resource
      * 

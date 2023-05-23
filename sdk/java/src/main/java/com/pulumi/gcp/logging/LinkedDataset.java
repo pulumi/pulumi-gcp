@@ -146,12 +146,16 @@ public class LinkedDataset extends com.pulumi.resources.CustomResource {
     /**
      * The bucket to which the linked dataset is attached.
      * 
+     * ***
+     * 
      */
     @Export(name="bucket", type=String.class, parameters={})
     private Output<String> bucket;
 
     /**
      * @return The bucket to which the linked dataset is attached.
+     * 
+     * ***
      * 
      */
     public Output<String> bucket() {

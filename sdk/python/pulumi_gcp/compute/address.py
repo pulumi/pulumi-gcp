@@ -44,6 +44,9 @@ class AddressArgs:
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field
                can only be used with INTERNAL type with the VPC_PEERING and
                IPSEC_INTERCONNECT purposes.
@@ -66,6 +69,8 @@ class AddressArgs:
                * PRIVATE_SERVICE_CONNECT for a private network address that is used to
                configure Private Service Connect. Only global internal addresses can use
                this purpose.
+               
+               This should only be set when using an Internal address.
         :param pulumi.Input[str] region: The Region in which the created address should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] subnetwork: The URL of the subnetwork in which to reserve the address. If an IP
@@ -162,6 +167,9 @@ class AddressArgs:
         which means the first character must be a lowercase letter, and all
         following characters must be a dash, lowercase letter, or digit,
         except the last character, which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -239,6 +247,8 @@ class AddressArgs:
         * PRIVATE_SERVICE_CONNECT for a private network address that is used to
         configure Private Service Connect. Only global internal addresses can use
         this purpose.
+
+        This should only be set when using an Internal address.
         """
         return pulumi.get(self, "purpose")
 
@@ -314,6 +324,9 @@ class _AddressState:
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field
                can only be used with INTERNAL type with the VPC_PEERING and
                IPSEC_INTERCONNECT purposes.
@@ -336,6 +349,8 @@ class _AddressState:
                * PRIVATE_SERVICE_CONNECT for a private network address that is used to
                configure Private Service Connect. Only global internal addresses can use
                this purpose.
+               
+               This should only be set when using an Internal address.
         :param pulumi.Input[str] region: The Region in which the created address should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -466,6 +481,9 @@ class _AddressState:
         which means the first character must be a lowercase letter, and all
         following characters must be a dash, lowercase letter, or digit,
         except the last character, which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -543,6 +561,8 @@ class _AddressState:
         * PRIVATE_SERVICE_CONNECT for a private network address that is used to
         configure Private Service Connect. Only global internal addresses can use
         this purpose.
+
+        This should only be set when using an Internal address.
         """
         return pulumi.get(self, "purpose")
 
@@ -756,6 +776,9 @@ class Address(pulumi.CustomResource):
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field
                can only be used with INTERNAL type with the VPC_PEERING and
                IPSEC_INTERCONNECT purposes.
@@ -778,6 +801,8 @@ class Address(pulumi.CustomResource):
                * PRIVATE_SERVICE_CONNECT for a private network address that is used to
                configure Private Service Connect. Only global internal addresses can use
                this purpose.
+               
+               This should only be set when using an Internal address.
         :param pulumi.Input[str] region: The Region in which the created address should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] subnetwork: The URL of the subnetwork in which to reserve the address. If an IP
@@ -1011,6 +1036,9 @@ class Address(pulumi.CustomResource):
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+               
+               
+               - - -
         :param pulumi.Input[str] network: The URL of the network in which to reserve the address. This field
                can only be used with INTERNAL type with the VPC_PEERING and
                IPSEC_INTERCONNECT purposes.
@@ -1033,6 +1061,8 @@ class Address(pulumi.CustomResource):
                * PRIVATE_SERVICE_CONNECT for a private network address that is used to
                configure Private Service Connect. Only global internal addresses can use
                this purpose.
+               
+               This should only be set when using an Internal address.
         :param pulumi.Input[str] region: The Region in which the created address should reside.
                If it is not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -1128,6 +1158,9 @@ class Address(pulumi.CustomResource):
         which means the first character must be a lowercase letter, and all
         following characters must be a dash, lowercase letter, or digit,
         except the last character, which cannot be a dash.
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1185,6 +1218,8 @@ class Address(pulumi.CustomResource):
         * PRIVATE_SERVICE_CONNECT for a private network address that is used to
         configure Private Service Connect. Only global internal addresses can use
         this purpose.
+
+        This should only be set when using an Internal address.
         """
         return pulumi.get(self, "purpose")
 

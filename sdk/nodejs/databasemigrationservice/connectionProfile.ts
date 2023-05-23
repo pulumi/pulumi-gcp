@@ -7,6 +7,18 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A connection profile definition.
+ *
+ * To get more information about ConnectionProfile, see:
+ *
+ * * [API documentation](https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.connectionProfiles/create)
+ * * How-to Guides
+ *     * [Database Migration](https://cloud.google.com/database-migration/docs/)
+ *
+ * > **Warning:** All arguments including the following potentially sensitive
+ * values will be stored in the raw state as plain text: `mysql.password`, `mysql.ssl.client_key`, `mysql.ssl.client_certificate`, `mysql.ssl.ca_certificate`, `postgresql.password`, `postgresql.ssl.client_key`, `postgresql.ssl.client_certificate`, `postgresql.ssl.ca_certificate`, `cloudsql.settings.root_password`, `alloydb.settings.initial_user.password`.
+ * Read more about sensitive data in state.
+ *
  * ## Example Usage
  * ### Database Migration Service Connection Profile Cloudsql
  *
@@ -194,6 +206,9 @@ export class ConnectionProfile extends pulumi.CustomResource {
     public readonly cloudsql!: pulumi.Output<outputs.databasemigrationservice.ConnectionProfileCloudsql | undefined>;
     /**
      * The ID of the connection profile.
+     *
+     *
+     * - - -
      */
     public readonly connectionProfileId!: pulumi.Output<string>;
     /**
@@ -313,6 +328,9 @@ export interface ConnectionProfileState {
     cloudsql?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileCloudsql>;
     /**
      * The ID of the connection profile.
+     *
+     *
+     * - - -
      */
     connectionProfileId?: pulumi.Input<string>;
     /**
@@ -381,6 +399,9 @@ export interface ConnectionProfileArgs {
     cloudsql?: pulumi.Input<inputs.databasemigrationservice.ConnectionProfileCloudsql>;
     /**
      * The ID of the connection profile.
+     *
+     *
+     * - - -
      */
     connectionProfileId: pulumi.Input<string>;
     /**

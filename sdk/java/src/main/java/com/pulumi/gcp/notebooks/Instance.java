@@ -453,12 +453,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
     /**
      * A reference to the zone where the machine resides.
      * 
+     * ***
+     * 
      */
     @Export(name="location", type=String.class, parameters={})
     private Output<String> location;
 
     /**
      * @return A reference to the zone where the machine resides.
+     * 
+     * ***
      * 
      */
     public Output<String> location() {
@@ -617,16 +621,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a &#39;PROVISIONED&#39;
-     * state. If needed you can utilize &#39;terraform apply -refresh-only&#39; to await the population of this value.
+     * The proxy endpoint that is used to access the Jupyter notebook.
+     * Only returned when the resource is in a `PROVISIONED` state. If
+     * needed you can utilize `pulumi up -refresh-only` to await
+     * the population of this value.
      * 
      */
     @Export(name="proxyUri", type=String.class, parameters={})
     private Output<String> proxyUri;
 
     /**
-     * @return The proxy endpoint that is used to access the Jupyter notebook. Only returned when the resource is in a &#39;PROVISIONED&#39;
-     * state. If needed you can utilize &#39;terraform apply -refresh-only&#39; to await the population of this value.
+     * @return The proxy endpoint that is used to access the Jupyter notebook.
+     * Only returned when the resource is in a `PROVISIONED` state. If
+     * needed you can utilize `pulumi up -refresh-only` to await
+     * the population of this value.
      * 
      */
     public Output<String> proxyUri() {

@@ -30,6 +30,8 @@ class TransferJobArgs:
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input['TransferJobScheduleArgs'] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
+               
+               - - -
         :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
         """
         pulumi.set(__self__, "description", description)
@@ -97,6 +99,8 @@ class TransferJobArgs:
     def schedule(self) -> Optional[pulumi.Input['TransferJobScheduleArgs']]:
         """
         Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
+
+        - - -
         """
         return pulumi.get(self, "schedule")
 
@@ -141,6 +145,8 @@ class _TransferJobState:
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input['TransferJobScheduleArgs'] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
+               
+               - - -
         :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
         :param pulumi.Input['TransferJobTransferSpecArgs'] transfer_spec: Transfer specification. Structure documented below.
         """
@@ -255,6 +261,8 @@ class _TransferJobState:
     def schedule(self) -> Optional[pulumi.Input['TransferJobScheduleArgs']]:
         """
         Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
+
+        - - -
         """
         return pulumi.get(self, "schedule")
 
@@ -317,7 +325,7 @@ class TransferJob(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.storage.get_transfer_project_service_account(project=var["project"])
+        default = gcp.storage.get_transfer_project_service_account(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
         s3_backup_bucket_bucket = gcp.storage.Bucket("s3-backup-bucketBucket",
             storage_class="NEARLINE",
             project=var["project"],
@@ -344,10 +352,10 @@ class TransferJob(pulumi.CustomResource):
                     delete_objects_unique_in_sink=False,
                 ),
                 aws_s3_data_source=gcp.storage.TransferJobTransferSpecAwsS3DataSourceArgs(
-                    bucket_name=var["aws_s3_bucket"],
+                    bucket_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                     aws_access_key=gcp.storage.TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs(
-                        access_key_id=var["aws_access_key"],
-                        secret_access_key=var["aws_secret_key"],
+                        access_key_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        secret_access_key=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                     ),
                 ),
                 gcs_data_sink=gcp.storage.TransferJobTransferSpecGcsDataSinkArgs(
@@ -403,6 +411,8 @@ class TransferJob(pulumi.CustomResource):
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['TransferJobScheduleArgs']] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
+               
+               - - -
         :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
         :param pulumi.Input[pulumi.InputType['TransferJobTransferSpecArgs']] transfer_spec: Transfer specification. Structure documented below.
         """
@@ -430,7 +440,7 @@ class TransferJob(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.storage.get_transfer_project_service_account(project=var["project"])
+        default = gcp.storage.get_transfer_project_service_account(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
         s3_backup_bucket_bucket = gcp.storage.Bucket("s3-backup-bucketBucket",
             storage_class="NEARLINE",
             project=var["project"],
@@ -457,10 +467,10 @@ class TransferJob(pulumi.CustomResource):
                     delete_objects_unique_in_sink=False,
                 ),
                 aws_s3_data_source=gcp.storage.TransferJobTransferSpecAwsS3DataSourceArgs(
-                    bucket_name=var["aws_s3_bucket"],
+                    bucket_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                     aws_access_key=gcp.storage.TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs(
-                        access_key_id=var["aws_access_key"],
-                        secret_access_key=var["aws_secret_key"],
+                        access_key_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        secret_access_key=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
                     ),
                 ),
                 gcs_data_sink=gcp.storage.TransferJobTransferSpecGcsDataSinkArgs(
@@ -589,6 +599,8 @@ class TransferJob(pulumi.CustomResource):
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['TransferJobScheduleArgs']] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
+               
+               - - -
         :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
         :param pulumi.Input[pulumi.InputType['TransferJobTransferSpecArgs']] transfer_spec: Transfer specification. Structure documented below.
         """
@@ -670,6 +682,8 @@ class TransferJob(pulumi.CustomResource):
     def schedule(self) -> pulumi.Output[Optional['outputs.TransferJobSchedule']]:
         """
         Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below.
+
+        - - -
         """
         return pulumi.get(self, "schedule")
 

@@ -11,6 +11,18 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A managed alloydb cluster.
+//
+// To get more information about Cluster, see:
+//
+// * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters/create)
+// * How-to Guides
+//   - [AlloyDB](https://cloud.google.com/alloydb/docs/)
+//
+// > **Warning:** All arguments including the following potentially sensitive
+// values will be stored in the raw state as plain text: `initial_user.password`.
+// Read more about sensitive data in state.
+//
 // ## Example Usage
 // ### Alloydb Cluster Basic
 //
@@ -109,6 +121,8 @@ type Cluster struct {
 	// User-defined labels for the alloydb cluster.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the alloydb cluster should reside.
+	//
+	// ***
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Cluster created via DMS migration.
 	// Structure is documented below.
@@ -188,6 +202,8 @@ type clusterState struct {
 	// User-defined labels for the alloydb cluster.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the alloydb cluster should reside.
+	//
+	// ***
 	Location *string `pulumi:"location"`
 	// Cluster created via DMS migration.
 	// Structure is documented below.
@@ -230,6 +246,8 @@ type ClusterState struct {
 	// User-defined labels for the alloydb cluster.
 	Labels pulumi.StringMapInput
 	// The location where the alloydb cluster should reside.
+	//
+	// ***
 	Location pulumi.StringPtrInput
 	// Cluster created via DMS migration.
 	// Structure is documented below.
@@ -268,6 +286,8 @@ type clusterArgs struct {
 	// User-defined labels for the alloydb cluster.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the alloydb cluster should reside.
+	//
+	// ***
 	Location string `pulumi:"location"`
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
@@ -296,6 +316,8 @@ type ClusterArgs struct {
 	// User-defined labels for the alloydb cluster.
 	Labels pulumi.StringMapInput
 	// The location where the alloydb cluster should reside.
+	//
+	// ***
 	Location pulumi.StringInput
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
@@ -444,6 +466,8 @@ func (o ClusterOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The location where the alloydb cluster should reside.
+//
+// ***
 func (o ClusterOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }

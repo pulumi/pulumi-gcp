@@ -23,6 +23,9 @@ class DefaultSupportedIdpConfigArgs:
         The set of arguments for constructing a DefaultSupportedIdpConfig resource.
         :param pulumi.Input[str] client_id: OAuth client ID
         :param pulumi.Input[str] client_secret: OAuth client secret
+               
+               
+               - - -
         :param pulumi.Input[str] idp_id: ID of the IDP. Possible values include:
                * `apple.com`
                * `facebook.com`
@@ -63,6 +66,9 @@ class DefaultSupportedIdpConfigArgs:
     def client_secret(self) -> pulumi.Input[str]:
         """
         OAuth client secret
+
+
+        - - -
         """
         return pulumi.get(self, "client_secret")
 
@@ -131,6 +137,9 @@ class _DefaultSupportedIdpConfigState:
         Input properties used for looking up and filtering DefaultSupportedIdpConfig resources.
         :param pulumi.Input[str] client_id: OAuth client ID
         :param pulumi.Input[str] client_secret: OAuth client secret
+               
+               
+               - - -
         :param pulumi.Input[bool] enabled: If this IDP allows the user to sign in
         :param pulumi.Input[str] idp_id: ID of the IDP. Possible values include:
                * `apple.com`
@@ -177,6 +186,9 @@ class _DefaultSupportedIdpConfigState:
     def client_secret(self) -> Optional[pulumi.Input[str]]:
         """
         OAuth client secret
+
+
+        - - -
         """
         return pulumi.get(self, "client_secret")
 
@@ -296,6 +308,9 @@ class DefaultSupportedIdpConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] client_id: OAuth client ID
         :param pulumi.Input[str] client_secret: OAuth client secret
+               
+               
+               - - -
         :param pulumi.Input[bool] enabled: If this IDP allows the user to sign in
         :param pulumi.Input[str] idp_id: ID of the IDP. Possible values include:
                * `apple.com`
@@ -420,6 +435,9 @@ class DefaultSupportedIdpConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] client_id: OAuth client ID
         :param pulumi.Input[str] client_secret: OAuth client secret
+               
+               
+               - - -
         :param pulumi.Input[bool] enabled: If this IDP allows the user to sign in
         :param pulumi.Input[str] idp_id: ID of the IDP. Possible values include:
                * `apple.com`
@@ -461,6 +479,9 @@ class DefaultSupportedIdpConfig(pulumi.CustomResource):
     def client_secret(self) -> pulumi.Output[str]:
         """
         OAuth client secret
+
+
+        - - -
         """
         return pulumi.get(self, "client_secret")
 

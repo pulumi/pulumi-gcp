@@ -132,6 +132,10 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The list of labels (key/value pairs) to add to the job.
+        /// 
+        /// * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+        /// 
+        /// * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -275,6 +279,10 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The list of labels (key/value pairs) to add to the job.
+        /// 
+        /// * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+        /// 
+        /// * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -389,6 +397,10 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The list of labels (key/value pairs) to add to the job.
+        /// 
+        /// * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+        /// 
+        /// * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
         /// </summary>
         public InputMap<string> Labels
         {

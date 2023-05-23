@@ -35,12 +35,20 @@ public final class DatabaseInstanceSettingsLocationPreferenceArgs extends com.pu
     /**
      * The preferred Compute Engine zone for the secondary/failover.
      * 
+     * The optional `settings.maintenance_window` subblock for instances declares a one-hour
+     * [maintenance window](https://cloud.google.com/sql/docs/instance-settings?hl=en#maintenance-window-2ndgen)
+     * when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time. It supports:
+     * 
      */
     @Import(name="secondaryZone")
     private @Nullable Output<String> secondaryZone;
 
     /**
      * @return The preferred Compute Engine zone for the secondary/failover.
+     * 
+     * The optional `settings.maintenance_window` subblock for instances declares a one-hour
+     * [maintenance window](https://cloud.google.com/sql/docs/instance-settings?hl=en#maintenance-window-2ndgen)
+     * when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time. It supports:
      * 
      */
     public Optional<Output<String>> secondaryZone() {
@@ -116,6 +124,10 @@ public final class DatabaseInstanceSettingsLocationPreferenceArgs extends com.pu
         /**
          * @param secondaryZone The preferred Compute Engine zone for the secondary/failover.
          * 
+         * The optional `settings.maintenance_window` subblock for instances declares a one-hour
+         * [maintenance window](https://cloud.google.com/sql/docs/instance-settings?hl=en#maintenance-window-2ndgen)
+         * when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time. It supports:
+         * 
          * @return builder
          * 
          */
@@ -126,6 +138,10 @@ public final class DatabaseInstanceSettingsLocationPreferenceArgs extends com.pu
 
         /**
          * @param secondaryZone The preferred Compute Engine zone for the secondary/failover.
+         * 
+         * The optional `settings.maintenance_window` subblock for instances declares a one-hour
+         * [maintenance window](https://cloud.google.com/sql/docs/instance-settings?hl=en#maintenance-window-2ndgen)
+         * when an Instance can automatically restart to apply updates. The maintenance window is specified in UTC time. It supports:
          * 
          * @return builder
          * 

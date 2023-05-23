@@ -39,6 +39,9 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         /// (Output)
         /// Output only. Stores timing information for pushing all artifact objects.
         /// Structure is documented below.
+        /// 
+        /// 
+        /// &lt;a name="nested_timing"&gt;&lt;/a&gt;The `timing` block contains:
         /// </summary>
         public InputList<Inputs.TriggerBuildArtifactsObjectsTimingArgs> Timings
         {

@@ -132,12 +132,16 @@ public class SshPublicKey extends com.pulumi.resources.CustomResource {
     /**
      * The user email.
      * 
+     * ***
+     * 
      */
     @Export(name="user", type=String.class, parameters={})
     private Output<String> user;
 
     /**
      * @return The user email.
+     * 
+     * ***
      * 
      */
     public Output<String> user() {

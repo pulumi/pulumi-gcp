@@ -86,6 +86,7 @@ public final class GameServerConfigState extends com.pulumi.resources.ResourceAr
     /**
      * The labels associated with this game server config. Each label is a
      * key-value pair.
+     * 
      * (Optional)
      * Set of labels to group by.
      * 
@@ -96,6 +97,7 @@ public final class GameServerConfigState extends com.pulumi.resources.ResourceAr
     /**
      * @return The labels associated with this game server config. Each label is a
      * key-value pair.
+     * 
      * (Optional)
      * Set of labels to group by.
      * 
@@ -121,6 +123,9 @@ public final class GameServerConfigState extends com.pulumi.resources.ResourceAr
 
     /**
      * The name of the FleetConfig.
+     * 
+     * ***
+     * 
      * (Required)
      * The name of the ScalingConfig
      * 
@@ -130,6 +135,9 @@ public final class GameServerConfigState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The name of the FleetConfig.
+     * 
+     * ***
+     * 
      * (Required)
      * The name of the ScalingConfig
      * 
@@ -307,6 +315,7 @@ public final class GameServerConfigState extends com.pulumi.resources.ResourceAr
         /**
          * @param labels The labels associated with this game server config. Each label is a
          * key-value pair.
+         * 
          * (Optional)
          * Set of labels to group by.
          * 
@@ -321,6 +330,7 @@ public final class GameServerConfigState extends com.pulumi.resources.ResourceAr
         /**
          * @param labels The labels associated with this game server config. Each label is a
          * key-value pair.
+         * 
          * (Optional)
          * Set of labels to group by.
          * 
@@ -354,6 +364,9 @@ public final class GameServerConfigState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param name The name of the FleetConfig.
+         * 
+         * ***
+         * 
          * (Required)
          * The name of the ScalingConfig
          * 
@@ -367,6 +380,9 @@ public final class GameServerConfigState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param name The name of the FleetConfig.
+         * 
+         * ***
+         * 
          * (Required)
          * The name of the ScalingConfig
          * 

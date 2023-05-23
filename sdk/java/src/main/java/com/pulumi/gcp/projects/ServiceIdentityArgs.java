@@ -35,12 +35,16 @@ public final class ServiceIdentityArgs extends com.pulumi.resources.ResourceArgs
     /**
      * The service to generate identity for.
      * 
+     * ***
+     * 
      */
     @Import(name="service", required=true)
     private Output<String> service;
 
     /**
      * @return The service to generate identity for.
+     * 
+     * ***
      * 
      */
     public Output<String> service() {
@@ -98,6 +102,8 @@ public final class ServiceIdentityArgs extends com.pulumi.resources.ResourceArgs
         /**
          * @param service The service to generate identity for.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -108,6 +114,8 @@ public final class ServiceIdentityArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param service The service to generate identity for.
+         * 
+         * ***
          * 
          * @return builder
          * 

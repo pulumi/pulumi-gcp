@@ -36,12 +36,16 @@ public final class GlobalNetworkEndpointState extends com.pulumi.resources.Resou
     /**
      * The global network endpoint group this endpoint is part of.
      * 
+     * ***
+     * 
      */
     @Import(name="globalNetworkEndpointGroup")
     private @Nullable Output<String> globalNetworkEndpointGroup;
 
     /**
      * @return The global network endpoint group this endpoint is part of.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> globalNetworkEndpointGroup() {
@@ -149,6 +153,8 @@ public final class GlobalNetworkEndpointState extends com.pulumi.resources.Resou
         /**
          * @param globalNetworkEndpointGroup The global network endpoint group this endpoint is part of.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -159,6 +165,8 @@ public final class GlobalNetworkEndpointState extends com.pulumi.resources.Resou
 
         /**
          * @param globalNetworkEndpointGroup The global network endpoint group this endpoint is part of.
+         * 
+         * ***
          * 
          * @return builder
          * 

@@ -22,6 +22,9 @@ class TagValueArgs:
         :param pulumi.Input[str] parent: Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
         :param pulumi.Input[str] short_name: Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
                The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               
+               - - -
         :param pulumi.Input[str] description: User-assigned description of the TagValue. Must not exceed 256 characters.
         """
         pulumi.set(__self__, "parent", parent)
@@ -47,6 +50,9 @@ class TagValueArgs:
         """
         Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
         The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+
+        - - -
         """
         return pulumi.get(self, "short_name")
 
@@ -87,6 +93,9 @@ class _TagValueState:
         :param pulumi.Input[str] parent: Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
         :param pulumi.Input[str] short_name: Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
                The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               
+               - - -
         :param pulumi.Input[str] update_time: Output only. Update time.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -172,6 +181,9 @@ class _TagValueState:
         """
         Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
         The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+
+        - - -
         """
         return pulumi.get(self, "short_name")
 
@@ -246,6 +258,9 @@ class TagValue(pulumi.CustomResource):
         :param pulumi.Input[str] parent: Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
         :param pulumi.Input[str] short_name: Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
                The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               
+               - - -
         """
         ...
     @overload
@@ -361,6 +376,9 @@ class TagValue(pulumi.CustomResource):
         :param pulumi.Input[str] parent: Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
         :param pulumi.Input[str] short_name: Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
                The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+               
+               
+               - - -
         :param pulumi.Input[str] update_time: Output only. Update time.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
@@ -424,6 +442,9 @@ class TagValue(pulumi.CustomResource):
         """
         Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
         The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+
+
+        - - -
         """
         return pulumi.get(self, "short_name")
 

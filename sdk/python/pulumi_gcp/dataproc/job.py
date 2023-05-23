@@ -39,6 +39,10 @@ class JobArgs:
         :param pulumi.Input['JobHadoopConfigArgs'] hadoop_config: The config of Hadoop job
         :param pulumi.Input['JobHiveConfigArgs'] hive_config: The config of hive job
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of labels (key/value pairs) to add to the job.
+               
+               * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+               
+               * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
         :param pulumi.Input['JobPigConfigArgs'] pig_config: The config of pag job.
         :param pulumi.Input['JobPrestoConfigArgs'] presto_config: The config of presto job
         :param pulumi.Input[str] project: The project in which the `cluster` can be found and jobs
@@ -134,6 +138,10 @@ class JobArgs:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The list of labels (key/value pairs) to add to the job.
+
+        * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+
+        * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
         """
         return pulumi.get(self, "labels")
 
@@ -282,6 +290,10 @@ class _JobState:
         :param pulumi.Input['JobHadoopConfigArgs'] hadoop_config: The config of Hadoop job
         :param pulumi.Input['JobHiveConfigArgs'] hive_config: The config of hive job
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of labels (key/value pairs) to add to the job.
+               
+               * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+               
+               * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
         :param pulumi.Input['JobPigConfigArgs'] pig_config: The config of pag job.
         :param pulumi.Input['JobPlacementArgs'] placement: The config of job placement.
         :param pulumi.Input['JobPrestoConfigArgs'] presto_config: The config of presto job
@@ -398,6 +410,10 @@ class _JobState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         The list of labels (key/value pairs) to add to the job.
+
+        * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+
+        * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
         """
         return pulumi.get(self, "labels")
 
@@ -622,6 +638,10 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobHadoopConfigArgs']] hadoop_config: The config of Hadoop job
         :param pulumi.Input[pulumi.InputType['JobHiveConfigArgs']] hive_config: The config of hive job
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of labels (key/value pairs) to add to the job.
+               
+               * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+               
+               * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
         :param pulumi.Input[pulumi.InputType['JobPigConfigArgs']] pig_config: The config of pag job.
         :param pulumi.Input[pulumi.InputType['JobPlacementArgs']] placement: The config of job placement.
         :param pulumi.Input[pulumi.InputType['JobPrestoConfigArgs']] presto_config: The config of presto job
@@ -794,6 +814,10 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobHadoopConfigArgs']] hadoop_config: The config of Hadoop job
         :param pulumi.Input[pulumi.InputType['JobHiveConfigArgs']] hive_config: The config of hive job
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The list of labels (key/value pairs) to add to the job.
+               
+               * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+               
+               * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
         :param pulumi.Input[pulumi.InputType['JobPigConfigArgs']] pig_config: The config of pag job.
         :param pulumi.Input[pulumi.InputType['JobPlacementArgs']] placement: The config of job placement.
         :param pulumi.Input[pulumi.InputType['JobPrestoConfigArgs']] presto_config: The config of presto job
@@ -878,6 +902,10 @@ class Job(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         The list of labels (key/value pairs) to add to the job.
+
+        * `scheduling.max_failures_per_hour` - (Required) Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
+
+        * `scheduling.max_failures_total` - (Required) Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.
         """
         return pulumi.get(self, "labels")
 

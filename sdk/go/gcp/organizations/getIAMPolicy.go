@@ -90,6 +90,9 @@ type LookupIAMPolicyArgs struct {
 	// A nested configuration block (described below)
 	// defining a binding to be included in the policy document. Multiple
 	// `binding` arguments are supported.
+	//
+	// Each document configuration must have one or more `binding` blocks, which
+	// each accept the following arguments:
 	Bindings []GetIAMPolicyBinding `pulumi:"bindings"`
 }
 
@@ -124,6 +127,9 @@ type LookupIAMPolicyOutputArgs struct {
 	// A nested configuration block (described below)
 	// defining a binding to be included in the policy document. Multiple
 	// `binding` arguments are supported.
+	//
+	// Each document configuration must have one or more `binding` blocks, which
+	// each accept the following arguments:
 	Bindings GetIAMPolicyBindingArrayInput `pulumi:"bindings"`
 }
 

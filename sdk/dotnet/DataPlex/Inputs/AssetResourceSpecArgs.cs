@@ -20,6 +20,8 @@ namespace Pulumi.Gcp.DataPlex.Inputs
 
         /// <summary>
         /// Required. Immutable. Type of resource. Possible values: STORAGE_BUCKET, BIGQUERY_DATASET
+        /// 
+        /// - - -
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

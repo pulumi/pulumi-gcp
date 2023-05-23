@@ -38,6 +38,11 @@ public final class RegionInstanceTemplateServiceAccountArgs extends com.pulumi.r
      * short names are supported. To allow full access to all Cloud APIs, use the
      * `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
      * 
+     * The [service accounts documentation](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam)
+     * explains that access scopes are the legacy method of specifying permissions for your instance.
+     * If you are following best practices and using IAM roles to grant permissions to service accounts,
+     * then you can define this field as an empty list.
+     * 
      */
     @Import(name="scopes", required=true)
     private Output<List<String>> scopes;
@@ -46,6 +51,11 @@ public final class RegionInstanceTemplateServiceAccountArgs extends com.pulumi.r
      * @return A list of service scopes. Both OAuth2 URLs and gcloud
      * short names are supported. To allow full access to all Cloud APIs, use the
      * `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+     * 
+     * The [service accounts documentation](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam)
+     * explains that access scopes are the legacy method of specifying permissions for your instance.
+     * If you are following best practices and using IAM roles to grant permissions to service accounts,
+     * then you can define this field as an empty list.
      * 
      */
     public Output<List<String>> scopes() {
@@ -105,6 +115,11 @@ public final class RegionInstanceTemplateServiceAccountArgs extends com.pulumi.r
          * short names are supported. To allow full access to all Cloud APIs, use the
          * `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
          * 
+         * The [service accounts documentation](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam)
+         * explains that access scopes are the legacy method of specifying permissions for your instance.
+         * If you are following best practices and using IAM roles to grant permissions to service accounts,
+         * then you can define this field as an empty list.
+         * 
          * @return builder
          * 
          */
@@ -118,6 +133,11 @@ public final class RegionInstanceTemplateServiceAccountArgs extends com.pulumi.r
          * short names are supported. To allow full access to all Cloud APIs, use the
          * `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
          * 
+         * The [service accounts documentation](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam)
+         * explains that access scopes are the legacy method of specifying permissions for your instance.
+         * If you are following best practices and using IAM roles to grant permissions to service accounts,
+         * then you can define this field as an empty list.
+         * 
          * @return builder
          * 
          */
@@ -129,6 +149,11 @@ public final class RegionInstanceTemplateServiceAccountArgs extends com.pulumi.r
          * @param scopes A list of service scopes. Both OAuth2 URLs and gcloud
          * short names are supported. To allow full access to all Cloud APIs, use the
          * `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+         * 
+         * The [service accounts documentation](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam)
+         * explains that access scopes are the legacy method of specifying permissions for your instance.
+         * If you are following best practices and using IAM roles to grant permissions to service accounts,
+         * then you can define this field as an empty list.
          * 
          * @return builder
          * 

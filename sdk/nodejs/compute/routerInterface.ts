@@ -103,6 +103,10 @@ export class RouterInterface extends pulumi.CustomResource {
     /**
      * The name of the router this interface will be attached to.
      * Changing this forces a new interface to be created.
+     *
+     * In addition to the above required fields, a router interface must have specified either `ipRange` or exactly one of `vpnTunnel`, `interconnectAttachment` or `subnetwork`, or both.
+     *
+     * - - -
      */
     public readonly router!: pulumi.Output<string>;
     /**
@@ -204,6 +208,10 @@ export interface RouterInterfaceState {
     /**
      * The name of the router this interface will be attached to.
      * Changing this forces a new interface to be created.
+     *
+     * In addition to the above required fields, a router interface must have specified either `ipRange` or exactly one of `vpnTunnel`, `interconnectAttachment` or `subnetwork`, or both.
+     *
+     * - - -
      */
     router?: pulumi.Input<string>;
     /**
@@ -262,6 +270,10 @@ export interface RouterInterfaceArgs {
     /**
      * The name of the router this interface will be attached to.
      * Changing this forces a new interface to be created.
+     *
+     * In addition to the above required fields, a router interface must have specified either `ipRange` or exactly one of `vpnTunnel`, `interconnectAttachment` or `subnetwork`, or both.
+     *
+     * - - -
      */
     router: pulumi.Input<string>;
     /**

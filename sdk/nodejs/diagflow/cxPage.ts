@@ -127,6 +127,9 @@ export class CxPage extends pulumi.CustomResource {
 
     /**
      * The human-readable name of the page, unique within the agent.
+     *
+     *
+     * - - -
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -162,6 +165,7 @@ export class CxPage extends pulumi.CustomResource {
     /**
      * (Output)
      * The unique identifier of this transition route.
+     *
      * (Output)
      * The unique identifier of this event handler.
      */
@@ -239,6 +243,9 @@ export class CxPage extends pulumi.CustomResource {
 export interface CxPageState {
     /**
      * The human-readable name of the page, unique within the agent.
+     *
+     *
+     * - - -
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -274,6 +281,7 @@ export interface CxPageState {
     /**
      * (Output)
      * The unique identifier of this transition route.
+     *
      * (Output)
      * The unique identifier of this event handler.
      */
@@ -310,6 +318,9 @@ export interface CxPageState {
 export interface CxPageArgs {
     /**
      * The human-readable name of the page, unique within the agent.
+     *
+     *
+     * - - -
      */
     displayName: pulumi.Input<string>;
     /**

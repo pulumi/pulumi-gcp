@@ -202,6 +202,8 @@ type Function struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The runtime in which the function is going to run.
 	// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+	//
+	// ***
 	Runtime pulumi.StringOutput `pulumi:"runtime"`
 	// Secret environment variables configuration. Structure is documented below.
 	SecretEnvironmentVariables FunctionSecretEnvironmentVariableArrayOutput `pulumi:"secretEnvironmentVariables"`
@@ -299,6 +301,8 @@ type functionState struct {
 	Region *string `pulumi:"region"`
 	// The runtime in which the function is going to run.
 	// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+	//
+	// ***
 	Runtime *string `pulumi:"runtime"`
 	// Secret environment variables configuration. Structure is documented below.
 	SecretEnvironmentVariables []FunctionSecretEnvironmentVariable `pulumi:"secretEnvironmentVariables"`
@@ -365,6 +369,8 @@ type FunctionState struct {
 	Region pulumi.StringPtrInput
 	// The runtime in which the function is going to run.
 	// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+	//
+	// ***
 	Runtime pulumi.StringPtrInput
 	// Secret environment variables configuration. Structure is documented below.
 	SecretEnvironmentVariables FunctionSecretEnvironmentVariableArrayInput
@@ -435,6 +441,8 @@ type functionArgs struct {
 	Region *string `pulumi:"region"`
 	// The runtime in which the function is going to run.
 	// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+	//
+	// ***
 	Runtime string `pulumi:"runtime"`
 	// Secret environment variables configuration. Structure is documented below.
 	SecretEnvironmentVariables []FunctionSecretEnvironmentVariable `pulumi:"secretEnvironmentVariables"`
@@ -502,6 +510,8 @@ type FunctionArgs struct {
 	Region pulumi.StringPtrInput
 	// The runtime in which the function is going to run.
 	// Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+	//
+	// ***
 	Runtime pulumi.StringInput
 	// Secret environment variables configuration. Structure is documented below.
 	SecretEnvironmentVariables FunctionSecretEnvironmentVariableArrayInput
@@ -711,6 +721,8 @@ func (o FunctionOutput) Region() pulumi.StringOutput {
 
 // The runtime in which the function is going to run.
 // Eg. `"nodejs16"`, `"python39"`, `"dotnet3"`, `"go116"`, `"java11"`, `"ruby30"`, `"php74"`, etc. Check the [official doc](https://cloud.google.com/functions/docs/concepts/exec#runtimes) for the up-to-date list.
+//
+// ***
 func (o FunctionOutput) Runtime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Runtime }).(pulumi.StringOutput)
 }

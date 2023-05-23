@@ -34,12 +34,16 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The parent of the resource.
      * 
+     * ***
+     * 
      */
     @Import(name="parent", required=true)
     private Output<String> parent;
 
     /**
      * @return The parent of the resource.
+     * 
+     * ***
      * 
      */
     public Output<String> parent() {
@@ -111,6 +115,8 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param parent The parent of the resource.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -121,6 +127,8 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param parent The parent of the resource.
+         * 
+         * ***
          * 
          * @return builder
          * 

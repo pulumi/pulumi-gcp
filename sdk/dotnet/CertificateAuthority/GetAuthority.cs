@@ -85,6 +85,8 @@ namespace Pulumi.Gcp.CertificateAuthority
     {
         /// <summary>
         /// ID of the certificate authority.
+        /// 
+        /// - - -
         /// </summary>
         [Input("certificateAuthorityId")]
         public string? CertificateAuthorityId { get; set; }
@@ -118,6 +120,8 @@ namespace Pulumi.Gcp.CertificateAuthority
     {
         /// <summary>
         /// ID of the certificate authority.
+        /// 
+        /// - - -
         /// </summary>
         [Input("certificateAuthorityId")]
         public Input<string>? CertificateAuthorityId { get; set; }

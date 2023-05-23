@@ -35,12 +35,16 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
      * 
+     * ***
+     * 
      */
     @Import(name="deletionProtection")
     private @Nullable Output<String> deletionProtection;
 
     /**
      * @return A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> deletionProtection() {
@@ -176,6 +180,8 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param deletionProtection A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -186,6 +192,8 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param deletionProtection A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
+         * 
+         * ***
          * 
          * @return builder
          * 

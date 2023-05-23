@@ -167,12 +167,16 @@ type SSLCertificate struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// These are in the same namespace as the managed SSL certificates.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Creates a unique name beginning with the
 	// specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringOutput `pulumi:"namePrefix"`
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
+	//
+	// ***
 	PrivateKey pulumi.StringOutput `pulumi:"privateKey"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -247,12 +251,16 @@ type sslcertificateState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// These are in the same namespace as the managed SSL certificates.
 	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the
 	// specified prefix. Conflicts with `name`.
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
+	//
+	// ***
 	PrivateKey *string `pulumi:"privateKey"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -282,12 +290,16 @@ type SSLCertificateState struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// These are in the same namespace as the managed SSL certificates.
 	Name pulumi.StringPtrInput
 	// Creates a unique name beginning with the
 	// specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringPtrInput
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
+	//
+	// ***
 	PrivateKey pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -315,12 +327,16 @@ type sslcertificateArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// These are in the same namespace as the managed SSL certificates.
 	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the
 	// specified prefix. Conflicts with `name`.
 	NamePrefix *string `pulumi:"namePrefix"`
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
+	//
+	// ***
 	PrivateKey string `pulumi:"privateKey"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -343,12 +359,16 @@ type SSLCertificateArgs struct {
 	// first character must be a lowercase letter, and all following
 	// characters must be a dash, lowercase letter, or digit, except the last
 	// character, which cannot be a dash.
+	//
+	// These are in the same namespace as the managed SSL certificates.
 	Name pulumi.StringPtrInput
 	// Creates a unique name beginning with the
 	// specified prefix. Conflicts with `name`.
 	NamePrefix pulumi.StringPtrInput
 	// The write-only private key in PEM format.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
+	//
+	// ***
 	PrivateKey pulumi.StringInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -477,6 +497,8 @@ func (o SSLCertificateOutput) ExpireTime() pulumi.StringOutput {
 // first character must be a lowercase letter, and all following
 // characters must be a dash, lowercase letter, or digit, except the last
 // character, which cannot be a dash.
+//
+// These are in the same namespace as the managed SSL certificates.
 func (o SSLCertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SSLCertificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -489,6 +511,8 @@ func (o SSLCertificateOutput) NamePrefix() pulumi.StringOutput {
 
 // The write-only private key in PEM format.
 // **Note**: This property is sensitive and will not be displayed in the plan.
+//
+// ***
 func (o SSLCertificateOutput) PrivateKey() pulumi.StringOutput {
 	return o.ApplyT(func(v *SSLCertificate) pulumi.StringOutput { return v.PrivateKey }).(pulumi.StringOutput)
 }

@@ -259,6 +259,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Name or self link of a machine
         /// image to create the instance based on.
+        /// 
+        /// - - -
         /// </summary>
         [Output("sourceMachineImage")]
         public Output<string> SourceMachineImage { get; private set; } = null!;
@@ -278,6 +280,12 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The zone that the machine should be created in. If not
         /// set, the provider zone is used.
+        /// 
+        /// In addition to these, most* arguments from `gcp.compute.Instance` are supported
+        /// as a way to override the properties in the machine image. All exported attributes
+        /// from `gcp.compute.Instance` are likewise exported here.
+        /// 
+        /// &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "boot_disk", "attached_disk", and "scratch_disk" fields.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -506,6 +514,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Name or self link of a machine
         /// image to create the instance based on.
+        /// 
+        /// - - -
         /// </summary>
         [Input("sourceMachineImage", required: true)]
         public Input<string> SourceMachineImage { get; set; } = null!;
@@ -525,6 +535,12 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The zone that the machine should be created in. If not
         /// set, the provider zone is used.
+        /// 
+        /// In addition to these, most* arguments from `gcp.compute.Instance` are supported
+        /// as a way to override the properties in the machine image. All exported attributes
+        /// from `gcp.compute.Instance` are likewise exported here.
+        /// 
+        /// &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "boot_disk", "attached_disk", and "scratch_disk" fields.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
@@ -789,6 +805,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Name or self link of a machine
         /// image to create the instance based on.
+        /// 
+        /// - - -
         /// </summary>
         [Input("sourceMachineImage")]
         public Input<string>? SourceMachineImage { get; set; }
@@ -814,6 +832,12 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The zone that the machine should be created in. If not
         /// set, the provider zone is used.
+        /// 
+        /// In addition to these, most* arguments from `gcp.compute.Instance` are supported
+        /// as a way to override the properties in the machine image. All exported attributes
+        /// from `gcp.compute.Instance` are likewise exported here.
+        /// 
+        /// &gt; **Warning:** *Due to API limitations, disk overrides are currently disabled. This includes the "boot_disk", "attached_disk", and "scratch_disk" fields.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
