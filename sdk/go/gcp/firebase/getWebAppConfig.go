@@ -46,8 +46,7 @@ type GetWebAppConfigResult struct {
 	AuthDomain string `pulumi:"authDomain"`
 	// The default Firebase Realtime Database URL.
 	DatabaseUrl string `pulumi:"databaseUrl"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id          string `pulumi:"id"`
 	// The ID of the project's default GCP resource location. The location is one of the available GCP resource
 	// locations.
 	// This field is omitted if the default GCP resource location has not been finalized yet. To set your project's
@@ -127,7 +126,6 @@ func (o GetWebAppConfigResultOutput) DatabaseUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebAppConfigResult) string { return v.DatabaseUrl }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
 func (o GetWebAppConfigResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWebAppConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }

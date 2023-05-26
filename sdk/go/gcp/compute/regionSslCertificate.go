@@ -111,7 +111,7 @@ import (
 //			_, err = random.NewRandomId(ctx, "certificate", &random.RandomIdArgs{
 //				ByteLength: pulumi.Int(4),
 //				Prefix:     pulumi.String("my-certificate-"),
-//				Keepers: pulumi.AnyMap{
+//				Keepers: pulumi.StringMap{
 //					"private_key": filebase64sha256OrPanic("path/to/private.key"),
 //					"certificate": filebase64sha256OrPanic("path/to/certificate.crt"),
 //				},

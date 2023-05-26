@@ -64,9 +64,6 @@ export interface GetRecordSetArgs {
  * A collection of values returned by getRecordSet.
  */
 export interface GetRecordSetResult {
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
     readonly id: string;
     readonly managedZone: string;
     readonly name: string;

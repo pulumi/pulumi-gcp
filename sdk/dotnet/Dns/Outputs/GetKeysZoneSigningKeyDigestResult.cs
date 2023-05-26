@@ -16,17 +16,17 @@ namespace Pulumi.Gcp.Dns.Outputs
         /// <summary>
         /// The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
         /// </summary>
-        public readonly string? Digest;
+        public readonly string Digest;
         /// <summary>
         /// Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
         /// </summary>
-        public readonly string? Type;
+        public readonly string Type;
 
         [OutputConstructor]
         private GetKeysZoneSigningKeyDigestResult(
-            string? digest,
+            string digest,
 
-            string? type)
+            string type)
         {
             Digest = digest;
             Type = type;

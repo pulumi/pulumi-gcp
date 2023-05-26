@@ -23,10 +23,6 @@ public final class GetManagedZoneResult {
      * 
      */
     private String dnsName;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
     private Integer managedZoneId;
     private String name;
@@ -60,10 +56,6 @@ public final class GetManagedZoneResult {
     public String dnsName() {
         return this.dnsName;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }

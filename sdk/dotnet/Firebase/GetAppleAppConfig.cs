@@ -78,9 +78,6 @@ namespace Pulumi.Gcp.Firebase
         /// The filename that the configuration artifact for the IosApp is typically saved as.
         /// </summary>
         public readonly string ConfigFilename;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
         public readonly string? Project;
 

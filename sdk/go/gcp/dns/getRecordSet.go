@@ -74,7 +74,6 @@ type LookupRecordSetArgs struct {
 
 // A collection of values returned by getRecordSet.
 type LookupRecordSetResult struct {
-	// The provider-assigned unique ID for this managed resource.
 	Id          string  `pulumi:"id"`
 	ManagedZone string  `pulumi:"managedZone"`
 	Name        string  `pulumi:"name"`
@@ -130,7 +129,6 @@ func (o LookupRecordSetResultOutput) ToLookupRecordSetResultOutputWithContext(ct
 	return o
 }
 
-// The provider-assigned unique ID for this managed resource.
 func (o LookupRecordSetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRecordSetResult) string { return v.Id }).(pulumi.StringOutput)
 }

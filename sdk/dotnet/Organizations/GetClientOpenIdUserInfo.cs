@@ -60,9 +60,6 @@ namespace Pulumi.Gcp.Organizations
         /// The email of the account used by the provider to authenticate with GCP.
         /// </summary>
         public readonly string Email;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
 
         [OutputConstructor]

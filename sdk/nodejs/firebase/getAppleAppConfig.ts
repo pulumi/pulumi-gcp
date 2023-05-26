@@ -43,9 +43,6 @@ export interface GetAppleAppConfigResult {
      * The filename that the configuration artifact for the IosApp is typically saved as.
      */
     readonly configFilename: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
     readonly id: string;
     readonly project?: string;
 }

@@ -5051,9 +5051,9 @@ func (o GetKeysKeySigningKeyArrayOutput) Index(i pulumi.IntInput) GetKeysKeySign
 
 type GetKeysKeySigningKeyDigest struct {
 	// The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
-	Digest *string `pulumi:"digest"`
+	Digest string `pulumi:"digest"`
 	// Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
-	Type *string `pulumi:"type"`
+	Type string `pulumi:"type"`
 }
 
 // GetKeysKeySigningKeyDigestInput is an input type that accepts GetKeysKeySigningKeyDigestArgs and GetKeysKeySigningKeyDigestOutput values.
@@ -5069,9 +5069,9 @@ type GetKeysKeySigningKeyDigestInput interface {
 
 type GetKeysKeySigningKeyDigestArgs struct {
 	// The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
-	Digest pulumi.StringPtrInput `pulumi:"digest"`
+	Digest pulumi.StringInput `pulumi:"digest"`
 	// Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetKeysKeySigningKeyDigestArgs) ElementType() reflect.Type {
@@ -5126,13 +5126,13 @@ func (o GetKeysKeySigningKeyDigestOutput) ToGetKeysKeySigningKeyDigestOutputWith
 }
 
 // The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
-func (o GetKeysKeySigningKeyDigestOutput) Digest() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetKeysKeySigningKeyDigest) *string { return v.Digest }).(pulumi.StringPtrOutput)
+func (o GetKeysKeySigningKeyDigestOutput) Digest() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKeyDigest) string { return v.Digest }).(pulumi.StringOutput)
 }
 
 // Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
-func (o GetKeysKeySigningKeyDigestOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetKeysKeySigningKeyDigest) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o GetKeysKeySigningKeyDigestOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysKeySigningKeyDigest) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type GetKeysKeySigningKeyDigestArrayOutput struct{ *pulumi.OutputState }
@@ -5326,9 +5326,9 @@ func (o GetKeysZoneSigningKeyArrayOutput) Index(i pulumi.IntInput) GetKeysZoneSi
 
 type GetKeysZoneSigningKeyDigest struct {
 	// The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
-	Digest *string `pulumi:"digest"`
+	Digest string `pulumi:"digest"`
 	// Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
-	Type *string `pulumi:"type"`
+	Type string `pulumi:"type"`
 }
 
 // GetKeysZoneSigningKeyDigestInput is an input type that accepts GetKeysZoneSigningKeyDigestArgs and GetKeysZoneSigningKeyDigestOutput values.
@@ -5344,9 +5344,9 @@ type GetKeysZoneSigningKeyDigestInput interface {
 
 type GetKeysZoneSigningKeyDigestArgs struct {
 	// The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
-	Digest pulumi.StringPtrInput `pulumi:"digest"`
+	Digest pulumi.StringInput `pulumi:"digest"`
 	// Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetKeysZoneSigningKeyDigestArgs) ElementType() reflect.Type {
@@ -5401,13 +5401,13 @@ func (o GetKeysZoneSigningKeyDigestOutput) ToGetKeysZoneSigningKeyDigestOutputWi
 }
 
 // The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
-func (o GetKeysZoneSigningKeyDigestOutput) Digest() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetKeysZoneSigningKeyDigest) *string { return v.Digest }).(pulumi.StringPtrOutput)
+func (o GetKeysZoneSigningKeyDigestOutput) Digest() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKeyDigest) string { return v.Digest }).(pulumi.StringOutput)
 }
 
 // Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
-func (o GetKeysZoneSigningKeyDigestOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetKeysZoneSigningKeyDigest) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o GetKeysZoneSigningKeyDigestOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeysZoneSigningKeyDigest) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type GetKeysZoneSigningKeyDigestArrayOutput struct{ *pulumi.OutputState }
