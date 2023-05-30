@@ -6,6 +6,7 @@ package com.pulumi.gcp.monitoring.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.monitoring.outputs.AlertPolicyConditionConditionThresholdAggregation;
 import com.pulumi.gcp.monitoring.outputs.AlertPolicyConditionConditionThresholdDenominatorAggregation;
+import com.pulumi.gcp.monitoring.outputs.AlertPolicyConditionConditionThresholdForecastOptions;
 import com.pulumi.gcp.monitoring.outputs.AlertPolicyConditionConditionThresholdTrigger;
 import java.lang.Double;
 import java.lang.String;
@@ -130,6 +131,17 @@ public final class AlertPolicyConditionConditionThreshold {
      * 
      */
     private @Nullable String filter;
+    /**
+     * @return When this field is present, the `MetricThreshold`
+     * condition forecasts whether the time series is
+     * predicted to violate the threshold within the
+     * `forecastHorizon`. When this field is not set, the
+     * `MetricThreshold` tests the current value of the
+     * timeseries against the threshold.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable AlertPolicyConditionConditionThresholdForecastOptions forecastOptions;
     /**
      * @return A value against which to compare the time
      * series.
@@ -280,6 +292,19 @@ public final class AlertPolicyConditionConditionThreshold {
         return Optional.ofNullable(this.filter);
     }
     /**
+     * @return When this field is present, the `MetricThreshold`
+     * condition forecasts whether the time series is
+     * predicted to violate the threshold within the
+     * `forecastHorizon`. When this field is not set, the
+     * `MetricThreshold` tests the current value of the
+     * timeseries against the threshold.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<AlertPolicyConditionConditionThresholdForecastOptions> forecastOptions() {
+        return Optional.ofNullable(this.forecastOptions);
+    }
+    /**
      * @return A value against which to compare the time
      * series.
      * 
@@ -319,6 +344,7 @@ public final class AlertPolicyConditionConditionThreshold {
         private String duration;
         private @Nullable String evaluationMissingData;
         private @Nullable String filter;
+        private @Nullable AlertPolicyConditionConditionThresholdForecastOptions forecastOptions;
         private @Nullable Double thresholdValue;
         private @Nullable AlertPolicyConditionConditionThresholdTrigger trigger;
         public Builder() {}
@@ -331,6 +357,7 @@ public final class AlertPolicyConditionConditionThreshold {
     	      this.duration = defaults.duration;
     	      this.evaluationMissingData = defaults.evaluationMissingData;
     	      this.filter = defaults.filter;
+    	      this.forecastOptions = defaults.forecastOptions;
     	      this.thresholdValue = defaults.thresholdValue;
     	      this.trigger = defaults.trigger;
         }
@@ -377,6 +404,11 @@ public final class AlertPolicyConditionConditionThreshold {
             return this;
         }
         @CustomType.Setter
+        public Builder forecastOptions(@Nullable AlertPolicyConditionConditionThresholdForecastOptions forecastOptions) {
+            this.forecastOptions = forecastOptions;
+            return this;
+        }
+        @CustomType.Setter
         public Builder thresholdValue(@Nullable Double thresholdValue) {
             this.thresholdValue = thresholdValue;
             return this;
@@ -395,6 +427,7 @@ public final class AlertPolicyConditionConditionThreshold {
             o.duration = duration;
             o.evaluationMissingData = evaluationMissingData;
             o.filter = filter;
+            o.forecastOptions = forecastOptions;
             o.thresholdValue = thresholdValue;
             o.trigger = trigger;
             return o;

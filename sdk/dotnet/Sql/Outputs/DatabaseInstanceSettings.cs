@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string? ActivationPolicy;
         public readonly Outputs.DatabaseInstanceSettingsActiveDirectoryConfig? ActiveDirectoryConfig;
+        public readonly Outputs.DatabaseInstanceSettingsAdvancedMachineFeatures? AdvancedMachineFeatures;
         /// <summary>
         /// The availability type of the Cloud SQL
         /// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
@@ -88,6 +89,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             Outputs.DatabaseInstanceSettingsActiveDirectoryConfig? activeDirectoryConfig,
 
+            Outputs.DatabaseInstanceSettingsAdvancedMachineFeatures? advancedMachineFeatures,
+
             string? availabilityType,
 
             Outputs.DatabaseInstanceSettingsBackupConfiguration? backupConfiguration,
@@ -134,6 +137,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         {
             ActivationPolicy = activationPolicy;
             ActiveDirectoryConfig = activeDirectoryConfig;
+            AdvancedMachineFeatures = advancedMachineFeatures;
             AvailabilityType = availabilityType;
             BackupConfiguration = backupConfiguration;
             Collation = collation;

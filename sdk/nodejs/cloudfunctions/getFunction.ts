@@ -130,6 +130,7 @@ export interface GetFunctionResult {
      * The URL of the Cloud Source Repository that the function is deployed from. Structure is documented below.
      */
     readonly sourceRepositories: outputs.cloudfunctions.GetFunctionSourceRepository[];
+    readonly status: string;
     /**
      * Function execution timeout (in seconds).
      */

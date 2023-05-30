@@ -6,6 +6,7 @@ package com.pulumi.gcp.sql.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsActiveDirectoryConfigArgs;
+import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsAdvancedMachineFeaturesArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsDatabaseFlagArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsDenyMaintenancePeriodArgs;
@@ -51,6 +52,13 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
 
     public Optional<Output<DatabaseInstanceSettingsActiveDirectoryConfigArgs>> activeDirectoryConfig() {
         return Optional.ofNullable(this.activeDirectoryConfig);
+    }
+
+    @Import(name="advancedMachineFeatures")
+    private @Nullable Output<DatabaseInstanceSettingsAdvancedMachineFeaturesArgs> advancedMachineFeatures;
+
+    public Optional<Output<DatabaseInstanceSettingsAdvancedMachineFeaturesArgs>> advancedMachineFeatures() {
+        return Optional.ofNullable(this.advancedMachineFeatures);
     }
 
     /**
@@ -314,6 +322,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     private DatabaseInstanceSettingsArgs(DatabaseInstanceSettingsArgs $) {
         this.activationPolicy = $.activationPolicy;
         this.activeDirectoryConfig = $.activeDirectoryConfig;
+        this.advancedMachineFeatures = $.advancedMachineFeatures;
         this.availabilityType = $.availabilityType;
         this.backupConfiguration = $.backupConfiguration;
         this.collation = $.collation;
@@ -386,6 +395,15 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
 
         public Builder activeDirectoryConfig(DatabaseInstanceSettingsActiveDirectoryConfigArgs activeDirectoryConfig) {
             return activeDirectoryConfig(Output.of(activeDirectoryConfig));
+        }
+
+        public Builder advancedMachineFeatures(@Nullable Output<DatabaseInstanceSettingsAdvancedMachineFeaturesArgs> advancedMachineFeatures) {
+            $.advancedMachineFeatures = advancedMachineFeatures;
+            return this;
+        }
+
+        public Builder advancedMachineFeatures(DatabaseInstanceSettingsAdvancedMachineFeaturesArgs advancedMachineFeatures) {
+            return advancedMachineFeatures(Output.of(advancedMachineFeatures));
         }
 
         /**

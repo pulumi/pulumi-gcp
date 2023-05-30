@@ -23,6 +23,11 @@ public final class TransferJobTransferSpecAwsS3DataSource {
      */
     private String bucketName;
     /**
+     * @return Root path to transfer objects. Must be an empty string or full path name that ends with a &#39;/&#39;. This field is treated as an object prefix. As such, it should generally not begin with a &#39;/&#39;.
+     * 
+     */
+    private @Nullable String path;
+    /**
      * @return The Amazon Resource Name (ARN) of the role to support temporary credentials via &#39;AssumeRoleWithWebIdentity&#39;. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a &#39;AssumeRoleWithWebIdentity&#39; call for the provided role using the [GoogleServiceAccount][] for this project.
      * 
      */
@@ -44,6 +49,13 @@ public final class TransferJobTransferSpecAwsS3DataSource {
         return this.bucketName;
     }
     /**
+     * @return Root path to transfer objects. Must be an empty string or full path name that ends with a &#39;/&#39;. This field is treated as an object prefix. As such, it should generally not begin with a &#39;/&#39;.
+     * 
+     */
+    public Optional<String> path() {
+        return Optional.ofNullable(this.path);
+    }
+    /**
      * @return The Amazon Resource Name (ARN) of the role to support temporary credentials via &#39;AssumeRoleWithWebIdentity&#39;. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a &#39;AssumeRoleWithWebIdentity&#39; call for the provided role using the [GoogleServiceAccount][] for this project.
      * 
      */
@@ -62,12 +74,14 @@ public final class TransferJobTransferSpecAwsS3DataSource {
     public static final class Builder {
         private @Nullable TransferJobTransferSpecAwsS3DataSourceAwsAccessKey awsAccessKey;
         private String bucketName;
+        private @Nullable String path;
         private @Nullable String roleArn;
         public Builder() {}
         public Builder(TransferJobTransferSpecAwsS3DataSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.awsAccessKey = defaults.awsAccessKey;
     	      this.bucketName = defaults.bucketName;
+    	      this.path = defaults.path;
     	      this.roleArn = defaults.roleArn;
         }
 
@@ -82,6 +96,11 @@ public final class TransferJobTransferSpecAwsS3DataSource {
             return this;
         }
         @CustomType.Setter
+        public Builder path(@Nullable String path) {
+            this.path = path;
+            return this;
+        }
+        @CustomType.Setter
         public Builder roleArn(@Nullable String roleArn) {
             this.roleArn = roleArn;
             return this;
@@ -90,6 +109,7 @@ public final class TransferJobTransferSpecAwsS3DataSource {
             final var o = new TransferJobTransferSpecAwsS3DataSource();
             o.awsAccessKey = awsAccessKey;
             o.bucketName = bucketName;
+            o.path = path;
             o.roleArn = roleArn;
             return o;
         }

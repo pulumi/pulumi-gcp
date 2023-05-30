@@ -121,6 +121,16 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly string? Filter;
         /// <summary>
+        /// When this field is present, the `MetricThreshold`
+        /// condition forecasts whether the time series is
+        /// predicted to violate the threshold within the
+        /// `forecastHorizon`. When this field is not set, the
+        /// `MetricThreshold` tests the current value of the
+        /// timeseries against the threshold.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AlertPolicyConditionConditionThresholdForecastOptions? ForecastOptions;
+        /// <summary>
         /// A value against which to compare the time
         /// series.
         /// </summary>
@@ -154,6 +164,8 @@ namespace Pulumi.Gcp.Monitoring.Outputs
 
             string? filter,
 
+            Outputs.AlertPolicyConditionConditionThresholdForecastOptions? forecastOptions,
+
             double? thresholdValue,
 
             Outputs.AlertPolicyConditionConditionThresholdTrigger? trigger)
@@ -165,6 +177,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
             Duration = duration;
             EvaluationMissingData = evaluationMissingData;
             Filter = filter;
+            ForecastOptions = forecastOptions;
             ThresholdValue = thresholdValue;
             Trigger = trigger;
         }

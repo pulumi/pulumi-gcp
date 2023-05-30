@@ -987,8 +987,9 @@ func (o DatabaseInstanceServerCaCertArrayOutput) Index(i pulumi.IntInput) Databa
 type DatabaseInstanceSettings struct {
 	// This specifies when the instance should be
 	// active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
-	ActivationPolicy      *string                                        `pulumi:"activationPolicy"`
-	ActiveDirectoryConfig *DatabaseInstanceSettingsActiveDirectoryConfig `pulumi:"activeDirectoryConfig"`
+	ActivationPolicy        *string                                          `pulumi:"activationPolicy"`
+	ActiveDirectoryConfig   *DatabaseInstanceSettingsActiveDirectoryConfig   `pulumi:"activeDirectoryConfig"`
+	AdvancedMachineFeatures *DatabaseInstanceSettingsAdvancedMachineFeatures `pulumi:"advancedMachineFeatures"`
 	// The availability type of the Cloud SQL
 	// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
 	// `settings.backup_configuration.enabled` is set to `true`.
@@ -1045,8 +1046,9 @@ type DatabaseInstanceSettingsInput interface {
 type DatabaseInstanceSettingsArgs struct {
 	// This specifies when the instance should be
 	// active. Can be either `ALWAYS`, `NEVER` or `ON_DEMAND`.
-	ActivationPolicy      pulumi.StringPtrInput                                 `pulumi:"activationPolicy"`
-	ActiveDirectoryConfig DatabaseInstanceSettingsActiveDirectoryConfigPtrInput `pulumi:"activeDirectoryConfig"`
+	ActivationPolicy        pulumi.StringPtrInput                                   `pulumi:"activationPolicy"`
+	ActiveDirectoryConfig   DatabaseInstanceSettingsActiveDirectoryConfigPtrInput   `pulumi:"activeDirectoryConfig"`
+	AdvancedMachineFeatures DatabaseInstanceSettingsAdvancedMachineFeaturesPtrInput `pulumi:"advancedMachineFeatures"`
 	// The availability type of the Cloud SQL
 	// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
 	// `settings.backup_configuration.enabled` is set to `true`.
@@ -1176,6 +1178,12 @@ func (o DatabaseInstanceSettingsOutput) ActiveDirectoryConfig() DatabaseInstance
 	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsActiveDirectoryConfig {
 		return v.ActiveDirectoryConfig
 	}).(DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput)
+}
+
+func (o DatabaseInstanceSettingsOutput) AdvancedMachineFeatures() DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsAdvancedMachineFeatures {
+		return v.AdvancedMachineFeatures
+	}).(DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput)
 }
 
 // The availability type of the Cloud SQL
@@ -1338,6 +1346,15 @@ func (o DatabaseInstanceSettingsPtrOutput) ActiveDirectoryConfig() DatabaseInsta
 		}
 		return v.ActiveDirectoryConfig
 	}).(DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput)
+}
+
+func (o DatabaseInstanceSettingsPtrOutput) AdvancedMachineFeatures() DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *DatabaseInstanceSettingsAdvancedMachineFeatures {
+		if v == nil {
+			return nil
+		}
+		return v.AdvancedMachineFeatures
+	}).(DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput)
 }
 
 // The availability type of the Cloud SQL
@@ -1695,6 +1712,143 @@ func (o DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput) Domain() pulumi.
 		}
 		return &v.Domain
 	}).(pulumi.StringPtrOutput)
+}
+
+type DatabaseInstanceSettingsAdvancedMachineFeatures struct {
+	// The number of threads per core. The value of this flag can be 1 or 2. To disable SMT, set this flag to 1. Only available in Cloud SQL for SQL Server instances. See [smt](https://cloud.google.com/sql/docs/sqlserver/create-instance#smt-create-instance) for more details.
+	ThreadsPerCore *int `pulumi:"threadsPerCore"`
+}
+
+// DatabaseInstanceSettingsAdvancedMachineFeaturesInput is an input type that accepts DatabaseInstanceSettingsAdvancedMachineFeaturesArgs and DatabaseInstanceSettingsAdvancedMachineFeaturesOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsAdvancedMachineFeaturesInput` via:
+//
+//	DatabaseInstanceSettingsAdvancedMachineFeaturesArgs{...}
+type DatabaseInstanceSettingsAdvancedMachineFeaturesInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsAdvancedMachineFeaturesOutput() DatabaseInstanceSettingsAdvancedMachineFeaturesOutput
+	ToDatabaseInstanceSettingsAdvancedMachineFeaturesOutputWithContext(context.Context) DatabaseInstanceSettingsAdvancedMachineFeaturesOutput
+}
+
+type DatabaseInstanceSettingsAdvancedMachineFeaturesArgs struct {
+	// The number of threads per core. The value of this flag can be 1 or 2. To disable SMT, set this flag to 1. Only available in Cloud SQL for SQL Server instances. See [smt](https://cloud.google.com/sql/docs/sqlserver/create-instance#smt-create-instance) for more details.
+	ThreadsPerCore pulumi.IntPtrInput `pulumi:"threadsPerCore"`
+}
+
+func (DatabaseInstanceSettingsAdvancedMachineFeaturesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsAdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (i DatabaseInstanceSettingsAdvancedMachineFeaturesArgs) ToDatabaseInstanceSettingsAdvancedMachineFeaturesOutput() DatabaseInstanceSettingsAdvancedMachineFeaturesOutput {
+	return i.ToDatabaseInstanceSettingsAdvancedMachineFeaturesOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsAdvancedMachineFeaturesArgs) ToDatabaseInstanceSettingsAdvancedMachineFeaturesOutputWithContext(ctx context.Context) DatabaseInstanceSettingsAdvancedMachineFeaturesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsAdvancedMachineFeaturesOutput)
+}
+
+func (i DatabaseInstanceSettingsAdvancedMachineFeaturesArgs) ToDatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput() DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput {
+	return i.ToDatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsAdvancedMachineFeaturesArgs) ToDatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsAdvancedMachineFeaturesOutput).ToDatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutputWithContext(ctx)
+}
+
+// DatabaseInstanceSettingsAdvancedMachineFeaturesPtrInput is an input type that accepts DatabaseInstanceSettingsAdvancedMachineFeaturesArgs, DatabaseInstanceSettingsAdvancedMachineFeaturesPtr and DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsAdvancedMachineFeaturesPtrInput` via:
+//
+//	        DatabaseInstanceSettingsAdvancedMachineFeaturesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabaseInstanceSettingsAdvancedMachineFeaturesPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput() DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput
+	ToDatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutputWithContext(context.Context) DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput
+}
+
+type databaseInstanceSettingsAdvancedMachineFeaturesPtrType DatabaseInstanceSettingsAdvancedMachineFeaturesArgs
+
+func DatabaseInstanceSettingsAdvancedMachineFeaturesPtr(v *DatabaseInstanceSettingsAdvancedMachineFeaturesArgs) DatabaseInstanceSettingsAdvancedMachineFeaturesPtrInput {
+	return (*databaseInstanceSettingsAdvancedMachineFeaturesPtrType)(v)
+}
+
+func (*databaseInstanceSettingsAdvancedMachineFeaturesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceSettingsAdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (i *databaseInstanceSettingsAdvancedMachineFeaturesPtrType) ToDatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput() DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput {
+	return i.ToDatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseInstanceSettingsAdvancedMachineFeaturesPtrType) ToDatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput)
+}
+
+type DatabaseInstanceSettingsAdvancedMachineFeaturesOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsAdvancedMachineFeaturesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsAdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsAdvancedMachineFeaturesOutput) ToDatabaseInstanceSettingsAdvancedMachineFeaturesOutput() DatabaseInstanceSettingsAdvancedMachineFeaturesOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsAdvancedMachineFeaturesOutput) ToDatabaseInstanceSettingsAdvancedMachineFeaturesOutputWithContext(ctx context.Context) DatabaseInstanceSettingsAdvancedMachineFeaturesOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsAdvancedMachineFeaturesOutput) ToDatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput() DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput {
+	return o.ToDatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseInstanceSettingsAdvancedMachineFeaturesOutput) ToDatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsAdvancedMachineFeatures) *DatabaseInstanceSettingsAdvancedMachineFeatures {
+		return &v
+	}).(DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput)
+}
+
+// The number of threads per core. The value of this flag can be 1 or 2. To disable SMT, set this flag to 1. Only available in Cloud SQL for SQL Server instances. See [smt](https://cloud.google.com/sql/docs/sqlserver/create-instance#smt-create-instance) for more details.
+func (o DatabaseInstanceSettingsAdvancedMachineFeaturesOutput) ThreadsPerCore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsAdvancedMachineFeatures) *int { return v.ThreadsPerCore }).(pulumi.IntPtrOutput)
+}
+
+type DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceSettingsAdvancedMachineFeatures)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput) ToDatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput() DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput) ToDatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput) Elem() DatabaseInstanceSettingsAdvancedMachineFeaturesOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsAdvancedMachineFeatures) DatabaseInstanceSettingsAdvancedMachineFeatures {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseInstanceSettingsAdvancedMachineFeatures
+		return ret
+	}).(DatabaseInstanceSettingsAdvancedMachineFeaturesOutput)
+}
+
+// The number of threads per core. The value of this flag can be 1 or 2. To disable SMT, set this flag to 1. Only available in Cloud SQL for SQL Server instances. See [smt](https://cloud.google.com/sql/docs/sqlserver/create-instance#smt-create-instance) for more details.
+func (o DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsAdvancedMachineFeatures) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadsPerCore
+	}).(pulumi.IntPtrOutput)
 }
 
 type DatabaseInstanceSettingsBackupConfiguration struct {
@@ -4959,6 +5113,7 @@ func (o GetDatabaseInstanceServerCaCertArrayOutput) Index(i pulumi.IntInput) Get
 type GetDatabaseInstanceSetting struct {
 	ActivationPolicy           string                                               `pulumi:"activationPolicy"`
 	ActiveDirectoryConfigs     []GetDatabaseInstanceSettingActiveDirectoryConfig    `pulumi:"activeDirectoryConfigs"`
+	AdvancedMachineFeatures    []GetDatabaseInstanceSettingAdvancedMachineFeature   `pulumi:"advancedMachineFeatures"`
 	AvailabilityType           string                                               `pulumi:"availabilityType"`
 	BackupConfigurations       []GetDatabaseInstanceSettingBackupConfiguration      `pulumi:"backupConfigurations"`
 	Collation                  string                                               `pulumi:"collation"`
@@ -4997,6 +5152,7 @@ type GetDatabaseInstanceSettingInput interface {
 type GetDatabaseInstanceSettingArgs struct {
 	ActivationPolicy           pulumi.StringInput                                           `pulumi:"activationPolicy"`
 	ActiveDirectoryConfigs     GetDatabaseInstanceSettingActiveDirectoryConfigArrayInput    `pulumi:"activeDirectoryConfigs"`
+	AdvancedMachineFeatures    GetDatabaseInstanceSettingAdvancedMachineFeatureArrayInput   `pulumi:"advancedMachineFeatures"`
 	AvailabilityType           pulumi.StringInput                                           `pulumi:"availabilityType"`
 	BackupConfigurations       GetDatabaseInstanceSettingBackupConfigurationArrayInput      `pulumi:"backupConfigurations"`
 	Collation                  pulumi.StringInput                                           `pulumi:"collation"`
@@ -5080,6 +5236,12 @@ func (o GetDatabaseInstanceSettingOutput) ActiveDirectoryConfigs() GetDatabaseIn
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) []GetDatabaseInstanceSettingActiveDirectoryConfig {
 		return v.ActiveDirectoryConfigs
 	}).(GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput)
+}
+
+func (o GetDatabaseInstanceSettingOutput) AdvancedMachineFeatures() GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) []GetDatabaseInstanceSettingAdvancedMachineFeature {
+		return v.AdvancedMachineFeatures
+	}).(GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput)
 }
 
 func (o GetDatabaseInstanceSettingOutput) AvailabilityType() pulumi.StringOutput {
@@ -5298,6 +5460,100 @@ func (o GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput) Index(i pulu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingActiveDirectoryConfig {
 		return vs[0].([]GetDatabaseInstanceSettingActiveDirectoryConfig)[vs[1].(int)]
 	}).(GetDatabaseInstanceSettingActiveDirectoryConfigOutput)
+}
+
+type GetDatabaseInstanceSettingAdvancedMachineFeature struct {
+	ThreadsPerCore int `pulumi:"threadsPerCore"`
+}
+
+// GetDatabaseInstanceSettingAdvancedMachineFeatureInput is an input type that accepts GetDatabaseInstanceSettingAdvancedMachineFeatureArgs and GetDatabaseInstanceSettingAdvancedMachineFeatureOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingAdvancedMachineFeatureInput` via:
+//
+//	GetDatabaseInstanceSettingAdvancedMachineFeatureArgs{...}
+type GetDatabaseInstanceSettingAdvancedMachineFeatureInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingAdvancedMachineFeatureOutput() GetDatabaseInstanceSettingAdvancedMachineFeatureOutput
+	ToGetDatabaseInstanceSettingAdvancedMachineFeatureOutputWithContext(context.Context) GetDatabaseInstanceSettingAdvancedMachineFeatureOutput
+}
+
+type GetDatabaseInstanceSettingAdvancedMachineFeatureArgs struct {
+	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
+}
+
+func (GetDatabaseInstanceSettingAdvancedMachineFeatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingAdvancedMachineFeatureArgs) ToGetDatabaseInstanceSettingAdvancedMachineFeatureOutput() GetDatabaseInstanceSettingAdvancedMachineFeatureOutput {
+	return i.ToGetDatabaseInstanceSettingAdvancedMachineFeatureOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingAdvancedMachineFeatureArgs) ToGetDatabaseInstanceSettingAdvancedMachineFeatureOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingAdvancedMachineFeatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingAdvancedMachineFeatureOutput)
+}
+
+// GetDatabaseInstanceSettingAdvancedMachineFeatureArrayInput is an input type that accepts GetDatabaseInstanceSettingAdvancedMachineFeatureArray and GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingAdvancedMachineFeatureArrayInput` via:
+//
+//	GetDatabaseInstanceSettingAdvancedMachineFeatureArray{ GetDatabaseInstanceSettingAdvancedMachineFeatureArgs{...} }
+type GetDatabaseInstanceSettingAdvancedMachineFeatureArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput() GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput
+	ToGetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutputWithContext(context.Context) GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput
+}
+
+type GetDatabaseInstanceSettingAdvancedMachineFeatureArray []GetDatabaseInstanceSettingAdvancedMachineFeatureInput
+
+func (GetDatabaseInstanceSettingAdvancedMachineFeatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingAdvancedMachineFeatureArray) ToGetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput() GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput {
+	return i.ToGetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingAdvancedMachineFeatureArray) ToGetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput)
+}
+
+type GetDatabaseInstanceSettingAdvancedMachineFeatureOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingAdvancedMachineFeatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingAdvancedMachineFeatureOutput) ToGetDatabaseInstanceSettingAdvancedMachineFeatureOutput() GetDatabaseInstanceSettingAdvancedMachineFeatureOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingAdvancedMachineFeatureOutput) ToGetDatabaseInstanceSettingAdvancedMachineFeatureOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingAdvancedMachineFeatureOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingAdvancedMachineFeatureOutput) ThreadsPerCore() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingAdvancedMachineFeature) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
+}
+
+type GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput) ToGetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput() GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput) ToGetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingAdvancedMachineFeatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingAdvancedMachineFeature {
+		return vs[0].([]GetDatabaseInstanceSettingAdvancedMachineFeature)[vs[1].(int)]
+	}).(GetDatabaseInstanceSettingAdvancedMachineFeatureOutput)
 }
 
 type GetDatabaseInstanceSettingBackupConfiguration struct {
@@ -7385,6 +7641,7 @@ func (o GetDatabaseInstancesInstanceServerCaCertArrayOutput) Index(i pulumi.IntI
 type GetDatabaseInstancesInstanceSetting struct {
 	ActivationPolicy           string                                                        `pulumi:"activationPolicy"`
 	ActiveDirectoryConfigs     []GetDatabaseInstancesInstanceSettingActiveDirectoryConfig    `pulumi:"activeDirectoryConfigs"`
+	AdvancedMachineFeatures    []GetDatabaseInstancesInstanceSettingAdvancedMachineFeature   `pulumi:"advancedMachineFeatures"`
 	AvailabilityType           string                                                        `pulumi:"availabilityType"`
 	BackupConfigurations       []GetDatabaseInstancesInstanceSettingBackupConfiguration      `pulumi:"backupConfigurations"`
 	Collation                  string                                                        `pulumi:"collation"`
@@ -7424,6 +7681,7 @@ type GetDatabaseInstancesInstanceSettingInput interface {
 type GetDatabaseInstancesInstanceSettingArgs struct {
 	ActivationPolicy           pulumi.StringInput                                                    `pulumi:"activationPolicy"`
 	ActiveDirectoryConfigs     GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayInput    `pulumi:"activeDirectoryConfigs"`
+	AdvancedMachineFeatures    GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayInput   `pulumi:"advancedMachineFeatures"`
 	AvailabilityType           pulumi.StringInput                                                    `pulumi:"availabilityType"`
 	BackupConfigurations       GetDatabaseInstancesInstanceSettingBackupConfigurationArrayInput      `pulumi:"backupConfigurations"`
 	Collation                  pulumi.StringInput                                                    `pulumi:"collation"`
@@ -7508,6 +7766,12 @@ func (o GetDatabaseInstancesInstanceSettingOutput) ActiveDirectoryConfigs() GetD
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) []GetDatabaseInstancesInstanceSettingActiveDirectoryConfig {
 		return v.ActiveDirectoryConfigs
 	}).(GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) AdvancedMachineFeatures() GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) []GetDatabaseInstancesInstanceSettingAdvancedMachineFeature {
+		return v.AdvancedMachineFeatures
+	}).(GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput)
 }
 
 func (o GetDatabaseInstancesInstanceSettingOutput) AvailabilityType() pulumi.StringOutput {
@@ -7729,6 +7993,100 @@ func (o GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput) Ind
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingActiveDirectoryConfig {
 		return vs[0].([]GetDatabaseInstancesInstanceSettingActiveDirectoryConfig)[vs[1].(int)]
 	}).(GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingAdvancedMachineFeature struct {
+	ThreadsPerCore int `pulumi:"threadsPerCore"`
+}
+
+// GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureInput is an input type that accepts GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArgs and GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArgs{...}
+type GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput() GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput
+	ToGetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput
+}
+
+type GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArgs struct {
+	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
+}
+
+func (GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArgs) ToGetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput() GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArgs) ToGetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput)
+}
+
+// GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArray and GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArray{ GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArgs{...} }
+type GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput() GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput
+	ToGetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput
+}
+
+type GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArray []GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureInput
+
+func (GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArray) ToGetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput() GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArray) ToGetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput) ToGetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput() GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput) ToGetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput) ThreadsPerCore() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingAdvancedMachineFeature) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingAdvancedMachineFeature)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput) ToGetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput() GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput) ToGetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingAdvancedMachineFeature {
+		return vs[0].([]GetDatabaseInstancesInstanceSettingAdvancedMachineFeature)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput)
 }
 
 type GetDatabaseInstancesInstanceSettingBackupConfiguration struct {
@@ -9263,6 +9621,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsPtrInput)(nil)).Elem(), DatabaseInstanceSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsActiveDirectoryConfigInput)(nil)).Elem(), DatabaseInstanceSettingsActiveDirectoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsActiveDirectoryConfigPtrInput)(nil)).Elem(), DatabaseInstanceSettingsActiveDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsAdvancedMachineFeaturesInput)(nil)).Elem(), DatabaseInstanceSettingsAdvancedMachineFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsAdvancedMachineFeaturesPtrInput)(nil)).Elem(), DatabaseInstanceSettingsAdvancedMachineFeaturesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsBackupConfigurationInput)(nil)).Elem(), DatabaseInstanceSettingsBackupConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsBackupConfigurationPtrInput)(nil)).Elem(), DatabaseInstanceSettingsBackupConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsInput)(nil)).Elem(), DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs{})
@@ -9307,6 +9667,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingActiveDirectoryConfigInput)(nil)).Elem(), GetDatabaseInstanceSettingActiveDirectoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingActiveDirectoryConfigArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingActiveDirectoryConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingAdvancedMachineFeatureInput)(nil)).Elem(), GetDatabaseInstanceSettingAdvancedMachineFeatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingAdvancedMachineFeatureArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingAdvancedMachineFeatureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingBackupConfigurationInput)(nil)).Elem(), GetDatabaseInstanceSettingBackupConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingBackupConfigurationArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingBackupConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingInput)(nil)).Elem(), GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArgs{})
@@ -9345,6 +9707,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingActiveDirectoryConfigInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingBackupConfigurationInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingBackupConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingBackupConfigurationArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingBackupConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArgs{})
@@ -9385,6 +9749,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsActiveDirectoryConfigOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsActiveDirectoryConfigPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsAdvancedMachineFeaturesOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsAdvancedMachineFeaturesPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsBackupConfigurationOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsBackupConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput{})
@@ -9429,6 +9795,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingActiveDirectoryConfigOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingActiveDirectoryConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingAdvancedMachineFeatureOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingAdvancedMachineFeatureArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingBackupConfigurationOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingBackupConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput{})
@@ -9467,6 +9835,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingActiveDirectoryConfigOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingActiveDirectoryConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingBackupConfigurationOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput{})

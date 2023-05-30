@@ -85,6 +85,30 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Image Basic Storage Location
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.Compute.Image("example", new()
+    ///     {
+    ///         RawDisk = new Gcp.Compute.Inputs.ImageRawDiskArgs
+    ///         {
+    ///             Source = "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+    ///         },
+    ///         StorageLocations = new[]
+    ///         {
+    ///             "us-central1",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -243,6 +267,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("sourceSnapshot")]
         public Output<string?> SourceSnapshot { get; private set; } = null!;
+
+        /// <summary>
+        /// Cloud Storage bucket storage location of the image
+        /// (regional or multi-regional).
+        /// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+        /// </summary>
+        [Output("storageLocations")]
+        public Output<ImmutableArray<string>> StorageLocations { get; private set; } = null!;
 
 
         /// <summary>
@@ -421,6 +453,20 @@ namespace Pulumi.Gcp.Compute
         [Input("sourceSnapshot")]
         public Input<string>? SourceSnapshot { get; set; }
 
+        [Input("storageLocations")]
+        private InputList<string>? _storageLocations;
+
+        /// <summary>
+        /// Cloud Storage bucket storage location of the image
+        /// (regional or multi-regional).
+        /// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+        /// </summary>
+        public InputList<string> StorageLocations
+        {
+            get => _storageLocations ?? (_storageLocations = new InputList<string>());
+            set => _storageLocations = value;
+        }
+
         public ImageArgs()
         {
         }
@@ -585,6 +631,20 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("sourceSnapshot")]
         public Input<string>? SourceSnapshot { get; set; }
+
+        [Input("storageLocations")]
+        private InputList<string>? _storageLocations;
+
+        /// <summary>
+        /// Cloud Storage bucket storage location of the image
+        /// (regional or multi-regional).
+        /// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+        /// </summary>
+        public InputList<string> StorageLocations
+        {
+            get => _storageLocations ?? (_storageLocations = new InputList<string>());
+            set => _storageLocations = value;
+        }
 
         public ImageState()
         {

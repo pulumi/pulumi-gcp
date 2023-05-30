@@ -37,6 +37,12 @@ namespace Pulumi.Gcp.Workstations.Inputs
         [Input("sizeGb")]
         public Input<int>? SizeGb { get; set; }
 
+        /// <summary>
+        /// The snapshot to use as the source for the disk. This can be the snapshot's `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+        /// </summary>
+        [Input("sourceSnapshot")]
+        public Input<string>? SourceSnapshot { get; set; }
+
         public WorkstationConfigPersistentDirectoryGcePdGetArgs()
         {
         }

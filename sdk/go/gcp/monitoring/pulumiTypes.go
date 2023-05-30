@@ -13,6 +13,10 @@ import (
 type AlertPolicyAlertStrategy struct {
 	// If an alert policy that was active has no data for this long, any open incidents will close.
 	AutoClose *string `pulumi:"autoClose"`
+	// Control over how the notification channels in `notificationChannels`
+	// are notified when this alert fires, on a per-channel basis.
+	// Structure is documented below.
+	NotificationChannelStrategies []AlertPolicyAlertStrategyNotificationChannelStrategy `pulumi:"notificationChannelStrategies"`
 	// Required for alert policies with a LogMatch condition.
 	// This limit is not implemented for alert policies that are not log-based.
 	// Structure is documented below.
@@ -33,6 +37,10 @@ type AlertPolicyAlertStrategyInput interface {
 type AlertPolicyAlertStrategyArgs struct {
 	// If an alert policy that was active has no data for this long, any open incidents will close.
 	AutoClose pulumi.StringPtrInput `pulumi:"autoClose"`
+	// Control over how the notification channels in `notificationChannels`
+	// are notified when this alert fires, on a per-channel basis.
+	// Structure is documented below.
+	NotificationChannelStrategies AlertPolicyAlertStrategyNotificationChannelStrategyArrayInput `pulumi:"notificationChannelStrategies"`
 	// Required for alert policies with a LogMatch condition.
 	// This limit is not implemented for alert policies that are not log-based.
 	// Structure is documented below.
@@ -121,6 +129,15 @@ func (o AlertPolicyAlertStrategyOutput) AutoClose() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertPolicyAlertStrategy) *string { return v.AutoClose }).(pulumi.StringPtrOutput)
 }
 
+// Control over how the notification channels in `notificationChannels`
+// are notified when this alert fires, on a per-channel basis.
+// Structure is documented below.
+func (o AlertPolicyAlertStrategyOutput) NotificationChannelStrategies() AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput {
+	return o.ApplyT(func(v AlertPolicyAlertStrategy) []AlertPolicyAlertStrategyNotificationChannelStrategy {
+		return v.NotificationChannelStrategies
+	}).(AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput)
+}
+
 // Required for alert policies with a LogMatch condition.
 // This limit is not implemented for alert policies that are not log-based.
 // Structure is documented below.
@@ -164,6 +181,18 @@ func (o AlertPolicyAlertStrategyPtrOutput) AutoClose() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Control over how the notification channels in `notificationChannels`
+// are notified when this alert fires, on a per-channel basis.
+// Structure is documented below.
+func (o AlertPolicyAlertStrategyPtrOutput) NotificationChannelStrategies() AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput {
+	return o.ApplyT(func(v *AlertPolicyAlertStrategy) []AlertPolicyAlertStrategyNotificationChannelStrategy {
+		if v == nil {
+			return nil
+		}
+		return v.NotificationChannelStrategies
+	}).(AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput)
+}
+
 // Required for alert policies with a LogMatch condition.
 // This limit is not implemented for alert policies that are not log-based.
 // Structure is documented below.
@@ -174,6 +203,123 @@ func (o AlertPolicyAlertStrategyPtrOutput) NotificationRateLimit() AlertPolicyAl
 		}
 		return v.NotificationRateLimit
 	}).(AlertPolicyAlertStrategyNotificationRateLimitPtrOutput)
+}
+
+type AlertPolicyAlertStrategyNotificationChannelStrategy struct {
+	// The notification channels that these settings apply to. Each of these
+	// correspond to the name field in one of the NotificationChannel objects
+	// referenced in the notificationChannels field of this AlertPolicy. The format is
+	// `projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]`
+	NotificationChannelNames []string `pulumi:"notificationChannelNames"`
+	// The frequency at which to send reminder notifications for open incidents.
+	RenotifyInterval *string `pulumi:"renotifyInterval"`
+}
+
+// AlertPolicyAlertStrategyNotificationChannelStrategyInput is an input type that accepts AlertPolicyAlertStrategyNotificationChannelStrategyArgs and AlertPolicyAlertStrategyNotificationChannelStrategyOutput values.
+// You can construct a concrete instance of `AlertPolicyAlertStrategyNotificationChannelStrategyInput` via:
+//
+//	AlertPolicyAlertStrategyNotificationChannelStrategyArgs{...}
+type AlertPolicyAlertStrategyNotificationChannelStrategyInput interface {
+	pulumi.Input
+
+	ToAlertPolicyAlertStrategyNotificationChannelStrategyOutput() AlertPolicyAlertStrategyNotificationChannelStrategyOutput
+	ToAlertPolicyAlertStrategyNotificationChannelStrategyOutputWithContext(context.Context) AlertPolicyAlertStrategyNotificationChannelStrategyOutput
+}
+
+type AlertPolicyAlertStrategyNotificationChannelStrategyArgs struct {
+	// The notification channels that these settings apply to. Each of these
+	// correspond to the name field in one of the NotificationChannel objects
+	// referenced in the notificationChannels field of this AlertPolicy. The format is
+	// `projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]`
+	NotificationChannelNames pulumi.StringArrayInput `pulumi:"notificationChannelNames"`
+	// The frequency at which to send reminder notifications for open incidents.
+	RenotifyInterval pulumi.StringPtrInput `pulumi:"renotifyInterval"`
+}
+
+func (AlertPolicyAlertStrategyNotificationChannelStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyAlertStrategyNotificationChannelStrategy)(nil)).Elem()
+}
+
+func (i AlertPolicyAlertStrategyNotificationChannelStrategyArgs) ToAlertPolicyAlertStrategyNotificationChannelStrategyOutput() AlertPolicyAlertStrategyNotificationChannelStrategyOutput {
+	return i.ToAlertPolicyAlertStrategyNotificationChannelStrategyOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyAlertStrategyNotificationChannelStrategyArgs) ToAlertPolicyAlertStrategyNotificationChannelStrategyOutputWithContext(ctx context.Context) AlertPolicyAlertStrategyNotificationChannelStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyAlertStrategyNotificationChannelStrategyOutput)
+}
+
+// AlertPolicyAlertStrategyNotificationChannelStrategyArrayInput is an input type that accepts AlertPolicyAlertStrategyNotificationChannelStrategyArray and AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput values.
+// You can construct a concrete instance of `AlertPolicyAlertStrategyNotificationChannelStrategyArrayInput` via:
+//
+//	AlertPolicyAlertStrategyNotificationChannelStrategyArray{ AlertPolicyAlertStrategyNotificationChannelStrategyArgs{...} }
+type AlertPolicyAlertStrategyNotificationChannelStrategyArrayInput interface {
+	pulumi.Input
+
+	ToAlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput() AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput
+	ToAlertPolicyAlertStrategyNotificationChannelStrategyArrayOutputWithContext(context.Context) AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput
+}
+
+type AlertPolicyAlertStrategyNotificationChannelStrategyArray []AlertPolicyAlertStrategyNotificationChannelStrategyInput
+
+func (AlertPolicyAlertStrategyNotificationChannelStrategyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertPolicyAlertStrategyNotificationChannelStrategy)(nil)).Elem()
+}
+
+func (i AlertPolicyAlertStrategyNotificationChannelStrategyArray) ToAlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput() AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput {
+	return i.ToAlertPolicyAlertStrategyNotificationChannelStrategyArrayOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyAlertStrategyNotificationChannelStrategyArray) ToAlertPolicyAlertStrategyNotificationChannelStrategyArrayOutputWithContext(ctx context.Context) AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput)
+}
+
+type AlertPolicyAlertStrategyNotificationChannelStrategyOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyAlertStrategyNotificationChannelStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyAlertStrategyNotificationChannelStrategy)(nil)).Elem()
+}
+
+func (o AlertPolicyAlertStrategyNotificationChannelStrategyOutput) ToAlertPolicyAlertStrategyNotificationChannelStrategyOutput() AlertPolicyAlertStrategyNotificationChannelStrategyOutput {
+	return o
+}
+
+func (o AlertPolicyAlertStrategyNotificationChannelStrategyOutput) ToAlertPolicyAlertStrategyNotificationChannelStrategyOutputWithContext(ctx context.Context) AlertPolicyAlertStrategyNotificationChannelStrategyOutput {
+	return o
+}
+
+// The notification channels that these settings apply to. Each of these
+// correspond to the name field in one of the NotificationChannel objects
+// referenced in the notificationChannels field of this AlertPolicy. The format is
+// `projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]`
+func (o AlertPolicyAlertStrategyNotificationChannelStrategyOutput) NotificationChannelNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlertPolicyAlertStrategyNotificationChannelStrategy) []string {
+		return v.NotificationChannelNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// The frequency at which to send reminder notifications for open incidents.
+func (o AlertPolicyAlertStrategyNotificationChannelStrategyOutput) RenotifyInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlertPolicyAlertStrategyNotificationChannelStrategy) *string { return v.RenotifyInterval }).(pulumi.StringPtrOutput)
+}
+
+type AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertPolicyAlertStrategyNotificationChannelStrategy)(nil)).Elem()
+}
+
+func (o AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput) ToAlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput() AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput {
+	return o
+}
+
+func (o AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput) ToAlertPolicyAlertStrategyNotificationChannelStrategyArrayOutputWithContext(ctx context.Context) AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput {
+	return o
+}
+
+func (o AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput) Index(i pulumi.IntInput) AlertPolicyAlertStrategyNotificationChannelStrategyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertPolicyAlertStrategyNotificationChannelStrategy {
+		return vs[0].([]AlertPolicyAlertStrategyNotificationChannelStrategy)[vs[1].(int)]
+	}).(AlertPolicyAlertStrategyNotificationChannelStrategyOutput)
 }
 
 type AlertPolicyAlertStrategyNotificationRateLimit struct {
@@ -2085,6 +2231,14 @@ type AlertPolicyConditionConditionThreshold struct {
 	// field may not exceed 2048 Unicode characters
 	// in length.
 	Filter *string `pulumi:"filter"`
+	// When this field is present, the `MetricThreshold`
+	// condition forecasts whether the time series is
+	// predicted to violate the threshold within the
+	// `forecastHorizon`. When this field is not set, the
+	// `MetricThreshold` tests the current value of the
+	// timeseries against the threshold.
+	// Structure is documented below.
+	ForecastOptions *AlertPolicyConditionConditionThresholdForecastOptions `pulumi:"forecastOptions"`
 	// A value against which to compare the time
 	// series.
 	ThresholdValue *float64 `pulumi:"thresholdValue"`
@@ -2205,6 +2359,14 @@ type AlertPolicyConditionConditionThresholdArgs struct {
 	// field may not exceed 2048 Unicode characters
 	// in length.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// When this field is present, the `MetricThreshold`
+	// condition forecasts whether the time series is
+	// predicted to violate the threshold within the
+	// `forecastHorizon`. When this field is not set, the
+	// `MetricThreshold` tests the current value of the
+	// timeseries against the threshold.
+	// Structure is documented below.
+	ForecastOptions AlertPolicyConditionConditionThresholdForecastOptionsPtrInput `pulumi:"forecastOptions"`
 	// A value against which to compare the time
 	// series.
 	ThresholdValue pulumi.Float64PtrInput `pulumi:"thresholdValue"`
@@ -2415,6 +2577,19 @@ func (o AlertPolicyConditionConditionThresholdOutput) Filter() pulumi.StringPtrO
 	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
+// When this field is present, the `MetricThreshold`
+// condition forecasts whether the time series is
+// predicted to violate the threshold within the
+// `forecastHorizon`. When this field is not set, the
+// `MetricThreshold` tests the current value of the
+// timeseries against the threshold.
+// Structure is documented below.
+func (o AlertPolicyConditionConditionThresholdOutput) ForecastOptions() AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionThreshold) *AlertPolicyConditionConditionThresholdForecastOptions {
+		return v.ForecastOptions
+	}).(AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput)
+}
+
 // A value against which to compare the time
 // series.
 func (o AlertPolicyConditionConditionThresholdOutput) ThresholdValue() pulumi.Float64PtrOutput {
@@ -2607,6 +2782,22 @@ func (o AlertPolicyConditionConditionThresholdPtrOutput) Filter() pulumi.StringP
 		}
 		return v.Filter
 	}).(pulumi.StringPtrOutput)
+}
+
+// When this field is present, the `MetricThreshold`
+// condition forecasts whether the time series is
+// predicted to violate the threshold within the
+// `forecastHorizon`. When this field is not set, the
+// `MetricThreshold` tests the current value of the
+// timeseries against the threshold.
+// Structure is documented below.
+func (o AlertPolicyConditionConditionThresholdPtrOutput) ForecastOptions() AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionThreshold) *AlertPolicyConditionConditionThresholdForecastOptions {
+		if v == nil {
+			return nil
+		}
+		return v.ForecastOptions
+	}).(AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput)
 }
 
 // A value against which to compare the time
@@ -3314,6 +3505,163 @@ func (o AlertPolicyConditionConditionThresholdDenominatorAggregationArrayOutput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertPolicyConditionConditionThresholdDenominatorAggregation {
 		return vs[0].([]AlertPolicyConditionConditionThresholdDenominatorAggregation)[vs[1].(int)]
 	}).(AlertPolicyConditionConditionThresholdDenominatorAggregationOutput)
+}
+
+type AlertPolicyConditionConditionThresholdForecastOptions struct {
+	// The length of time into the future to forecast
+	// whether a timeseries will violate the threshold.
+	// If the predicted value is found to violate the
+	// threshold, and the violation is observed in all
+	// forecasts made for the Configured `duration`,
+	// then the timeseries is considered to be failing.
+	ForecastHorizon string `pulumi:"forecastHorizon"`
+}
+
+// AlertPolicyConditionConditionThresholdForecastOptionsInput is an input type that accepts AlertPolicyConditionConditionThresholdForecastOptionsArgs and AlertPolicyConditionConditionThresholdForecastOptionsOutput values.
+// You can construct a concrete instance of `AlertPolicyConditionConditionThresholdForecastOptionsInput` via:
+//
+//	AlertPolicyConditionConditionThresholdForecastOptionsArgs{...}
+type AlertPolicyConditionConditionThresholdForecastOptionsInput interface {
+	pulumi.Input
+
+	ToAlertPolicyConditionConditionThresholdForecastOptionsOutput() AlertPolicyConditionConditionThresholdForecastOptionsOutput
+	ToAlertPolicyConditionConditionThresholdForecastOptionsOutputWithContext(context.Context) AlertPolicyConditionConditionThresholdForecastOptionsOutput
+}
+
+type AlertPolicyConditionConditionThresholdForecastOptionsArgs struct {
+	// The length of time into the future to forecast
+	// whether a timeseries will violate the threshold.
+	// If the predicted value is found to violate the
+	// threshold, and the violation is observed in all
+	// forecasts made for the Configured `duration`,
+	// then the timeseries is considered to be failing.
+	ForecastHorizon pulumi.StringInput `pulumi:"forecastHorizon"`
+}
+
+func (AlertPolicyConditionConditionThresholdForecastOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyConditionConditionThresholdForecastOptions)(nil)).Elem()
+}
+
+func (i AlertPolicyConditionConditionThresholdForecastOptionsArgs) ToAlertPolicyConditionConditionThresholdForecastOptionsOutput() AlertPolicyConditionConditionThresholdForecastOptionsOutput {
+	return i.ToAlertPolicyConditionConditionThresholdForecastOptionsOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyConditionConditionThresholdForecastOptionsArgs) ToAlertPolicyConditionConditionThresholdForecastOptionsOutputWithContext(ctx context.Context) AlertPolicyConditionConditionThresholdForecastOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionThresholdForecastOptionsOutput)
+}
+
+func (i AlertPolicyConditionConditionThresholdForecastOptionsArgs) ToAlertPolicyConditionConditionThresholdForecastOptionsPtrOutput() AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput {
+	return i.ToAlertPolicyConditionConditionThresholdForecastOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyConditionConditionThresholdForecastOptionsArgs) ToAlertPolicyConditionConditionThresholdForecastOptionsPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionThresholdForecastOptionsOutput).ToAlertPolicyConditionConditionThresholdForecastOptionsPtrOutputWithContext(ctx)
+}
+
+// AlertPolicyConditionConditionThresholdForecastOptionsPtrInput is an input type that accepts AlertPolicyConditionConditionThresholdForecastOptionsArgs, AlertPolicyConditionConditionThresholdForecastOptionsPtr and AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput values.
+// You can construct a concrete instance of `AlertPolicyConditionConditionThresholdForecastOptionsPtrInput` via:
+//
+//	        AlertPolicyConditionConditionThresholdForecastOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlertPolicyConditionConditionThresholdForecastOptionsPtrInput interface {
+	pulumi.Input
+
+	ToAlertPolicyConditionConditionThresholdForecastOptionsPtrOutput() AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput
+	ToAlertPolicyConditionConditionThresholdForecastOptionsPtrOutputWithContext(context.Context) AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput
+}
+
+type alertPolicyConditionConditionThresholdForecastOptionsPtrType AlertPolicyConditionConditionThresholdForecastOptionsArgs
+
+func AlertPolicyConditionConditionThresholdForecastOptionsPtr(v *AlertPolicyConditionConditionThresholdForecastOptionsArgs) AlertPolicyConditionConditionThresholdForecastOptionsPtrInput {
+	return (*alertPolicyConditionConditionThresholdForecastOptionsPtrType)(v)
+}
+
+func (*alertPolicyConditionConditionThresholdForecastOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyConditionConditionThresholdForecastOptions)(nil)).Elem()
+}
+
+func (i *alertPolicyConditionConditionThresholdForecastOptionsPtrType) ToAlertPolicyConditionConditionThresholdForecastOptionsPtrOutput() AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput {
+	return i.ToAlertPolicyConditionConditionThresholdForecastOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *alertPolicyConditionConditionThresholdForecastOptionsPtrType) ToAlertPolicyConditionConditionThresholdForecastOptionsPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput)
+}
+
+type AlertPolicyConditionConditionThresholdForecastOptionsOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyConditionConditionThresholdForecastOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyConditionConditionThresholdForecastOptions)(nil)).Elem()
+}
+
+func (o AlertPolicyConditionConditionThresholdForecastOptionsOutput) ToAlertPolicyConditionConditionThresholdForecastOptionsOutput() AlertPolicyConditionConditionThresholdForecastOptionsOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionThresholdForecastOptionsOutput) ToAlertPolicyConditionConditionThresholdForecastOptionsOutputWithContext(ctx context.Context) AlertPolicyConditionConditionThresholdForecastOptionsOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionThresholdForecastOptionsOutput) ToAlertPolicyConditionConditionThresholdForecastOptionsPtrOutput() AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput {
+	return o.ToAlertPolicyConditionConditionThresholdForecastOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o AlertPolicyConditionConditionThresholdForecastOptionsOutput) ToAlertPolicyConditionConditionThresholdForecastOptionsPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyConditionConditionThresholdForecastOptions) *AlertPolicyConditionConditionThresholdForecastOptions {
+		return &v
+	}).(AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput)
+}
+
+// The length of time into the future to forecast
+// whether a timeseries will violate the threshold.
+// If the predicted value is found to violate the
+// threshold, and the violation is observed in all
+// forecasts made for the Configured `duration`,
+// then the timeseries is considered to be failing.
+func (o AlertPolicyConditionConditionThresholdForecastOptionsOutput) ForecastHorizon() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertPolicyConditionConditionThresholdForecastOptions) string { return v.ForecastHorizon }).(pulumi.StringOutput)
+}
+
+type AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicyConditionConditionThresholdForecastOptions)(nil)).Elem()
+}
+
+func (o AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput) ToAlertPolicyConditionConditionThresholdForecastOptionsPtrOutput() AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput) ToAlertPolicyConditionConditionThresholdForecastOptionsPtrOutputWithContext(ctx context.Context) AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput {
+	return o
+}
+
+func (o AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput) Elem() AlertPolicyConditionConditionThresholdForecastOptionsOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionThresholdForecastOptions) AlertPolicyConditionConditionThresholdForecastOptions {
+		if v != nil {
+			return *v
+		}
+		var ret AlertPolicyConditionConditionThresholdForecastOptions
+		return ret
+	}).(AlertPolicyConditionConditionThresholdForecastOptionsOutput)
+}
+
+// The length of time into the future to forecast
+// whether a timeseries will violate the threshold.
+// If the predicted value is found to violate the
+// threshold, and the violation is observed in all
+// forecasts made for the Configured `duration`,
+// then the timeseries is considered to be failing.
+func (o AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput) ForecastHorizon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertPolicyConditionConditionThresholdForecastOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ForecastHorizon
+	}).(pulumi.StringPtrOutput)
 }
 
 type AlertPolicyConditionConditionThresholdTrigger struct {
@@ -10667,6 +11015,8 @@ func (o GetUptimeCheckIPsUptimeCheckIpArrayOutput) Index(i pulumi.IntInput) GetU
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyAlertStrategyInput)(nil)).Elem(), AlertPolicyAlertStrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyAlertStrategyPtrInput)(nil)).Elem(), AlertPolicyAlertStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyAlertStrategyNotificationChannelStrategyInput)(nil)).Elem(), AlertPolicyAlertStrategyNotificationChannelStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyAlertStrategyNotificationChannelStrategyArrayInput)(nil)).Elem(), AlertPolicyAlertStrategyNotificationChannelStrategyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyAlertStrategyNotificationRateLimitInput)(nil)).Elem(), AlertPolicyAlertStrategyNotificationRateLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyAlertStrategyNotificationRateLimitPtrInput)(nil)).Elem(), AlertPolicyAlertStrategyNotificationRateLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionInput)(nil)).Elem(), AlertPolicyConditionArgs{})
@@ -10689,6 +11039,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionThresholdAggregationArrayInput)(nil)).Elem(), AlertPolicyConditionConditionThresholdAggregationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionThresholdDenominatorAggregationInput)(nil)).Elem(), AlertPolicyConditionConditionThresholdDenominatorAggregationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionThresholdDenominatorAggregationArrayInput)(nil)).Elem(), AlertPolicyConditionConditionThresholdDenominatorAggregationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionThresholdForecastOptionsInput)(nil)).Elem(), AlertPolicyConditionConditionThresholdForecastOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionThresholdForecastOptionsPtrInput)(nil)).Elem(), AlertPolicyConditionConditionThresholdForecastOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionThresholdTriggerInput)(nil)).Elem(), AlertPolicyConditionConditionThresholdTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyConditionConditionThresholdTriggerPtrInput)(nil)).Elem(), AlertPolicyConditionConditionThresholdTriggerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlertPolicyCreationRecordInput)(nil)).Elem(), AlertPolicyCreationRecordArgs{})
@@ -10777,6 +11129,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUptimeCheckIPsUptimeCheckIpArrayInput)(nil)).Elem(), GetUptimeCheckIPsUptimeCheckIpArray{})
 	pulumi.RegisterOutputType(AlertPolicyAlertStrategyOutput{})
 	pulumi.RegisterOutputType(AlertPolicyAlertStrategyPtrOutput{})
+	pulumi.RegisterOutputType(AlertPolicyAlertStrategyNotificationChannelStrategyOutput{})
+	pulumi.RegisterOutputType(AlertPolicyAlertStrategyNotificationChannelStrategyArrayOutput{})
 	pulumi.RegisterOutputType(AlertPolicyAlertStrategyNotificationRateLimitOutput{})
 	pulumi.RegisterOutputType(AlertPolicyAlertStrategyNotificationRateLimitPtrOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionOutput{})
@@ -10799,6 +11153,8 @@ func init() {
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionThresholdAggregationArrayOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionThresholdDenominatorAggregationOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionThresholdDenominatorAggregationArrayOutput{})
+	pulumi.RegisterOutputType(AlertPolicyConditionConditionThresholdForecastOptionsOutput{})
+	pulumi.RegisterOutputType(AlertPolicyConditionConditionThresholdForecastOptionsPtrOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionThresholdTriggerOutput{})
 	pulumi.RegisterOutputType(AlertPolicyConditionConditionThresholdTriggerPtrOutput{})
 	pulumi.RegisterOutputType(AlertPolicyCreationRecordOutput{})

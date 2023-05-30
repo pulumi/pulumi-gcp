@@ -177,7 +177,7 @@ namespace Pulumi.Gcp.Dataflow
         /// Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
         /// </summary>
         [Output("labels")]
-        public Output<ImmutableDictionary<string, object>?> Labels { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, object>> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The machine type to use for the job.

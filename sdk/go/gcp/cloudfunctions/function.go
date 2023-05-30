@@ -218,6 +218,8 @@ type Function struct {
 	// Represents parameters related to source repository where a function is hosted.
 	// Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
 	SourceRepository FunctionSourceRepositoryPtrOutput `pulumi:"sourceRepository"`
+	// Describes the current stage of a deployment.
+	Status pulumi.StringOutput `pulumi:"status"`
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout pulumi.IntPtrOutput `pulumi:"timeout"`
 	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
@@ -317,6 +319,8 @@ type functionState struct {
 	// Represents parameters related to source repository where a function is hosted.
 	// Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
 	SourceRepository *FunctionSourceRepository `pulumi:"sourceRepository"`
+	// Describes the current stage of a deployment.
+	Status *string `pulumi:"status"`
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout *int `pulumi:"timeout"`
 	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
@@ -385,6 +389,8 @@ type FunctionState struct {
 	// Represents parameters related to source repository where a function is hosted.
 	// Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
 	SourceRepository FunctionSourceRepositoryPtrInput
+	// Describes the current stage of a deployment.
+	Status pulumi.StringPtrInput
 	// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
 	Timeout pulumi.IntPtrInput
 	// Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `httpsTriggerUrl`. Cannot be used with `eventTrigger`.
@@ -756,6 +762,11 @@ func (o FunctionOutput) SourceArchiveObject() pulumi.StringPtrOutput {
 // Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
 func (o FunctionOutput) SourceRepository() FunctionSourceRepositoryPtrOutput {
 	return o.ApplyT(func(v *Function) FunctionSourceRepositoryPtrOutput { return v.SourceRepository }).(FunctionSourceRepositoryPtrOutput)
+}
+
+// Describes the current stage of a deployment.
+func (o FunctionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
 // Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.

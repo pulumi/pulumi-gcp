@@ -211,7 +211,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
     /**
      * A JSON schema for the external table. Schema is required
      * for CSV and JSON formats if autodetect is not on. Schema is disallowed
-     * for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
+     * for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
      * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
      * string will create a diff, even if the JSON itself hasn&#39;t changed.
      * Furthermore drift for this field cannot not be detected because BigQuery
@@ -228,7 +228,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
     /**
      * @return A JSON schema for the external table. Schema is required
      * for CSV and JSON formats if autodetect is not on. Schema is disallowed
-     * for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
+     * for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
      * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
      * string will create a diff, even if the JSON itself hasn&#39;t changed.
      * Furthermore drift for this field cannot not be detected because BigQuery
@@ -244,22 +244,20 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
     }
 
     /**
-     * The data format. Supported values are:
-     * &#34;CSV&#34;, &#34;GOOGLE_SHEETS&#34;, &#34;NEWLINE_DELIMITED_JSON&#34;, &#34;AVRO&#34;, &#34;PARQUET&#34;, &#34;ORC&#34;,
-     * &#34;DATSTORE_BACKUP&#34;, and &#34;BIGTABLE&#34;. To use &#34;GOOGLE_SHEETS&#34;
-     * the `scopes` must include
-     * &#34;https://www.googleapis.com/auth/drive.readonly&#34;.
+     * The data format. Please see sourceFormat under
+     * [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
+     * in Bigquery&#39;s public API documentation for supported formats. To use &#34;GOOGLE_SHEETS&#34;
+     * the `scopes` must include &#34;https://www.googleapis.com/auth/drive.readonly&#34;.
      * 
      */
     @Import(name="sourceFormat", required=true)
     private Output<String> sourceFormat;
 
     /**
-     * @return The data format. Supported values are:
-     * &#34;CSV&#34;, &#34;GOOGLE_SHEETS&#34;, &#34;NEWLINE_DELIMITED_JSON&#34;, &#34;AVRO&#34;, &#34;PARQUET&#34;, &#34;ORC&#34;,
-     * &#34;DATSTORE_BACKUP&#34;, and &#34;BIGTABLE&#34;. To use &#34;GOOGLE_SHEETS&#34;
-     * the `scopes` must include
-     * &#34;https://www.googleapis.com/auth/drive.readonly&#34;.
+     * @return The data format. Please see sourceFormat under
+     * [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
+     * in Bigquery&#39;s public API documentation for supported formats. To use &#34;GOOGLE_SHEETS&#34;
+     * the `scopes` must include &#34;https://www.googleapis.com/auth/drive.readonly&#34;.
      * 
      */
     public Output<String> sourceFormat() {
@@ -568,7 +566,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
         /**
          * @param schema A JSON schema for the external table. Schema is required
          * for CSV and JSON formats if autodetect is not on. Schema is disallowed
-         * for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
+         * for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
          * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
          * string will create a diff, even if the JSON itself hasn&#39;t changed.
          * Furthermore drift for this field cannot not be detected because BigQuery
@@ -589,7 +587,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
         /**
          * @param schema A JSON schema for the external table. Schema is required
          * for CSV and JSON formats if autodetect is not on. Schema is disallowed
-         * for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
+         * for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
          * ~&gt;**NOTE:** Because this field expects a JSON string, any changes to the
          * string will create a diff, even if the JSON itself hasn&#39;t changed.
          * Furthermore drift for this field cannot not be detected because BigQuery
@@ -607,11 +605,10 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sourceFormat The data format. Supported values are:
-         * &#34;CSV&#34;, &#34;GOOGLE_SHEETS&#34;, &#34;NEWLINE_DELIMITED_JSON&#34;, &#34;AVRO&#34;, &#34;PARQUET&#34;, &#34;ORC&#34;,
-         * &#34;DATSTORE_BACKUP&#34;, and &#34;BIGTABLE&#34;. To use &#34;GOOGLE_SHEETS&#34;
-         * the `scopes` must include
-         * &#34;https://www.googleapis.com/auth/drive.readonly&#34;.
+         * @param sourceFormat The data format. Please see sourceFormat under
+         * [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
+         * in Bigquery&#39;s public API documentation for supported formats. To use &#34;GOOGLE_SHEETS&#34;
+         * the `scopes` must include &#34;https://www.googleapis.com/auth/drive.readonly&#34;.
          * 
          * @return builder
          * 
@@ -622,11 +619,10 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param sourceFormat The data format. Supported values are:
-         * &#34;CSV&#34;, &#34;GOOGLE_SHEETS&#34;, &#34;NEWLINE_DELIMITED_JSON&#34;, &#34;AVRO&#34;, &#34;PARQUET&#34;, &#34;ORC&#34;,
-         * &#34;DATSTORE_BACKUP&#34;, and &#34;BIGTABLE&#34;. To use &#34;GOOGLE_SHEETS&#34;
-         * the `scopes` must include
-         * &#34;https://www.googleapis.com/auth/drive.readonly&#34;.
+         * @param sourceFormat The data format. Please see sourceFormat under
+         * [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
+         * in Bigquery&#39;s public API documentation for supported formats. To use &#34;GOOGLE_SHEETS&#34;
+         * the `scopes` must include &#34;https://www.googleapis.com/auth/drive.readonly&#34;.
          * 
          * @return builder
          * 

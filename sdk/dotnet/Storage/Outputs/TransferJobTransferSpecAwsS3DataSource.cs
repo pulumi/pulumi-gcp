@@ -22,6 +22,10 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly string BucketName;
         /// <summary>
+        /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        /// </summary>
+        public readonly string? Path;
+        /// <summary>
         /// The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
         /// </summary>
         public readonly string? RoleArn;
@@ -32,10 +36,13 @@ namespace Pulumi.Gcp.Storage.Outputs
 
             string bucketName,
 
+            string? path,
+
             string? roleArn)
         {
             AwsAccessKey = awsAccessKey;
             BucketName = bucketName;
+            Path = path;
             RoleArn = roleArn;
         }
     }

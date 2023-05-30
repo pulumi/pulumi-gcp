@@ -182,10 +182,10 @@ type RegionCommitment struct {
 	// A human-readable explanation of the status.
 	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
 	// The type of commitment, which affects the discount rate and the eligible resources.
-	// Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized
-	// machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to
-	// accelerator optimized machines.
-	// Possible values are: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`.
+	// The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
+	// `GENERAL_PURPOSE_N1`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
+	// `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
+	// `GRAPHICS_OPTIMIZED_G2`
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -274,10 +274,10 @@ type regionCommitmentState struct {
 	// A human-readable explanation of the status.
 	StatusMessage *string `pulumi:"statusMessage"`
 	// The type of commitment, which affects the discount rate and the eligible resources.
-	// Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized
-	// machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to
-	// accelerator optimized machines.
-	// Possible values are: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`.
+	// The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
+	// `GENERAL_PURPOSE_N1`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
+	// `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
+	// `GRAPHICS_OPTIMIZED_G2`
 	Type *string `pulumi:"type"`
 }
 
@@ -335,10 +335,10 @@ type RegionCommitmentState struct {
 	// A human-readable explanation of the status.
 	StatusMessage pulumi.StringPtrInput
 	// The type of commitment, which affects the discount rate and the eligible resources.
-	// Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized
-	// machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to
-	// accelerator optimized machines.
-	// Possible values are: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`.
+	// The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
+	// `GENERAL_PURPOSE_N1`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
+	// `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
+	// `GRAPHICS_OPTIMIZED_G2`
 	Type pulumi.StringPtrInput
 }
 
@@ -385,10 +385,10 @@ type regionCommitmentArgs struct {
 	// Structure is documented below.
 	Resources []RegionCommitmentResource `pulumi:"resources"`
 	// The type of commitment, which affects the discount rate and the eligible resources.
-	// Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized
-	// machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to
-	// accelerator optimized machines.
-	// Possible values are: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`.
+	// The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
+	// `GENERAL_PURPOSE_N1`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
+	// `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
+	// `GRAPHICS_OPTIMIZED_G2`
 	Type *string `pulumi:"type"`
 }
 
@@ -432,10 +432,10 @@ type RegionCommitmentArgs struct {
 	// Structure is documented below.
 	Resources RegionCommitmentResourceArrayInput
 	// The type of commitment, which affects the discount rate and the eligible resources.
-	// Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized
-	// machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to
-	// accelerator optimized machines.
-	// Possible values are: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`.
+	// The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
+	// `GENERAL_PURPOSE_N1`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
+	// `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
+	// `GRAPHICS_OPTIMIZED_G2`
 	Type pulumi.StringPtrInput
 }
 
@@ -627,10 +627,10 @@ func (o RegionCommitmentOutput) StatusMessage() pulumi.StringOutput {
 }
 
 // The type of commitment, which affects the discount rate and the eligible resources.
-// Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized
-// machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to
-// accelerator optimized machines.
-// Possible values are: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`.
+// The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
+// `GENERAL_PURPOSE_N1`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
+// `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
+// `GRAPHICS_OPTIMIZED_G2`
 func (o RegionCommitmentOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionCommitment) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

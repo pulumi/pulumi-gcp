@@ -495,7 +495,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
         The Compute NetworkFirewallPolicyRule resource
 
         ## Example Usage
-        ### Regional
+        ### Regional_net_sec_rule
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -506,12 +506,14 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
             location="us-west1",
             items=["208.80.154.224/32"],
             type="IPV4",
-            capacity=100)
+            capacity=100,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy",
             description="Sample regional network firewall policy",
             project="my-project-name",
-            region="us-west1")
-        basic_network = gcp.compute.Network("basicNetwork")
+            region="us-west1",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        basic_network = gcp.compute.Network("basicNetwork", opts=pulumi.ResourceOptions(provider=google_beta))
         basic_key = gcp.tags.TagKey("basicKey",
             description="For keyname resources.",
             parent="organizations/123456789",
@@ -519,11 +521,13 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
             short_name="tagkey",
             purpose_data={
                 "network": basic_network.name.apply(lambda name: f"my-project-name/{name}"),
-            })
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
         basic_value = gcp.tags.TagValue("basicValue",
             description="For valuename resources.",
             parent=basic_key.name.apply(lambda name: f"tagKeys/{name}"),
-            short_name="tagvalue")
+            short_name="tagvalue",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         primary = gcp.compute.RegionNetworkFirewallPolicyRule("primary",
             action="allow",
             description="This is a simple rule description",
@@ -547,7 +551,8 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                     name=basic_value.name.apply(lambda name: f"tagValues/{name}"),
                 )],
                 src_address_groups=[basic_regional_networksecurity_address_group.id],
-            ))
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -596,7 +601,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
         The Compute NetworkFirewallPolicyRule resource
 
         ## Example Usage
-        ### Regional
+        ### Regional_net_sec_rule
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -607,12 +612,14 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
             location="us-west1",
             items=["208.80.154.224/32"],
             type="IPV4",
-            capacity=100)
+            capacity=100,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         basic_regional_network_firewall_policy = gcp.compute.RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy",
             description="Sample regional network firewall policy",
             project="my-project-name",
-            region="us-west1")
-        basic_network = gcp.compute.Network("basicNetwork")
+            region="us-west1",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        basic_network = gcp.compute.Network("basicNetwork", opts=pulumi.ResourceOptions(provider=google_beta))
         basic_key = gcp.tags.TagKey("basicKey",
             description="For keyname resources.",
             parent="organizations/123456789",
@@ -620,11 +627,13 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
             short_name="tagkey",
             purpose_data={
                 "network": basic_network.name.apply(lambda name: f"my-project-name/{name}"),
-            })
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
         basic_value = gcp.tags.TagValue("basicValue",
             description="For valuename resources.",
             parent=basic_key.name.apply(lambda name: f"tagKeys/{name}"),
-            short_name="tagvalue")
+            short_name="tagvalue",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         primary = gcp.compute.RegionNetworkFirewallPolicyRule("primary",
             action="allow",
             description="This is a simple rule description",
@@ -648,7 +657,8 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                     name=basic_value.name.apply(lambda name: f"tagValues/{name}"),
                 )],
                 src_address_groups=[basic_regional_networksecurity_address_group.id],
-            ))
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import

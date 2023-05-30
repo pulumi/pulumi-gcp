@@ -100,6 +100,9 @@ namespace Pulumi.Gcp.Firebase
         /// The default Firebase Realtime Database URL.
         /// </summary>
         public readonly string DatabaseUrl;
+        /// <summary>
+        /// The provider-assigned unique ID for this managed resource.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The ID of the project's default GCP resource location. The location is one of the available GCP resource

@@ -48,5 +48,8 @@ export interface GetClientOpenIdUserInfoResult {
      * The email of the account used by the provider to authenticate with GCP.
      */
     readonly email: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
     readonly id: string;
 }

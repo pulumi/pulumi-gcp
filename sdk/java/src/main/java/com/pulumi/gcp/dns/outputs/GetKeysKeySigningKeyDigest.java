@@ -6,6 +6,8 @@ package com.pulumi.gcp.dns.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKeysKeySigningKeyDigest {
@@ -13,27 +15,27 @@ public final class GetKeysKeySigningKeyDigest {
      * @return The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
      * 
      */
-    private String digest;
+    private @Nullable String digest;
     /**
      * @return Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
      * 
      */
-    private String type;
+    private @Nullable String type;
 
     private GetKeysKeySigningKeyDigest() {}
     /**
      * @return The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
      * 
      */
-    public String digest() {
-        return this.digest;
+    public Optional<String> digest() {
+        return Optional.ofNullable(this.digest);
     }
     /**
      * @return Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
      * 
      */
-    public String type() {
-        return this.type;
+    public Optional<String> type() {
+        return Optional.ofNullable(this.type);
     }
 
     public static Builder builder() {
@@ -45,8 +47,8 @@ public final class GetKeysKeySigningKeyDigest {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String digest;
-        private String type;
+        private @Nullable String digest;
+        private @Nullable String type;
         public Builder() {}
         public Builder(GetKeysKeySigningKeyDigest defaults) {
     	      Objects.requireNonNull(defaults);
@@ -55,13 +57,13 @@ public final class GetKeysKeySigningKeyDigest {
         }
 
         @CustomType.Setter
-        public Builder digest(String digest) {
-            this.digest = Objects.requireNonNull(digest);
+        public Builder digest(@Nullable String digest) {
+            this.digest = digest;
             return this;
         }
         @CustomType.Setter
-        public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+        public Builder type(@Nullable String type) {
+            this.type = type;
             return this;
         }
         public GetKeysKeySigningKeyDigest build() {

@@ -107,6 +107,7 @@ public final class GetFunctionResult {
      * 
      */
     private List<GetFunctionSourceRepository> sourceRepositories;
+    private String status;
     /**
      * @return Function execution timeout (in seconds).
      * 
@@ -270,6 +271,9 @@ public final class GetFunctionResult {
     public List<GetFunctionSourceRepository> sourceRepositories() {
         return this.sourceRepositories;
     }
+    public String status() {
+        return this.status;
+    }
     /**
      * @return Function execution timeout (in seconds).
      * 
@@ -335,6 +339,7 @@ public final class GetFunctionResult {
         private String sourceArchiveBucket;
         private String sourceArchiveObject;
         private List<GetFunctionSourceRepository> sourceRepositories;
+        private String status;
         private Integer timeout;
         private Boolean triggerHttp;
         private String vpcConnector;
@@ -369,6 +374,7 @@ public final class GetFunctionResult {
     	      this.sourceArchiveBucket = defaults.sourceArchiveBucket;
     	      this.sourceArchiveObject = defaults.sourceArchiveObject;
     	      this.sourceRepositories = defaults.sourceRepositories;
+    	      this.status = defaults.status;
     	      this.timeout = defaults.timeout;
     	      this.triggerHttp = defaults.triggerHttp;
     	      this.vpcConnector = defaults.vpcConnector;
@@ -523,6 +529,11 @@ public final class GetFunctionResult {
             return sourceRepositories(List.of(sourceRepositories));
         }
         @CustomType.Setter
+        public Builder status(String status) {
+            this.status = Objects.requireNonNull(status);
+            return this;
+        }
+        @CustomType.Setter
         public Builder timeout(Integer timeout) {
             this.timeout = Objects.requireNonNull(timeout);
             return this;
@@ -571,6 +582,7 @@ public final class GetFunctionResult {
             o.sourceArchiveBucket = sourceArchiveBucket;
             o.sourceArchiveObject = sourceArchiveObject;
             o.sourceRepositories = sourceRepositories;
+            o.status = status;
             o.timeout = timeout;
             o.triggerHttp = triggerHttp;
             o.vpcConnector = vpcConnector;

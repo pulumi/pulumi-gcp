@@ -3801,7 +3801,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="gatewayApiConfig")
-    def gateway_api_config(self) -> pulumi.Output[Optional['outputs.ClusterGatewayApiConfig']]:
+    def gateway_api_config(self) -> pulumi.Output['outputs.ClusterGatewayApiConfig']:
         """
         Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         """

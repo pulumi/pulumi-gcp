@@ -14,14 +14,14 @@ public final class ClusterGatewayApiConfigArgs extends com.pulumi.resources.Reso
     public static final ClusterGatewayApiConfigArgs Empty = new ClusterGatewayApiConfigArgs();
 
     /**
-     * Which Gateway Api channel should be used. `CHANNEL_DISABLED` or `CHANNEL_STANDARD`.
+     * Which Gateway Api channel should be used. `CHANNEL_DISABLED`, `CHANNEL_EXPERIMENTAL` or `CHANNEL_STANDARD`.
      * 
      */
     @Import(name="channel", required=true)
     private Output<String> channel;
 
     /**
-     * @return Which Gateway Api channel should be used. `CHANNEL_DISABLED` or `CHANNEL_STANDARD`.
+     * @return Which Gateway Api channel should be used. `CHANNEL_DISABLED`, `CHANNEL_EXPERIMENTAL` or `CHANNEL_STANDARD`.
      * 
      */
     public Output<String> channel() {
@@ -53,7 +53,7 @@ public final class ClusterGatewayApiConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param channel Which Gateway Api channel should be used. `CHANNEL_DISABLED` or `CHANNEL_STANDARD`.
+         * @param channel Which Gateway Api channel should be used. `CHANNEL_DISABLED`, `CHANNEL_EXPERIMENTAL` or `CHANNEL_STANDARD`.
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class ClusterGatewayApiConfigArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param channel Which Gateway Api channel should be used. `CHANNEL_DISABLED` or `CHANNEL_STANDARD`.
+         * @param channel Which Gateway Api channel should be used. `CHANNEL_DISABLED`, `CHANNEL_EXPERIMENTAL` or `CHANNEL_STANDARD`.
          * 
          * @return builder
          * 

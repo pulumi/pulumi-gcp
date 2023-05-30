@@ -58,10 +58,10 @@ class RegionCommitmentArgs:
                Note that VCPU and MEMORY resource commitments must occur together.
                Structure is documented below.
         :param pulumi.Input[str] type: The type of commitment, which affects the discount rate and the eligible resources.
-               Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized
-               machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to
-               accelerator optimized machines.
-               Possible values are: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`.
+               The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
+               `GENERAL_PURPOSE_N1`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
+               `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
+               `GRAPHICS_OPTIMIZED_G2`
         """
         pulumi.set(__self__, "plan", plan)
         if auto_renew is not None:
@@ -216,10 +216,10 @@ class RegionCommitmentArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of commitment, which affects the discount rate and the eligible resources.
-        Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized
-        machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to
-        accelerator optimized machines.
-        Possible values are: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`.
+        The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
+        `GENERAL_PURPOSE_N1`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
+        `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
+        `GRAPHICS_OPTIMIZED_G2`
         """
         return pulumi.get(self, "type")
 
@@ -288,10 +288,10 @@ class _RegionCommitmentState:
                (each commitment has an end date defined).
         :param pulumi.Input[str] status_message: A human-readable explanation of the status.
         :param pulumi.Input[str] type: The type of commitment, which affects the discount rate and the eligible resources.
-               Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized
-               machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to
-               accelerator optimized machines.
-               Possible values are: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`.
+               The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
+               `GENERAL_PURPOSE_N1`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
+               `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
+               `GRAPHICS_OPTIMIZED_G2`
         """
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
@@ -546,10 +546,10 @@ class _RegionCommitmentState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of commitment, which affects the discount rate and the eligible resources.
-        Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized
-        machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to
-        accelerator optimized machines.
-        Possible values are: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`.
+        The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
+        `GENERAL_PURPOSE_N1`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
+        `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
+        `GRAPHICS_OPTIMIZED_G2`
         """
         return pulumi.get(self, "type")
 
@@ -683,10 +683,10 @@ class RegionCommitment(pulumi.CustomResource):
                Note that VCPU and MEMORY resource commitments must occur together.
                Structure is documented below.
         :param pulumi.Input[str] type: The type of commitment, which affects the discount rate and the eligible resources.
-               Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized
-               machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to
-               accelerator optimized machines.
-               Possible values are: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`.
+               The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
+               `GENERAL_PURPOSE_N1`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
+               `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
+               `GRAPHICS_OPTIMIZED_G2`
         """
         ...
     @overload
@@ -896,10 +896,10 @@ class RegionCommitment(pulumi.CustomResource):
                (each commitment has an end date defined).
         :param pulumi.Input[str] status_message: A human-readable explanation of the status.
         :param pulumi.Input[str] type: The type of commitment, which affects the discount rate and the eligible resources.
-               Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized
-               machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to
-               accelerator optimized machines.
-               Possible values are: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`.
+               The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
+               `GENERAL_PURPOSE_N1`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
+               `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
+               `GRAPHICS_OPTIMIZED_G2`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1078,10 +1078,10 @@ class RegionCommitment(pulumi.CustomResource):
     def type(self) -> pulumi.Output[str]:
         """
         The type of commitment, which affects the discount rate and the eligible resources.
-        Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized
-        machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to
-        accelerator optimized machines.
-        Possible values are: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`.
+        The type could be one of the following value: `MEMORY_OPTIMIZED`, `ACCELERATOR_OPTIMIZED`,
+        `GENERAL_PURPOSE_N1`, `GENERAL_PURPOSE_N2`, `GENERAL_PURPOSE_N2D`, `GENERAL_PURPOSE_E2`,
+        `GENERAL_PURPOSE_T2D`, `GENERAL_PURPOSE_C3`, `COMPUTE_OPTIMIZED_C2`, `COMPUTE_OPTIMIZED_C2D` and
+        `GRAPHICS_OPTIMIZED_G2`
         """
         return pulumi.get(self, "type")
 

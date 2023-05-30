@@ -282,7 +282,7 @@ namespace Pulumi.Gcp.Container
         /// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         /// </summary>
         [Output("gatewayApiConfig")]
-        public Output<Outputs.ClusterGatewayApiConfig?> GatewayApiConfig { get; private set; } = null!;
+        public Output<Outputs.ClusterGatewayApiConfig> GatewayApiConfig { get; private set; } = null!;
 
         /// <summary>
         /// . Structure is documented below.

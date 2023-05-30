@@ -114,6 +114,18 @@ namespace Pulumi.Gcp.Dataflow
     public partial class FlexTemplateJob : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// List of experiments that should be used by the job. An example value is ["enable_stackdriver_agent_metrics"].
+        /// </summary>
+        [Output("additionalExperiments")]
+        public Output<ImmutableArray<string>> AdditionalExperiments { get; private set; } = null!;
+
+        /// <summary>
+        /// The algorithm to use for autoscaling
+        /// </summary>
+        [Output("autoscalingAlgorithm")]
+        public Output<string?> AutoscalingAlgorithm { get; private set; } = null!;
+
+        /// <summary>
         /// The GCS path to the Dataflow job Flex
         /// Template.
         /// 
@@ -123,10 +135,29 @@ namespace Pulumi.Gcp.Dataflow
         public Output<string> ContainerSpecGcsPath { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates if the job should use the streaming engine feature.
+        /// </summary>
+        [Output("enableStreamingEngine")]
+        public Output<bool?> EnableStreamingEngine { get; private set; } = null!;
+
+        /// <summary>
+        /// The configuration for VM IPs. Options are "WORKER_IP_PUBLIC" or "WORKER_IP_PRIVATE".
+        /// </summary>
+        [Output("ipConfiguration")]
+        public Output<string?> IpConfiguration { get; private set; } = null!;
+
+        /// <summary>
         /// The unique ID of this job.
         /// </summary>
         [Output("jobId")]
         public Output<string> JobId { get; private set; } = null!;
+
+        /// <summary>
+        /// The name for the Cloud KMS key for the job. Key format is:
+        /// projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+        /// </summary>
+        [Output("kmsKeyName")]
+        public Output<string?> KmsKeyName { get; private set; } = null!;
 
         /// <summary>
         /// User labels to be specified for the job. Keys and values
@@ -141,10 +172,41 @@ namespace Pulumi.Gcp.Dataflow
         public Output<ImmutableDictionary<string, object>?> Labels { get; private set; } = null!;
 
         /// <summary>
+        /// The machine type to use for launching the job. The default is n1-standard-1.
+        /// </summary>
+        [Output("launcherMachineType")]
+        public Output<string?> LauncherMachineType { get; private set; } = null!;
+
+        /// <summary>
+        /// The machine type to use for the job.
+        /// </summary>
+        [Output("machineType")]
+        public Output<string?> MachineType { get; private set; } = null!;
+
+        /// <summary>
+        /// The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
+        /// 1000.
+        /// </summary>
+        [Output("maxWorkers")]
+        public Output<int?> MaxWorkers { get; private set; } = null!;
+
+        /// <summary>
         /// A unique name for the resource, required by Dataflow.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The network to which VMs will be assigned. If it is not provided, "default" will be used.
+        /// </summary>
+        [Output("network")]
+        public Output<string?> Network { get; private set; } = null!;
+
+        /// <summary>
+        /// The initial number of Google Compute Engine instances for the job.
+        /// </summary>
+        [Output("numWorkers")]
+        public Output<int?> NumWorkers { get; private set; } = null!;
 
         /// <summary>
         /// One of "drain" or "cancel". Specifies behavior of
@@ -175,6 +237,19 @@ namespace Pulumi.Gcp.Dataflow
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
+        /// the SDK. Note this field is only valid for portable pipelines.
+        /// </summary>
+        [Output("sdkContainerImage")]
+        public Output<string?> SdkContainerImage { get; private set; } = null!;
+
+        /// <summary>
+        /// The Service Account email used to create the job.
+        /// </summary>
+        [Output("serviceAccountEmail")]
+        public Output<string> ServiceAccountEmail { get; private set; } = null!;
+
+        /// <summary>
         /// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
         /// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
         /// different, e.g. by embedding a release ID or by using a random_id.
@@ -183,10 +258,41 @@ namespace Pulumi.Gcp.Dataflow
         public Output<bool?> SkipWaitOnJobTermination { get; private set; } = null!;
 
         /// <summary>
+        /// The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
+        /// </summary>
+        [Output("stagingLocation")]
+        public Output<string> StagingLocation { get; private set; } = null!;
+
+        /// <summary>
         /// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+        /// </summary>
+        [Output("subnetwork")]
+        public Output<string?> Subnetwork { get; private set; } = null!;
+
+        /// <summary>
+        /// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
+        /// </summary>
+        [Output("tempLocation")]
+        public Output<string> TempLocation { get; private set; } = null!;
+
+        /// <summary>
+        /// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
+        /// corresponding name prefixes of the new job.
+        /// </summary>
+        [Output("transformNameMapping")]
+        public Output<ImmutableDictionary<string, object>?> TransformNameMapping { get; private set; } = null!;
+
+        /// <summary>
+        /// The type of this job, selected from the JobType enum.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
 
 
         /// <summary>
@@ -234,6 +340,24 @@ namespace Pulumi.Gcp.Dataflow
 
     public sealed class FlexTemplateJobArgs : global::Pulumi.ResourceArgs
     {
+        [Input("additionalExperiments")]
+        private InputList<string>? _additionalExperiments;
+
+        /// <summary>
+        /// List of experiments that should be used by the job. An example value is ["enable_stackdriver_agent_metrics"].
+        /// </summary>
+        public InputList<string> AdditionalExperiments
+        {
+            get => _additionalExperiments ?? (_additionalExperiments = new InputList<string>());
+            set => _additionalExperiments = value;
+        }
+
+        /// <summary>
+        /// The algorithm to use for autoscaling
+        /// </summary>
+        [Input("autoscalingAlgorithm")]
+        public Input<string>? AutoscalingAlgorithm { get; set; }
+
         /// <summary>
         /// The GCS path to the Dataflow job Flex
         /// Template.
@@ -242,6 +366,25 @@ namespace Pulumi.Gcp.Dataflow
         /// </summary>
         [Input("containerSpecGcsPath", required: true)]
         public Input<string> ContainerSpecGcsPath { get; set; } = null!;
+
+        /// <summary>
+        /// Indicates if the job should use the streaming engine feature.
+        /// </summary>
+        [Input("enableStreamingEngine")]
+        public Input<bool>? EnableStreamingEngine { get; set; }
+
+        /// <summary>
+        /// The configuration for VM IPs. Options are "WORKER_IP_PUBLIC" or "WORKER_IP_PRIVATE".
+        /// </summary>
+        [Input("ipConfiguration")]
+        public Input<string>? IpConfiguration { get; set; }
+
+        /// <summary>
+        /// The name for the Cloud KMS key for the job. Key format is:
+        /// projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+        /// </summary>
+        [Input("kmsKeyName")]
+        public Input<string>? KmsKeyName { get; set; }
 
         [Input("labels")]
         private InputMap<object>? _labels;
@@ -262,10 +405,41 @@ namespace Pulumi.Gcp.Dataflow
         }
 
         /// <summary>
+        /// The machine type to use for launching the job. The default is n1-standard-1.
+        /// </summary>
+        [Input("launcherMachineType")]
+        public Input<string>? LauncherMachineType { get; set; }
+
+        /// <summary>
+        /// The machine type to use for the job.
+        /// </summary>
+        [Input("machineType")]
+        public Input<string>? MachineType { get; set; }
+
+        /// <summary>
+        /// The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
+        /// 1000.
+        /// </summary>
+        [Input("maxWorkers")]
+        public Input<int>? MaxWorkers { get; set; }
+
+        /// <summary>
         /// A unique name for the resource, required by Dataflow.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The network to which VMs will be assigned. If it is not provided, "default" will be used.
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// The initial number of Google Compute Engine instances for the job.
+        /// </summary>
+        [Input("numWorkers")]
+        public Input<int>? NumWorkers { get; set; }
 
         /// <summary>
         /// One of "drain" or "cancel". Specifies behavior of
@@ -302,12 +476,56 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? Region { get; set; }
 
         /// <summary>
+        /// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
+        /// the SDK. Note this field is only valid for portable pipelines.
+        /// </summary>
+        [Input("sdkContainerImage")]
+        public Input<string>? SdkContainerImage { get; set; }
+
+        /// <summary>
+        /// The Service Account email used to create the job.
+        /// </summary>
+        [Input("serviceAccountEmail")]
+        public Input<string>? ServiceAccountEmail { get; set; }
+
+        /// <summary>
         /// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
         /// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
         /// different, e.g. by embedding a release ID or by using a random_id.
         /// </summary>
         [Input("skipWaitOnJobTermination")]
         public Input<bool>? SkipWaitOnJobTermination { get; set; }
+
+        /// <summary>
+        /// The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
+        /// </summary>
+        [Input("stagingLocation")]
+        public Input<string>? StagingLocation { get; set; }
+
+        /// <summary>
+        /// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+        /// </summary>
+        [Input("subnetwork")]
+        public Input<string>? Subnetwork { get; set; }
+
+        /// <summary>
+        /// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
+        /// </summary>
+        [Input("tempLocation")]
+        public Input<string>? TempLocation { get; set; }
+
+        [Input("transformNameMapping")]
+        private InputMap<object>? _transformNameMapping;
+
+        /// <summary>
+        /// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
+        /// corresponding name prefixes of the new job.
+        /// </summary>
+        public InputMap<object> TransformNameMapping
+        {
+            get => _transformNameMapping ?? (_transformNameMapping = new InputMap<object>());
+            set => _transformNameMapping = value;
+        }
 
         public FlexTemplateJobArgs()
         {
@@ -317,6 +535,24 @@ namespace Pulumi.Gcp.Dataflow
 
     public sealed class FlexTemplateJobState : global::Pulumi.ResourceArgs
     {
+        [Input("additionalExperiments")]
+        private InputList<string>? _additionalExperiments;
+
+        /// <summary>
+        /// List of experiments that should be used by the job. An example value is ["enable_stackdriver_agent_metrics"].
+        /// </summary>
+        public InputList<string> AdditionalExperiments
+        {
+            get => _additionalExperiments ?? (_additionalExperiments = new InputList<string>());
+            set => _additionalExperiments = value;
+        }
+
+        /// <summary>
+        /// The algorithm to use for autoscaling
+        /// </summary>
+        [Input("autoscalingAlgorithm")]
+        public Input<string>? AutoscalingAlgorithm { get; set; }
+
         /// <summary>
         /// The GCS path to the Dataflow job Flex
         /// Template.
@@ -327,10 +563,29 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? ContainerSpecGcsPath { get; set; }
 
         /// <summary>
+        /// Indicates if the job should use the streaming engine feature.
+        /// </summary>
+        [Input("enableStreamingEngine")]
+        public Input<bool>? EnableStreamingEngine { get; set; }
+
+        /// <summary>
+        /// The configuration for VM IPs. Options are "WORKER_IP_PUBLIC" or "WORKER_IP_PRIVATE".
+        /// </summary>
+        [Input("ipConfiguration")]
+        public Input<string>? IpConfiguration { get; set; }
+
+        /// <summary>
         /// The unique ID of this job.
         /// </summary>
         [Input("jobId")]
         public Input<string>? JobId { get; set; }
+
+        /// <summary>
+        /// The name for the Cloud KMS key for the job. Key format is:
+        /// projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+        /// </summary>
+        [Input("kmsKeyName")]
+        public Input<string>? KmsKeyName { get; set; }
 
         [Input("labels")]
         private InputMap<object>? _labels;
@@ -351,10 +606,41 @@ namespace Pulumi.Gcp.Dataflow
         }
 
         /// <summary>
+        /// The machine type to use for launching the job. The default is n1-standard-1.
+        /// </summary>
+        [Input("launcherMachineType")]
+        public Input<string>? LauncherMachineType { get; set; }
+
+        /// <summary>
+        /// The machine type to use for the job.
+        /// </summary>
+        [Input("machineType")]
+        public Input<string>? MachineType { get; set; }
+
+        /// <summary>
+        /// The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
+        /// 1000.
+        /// </summary>
+        [Input("maxWorkers")]
+        public Input<int>? MaxWorkers { get; set; }
+
+        /// <summary>
         /// A unique name for the resource, required by Dataflow.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The network to which VMs will be assigned. If it is not provided, "default" will be used.
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// The initial number of Google Compute Engine instances for the job.
+        /// </summary>
+        [Input("numWorkers")]
+        public Input<int>? NumWorkers { get; set; }
 
         /// <summary>
         /// One of "drain" or "cancel". Specifies behavior of
@@ -391,6 +677,19 @@ namespace Pulumi.Gcp.Dataflow
         public Input<string>? Region { get; set; }
 
         /// <summary>
+        /// Docker registry location of container image to use for the 'worker harness. Default is the container for the version of
+        /// the SDK. Note this field is only valid for portable pipelines.
+        /// </summary>
+        [Input("sdkContainerImage")]
+        public Input<string>? SdkContainerImage { get; set; }
+
+        /// <summary>
+        /// The Service Account email used to create the job.
+        /// </summary>
+        [Input("serviceAccountEmail")]
+        public Input<string>? ServiceAccountEmail { get; set; }
+
+        /// <summary>
         /// If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
         /// terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
         /// different, e.g. by embedding a release ID or by using a random_id.
@@ -399,10 +698,47 @@ namespace Pulumi.Gcp.Dataflow
         public Input<bool>? SkipWaitOnJobTermination { get; set; }
 
         /// <summary>
+        /// The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
+        /// </summary>
+        [Input("stagingLocation")]
+        public Input<string>? StagingLocation { get; set; }
+
+        /// <summary>
         /// The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// The subnetwork to which VMs will be assigned. Should be of the form "regions/REGION/subnetworks/SUBNETWORK".
+        /// </summary>
+        [Input("subnetwork")]
+        public Input<string>? Subnetwork { get; set; }
+
+        /// <summary>
+        /// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
+        /// </summary>
+        [Input("tempLocation")]
+        public Input<string>? TempLocation { get; set; }
+
+        [Input("transformNameMapping")]
+        private InputMap<object>? _transformNameMapping;
+
+        /// <summary>
+        /// Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
+        /// corresponding name prefixes of the new job.
+        /// </summary>
+        public InputMap<object> TransformNameMapping
+        {
+            get => _transformNameMapping ?? (_transformNameMapping = new InputMap<object>());
+            set => _transformNameMapping = value;
+        }
+
+        /// <summary>
+        /// The type of this job, selected from the JobType enum.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public FlexTemplateJobState()
         {

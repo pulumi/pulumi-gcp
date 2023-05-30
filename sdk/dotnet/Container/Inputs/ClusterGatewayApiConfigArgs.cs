@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterGatewayApiConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Which Gateway Api channel should be used. `CHANNEL_DISABLED` or `CHANNEL_STANDARD`.
+        /// Which Gateway Api channel should be used. `CHANNEL_DISABLED`, `CHANNEL_EXPERIMENTAL` or `CHANNEL_STANDARD`.
         /// </summary>
         [Input("channel", required: true)]
         public Input<string> Channel { get; set; } = null!;

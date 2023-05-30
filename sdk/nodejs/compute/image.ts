@@ -61,6 +61,19 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Image Basic Storage Location
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.compute.Image("example", {
+ *     rawDisk: {
+ *         source: "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+ *     },
+ *     storageLocations: ["us-central1"],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -211,6 +224,12 @@ export class Image extends pulumi.CustomResource {
      * * The sourceDisk URL
      */
     public readonly sourceSnapshot!: pulumi.Output<string | undefined>;
+    /**
+     * Cloud Storage bucket storage location of the image
+     * (regional or multi-regional).
+     * Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+     */
+    public readonly storageLocations!: pulumi.Output<string[]>;
 
     /**
      * Create a Image resource with the given unique name, arguments, and options.
@@ -242,6 +261,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["sourceDisk"] = state ? state.sourceDisk : undefined;
             resourceInputs["sourceImage"] = state ? state.sourceImage : undefined;
             resourceInputs["sourceSnapshot"] = state ? state.sourceSnapshot : undefined;
+            resourceInputs["storageLocations"] = state ? state.storageLocations : undefined;
         } else {
             const args = argsOrState as ImageArgs | undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -257,6 +277,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["sourceDisk"] = args ? args.sourceDisk : undefined;
             resourceInputs["sourceImage"] = args ? args.sourceImage : undefined;
             resourceInputs["sourceSnapshot"] = args ? args.sourceSnapshot : undefined;
+            resourceInputs["storageLocations"] = args ? args.storageLocations : undefined;
             resourceInputs["archiveSizeBytes"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
@@ -376,6 +397,12 @@ export interface ImageState {
      * * The sourceDisk URL
      */
     sourceSnapshot?: pulumi.Input<string>;
+    /**
+     * Cloud Storage bucket storage location of the image
+     * (regional or multi-regional).
+     * Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+     */
+    storageLocations?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -469,4 +496,10 @@ export interface ImageArgs {
      * * The sourceDisk URL
      */
     sourceSnapshot?: pulumi.Input<string>;
+    /**
+     * Cloud Storage bucket storage location of the image
+     * (regional or multi-regional).
+     * Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+     */
+    storageLocations?: pulumi.Input<pulumi.Input<string>[]>;
 }

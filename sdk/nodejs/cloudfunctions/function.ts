@@ -237,6 +237,10 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly sourceRepository!: pulumi.Output<outputs.cloudfunctions.FunctionSourceRepository | undefined>;
     /**
+     * Describes the current stage of a deployment.
+     */
+    public /*out*/ readonly status!: pulumi.Output<string>;
+    /**
      * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
      */
     public readonly timeout!: pulumi.Output<number | undefined>;
@@ -292,6 +296,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["sourceArchiveBucket"] = state ? state.sourceArchiveBucket : undefined;
             resourceInputs["sourceArchiveObject"] = state ? state.sourceArchiveObject : undefined;
             resourceInputs["sourceRepository"] = state ? state.sourceRepository : undefined;
+            resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["timeout"] = state ? state.timeout : undefined;
             resourceInputs["triggerHttp"] = state ? state.triggerHttp : undefined;
             resourceInputs["vpcConnector"] = state ? state.vpcConnector : undefined;
@@ -331,6 +336,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["triggerHttp"] = args ? args.triggerHttp : undefined;
             resourceInputs["vpcConnector"] = args ? args.vpcConnector : undefined;
             resourceInputs["vpcConnectorEgressSettings"] = args ? args.vpcConnectorEgressSettings : undefined;
+            resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Function.__pulumiType, name, resourceInputs, opts);
@@ -450,6 +456,10 @@ export interface FunctionState {
      * Cannot be set alongside `sourceArchiveBucket` or `sourceArchiveObject`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
      */
     sourceRepository?: pulumi.Input<inputs.cloudfunctions.FunctionSourceRepository>;
+    /**
+     * Describes the current stage of a deployment.
+     */
+    status?: pulumi.Input<string>;
     /**
      * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
      */

@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute
     /// The Compute NetworkFirewallPolicyRule resource
     /// 
     /// ## Example Usage
-    /// ### Global
+    /// ### Global_net_sec_rule
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,15 +33,26 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///         Type = "IPV4",
     ///         Capacity = 100,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var basicNetworkFirewallPolicy = new Gcp.Compute.NetworkFirewallPolicy("basicNetworkFirewallPolicy", new()
     ///     {
     ///         Description = "Sample global network firewall policy",
     ///         Project = "my-project-name",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var basicNetwork = new Gcp.Compute.Network("basicNetwork");
+    ///     var basicNetwork = new Gcp.Compute.Network("basicNetwork", new()
+    ///     {
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
     /// 
     ///     var basicKey = new Gcp.Tags.TagKey("basicKey", new()
     ///     {
@@ -53,6 +64,9 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             { "network", basicNetwork.Name.Apply(name =&gt; $"my-project-name/{name}") },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var basicValue = new Gcp.Tags.TagValue("basicValue", new()
@@ -60,6 +74,9 @@ namespace Pulumi.Gcp.Compute
     ///         Description = "For valuename resources.",
     ///         Parent = basicKey.Name.Apply(name =&gt; $"tagKeys/{name}"),
     ///         ShortName = "tagvalue",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var primary = new Gcp.Compute.NetworkFirewallPolicyRule("primary", new()
@@ -113,6 +130,9 @@ namespace Pulumi.Gcp.Compute
     ///                 basicGlobalNetworksecurityAddressGroup.Id,
     ///             },
     ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * The Compute NetworkFirewallPolicyRule resource
  *
  * ## Example Usage
- * ### Regional
+ * ### Regional_net_sec_rule
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -22,13 +22,19 @@ import * as utilities from "../utilities";
  *     items: ["208.80.154.224/32"],
  *     type: "IPV4",
  *     capacity: 100,
+ * }, {
+ *     provider: google_beta,
  * });
  * const basicRegionalNetworkFirewallPolicy = new gcp.compute.RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy", {
  *     description: "Sample regional network firewall policy",
  *     project: "my-project-name",
  *     region: "us-west1",
+ * }, {
+ *     provider: google_beta,
  * });
- * const basicNetwork = new gcp.compute.Network("basicNetwork", {});
+ * const basicNetwork = new gcp.compute.Network("basicNetwork", {}, {
+ *     provider: google_beta,
+ * });
  * const basicKey = new gcp.tags.TagKey("basicKey", {
  *     description: "For keyname resources.",
  *     parent: "organizations/123456789",
@@ -37,11 +43,15 @@ import * as utilities from "../utilities";
  *     purposeData: {
  *         network: pulumi.interpolate`my-project-name/${basicNetwork.name}`,
  *     },
+ * }, {
+ *     provider: google_beta,
  * });
  * const basicValue = new gcp.tags.TagValue("basicValue", {
  *     description: "For valuename resources.",
  *     parent: pulumi.interpolate`tagKeys/${basicKey.name}`,
  *     shortName: "tagvalue",
+ * }, {
+ *     provider: google_beta,
  * });
  * const primary = new gcp.compute.RegionNetworkFirewallPolicyRule("primary", {
  *     action: "allow",
@@ -67,6 +77,8 @@ import * as utilities from "../utilities";
  *         }],
  *         srcAddressGroups: [basicRegionalNetworksecurityAddressGroup.id],
  *     },
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *

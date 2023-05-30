@@ -14226,7 +14226,7 @@ func (o ClusterDnsConfigPtrOutput) ClusterDnsScope() pulumi.StringPtrOutput {
 }
 
 type ClusterGatewayApiConfig struct {
-	// Which Gateway Api channel should be used. `CHANNEL_DISABLED` or `CHANNEL_STANDARD`.
+	// Which Gateway Api channel should be used. `CHANNEL_DISABLED`, `CHANNEL_EXPERIMENTAL` or `CHANNEL_STANDARD`.
 	Channel string `pulumi:"channel"`
 }
 
@@ -14242,7 +14242,7 @@ type ClusterGatewayApiConfigInput interface {
 }
 
 type ClusterGatewayApiConfigArgs struct {
-	// Which Gateway Api channel should be used. `CHANNEL_DISABLED` or `CHANNEL_STANDARD`.
+	// Which Gateway Api channel should be used. `CHANNEL_DISABLED`, `CHANNEL_EXPERIMENTAL` or `CHANNEL_STANDARD`.
 	Channel pulumi.StringInput `pulumi:"channel"`
 }
 
@@ -14323,7 +14323,7 @@ func (o ClusterGatewayApiConfigOutput) ToClusterGatewayApiConfigPtrOutputWithCon
 	}).(ClusterGatewayApiConfigPtrOutput)
 }
 
-// Which Gateway Api channel should be used. `CHANNEL_DISABLED` or `CHANNEL_STANDARD`.
+// Which Gateway Api channel should be used. `CHANNEL_DISABLED`, `CHANNEL_EXPERIMENTAL` or `CHANNEL_STANDARD`.
 func (o ClusterGatewayApiConfigOutput) Channel() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterGatewayApiConfig) string { return v.Channel }).(pulumi.StringOutput)
 }
@@ -14352,7 +14352,7 @@ func (o ClusterGatewayApiConfigPtrOutput) Elem() ClusterGatewayApiConfigOutput {
 	}).(ClusterGatewayApiConfigOutput)
 }
 
-// Which Gateway Api channel should be used. `CHANNEL_DISABLED` or `CHANNEL_STANDARD`.
+// Which Gateway Api channel should be used. `CHANNEL_DISABLED`, `CHANNEL_EXPERIMENTAL` or `CHANNEL_STANDARD`.
 func (o ClusterGatewayApiConfigPtrOutput) Channel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterGatewayApiConfig) *string {
 		if v == nil {

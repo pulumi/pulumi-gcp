@@ -12,6 +12,7 @@ from . import outputs
 
 __all__ = [
     'AlertPolicyAlertStrategy',
+    'AlertPolicyAlertStrategyNotificationChannelStrategy',
     'AlertPolicyAlertStrategyNotificationRateLimit',
     'AlertPolicyCondition',
     'AlertPolicyConditionConditionAbsent',
@@ -23,6 +24,7 @@ __all__ = [
     'AlertPolicyConditionConditionThreshold',
     'AlertPolicyConditionConditionThresholdAggregation',
     'AlertPolicyConditionConditionThresholdDenominatorAggregation',
+    'AlertPolicyConditionConditionThresholdForecastOptions',
     'AlertPolicyConditionConditionThresholdTrigger',
     'AlertPolicyCreationRecord',
     'AlertPolicyDocumentation',
@@ -75,6 +77,8 @@ class AlertPolicyAlertStrategy(dict):
         suggest = None
         if key == "autoClose":
             suggest = "auto_close"
+        elif key == "notificationChannelStrategies":
+            suggest = "notification_channel_strategies"
         elif key == "notificationRateLimit":
             suggest = "notification_rate_limit"
 
@@ -91,15 +95,21 @@ class AlertPolicyAlertStrategy(dict):
 
     def __init__(__self__, *,
                  auto_close: Optional[str] = None,
+                 notification_channel_strategies: Optional[Sequence['outputs.AlertPolicyAlertStrategyNotificationChannelStrategy']] = None,
                  notification_rate_limit: Optional['outputs.AlertPolicyAlertStrategyNotificationRateLimit'] = None):
         """
         :param str auto_close: If an alert policy that was active has no data for this long, any open incidents will close.
+        :param Sequence['AlertPolicyAlertStrategyNotificationChannelStrategyArgs'] notification_channel_strategies: Control over how the notification channels in `notification_channels`
+               are notified when this alert fires, on a per-channel basis.
+               Structure is documented below.
         :param 'AlertPolicyAlertStrategyNotificationRateLimitArgs' notification_rate_limit: Required for alert policies with a LogMatch condition.
                This limit is not implemented for alert policies that are not log-based.
                Structure is documented below.
         """
         if auto_close is not None:
             pulumi.set(__self__, "auto_close", auto_close)
+        if notification_channel_strategies is not None:
+            pulumi.set(__self__, "notification_channel_strategies", notification_channel_strategies)
         if notification_rate_limit is not None:
             pulumi.set(__self__, "notification_rate_limit", notification_rate_limit)
 
@@ -112,6 +122,16 @@ class AlertPolicyAlertStrategy(dict):
         return pulumi.get(self, "auto_close")
 
     @property
+    @pulumi.getter(name="notificationChannelStrategies")
+    def notification_channel_strategies(self) -> Optional[Sequence['outputs.AlertPolicyAlertStrategyNotificationChannelStrategy']]:
+        """
+        Control over how the notification channels in `notification_channels`
+        are notified when this alert fires, on a per-channel basis.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "notification_channel_strategies")
+
+    @property
     @pulumi.getter(name="notificationRateLimit")
     def notification_rate_limit(self) -> Optional['outputs.AlertPolicyAlertStrategyNotificationRateLimit']:
         """
@@ -120,6 +140,62 @@ class AlertPolicyAlertStrategy(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "notification_rate_limit")
+
+
+@pulumi.output_type
+class AlertPolicyAlertStrategyNotificationChannelStrategy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "notificationChannelNames":
+            suggest = "notification_channel_names"
+        elif key == "renotifyInterval":
+            suggest = "renotify_interval"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlertPolicyAlertStrategyNotificationChannelStrategy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlertPolicyAlertStrategyNotificationChannelStrategy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlertPolicyAlertStrategyNotificationChannelStrategy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 notification_channel_names: Optional[Sequence[str]] = None,
+                 renotify_interval: Optional[str] = None):
+        """
+        :param Sequence[str] notification_channel_names: The notification channels that these settings apply to. Each of these
+               correspond to the name field in one of the NotificationChannel objects
+               referenced in the notification_channels field of this AlertPolicy. The format is
+               `projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]`
+        :param str renotify_interval: The frequency at which to send reminder notifications for open incidents.
+        """
+        if notification_channel_names is not None:
+            pulumi.set(__self__, "notification_channel_names", notification_channel_names)
+        if renotify_interval is not None:
+            pulumi.set(__self__, "renotify_interval", renotify_interval)
+
+    @property
+    @pulumi.getter(name="notificationChannelNames")
+    def notification_channel_names(self) -> Optional[Sequence[str]]:
+        """
+        The notification channels that these settings apply to. Each of these
+        correspond to the name field in one of the NotificationChannel objects
+        referenced in the notification_channels field of this AlertPolicy. The format is
+        `projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]`
+        """
+        return pulumi.get(self, "notification_channel_names")
+
+    @property
+    @pulumi.getter(name="renotifyInterval")
+    def renotify_interval(self) -> Optional[str]:
+        """
+        The frequency at which to send reminder notifications for open incidents.
+        """
+        return pulumi.get(self, "renotify_interval")
 
 
 @pulumi.output_type
@@ -884,6 +960,8 @@ class AlertPolicyConditionConditionThreshold(dict):
             suggest = "denominator_filter"
         elif key == "evaluationMissingData":
             suggest = "evaluation_missing_data"
+        elif key == "forecastOptions":
+            suggest = "forecast_options"
         elif key == "thresholdValue":
             suggest = "threshold_value"
 
@@ -906,6 +984,7 @@ class AlertPolicyConditionConditionThreshold(dict):
                  denominator_filter: Optional[str] = None,
                  evaluation_missing_data: Optional[str] = None,
                  filter: Optional[str] = None,
+                 forecast_options: Optional['outputs.AlertPolicyConditionConditionThresholdForecastOptions'] = None,
                  threshold_value: Optional[float] = None,
                  trigger: Optional['outputs.AlertPolicyConditionConditionThresholdTrigger'] = None):
         """
@@ -995,6 +1074,13 @@ class AlertPolicyConditionConditionThreshold(dict):
                resource labels, and metric labels. This
                field may not exceed 2048 Unicode characters
                in length.
+        :param 'AlertPolicyConditionConditionThresholdForecastOptionsArgs' forecast_options: When this field is present, the `MetricThreshold`
+               condition forecasts whether the time series is
+               predicted to violate the threshold within the
+               `forecastHorizon`. When this field is not set, the
+               `MetricThreshold` tests the current value of the
+               timeseries against the threshold.
+               Structure is documented below.
         :param float threshold_value: A value against which to compare the time
                series.
         :param 'AlertPolicyConditionConditionThresholdTriggerArgs' trigger: The number/percent of time series for which
@@ -1019,6 +1105,8 @@ class AlertPolicyConditionConditionThreshold(dict):
             pulumi.set(__self__, "evaluation_missing_data", evaluation_missing_data)
         if filter is not None:
             pulumi.set(__self__, "filter", filter)
+        if forecast_options is not None:
+            pulumi.set(__self__, "forecast_options", forecast_options)
         if threshold_value is not None:
             pulumi.set(__self__, "threshold_value", threshold_value)
         if trigger is not None:
@@ -1158,6 +1246,20 @@ class AlertPolicyConditionConditionThreshold(dict):
         in length.
         """
         return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter(name="forecastOptions")
+    def forecast_options(self) -> Optional['outputs.AlertPolicyConditionConditionThresholdForecastOptions']:
+        """
+        When this field is present, the `MetricThreshold`
+        condition forecasts whether the time series is
+        predicted to violate the threshold within the
+        `forecastHorizon`. When this field is not set, the
+        `MetricThreshold` tests the current value of the
+        timeseries against the threshold.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "forecast_options")
 
     @property
     @pulumi.getter(name="thresholdValue")
@@ -1623,6 +1725,51 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregation(dict):
         Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
         """
         return pulumi.get(self, "per_series_aligner")
+
+
+@pulumi.output_type
+class AlertPolicyConditionConditionThresholdForecastOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "forecastHorizon":
+            suggest = "forecast_horizon"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlertPolicyConditionConditionThresholdForecastOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlertPolicyConditionConditionThresholdForecastOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlertPolicyConditionConditionThresholdForecastOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 forecast_horizon: str):
+        """
+        :param str forecast_horizon: The length of time into the future to forecast
+               whether a timeseries will violate the threshold.
+               If the predicted value is found to violate the
+               threshold, and the violation is observed in all
+               forecasts made for the Configured `duration`,
+               then the timeseries is considered to be failing.
+        """
+        pulumi.set(__self__, "forecast_horizon", forecast_horizon)
+
+    @property
+    @pulumi.getter(name="forecastHorizon")
+    def forecast_horizon(self) -> str:
+        """
+        The length of time into the future to forecast
+        whether a timeseries will violate the threshold.
+        If the predicted value is found to violate the
+        threshold, and the violation is observed in all
+        forecasts made for the Configured `duration`,
+        then the timeseries is considered to be failing.
+        """
+        return pulumi.get(self, "forecast_horizon")
 
 
 @pulumi.output_type

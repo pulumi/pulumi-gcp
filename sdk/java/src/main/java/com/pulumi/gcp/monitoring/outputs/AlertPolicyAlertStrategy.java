@@ -4,8 +4,10 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.monitoring.outputs.AlertPolicyAlertStrategyNotificationChannelStrategy;
 import com.pulumi.gcp.monitoring.outputs.AlertPolicyAlertStrategyNotificationRateLimit;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +19,13 @@ public final class AlertPolicyAlertStrategy {
      * 
      */
     private @Nullable String autoClose;
+    /**
+     * @return Control over how the notification channels in `notification_channels`
+     * are notified when this alert fires, on a per-channel basis.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<AlertPolicyAlertStrategyNotificationChannelStrategy> notificationChannelStrategies;
     /**
      * @return Required for alert policies with a LogMatch condition.
      * This limit is not implemented for alert policies that are not log-based.
@@ -32,6 +41,15 @@ public final class AlertPolicyAlertStrategy {
      */
     public Optional<String> autoClose() {
         return Optional.ofNullable(this.autoClose);
+    }
+    /**
+     * @return Control over how the notification channels in `notification_channels`
+     * are notified when this alert fires, on a per-channel basis.
+     * Structure is documented below.
+     * 
+     */
+    public List<AlertPolicyAlertStrategyNotificationChannelStrategy> notificationChannelStrategies() {
+        return this.notificationChannelStrategies == null ? List.of() : this.notificationChannelStrategies;
     }
     /**
      * @return Required for alert policies with a LogMatch condition.
@@ -53,11 +71,13 @@ public final class AlertPolicyAlertStrategy {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String autoClose;
+        private @Nullable List<AlertPolicyAlertStrategyNotificationChannelStrategy> notificationChannelStrategies;
         private @Nullable AlertPolicyAlertStrategyNotificationRateLimit notificationRateLimit;
         public Builder() {}
         public Builder(AlertPolicyAlertStrategy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoClose = defaults.autoClose;
+    	      this.notificationChannelStrategies = defaults.notificationChannelStrategies;
     	      this.notificationRateLimit = defaults.notificationRateLimit;
         }
 
@@ -67,6 +87,14 @@ public final class AlertPolicyAlertStrategy {
             return this;
         }
         @CustomType.Setter
+        public Builder notificationChannelStrategies(@Nullable List<AlertPolicyAlertStrategyNotificationChannelStrategy> notificationChannelStrategies) {
+            this.notificationChannelStrategies = notificationChannelStrategies;
+            return this;
+        }
+        public Builder notificationChannelStrategies(AlertPolicyAlertStrategyNotificationChannelStrategy... notificationChannelStrategies) {
+            return notificationChannelStrategies(List.of(notificationChannelStrategies));
+        }
+        @CustomType.Setter
         public Builder notificationRateLimit(@Nullable AlertPolicyAlertStrategyNotificationRateLimit notificationRateLimit) {
             this.notificationRateLimit = notificationRateLimit;
             return this;
@@ -74,6 +102,7 @@ public final class AlertPolicyAlertStrategy {
         public AlertPolicyAlertStrategy build() {
             final var o = new AlertPolicyAlertStrategy();
             o.autoClose = autoClose;
+            o.notificationChannelStrategies = notificationChannelStrategies;
             o.notificationRateLimit = notificationRateLimit;
             return o;
         }

@@ -96,6 +96,36 @@ import (
 //	}
 //
 // ```
+// ### Image Basic Storage Location
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewImage(ctx, "example", &compute.ImageArgs{
+//				RawDisk: &compute.ImageRawDiskArgs{
+//					Source: pulumi.String("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz"),
+//				},
+//				StorageLocations: pulumi.StringArray{
+//					pulumi.String("us-central1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -191,6 +221,10 @@ type Image struct {
 	// * The rawDisk.source URL
 	// * The sourceDisk URL
 	SourceSnapshot pulumi.StringPtrOutput `pulumi:"sourceSnapshot"`
+	// Cloud Storage bucket storage location of the image
+	// (regional or multi-regional).
+	// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+	StorageLocations pulumi.StringArrayOutput `pulumi:"storageLocations"`
 }
 
 // NewImage registers a new resource with the given unique name, arguments, and options.
@@ -292,6 +326,10 @@ type imageState struct {
 	// * The rawDisk.source URL
 	// * The sourceDisk URL
 	SourceSnapshot *string `pulumi:"sourceSnapshot"`
+	// Cloud Storage bucket storage location of the image
+	// (regional or multi-regional).
+	// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+	StorageLocations []string `pulumi:"storageLocations"`
 }
 
 type ImageState struct {
@@ -365,6 +403,10 @@ type ImageState struct {
 	// * The rawDisk.source URL
 	// * The sourceDisk URL
 	SourceSnapshot pulumi.StringPtrInput
+	// Cloud Storage bucket storage location of the image
+	// (regional or multi-regional).
+	// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+	StorageLocations pulumi.StringArrayInput
 }
 
 func (ImageState) ElementType() reflect.Type {
@@ -432,6 +474,10 @@ type imageArgs struct {
 	// * The rawDisk.source URL
 	// * The sourceDisk URL
 	SourceSnapshot *string `pulumi:"sourceSnapshot"`
+	// Cloud Storage bucket storage location of the image
+	// (regional or multi-regional).
+	// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+	StorageLocations []string `pulumi:"storageLocations"`
 }
 
 // The set of arguments for constructing a Image resource.
@@ -496,6 +542,10 @@ type ImageArgs struct {
 	// * The rawDisk.source URL
 	// * The sourceDisk URL
 	SourceSnapshot pulumi.StringPtrInput
+	// Cloud Storage bucket storage location of the image
+	// (regional or multi-regional).
+	// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+	StorageLocations pulumi.StringArrayInput
 }
 
 func (ImageArgs) ElementType() reflect.Type {
@@ -704,6 +754,13 @@ func (o ImageOutput) SourceImage() pulumi.StringPtrOutput {
 // * The sourceDisk URL
 func (o ImageOutput) SourceSnapshot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.SourceSnapshot }).(pulumi.StringPtrOutput)
+}
+
+// Cloud Storage bucket storage location of the image
+// (regional or multi-regional).
+// Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+func (o ImageOutput) StorageLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringArrayOutput { return v.StorageLocations }).(pulumi.StringArrayOutput)
 }
 
 type ImageArrayOutput struct{ *pulumi.OutputState }

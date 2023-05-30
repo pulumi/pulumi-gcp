@@ -6,8 +6,10 @@ package com.pulumi.gcp.dataflow.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,6 +19,36 @@ import javax.annotation.Nullable;
 public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArgs {
 
     public static final FlexTemplateJobState Empty = new FlexTemplateJobState();
+
+    /**
+     * List of experiments that should be used by the job. An example value is [&#34;enable_stackdriver_agent_metrics&#34;].
+     * 
+     */
+    @Import(name="additionalExperiments")
+    private @Nullable Output<List<String>> additionalExperiments;
+
+    /**
+     * @return List of experiments that should be used by the job. An example value is [&#34;enable_stackdriver_agent_metrics&#34;].
+     * 
+     */
+    public Optional<Output<List<String>>> additionalExperiments() {
+        return Optional.ofNullable(this.additionalExperiments);
+    }
+
+    /**
+     * The algorithm to use for autoscaling
+     * 
+     */
+    @Import(name="autoscalingAlgorithm")
+    private @Nullable Output<String> autoscalingAlgorithm;
+
+    /**
+     * @return The algorithm to use for autoscaling
+     * 
+     */
+    public Optional<Output<String>> autoscalingAlgorithm() {
+        return Optional.ofNullable(this.autoscalingAlgorithm);
+    }
 
     /**
      * The GCS path to the Dataflow job Flex
@@ -40,6 +72,36 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Indicates if the job should use the streaming engine feature.
+     * 
+     */
+    @Import(name="enableStreamingEngine")
+    private @Nullable Output<Boolean> enableStreamingEngine;
+
+    /**
+     * @return Indicates if the job should use the streaming engine feature.
+     * 
+     */
+    public Optional<Output<Boolean>> enableStreamingEngine() {
+        return Optional.ofNullable(this.enableStreamingEngine);
+    }
+
+    /**
+     * The configuration for VM IPs. Options are &#34;WORKER_IP_PUBLIC&#34; or &#34;WORKER_IP_PRIVATE&#34;.
+     * 
+     */
+    @Import(name="ipConfiguration")
+    private @Nullable Output<String> ipConfiguration;
+
+    /**
+     * @return The configuration for VM IPs. Options are &#34;WORKER_IP_PUBLIC&#34; or &#34;WORKER_IP_PRIVATE&#34;.
+     * 
+     */
+    public Optional<Output<String>> ipConfiguration() {
+        return Optional.ofNullable(this.ipConfiguration);
+    }
+
+    /**
      * The unique ID of this job.
      * 
      */
@@ -52,6 +114,23 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> jobId() {
         return Optional.ofNullable(this.jobId);
+    }
+
+    /**
+     * The name for the Cloud KMS key for the job. Key format is:
+     * projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+     * 
+     */
+    @Import(name="kmsKeyName")
+    private @Nullable Output<String> kmsKeyName;
+
+    /**
+     * @return The name for the Cloud KMS key for the job. Key format is:
+     * projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+     * 
+     */
+    public Optional<Output<String>> kmsKeyName() {
+        return Optional.ofNullable(this.kmsKeyName);
     }
 
     /**
@@ -82,6 +161,53 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The machine type to use for launching the job. The default is n1-standard-1.
+     * 
+     */
+    @Import(name="launcherMachineType")
+    private @Nullable Output<String> launcherMachineType;
+
+    /**
+     * @return The machine type to use for launching the job. The default is n1-standard-1.
+     * 
+     */
+    public Optional<Output<String>> launcherMachineType() {
+        return Optional.ofNullable(this.launcherMachineType);
+    }
+
+    /**
+     * The machine type to use for the job.
+     * 
+     */
+    @Import(name="machineType")
+    private @Nullable Output<String> machineType;
+
+    /**
+     * @return The machine type to use for the job.
+     * 
+     */
+    public Optional<Output<String>> machineType() {
+        return Optional.ofNullable(this.machineType);
+    }
+
+    /**
+     * The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
+     * 1000.
+     * 
+     */
+    @Import(name="maxWorkers")
+    private @Nullable Output<Integer> maxWorkers;
+
+    /**
+     * @return The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
+     * 1000.
+     * 
+     */
+    public Optional<Output<Integer>> maxWorkers() {
+        return Optional.ofNullable(this.maxWorkers);
+    }
+
+    /**
      * A unique name for the resource, required by Dataflow.
      * 
      */
@@ -94,6 +220,36 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * The network to which VMs will be assigned. If it is not provided, &#34;default&#34; will be used.
+     * 
+     */
+    @Import(name="network")
+    private @Nullable Output<String> network;
+
+    /**
+     * @return The network to which VMs will be assigned. If it is not provided, &#34;default&#34; will be used.
+     * 
+     */
+    public Optional<Output<String>> network() {
+        return Optional.ofNullable(this.network);
+    }
+
+    /**
+     * The initial number of Google Compute Engine instances for the job.
+     * 
+     */
+    @Import(name="numWorkers")
+    private @Nullable Output<Integer> numWorkers;
+
+    /**
+     * @return The initial number of Google Compute Engine instances for the job.
+     * 
+     */
+    public Optional<Output<Integer>> numWorkers() {
+        return Optional.ofNullable(this.numWorkers);
     }
 
     /**
@@ -165,6 +321,38 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Docker registry location of container image to use for the &#39;worker harness. Default is the container for the version of
+     * the SDK. Note this field is only valid for portable pipelines.
+     * 
+     */
+    @Import(name="sdkContainerImage")
+    private @Nullable Output<String> sdkContainerImage;
+
+    /**
+     * @return Docker registry location of container image to use for the &#39;worker harness. Default is the container for the version of
+     * the SDK. Note this field is only valid for portable pipelines.
+     * 
+     */
+    public Optional<Output<String>> sdkContainerImage() {
+        return Optional.ofNullable(this.sdkContainerImage);
+    }
+
+    /**
+     * The Service Account email used to create the job.
+     * 
+     */
+    @Import(name="serviceAccountEmail")
+    private @Nullable Output<String> serviceAccountEmail;
+
+    /**
+     * @return The Service Account email used to create the job.
+     * 
+     */
+    public Optional<Output<String>> serviceAccountEmail() {
+        return Optional.ofNullable(this.serviceAccountEmail);
+    }
+
+    /**
      * If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
      * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
      * different, e.g. by embedding a release ID or by using a random_id.
@@ -184,6 +372,21 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
+     * 
+     */
+    @Import(name="stagingLocation")
+    private @Nullable Output<String> stagingLocation;
+
+    /**
+     * @return The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
+     * 
+     */
+    public Optional<Output<String>> stagingLocation() {
+        return Optional.ofNullable(this.stagingLocation);
+    }
+
+    /**
      * The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
      * 
      */
@@ -198,19 +401,98 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.state);
     }
 
+    /**
+     * The subnetwork to which VMs will be assigned. Should be of the form &#34;regions/REGION/subnetworks/SUBNETWORK&#34;.
+     * 
+     */
+    @Import(name="subnetwork")
+    private @Nullable Output<String> subnetwork;
+
+    /**
+     * @return The subnetwork to which VMs will be assigned. Should be of the form &#34;regions/REGION/subnetworks/SUBNETWORK&#34;.
+     * 
+     */
+    public Optional<Output<String>> subnetwork() {
+        return Optional.ofNullable(this.subnetwork);
+    }
+
+    /**
+     * The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
+     * 
+     */
+    @Import(name="tempLocation")
+    private @Nullable Output<String> tempLocation;
+
+    /**
+     * @return The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
+     * 
+     */
+    public Optional<Output<String>> tempLocation() {
+        return Optional.ofNullable(this.tempLocation);
+    }
+
+    /**
+     * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
+     * corresponding name prefixes of the new job.
+     * 
+     */
+    @Import(name="transformNameMapping")
+    private @Nullable Output<Map<String,Object>> transformNameMapping;
+
+    /**
+     * @return Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
+     * corresponding name prefixes of the new job.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> transformNameMapping() {
+        return Optional.ofNullable(this.transformNameMapping);
+    }
+
+    /**
+     * The type of this job, selected from the JobType enum.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return The type of this job, selected from the JobType enum.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
     private FlexTemplateJobState() {}
 
     private FlexTemplateJobState(FlexTemplateJobState $) {
+        this.additionalExperiments = $.additionalExperiments;
+        this.autoscalingAlgorithm = $.autoscalingAlgorithm;
         this.containerSpecGcsPath = $.containerSpecGcsPath;
+        this.enableStreamingEngine = $.enableStreamingEngine;
+        this.ipConfiguration = $.ipConfiguration;
         this.jobId = $.jobId;
+        this.kmsKeyName = $.kmsKeyName;
         this.labels = $.labels;
+        this.launcherMachineType = $.launcherMachineType;
+        this.machineType = $.machineType;
+        this.maxWorkers = $.maxWorkers;
         this.name = $.name;
+        this.network = $.network;
+        this.numWorkers = $.numWorkers;
         this.onDelete = $.onDelete;
         this.parameters = $.parameters;
         this.project = $.project;
         this.region = $.region;
+        this.sdkContainerImage = $.sdkContainerImage;
+        this.serviceAccountEmail = $.serviceAccountEmail;
         this.skipWaitOnJobTermination = $.skipWaitOnJobTermination;
+        this.stagingLocation = $.stagingLocation;
         this.state = $.state;
+        this.subnetwork = $.subnetwork;
+        this.tempLocation = $.tempLocation;
+        this.transformNameMapping = $.transformNameMapping;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -229,6 +511,58 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
 
         public Builder(FlexTemplateJobState defaults) {
             $ = new FlexTemplateJobState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param additionalExperiments List of experiments that should be used by the job. An example value is [&#34;enable_stackdriver_agent_metrics&#34;].
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalExperiments(@Nullable Output<List<String>> additionalExperiments) {
+            $.additionalExperiments = additionalExperiments;
+            return this;
+        }
+
+        /**
+         * @param additionalExperiments List of experiments that should be used by the job. An example value is [&#34;enable_stackdriver_agent_metrics&#34;].
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalExperiments(List<String> additionalExperiments) {
+            return additionalExperiments(Output.of(additionalExperiments));
+        }
+
+        /**
+         * @param additionalExperiments List of experiments that should be used by the job. An example value is [&#34;enable_stackdriver_agent_metrics&#34;].
+         * 
+         * @return builder
+         * 
+         */
+        public Builder additionalExperiments(String... additionalExperiments) {
+            return additionalExperiments(List.of(additionalExperiments));
+        }
+
+        /**
+         * @param autoscalingAlgorithm The algorithm to use for autoscaling
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingAlgorithm(@Nullable Output<String> autoscalingAlgorithm) {
+            $.autoscalingAlgorithm = autoscalingAlgorithm;
+            return this;
+        }
+
+        /**
+         * @param autoscalingAlgorithm The algorithm to use for autoscaling
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autoscalingAlgorithm(String autoscalingAlgorithm) {
+            return autoscalingAlgorithm(Output.of(autoscalingAlgorithm));
         }
 
         /**
@@ -259,6 +593,48 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param enableStreamingEngine Indicates if the job should use the streaming engine feature.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableStreamingEngine(@Nullable Output<Boolean> enableStreamingEngine) {
+            $.enableStreamingEngine = enableStreamingEngine;
+            return this;
+        }
+
+        /**
+         * @param enableStreamingEngine Indicates if the job should use the streaming engine feature.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableStreamingEngine(Boolean enableStreamingEngine) {
+            return enableStreamingEngine(Output.of(enableStreamingEngine));
+        }
+
+        /**
+         * @param ipConfiguration The configuration for VM IPs. Options are &#34;WORKER_IP_PUBLIC&#34; or &#34;WORKER_IP_PRIVATE&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipConfiguration(@Nullable Output<String> ipConfiguration) {
+            $.ipConfiguration = ipConfiguration;
+            return this;
+        }
+
+        /**
+         * @param ipConfiguration The configuration for VM IPs. Options are &#34;WORKER_IP_PUBLIC&#34; or &#34;WORKER_IP_PRIVATE&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipConfiguration(String ipConfiguration) {
+            return ipConfiguration(Output.of(ipConfiguration));
+        }
+
+        /**
          * @param jobId The unique ID of this job.
          * 
          * @return builder
@@ -277,6 +653,29 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
          */
         public Builder jobId(String jobId) {
             return jobId(Output.of(jobId));
+        }
+
+        /**
+         * @param kmsKeyName The name for the Cloud KMS key for the job. Key format is:
+         * projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyName(@Nullable Output<String> kmsKeyName) {
+            $.kmsKeyName = kmsKeyName;
+            return this;
+        }
+
+        /**
+         * @param kmsKeyName The name for the Cloud KMS key for the job. Key format is:
+         * projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKeyName(String kmsKeyName) {
+            return kmsKeyName(Output.of(kmsKeyName));
         }
 
         /**
@@ -313,6 +712,71 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param launcherMachineType The machine type to use for launching the job. The default is n1-standard-1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder launcherMachineType(@Nullable Output<String> launcherMachineType) {
+            $.launcherMachineType = launcherMachineType;
+            return this;
+        }
+
+        /**
+         * @param launcherMachineType The machine type to use for launching the job. The default is n1-standard-1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder launcherMachineType(String launcherMachineType) {
+            return launcherMachineType(Output.of(launcherMachineType));
+        }
+
+        /**
+         * @param machineType The machine type to use for the job.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder machineType(@Nullable Output<String> machineType) {
+            $.machineType = machineType;
+            return this;
+        }
+
+        /**
+         * @param machineType The machine type to use for the job.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder machineType(String machineType) {
+            return machineType(Output.of(machineType));
+        }
+
+        /**
+         * @param maxWorkers The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
+         * 1000.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxWorkers(@Nullable Output<Integer> maxWorkers) {
+            $.maxWorkers = maxWorkers;
+            return this;
+        }
+
+        /**
+         * @param maxWorkers The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
+         * 1000.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxWorkers(Integer maxWorkers) {
+            return maxWorkers(Output.of(maxWorkers));
+        }
+
+        /**
          * @param name A unique name for the resource, required by Dataflow.
          * 
          * @return builder
@@ -331,6 +795,48 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param network The network to which VMs will be assigned. If it is not provided, &#34;default&#34; will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder network(@Nullable Output<String> network) {
+            $.network = network;
+            return this;
+        }
+
+        /**
+         * @param network The network to which VMs will be assigned. If it is not provided, &#34;default&#34; will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder network(String network) {
+            return network(Output.of(network));
+        }
+
+        /**
+         * @param numWorkers The initial number of Google Compute Engine instances for the job.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder numWorkers(@Nullable Output<Integer> numWorkers) {
+            $.numWorkers = numWorkers;
+            return this;
+        }
+
+        /**
+         * @param numWorkers The initial number of Google Compute Engine instances for the job.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder numWorkers(Integer numWorkers) {
+            return numWorkers(Output.of(numWorkers));
         }
 
         /**
@@ -426,6 +932,50 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param sdkContainerImage Docker registry location of container image to use for the &#39;worker harness. Default is the container for the version of
+         * the SDK. Note this field is only valid for portable pipelines.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdkContainerImage(@Nullable Output<String> sdkContainerImage) {
+            $.sdkContainerImage = sdkContainerImage;
+            return this;
+        }
+
+        /**
+         * @param sdkContainerImage Docker registry location of container image to use for the &#39;worker harness. Default is the container for the version of
+         * the SDK. Note this field is only valid for portable pipelines.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sdkContainerImage(String sdkContainerImage) {
+            return sdkContainerImage(Output.of(sdkContainerImage));
+        }
+
+        /**
+         * @param serviceAccountEmail The Service Account email used to create the job.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccountEmail(@Nullable Output<String> serviceAccountEmail) {
+            $.serviceAccountEmail = serviceAccountEmail;
+            return this;
+        }
+
+        /**
+         * @param serviceAccountEmail The Service Account email used to create the job.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceAccountEmail(String serviceAccountEmail) {
+            return serviceAccountEmail(Output.of(serviceAccountEmail));
+        }
+
+        /**
          * @param skipWaitOnJobTermination If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
          * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
          * different, e.g. by embedding a release ID or by using a random_id.
@@ -451,6 +1001,27 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param stagingLocation The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stagingLocation(@Nullable Output<String> stagingLocation) {
+            $.stagingLocation = stagingLocation;
+            return this;
+        }
+
+        /**
+         * @param stagingLocation The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stagingLocation(String stagingLocation) {
+            return stagingLocation(Output.of(stagingLocation));
+        }
+
+        /**
          * @param state The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
          * 
          * @return builder
@@ -469,6 +1040,92 @@ public final class FlexTemplateJobState extends com.pulumi.resources.ResourceArg
          */
         public Builder state(String state) {
             return state(Output.of(state));
+        }
+
+        /**
+         * @param subnetwork The subnetwork to which VMs will be assigned. Should be of the form &#34;regions/REGION/subnetworks/SUBNETWORK&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetwork(@Nullable Output<String> subnetwork) {
+            $.subnetwork = subnetwork;
+            return this;
+        }
+
+        /**
+         * @param subnetwork The subnetwork to which VMs will be assigned. Should be of the form &#34;regions/REGION/subnetworks/SUBNETWORK&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetwork(String subnetwork) {
+            return subnetwork(Output.of(subnetwork));
+        }
+
+        /**
+         * @param tempLocation The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tempLocation(@Nullable Output<String> tempLocation) {
+            $.tempLocation = tempLocation;
+            return this;
+        }
+
+        /**
+         * @param tempLocation The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tempLocation(String tempLocation) {
+            return tempLocation(Output.of(tempLocation));
+        }
+
+        /**
+         * @param transformNameMapping Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
+         * corresponding name prefixes of the new job.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transformNameMapping(@Nullable Output<Map<String,Object>> transformNameMapping) {
+            $.transformNameMapping = transformNameMapping;
+            return this;
+        }
+
+        /**
+         * @param transformNameMapping Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
+         * corresponding name prefixes of the new job.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder transformNameMapping(Map<String,Object> transformNameMapping) {
+            return transformNameMapping(Output.of(transformNameMapping));
+        }
+
+        /**
+         * @param type The type of this job, selected from the JobType enum.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type The type of this job, selected from the JobType enum.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         public FlexTemplateJobState build() {

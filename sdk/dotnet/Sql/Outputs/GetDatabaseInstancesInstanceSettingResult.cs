@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.Sql.Outputs
     {
         public readonly string ActivationPolicy;
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingActiveDirectoryConfigResult> ActiveDirectoryConfigs;
+        public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureResult> AdvancedMachineFeatures;
         public readonly string AvailabilityType;
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingBackupConfigurationResult> BackupConfigurations;
         public readonly string Collation;
@@ -46,6 +47,8 @@ namespace Pulumi.Gcp.Sql.Outputs
             string activationPolicy,
 
             ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingActiveDirectoryConfigResult> activeDirectoryConfigs,
+
+            ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureResult> advancedMachineFeatures,
 
             string availabilityType,
 
@@ -93,6 +96,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         {
             ActivationPolicy = activationPolicy;
             ActiveDirectoryConfigs = activeDirectoryConfigs;
+            AdvancedMachineFeatures = advancedMachineFeatures;
             AvailabilityType = availabilityType;
             BackupConfigurations = backupConfigurations;
             Collation = collation;

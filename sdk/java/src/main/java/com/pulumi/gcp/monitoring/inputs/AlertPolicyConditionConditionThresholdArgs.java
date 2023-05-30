@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdAggregationArgs;
 import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdDenominatorAggregationArgs;
+import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdForecastOptionsArgs;
 import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdTriggerArgs;
 import java.lang.Double;
 import java.lang.String;
@@ -284,6 +285,33 @@ public final class AlertPolicyConditionConditionThresholdArgs extends com.pulumi
     }
 
     /**
+     * When this field is present, the `MetricThreshold`
+     * condition forecasts whether the time series is
+     * predicted to violate the threshold within the
+     * `forecastHorizon`. When this field is not set, the
+     * `MetricThreshold` tests the current value of the
+     * timeseries against the threshold.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="forecastOptions")
+    private @Nullable Output<AlertPolicyConditionConditionThresholdForecastOptionsArgs> forecastOptions;
+
+    /**
+     * @return When this field is present, the `MetricThreshold`
+     * condition forecasts whether the time series is
+     * predicted to violate the threshold within the
+     * `forecastHorizon`. When this field is not set, the
+     * `MetricThreshold` tests the current value of the
+     * timeseries against the threshold.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AlertPolicyConditionConditionThresholdForecastOptionsArgs>> forecastOptions() {
+        return Optional.ofNullable(this.forecastOptions);
+    }
+
+    /**
      * A value against which to compare the time
      * series.
      * 
@@ -341,6 +369,7 @@ public final class AlertPolicyConditionConditionThresholdArgs extends com.pulumi
         this.duration = $.duration;
         this.evaluationMissingData = $.evaluationMissingData;
         this.filter = $.filter;
+        this.forecastOptions = $.forecastOptions;
         this.thresholdValue = $.thresholdValue;
         this.trigger = $.trigger;
     }
@@ -715,6 +744,39 @@ public final class AlertPolicyConditionConditionThresholdArgs extends com.pulumi
          */
         public Builder filter(String filter) {
             return filter(Output.of(filter));
+        }
+
+        /**
+         * @param forecastOptions When this field is present, the `MetricThreshold`
+         * condition forecasts whether the time series is
+         * predicted to violate the threshold within the
+         * `forecastHorizon`. When this field is not set, the
+         * `MetricThreshold` tests the current value of the
+         * timeseries against the threshold.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forecastOptions(@Nullable Output<AlertPolicyConditionConditionThresholdForecastOptionsArgs> forecastOptions) {
+            $.forecastOptions = forecastOptions;
+            return this;
+        }
+
+        /**
+         * @param forecastOptions When this field is present, the `MetricThreshold`
+         * condition forecasts whether the time series is
+         * predicted to violate the threshold within the
+         * `forecastHorizon`. When this field is not set, the
+         * `MetricThreshold` tests the current value of the
+         * timeseries against the threshold.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forecastOptions(AlertPolicyConditionConditionThresholdForecastOptionsArgs forecastOptions) {
+            return forecastOptions(Output.of(forecastOptions));
         }
 
         /**

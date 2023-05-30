@@ -767,6 +767,7 @@
         "networksecurity/gatewaySecurityPolicy.ts",
         "networksecurity/gatewaySecurityPolicyRule.ts",
         "networksecurity/index.ts",
+        "networksecurity/serverTlsPolicy.ts",
         "networksecurity/tlsInspectionPolicy.ts",
         "networksecurity/urlList.ts",
         "networkservices/edgeCacheKeyset.ts",

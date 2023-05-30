@@ -78,6 +78,21 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
         return Optional.ofNullable(this.sizeGb);
     }
 
+    /**
+     * The snapshot to use as the source for the disk. This can be the snapshot&#39;s `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+     * 
+     */
+    @Import(name="sourceSnapshot")
+    private @Nullable Output<String> sourceSnapshot;
+
+    /**
+     * @return The snapshot to use as the source for the disk. This can be the snapshot&#39;s `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+     * 
+     */
+    public Optional<Output<String>> sourceSnapshot() {
+        return Optional.ofNullable(this.sourceSnapshot);
+    }
+
     private WorkstationConfigPersistentDirectoryGcePdArgs() {}
 
     private WorkstationConfigPersistentDirectoryGcePdArgs(WorkstationConfigPersistentDirectoryGcePdArgs $) {
@@ -85,6 +100,7 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
         this.fsType = $.fsType;
         this.reclaimPolicy = $.reclaimPolicy;
         this.sizeGb = $.sizeGb;
+        this.sourceSnapshot = $.sourceSnapshot;
     }
 
     public static Builder builder() {
@@ -189,6 +205,27 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
          */
         public Builder sizeGb(Integer sizeGb) {
             return sizeGb(Output.of(sizeGb));
+        }
+
+        /**
+         * @param sourceSnapshot The snapshot to use as the source for the disk. This can be the snapshot&#39;s `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceSnapshot(@Nullable Output<String> sourceSnapshot) {
+            $.sourceSnapshot = sourceSnapshot;
+            return this;
+        }
+
+        /**
+         * @param sourceSnapshot The snapshot to use as the source for the disk. This can be the snapshot&#39;s `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceSnapshot(String sourceSnapshot) {
+            return sourceSnapshot(Output.of(sourceSnapshot));
         }
 
         public WorkstationConfigPersistentDirectoryGcePdArgs build() {

@@ -224,6 +224,81 @@ import (
 //	}
 //
 // ```
+// ### Workstation Config Source Snapshot
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/workstations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+//				IpCidrRange: pulumi.String("10.0.0.0/24"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     defaultNetwork.Name,
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			mySourceDisk, err := compute.NewDisk(ctx, "mySourceDisk", &compute.DiskArgs{
+//				Size: pulumi.Int(10),
+//				Type: pulumi.String("pd-ssd"),
+//				Zone: pulumi.String("us-central1-a"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			mySourceSnapshot, err := compute.NewSnapshot(ctx, "mySourceSnapshot", &compute.SnapshotArgs{
+//				SourceDisk: mySourceDisk.Name,
+//				Zone:       pulumi.String("us-central1-a"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			defaultWorkstationCluster, err := workstations.NewWorkstationCluster(ctx, "defaultWorkstationCluster", &workstations.WorkstationClusterArgs{
+//				WorkstationClusterId: pulumi.String("workstation-cluster"),
+//				Network:              defaultNetwork.ID(),
+//				Subnetwork:           defaultSubnetwork.ID(),
+//				Location:             pulumi.String("us-central1"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = workstations.NewWorkstationConfig(ctx, "defaultWorkstationConfig", &workstations.WorkstationConfigArgs{
+//				WorkstationConfigId:  pulumi.String("workstation-config"),
+//				WorkstationClusterId: defaultWorkstationCluster.WorkstationClusterId,
+//				Location:             defaultWorkstationCluster.Location,
+//				PersistentDirectories: workstations.WorkstationConfigPersistentDirectoryArray{
+//					&workstations.WorkstationConfigPersistentDirectoryArgs{
+//						MountPath: pulumi.String("/home"),
+//						GcePd: &workstations.WorkstationConfigPersistentDirectoryGcePdArgs{
+//							SourceSnapshot: mySourceSnapshot.ID(),
+//							ReclaimPolicy:  pulumi.String("DELETE"),
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Workstation Config Shielded Instance Config
 //
 // ```go

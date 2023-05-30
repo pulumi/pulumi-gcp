@@ -3679,6 +3679,8 @@ type TransferJobTransferSpecAwsS3DataSource struct {
 	AwsAccessKey *TransferJobTransferSpecAwsS3DataSourceAwsAccessKey `pulumi:"awsAccessKey"`
 	// Google Cloud Storage bucket name.
 	BucketName string `pulumi:"bucketName"`
+	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+	Path *string `pulumi:"path"`
 	// The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
 	RoleArn *string `pulumi:"roleArn"`
 }
@@ -3699,6 +3701,8 @@ type TransferJobTransferSpecAwsS3DataSourceArgs struct {
 	AwsAccessKey TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyPtrInput `pulumi:"awsAccessKey"`
 	// Google Cloud Storage bucket name.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+	Path pulumi.StringPtrInput `pulumi:"path"`
 	// The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
 	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 }
@@ -3792,6 +3796,11 @@ func (o TransferJobTransferSpecAwsS3DataSourceOutput) BucketName() pulumi.String
 	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
+// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+func (o TransferJobTransferSpecAwsS3DataSourceOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
 // The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
 func (o TransferJobTransferSpecAwsS3DataSourceOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecAwsS3DataSource) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
@@ -3838,6 +3847,16 @@ func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) BucketName() pulumi.Str
 			return nil
 		}
 		return &v.BucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+func (o TransferJobTransferSpecAwsS3DataSourcePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobTransferSpecAwsS3DataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
 	}).(pulumi.StringPtrOutput)
 }
 

@@ -742,6 +742,8 @@ class WorkstationConfigPersistentDirectoryGcePd(dict):
             suggest = "reclaim_policy"
         elif key == "sizeGb":
             suggest = "size_gb"
+        elif key == "sourceSnapshot":
+            suggest = "source_snapshot"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in WorkstationConfigPersistentDirectoryGcePd. Access the value via the '{suggest}' property getter instead.")
@@ -758,13 +760,15 @@ class WorkstationConfigPersistentDirectoryGcePd(dict):
                  disk_type: Optional[str] = None,
                  fs_type: Optional[str] = None,
                  reclaim_policy: Optional[str] = None,
-                 size_gb: Optional[int] = None):
+                 size_gb: Optional[int] = None,
+                 source_snapshot: Optional[str] = None):
         """
         :param str disk_type: Type of the disk to use.
         :param str fs_type: Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
         :param str reclaim_policy: What should happen to the disk after the workstation is deleted. Defaults to DELETE.
                Possible values are: `DELETE`, `RETAIN`.
         :param int size_gb: Size of the disk in GB. Must be empty if sourceSnapshot is set.
+        :param str source_snapshot: The snapshot to use as the source for the disk. This can be the snapshot's `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
         """
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
@@ -774,6 +778,8 @@ class WorkstationConfigPersistentDirectoryGcePd(dict):
             pulumi.set(__self__, "reclaim_policy", reclaim_policy)
         if size_gb is not None:
             pulumi.set(__self__, "size_gb", size_gb)
+        if source_snapshot is not None:
+            pulumi.set(__self__, "source_snapshot", source_snapshot)
 
     @property
     @pulumi.getter(name="diskType")
@@ -807,6 +813,14 @@ class WorkstationConfigPersistentDirectoryGcePd(dict):
         Size of the disk in GB. Must be empty if sourceSnapshot is set.
         """
         return pulumi.get(self, "size_gb")
+
+    @property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> Optional[str]:
+        """
+        The snapshot to use as the source for the disk. This can be the snapshot's `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+        """
+        return pulumi.get(self, "source_snapshot")
 
 
 @pulumi.output_type

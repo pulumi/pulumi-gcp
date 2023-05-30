@@ -22,6 +22,10 @@ public final class GetAppleAppConfigResult {
      * 
      */
     private String configFilename;
+    /**
+     * @return The provider-assigned unique ID for this managed resource.
+     * 
+     */
     private String id;
     private @Nullable String project;
 
@@ -43,6 +47,10 @@ public final class GetAppleAppConfigResult {
     public String configFilename() {
         return this.configFilename;
     }
+    /**
+     * @return The provider-assigned unique ID for this managed resource.
+     * 
+     */
     public String id() {
         return this.id;
     }

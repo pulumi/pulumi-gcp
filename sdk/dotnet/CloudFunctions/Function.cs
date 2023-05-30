@@ -299,6 +299,12 @@ namespace Pulumi.Gcp.CloudFunctions
         public Output<Outputs.FunctionSourceRepository?> SourceRepository { get; private set; } = null!;
 
         /// <summary>
+        /// Describes the current stage of a deployment.
+        /// </summary>
+        [Output("status")]
+        public Output<string> Status { get; private set; } = null!;
+
+        /// <summary>
         /// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         /// </summary>
         [Output("timeout")]
@@ -781,6 +787,12 @@ namespace Pulumi.Gcp.CloudFunctions
         /// </summary>
         [Input("sourceRepository")]
         public Input<Inputs.FunctionSourceRepositoryGetArgs>? SourceRepository { get; set; }
+
+        /// <summary>
+        /// Describes the current stage of a deployment.
+        /// </summary>
+        [Input("status")]
+        public Input<string>? Status { get; set; }
 
         /// <summary>
         /// Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.

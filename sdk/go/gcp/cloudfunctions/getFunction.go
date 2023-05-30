@@ -106,6 +106,7 @@ type LookupFunctionResult struct {
 	SourceArchiveObject string `pulumi:"sourceArchiveObject"`
 	// The URL of the Cloud Source Repository that the function is deployed from. Structure is documented below.
 	SourceRepositories []GetFunctionSourceRepository `pulumi:"sourceRepositories"`
+	Status             string                        `pulumi:"status"`
 	// Function execution timeout (in seconds).
 	Timeout int `pulumi:"timeout"`
 	// If function is triggered by HTTP, this boolean is set.
@@ -285,6 +286,10 @@ func (o LookupFunctionResultOutput) SourceArchiveObject() pulumi.StringOutput {
 // The URL of the Cloud Source Repository that the function is deployed from. Structure is documented below.
 func (o LookupFunctionResultOutput) SourceRepositories() GetFunctionSourceRepositoryArrayOutput {
 	return o.ApplyT(func(v LookupFunctionResult) []GetFunctionSourceRepository { return v.SourceRepositories }).(GetFunctionSourceRepositoryArrayOutput)
+}
+
+func (o LookupFunctionResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // Function execution timeout (in seconds).

@@ -30,6 +30,10 @@ namespace Pulumi.Gcp.Workstations.Outputs
         /// Size of the disk in GB. Must be empty if sourceSnapshot is set.
         /// </summary>
         public readonly int? SizeGb;
+        /// <summary>
+        /// The snapshot to use as the source for the disk. This can be the snapshot's `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+        /// </summary>
+        public readonly string? SourceSnapshot;
 
         [OutputConstructor]
         private WorkstationConfigPersistentDirectoryGcePd(
@@ -39,12 +43,15 @@ namespace Pulumi.Gcp.Workstations.Outputs
 
             string? reclaimPolicy,
 
-            int? sizeGb)
+            int? sizeGb,
+
+            string? sourceSnapshot)
         {
             DiskType = diskType;
             FsType = fsType;
             ReclaimPolicy = reclaimPolicy;
             SizeGb = sizeGb;
+            SourceSnapshot = sourceSnapshot;
         }
     }
 }

@@ -4354,7 +4354,7 @@ class ClusterGatewayApiConfigArgs:
     def __init__(__self__, *,
                  channel: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] channel: Which Gateway Api channel should be used. `CHANNEL_DISABLED` or `CHANNEL_STANDARD`.
+        :param pulumi.Input[str] channel: Which Gateway Api channel should be used. `CHANNEL_DISABLED`, `CHANNEL_EXPERIMENTAL` or `CHANNEL_STANDARD`.
         """
         pulumi.set(__self__, "channel", channel)
 
@@ -4362,7 +4362,7 @@ class ClusterGatewayApiConfigArgs:
     @pulumi.getter
     def channel(self) -> pulumi.Input[str]:
         """
-        Which Gateway Api channel should be used. `CHANNEL_DISABLED` or `CHANNEL_STANDARD`.
+        Which Gateway Api channel should be used. `CHANNEL_DISABLED`, `CHANNEL_EXPERIMENTAL` or `CHANNEL_STANDARD`.
         """
         return pulumi.get(self, "channel")
 
