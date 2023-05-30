@@ -1360,6 +1360,1048 @@ func (o ClientTlsPolicyServerValidationCaGrpcEndpointPtrOutput) TargetUri() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+type ServerTlsPolicyMtlsPolicy struct {
+	// Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
+	// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+	// Structure is documented below.
+	ClientValidationCas []ServerTlsPolicyMtlsPolicyClientValidationCa `pulumi:"clientValidationCas"`
+	// When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
+	// Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+	// Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+	ClientValidationMode *string `pulumi:"clientValidationMode"`
+	// Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
+	// If specified, the chain validation will be performed against certificates configured in the given TrustConfig.
+	// Allowed only if the policy is to be used with external HTTPS load balancers.
+	ClientValidationTrustConfig *string `pulumi:"clientValidationTrustConfig"`
+}
+
+// ServerTlsPolicyMtlsPolicyInput is an input type that accepts ServerTlsPolicyMtlsPolicyArgs and ServerTlsPolicyMtlsPolicyOutput values.
+// You can construct a concrete instance of `ServerTlsPolicyMtlsPolicyInput` via:
+//
+//	ServerTlsPolicyMtlsPolicyArgs{...}
+type ServerTlsPolicyMtlsPolicyInput interface {
+	pulumi.Input
+
+	ToServerTlsPolicyMtlsPolicyOutput() ServerTlsPolicyMtlsPolicyOutput
+	ToServerTlsPolicyMtlsPolicyOutputWithContext(context.Context) ServerTlsPolicyMtlsPolicyOutput
+}
+
+type ServerTlsPolicyMtlsPolicyArgs struct {
+	// Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
+	// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+	// Structure is documented below.
+	ClientValidationCas ServerTlsPolicyMtlsPolicyClientValidationCaArrayInput `pulumi:"clientValidationCas"`
+	// When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
+	// Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+	// Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+	ClientValidationMode pulumi.StringPtrInput `pulumi:"clientValidationMode"`
+	// Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
+	// If specified, the chain validation will be performed against certificates configured in the given TrustConfig.
+	// Allowed only if the policy is to be used with external HTTPS load balancers.
+	ClientValidationTrustConfig pulumi.StringPtrInput `pulumi:"clientValidationTrustConfig"`
+}
+
+func (ServerTlsPolicyMtlsPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerTlsPolicyMtlsPolicy)(nil)).Elem()
+}
+
+func (i ServerTlsPolicyMtlsPolicyArgs) ToServerTlsPolicyMtlsPolicyOutput() ServerTlsPolicyMtlsPolicyOutput {
+	return i.ToServerTlsPolicyMtlsPolicyOutputWithContext(context.Background())
+}
+
+func (i ServerTlsPolicyMtlsPolicyArgs) ToServerTlsPolicyMtlsPolicyOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyMtlsPolicyOutput)
+}
+
+func (i ServerTlsPolicyMtlsPolicyArgs) ToServerTlsPolicyMtlsPolicyPtrOutput() ServerTlsPolicyMtlsPolicyPtrOutput {
+	return i.ToServerTlsPolicyMtlsPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ServerTlsPolicyMtlsPolicyArgs) ToServerTlsPolicyMtlsPolicyPtrOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyMtlsPolicyOutput).ToServerTlsPolicyMtlsPolicyPtrOutputWithContext(ctx)
+}
+
+// ServerTlsPolicyMtlsPolicyPtrInput is an input type that accepts ServerTlsPolicyMtlsPolicyArgs, ServerTlsPolicyMtlsPolicyPtr and ServerTlsPolicyMtlsPolicyPtrOutput values.
+// You can construct a concrete instance of `ServerTlsPolicyMtlsPolicyPtrInput` via:
+//
+//	        ServerTlsPolicyMtlsPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerTlsPolicyMtlsPolicyPtrInput interface {
+	pulumi.Input
+
+	ToServerTlsPolicyMtlsPolicyPtrOutput() ServerTlsPolicyMtlsPolicyPtrOutput
+	ToServerTlsPolicyMtlsPolicyPtrOutputWithContext(context.Context) ServerTlsPolicyMtlsPolicyPtrOutput
+}
+
+type serverTlsPolicyMtlsPolicyPtrType ServerTlsPolicyMtlsPolicyArgs
+
+func ServerTlsPolicyMtlsPolicyPtr(v *ServerTlsPolicyMtlsPolicyArgs) ServerTlsPolicyMtlsPolicyPtrInput {
+	return (*serverTlsPolicyMtlsPolicyPtrType)(v)
+}
+
+func (*serverTlsPolicyMtlsPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerTlsPolicyMtlsPolicy)(nil)).Elem()
+}
+
+func (i *serverTlsPolicyMtlsPolicyPtrType) ToServerTlsPolicyMtlsPolicyPtrOutput() ServerTlsPolicyMtlsPolicyPtrOutput {
+	return i.ToServerTlsPolicyMtlsPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *serverTlsPolicyMtlsPolicyPtrType) ToServerTlsPolicyMtlsPolicyPtrOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyMtlsPolicyPtrOutput)
+}
+
+type ServerTlsPolicyMtlsPolicyOutput struct{ *pulumi.OutputState }
+
+func (ServerTlsPolicyMtlsPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerTlsPolicyMtlsPolicy)(nil)).Elem()
+}
+
+func (o ServerTlsPolicyMtlsPolicyOutput) ToServerTlsPolicyMtlsPolicyOutput() ServerTlsPolicyMtlsPolicyOutput {
+	return o
+}
+
+func (o ServerTlsPolicyMtlsPolicyOutput) ToServerTlsPolicyMtlsPolicyOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyOutput {
+	return o
+}
+
+func (o ServerTlsPolicyMtlsPolicyOutput) ToServerTlsPolicyMtlsPolicyPtrOutput() ServerTlsPolicyMtlsPolicyPtrOutput {
+	return o.ToServerTlsPolicyMtlsPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ServerTlsPolicyMtlsPolicyOutput) ToServerTlsPolicyMtlsPolicyPtrOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerTlsPolicyMtlsPolicy) *ServerTlsPolicyMtlsPolicy {
+		return &v
+	}).(ServerTlsPolicyMtlsPolicyPtrOutput)
+}
+
+// Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
+// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+// Structure is documented below.
+func (o ServerTlsPolicyMtlsPolicyOutput) ClientValidationCas() ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput {
+	return o.ApplyT(func(v ServerTlsPolicyMtlsPolicy) []ServerTlsPolicyMtlsPolicyClientValidationCa {
+		return v.ClientValidationCas
+	}).(ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput)
+}
+
+// When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
+// Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+// Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+func (o ServerTlsPolicyMtlsPolicyOutput) ClientValidationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerTlsPolicyMtlsPolicy) *string { return v.ClientValidationMode }).(pulumi.StringPtrOutput)
+}
+
+// Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
+// If specified, the chain validation will be performed against certificates configured in the given TrustConfig.
+// Allowed only if the policy is to be used with external HTTPS load balancers.
+func (o ServerTlsPolicyMtlsPolicyOutput) ClientValidationTrustConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerTlsPolicyMtlsPolicy) *string { return v.ClientValidationTrustConfig }).(pulumi.StringPtrOutput)
+}
+
+type ServerTlsPolicyMtlsPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerTlsPolicyMtlsPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerTlsPolicyMtlsPolicy)(nil)).Elem()
+}
+
+func (o ServerTlsPolicyMtlsPolicyPtrOutput) ToServerTlsPolicyMtlsPolicyPtrOutput() ServerTlsPolicyMtlsPolicyPtrOutput {
+	return o
+}
+
+func (o ServerTlsPolicyMtlsPolicyPtrOutput) ToServerTlsPolicyMtlsPolicyPtrOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyPtrOutput {
+	return o
+}
+
+func (o ServerTlsPolicyMtlsPolicyPtrOutput) Elem() ServerTlsPolicyMtlsPolicyOutput {
+	return o.ApplyT(func(v *ServerTlsPolicyMtlsPolicy) ServerTlsPolicyMtlsPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ServerTlsPolicyMtlsPolicy
+		return ret
+	}).(ServerTlsPolicyMtlsPolicyOutput)
+}
+
+// Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
+// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+// Structure is documented below.
+func (o ServerTlsPolicyMtlsPolicyPtrOutput) ClientValidationCas() ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput {
+	return o.ApplyT(func(v *ServerTlsPolicyMtlsPolicy) []ServerTlsPolicyMtlsPolicyClientValidationCa {
+		if v == nil {
+			return nil
+		}
+		return v.ClientValidationCas
+	}).(ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput)
+}
+
+// When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
+// Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+// Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+func (o ServerTlsPolicyMtlsPolicyPtrOutput) ClientValidationMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerTlsPolicyMtlsPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientValidationMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
+// If specified, the chain validation will be performed against certificates configured in the given TrustConfig.
+// Allowed only if the policy is to be used with external HTTPS load balancers.
+func (o ServerTlsPolicyMtlsPolicyPtrOutput) ClientValidationTrustConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerTlsPolicyMtlsPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientValidationTrustConfig
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServerTlsPolicyMtlsPolicyClientValidationCa struct {
+	// Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+	// Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
+	// Structure is documented below.
+	CertificateProviderInstance *ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance `pulumi:"certificateProviderInstance"`
+	// gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+	// Structure is documented below.
+	GrpcEndpoint *ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint `pulumi:"grpcEndpoint"`
+}
+
+// ServerTlsPolicyMtlsPolicyClientValidationCaInput is an input type that accepts ServerTlsPolicyMtlsPolicyClientValidationCaArgs and ServerTlsPolicyMtlsPolicyClientValidationCaOutput values.
+// You can construct a concrete instance of `ServerTlsPolicyMtlsPolicyClientValidationCaInput` via:
+//
+//	ServerTlsPolicyMtlsPolicyClientValidationCaArgs{...}
+type ServerTlsPolicyMtlsPolicyClientValidationCaInput interface {
+	pulumi.Input
+
+	ToServerTlsPolicyMtlsPolicyClientValidationCaOutput() ServerTlsPolicyMtlsPolicyClientValidationCaOutput
+	ToServerTlsPolicyMtlsPolicyClientValidationCaOutputWithContext(context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaOutput
+}
+
+type ServerTlsPolicyMtlsPolicyClientValidationCaArgs struct {
+	// Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+	// Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
+	// Structure is documented below.
+	CertificateProviderInstance ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrInput `pulumi:"certificateProviderInstance"`
+	// gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+	// Structure is documented below.
+	GrpcEndpoint ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrInput `pulumi:"grpcEndpoint"`
+}
+
+func (ServerTlsPolicyMtlsPolicyClientValidationCaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerTlsPolicyMtlsPolicyClientValidationCa)(nil)).Elem()
+}
+
+func (i ServerTlsPolicyMtlsPolicyClientValidationCaArgs) ToServerTlsPolicyMtlsPolicyClientValidationCaOutput() ServerTlsPolicyMtlsPolicyClientValidationCaOutput {
+	return i.ToServerTlsPolicyMtlsPolicyClientValidationCaOutputWithContext(context.Background())
+}
+
+func (i ServerTlsPolicyMtlsPolicyClientValidationCaArgs) ToServerTlsPolicyMtlsPolicyClientValidationCaOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyMtlsPolicyClientValidationCaOutput)
+}
+
+// ServerTlsPolicyMtlsPolicyClientValidationCaArrayInput is an input type that accepts ServerTlsPolicyMtlsPolicyClientValidationCaArray and ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput values.
+// You can construct a concrete instance of `ServerTlsPolicyMtlsPolicyClientValidationCaArrayInput` via:
+//
+//	ServerTlsPolicyMtlsPolicyClientValidationCaArray{ ServerTlsPolicyMtlsPolicyClientValidationCaArgs{...} }
+type ServerTlsPolicyMtlsPolicyClientValidationCaArrayInput interface {
+	pulumi.Input
+
+	ToServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput() ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput
+	ToServerTlsPolicyMtlsPolicyClientValidationCaArrayOutputWithContext(context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput
+}
+
+type ServerTlsPolicyMtlsPolicyClientValidationCaArray []ServerTlsPolicyMtlsPolicyClientValidationCaInput
+
+func (ServerTlsPolicyMtlsPolicyClientValidationCaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerTlsPolicyMtlsPolicyClientValidationCa)(nil)).Elem()
+}
+
+func (i ServerTlsPolicyMtlsPolicyClientValidationCaArray) ToServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput() ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput {
+	return i.ToServerTlsPolicyMtlsPolicyClientValidationCaArrayOutputWithContext(context.Background())
+}
+
+func (i ServerTlsPolicyMtlsPolicyClientValidationCaArray) ToServerTlsPolicyMtlsPolicyClientValidationCaArrayOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput)
+}
+
+type ServerTlsPolicyMtlsPolicyClientValidationCaOutput struct{ *pulumi.OutputState }
+
+func (ServerTlsPolicyMtlsPolicyClientValidationCaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerTlsPolicyMtlsPolicyClientValidationCa)(nil)).Elem()
+}
+
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaOutput) ToServerTlsPolicyMtlsPolicyClientValidationCaOutput() ServerTlsPolicyMtlsPolicyClientValidationCaOutput {
+	return o
+}
+
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaOutput) ToServerTlsPolicyMtlsPolicyClientValidationCaOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaOutput {
+	return o
+}
+
+// Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+// Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
+// Structure is documented below.
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaOutput) CertificateProviderInstance() ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput {
+	return o.ApplyT(func(v ServerTlsPolicyMtlsPolicyClientValidationCa) *ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance {
+		return v.CertificateProviderInstance
+	}).(ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput)
+}
+
+// gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+// Structure is documented below.
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaOutput) GrpcEndpoint() ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput {
+	return o.ApplyT(func(v ServerTlsPolicyMtlsPolicyClientValidationCa) *ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint {
+		return v.GrpcEndpoint
+	}).(ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput)
+}
+
+type ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput struct{ *pulumi.OutputState }
+
+func (ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServerTlsPolicyMtlsPolicyClientValidationCa)(nil)).Elem()
+}
+
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput) ToServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput() ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput {
+	return o
+}
+
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput) ToServerTlsPolicyMtlsPolicyClientValidationCaArrayOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput {
+	return o
+}
+
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput) Index(i pulumi.IntInput) ServerTlsPolicyMtlsPolicyClientValidationCaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServerTlsPolicyMtlsPolicyClientValidationCa {
+		return vs[0].([]ServerTlsPolicyMtlsPolicyClientValidationCa)[vs[1].(int)]
+	}).(ServerTlsPolicyMtlsPolicyClientValidationCaOutput)
+}
+
+type ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance struct {
+	// Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "googleCloudPrivateSpiffe" to use Certificate Authority Service certificate provider instance.
+	PluginInstance string `pulumi:"pluginInstance"`
+}
+
+// ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceInput is an input type that accepts ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs and ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput values.
+// You can construct a concrete instance of `ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceInput` via:
+//
+//	ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs{...}
+type ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceInput interface {
+	pulumi.Input
+
+	ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput() ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput
+	ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutputWithContext(context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput
+}
+
+type ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs struct {
+	// Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "googleCloudPrivateSpiffe" to use Certificate Authority Service certificate provider instance.
+	PluginInstance pulumi.StringInput `pulumi:"pluginInstance"`
+}
+
+func (ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance)(nil)).Elem()
+}
+
+func (i ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs) ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput() ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput {
+	return i.ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutputWithContext(context.Background())
+}
+
+func (i ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs) ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput)
+}
+
+func (i ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs) ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput() ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput {
+	return i.ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutputWithContext(context.Background())
+}
+
+func (i ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs) ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput).ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutputWithContext(ctx)
+}
+
+// ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrInput is an input type that accepts ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs, ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtr and ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput values.
+// You can construct a concrete instance of `ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrInput` via:
+//
+//	        ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrInput interface {
+	pulumi.Input
+
+	ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput() ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput
+	ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutputWithContext(context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput
+}
+
+type serverTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrType ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs
+
+func ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtr(v *ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs) ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrInput {
+	return (*serverTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrType)(v)
+}
+
+func (*serverTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance)(nil)).Elem()
+}
+
+func (i *serverTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrType) ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput() ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput {
+	return i.ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *serverTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrType) ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput)
+}
+
+type ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput struct{ *pulumi.OutputState }
+
+func (ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance)(nil)).Elem()
+}
+
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput) ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput() ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput {
+	return o
+}
+
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput) ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput {
+	return o
+}
+
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput) ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput() ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput {
+	return o.ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutputWithContext(context.Background())
+}
+
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput) ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance) *ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance {
+		return &v
+	}).(ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput)
+}
+
+// Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "googleCloudPrivateSpiffe" to use Certificate Authority Service certificate provider instance.
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput) PluginInstance() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance) string {
+		return v.PluginInstance
+	}).(pulumi.StringOutput)
+}
+
+type ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput struct{ *pulumi.OutputState }
+
+func (ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance)(nil)).Elem()
+}
+
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput) ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput() ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput {
+	return o
+}
+
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput) ToServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput {
+	return o
+}
+
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput) Elem() ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput {
+	return o.ApplyT(func(v *ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance) ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance {
+		if v != nil {
+			return *v
+		}
+		var ret ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance
+		return ret
+	}).(ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput)
+}
+
+// Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "googleCloudPrivateSpiffe" to use Certificate Authority Service certificate provider instance.
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput) PluginInstance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PluginInstance
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint struct {
+	// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+	TargetUri string `pulumi:"targetUri"`
+}
+
+// ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointInput is an input type that accepts ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs and ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput values.
+// You can construct a concrete instance of `ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointInput` via:
+//
+//	ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs{...}
+type ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointInput interface {
+	pulumi.Input
+
+	ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput() ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput
+	ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutputWithContext(context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput
+}
+
+type ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs struct {
+	// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+	TargetUri pulumi.StringInput `pulumi:"targetUri"`
+}
+
+func (ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint)(nil)).Elem()
+}
+
+func (i ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs) ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput() ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput {
+	return i.ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutputWithContext(context.Background())
+}
+
+func (i ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs) ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput)
+}
+
+func (i ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs) ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput() ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput {
+	return i.ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs) ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput).ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutputWithContext(ctx)
+}
+
+// ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrInput is an input type that accepts ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs, ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtr and ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput values.
+// You can construct a concrete instance of `ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrInput` via:
+//
+//	        ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrInput interface {
+	pulumi.Input
+
+	ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput() ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput
+	ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutputWithContext(context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput
+}
+
+type serverTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrType ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs
+
+func ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtr(v *ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs) ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrInput {
+	return (*serverTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrType)(v)
+}
+
+func (*serverTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint)(nil)).Elem()
+}
+
+func (i *serverTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrType) ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput() ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput {
+	return i.ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *serverTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrType) ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput)
+}
+
+type ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput struct{ *pulumi.OutputState }
+
+func (ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint)(nil)).Elem()
+}
+
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput) ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput() ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput {
+	return o
+}
+
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput) ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput {
+	return o
+}
+
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput) ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput() ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput {
+	return o.ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput) ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint) *ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint {
+		return &v
+	}).(ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput)
+}
+
+// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput) TargetUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint) string { return v.TargetUri }).(pulumi.StringOutput)
+}
+
+type ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint)(nil)).Elem()
+}
+
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput) ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput() ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput {
+	return o
+}
+
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput) ToServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutputWithContext(ctx context.Context) ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput {
+	return o
+}
+
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput) Elem() ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput {
+	return o.ApplyT(func(v *ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint) ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint
+		return ret
+	}).(ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput)
+}
+
+// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+func (o ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput) TargetUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServerTlsPolicyServerCertificate struct {
+	// Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+	// Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
+	// Structure is documented below.
+	CertificateProviderInstance *ServerTlsPolicyServerCertificateCertificateProviderInstance `pulumi:"certificateProviderInstance"`
+	// gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+	// Structure is documented below.
+	GrpcEndpoint *ServerTlsPolicyServerCertificateGrpcEndpoint `pulumi:"grpcEndpoint"`
+}
+
+// ServerTlsPolicyServerCertificateInput is an input type that accepts ServerTlsPolicyServerCertificateArgs and ServerTlsPolicyServerCertificateOutput values.
+// You can construct a concrete instance of `ServerTlsPolicyServerCertificateInput` via:
+//
+//	ServerTlsPolicyServerCertificateArgs{...}
+type ServerTlsPolicyServerCertificateInput interface {
+	pulumi.Input
+
+	ToServerTlsPolicyServerCertificateOutput() ServerTlsPolicyServerCertificateOutput
+	ToServerTlsPolicyServerCertificateOutputWithContext(context.Context) ServerTlsPolicyServerCertificateOutput
+}
+
+type ServerTlsPolicyServerCertificateArgs struct {
+	// Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+	// Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
+	// Structure is documented below.
+	CertificateProviderInstance ServerTlsPolicyServerCertificateCertificateProviderInstancePtrInput `pulumi:"certificateProviderInstance"`
+	// gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+	// Structure is documented below.
+	GrpcEndpoint ServerTlsPolicyServerCertificateGrpcEndpointPtrInput `pulumi:"grpcEndpoint"`
+}
+
+func (ServerTlsPolicyServerCertificateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerTlsPolicyServerCertificate)(nil)).Elem()
+}
+
+func (i ServerTlsPolicyServerCertificateArgs) ToServerTlsPolicyServerCertificateOutput() ServerTlsPolicyServerCertificateOutput {
+	return i.ToServerTlsPolicyServerCertificateOutputWithContext(context.Background())
+}
+
+func (i ServerTlsPolicyServerCertificateArgs) ToServerTlsPolicyServerCertificateOutputWithContext(ctx context.Context) ServerTlsPolicyServerCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyServerCertificateOutput)
+}
+
+func (i ServerTlsPolicyServerCertificateArgs) ToServerTlsPolicyServerCertificatePtrOutput() ServerTlsPolicyServerCertificatePtrOutput {
+	return i.ToServerTlsPolicyServerCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i ServerTlsPolicyServerCertificateArgs) ToServerTlsPolicyServerCertificatePtrOutputWithContext(ctx context.Context) ServerTlsPolicyServerCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyServerCertificateOutput).ToServerTlsPolicyServerCertificatePtrOutputWithContext(ctx)
+}
+
+// ServerTlsPolicyServerCertificatePtrInput is an input type that accepts ServerTlsPolicyServerCertificateArgs, ServerTlsPolicyServerCertificatePtr and ServerTlsPolicyServerCertificatePtrOutput values.
+// You can construct a concrete instance of `ServerTlsPolicyServerCertificatePtrInput` via:
+//
+//	        ServerTlsPolicyServerCertificateArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerTlsPolicyServerCertificatePtrInput interface {
+	pulumi.Input
+
+	ToServerTlsPolicyServerCertificatePtrOutput() ServerTlsPolicyServerCertificatePtrOutput
+	ToServerTlsPolicyServerCertificatePtrOutputWithContext(context.Context) ServerTlsPolicyServerCertificatePtrOutput
+}
+
+type serverTlsPolicyServerCertificatePtrType ServerTlsPolicyServerCertificateArgs
+
+func ServerTlsPolicyServerCertificatePtr(v *ServerTlsPolicyServerCertificateArgs) ServerTlsPolicyServerCertificatePtrInput {
+	return (*serverTlsPolicyServerCertificatePtrType)(v)
+}
+
+func (*serverTlsPolicyServerCertificatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerTlsPolicyServerCertificate)(nil)).Elem()
+}
+
+func (i *serverTlsPolicyServerCertificatePtrType) ToServerTlsPolicyServerCertificatePtrOutput() ServerTlsPolicyServerCertificatePtrOutput {
+	return i.ToServerTlsPolicyServerCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i *serverTlsPolicyServerCertificatePtrType) ToServerTlsPolicyServerCertificatePtrOutputWithContext(ctx context.Context) ServerTlsPolicyServerCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyServerCertificatePtrOutput)
+}
+
+type ServerTlsPolicyServerCertificateOutput struct{ *pulumi.OutputState }
+
+func (ServerTlsPolicyServerCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerTlsPolicyServerCertificate)(nil)).Elem()
+}
+
+func (o ServerTlsPolicyServerCertificateOutput) ToServerTlsPolicyServerCertificateOutput() ServerTlsPolicyServerCertificateOutput {
+	return o
+}
+
+func (o ServerTlsPolicyServerCertificateOutput) ToServerTlsPolicyServerCertificateOutputWithContext(ctx context.Context) ServerTlsPolicyServerCertificateOutput {
+	return o
+}
+
+func (o ServerTlsPolicyServerCertificateOutput) ToServerTlsPolicyServerCertificatePtrOutput() ServerTlsPolicyServerCertificatePtrOutput {
+	return o.ToServerTlsPolicyServerCertificatePtrOutputWithContext(context.Background())
+}
+
+func (o ServerTlsPolicyServerCertificateOutput) ToServerTlsPolicyServerCertificatePtrOutputWithContext(ctx context.Context) ServerTlsPolicyServerCertificatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerTlsPolicyServerCertificate) *ServerTlsPolicyServerCertificate {
+		return &v
+	}).(ServerTlsPolicyServerCertificatePtrOutput)
+}
+
+// Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+// Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
+// Structure is documented below.
+func (o ServerTlsPolicyServerCertificateOutput) CertificateProviderInstance() ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput {
+	return o.ApplyT(func(v ServerTlsPolicyServerCertificate) *ServerTlsPolicyServerCertificateCertificateProviderInstance {
+		return v.CertificateProviderInstance
+	}).(ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput)
+}
+
+// gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+// Structure is documented below.
+func (o ServerTlsPolicyServerCertificateOutput) GrpcEndpoint() ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput {
+	return o.ApplyT(func(v ServerTlsPolicyServerCertificate) *ServerTlsPolicyServerCertificateGrpcEndpoint {
+		return v.GrpcEndpoint
+	}).(ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput)
+}
+
+type ServerTlsPolicyServerCertificatePtrOutput struct{ *pulumi.OutputState }
+
+func (ServerTlsPolicyServerCertificatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerTlsPolicyServerCertificate)(nil)).Elem()
+}
+
+func (o ServerTlsPolicyServerCertificatePtrOutput) ToServerTlsPolicyServerCertificatePtrOutput() ServerTlsPolicyServerCertificatePtrOutput {
+	return o
+}
+
+func (o ServerTlsPolicyServerCertificatePtrOutput) ToServerTlsPolicyServerCertificatePtrOutputWithContext(ctx context.Context) ServerTlsPolicyServerCertificatePtrOutput {
+	return o
+}
+
+func (o ServerTlsPolicyServerCertificatePtrOutput) Elem() ServerTlsPolicyServerCertificateOutput {
+	return o.ApplyT(func(v *ServerTlsPolicyServerCertificate) ServerTlsPolicyServerCertificate {
+		if v != nil {
+			return *v
+		}
+		var ret ServerTlsPolicyServerCertificate
+		return ret
+	}).(ServerTlsPolicyServerCertificateOutput)
+}
+
+// Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+// Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
+// Structure is documented below.
+func (o ServerTlsPolicyServerCertificatePtrOutput) CertificateProviderInstance() ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput {
+	return o.ApplyT(func(v *ServerTlsPolicyServerCertificate) *ServerTlsPolicyServerCertificateCertificateProviderInstance {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateProviderInstance
+	}).(ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput)
+}
+
+// gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+// Structure is documented below.
+func (o ServerTlsPolicyServerCertificatePtrOutput) GrpcEndpoint() ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput {
+	return o.ApplyT(func(v *ServerTlsPolicyServerCertificate) *ServerTlsPolicyServerCertificateGrpcEndpoint {
+		if v == nil {
+			return nil
+		}
+		return v.GrpcEndpoint
+	}).(ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput)
+}
+
+type ServerTlsPolicyServerCertificateCertificateProviderInstance struct {
+	// Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "googleCloudPrivateSpiffe" to use Certificate Authority Service certificate provider instance.
+	PluginInstance string `pulumi:"pluginInstance"`
+}
+
+// ServerTlsPolicyServerCertificateCertificateProviderInstanceInput is an input type that accepts ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs and ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput values.
+// You can construct a concrete instance of `ServerTlsPolicyServerCertificateCertificateProviderInstanceInput` via:
+//
+//	ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs{...}
+type ServerTlsPolicyServerCertificateCertificateProviderInstanceInput interface {
+	pulumi.Input
+
+	ToServerTlsPolicyServerCertificateCertificateProviderInstanceOutput() ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput
+	ToServerTlsPolicyServerCertificateCertificateProviderInstanceOutputWithContext(context.Context) ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput
+}
+
+type ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs struct {
+	// Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "googleCloudPrivateSpiffe" to use Certificate Authority Service certificate provider instance.
+	PluginInstance pulumi.StringInput `pulumi:"pluginInstance"`
+}
+
+func (ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerTlsPolicyServerCertificateCertificateProviderInstance)(nil)).Elem()
+}
+
+func (i ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs) ToServerTlsPolicyServerCertificateCertificateProviderInstanceOutput() ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput {
+	return i.ToServerTlsPolicyServerCertificateCertificateProviderInstanceOutputWithContext(context.Background())
+}
+
+func (i ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs) ToServerTlsPolicyServerCertificateCertificateProviderInstanceOutputWithContext(ctx context.Context) ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput)
+}
+
+func (i ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs) ToServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput() ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput {
+	return i.ToServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutputWithContext(context.Background())
+}
+
+func (i ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs) ToServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutputWithContext(ctx context.Context) ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput).ToServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutputWithContext(ctx)
+}
+
+// ServerTlsPolicyServerCertificateCertificateProviderInstancePtrInput is an input type that accepts ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs, ServerTlsPolicyServerCertificateCertificateProviderInstancePtr and ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput values.
+// You can construct a concrete instance of `ServerTlsPolicyServerCertificateCertificateProviderInstancePtrInput` via:
+//
+//	        ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerTlsPolicyServerCertificateCertificateProviderInstancePtrInput interface {
+	pulumi.Input
+
+	ToServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput() ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput
+	ToServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutputWithContext(context.Context) ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput
+}
+
+type serverTlsPolicyServerCertificateCertificateProviderInstancePtrType ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs
+
+func ServerTlsPolicyServerCertificateCertificateProviderInstancePtr(v *ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs) ServerTlsPolicyServerCertificateCertificateProviderInstancePtrInput {
+	return (*serverTlsPolicyServerCertificateCertificateProviderInstancePtrType)(v)
+}
+
+func (*serverTlsPolicyServerCertificateCertificateProviderInstancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerTlsPolicyServerCertificateCertificateProviderInstance)(nil)).Elem()
+}
+
+func (i *serverTlsPolicyServerCertificateCertificateProviderInstancePtrType) ToServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput() ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput {
+	return i.ToServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *serverTlsPolicyServerCertificateCertificateProviderInstancePtrType) ToServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutputWithContext(ctx context.Context) ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput)
+}
+
+type ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput struct{ *pulumi.OutputState }
+
+func (ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerTlsPolicyServerCertificateCertificateProviderInstance)(nil)).Elem()
+}
+
+func (o ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput) ToServerTlsPolicyServerCertificateCertificateProviderInstanceOutput() ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput {
+	return o
+}
+
+func (o ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput) ToServerTlsPolicyServerCertificateCertificateProviderInstanceOutputWithContext(ctx context.Context) ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput {
+	return o
+}
+
+func (o ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput) ToServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput() ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput {
+	return o.ToServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutputWithContext(context.Background())
+}
+
+func (o ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput) ToServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutputWithContext(ctx context.Context) ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerTlsPolicyServerCertificateCertificateProviderInstance) *ServerTlsPolicyServerCertificateCertificateProviderInstance {
+		return &v
+	}).(ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput)
+}
+
+// Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "googleCloudPrivateSpiffe" to use Certificate Authority Service certificate provider instance.
+func (o ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput) PluginInstance() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerTlsPolicyServerCertificateCertificateProviderInstance) string { return v.PluginInstance }).(pulumi.StringOutput)
+}
+
+type ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput struct{ *pulumi.OutputState }
+
+func (ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerTlsPolicyServerCertificateCertificateProviderInstance)(nil)).Elem()
+}
+
+func (o ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput) ToServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput() ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput {
+	return o
+}
+
+func (o ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput) ToServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutputWithContext(ctx context.Context) ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput {
+	return o
+}
+
+func (o ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput) Elem() ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput {
+	return o.ApplyT(func(v *ServerTlsPolicyServerCertificateCertificateProviderInstance) ServerTlsPolicyServerCertificateCertificateProviderInstance {
+		if v != nil {
+			return *v
+		}
+		var ret ServerTlsPolicyServerCertificateCertificateProviderInstance
+		return ret
+	}).(ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput)
+}
+
+// Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "googleCloudPrivateSpiffe" to use Certificate Authority Service certificate provider instance.
+func (o ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput) PluginInstance() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerTlsPolicyServerCertificateCertificateProviderInstance) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PluginInstance
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServerTlsPolicyServerCertificateGrpcEndpoint struct {
+	// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+	TargetUri string `pulumi:"targetUri"`
+}
+
+// ServerTlsPolicyServerCertificateGrpcEndpointInput is an input type that accepts ServerTlsPolicyServerCertificateGrpcEndpointArgs and ServerTlsPolicyServerCertificateGrpcEndpointOutput values.
+// You can construct a concrete instance of `ServerTlsPolicyServerCertificateGrpcEndpointInput` via:
+//
+//	ServerTlsPolicyServerCertificateGrpcEndpointArgs{...}
+type ServerTlsPolicyServerCertificateGrpcEndpointInput interface {
+	pulumi.Input
+
+	ToServerTlsPolicyServerCertificateGrpcEndpointOutput() ServerTlsPolicyServerCertificateGrpcEndpointOutput
+	ToServerTlsPolicyServerCertificateGrpcEndpointOutputWithContext(context.Context) ServerTlsPolicyServerCertificateGrpcEndpointOutput
+}
+
+type ServerTlsPolicyServerCertificateGrpcEndpointArgs struct {
+	// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+	TargetUri pulumi.StringInput `pulumi:"targetUri"`
+}
+
+func (ServerTlsPolicyServerCertificateGrpcEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerTlsPolicyServerCertificateGrpcEndpoint)(nil)).Elem()
+}
+
+func (i ServerTlsPolicyServerCertificateGrpcEndpointArgs) ToServerTlsPolicyServerCertificateGrpcEndpointOutput() ServerTlsPolicyServerCertificateGrpcEndpointOutput {
+	return i.ToServerTlsPolicyServerCertificateGrpcEndpointOutputWithContext(context.Background())
+}
+
+func (i ServerTlsPolicyServerCertificateGrpcEndpointArgs) ToServerTlsPolicyServerCertificateGrpcEndpointOutputWithContext(ctx context.Context) ServerTlsPolicyServerCertificateGrpcEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyServerCertificateGrpcEndpointOutput)
+}
+
+func (i ServerTlsPolicyServerCertificateGrpcEndpointArgs) ToServerTlsPolicyServerCertificateGrpcEndpointPtrOutput() ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput {
+	return i.ToServerTlsPolicyServerCertificateGrpcEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i ServerTlsPolicyServerCertificateGrpcEndpointArgs) ToServerTlsPolicyServerCertificateGrpcEndpointPtrOutputWithContext(ctx context.Context) ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyServerCertificateGrpcEndpointOutput).ToServerTlsPolicyServerCertificateGrpcEndpointPtrOutputWithContext(ctx)
+}
+
+// ServerTlsPolicyServerCertificateGrpcEndpointPtrInput is an input type that accepts ServerTlsPolicyServerCertificateGrpcEndpointArgs, ServerTlsPolicyServerCertificateGrpcEndpointPtr and ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput values.
+// You can construct a concrete instance of `ServerTlsPolicyServerCertificateGrpcEndpointPtrInput` via:
+//
+//	        ServerTlsPolicyServerCertificateGrpcEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerTlsPolicyServerCertificateGrpcEndpointPtrInput interface {
+	pulumi.Input
+
+	ToServerTlsPolicyServerCertificateGrpcEndpointPtrOutput() ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput
+	ToServerTlsPolicyServerCertificateGrpcEndpointPtrOutputWithContext(context.Context) ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput
+}
+
+type serverTlsPolicyServerCertificateGrpcEndpointPtrType ServerTlsPolicyServerCertificateGrpcEndpointArgs
+
+func ServerTlsPolicyServerCertificateGrpcEndpointPtr(v *ServerTlsPolicyServerCertificateGrpcEndpointArgs) ServerTlsPolicyServerCertificateGrpcEndpointPtrInput {
+	return (*serverTlsPolicyServerCertificateGrpcEndpointPtrType)(v)
+}
+
+func (*serverTlsPolicyServerCertificateGrpcEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerTlsPolicyServerCertificateGrpcEndpoint)(nil)).Elem()
+}
+
+func (i *serverTlsPolicyServerCertificateGrpcEndpointPtrType) ToServerTlsPolicyServerCertificateGrpcEndpointPtrOutput() ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput {
+	return i.ToServerTlsPolicyServerCertificateGrpcEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *serverTlsPolicyServerCertificateGrpcEndpointPtrType) ToServerTlsPolicyServerCertificateGrpcEndpointPtrOutputWithContext(ctx context.Context) ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput)
+}
+
+type ServerTlsPolicyServerCertificateGrpcEndpointOutput struct{ *pulumi.OutputState }
+
+func (ServerTlsPolicyServerCertificateGrpcEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerTlsPolicyServerCertificateGrpcEndpoint)(nil)).Elem()
+}
+
+func (o ServerTlsPolicyServerCertificateGrpcEndpointOutput) ToServerTlsPolicyServerCertificateGrpcEndpointOutput() ServerTlsPolicyServerCertificateGrpcEndpointOutput {
+	return o
+}
+
+func (o ServerTlsPolicyServerCertificateGrpcEndpointOutput) ToServerTlsPolicyServerCertificateGrpcEndpointOutputWithContext(ctx context.Context) ServerTlsPolicyServerCertificateGrpcEndpointOutput {
+	return o
+}
+
+func (o ServerTlsPolicyServerCertificateGrpcEndpointOutput) ToServerTlsPolicyServerCertificateGrpcEndpointPtrOutput() ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput {
+	return o.ToServerTlsPolicyServerCertificateGrpcEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o ServerTlsPolicyServerCertificateGrpcEndpointOutput) ToServerTlsPolicyServerCertificateGrpcEndpointPtrOutputWithContext(ctx context.Context) ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerTlsPolicyServerCertificateGrpcEndpoint) *ServerTlsPolicyServerCertificateGrpcEndpoint {
+		return &v
+	}).(ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput)
+}
+
+// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+func (o ServerTlsPolicyServerCertificateGrpcEndpointOutput) TargetUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ServerTlsPolicyServerCertificateGrpcEndpoint) string { return v.TargetUri }).(pulumi.StringOutput)
+}
+
+type ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerTlsPolicyServerCertificateGrpcEndpoint)(nil)).Elem()
+}
+
+func (o ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput) ToServerTlsPolicyServerCertificateGrpcEndpointPtrOutput() ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput {
+	return o
+}
+
+func (o ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput) ToServerTlsPolicyServerCertificateGrpcEndpointPtrOutputWithContext(ctx context.Context) ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput {
+	return o
+}
+
+func (o ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput) Elem() ServerTlsPolicyServerCertificateGrpcEndpointOutput {
+	return o.ApplyT(func(v *ServerTlsPolicyServerCertificateGrpcEndpoint) ServerTlsPolicyServerCertificateGrpcEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret ServerTlsPolicyServerCertificateGrpcEndpoint
+		return ret
+	}).(ServerTlsPolicyServerCertificateGrpcEndpointOutput)
+}
+
+// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+func (o ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput) TargetUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerTlsPolicyServerCertificateGrpcEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TargetUri
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationPolicyRuleInput)(nil)).Elem(), AuthorizationPolicyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationPolicyRuleArrayInput)(nil)).Elem(), AuthorizationPolicyRuleArray{})
@@ -1381,6 +2423,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientTlsPolicyServerValidationCaCertificateProviderInstancePtrInput)(nil)).Elem(), ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientTlsPolicyServerValidationCaGrpcEndpointInput)(nil)).Elem(), ClientTlsPolicyServerValidationCaGrpcEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientTlsPolicyServerValidationCaGrpcEndpointPtrInput)(nil)).Elem(), ClientTlsPolicyServerValidationCaGrpcEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyMtlsPolicyInput)(nil)).Elem(), ServerTlsPolicyMtlsPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyMtlsPolicyPtrInput)(nil)).Elem(), ServerTlsPolicyMtlsPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyMtlsPolicyClientValidationCaInput)(nil)).Elem(), ServerTlsPolicyMtlsPolicyClientValidationCaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyMtlsPolicyClientValidationCaArrayInput)(nil)).Elem(), ServerTlsPolicyMtlsPolicyClientValidationCaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceInput)(nil)).Elem(), ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrInput)(nil)).Elem(), ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointInput)(nil)).Elem(), ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrInput)(nil)).Elem(), ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyServerCertificateInput)(nil)).Elem(), ServerTlsPolicyServerCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyServerCertificatePtrInput)(nil)).Elem(), ServerTlsPolicyServerCertificateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyServerCertificateCertificateProviderInstanceInput)(nil)).Elem(), ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyServerCertificateCertificateProviderInstancePtrInput)(nil)).Elem(), ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyServerCertificateGrpcEndpointInput)(nil)).Elem(), ServerTlsPolicyServerCertificateGrpcEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyServerCertificateGrpcEndpointPtrInput)(nil)).Elem(), ServerTlsPolicyServerCertificateGrpcEndpointArgs{})
 	pulumi.RegisterOutputType(AuthorizationPolicyRuleOutput{})
 	pulumi.RegisterOutputType(AuthorizationPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(AuthorizationPolicyRuleDestinationOutput{})
@@ -1401,4 +2457,18 @@ func init() {
 	pulumi.RegisterOutputType(ClientTlsPolicyServerValidationCaCertificateProviderInstancePtrOutput{})
 	pulumi.RegisterOutputType(ClientTlsPolicyServerValidationCaGrpcEndpointOutput{})
 	pulumi.RegisterOutputType(ClientTlsPolicyServerValidationCaGrpcEndpointPtrOutput{})
+	pulumi.RegisterOutputType(ServerTlsPolicyMtlsPolicyOutput{})
+	pulumi.RegisterOutputType(ServerTlsPolicyMtlsPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ServerTlsPolicyMtlsPolicyClientValidationCaOutput{})
+	pulumi.RegisterOutputType(ServerTlsPolicyMtlsPolicyClientValidationCaArrayOutput{})
+	pulumi.RegisterOutputType(ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceOutput{})
+	pulumi.RegisterOutputType(ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstancePtrOutput{})
+	pulumi.RegisterOutputType(ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointOutput{})
+	pulumi.RegisterOutputType(ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointPtrOutput{})
+	pulumi.RegisterOutputType(ServerTlsPolicyServerCertificateOutput{})
+	pulumi.RegisterOutputType(ServerTlsPolicyServerCertificatePtrOutput{})
+	pulumi.RegisterOutputType(ServerTlsPolicyServerCertificateCertificateProviderInstanceOutput{})
+	pulumi.RegisterOutputType(ServerTlsPolicyServerCertificateCertificateProviderInstancePtrOutput{})
+	pulumi.RegisterOutputType(ServerTlsPolicyServerCertificateGrpcEndpointOutput{})
+	pulumi.RegisterOutputType(ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput{})
 }

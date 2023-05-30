@@ -281,14 +281,14 @@ public class Bucket extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="labels", type=Map.class, parameters={String.class, String.class})
-    private Output</* @Nullable */ Map<String,String>> labels;
+    private Output<Map<String,String>> labels;
 
     /**
      * @return A map of key/value label pairs to assign to the bucket.
      * 
      */
-    public Output<Optional<Map<String,String>>> labels() {
-        return Codegen.optional(this.labels);
+    public Output<Map<String,String>> labels() {
+        return this.labels;
     }
     /**
      * The bucket&#39;s [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.

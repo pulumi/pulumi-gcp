@@ -18,6 +18,7 @@ __all__ = [
     'DatabaseInstanceServerCaCert',
     'DatabaseInstanceSettings',
     'DatabaseInstanceSettingsActiveDirectoryConfig',
+    'DatabaseInstanceSettingsAdvancedMachineFeatures',
     'DatabaseInstanceSettingsBackupConfiguration',
     'DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings',
     'DatabaseInstanceSettingsDatabaseFlag',
@@ -40,6 +41,7 @@ __all__ = [
     'GetDatabaseInstanceServerCaCertResult',
     'GetDatabaseInstanceSettingResult',
     'GetDatabaseInstanceSettingActiveDirectoryConfigResult',
+    'GetDatabaseInstanceSettingAdvancedMachineFeatureResult',
     'GetDatabaseInstanceSettingBackupConfigurationResult',
     'GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult',
     'GetDatabaseInstanceSettingDatabaseFlagResult',
@@ -59,6 +61,7 @@ __all__ = [
     'GetDatabaseInstancesInstanceServerCaCertResult',
     'GetDatabaseInstancesInstanceSettingResult',
     'GetDatabaseInstancesInstanceSettingActiveDirectoryConfigResult',
+    'GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureResult',
     'GetDatabaseInstancesInstanceSettingBackupConfigurationResult',
     'GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingResult',
     'GetDatabaseInstancesInstanceSettingDatabaseFlagResult',
@@ -539,6 +542,8 @@ class DatabaseInstanceSettings(dict):
             suggest = "activation_policy"
         elif key == "activeDirectoryConfig":
             suggest = "active_directory_config"
+        elif key == "advancedMachineFeatures":
+            suggest = "advanced_machine_features"
         elif key == "availabilityType":
             suggest = "availability_type"
         elif key == "backupConfiguration":
@@ -593,6 +598,7 @@ class DatabaseInstanceSettings(dict):
                  tier: str,
                  activation_policy: Optional[str] = None,
                  active_directory_config: Optional['outputs.DatabaseInstanceSettingsActiveDirectoryConfig'] = None,
+                 advanced_machine_features: Optional['outputs.DatabaseInstanceSettingsAdvancedMachineFeatures'] = None,
                  availability_type: Optional[str] = None,
                  backup_configuration: Optional['outputs.DatabaseInstanceSettingsBackupConfiguration'] = None,
                  collation: Optional[str] = None,
@@ -641,6 +647,8 @@ class DatabaseInstanceSettings(dict):
             pulumi.set(__self__, "activation_policy", activation_policy)
         if active_directory_config is not None:
             pulumi.set(__self__, "active_directory_config", active_directory_config)
+        if advanced_machine_features is not None:
+            pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if availability_type is not None:
             pulumi.set(__self__, "availability_type", availability_type)
         if backup_configuration is not None:
@@ -707,6 +715,11 @@ class DatabaseInstanceSettings(dict):
     @pulumi.getter(name="activeDirectoryConfig")
     def active_directory_config(self) -> Optional['outputs.DatabaseInstanceSettingsActiveDirectoryConfig']:
         return pulumi.get(self, "active_directory_config")
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> Optional['outputs.DatabaseInstanceSettingsAdvancedMachineFeatures']:
+        return pulumi.get(self, "advanced_machine_features")
 
     @property
     @pulumi.getter(name="availabilityType")
@@ -867,6 +880,42 @@ class DatabaseInstanceSettingsActiveDirectoryConfig(dict):
         Can only be used with SQL Server.
         """
         return pulumi.get(self, "domain")
+
+
+@pulumi.output_type
+class DatabaseInstanceSettingsAdvancedMachineFeatures(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "threadsPerCore":
+            suggest = "threads_per_core"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceSettingsAdvancedMachineFeatures. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceSettingsAdvancedMachineFeatures.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceSettingsAdvancedMachineFeatures.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 threads_per_core: Optional[int] = None):
+        """
+        :param int threads_per_core: The number of threads per core. The value of this flag can be 1 or 2. To disable SMT, set this flag to 1. Only available in Cloud SQL for SQL Server instances. See [smt](https://cloud.google.com/sql/docs/sqlserver/create-instance#smt-create-instance) for more details.
+        """
+        if threads_per_core is not None:
+            pulumi.set(__self__, "threads_per_core", threads_per_core)
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> Optional[int]:
+        """
+        The number of threads per core. The value of this flag can be 1 or 2. To disable SMT, set this flag to 1. Only available in Cloud SQL for SQL Server instances. See [smt](https://cloud.google.com/sql/docs/sqlserver/create-instance#smt-create-instance) for more details.
+        """
+        return pulumi.get(self, "threads_per_core")
 
 
 @pulumi.output_type
@@ -2166,6 +2215,7 @@ class GetDatabaseInstanceSettingResult(dict):
     def __init__(__self__, *,
                  activation_policy: str,
                  active_directory_configs: Sequence['outputs.GetDatabaseInstanceSettingActiveDirectoryConfigResult'],
+                 advanced_machine_features: Sequence['outputs.GetDatabaseInstanceSettingAdvancedMachineFeatureResult'],
                  availability_type: str,
                  backup_configurations: Sequence['outputs.GetDatabaseInstanceSettingBackupConfigurationResult'],
                  collation: str,
@@ -2190,6 +2240,7 @@ class GetDatabaseInstanceSettingResult(dict):
                  version: int):
         pulumi.set(__self__, "activation_policy", activation_policy)
         pulumi.set(__self__, "active_directory_configs", active_directory_configs)
+        pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         pulumi.set(__self__, "availability_type", availability_type)
         pulumi.set(__self__, "backup_configurations", backup_configurations)
         pulumi.set(__self__, "collation", collation)
@@ -2222,6 +2273,11 @@ class GetDatabaseInstanceSettingResult(dict):
     @pulumi.getter(name="activeDirectoryConfigs")
     def active_directory_configs(self) -> Sequence['outputs.GetDatabaseInstanceSettingActiveDirectoryConfigResult']:
         return pulumi.get(self, "active_directory_configs")
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> Sequence['outputs.GetDatabaseInstanceSettingAdvancedMachineFeatureResult']:
+        return pulumi.get(self, "advanced_machine_features")
 
     @property
     @pulumi.getter(name="availabilityType")
@@ -2344,6 +2400,18 @@ class GetDatabaseInstanceSettingActiveDirectoryConfigResult(dict):
     @pulumi.getter
     def domain(self) -> str:
         return pulumi.get(self, "domain")
+
+
+@pulumi.output_type
+class GetDatabaseInstanceSettingAdvancedMachineFeatureResult(dict):
+    def __init__(__self__, *,
+                 threads_per_core: int):
+        pulumi.set(__self__, "threads_per_core", threads_per_core)
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> int:
+        return pulumi.get(self, "threads_per_core")
 
 
 @pulumi.output_type
@@ -3112,6 +3180,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
     def __init__(__self__, *,
                  activation_policy: str,
                  active_directory_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingActiveDirectoryConfigResult'],
+                 advanced_machine_features: Sequence['outputs.GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureResult'],
                  availability_type: str,
                  backup_configurations: Sequence['outputs.GetDatabaseInstancesInstanceSettingBackupConfigurationResult'],
                  collation: str,
@@ -3139,6 +3208,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         """
         pulumi.set(__self__, "activation_policy", activation_policy)
         pulumi.set(__self__, "active_directory_configs", active_directory_configs)
+        pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         pulumi.set(__self__, "availability_type", availability_type)
         pulumi.set(__self__, "backup_configurations", backup_configurations)
         pulumi.set(__self__, "collation", collation)
@@ -3171,6 +3241,11 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
     @pulumi.getter(name="activeDirectoryConfigs")
     def active_directory_configs(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingActiveDirectoryConfigResult']:
         return pulumi.get(self, "active_directory_configs")
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureResult']:
+        return pulumi.get(self, "advanced_machine_features")
 
     @property
     @pulumi.getter(name="availabilityType")
@@ -3296,6 +3371,18 @@ class GetDatabaseInstancesInstanceSettingActiveDirectoryConfigResult(dict):
     @pulumi.getter
     def domain(self) -> str:
         return pulumi.get(self, "domain")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureResult(dict):
+    def __init__(__self__, *,
+                 threads_per_core: int):
+        pulumi.set(__self__, "threads_per_core", threads_per_core)
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> int:
+        return pulumi.get(self, "threads_per_core")
 
 
 @pulumi.output_type

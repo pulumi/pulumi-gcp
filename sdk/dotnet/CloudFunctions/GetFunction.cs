@@ -209,6 +209,7 @@ namespace Pulumi.Gcp.CloudFunctions
         /// The URL of the Cloud Source Repository that the function is deployed from. Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFunctionSourceRepositoryResult> SourceRepositories;
+        public readonly string Status;
         /// <summary>
         /// Function execution timeout (in seconds).
         /// </summary>
@@ -282,6 +283,8 @@ namespace Pulumi.Gcp.CloudFunctions
 
             ImmutableArray<Outputs.GetFunctionSourceRepositoryResult> sourceRepositories,
 
+            string status,
+
             int timeout,
 
             bool triggerHttp,
@@ -317,6 +320,7 @@ namespace Pulumi.Gcp.CloudFunctions
             SourceArchiveBucket = sourceArchiveBucket;
             SourceArchiveObject = sourceArchiveObject;
             SourceRepositories = sourceRepositories;
+            Status = status;
             Timeout = timeout;
             TriggerHttp = triggerHttp;
             VpcConnector = vpcConnector;

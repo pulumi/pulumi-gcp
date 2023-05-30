@@ -11,8 +11,10 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.dataflow.FlexTemplateJobArgs;
 import com.pulumi.gcp.dataflow.inputs.FlexTemplateJobState;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -139,6 +141,34 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:dataflow/flexTemplateJob:FlexTemplateJob")
 public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
     /**
+     * List of experiments that should be used by the job. An example value is [&#34;enable_stackdriver_agent_metrics&#34;].
+     * 
+     */
+    @Export(name="additionalExperiments", type=List.class, parameters={String.class})
+    private Output<List<String>> additionalExperiments;
+
+    /**
+     * @return List of experiments that should be used by the job. An example value is [&#34;enable_stackdriver_agent_metrics&#34;].
+     * 
+     */
+    public Output<List<String>> additionalExperiments() {
+        return this.additionalExperiments;
+    }
+    /**
+     * The algorithm to use for autoscaling
+     * 
+     */
+    @Export(name="autoscalingAlgorithm", type=String.class, parameters={})
+    private Output</* @Nullable */ String> autoscalingAlgorithm;
+
+    /**
+     * @return The algorithm to use for autoscaling
+     * 
+     */
+    public Output<Optional<String>> autoscalingAlgorithm() {
+        return Codegen.optional(this.autoscalingAlgorithm);
+    }
+    /**
      * The GCS path to the Dataflow job Flex
      * Template.
      * 
@@ -159,6 +189,34 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
         return this.containerSpecGcsPath;
     }
     /**
+     * Indicates if the job should use the streaming engine feature.
+     * 
+     */
+    @Export(name="enableStreamingEngine", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> enableStreamingEngine;
+
+    /**
+     * @return Indicates if the job should use the streaming engine feature.
+     * 
+     */
+    public Output<Optional<Boolean>> enableStreamingEngine() {
+        return Codegen.optional(this.enableStreamingEngine);
+    }
+    /**
+     * The configuration for VM IPs. Options are &#34;WORKER_IP_PUBLIC&#34; or &#34;WORKER_IP_PRIVATE&#34;.
+     * 
+     */
+    @Export(name="ipConfiguration", type=String.class, parameters={})
+    private Output</* @Nullable */ String> ipConfiguration;
+
+    /**
+     * @return The configuration for VM IPs. Options are &#34;WORKER_IP_PUBLIC&#34; or &#34;WORKER_IP_PRIVATE&#34;.
+     * 
+     */
+    public Output<Optional<String>> ipConfiguration() {
+        return Codegen.optional(this.ipConfiguration);
+    }
+    /**
      * The unique ID of this job.
      * 
      */
@@ -171,6 +229,22 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      */
     public Output<String> jobId() {
         return this.jobId;
+    }
+    /**
+     * The name for the Cloud KMS key for the job. Key format is:
+     * projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+     * 
+     */
+    @Export(name="kmsKeyName", type=String.class, parameters={})
+    private Output</* @Nullable */ String> kmsKeyName;
+
+    /**
+     * @return The name for the Cloud KMS key for the job. Key format is:
+     * projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
+     * 
+     */
+    public Output<Optional<String>> kmsKeyName() {
+        return Codegen.optional(this.kmsKeyName);
     }
     /**
      * User labels to be specified for the job. Keys and values
@@ -199,6 +273,50 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
+     * The machine type to use for launching the job. The default is n1-standard-1.
+     * 
+     */
+    @Export(name="launcherMachineType", type=String.class, parameters={})
+    private Output</* @Nullable */ String> launcherMachineType;
+
+    /**
+     * @return The machine type to use for launching the job. The default is n1-standard-1.
+     * 
+     */
+    public Output<Optional<String>> launcherMachineType() {
+        return Codegen.optional(this.launcherMachineType);
+    }
+    /**
+     * The machine type to use for the job.
+     * 
+     */
+    @Export(name="machineType", type=String.class, parameters={})
+    private Output</* @Nullable */ String> machineType;
+
+    /**
+     * @return The machine type to use for the job.
+     * 
+     */
+    public Output<Optional<String>> machineType() {
+        return Codegen.optional(this.machineType);
+    }
+    /**
+     * The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
+     * 1000.
+     * 
+     */
+    @Export(name="maxWorkers", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> maxWorkers;
+
+    /**
+     * @return The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to
+     * 1000.
+     * 
+     */
+    public Output<Optional<Integer>> maxWorkers() {
+        return Codegen.optional(this.maxWorkers);
+    }
+    /**
      * A unique name for the resource, required by Dataflow.
      * 
      */
@@ -211,6 +329,34 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The network to which VMs will be assigned. If it is not provided, &#34;default&#34; will be used.
+     * 
+     */
+    @Export(name="network", type=String.class, parameters={})
+    private Output</* @Nullable */ String> network;
+
+    /**
+     * @return The network to which VMs will be assigned. If it is not provided, &#34;default&#34; will be used.
+     * 
+     */
+    public Output<Optional<String>> network() {
+        return Codegen.optional(this.network);
+    }
+    /**
+     * The initial number of Google Compute Engine instances for the job.
+     * 
+     */
+    @Export(name="numWorkers", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> numWorkers;
+
+    /**
+     * @return The initial number of Google Compute Engine instances for the job.
+     * 
+     */
+    public Output<Optional<Integer>> numWorkers() {
+        return Codegen.optional(this.numWorkers);
     }
     /**
      * One of &#34;drain&#34; or &#34;cancel&#34;. Specifies behavior of
@@ -277,6 +423,36 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
+     * Docker registry location of container image to use for the &#39;worker harness. Default is the container for the version of
+     * the SDK. Note this field is only valid for portable pipelines.
+     * 
+     */
+    @Export(name="sdkContainerImage", type=String.class, parameters={})
+    private Output</* @Nullable */ String> sdkContainerImage;
+
+    /**
+     * @return Docker registry location of container image to use for the &#39;worker harness. Default is the container for the version of
+     * the SDK. Note this field is only valid for portable pipelines.
+     * 
+     */
+    public Output<Optional<String>> sdkContainerImage() {
+        return Codegen.optional(this.sdkContainerImage);
+    }
+    /**
+     * The Service Account email used to create the job.
+     * 
+     */
+    @Export(name="serviceAccountEmail", type=String.class, parameters={})
+    private Output<String> serviceAccountEmail;
+
+    /**
+     * @return The Service Account email used to create the job.
+     * 
+     */
+    public Output<String> serviceAccountEmail() {
+        return this.serviceAccountEmail;
+    }
+    /**
      * If true, treat DRAINING and CANCELLING as terminal job states and do not wait for further changes before removing from
      * terraform state and moving on. WARNING: this will lead to job name conflicts if you do not ensure that the job names are
      * different, e.g. by embedding a release ID or by using a random_id.
@@ -295,6 +471,20 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.skipWaitOnJobTermination);
     }
     /**
+     * The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
+     * 
+     */
+    @Export(name="stagingLocation", type=String.class, parameters={})
+    private Output<String> stagingLocation;
+
+    /**
+     * @return The Cloud Storage path to use for staging files. Must be a valid Cloud Storage URL, beginning with gs://.
+     * 
+     */
+    public Output<String> stagingLocation() {
+        return this.stagingLocation;
+    }
+    /**
      * The current state of the resource, selected from the [JobState enum](https://cloud.google.com/dataflow/docs/reference/rest/v1b3/projects.jobs#Job.JobState)
      * 
      */
@@ -307,6 +497,64 @@ public class FlexTemplateJob extends com.pulumi.resources.CustomResource {
      */
     public Output<String> state() {
         return this.state;
+    }
+    /**
+     * The subnetwork to which VMs will be assigned. Should be of the form &#34;regions/REGION/subnetworks/SUBNETWORK&#34;.
+     * 
+     */
+    @Export(name="subnetwork", type=String.class, parameters={})
+    private Output</* @Nullable */ String> subnetwork;
+
+    /**
+     * @return The subnetwork to which VMs will be assigned. Should be of the form &#34;regions/REGION/subnetworks/SUBNETWORK&#34;.
+     * 
+     */
+    public Output<Optional<String>> subnetwork() {
+        return Codegen.optional(this.subnetwork);
+    }
+    /**
+     * The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
+     * 
+     */
+    @Export(name="tempLocation", type=String.class, parameters={})
+    private Output<String> tempLocation;
+
+    /**
+     * @return The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
+     * 
+     */
+    public Output<String> tempLocation() {
+        return this.tempLocation;
+    }
+    /**
+     * Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
+     * corresponding name prefixes of the new job.
+     * 
+     */
+    @Export(name="transformNameMapping", type=Map.class, parameters={String.class, Object.class})
+    private Output</* @Nullable */ Map<String,Object>> transformNameMapping;
+
+    /**
+     * @return Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the
+     * corresponding name prefixes of the new job.
+     * 
+     */
+    public Output<Optional<Map<String,Object>>> transformNameMapping() {
+        return Codegen.optional(this.transformNameMapping);
+    }
+    /**
+     * The type of this job, selected from the JobType enum.
+     * 
+     */
+    @Export(name="type", type=String.class, parameters={})
+    private Output<String> type;
+
+    /**
+     * @return The type of this job, selected from the JobType enum.
+     * 
+     */
+    public Output<String> type() {
+        return this.type;
     }
 
     /**

@@ -14,7 +14,7 @@ import (
 // The Compute NetworkFirewallPolicyRule resource
 //
 // ## Example Usage
-// ### Global
+// ### Global_net_sec_rule
 // ```go
 // package main
 //
@@ -40,18 +40,18 @@ import (
 //				},
 //				Type:     pulumi.String("IPV4"),
 //				Capacity: pulumi.Int(100),
-//			})
+//			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}
 //			basicNetworkFirewallPolicy, err := compute.NewNetworkFirewallPolicy(ctx, "basicNetworkFirewallPolicy", &compute.NetworkFirewallPolicyArgs{
 //				Description: pulumi.String("Sample global network firewall policy"),
 //				Project:     pulumi.String("my-project-name"),
-//			})
+//			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}
-//			basicNetwork, err := compute.NewNetwork(ctx, "basicNetwork", nil)
+//			basicNetwork, err := compute.NewNetwork(ctx, "basicNetwork", nil, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}
@@ -65,7 +65,7 @@ import (
 //						return fmt.Sprintf("my-project-name/%v", name), nil
 //					}).(pulumi.StringOutput),
 //				},
-//			})
+//			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}
@@ -75,7 +75,7 @@ import (
 //					return fmt.Sprintf("tagKeys/%v", name), nil
 //				}).(pulumi.StringOutput),
 //				ShortName: pulumi.String("tagvalue"),
-//			})
+//			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}
@@ -120,7 +120,7 @@ import (
 //						basicGlobalNetworksecurityAddressGroup.ID(),
 //					},
 //				},
-//			})
+//			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}

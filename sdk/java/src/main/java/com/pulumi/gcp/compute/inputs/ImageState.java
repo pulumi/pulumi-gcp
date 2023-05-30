@@ -348,6 +348,25 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sourceSnapshot);
     }
 
+    /**
+     * Cloud Storage bucket storage location of the image
+     * (regional or multi-regional).
+     * Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+     * 
+     */
+    @Import(name="storageLocations")
+    private @Nullable Output<List<String>> storageLocations;
+
+    /**
+     * @return Cloud Storage bucket storage location of the image
+     * (regional or multi-regional).
+     * Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+     * 
+     */
+    public Optional<Output<List<String>>> storageLocations() {
+        return Optional.ofNullable(this.storageLocations);
+    }
+
     private ImageState() {}
 
     private ImageState(ImageState $) {
@@ -368,6 +387,7 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
         this.sourceDisk = $.sourceDisk;
         this.sourceImage = $.sourceImage;
         this.sourceSnapshot = $.sourceSnapshot;
+        this.storageLocations = $.storageLocations;
     }
 
     public static Builder builder() {
@@ -837,6 +857,43 @@ public final class ImageState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sourceSnapshot(String sourceSnapshot) {
             return sourceSnapshot(Output.of(sourceSnapshot));
+        }
+
+        /**
+         * @param storageLocations Cloud Storage bucket storage location of the image
+         * (regional or multi-regional).
+         * Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageLocations(@Nullable Output<List<String>> storageLocations) {
+            $.storageLocations = storageLocations;
+            return this;
+        }
+
+        /**
+         * @param storageLocations Cloud Storage bucket storage location of the image
+         * (regional or multi-regional).
+         * Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageLocations(List<String> storageLocations) {
+            return storageLocations(Output.of(storageLocations));
+        }
+
+        /**
+         * @param storageLocations Cloud Storage bucket storage location of the image
+         * (regional or multi-regional).
+         * Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageLocations(String... storageLocations) {
+            return storageLocations(List.of(storageLocations));
         }
 
         public ImageState build() {

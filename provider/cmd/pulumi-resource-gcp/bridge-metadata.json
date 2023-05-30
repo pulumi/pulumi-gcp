@@ -577,6 +577,7 @@
             "gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy": 0,
             "gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy": 0,
             "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule": 0,
+            "gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy": 0,
             "gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy": 0,
             "gcp:networksecurity/urlList:UrlList": 0,
             "gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset": 0,
@@ -818,16 +819,16 @@
             "gcp:container/getRegistryImage:getRegistryImage": 0,
             "gcp:container/getRegistryRepository:getRegistryRepository": 0,
             "gcp:datastream/getStaticIps:getStaticIps": 0,
-            "gcp:dns/getKeys:getKeys": 1,
-            "gcp:dns/getManagedZone:getManagedZone": 1,
-            "gcp:dns/getRecordSet:getRecordSet": 1,
+            "gcp:dns/getKeys:getKeys": 0,
+            "gcp:dns/getManagedZone:getManagedZone": 0,
+            "gcp:dns/getRecordSet:getRecordSet": 0,
             "gcp:firebase/getAndroidApp:getAndroidApp": 0,
             "gcp:firebase/getAndroidAppConfig:getAndroidAppConfig": 1,
             "gcp:firebase/getAppleApp:getAppleApp": 0,
-            "gcp:firebase/getAppleAppConfig:getAppleAppConfig": 1,
+            "gcp:firebase/getAppleAppConfig:getAppleAppConfig": 0,
             "gcp:firebase/getHostingChannel:getHostingChannel": 0,
             "gcp:firebase/getWebApp:getWebApp": 0,
-            "gcp:firebase/getWebAppConfig:getWebAppConfig": 1,
+            "gcp:firebase/getWebAppConfig:getWebAppConfig": 0,
             "gcp:folder/getOrganizationPolicy:getOrganizationPolicy": 0,
             "gcp:gameservices/getGameServerDeploymentRollout:getGameServerDeploymentRollout": 0,
             "gcp:iam/getRule:getRule": 0,
@@ -852,8 +853,8 @@
             "gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs": 0,
             "gcp:organizations/getActiveFolder:getActiveFolder": 0,
             "gcp:organizations/getBillingAccount:getBillingAccount": 0,
-            "gcp:organizations/getClientConfig:getClientConfig": 1,
-            "gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo": 1,
+            "gcp:organizations/getClientConfig:getClientConfig": 0,
+            "gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo": 0,
             "gcp:organizations/getFolder:getFolder": 0,
             "gcp:organizations/getFolders:getFolders": 0,
             "gcp:organizations/getIAMPolicy:getIAMPolicy": 0,
@@ -1476,6 +1477,7 @@
             "gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy": "google_network_security_client_tls_policy",
             "gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy": "google_network_security_gateway_security_policy",
             "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule": "google_network_security_gateway_security_policy_rule",
+            "gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy": "google_network_security_server_tls_policy",
             "gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy": "google_network_security_tls_inspection_policy",
             "gcp:networksecurity/urlList:UrlList": "google_network_security_url_lists",
             "gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset": "google_network_services_edge_cache_keyset",
@@ -8340,7 +8342,8 @@
                 "selfLink": "self_link",
                 "sourceDisk": "source_disk",
                 "sourceImage": "source_image",
-                "sourceSnapshot": "source_snapshot"
+                "sourceSnapshot": "source_snapshot",
+                "storageLocations": "storage_locations"
             },
             "gcp:compute/imageIamPolicy:ImageIamPolicy": {
                 "policyData": "policy_data"
@@ -10517,10 +10520,24 @@
                 "policyData": "policy_data"
             },
             "gcp:dataflow/flexTemplateJob:FlexTemplateJob": {
+                "additionalExperiments": "additional_experiments",
+                "autoscalingAlgorithm": "autoscaling_algorithm",
                 "containerSpecGcsPath": "container_spec_gcs_path",
+                "enableStreamingEngine": "enable_streaming_engine",
+                "ipConfiguration": "ip_configuration",
                 "jobId": "job_id",
+                "kmsKeyName": "kms_key_name",
+                "launcherMachineType": "launcher_machine_type",
+                "machineType": "machine_type",
+                "maxWorkers": "max_workers",
+                "numWorkers": "num_workers",
                 "onDelete": "on_delete",
-                "skipWaitOnJobTermination": "skip_wait_on_job_termination"
+                "sdkContainerImage": "sdk_container_image",
+                "serviceAccountEmail": "service_account_email",
+                "skipWaitOnJobTermination": "skip_wait_on_job_termination",
+                "stagingLocation": "staging_location",
+                "tempLocation": "temp_location",
+                "transformNameMapping": "transform_name_mapping"
             },
             "gcp:dataflow/job:Job": {
                 "additionalExperiments": "additional_experiments",
@@ -14113,7 +14130,12 @@
             },
             "gcp:monitoring/AlertPolicyAlertStrategy:AlertPolicyAlertStrategy": {
                 "autoClose": "auto_close",
+                "notificationChannelStrategies": "notification_channel_strategy",
                 "notificationRateLimit": "notification_rate_limit"
+            },
+            "gcp:monitoring/AlertPolicyAlertStrategyNotificationChannelStrategy:AlertPolicyAlertStrategyNotificationChannelStrategy": {
+                "notificationChannelNames": "notification_channel_names",
+                "renotifyInterval": "renotify_interval"
             },
             "gcp:monitoring/AlertPolicyCondition:AlertPolicyCondition": {
                 "conditionAbsent": "condition_absent",
@@ -14138,6 +14160,7 @@
                 "denominatorAggregations": "denominator_aggregations",
                 "denominatorFilter": "denominator_filter",
                 "evaluationMissingData": "evaluation_missing_data",
+                "forecastOptions": "forecast_options",
                 "thresholdValue": "threshold_value"
             },
             "gcp:monitoring/AlertPolicyConditionConditionThresholdAggregation:AlertPolicyConditionConditionThresholdAggregation": {
@@ -14151,6 +14174,9 @@
                 "crossSeriesReducer": "cross_series_reducer",
                 "groupByFields": "group_by_fields",
                 "perSeriesAligner": "per_series_aligner"
+            },
+            "gcp:monitoring/AlertPolicyConditionConditionThresholdForecastOptions:AlertPolicyConditionConditionThresholdForecastOptions": {
+                "forecastHorizon": "forecast_horizon"
             },
             "gcp:monitoring/AlertPolicyCreationRecord:AlertPolicyCreationRecord": {
                 "mutateTime": "mutate_time",
@@ -14457,6 +14483,31 @@
             "gcp:networksecurity/ClientTlsPolicyServerValidationCaGrpcEndpoint:ClientTlsPolicyServerValidationCaGrpcEndpoint": {
                 "targetUri": "target_uri"
             },
+            "gcp:networksecurity/ServerTlsPolicyMtlsPolicy:ServerTlsPolicyMtlsPolicy": {
+                "clientValidationCas": "client_validation_ca",
+                "clientValidationMode": "client_validation_mode",
+                "clientValidationTrustConfig": "client_validation_trust_config"
+            },
+            "gcp:networksecurity/ServerTlsPolicyMtlsPolicyClientValidationCa:ServerTlsPolicyMtlsPolicyClientValidationCa": {
+                "certificateProviderInstance": "certificate_provider_instance",
+                "grpcEndpoint": "grpc_endpoint"
+            },
+            "gcp:networksecurity/ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance:ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance": {
+                "pluginInstance": "plugin_instance"
+            },
+            "gcp:networksecurity/ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint:ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint": {
+                "targetUri": "target_uri"
+            },
+            "gcp:networksecurity/ServerTlsPolicyServerCertificate:ServerTlsPolicyServerCertificate": {
+                "certificateProviderInstance": "certificate_provider_instance",
+                "grpcEndpoint": "grpc_endpoint"
+            },
+            "gcp:networksecurity/ServerTlsPolicyServerCertificateCertificateProviderInstance:ServerTlsPolicyServerCertificateCertificateProviderInstance": {
+                "pluginInstance": "plugin_instance"
+            },
+            "gcp:networksecurity/ServerTlsPolicyServerCertificateGrpcEndpoint:ServerTlsPolicyServerCertificateGrpcEndpoint": {
+                "targetUri": "target_uri"
+            },
             "gcp:networksecurity/addressGroup:AddressGroup": {
                 "createTime": "create_time",
                 "updateTime": "update_time"
@@ -14485,6 +14536,13 @@
                 "selfLink": "self_link",
                 "sessionMatcher": "session_matcher",
                 "tlsInspectionEnabled": "tls_inspection_enabled",
+                "updateTime": "update_time"
+            },
+            "gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy": {
+                "allowOpen": "allow_open",
+                "createTime": "create_time",
+                "mtlsPolicy": "mtls_policy",
+                "serverCertificate": "server_certificate",
                 "updateTime": "update_time"
             },
             "gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy": {
@@ -16010,6 +16068,7 @@
             "gcp:sql/DatabaseInstanceSettings:DatabaseInstanceSettings": {
                 "activationPolicy": "activation_policy",
                 "activeDirectoryConfig": "active_directory_config",
+                "advancedMachineFeatures": "advanced_machine_features",
                 "availabilityType": "availability_type",
                 "backupConfiguration": "backup_configuration",
                 "connectorEnforcement": "connector_enforcement",
@@ -16029,6 +16088,9 @@
                 "sqlServerAuditConfig": "sql_server_audit_config",
                 "timeZone": "time_zone",
                 "userLabels": "user_labels"
+            },
+            "gcp:sql/DatabaseInstanceSettingsAdvancedMachineFeatures:DatabaseInstanceSettingsAdvancedMachineFeatures": {
+                "threadsPerCore": "threads_per_core"
             },
             "gcp:sql/DatabaseInstanceSettingsBackupConfiguration:DatabaseInstanceSettingsBackupConfiguration": {
                 "backupRetentionSettings": "backup_retention_settings",
@@ -16191,6 +16253,7 @@
             "gcp:sql/getDatabaseInstanceSetting:getDatabaseInstanceSetting": {
                 "activationPolicy": "activation_policy",
                 "activeDirectoryConfigs": "active_directory_config",
+                "advancedMachineFeatures": "advanced_machine_features",
                 "availabilityType": "availability_type",
                 "backupConfigurations": "backup_configuration",
                 "connectorEnforcement": "connector_enforcement",
@@ -16210,6 +16273,9 @@
                 "sqlServerAuditConfigs": "sql_server_audit_config",
                 "timeZone": "time_zone",
                 "userLabels": "user_labels"
+            },
+            "gcp:sql/getDatabaseInstanceSettingAdvancedMachineFeature:getDatabaseInstanceSettingAdvancedMachineFeature": {
+                "threadsPerCore": "threads_per_core"
             },
             "gcp:sql/getDatabaseInstanceSettingBackupConfiguration:getDatabaseInstanceSettingBackupConfiguration": {
                 "backupRetentionSettings": "backup_retention_settings",
@@ -16320,6 +16386,7 @@
             "gcp:sql/getDatabaseInstancesInstanceSetting:getDatabaseInstancesInstanceSetting": {
                 "activationPolicy": "activation_policy",
                 "activeDirectoryConfigs": "active_directory_config",
+                "advancedMachineFeatures": "advanced_machine_features",
                 "availabilityType": "availability_type",
                 "backupConfigurations": "backup_configuration",
                 "connectorEnforcement": "connector_enforcement",
@@ -16339,6 +16406,9 @@
                 "sqlServerAuditConfigs": "sql_server_audit_config",
                 "timeZone": "time_zone",
                 "userLabels": "user_labels"
+            },
+            "gcp:sql/getDatabaseInstancesInstanceSettingAdvancedMachineFeature:getDatabaseInstancesInstanceSettingAdvancedMachineFeature": {
+                "threadsPerCore": "threads_per_core"
             },
             "gcp:sql/getDatabaseInstancesInstanceSettingBackupConfiguration:getDatabaseInstancesInstanceSettingBackupConfiguration": {
                 "backupRetentionSettings": "backup_retention_settings",
@@ -17036,7 +17106,8 @@
                 "diskType": "disk_type",
                 "fsType": "fs_type",
                 "reclaimPolicy": "reclaim_policy",
-                "sizeGb": "size_gb"
+                "sizeGb": "size_gb",
+                "sourceSnapshot": "source_snapshot"
             },
             "gcp:workstations/workstation:Workstation": {
                 "createTime": "create_time",

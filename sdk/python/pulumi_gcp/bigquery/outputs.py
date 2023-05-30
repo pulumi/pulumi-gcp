@@ -3712,11 +3712,10 @@ class TableExternalDataConfiguration(dict):
         """
         :param bool autodetect: Let BigQuery try to autodetect the schema
                and format of the table.
-        :param str source_format: The data format. Supported values are:
-               "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC",
-               "DATSTORE_BACKUP", and "BIGTABLE". To use "GOOGLE_SHEETS"
-               the `scopes` must include
-               "https://www.googleapis.com/auth/drive.readonly".
+        :param str source_format: The data format. Please see sourceFormat under
+               [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
+               in Bigquery's public API documentation for supported formats. To use "GOOGLE_SHEETS"
+               the `scopes` must include "https://www.googleapis.com/auth/drive.readonly".
         :param Sequence[str] source_uris: A list of the fully-qualified URIs that point to
                your data in Google Cloud.
         :param 'TableExternalDataConfigurationAvroOptionsArgs' avro_options: Additional options if `source_format` is set to  
@@ -3747,7 +3746,7 @@ class TableExternalDataConfiguration(dict):
         :param str reference_file_schema_uri: When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
         :param str schema: A JSON schema for the external table. Schema is required
                for CSV and JSON formats if autodetect is not on. Schema is disallowed
-               for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
+               for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
                ~>**NOTE:** Because this field expects a JSON string, any changes to the
                string will create a diff, even if the JSON itself hasn't changed.
                Furthermore drift for this field cannot not be detected because BigQuery
@@ -3794,11 +3793,10 @@ class TableExternalDataConfiguration(dict):
     @pulumi.getter(name="sourceFormat")
     def source_format(self) -> str:
         """
-        The data format. Supported values are:
-        "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC",
-        "DATSTORE_BACKUP", and "BIGTABLE". To use "GOOGLE_SHEETS"
-        the `scopes` must include
-        "https://www.googleapis.com/auth/drive.readonly".
+        The data format. Please see sourceFormat under
+        [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
+        in Bigquery's public API documentation for supported formats. To use "GOOGLE_SHEETS"
+        the `scopes` must include "https://www.googleapis.com/auth/drive.readonly".
         """
         return pulumi.get(self, "source_format")
 
@@ -3906,7 +3904,7 @@ class TableExternalDataConfiguration(dict):
         """
         A JSON schema for the external table. Schema is required
         for CSV and JSON formats if autodetect is not on. Schema is disallowed
-        for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
+        for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
         ~>**NOTE:** Because this field expects a JSON string, any changes to the
         string will create a diff, even if the JSON itself hasn't changed.
         Furthermore drift for this field cannot not be detected because BigQuery

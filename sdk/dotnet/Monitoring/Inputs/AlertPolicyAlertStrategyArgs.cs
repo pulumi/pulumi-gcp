@@ -18,6 +18,20 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         [Input("autoClose")]
         public Input<string>? AutoClose { get; set; }
 
+        [Input("notificationChannelStrategies")]
+        private InputList<Inputs.AlertPolicyAlertStrategyNotificationChannelStrategyArgs>? _notificationChannelStrategies;
+
+        /// <summary>
+        /// Control over how the notification channels in `notification_channels`
+        /// are notified when this alert fires, on a per-channel basis.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.AlertPolicyAlertStrategyNotificationChannelStrategyArgs> NotificationChannelStrategies
+        {
+            get => _notificationChannelStrategies ?? (_notificationChannelStrategies = new InputList<Inputs.AlertPolicyAlertStrategyNotificationChannelStrategyArgs>());
+            set => _notificationChannelStrategies = value;
+        }
+
         /// <summary>
         /// Required for alert policies with a LogMatch condition.
         /// This limit is not implemented for alert policies that are not log-based.

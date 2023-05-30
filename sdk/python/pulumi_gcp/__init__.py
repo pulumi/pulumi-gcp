@@ -4928,6 +4928,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "networksecurity/serverTlsPolicy",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy": "ServerTlsPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "networksecurity/tlsInspectionPolicy",
   "fqn": "pulumi_gcp.networksecurity",
   "classes": {

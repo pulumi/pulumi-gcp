@@ -20,6 +20,13 @@ __all__ = [
     'ClientTlsPolicyServerValidationCaArgs',
     'ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs',
     'ClientTlsPolicyServerValidationCaGrpcEndpointArgs',
+    'ServerTlsPolicyMtlsPolicyArgs',
+    'ServerTlsPolicyMtlsPolicyClientValidationCaArgs',
+    'ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs',
+    'ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs',
+    'ServerTlsPolicyServerCertificateArgs',
+    'ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs',
+    'ServerTlsPolicyServerCertificateGrpcEndpointArgs',
 ]
 
 @pulumi.input_type
@@ -375,6 +382,251 @@ class ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs:
 
 @pulumi.input_type
 class ClientTlsPolicyServerValidationCaGrpcEndpointArgs:
+    def __init__(__self__, *,
+                 target_uri: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] target_uri: The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+        """
+        pulumi.set(__self__, "target_uri", target_uri)
+
+    @property
+    @pulumi.getter(name="targetUri")
+    def target_uri(self) -> pulumi.Input[str]:
+        """
+        The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+        """
+        return pulumi.get(self, "target_uri")
+
+    @target_uri.setter
+    def target_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_uri", value)
+
+
+@pulumi.input_type
+class ServerTlsPolicyMtlsPolicyArgs:
+    def __init__(__self__, *,
+                 client_validation_cas: Optional[pulumi.Input[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArgs']]]] = None,
+                 client_validation_mode: Optional[pulumi.Input[str]] = None,
+                 client_validation_trust_config: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArgs']]] client_validation_cas: Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
+               Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+               Structure is documented below.
+        :param pulumi.Input[str] client_validation_mode: When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
+               Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+               Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+        :param pulumi.Input[str] client_validation_trust_config: Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
+               If specified, the chain validation will be performed against certificates configured in the given TrustConfig.
+               Allowed only if the policy is to be used with external HTTPS load balancers.
+        """
+        if client_validation_cas is not None:
+            pulumi.set(__self__, "client_validation_cas", client_validation_cas)
+        if client_validation_mode is not None:
+            pulumi.set(__self__, "client_validation_mode", client_validation_mode)
+        if client_validation_trust_config is not None:
+            pulumi.set(__self__, "client_validation_trust_config", client_validation_trust_config)
+
+    @property
+    @pulumi.getter(name="clientValidationCas")
+    def client_validation_cas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArgs']]]]:
+        """
+        Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
+        Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "client_validation_cas")
+
+    @client_validation_cas.setter
+    def client_validation_cas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaArgs']]]]):
+        pulumi.set(self, "client_validation_cas", value)
+
+    @property
+    @pulumi.getter(name="clientValidationMode")
+    def client_validation_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
+        Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+        Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+        """
+        return pulumi.get(self, "client_validation_mode")
+
+    @client_validation_mode.setter
+    def client_validation_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_validation_mode", value)
+
+    @property
+    @pulumi.getter(name="clientValidationTrustConfig")
+    def client_validation_trust_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
+        If specified, the chain validation will be performed against certificates configured in the given TrustConfig.
+        Allowed only if the policy is to be used with external HTTPS load balancers.
+        """
+        return pulumi.get(self, "client_validation_trust_config")
+
+    @client_validation_trust_config.setter
+    def client_validation_trust_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_validation_trust_config", value)
+
+
+@pulumi.input_type
+class ServerTlsPolicyMtlsPolicyClientValidationCaArgs:
+    def __init__(__self__, *,
+                 certificate_provider_instance: Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs']] = None,
+                 grpc_endpoint: Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs']] = None):
+        """
+        :param pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs'] certificate_provider_instance: Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+               Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
+               Structure is documented below.
+        :param pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs'] grpc_endpoint: gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+               Structure is documented below.
+        """
+        if certificate_provider_instance is not None:
+            pulumi.set(__self__, "certificate_provider_instance", certificate_provider_instance)
+        if grpc_endpoint is not None:
+            pulumi.set(__self__, "grpc_endpoint", grpc_endpoint)
+
+    @property
+    @pulumi.getter(name="certificateProviderInstance")
+    def certificate_provider_instance(self) -> Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs']]:
+        """
+        Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+        Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "certificate_provider_instance")
+
+    @certificate_provider_instance.setter
+    def certificate_provider_instance(self, value: Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs']]):
+        pulumi.set(self, "certificate_provider_instance", value)
+
+    @property
+    @pulumi.getter(name="grpcEndpoint")
+    def grpc_endpoint(self) -> Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs']]:
+        """
+        gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "grpc_endpoint")
+
+    @grpc_endpoint.setter
+    def grpc_endpoint(self, value: Optional[pulumi.Input['ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs']]):
+        pulumi.set(self, "grpc_endpoint", value)
+
+
+@pulumi.input_type
+class ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs:
+    def __init__(__self__, *,
+                 plugin_instance: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] plugin_instance: Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
+        """
+        pulumi.set(__self__, "plugin_instance", plugin_instance)
+
+    @property
+    @pulumi.getter(name="pluginInstance")
+    def plugin_instance(self) -> pulumi.Input[str]:
+        """
+        Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
+        """
+        return pulumi.get(self, "plugin_instance")
+
+    @plugin_instance.setter
+    def plugin_instance(self, value: pulumi.Input[str]):
+        pulumi.set(self, "plugin_instance", value)
+
+
+@pulumi.input_type
+class ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs:
+    def __init__(__self__, *,
+                 target_uri: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] target_uri: The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+        """
+        pulumi.set(__self__, "target_uri", target_uri)
+
+    @property
+    @pulumi.getter(name="targetUri")
+    def target_uri(self) -> pulumi.Input[str]:
+        """
+        The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+        """
+        return pulumi.get(self, "target_uri")
+
+    @target_uri.setter
+    def target_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "target_uri", value)
+
+
+@pulumi.input_type
+class ServerTlsPolicyServerCertificateArgs:
+    def __init__(__self__, *,
+                 certificate_provider_instance: Optional[pulumi.Input['ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs']] = None,
+                 grpc_endpoint: Optional[pulumi.Input['ServerTlsPolicyServerCertificateGrpcEndpointArgs']] = None):
+        """
+        :param pulumi.Input['ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs'] certificate_provider_instance: Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+               Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
+               Structure is documented below.
+        :param pulumi.Input['ServerTlsPolicyServerCertificateGrpcEndpointArgs'] grpc_endpoint: gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+               Structure is documented below.
+        """
+        if certificate_provider_instance is not None:
+            pulumi.set(__self__, "certificate_provider_instance", certificate_provider_instance)
+        if grpc_endpoint is not None:
+            pulumi.set(__self__, "grpc_endpoint", grpc_endpoint)
+
+    @property
+    @pulumi.getter(name="certificateProviderInstance")
+    def certificate_provider_instance(self) -> Optional[pulumi.Input['ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs']]:
+        """
+        Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+        Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "certificate_provider_instance")
+
+    @certificate_provider_instance.setter
+    def certificate_provider_instance(self, value: Optional[pulumi.Input['ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs']]):
+        pulumi.set(self, "certificate_provider_instance", value)
+
+    @property
+    @pulumi.getter(name="grpcEndpoint")
+    def grpc_endpoint(self) -> Optional[pulumi.Input['ServerTlsPolicyServerCertificateGrpcEndpointArgs']]:
+        """
+        gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "grpc_endpoint")
+
+    @grpc_endpoint.setter
+    def grpc_endpoint(self, value: Optional[pulumi.Input['ServerTlsPolicyServerCertificateGrpcEndpointArgs']]):
+        pulumi.set(self, "grpc_endpoint", value)
+
+
+@pulumi.input_type
+class ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs:
+    def __init__(__self__, *,
+                 plugin_instance: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] plugin_instance: Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
+        """
+        pulumi.set(__self__, "plugin_instance", plugin_instance)
+
+    @property
+    @pulumi.getter(name="pluginInstance")
+    def plugin_instance(self) -> pulumi.Input[str]:
+        """
+        Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
+        """
+        return pulumi.get(self, "plugin_instance")
+
+    @plugin_instance.setter
+    def plugin_instance(self, value: pulumi.Input[str]):
+        pulumi.set(self, "plugin_instance", value)
+
+
+@pulumi.input_type
+class ServerTlsPolicyServerCertificateGrpcEndpointArgs:
     def __init__(__self__, *,
                  target_uri: pulumi.Input[str]):
         """

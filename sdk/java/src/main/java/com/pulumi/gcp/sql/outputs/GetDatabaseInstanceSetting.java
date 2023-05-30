@@ -5,6 +5,7 @@ package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingActiveDirectoryConfig;
+import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingAdvancedMachineFeature;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingBackupConfiguration;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingDatabaseFlag;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingDenyMaintenancePeriod;
@@ -25,6 +26,7 @@ import java.util.Objects;
 public final class GetDatabaseInstanceSetting {
     private String activationPolicy;
     private List<GetDatabaseInstanceSettingActiveDirectoryConfig> activeDirectoryConfigs;
+    private List<GetDatabaseInstanceSettingAdvancedMachineFeature> advancedMachineFeatures;
     private String availabilityType;
     private List<GetDatabaseInstanceSettingBackupConfiguration> backupConfigurations;
     private String collation;
@@ -54,6 +56,9 @@ public final class GetDatabaseInstanceSetting {
     }
     public List<GetDatabaseInstanceSettingActiveDirectoryConfig> activeDirectoryConfigs() {
         return this.activeDirectoryConfigs;
+    }
+    public List<GetDatabaseInstanceSettingAdvancedMachineFeature> advancedMachineFeatures() {
+        return this.advancedMachineFeatures;
     }
     public String availabilityType() {
         return this.availabilityType;
@@ -133,6 +138,7 @@ public final class GetDatabaseInstanceSetting {
     public static final class Builder {
         private String activationPolicy;
         private List<GetDatabaseInstanceSettingActiveDirectoryConfig> activeDirectoryConfigs;
+        private List<GetDatabaseInstanceSettingAdvancedMachineFeature> advancedMachineFeatures;
         private String availabilityType;
         private List<GetDatabaseInstanceSettingBackupConfiguration> backupConfigurations;
         private String collation;
@@ -160,6 +166,7 @@ public final class GetDatabaseInstanceSetting {
     	      Objects.requireNonNull(defaults);
     	      this.activationPolicy = defaults.activationPolicy;
     	      this.activeDirectoryConfigs = defaults.activeDirectoryConfigs;
+    	      this.advancedMachineFeatures = defaults.advancedMachineFeatures;
     	      this.availabilityType = defaults.availabilityType;
     	      this.backupConfigurations = defaults.backupConfigurations;
     	      this.collation = defaults.collation;
@@ -196,6 +203,14 @@ public final class GetDatabaseInstanceSetting {
         }
         public Builder activeDirectoryConfigs(GetDatabaseInstanceSettingActiveDirectoryConfig... activeDirectoryConfigs) {
             return activeDirectoryConfigs(List.of(activeDirectoryConfigs));
+        }
+        @CustomType.Setter
+        public Builder advancedMachineFeatures(List<GetDatabaseInstanceSettingAdvancedMachineFeature> advancedMachineFeatures) {
+            this.advancedMachineFeatures = Objects.requireNonNull(advancedMachineFeatures);
+            return this;
+        }
+        public Builder advancedMachineFeatures(GetDatabaseInstanceSettingAdvancedMachineFeature... advancedMachineFeatures) {
+            return advancedMachineFeatures(List.of(advancedMachineFeatures));
         }
         @CustomType.Setter
         public Builder availabilityType(String availabilityType) {
@@ -338,6 +353,7 @@ public final class GetDatabaseInstanceSetting {
             final var o = new GetDatabaseInstanceSetting();
             o.activationPolicy = activationPolicy;
             o.activeDirectoryConfigs = activeDirectoryConfigs;
+            o.advancedMachineFeatures = advancedMachineFeatures;
             o.availabilityType = availabilityType;
             o.backupConfigurations = backupConfigurations;
             o.collation = collation;

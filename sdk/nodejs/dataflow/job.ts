@@ -152,7 +152,7 @@ export class Job extends pulumi.CustomResource {
      * **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
      * Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: any} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: any}>;
     /**
      * The machine type to use for the job.
      */

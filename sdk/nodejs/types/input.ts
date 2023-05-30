@@ -4335,7 +4335,7 @@ export namespace bigquery {
         /**
          * A JSON schema for the external table. Schema is required
          * for CSV and JSON formats if autodetect is not on. Schema is disallowed
-         * for Google Cloud Bigtable, Cloud Datastore backups, Avro, ORC and Parquet formats.
+         * for Google Cloud Bigtable, Cloud Datastore backups, Avro, Iceberg, ORC and Parquet formats.
          * ~>**NOTE:** Because this field expects a JSON string, any changes to the
          * string will create a diff, even if the JSON itself hasn't changed.
          * Furthermore drift for this field cannot not be detected because BigQuery
@@ -4347,11 +4347,10 @@ export namespace bigquery {
          */
         schema?: pulumi.Input<string>;
         /**
-         * The data format. Supported values are:
-         * "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC",
-         * "DATSTORE_BACKUP", and "BIGTABLE". To use "GOOGLE_SHEETS"
-         * the `scopes` must include
-         * "https://www.googleapis.com/auth/drive.readonly".
+         * The data format. Please see sourceFormat under
+         * [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
+         * in Bigquery's public API documentation for supported formats. To use "GOOGLE_SHEETS"
+         * the `scopes` must include "https://www.googleapis.com/auth/drive.readonly".
          */
         sourceFormat: pulumi.Input<string>;
         /**
@@ -23130,7 +23129,7 @@ export namespace container {
 
     export interface ClusterGatewayApiConfig {
         /**
-         * Which Gateway Api channel should be used. `CHANNEL_DISABLED` or `CHANNEL_STANDARD`.
+         * Which Gateway Api channel should be used. `CHANNEL_DISABLED`, `CHANNEL_EXPERIMENTAL` or `CHANNEL_STANDARD`.
          */
         channel: pulumi.Input<string>;
     }
@@ -38037,11 +38036,31 @@ export namespace monitoring {
          */
         autoClose?: pulumi.Input<string>;
         /**
+         * Control over how the notification channels in `notificationChannels`
+         * are notified when this alert fires, on a per-channel basis.
+         * Structure is documented below.
+         */
+        notificationChannelStrategies?: pulumi.Input<pulumi.Input<inputs.monitoring.AlertPolicyAlertStrategyNotificationChannelStrategy>[]>;
+        /**
          * Required for alert policies with a LogMatch condition.
          * This limit is not implemented for alert policies that are not log-based.
          * Structure is documented below.
          */
         notificationRateLimit?: pulumi.Input<inputs.monitoring.AlertPolicyAlertStrategyNotificationRateLimit>;
+    }
+
+    export interface AlertPolicyAlertStrategyNotificationChannelStrategy {
+        /**
+         * The notification channels that these settings apply to. Each of these
+         * correspond to the name field in one of the NotificationChannel objects
+         * referenced in the notificationChannels field of this AlertPolicy. The format is
+         * `projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]`
+         */
+        notificationChannelNames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The frequency at which to send reminder notifications for open incidents.
+         */
+        renotifyInterval?: pulumi.Input<string>;
     }
 
     export interface AlertPolicyAlertStrategyNotificationRateLimit {
@@ -38436,6 +38455,16 @@ export namespace monitoring {
          */
         filter?: pulumi.Input<string>;
         /**
+         * When this field is present, the `MetricThreshold`
+         * condition forecasts whether the time series is
+         * predicted to violate the threshold within the
+         * `forecastHorizon`. When this field is not set, the
+         * `MetricThreshold` tests the current value of the
+         * timeseries against the threshold.
+         * Structure is documented below.
+         */
+        forecastOptions?: pulumi.Input<inputs.monitoring.AlertPolicyConditionConditionThresholdForecastOptions>;
+        /**
          * A value against which to compare the time
          * series.
          */
@@ -38632,6 +38661,18 @@ export namespace monitoring {
          * Possible values are: `ALIGN_NONE`, `ALIGN_DELTA`, `ALIGN_RATE`, `ALIGN_INTERPOLATE`, `ALIGN_NEXT_OLDER`, `ALIGN_MIN`, `ALIGN_MAX`, `ALIGN_MEAN`, `ALIGN_COUNT`, `ALIGN_SUM`, `ALIGN_STDDEV`, `ALIGN_COUNT_TRUE`, `ALIGN_COUNT_FALSE`, `ALIGN_FRACTION_TRUE`, `ALIGN_PERCENTILE_99`, `ALIGN_PERCENTILE_95`, `ALIGN_PERCENTILE_50`, `ALIGN_PERCENTILE_05`, `ALIGN_PERCENT_CHANGE`.
          */
         perSeriesAligner?: pulumi.Input<string>;
+    }
+
+    export interface AlertPolicyConditionConditionThresholdForecastOptions {
+        /**
+         * The length of time into the future to forecast
+         * whether a timeseries will violate the threshold.
+         * If the predicted value is found to violate the
+         * threshold, and the violation is observed in all
+         * forecasts made for the Configured `duration`,
+         * then the timeseries is considered to be failing.
+         */
+        forecastHorizon: pulumi.Input<string>;
     }
 
     export interface AlertPolicyConditionConditionThresholdTrigger {
@@ -39558,6 +39599,83 @@ export namespace networksecurity {
     }
 
     export interface ClientTlsPolicyServerValidationCaGrpcEndpoint {
+        /**
+         * The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+         */
+        targetUri: pulumi.Input<string>;
+    }
+
+    export interface ServerTlsPolicyMtlsPolicy {
+        /**
+         * Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
+         * Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+         * Structure is documented below.
+         */
+        clientValidationCas?: pulumi.Input<pulumi.Input<inputs.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCa>[]>;
+        /**
+         * When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
+         * Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+         * Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+         */
+        clientValidationMode?: pulumi.Input<string>;
+        /**
+         * Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
+         * If specified, the chain validation will be performed against certificates configured in the given TrustConfig.
+         * Allowed only if the policy is to be used with external HTTPS load balancers.
+         */
+        clientValidationTrustConfig?: pulumi.Input<string>;
+    }
+
+    export interface ServerTlsPolicyMtlsPolicyClientValidationCa {
+        /**
+         * Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+         * Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
+         * Structure is documented below.
+         */
+        certificateProviderInstance?: pulumi.Input<inputs.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance>;
+        /**
+         * gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+         * Structure is documented below.
+         */
+        grpcEndpoint?: pulumi.Input<inputs.networksecurity.ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint>;
+    }
+
+    export interface ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance {
+        /**
+         * Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "googleCloudPrivateSpiffe" to use Certificate Authority Service certificate provider instance.
+         */
+        pluginInstance: pulumi.Input<string>;
+    }
+
+    export interface ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint {
+        /**
+         * The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+         */
+        targetUri: pulumi.Input<string>;
+    }
+
+    export interface ServerTlsPolicyServerCertificate {
+        /**
+         * Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+         * Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
+         * Structure is documented below.
+         */
+        certificateProviderInstance?: pulumi.Input<inputs.networksecurity.ServerTlsPolicyServerCertificateCertificateProviderInstance>;
+        /**
+         * gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+         * Structure is documented below.
+         */
+        grpcEndpoint?: pulumi.Input<inputs.networksecurity.ServerTlsPolicyServerCertificateGrpcEndpoint>;
+    }
+
+    export interface ServerTlsPolicyServerCertificateCertificateProviderInstance {
+        /**
+         * Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "googleCloudPrivateSpiffe" to use Certificate Authority Service certificate provider instance.
+         */
+        pluginInstance: pulumi.Input<string>;
+    }
+
+    export interface ServerTlsPolicyServerCertificateGrpcEndpoint {
         /**
          * The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
          */
@@ -44602,6 +44720,7 @@ export namespace sql {
          */
         activationPolicy?: pulumi.Input<string>;
         activeDirectoryConfig?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsActiveDirectoryConfig>;
+        advancedMachineFeatures?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsAdvancedMachineFeatures>;
         /**
          * The availability type of the Cloud SQL
          * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that
@@ -44672,6 +44791,13 @@ export namespace sql {
          * Can only be used with SQL Server.
          */
         domain: pulumi.Input<string>;
+    }
+
+    export interface DatabaseInstanceSettingsAdvancedMachineFeatures {
+        /**
+         * The number of threads per core. The value of this flag can be 1 or 2. To disable SMT, set this flag to 1. Only available in Cloud SQL for SQL Server instances. See [smt](https://cloud.google.com/sql/docs/sqlserver/create-instance#smt-create-instance) for more details.
+         */
+        threadsPerCore?: pulumi.Input<number>;
     }
 
     export interface DatabaseInstanceSettingsBackupConfiguration {
@@ -45328,6 +45454,10 @@ export namespace storage {
          * Google Cloud Storage bucket name.
          */
         bucketName: pulumi.Input<string>;
+        /**
+         * Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+         */
+        path?: pulumi.Input<string>;
         /**
          * The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
          */
@@ -46171,6 +46301,10 @@ export namespace workstations {
          * Size of the disk in GB. Must be empty if sourceSnapshot is set.
          */
         sizeGb?: pulumi.Input<number>;
+        /**
+         * The snapshot to use as the source for the disk. This can be the snapshot's `selfLink`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+         */
+        sourceSnapshot?: pulumi.Input<string>;
     }
 
     export interface WorkstationIamBindingCondition {

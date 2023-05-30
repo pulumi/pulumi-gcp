@@ -425,6 +425,21 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Describes the current stage of a deployment.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return Describes the current stage of a deployment.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
      * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
      * 
      */
@@ -513,6 +528,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         this.sourceArchiveBucket = $.sourceArchiveBucket;
         this.sourceArchiveObject = $.sourceArchiveObject;
         this.sourceRepository = $.sourceRepository;
+        this.status = $.status;
         this.timeout = $.timeout;
         this.triggerHttp = $.triggerHttp;
         this.vpcConnector = $.vpcConnector;
@@ -1111,6 +1127,27 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder sourceRepository(FunctionSourceRepositoryArgs sourceRepository) {
             return sourceRepository(Output.of(sourceRepository));
+        }
+
+        /**
+         * @param status Describes the current stage of a deployment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status Describes the current stage of a deployment.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
         }
 
         /**

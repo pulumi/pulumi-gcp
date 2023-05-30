@@ -1432,15 +1432,19 @@ class TransferJobTransferSpecAwsS3DataSource(dict):
     def __init__(__self__, *,
                  bucket_name: str,
                  aws_access_key: Optional['outputs.TransferJobTransferSpecAwsS3DataSourceAwsAccessKey'] = None,
+                 path: Optional[str] = None,
                  role_arn: Optional[str] = None):
         """
         :param str bucket_name: Google Cloud Storage bucket name.
         :param 'TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs' aws_access_key: AWS credentials block.
+        :param str path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         :param str role_arn: The Amazon Resource Name (ARN) of the role to support temporary credentials via 'AssumeRoleWithWebIdentity'. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a 'AssumeRoleWithWebIdentity' call for the provided role using the [GoogleServiceAccount][] for this project.
         """
         pulumi.set(__self__, "bucket_name", bucket_name)
         if aws_access_key is not None:
             pulumi.set(__self__, "aws_access_key", aws_access_key)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
         if role_arn is not None:
             pulumi.set(__self__, "role_arn", role_arn)
 
@@ -1459,6 +1463,14 @@ class TransferJobTransferSpecAwsS3DataSource(dict):
         AWS credentials block.
         """
         return pulumi.get(self, "aws_access_key")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        """
+        return pulumi.get(self, "path")
 
     @property
     @pulumi.getter(name="roleArn")

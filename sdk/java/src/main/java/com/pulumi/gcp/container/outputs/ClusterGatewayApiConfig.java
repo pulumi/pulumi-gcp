@@ -10,14 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class ClusterGatewayApiConfig {
     /**
-     * @return Which Gateway Api channel should be used. `CHANNEL_DISABLED` or `CHANNEL_STANDARD`.
+     * @return Which Gateway Api channel should be used. `CHANNEL_DISABLED`, `CHANNEL_EXPERIMENTAL` or `CHANNEL_STANDARD`.
      * 
      */
     private String channel;
 
     private ClusterGatewayApiConfig() {}
     /**
-     * @return Which Gateway Api channel should be used. `CHANNEL_DISABLED` or `CHANNEL_STANDARD`.
+     * @return Which Gateway Api channel should be used. `CHANNEL_DISABLED`, `CHANNEL_EXPERIMENTAL` or `CHANNEL_STANDARD`.
      * 
      */
     public String channel() {

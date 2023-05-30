@@ -44,7 +44,8 @@ func GetClientConfig(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetClie
 type GetClientConfigResult struct {
 	// The OAuth2 access token used by the client to authenticate against the Google Cloud API.
 	AccessToken string `pulumi:"accessToken"`
-	Id          string `pulumi:"id"`
+	// The provider-assigned unique ID for this managed resource.
+	Id string `pulumi:"id"`
 	// The ID of the project to apply any resources to.
 	Project string `pulumi:"project"`
 	// The region to operate under.

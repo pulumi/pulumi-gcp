@@ -159,6 +159,9 @@ namespace Pulumi.Gcp.Dns
     [OutputType]
     public sealed class GetRecordSetResult
     {
+        /// <summary>
+        /// The provider-assigned unique ID for this managed resource.
+        /// </summary>
         public readonly string Id;
         public readonly string ManagedZone;
         public readonly string Name;

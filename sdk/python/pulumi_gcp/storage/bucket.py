@@ -1148,7 +1148,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
         A map of key/value label pairs to assign to the bucket.
         """

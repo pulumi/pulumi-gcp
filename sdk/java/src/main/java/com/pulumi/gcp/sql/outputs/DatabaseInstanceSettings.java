@@ -5,6 +5,7 @@ package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsActiveDirectoryConfig;
+import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsAdvancedMachineFeatures;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsBackupConfiguration;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsDatabaseFlag;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsDenyMaintenancePeriod;
@@ -32,6 +33,7 @@ public final class DatabaseInstanceSettings {
      */
     private @Nullable String activationPolicy;
     private @Nullable DatabaseInstanceSettingsActiveDirectoryConfig activeDirectoryConfig;
+    private @Nullable DatabaseInstanceSettingsAdvancedMachineFeatures advancedMachineFeatures;
     /**
      * @return The availability type of the Cloud SQL
      * instance, high availability (`REGIONAL`) or single zone (`ZONAL`).&#39; For all instances, ensure that
@@ -117,6 +119,9 @@ public final class DatabaseInstanceSettings {
     }
     public Optional<DatabaseInstanceSettingsActiveDirectoryConfig> activeDirectoryConfig() {
         return Optional.ofNullable(this.activeDirectoryConfig);
+    }
+    public Optional<DatabaseInstanceSettingsAdvancedMachineFeatures> advancedMachineFeatures() {
+        return Optional.ofNullable(this.advancedMachineFeatures);
     }
     /**
      * @return The availability type of the Cloud SQL
@@ -247,6 +252,7 @@ public final class DatabaseInstanceSettings {
     public static final class Builder {
         private @Nullable String activationPolicy;
         private @Nullable DatabaseInstanceSettingsActiveDirectoryConfig activeDirectoryConfig;
+        private @Nullable DatabaseInstanceSettingsAdvancedMachineFeatures advancedMachineFeatures;
         private @Nullable String availabilityType;
         private @Nullable DatabaseInstanceSettingsBackupConfiguration backupConfiguration;
         private @Nullable String collation;
@@ -274,6 +280,7 @@ public final class DatabaseInstanceSettings {
     	      Objects.requireNonNull(defaults);
     	      this.activationPolicy = defaults.activationPolicy;
     	      this.activeDirectoryConfig = defaults.activeDirectoryConfig;
+    	      this.advancedMachineFeatures = defaults.advancedMachineFeatures;
     	      this.availabilityType = defaults.availabilityType;
     	      this.backupConfiguration = defaults.backupConfiguration;
     	      this.collation = defaults.collation;
@@ -306,6 +313,11 @@ public final class DatabaseInstanceSettings {
         @CustomType.Setter
         public Builder activeDirectoryConfig(@Nullable DatabaseInstanceSettingsActiveDirectoryConfig activeDirectoryConfig) {
             this.activeDirectoryConfig = activeDirectoryConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder advancedMachineFeatures(@Nullable DatabaseInstanceSettingsAdvancedMachineFeatures advancedMachineFeatures) {
+            this.advancedMachineFeatures = advancedMachineFeatures;
             return this;
         }
         @CustomType.Setter
@@ -425,6 +437,7 @@ public final class DatabaseInstanceSettings {
             final var o = new DatabaseInstanceSettings();
             o.activationPolicy = activationPolicy;
             o.activeDirectoryConfig = activeDirectoryConfig;
+            o.advancedMachineFeatures = advancedMachineFeatures;
             o.availabilityType = availabilityType;
             o.backupConfiguration = backupConfiguration;
             o.collation = collation;

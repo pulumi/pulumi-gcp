@@ -615,14 +615,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="gatewayApiConfig", type=ClusterGatewayApiConfig.class, parameters={})
-    private Output</* @Nullable */ ClusterGatewayApiConfig> gatewayApiConfig;
+    private Output<ClusterGatewayApiConfig> gatewayApiConfig;
 
     /**
      * @return Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
      * 
      */
-    public Output<Optional<ClusterGatewayApiConfig>> gatewayApiConfig() {
-        return Codegen.optional(this.gatewayApiConfig);
+    public Output<ClusterGatewayApiConfig> gatewayApiConfig() {
+        return this.gatewayApiConfig;
     }
     /**
      * . Structure is documented below.

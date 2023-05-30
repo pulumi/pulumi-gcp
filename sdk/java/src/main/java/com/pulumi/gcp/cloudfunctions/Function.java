@@ -550,6 +550,20 @@ public class Function extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sourceRepository);
     }
     /**
+     * Describes the current stage of a deployment.
+     * 
+     */
+    @Export(name="status", type=String.class, parameters={})
+    private Output<String> status;
+
+    /**
+     * @return Describes the current stage of a deployment.
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
+    }
+    /**
      * Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
      * 
      */

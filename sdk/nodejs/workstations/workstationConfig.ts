@@ -161,6 +161,58 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Workstation Config Source Snapshot
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false}, {
+ *     provider: google_beta,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ *     ipCidrRange: "10.0.0.0/24",
+ *     region: "us-central1",
+ *     network: defaultNetwork.name,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const mySourceDisk = new gcp.compute.Disk("mySourceDisk", {
+ *     size: 10,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const mySourceSnapshot = new gcp.compute.Snapshot("mySourceSnapshot", {
+ *     sourceDisk: mySourceDisk.name,
+ *     zone: "us-central1-a",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultWorkstationCluster = new gcp.workstations.WorkstationCluster("defaultWorkstationCluster", {
+ *     workstationClusterId: "workstation-cluster",
+ *     network: defaultNetwork.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     location: "us-central1",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultWorkstationConfig = new gcp.workstations.WorkstationConfig("defaultWorkstationConfig", {
+ *     workstationConfigId: "workstation-config",
+ *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
+ *     location: defaultWorkstationCluster.location,
+ *     persistentDirectories: [{
+ *         mountPath: "/home",
+ *         gcePd: {
+ *             sourceSnapshot: mySourceSnapshot.id,
+ *             reclaimPolicy: "DELETE",
+ *         },
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  * ### Workstation Config Shielded Instance Config
  *
  * ```typescript

@@ -56,6 +56,9 @@ export interface GetWebAppConfigResult {
      * The default Firebase Realtime Database URL.
      */
     readonly databaseUrl: string;
+    /**
+     * The provider-assigned unique ID for this managed resource.
+     */
     readonly id: string;
     /**
      * The ID of the project's default GCP resource location. The location is one of the available GCP resource

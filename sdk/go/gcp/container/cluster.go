@@ -213,7 +213,7 @@ type Cluster struct {
 	// The IP address of this cluster's Kubernetes master.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
-	GatewayApiConfig ClusterGatewayApiConfigPtrOutput `pulumi:"gatewayApiConfig"`
+	GatewayApiConfig ClusterGatewayApiConfigOutput `pulumi:"gatewayApiConfig"`
 	// . Structure is documented below.
 	IdentityServiceConfig ClusterIdentityServiceConfigOutput `pulumi:"identityServiceConfig"`
 	// The number of nodes to create in this
@@ -1771,8 +1771,8 @@ func (o ClusterOutput) Endpoint() pulumi.StringOutput {
 }
 
 // Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
-func (o ClusterOutput) GatewayApiConfig() ClusterGatewayApiConfigPtrOutput {
-	return o.ApplyT(func(v *Cluster) ClusterGatewayApiConfigPtrOutput { return v.GatewayApiConfig }).(ClusterGatewayApiConfigPtrOutput)
+func (o ClusterOutput) GatewayApiConfig() ClusterGatewayApiConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterGatewayApiConfigOutput { return v.GatewayApiConfig }).(ClusterGatewayApiConfigOutput)
 }
 
 // . Structure is documented below.

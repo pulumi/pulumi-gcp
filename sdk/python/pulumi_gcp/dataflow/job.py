@@ -1182,7 +1182,7 @@ class Job(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def labels(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+    def labels(self) -> pulumi.Output[Mapping[str, Any]]:
         """
         User labels to be specified for the job. Keys and values should follow the restrictions
         specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.

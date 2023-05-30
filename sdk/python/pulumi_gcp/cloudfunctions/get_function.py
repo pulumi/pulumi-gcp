@@ -22,7 +22,7 @@ class GetFunctionResult:
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, build_worker_pool=None, description=None, docker_registry=None, docker_repository=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_security_level=None, https_trigger_url=None, id=None, ingress_settings=None, kms_key_name=None, labels=None, max_instances=None, min_instances=None, name=None, project=None, region=None, runtime=None, secret_environment_variables=None, secret_volumes=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, timeout=None, trigger_http=None, vpc_connector=None, vpc_connector_egress_settings=None):
+    def __init__(__self__, available_memory_mb=None, build_environment_variables=None, build_worker_pool=None, description=None, docker_registry=None, docker_repository=None, entry_point=None, environment_variables=None, event_triggers=None, https_trigger_security_level=None, https_trigger_url=None, id=None, ingress_settings=None, kms_key_name=None, labels=None, max_instances=None, min_instances=None, name=None, project=None, region=None, runtime=None, secret_environment_variables=None, secret_volumes=None, service_account_email=None, source_archive_bucket=None, source_archive_object=None, source_repositories=None, status=None, timeout=None, trigger_http=None, vpc_connector=None, vpc_connector_egress_settings=None):
         if available_memory_mb and not isinstance(available_memory_mb, int):
             raise TypeError("Expected argument 'available_memory_mb' to be a int")
         pulumi.set(__self__, "available_memory_mb", available_memory_mb)
@@ -104,6 +104,9 @@ class GetFunctionResult:
         if source_repositories and not isinstance(source_repositories, list):
             raise TypeError("Expected argument 'source_repositories' to be a list")
         pulumi.set(__self__, "source_repositories", source_repositories)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
         if timeout and not isinstance(timeout, int):
             raise TypeError("Expected argument 'timeout' to be a int")
         pulumi.set(__self__, "timeout", timeout)
@@ -299,6 +302,11 @@ class GetFunctionResult:
 
     @property
     @pulumi.getter
+    def status(self) -> str:
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
     def timeout(self) -> int:
         """
         Function execution timeout (in seconds).
@@ -363,6 +371,7 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             source_archive_bucket=self.source_archive_bucket,
             source_archive_object=self.source_archive_object,
             source_repositories=self.source_repositories,
+            status=self.status,
             timeout=self.timeout,
             trigger_http=self.trigger_http,
             vpc_connector=self.vpc_connector,
@@ -431,6 +440,7 @@ def get_function(name: Optional[str] = None,
         source_archive_bucket=__ret__.source_archive_bucket,
         source_archive_object=__ret__.source_archive_object,
         source_repositories=__ret__.source_repositories,
+        status=__ret__.status,
         timeout=__ret__.timeout,
         trigger_http=__ret__.trigger_http,
         vpc_connector=__ret__.vpc_connector,

@@ -28,7 +28,8 @@ class ImageArgs:
                  raw_disk: Optional[pulumi.Input['ImageRawDiskArgs']] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
-                 source_snapshot: Optional[pulumi.Input[str]] = None):
+                 source_snapshot: Optional[pulumi.Input[str]] = None,
+                 storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Image resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
@@ -79,6 +80,9 @@ class ImageArgs:
                * The sourceImage URL
                * The rawDisk.source URL
                * The sourceDisk URL
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the image
+               (regional or multi-regional).
+               Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -106,6 +110,8 @@ class ImageArgs:
             pulumi.set(__self__, "source_image", source_image)
         if source_snapshot is not None:
             pulumi.set(__self__, "source_snapshot", source_snapshot)
+        if storage_locations is not None:
+            pulumi.set(__self__, "storage_locations", storage_locations)
 
     @property
     @pulumi.getter
@@ -298,6 +304,20 @@ class ImageArgs:
     def source_snapshot(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_snapshot", value)
 
+    @property
+    @pulumi.getter(name="storageLocations")
+    def storage_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Cloud Storage bucket storage location of the image
+        (regional or multi-regional).
+        Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+        """
+        return pulumi.get(self, "storage_locations")
+
+    @storage_locations.setter
+    def storage_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "storage_locations", value)
+
 
 @pulumi.input_type
 class _ImageState:
@@ -318,7 +338,8 @@ class _ImageState:
                  self_link: Optional[pulumi.Input[str]] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
-                 source_snapshot: Optional[pulumi.Input[str]] = None):
+                 source_snapshot: Optional[pulumi.Input[str]] = None,
+                 storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Image resources.
         :param pulumi.Input[int] archive_size_bytes: Size of the image tar.gz archive stored in Google Cloud Storage (in
@@ -375,6 +396,9 @@ class _ImageState:
                * The sourceImage URL
                * The rawDisk.source URL
                * The sourceDisk URL
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the image
+               (regional or multi-regional).
+               Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
         """
         if archive_size_bytes is not None:
             pulumi.set(__self__, "archive_size_bytes", archive_size_bytes)
@@ -410,6 +434,8 @@ class _ImageState:
             pulumi.set(__self__, "source_image", source_image)
         if source_snapshot is not None:
             pulumi.set(__self__, "source_snapshot", source_snapshot)
+        if storage_locations is not None:
+            pulumi.set(__self__, "storage_locations", storage_locations)
 
     @property
     @pulumi.getter(name="archiveSizeBytes")
@@ -652,6 +678,20 @@ class _ImageState:
     def source_snapshot(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_snapshot", value)
 
+    @property
+    @pulumi.getter(name="storageLocations")
+    def storage_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Cloud Storage bucket storage location of the image
+        (regional or multi-regional).
+        Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+        """
+        return pulumi.get(self, "storage_locations")
+
+    @storage_locations.setter
+    def storage_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "storage_locations", value)
+
 
 class Image(pulumi.CustomResource):
     @overload
@@ -671,6 +711,7 @@ class Image(pulumi.CustomResource):
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
                  source_snapshot: Optional[pulumi.Input[str]] = None,
+                 storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Represents an Image resource.
@@ -725,6 +766,18 @@ class Image(pulumi.CustomResource):
             raw_disk=gcp.compute.ImageRawDiskArgs(
                 source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
             ))
+        ```
+        ### Image Basic Storage Location
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.compute.Image("example",
+            raw_disk=gcp.compute.ImageRawDiskArgs(
+                source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+            ),
+            storage_locations=["us-central1"])
         ```
 
         ## Import
@@ -793,6 +846,9 @@ class Image(pulumi.CustomResource):
                * The sourceImage URL
                * The rawDisk.source URL
                * The sourceDisk URL
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the image
+               (regional or multi-regional).
+               Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
         """
         ...
     @overload
@@ -854,6 +910,18 @@ class Image(pulumi.CustomResource):
                 source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
             ))
         ```
+        ### Image Basic Storage Location
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.compute.Image("example",
+            raw_disk=gcp.compute.ImageRawDiskArgs(
+                source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
+            ),
+            storage_locations=["us-central1"])
+        ```
 
         ## Import
 
@@ -899,6 +967,7 @@ class Image(pulumi.CustomResource):
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
                  source_snapshot: Optional[pulumi.Input[str]] = None,
+                 storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -921,6 +990,7 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["source_disk"] = source_disk
             __props__.__dict__["source_image"] = source_image
             __props__.__dict__["source_snapshot"] = source_snapshot
+            __props__.__dict__["storage_locations"] = storage_locations
             __props__.__dict__["archive_size_bytes"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["label_fingerprint"] = None
@@ -951,7 +1021,8 @@ class Image(pulumi.CustomResource):
             self_link: Optional[pulumi.Input[str]] = None,
             source_disk: Optional[pulumi.Input[str]] = None,
             source_image: Optional[pulumi.Input[str]] = None,
-            source_snapshot: Optional[pulumi.Input[str]] = None) -> 'Image':
+            source_snapshot: Optional[pulumi.Input[str]] = None,
+            storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Image':
         """
         Get an existing Image resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1013,6 +1084,9 @@ class Image(pulumi.CustomResource):
                * The sourceImage URL
                * The rawDisk.source URL
                * The sourceDisk URL
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the image
+               (regional or multi-regional).
+               Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1035,6 +1109,7 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["source_disk"] = source_disk
         __props__.__dict__["source_image"] = source_image
         __props__.__dict__["source_snapshot"] = source_snapshot
+        __props__.__dict__["storage_locations"] = storage_locations
         return Image(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1209,4 +1284,14 @@ class Image(pulumi.CustomResource):
         * The sourceDisk URL
         """
         return pulumi.get(self, "source_snapshot")
+
+    @property
+    @pulumi.getter(name="storageLocations")
+    def storage_locations(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Cloud Storage bucket storage location of the image
+        (regional or multi-regional).
+        Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+        """
+        return pulumi.get(self, "storage_locations")
 

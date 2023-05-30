@@ -268,6 +268,97 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Workstation Config Source Snapshot
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.Disk;
+ * import com.pulumi.gcp.compute.DiskArgs;
+ * import com.pulumi.gcp.compute.Snapshot;
+ * import com.pulumi.gcp.compute.SnapshotArgs;
+ * import com.pulumi.gcp.workstations.WorkstationCluster;
+ * import com.pulumi.gcp.workstations.WorkstationClusterArgs;
+ * import com.pulumi.gcp.workstations.WorkstationConfig;
+ * import com.pulumi.gcp.workstations.WorkstationConfigArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigPersistentDirectoryArgs;
+ * import com.pulumi.gcp.workstations.inputs.WorkstationConfigPersistentDirectoryGcePdArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .autoCreateSubnetworks(false)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .ipCidrRange(&#34;10.0.0.0/24&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .network(defaultNetwork.name())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var mySourceDisk = new Disk(&#34;mySourceDisk&#34;, DiskArgs.builder()        
+ *             .size(10)
+ *             .type(&#34;pd-ssd&#34;)
+ *             .zone(&#34;us-central1-a&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var mySourceSnapshot = new Snapshot(&#34;mySourceSnapshot&#34;, SnapshotArgs.builder()        
+ *             .sourceDisk(mySourceDisk.name())
+ *             .zone(&#34;us-central1-a&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultWorkstationCluster = new WorkstationCluster(&#34;defaultWorkstationCluster&#34;, WorkstationClusterArgs.builder()        
+ *             .workstationClusterId(&#34;workstation-cluster&#34;)
+ *             .network(defaultNetwork.id())
+ *             .subnetwork(defaultSubnetwork.id())
+ *             .location(&#34;us-central1&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultWorkstationConfig = new WorkstationConfig(&#34;defaultWorkstationConfig&#34;, WorkstationConfigArgs.builder()        
+ *             .workstationConfigId(&#34;workstation-config&#34;)
+ *             .workstationClusterId(defaultWorkstationCluster.workstationClusterId())
+ *             .location(defaultWorkstationCluster.location())
+ *             .persistentDirectories(WorkstationConfigPersistentDirectoryArgs.builder()
+ *                 .mountPath(&#34;/home&#34;)
+ *                 .gcePd(WorkstationConfigPersistentDirectoryGcePdArgs.builder()
+ *                     .sourceSnapshot(mySourceSnapshot.id())
+ *                     .reclaimPolicy(&#34;DELETE&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Workstation Config Shielded Instance Config
  * ```java
  * package generated_program;

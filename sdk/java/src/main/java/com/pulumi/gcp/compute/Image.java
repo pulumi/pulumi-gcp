@@ -117,6 +117,39 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Image Basic Storage Location
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Image;
+ * import com.pulumi.gcp.compute.ImageArgs;
+ * import com.pulumi.gcp.compute.inputs.ImageRawDiskArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Image(&#34;example&#34;, ImageArgs.builder()        
+ *             .rawDisk(ImageRawDiskArgs.builder()
+ *                 .source(&#34;https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz&#34;)
+ *                 .build())
+ *             .storageLocations(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -446,6 +479,24 @@ public class Image extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> sourceSnapshot() {
         return Codegen.optional(this.sourceSnapshot);
+    }
+    /**
+     * Cloud Storage bucket storage location of the image
+     * (regional or multi-regional).
+     * Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+     * 
+     */
+    @Export(name="storageLocations", type=List.class, parameters={String.class})
+    private Output<List<String>> storageLocations;
+
+    /**
+     * @return Cloud Storage bucket storage location of the image
+     * (regional or multi-regional).
+     * Reference link: https://cloud.google.com/compute/docs/reference/rest/v1/images
+     * 
+     */
+    public Output<List<String>> storageLocations() {
+        return this.storageLocations;
     }
 
     /**

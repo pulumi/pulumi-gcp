@@ -14,7 +14,7 @@ import (
 // The Compute NetworkFirewallPolicyRule resource
 //
 // ## Example Usage
-// ### Regional
+// ### Regional_net_sec_rule
 // ```go
 // package main
 //
@@ -40,7 +40,7 @@ import (
 //				},
 //				Type:     pulumi.String("IPV4"),
 //				Capacity: pulumi.Int(100),
-//			})
+//			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}
@@ -48,11 +48,11 @@ import (
 //				Description: pulumi.String("Sample regional network firewall policy"),
 //				Project:     pulumi.String("my-project-name"),
 //				Region:      pulumi.String("us-west1"),
-//			})
+//			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}
-//			basicNetwork, err := compute.NewNetwork(ctx, "basicNetwork", nil)
+//			basicNetwork, err := compute.NewNetwork(ctx, "basicNetwork", nil, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}
@@ -66,7 +66,7 @@ import (
 //						return fmt.Sprintf("my-project-name/%v", name), nil
 //					}).(pulumi.StringOutput),
 //				},
-//			})
+//			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}
@@ -76,7 +76,7 @@ import (
 //					return fmt.Sprintf("tagKeys/%v", name), nil
 //				}).(pulumi.StringOutput),
 //				ShortName: pulumi.String("tagvalue"),
-//			})
+//			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}
@@ -122,7 +122,7 @@ import (
 //						basicRegionalNetworksecurityAddressGroup.ID(),
 //					},
 //				},
-//			})
+//			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}

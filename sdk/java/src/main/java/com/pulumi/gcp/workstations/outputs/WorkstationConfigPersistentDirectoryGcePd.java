@@ -33,6 +33,11 @@ public final class WorkstationConfigPersistentDirectoryGcePd {
      * 
      */
     private @Nullable Integer sizeGb;
+    /**
+     * @return The snapshot to use as the source for the disk. This can be the snapshot&#39;s `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+     * 
+     */
+    private @Nullable String sourceSnapshot;
 
     private WorkstationConfigPersistentDirectoryGcePd() {}
     /**
@@ -64,6 +69,13 @@ public final class WorkstationConfigPersistentDirectoryGcePd {
     public Optional<Integer> sizeGb() {
         return Optional.ofNullable(this.sizeGb);
     }
+    /**
+     * @return The snapshot to use as the source for the disk. This can be the snapshot&#39;s `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+     * 
+     */
+    public Optional<String> sourceSnapshot() {
+        return Optional.ofNullable(this.sourceSnapshot);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -78,6 +90,7 @@ public final class WorkstationConfigPersistentDirectoryGcePd {
         private @Nullable String fsType;
         private @Nullable String reclaimPolicy;
         private @Nullable Integer sizeGb;
+        private @Nullable String sourceSnapshot;
         public Builder() {}
         public Builder(WorkstationConfigPersistentDirectoryGcePd defaults) {
     	      Objects.requireNonNull(defaults);
@@ -85,6 +98,7 @@ public final class WorkstationConfigPersistentDirectoryGcePd {
     	      this.fsType = defaults.fsType;
     	      this.reclaimPolicy = defaults.reclaimPolicy;
     	      this.sizeGb = defaults.sizeGb;
+    	      this.sourceSnapshot = defaults.sourceSnapshot;
         }
 
         @CustomType.Setter
@@ -107,12 +121,18 @@ public final class WorkstationConfigPersistentDirectoryGcePd {
             this.sizeGb = sizeGb;
             return this;
         }
+        @CustomType.Setter
+        public Builder sourceSnapshot(@Nullable String sourceSnapshot) {
+            this.sourceSnapshot = sourceSnapshot;
+            return this;
+        }
         public WorkstationConfigPersistentDirectoryGcePd build() {
             final var o = new WorkstationConfigPersistentDirectoryGcePd();
             o.diskType = diskType;
             o.fsType = fsType;
             o.reclaimPolicy = reclaimPolicy;
             o.sizeGb = sizeGb;
+            o.sourceSnapshot = sourceSnapshot;
             return o;
         }
     }

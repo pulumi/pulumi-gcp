@@ -724,13 +724,15 @@ class WorkstationConfigPersistentDirectoryGcePdArgs:
                  disk_type: Optional[pulumi.Input[str]] = None,
                  fs_type: Optional[pulumi.Input[str]] = None,
                  reclaim_policy: Optional[pulumi.Input[str]] = None,
-                 size_gb: Optional[pulumi.Input[int]] = None):
+                 size_gb: Optional[pulumi.Input[int]] = None,
+                 source_snapshot: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] disk_type: Type of the disk to use.
         :param pulumi.Input[str] fs_type: Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
         :param pulumi.Input[str] reclaim_policy: What should happen to the disk after the workstation is deleted. Defaults to DELETE.
                Possible values are: `DELETE`, `RETAIN`.
         :param pulumi.Input[int] size_gb: Size of the disk in GB. Must be empty if sourceSnapshot is set.
+        :param pulumi.Input[str] source_snapshot: The snapshot to use as the source for the disk. This can be the snapshot's `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
         """
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
@@ -740,6 +742,8 @@ class WorkstationConfigPersistentDirectoryGcePdArgs:
             pulumi.set(__self__, "reclaim_policy", reclaim_policy)
         if size_gb is not None:
             pulumi.set(__self__, "size_gb", size_gb)
+        if source_snapshot is not None:
+            pulumi.set(__self__, "source_snapshot", source_snapshot)
 
     @property
     @pulumi.getter(name="diskType")
@@ -789,6 +793,18 @@ class WorkstationConfigPersistentDirectoryGcePdArgs:
     @size_gb.setter
     def size_gb(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size_gb", value)
+
+    @property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> Optional[pulumi.Input[str]]:
+        """
+        The snapshot to use as the source for the disk. This can be the snapshot's `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+        """
+        return pulumi.get(self, "source_snapshot")
+
+    @source_snapshot.setter
+    def source_snapshot(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_snapshot", value)
 
 
 @pulumi.input_type

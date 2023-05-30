@@ -539,6 +539,7 @@ class _FunctionState:
                  source_archive_bucket: Optional[pulumi.Input[str]] = None,
                  source_archive_object: Optional[pulumi.Input[str]] = None,
                  source_repository: Optional[pulumi.Input['FunctionSourceRepositoryArgs']] = None,
+                 status: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[int]] = None,
                  trigger_http: Optional[pulumi.Input[bool]] = None,
                  vpc_connector: Optional[pulumi.Input[str]] = None,
@@ -576,6 +577,7 @@ class _FunctionState:
         :param pulumi.Input[str] source_archive_object: The source archive object (file) in archive bucket.
         :param pulumi.Input['FunctionSourceRepositoryArgs'] source_repository: Represents parameters related to source repository where a function is hosted.
                Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
+        :param pulumi.Input[str] status: Describes the current stage of a deployment.
         :param pulumi.Input[int] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         :param pulumi.Input[bool] trigger_http: Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
         :param pulumi.Input[str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
@@ -633,6 +635,8 @@ class _FunctionState:
             pulumi.set(__self__, "source_archive_object", source_archive_object)
         if source_repository is not None:
             pulumi.set(__self__, "source_repository", source_repository)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
         if trigger_http is not None:
@@ -958,6 +962,18 @@ class _FunctionState:
     @source_repository.setter
     def source_repository(self, value: Optional[pulumi.Input['FunctionSourceRepositoryArgs']]):
         pulumi.set(self, "source_repository", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Describes the current stage of a deployment.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
     @property
     @pulumi.getter
@@ -1348,6 +1364,7 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["trigger_http"] = trigger_http
             __props__.__dict__["vpc_connector"] = vpc_connector
             __props__.__dict__["vpc_connector_egress_settings"] = vpc_connector_egress_settings
+            __props__.__dict__["status"] = None
         super(Function, __self__).__init__(
             'gcp:cloudfunctions/function:Function',
             resource_name,
@@ -1384,6 +1401,7 @@ class Function(pulumi.CustomResource):
             source_archive_bucket: Optional[pulumi.Input[str]] = None,
             source_archive_object: Optional[pulumi.Input[str]] = None,
             source_repository: Optional[pulumi.Input[pulumi.InputType['FunctionSourceRepositoryArgs']]] = None,
+            status: Optional[pulumi.Input[str]] = None,
             timeout: Optional[pulumi.Input[int]] = None,
             trigger_http: Optional[pulumi.Input[bool]] = None,
             vpc_connector: Optional[pulumi.Input[str]] = None,
@@ -1426,6 +1444,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] source_archive_object: The source archive object (file) in archive bucket.
         :param pulumi.Input[pulumi.InputType['FunctionSourceRepositoryArgs']] source_repository: Represents parameters related to source repository where a function is hosted.
                Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
+        :param pulumi.Input[str] status: Describes the current stage of a deployment.
         :param pulumi.Input[int] timeout: Timeout (in seconds) for the function. Default value is 60 seconds. Cannot be more than 540 seconds.
         :param pulumi.Input[bool] trigger_http: Boolean variable. Any HTTP request (of a supported type) to the endpoint will trigger function execution. Supported HTTP request types are: POST, PUT, GET, DELETE, and OPTIONS. Endpoint is returned as `https_trigger_url`. Cannot be used with `event_trigger`.
         :param pulumi.Input[str] vpc_connector: The VPC Network Connector that this cloud function can connect to. It should be set up as fully-qualified URI. The format of this field is `projects/*/locations/*/connectors/*`.
@@ -1461,6 +1480,7 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["source_archive_bucket"] = source_archive_bucket
         __props__.__dict__["source_archive_object"] = source_archive_object
         __props__.__dict__["source_repository"] = source_repository
+        __props__.__dict__["status"] = status
         __props__.__dict__["timeout"] = timeout
         __props__.__dict__["trigger_http"] = trigger_http
         __props__.__dict__["vpc_connector"] = vpc_connector
@@ -1679,6 +1699,14 @@ class Function(pulumi.CustomResource):
         Cannot be set alongside `source_archive_bucket` or `source_archive_object`. Structure is documented below. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`.*
         """
         return pulumi.get(self, "source_repository")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output[str]:
+        """
+        Describes the current stage of a deployment.
+        """
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter

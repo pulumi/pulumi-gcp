@@ -5,8 +5,10 @@ package com.pulumi.gcp.monitoring.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.monitoring.inputs.AlertPolicyAlertStrategyNotificationChannelStrategyArgs;
 import com.pulumi.gcp.monitoring.inputs.AlertPolicyAlertStrategyNotificationRateLimitArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,6 +34,25 @@ public final class AlertPolicyAlertStrategyArgs extends com.pulumi.resources.Res
     }
 
     /**
+     * Control over how the notification channels in `notification_channels`
+     * are notified when this alert fires, on a per-channel basis.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="notificationChannelStrategies")
+    private @Nullable Output<List<AlertPolicyAlertStrategyNotificationChannelStrategyArgs>> notificationChannelStrategies;
+
+    /**
+     * @return Control over how the notification channels in `notification_channels`
+     * are notified when this alert fires, on a per-channel basis.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<AlertPolicyAlertStrategyNotificationChannelStrategyArgs>>> notificationChannelStrategies() {
+        return Optional.ofNullable(this.notificationChannelStrategies);
+    }
+
+    /**
      * Required for alert policies with a LogMatch condition.
      * This limit is not implemented for alert policies that are not log-based.
      * Structure is documented below.
@@ -54,6 +75,7 @@ public final class AlertPolicyAlertStrategyArgs extends com.pulumi.resources.Res
 
     private AlertPolicyAlertStrategyArgs(AlertPolicyAlertStrategyArgs $) {
         this.autoClose = $.autoClose;
+        this.notificationChannelStrategies = $.notificationChannelStrategies;
         this.notificationRateLimit = $.notificationRateLimit;
     }
 
@@ -94,6 +116,43 @@ public final class AlertPolicyAlertStrategyArgs extends com.pulumi.resources.Res
          */
         public Builder autoClose(String autoClose) {
             return autoClose(Output.of(autoClose));
+        }
+
+        /**
+         * @param notificationChannelStrategies Control over how the notification channels in `notification_channels`
+         * are notified when this alert fires, on a per-channel basis.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationChannelStrategies(@Nullable Output<List<AlertPolicyAlertStrategyNotificationChannelStrategyArgs>> notificationChannelStrategies) {
+            $.notificationChannelStrategies = notificationChannelStrategies;
+            return this;
+        }
+
+        /**
+         * @param notificationChannelStrategies Control over how the notification channels in `notification_channels`
+         * are notified when this alert fires, on a per-channel basis.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationChannelStrategies(List<AlertPolicyAlertStrategyNotificationChannelStrategyArgs> notificationChannelStrategies) {
+            return notificationChannelStrategies(Output.of(notificationChannelStrategies));
+        }
+
+        /**
+         * @param notificationChannelStrategies Control over how the notification channels in `notification_channels`
+         * are notified when this alert fires, on a per-channel basis.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notificationChannelStrategies(AlertPolicyAlertStrategyNotificationChannelStrategyArgs... notificationChannelStrategies) {
+            return notificationChannelStrategies(List.of(notificationChannelStrategies));
         }
 
         /**

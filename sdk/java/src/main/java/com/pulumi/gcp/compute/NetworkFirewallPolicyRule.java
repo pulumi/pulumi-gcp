@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * The Compute NetworkFirewallPolicyRule resource
  * 
  * ## Example Usage
- * ### Global
+ * ### Global_net_sec_rule
  * ```java
  * package generated_program;
  * 
@@ -35,6 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.NetworkFirewallPolicy;
  * import com.pulumi.gcp.compute.NetworkFirewallPolicyArgs;
  * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.tags.TagKey;
  * import com.pulumi.gcp.tags.TagKeyArgs;
  * import com.pulumi.gcp.tags.TagValue;
@@ -42,6 +43,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.NetworkFirewallPolicyRule;
  * import com.pulumi.gcp.compute.NetworkFirewallPolicyRuleArgs;
  * import com.pulumi.gcp.compute.inputs.NetworkFirewallPolicyRuleMatchArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -62,14 +64,20 @@ import javax.annotation.Nullable;
  *             .items(&#34;208.80.154.224/32&#34;)
  *             .type(&#34;IPV4&#34;)
  *             .capacity(100)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
  *         var basicNetworkFirewallPolicy = new NetworkFirewallPolicy(&#34;basicNetworkFirewallPolicy&#34;, NetworkFirewallPolicyArgs.builder()        
  *             .description(&#34;Sample global network firewall policy&#34;)
  *             .project(&#34;my-project-name&#34;)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
- *         var basicNetwork = new Network(&#34;basicNetwork&#34;);
+ *         var basicNetwork = new Network(&#34;basicNetwork&#34;, NetworkArgs.Empty, CustomResourceOptions.builder()
+ *             .provider(google_beta)
+ *             .build());
  * 
  *         var basicKey = new TagKey(&#34;basicKey&#34;, TagKeyArgs.builder()        
  *             .description(&#34;For keyname resources.&#34;)
@@ -77,13 +85,17 @@ import javax.annotation.Nullable;
  *             .purpose(&#34;GCE_FIREWALL&#34;)
  *             .shortName(&#34;tagkey&#34;)
  *             .purposeData(Map.of(&#34;network&#34;, basicNetwork.name().applyValue(name -&gt; String.format(&#34;my-project-name/%s&#34;, name))))
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
  *         var basicValue = new TagValue(&#34;basicValue&#34;, TagValueArgs.builder()        
  *             .description(&#34;For valuename resources.&#34;)
  *             .parent(basicKey.name().applyValue(name -&gt; String.format(&#34;tagKeys/%s&#34;, name)))
  *             .shortName(&#34;tagvalue&#34;)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
  *         var primary = new NetworkFirewallPolicyRule(&#34;primary&#34;, NetworkFirewallPolicyRuleArgs.builder()        
  *             .action(&#34;allow&#34;)
@@ -108,7 +120,9 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .srcAddressGroups(basicGlobalNetworksecurityAddressGroup.id())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
  *     }
  * }

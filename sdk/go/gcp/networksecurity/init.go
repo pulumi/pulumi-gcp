@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GatewaySecurityPolicy{}
 	case "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule":
 		r = &GatewaySecurityPolicyRule{}
+	case "gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy":
+		r = &ServerTlsPolicy{}
 	case "gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy":
 		r = &TlsInspectionPolicy{}
 	case "gcp:networksecurity/urlList:UrlList":
@@ -71,6 +73,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"networksecurity/gatewaySecurityPolicyRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networksecurity/serverTlsPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

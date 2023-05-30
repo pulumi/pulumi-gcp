@@ -235,7 +235,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
      */
-    public readonly gatewayApiConfig!: pulumi.Output<outputs.container.ClusterGatewayApiConfig | undefined>;
+    public readonly gatewayApiConfig!: pulumi.Output<outputs.container.ClusterGatewayApiConfig>;
     /**
      * . Structure is documented below.
      */

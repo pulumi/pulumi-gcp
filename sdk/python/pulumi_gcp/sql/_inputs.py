@@ -17,6 +17,7 @@ __all__ = [
     'DatabaseInstanceServerCaCertArgs',
     'DatabaseInstanceSettingsArgs',
     'DatabaseInstanceSettingsActiveDirectoryConfigArgs',
+    'DatabaseInstanceSettingsAdvancedMachineFeaturesArgs',
     'DatabaseInstanceSettingsBackupConfigurationArgs',
     'DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs',
     'DatabaseInstanceSettingsDatabaseFlagArgs',
@@ -482,6 +483,7 @@ class DatabaseInstanceSettingsArgs:
                  tier: pulumi.Input[str],
                  activation_policy: Optional[pulumi.Input[str]] = None,
                  active_directory_config: Optional[pulumi.Input['DatabaseInstanceSettingsActiveDirectoryConfigArgs']] = None,
+                 advanced_machine_features: Optional[pulumi.Input['DatabaseInstanceSettingsAdvancedMachineFeaturesArgs']] = None,
                  availability_type: Optional[pulumi.Input[str]] = None,
                  backup_configuration: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationArgs']] = None,
                  collation: Optional[pulumi.Input[str]] = None,
@@ -530,6 +532,8 @@ class DatabaseInstanceSettingsArgs:
             pulumi.set(__self__, "activation_policy", activation_policy)
         if active_directory_config is not None:
             pulumi.set(__self__, "active_directory_config", active_directory_config)
+        if advanced_machine_features is not None:
+            pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
         if availability_type is not None:
             pulumi.set(__self__, "availability_type", availability_type)
         if backup_configuration is not None:
@@ -608,6 +612,15 @@ class DatabaseInstanceSettingsArgs:
     @active_directory_config.setter
     def active_directory_config(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsActiveDirectoryConfigArgs']]):
         pulumi.set(self, "active_directory_config", value)
+
+    @property
+    @pulumi.getter(name="advancedMachineFeatures")
+    def advanced_machine_features(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsAdvancedMachineFeaturesArgs']]:
+        return pulumi.get(self, "advanced_machine_features")
+
+    @advanced_machine_features.setter
+    def advanced_machine_features(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsAdvancedMachineFeaturesArgs']]):
+        pulumi.set(self, "advanced_machine_features", value)
 
     @property
     @pulumi.getter(name="availabilityType")
@@ -856,6 +869,29 @@ class DatabaseInstanceSettingsActiveDirectoryConfigArgs:
     @domain.setter
     def domain(self, value: pulumi.Input[str]):
         pulumi.set(self, "domain", value)
+
+
+@pulumi.input_type
+class DatabaseInstanceSettingsAdvancedMachineFeaturesArgs:
+    def __init__(__self__, *,
+                 threads_per_core: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] threads_per_core: The number of threads per core. The value of this flag can be 1 or 2. To disable SMT, set this flag to 1. Only available in Cloud SQL for SQL Server instances. See [smt](https://cloud.google.com/sql/docs/sqlserver/create-instance#smt-create-instance) for more details.
+        """
+        if threads_per_core is not None:
+            pulumi.set(__self__, "threads_per_core", threads_per_core)
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of threads per core. The value of this flag can be 1 or 2. To disable SMT, set this flag to 1. Only available in Cloud SQL for SQL Server instances. See [smt](https://cloud.google.com/sql/docs/sqlserver/create-instance#smt-create-instance) for more details.
+        """
+        return pulumi.get(self, "threads_per_core")
+
+    @threads_per_core.setter
+    def threads_per_core(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "threads_per_core", value)
 
 
 @pulumi.input_type

@@ -673,6 +673,47 @@ class WorkstationConfig(pulumi.CustomResource):
             )],
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Workstation Config Source Snapshot
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default_network.name,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        my_source_disk = gcp.compute.Disk("mySourceDisk",
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        my_source_snapshot = gcp.compute.Snapshot("mySourceSnapshot",
+            source_disk=my_source_disk.name,
+            zone="us-central1-a",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
+            workstation_cluster_id="workstation-cluster",
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_workstation_config = gcp.workstations.WorkstationConfig("defaultWorkstationConfig",
+            workstation_config_id="workstation-config",
+            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
+            location=default_workstation_cluster.location,
+            persistent_directories=[gcp.workstations.WorkstationConfigPersistentDirectoryArgs(
+                mount_path="/home",
+                gce_pd=gcp.workstations.WorkstationConfigPersistentDirectoryGcePdArgs(
+                    source_snapshot=my_source_snapshot.id,
+                    reclaim_policy="DELETE",
+                ),
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
         ### Workstation Config Shielded Instance Config
 
         ```python
@@ -946,6 +987,47 @@ class WorkstationConfig(pulumi.CustomResource):
                 mount_path="/home",
                 gce_pd=gcp.workstations.WorkstationConfigPersistentDirectoryGcePdArgs(
                     size_gb=200,
+                    reclaim_policy="DELETE",
+                ),
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Workstation Config Source Snapshot
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.0.0.0/24",
+            region="us-central1",
+            network=default_network.name,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        my_source_disk = gcp.compute.Disk("mySourceDisk",
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        my_source_snapshot = gcp.compute.Snapshot("mySourceSnapshot",
+            source_disk=my_source_disk.name,
+            zone="us-central1-a",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_workstation_cluster = gcp.workstations.WorkstationCluster("defaultWorkstationCluster",
+            workstation_cluster_id="workstation-cluster",
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            location="us-central1",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_workstation_config = gcp.workstations.WorkstationConfig("defaultWorkstationConfig",
+            workstation_config_id="workstation-config",
+            workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
+            location=default_workstation_cluster.location,
+            persistent_directories=[gcp.workstations.WorkstationConfigPersistentDirectoryArgs(
+                mount_path="/home",
+                gce_pd=gcp.workstations.WorkstationConfigPersistentDirectoryGcePdArgs(
+                    source_snapshot=my_source_snapshot.id,
                     reclaim_policy="DELETE",
                 ),
             )],

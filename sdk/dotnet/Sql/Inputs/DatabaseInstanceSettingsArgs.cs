@@ -22,6 +22,9 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("activeDirectoryConfig")]
         public Input<Inputs.DatabaseInstanceSettingsActiveDirectoryConfigArgs>? ActiveDirectoryConfig { get; set; }
 
+        [Input("advancedMachineFeatures")]
+        public Input<Inputs.DatabaseInstanceSettingsAdvancedMachineFeaturesArgs>? AdvancedMachineFeatures { get; set; }
+
         /// <summary>
         /// The availability type of the Cloud SQL
         /// instance, high availability (`REGIONAL`) or single zone (`ZONAL`).' For all instances, ensure that

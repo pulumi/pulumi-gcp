@@ -258,7 +258,7 @@ public class Job extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="labels", type=Map.class, parameters={String.class, Object.class})
-    private Output</* @Nullable */ Map<String,Object>> labels;
+    private Output<Map<String,Object>> labels;
 
     /**
      * @return User labels to be specified for the job. Keys and values should follow the restrictions
@@ -267,8 +267,8 @@ public class Job extends com.pulumi.resources.CustomResource {
      * Unless explicitly set in config, these labels will be ignored to prevent diffs on re-apply.
      * 
      */
-    public Output<Optional<Map<String,Object>>> labels() {
-        return Codegen.optional(this.labels);
+    public Output<Map<String,Object>> labels() {
+        return this.labels;
     }
     /**
      * The machine type to use for the job.

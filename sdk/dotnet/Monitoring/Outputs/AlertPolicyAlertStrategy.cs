@@ -18,6 +18,12 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly string? AutoClose;
         /// <summary>
+        /// Control over how the notification channels in `notification_channels`
+        /// are notified when this alert fires, on a per-channel basis.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.AlertPolicyAlertStrategyNotificationChannelStrategy> NotificationChannelStrategies;
+        /// <summary>
         /// Required for alert policies with a LogMatch condition.
         /// This limit is not implemented for alert policies that are not log-based.
         /// Structure is documented below.
@@ -28,9 +34,12 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         private AlertPolicyAlertStrategy(
             string? autoClose,
 
+            ImmutableArray<Outputs.AlertPolicyAlertStrategyNotificationChannelStrategy> notificationChannelStrategies,
+
             Outputs.AlertPolicyAlertStrategyNotificationRateLimit? notificationRateLimit)
         {
             AutoClose = autoClose;
+            NotificationChannelStrategies = notificationChannelStrategies;
             NotificationRateLimit = notificationRateLimit;
         }
     }

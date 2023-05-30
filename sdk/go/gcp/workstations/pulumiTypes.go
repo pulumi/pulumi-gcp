@@ -2035,6 +2035,8 @@ type WorkstationConfigPersistentDirectoryGcePd struct {
 	ReclaimPolicy *string `pulumi:"reclaimPolicy"`
 	// Size of the disk in GB. Must be empty if sourceSnapshot is set.
 	SizeGb *int `pulumi:"sizeGb"`
+	// The snapshot to use as the source for the disk. This can be the snapshot's `selfLink`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+	SourceSnapshot *string `pulumi:"sourceSnapshot"`
 }
 
 // WorkstationConfigPersistentDirectoryGcePdInput is an input type that accepts WorkstationConfigPersistentDirectoryGcePdArgs and WorkstationConfigPersistentDirectoryGcePdOutput values.
@@ -2058,6 +2060,8 @@ type WorkstationConfigPersistentDirectoryGcePdArgs struct {
 	ReclaimPolicy pulumi.StringPtrInput `pulumi:"reclaimPolicy"`
 	// Size of the disk in GB. Must be empty if sourceSnapshot is set.
 	SizeGb pulumi.IntPtrInput `pulumi:"sizeGb"`
+	// The snapshot to use as the source for the disk. This can be the snapshot's `selfLink`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+	SourceSnapshot pulumi.StringPtrInput `pulumi:"sourceSnapshot"`
 }
 
 func (WorkstationConfigPersistentDirectoryGcePdArgs) ElementType() reflect.Type {
@@ -2158,6 +2162,11 @@ func (o WorkstationConfigPersistentDirectoryGcePdOutput) SizeGb() pulumi.IntPtrO
 	return o.ApplyT(func(v WorkstationConfigPersistentDirectoryGcePd) *int { return v.SizeGb }).(pulumi.IntPtrOutput)
 }
 
+// The snapshot to use as the source for the disk. This can be the snapshot's `selfLink`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+func (o WorkstationConfigPersistentDirectoryGcePdOutput) SourceSnapshot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkstationConfigPersistentDirectoryGcePd) *string { return v.SourceSnapshot }).(pulumi.StringPtrOutput)
+}
+
 type WorkstationConfigPersistentDirectoryGcePdPtrOutput struct{ *pulumi.OutputState }
 
 func (WorkstationConfigPersistentDirectoryGcePdPtrOutput) ElementType() reflect.Type {
@@ -2221,6 +2230,16 @@ func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) SizeGb() pulumi.IntP
 		}
 		return v.SizeGb
 	}).(pulumi.IntPtrOutput)
+}
+
+// The snapshot to use as the source for the disk. This can be the snapshot's `selfLink`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) SourceSnapshot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfigPersistentDirectoryGcePd) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceSnapshot
+	}).(pulumi.StringPtrOutput)
 }
 
 type WorkstationIamBindingCondition struct {

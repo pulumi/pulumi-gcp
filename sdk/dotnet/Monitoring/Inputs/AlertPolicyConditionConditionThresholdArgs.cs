@@ -146,6 +146,18 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         public Input<string>? Filter { get; set; }
 
         /// <summary>
+        /// When this field is present, the `MetricThreshold`
+        /// condition forecasts whether the time series is
+        /// predicted to violate the threshold within the
+        /// `forecastHorizon`. When this field is not set, the
+        /// `MetricThreshold` tests the current value of the
+        /// timeseries against the threshold.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("forecastOptions")]
+        public Input<Inputs.AlertPolicyConditionConditionThresholdForecastOptionsArgs>? ForecastOptions { get; set; }
+
+        /// <summary>
         /// A value against which to compare the time
         /// series.
         /// </summary>

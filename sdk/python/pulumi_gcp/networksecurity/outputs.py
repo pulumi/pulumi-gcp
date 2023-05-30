@@ -21,6 +21,13 @@ __all__ = [
     'ClientTlsPolicyServerValidationCa',
     'ClientTlsPolicyServerValidationCaCertificateProviderInstance',
     'ClientTlsPolicyServerValidationCaGrpcEndpoint',
+    'ServerTlsPolicyMtlsPolicy',
+    'ServerTlsPolicyMtlsPolicyClientValidationCa',
+    'ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance',
+    'ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint',
+    'ServerTlsPolicyServerCertificate',
+    'ServerTlsPolicyServerCertificateCertificateProviderInstance',
+    'ServerTlsPolicyServerCertificateGrpcEndpoint',
 ]
 
 @pulumi.output_type
@@ -465,6 +472,334 @@ class ClientTlsPolicyServerValidationCaGrpcEndpoint(dict):
 
     def get(self, key: str, default = None) -> Any:
         ClientTlsPolicyServerValidationCaGrpcEndpoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 target_uri: str):
+        """
+        :param str target_uri: The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+        """
+        pulumi.set(__self__, "target_uri", target_uri)
+
+    @property
+    @pulumi.getter(name="targetUri")
+    def target_uri(self) -> str:
+        """
+        The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+        """
+        return pulumi.get(self, "target_uri")
+
+
+@pulumi.output_type
+class ServerTlsPolicyMtlsPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientValidationCas":
+            suggest = "client_validation_cas"
+        elif key == "clientValidationMode":
+            suggest = "client_validation_mode"
+        elif key == "clientValidationTrustConfig":
+            suggest = "client_validation_trust_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerTlsPolicyMtlsPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerTlsPolicyMtlsPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerTlsPolicyMtlsPolicy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_validation_cas: Optional[Sequence['outputs.ServerTlsPolicyMtlsPolicyClientValidationCa']] = None,
+                 client_validation_mode: Optional[str] = None,
+                 client_validation_trust_config: Optional[str] = None):
+        """
+        :param Sequence['ServerTlsPolicyMtlsPolicyClientValidationCaArgs'] client_validation_cas: Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
+               Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+               Structure is documented below.
+        :param str client_validation_mode: When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
+               Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+               Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+        :param str client_validation_trust_config: Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
+               If specified, the chain validation will be performed against certificates configured in the given TrustConfig.
+               Allowed only if the policy is to be used with external HTTPS load balancers.
+        """
+        if client_validation_cas is not None:
+            pulumi.set(__self__, "client_validation_cas", client_validation_cas)
+        if client_validation_mode is not None:
+            pulumi.set(__self__, "client_validation_mode", client_validation_mode)
+        if client_validation_trust_config is not None:
+            pulumi.set(__self__, "client_validation_trust_config", client_validation_trust_config)
+
+    @property
+    @pulumi.getter(name="clientValidationCas")
+    def client_validation_cas(self) -> Optional[Sequence['outputs.ServerTlsPolicyMtlsPolicyClientValidationCa']]:
+        """
+        Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
+        Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "client_validation_cas")
+
+    @property
+    @pulumi.getter(name="clientValidationMode")
+    def client_validation_mode(self) -> Optional[str]:
+        """
+        When the client presents an invalid certificate or no certificate to the load balancer, the clientValidationMode specifies how the client connection is handled.
+        Required if the policy is to be used with the external HTTPS load balancing. For Traffic Director it must be empty.
+        Possible values are: `CLIENT_VALIDATION_MODE_UNSPECIFIED`, `ALLOW_INVALID_OR_MISSING_CLIENT_CERT`, `REJECT_INVALID`.
+        """
+        return pulumi.get(self, "client_validation_mode")
+
+    @property
+    @pulumi.getter(name="clientValidationTrustConfig")
+    def client_validation_trust_config(self) -> Optional[str]:
+        """
+        Reference to the TrustConfig from certificatemanager.googleapis.com namespace.
+        If specified, the chain validation will be performed against certificates configured in the given TrustConfig.
+        Allowed only if the policy is to be used with external HTTPS load balancers.
+        """
+        return pulumi.get(self, "client_validation_trust_config")
+
+
+@pulumi.output_type
+class ServerTlsPolicyMtlsPolicyClientValidationCa(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateProviderInstance":
+            suggest = "certificate_provider_instance"
+        elif key == "grpcEndpoint":
+            suggest = "grpc_endpoint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerTlsPolicyMtlsPolicyClientValidationCa. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerTlsPolicyMtlsPolicyClientValidationCa.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerTlsPolicyMtlsPolicyClientValidationCa.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 certificate_provider_instance: Optional['outputs.ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance'] = None,
+                 grpc_endpoint: Optional['outputs.ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint'] = None):
+        """
+        :param 'ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs' certificate_provider_instance: Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+               Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
+               Structure is documented below.
+        :param 'ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpointArgs' grpc_endpoint: gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+               Structure is documented below.
+        """
+        if certificate_provider_instance is not None:
+            pulumi.set(__self__, "certificate_provider_instance", certificate_provider_instance)
+        if grpc_endpoint is not None:
+            pulumi.set(__self__, "grpc_endpoint", grpc_endpoint)
+
+    @property
+    @pulumi.getter(name="certificateProviderInstance")
+    def certificate_provider_instance(self) -> Optional['outputs.ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance']:
+        """
+        Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+        Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "certificate_provider_instance")
+
+    @property
+    @pulumi.getter(name="grpcEndpoint")
+    def grpc_endpoint(self) -> Optional['outputs.ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint']:
+        """
+        gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "grpc_endpoint")
+
+
+@pulumi.output_type
+class ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pluginInstance":
+            suggest = "plugin_instance"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 plugin_instance: str):
+        """
+        :param str plugin_instance: Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
+        """
+        pulumi.set(__self__, "plugin_instance", plugin_instance)
+
+    @property
+    @pulumi.getter(name="pluginInstance")
+    def plugin_instance(self) -> str:
+        """
+        Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
+        """
+        return pulumi.get(self, "plugin_instance")
+
+
+@pulumi.output_type
+class ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetUri":
+            suggest = "target_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 target_uri: str):
+        """
+        :param str target_uri: The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+        """
+        pulumi.set(__self__, "target_uri", target_uri)
+
+    @property
+    @pulumi.getter(name="targetUri")
+    def target_uri(self) -> str:
+        """
+        The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
+        """
+        return pulumi.get(self, "target_uri")
+
+
+@pulumi.output_type
+class ServerTlsPolicyServerCertificate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateProviderInstance":
+            suggest = "certificate_provider_instance"
+        elif key == "grpcEndpoint":
+            suggest = "grpc_endpoint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerTlsPolicyServerCertificate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerTlsPolicyServerCertificate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerTlsPolicyServerCertificate.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 certificate_provider_instance: Optional['outputs.ServerTlsPolicyServerCertificateCertificateProviderInstance'] = None,
+                 grpc_endpoint: Optional['outputs.ServerTlsPolicyServerCertificateGrpcEndpoint'] = None):
+        """
+        :param 'ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs' certificate_provider_instance: Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+               Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
+               Structure is documented below.
+        :param 'ServerTlsPolicyServerCertificateGrpcEndpointArgs' grpc_endpoint: gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+               Structure is documented below.
+        """
+        if certificate_provider_instance is not None:
+            pulumi.set(__self__, "certificate_provider_instance", certificate_provider_instance)
+        if grpc_endpoint is not None:
+            pulumi.set(__self__, "grpc_endpoint", grpc_endpoint)
+
+    @property
+    @pulumi.getter(name="certificateProviderInstance")
+    def certificate_provider_instance(self) -> Optional['outputs.ServerTlsPolicyServerCertificateCertificateProviderInstance']:
+        """
+        Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+        Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allowOpen as a permissive mode that allows both plain text and TLS is not supported.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "certificate_provider_instance")
+
+    @property
+    @pulumi.getter(name="grpcEndpoint")
+    def grpc_endpoint(self) -> Optional['outputs.ServerTlsPolicyServerCertificateGrpcEndpoint']:
+        """
+        gRPC specific configuration to access the gRPC server to obtain the cert and private key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "grpc_endpoint")
+
+
+@pulumi.output_type
+class ServerTlsPolicyServerCertificateCertificateProviderInstance(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pluginInstance":
+            suggest = "plugin_instance"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerTlsPolicyServerCertificateCertificateProviderInstance. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerTlsPolicyServerCertificateCertificateProviderInstance.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerTlsPolicyServerCertificateCertificateProviderInstance.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 plugin_instance: str):
+        """
+        :param str plugin_instance: Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
+        """
+        pulumi.set(__self__, "plugin_instance", plugin_instance)
+
+    @property
+    @pulumi.getter(name="pluginInstance")
+    def plugin_instance(self) -> str:
+        """
+        Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance.
+        """
+        return pulumi.get(self, "plugin_instance")
+
+
+@pulumi.output_type
+class ServerTlsPolicyServerCertificateGrpcEndpoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetUri":
+            suggest = "target_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerTlsPolicyServerCertificateGrpcEndpoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerTlsPolicyServerCertificateGrpcEndpoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerTlsPolicyServerCertificateGrpcEndpoint.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,

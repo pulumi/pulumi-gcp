@@ -36,9 +36,10 @@ type GetAppleAppConfigResult struct {
 	// The content of the XML configuration file as a base64-encoded string.
 	ConfigFileContents string `pulumi:"configFileContents"`
 	// The filename that the configuration artifact for the IosApp is typically saved as.
-	ConfigFilename string  `pulumi:"configFilename"`
-	Id             string  `pulumi:"id"`
-	Project        *string `pulumi:"project"`
+	ConfigFilename string `pulumi:"configFilename"`
+	// The provider-assigned unique ID for this managed resource.
+	Id      string  `pulumi:"id"`
+	Project *string `pulumi:"project"`
 }
 
 func GetAppleAppConfigOutput(ctx *pulumi.Context, args GetAppleAppConfigOutputArgs, opts ...pulumi.InvokeOption) GetAppleAppConfigResultOutput {
@@ -98,6 +99,7 @@ func (o GetAppleAppConfigResultOutput) ConfigFilename() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppleAppConfigResult) string { return v.ConfigFilename }).(pulumi.StringOutput)
 }
 
+// The provider-assigned unique ID for this managed resource.
 func (o GetAppleAppConfigResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppleAppConfigResult) string { return v.Id }).(pulumi.StringOutput)
 }
