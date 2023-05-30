@@ -4,6 +4,7 @@ package gcp
 
 import (
 	"context"
+	_ "embed"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -11,12 +12,13 @@ import (
 	"unicode"
 
 	"github.com/pulumi/pulumi/pkg/v3/resource/provider"
-	"github.com/pulumi/pulumi/sdk/go/common/util/contract"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
 	google "github.com/hashicorp/terraform-provider-google-beta/google-beta"
 	tpg_transport "github.com/hashicorp/terraform-provider-google-beta/google-beta/transport"
 	"github.com/pulumi/pulumi-gcp/provider/v6/pkg/version"
+	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
@@ -351,9 +353,15 @@ func preConfigureCallbackWithLogger(ctx context.Context, host *provider.HostClie
 	return nil
 }
 
+//go:embed cmd/pulumi-resource-gcp/bridge-metadata.json
+var metadata []byte
+
 // Provider returns additional overlaid schema and metadata associated with the gcp package.
 func Provider() tfbridge.ProviderInfo {
-	p := shimv2.NewProvider(google.Provider())
+	p := pf.MuxShimWithPF(
+		context.Background(),
+		shimv2.NewProvider(google.Provider()),
+		google.New(version.Version)) // this probably should be TF version but it does not seem to matter
 	prov := tfbridge.ProviderInfo{
 		P:              p,
 		Name:           "google-beta",
@@ -364,6 +372,8 @@ func Provider() tfbridge.ProviderInfo {
 		License:        "Apache-2.0",
 		Homepage:       "https://pulumi.io",
 		Repository:     "https://github.com/pulumi/pulumi-gcp",
+		Version:        version.Version,
+		MetadataInfo:   tfbridge.NewProviderMetadata(metadata),
 		Config: map[string]*tfbridge.SchemaInfo{
 			"project": {
 				Default: &tfbridge.DefaultInfo{
@@ -3591,6 +3601,12 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpDataSource(gcpFirebase, "getAppleApp"),
 				Docs: &tfbridge.DocInfo{
 					Source: "firebase_apple_app.html.markdown",
+				},
+			},
+			"google_firebase_android_app_config": {
+				Tok: gcpDataSource(gcpFirebase, "getAndroidAppConfig"),
+				Docs: &tfbridge.DocInfo{
+					Markdown: []byte(" "),
 				},
 			},
 			"google_firebase_hosting_channel": {

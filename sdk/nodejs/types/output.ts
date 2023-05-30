@@ -36782,11 +36782,11 @@ export namespace dns {
         /**
          * The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
          */
-        digest?: string;
+        digest: string;
         /**
          * Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
          */
-        type?: string;
+        type: string;
     }
 
     export interface GetKeysZoneSigningKey {
@@ -36832,11 +36832,11 @@ export namespace dns {
         /**
          * The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
          */
-        digest?: string;
+        digest: string;
         /**
          * Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
          */
-        type?: string;
+        type: string;
     }
 
     export interface ManagedZoneCloudLoggingConfig {

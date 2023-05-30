@@ -48,9 +48,6 @@ namespace Pulumi.Gcp.Organizations
         /// The OAuth2 access token used by the client to authenticate against the Google Cloud API.
         /// </summary>
         public readonly string AccessToken;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The ID of the project to apply any resources to.

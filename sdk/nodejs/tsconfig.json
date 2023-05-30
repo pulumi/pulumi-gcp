@@ -565,6 +565,7 @@
         "firebase/appleApp.ts",
         "firebase/databaseInstance.ts",
         "firebase/getAndroidApp.ts",
+        "firebase/getAndroidAppConfig.ts",
         "firebase/getAppleApp.ts",
         "firebase/getAppleAppConfig.ts",
         "firebase/getHostingChannel.ts",
