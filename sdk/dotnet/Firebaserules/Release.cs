@@ -62,6 +62,9 @@ namespace Pulumi.Gcp.Firebaserules
     ///     {
     ///         Project = "my-project-name",
     ///         Location = "us-west1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
     ///     });
     /// 
     ///     // Make the Storage bucket accessible for Firebase SDKs, authentication, and Firebase Security Rules.
@@ -69,6 +72,9 @@ namespace Pulumi.Gcp.Firebaserules
     ///     {
     ///         Project = "my-project-name",
     ///         BucketId = bucketBucket.Name,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
     ///     });
     /// 
     ///     // Create a ruleset of Firebase Security Rules from a local file.
@@ -88,6 +94,7 @@ namespace Pulumi.Gcp.Firebaserules
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
+    ///         Provider = google_beta,
     ///         DependsOn = new[]
     ///         {
     ///             bucketStorageBucket,
@@ -98,6 +105,9 @@ namespace Pulumi.Gcp.Firebaserules
     ///     {
     ///         RulesetName = storage.Name.Apply(name =&gt; $"projects/my-project-name/rulesets/{name}"),
     ///         Project = "my-project-name",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

@@ -24,9 +24,11 @@ class WorkstationConfigArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input['WorkstationConfigEncryptionKeyArgs']] = None,
                  host: Optional[pulumi.Input['WorkstationConfigHostArgs']] = None,
+                 idle_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 running_timeout: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WorkstationConfig resource.
         :param pulumi.Input[str] location: The location where the workstation cluster config should reside.
@@ -46,11 +48,15 @@ class WorkstationConfigArgs:
                Structure is documented below.
         :param pulumi.Input['WorkstationConfigHostArgs'] host: Runtime host for a workstation.
                Structure is documented below.
+        :param pulumi.Input[str] idle_timeout: How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]] persistent_directories: Directories to persist across workstation sessions.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] running_timeout: How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
@@ -65,12 +71,16 @@ class WorkstationConfigArgs:
             pulumi.set(__self__, "encryption_key", encryption_key)
         if host is not None:
             pulumi.set(__self__, "host", host)
+        if idle_timeout is not None:
+            pulumi.set(__self__, "idle_timeout", idle_timeout)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if persistent_directories is not None:
             pulumi.set(__self__, "persistent_directories", persistent_directories)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if running_timeout is not None:
+            pulumi.set(__self__, "running_timeout", running_timeout)
 
     @property
     @pulumi.getter
@@ -178,6 +188,19 @@ class WorkstationConfigArgs:
         pulumi.set(self, "host", value)
 
     @property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "idle_timeout")
+
+    @idle_timeout.setter
+    def idle_timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "idle_timeout", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -215,6 +238,19 @@ class WorkstationConfigArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="runningTimeout")
+    def running_timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "running_timeout")
+
+    @running_timeout.setter
+    def running_timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "running_timeout", value)
+
 
 @pulumi.input_type
 class _WorkstationConfigState:
@@ -228,11 +264,13 @@ class _WorkstationConfigState:
                  encryption_key: Optional[pulumi.Input['WorkstationConfigEncryptionKeyArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input['WorkstationConfigHostArgs']] = None,
+                 idle_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input['WorkstationConfigPersistentDirectoryArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 running_timeout: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,
                  workstation_config_id: Optional[pulumi.Input[str]] = None):
@@ -255,6 +293,8 @@ class _WorkstationConfigState:
                May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
         :param pulumi.Input['WorkstationConfigHostArgs'] host: Runtime host for a workstation.
                Structure is documented below.
+        :param pulumi.Input[str] idle_timeout: How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] location: The location where the workstation cluster config should reside.
                
@@ -265,6 +305,8 @@ class _WorkstationConfigState:
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] running_timeout: How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         :param pulumi.Input[str] workstation_cluster_id: The ID of the parent workstation cluster.
         :param pulumi.Input[str] workstation_config_id: The ID to be assigned to the workstation cluster config.
@@ -287,6 +329,8 @@ class _WorkstationConfigState:
             pulumi.set(__self__, "etag", etag)
         if host is not None:
             pulumi.set(__self__, "host", host)
+        if idle_timeout is not None:
+            pulumi.set(__self__, "idle_timeout", idle_timeout)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -297,6 +341,8 @@ class _WorkstationConfigState:
             pulumi.set(__self__, "persistent_directories", persistent_directories)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if running_timeout is not None:
+            pulumi.set(__self__, "running_timeout", running_timeout)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
         if workstation_cluster_id is not None:
@@ -421,6 +467,19 @@ class _WorkstationConfigState:
         pulumi.set(self, "host", value)
 
     @property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "idle_timeout")
+
+    @idle_timeout.setter
+    def idle_timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "idle_timeout", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -486,6 +545,19 @@ class _WorkstationConfigState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="runningTimeout")
+    def running_timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "running_timeout")
+
+    @running_timeout.setter
+    def running_timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "running_timeout", value)
+
+    @property
     @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[str]]:
         """
@@ -532,10 +604,12 @@ class WorkstationConfig(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArgs']]] = None,
                  host: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigHostArgs']]] = None,
+                 idle_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigPersistentDirectoryArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 running_timeout: Optional[pulumi.Input[str]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,
                  workstation_config_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -570,6 +644,8 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_config_id="workstation-config",
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
+            idle_timeout="600s",
+            running_timeout="21600s",
             host=gcp.workstations.WorkstationConfigHostArgs(
                 gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
                     machine_type="e2-standard-4",
@@ -668,6 +744,8 @@ class WorkstationConfig(pulumi.CustomResource):
                 mount_path="/home",
                 gce_pd=gcp.workstations.WorkstationConfigPersistentDirectoryGcePdArgs(
                     size_gb=200,
+                    fs_type="ext4",
+                    disk_type="pd-standard",
                     reclaim_policy="DELETE",
                 ),
             )],
@@ -840,6 +918,8 @@ class WorkstationConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['WorkstationConfigHostArgs']] host: Runtime host for a workstation.
                Structure is documented below.
+        :param pulumi.Input[str] idle_timeout: How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] location: The location where the workstation cluster config should reside.
                
@@ -849,6 +929,8 @@ class WorkstationConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] running_timeout: How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param pulumi.Input[str] workstation_cluster_id: The ID of the parent workstation cluster.
         :param pulumi.Input[str] workstation_config_id: The ID to be assigned to the workstation cluster config.
         """
@@ -889,6 +971,8 @@ class WorkstationConfig(pulumi.CustomResource):
             workstation_config_id="workstation-config",
             workstation_cluster_id=default_workstation_cluster.workstation_cluster_id,
             location="us-central1",
+            idle_timeout="600s",
+            running_timeout="21600s",
             host=gcp.workstations.WorkstationConfigHostArgs(
                 gce_instance=gcp.workstations.WorkstationConfigHostGceInstanceArgs(
                     machine_type="e2-standard-4",
@@ -987,6 +1071,8 @@ class WorkstationConfig(pulumi.CustomResource):
                 mount_path="/home",
                 gce_pd=gcp.workstations.WorkstationConfigPersistentDirectoryGcePdArgs(
                     size_gb=200,
+                    fs_type="ext4",
+                    disk_type="pd-standard",
                     reclaim_policy="DELETE",
                 ),
             )],
@@ -1166,10 +1252,12 @@ class WorkstationConfig(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  encryption_key: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArgs']]] = None,
                  host: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigHostArgs']]] = None,
+                 idle_timeout: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigPersistentDirectoryArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 running_timeout: Optional[pulumi.Input[str]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,
                  workstation_config_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1186,12 +1274,14 @@ class WorkstationConfig(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["encryption_key"] = encryption_key
             __props__.__dict__["host"] = host
+            __props__.__dict__["idle_timeout"] = idle_timeout
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["persistent_directories"] = persistent_directories
             __props__.__dict__["project"] = project
+            __props__.__dict__["running_timeout"] = running_timeout
             if workstation_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workstation_cluster_id'")
             __props__.__dict__["workstation_cluster_id"] = workstation_cluster_id
@@ -1223,11 +1313,13 @@ class WorkstationConfig(pulumi.CustomResource):
             encryption_key: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             host: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigHostArgs']]] = None,
+            idle_timeout: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             persistent_directories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['WorkstationConfigPersistentDirectoryArgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            running_timeout: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             workstation_cluster_id: Optional[pulumi.Input[str]] = None,
             workstation_config_id: Optional[pulumi.Input[str]] = None) -> 'WorkstationConfig':
@@ -1255,6 +1347,8 @@ class WorkstationConfig(pulumi.CustomResource):
                May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
         :param pulumi.Input[pulumi.InputType['WorkstationConfigHostArgs']] host: Runtime host for a workstation.
                Structure is documented below.
+        :param pulumi.Input[str] idle_timeout: How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] location: The location where the workstation cluster config should reside.
                
@@ -1265,6 +1359,8 @@ class WorkstationConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] running_timeout: How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+               A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
         :param pulumi.Input[str] uid: The system-generated UID of the resource.
         :param pulumi.Input[str] workstation_cluster_id: The ID of the parent workstation cluster.
         :param pulumi.Input[str] workstation_config_id: The ID to be assigned to the workstation cluster config.
@@ -1282,11 +1378,13 @@ class WorkstationConfig(pulumi.CustomResource):
         __props__.__dict__["encryption_key"] = encryption_key
         __props__.__dict__["etag"] = etag
         __props__.__dict__["host"] = host
+        __props__.__dict__["idle_timeout"] = idle_timeout
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["persistent_directories"] = persistent_directories
         __props__.__dict__["project"] = project
+        __props__.__dict__["running_timeout"] = running_timeout
         __props__.__dict__["uid"] = uid
         __props__.__dict__["workstation_cluster_id"] = workstation_cluster_id
         __props__.__dict__["workstation_config_id"] = workstation_config_id
@@ -1373,6 +1471,15 @@ class WorkstationConfig(pulumi.CustomResource):
         return pulumi.get(self, "host")
 
     @property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> pulumi.Output[Optional[str]]:
+        """
+        How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "idle_timeout")
+
+    @property
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
@@ -1416,6 +1523,15 @@ class WorkstationConfig(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="runningTimeout")
+    def running_timeout(self) -> pulumi.Output[Optional[str]]:
+        """
+        How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+        A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "running_timeout")
 
     @property
     @pulumi.getter

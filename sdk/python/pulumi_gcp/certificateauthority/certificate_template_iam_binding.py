@@ -301,6 +301,10 @@ class CertificateTemplateIamBinding(pulumi.CustomResource):
         * `certificateauthority.CertificateTemplateIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the certificatetemplate are preserved.
         * `certificateauthority.CertificateTemplateIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the certificatetemplate are preserved.
 
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `certificateauthority.CertificateTemplateIamPolicy`: Retrieves the IAM policy for the certificatetemplate
+
         > **Note:** `certificateauthority.CertificateTemplateIamPolicy` **cannot** be used in conjunction with `certificateauthority.CertificateTemplateIamBinding` and `certificateauthority.CertificateTemplateIamMember` or they will fight over what your policy should be.
 
         > **Note:** `certificateauthority.CertificateTemplateIamBinding` resources **can be** used in conjunction with `certificateauthority.CertificateTemplateIamMember` resources **only if** they do not grant privilege to the same role.
@@ -457,6 +461,10 @@ class CertificateTemplateIamBinding(pulumi.CustomResource):
         * `certificateauthority.CertificateTemplateIamPolicy`: Authoritative. Sets the IAM policy for the certificatetemplate and replaces any existing policy already attached.
         * `certificateauthority.CertificateTemplateIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the certificatetemplate are preserved.
         * `certificateauthority.CertificateTemplateIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the certificatetemplate are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `certificateauthority.CertificateTemplateIamPolicy`: Retrieves the IAM policy for the certificatetemplate
 
         > **Note:** `certificateauthority.CertificateTemplateIamPolicy` **cannot** be used in conjunction with `certificateauthority.CertificateTemplateIamBinding` and `certificateauthority.CertificateTemplateIamMember` or they will fight over what your policy should be.
 

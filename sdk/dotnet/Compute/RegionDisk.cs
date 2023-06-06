@@ -121,6 +121,49 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Region Disk Features
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var regiondisk = new Gcp.Compute.RegionDisk("regiondisk", new()
+    ///     {
+    ///         GuestOsFeatures = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionDiskGuestOsFeatureArgs
+    ///             {
+    ///                 Type = "SECURE_BOOT",
+    ///             },
+    ///             new Gcp.Compute.Inputs.RegionDiskGuestOsFeatureArgs
+    ///             {
+    ///                 Type = "MULTI_IP_SUBNET",
+    ///             },
+    ///             new Gcp.Compute.Inputs.RegionDiskGuestOsFeatureArgs
+    ///             {
+    ///                 Type = "WINDOWS",
+    ///             },
+    ///         },
+    ///         Licenses = new[]
+    ///         {
+    ///             "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core",
+    ///         },
+    ///         PhysicalBlockSizeBytes = 4096,
+    ///         Region = "us-central1",
+    ///         ReplicaZones = new[]
+    ///         {
+    ///             "us-central1-a",
+    ///             "us-central1-f",
+    ///         },
+    ///         Type = "pd-ssd",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -180,6 +223,14 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.RegionDiskDiskEncryptionKey?> DiskEncryptionKey { get; private set; } = null!;
 
         /// <summary>
+        /// A list of features to enable on the guest operating system.
+        /// Applicable only for bootable disks.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("guestOsFeatures")]
+        public Output<ImmutableArray<Outputs.RegionDiskGuestOsFeature>> GuestOsFeatures { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         /// </summary>
         [Output("interface")]
@@ -209,6 +260,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("lastDetachTimestamp")]
         public Output<string> LastDetachTimestamp { get; private set; } = null!;
+
+        /// <summary>
+        /// Any applicable license URI.
+        /// </summary>
+        [Output("licenses")]
+        public Output<ImmutableArray<string>> Licenses { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is
@@ -410,6 +467,20 @@ namespace Pulumi.Gcp.Compute
         [Input("diskEncryptionKey")]
         public Input<Inputs.RegionDiskDiskEncryptionKeyArgs>? DiskEncryptionKey { get; set; }
 
+        [Input("guestOsFeatures")]
+        private InputList<Inputs.RegionDiskGuestOsFeatureArgs>? _guestOsFeatures;
+
+        /// <summary>
+        /// A list of features to enable on the guest operating system.
+        /// Applicable only for bootable disks.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.RegionDiskGuestOsFeatureArgs> GuestOsFeatures
+        {
+            get => _guestOsFeatures ?? (_guestOsFeatures = new InputList<Inputs.RegionDiskGuestOsFeatureArgs>());
+            set => _guestOsFeatures = value;
+        }
+
         /// <summary>
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         /// </summary>
@@ -426,6 +497,18 @@ namespace Pulumi.Gcp.Compute
         {
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
+        }
+
+        [Input("licenses")]
+        private InputList<string>? _licenses;
+
+        /// <summary>
+        /// Any applicable license URI.
+        /// </summary>
+        public InputList<string> Licenses
+        {
+            get => _licenses ?? (_licenses = new InputList<string>());
+            set => _licenses = value;
         }
 
         /// <summary>
@@ -570,6 +653,20 @@ namespace Pulumi.Gcp.Compute
         [Input("diskEncryptionKey")]
         public Input<Inputs.RegionDiskDiskEncryptionKeyGetArgs>? DiskEncryptionKey { get; set; }
 
+        [Input("guestOsFeatures")]
+        private InputList<Inputs.RegionDiskGuestOsFeatureGetArgs>? _guestOsFeatures;
+
+        /// <summary>
+        /// A list of features to enable on the guest operating system.
+        /// Applicable only for bootable disks.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.RegionDiskGuestOsFeatureGetArgs> GuestOsFeatures
+        {
+            get => _guestOsFeatures ?? (_guestOsFeatures = new InputList<Inputs.RegionDiskGuestOsFeatureGetArgs>());
+            set => _guestOsFeatures = value;
+        }
+
         /// <summary>
         /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         /// </summary>
@@ -606,6 +703,18 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("lastDetachTimestamp")]
         public Input<string>? LastDetachTimestamp { get; set; }
+
+        [Input("licenses")]
+        private InputList<string>? _licenses;
+
+        /// <summary>
+        /// Any applicable license URI.
+        /// </summary>
+        public InputList<string> Licenses
+        {
+            get => _licenses ?? (_licenses = new InputList<string>());
+            set => _licenses = value;
+        }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is

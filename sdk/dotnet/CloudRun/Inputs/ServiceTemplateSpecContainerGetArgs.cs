@@ -85,6 +85,12 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         [Input("livenessProbe")]
         public Input<Inputs.ServiceTemplateSpecContainerLivenessProbeGetArgs>? LivenessProbe { get; set; }
 
+        /// <summary>
+        /// Name of the container
+        /// </summary>
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
         [Input("ports")]
         private InputList<Inputs.ServiceTemplateSpecContainerPortGetArgs>? _ports;
 

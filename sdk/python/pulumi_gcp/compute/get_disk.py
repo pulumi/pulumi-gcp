@@ -22,7 +22,7 @@ class GetDiskResult:
     """
     A collection of values returned by getDisk.
     """
-    def __init__(__self__, async_primary_disks=None, creation_timestamp=None, description=None, disk_encryption_keys=None, id=None, image=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, multi_writer=None, name=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, resource_policies=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_image_encryption_keys=None, source_image_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None, zone=None):
+    def __init__(__self__, async_primary_disks=None, creation_timestamp=None, description=None, disk_encryption_keys=None, guest_os_features=None, id=None, image=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, multi_writer=None, name=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, resource_policies=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_image_encryption_keys=None, source_image_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None, zone=None):
         if async_primary_disks and not isinstance(async_primary_disks, list):
             raise TypeError("Expected argument 'async_primary_disks' to be a list")
         pulumi.set(__self__, "async_primary_disks", async_primary_disks)
@@ -35,6 +35,9 @@ class GetDiskResult:
         if disk_encryption_keys and not isinstance(disk_encryption_keys, list):
             raise TypeError("Expected argument 'disk_encryption_keys' to be a list")
         pulumi.set(__self__, "disk_encryption_keys", disk_encryption_keys)
+        if guest_os_features and not isinstance(guest_os_features, list):
+            raise TypeError("Expected argument 'guest_os_features' to be a list")
+        pulumi.set(__self__, "guest_os_features", guest_os_features)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -56,6 +59,9 @@ class GetDiskResult:
         if last_detach_timestamp and not isinstance(last_detach_timestamp, str):
             raise TypeError("Expected argument 'last_detach_timestamp' to be a str")
         pulumi.set(__self__, "last_detach_timestamp", last_detach_timestamp)
+        if licenses and not isinstance(licenses, list):
+            raise TypeError("Expected argument 'licenses' to be a list")
+        pulumi.set(__self__, "licenses", licenses)
         if multi_writer and not isinstance(multi_writer, bool):
             raise TypeError("Expected argument 'multi_writer' to be a bool")
         pulumi.set(__self__, "multi_writer", multi_writer)
@@ -138,6 +144,11 @@ class GetDiskResult:
         return pulumi.get(self, "disk_encryption_keys")
 
     @property
+    @pulumi.getter(name="guestOsFeatures")
+    def guest_os_features(self) -> Sequence['outputs.GetDiskGuestOsFeatureResult']:
+        return pulumi.get(self, "guest_os_features")
+
+    @property
     @pulumi.getter
     def id(self) -> str:
         """
@@ -190,6 +201,11 @@ class GetDiskResult:
         Last detach timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "last_detach_timestamp")
+
+    @property
+    @pulumi.getter
+    def licenses(self) -> Sequence[str]:
+        return pulumi.get(self, "licenses")
 
     @property
     @pulumi.getter(name="multiWriter")
@@ -336,6 +352,7 @@ class AwaitableGetDiskResult(GetDiskResult):
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             disk_encryption_keys=self.disk_encryption_keys,
+            guest_os_features=self.guest_os_features,
             id=self.id,
             image=self.image,
             interface=self.interface,
@@ -343,6 +360,7 @@ class AwaitableGetDiskResult(GetDiskResult):
             labels=self.labels,
             last_attach_timestamp=self.last_attach_timestamp,
             last_detach_timestamp=self.last_detach_timestamp,
+            licenses=self.licenses,
             multi_writer=self.multi_writer,
             name=self.name,
             physical_block_size_bytes=self.physical_block_size_bytes,
@@ -407,6 +425,7 @@ def get_disk(name: Optional[str] = None,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         disk_encryption_keys=__ret__.disk_encryption_keys,
+        guest_os_features=__ret__.guest_os_features,
         id=__ret__.id,
         image=__ret__.image,
         interface=__ret__.interface,
@@ -414,6 +433,7 @@ def get_disk(name: Optional[str] = None,
         labels=__ret__.labels,
         last_attach_timestamp=__ret__.last_attach_timestamp,
         last_detach_timestamp=__ret__.last_detach_timestamp,
+        licenses=__ret__.licenses,
         multi_writer=__ret__.multi_writer,
         name=__ret__.name,
         physical_block_size_bytes=__ret__.physical_block_size_bytes,

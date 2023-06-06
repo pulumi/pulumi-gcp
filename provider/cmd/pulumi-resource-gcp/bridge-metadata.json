@@ -320,6 +320,9 @@
             "gcp:container/nodePool:NodePool": 0,
             "gcp:container/registry:Registry": 0,
             "gcp:containeranalysis/note:Note": 0,
+            "gcp:containeranalysis/noteIamBinding:NoteIamBinding": 0,
+            "gcp:containeranalysis/noteIamMember:NoteIamMember": 0,
+            "gcp:containeranalysis/noteIamPolicy:NoteIamPolicy": 0,
             "gcp:containeranalysis/occurence:Occurence": 0,
             "gcp:databasemigrationservice/connectionProfile:ConnectionProfile": 0,
             "gcp:datacatalog/entry:Entry": 0,
@@ -1220,6 +1223,9 @@
             "gcp:container/nodePool:NodePool": "google_container_node_pool",
             "gcp:container/registry:Registry": "google_container_registry",
             "gcp:containeranalysis/note:Note": "google_container_analysis_note",
+            "gcp:containeranalysis/noteIamBinding:NoteIamBinding": "google_container_analysis_note_iam_binding",
+            "gcp:containeranalysis/noteIamMember:NoteIamMember": "google_container_analysis_note_iam_member",
+            "gcp:containeranalysis/noteIamPolicy:NoteIamPolicy": "google_container_analysis_note_iam_policy",
             "gcp:containeranalysis/occurence:Occurence": "google_container_analysis_occurrence",
             "gcp:databasemigrationservice/connectionProfile:ConnectionProfile": "google_database_migration_service_connection_profile",
             "gcp:datacatalog/entry:Entry": "google_data_catalog_entry",
@@ -3549,6 +3555,7 @@
                 "celExpression": "cel_expression"
             },
             "gcp:certificateauthority/CaPoolPublishingOptions:CaPoolPublishingOptions": {
+                "encodingFormat": "encoding_format",
                 "publishCaCert": "publish_ca_cert",
                 "publishCrl": "publish_crl"
             },
@@ -4815,6 +4822,12 @@
             "gcp:cloudrun/ServiceTemplateSpecContainerVolumeMount:ServiceTemplateSpecContainerVolumeMount": {
                 "mountPath": "mount_path"
             },
+            "gcp:cloudrun/ServiceTemplateSpecVolume:ServiceTemplateSpecVolume": {
+                "emptyDir": "empty_dir"
+            },
+            "gcp:cloudrun/ServiceTemplateSpecVolumeEmptyDir:ServiceTemplateSpecVolumeEmptyDir": {
+                "sizeLimit": "size_limit"
+            },
             "gcp:cloudrun/ServiceTemplateSpecVolumeSecret:ServiceTemplateSpecVolumeSecret": {
                 "defaultMode": "default_mode",
                 "secretName": "secret_name"
@@ -4911,7 +4924,11 @@
                 "mountPath": "mount_path"
             },
             "gcp:cloudrun/getServiceTemplateSpecVolume:getServiceTemplateSpecVolume": {
+                "emptyDirs": "empty_dir",
                 "secrets": "secret"
+            },
+            "gcp:cloudrun/getServiceTemplateSpecVolumeEmptyDir:getServiceTemplateSpecVolumeEmptyDir": {
+                "sizeLimit": "size_limit"
             },
             "gcp:cloudrun/getServiceTemplateSpecVolumeSecret:getServiceTemplateSpecVolumeSecret": {
                 "defaultMode": "default_mode",
@@ -7260,6 +7277,7 @@
                 "asyncPrimaryDisk": "async_primary_disk",
                 "creationTimestamp": "creation_timestamp",
                 "diskEncryptionKey": "disk_encryption_key",
+                "guestOsFeatures": "guest_os_features",
                 "labelFingerprint": "label_fingerprint",
                 "lastAttachTimestamp": "last_attach_timestamp",
                 "lastDetachTimestamp": "last_detach_timestamp",
@@ -7507,6 +7525,7 @@
                 "asyncPrimaryDisks": "async_primary_disk",
                 "creationTimestamp": "creation_timestamp",
                 "diskEncryptionKeys": "disk_encryption_key",
+                "guestOsFeatures": "guest_os_features",
                 "labelFingerprint": "label_fingerprint",
                 "lastAttachTimestamp": "last_attach_timestamp",
                 "lastDetachTimestamp": "last_detach_timestamp",
@@ -8694,6 +8713,7 @@
                 "asyncPrimaryDisk": "async_primary_disk",
                 "creationTimestamp": "creation_timestamp",
                 "diskEncryptionKey": "disk_encryption_key",
+                "guestOsFeatures": "guest_os_features",
                 "labelFingerprint": "label_fingerprint",
                 "lastAttachTimestamp": "last_attach_timestamp",
                 "lastDetachTimestamp": "last_detach_timestamp",
@@ -10327,6 +10347,9 @@
                 "shortDescription": "short_description",
                 "updateTime": "update_time"
             },
+            "gcp:containeranalysis/noteIamPolicy:NoteIamPolicy": {
+                "policyData": "policy_data"
+            },
             "gcp:containeranalysis/occurence:Occurence": {
                 "createTime": "create_time",
                 "noteName": "note_name",
@@ -11052,7 +11075,9 @@
                 "timespanConfig": "timespan_config"
             },
             "gcp:dataloss/PreventionJobTriggerInspectJobStorageConfigBigQueryOptions:PreventionJobTriggerInspectJobStorageConfigBigQueryOptions": {
+                "excludedFields": "excluded_fields",
                 "identifyingFields": "identifying_fields",
+                "includedFields": "included_fields",
                 "rowsLimit": "rows_limit",
                 "rowsLimitPercent": "rows_limit_percent",
                 "sampleMethod": "sample_method",
@@ -12009,6 +12034,7 @@
             "gcp:datastream/StreamSourceConfigMysqlSourceConfig:StreamSourceConfigMysqlSourceConfig": {
                 "excludeObjects": "exclude_objects",
                 "includeObjects": "include_objects",
+                "maxConcurrentBackfillTasks": "max_concurrent_backfill_tasks",
                 "maxConcurrentCdcTasks": "max_concurrent_cdc_tasks"
             },
             "gcp:datastream/StreamSourceConfigMysqlSourceConfigExcludeObjects:StreamSourceConfigMysqlSourceConfigExcludeObjects": {
@@ -17126,7 +17152,9 @@
                 "createTime": "create_time",
                 "displayName": "display_name",
                 "encryptionKey": "encryption_key",
+                "idleTimeout": "idle_timeout",
                 "persistentDirectories": "persistent_directories",
+                "runningTimeout": "running_timeout",
                 "workstationClusterId": "workstation_cluster_id",
                 "workstationConfigId": "workstation_config_id"
             },

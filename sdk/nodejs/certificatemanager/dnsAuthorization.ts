@@ -18,20 +18,11 @@ import * as utilities from "../utilities";
  *
  * const _default = new gcp.certificatemanager.DnsAuthorization("default", {
  *     description: "The default dnss",
- *     domain: "%{random_suffix}.hashicorptest.com",
+ *     domain: "subdomain.hashicorptest.com",
  * });
- * export const recordNameToInsert = {
- *     "google_certificate_manager_dns_authorization.default.dns_resource_record.0.name": [{}],
- *     value: "",
- * };
- * export const recordTypeToInsert = {
- *     "google_certificate_manager_dns_authorization.default.dns_resource_record.0.type": [{}],
- *     value: "",
- * };
- * export const recordDataToInsert = {
- *     "google_certificate_manager_dns_authorization.default.dns_resource_record.0.data": [{}],
- *     value: "",
- * };
+ * export const recordNameToInsert = _default.dnsResourceRecords.apply(dnsResourceRecords => dnsResourceRecords[0].name);
+ * export const recordTypeToInsert = _default.dnsResourceRecords.apply(dnsResourceRecords => dnsResourceRecords[0].type);
+ * export const recordDataToInsert = _default.dnsResourceRecords.apply(dnsResourceRecords => dnsResourceRecords[0].data);
  * ```
  *
  * ## Import

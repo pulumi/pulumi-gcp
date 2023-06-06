@@ -39,8 +39,6 @@ public final class ServiceTemplateSpecVolumeSecretItemArgs extends com.pulumi.re
      * conflict with other options that affect the file mode, like fsGroup, and
      * the result can be other mode bits set.
      * 
-     * ***
-     * 
      */
     @Import(name="mode")
     private @Nullable Output<Integer> mode;
@@ -50,8 +48,6 @@ public final class ServiceTemplateSpecVolumeSecretItemArgs extends com.pulumi.re
      * not specified, the volume defaultMode will be used. This might be in
      * conflict with other options that affect the file mode, like fsGroup, and
      * the result can be other mode bits set.
-     * 
-     * ***
      * 
      */
     public Optional<Output<Integer>> mode() {
@@ -134,8 +130,6 @@ public final class ServiceTemplateSpecVolumeSecretItemArgs extends com.pulumi.re
          * conflict with other options that affect the file mode, like fsGroup, and
          * the result can be other mode bits set.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -149,8 +143,6 @@ public final class ServiceTemplateSpecVolumeSecretItemArgs extends com.pulumi.re
          * not specified, the volume defaultMode will be used. This might be in
          * conflict with other options that affect the file mode, like fsGroup, and
          * the result can be other mode bits set.
-         * 
-         * ***
          * 
          * @return builder
          * 

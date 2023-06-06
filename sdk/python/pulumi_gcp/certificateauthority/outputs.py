@@ -2929,6 +2929,8 @@ class CaPoolPublishingOptions(dict):
             suggest = "publish_ca_cert"
         elif key == "publishCrl":
             suggest = "publish_crl"
+        elif key == "encodingFormat":
+            suggest = "encoding_format"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in CaPoolPublishingOptions. Access the value via the '{suggest}' property getter instead.")
@@ -2943,7 +2945,8 @@ class CaPoolPublishingOptions(dict):
 
     def __init__(__self__, *,
                  publish_ca_cert: bool,
-                 publish_crl: bool):
+                 publish_crl: bool,
+                 encoding_format: Optional[str] = None):
         """
         :param bool publish_ca_cert: When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access"
                X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding
@@ -2952,9 +2955,15 @@ class CaPoolPublishingOptions(dict):
                in all issued Certificates. If this is false, CRLs will not be published and the corresponding X.509 extension will not
                be written in issued certificates. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are
                also rebuilt shortly after a certificate is revoked.
+        :param str encoding_format: Specifies the encoding format of each CertificateAuthority's CA
+               certificate and CRLs. If this is omitted, CA certificates and CRLs
+               will be published in PEM.
+               Possible values are: `PEM`, `DER`.
         """
         pulumi.set(__self__, "publish_ca_cert", publish_ca_cert)
         pulumi.set(__self__, "publish_crl", publish_crl)
+        if encoding_format is not None:
+            pulumi.set(__self__, "encoding_format", encoding_format)
 
     @property
     @pulumi.getter(name="publishCaCert")
@@ -2976,6 +2985,17 @@ class CaPoolPublishingOptions(dict):
         also rebuilt shortly after a certificate is revoked.
         """
         return pulumi.get(self, "publish_crl")
+
+    @property
+    @pulumi.getter(name="encodingFormat")
+    def encoding_format(self) -> Optional[str]:
+        """
+        Specifies the encoding format of each CertificateAuthority's CA
+        certificate and CRLs. If this is omitted, CA certificates and CRLs
+        will be published in PEM.
+        Possible values are: `PEM`, `DER`.
+        """
+        return pulumi.get(self, "encoding_format")
 
 
 @pulumi.output_type

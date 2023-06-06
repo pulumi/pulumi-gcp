@@ -70,6 +70,33 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Disk Features
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Disk("default", {
+ *     guestOsFeatures: [
+ *         {
+ *             type: "SECURE_BOOT",
+ *         },
+ *         {
+ *             type: "MULTI_IP_SUBNET",
+ *         },
+ *         {
+ *             type: "WINDOWS",
+ *         },
+ *     ],
+ *     labels: {
+ *         environment: "dev",
+ *     },
+ *     licenses: ["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
+ *     physicalBlockSizeBytes: 4096,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -146,6 +173,12 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly diskEncryptionKey!: pulumi.Output<outputs.compute.DiskDiskEncryptionKey | undefined>;
     /**
+     * A list of features to enable on the guest operating system.
+     * Applicable only for bootable disks.
+     * Structure is documented below.
+     */
+    public readonly guestOsFeatures!: pulumi.Output<outputs.compute.DiskGuestOsFeature[]>;
+    /**
      * The image from which to initialize this disk. This can be
      * one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
      * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -180,6 +213,10 @@ export class Disk extends pulumi.CustomResource {
      * Last detach timestamp in RFC3339 text format.
      */
     public /*out*/ readonly lastDetachTimestamp!: pulumi.Output<string>;
+    /**
+     * Any applicable license URI.
+     */
+    public readonly licenses!: pulumi.Output<string[]>;
     /**
      * Indicates whether or not the disk can be read/write attached to more than one instance.
      */
@@ -327,12 +364,14 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["diskEncryptionKey"] = state ? state.diskEncryptionKey : undefined;
+            resourceInputs["guestOsFeatures"] = state ? state.guestOsFeatures : undefined;
             resourceInputs["image"] = state ? state.image : undefined;
             resourceInputs["interface"] = state ? state.interface : undefined;
             resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["lastAttachTimestamp"] = state ? state.lastAttachTimestamp : undefined;
             resourceInputs["lastDetachTimestamp"] = state ? state.lastDetachTimestamp : undefined;
+            resourceInputs["licenses"] = state ? state.licenses : undefined;
             resourceInputs["multiWriter"] = state ? state.multiWriter : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["physicalBlockSizeBytes"] = state ? state.physicalBlockSizeBytes : undefined;
@@ -356,9 +395,11 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["asyncPrimaryDisk"] = args ? args.asyncPrimaryDisk : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
+            resourceInputs["guestOsFeatures"] = args ? args.guestOsFeatures : undefined;
             resourceInputs["image"] = args ? args.image : undefined;
             resourceInputs["interface"] = args ? args.interface : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
+            resourceInputs["licenses"] = args ? args.licenses : undefined;
             resourceInputs["multiWriter"] = args ? args.multiWriter : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["physicalBlockSizeBytes"] = args ? args.physicalBlockSizeBytes : undefined;
@@ -418,6 +459,12 @@ export interface DiskState {
      */
     diskEncryptionKey?: pulumi.Input<inputs.compute.DiskDiskEncryptionKey>;
     /**
+     * A list of features to enable on the guest operating system.
+     * Applicable only for bootable disks.
+     * Structure is documented below.
+     */
+    guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.DiskGuestOsFeature>[]>;
+    /**
      * The image from which to initialize this disk. This can be
      * one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
      * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -452,6 +499,10 @@ export interface DiskState {
      * Last detach timestamp in RFC3339 text format.
      */
     lastDetachTimestamp?: pulumi.Input<string>;
+    /**
+     * Any applicable license URI.
+     */
+    licenses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether or not the disk can be read/write attached to more than one instance.
      */
@@ -610,6 +661,12 @@ export interface DiskArgs {
      */
     diskEncryptionKey?: pulumi.Input<inputs.compute.DiskDiskEncryptionKey>;
     /**
+     * A list of features to enable on the guest operating system.
+     * Applicable only for bootable disks.
+     * Structure is documented below.
+     */
+    guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.DiskGuestOsFeature>[]>;
+    /**
      * The image from which to initialize this disk. This can be
      * one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
      * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -631,6 +688,10 @@ export interface DiskArgs {
      * Labels to apply to this disk.  A list of key->value pairs.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Any applicable license URI.
+     */
+    licenses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether or not the disk can be read/write attached to more than one instance.
      */

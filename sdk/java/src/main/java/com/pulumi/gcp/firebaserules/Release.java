@@ -96,12 +96,16 @@ import javax.annotation.Nullable;
  *         var bucketBucket = new Bucket(&#34;bucketBucket&#34;, BucketArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .location(&#34;us-west1&#34;)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
  *         var bucketStorageBucket = new StorageBucket(&#34;bucketStorageBucket&#34;, StorageBucketArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
  *             .bucketId(bucketBucket.name())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
  *         var storage = new Ruleset(&#34;storage&#34;, RulesetArgs.builder()        
  *             .project(&#34;my-project-name&#34;)
@@ -112,13 +116,16 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
  *                 .dependsOn(bucketStorageBucket)
  *                 .build());
  * 
  *         var primary = new Release(&#34;primary&#34;, ReleaseArgs.builder()        
  *             .rulesetName(storage.name().applyValue(name -&gt; String.format(&#34;projects/my-project-name/rulesets/%s&#34;, name)))
  *             .project(&#34;my-project-name&#34;)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
  *     }
  * }

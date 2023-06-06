@@ -30514,10 +30514,17 @@ func (o PreventionJobTriggerInspectJobStorageConfigPtrOutput) TimespanConfig() P
 }
 
 type PreventionJobTriggerInspectJobStorageConfigBigQueryOptions struct {
+	// References to fields excluded from scanning.
+	// This allows you to skip inspection of entire columns which you know have no findings.
+	// Structure is documented below.
+	ExcludedFields []PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField `pulumi:"excludedFields"`
 	// Specifies the BigQuery fields that will be returned with findings.
 	// If not specified, no identifying fields will be returned for findings.
 	// Structure is documented below.
 	IdentifyingFields []PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField `pulumi:"identifyingFields"`
+	// Limit scanning only to these fields.
+	// Structure is documented below.
+	IncludedFields []PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField `pulumi:"includedFields"`
 	// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
 	// If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
 	// specified. Cannot be used in conjunction with TimespanConfig.
@@ -30548,10 +30555,17 @@ type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsInput interface {
 }
 
 type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs struct {
+	// References to fields excluded from scanning.
+	// This allows you to skip inspection of entire columns which you know have no findings.
+	// Structure is documented below.
+	ExcludedFields PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayInput `pulumi:"excludedFields"`
 	// Specifies the BigQuery fields that will be returned with findings.
 	// If not specified, no identifying fields will be returned for findings.
 	// Structure is documented below.
 	IdentifyingFields PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayInput `pulumi:"identifyingFields"`
+	// Limit scanning only to these fields.
+	// Structure is documented below.
+	IncludedFields PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayInput `pulumi:"includedFields"`
 	// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
 	// If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
 	// specified. Cannot be used in conjunction with TimespanConfig.
@@ -30647,6 +30661,15 @@ func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsOutput) ToPrev
 	}).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrOutput)
 }
 
+// References to fields excluded from scanning.
+// This allows you to skip inspection of entire columns which you know have no findings.
+// Structure is documented below.
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsOutput) ExcludedFields() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigBigQueryOptions) []PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField {
+		return v.ExcludedFields
+	}).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutput)
+}
+
 // Specifies the BigQuery fields that will be returned with findings.
 // If not specified, no identifying fields will be returned for findings.
 // Structure is documented below.
@@ -30654,6 +30677,14 @@ func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsOutput) Identi
 	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigBigQueryOptions) []PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField {
 		return v.IdentifyingFields
 	}).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutput)
+}
+
+// Limit scanning only to these fields.
+// Structure is documented below.
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsOutput) IncludedFields() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigBigQueryOptions) []PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField {
+		return v.IncludedFields
+	}).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutput)
 }
 
 // Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
@@ -30710,6 +30741,18 @@ func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrOutput) Ele
 	}).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsOutput)
 }
 
+// References to fields excluded from scanning.
+// This allows you to skip inspection of entire columns which you know have no findings.
+// Structure is documented below.
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrOutput) ExcludedFields() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigBigQueryOptions) []PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedFields
+	}).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutput)
+}
+
 // Specifies the BigQuery fields that will be returned with findings.
 // If not specified, no identifying fields will be returned for findings.
 // Structure is documented below.
@@ -30720,6 +30763,17 @@ func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrOutput) Ide
 		}
 		return v.IdentifyingFields
 	}).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutput)
+}
+
+// Limit scanning only to these fields.
+// Structure is documented below.
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrOutput) IncludedFields() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutput {
+	return o.ApplyT(func(v *PreventionJobTriggerInspectJobStorageConfigBigQueryOptions) []PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedFields
+	}).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutput)
 }
 
 // Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
@@ -30768,6 +30822,103 @@ func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrOutput) Tab
 		}
 		return &v.TableReference
 	}).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferencePtrOutput)
+}
+
+type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField struct {
+	// Name describing the field excluded from scanning.
+	Name string `pulumi:"name"`
+}
+
+// PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs and PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldInput` via:
+//
+//	PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs{...}
+type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldOutput() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldOutput
+	ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldOutputWithContext(context.Context) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldOutput
+}
+
+type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs struct {
+	// Name describing the field excluded from scanning.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField)(nil)).Elem()
+}
+
+func (i PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs) ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldOutput() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldOutput {
+	return i.ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs) ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldOutput)
+}
+
+// PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArray and PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayInput` via:
+//
+//	PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArray{ PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs{...} }
+type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutput() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutput
+	ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutputWithContext(context.Context) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutput
+}
+
+type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArray []PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldInput
+
+func (PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField)(nil)).Elem()
+}
+
+func (i PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArray) ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutput() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutput {
+	return i.ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArray) ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutput)
+}
+
+type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldOutput) ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldOutput() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldOutput) ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldOutput {
+	return o
+}
+
+// Name describing the field excluded from scanning.
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutput) ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutput() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutput) ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutput) Index(i pulumi.IntInput) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField {
+		return vs[0].([]PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField)[vs[1].(int)]
+	}).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldOutput)
 }
 
 type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField struct {
@@ -30867,6 +31018,103 @@ func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFie
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField {
 		return vs[0].([]PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField)[vs[1].(int)]
 	}).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutput)
+}
+
+type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField struct {
+	// Name describing the field to which scanning is limited.
+	Name string `pulumi:"name"`
+}
+
+// PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs and PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldInput` via:
+//
+//	PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs{...}
+type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldOutput() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldOutput
+	ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldOutputWithContext(context.Context) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldOutput
+}
+
+type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs struct {
+	// Name describing the field to which scanning is limited.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField)(nil)).Elem()
+}
+
+func (i PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs) ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldOutput() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldOutput {
+	return i.ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs) ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldOutput)
+}
+
+// PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayInput is an input type that accepts PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArray and PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutput values.
+// You can construct a concrete instance of `PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayInput` via:
+//
+//	PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArray{ PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs{...} }
+type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutput() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutput
+	ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutputWithContext(context.Context) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutput
+}
+
+type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArray []PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldInput
+
+func (PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField)(nil)).Elem()
+}
+
+func (i PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArray) ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutput() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutput {
+	return i.ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArray) ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutput)
+}
+
+type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldOutput) ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldOutput() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldOutput) ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldOutput {
+	return o
+}
+
+// Name describing the field to which scanning is limited.
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutput) ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutput() PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutput) ToPreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutputWithContext(ctx context.Context) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutput {
+	return o
+}
+
+func (o PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutput) Index(i pulumi.IntInput) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField {
+		return vs[0].([]PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField)[vs[1].(int)]
+	}).(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldOutput)
 }
 
 type PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference struct {
@@ -35327,8 +35575,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferencePtrInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsInput)(nil)).Elem(), PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs{})
@@ -35739,8 +35991,12 @@ func init() {
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsPtrOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArrayOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArrayOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldOutput{})
+	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArrayOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferencePtrOutput{})
 	pulumi.RegisterOutputType(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsOutput{})

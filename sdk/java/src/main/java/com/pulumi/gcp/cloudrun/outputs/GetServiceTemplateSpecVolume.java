@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecVolumeEmptyDir;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecVolumeSecret;
 import java.lang.String;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServiceTemplateSpecVolume {
+    private List<GetServiceTemplateSpecVolumeEmptyDir> emptyDirs;
     /**
      * @return The name of the Cloud Run Service.
      * 
@@ -19,6 +21,9 @@ public final class GetServiceTemplateSpecVolume {
     private List<GetServiceTemplateSpecVolumeSecret> secrets;
 
     private GetServiceTemplateSpecVolume() {}
+    public List<GetServiceTemplateSpecVolumeEmptyDir> emptyDirs() {
+        return this.emptyDirs;
+    }
     /**
      * @return The name of the Cloud Run Service.
      * 
@@ -39,15 +44,25 @@ public final class GetServiceTemplateSpecVolume {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetServiceTemplateSpecVolumeEmptyDir> emptyDirs;
         private String name;
         private List<GetServiceTemplateSpecVolumeSecret> secrets;
         public Builder() {}
         public Builder(GetServiceTemplateSpecVolume defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.emptyDirs = defaults.emptyDirs;
     	      this.name = defaults.name;
     	      this.secrets = defaults.secrets;
         }
 
+        @CustomType.Setter
+        public Builder emptyDirs(List<GetServiceTemplateSpecVolumeEmptyDir> emptyDirs) {
+            this.emptyDirs = Objects.requireNonNull(emptyDirs);
+            return this;
+        }
+        public Builder emptyDirs(GetServiceTemplateSpecVolumeEmptyDir... emptyDirs) {
+            return emptyDirs(List.of(emptyDirs));
+        }
         @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
@@ -63,6 +78,7 @@ public final class GetServiceTemplateSpecVolume {
         }
         public GetServiceTemplateSpecVolume build() {
             final var o = new GetServiceTemplateSpecVolume();
+            o.emptyDirs = emptyDirs;
             o.name = name;
             o.secrets = secrets;
             return o;

@@ -330,6 +330,7 @@ import (
 //				BackendService:      prodRegionBackendService.ID(),
 //				AllPorts:            pulumi.Bool(true),
 //				Network:             prodNetwork.Name,
+//				AllowGlobalAccess:   pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

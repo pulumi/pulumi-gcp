@@ -146,6 +146,21 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
     }
 
     /**
+     * Name of the container
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return Name of the container
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
      * List of open ports in the container.
      * Structure is documented below.
      * 
@@ -257,6 +272,7 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
         this.envs = $.envs;
         this.image = $.image;
         this.livenessProbe = $.livenessProbe;
+        this.name = $.name;
         this.ports = $.ports;
         this.resources = $.resources;
         this.startupProbe = $.startupProbe;
@@ -491,6 +507,27 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
          */
         public Builder livenessProbe(ServiceTemplateSpecContainerLivenessProbeArgs livenessProbe) {
             return livenessProbe(Output.of(livenessProbe));
+        }
+
+        /**
+         * @param name Name of the container
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name Name of the container
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**

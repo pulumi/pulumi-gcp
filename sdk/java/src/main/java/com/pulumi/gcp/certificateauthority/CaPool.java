@@ -198,6 +198,7 @@ import javax.annotation.Nullable;
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .location(&#34;us-central1&#34;)
  *             .publishingOptions(CaPoolPublishingOptionsArgs.builder()
+ *                 .encodingFormat(&#34;PEM&#34;)
  *                 .publishCaCert(false)
  *                 .publishCrl(true)
  *                 .build())

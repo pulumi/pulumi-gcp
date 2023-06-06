@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     ///     var basic = new Gcp.Logging.ProjectBucketConfig("basic", new()
     ///     {
-    ///         Project = @default.Id,
+    ///         Project = @default.ProjectId,
     ///         Location = "global",
     ///         RetentionDays = 30,
     ///         BucketId = "_Default",

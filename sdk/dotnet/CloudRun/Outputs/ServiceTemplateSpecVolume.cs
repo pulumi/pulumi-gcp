@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     [OutputType]
     public sealed class ServiceTemplateSpecVolume
     {
+        public readonly Outputs.ServiceTemplateSpecVolumeEmptyDir? EmptyDir;
         /// <summary>
         /// Volume's name.
         /// </summary>
@@ -23,14 +24,17 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// the file is the secret_name.
         /// Structure is documented below.
         /// </summary>
-        public readonly Outputs.ServiceTemplateSpecVolumeSecret Secret;
+        public readonly Outputs.ServiceTemplateSpecVolumeSecret? Secret;
 
         [OutputConstructor]
         private ServiceTemplateSpecVolume(
+            Outputs.ServiceTemplateSpecVolumeEmptyDir? emptyDir,
+
             string name,
 
-            Outputs.ServiceTemplateSpecVolumeSecret secret)
+            Outputs.ServiceTemplateSpecVolumeSecret? secret)
         {
+            EmptyDir = emptyDir;
             Name = name;
             Secret = secret;
         }

@@ -12,6 +12,7 @@ import com.pulumi.gcp.compute.DiskArgs;
 import com.pulumi.gcp.compute.inputs.DiskState;
 import com.pulumi.gcp.compute.outputs.DiskAsyncPrimaryDisk;
 import com.pulumi.gcp.compute.outputs.DiskDiskEncryptionKey;
+import com.pulumi.gcp.compute.outputs.DiskGuestOsFeature;
 import com.pulumi.gcp.compute.outputs.DiskSourceImageEncryptionKey;
 import com.pulumi.gcp.compute.outputs.DiskSourceSnapshotEncryptionKey;
 import java.lang.Boolean;
@@ -125,6 +126,50 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Disk Features
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Disk;
+ * import com.pulumi.gcp.compute.DiskArgs;
+ * import com.pulumi.gcp.compute.inputs.DiskGuestOsFeatureArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Disk(&#34;default&#34;, DiskArgs.builder()        
+ *             .guestOsFeatures(            
+ *                 DiskGuestOsFeatureArgs.builder()
+ *                     .type(&#34;SECURE_BOOT&#34;)
+ *                     .build(),
+ *                 DiskGuestOsFeatureArgs.builder()
+ *                     .type(&#34;MULTI_IP_SUBNET&#34;)
+ *                     .build(),
+ *                 DiskGuestOsFeatureArgs.builder()
+ *                     .type(&#34;WINDOWS&#34;)
+ *                     .build())
+ *             .labels(Map.of(&#34;environment&#34;, &#34;dev&#34;))
+ *             .licenses(&#34;https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core&#34;)
+ *             .physicalBlockSizeBytes(4096)
+ *             .type(&#34;pd-ssd&#34;)
+ *             .zone(&#34;us-central1-a&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -224,6 +269,24 @@ public class Disk extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<DiskDiskEncryptionKey>> diskEncryptionKey() {
         return Codegen.optional(this.diskEncryptionKey);
+    }
+    /**
+     * A list of features to enable on the guest operating system.
+     * Applicable only for bootable disks.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="guestOsFeatures", type=List.class, parameters={DiskGuestOsFeature.class})
+    private Output<List<DiskGuestOsFeature>> guestOsFeatures;
+
+    /**
+     * @return A list of features to enable on the guest operating system.
+     * Applicable only for bootable disks.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<DiskGuestOsFeature>> guestOsFeatures() {
+        return this.guestOsFeatures;
     }
     /**
      * The image from which to initialize this disk. This can be
@@ -330,6 +393,20 @@ public class Disk extends com.pulumi.resources.CustomResource {
      */
     public Output<String> lastDetachTimestamp() {
         return this.lastDetachTimestamp;
+    }
+    /**
+     * Any applicable license URI.
+     * 
+     */
+    @Export(name="licenses", type=List.class, parameters={String.class})
+    private Output<List<String>> licenses;
+
+    /**
+     * @return Any applicable license URI.
+     * 
+     */
+    public Output<List<String>> licenses() {
+        return this.licenses;
     }
     /**
      * Indicates whether or not the disk can be read/write attached to more than one instance.

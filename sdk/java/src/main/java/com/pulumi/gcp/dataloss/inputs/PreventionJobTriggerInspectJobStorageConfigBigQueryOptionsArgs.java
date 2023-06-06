@@ -5,7 +5,9 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -18,6 +20,25 @@ import javax.annotation.Nullable;
 public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs Empty = new PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs();
+
+    /**
+     * References to fields excluded from scanning.
+     * This allows you to skip inspection of entire columns which you know have no findings.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="excludedFields")
+    private @Nullable Output<List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs>> excludedFields;
+
+    /**
+     * @return References to fields excluded from scanning.
+     * This allows you to skip inspection of entire columns which you know have no findings.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs>>> excludedFields() {
+        return Optional.ofNullable(this.excludedFields);
+    }
 
     /**
      * Specifies the BigQuery fields that will be returned with findings.
@@ -36,6 +57,23 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArg
      */
     public Optional<Output<List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs>>> identifyingFields() {
         return Optional.ofNullable(this.identifyingFields);
+    }
+
+    /**
+     * Limit scanning only to these fields.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="includedFields")
+    private @Nullable Output<List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs>> includedFields;
+
+    /**
+     * @return Limit scanning only to these fields.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs>>> includedFields() {
+        return Optional.ofNullable(this.includedFields);
     }
 
     /**
@@ -117,7 +155,9 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArg
     private PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs() {}
 
     private PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs $) {
+        this.excludedFields = $.excludedFields;
         this.identifyingFields = $.identifyingFields;
+        this.includedFields = $.includedFields;
         this.rowsLimit = $.rowsLimit;
         this.rowsLimitPercent = $.rowsLimitPercent;
         this.sampleMethod = $.sampleMethod;
@@ -140,6 +180,43 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArg
 
         public Builder(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs defaults) {
             $ = new PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param excludedFields References to fields excluded from scanning.
+         * This allows you to skip inspection of entire columns which you know have no findings.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedFields(@Nullable Output<List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs>> excludedFields) {
+            $.excludedFields = excludedFields;
+            return this;
+        }
+
+        /**
+         * @param excludedFields References to fields excluded from scanning.
+         * This allows you to skip inspection of entire columns which you know have no findings.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedFields(List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs> excludedFields) {
+            return excludedFields(Output.of(excludedFields));
+        }
+
+        /**
+         * @param excludedFields References to fields excluded from scanning.
+         * This allows you to skip inspection of entire columns which you know have no findings.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder excludedFields(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs... excludedFields) {
+            return excludedFields(List.of(excludedFields));
         }
 
         /**
@@ -177,6 +254,40 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArg
          */
         public Builder identifyingFields(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs... identifyingFields) {
             return identifyingFields(List.of(identifyingFields));
+        }
+
+        /**
+         * @param includedFields Limit scanning only to these fields.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includedFields(@Nullable Output<List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs>> includedFields) {
+            $.includedFields = includedFields;
+            return this;
+        }
+
+        /**
+         * @param includedFields Limit scanning only to these fields.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includedFields(List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs> includedFields) {
+            return includedFields(Output.of(includedFields));
+        }
+
+        /**
+         * @param includedFields Limit scanning only to these fields.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder includedFields(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs... includedFields) {
+            return includedFields(List.of(includedFields));
         }
 
         /**

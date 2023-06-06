@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Workstations.Outputs
     public sealed class WorkstationConfigPersistentDirectory
     {
         /// <summary>
-        /// PersistentDirectory backed by a Compute Engine regional persistent disk.
+        /// A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.WorkstationConfigPersistentDirectoryGcePd? GcePd;

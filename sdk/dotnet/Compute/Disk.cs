@@ -93,6 +93,48 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Disk Features
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Disk("default", new()
+    ///     {
+    ///         GuestOsFeatures = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.DiskGuestOsFeatureArgs
+    ///             {
+    ///                 Type = "SECURE_BOOT",
+    ///             },
+    ///             new Gcp.Compute.Inputs.DiskGuestOsFeatureArgs
+    ///             {
+    ///                 Type = "MULTI_IP_SUBNET",
+    ///             },
+    ///             new Gcp.Compute.Inputs.DiskGuestOsFeatureArgs
+    ///             {
+    ///                 Type = "WINDOWS",
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "environment", "dev" },
+    ///         },
+    ///         Licenses = new[]
+    ///         {
+    ///             "https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core",
+    ///         },
+    ///         PhysicalBlockSizeBytes = 4096,
+    ///         Type = "pd-ssd",
+    ///         Zone = "us-central1-a",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -152,6 +194,14 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.DiskDiskEncryptionKey?> DiskEncryptionKey { get; private set; } = null!;
 
         /// <summary>
+        /// A list of features to enable on the guest operating system.
+        /// Applicable only for bootable disks.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("guestOsFeatures")]
+        public Output<ImmutableArray<Outputs.DiskGuestOsFeature>> GuestOsFeatures { get; private set; } = null!;
+
+        /// <summary>
         /// The image from which to initialize this disk. This can be
         /// one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
         /// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -195,6 +245,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("lastDetachTimestamp")]
         public Output<string> LastDetachTimestamp { get; private set; } = null!;
+
+        /// <summary>
+        /// Any applicable license URI.
+        /// </summary>
+        [Output("licenses")]
+        public Output<ImmutableArray<string>> Licenses { get; private set; } = null!;
 
         /// <summary>
         /// Indicates whether or not the disk can be read/write attached to more than one instance.
@@ -435,6 +491,20 @@ namespace Pulumi.Gcp.Compute
         [Input("diskEncryptionKey")]
         public Input<Inputs.DiskDiskEncryptionKeyArgs>? DiskEncryptionKey { get; set; }
 
+        [Input("guestOsFeatures")]
+        private InputList<Inputs.DiskGuestOsFeatureArgs>? _guestOsFeatures;
+
+        /// <summary>
+        /// A list of features to enable on the guest operating system.
+        /// Applicable only for bootable disks.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.DiskGuestOsFeatureArgs> GuestOsFeatures
+        {
+            get => _guestOsFeatures ?? (_guestOsFeatures = new InputList<Inputs.DiskGuestOsFeatureArgs>());
+            set => _guestOsFeatures = value;
+        }
+
         /// <summary>
         /// The image from which to initialize this disk. This can be
         /// one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
@@ -465,6 +535,18 @@ namespace Pulumi.Gcp.Compute
         {
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
+        }
+
+        [Input("licenses")]
+        private InputList<string>? _licenses;
+
+        /// <summary>
+        /// Any applicable license URI.
+        /// </summary>
+        public InputList<string> Licenses
+        {
+            get => _licenses ?? (_licenses = new InputList<string>());
+            set => _licenses = value;
         }
 
         /// <summary>
@@ -638,6 +720,20 @@ namespace Pulumi.Gcp.Compute
         [Input("diskEncryptionKey")]
         public Input<Inputs.DiskDiskEncryptionKeyGetArgs>? DiskEncryptionKey { get; set; }
 
+        [Input("guestOsFeatures")]
+        private InputList<Inputs.DiskGuestOsFeatureGetArgs>? _guestOsFeatures;
+
+        /// <summary>
+        /// A list of features to enable on the guest operating system.
+        /// Applicable only for bootable disks.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.DiskGuestOsFeatureGetArgs> GuestOsFeatures
+        {
+            get => _guestOsFeatures ?? (_guestOsFeatures = new InputList<Inputs.DiskGuestOsFeatureGetArgs>());
+            set => _guestOsFeatures = value;
+        }
+
         /// <summary>
         /// The image from which to initialize this disk. This can be
         /// one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
@@ -688,6 +784,18 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("lastDetachTimestamp")]
         public Input<string>? LastDetachTimestamp { get; set; }
+
+        [Input("licenses")]
+        private InputList<string>? _licenses;
+
+        /// <summary>
+        /// Any applicable license URI.
+        /// </summary>
+        public InputList<string> Licenses
+        {
+            get => _licenses ?? (_licenses = new InputList<string>());
+            set => _licenses = value;
+        }
 
         /// <summary>
         /// Indicates whether or not the disk can be read/write attached to more than one instance.

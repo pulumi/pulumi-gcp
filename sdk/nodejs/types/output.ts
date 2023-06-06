@@ -6021,6 +6021,13 @@ export namespace certificateauthority {
 
     export interface CaPoolPublishingOptions {
         /**
+         * Specifies the encoding format of each CertificateAuthority's CA
+         * certificate and CRLs. If this is omitted, CA certificates and CRLs
+         * will be published in PEM.
+         * Possible values are: `PEM`, `DER`.
+         */
+        encodingFormat?: string;
+        /**
          * When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access"
          * X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding
          * X.509 extension will not be written in issued certificates.
@@ -9944,6 +9951,10 @@ export namespace cloudrun {
         envs: outputs.cloudrun.GetServiceTemplateSpecContainerEnv[];
         image: string;
         livenessProbes: outputs.cloudrun.GetServiceTemplateSpecContainerLivenessProbe[];
+        /**
+         * The name of the Cloud Run Service.
+         */
+        name: string;
         ports: outputs.cloudrun.GetServiceTemplateSpecContainerPort[];
         resources: outputs.cloudrun.GetServiceTemplateSpecContainerResource[];
         startupProbes: outputs.cloudrun.GetServiceTemplateSpecContainerStartupProbe[];
@@ -10086,11 +10097,17 @@ export namespace cloudrun {
     }
 
     export interface GetServiceTemplateSpecVolume {
+        emptyDirs: outputs.cloudrun.GetServiceTemplateSpecVolumeEmptyDir[];
         /**
          * The name of the Cloud Run Service.
          */
         name: string;
         secrets: outputs.cloudrun.GetServiceTemplateSpecVolumeSecret[];
+    }
+
+    export interface GetServiceTemplateSpecVolumeEmptyDir {
+        medium: string;
+        sizeLimit: string;
     }
 
     export interface GetServiceTemplateSpecVolumeSecret {
@@ -10338,9 +10355,7 @@ export namespace cloudrun {
          */
         containerConcurrency: number;
         /**
-         * Container defines the unit of execution for this Revision.
-         * In the context of a Revision, we disallow a number of the fields of
-         * this Container, including: name, ports, and volumeMounts.
+         * Containers defines the unit of execution for this Revision.
          * Structure is documented below.
          */
         containers: outputs.cloudrun.ServiceTemplateSpecContainer[];
@@ -10411,6 +10426,10 @@ export namespace cloudrun {
          * Structure is documented below.
          */
         livenessProbe?: outputs.cloudrun.ServiceTemplateSpecContainerLivenessProbe;
+        /**
+         * Name of the container
+         */
+        name: string;
         /**
          * List of open ports in the container.
          * Structure is documented below.
@@ -10752,6 +10771,7 @@ export namespace cloudrun {
     }
 
     export interface ServiceTemplateSpecVolume {
+        emptyDir?: outputs.cloudrun.ServiceTemplateSpecVolumeEmptyDir;
         /**
          * Volume's name.
          */
@@ -10762,7 +10782,20 @@ export namespace cloudrun {
          * the file is the secret_name.
          * Structure is documented below.
          */
-        secret: outputs.cloudrun.ServiceTemplateSpecVolumeSecret;
+        secret?: outputs.cloudrun.ServiceTemplateSpecVolumeSecret;
+    }
+
+    export interface ServiceTemplateSpecVolumeEmptyDir {
+        /**
+         * The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory.
+         */
+        medium?: string;
+        /**
+         * Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+         *
+         * - - -
+         */
+        sizeLimit?: string;
     }
 
     export interface ServiceTemplateSpecVolumeSecret {
@@ -10807,8 +10840,6 @@ export namespace cloudrun {
          * not specified, the volume defaultMode will be used. This might be in
          * conflict with other options that affect the file mode, like fsGroup, and
          * the result can be other mode bits set.
-         *
-         * - - -
          */
         mode?: number;
         /**
@@ -13796,6 +13827,14 @@ export namespace compute {
         sha256: string;
     }
 
+    export interface DiskGuestOsFeature {
+        /**
+         * The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+         * Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`.
+         */
+        type: string;
+    }
+
     export interface DiskIamBindingCondition {
         description?: string;
         expression: string;
@@ -14198,6 +14237,14 @@ export namespace compute {
         rawKey: string;
         rsaEncryptedKey: string;
         sha256: string;
+    }
+
+    export interface GetDiskGuestOsFeature {
+        /**
+         * URL of the disk type resource describing which disk type to use to
+         * create the disk.
+         */
+        type: string;
     }
 
     export interface GetDiskSourceImageEncryptionKey {
@@ -18759,6 +18806,14 @@ export namespace compute {
          * encryption key that protects this resource.
          */
         sha256: string;
+    }
+
+    export interface RegionDiskGuestOsFeature {
+        /**
+         * The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+         * Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`.
+         */
+        type: string;
     }
 
     export interface RegionDiskIamBindingCondition {
@@ -28251,6 +28306,18 @@ export namespace containeranalysis {
         humanReadableName: string;
     }
 
+    export interface NoteIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface NoteIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface NoteRelatedUrl {
         /**
          * Label to describe usage of the URL
@@ -31869,11 +31936,22 @@ export namespace dataloss {
 
     export interface PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
         /**
+         * References to fields excluded from scanning.
+         * This allows you to skip inspection of entire columns which you know have no findings.
+         * Structure is documented below.
+         */
+        excludedFields?: outputs.dataloss.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField[];
+        /**
          * Specifies the BigQuery fields that will be returned with findings.
          * If not specified, no identifying fields will be returned for findings.
          * Structure is documented below.
          */
         identifyingFields?: outputs.dataloss.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField[];
+        /**
+         * Limit scanning only to these fields.
+         * Structure is documented below.
+         */
+        includedFields?: outputs.dataloss.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField[];
         /**
          * Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
          * If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
@@ -31900,9 +31978,23 @@ export namespace dataloss {
         tableReference: outputs.dataloss.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference;
     }
 
+    export interface PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField {
+        /**
+         * Name describing the field excluded from scanning.
+         */
+        name: string;
+    }
+
     export interface PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField {
         /**
          * Name describing the field.
+         */
+        name: string;
+    }
+
+    export interface PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField {
+        /**
+         * Name describing the field to which scanning is limited.
          */
         name: string;
     }
@@ -35518,6 +35610,11 @@ export namespace datastream {
          */
         includeObjects?: outputs.datastream.StreamSourceConfigMysqlSourceConfigIncludeObjects;
         /**
+         * Maximum number of concurrent backfill tasks. The number should be non negative.
+         * If not set (or set to 0), the system's default value will be used.
+         */
+        maxConcurrentBackfillTasks: number;
+        /**
          * Maximum number of concurrent CDC tasks. The number should be non negative.
          * If not set (or set to 0), the system's default value will be used.
          */
@@ -37073,7 +37170,7 @@ export namespace dns {
          */
         ipProtocol: string;
         /**
-         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
          */
         loadBalancerType: string;
         /**
@@ -37148,7 +37245,7 @@ export namespace dns {
          */
         ipProtocol: string;
         /**
-         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
          */
         loadBalancerType: string;
         /**
@@ -37187,7 +37284,7 @@ export namespace dns {
          */
         ipProtocol: string;
         /**
-         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
          */
         loadBalancerType: string;
         /**
@@ -37242,7 +37339,7 @@ export namespace dns {
          */
         ipProtocol: string;
         /**
-         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+         * The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
          */
         loadBalancerType: string;
         /**
@@ -48810,7 +48907,7 @@ export namespace sql {
          */
         queryPlansPerMinute: number;
         /**
-         * Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+         * Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. Higher query lengths are more useful for analytical queries, but they also require more memory. Changing the query length requires you to restart the instance. You can still add tags to queries that exceed the length limit.
          */
         queryStringLength?: number;
         /**
@@ -50706,7 +50803,7 @@ export namespace workstations {
 
     export interface WorkstationConfigPersistentDirectory {
         /**
-         * PersistentDirectory backed by a Compute Engine regional persistent disk.
+         * A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
          * Structure is documented below.
          */
         gcePd: outputs.workstations.WorkstationConfigPersistentDirectoryGcePd;
@@ -50718,24 +50815,25 @@ export namespace workstations {
 
     export interface WorkstationConfigPersistentDirectoryGcePd {
         /**
-         * Type of the disk to use.
+         * The type of the persistent disk for the home directory. Defaults to `pd-standard`.
          */
         diskType: string;
         /**
-         * Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
+         * Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if `sourceSnapshot` is set. Defaults to `ext4`.
          */
         fsType: string;
         /**
-         * What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+         * Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
          * Possible values are: `DELETE`, `RETAIN`.
          */
         reclaimPolicy?: string;
         /**
-         * Size of the disk in GB. Must be empty if sourceSnapshot is set.
+         * The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if `sourceSnapshot` is set.
+         * Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the `diskType` must be `pd-balanced` or `pd-ssd`.
          */
         sizeGb: number;
         /**
-         * The snapshot to use as the source for the disk. This can be the snapshot's `selfLink`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+         * Name of the snapshot to use as the source for the disk. This can be the snapshot's `selfLink`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
          */
         sourceSnapshot?: string;
     }

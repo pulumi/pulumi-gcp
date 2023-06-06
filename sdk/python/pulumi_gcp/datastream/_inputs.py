@@ -1984,12 +1984,15 @@ class StreamSourceConfigMysqlSourceConfigArgs:
     def __init__(__self__, *,
                  exclude_objects: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs']] = None,
                  include_objects: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs']] = None,
+                 max_concurrent_backfill_tasks: Optional[pulumi.Input[int]] = None,
                  max_concurrent_cdc_tasks: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs'] exclude_objects: MySQL objects to exclude from the stream.
                Structure is documented below.
         :param pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs'] include_objects: MySQL objects to retrieve from the source.
                Structure is documented below.
+        :param pulumi.Input[int] max_concurrent_backfill_tasks: Maximum number of concurrent backfill tasks. The number should be non negative.
+               If not set (or set to 0), the system's default value will be used.
         :param pulumi.Input[int] max_concurrent_cdc_tasks: Maximum number of concurrent CDC tasks. The number should be non negative.
                If not set (or set to 0), the system's default value will be used.
         """
@@ -1997,6 +2000,8 @@ class StreamSourceConfigMysqlSourceConfigArgs:
             pulumi.set(__self__, "exclude_objects", exclude_objects)
         if include_objects is not None:
             pulumi.set(__self__, "include_objects", include_objects)
+        if max_concurrent_backfill_tasks is not None:
+            pulumi.set(__self__, "max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
         if max_concurrent_cdc_tasks is not None:
             pulumi.set(__self__, "max_concurrent_cdc_tasks", max_concurrent_cdc_tasks)
 
@@ -2025,6 +2030,19 @@ class StreamSourceConfigMysqlSourceConfigArgs:
     @include_objects.setter
     def include_objects(self, value: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs']]):
         pulumi.set(self, "include_objects", value)
+
+    @property
+    @pulumi.getter(name="maxConcurrentBackfillTasks")
+    def max_concurrent_backfill_tasks(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of concurrent backfill tasks. The number should be non negative.
+        If not set (or set to 0), the system's default value will be used.
+        """
+        return pulumi.get(self, "max_concurrent_backfill_tasks")
+
+    @max_concurrent_backfill_tasks.setter
+    def max_concurrent_backfill_tasks(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_concurrent_backfill_tasks", value)
 
     @property
     @pulumi.getter(name="maxConcurrentCdcTasks")

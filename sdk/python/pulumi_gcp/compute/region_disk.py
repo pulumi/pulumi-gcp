@@ -20,8 +20,10 @@ class RegionDiskArgs:
                  async_primary_disk: Optional[pulumi.Input['RegionDiskAsyncPrimaryDiskArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input['RegionDiskDiskEncryptionKeyArgs']] = None,
+                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -50,8 +52,12 @@ class RegionDiskArgs:
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
+               Applicable only for bootable disks.
+               Structure is documented below.
         :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -100,6 +106,8 @@ class RegionDiskArgs:
             pulumi.set(__self__, "description", description)
         if disk_encryption_key is not None:
             pulumi.set(__self__, "disk_encryption_key", disk_encryption_key)
+        if guest_os_features is not None:
+            pulumi.set(__self__, "guest_os_features", guest_os_features)
         if interface is not None:
             warnings.warn("""This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""", DeprecationWarning)
             pulumi.log.warn("""interface is deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""")
@@ -107,6 +115,8 @@ class RegionDiskArgs:
             pulumi.set(__self__, "interface", interface)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if licenses is not None:
+            pulumi.set(__self__, "licenses", licenses)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if physical_block_size_bytes is not None:
@@ -188,6 +198,20 @@ class RegionDiskArgs:
         pulumi.set(self, "disk_encryption_key", value)
 
     @property
+    @pulumi.getter(name="guestOsFeatures")
+    def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]]:
+        """
+        A list of features to enable on the guest operating system.
+        Applicable only for bootable disks.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "guest_os_features")
+
+    @guest_os_features.setter
+    def guest_os_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]]):
+        pulumi.set(self, "guest_os_features", value)
+
+    @property
     @pulumi.getter
     def interface(self) -> Optional[pulumi.Input[str]]:
         """
@@ -210,6 +234,18 @@ class RegionDiskArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def licenses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Any applicable license URI.
+        """
+        return pulumi.get(self, "licenses")
+
+    @licenses.setter
+    def licenses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "licenses", value)
 
     @property
     @pulumi.getter
@@ -358,11 +394,13 @@ class _RegionDiskState:
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input['RegionDiskDiskEncryptionKeyArgs']] = None,
+                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  last_attach_timestamp: Optional[pulumi.Input[str]] = None,
                  last_detach_timestamp: Optional[pulumi.Input[str]] = None,
+                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -393,12 +431,16 @@ class _RegionDiskState:
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
+               Applicable only for bootable disks.
+               Structure is documented below.
         :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
                internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[str] last_attach_timestamp: Last attach timestamp in RFC3339 text format.
         :param pulumi.Input[str] last_detach_timestamp: Last detach timestamp in RFC3339 text format.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -464,6 +506,8 @@ class _RegionDiskState:
             pulumi.set(__self__, "description", description)
         if disk_encryption_key is not None:
             pulumi.set(__self__, "disk_encryption_key", disk_encryption_key)
+        if guest_os_features is not None:
+            pulumi.set(__self__, "guest_os_features", guest_os_features)
         if interface is not None:
             warnings.warn("""This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""", DeprecationWarning)
             pulumi.log.warn("""interface is deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""")
@@ -477,6 +521,8 @@ class _RegionDiskState:
             pulumi.set(__self__, "last_attach_timestamp", last_attach_timestamp)
         if last_detach_timestamp is not None:
             pulumi.set(__self__, "last_detach_timestamp", last_detach_timestamp)
+        if licenses is not None:
+            pulumi.set(__self__, "licenses", licenses)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if physical_block_size_bytes is not None:
@@ -565,6 +611,20 @@ class _RegionDiskState:
         pulumi.set(self, "disk_encryption_key", value)
 
     @property
+    @pulumi.getter(name="guestOsFeatures")
+    def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]]:
+        """
+        A list of features to enable on the guest operating system.
+        Applicable only for bootable disks.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "guest_os_features")
+
+    @guest_os_features.setter
+    def guest_os_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionDiskGuestOsFeatureArgs']]]]):
+        pulumi.set(self, "guest_os_features", value)
+
+    @property
     @pulumi.getter
     def interface(self) -> Optional[pulumi.Input[str]]:
         """
@@ -624,6 +684,18 @@ class _RegionDiskState:
     @last_detach_timestamp.setter
     def last_detach_timestamp(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "last_detach_timestamp", value)
+
+    @property
+    @pulumi.getter
+    def licenses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Any applicable license URI.
+        """
+        return pulumi.get(self, "licenses")
+
+    @licenses.setter
+    def licenses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "licenses", value)
 
     @property
     @pulumi.getter
@@ -844,8 +916,10 @@ class RegionDisk(pulumi.CustomResource):
                  async_primary_disk: Optional[pulumi.Input[pulumi.InputType['RegionDiskAsyncPrimaryDiskArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['RegionDiskDiskEncryptionKeyArgs']]] = None,
+                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionDiskGuestOsFeatureArgs']]]]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -936,6 +1010,33 @@ class RegionDisk(pulumi.CustomResource):
             ],
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Region Disk Features
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        regiondisk = gcp.compute.RegionDisk("regiondisk",
+            guest_os_features=[
+                gcp.compute.RegionDiskGuestOsFeatureArgs(
+                    type="SECURE_BOOT",
+                ),
+                gcp.compute.RegionDiskGuestOsFeatureArgs(
+                    type="MULTI_IP_SUBNET",
+                ),
+                gcp.compute.RegionDiskGuestOsFeatureArgs(
+                    type="WINDOWS",
+                ),
+            ],
+            licenses=["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
+            physical_block_size_bytes=4096,
+            region="us-central1",
+            replica_zones=[
+                "us-central1-a",
+                "us-central1-f",
+            ],
+            type="pd-ssd")
+        ```
 
         ## Import
 
@@ -972,8 +1073,12 @@ class RegionDisk(pulumi.CustomResource):
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionDiskGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
+               Applicable only for bootable disks.
+               Structure is documented below.
         :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -1104,6 +1209,33 @@ class RegionDisk(pulumi.CustomResource):
             ],
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Region Disk Features
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        regiondisk = gcp.compute.RegionDisk("regiondisk",
+            guest_os_features=[
+                gcp.compute.RegionDiskGuestOsFeatureArgs(
+                    type="SECURE_BOOT",
+                ),
+                gcp.compute.RegionDiskGuestOsFeatureArgs(
+                    type="MULTI_IP_SUBNET",
+                ),
+                gcp.compute.RegionDiskGuestOsFeatureArgs(
+                    type="WINDOWS",
+                ),
+            ],
+            licenses=["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
+            physical_block_size_bytes=4096,
+            region="us-central1",
+            replica_zones=[
+                "us-central1-a",
+                "us-central1-f",
+            ],
+            type="pd-ssd")
+        ```
 
         ## Import
 
@@ -1143,8 +1275,10 @@ class RegionDisk(pulumi.CustomResource):
                  async_primary_disk: Optional[pulumi.Input[pulumi.InputType['RegionDiskAsyncPrimaryDiskArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['RegionDiskDiskEncryptionKeyArgs']]] = None,
+                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionDiskGuestOsFeatureArgs']]]]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -1167,11 +1301,13 @@ class RegionDisk(pulumi.CustomResource):
             __props__.__dict__["async_primary_disk"] = async_primary_disk
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_encryption_key"] = disk_encryption_key
+            __props__.__dict__["guest_os_features"] = guest_os_features
             if interface is not None and not opts.urn:
                 warnings.warn("""This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""", DeprecationWarning)
                 pulumi.log.warn("""interface is deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""")
             __props__.__dict__["interface"] = interface
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["licenses"] = licenses
             __props__.__dict__["name"] = name
             __props__.__dict__["physical_block_size_bytes"] = physical_block_size_bytes
             __props__.__dict__["project"] = project
@@ -1206,11 +1342,13 @@ class RegionDisk(pulumi.CustomResource):
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['RegionDiskDiskEncryptionKeyArgs']]] = None,
+            guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionDiskGuestOsFeatureArgs']]]]] = None,
             interface: Optional[pulumi.Input[str]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             last_attach_timestamp: Optional[pulumi.Input[str]] = None,
             last_detach_timestamp: Optional[pulumi.Input[str]] = None,
+            licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -1246,12 +1384,16 @@ class RegionDisk(pulumi.CustomResource):
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionDiskGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
+               Applicable only for bootable disks.
+               Structure is documented below.
         :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
                internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[str] last_attach_timestamp: Last attach timestamp in RFC3339 text format.
         :param pulumi.Input[str] last_detach_timestamp: Last detach timestamp in RFC3339 text format.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -1317,11 +1459,13 @@ class RegionDisk(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_encryption_key"] = disk_encryption_key
+        __props__.__dict__["guest_os_features"] = guest_os_features
         __props__.__dict__["interface"] = interface
         __props__.__dict__["label_fingerprint"] = label_fingerprint
         __props__.__dict__["labels"] = labels
         __props__.__dict__["last_attach_timestamp"] = last_attach_timestamp
         __props__.__dict__["last_detach_timestamp"] = last_detach_timestamp
+        __props__.__dict__["licenses"] = licenses
         __props__.__dict__["name"] = name
         __props__.__dict__["physical_block_size_bytes"] = physical_block_size_bytes
         __props__.__dict__["project"] = project
@@ -1381,6 +1525,16 @@ class RegionDisk(pulumi.CustomResource):
         return pulumi.get(self, "disk_encryption_key")
 
     @property
+    @pulumi.getter(name="guestOsFeatures")
+    def guest_os_features(self) -> pulumi.Output[Sequence['outputs.RegionDiskGuestOsFeature']]:
+        """
+        A list of features to enable on the guest operating system.
+        Applicable only for bootable disks.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "guest_os_features")
+
+    @property
     @pulumi.getter
     def interface(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1420,6 +1574,14 @@ class RegionDisk(pulumi.CustomResource):
         Last detach timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "last_detach_timestamp")
+
+    @property
+    @pulumi.getter
+    def licenses(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Any applicable license URI.
+        """
+        return pulumi.get(self, "licenses")
 
     @property
     @pulumi.getter

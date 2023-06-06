@@ -59,6 +59,7 @@ __all__ = [
     'DiskAsyncPrimaryDisk',
     'DiskAsyncReplicationSecondaryDisk',
     'DiskDiskEncryptionKey',
+    'DiskGuestOsFeature',
     'DiskIamBindingCondition',
     'DiskIamMemberCondition',
     'DiskSourceImageEncryptionKey',
@@ -242,6 +243,7 @@ __all__ = [
     'RegionCommitmentResource',
     'RegionDiskAsyncPrimaryDisk',
     'RegionDiskDiskEncryptionKey',
+    'RegionDiskGuestOsFeature',
     'RegionDiskIamBindingCondition',
     'RegionDiskIamMemberCondition',
     'RegionDiskSourceSnapshotEncryptionKey',
@@ -540,6 +542,7 @@ __all__ = [
     'GetBackendServiceSecuritySettingResult',
     'GetDiskAsyncPrimaryDiskResult',
     'GetDiskDiskEncryptionKeyResult',
+    'GetDiskGuestOsFeatureResult',
     'GetDiskSourceImageEncryptionKeyResult',
     'GetDiskSourceSnapshotEncryptionKeyResult',
     'GetForwardingRuleServiceDirectoryRegistrationResult',
@@ -4443,6 +4446,26 @@ class DiskDiskEncryptionKey(dict):
         encryption key that protects this resource.
         """
         return pulumi.get(self, "sha256")
+
+
+@pulumi.output_type
+class DiskGuestOsFeature(dict):
+    def __init__(__self__, *,
+                 type: str):
+        """
+        :param str type: The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+               Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`.
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+        Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -16408,6 +16431,26 @@ class RegionDiskDiskEncryptionKey(dict):
         encryption key that protects this resource.
         """
         return pulumi.get(self, "sha256")
+
+
+@pulumi.output_type
+class RegionDiskGuestOsFeature(dict):
+    def __init__(__self__, *,
+                 type: str):
+        """
+        :param str type: The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+               Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`.
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+        Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -37151,6 +37194,26 @@ class GetDiskDiskEncryptionKeyResult(dict):
     @pulumi.getter
     def sha256(self) -> str:
         return pulumi.get(self, "sha256")
+
+
+@pulumi.output_type
+class GetDiskGuestOsFeatureResult(dict):
+    def __init__(__self__, *,
+                 type: str):
+        """
+        :param str type: URL of the disk type resource describing which disk type to use to
+               create the disk.
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        URL of the disk type resource describing which disk type to use to
+        create the disk.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

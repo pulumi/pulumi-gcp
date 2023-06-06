@@ -1915,7 +1915,7 @@ func (o WorkstationConfigIamMemberConditionPtrOutput) Title() pulumi.StringPtrOu
 }
 
 type WorkstationConfigPersistentDirectory struct {
-	// PersistentDirectory backed by a Compute Engine regional persistent disk.
+	// A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
 	// Structure is documented below.
 	GcePd *WorkstationConfigPersistentDirectoryGcePd `pulumi:"gcePd"`
 	// Location of this directory in the running workstation.
@@ -1934,7 +1934,7 @@ type WorkstationConfigPersistentDirectoryInput interface {
 }
 
 type WorkstationConfigPersistentDirectoryArgs struct {
-	// PersistentDirectory backed by a Compute Engine regional persistent disk.
+	// A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
 	// Structure is documented below.
 	GcePd WorkstationConfigPersistentDirectoryGcePdPtrInput `pulumi:"gcePd"`
 	// Location of this directory in the running workstation.
@@ -1992,7 +1992,7 @@ func (o WorkstationConfigPersistentDirectoryOutput) ToWorkstationConfigPersisten
 	return o
 }
 
-// PersistentDirectory backed by a Compute Engine regional persistent disk.
+// A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
 // Structure is documented below.
 func (o WorkstationConfigPersistentDirectoryOutput) GcePd() WorkstationConfigPersistentDirectoryGcePdPtrOutput {
 	return o.ApplyT(func(v WorkstationConfigPersistentDirectory) *WorkstationConfigPersistentDirectoryGcePd {
@@ -2026,16 +2026,17 @@ func (o WorkstationConfigPersistentDirectoryArrayOutput) Index(i pulumi.IntInput
 }
 
 type WorkstationConfigPersistentDirectoryGcePd struct {
-	// Type of the disk to use.
+	// The type of the persistent disk for the home directory. Defaults to `pd-standard`.
 	DiskType *string `pulumi:"diskType"`
-	// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
+	// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if `sourceSnapshot` is set. Defaults to `ext4`.
 	FsType *string `pulumi:"fsType"`
-	// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+	// Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
 	// Possible values are: `DELETE`, `RETAIN`.
 	ReclaimPolicy *string `pulumi:"reclaimPolicy"`
-	// Size of the disk in GB. Must be empty if sourceSnapshot is set.
+	// The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if `sourceSnapshot` is set.
+	// Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the `diskType` must be `pd-balanced` or `pd-ssd`.
 	SizeGb *int `pulumi:"sizeGb"`
-	// The snapshot to use as the source for the disk. This can be the snapshot's `selfLink`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+	// Name of the snapshot to use as the source for the disk. This can be the snapshot's `selfLink`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
 	SourceSnapshot *string `pulumi:"sourceSnapshot"`
 }
 
@@ -2051,16 +2052,17 @@ type WorkstationConfigPersistentDirectoryGcePdInput interface {
 }
 
 type WorkstationConfigPersistentDirectoryGcePdArgs struct {
-	// Type of the disk to use.
+	// The type of the persistent disk for the home directory. Defaults to `pd-standard`.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
-	// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
+	// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if `sourceSnapshot` is set. Defaults to `ext4`.
 	FsType pulumi.StringPtrInput `pulumi:"fsType"`
-	// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+	// Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
 	// Possible values are: `DELETE`, `RETAIN`.
 	ReclaimPolicy pulumi.StringPtrInput `pulumi:"reclaimPolicy"`
-	// Size of the disk in GB. Must be empty if sourceSnapshot is set.
+	// The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if `sourceSnapshot` is set.
+	// Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the `diskType` must be `pd-balanced` or `pd-ssd`.
 	SizeGb pulumi.IntPtrInput `pulumi:"sizeGb"`
-	// The snapshot to use as the source for the disk. This can be the snapshot's `selfLink`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+	// Name of the snapshot to use as the source for the disk. This can be the snapshot's `selfLink`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
 	SourceSnapshot pulumi.StringPtrInput `pulumi:"sourceSnapshot"`
 }
 
@@ -2141,28 +2143,29 @@ func (o WorkstationConfigPersistentDirectoryGcePdOutput) ToWorkstationConfigPers
 	}).(WorkstationConfigPersistentDirectoryGcePdPtrOutput)
 }
 
-// Type of the disk to use.
+// The type of the persistent disk for the home directory. Defaults to `pd-standard`.
 func (o WorkstationConfigPersistentDirectoryGcePdOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkstationConfigPersistentDirectoryGcePd) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
-// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
+// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if `sourceSnapshot` is set. Defaults to `ext4`.
 func (o WorkstationConfigPersistentDirectoryGcePdOutput) FsType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkstationConfigPersistentDirectoryGcePd) *string { return v.FsType }).(pulumi.StringPtrOutput)
 }
 
-// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+// Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
 // Possible values are: `DELETE`, `RETAIN`.
 func (o WorkstationConfigPersistentDirectoryGcePdOutput) ReclaimPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkstationConfigPersistentDirectoryGcePd) *string { return v.ReclaimPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Size of the disk in GB. Must be empty if sourceSnapshot is set.
+// The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if `sourceSnapshot` is set.
+// Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the `diskType` must be `pd-balanced` or `pd-ssd`.
 func (o WorkstationConfigPersistentDirectoryGcePdOutput) SizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v WorkstationConfigPersistentDirectoryGcePd) *int { return v.SizeGb }).(pulumi.IntPtrOutput)
 }
 
-// The snapshot to use as the source for the disk. This can be the snapshot's `selfLink`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+// Name of the snapshot to use as the source for the disk. This can be the snapshot's `selfLink`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
 func (o WorkstationConfigPersistentDirectoryGcePdOutput) SourceSnapshot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkstationConfigPersistentDirectoryGcePd) *string { return v.SourceSnapshot }).(pulumi.StringPtrOutput)
 }
@@ -2191,7 +2194,7 @@ func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) Elem() WorkstationCo
 	}).(WorkstationConfigPersistentDirectoryGcePdOutput)
 }
 
-// Type of the disk to use.
+// The type of the persistent disk for the home directory. Defaults to `pd-standard`.
 func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkstationConfigPersistentDirectoryGcePd) *string {
 		if v == nil {
@@ -2201,7 +2204,7 @@ func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) DiskType() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
+// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if `sourceSnapshot` is set. Defaults to `ext4`.
 func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) FsType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkstationConfigPersistentDirectoryGcePd) *string {
 		if v == nil {
@@ -2211,7 +2214,7 @@ func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) FsType() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+// Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
 // Possible values are: `DELETE`, `RETAIN`.
 func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) ReclaimPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkstationConfigPersistentDirectoryGcePd) *string {
@@ -2222,7 +2225,8 @@ func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) ReclaimPolicy() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Size of the disk in GB. Must be empty if sourceSnapshot is set.
+// The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if `sourceSnapshot` is set.
+// Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the `diskType` must be `pd-balanced` or `pd-ssd`.
 func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) SizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WorkstationConfigPersistentDirectoryGcePd) *int {
 		if v == nil {
@@ -2232,7 +2236,7 @@ func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) SizeGb() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
-// The snapshot to use as the source for the disk. This can be the snapshot's `selfLink`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+// Name of the snapshot to use as the source for the disk. This can be the snapshot's `selfLink`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
 func (o WorkstationConfigPersistentDirectoryGcePdPtrOutput) SourceSnapshot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkstationConfigPersistentDirectoryGcePd) *string {
 		if v == nil {

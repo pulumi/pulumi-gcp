@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Dns.Inputs
         public Input<string> IpProtocol { get; set; } = null!;
 
         /// <summary>
-        /// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+        /// The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
         /// </summary>
         [Input("loadBalancerType", required: true)]
         public Input<string> LoadBalancerType { get; set; } = null!;

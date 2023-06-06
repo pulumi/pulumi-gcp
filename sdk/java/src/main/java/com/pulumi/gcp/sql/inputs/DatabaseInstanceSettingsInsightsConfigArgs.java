@@ -51,14 +51,14 @@ public final class DatabaseInstanceSettingsInsightsConfigArgs extends com.pulumi
     }
 
     /**
-     * Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+     * Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. Higher query lengths are more useful for analytical queries, but they also require more memory. Changing the query length requires you to restart the instance. You can still add tags to queries that exceed the length limit.
      * 
      */
     @Import(name="queryStringLength")
     private @Nullable Output<Integer> queryStringLength;
 
     /**
-     * @return Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+     * @return Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. Higher query lengths are more useful for analytical queries, but they also require more memory. Changing the query length requires you to restart the instance. You can still add tags to queries that exceed the length limit.
      * 
      */
     public Optional<Output<Integer>> queryStringLength() {
@@ -170,7 +170,7 @@ public final class DatabaseInstanceSettingsInsightsConfigArgs extends com.pulumi
         }
 
         /**
-         * @param queryStringLength Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+         * @param queryStringLength Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. Higher query lengths are more useful for analytical queries, but they also require more memory. Changing the query length requires you to restart the instance. You can still add tags to queries that exceed the length limit.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class DatabaseInstanceSettingsInsightsConfigArgs extends com.pulumi
         }
 
         /**
-         * @param queryStringLength Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+         * @param queryStringLength Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. Higher query lengths are more useful for analytical queries, but they also require more memory. Changing the query length requires you to restart the instance. You can still add tags to queries that exceed the length limit.
          * 
          * @return builder
          * 

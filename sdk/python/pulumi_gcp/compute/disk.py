@@ -19,9 +19,11 @@ class DiskArgs:
                  async_primary_disk: Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']] = None,
+                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  multi_writer: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
@@ -50,6 +52,9 @@ class DiskArgs:
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
+               Applicable only for bootable disks.
+               Structure is documented below.
         :param pulumi.Input[str] image: The image from which to initialize this disk. This can be
                one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
                `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -61,6 +66,7 @@ class DiskArgs:
                These images can be referred by family name here.
         :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[bool] multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -126,6 +132,8 @@ class DiskArgs:
             pulumi.set(__self__, "description", description)
         if disk_encryption_key is not None:
             pulumi.set(__self__, "disk_encryption_key", disk_encryption_key)
+        if guest_os_features is not None:
+            pulumi.set(__self__, "guest_os_features", guest_os_features)
         if image is not None:
             pulumi.set(__self__, "image", image)
         if interface is not None:
@@ -135,6 +143,8 @@ class DiskArgs:
             pulumi.set(__self__, "interface", interface)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if licenses is not None:
+            pulumi.set(__self__, "licenses", licenses)
         if multi_writer is not None:
             pulumi.set(__self__, "multi_writer", multi_writer)
         if name is not None:
@@ -209,6 +219,20 @@ class DiskArgs:
         pulumi.set(self, "disk_encryption_key", value)
 
     @property
+    @pulumi.getter(name="guestOsFeatures")
+    def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]]]:
+        """
+        A list of features to enable on the guest operating system.
+        Applicable only for bootable disks.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "guest_os_features")
+
+    @guest_os_features.setter
+    def guest_os_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]]]):
+        pulumi.set(self, "guest_os_features", value)
+
+    @property
     @pulumi.getter
     def image(self) -> Optional[pulumi.Input[str]]:
         """
@@ -251,6 +275,18 @@ class DiskArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def licenses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Any applicable license URI.
+        """
+        return pulumi.get(self, "licenses")
+
+    @licenses.setter
+    def licenses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "licenses", value)
 
     @property
     @pulumi.getter(name="multiWriter")
@@ -461,12 +497,14 @@ class _DiskState:
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']] = None,
+                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  last_attach_timestamp: Optional[pulumi.Input[str]] = None,
                  last_detach_timestamp: Optional[pulumi.Input[str]] = None,
+                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  multi_writer: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
@@ -501,6 +539,9 @@ class _DiskState:
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
+               Applicable only for bootable disks.
+               Structure is documented below.
         :param pulumi.Input[str] image: The image from which to initialize this disk. This can be
                one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
                `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -516,6 +557,7 @@ class _DiskState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[str] last_attach_timestamp: Last attach timestamp in RFC3339 text format.
         :param pulumi.Input[str] last_detach_timestamp: Last detach timestamp in RFC3339 text format.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[bool] multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -600,6 +642,8 @@ class _DiskState:
             pulumi.set(__self__, "description", description)
         if disk_encryption_key is not None:
             pulumi.set(__self__, "disk_encryption_key", disk_encryption_key)
+        if guest_os_features is not None:
+            pulumi.set(__self__, "guest_os_features", guest_os_features)
         if image is not None:
             pulumi.set(__self__, "image", image)
         if interface is not None:
@@ -615,6 +659,8 @@ class _DiskState:
             pulumi.set(__self__, "last_attach_timestamp", last_attach_timestamp)
         if last_detach_timestamp is not None:
             pulumi.set(__self__, "last_detach_timestamp", last_detach_timestamp)
+        if licenses is not None:
+            pulumi.set(__self__, "licenses", licenses)
         if multi_writer is not None:
             pulumi.set(__self__, "multi_writer", multi_writer)
         if name is not None:
@@ -711,6 +757,20 @@ class _DiskState:
         pulumi.set(self, "disk_encryption_key", value)
 
     @property
+    @pulumi.getter(name="guestOsFeatures")
+    def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]]]:
+        """
+        A list of features to enable on the guest operating system.
+        Applicable only for bootable disks.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "guest_os_features")
+
+    @guest_os_features.setter
+    def guest_os_features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]]]):
+        pulumi.set(self, "guest_os_features", value)
+
+    @property
     @pulumi.getter
     def image(self) -> Optional[pulumi.Input[str]]:
         """
@@ -790,6 +850,18 @@ class _DiskState:
     @last_detach_timestamp.setter
     def last_detach_timestamp(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "last_detach_timestamp", value)
+
+    @property
+    @pulumi.getter
+    def licenses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Any applicable license URI.
+        """
+        return pulumi.get(self, "licenses")
+
+    @licenses.setter
+    def licenses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "licenses", value)
 
     @property
     @pulumi.getter(name="multiWriter")
@@ -1073,9 +1145,11 @@ class Disk(pulumi.CustomResource):
                  async_primary_disk: Optional[pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArgs']]] = None,
+                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  multi_writer: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
@@ -1149,6 +1223,32 @@ class Disk(pulumi.CustomResource):
             physical_block_size_bytes=4096,
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Disk Features
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Disk("default",
+            guest_os_features=[
+                gcp.compute.DiskGuestOsFeatureArgs(
+                    type="SECURE_BOOT",
+                ),
+                gcp.compute.DiskGuestOsFeatureArgs(
+                    type="MULTI_IP_SUBNET",
+                ),
+                gcp.compute.DiskGuestOsFeatureArgs(
+                    type="WINDOWS",
+                ),
+            ],
+            labels={
+                "environment": "dev",
+            },
+            licenses=["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
+            physical_block_size_bytes=4096,
+            type="pd-ssd",
+            zone="us-central1-a")
+        ```
 
         ## Import
 
@@ -1185,6 +1285,9 @@ class Disk(pulumi.CustomResource):
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
+               Applicable only for bootable disks.
+               Structure is documented below.
         :param pulumi.Input[str] image: The image from which to initialize this disk. This can be
                one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
                `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -1196,6 +1299,7 @@ class Disk(pulumi.CustomResource):
                These images can be referred by family name here.
         :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[bool] multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -1320,6 +1424,32 @@ class Disk(pulumi.CustomResource):
             physical_block_size_bytes=4096,
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Disk Features
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Disk("default",
+            guest_os_features=[
+                gcp.compute.DiskGuestOsFeatureArgs(
+                    type="SECURE_BOOT",
+                ),
+                gcp.compute.DiskGuestOsFeatureArgs(
+                    type="MULTI_IP_SUBNET",
+                ),
+                gcp.compute.DiskGuestOsFeatureArgs(
+                    type="WINDOWS",
+                ),
+            ],
+            labels={
+                "environment": "dev",
+            },
+            licenses=["https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"],
+            physical_block_size_bytes=4096,
+            type="pd-ssd",
+            zone="us-central1-a")
+        ```
 
         ## Import
 
@@ -1359,9 +1489,11 @@ class Disk(pulumi.CustomResource):
                  async_primary_disk: Optional[pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArgs']]] = None,
+                 guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  multi_writer: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
@@ -1387,12 +1519,14 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["async_primary_disk"] = async_primary_disk
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_encryption_key"] = disk_encryption_key
+            __props__.__dict__["guest_os_features"] = guest_os_features
             __props__.__dict__["image"] = image
             if interface is not None and not opts.urn:
                 warnings.warn("""This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""", DeprecationWarning)
                 pulumi.log.warn("""interface is deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""")
             __props__.__dict__["interface"] = interface
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["licenses"] = licenses
             __props__.__dict__["multi_writer"] = multi_writer
             __props__.__dict__["name"] = name
             __props__.__dict__["physical_block_size_bytes"] = physical_block_size_bytes
@@ -1429,12 +1563,14 @@ class Disk(pulumi.CustomResource):
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArgs']]] = None,
+            guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]]] = None,
             image: Optional[pulumi.Input[str]] = None,
             interface: Optional[pulumi.Input[str]] = None,
             label_fingerprint: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             last_attach_timestamp: Optional[pulumi.Input[str]] = None,
             last_detach_timestamp: Optional[pulumi.Input[str]] = None,
+            licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             multi_writer: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
@@ -1474,6 +1610,9 @@ class Disk(pulumi.CustomResource):
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
+               Applicable only for bootable disks.
+               Structure is documented below.
         :param pulumi.Input[str] image: The image from which to initialize this disk. This can be
                one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
                `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -1489,6 +1628,7 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[str] last_attach_timestamp: Last attach timestamp in RFC3339 text format.
         :param pulumi.Input[str] last_detach_timestamp: Last detach timestamp in RFC3339 text format.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[bool] multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -1573,12 +1713,14 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_encryption_key"] = disk_encryption_key
+        __props__.__dict__["guest_os_features"] = guest_os_features
         __props__.__dict__["image"] = image
         __props__.__dict__["interface"] = interface
         __props__.__dict__["label_fingerprint"] = label_fingerprint
         __props__.__dict__["labels"] = labels
         __props__.__dict__["last_attach_timestamp"] = last_attach_timestamp
         __props__.__dict__["last_detach_timestamp"] = last_detach_timestamp
+        __props__.__dict__["licenses"] = licenses
         __props__.__dict__["multi_writer"] = multi_writer
         __props__.__dict__["name"] = name
         __props__.__dict__["physical_block_size_bytes"] = physical_block_size_bytes
@@ -1642,6 +1784,16 @@ class Disk(pulumi.CustomResource):
         return pulumi.get(self, "disk_encryption_key")
 
     @property
+    @pulumi.getter(name="guestOsFeatures")
+    def guest_os_features(self) -> pulumi.Output[Sequence['outputs.DiskGuestOsFeature']]:
+        """
+        A list of features to enable on the guest operating system.
+        Applicable only for bootable disks.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "guest_os_features")
+
+    @property
     @pulumi.getter
     def image(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1697,6 +1849,14 @@ class Disk(pulumi.CustomResource):
         Last detach timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "last_detach_timestamp")
+
+    @property
+    @pulumi.getter
+    def licenses(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Any applicable license URI.
+        """
+        return pulumi.get(self, "licenses")
 
     @property
     @pulumi.getter(name="multiWriter")

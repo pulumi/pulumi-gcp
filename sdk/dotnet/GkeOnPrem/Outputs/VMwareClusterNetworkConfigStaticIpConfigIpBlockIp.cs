@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
         /// <summary>
         /// Hostname of the machine. VM's name will be used if this field is empty.
         /// </summary>
-        public readonly string Hostname;
+        public readonly string? Hostname;
         /// <summary>
         /// IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
         /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
 
         [OutputConstructor]
         private VMwareClusterNetworkConfigStaticIpConfigIpBlockIp(
-            string hostname,
+            string? hostname,
 
             string ip)
         {

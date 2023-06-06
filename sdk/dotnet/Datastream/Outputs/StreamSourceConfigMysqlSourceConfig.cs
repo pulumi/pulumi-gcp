@@ -24,6 +24,11 @@ namespace Pulumi.Gcp.Datastream.Outputs
         /// </summary>
         public readonly Outputs.StreamSourceConfigMysqlSourceConfigIncludeObjects? IncludeObjects;
         /// <summary>
+        /// Maximum number of concurrent backfill tasks. The number should be non negative.
+        /// If not set (or set to 0), the system's default value will be used.
+        /// </summary>
+        public readonly int? MaxConcurrentBackfillTasks;
+        /// <summary>
         /// Maximum number of concurrent CDC tasks. The number should be non negative.
         /// If not set (or set to 0), the system's default value will be used.
         /// </summary>
@@ -35,10 +40,13 @@ namespace Pulumi.Gcp.Datastream.Outputs
 
             Outputs.StreamSourceConfigMysqlSourceConfigIncludeObjects? includeObjects,
 
+            int? maxConcurrentBackfillTasks,
+
             int? maxConcurrentCdcTasks)
         {
             ExcludeObjects = excludeObjects;
             IncludeObjects = includeObjects;
+            MaxConcurrentBackfillTasks = maxConcurrentBackfillTasks;
             MaxConcurrentCdcTasks = maxConcurrentCdcTasks;
         }
     }

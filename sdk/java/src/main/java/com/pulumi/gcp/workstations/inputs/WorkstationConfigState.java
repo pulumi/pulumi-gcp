@@ -175,6 +175,23 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * How long to wait before automatically stopping an instance that hasn&#39;t recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
+    @Import(name="idleTimeout")
+    private @Nullable Output<String> idleTimeout;
+
+    /**
+     * @return How long to wait before automatically stopping an instance that hasn&#39;t recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
+    public Optional<Output<String>> idleTimeout() {
+        return Optional.ofNullable(this.idleTimeout);
+    }
+
+    /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
      * 
      */
@@ -258,6 +275,23 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
+    @Import(name="runningTimeout")
+    private @Nullable Output<String> runningTimeout;
+
+    /**
+     * @return How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
+    public Optional<Output<String>> runningTimeout() {
+        return Optional.ofNullable(this.runningTimeout);
+    }
+
+    /**
      * The system-generated UID of the resource.
      * 
      */
@@ -314,11 +348,13 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
         this.encryptionKey = $.encryptionKey;
         this.etag = $.etag;
         this.host = $.host;
+        this.idleTimeout = $.idleTimeout;
         this.labels = $.labels;
         this.location = $.location;
         this.name = $.name;
         this.persistentDirectories = $.persistentDirectories;
         this.project = $.project;
+        this.runningTimeout = $.runningTimeout;
         this.uid = $.uid;
         this.workstationClusterId = $.workstationClusterId;
         this.workstationConfigId = $.workstationConfigId;
@@ -559,6 +595,29 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
         }
 
         /**
+         * @param idleTimeout How long to wait before automatically stopping an instance that hasn&#39;t recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+         * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idleTimeout(@Nullable Output<String> idleTimeout) {
+            $.idleTimeout = idleTimeout;
+            return this;
+        }
+
+        /**
+         * @param idleTimeout How long to wait before automatically stopping an instance that hasn&#39;t recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+         * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder idleTimeout(String idleTimeout) {
+            return idleTimeout(Output.of(idleTimeout));
+        }
+
+        /**
          * @param labels Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
          * 
          * @return builder
@@ -680,6 +739,29 @@ public final class WorkstationConfigState extends com.pulumi.resources.ResourceA
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param runningTimeout How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+         * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runningTimeout(@Nullable Output<String> runningTimeout) {
+            $.runningTimeout = runningTimeout;
+            return this;
+        }
+
+        /**
+         * @param runningTimeout How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+         * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder runningTimeout(String runningTimeout) {
+            return runningTimeout(Output.of(runningTimeout));
         }
 
         /**

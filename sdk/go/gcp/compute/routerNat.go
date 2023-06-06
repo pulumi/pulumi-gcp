@@ -74,6 +74,73 @@ import (
 //	}
 //
 // ```
+// ### Router Nat Manual Ips
+//
+// ```go
+// package main
+//
+// import (
+//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// net, err := compute.NewNetwork(ctx, "net", nil)
+// if err != nil {
+// return err
+// }
+// subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
+// Network: net.ID(),
+// IpCidrRange: pulumi.String("10.0.0.0/16"),
+// Region: pulumi.String("us-central1"),
+// })
+// if err != nil {
+// return err
+// }
+// router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
+// Region: subnet.Region,
+// Network: net.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// var address []*compute.Address
+//
+//	for index := 0; index < 2; index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := compute.NewAddress(ctx, fmt.Sprintf("address-%v", key0), &compute.AddressArgs{
+// Region: subnet.Region,
+// })
+// if err != nil {
+// return err
+// }
+// address = append(address, __res)
+// }
+// _, err = compute.NewRouterNat(ctx, "natManual", &compute.RouterNatArgs{
+// Router: router.Name,
+// Region: router.Region,
+// NatIpAllocateOption: pulumi.String("MANUAL_ONLY"),
+// NatIps: %!v(PANIC=Format method: fatal: A failure has occurred: unlowered splat expression @ #-resources-gcp:compute-routerNat:RouterNat.pp:22,27-45),
+// SourceSubnetworkIpRangesToNat: pulumi.String("LIST_OF_SUBNETWORKS"),
+// Subnetworks: compute.RouterNatSubnetworkArray{
+// &compute.RouterNatSubnetworkArgs{
+// Name: subnet.ID(),
+// SourceIpRangesToNats: pulumi.StringArray{
+// pulumi.String("ALL_IP_RANGES"),
+// },
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
 // ### Router Nat Rules
 //
 // ```go

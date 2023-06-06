@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.DiskAsyncPrimaryDiskArgs;
 import com.pulumi.gcp.compute.inputs.DiskDiskEncryptionKeyArgs;
+import com.pulumi.gcp.compute.inputs.DiskGuestOsFeatureArgs;
 import com.pulumi.gcp.compute.inputs.DiskSourceImageEncryptionKeyArgs;
 import com.pulumi.gcp.compute.inputs.DiskSourceSnapshotEncryptionKeyArgs;
 import java.lang.Boolean;
@@ -89,6 +90,25 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A list of features to enable on the guest operating system.
+     * Applicable only for bootable disks.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="guestOsFeatures")
+    private @Nullable Output<List<DiskGuestOsFeatureArgs>> guestOsFeatures;
+
+    /**
+     * @return A list of features to enable on the guest operating system.
+     * Applicable only for bootable disks.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<DiskGuestOsFeatureArgs>>> guestOsFeatures() {
+        return Optional.ofNullable(this.guestOsFeatures);
+    }
+
+    /**
      * The image from which to initialize this disk. This can be
      * one of: the image&#39;s `self_link`, `projects/{project}/global/images/{image}`,
      * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -155,6 +175,21 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Map<String,String>>> labels() {
         return Optional.ofNullable(this.labels);
+    }
+
+    /**
+     * Any applicable license URI.
+     * 
+     */
+    @Import(name="licenses")
+    private @Nullable Output<List<String>> licenses;
+
+    /**
+     * @return Any applicable license URI.
+     * 
+     */
+    public Optional<Output<List<String>>> licenses() {
+        return Optional.ofNullable(this.licenses);
     }
 
     /**
@@ -446,9 +481,11 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         this.asyncPrimaryDisk = $.asyncPrimaryDisk;
         this.description = $.description;
         this.diskEncryptionKey = $.diskEncryptionKey;
+        this.guestOsFeatures = $.guestOsFeatures;
         this.image = $.image;
         this.interface_ = $.interface_;
         this.labels = $.labels;
+        this.licenses = $.licenses;
         this.multiWriter = $.multiWriter;
         this.name = $.name;
         this.physicalBlockSizeBytes = $.physicalBlockSizeBytes;
@@ -566,6 +603,43 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param guestOsFeatures A list of features to enable on the guest operating system.
+         * Applicable only for bootable disks.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder guestOsFeatures(@Nullable Output<List<DiskGuestOsFeatureArgs>> guestOsFeatures) {
+            $.guestOsFeatures = guestOsFeatures;
+            return this;
+        }
+
+        /**
+         * @param guestOsFeatures A list of features to enable on the guest operating system.
+         * Applicable only for bootable disks.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder guestOsFeatures(List<DiskGuestOsFeatureArgs> guestOsFeatures) {
+            return guestOsFeatures(Output.of(guestOsFeatures));
+        }
+
+        /**
+         * @param guestOsFeatures A list of features to enable on the guest operating system.
+         * Applicable only for bootable disks.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder guestOsFeatures(DiskGuestOsFeatureArgs... guestOsFeatures) {
+            return guestOsFeatures(List.of(guestOsFeatures));
+        }
+
+        /**
          * @param image The image from which to initialize this disk. This can be
          * one of: the image&#39;s `self_link`, `projects/{project}/global/images/{image}`,
          * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -650,6 +724,37 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder labels(Map<String,String> labels) {
             return labels(Output.of(labels));
+        }
+
+        /**
+         * @param licenses Any applicable license URI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder licenses(@Nullable Output<List<String>> licenses) {
+            $.licenses = licenses;
+            return this;
+        }
+
+        /**
+         * @param licenses Any applicable license URI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder licenses(List<String> licenses) {
+            return licenses(Output.of(licenses));
+        }
+
+        /**
+         * @param licenses Any applicable license URI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder licenses(String... licenses) {
+            return licenses(List.of(licenses));
         }
 
         /**

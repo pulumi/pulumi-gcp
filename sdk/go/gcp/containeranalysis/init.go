@@ -23,6 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:containeranalysis/note:Note":
 		r = &Note{}
+	case "gcp:containeranalysis/noteIamBinding:NoteIamBinding":
+		r = &NoteIamBinding{}
+	case "gcp:containeranalysis/noteIamMember:NoteIamMember":
+		r = &NoteIamMember{}
+	case "gcp:containeranalysis/noteIamPolicy:NoteIamPolicy":
+		r = &NoteIamPolicy{}
 	case "gcp:containeranalysis/occurence:Occurence":
 		r = &Occurence{}
 	default:
@@ -41,6 +47,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"containeranalysis/note",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"containeranalysis/noteIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"containeranalysis/noteIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"containeranalysis/noteIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

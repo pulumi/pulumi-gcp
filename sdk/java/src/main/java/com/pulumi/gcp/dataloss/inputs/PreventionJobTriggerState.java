@@ -142,6 +142,12 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
      * Name of a BigQuery field to be returned with the findings.
      * 
      * (Required)
+     * Name describing the field to which scanning is limited.
+     * 
+     * (Required)
+     * Name describing the field excluded from scanning.
+     * 
+     * (Required)
      * Name describing the field.
      * 
      */
@@ -185,6 +191,12 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
      * 
      * (Required)
      * Name of a BigQuery field to be returned with the findings.
+     * 
+     * (Required)
+     * Name describing the field to which scanning is limited.
+     * 
+     * (Required)
+     * Name describing the field excluded from scanning.
      * 
      * (Required)
      * Name describing the field.
@@ -449,6 +461,12 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
          * Name of a BigQuery field to be returned with the findings.
          * 
          * (Required)
+         * Name describing the field to which scanning is limited.
+         * 
+         * (Required)
+         * Name describing the field excluded from scanning.
+         * 
+         * (Required)
          * Name describing the field.
          * 
          * @return builder
@@ -496,6 +514,12 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
          * 
          * (Required)
          * Name of a BigQuery field to be returned with the findings.
+         * 
+         * (Required)
+         * Name describing the field to which scanning is limited.
+         * 
+         * (Required)
+         * Name describing the field excluded from scanning.
          * 
          * (Required)
          * Name describing the field.

@@ -37,9 +37,7 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * Container defines the unit of execution for this Revision.
-     * In the context of a Revision, we disallow a number of the fields of
-     * this Container, including: name, ports, and volumeMounts.
+     * Containers defines the unit of execution for this Revision.
      * Structure is documented below.
      * 
      */
@@ -47,9 +45,7 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
     private @Nullable Output<List<ServiceTemplateSpecContainerArgs>> containers;
 
     /**
-     * @return Container defines the unit of execution for this Revision.
-     * In the context of a Revision, we disallow a number of the fields of
-     * this Container, including: name, ports, and volumeMounts.
+     * @return Containers defines the unit of execution for this Revision.
      * Structure is documented below.
      * 
      */
@@ -194,9 +190,7 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param containers Container defines the unit of execution for this Revision.
-         * In the context of a Revision, we disallow a number of the fields of
-         * this Container, including: name, ports, and volumeMounts.
+         * @param containers Containers defines the unit of execution for this Revision.
          * Structure is documented below.
          * 
          * @return builder
@@ -208,9 +202,7 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param containers Container defines the unit of execution for this Revision.
-         * In the context of a Revision, we disallow a number of the fields of
-         * this Container, including: name, ports, and volumeMounts.
+         * @param containers Containers defines the unit of execution for this Revision.
          * Structure is documented below.
          * 
          * @return builder
@@ -221,9 +213,7 @@ public final class ServiceTemplateSpecArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param containers Container defines the unit of execution for this Revision.
-         * In the context of a Revision, we disallow a number of the fields of
-         * this Container, including: name, ports, and volumeMounts.
+         * @param containers Containers defines the unit of execution for this Revision.
          * Structure is documented below.
          * 
          * @return builder

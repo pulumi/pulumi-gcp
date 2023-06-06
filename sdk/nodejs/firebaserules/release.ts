@@ -38,11 +38,15 @@ import * as utilities from "../utilities";
  * const bucketBucket = new gcp.storage.Bucket("bucketBucket", {
  *     project: "my-project-name",
  *     location: "us-west1",
+ * }, {
+ *     provider: google_beta,
  * });
  * // Make the Storage bucket accessible for Firebase SDKs, authentication, and Firebase Security Rules.
  * const bucketStorageBucket = new gcp.firebase.StorageBucket("bucketStorageBucket", {
  *     project: "my-project-name",
  *     bucketId: bucketBucket.name,
+ * }, {
+ *     provider: google_beta,
  * });
  * // Create a ruleset of Firebase Security Rules from a local file.
  * const storage = new gcp.firebaserules.Ruleset("storage", {
@@ -54,11 +58,14 @@ import * as utilities from "../utilities";
  *         }],
  *     },
  * }, {
+ *     provider: google_beta,
  *     dependsOn: [bucketStorageBucket],
  * });
  * const primary = new gcp.firebaserules.Release("primary", {
  *     rulesetName: pulumi.interpolate`projects/my-project-name/rulesets/${storage.name}`,
  *     project: "my-project-name",
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *

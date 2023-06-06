@@ -6,6 +6,9 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .note import *
+from .note_iam_binding import *
+from .note_iam_member import *
+from .note_iam_policy import *
 from .occurence import *
 from ._inputs import *
 from . import outputs

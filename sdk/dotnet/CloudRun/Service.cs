@@ -303,6 +303,116 @@ namespace Pulumi.Gcp.CloudRun
     /// 
     /// });
     /// ```
+    /// ### Cloud Run Service Multicontainer
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.CloudRun.Service("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
+    ///         {
+    ///             Annotations = 
+    ///             {
+    ///                 { "run.googleapis.com/launch-stage", "BETA" },
+    ///             },
+    ///         },
+    ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Metadata = new Gcp.CloudRun.Inputs.ServiceTemplateMetadataArgs
+    ///             {
+    ///                 Annotations = 
+    ///                 {
+    ///                     { "run.googleapis.com/container-dependencies", JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         ["hello-1"] = new[]
+    ///                         {
+    ///                             "hello-2",
+    ///                         },
+    ///                     }) },
+    ///                 },
+    ///             },
+    ///             Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///             {
+    ///                 Containers = new[]
+    ///                 {
+    ///                     new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                     {
+    ///                         Name = "hello-1",
+    ///                         Ports = new[]
+    ///                         {
+    ///                             new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerPortArgs
+    ///                             {
+    ///                                 ContainerPort = 8080,
+    ///                             },
+    ///                         },
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                         VolumeMounts = new[]
+    ///                         {
+    ///                             new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerVolumeMountArgs
+    ///                             {
+    ///                                 Name = "shared-volume",
+    ///                                 MountPath = "/mnt/shared",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                     {
+    ///                         Name = "hello-2",
+    ///                         Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                         Envs = new[]
+    ///                         {
+    ///                             new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerEnvArgs
+    ///                             {
+    ///                                 Name = "PORT",
+    ///                                 Value = "8081",
+    ///                             },
+    ///                         },
+    ///                         StartupProbe = new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerStartupProbeArgs
+    ///                         {
+    ///                             HttpGet = new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerStartupProbeHttpGetArgs
+    ///                             {
+    ///                                 Port = 8081,
+    ///                             },
+    ///                         },
+    ///                         VolumeMounts = new[]
+    ///                         {
+    ///                             new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerVolumeMountArgs
+    ///                             {
+    ///                                 Name = "shared-volume",
+    ///                                 MountPath = "/mnt/shared",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Volumes = new[]
+    ///                 {
+    ///                     new Gcp.CloudRun.Inputs.ServiceTemplateSpecVolumeArgs
+    ///                     {
+    ///                         Name = "shared-volume",
+    ///                         EmptyDir = new Gcp.CloudRun.Inputs.ServiceTemplateSpecVolumeEmptyDirArgs
+    ///                         {
+    ///                             Medium = "Memory",
+    ///                             SizeLimit = "128Mi",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

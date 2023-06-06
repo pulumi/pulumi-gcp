@@ -17,6 +17,10 @@ import (
 // * `bigqueryanalyticshub.DataExchangeIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the dataexchange are preserved.
 // * `bigqueryanalyticshub.DataExchangeIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the dataexchange are preserved.
 //
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `bigqueryanalyticshub.DataExchangeIamPolicy`: Retrieves the IAM policy for the dataexchange
+//
 // > **Note:** `bigqueryanalyticshub.DataExchangeIamPolicy` **cannot** be used in conjunction with `bigqueryanalyticshub.DataExchangeIamBinding` and `bigqueryanalyticshub.DataExchangeIamMember` or they will fight over what your policy should be.
 //
 // > **Note:** `bigqueryanalyticshub.DataExchangeIamBinding` resources **can be** used in conjunction with `bigqueryanalyticshub.DataExchangeIamMember` resources **only if** they do not grant privilege to the same role.

@@ -328,6 +328,332 @@ func (o NoteAttestationAuthorityHintPtrOutput) HumanReadableName() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+type NoteIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// NoteIamBindingConditionInput is an input type that accepts NoteIamBindingConditionArgs and NoteIamBindingConditionOutput values.
+// You can construct a concrete instance of `NoteIamBindingConditionInput` via:
+//
+//	NoteIamBindingConditionArgs{...}
+type NoteIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToNoteIamBindingConditionOutput() NoteIamBindingConditionOutput
+	ToNoteIamBindingConditionOutputWithContext(context.Context) NoteIamBindingConditionOutput
+}
+
+type NoteIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (NoteIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NoteIamBindingCondition)(nil)).Elem()
+}
+
+func (i NoteIamBindingConditionArgs) ToNoteIamBindingConditionOutput() NoteIamBindingConditionOutput {
+	return i.ToNoteIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i NoteIamBindingConditionArgs) ToNoteIamBindingConditionOutputWithContext(ctx context.Context) NoteIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NoteIamBindingConditionOutput)
+}
+
+func (i NoteIamBindingConditionArgs) ToNoteIamBindingConditionPtrOutput() NoteIamBindingConditionPtrOutput {
+	return i.ToNoteIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i NoteIamBindingConditionArgs) ToNoteIamBindingConditionPtrOutputWithContext(ctx context.Context) NoteIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NoteIamBindingConditionOutput).ToNoteIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// NoteIamBindingConditionPtrInput is an input type that accepts NoteIamBindingConditionArgs, NoteIamBindingConditionPtr and NoteIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `NoteIamBindingConditionPtrInput` via:
+//
+//	        NoteIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type NoteIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToNoteIamBindingConditionPtrOutput() NoteIamBindingConditionPtrOutput
+	ToNoteIamBindingConditionPtrOutputWithContext(context.Context) NoteIamBindingConditionPtrOutput
+}
+
+type noteIamBindingConditionPtrType NoteIamBindingConditionArgs
+
+func NoteIamBindingConditionPtr(v *NoteIamBindingConditionArgs) NoteIamBindingConditionPtrInput {
+	return (*noteIamBindingConditionPtrType)(v)
+}
+
+func (*noteIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NoteIamBindingCondition)(nil)).Elem()
+}
+
+func (i *noteIamBindingConditionPtrType) ToNoteIamBindingConditionPtrOutput() NoteIamBindingConditionPtrOutput {
+	return i.ToNoteIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *noteIamBindingConditionPtrType) ToNoteIamBindingConditionPtrOutputWithContext(ctx context.Context) NoteIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NoteIamBindingConditionPtrOutput)
+}
+
+type NoteIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (NoteIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NoteIamBindingCondition)(nil)).Elem()
+}
+
+func (o NoteIamBindingConditionOutput) ToNoteIamBindingConditionOutput() NoteIamBindingConditionOutput {
+	return o
+}
+
+func (o NoteIamBindingConditionOutput) ToNoteIamBindingConditionOutputWithContext(ctx context.Context) NoteIamBindingConditionOutput {
+	return o
+}
+
+func (o NoteIamBindingConditionOutput) ToNoteIamBindingConditionPtrOutput() NoteIamBindingConditionPtrOutput {
+	return o.ToNoteIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o NoteIamBindingConditionOutput) ToNoteIamBindingConditionPtrOutputWithContext(ctx context.Context) NoteIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NoteIamBindingCondition) *NoteIamBindingCondition {
+		return &v
+	}).(NoteIamBindingConditionPtrOutput)
+}
+
+func (o NoteIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NoteIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o NoteIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v NoteIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o NoteIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v NoteIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type NoteIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (NoteIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NoteIamBindingCondition)(nil)).Elem()
+}
+
+func (o NoteIamBindingConditionPtrOutput) ToNoteIamBindingConditionPtrOutput() NoteIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o NoteIamBindingConditionPtrOutput) ToNoteIamBindingConditionPtrOutputWithContext(ctx context.Context) NoteIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o NoteIamBindingConditionPtrOutput) Elem() NoteIamBindingConditionOutput {
+	return o.ApplyT(func(v *NoteIamBindingCondition) NoteIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret NoteIamBindingCondition
+		return ret
+	}).(NoteIamBindingConditionOutput)
+}
+
+func (o NoteIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NoteIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NoteIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NoteIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NoteIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NoteIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type NoteIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// NoteIamMemberConditionInput is an input type that accepts NoteIamMemberConditionArgs and NoteIamMemberConditionOutput values.
+// You can construct a concrete instance of `NoteIamMemberConditionInput` via:
+//
+//	NoteIamMemberConditionArgs{...}
+type NoteIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToNoteIamMemberConditionOutput() NoteIamMemberConditionOutput
+	ToNoteIamMemberConditionOutputWithContext(context.Context) NoteIamMemberConditionOutput
+}
+
+type NoteIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (NoteIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NoteIamMemberCondition)(nil)).Elem()
+}
+
+func (i NoteIamMemberConditionArgs) ToNoteIamMemberConditionOutput() NoteIamMemberConditionOutput {
+	return i.ToNoteIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i NoteIamMemberConditionArgs) ToNoteIamMemberConditionOutputWithContext(ctx context.Context) NoteIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NoteIamMemberConditionOutput)
+}
+
+func (i NoteIamMemberConditionArgs) ToNoteIamMemberConditionPtrOutput() NoteIamMemberConditionPtrOutput {
+	return i.ToNoteIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i NoteIamMemberConditionArgs) ToNoteIamMemberConditionPtrOutputWithContext(ctx context.Context) NoteIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NoteIamMemberConditionOutput).ToNoteIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// NoteIamMemberConditionPtrInput is an input type that accepts NoteIamMemberConditionArgs, NoteIamMemberConditionPtr and NoteIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `NoteIamMemberConditionPtrInput` via:
+//
+//	        NoteIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type NoteIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToNoteIamMemberConditionPtrOutput() NoteIamMemberConditionPtrOutput
+	ToNoteIamMemberConditionPtrOutputWithContext(context.Context) NoteIamMemberConditionPtrOutput
+}
+
+type noteIamMemberConditionPtrType NoteIamMemberConditionArgs
+
+func NoteIamMemberConditionPtr(v *NoteIamMemberConditionArgs) NoteIamMemberConditionPtrInput {
+	return (*noteIamMemberConditionPtrType)(v)
+}
+
+func (*noteIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NoteIamMemberCondition)(nil)).Elem()
+}
+
+func (i *noteIamMemberConditionPtrType) ToNoteIamMemberConditionPtrOutput() NoteIamMemberConditionPtrOutput {
+	return i.ToNoteIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *noteIamMemberConditionPtrType) ToNoteIamMemberConditionPtrOutputWithContext(ctx context.Context) NoteIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NoteIamMemberConditionPtrOutput)
+}
+
+type NoteIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (NoteIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NoteIamMemberCondition)(nil)).Elem()
+}
+
+func (o NoteIamMemberConditionOutput) ToNoteIamMemberConditionOutput() NoteIamMemberConditionOutput {
+	return o
+}
+
+func (o NoteIamMemberConditionOutput) ToNoteIamMemberConditionOutputWithContext(ctx context.Context) NoteIamMemberConditionOutput {
+	return o
+}
+
+func (o NoteIamMemberConditionOutput) ToNoteIamMemberConditionPtrOutput() NoteIamMemberConditionPtrOutput {
+	return o.ToNoteIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o NoteIamMemberConditionOutput) ToNoteIamMemberConditionPtrOutputWithContext(ctx context.Context) NoteIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NoteIamMemberCondition) *NoteIamMemberCondition {
+		return &v
+	}).(NoteIamMemberConditionPtrOutput)
+}
+
+func (o NoteIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NoteIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o NoteIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v NoteIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o NoteIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v NoteIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type NoteIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (NoteIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NoteIamMemberCondition)(nil)).Elem()
+}
+
+func (o NoteIamMemberConditionPtrOutput) ToNoteIamMemberConditionPtrOutput() NoteIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o NoteIamMemberConditionPtrOutput) ToNoteIamMemberConditionPtrOutputWithContext(ctx context.Context) NoteIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o NoteIamMemberConditionPtrOutput) Elem() NoteIamMemberConditionOutput {
+	return o.ApplyT(func(v *NoteIamMemberCondition) NoteIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret NoteIamMemberCondition
+		return ret
+	}).(NoteIamMemberConditionOutput)
+}
+
+func (o NoteIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NoteIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NoteIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NoteIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NoteIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NoteIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type NoteRelatedUrl struct {
 	// Label to describe usage of the URL
 	Label *string `pulumi:"label"`
@@ -776,6 +1102,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NoteAttestationAuthorityPtrInput)(nil)).Elem(), NoteAttestationAuthorityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NoteAttestationAuthorityHintInput)(nil)).Elem(), NoteAttestationAuthorityHintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NoteAttestationAuthorityHintPtrInput)(nil)).Elem(), NoteAttestationAuthorityHintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NoteIamBindingConditionInput)(nil)).Elem(), NoteIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NoteIamBindingConditionPtrInput)(nil)).Elem(), NoteIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NoteIamMemberConditionInput)(nil)).Elem(), NoteIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NoteIamMemberConditionPtrInput)(nil)).Elem(), NoteIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NoteRelatedUrlInput)(nil)).Elem(), NoteRelatedUrlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NoteRelatedUrlArrayInput)(nil)).Elem(), NoteRelatedUrlArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OccurenceAttestationInput)(nil)).Elem(), OccurenceAttestationArgs{})
@@ -786,6 +1116,10 @@ func init() {
 	pulumi.RegisterOutputType(NoteAttestationAuthorityPtrOutput{})
 	pulumi.RegisterOutputType(NoteAttestationAuthorityHintOutput{})
 	pulumi.RegisterOutputType(NoteAttestationAuthorityHintPtrOutput{})
+	pulumi.RegisterOutputType(NoteIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(NoteIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(NoteIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(NoteIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(NoteRelatedUrlOutput{})
 	pulumi.RegisterOutputType(NoteRelatedUrlArrayOutput{})
 	pulumi.RegisterOutputType(OccurenceAttestationOutput{})

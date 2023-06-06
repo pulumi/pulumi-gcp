@@ -19,6 +19,10 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerEnvResult> Envs;
         public readonly string Image;
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerLivenessProbeResult> LivenessProbes;
+        /// <summary>
+        /// The name of the Cloud Run Service.
+        /// </summary>
+        public readonly string Name;
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerPortResult> Ports;
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerResourceResult> Resources;
         public readonly ImmutableArray<Outputs.GetServiceTemplateSpecContainerStartupProbeResult> StartupProbes;
@@ -39,6 +43,8 @@ namespace Pulumi.Gcp.CloudRun.Outputs
 
             ImmutableArray<Outputs.GetServiceTemplateSpecContainerLivenessProbeResult> livenessProbes,
 
+            string name,
+
             ImmutableArray<Outputs.GetServiceTemplateSpecContainerPortResult> ports,
 
             ImmutableArray<Outputs.GetServiceTemplateSpecContainerResourceResult> resources,
@@ -55,6 +61,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
             Envs = envs;
             Image = image;
             LivenessProbes = livenessProbes;
+            Name = name;
             Ports = ports;
             Resources = resources;
             StartupProbes = startupProbes;

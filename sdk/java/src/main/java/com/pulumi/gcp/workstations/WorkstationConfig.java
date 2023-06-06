@@ -84,6 +84,8 @@ import javax.annotation.Nullable;
  *             .workstationConfigId(&#34;workstation-config&#34;)
  *             .workstationClusterId(defaultWorkstationCluster.workstationClusterId())
  *             .location(&#34;us-central1&#34;)
+ *             .idleTimeout(&#34;600s&#34;)
+ *             .runningTimeout(&#34;21600s&#34;)
  *             .host(WorkstationConfigHostArgs.builder()
  *                 .gceInstance(WorkstationConfigHostGceInstanceArgs.builder()
  *                     .machineType(&#34;e2-standard-4&#34;)
@@ -258,6 +260,8 @@ import javax.annotation.Nullable;
  *                 .mountPath(&#34;/home&#34;)
  *                 .gcePd(WorkstationConfigPersistentDirectoryGcePdArgs.builder()
  *                     .sizeGb(200)
+ *                     .fsType(&#34;ext4&#34;)
+ *                     .diskType(&#34;pd-standard&#34;)
  *                     .reclaimPolicy(&#34;DELETE&#34;)
  *                     .build())
  *                 .build())
@@ -710,6 +714,22 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
         return this.host;
     }
     /**
+     * How long to wait before automatically stopping an instance that hasn&#39;t recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
+    @Export(name="idleTimeout", type=String.class, parameters={})
+    private Output</* @Nullable */ String> idleTimeout;
+
+    /**
+     * @return How long to wait before automatically stopping an instance that hasn&#39;t recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
+    public Output<Optional<String>> idleTimeout() {
+        return Codegen.optional(this.idleTimeout);
+    }
+    /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
      * 
      */
@@ -786,6 +806,22 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
+    @Export(name="runningTimeout", type=String.class, parameters={})
+    private Output</* @Nullable */ String> runningTimeout;
+
+    /**
+     * @return How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+     * A duration in seconds with up to nine fractional digits, ending with &#39;s&#39;. Example: &#34;3.5s&#34;.
+     * 
+     */
+    public Output<Optional<String>> runningTimeout() {
+        return Codegen.optional(this.runningTimeout);
     }
     /**
      * The system-generated UID of the resource.

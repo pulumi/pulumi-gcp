@@ -58,6 +58,7 @@ __all__ = [
     'DiskAsyncPrimaryDiskArgs',
     'DiskAsyncReplicationSecondaryDiskArgs',
     'DiskDiskEncryptionKeyArgs',
+    'DiskGuestOsFeatureArgs',
     'DiskIamBindingConditionArgs',
     'DiskIamMemberConditionArgs',
     'DiskSourceImageEncryptionKeyArgs',
@@ -241,6 +242,7 @@ __all__ = [
     'RegionCommitmentResourceArgs',
     'RegionDiskAsyncPrimaryDiskArgs',
     'RegionDiskDiskEncryptionKeyArgs',
+    'RegionDiskGuestOsFeatureArgs',
     'RegionDiskIamBindingConditionArgs',
     'RegionDiskIamMemberConditionArgs',
     'RegionDiskSourceSnapshotEncryptionKeyArgs',
@@ -4387,6 +4389,30 @@ class DiskDiskEncryptionKeyArgs:
     @sha256.setter
     def sha256(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sha256", value)
+
+
+@pulumi.input_type
+class DiskGuestOsFeatureArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] type: The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+               Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`.
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+        Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
@@ -16425,6 +16451,30 @@ class RegionDiskDiskEncryptionKeyArgs:
     @sha256.setter
     def sha256(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sha256", value)
+
+
+@pulumi.input_type
+class RegionDiskGuestOsFeatureArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] type: The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+               Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`.
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
+        Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type

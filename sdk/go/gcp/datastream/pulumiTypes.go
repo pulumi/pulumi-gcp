@@ -5439,6 +5439,9 @@ type StreamSourceConfigMysqlSourceConfig struct {
 	// MySQL objects to retrieve from the source.
 	// Structure is documented below.
 	IncludeObjects *StreamSourceConfigMysqlSourceConfigIncludeObjects `pulumi:"includeObjects"`
+	// Maximum number of concurrent backfill tasks. The number should be non negative.
+	// If not set (or set to 0), the system's default value will be used.
+	MaxConcurrentBackfillTasks *int `pulumi:"maxConcurrentBackfillTasks"`
 	// Maximum number of concurrent CDC tasks. The number should be non negative.
 	// If not set (or set to 0), the system's default value will be used.
 	MaxConcurrentCdcTasks *int `pulumi:"maxConcurrentCdcTasks"`
@@ -5462,6 +5465,9 @@ type StreamSourceConfigMysqlSourceConfigArgs struct {
 	// MySQL objects to retrieve from the source.
 	// Structure is documented below.
 	IncludeObjects StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrInput `pulumi:"includeObjects"`
+	// Maximum number of concurrent backfill tasks. The number should be non negative.
+	// If not set (or set to 0), the system's default value will be used.
+	MaxConcurrentBackfillTasks pulumi.IntPtrInput `pulumi:"maxConcurrentBackfillTasks"`
 	// Maximum number of concurrent CDC tasks. The number should be non negative.
 	// If not set (or set to 0), the system's default value will be used.
 	MaxConcurrentCdcTasks pulumi.IntPtrInput `pulumi:"maxConcurrentCdcTasks"`
@@ -5560,6 +5566,12 @@ func (o StreamSourceConfigMysqlSourceConfigOutput) IncludeObjects() StreamSource
 	}).(StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput)
 }
 
+// Maximum number of concurrent backfill tasks. The number should be non negative.
+// If not set (or set to 0), the system's default value will be used.
+func (o StreamSourceConfigMysqlSourceConfigOutput) MaxConcurrentBackfillTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfig) *int { return v.MaxConcurrentBackfillTasks }).(pulumi.IntPtrOutput)
+}
+
 // Maximum number of concurrent CDC tasks. The number should be non negative.
 // If not set (or set to 0), the system's default value will be used.
 func (o StreamSourceConfigMysqlSourceConfigOutput) MaxConcurrentCdcTasks() pulumi.IntPtrOutput {
@@ -5610,6 +5622,17 @@ func (o StreamSourceConfigMysqlSourceConfigPtrOutput) IncludeObjects() StreamSou
 		}
 		return v.IncludeObjects
 	}).(StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput)
+}
+
+// Maximum number of concurrent backfill tasks. The number should be non negative.
+// If not set (or set to 0), the system's default value will be used.
+func (o StreamSourceConfigMysqlSourceConfigPtrOutput) MaxConcurrentBackfillTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigMysqlSourceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentBackfillTasks
+	}).(pulumi.IntPtrOutput)
 }
 
 // Maximum number of concurrent CDC tasks. The number should be non negative.

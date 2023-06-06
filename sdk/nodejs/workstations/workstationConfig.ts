@@ -42,6 +42,8 @@ import * as utilities from "../utilities";
  *     workstationConfigId: "workstation-config",
  *     workstationClusterId: defaultWorkstationCluster.workstationClusterId,
  *     location: "us-central1",
+ *     idleTimeout: "600s",
+ *     runningTimeout: "21600s",
  *     host: {
  *         gceInstance: {
  *             machineType: "e2-standard-4",
@@ -154,6 +156,8 @@ import * as utilities from "../utilities";
  *         mountPath: "/home",
  *         gcePd: {
  *             sizeGb: 200,
+ *             fsType: "ext4",
+ *             diskType: "pd-standard",
  *             reclaimPolicy: "DELETE",
  *         },
  *     }],
@@ -417,6 +421,11 @@ export class WorkstationConfig extends pulumi.CustomResource {
      */
     public readonly host!: pulumi.Output<outputs.workstations.WorkstationConfigHost>;
     /**
+     * How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+     * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+     */
+    public readonly idleTimeout!: pulumi.Output<string | undefined>;
+    /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -441,6 +450,11 @@ export class WorkstationConfig extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
+     * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+     */
+    public readonly runningTimeout!: pulumi.Output<string | undefined>;
     /**
      * The system-generated UID of the resource.
      */
@@ -476,11 +490,13 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["encryptionKey"] = state ? state.encryptionKey : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["host"] = state ? state.host : undefined;
+            resourceInputs["idleTimeout"] = state ? state.idleTimeout : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["persistentDirectories"] = state ? state.persistentDirectories : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["runningTimeout"] = state ? state.runningTimeout : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["workstationClusterId"] = state ? state.workstationClusterId : undefined;
             resourceInputs["workstationConfigId"] = state ? state.workstationConfigId : undefined;
@@ -500,10 +516,12 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
             resourceInputs["host"] = args ? args.host : undefined;
+            resourceInputs["idleTimeout"] = args ? args.idleTimeout : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["persistentDirectories"] = args ? args.persistentDirectories : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["runningTimeout"] = args ? args.runningTimeout : undefined;
             resourceInputs["workstationClusterId"] = args ? args.workstationClusterId : undefined;
             resourceInputs["workstationConfigId"] = args ? args.workstationConfigId : undefined;
             resourceInputs["conditions"] = undefined /*out*/;
@@ -567,6 +585,11 @@ export interface WorkstationConfigState {
      */
     host?: pulumi.Input<inputs.workstations.WorkstationConfigHost>;
     /**
+     * How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+     * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+     */
+    idleTimeout?: pulumi.Input<string>;
+    /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -591,6 +614,11 @@ export interface WorkstationConfigState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
+     * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+     */
+    runningTimeout?: pulumi.Input<string>;
     /**
      * The system-generated UID of the resource.
      */
@@ -636,6 +664,11 @@ export interface WorkstationConfigArgs {
      */
     host?: pulumi.Input<inputs.workstations.WorkstationConfigHost>;
     /**
+     * How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+     * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+     */
+    idleTimeout?: pulumi.Input<string>;
+    /**
      * Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -656,6 +689,11 @@ export interface WorkstationConfigArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
+     * A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+     */
+    runningTimeout?: pulumi.Input<string>;
     /**
      * The ID of the parent workstation cluster.
      */

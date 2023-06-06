@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.compute.outputs.GetDiskAsyncPrimaryDisk;
 import com.pulumi.gcp.compute.outputs.GetDiskDiskEncryptionKey;
+import com.pulumi.gcp.compute.outputs.GetDiskGuestOsFeature;
 import com.pulumi.gcp.compute.outputs.GetDiskSourceImageEncryptionKey;
 import com.pulumi.gcp.compute.outputs.GetDiskSourceSnapshotEncryptionKey;
 import java.lang.Boolean;
@@ -31,6 +32,7 @@ public final class GetDiskResult {
      */
     private String description;
     private List<GetDiskDiskEncryptionKey> diskEncryptionKeys;
+    private List<GetDiskGuestOsFeature> guestOsFeatures;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -63,6 +65,7 @@ public final class GetDiskResult {
      * 
      */
     private String lastDetachTimestamp;
+    private List<String> licenses;
     private Boolean multiWriter;
     private String name;
     /**
@@ -158,6 +161,9 @@ public final class GetDiskResult {
     public List<GetDiskDiskEncryptionKey> diskEncryptionKeys() {
         return this.diskEncryptionKeys;
     }
+    public List<GetDiskGuestOsFeature> guestOsFeatures() {
+        return this.guestOsFeatures;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -203,6 +209,9 @@ public final class GetDiskResult {
      */
     public String lastDetachTimestamp() {
         return this.lastDetachTimestamp;
+    }
+    public List<String> licenses() {
+        return this.licenses;
     }
     public Boolean multiWriter() {
         return this.multiWriter;
@@ -327,6 +336,7 @@ public final class GetDiskResult {
         private String creationTimestamp;
         private String description;
         private List<GetDiskDiskEncryptionKey> diskEncryptionKeys;
+        private List<GetDiskGuestOsFeature> guestOsFeatures;
         private String id;
         private String image;
         private String interface_;
@@ -334,6 +344,7 @@ public final class GetDiskResult {
         private Map<String,String> labels;
         private String lastAttachTimestamp;
         private String lastDetachTimestamp;
+        private List<String> licenses;
         private Boolean multiWriter;
         private String name;
         private Integer physicalBlockSizeBytes;
@@ -359,6 +370,7 @@ public final class GetDiskResult {
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.description = defaults.description;
     	      this.diskEncryptionKeys = defaults.diskEncryptionKeys;
+    	      this.guestOsFeatures = defaults.guestOsFeatures;
     	      this.id = defaults.id;
     	      this.image = defaults.image;
     	      this.interface_ = defaults.interface_;
@@ -366,6 +378,7 @@ public final class GetDiskResult {
     	      this.labels = defaults.labels;
     	      this.lastAttachTimestamp = defaults.lastAttachTimestamp;
     	      this.lastDetachTimestamp = defaults.lastDetachTimestamp;
+    	      this.licenses = defaults.licenses;
     	      this.multiWriter = defaults.multiWriter;
     	      this.name = defaults.name;
     	      this.physicalBlockSizeBytes = defaults.physicalBlockSizeBytes;
@@ -413,6 +426,14 @@ public final class GetDiskResult {
             return diskEncryptionKeys(List.of(diskEncryptionKeys));
         }
         @CustomType.Setter
+        public Builder guestOsFeatures(List<GetDiskGuestOsFeature> guestOsFeatures) {
+            this.guestOsFeatures = Objects.requireNonNull(guestOsFeatures);
+            return this;
+        }
+        public Builder guestOsFeatures(GetDiskGuestOsFeature... guestOsFeatures) {
+            return guestOsFeatures(List.of(guestOsFeatures));
+        }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
@@ -446,6 +467,14 @@ public final class GetDiskResult {
         public Builder lastDetachTimestamp(String lastDetachTimestamp) {
             this.lastDetachTimestamp = Objects.requireNonNull(lastDetachTimestamp);
             return this;
+        }
+        @CustomType.Setter
+        public Builder licenses(List<String> licenses) {
+            this.licenses = Objects.requireNonNull(licenses);
+            return this;
+        }
+        public Builder licenses(String... licenses) {
+            return licenses(List.of(licenses));
         }
         @CustomType.Setter
         public Builder multiWriter(Boolean multiWriter) {
@@ -555,6 +584,7 @@ public final class GetDiskResult {
             o.creationTimestamp = creationTimestamp;
             o.description = description;
             o.diskEncryptionKeys = diskEncryptionKeys;
+            o.guestOsFeatures = guestOsFeatures;
             o.id = id;
             o.image = image;
             o.interface_ = interface_;
@@ -562,6 +592,7 @@ public final class GetDiskResult {
             o.labels = labels;
             o.lastAttachTimestamp = lastAttachTimestamp;
             o.lastDetachTimestamp = lastDetachTimestamp;
+            o.licenses = licenses;
             o.multiWriter = multiWriter;
             o.name = name;
             o.physicalBlockSizeBytes = physicalBlockSizeBytes;

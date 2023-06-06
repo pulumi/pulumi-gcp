@@ -298,6 +298,10 @@ class ServiceIamBinding(pulumi.CustomResource):
         * `cloudrunv2.ServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service are preserved.
         * `cloudrunv2.ServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service are preserved.
 
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `cloudrunv2.ServiceIamPolicy`: Retrieves the IAM policy for the service
+
         > **Note:** `cloudrunv2.ServiceIamPolicy` **cannot** be used in conjunction with `cloudrunv2.ServiceIamBinding` and `cloudrunv2.ServiceIamMember` or they will fight over what your policy should be.
 
         > **Note:** `cloudrunv2.ServiceIamBinding` resources **can be** used in conjunction with `cloudrunv2.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
@@ -402,6 +406,10 @@ class ServiceIamBinding(pulumi.CustomResource):
         * `cloudrunv2.ServiceIamPolicy`: Authoritative. Sets the IAM policy for the service and replaces any existing policy already attached.
         * `cloudrunv2.ServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the service are preserved.
         * `cloudrunv2.ServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the service are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `cloudrunv2.ServiceIamPolicy`: Retrieves the IAM policy for the service
 
         > **Note:** `cloudrunv2.ServiceIamPolicy` **cannot** be used in conjunction with `cloudrunv2.ServiceIamBinding` and `cloudrunv2.ServiceIamMember` or they will fight over what your policy should be.
 

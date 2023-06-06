@@ -66,6 +66,11 @@ public final class ServiceTemplateSpecContainer {
      */
     private @Nullable ServiceTemplateSpecContainerLivenessProbe livenessProbe;
     /**
+     * @return Name of the container
+     * 
+     */
+    private @Nullable String name;
+    /**
      * @return List of open ports in the container.
      * Structure is documented below.
      * 
@@ -165,6 +170,13 @@ public final class ServiceTemplateSpecContainer {
         return Optional.ofNullable(this.livenessProbe);
     }
     /**
+     * @return Name of the container
+     * 
+     */
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
+    }
+    /**
      * @return List of open ports in the container.
      * Structure is documented below.
      * 
@@ -229,6 +241,7 @@ public final class ServiceTemplateSpecContainer {
         private @Nullable List<ServiceTemplateSpecContainerEnv> envs;
         private String image;
         private @Nullable ServiceTemplateSpecContainerLivenessProbe livenessProbe;
+        private @Nullable String name;
         private @Nullable List<ServiceTemplateSpecContainerPort> ports;
         private @Nullable ServiceTemplateSpecContainerResources resources;
         private @Nullable ServiceTemplateSpecContainerStartupProbe startupProbe;
@@ -243,6 +256,7 @@ public final class ServiceTemplateSpecContainer {
     	      this.envs = defaults.envs;
     	      this.image = defaults.image;
     	      this.livenessProbe = defaults.livenessProbe;
+    	      this.name = defaults.name;
     	      this.ports = defaults.ports;
     	      this.resources = defaults.resources;
     	      this.startupProbe = defaults.startupProbe;
@@ -293,6 +307,11 @@ public final class ServiceTemplateSpecContainer {
             return this;
         }
         @CustomType.Setter
+        public Builder name(@Nullable String name) {
+            this.name = name;
+            return this;
+        }
+        @CustomType.Setter
         public Builder ports(@Nullable List<ServiceTemplateSpecContainerPort> ports) {
             this.ports = ports;
             return this;
@@ -331,6 +350,7 @@ public final class ServiceTemplateSpecContainer {
             o.envs = envs;
             o.image = image;
             o.livenessProbe = livenessProbe;
+            o.name = name;
             o.ports = ports;
             o.resources = resources;
             o.startupProbe = startupProbe;

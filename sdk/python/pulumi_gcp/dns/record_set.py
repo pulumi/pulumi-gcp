@@ -432,7 +432,8 @@ class RecordSet(pulumi.CustomResource):
             load_balancing_scheme="INTERNAL",
             backend_service=prod_region_backend_service.id,
             all_ports=True,
-            network=prod_network.name)
+            network=prod_network.name,
+            allow_global_access=True)
         record_set = gcp.dns.RecordSet("recordSet",
             name=prod_managed_zone.dns_name.apply(lambda dns_name: f"backend.{dns_name}"),
             managed_zone=prod_managed_zone.name,
@@ -642,7 +643,8 @@ class RecordSet(pulumi.CustomResource):
             load_balancing_scheme="INTERNAL",
             backend_service=prod_region_backend_service.id,
             all_ports=True,
-            network=prod_network.name)
+            network=prod_network.name,
+            allow_global_access=True)
         record_set = gcp.dns.RecordSet("recordSet",
             name=prod_managed_zone.dns_name.apply(lambda dns_name: f"backend.{dns_name}"),
             managed_zone=prod_managed_zone.name,

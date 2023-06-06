@@ -12,6 +12,20 @@ namespace Pulumi.Gcp.DataLoss.Inputs
 
     public sealed class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs : global::Pulumi.ResourceArgs
     {
+        [Input("excludedFields")]
+        private InputList<Inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs>? _excludedFields;
+
+        /// <summary>
+        /// References to fields excluded from scanning.
+        /// This allows you to skip inspection of entire columns which you know have no findings.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs> ExcludedFields
+        {
+            get => _excludedFields ?? (_excludedFields = new InputList<Inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs>());
+            set => _excludedFields = value;
+        }
+
         [Input("identifyingFields")]
         private InputList<Inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs>? _identifyingFields;
 
@@ -24,6 +38,19 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         {
             get => _identifyingFields ?? (_identifyingFields = new InputList<Inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs>());
             set => _identifyingFields = value;
+        }
+
+        [Input("includedFields")]
+        private InputList<Inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs>? _includedFields;
+
+        /// <summary>
+        /// Limit scanning only to these fields.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs> IncludedFields
+        {
+            get => _includedFields ?? (_includedFields = new InputList<Inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs>());
+            set => _includedFields = value;
         }
 
         /// <summary>

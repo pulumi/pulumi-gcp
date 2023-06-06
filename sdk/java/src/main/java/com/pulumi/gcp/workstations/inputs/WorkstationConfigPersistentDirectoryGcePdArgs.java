@@ -17,14 +17,14 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
     public static final WorkstationConfigPersistentDirectoryGcePdArgs Empty = new WorkstationConfigPersistentDirectoryGcePdArgs();
 
     /**
-     * Type of the disk to use.
+     * The type of the persistent disk for the home directory. Defaults to `pd-standard`.
      * 
      */
     @Import(name="diskType")
     private @Nullable Output<String> diskType;
 
     /**
-     * @return Type of the disk to use.
+     * @return The type of the persistent disk for the home directory. Defaults to `pd-standard`.
      * 
      */
     public Optional<Output<String>> diskType() {
@@ -32,14 +32,14 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
     }
 
     /**
-     * Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
+     * Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if `sourceSnapshot` is set. Defaults to `ext4`.
      * 
      */
     @Import(name="fsType")
     private @Nullable Output<String> fsType;
 
     /**
-     * @return Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
+     * @return Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if `sourceSnapshot` is set. Defaults to `ext4`.
      * 
      */
     public Optional<Output<String>> fsType() {
@@ -47,7 +47,7 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
     }
 
     /**
-     * What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+     * Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
      * Possible values are: `DELETE`, `RETAIN`.
      * 
      */
@@ -55,7 +55,7 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
     private @Nullable Output<String> reclaimPolicy;
 
     /**
-     * @return What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+     * @return Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
      * Possible values are: `DELETE`, `RETAIN`.
      * 
      */
@@ -64,14 +64,16 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
     }
 
     /**
-     * Size of the disk in GB. Must be empty if sourceSnapshot is set.
+     * The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if `sourceSnapshot` is set.
+     * Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the `diskType` must be `pd-balanced` or `pd-ssd`.
      * 
      */
     @Import(name="sizeGb")
     private @Nullable Output<Integer> sizeGb;
 
     /**
-     * @return Size of the disk in GB. Must be empty if sourceSnapshot is set.
+     * @return The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if `sourceSnapshot` is set.
+     * Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the `diskType` must be `pd-balanced` or `pd-ssd`.
      * 
      */
     public Optional<Output<Integer>> sizeGb() {
@@ -79,14 +81,14 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
     }
 
     /**
-     * The snapshot to use as the source for the disk. This can be the snapshot&#39;s `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+     * Name of the snapshot to use as the source for the disk. This can be the snapshot&#39;s `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
      * 
      */
     @Import(name="sourceSnapshot")
     private @Nullable Output<String> sourceSnapshot;
 
     /**
-     * @return The snapshot to use as the source for the disk. This can be the snapshot&#39;s `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+     * @return Name of the snapshot to use as the source for the disk. This can be the snapshot&#39;s `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
      * 
      */
     public Optional<Output<String>> sourceSnapshot() {
@@ -122,7 +124,7 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
         }
 
         /**
-         * @param diskType Type of the disk to use.
+         * @param diskType The type of the persistent disk for the home directory. Defaults to `pd-standard`.
          * 
          * @return builder
          * 
@@ -133,7 +135,7 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
         }
 
         /**
-         * @param diskType Type of the disk to use.
+         * @param diskType The type of the persistent disk for the home directory. Defaults to `pd-standard`.
          * 
          * @return builder
          * 
@@ -143,7 +145,7 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
         }
 
         /**
-         * @param fsType Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
+         * @param fsType Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if `sourceSnapshot` is set. Defaults to `ext4`.
          * 
          * @return builder
          * 
@@ -154,7 +156,7 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
         }
 
         /**
-         * @param fsType Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
+         * @param fsType Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if `sourceSnapshot` is set. Defaults to `ext4`.
          * 
          * @return builder
          * 
@@ -164,7 +166,7 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
         }
 
         /**
-         * @param reclaimPolicy What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+         * @param reclaimPolicy Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
          * Possible values are: `DELETE`, `RETAIN`.
          * 
          * @return builder
@@ -176,7 +178,7 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
         }
 
         /**
-         * @param reclaimPolicy What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+         * @param reclaimPolicy Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
          * Possible values are: `DELETE`, `RETAIN`.
          * 
          * @return builder
@@ -187,7 +189,8 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
         }
 
         /**
-         * @param sizeGb Size of the disk in GB. Must be empty if sourceSnapshot is set.
+         * @param sizeGb The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if `sourceSnapshot` is set.
+         * Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the `diskType` must be `pd-balanced` or `pd-ssd`.
          * 
          * @return builder
          * 
@@ -198,7 +201,8 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
         }
 
         /**
-         * @param sizeGb Size of the disk in GB. Must be empty if sourceSnapshot is set.
+         * @param sizeGb The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if `sourceSnapshot` is set.
+         * Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the `diskType` must be `pd-balanced` or `pd-ssd`.
          * 
          * @return builder
          * 
@@ -208,7 +212,7 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
         }
 
         /**
-         * @param sourceSnapshot The snapshot to use as the source for the disk. This can be the snapshot&#39;s `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+         * @param sourceSnapshot Name of the snapshot to use as the source for the disk. This can be the snapshot&#39;s `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
          * 
          * @return builder
          * 
@@ -219,7 +223,7 @@ public final class WorkstationConfigPersistentDirectoryGcePdArgs extends com.pul
         }
 
         /**
-         * @param sourceSnapshot The snapshot to use as the source for the disk. This can be the snapshot&#39;s `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+         * @param sourceSnapshot Name of the snapshot to use as the source for the disk. This can be the snapshot&#39;s `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
          * 
          * @return builder
          * 

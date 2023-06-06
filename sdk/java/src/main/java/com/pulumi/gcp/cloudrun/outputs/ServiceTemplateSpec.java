@@ -22,9 +22,7 @@ public final class ServiceTemplateSpec {
      */
     private @Nullable Integer containerConcurrency;
     /**
-     * @return Container defines the unit of execution for this Revision.
-     * In the context of a Revision, we disallow a number of the fields of
-     * this Container, including: name, ports, and volumeMounts.
+     * @return Containers defines the unit of execution for this Revision.
      * Structure is documented below.
      * 
      */
@@ -72,9 +70,7 @@ public final class ServiceTemplateSpec {
         return Optional.ofNullable(this.containerConcurrency);
     }
     /**
-     * @return Container defines the unit of execution for this Revision.
-     * In the context of a Revision, we disallow a number of the fields of
-     * this Container, including: name, ports, and volumeMounts.
+     * @return Containers defines the unit of execution for this Revision.
      * Structure is documented below.
      * 
      */

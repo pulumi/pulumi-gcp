@@ -60,6 +60,8 @@ import (
 //				WorkstationConfigId:  pulumi.String("workstation-config"),
 //				WorkstationClusterId: defaultWorkstationCluster.WorkstationClusterId,
 //				Location:             pulumi.String("us-central1"),
+//				IdleTimeout:          pulumi.String("600s"),
+//				RunningTimeout:       pulumi.String("21600s"),
 //				Host: &workstations.WorkstationConfigHostArgs{
 //					GceInstance: &workstations.WorkstationConfigHostGceInstanceArgs{
 //						MachineType:              pulumi.String("e2-standard-4"),
@@ -211,6 +213,8 @@ import (
 //						MountPath: pulumi.String("/home"),
 //						GcePd: &workstations.WorkstationConfigPersistentDirectoryGcePdArgs{
 //							SizeGb:        pulumi.Int(200),
+//							FsType:        pulumi.String("ext4"),
+//							DiskType:      pulumi.String("pd-standard"),
 //							ReclaimPolicy: pulumi.String("DELETE"),
 //						},
 //					},
@@ -511,6 +515,9 @@ type WorkstationConfig struct {
 	// Runtime host for a workstation.
 	// Structure is documented below.
 	Host WorkstationConfigHostOutput `pulumi:"host"`
+	// How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	IdleTimeout pulumi.StringPtrOutput `pulumi:"idleTimeout"`
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location where the workstation cluster config should reside.
@@ -525,6 +532,9 @@ type WorkstationConfig struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	RunningTimeout pulumi.StringPtrOutput `pulumi:"runningTimeout"`
 	// The system-generated UID of the resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The ID of the parent workstation cluster.
@@ -597,6 +607,9 @@ type workstationConfigState struct {
 	// Runtime host for a workstation.
 	// Structure is documented below.
 	Host *WorkstationConfigHost `pulumi:"host"`
+	// How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	IdleTimeout *string `pulumi:"idleTimeout"`
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the workstation cluster config should reside.
@@ -611,6 +624,9 @@ type workstationConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	RunningTimeout *string `pulumi:"runningTimeout"`
 	// The system-generated UID of the resource.
 	Uid *string `pulumi:"uid"`
 	// The ID of the parent workstation cluster.
@@ -646,6 +662,9 @@ type WorkstationConfigState struct {
 	// Runtime host for a workstation.
 	// Structure is documented below.
 	Host WorkstationConfigHostPtrInput
+	// How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	IdleTimeout pulumi.StringPtrInput
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels pulumi.StringMapInput
 	// The location where the workstation cluster config should reside.
@@ -660,6 +679,9 @@ type WorkstationConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	RunningTimeout pulumi.StringPtrInput
 	// The system-generated UID of the resource.
 	Uid pulumi.StringPtrInput
 	// The ID of the parent workstation cluster.
@@ -689,6 +711,9 @@ type workstationConfigArgs struct {
 	// Runtime host for a workstation.
 	// Structure is documented below.
 	Host *WorkstationConfigHost `pulumi:"host"`
+	// How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	IdleTimeout *string `pulumi:"idleTimeout"`
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels map[string]string `pulumi:"labels"`
 	// The location where the workstation cluster config should reside.
@@ -701,6 +726,9 @@ type workstationConfigArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	RunningTimeout *string `pulumi:"runningTimeout"`
 	// The ID of the parent workstation cluster.
 	WorkstationClusterId string `pulumi:"workstationClusterId"`
 	// The ID to be assigned to the workstation cluster config.
@@ -725,6 +753,9 @@ type WorkstationConfigArgs struct {
 	// Runtime host for a workstation.
 	// Structure is documented below.
 	Host WorkstationConfigHostPtrInput
+	// How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	IdleTimeout pulumi.StringPtrInput
 	// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 	Labels pulumi.StringMapInput
 	// The location where the workstation cluster config should reside.
@@ -737,6 +768,9 @@ type WorkstationConfigArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
+	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+	RunningTimeout pulumi.StringPtrInput
 	// The ID of the parent workstation cluster.
 	WorkstationClusterId pulumi.StringInput
 	// The ID to be assigned to the workstation cluster config.
@@ -883,6 +917,12 @@ func (o WorkstationConfigOutput) Host() WorkstationConfigHostOutput {
 	return o.ApplyT(func(v *WorkstationConfig) WorkstationConfigHostOutput { return v.Host }).(WorkstationConfigHostOutput)
 }
 
+// How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+func (o WorkstationConfigOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringPtrOutput { return v.IdleTimeout }).(pulumi.StringPtrOutput)
+}
+
 // Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
 func (o WorkstationConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
@@ -912,6 +952,12 @@ func (o WorkstationConfigOutput) PersistentDirectories() WorkstationConfigPersis
 // If it is not provided, the provider project is used.
 func (o WorkstationConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryptionKey` is set. Defaults to 12 hours.
+// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+func (o WorkstationConfigOutput) RunningTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfig) pulumi.StringPtrOutput { return v.RunningTimeout }).(pulumi.StringPtrOutput)
 }
 
 // The system-generated UID of the resource.

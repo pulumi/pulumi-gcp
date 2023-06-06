@@ -14,11 +14,22 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions
     {
         /// <summary>
+        /// References to fields excluded from scanning.
+        /// This allows you to skip inspection of entire columns which you know have no findings.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField> ExcludedFields;
+        /// <summary>
         /// Specifies the BigQuery fields that will be returned with findings.
         /// If not specified, no identifying fields will be returned for findings.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField> IdentifyingFields;
+        /// <summary>
+        /// Limit scanning only to these fields.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField> IncludedFields;
         /// <summary>
         /// Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
         /// If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
@@ -46,7 +57,11 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
         [OutputConstructor]
         private PreventionJobTriggerInspectJobStorageConfigBigQueryOptions(
+            ImmutableArray<Outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField> excludedFields,
+
             ImmutableArray<Outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField> identifyingFields,
+
+            ImmutableArray<Outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField> includedFields,
 
             int? rowsLimit,
 
@@ -56,7 +71,9 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
             Outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference tableReference)
         {
+            ExcludedFields = excludedFields;
             IdentifyingFields = identifyingFields;
+            IncludedFields = includedFields;
             RowsLimit = rowsLimit;
             RowsLimitPercent = rowsLimitPercent;
             SampleMethod = sampleMethod;

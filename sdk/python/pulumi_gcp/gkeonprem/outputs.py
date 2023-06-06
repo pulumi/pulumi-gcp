@@ -4208,22 +4208,15 @@ class VMwareClusterNetworkConfigStaticIpConfigIpBlock(dict):
 @pulumi.output_type
 class VMwareClusterNetworkConfigStaticIpConfigIpBlockIp(dict):
     def __init__(__self__, *,
-                 hostname: str,
-                 ip: str):
+                 ip: str,
+                 hostname: Optional[str] = None):
         """
-        :param str hostname: Hostname of the machine. VM's name will be used if this field is empty.
         :param str ip: IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
+        :param str hostname: Hostname of the machine. VM's name will be used if this field is empty.
         """
-        pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "ip", ip)
-
-    @property
-    @pulumi.getter
-    def hostname(self) -> str:
-        """
-        Hostname of the machine. VM's name will be used if this field is empty.
-        """
-        return pulumi.get(self, "hostname")
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
 
     @property
     @pulumi.getter
@@ -4232,6 +4225,14 @@ class VMwareClusterNetworkConfigStaticIpConfigIpBlockIp(dict):
         IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
         """
         return pulumi.get(self, "ip")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[str]:
+        """
+        Hostname of the machine. VM's name will be used if this field is empty.
+        """
+        return pulumi.get(self, "hostname")
 
 
 @pulumi.output_type

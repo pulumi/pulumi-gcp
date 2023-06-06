@@ -46,6 +46,7 @@ __all__ = [
     'ServiceTemplateSpecContainerStartupProbeTcpSocket',
     'ServiceTemplateSpecContainerVolumeMount',
     'ServiceTemplateSpecVolume',
+    'ServiceTemplateSpecVolumeEmptyDir',
     'ServiceTemplateSpecVolumeSecret',
     'ServiceTemplateSpecVolumeSecretItem',
     'ServiceTraffic',
@@ -77,6 +78,7 @@ __all__ = [
     'GetServiceTemplateSpecContainerStartupProbeTcpSocketResult',
     'GetServiceTemplateSpecContainerVolumeMountResult',
     'GetServiceTemplateSpecVolumeResult',
+    'GetServiceTemplateSpecVolumeEmptyDirResult',
     'GetServiceTemplateSpecVolumeSecretResult',
     'GetServiceTemplateSpecVolumeSecretItemResult',
     'GetServiceTrafficResult',
@@ -1187,9 +1189,7 @@ class ServiceTemplateSpec(dict):
         """
         :param int container_concurrency: ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
                requests per container of the Revision. Values are:
-        :param Sequence['ServiceTemplateSpecContainerArgs'] containers: Container defines the unit of execution for this Revision.
-               In the context of a Revision, we disallow a number of the fields of
-               this Container, including: name, ports, and volumeMounts.
+        :param Sequence['ServiceTemplateSpecContainerArgs'] containers: Containers defines the unit of execution for this Revision.
                Structure is documented below.
         :param str service_account_name: Email address of the IAM service account associated with the revision of the
                service. The service account represents the identity of the running revision,
@@ -1230,9 +1230,7 @@ class ServiceTemplateSpec(dict):
     @pulumi.getter
     def containers(self) -> Optional[Sequence['outputs.ServiceTemplateSpecContainer']]:
         """
-        Container defines the unit of execution for this Revision.
-        In the context of a Revision, we disallow a number of the fields of
-        this Container, including: name, ports, and volumeMounts.
+        Containers defines the unit of execution for this Revision.
         Structure is documented below.
         """
         return pulumi.get(self, "containers")
@@ -1312,6 +1310,7 @@ class ServiceTemplateSpecContainer(dict):
                  env_froms: Optional[Sequence['outputs.ServiceTemplateSpecContainerEnvFrom']] = None,
                  envs: Optional[Sequence['outputs.ServiceTemplateSpecContainerEnv']] = None,
                  liveness_probe: Optional['outputs.ServiceTemplateSpecContainerLivenessProbe'] = None,
+                 name: Optional[str] = None,
                  ports: Optional[Sequence['outputs.ServiceTemplateSpecContainerPort']] = None,
                  resources: Optional['outputs.ServiceTemplateSpecContainerResources'] = None,
                  startup_probe: Optional['outputs.ServiceTemplateSpecContainerStartupProbe'] = None,
@@ -1336,6 +1335,7 @@ class ServiceTemplateSpecContainer(dict):
         :param 'ServiceTemplateSpecContainerLivenessProbeArgs' liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
                https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
                Structure is documented below.
+        :param str name: Name of the container
         :param Sequence['ServiceTemplateSpecContainerPortArgs'] ports: List of open ports in the container.
                Structure is documented below.
         :param 'ServiceTemplateSpecContainerResourcesArgs' resources: Compute Resources required by this container. Used to set values such as max memory
@@ -1363,6 +1363,8 @@ class ServiceTemplateSpecContainer(dict):
             pulumi.set(__self__, "envs", envs)
         if liveness_probe is not None:
             pulumi.set(__self__, "liveness_probe", liveness_probe)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if ports is not None:
             pulumi.set(__self__, "ports", ports)
         if resources is not None:
@@ -1433,6 +1435,14 @@ class ServiceTemplateSpecContainer(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "liveness_probe")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the container
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
@@ -2517,9 +2527,27 @@ class ServiceTemplateSpecContainerVolumeMount(dict):
 
 @pulumi.output_type
 class ServiceTemplateSpecVolume(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emptyDir":
+            suggest = "empty_dir"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateSpecVolume. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceTemplateSpecVolume.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceTemplateSpecVolume.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
-                 secret: 'outputs.ServiceTemplateSpecVolumeSecret'):
+                 empty_dir: Optional['outputs.ServiceTemplateSpecVolumeEmptyDir'] = None,
+                 secret: Optional['outputs.ServiceTemplateSpecVolumeSecret'] = None):
         """
         :param str name: Volume's name.
         :param 'ServiceTemplateSpecVolumeSecretArgs' secret: The secret's value will be presented as the content of a file whose
@@ -2528,7 +2556,10 @@ class ServiceTemplateSpecVolume(dict):
                Structure is documented below.
         """
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "secret", secret)
+        if empty_dir is not None:
+            pulumi.set(__self__, "empty_dir", empty_dir)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
 
     @property
     @pulumi.getter
@@ -2539,8 +2570,13 @@ class ServiceTemplateSpecVolume(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="emptyDir")
+    def empty_dir(self) -> Optional['outputs.ServiceTemplateSpecVolumeEmptyDir']:
+        return pulumi.get(self, "empty_dir")
+
+    @property
     @pulumi.getter
-    def secret(self) -> 'outputs.ServiceTemplateSpecVolumeSecret':
+    def secret(self) -> Optional['outputs.ServiceTemplateSpecVolumeSecret']:
         """
         The secret's value will be presented as the content of a file whose
         name is defined in the item path. If no items are defined, the name of
@@ -2548,6 +2584,58 @@ class ServiceTemplateSpecVolume(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "secret")
+
+
+@pulumi.output_type
+class ServiceTemplateSpecVolumeEmptyDir(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sizeLimit":
+            suggest = "size_limit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateSpecVolumeEmptyDir. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceTemplateSpecVolumeEmptyDir.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceTemplateSpecVolumeEmptyDir.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 medium: Optional[str] = None,
+                 size_limit: Optional[str] = None):
+        """
+        :param str medium: The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory.
+        :param str size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+               
+               - - -
+        """
+        if medium is not None:
+            pulumi.set(__self__, "medium", medium)
+        if size_limit is not None:
+            pulumi.set(__self__, "size_limit", size_limit)
+
+    @property
+    @pulumi.getter
+    def medium(self) -> Optional[str]:
+        """
+        The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory.
+        """
+        return pulumi.get(self, "medium")
+
+    @property
+    @pulumi.getter(name="sizeLimit")
+    def size_limit(self) -> Optional[str]:
+        """
+        Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+
+        - - -
+        """
+        return pulumi.get(self, "size_limit")
 
 
 @pulumi.output_type
@@ -2660,8 +2748,6 @@ class ServiceTemplateSpecVolumeSecretItem(dict):
                not specified, the volume defaultMode will be used. This might be in
                conflict with other options that affect the file mode, like fsGroup, and
                the result can be other mode bits set.
-               
-               - - -
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "path", path)
@@ -2696,8 +2782,6 @@ class ServiceTemplateSpecVolumeSecretItem(dict):
         not specified, the volume defaultMode will be used. This might be in
         conflict with other options that affect the file mode, like fsGroup, and
         the result can be other mode bits set.
-
-        - - -
         """
         return pulumi.get(self, "mode")
 
@@ -3068,17 +3152,22 @@ class GetServiceTemplateSpecContainerResult(dict):
                  envs: Sequence['outputs.GetServiceTemplateSpecContainerEnvResult'],
                  image: str,
                  liveness_probes: Sequence['outputs.GetServiceTemplateSpecContainerLivenessProbeResult'],
+                 name: str,
                  ports: Sequence['outputs.GetServiceTemplateSpecContainerPortResult'],
                  resources: Sequence['outputs.GetServiceTemplateSpecContainerResourceResult'],
                  startup_probes: Sequence['outputs.GetServiceTemplateSpecContainerStartupProbeResult'],
                  volume_mounts: Sequence['outputs.GetServiceTemplateSpecContainerVolumeMountResult'],
                  working_dir: str):
+        """
+        :param str name: The name of the Cloud Run Service.
+        """
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "commands", commands)
         pulumi.set(__self__, "env_froms", env_froms)
         pulumi.set(__self__, "envs", envs)
         pulumi.set(__self__, "image", image)
         pulumi.set(__self__, "liveness_probes", liveness_probes)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "ports", ports)
         pulumi.set(__self__, "resources", resources)
         pulumi.set(__self__, "startup_probes", startup_probes)
@@ -3114,6 +3203,14 @@ class GetServiceTemplateSpecContainerResult(dict):
     @pulumi.getter(name="livenessProbes")
     def liveness_probes(self) -> Sequence['outputs.GetServiceTemplateSpecContainerLivenessProbeResult']:
         return pulumi.get(self, "liveness_probes")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the Cloud Run Service.
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
@@ -3642,13 +3739,20 @@ class GetServiceTemplateSpecContainerVolumeMountResult(dict):
 @pulumi.output_type
 class GetServiceTemplateSpecVolumeResult(dict):
     def __init__(__self__, *,
+                 empty_dirs: Sequence['outputs.GetServiceTemplateSpecVolumeEmptyDirResult'],
                  name: str,
                  secrets: Sequence['outputs.GetServiceTemplateSpecVolumeSecretResult']):
         """
         :param str name: The name of the Cloud Run Service.
         """
+        pulumi.set(__self__, "empty_dirs", empty_dirs)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "secrets", secrets)
+
+    @property
+    @pulumi.getter(name="emptyDirs")
+    def empty_dirs(self) -> Sequence['outputs.GetServiceTemplateSpecVolumeEmptyDirResult']:
+        return pulumi.get(self, "empty_dirs")
 
     @property
     @pulumi.getter
@@ -3662,6 +3766,25 @@ class GetServiceTemplateSpecVolumeResult(dict):
     @pulumi.getter
     def secrets(self) -> Sequence['outputs.GetServiceTemplateSpecVolumeSecretResult']:
         return pulumi.get(self, "secrets")
+
+
+@pulumi.output_type
+class GetServiceTemplateSpecVolumeEmptyDirResult(dict):
+    def __init__(__self__, *,
+                 medium: str,
+                 size_limit: str):
+        pulumi.set(__self__, "medium", medium)
+        pulumi.set(__self__, "size_limit", size_limit)
+
+    @property
+    @pulumi.getter
+    def medium(self) -> str:
+        return pulumi.get(self, "medium")
+
+    @property
+    @pulumi.getter(name="sizeLimit")
+    def size_limit(self) -> str:
+        return pulumi.get(self, "size_limit")
 
 
 @pulumi.output_type

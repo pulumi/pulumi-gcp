@@ -325,6 +325,103 @@ import (
 //	}
 //
 // ```
+// ### Cloud Run Service Multicontainer
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudrun"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"hello-1": []string{
+//					"hello-2",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
+//				Location: pulumi.String("us-central1"),
+//				Metadata: &cloudrun.ServiceMetadataArgs{
+//					Annotations: pulumi.StringMap{
+//						"run.googleapis.com/launch-stage": pulumi.String("BETA"),
+//					},
+//				},
+//				Template: &cloudrun.ServiceTemplateArgs{
+//					Metadata: &cloudrun.ServiceTemplateMetadataArgs{
+//						Annotations: pulumi.StringMap{
+//							"run.googleapis.com/container-dependencies": pulumi.String(json0),
+//						},
+//					},
+//					Spec: &cloudrun.ServiceTemplateSpecArgs{
+//						Containers: cloudrun.ServiceTemplateSpecContainerArray{
+//							&cloudrun.ServiceTemplateSpecContainerArgs{
+//								Name: pulumi.String("hello-1"),
+//								Ports: cloudrun.ServiceTemplateSpecContainerPortArray{
+//									&cloudrun.ServiceTemplateSpecContainerPortArgs{
+//										ContainerPort: pulumi.Int(8080),
+//									},
+//								},
+//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//								VolumeMounts: cloudrun.ServiceTemplateSpecContainerVolumeMountArray{
+//									&cloudrun.ServiceTemplateSpecContainerVolumeMountArgs{
+//										Name:      pulumi.String("shared-volume"),
+//										MountPath: pulumi.String("/mnt/shared"),
+//									},
+//								},
+//							},
+//							&cloudrun.ServiceTemplateSpecContainerArgs{
+//								Name:  pulumi.String("hello-2"),
+//								Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//								Envs: cloudrun.ServiceTemplateSpecContainerEnvArray{
+//									&cloudrun.ServiceTemplateSpecContainerEnvArgs{
+//										Name:  pulumi.String("PORT"),
+//										Value: pulumi.String("8081"),
+//									},
+//								},
+//								StartupProbe: &cloudrun.ServiceTemplateSpecContainerStartupProbeArgs{
+//									HttpGet: &cloudrun.ServiceTemplateSpecContainerStartupProbeHttpGetArgs{
+//										Port: pulumi.Int(8081),
+//									},
+//								},
+//								VolumeMounts: cloudrun.ServiceTemplateSpecContainerVolumeMountArray{
+//									&cloudrun.ServiceTemplateSpecContainerVolumeMountArgs{
+//										Name:      pulumi.String("shared-volume"),
+//										MountPath: pulumi.String("/mnt/shared"),
+//									},
+//								},
+//							},
+//						},
+//						Volumes: cloudrun.ServiceTemplateSpecVolumeArray{
+//							&cloudrun.ServiceTemplateSpecVolumeArgs{
+//								Name: pulumi.String("shared-volume"),
+//								EmptyDir: &cloudrun.ServiceTemplateSpecVolumeEmptyDirArgs{
+//									Medium:    pulumi.String("Memory"),
+//									SizeLimit: pulumi.String("128Mi"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

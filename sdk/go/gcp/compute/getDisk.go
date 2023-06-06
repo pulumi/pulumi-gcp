@@ -79,6 +79,7 @@ type LookupDiskResult struct {
 	// The optional description of this resource.
 	Description        string                     `pulumi:"description"`
 	DiskEncryptionKeys []GetDiskDiskEncryptionKey `pulumi:"diskEncryptionKeys"`
+	GuestOsFeatures    []GetDiskGuestOsFeature    `pulumi:"guestOsFeatures"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The image from which to initialize this disk.
@@ -92,9 +93,10 @@ type LookupDiskResult struct {
 	// Last attach timestamp in RFC3339 text format.
 	LastAttachTimestamp string `pulumi:"lastAttachTimestamp"`
 	// Last detach timestamp in RFC3339 text format.
-	LastDetachTimestamp string `pulumi:"lastDetachTimestamp"`
-	MultiWriter         bool   `pulumi:"multiWriter"`
-	Name                string `pulumi:"name"`
+	LastDetachTimestamp string   `pulumi:"lastDetachTimestamp"`
+	Licenses            []string `pulumi:"licenses"`
+	MultiWriter         bool     `pulumi:"multiWriter"`
+	Name                string   `pulumi:"name"`
 	// Physical block size of the persistent disk, in bytes.
 	PhysicalBlockSizeBytes int      `pulumi:"physicalBlockSizeBytes"`
 	Project                *string  `pulumi:"project"`
@@ -198,6 +200,10 @@ func (o LookupDiskResultOutput) DiskEncryptionKeys() GetDiskDiskEncryptionKeyArr
 	return o.ApplyT(func(v LookupDiskResult) []GetDiskDiskEncryptionKey { return v.DiskEncryptionKeys }).(GetDiskDiskEncryptionKeyArrayOutput)
 }
 
+func (o LookupDiskResultOutput) GuestOsFeatures() GetDiskGuestOsFeatureArrayOutput {
+	return o.ApplyT(func(v LookupDiskResult) []GetDiskGuestOsFeature { return v.GuestOsFeatures }).(GetDiskGuestOsFeatureArrayOutput)
+}
+
 // The provider-assigned unique ID for this managed resource.
 func (o LookupDiskResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.Id }).(pulumi.StringOutput)
@@ -231,6 +237,10 @@ func (o LookupDiskResultOutput) LastAttachTimestamp() pulumi.StringOutput {
 // Last detach timestamp in RFC3339 text format.
 func (o LookupDiskResultOutput) LastDetachTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDiskResult) string { return v.LastDetachTimestamp }).(pulumi.StringOutput)
+}
+
+func (o LookupDiskResultOutput) Licenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDiskResult) []string { return v.Licenses }).(pulumi.StringArrayOutput)
 }
 
 func (o LookupDiskResultOutput) MultiWriter() pulumi.BoolOutput {

@@ -1339,9 +1339,28 @@ func Provider() tfbridge.ProviderInfo {
 			"google_container_analysis_note": {
 				Tok: gcpResource(gcpContainerAnalysis, "Note"),
 				Docs: &tfbridge.DocInfo{
-					Source: "containeranalysis_note.html.markdown",
+					Source: "container_analysis_note.html.markdown",
 				},
 			},
+			"google_container_analysis_note_iam_binding": {
+				Tok: gcpResource(gcpContainerAnalysis, "NoteIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "container_analysis_note_iam.html.markdown",
+				},
+			},
+			"google_container_analysis_note_iam_member": {
+				Tok: gcpResource(gcpContainerAnalysis, "NoteIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "container_analysis_note_iam.html.markdown",
+				},
+			},
+			"google_container_analysis_note_iam_policy": {
+				Tok: gcpResource(gcpContainerAnalysis, "NoteIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "container_analysis_note_iam.html.markdown",
+				},
+			},
+
 			"google_container_analysis_occurrence": {
 				// nolint:misspell
 				Tok: gcpResource(gcpContainerAnalysis, "Occurence"),

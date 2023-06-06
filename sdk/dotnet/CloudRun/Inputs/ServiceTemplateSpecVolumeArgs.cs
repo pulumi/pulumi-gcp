@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.CloudRun.Inputs
 
     public sealed class ServiceTemplateSpecVolumeArgs : global::Pulumi.ResourceArgs
     {
+        [Input("emptyDir")]
+        public Input<Inputs.ServiceTemplateSpecVolumeEmptyDirArgs>? EmptyDir { get; set; }
+
         /// <summary>
         /// Volume's name.
         /// </summary>
@@ -24,8 +27,8 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         /// the file is the secret_name.
         /// Structure is documented below.
         /// </summary>
-        [Input("secret", required: true)]
-        public Input<Inputs.ServiceTemplateSpecVolumeSecretArgs> Secret { get; set; } = null!;
+        [Input("secret")]
+        public Input<Inputs.ServiceTemplateSpecVolumeSecretArgs>? Secret { get; set; }
 
         public ServiceTemplateSpecVolumeArgs()
         {

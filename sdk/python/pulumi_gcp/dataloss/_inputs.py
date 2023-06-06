@@ -194,7 +194,9 @@ __all__ = [
     'PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximityArgs',
     'PreventionJobTriggerInspectJobStorageConfigArgs',
     'PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs',
+    'PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs',
     'PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs',
+    'PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs',
     'PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs',
     'PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs',
     'PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs',
@@ -9757,15 +9759,22 @@ class PreventionJobTriggerInspectJobStorageConfigArgs:
 class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs:
     def __init__(__self__, *,
                  table_reference: pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs'],
+                 excluded_fields: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs']]]] = None,
                  identifying_fields: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs']]]] = None,
+                 included_fields: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs']]]] = None,
                  rows_limit: Optional[pulumi.Input[int]] = None,
                  rows_limit_percent: Optional[pulumi.Input[int]] = None,
                  sample_method: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReferenceArgs'] table_reference: Set of files to scan.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs']]] excluded_fields: References to fields excluded from scanning.
+               This allows you to skip inspection of entire columns which you know have no findings.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs']]] identifying_fields: Specifies the BigQuery fields that will be returned with findings.
                If not specified, no identifying fields will be returned for findings.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs']]] included_fields: Limit scanning only to these fields.
                Structure is documented below.
         :param pulumi.Input[int] rows_limit: Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
                If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
@@ -9779,8 +9788,12 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs:
                Possible values are: `TOP`, `RANDOM_START`.
         """
         pulumi.set(__self__, "table_reference", table_reference)
+        if excluded_fields is not None:
+            pulumi.set(__self__, "excluded_fields", excluded_fields)
         if identifying_fields is not None:
             pulumi.set(__self__, "identifying_fields", identifying_fields)
+        if included_fields is not None:
+            pulumi.set(__self__, "included_fields", included_fields)
         if rows_limit is not None:
             pulumi.set(__self__, "rows_limit", rows_limit)
         if rows_limit_percent is not None:
@@ -9802,6 +9815,20 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs:
         pulumi.set(self, "table_reference", value)
 
     @property
+    @pulumi.getter(name="excludedFields")
+    def excluded_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs']]]]:
+        """
+        References to fields excluded from scanning.
+        This allows you to skip inspection of entire columns which you know have no findings.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "excluded_fields")
+
+    @excluded_fields.setter
+    def excluded_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs']]]]):
+        pulumi.set(self, "excluded_fields", value)
+
+    @property
     @pulumi.getter(name="identifyingFields")
     def identifying_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs']]]]:
         """
@@ -9814,6 +9841,19 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs:
     @identifying_fields.setter
     def identifying_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs']]]]):
         pulumi.set(self, "identifying_fields", value)
+
+    @property
+    @pulumi.getter(name="includedFields")
+    def included_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs']]]]:
+        """
+        Limit scanning only to these fields.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "included_fields")
+
+    @included_fields.setter
+    def included_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs']]]]):
+        pulumi.set(self, "included_fields", value)
 
     @property
     @pulumi.getter(name="rowsLimit")
@@ -9860,6 +9900,28 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs:
 
 
 @pulumi.input_type
+class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: Name describing the field excluded from scanning.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name describing the field excluded from scanning.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
 class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str]):
@@ -9873,6 +9935,28 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField
     def name(self) -> pulumi.Input[str]:
         """
         Name describing the field.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: Name describing the field to which scanning is limited.
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name describing the field to which scanning is limited.
         """
         return pulumi.get(self, "name")
 

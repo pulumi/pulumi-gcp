@@ -102,6 +102,50 @@ import (
 //	}
 //
 // ```
+// ### Disk Features
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewDisk(ctx, "default", &compute.DiskArgs{
+//				GuestOsFeatures: compute.DiskGuestOsFeatureArray{
+//					&compute.DiskGuestOsFeatureArgs{
+//						Type: pulumi.String("SECURE_BOOT"),
+//					},
+//					&compute.DiskGuestOsFeatureArgs{
+//						Type: pulumi.String("MULTI_IP_SUBNET"),
+//					},
+//					&compute.DiskGuestOsFeatureArgs{
+//						Type: pulumi.String("WINDOWS"),
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"environment": pulumi.String("dev"),
+//				},
+//				Licenses: pulumi.StringArray{
+//					pulumi.String("https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"),
+//				},
+//				PhysicalBlockSizeBytes: pulumi.Int(4096),
+//				Type:                   pulumi.String("pd-ssd"),
+//				Zone:                   pulumi.String("us-central1-a"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -151,6 +195,10 @@ type Disk struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey DiskDiskEncryptionKeyPtrOutput `pulumi:"diskEncryptionKey"`
+	// A list of features to enable on the guest operating system.
+	// Applicable only for bootable disks.
+	// Structure is documented below.
+	GuestOsFeatures DiskGuestOsFeatureArrayOutput `pulumi:"guestOsFeatures"`
 	// The image from which to initialize this disk. This can be
 	// one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
 	// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -174,6 +222,8 @@ type Disk struct {
 	LastAttachTimestamp pulumi.StringOutput `pulumi:"lastAttachTimestamp"`
 	// Last detach timestamp in RFC3339 text format.
 	LastDetachTimestamp pulumi.StringOutput `pulumi:"lastDetachTimestamp"`
+	// Any applicable license URI.
+	Licenses pulumi.StringArrayOutput `pulumi:"licenses"`
 	// Indicates whether or not the disk can be read/write attached to more than one instance.
 	MultiWriter pulumi.BoolPtrOutput `pulumi:"multiWriter"`
 	// Name of the resource. Provided by the client when the resource is
@@ -315,6 +365,10 @@ type diskState struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey *DiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
+	// A list of features to enable on the guest operating system.
+	// Applicable only for bootable disks.
+	// Structure is documented below.
+	GuestOsFeatures []DiskGuestOsFeature `pulumi:"guestOsFeatures"`
 	// The image from which to initialize this disk. This can be
 	// one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
 	// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -338,6 +392,8 @@ type diskState struct {
 	LastAttachTimestamp *string `pulumi:"lastAttachTimestamp"`
 	// Last detach timestamp in RFC3339 text format.
 	LastDetachTimestamp *string `pulumi:"lastDetachTimestamp"`
+	// Any applicable license URI.
+	Licenses []string `pulumi:"licenses"`
 	// Indicates whether or not the disk can be read/write attached to more than one instance.
 	MultiWriter *bool `pulumi:"multiWriter"`
 	// Name of the resource. Provided by the client when the resource is
@@ -451,6 +507,10 @@ type DiskState struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey DiskDiskEncryptionKeyPtrInput
+	// A list of features to enable on the guest operating system.
+	// Applicable only for bootable disks.
+	// Structure is documented below.
+	GuestOsFeatures DiskGuestOsFeatureArrayInput
 	// The image from which to initialize this disk. This can be
 	// one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
 	// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -474,6 +534,8 @@ type DiskState struct {
 	LastAttachTimestamp pulumi.StringPtrInput
 	// Last detach timestamp in RFC3339 text format.
 	LastDetachTimestamp pulumi.StringPtrInput
+	// Any applicable license URI.
+	Licenses pulumi.StringArrayInput
 	// Indicates whether or not the disk can be read/write attached to more than one instance.
 	MultiWriter pulumi.BoolPtrInput
 	// Name of the resource. Provided by the client when the resource is
@@ -589,6 +651,10 @@ type diskArgs struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey *DiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
+	// A list of features to enable on the guest operating system.
+	// Applicable only for bootable disks.
+	// Structure is documented below.
+	GuestOsFeatures []DiskGuestOsFeature `pulumi:"guestOsFeatures"`
 	// The image from which to initialize this disk. This can be
 	// one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
 	// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -605,6 +671,8 @@ type diskArgs struct {
 	Interface *string `pulumi:"interface"`
 	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
+	// Any applicable license URI.
+	Licenses []string `pulumi:"licenses"`
 	// Indicates whether or not the disk can be read/write attached to more than one instance.
 	MultiWriter *bool `pulumi:"multiWriter"`
 	// Name of the resource. Provided by the client when the resource is
@@ -695,6 +763,10 @@ type DiskArgs struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey DiskDiskEncryptionKeyPtrInput
+	// A list of features to enable on the guest operating system.
+	// Applicable only for bootable disks.
+	// Structure is documented below.
+	GuestOsFeatures DiskGuestOsFeatureArrayInput
 	// The image from which to initialize this disk. This can be
 	// one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
 	// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -711,6 +783,8 @@ type DiskArgs struct {
 	Interface pulumi.StringPtrInput
 	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
+	// Any applicable license URI.
+	Licenses pulumi.StringArrayInput
 	// Indicates whether or not the disk can be read/write attached to more than one instance.
 	MultiWriter pulumi.BoolPtrInput
 	// Name of the resource. Provided by the client when the resource is
@@ -900,6 +974,13 @@ func (o DiskOutput) DiskEncryptionKey() DiskDiskEncryptionKeyPtrOutput {
 	return o.ApplyT(func(v *Disk) DiskDiskEncryptionKeyPtrOutput { return v.DiskEncryptionKey }).(DiskDiskEncryptionKeyPtrOutput)
 }
 
+// A list of features to enable on the guest operating system.
+// Applicable only for bootable disks.
+// Structure is documented below.
+func (o DiskOutput) GuestOsFeatures() DiskGuestOsFeatureArrayOutput {
+	return o.ApplyT(func(v *Disk) DiskGuestOsFeatureArrayOutput { return v.GuestOsFeatures }).(DiskGuestOsFeatureArrayOutput)
+}
+
 // The image from which to initialize this disk. This can be
 // one of: the image's `selfLink`, `projects/{project}/global/images/{image}`,
 // `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -939,6 +1020,11 @@ func (o DiskOutput) LastAttachTimestamp() pulumi.StringOutput {
 // Last detach timestamp in RFC3339 text format.
 func (o DiskOutput) LastDetachTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.LastDetachTimestamp }).(pulumi.StringOutput)
+}
+
+// Any applicable license URI.
+func (o DiskOutput) Licenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Disk) pulumi.StringArrayOutput { return v.Licenses }).(pulumi.StringArrayOutput)
 }
 
 // Indicates whether or not the disk can be read/write attached to more than one instance.

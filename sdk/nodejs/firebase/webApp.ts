@@ -67,15 +67,23 @@ import * as utilities from "../utilities";
  * WebApp can be imported using any of these accepted formats
  *
  * ```sh
- *  $ pulumi import gcp:firebase/webApp:WebApp default {{project}}/{{name}}
+ *  $ pulumi import gcp:firebase/webApp:WebApp default {{project}} projects/{{project}}/webApps/{{app_id}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:firebase/webApp:WebApp default {{project}} {{name}}
+ *  $ pulumi import gcp:firebase/webApp:WebApp default projects/{{project}}/webApps/{{app_id}}
  * ```
  *
  * ```sh
- *  $ pulumi import gcp:firebase/webApp:WebApp default {{name}}
+ *  $ pulumi import gcp:firebase/webApp:WebApp default {{project}}/{{project}}/{{app_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:firebase/webApp:WebApp default webApps/{{app_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:firebase/webApp:WebApp default {{app_id}}
  * ```
  */
 export class WebApp extends pulumi.CustomResource {

@@ -6,12 +6,36 @@ package com.pulumi.gcp.certificateauthority.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class CaPoolPublishingOptionsArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final CaPoolPublishingOptionsArgs Empty = new CaPoolPublishingOptionsArgs();
+
+    /**
+     * Specifies the encoding format of each CertificateAuthority&#39;s CA
+     * certificate and CRLs. If this is omitted, CA certificates and CRLs
+     * will be published in PEM.
+     * Possible values are: `PEM`, `DER`.
+     * 
+     */
+    @Import(name="encodingFormat")
+    private @Nullable Output<String> encodingFormat;
+
+    /**
+     * @return Specifies the encoding format of each CertificateAuthority&#39;s CA
+     * certificate and CRLs. If this is omitted, CA certificates and CRLs
+     * will be published in PEM.
+     * Possible values are: `PEM`, `DER`.
+     * 
+     */
+    public Optional<Output<String>> encodingFormat() {
+        return Optional.ofNullable(this.encodingFormat);
+    }
 
     /**
      * When true, publishes each CertificateAuthority&#39;s CA certificate and includes its URL in the &#34;Authority Information Access&#34;
@@ -56,6 +80,7 @@ public final class CaPoolPublishingOptionsArgs extends com.pulumi.resources.Reso
     private CaPoolPublishingOptionsArgs() {}
 
     private CaPoolPublishingOptionsArgs(CaPoolPublishingOptionsArgs $) {
+        this.encodingFormat = $.encodingFormat;
         this.publishCaCert = $.publishCaCert;
         this.publishCrl = $.publishCrl;
     }
@@ -76,6 +101,33 @@ public final class CaPoolPublishingOptionsArgs extends com.pulumi.resources.Reso
 
         public Builder(CaPoolPublishingOptionsArgs defaults) {
             $ = new CaPoolPublishingOptionsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param encodingFormat Specifies the encoding format of each CertificateAuthority&#39;s CA
+         * certificate and CRLs. If this is omitted, CA certificates and CRLs
+         * will be published in PEM.
+         * Possible values are: `PEM`, `DER`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encodingFormat(@Nullable Output<String> encodingFormat) {
+            $.encodingFormat = encodingFormat;
+            return this;
+        }
+
+        /**
+         * @param encodingFormat Specifies the encoding format of each CertificateAuthority&#39;s CA
+         * certificate and CRLs. If this is omitted, CA certificates and CRLs
+         * will be published in PEM.
+         * Possible values are: `PEM`, `DER`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encodingFormat(String encodingFormat) {
+            return encodingFormat(Output.of(encodingFormat));
         }
 
         /**

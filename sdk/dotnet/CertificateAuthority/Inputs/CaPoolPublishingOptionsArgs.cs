@@ -13,6 +13,15 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
     public sealed class CaPoolPublishingOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies the encoding format of each CertificateAuthority's CA
+        /// certificate and CRLs. If this is omitted, CA certificates and CRLs
+        /// will be published in PEM.
+        /// Possible values are: `PEM`, `DER`.
+        /// </summary>
+        [Input("encodingFormat")]
+        public Input<string>? EncodingFormat { get; set; }
+
+        /// <summary>
         /// When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access"
         /// X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding
         /// X.509 extension will not be written in issued certificates.

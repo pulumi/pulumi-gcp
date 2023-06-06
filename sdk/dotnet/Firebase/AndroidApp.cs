@@ -47,19 +47,23 @@ namespace Pulumi.Gcp.Firebase
     /// AndroidApp can be imported using any of these accepted formats
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:firebase/androidApp:AndroidApp default projects/{{project}}/androidApps/{{appId}}
+    ///  $ pulumi import gcp:firebase/androidApp:AndroidApp default {{project}} projects/{{project}}/androidApps/{{app_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:firebase/androidApp:AndroidApp default {{project}}/{{appId}}
+    ///  $ pulumi import gcp:firebase/androidApp:AndroidApp default projects/{{project}}/androidApps/{{app_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:firebase/androidApp:AndroidApp default androidApps/{{appId}}
+    ///  $ pulumi import gcp:firebase/androidApp:AndroidApp default {{project}}/{{project}}/{{app_id}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:firebase/androidApp:AndroidApp default {{appId}}
+    ///  $ pulumi import gcp:firebase/androidApp:AndroidApp default androidApps/{{app_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:firebase/androidApp:AndroidApp default {{app_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:firebase/androidApp:AndroidApp")]

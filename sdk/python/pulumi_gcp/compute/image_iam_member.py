@@ -276,6 +276,10 @@ class ImageIamMember(pulumi.CustomResource):
         * `compute.ImageIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the image are preserved.
         * `compute.ImageIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the image are preserved.
 
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `compute.ImageIamPolicy`: Retrieves the IAM policy for the image
+
         > **Note:** `compute.ImageIamPolicy` **cannot** be used in conjunction with `compute.ImageIamBinding` and `compute.ImageIamMember` or they will fight over what your policy should be.
 
         > **Note:** `compute.ImageIamBinding` resources **can be** used in conjunction with `compute.ImageIamMember` resources **only if** they do not grant privilege to the same role.
@@ -438,6 +442,10 @@ class ImageIamMember(pulumi.CustomResource):
         * `compute.ImageIamPolicy`: Authoritative. Sets the IAM policy for the image and replaces any existing policy already attached.
         * `compute.ImageIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the image are preserved.
         * `compute.ImageIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the image are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `compute.ImageIamPolicy`: Retrieves the IAM policy for the image
 
         > **Note:** `compute.ImageIamPolicy` **cannot** be used in conjunction with `compute.ImageIamBinding` and `compute.ImageIamMember` or they will fight over what your policy should be.
 

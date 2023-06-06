@@ -173,6 +173,10 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
         * `accesscontextmanager.AccessPolicyIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the accesspolicy are preserved.
         * `accesscontextmanager.AccessPolicyIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the accesspolicy are preserved.
 
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `accesscontextmanager.AccessPolicyIamPolicy`: Retrieves the IAM policy for the accesspolicy
+
         > **Note:** `accesscontextmanager.AccessPolicyIamPolicy` **cannot** be used in conjunction with `accesscontextmanager.AccessPolicyIamBinding` and `accesscontextmanager.AccessPolicyIamMember` or they will fight over what your policy should be.
 
         > **Note:** `accesscontextmanager.AccessPolicyIamBinding` resources **can be** used in conjunction with `accesscontextmanager.AccessPolicyIamMember` resources **only if** they do not grant privilege to the same role.
@@ -266,6 +270,10 @@ class AccessPolicyIamPolicy(pulumi.CustomResource):
         * `accesscontextmanager.AccessPolicyIamPolicy`: Authoritative. Sets the IAM policy for the accesspolicy and replaces any existing policy already attached.
         * `accesscontextmanager.AccessPolicyIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the accesspolicy are preserved.
         * `accesscontextmanager.AccessPolicyIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the accesspolicy are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `accesscontextmanager.AccessPolicyIamPolicy`: Retrieves the IAM policy for the accesspolicy
 
         > **Note:** `accesscontextmanager.AccessPolicyIamPolicy` **cannot** be used in conjunction with `accesscontextmanager.AccessPolicyIamBinding` and `accesscontextmanager.AccessPolicyIamMember` or they will fight over what your policy should be.
 

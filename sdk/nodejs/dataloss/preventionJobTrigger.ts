@@ -424,6 +424,12 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
      * Name of a BigQuery field to be returned with the findings.
      *
      * (Required)
+     * Name describing the field to which scanning is limited.
+     *
+     * (Required)
+     * Name describing the field excluded from scanning.
+     *
+     * (Required)
      * Name describing the field.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -561,6 +567,12 @@ export interface PreventionJobTriggerState {
      *
      * (Required)
      * Name of a BigQuery field to be returned with the findings.
+     *
+     * (Required)
+     * Name describing the field to which scanning is limited.
+     *
+     * (Required)
+     * Name describing the field excluded from scanning.
      *
      * (Required)
      * Name describing the field.
