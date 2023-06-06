@@ -11,15 +11,179 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Three different resources help you manage your IAM policy for Container Registry Note. Each of these resources serves a different use case:
+//
+// * `containeranalysis.NoteIamPolicy`: Authoritative. Sets the IAM policy for the note and replaces any existing policy already attached.
+// * `containeranalysis.NoteIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the note are preserved.
+// * `containeranalysis.NoteIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the note are preserved.
+//
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `containeranalysis.NoteIamPolicy`: Retrieves the IAM policy for the note
+//
+// > **Note:** `containeranalysis.NoteIamPolicy` **cannot** be used in conjunction with `containeranalysis.NoteIamBinding` and `containeranalysis.NoteIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `containeranalysis.NoteIamBinding` resources **can be** used in conjunction with `containeranalysis.NoteIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## google\_container\_analysis\_note\_iam\_policy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/containeranalysis"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/containeranalysis.notes.occurrences.viewer",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = containeranalysis.NewNoteIamPolicy(ctx, "policy", &containeranalysis.NoteIamPolicyArgs{
+//				Project:    pulumi.Any(google_container_analysis_note.Note.Project),
+//				Note:       pulumi.Any(google_container_analysis_note.Note.Name),
+//				PolicyData: *pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## google\_container\_analysis\_note\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/containeranalysis"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := containeranalysis.NewNoteIamBinding(ctx, "binding", &containeranalysis.NoteIamBindingArgs{
+//				Project: pulumi.Any(google_container_analysis_note.Note.Project),
+//				Note:    pulumi.Any(google_container_analysis_note.Note.Name),
+//				Role:    pulumi.String("roles/containeranalysis.notes.occurrences.viewer"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## google\_container\_analysis\_note\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/containeranalysis"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := containeranalysis.NewNoteIamMember(ctx, "member", &containeranalysis.NoteIamMemberArgs{
+//				Project: pulumi.Any(google_container_analysis_note.Note.Project),
+//				Note:    pulumi.Any(google_container_analysis_note.Note.Name),
+//				Role:    pulumi.String("roles/containeranalysis.notes.occurrences.viewer"),
+//				Member:  pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/notes/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Container Registry note IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+//
+// ```sh
+//
+//	$ pulumi import gcp:containeranalysis/noteIamBinding:NoteIamBinding editor "projects/{{project}}/notes/{{note}} roles/containeranalysis.notes.occurrences.viewer user:jane@example.com"
+//
+// ```
+//
+//	IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//
+// ```sh
+//
+//	$ pulumi import gcp:containeranalysis/noteIamBinding:NoteIamBinding editor "projects/{{project}}/notes/{{note}} roles/containeranalysis.notes.occurrences.viewer"
+//
+// ```
+//
+//	IAM policy imports use the identifier of the resource in question, e.g.
+//
+// ```sh
+//
+//	$ pulumi import gcp:containeranalysis/noteIamBinding:NoteIamBinding editor projects/{{project}}/notes/{{note}}
+//
+// ```
+//
+//	-> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type NoteIamBinding struct {
 	pulumi.CustomResourceState
 
 	Condition NoteIamBindingConditionPtrOutput `pulumi:"condition"`
-	Etag      pulumi.StringOutput              `pulumi:"etag"`
-	Members   pulumi.StringArrayOutput         `pulumi:"members"`
-	Note      pulumi.StringOutput              `pulumi:"note"`
-	Project   pulumi.StringOutput              `pulumi:"project"`
-	Role      pulumi.StringOutput              `pulumi:"role"`
+	// (Computed) The etag of the IAM policy.
+	Etag    pulumi.StringOutput      `pulumi:"etag"`
+	Members pulumi.StringArrayOutput `pulumi:"members"`
+	// Used to find the parent resource to bind the IAM policy to
+	Note pulumi.StringOutput `pulumi:"note"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Project pulumi.StringOutput `pulumi:"project"`
+	// The role that should be applied. Only one
+	// `containeranalysis.NoteIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	Role pulumi.StringOutput `pulumi:"role"`
 }
 
 // NewNoteIamBinding registers a new resource with the given unique name, arguments, and options.
@@ -61,20 +225,58 @@ func GetNoteIamBinding(ctx *pulumi.Context,
 // Input properties used for looking up and filtering NoteIamBinding resources.
 type noteIamBindingState struct {
 	Condition *NoteIamBindingCondition `pulumi:"condition"`
-	Etag      *string                  `pulumi:"etag"`
-	Members   []string                 `pulumi:"members"`
-	Note      *string                  `pulumi:"note"`
-	Project   *string                  `pulumi:"project"`
-	Role      *string                  `pulumi:"role"`
+	// (Computed) The etag of the IAM policy.
+	Etag    *string  `pulumi:"etag"`
+	Members []string `pulumi:"members"`
+	// Used to find the parent resource to bind the IAM policy to
+	Note *string `pulumi:"note"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Project *string `pulumi:"project"`
+	// The role that should be applied. Only one
+	// `containeranalysis.NoteIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	Role *string `pulumi:"role"`
 }
 
 type NoteIamBindingState struct {
 	Condition NoteIamBindingConditionPtrInput
-	Etag      pulumi.StringPtrInput
-	Members   pulumi.StringArrayInput
-	Note      pulumi.StringPtrInput
-	Project   pulumi.StringPtrInput
-	Role      pulumi.StringPtrInput
+	// (Computed) The etag of the IAM policy.
+	Etag    pulumi.StringPtrInput
+	Members pulumi.StringArrayInput
+	// Used to find the parent resource to bind the IAM policy to
+	Note pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Project pulumi.StringPtrInput
+	// The role that should be applied. Only one
+	// `containeranalysis.NoteIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	Role pulumi.StringPtrInput
 }
 
 func (NoteIamBindingState) ElementType() reflect.Type {
@@ -84,18 +286,54 @@ func (NoteIamBindingState) ElementType() reflect.Type {
 type noteIamBindingArgs struct {
 	Condition *NoteIamBindingCondition `pulumi:"condition"`
 	Members   []string                 `pulumi:"members"`
-	Note      string                   `pulumi:"note"`
-	Project   *string                  `pulumi:"project"`
-	Role      string                   `pulumi:"role"`
+	// Used to find the parent resource to bind the IAM policy to
+	Note string `pulumi:"note"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Project *string `pulumi:"project"`
+	// The role that should be applied. Only one
+	// `containeranalysis.NoteIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	Role string `pulumi:"role"`
 }
 
 // The set of arguments for constructing a NoteIamBinding resource.
 type NoteIamBindingArgs struct {
 	Condition NoteIamBindingConditionPtrInput
 	Members   pulumi.StringArrayInput
-	Note      pulumi.StringInput
-	Project   pulumi.StringPtrInput
-	Role      pulumi.StringInput
+	// Used to find the parent resource to bind the IAM policy to
+	Note pulumi.StringInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+	//
+	// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+	//   Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+	// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+	// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+	Project pulumi.StringPtrInput
+	// The role that should be applied. Only one
+	// `containeranalysis.NoteIamBinding` can be used per role. Note that custom roles must be of the format
+	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+	Role pulumi.StringInput
 }
 
 func (NoteIamBindingArgs) ElementType() reflect.Type {
@@ -189,6 +427,7 @@ func (o NoteIamBindingOutput) Condition() NoteIamBindingConditionPtrOutput {
 	return o.ApplyT(func(v *NoteIamBinding) NoteIamBindingConditionPtrOutput { return v.Condition }).(NoteIamBindingConditionPtrOutput)
 }
 
+// (Computed) The etag of the IAM policy.
 func (o NoteIamBindingOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *NoteIamBinding) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
@@ -197,14 +436,32 @@ func (o NoteIamBindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NoteIamBinding) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
 
+// Used to find the parent resource to bind the IAM policy to
 func (o NoteIamBindingOutput) Note() pulumi.StringOutput {
 	return o.ApplyT(func(v *NoteIamBinding) pulumi.StringOutput { return v.Note }).(pulumi.StringOutput)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+//
+//   - `member/members` - (Required) Identities that will be granted the privilege in `role`.
+//     Each entry can have one of the following values:
+//   - **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+//   - **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+//   - **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+//   - **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+//   - **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+//   - **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+//   - **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+//   - **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+//   - **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
 func (o NoteIamBindingOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *NoteIamBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// The role that should be applied. Only one
+// `containeranalysis.NoteIamBinding` can be used per role. Note that custom roles must be of the format
+// `[projects|organizations]/{parent-name}/roles/{role-name}`.
 func (o NoteIamBindingOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *NoteIamBinding) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
