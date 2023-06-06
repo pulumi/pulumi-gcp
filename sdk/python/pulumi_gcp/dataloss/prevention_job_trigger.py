@@ -194,6 +194,12 @@ class _PreventionJobTriggerState:
                Name of a BigQuery field to be returned with the findings.
                
                (Required)
+               Name describing the field to which scanning is limited.
+               
+               (Required)
+               Name describing the field excluded from scanning.
+               
+               (Required)
                Name describing the field.
         :param pulumi.Input[str] parent: The parent of the trigger, either in the format `projects/{{project}}`
                or `projects/{{project}}/locations/{{location}}`
@@ -330,6 +336,12 @@ class _PreventionJobTriggerState:
 
         (Required)
         Name of a BigQuery field to be returned with the findings.
+
+        (Required)
+        Name describing the field to which scanning is limited.
+
+        (Required)
+        Name describing the field excluded from scanning.
 
         (Required)
         Name describing the field.
@@ -1181,6 +1193,12 @@ class PreventionJobTrigger(pulumi.CustomResource):
                Name of a BigQuery field to be returned with the findings.
                
                (Required)
+               Name describing the field to which scanning is limited.
+               
+               (Required)
+               Name describing the field excluded from scanning.
+               
+               (Required)
                Name describing the field.
         :param pulumi.Input[str] parent: The parent of the trigger, either in the format `projects/{{project}}`
                or `projects/{{project}}/locations/{{location}}`
@@ -1292,6 +1310,12 @@ class PreventionJobTrigger(pulumi.CustomResource):
 
         (Required)
         Name of a BigQuery field to be returned with the findings.
+
+        (Required)
+        Name describing the field to which scanning is limited.
+
+        (Required)
+        Name describing the field excluded from scanning.
 
         (Required)
         Name describing the field.

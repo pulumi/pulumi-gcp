@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Workstations.Inputs
     public sealed class WorkstationConfigPersistentDirectoryGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// PersistentDirectory backed by a Compute Engine regional persistent disk.
+        /// A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
         /// Structure is documented below.
         /// </summary>
         [Input("gcePd")]

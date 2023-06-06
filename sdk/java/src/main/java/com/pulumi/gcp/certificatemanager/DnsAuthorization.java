@@ -45,21 +45,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new DnsAuthorization(&#34;default&#34;, DnsAuthorizationArgs.builder()        
  *             .description(&#34;The default dnss&#34;)
- *             .domain(&#34;%{random_suffix}.hashicorptest.com&#34;)
+ *             .domain(&#34;subdomain.hashicorptest.com&#34;)
  *             .build());
  * 
- *         ctx.export(&#34;recordNameToInsert&#34;, Map.ofEntries(
- *             Map.entry(&#34;google_certificate_manager_dns_authorization.default.dns_resource_record.0.name&#34;, ),
- *             Map.entry(&#34;value&#34;, &#34;&#34;)
- *         ));
- *         ctx.export(&#34;recordTypeToInsert&#34;, Map.ofEntries(
- *             Map.entry(&#34;google_certificate_manager_dns_authorization.default.dns_resource_record.0.type&#34;, ),
- *             Map.entry(&#34;value&#34;, &#34;&#34;)
- *         ));
- *         ctx.export(&#34;recordDataToInsert&#34;, Map.ofEntries(
- *             Map.entry(&#34;google_certificate_manager_dns_authorization.default.dns_resource_record.0.data&#34;, ),
- *             Map.entry(&#34;value&#34;, &#34;&#34;)
- *         ));
+ *         ctx.export(&#34;recordNameToInsert&#34;, default_.dnsResourceRecords().applyValue(dnsResourceRecords -&gt; dnsResourceRecords[0].name()));
+ *         ctx.export(&#34;recordTypeToInsert&#34;, default_.dnsResourceRecords().applyValue(dnsResourceRecords -&gt; dnsResourceRecords[0].type()));
+ *         ctx.export(&#34;recordDataToInsert&#34;, default_.dnsResourceRecords().applyValue(dnsResourceRecords -&gt; dnsResourceRecords[0].data()));
  *     }
  * }
  * ```

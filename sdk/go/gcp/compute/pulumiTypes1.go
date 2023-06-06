@@ -10,6 +10,348 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction struct {
+	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Structure is documented below.
+	RequestHeadersToAdds []URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd `pulumi:"requestHeadersToAdds"`
+	// A list of header names for headers that need to be removed from the request prior to
+	// forwarding the request to the backendService.
+	RequestHeadersToRemoves []string `pulumi:"requestHeadersToRemoves"`
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
+	ResponseHeadersToAdds []URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd `pulumi:"responseHeadersToAdds"`
+	// A list of header names for headers that need to be removed from the response prior to sending the
+	// response back to the client.
+	ResponseHeadersToRemoves []string `pulumi:"responseHeadersToRemoves"`
+}
+
+// URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs and URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionInput` via:
+//
+//	URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs{...}
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput
+	ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput
+}
+
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs struct {
+	// Headers to add to a matching request prior to forwarding the request to the backendService.
+	// Structure is documented below.
+	RequestHeadersToAdds URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayInput `pulumi:"requestHeadersToAdds"`
+	// A list of header names for headers that need to be removed from the request prior to
+	// forwarding the request to the backendService.
+	RequestHeadersToRemoves pulumi.StringArrayInput `pulumi:"requestHeadersToRemoves"`
+	// Headers to add the response prior to sending the response back to the client.
+	// Structure is documented below.
+	ResponseHeadersToAdds URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayInput `pulumi:"responseHeadersToAdds"`
+	// A list of header names for headers that need to be removed from the response prior to sending the
+	// response back to the client.
+	ResponseHeadersToRemoves pulumi.StringArrayInput `pulumi:"responseHeadersToRemoves"`
+}
+
+func (URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput)
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput).ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs, URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtr and URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrInput` via:
+//
+//	        URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput
+	ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput
+}
+
+type urlmapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrType URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs
+
+func URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtr(v *URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrInput {
+	return (*urlmapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrType)(v)
+}
+
+func (*urlmapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrType) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrType) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return o.ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction) *URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction {
+		return &v
+	}).(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput)
+}
+
+// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput) RequestHeadersToAdds() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction) []URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
+		return v.RequestHeadersToAdds
+	}).(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput)
+}
+
+// A list of header names for headers that need to be removed from the request prior to
+// forwarding the request to the backendService.
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput) RequestHeadersToRemoves() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction) []string {
+		return v.RequestHeadersToRemoves
+	}).(pulumi.StringArrayOutput)
+}
+
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput) ResponseHeadersToAdds() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction) []URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
+		return v.ResponseHeadersToAdds
+	}).(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput)
+}
+
+// A list of header names for headers that need to be removed from the response prior to sending the
+// response back to the client.
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput) ResponseHeadersToRemoves() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction) []string {
+		return v.ResponseHeadersToRemoves
+	}).(pulumi.StringArrayOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput) Elem() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction
+		return ret
+	}).(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput)
+}
+
+// Headers to add to a matching request prior to forwarding the request to the backendService.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput) RequestHeadersToAdds() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction) []URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
+		if v == nil {
+			return nil
+		}
+		return v.RequestHeadersToAdds
+	}).(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput)
+}
+
+// A list of header names for headers that need to be removed from the request prior to
+// forwarding the request to the backendService.
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput) RequestHeadersToRemoves() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestHeadersToRemoves
+	}).(pulumi.StringArrayOutput)
+}
+
+// Headers to add the response prior to sending the response back to the client.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput) ResponseHeadersToAdds() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction) []URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseHeadersToAdds
+	}).(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput)
+}
+
+// A list of header names for headers that need to be removed from the response prior to sending the
+// response back to the client.
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput) ResponseHeadersToRemoves() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ResponseHeadersToRemoves
+	}).(pulumi.StringArrayOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd struct {
+	// The name of the header to add.
+	HeaderName string `pulumi:"headerName"`
+	// The value of the header to add.
+	HeaderValue string `pulumi:"headerValue"`
+	// If false, headerValue is appended to any values that already exist for the header.
+	// If true, headerValue is set for the header, discarding any values that were set for that header.
+	Replace bool `pulumi:"replace"`
+}
+
+// URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs and URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddInput` via:
+//
+//	URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs{...}
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput
+	ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput
+}
+
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs struct {
+	// The name of the header to add.
+	HeaderName pulumi.StringInput `pulumi:"headerName"`
+	// The value of the header to add.
+	HeaderValue pulumi.StringInput `pulumi:"headerValue"`
+	// If false, headerValue is appended to any values that already exist for the header.
+	// If true, headerValue is set for the header, discarding any values that were set for that header.
+	Replace pulumi.BoolInput `pulumi:"replace"`
+}
+
+func (URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput)
+}
+
+// URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray and URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayInput` via:
+//
+//	URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray{ URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs{...} }
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput
+	ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput
+}
+
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray []URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddInput
+
+func (URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput {
+	return o
+}
+
+// The name of the header to add.
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput) HeaderName() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd) string {
+		return v.HeaderName
+	}).(pulumi.StringOutput)
+}
+
+// The value of the header to add.
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput) HeaderValue() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd) string {
+		return v.HeaderValue
+	}).(pulumi.StringOutput)
+}
+
+// If false, headerValue is appended to any values that already exist for the header.
+// If true, headerValue is set for the header, discarding any values that were set for that header.
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput) Replace() pulumi.BoolOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd) bool {
+		return v.Replace
+	}).(pulumi.BoolOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput) Index(i pulumi.IntInput) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd {
+		return vs[0].([]URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAdd)[vs[1].(int)]
+	}).(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput)
+}
+
 type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd struct {
 	// The name of the header to add.
 	HeaderName string `pulumi:"headerName"`
@@ -3535,6 +3877,106 @@ func (o GetDiskDiskEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetDiskDis
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiskDiskEncryptionKey {
 		return vs[0].([]GetDiskDiskEncryptionKey)[vs[1].(int)]
 	}).(GetDiskDiskEncryptionKeyOutput)
+}
+
+type GetDiskGuestOsFeature struct {
+	// URL of the disk type resource describing which disk type to use to
+	// create the disk.
+	Type string `pulumi:"type"`
+}
+
+// GetDiskGuestOsFeatureInput is an input type that accepts GetDiskGuestOsFeatureArgs and GetDiskGuestOsFeatureOutput values.
+// You can construct a concrete instance of `GetDiskGuestOsFeatureInput` via:
+//
+//	GetDiskGuestOsFeatureArgs{...}
+type GetDiskGuestOsFeatureInput interface {
+	pulumi.Input
+
+	ToGetDiskGuestOsFeatureOutput() GetDiskGuestOsFeatureOutput
+	ToGetDiskGuestOsFeatureOutputWithContext(context.Context) GetDiskGuestOsFeatureOutput
+}
+
+type GetDiskGuestOsFeatureArgs struct {
+	// URL of the disk type resource describing which disk type to use to
+	// create the disk.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDiskGuestOsFeatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiskGuestOsFeature)(nil)).Elem()
+}
+
+func (i GetDiskGuestOsFeatureArgs) ToGetDiskGuestOsFeatureOutput() GetDiskGuestOsFeatureOutput {
+	return i.ToGetDiskGuestOsFeatureOutputWithContext(context.Background())
+}
+
+func (i GetDiskGuestOsFeatureArgs) ToGetDiskGuestOsFeatureOutputWithContext(ctx context.Context) GetDiskGuestOsFeatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiskGuestOsFeatureOutput)
+}
+
+// GetDiskGuestOsFeatureArrayInput is an input type that accepts GetDiskGuestOsFeatureArray and GetDiskGuestOsFeatureArrayOutput values.
+// You can construct a concrete instance of `GetDiskGuestOsFeatureArrayInput` via:
+//
+//	GetDiskGuestOsFeatureArray{ GetDiskGuestOsFeatureArgs{...} }
+type GetDiskGuestOsFeatureArrayInput interface {
+	pulumi.Input
+
+	ToGetDiskGuestOsFeatureArrayOutput() GetDiskGuestOsFeatureArrayOutput
+	ToGetDiskGuestOsFeatureArrayOutputWithContext(context.Context) GetDiskGuestOsFeatureArrayOutput
+}
+
+type GetDiskGuestOsFeatureArray []GetDiskGuestOsFeatureInput
+
+func (GetDiskGuestOsFeatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiskGuestOsFeature)(nil)).Elem()
+}
+
+func (i GetDiskGuestOsFeatureArray) ToGetDiskGuestOsFeatureArrayOutput() GetDiskGuestOsFeatureArrayOutput {
+	return i.ToGetDiskGuestOsFeatureArrayOutputWithContext(context.Background())
+}
+
+func (i GetDiskGuestOsFeatureArray) ToGetDiskGuestOsFeatureArrayOutputWithContext(ctx context.Context) GetDiskGuestOsFeatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDiskGuestOsFeatureArrayOutput)
+}
+
+type GetDiskGuestOsFeatureOutput struct{ *pulumi.OutputState }
+
+func (GetDiskGuestOsFeatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDiskGuestOsFeature)(nil)).Elem()
+}
+
+func (o GetDiskGuestOsFeatureOutput) ToGetDiskGuestOsFeatureOutput() GetDiskGuestOsFeatureOutput {
+	return o
+}
+
+func (o GetDiskGuestOsFeatureOutput) ToGetDiskGuestOsFeatureOutputWithContext(ctx context.Context) GetDiskGuestOsFeatureOutput {
+	return o
+}
+
+// URL of the disk type resource describing which disk type to use to
+// create the disk.
+func (o GetDiskGuestOsFeatureOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDiskGuestOsFeature) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDiskGuestOsFeatureArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDiskGuestOsFeatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDiskGuestOsFeature)(nil)).Elem()
+}
+
+func (o GetDiskGuestOsFeatureArrayOutput) ToGetDiskGuestOsFeatureArrayOutput() GetDiskGuestOsFeatureArrayOutput {
+	return o
+}
+
+func (o GetDiskGuestOsFeatureArrayOutput) ToGetDiskGuestOsFeatureArrayOutputWithContext(ctx context.Context) GetDiskGuestOsFeatureArrayOutput {
+	return o
+}
+
+func (o GetDiskGuestOsFeatureArrayOutput) Index(i pulumi.IntInput) GetDiskGuestOsFeatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDiskGuestOsFeature {
+		return vs[0].([]GetDiskGuestOsFeature)[vs[1].(int)]
+	}).(GetDiskGuestOsFeatureOutput)
 }
 
 type GetDiskSourceImageEncryptionKey struct {
@@ -17157,6 +17599,10 @@ func (o GetSubnetworkSecondaryIpRangeArrayOutput) Index(i pulumi.IntInput) GetSu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleUrlRedirectInput)(nil)).Elem(), URLMapPathMatcherRouteRuleUrlRedirectArgs{})
@@ -17215,6 +17661,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskAsyncPrimaryDiskArrayInput)(nil)).Elem(), GetDiskAsyncPrimaryDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskDiskEncryptionKeyInput)(nil)).Elem(), GetDiskDiskEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskDiskEncryptionKeyArrayInput)(nil)).Elem(), GetDiskDiskEncryptionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskGuestOsFeatureInput)(nil)).Elem(), GetDiskGuestOsFeatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskGuestOsFeatureArrayInput)(nil)).Elem(), GetDiskGuestOsFeatureArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskSourceImageEncryptionKeyInput)(nil)).Elem(), GetDiskSourceImageEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskSourceImageEncryptionKeyArrayInput)(nil)).Elem(), GetDiskSourceImageEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDiskSourceSnapshotEncryptionKeyInput)(nil)).Elem(), GetDiskSourceSnapshotEncryptionKeyArgs{})
@@ -17447,6 +17895,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKeyArrayInput)(nil)).Elem(), GetSnapshotSourceDiskEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArrayOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArrayOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleUrlRedirectOutput{})
@@ -17505,6 +17957,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDiskAsyncPrimaryDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetDiskDiskEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(GetDiskDiskEncryptionKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetDiskGuestOsFeatureOutput{})
+	pulumi.RegisterOutputType(GetDiskGuestOsFeatureArrayOutput{})
 	pulumi.RegisterOutputType(GetDiskSourceImageEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(GetDiskSourceImageEncryptionKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetDiskSourceSnapshotEncryptionKeyOutput{})

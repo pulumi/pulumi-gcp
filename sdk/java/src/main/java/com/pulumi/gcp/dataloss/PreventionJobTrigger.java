@@ -728,6 +728,12 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
      * Name of a BigQuery field to be returned with the findings.
      * 
      * (Required)
+     * Name describing the field to which scanning is limited.
+     * 
+     * (Required)
+     * Name describing the field excluded from scanning.
+     * 
+     * (Required)
      * Name describing the field.
      * 
      */
@@ -771,6 +777,12 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
      * 
      * (Required)
      * Name of a BigQuery field to be returned with the findings.
+     * 
+     * (Required)
+     * Name describing the field to which scanning is limited.
+     * 
+     * (Required)
+     * Name describing the field excluded from scanning.
      * 
      * (Required)
      * Name describing the field.

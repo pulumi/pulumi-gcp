@@ -2872,6 +2872,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "containeranalysis/noteIamBinding",
+  "fqn": "pulumi_gcp.containeranalysis",
+  "classes": {
+   "gcp:containeranalysis/noteIamBinding:NoteIamBinding": "NoteIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "containeranalysis/noteIamMember",
+  "fqn": "pulumi_gcp.containeranalysis",
+  "classes": {
+   "gcp:containeranalysis/noteIamMember:NoteIamMember": "NoteIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "containeranalysis/noteIamPolicy",
+  "fqn": "pulumi_gcp.containeranalysis",
+  "classes": {
+   "gcp:containeranalysis/noteIamPolicy:NoteIamPolicy": "NoteIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "containeranalysis/occurence",
   "fqn": "pulumi_gcp.containeranalysis",
   "classes": {

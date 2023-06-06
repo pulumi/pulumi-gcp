@@ -265,19 +265,10 @@ class DnsAuthorization(pulumi.CustomResource):
 
         default = gcp.certificatemanager.DnsAuthorization("default",
             description="The default dnss",
-            domain="%{random_suffix}.hashicorptest.com")
-        pulumi.export("recordNameToInsert", {
-            "google_certificate_manager_dns_authorization.default.dns_resource_record.0.name": [{}],
-            "value": "",
-        })
-        pulumi.export("recordTypeToInsert", {
-            "google_certificate_manager_dns_authorization.default.dns_resource_record.0.type": [{}],
-            "value": "",
-        })
-        pulumi.export("recordDataToInsert", {
-            "google_certificate_manager_dns_authorization.default.dns_resource_record.0.data": [{}],
-            "value": "",
-        })
+            domain="subdomain.hashicorptest.com")
+        pulumi.export("recordNameToInsert", default.dns_resource_records[0].name)
+        pulumi.export("recordTypeToInsert", default.dns_resource_records[0].type)
+        pulumi.export("recordDataToInsert", default.dns_resource_records[0].data)
         ```
 
         ## Import
@@ -330,19 +321,10 @@ class DnsAuthorization(pulumi.CustomResource):
 
         default = gcp.certificatemanager.DnsAuthorization("default",
             description="The default dnss",
-            domain="%{random_suffix}.hashicorptest.com")
-        pulumi.export("recordNameToInsert", {
-            "google_certificate_manager_dns_authorization.default.dns_resource_record.0.name": [{}],
-            "value": "",
-        })
-        pulumi.export("recordTypeToInsert", {
-            "google_certificate_manager_dns_authorization.default.dns_resource_record.0.type": [{}],
-            "value": "",
-        })
-        pulumi.export("recordDataToInsert", {
-            "google_certificate_manager_dns_authorization.default.dns_resource_record.0.data": [{}],
-            "value": "",
-        })
+            domain="subdomain.hashicorptest.com")
+        pulumi.export("recordNameToInsert", default.dns_resource_records[0].name)
+        pulumi.export("recordTypeToInsert", default.dns_resource_records[0].type)
+        pulumi.export("recordDataToInsert", default.dns_resource_records[0].data)
         ```
 
         ## Import

@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *     orgId: "123456789",
  * });
  * const basic = new gcp.logging.ProjectBucketConfig("basic", {
- *     project: _default.id,
+ *     project: _default.projectId,
  *     location: "global",
  *     retentionDays: 30,
  *     bucketId: "_Default",

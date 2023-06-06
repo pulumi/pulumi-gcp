@@ -79,14 +79,14 @@ import (
 //			bucketBucket, err := storage.NewBucket(ctx, "bucketBucket", &storage.BucketArgs{
 //				Project:  pulumi.String("my-project-name"),
 //				Location: pulumi.String("us-west1"),
-//			})
+//			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}
 //			bucketStorageBucket, err := firebase.NewStorageBucket(ctx, "bucketStorageBucket", &firebase.StorageBucketArgs{
 //				Project:  pulumi.String("my-project-name"),
 //				BucketId: bucketBucket.Name,
-//			})
+//			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}
@@ -100,7 +100,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
+//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
 //				bucketStorageBucket,
 //			}))
 //			if err != nil {
@@ -111,7 +111,7 @@ import (
 //					return fmt.Sprintf("projects/my-project-name/rulesets/%v", name), nil
 //				}).(pulumi.StringOutput),
 //				Project: pulumi.String("my-project-name"),
-//			})
+//			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}

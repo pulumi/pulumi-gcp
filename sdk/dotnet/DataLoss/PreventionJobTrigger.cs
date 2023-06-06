@@ -583,6 +583,12 @@ namespace Pulumi.Gcp.DataLoss
         /// Name of a BigQuery field to be returned with the findings.
         /// 
         /// (Required)
+        /// Name describing the field to which scanning is limited.
+        /// 
+        /// (Required)
+        /// Name describing the field excluded from scanning.
+        /// 
+        /// (Required)
         /// Name describing the field.
         /// </summary>
         [Output("name")]
@@ -792,6 +798,12 @@ namespace Pulumi.Gcp.DataLoss
         /// 
         /// (Required)
         /// Name of a BigQuery field to be returned with the findings.
+        /// 
+        /// (Required)
+        /// Name describing the field to which scanning is limited.
+        /// 
+        /// (Required)
+        /// Name describing the field excluded from scanning.
         /// 
         /// (Required)
         /// Name describing the field.

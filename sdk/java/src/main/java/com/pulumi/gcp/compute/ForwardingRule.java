@@ -1260,7 +1260,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.ForwardingRuleArgs;
  * import com.pulumi.gcp.compute.ServiceAttachment;
  * import com.pulumi.gcp.compute.ServiceAttachmentArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -1276,48 +1275,36 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var consumerNet = new Network(&#34;consumerNet&#34;, NetworkArgs.builder()        
  *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var consumerSubnet = new Subnetwork(&#34;consumerSubnet&#34;, SubnetworkArgs.builder()        
  *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(consumerNet.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var consumerAddress = new Address(&#34;consumerAddress&#34;, AddressArgs.builder()        
  *             .region(&#34;us-central1&#34;)
  *             .subnetwork(consumerSubnet.id())
  *             .addressType(&#34;INTERNAL&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var producerNet = new Network(&#34;producerNet&#34;, NetworkArgs.builder()        
  *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var pscProducerSubnet = new Subnetwork(&#34;pscProducerSubnet&#34;, SubnetworkArgs.builder()        
  *             .ipCidrRange(&#34;10.1.0.0/16&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .purpose(&#34;PRIVATE_SERVICE_CONNECT&#34;)
  *             .network(producerNet.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var producerSubnet = new Subnetwork(&#34;producerSubnet&#34;, SubnetworkArgs.builder()        
  *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .network(producerNet.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var producerServiceHealthCheck = new HealthCheck(&#34;producerServiceHealthCheck&#34;, HealthCheckArgs.builder()        
  *             .checkIntervalSec(1)
@@ -1325,16 +1312,12 @@ import javax.annotation.Nullable;
  *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
  *                 .port(&#34;80&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var producerServiceBackend = new RegionBackendService(&#34;producerServiceBackend&#34;, RegionBackendServiceArgs.builder()        
  *             .region(&#34;us-central1&#34;)
  *             .healthChecks(producerServiceHealthCheck.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var producerTargetService = new ForwardingRule(&#34;producerTargetService&#34;, ForwardingRuleArgs.builder()        
  *             .region(&#34;us-central1&#34;)
@@ -1343,9 +1326,7 @@ import javax.annotation.Nullable;
  *             .allPorts(true)
  *             .network(producerNet.name())
  *             .subnetwork(producerSubnet.name())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var producerServiceAttachment = new ServiceAttachment(&#34;producerServiceAttachment&#34;, ServiceAttachmentArgs.builder()        
  *             .region(&#34;us-central1&#34;)
@@ -1354,9 +1335,7 @@ import javax.annotation.Nullable;
  *             .connectionPreference(&#34;ACCEPT_AUTOMATIC&#34;)
  *             .natSubnets(pscProducerSubnet.name())
  *             .targetService(producerTargetService.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var default_ = new ForwardingRule(&#34;default&#34;, ForwardingRuleArgs.builder()        
  *             .region(&#34;us-central1&#34;)
@@ -1365,9 +1344,7 @@ import javax.annotation.Nullable;
  *             .network(consumerNet.name())
  *             .ipAddress(consumerAddress.id())
  *             .allowPscGlobalAccess(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

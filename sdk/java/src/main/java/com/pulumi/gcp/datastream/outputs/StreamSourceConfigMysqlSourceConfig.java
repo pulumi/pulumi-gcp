@@ -26,6 +26,12 @@ public final class StreamSourceConfigMysqlSourceConfig {
      */
     private @Nullable StreamSourceConfigMysqlSourceConfigIncludeObjects includeObjects;
     /**
+     * @return Maximum number of concurrent backfill tasks. The number should be non negative.
+     * If not set (or set to 0), the system&#39;s default value will be used.
+     * 
+     */
+    private @Nullable Integer maxConcurrentBackfillTasks;
+    /**
      * @return Maximum number of concurrent CDC tasks. The number should be non negative.
      * If not set (or set to 0), the system&#39;s default value will be used.
      * 
@@ -50,6 +56,14 @@ public final class StreamSourceConfigMysqlSourceConfig {
         return Optional.ofNullable(this.includeObjects);
     }
     /**
+     * @return Maximum number of concurrent backfill tasks. The number should be non negative.
+     * If not set (or set to 0), the system&#39;s default value will be used.
+     * 
+     */
+    public Optional<Integer> maxConcurrentBackfillTasks() {
+        return Optional.ofNullable(this.maxConcurrentBackfillTasks);
+    }
+    /**
      * @return Maximum number of concurrent CDC tasks. The number should be non negative.
      * If not set (or set to 0), the system&#39;s default value will be used.
      * 
@@ -69,12 +83,14 @@ public final class StreamSourceConfigMysqlSourceConfig {
     public static final class Builder {
         private @Nullable StreamSourceConfigMysqlSourceConfigExcludeObjects excludeObjects;
         private @Nullable StreamSourceConfigMysqlSourceConfigIncludeObjects includeObjects;
+        private @Nullable Integer maxConcurrentBackfillTasks;
         private @Nullable Integer maxConcurrentCdcTasks;
         public Builder() {}
         public Builder(StreamSourceConfigMysqlSourceConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.excludeObjects = defaults.excludeObjects;
     	      this.includeObjects = defaults.includeObjects;
+    	      this.maxConcurrentBackfillTasks = defaults.maxConcurrentBackfillTasks;
     	      this.maxConcurrentCdcTasks = defaults.maxConcurrentCdcTasks;
         }
 
@@ -89,6 +105,11 @@ public final class StreamSourceConfigMysqlSourceConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder maxConcurrentBackfillTasks(@Nullable Integer maxConcurrentBackfillTasks) {
+            this.maxConcurrentBackfillTasks = maxConcurrentBackfillTasks;
+            return this;
+        }
+        @CustomType.Setter
         public Builder maxConcurrentCdcTasks(@Nullable Integer maxConcurrentCdcTasks) {
             this.maxConcurrentCdcTasks = maxConcurrentCdcTasks;
             return this;
@@ -97,6 +118,7 @@ public final class StreamSourceConfigMysqlSourceConfig {
             final var o = new StreamSourceConfigMysqlSourceConfig();
             o.excludeObjects = excludeObjects;
             o.includeObjects = includeObjects;
+            o.maxConcurrentBackfillTasks = maxConcurrentBackfillTasks;
             o.maxConcurrentCdcTasks = maxConcurrentCdcTasks;
             return o;
         }

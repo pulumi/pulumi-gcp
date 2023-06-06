@@ -335,6 +335,7 @@ import javax.annotation.Nullable;
  *             .backendService(prodRegionBackendService.id())
  *             .allPorts(true)
  *             .network(prodNetwork.name())
+ *             .allowGlobalAccess(true)
  *             .build());
  * 
  *         var recordSet = new RecordSet(&#34;recordSet&#34;, RecordSetArgs.builder()        
@@ -348,6 +349,134 @@ import javax.annotation.Nullable;
  *                     .primary(RecordSetRoutingPolicyPrimaryBackupPrimaryArgs.builder()
  *                         .internalLoadBalancers(RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs.builder()
  *                             .loadBalancerType(&#34;regionalL4ilb&#34;)
+ *                             .ipAddress(prodForwardingRule.ipAddress())
+ *                             .port(&#34;80&#34;)
+ *                             .ipProtocol(&#34;tcp&#34;)
+ *                             .networkUrl(prodNetwork.id())
+ *                             .project(prodForwardingRule.project())
+ *                             .region(prodForwardingRule.region())
+ *                             .build())
+ *                         .build())
+ *                     .backupGeos(                    
+ *                         RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs.builder()
+ *                             .location(&#34;asia-east1&#34;)
+ *                             .rrdatas(&#34;10.128.1.1&#34;)
+ *                             .build(),
+ *                         RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs.builder()
+ *                             .location(&#34;us-west1&#34;)
+ *                             .rrdatas(&#34;10.130.1.1&#34;)
+ *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Primary-Backup with a regional L7 ILB
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dns.ManagedZone;
+ * import com.pulumi.gcp.dns.ManagedZoneArgs;
+ * import com.pulumi.gcp.compute.RegionHealthCheck;
+ * import com.pulumi.gcp.compute.RegionHealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionHealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.RegionUrlMap;
+ * import com.pulumi.gcp.compute.RegionUrlMapArgs;
+ * import com.pulumi.gcp.compute.RegionTargetHttpProxy;
+ * import com.pulumi.gcp.compute.RegionTargetHttpProxyArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.ForwardingRule;
+ * import com.pulumi.gcp.compute.ForwardingRuleArgs;
+ * import com.pulumi.gcp.dns.RecordSet;
+ * import com.pulumi.gcp.dns.RecordSetArgs;
+ * import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyArgs;
+ * import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupArgs;
+ * import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupPrimaryArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var prodManagedZone = new ManagedZone(&#34;prodManagedZone&#34;, ManagedZoneArgs.builder()        
+ *             .dnsName(&#34;prod.mydomain.com.&#34;)
+ *             .build());
+ * 
+ *         var prodRegionHealthCheck = new RegionHealthCheck(&#34;prodRegionHealthCheck&#34;, RegionHealthCheckArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .httpHealthCheck(RegionHealthCheckHttpHealthCheckArgs.builder()
+ *                 .port(80)
+ *                 .build())
+ *             .build());
+ * 
+ *         var prodRegionBackendService = new RegionBackendService(&#34;prodRegionBackendService&#34;, RegionBackendServiceArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *             .protocol(&#34;HTTP&#34;)
+ *             .healthChecks(prodRegionHealthCheck.id())
+ *             .build());
+ * 
+ *         var prodRegionUrlMap = new RegionUrlMap(&#34;prodRegionUrlMap&#34;, RegionUrlMapArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .defaultService(prodRegionBackendService.id())
+ *             .build());
+ * 
+ *         var prodRegionTargetHttpProxy = new RegionTargetHttpProxy(&#34;prodRegionTargetHttpProxy&#34;, RegionTargetHttpProxyArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .urlMap(prodRegionUrlMap.id())
+ *             .build());
+ * 
+ *         var prodNetwork = new Network(&#34;prodNetwork&#34;);
+ * 
+ *         var prodProxy = new Subnetwork(&#34;prodProxy&#34;, SubnetworkArgs.builder()        
+ *             .ipCidrRange(&#34;10.100.0.0/24&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .purpose(&#34;INTERNAL_HTTPS_LOAD_BALANCER&#34;)
+ *             .role(&#34;ACTIVE&#34;)
+ *             .network(prodNetwork.id())
+ *             .build());
+ * 
+ *         var prodForwardingRule = new ForwardingRule(&#34;prodForwardingRule&#34;, ForwardingRuleArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .loadBalancingScheme(&#34;INTERNAL_MANAGED&#34;)
+ *             .target(prodRegionTargetHttpProxy.id())
+ *             .portRange(&#34;80&#34;)
+ *             .allowGlobalAccess(true)
+ *             .network(prodNetwork.name())
+ *             .ipProtocol(&#34;TCP&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(prodProxy)
+ *                 .build());
+ * 
+ *         var recordSet = new RecordSet(&#34;recordSet&#34;, RecordSetArgs.builder()        
+ *             .name(prodManagedZone.dnsName().applyValue(dnsName -&gt; String.format(&#34;backend.%s&#34;, dnsName)))
+ *             .managedZone(prodManagedZone.name())
+ *             .type(&#34;A&#34;)
+ *             .ttl(300)
+ *             .routingPolicy(RecordSetRoutingPolicyArgs.builder()
+ *                 .primaryBackup(RecordSetRoutingPolicyPrimaryBackupArgs.builder()
+ *                     .trickleRatio(0.1)
+ *                     .primary(RecordSetRoutingPolicyPrimaryBackupPrimaryArgs.builder()
+ *                         .internalLoadBalancers(RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs.builder()
+ *                             .loadBalancerType(&#34;regionalL7ilb&#34;)
  *                             .ipAddress(prodForwardingRule.ipAddress())
  *                             .port(&#34;80&#34;)
  *                             .ipProtocol(&#34;tcp&#34;)

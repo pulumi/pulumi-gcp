@@ -26,35 +26,14 @@ namespace Pulumi.Gcp.CertificateManager
     ///     var @default = new Gcp.CertificateManager.DnsAuthorization("default", new()
     ///     {
     ///         Description = "The default dnss",
-    ///         Domain = "%{random_suffix}.hashicorptest.com",
+    ///         Domain = "subdomain.hashicorptest.com",
     ///     });
     /// 
     ///     return new Dictionary&lt;string, object?&gt;
     ///     {
-    ///         ["recordNameToInsert"] = 
-    ///         {
-    ///             { "google_certificate_manager_dns_authorization.default.dns_resource_record.0.name", new[]
-    ///             {
-    ///                 null,
-    ///             } },
-    ///             { "value", "" },
-    ///         },
-    ///         ["recordTypeToInsert"] = 
-    ///         {
-    ///             { "google_certificate_manager_dns_authorization.default.dns_resource_record.0.type", new[]
-    ///             {
-    ///                 null,
-    ///             } },
-    ///             { "value", "" },
-    ///         },
-    ///         ["recordDataToInsert"] = 
-    ///         {
-    ///             { "google_certificate_manager_dns_authorization.default.dns_resource_record.0.data", new[]
-    ///             {
-    ///                 null,
-    ///             } },
-    ///             { "value", "" },
-    ///         },
+    ///         ["recordNameToInsert"] = @default.DnsResourceRecords.Apply(dnsResourceRecords =&gt; dnsResourceRecords[0].Name),
+    ///         ["recordTypeToInsert"] = @default.DnsResourceRecords.Apply(dnsResourceRecords =&gt; dnsResourceRecords[0].Type),
+    ///         ["recordDataToInsert"] = @default.DnsResourceRecords.Apply(dnsResourceRecords =&gt; dnsResourceRecords[0].Data),
     ///     };
     /// });
     /// ```

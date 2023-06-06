@@ -23,9 +23,7 @@ namespace Pulumi.Gcp.CloudRun.Inputs
         private InputList<Inputs.ServiceTemplateSpecContainerArgs>? _containers;
 
         /// <summary>
-        /// Container defines the unit of execution for this Revision.
-        /// In the context of a Revision, we disallow a number of the fields of
-        /// this Container, including: name, ports, and volumeMounts.
+        /// Containers defines the unit of execution for this Revision.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ServiceTemplateSpecContainerArgs> Containers

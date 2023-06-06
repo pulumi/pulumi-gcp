@@ -73,6 +73,7 @@ export interface GetDiskResult {
      */
     readonly description: string;
     readonly diskEncryptionKeys: outputs.compute.GetDiskDiskEncryptionKey[];
+    readonly guestOsFeatures: outputs.compute.GetDiskGuestOsFeature[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -99,6 +100,7 @@ export interface GetDiskResult {
      * Last detach timestamp in RFC3339 text format.
      */
     readonly lastDetachTimestamp: string;
+    readonly licenses: string[];
     readonly multiWriter: boolean;
     readonly name: string;
     /**

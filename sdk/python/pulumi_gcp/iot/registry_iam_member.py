@@ -314,6 +314,10 @@ class RegistryIamMember(pulumi.CustomResource):
         * `iot.RegistryIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the deviceregistry are preserved.
         * `iot.RegistryIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the deviceregistry are preserved.
 
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `iot.RegistryIamPolicy`: Retrieves the IAM policy for the deviceregistry
+
         > **Note:** `iot.RegistryIamPolicy` **cannot** be used in conjunction with `iot.RegistryIamBinding` and `iot.RegistryIamMember` or they will fight over what your policy should be.
 
         > **Note:** `iot.RegistryIamBinding` resources **can be** used in conjunction with `iot.RegistryIamMember` resources **only if** they do not grant privilege to the same role.
@@ -422,6 +426,10 @@ class RegistryIamMember(pulumi.CustomResource):
         * `iot.RegistryIamPolicy`: Authoritative. Sets the IAM policy for the deviceregistry and replaces any existing policy already attached.
         * `iot.RegistryIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the deviceregistry are preserved.
         * `iot.RegistryIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the deviceregistry are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `iot.RegistryIamPolicy`: Retrieves the IAM policy for the deviceregistry
 
         > **Note:** `iot.RegistryIamPolicy` **cannot** be used in conjunction with `iot.RegistryIamBinding` and `iot.RegistryIamMember` or they will fight over what your policy should be.
 

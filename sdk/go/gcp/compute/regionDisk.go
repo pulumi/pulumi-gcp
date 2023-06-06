@@ -131,6 +131,51 @@ import (
 //	}
 //
 // ```
+// ### Region Disk Features
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRegionDisk(ctx, "regiondisk", &compute.RegionDiskArgs{
+//				GuestOsFeatures: compute.RegionDiskGuestOsFeatureArray{
+//					&compute.RegionDiskGuestOsFeatureArgs{
+//						Type: pulumi.String("SECURE_BOOT"),
+//					},
+//					&compute.RegionDiskGuestOsFeatureArgs{
+//						Type: pulumi.String("MULTI_IP_SUBNET"),
+//					},
+//					&compute.RegionDiskGuestOsFeatureArgs{
+//						Type: pulumi.String("WINDOWS"),
+//					},
+//				},
+//				Licenses: pulumi.StringArray{
+//					pulumi.String("https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core"),
+//				},
+//				PhysicalBlockSizeBytes: pulumi.Int(4096),
+//				Region:                 pulumi.String("us-central1"),
+//				ReplicaZones: pulumi.StringArray{
+//					pulumi.String("us-central1-a"),
+//					pulumi.String("us-central1-f"),
+//				},
+//				Type: pulumi.String("pd-ssd"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -180,6 +225,10 @@ type RegionDisk struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey RegionDiskDiskEncryptionKeyPtrOutput `pulumi:"diskEncryptionKey"`
+	// A list of features to enable on the guest operating system.
+	// Applicable only for bootable disks.
+	// Structure is documented below.
+	GuestOsFeatures RegionDiskGuestOsFeatureArrayOutput `pulumi:"guestOsFeatures"`
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
@@ -193,6 +242,8 @@ type RegionDisk struct {
 	LastAttachTimestamp pulumi.StringOutput `pulumi:"lastAttachTimestamp"`
 	// Last detach timestamp in RFC3339 text format.
 	LastDetachTimestamp pulumi.StringOutput `pulumi:"lastDetachTimestamp"`
+	// Any applicable license URI.
+	Licenses pulumi.StringArrayOutput `pulumi:"licenses"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -314,6 +365,10 @@ type regionDiskState struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey *RegionDiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
+	// A list of features to enable on the guest operating system.
+	// Applicable only for bootable disks.
+	// Structure is documented below.
+	GuestOsFeatures []RegionDiskGuestOsFeature `pulumi:"guestOsFeatures"`
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
@@ -327,6 +382,8 @@ type regionDiskState struct {
 	LastAttachTimestamp *string `pulumi:"lastAttachTimestamp"`
 	// Last detach timestamp in RFC3339 text format.
 	LastDetachTimestamp *string `pulumi:"lastDetachTimestamp"`
+	// Any applicable license URI.
+	Licenses []string `pulumi:"licenses"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -417,6 +474,10 @@ type RegionDiskState struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey RegionDiskDiskEncryptionKeyPtrInput
+	// A list of features to enable on the guest operating system.
+	// Applicable only for bootable disks.
+	// Structure is documented below.
+	GuestOsFeatures RegionDiskGuestOsFeatureArrayInput
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
@@ -430,6 +491,8 @@ type RegionDiskState struct {
 	LastAttachTimestamp pulumi.StringPtrInput
 	// Last detach timestamp in RFC3339 text format.
 	LastDetachTimestamp pulumi.StringPtrInput
+	// Any applicable license URI.
+	Licenses pulumi.StringArrayInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -522,12 +585,18 @@ type regionDiskArgs struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey *RegionDiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
+	// A list of features to enable on the guest operating system.
+	// Applicable only for bootable disks.
+	// Structure is documented below.
+	GuestOsFeatures []RegionDiskGuestOsFeature `pulumi:"guestOsFeatures"`
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
 	Interface *string `pulumi:"interface"`
 	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
+	// Any applicable license URI.
+	Licenses []string `pulumi:"licenses"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -601,12 +670,18 @@ type RegionDiskArgs struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey RegionDiskDiskEncryptionKeyPtrInput
+	// A list of features to enable on the guest operating system.
+	// Applicable only for bootable disks.
+	// Structure is documented below.
+	GuestOsFeatures RegionDiskGuestOsFeatureArrayInput
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
 	Interface pulumi.StringPtrInput
 	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
+	// Any applicable license URI.
+	Licenses pulumi.StringArrayInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -779,6 +854,13 @@ func (o RegionDiskOutput) DiskEncryptionKey() RegionDiskDiskEncryptionKeyPtrOutp
 	return o.ApplyT(func(v *RegionDisk) RegionDiskDiskEncryptionKeyPtrOutput { return v.DiskEncryptionKey }).(RegionDiskDiskEncryptionKeyPtrOutput)
 }
 
+// A list of features to enable on the guest operating system.
+// Applicable only for bootable disks.
+// Structure is documented below.
+func (o RegionDiskOutput) GuestOsFeatures() RegionDiskGuestOsFeatureArrayOutput {
+	return o.ApplyT(func(v *RegionDisk) RegionDiskGuestOsFeatureArrayOutput { return v.GuestOsFeatures }).(RegionDiskGuestOsFeatureArrayOutput)
+}
+
 // Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 //
 // Deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.
@@ -805,6 +887,11 @@ func (o RegionDiskOutput) LastAttachTimestamp() pulumi.StringOutput {
 // Last detach timestamp in RFC3339 text format.
 func (o RegionDiskOutput) LastDetachTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionDisk) pulumi.StringOutput { return v.LastDetachTimestamp }).(pulumi.StringOutput)
+}
+
+// Any applicable license URI.
+func (o RegionDiskOutput) Licenses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RegionDisk) pulumi.StringArrayOutput { return v.Licenses }).(pulumi.StringArrayOutput)
 }
 
 // Name of the resource. Provided by the client when the resource is

@@ -278,6 +278,10 @@ class ListingIamPolicy(pulumi.CustomResource):
         * `bigqueryanalyticshub.ListingIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the listing are preserved.
         * `bigqueryanalyticshub.ListingIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the listing are preserved.
 
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `bigqueryanalyticshub.ListingIamPolicy`: Retrieves the IAM policy for the listing
+
         > **Note:** `bigqueryanalyticshub.ListingIamPolicy` **cannot** be used in conjunction with `bigqueryanalyticshub.ListingIamBinding` and `bigqueryanalyticshub.ListingIamMember` or they will fight over what your policy should be.
 
         > **Note:** `bigqueryanalyticshub.ListingIamBinding` resources **can be** used in conjunction with `bigqueryanalyticshub.ListingIamMember` resources **only if** they do not grant privilege to the same role.
@@ -389,6 +393,10 @@ class ListingIamPolicy(pulumi.CustomResource):
         * `bigqueryanalyticshub.ListingIamPolicy`: Authoritative. Sets the IAM policy for the listing and replaces any existing policy already attached.
         * `bigqueryanalyticshub.ListingIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the listing are preserved.
         * `bigqueryanalyticshub.ListingIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the listing are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `bigqueryanalyticshub.ListingIamPolicy`: Retrieves the IAM policy for the listing
 
         > **Note:** `bigqueryanalyticshub.ListingIamPolicy` **cannot** be used in conjunction with `bigqueryanalyticshub.ListingIamBinding` and `bigqueryanalyticshub.ListingIamMember` or they will fight over what your policy should be.
 

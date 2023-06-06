@@ -683,7 +683,7 @@ class WorkstationConfigPersistentDirectoryArgs:
                  gce_pd: Optional[pulumi.Input['WorkstationConfigPersistentDirectoryGcePdArgs']] = None,
                  mount_path: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['WorkstationConfigPersistentDirectoryGcePdArgs'] gce_pd: PersistentDirectory backed by a Compute Engine regional persistent disk.
+        :param pulumi.Input['WorkstationConfigPersistentDirectoryGcePdArgs'] gce_pd: A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
                Structure is documented below.
         :param pulumi.Input[str] mount_path: Location of this directory in the running workstation.
         """
@@ -696,7 +696,7 @@ class WorkstationConfigPersistentDirectoryArgs:
     @pulumi.getter(name="gcePd")
     def gce_pd(self) -> Optional[pulumi.Input['WorkstationConfigPersistentDirectoryGcePdArgs']]:
         """
-        PersistentDirectory backed by a Compute Engine regional persistent disk.
+        A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
         Structure is documented below.
         """
         return pulumi.get(self, "gce_pd")
@@ -727,12 +727,13 @@ class WorkstationConfigPersistentDirectoryGcePdArgs:
                  size_gb: Optional[pulumi.Input[int]] = None,
                  source_snapshot: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] disk_type: Type of the disk to use.
-        :param pulumi.Input[str] fs_type: Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
-        :param pulumi.Input[str] reclaim_policy: What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+        :param pulumi.Input[str] disk_type: The type of the persistent disk for the home directory. Defaults to `pd-standard`.
+        :param pulumi.Input[str] fs_type: Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if `sourceSnapshot` is set. Defaults to `ext4`.
+        :param pulumi.Input[str] reclaim_policy: Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
                Possible values are: `DELETE`, `RETAIN`.
-        :param pulumi.Input[int] size_gb: Size of the disk in GB. Must be empty if sourceSnapshot is set.
-        :param pulumi.Input[str] source_snapshot: The snapshot to use as the source for the disk. This can be the snapshot's `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+        :param pulumi.Input[int] size_gb: The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if `sourceSnapshot` is set.
+               Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the `diskType` must be `pd-balanced` or `pd-ssd`.
+        :param pulumi.Input[str] source_snapshot: Name of the snapshot to use as the source for the disk. This can be the snapshot's `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
         """
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
@@ -749,7 +750,7 @@ class WorkstationConfigPersistentDirectoryGcePdArgs:
     @pulumi.getter(name="diskType")
     def disk_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the disk to use.
+        The type of the persistent disk for the home directory. Defaults to `pd-standard`.
         """
         return pulumi.get(self, "disk_type")
 
@@ -761,7 +762,7 @@ class WorkstationConfigPersistentDirectoryGcePdArgs:
     @pulumi.getter(name="fsType")
     def fs_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if sourceSnapshot is set.
+        Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if `sourceSnapshot` is set. Defaults to `ext4`.
         """
         return pulumi.get(self, "fs_type")
 
@@ -773,7 +774,7 @@ class WorkstationConfigPersistentDirectoryGcePdArgs:
     @pulumi.getter(name="reclaimPolicy")
     def reclaim_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        What should happen to the disk after the workstation is deleted. Defaults to DELETE.
+        Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
         Possible values are: `DELETE`, `RETAIN`.
         """
         return pulumi.get(self, "reclaim_policy")
@@ -786,7 +787,8 @@ class WorkstationConfigPersistentDirectoryGcePdArgs:
     @pulumi.getter(name="sizeGb")
     def size_gb(self) -> Optional[pulumi.Input[int]]:
         """
-        Size of the disk in GB. Must be empty if sourceSnapshot is set.
+        The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if `sourceSnapshot` is set.
+        Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the `diskType` must be `pd-balanced` or `pd-ssd`.
         """
         return pulumi.get(self, "size_gb")
 
@@ -798,7 +800,7 @@ class WorkstationConfigPersistentDirectoryGcePdArgs:
     @pulumi.getter(name="sourceSnapshot")
     def source_snapshot(self) -> Optional[pulumi.Input[str]]:
         """
-        The snapshot to use as the source for the disk. This can be the snapshot's `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, sizeGb and fsType must be empty.
+        Name of the snapshot to use as the source for the disk. This can be the snapshot's `self_link`, `id`, or a string in the format of `projects/{project}/global/snapshots/{snapshot}`. If set, `sizeGb` and `fsType` must be empty. Can only be updated if it has an existing value.
         """
         return pulumi.get(self, "source_snapshot")
 

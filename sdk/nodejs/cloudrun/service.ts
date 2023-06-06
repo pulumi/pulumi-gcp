@@ -185,6 +185,71 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Cloud Run Service Multicontainer
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrun.Service("default", {
+ *     location: "us-central1",
+ *     metadata: {
+ *         annotations: {
+ *             "run.googleapis.com/launch-stage": "BETA",
+ *         },
+ *     },
+ *     template: {
+ *         metadata: {
+ *             annotations: {
+ *                 "run.googleapis.com/container-dependencies": JSON.stringify({
+ *                     "hello-1": ["hello-2"],
+ *                 }),
+ *             },
+ *         },
+ *         spec: {
+ *             containers: [
+ *                 {
+ *                     name: "hello-1",
+ *                     ports: [{
+ *                         containerPort: 8080,
+ *                     }],
+ *                     image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *                     volumeMounts: [{
+ *                         name: "shared-volume",
+ *                         mountPath: "/mnt/shared",
+ *                     }],
+ *                 },
+ *                 {
+ *                     name: "hello-2",
+ *                     image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *                     envs: [{
+ *                         name: "PORT",
+ *                         value: "8081",
+ *                     }],
+ *                     startupProbe: {
+ *                         httpGet: {
+ *                             port: 8081,
+ *                         },
+ *                     },
+ *                     volumeMounts: [{
+ *                         name: "shared-volume",
+ *                         mountPath: "/mnt/shared",
+ *                     }],
+ *                 },
+ *             ],
+ *             volumes: [{
+ *                 name: "shared-volume",
+ *                 emptyDir: {
+ *                     medium: "Memory",
+ *                     sizeLimit: "128Mi",
+ *                 },
+ *             }],
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

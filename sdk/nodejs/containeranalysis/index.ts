@@ -10,6 +10,21 @@ export type Note = import("./note").Note;
 export const Note: typeof import("./note").Note = null as any;
 utilities.lazyLoad(exports, ["Note"], () => require("./note"));
 
+export { NoteIamBindingArgs, NoteIamBindingState } from "./noteIamBinding";
+export type NoteIamBinding = import("./noteIamBinding").NoteIamBinding;
+export const NoteIamBinding: typeof import("./noteIamBinding").NoteIamBinding = null as any;
+utilities.lazyLoad(exports, ["NoteIamBinding"], () => require("./noteIamBinding"));
+
+export { NoteIamMemberArgs, NoteIamMemberState } from "./noteIamMember";
+export type NoteIamMember = import("./noteIamMember").NoteIamMember;
+export const NoteIamMember: typeof import("./noteIamMember").NoteIamMember = null as any;
+utilities.lazyLoad(exports, ["NoteIamMember"], () => require("./noteIamMember"));
+
+export { NoteIamPolicyArgs, NoteIamPolicyState } from "./noteIamPolicy";
+export type NoteIamPolicy = import("./noteIamPolicy").NoteIamPolicy;
+export const NoteIamPolicy: typeof import("./noteIamPolicy").NoteIamPolicy = null as any;
+utilities.lazyLoad(exports, ["NoteIamPolicy"], () => require("./noteIamPolicy"));
+
 export { OccurenceArgs, OccurenceState } from "./occurence";
 export type Occurence = import("./occurence").Occurence;
 export const Occurence: typeof import("./occurence").Occurence = null as any;
@@ -22,6 +37,12 @@ const _module = {
         switch (type) {
             case "gcp:containeranalysis/note:Note":
                 return new Note(name, <any>undefined, { urn })
+            case "gcp:containeranalysis/noteIamBinding:NoteIamBinding":
+                return new NoteIamBinding(name, <any>undefined, { urn })
+            case "gcp:containeranalysis/noteIamMember:NoteIamMember":
+                return new NoteIamMember(name, <any>undefined, { urn })
+            case "gcp:containeranalysis/noteIamPolicy:NoteIamPolicy":
+                return new NoteIamPolicy(name, <any>undefined, { urn })
             case "gcp:containeranalysis/occurence:Occurence":
                 return new Occurence(name, <any>undefined, { urn })
             default:
@@ -30,4 +51,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "containeranalysis/note", _module)
+pulumi.runtime.registerResourceModule("gcp", "containeranalysis/noteIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "containeranalysis/noteIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "containeranalysis/noteIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "containeranalysis/occurence", _module)

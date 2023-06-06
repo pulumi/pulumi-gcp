@@ -167,6 +167,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetDiskDiskEncryptionKeyResult> DiskEncryptionKeys;
+        public readonly ImmutableArray<Outputs.GetDiskGuestOsFeatureResult> GuestOsFeatures;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -193,6 +194,7 @@ namespace Pulumi.Gcp.Compute
         /// Last detach timestamp in RFC3339 text format.
         /// </summary>
         public readonly string LastDetachTimestamp;
+        public readonly ImmutableArray<string> Licenses;
         public readonly bool MultiWriter;
         public readonly string Name;
         /// <summary>
@@ -266,6 +268,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetDiskDiskEncryptionKeyResult> diskEncryptionKeys,
 
+            ImmutableArray<Outputs.GetDiskGuestOsFeatureResult> guestOsFeatures,
+
             string id,
 
             string image,
@@ -279,6 +283,8 @@ namespace Pulumi.Gcp.Compute
             string lastAttachTimestamp,
 
             string lastDetachTimestamp,
+
+            ImmutableArray<string> licenses,
 
             bool multiWriter,
 
@@ -320,6 +326,7 @@ namespace Pulumi.Gcp.Compute
             CreationTimestamp = creationTimestamp;
             Description = description;
             DiskEncryptionKeys = diskEncryptionKeys;
+            GuestOsFeatures = guestOsFeatures;
             Id = id;
             Image = image;
             Interface = @interface;
@@ -327,6 +334,7 @@ namespace Pulumi.Gcp.Compute
             Labels = labels;
             LastAttachTimestamp = lastAttachTimestamp;
             LastDetachTimestamp = lastDetachTimestamp;
+            Licenses = licenses;
             MultiWriter = multiWriter;
             Name = name;
             PhysicalBlockSizeBytes = physicalBlockSizeBytes;

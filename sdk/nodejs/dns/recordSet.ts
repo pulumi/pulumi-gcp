@@ -147,6 +147,7 @@ import * as utilities from "../utilities";
  *     backendService: prodRegionBackendService.id,
  *     allPorts: true,
  *     network: prodNetwork.name,
+ *     allowGlobalAccess: true,
  * });
  * const recordSet = new gcp.dns.RecordSet("recordSet", {
  *     name: pulumi.interpolate`backend.${prodManagedZone.dnsName}`,

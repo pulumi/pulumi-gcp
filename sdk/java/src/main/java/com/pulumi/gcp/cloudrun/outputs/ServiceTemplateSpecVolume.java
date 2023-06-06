@@ -4,12 +4,16 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecVolumeEmptyDir;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecVolumeSecret;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceTemplateSpecVolume {
+    private @Nullable ServiceTemplateSpecVolumeEmptyDir emptyDir;
     /**
      * @return Volume&#39;s name.
      * 
@@ -22,9 +26,12 @@ public final class ServiceTemplateSpecVolume {
      * Structure is documented below.
      * 
      */
-    private ServiceTemplateSpecVolumeSecret secret;
+    private @Nullable ServiceTemplateSpecVolumeSecret secret;
 
     private ServiceTemplateSpecVolume() {}
+    public Optional<ServiceTemplateSpecVolumeEmptyDir> emptyDir() {
+        return Optional.ofNullable(this.emptyDir);
+    }
     /**
      * @return Volume&#39;s name.
      * 
@@ -39,8 +46,8 @@ public final class ServiceTemplateSpecVolume {
      * Structure is documented below.
      * 
      */
-    public ServiceTemplateSpecVolumeSecret secret() {
-        return this.secret;
+    public Optional<ServiceTemplateSpecVolumeSecret> secret() {
+        return Optional.ofNullable(this.secret);
     }
 
     public static Builder builder() {
@@ -52,27 +59,35 @@ public final class ServiceTemplateSpecVolume {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable ServiceTemplateSpecVolumeEmptyDir emptyDir;
         private String name;
-        private ServiceTemplateSpecVolumeSecret secret;
+        private @Nullable ServiceTemplateSpecVolumeSecret secret;
         public Builder() {}
         public Builder(ServiceTemplateSpecVolume defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.emptyDir = defaults.emptyDir;
     	      this.name = defaults.name;
     	      this.secret = defaults.secret;
         }
 
+        @CustomType.Setter
+        public Builder emptyDir(@Nullable ServiceTemplateSpecVolumeEmptyDir emptyDir) {
+            this.emptyDir = emptyDir;
+            return this;
+        }
         @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
         @CustomType.Setter
-        public Builder secret(ServiceTemplateSpecVolumeSecret secret) {
-            this.secret = Objects.requireNonNull(secret);
+        public Builder secret(@Nullable ServiceTemplateSpecVolumeSecret secret) {
+            this.secret = secret;
             return this;
         }
         public ServiceTemplateSpecVolume build() {
             final var o = new ServiceTemplateSpecVolume();
+            o.emptyDir = emptyDir;
             o.name = name;
             o.secret = secret;
             return o;

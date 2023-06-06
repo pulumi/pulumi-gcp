@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var basic = new ProjectBucketConfig(&#34;basic&#34;, ProjectBucketConfigArgs.builder()        
- *             .project(default_.id())
+ *             .project(default_.projectId())
  *             .location(&#34;global&#34;)
  *             .retentionDays(30)
  *             .bucketId(&#34;_Default&#34;)

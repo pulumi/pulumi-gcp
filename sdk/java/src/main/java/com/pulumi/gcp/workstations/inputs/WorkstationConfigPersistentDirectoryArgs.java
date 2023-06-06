@@ -17,7 +17,7 @@ public final class WorkstationConfigPersistentDirectoryArgs extends com.pulumi.r
     public static final WorkstationConfigPersistentDirectoryArgs Empty = new WorkstationConfigPersistentDirectoryArgs();
 
     /**
-     * PersistentDirectory backed by a Compute Engine regional persistent disk.
+     * A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
      * Structure is documented below.
      * 
      */
@@ -25,7 +25,7 @@ public final class WorkstationConfigPersistentDirectoryArgs extends com.pulumi.r
     private @Nullable Output<WorkstationConfigPersistentDirectoryGcePdArgs> gcePd;
 
     /**
-     * @return PersistentDirectory backed by a Compute Engine regional persistent disk.
+     * @return A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
      * Structure is documented below.
      * 
      */
@@ -74,7 +74,7 @@ public final class WorkstationConfigPersistentDirectoryArgs extends com.pulumi.r
         }
 
         /**
-         * @param gcePd PersistentDirectory backed by a Compute Engine regional persistent disk.
+         * @param gcePd A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
          * Structure is documented below.
          * 
          * @return builder
@@ -86,7 +86,7 @@ public final class WorkstationConfigPersistentDirectoryArgs extends com.pulumi.r
         }
 
         /**
-         * @param gcePd PersistentDirectory backed by a Compute Engine regional persistent disk.
+         * @param gcePd A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
          * Structure is documented below.
          * 
          * @return builder

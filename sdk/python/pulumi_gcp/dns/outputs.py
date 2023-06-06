@@ -1023,7 +1023,7 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer(dict):
         """
         :param str ip_address: The frontend IP address of the load balancer.
         :param str ip_protocol: The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
-        :param str load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+        :param str load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
         :param str network_url: The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
         :param str port: The configured port of the load balancer.
         :param str project: The ID of the project in which the load balancer belongs.
@@ -1058,7 +1058,7 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer(dict):
     @pulumi.getter(name="loadBalancerType")
     def load_balancer_type(self) -> str:
         """
-        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
         """
         return pulumi.get(self, "load_balancer_type")
 
@@ -1307,7 +1307,7 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLo
         """
         :param str ip_address: The frontend IP address of the load balancer.
         :param str ip_protocol: The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
-        :param str load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+        :param str load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
         :param str network_url: The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
         :param str port: The configured port of the load balancer.
         :param str project: The ID of the project in which the load balancer belongs.
@@ -1342,7 +1342,7 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLo
     @pulumi.getter(name="loadBalancerType")
     def load_balancer_type(self) -> str:
         """
-        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
         """
         return pulumi.get(self, "load_balancer_type")
 
@@ -1452,7 +1452,7 @@ class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer(dict):
         """
         :param str ip_address: The frontend IP address of the load balancer.
         :param str ip_protocol: The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
-        :param str load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+        :param str load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
         :param str network_url: The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
         :param str port: The configured port of the load balancer.
         :param str project: The ID of the project in which the load balancer belongs.
@@ -1487,7 +1487,7 @@ class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer(dict):
     @pulumi.getter(name="loadBalancerType")
     def load_balancer_type(self) -> str:
         """
-        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
         """
         return pulumi.get(self, "load_balancer_type")
 
@@ -1658,7 +1658,7 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer(dict):
         """
         :param str ip_address: The frontend IP address of the load balancer.
         :param str ip_protocol: The configured IP protocol of the load balancer. This value is case-sensitive. Possible values: ["tcp", "udp"]
-        :param str load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+        :param str load_balancer_type: The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
         :param str network_url: The fully qualified url of the network in which the load balancer belongs. This should be formatted like `projects/{project}/global/networks/{network}` or `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
         :param str port: The configured port of the load balancer.
         :param str project: The ID of the project in which the load balancer belongs.
@@ -1693,7 +1693,7 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer(dict):
     @pulumi.getter(name="loadBalancerType")
     def load_balancer_type(self) -> str:
         """
-        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb"]
+        The type of load balancer. This value is case-sensitive. Possible values: ["regionalL4ilb", "regionalL7ilb"]
         """
         return pulumi.get(self, "load_balancer_type")
 

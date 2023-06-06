@@ -242,6 +242,10 @@ class FunctionIamPolicy(pulumi.CustomResource):
         * `cloudfunctionsv2.FunctionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the function are preserved.
         * `cloudfunctionsv2.FunctionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the function are preserved.
 
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `cloudfunctionsv2.FunctionIamPolicy`: Retrieves the IAM policy for the function
+
         > **Note:** `cloudfunctionsv2.FunctionIamPolicy` **cannot** be used in conjunction with `cloudfunctionsv2.FunctionIamBinding` and `cloudfunctionsv2.FunctionIamMember` or they will fight over what your policy should be.
 
         > **Note:** `cloudfunctionsv2.FunctionIamBinding` resources **can be** used in conjunction with `cloudfunctionsv2.FunctionIamMember` resources **only if** they do not grant privilege to the same role.
@@ -348,6 +352,10 @@ class FunctionIamPolicy(pulumi.CustomResource):
         * `cloudfunctionsv2.FunctionIamPolicy`: Authoritative. Sets the IAM policy for the function and replaces any existing policy already attached.
         * `cloudfunctionsv2.FunctionIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the function are preserved.
         * `cloudfunctionsv2.FunctionIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the function are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `cloudfunctionsv2.FunctionIamPolicy`: Retrieves the IAM policy for the function
 
         > **Note:** `cloudfunctionsv2.FunctionIamPolicy` **cannot** be used in conjunction with `cloudfunctionsv2.FunctionIamBinding` and `cloudfunctionsv2.FunctionIamMember` or they will fight over what your policy should be.
 

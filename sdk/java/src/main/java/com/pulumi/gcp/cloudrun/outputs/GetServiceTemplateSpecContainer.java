@@ -23,6 +23,11 @@ public final class GetServiceTemplateSpecContainer {
     private List<GetServiceTemplateSpecContainerEnv> envs;
     private String image;
     private List<GetServiceTemplateSpecContainerLivenessProbe> livenessProbes;
+    /**
+     * @return The name of the Cloud Run Service.
+     * 
+     */
+    private String name;
     private List<GetServiceTemplateSpecContainerPort> ports;
     private List<GetServiceTemplateSpecContainerResource> resources;
     private List<GetServiceTemplateSpecContainerStartupProbe> startupProbes;
@@ -47,6 +52,13 @@ public final class GetServiceTemplateSpecContainer {
     }
     public List<GetServiceTemplateSpecContainerLivenessProbe> livenessProbes() {
         return this.livenessProbes;
+    }
+    /**
+     * @return The name of the Cloud Run Service.
+     * 
+     */
+    public String name() {
+        return this.name;
     }
     public List<GetServiceTemplateSpecContainerPort> ports() {
         return this.ports;
@@ -79,6 +91,7 @@ public final class GetServiceTemplateSpecContainer {
         private List<GetServiceTemplateSpecContainerEnv> envs;
         private String image;
         private List<GetServiceTemplateSpecContainerLivenessProbe> livenessProbes;
+        private String name;
         private List<GetServiceTemplateSpecContainerPort> ports;
         private List<GetServiceTemplateSpecContainerResource> resources;
         private List<GetServiceTemplateSpecContainerStartupProbe> startupProbes;
@@ -93,6 +106,7 @@ public final class GetServiceTemplateSpecContainer {
     	      this.envs = defaults.envs;
     	      this.image = defaults.image;
     	      this.livenessProbes = defaults.livenessProbes;
+    	      this.name = defaults.name;
     	      this.ports = defaults.ports;
     	      this.resources = defaults.resources;
     	      this.startupProbes = defaults.startupProbes;
@@ -146,6 +160,11 @@ public final class GetServiceTemplateSpecContainer {
             return livenessProbes(List.of(livenessProbes));
         }
         @CustomType.Setter
+        public Builder name(String name) {
+            this.name = Objects.requireNonNull(name);
+            return this;
+        }
+        @CustomType.Setter
         public Builder ports(List<GetServiceTemplateSpecContainerPort> ports) {
             this.ports = Objects.requireNonNull(ports);
             return this;
@@ -190,6 +209,7 @@ public final class GetServiceTemplateSpecContainer {
             o.envs = envs;
             o.image = image;
             o.livenessProbes = livenessProbes;
+            o.name = name;
             o.ports = ports;
             o.resources = resources;
             o.startupProbes = startupProbes;

@@ -92,19 +92,23 @@ import javax.annotation.Nullable;
  * AppleApp can be imported using any of these accepted formats
  * 
  * ```sh
- *  $ pulumi import gcp:firebase/appleApp:AppleApp default projects/{{project}}/iosApps/{{appId}}
+ *  $ pulumi import gcp:firebase/appleApp:AppleApp default {{project}} projects/{{project}}/iosApps/{{app_id}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:firebase/appleApp:AppleApp default {{project}}/{{appId}}
+ *  $ pulumi import gcp:firebase/appleApp:AppleApp default projects/{{project}}/iosApps/{{app_id}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:firebase/appleApp:AppleApp default iosApps/{{appId}}
+ *  $ pulumi import gcp:firebase/appleApp:AppleApp default {{project}}/{{project}}/{{app_id}}
  * ```
  * 
  * ```sh
- *  $ pulumi import gcp:firebase/appleApp:AppleApp default {{appId}}
+ *  $ pulumi import gcp:firebase/appleApp:AppleApp default iosApps/{{app_id}}
+ * ```
+ * 
+ * ```sh
+ *  $ pulumi import gcp:firebase/appleApp:AppleApp default {{app_id}}
  * ```
  * 
  */

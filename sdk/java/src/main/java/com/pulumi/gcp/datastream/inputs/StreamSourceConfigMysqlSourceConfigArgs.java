@@ -52,6 +52,23 @@ public final class StreamSourceConfigMysqlSourceConfigArgs extends com.pulumi.re
     }
 
     /**
+     * Maximum number of concurrent backfill tasks. The number should be non negative.
+     * If not set (or set to 0), the system&#39;s default value will be used.
+     * 
+     */
+    @Import(name="maxConcurrentBackfillTasks")
+    private @Nullable Output<Integer> maxConcurrentBackfillTasks;
+
+    /**
+     * @return Maximum number of concurrent backfill tasks. The number should be non negative.
+     * If not set (or set to 0), the system&#39;s default value will be used.
+     * 
+     */
+    public Optional<Output<Integer>> maxConcurrentBackfillTasks() {
+        return Optional.ofNullable(this.maxConcurrentBackfillTasks);
+    }
+
+    /**
      * Maximum number of concurrent CDC tasks. The number should be non negative.
      * If not set (or set to 0), the system&#39;s default value will be used.
      * 
@@ -73,6 +90,7 @@ public final class StreamSourceConfigMysqlSourceConfigArgs extends com.pulumi.re
     private StreamSourceConfigMysqlSourceConfigArgs(StreamSourceConfigMysqlSourceConfigArgs $) {
         this.excludeObjects = $.excludeObjects;
         this.includeObjects = $.includeObjects;
+        this.maxConcurrentBackfillTasks = $.maxConcurrentBackfillTasks;
         this.maxConcurrentCdcTasks = $.maxConcurrentCdcTasks;
     }
 
@@ -138,6 +156,29 @@ public final class StreamSourceConfigMysqlSourceConfigArgs extends com.pulumi.re
          */
         public Builder includeObjects(StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs includeObjects) {
             return includeObjects(Output.of(includeObjects));
+        }
+
+        /**
+         * @param maxConcurrentBackfillTasks Maximum number of concurrent backfill tasks. The number should be non negative.
+         * If not set (or set to 0), the system&#39;s default value will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxConcurrentBackfillTasks(@Nullable Output<Integer> maxConcurrentBackfillTasks) {
+            $.maxConcurrentBackfillTasks = maxConcurrentBackfillTasks;
+            return this;
+        }
+
+        /**
+         * @param maxConcurrentBackfillTasks Maximum number of concurrent backfill tasks. The number should be non negative.
+         * If not set (or set to 0), the system&#39;s default value will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxConcurrentBackfillTasks(Integer maxConcurrentBackfillTasks) {
+            return maxConcurrentBackfillTasks(Output.of(maxConcurrentBackfillTasks));
         }
 
         /**

@@ -525,6 +525,12 @@ type PreventionJobTrigger struct {
 	// Name of a BigQuery field to be returned with the findings.
 	//
 	// (Required)
+	// Name describing the field to which scanning is limited.
+	//
+	// (Required)
+	// Name describing the field excluded from scanning.
+	//
+	// (Required)
 	// Name describing the field.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of the trigger, either in the format `projects/{{project}}`
@@ -629,6 +635,12 @@ type preventionJobTriggerState struct {
 	// Name of a BigQuery field to be returned with the findings.
 	//
 	// (Required)
+	// Name describing the field to which scanning is limited.
+	//
+	// (Required)
+	// Name describing the field excluded from scanning.
+	//
+	// (Required)
 	// Name describing the field.
 	Name *string `pulumi:"name"`
 	// The parent of the trigger, either in the format `projects/{{project}}`
@@ -697,6 +709,12 @@ type PreventionJobTriggerState struct {
 	//
 	// (Required)
 	// Name of a BigQuery field to be returned with the findings.
+	//
+	// (Required)
+	// Name describing the field to which scanning is limited.
+	//
+	// (Required)
+	// Name describing the field excluded from scanning.
 	//
 	// (Required)
 	// Name describing the field.
@@ -919,6 +937,12 @@ func (o PreventionJobTriggerOutput) LastRunTime() pulumi.StringOutput {
 //
 // (Required)
 // Name of a BigQuery field to be returned with the findings.
+//
+// (Required)
+// Name describing the field to which scanning is limited.
+//
+// (Required)
+// Name describing the field excluded from scanning.
 //
 // (Required)
 // Name describing the field.

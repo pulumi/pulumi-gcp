@@ -50,6 +50,10 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         /// </summary>
         public readonly Outputs.ServiceTemplateSpecContainerLivenessProbe? LivenessProbe;
         /// <summary>
+        /// Name of the container
+        /// </summary>
+        public readonly string? Name;
+        /// <summary>
         /// List of open ports in the container.
         /// Structure is documented below.
         /// </summary>
@@ -94,6 +98,8 @@ namespace Pulumi.Gcp.CloudRun.Outputs
 
             Outputs.ServiceTemplateSpecContainerLivenessProbe? livenessProbe,
 
+            string? name,
+
             ImmutableArray<Outputs.ServiceTemplateSpecContainerPort> ports,
 
             Outputs.ServiceTemplateSpecContainerResources? resources,
@@ -110,6 +116,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
             Envs = envs;
             Image = image;
             LivenessProbe = livenessProbe;
+            Name = name;
             Ports = ports;
             Resources = resources;
             StartupProbe = startupProbe;

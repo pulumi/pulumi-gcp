@@ -5,10 +5,21 @@ package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class CaPoolPublishingOptions {
+    /**
+     * @return Specifies the encoding format of each CertificateAuthority&#39;s CA
+     * certificate and CRLs. If this is omitted, CA certificates and CRLs
+     * will be published in PEM.
+     * Possible values are: `PEM`, `DER`.
+     * 
+     */
+    private @Nullable String encodingFormat;
     /**
      * @return When true, publishes each CertificateAuthority&#39;s CA certificate and includes its URL in the &#34;Authority Information Access&#34;
      * X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding
@@ -26,6 +37,16 @@ public final class CaPoolPublishingOptions {
     private Boolean publishCrl;
 
     private CaPoolPublishingOptions() {}
+    /**
+     * @return Specifies the encoding format of each CertificateAuthority&#39;s CA
+     * certificate and CRLs. If this is omitted, CA certificates and CRLs
+     * will be published in PEM.
+     * Possible values are: `PEM`, `DER`.
+     * 
+     */
+    public Optional<String> encodingFormat() {
+        return Optional.ofNullable(this.encodingFormat);
+    }
     /**
      * @return When true, publishes each CertificateAuthority&#39;s CA certificate and includes its URL in the &#34;Authority Information Access&#34;
      * X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding
@@ -55,15 +76,22 @@ public final class CaPoolPublishingOptions {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String encodingFormat;
         private Boolean publishCaCert;
         private Boolean publishCrl;
         public Builder() {}
         public Builder(CaPoolPublishingOptions defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.encodingFormat = defaults.encodingFormat;
     	      this.publishCaCert = defaults.publishCaCert;
     	      this.publishCrl = defaults.publishCrl;
         }
 
+        @CustomType.Setter
+        public Builder encodingFormat(@Nullable String encodingFormat) {
+            this.encodingFormat = encodingFormat;
+            return this;
+        }
         @CustomType.Setter
         public Builder publishCaCert(Boolean publishCaCert) {
             this.publishCaCert = Objects.requireNonNull(publishCaCert);
@@ -76,6 +104,7 @@ public final class CaPoolPublishingOptions {
         }
         public CaPoolPublishingOptions build() {
             final var o = new CaPoolPublishingOptions();
+            o.encodingFormat = encodingFormat;
             o.publishCaCert = publishCaCert;
             o.publishCrl = publishCrl;
             return o;

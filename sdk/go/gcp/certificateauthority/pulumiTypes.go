@@ -6867,6 +6867,11 @@ func (o CaPoolIssuancePolicyIdentityConstraintsCelExpressionPtrOutput) Title() p
 }
 
 type CaPoolPublishingOptions struct {
+	// Specifies the encoding format of each CertificateAuthority's CA
+	// certificate and CRLs. If this is omitted, CA certificates and CRLs
+	// will be published in PEM.
+	// Possible values are: `PEM`, `DER`.
+	EncodingFormat *string `pulumi:"encodingFormat"`
 	// When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access"
 	// X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding
 	// X.509 extension will not be written in issued certificates.
@@ -6890,6 +6895,11 @@ type CaPoolPublishingOptionsInput interface {
 }
 
 type CaPoolPublishingOptionsArgs struct {
+	// Specifies the encoding format of each CertificateAuthority's CA
+	// certificate and CRLs. If this is omitted, CA certificates and CRLs
+	// will be published in PEM.
+	// Possible values are: `PEM`, `DER`.
+	EncodingFormat pulumi.StringPtrInput `pulumi:"encodingFormat"`
 	// When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access"
 	// X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding
 	// X.509 extension will not be written in issued certificates.
@@ -6978,6 +6988,14 @@ func (o CaPoolPublishingOptionsOutput) ToCaPoolPublishingOptionsPtrOutputWithCon
 	}).(CaPoolPublishingOptionsPtrOutput)
 }
 
+// Specifies the encoding format of each CertificateAuthority's CA
+// certificate and CRLs. If this is omitted, CA certificates and CRLs
+// will be published in PEM.
+// Possible values are: `PEM`, `DER`.
+func (o CaPoolPublishingOptionsOutput) EncodingFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CaPoolPublishingOptions) *string { return v.EncodingFormat }).(pulumi.StringPtrOutput)
+}
+
 // When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access"
 // X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding
 // X.509 extension will not be written in issued certificates.
@@ -7015,6 +7033,19 @@ func (o CaPoolPublishingOptionsPtrOutput) Elem() CaPoolPublishingOptionsOutput {
 		var ret CaPoolPublishingOptions
 		return ret
 	}).(CaPoolPublishingOptionsOutput)
+}
+
+// Specifies the encoding format of each CertificateAuthority's CA
+// certificate and CRLs. If this is omitted, CA certificates and CRLs
+// will be published in PEM.
+// Possible values are: `PEM`, `DER`.
+func (o CaPoolPublishingOptionsPtrOutput) EncodingFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CaPoolPublishingOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncodingFormat
+	}).(pulumi.StringPtrOutput)
 }
 
 // When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access"

@@ -25,7 +25,7 @@ public final class DatabaseInstanceSettingsInsightsConfig {
      */
     private @Nullable Integer queryPlansPerMinute;
     /**
-     * @return Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+     * @return Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. Higher query lengths are more useful for analytical queries, but they also require more memory. Changing the query length requires you to restart the instance. You can still add tags to queries that exceed the length limit.
      * 
      */
     private @Nullable Integer queryStringLength;
@@ -58,7 +58,7 @@ public final class DatabaseInstanceSettingsInsightsConfig {
         return Optional.ofNullable(this.queryPlansPerMinute);
     }
     /**
-     * @return Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+     * @return Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. Higher query lengths are more useful for analytical queries, but they also require more memory. Changing the query length requires you to restart the instance. You can still add tags to queries that exceed the length limit.
      * 
      */
     public Optional<Integer> queryStringLength() {

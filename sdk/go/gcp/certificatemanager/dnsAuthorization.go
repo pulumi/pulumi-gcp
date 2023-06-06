@@ -30,29 +30,20 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := certificatemanager.NewDnsAuthorization(ctx, "default", &certificatemanager.DnsAuthorizationArgs{
 //				Description: pulumi.String("The default dnss"),
-//				Domain:      pulumi.String("%{random_suffix}.hashicorptest.com"),
+//				Domain:      pulumi.String("subdomain.hashicorptest.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("recordNameToInsert", map[string]interface{}{
-//				"google_certificate_manager_dns_authorization.default.dns_resource_record.0.name": []map[string]interface{}{
-//					nil,
-//				},
-//				"value": "",
-//			})
-//			ctx.Export("recordTypeToInsert", map[string]interface{}{
-//				"google_certificate_manager_dns_authorization.default.dns_resource_record.0.type": []map[string]interface{}{
-//					nil,
-//				},
-//				"value": "",
-//			})
-//			ctx.Export("recordDataToInsert", map[string]interface{}{
-//				"google_certificate_manager_dns_authorization.default.dns_resource_record.0.data": []map[string]interface{}{
-//					nil,
-//				},
-//				"value": "",
-//			})
+//			ctx.Export("recordNameToInsert", _default.DnsResourceRecords.ApplyT(func(dnsResourceRecords []certificatemanager.DnsAuthorizationDnsResourceRecord) (*string, error) {
+//				return &dnsResourceRecords[0].Name, nil
+//			}).(pulumi.StringPtrOutput))
+//			ctx.Export("recordTypeToInsert", _default.DnsResourceRecords.ApplyT(func(dnsResourceRecords []certificatemanager.DnsAuthorizationDnsResourceRecord) (*string, error) {
+//				return &dnsResourceRecords[0].Type, nil
+//			}).(pulumi.StringPtrOutput))
+//			ctx.Export("recordDataToInsert", _default.DnsResourceRecords.ApplyT(func(dnsResourceRecords []certificatemanager.DnsAuthorizationDnsResourceRecord) (*string, error) {
+//				return &dnsResourceRecords[0].Data, nil
+//			}).(pulumi.StringPtrOutput))
 //			return nil
 //		})
 //	}

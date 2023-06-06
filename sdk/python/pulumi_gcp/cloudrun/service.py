@@ -549,6 +549,70 @@ class Service(pulumi.CustomResource):
                 latest_revision=True,
             )])
         ```
+        ### Cloud Run Service Multicontainer
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            metadata=gcp.cloudrun.ServiceMetadataArgs(
+                annotations={
+                    "run.googleapis.com/launch-stage": "BETA",
+                },
+            ),
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                metadata=gcp.cloudrun.ServiceTemplateMetadataArgs(
+                    annotations={
+                        "run.googleapis.com/container-dependencies": json.dumps({
+                            "hello-1": ["hello-2"],
+                        }),
+                    },
+                ),
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[
+                        gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                            name="hello-1",
+                            ports=[gcp.cloudrun.ServiceTemplateSpecContainerPortArgs(
+                                container_port=8080,
+                            )],
+                            image="us-docker.pkg.dev/cloudrun/container/hello",
+                            volume_mounts=[gcp.cloudrun.ServiceTemplateSpecContainerVolumeMountArgs(
+                                name="shared-volume",
+                                mount_path="/mnt/shared",
+                            )],
+                        ),
+                        gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                            name="hello-2",
+                            image="us-docker.pkg.dev/cloudrun/container/hello",
+                            envs=[gcp.cloudrun.ServiceTemplateSpecContainerEnvArgs(
+                                name="PORT",
+                                value="8081",
+                            )],
+                            startup_probe=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeArgs(
+                                http_get=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeHttpGetArgs(
+                                    port=8081,
+                                ),
+                            ),
+                            volume_mounts=[gcp.cloudrun.ServiceTemplateSpecContainerVolumeMountArgs(
+                                name="shared-volume",
+                                mount_path="/mnt/shared",
+                            )],
+                        ),
+                    ],
+                    volumes=[gcp.cloudrun.ServiceTemplateSpecVolumeArgs(
+                        name="shared-volume",
+                        empty_dir=gcp.cloudrun.ServiceTemplateSpecVolumeEmptyDirArgs(
+                            medium="Memory",
+                            size_limit="128Mi",
+                        ),
+                    )],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -772,6 +836,70 @@ class Service(pulumi.CustomResource):
                 percent=100,
                 latest_revision=True,
             )])
+        ```
+        ### Cloud Run Service Multicontainer
+
+        ```python
+        import pulumi
+        import json
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            metadata=gcp.cloudrun.ServiceMetadataArgs(
+                annotations={
+                    "run.googleapis.com/launch-stage": "BETA",
+                },
+            ),
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                metadata=gcp.cloudrun.ServiceTemplateMetadataArgs(
+                    annotations={
+                        "run.googleapis.com/container-dependencies": json.dumps({
+                            "hello-1": ["hello-2"],
+                        }),
+                    },
+                ),
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[
+                        gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                            name="hello-1",
+                            ports=[gcp.cloudrun.ServiceTemplateSpecContainerPortArgs(
+                                container_port=8080,
+                            )],
+                            image="us-docker.pkg.dev/cloudrun/container/hello",
+                            volume_mounts=[gcp.cloudrun.ServiceTemplateSpecContainerVolumeMountArgs(
+                                name="shared-volume",
+                                mount_path="/mnt/shared",
+                            )],
+                        ),
+                        gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                            name="hello-2",
+                            image="us-docker.pkg.dev/cloudrun/container/hello",
+                            envs=[gcp.cloudrun.ServiceTemplateSpecContainerEnvArgs(
+                                name="PORT",
+                                value="8081",
+                            )],
+                            startup_probe=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeArgs(
+                                http_get=gcp.cloudrun.ServiceTemplateSpecContainerStartupProbeHttpGetArgs(
+                                    port=8081,
+                                ),
+                            ),
+                            volume_mounts=[gcp.cloudrun.ServiceTemplateSpecContainerVolumeMountArgs(
+                                name="shared-volume",
+                                mount_path="/mnt/shared",
+                            )],
+                        ),
+                    ],
+                    volumes=[gcp.cloudrun.ServiceTemplateSpecVolumeArgs(
+                        name="shared-volume",
+                        empty_dir=gcp.cloudrun.ServiceTemplateSpecVolumeEmptyDirArgs(
+                            medium="Memory",
+                            size_limit="128Mi",
+                        ),
+                    )],
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import

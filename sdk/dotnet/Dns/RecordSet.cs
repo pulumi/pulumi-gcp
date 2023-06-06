@@ -260,6 +260,7 @@ namespace Pulumi.Gcp.Dns
     ///         BackendService = prodRegionBackendService.Id,
     ///         AllPorts = true,
     ///         Network = prodNetwork.Name,
+    ///         AllowGlobalAccess = true,
     ///     });
     /// 
     ///     var recordSet = new Gcp.Dns.RecordSet("recordSet", new()

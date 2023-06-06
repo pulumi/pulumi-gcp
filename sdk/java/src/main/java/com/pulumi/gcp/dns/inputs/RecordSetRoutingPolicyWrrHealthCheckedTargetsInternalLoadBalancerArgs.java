@@ -46,14 +46,14 @@ public final class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBala
     }
 
     /**
-     * The type of load balancer. This value is case-sensitive. Possible values: [&#34;regionalL4ilb&#34;]
+     * The type of load balancer. This value is case-sensitive. Possible values: [&#34;regionalL4ilb&#34;, &#34;regionalL7ilb&#34;]
      * 
      */
     @Import(name="loadBalancerType", required=true)
     private Output<String> loadBalancerType;
 
     /**
-     * @return The type of load balancer. This value is case-sensitive. Possible values: [&#34;regionalL4ilb&#34;]
+     * @return The type of load balancer. This value is case-sensitive. Possible values: [&#34;regionalL4ilb&#34;, &#34;regionalL7ilb&#34;]
      * 
      */
     public Output<String> loadBalancerType() {
@@ -193,7 +193,7 @@ public final class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBala
         }
 
         /**
-         * @param loadBalancerType The type of load balancer. This value is case-sensitive. Possible values: [&#34;regionalL4ilb&#34;]
+         * @param loadBalancerType The type of load balancer. This value is case-sensitive. Possible values: [&#34;regionalL4ilb&#34;, &#34;regionalL7ilb&#34;]
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBala
         }
 
         /**
-         * @param loadBalancerType The type of load balancer. This value is case-sensitive. Possible values: [&#34;regionalL4ilb&#34;]
+         * @param loadBalancerType The type of load balancer. This value is case-sensitive. Possible values: [&#34;regionalL4ilb&#34;, &#34;regionalL7ilb&#34;]
          * 
          * @return builder
          * 

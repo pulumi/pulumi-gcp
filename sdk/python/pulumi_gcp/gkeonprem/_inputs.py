@@ -3945,26 +3945,15 @@ class VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs:
 @pulumi.input_type
 class VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs:
     def __init__(__self__, *,
-                 hostname: pulumi.Input[str],
-                 ip: pulumi.Input[str]):
+                 ip: pulumi.Input[str],
+                 hostname: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] hostname: Hostname of the machine. VM's name will be used if this field is empty.
         :param pulumi.Input[str] ip: IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
+        :param pulumi.Input[str] hostname: Hostname of the machine. VM's name will be used if this field is empty.
         """
-        pulumi.set(__self__, "hostname", hostname)
         pulumi.set(__self__, "ip", ip)
-
-    @property
-    @pulumi.getter
-    def hostname(self) -> pulumi.Input[str]:
-        """
-        Hostname of the machine. VM's name will be used if this field is empty.
-        """
-        return pulumi.get(self, "hostname")
-
-    @hostname.setter
-    def hostname(self, value: pulumi.Input[str]):
-        pulumi.set(self, "hostname", value)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
 
     @property
     @pulumi.getter
@@ -3977,6 +3966,18 @@ class VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs:
     @ip.setter
     def ip(self, value: pulumi.Input[str]):
         pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hostname of the machine. VM's name will be used if this field is empty.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hostname", value)
 
 
 @pulumi.input_type

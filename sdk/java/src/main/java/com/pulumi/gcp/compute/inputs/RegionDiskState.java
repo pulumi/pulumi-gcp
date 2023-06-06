@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.RegionDiskAsyncPrimaryDiskArgs;
 import com.pulumi.gcp.compute.inputs.RegionDiskDiskEncryptionKeyArgs;
+import com.pulumi.gcp.compute.inputs.RegionDiskGuestOsFeatureArgs;
 import com.pulumi.gcp.compute.inputs.RegionDiskSourceSnapshotEncryptionKeyArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -102,6 +103,25 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A list of features to enable on the guest operating system.
+     * Applicable only for bootable disks.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="guestOsFeatures")
+    private @Nullable Output<List<RegionDiskGuestOsFeatureArgs>> guestOsFeatures;
+
+    /**
+     * @return A list of features to enable on the guest operating system.
+     * Applicable only for bootable disks.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<RegionDiskGuestOsFeatureArgs>>> guestOsFeatures() {
+        return Optional.ofNullable(this.guestOsFeatures);
+    }
+
+    /**
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      * 
      * @deprecated
@@ -184,6 +204,21 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> lastDetachTimestamp() {
         return Optional.ofNullable(this.lastDetachTimestamp);
+    }
+
+    /**
+     * Any applicable license URI.
+     * 
+     */
+    @Import(name="licenses")
+    private @Nullable Output<List<String>> licenses;
+
+    /**
+     * @return Any applicable license URI.
+     * 
+     */
+    public Optional<Output<List<String>>> licenses() {
+        return Optional.ofNullable(this.licenses);
     }
 
     /**
@@ -485,11 +520,13 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
         this.diskEncryptionKey = $.diskEncryptionKey;
+        this.guestOsFeatures = $.guestOsFeatures;
         this.interface_ = $.interface_;
         this.labelFingerprint = $.labelFingerprint;
         this.labels = $.labels;
         this.lastAttachTimestamp = $.lastAttachTimestamp;
         this.lastDetachTimestamp = $.lastDetachTimestamp;
+        this.licenses = $.licenses;
         this.name = $.name;
         this.physicalBlockSizeBytes = $.physicalBlockSizeBytes;
         this.project = $.project;
@@ -629,6 +666,43 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param guestOsFeatures A list of features to enable on the guest operating system.
+         * Applicable only for bootable disks.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder guestOsFeatures(@Nullable Output<List<RegionDiskGuestOsFeatureArgs>> guestOsFeatures) {
+            $.guestOsFeatures = guestOsFeatures;
+            return this;
+        }
+
+        /**
+         * @param guestOsFeatures A list of features to enable on the guest operating system.
+         * Applicable only for bootable disks.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder guestOsFeatures(List<RegionDiskGuestOsFeatureArgs> guestOsFeatures) {
+            return guestOsFeatures(Output.of(guestOsFeatures));
+        }
+
+        /**
+         * @param guestOsFeatures A list of features to enable on the guest operating system.
+         * Applicable only for bootable disks.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder guestOsFeatures(RegionDiskGuestOsFeatureArgs... guestOsFeatures) {
+            return guestOsFeatures(List.of(guestOsFeatures));
+        }
+
+        /**
          * @param interface_ Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
          * 
          * @return builder
@@ -741,6 +815,37 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder lastDetachTimestamp(String lastDetachTimestamp) {
             return lastDetachTimestamp(Output.of(lastDetachTimestamp));
+        }
+
+        /**
+         * @param licenses Any applicable license URI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder licenses(@Nullable Output<List<String>> licenses) {
+            $.licenses = licenses;
+            return this;
+        }
+
+        /**
+         * @param licenses Any applicable license URI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder licenses(List<String> licenses) {
+            return licenses(Output.of(licenses));
+        }
+
+        /**
+         * @param licenses Any applicable license URI.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder licenses(String... licenses) {
+            return licenses(List.of(licenses));
         }
 
         /**

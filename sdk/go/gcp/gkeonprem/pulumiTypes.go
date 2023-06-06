@@ -11784,7 +11784,7 @@ func (o VMwareClusterNetworkConfigStaticIpConfigIpBlockArrayOutput) Index(i pulu
 
 type VMwareClusterNetworkConfigStaticIpConfigIpBlockIp struct {
 	// Hostname of the machine. VM's name will be used if this field is empty.
-	Hostname string `pulumi:"hostname"`
+	Hostname *string `pulumi:"hostname"`
 	// IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
 	Ip string `pulumi:"ip"`
 }
@@ -11802,7 +11802,7 @@ type VMwareClusterNetworkConfigStaticIpConfigIpBlockIpInput interface {
 
 type VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs struct {
 	// Hostname of the machine. VM's name will be used if this field is empty.
-	Hostname pulumi.StringInput `pulumi:"hostname"`
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
 	// IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
 	Ip pulumi.StringInput `pulumi:"ip"`
 }
@@ -11859,8 +11859,8 @@ func (o VMwareClusterNetworkConfigStaticIpConfigIpBlockIpOutput) ToVMwareCluster
 }
 
 // Hostname of the machine. VM's name will be used if this field is empty.
-func (o VMwareClusterNetworkConfigStaticIpConfigIpBlockIpOutput) Hostname() pulumi.StringOutput {
-	return o.ApplyT(func(v VMwareClusterNetworkConfigStaticIpConfigIpBlockIp) string { return v.Hostname }).(pulumi.StringOutput)
+func (o VMwareClusterNetworkConfigStaticIpConfigIpBlockIpOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VMwareClusterNetworkConfigStaticIpConfigIpBlockIp) *string { return v.Hostname }).(pulumi.StringPtrOutput)
 }
 
 // IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).

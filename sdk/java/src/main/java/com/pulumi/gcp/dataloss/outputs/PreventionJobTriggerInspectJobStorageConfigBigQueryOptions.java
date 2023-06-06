@@ -4,7 +4,9 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField;
+import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference;
 import java.lang.Integer;
 import java.lang.String;
@@ -16,12 +18,25 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
     /**
+     * @return References to fields excluded from scanning.
+     * This allows you to skip inspection of entire columns which you know have no findings.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField> excludedFields;
+    /**
      * @return Specifies the BigQuery fields that will be returned with findings.
      * If not specified, no identifying fields will be returned for findings.
      * Structure is documented below.
      * 
      */
     private @Nullable List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField> identifyingFields;
+    /**
+     * @return Limit scanning only to these fields.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField> includedFields;
     /**
      * @return Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
      * If not set, or if set to 0, all rows will be scanned. Only one of rowsLimit and rowsLimitPercent can be
@@ -53,6 +68,15 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
 
     private PreventionJobTriggerInspectJobStorageConfigBigQueryOptions() {}
     /**
+     * @return References to fields excluded from scanning.
+     * This allows you to skip inspection of entire columns which you know have no findings.
+     * Structure is documented below.
+     * 
+     */
+    public List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField> excludedFields() {
+        return this.excludedFields == null ? List.of() : this.excludedFields;
+    }
+    /**
      * @return Specifies the BigQuery fields that will be returned with findings.
      * If not specified, no identifying fields will be returned for findings.
      * Structure is documented below.
@@ -60,6 +84,14 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
      */
     public List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField> identifyingFields() {
         return this.identifyingFields == null ? List.of() : this.identifyingFields;
+    }
+    /**
+     * @return Limit scanning only to these fields.
+     * Structure is documented below.
+     * 
+     */
+    public List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField> includedFields() {
+        return this.includedFields == null ? List.of() : this.includedFields;
     }
     /**
      * @return Max number of rows to scan. If the table has more rows than this value, the rest of the rows are omitted.
@@ -107,7 +139,9 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField> excludedFields;
         private @Nullable List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField> identifyingFields;
+        private @Nullable List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField> includedFields;
         private @Nullable Integer rowsLimit;
         private @Nullable Integer rowsLimitPercent;
         private @Nullable String sampleMethod;
@@ -115,7 +149,9 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
         public Builder() {}
         public Builder(PreventionJobTriggerInspectJobStorageConfigBigQueryOptions defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.excludedFields = defaults.excludedFields;
     	      this.identifyingFields = defaults.identifyingFields;
+    	      this.includedFields = defaults.includedFields;
     	      this.rowsLimit = defaults.rowsLimit;
     	      this.rowsLimitPercent = defaults.rowsLimitPercent;
     	      this.sampleMethod = defaults.sampleMethod;
@@ -123,12 +159,28 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
         }
 
         @CustomType.Setter
+        public Builder excludedFields(@Nullable List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField> excludedFields) {
+            this.excludedFields = excludedFields;
+            return this;
+        }
+        public Builder excludedFields(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField... excludedFields) {
+            return excludedFields(List.of(excludedFields));
+        }
+        @CustomType.Setter
         public Builder identifyingFields(@Nullable List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField> identifyingFields) {
             this.identifyingFields = identifyingFields;
             return this;
         }
         public Builder identifyingFields(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField... identifyingFields) {
             return identifyingFields(List.of(identifyingFields));
+        }
+        @CustomType.Setter
+        public Builder includedFields(@Nullable List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField> includedFields) {
+            this.includedFields = includedFields;
+            return this;
+        }
+        public Builder includedFields(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField... includedFields) {
+            return includedFields(List.of(includedFields));
         }
         @CustomType.Setter
         public Builder rowsLimit(@Nullable Integer rowsLimit) {
@@ -152,7 +204,9 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
         }
         public PreventionJobTriggerInspectJobStorageConfigBigQueryOptions build() {
             final var o = new PreventionJobTriggerInspectJobStorageConfigBigQueryOptions();
+            o.excludedFields = excludedFields;
             o.identifyingFields = identifyingFields;
+            o.includedFields = includedFields;
             o.rowsLimit = rowsLimit;
             o.rowsLimitPercent = rowsLimitPercent;
             o.sampleMethod = sampleMethod;

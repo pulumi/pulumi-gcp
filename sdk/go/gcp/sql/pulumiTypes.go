@@ -2564,7 +2564,7 @@ type DatabaseInstanceSettingsInsightsConfig struct {
 	//
 	// The optional `settings.password_validation_policy` subblock for instances declares [Password Validation Policy](https://cloud.google.com/sql/docs/postgres/built-in-authentication) configuration. It contains:
 	QueryPlansPerMinute *int `pulumi:"queryPlansPerMinute"`
-	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. Higher query lengths are more useful for analytical queries, but they also require more memory. Changing the query length requires you to restart the instance. You can still add tags to queries that exceed the length limit.
 	QueryStringLength *int `pulumi:"queryStringLength"`
 	// True if Query Insights will record application tags from query when enabled.
 	RecordApplicationTags *bool `pulumi:"recordApplicationTags"`
@@ -2590,7 +2590,7 @@ type DatabaseInstanceSettingsInsightsConfigArgs struct {
 	//
 	// The optional `settings.password_validation_policy` subblock for instances declares [Password Validation Policy](https://cloud.google.com/sql/docs/postgres/built-in-authentication) configuration. It contains:
 	QueryPlansPerMinute pulumi.IntPtrInput `pulumi:"queryPlansPerMinute"`
-	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. Higher query lengths are more useful for analytical queries, but they also require more memory. Changing the query length requires you to restart the instance. You can still add tags to queries that exceed the length limit.
 	QueryStringLength pulumi.IntPtrInput `pulumi:"queryStringLength"`
 	// True if Query Insights will record application tags from query when enabled.
 	RecordApplicationTags pulumi.BoolPtrInput `pulumi:"recordApplicationTags"`
@@ -2687,7 +2687,7 @@ func (o DatabaseInstanceSettingsInsightsConfigOutput) QueryPlansPerMinute() pulu
 	return o.ApplyT(func(v DatabaseInstanceSettingsInsightsConfig) *int { return v.QueryPlansPerMinute }).(pulumi.IntPtrOutput)
 }
 
-// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. Higher query lengths are more useful for analytical queries, but they also require more memory. Changing the query length requires you to restart the instance. You can still add tags to queries that exceed the length limit.
 func (o DatabaseInstanceSettingsInsightsConfigOutput) QueryStringLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsInsightsConfig) *int { return v.QueryStringLength }).(pulumi.IntPtrOutput)
 }
@@ -2748,7 +2748,7 @@ func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) QueryPlansPerMinute() p
 	}).(pulumi.IntPtrOutput)
 }
 
-// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024. Higher query lengths are more useful for analytical queries, but they also require more memory. Changing the query length requires you to restart the instance. You can still add tags to queries that exceed the length limit.
 func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) QueryStringLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsInsightsConfig) *int {
 		if v == nil {

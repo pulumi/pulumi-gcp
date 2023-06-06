@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     [OutputType]
     public sealed class GetServiceTemplateSpecVolumeResult
     {
+        public readonly ImmutableArray<Outputs.GetServiceTemplateSpecVolumeEmptyDirResult> EmptyDirs;
         /// <summary>
         /// The name of the Cloud Run Service.
         /// </summary>
@@ -21,10 +22,13 @@ namespace Pulumi.Gcp.CloudRun.Outputs
 
         [OutputConstructor]
         private GetServiceTemplateSpecVolumeResult(
+            ImmutableArray<Outputs.GetServiceTemplateSpecVolumeEmptyDirResult> emptyDirs,
+
             string name,
 
             ImmutableArray<Outputs.GetServiceTemplateSpecVolumeSecretResult> secrets)
         {
+            EmptyDirs = emptyDirs;
             Name = name;
             Secrets = secrets;
         }

@@ -2556,9 +2556,7 @@ type ServiceTemplateSpec struct {
 	// ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
 	// requests per container of the Revision. Values are:
 	ContainerConcurrency *int `pulumi:"containerConcurrency"`
-	// Container defines the unit of execution for this Revision.
-	// In the context of a Revision, we disallow a number of the fields of
-	// this Container, including: name, ports, and volumeMounts.
+	// Containers defines the unit of execution for this Revision.
 	// Structure is documented below.
 	Containers []ServiceTemplateSpecContainer `pulumi:"containers"`
 	// Email address of the IAM service account associated with the revision of the
@@ -2596,9 +2594,7 @@ type ServiceTemplateSpecArgs struct {
 	// ContainerConcurrency specifies the maximum allowed in-flight (concurrent)
 	// requests per container of the Revision. Values are:
 	ContainerConcurrency pulumi.IntPtrInput `pulumi:"containerConcurrency"`
-	// Container defines the unit of execution for this Revision.
-	// In the context of a Revision, we disallow a number of the fields of
-	// this Container, including: name, ports, and volumeMounts.
+	// Containers defines the unit of execution for this Revision.
 	// Structure is documented below.
 	Containers ServiceTemplateSpecContainerArrayInput `pulumi:"containers"`
 	// Email address of the IAM service account associated with the revision of the
@@ -2704,9 +2700,7 @@ func (o ServiceTemplateSpecOutput) ContainerConcurrency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpec) *int { return v.ContainerConcurrency }).(pulumi.IntPtrOutput)
 }
 
-// Container defines the unit of execution for this Revision.
-// In the context of a Revision, we disallow a number of the fields of
-// this Container, including: name, ports, and volumeMounts.
+// Containers defines the unit of execution for this Revision.
 // Structure is documented below.
 func (o ServiceTemplateSpecOutput) Containers() ServiceTemplateSpecContainerArrayOutput {
 	return o.ApplyT(func(v ServiceTemplateSpec) []ServiceTemplateSpecContainer { return v.Containers }).(ServiceTemplateSpecContainerArrayOutput)
@@ -2777,9 +2771,7 @@ func (o ServiceTemplateSpecPtrOutput) ContainerConcurrency() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// Container defines the unit of execution for this Revision.
-// In the context of a Revision, we disallow a number of the fields of
-// this Container, including: name, ports, and volumeMounts.
+// Containers defines the unit of execution for this Revision.
 // Structure is documented below.
 func (o ServiceTemplateSpecPtrOutput) Containers() ServiceTemplateSpecContainerArrayOutput {
 	return o.ApplyT(func(v *ServiceTemplateSpec) []ServiceTemplateSpecContainer {
@@ -2867,6 +2859,8 @@ type ServiceTemplateSpecContainer struct {
 	// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	// Structure is documented below.
 	LivenessProbe *ServiceTemplateSpecContainerLivenessProbe `pulumi:"livenessProbe"`
+	// Name of the container
+	Name *string `pulumi:"name"`
 	// List of open ports in the container.
 	// Structure is documented below.
 	Ports []ServiceTemplateSpecContainerPort `pulumi:"ports"`
@@ -2929,6 +2923,8 @@ type ServiceTemplateSpecContainerArgs struct {
 	// https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	// Structure is documented below.
 	LivenessProbe ServiceTemplateSpecContainerLivenessProbePtrInput `pulumi:"livenessProbe"`
+	// Name of the container
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// List of open ports in the container.
 	// Structure is documented below.
 	Ports ServiceTemplateSpecContainerPortArrayInput `pulumi:"ports"`
@@ -3048,6 +3044,11 @@ func (o ServiceTemplateSpecContainerOutput) LivenessProbe() ServiceTemplateSpecC
 	return o.ApplyT(func(v ServiceTemplateSpecContainer) *ServiceTemplateSpecContainerLivenessProbe {
 		return v.LivenessProbe
 	}).(ServiceTemplateSpecContainerLivenessProbePtrOutput)
+}
+
+// Name of the container
+func (o ServiceTemplateSpecContainerOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecContainer) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // List of open ports in the container.
@@ -6292,13 +6293,14 @@ func (o ServiceTemplateSpecContainerVolumeMountArrayOutput) Index(i pulumi.IntIn
 }
 
 type ServiceTemplateSpecVolume struct {
+	EmptyDir *ServiceTemplateSpecVolumeEmptyDir `pulumi:"emptyDir"`
 	// Volume's name.
 	Name string `pulumi:"name"`
 	// The secret's value will be presented as the content of a file whose
 	// name is defined in the item path. If no items are defined, the name of
 	// the file is the secret_name.
 	// Structure is documented below.
-	Secret ServiceTemplateSpecVolumeSecret `pulumi:"secret"`
+	Secret *ServiceTemplateSpecVolumeSecret `pulumi:"secret"`
 }
 
 // ServiceTemplateSpecVolumeInput is an input type that accepts ServiceTemplateSpecVolumeArgs and ServiceTemplateSpecVolumeOutput values.
@@ -6313,13 +6315,14 @@ type ServiceTemplateSpecVolumeInput interface {
 }
 
 type ServiceTemplateSpecVolumeArgs struct {
+	EmptyDir ServiceTemplateSpecVolumeEmptyDirPtrInput `pulumi:"emptyDir"`
 	// Volume's name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The secret's value will be presented as the content of a file whose
 	// name is defined in the item path. If no items are defined, the name of
 	// the file is the secret_name.
 	// Structure is documented below.
-	Secret ServiceTemplateSpecVolumeSecretInput `pulumi:"secret"`
+	Secret ServiceTemplateSpecVolumeSecretPtrInput `pulumi:"secret"`
 }
 
 func (ServiceTemplateSpecVolumeArgs) ElementType() reflect.Type {
@@ -6373,6 +6376,10 @@ func (o ServiceTemplateSpecVolumeOutput) ToServiceTemplateSpecVolumeOutputWithCo
 	return o
 }
 
+func (o ServiceTemplateSpecVolumeOutput) EmptyDir() ServiceTemplateSpecVolumeEmptyDirPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecVolume) *ServiceTemplateSpecVolumeEmptyDir { return v.EmptyDir }).(ServiceTemplateSpecVolumeEmptyDirPtrOutput)
+}
+
 // Volume's name.
 func (o ServiceTemplateSpecVolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecVolume) string { return v.Name }).(pulumi.StringOutput)
@@ -6382,8 +6389,8 @@ func (o ServiceTemplateSpecVolumeOutput) Name() pulumi.StringOutput {
 // name is defined in the item path. If no items are defined, the name of
 // the file is the secret_name.
 // Structure is documented below.
-func (o ServiceTemplateSpecVolumeOutput) Secret() ServiceTemplateSpecVolumeSecretOutput {
-	return o.ApplyT(func(v ServiceTemplateSpecVolume) ServiceTemplateSpecVolumeSecret { return v.Secret }).(ServiceTemplateSpecVolumeSecretOutput)
+func (o ServiceTemplateSpecVolumeOutput) Secret() ServiceTemplateSpecVolumeSecretPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecVolume) *ServiceTemplateSpecVolumeSecret { return v.Secret }).(ServiceTemplateSpecVolumeSecretPtrOutput)
 }
 
 type ServiceTemplateSpecVolumeArrayOutput struct{ *pulumi.OutputState }
@@ -6404,6 +6411,170 @@ func (o ServiceTemplateSpecVolumeArrayOutput) Index(i pulumi.IntInput) ServiceTe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTemplateSpecVolume {
 		return vs[0].([]ServiceTemplateSpecVolume)[vs[1].(int)]
 	}).(ServiceTemplateSpecVolumeOutput)
+}
+
+type ServiceTemplateSpecVolumeEmptyDir struct {
+	// The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory.
+	Medium *string `pulumi:"medium"`
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+	//
+	// ***
+	SizeLimit *string `pulumi:"sizeLimit"`
+}
+
+// ServiceTemplateSpecVolumeEmptyDirInput is an input type that accepts ServiceTemplateSpecVolumeEmptyDirArgs and ServiceTemplateSpecVolumeEmptyDirOutput values.
+// You can construct a concrete instance of `ServiceTemplateSpecVolumeEmptyDirInput` via:
+//
+//	ServiceTemplateSpecVolumeEmptyDirArgs{...}
+type ServiceTemplateSpecVolumeEmptyDirInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSpecVolumeEmptyDirOutput() ServiceTemplateSpecVolumeEmptyDirOutput
+	ToServiceTemplateSpecVolumeEmptyDirOutputWithContext(context.Context) ServiceTemplateSpecVolumeEmptyDirOutput
+}
+
+type ServiceTemplateSpecVolumeEmptyDirArgs struct {
+	// The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory.
+	Medium pulumi.StringPtrInput `pulumi:"medium"`
+	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+	//
+	// ***
+	SizeLimit pulumi.StringPtrInput `pulumi:"sizeLimit"`
+}
+
+func (ServiceTemplateSpecVolumeEmptyDirArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSpecVolumeEmptyDir)(nil)).Elem()
+}
+
+func (i ServiceTemplateSpecVolumeEmptyDirArgs) ToServiceTemplateSpecVolumeEmptyDirOutput() ServiceTemplateSpecVolumeEmptyDirOutput {
+	return i.ToServiceTemplateSpecVolumeEmptyDirOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSpecVolumeEmptyDirArgs) ToServiceTemplateSpecVolumeEmptyDirOutputWithContext(ctx context.Context) ServiceTemplateSpecVolumeEmptyDirOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecVolumeEmptyDirOutput)
+}
+
+func (i ServiceTemplateSpecVolumeEmptyDirArgs) ToServiceTemplateSpecVolumeEmptyDirPtrOutput() ServiceTemplateSpecVolumeEmptyDirPtrOutput {
+	return i.ToServiceTemplateSpecVolumeEmptyDirPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSpecVolumeEmptyDirArgs) ToServiceTemplateSpecVolumeEmptyDirPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecVolumeEmptyDirPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecVolumeEmptyDirOutput).ToServiceTemplateSpecVolumeEmptyDirPtrOutputWithContext(ctx)
+}
+
+// ServiceTemplateSpecVolumeEmptyDirPtrInput is an input type that accepts ServiceTemplateSpecVolumeEmptyDirArgs, ServiceTemplateSpecVolumeEmptyDirPtr and ServiceTemplateSpecVolumeEmptyDirPtrOutput values.
+// You can construct a concrete instance of `ServiceTemplateSpecVolumeEmptyDirPtrInput` via:
+//
+//	        ServiceTemplateSpecVolumeEmptyDirArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTemplateSpecVolumeEmptyDirPtrInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSpecVolumeEmptyDirPtrOutput() ServiceTemplateSpecVolumeEmptyDirPtrOutput
+	ToServiceTemplateSpecVolumeEmptyDirPtrOutputWithContext(context.Context) ServiceTemplateSpecVolumeEmptyDirPtrOutput
+}
+
+type serviceTemplateSpecVolumeEmptyDirPtrType ServiceTemplateSpecVolumeEmptyDirArgs
+
+func ServiceTemplateSpecVolumeEmptyDirPtr(v *ServiceTemplateSpecVolumeEmptyDirArgs) ServiceTemplateSpecVolumeEmptyDirPtrInput {
+	return (*serviceTemplateSpecVolumeEmptyDirPtrType)(v)
+}
+
+func (*serviceTemplateSpecVolumeEmptyDirPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateSpecVolumeEmptyDir)(nil)).Elem()
+}
+
+func (i *serviceTemplateSpecVolumeEmptyDirPtrType) ToServiceTemplateSpecVolumeEmptyDirPtrOutput() ServiceTemplateSpecVolumeEmptyDirPtrOutput {
+	return i.ToServiceTemplateSpecVolumeEmptyDirPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTemplateSpecVolumeEmptyDirPtrType) ToServiceTemplateSpecVolumeEmptyDirPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecVolumeEmptyDirPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecVolumeEmptyDirPtrOutput)
+}
+
+type ServiceTemplateSpecVolumeEmptyDirOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSpecVolumeEmptyDirOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateSpecVolumeEmptyDir)(nil)).Elem()
+}
+
+func (o ServiceTemplateSpecVolumeEmptyDirOutput) ToServiceTemplateSpecVolumeEmptyDirOutput() ServiceTemplateSpecVolumeEmptyDirOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecVolumeEmptyDirOutput) ToServiceTemplateSpecVolumeEmptyDirOutputWithContext(ctx context.Context) ServiceTemplateSpecVolumeEmptyDirOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecVolumeEmptyDirOutput) ToServiceTemplateSpecVolumeEmptyDirPtrOutput() ServiceTemplateSpecVolumeEmptyDirPtrOutput {
+	return o.ToServiceTemplateSpecVolumeEmptyDirPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTemplateSpecVolumeEmptyDirOutput) ToServiceTemplateSpecVolumeEmptyDirPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecVolumeEmptyDirPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateSpecVolumeEmptyDir) *ServiceTemplateSpecVolumeEmptyDir {
+		return &v
+	}).(ServiceTemplateSpecVolumeEmptyDirPtrOutput)
+}
+
+// The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory.
+func (o ServiceTemplateSpecVolumeEmptyDirOutput) Medium() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecVolumeEmptyDir) *string { return v.Medium }).(pulumi.StringPtrOutput)
+}
+
+// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+//
+// ***
+func (o ServiceTemplateSpecVolumeEmptyDirOutput) SizeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateSpecVolumeEmptyDir) *string { return v.SizeLimit }).(pulumi.StringPtrOutput)
+}
+
+type ServiceTemplateSpecVolumeEmptyDirPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSpecVolumeEmptyDirPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateSpecVolumeEmptyDir)(nil)).Elem()
+}
+
+func (o ServiceTemplateSpecVolumeEmptyDirPtrOutput) ToServiceTemplateSpecVolumeEmptyDirPtrOutput() ServiceTemplateSpecVolumeEmptyDirPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecVolumeEmptyDirPtrOutput) ToServiceTemplateSpecVolumeEmptyDirPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecVolumeEmptyDirPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecVolumeEmptyDirPtrOutput) Elem() ServiceTemplateSpecVolumeEmptyDirOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecVolumeEmptyDir) ServiceTemplateSpecVolumeEmptyDir {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateSpecVolumeEmptyDir
+		return ret
+	}).(ServiceTemplateSpecVolumeEmptyDirOutput)
+}
+
+// The medium on which the data is stored. The default is "" which means to use the node's default medium. Must be an empty string (default) or Memory.
+func (o ServiceTemplateSpecVolumeEmptyDirPtrOutput) Medium() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecVolumeEmptyDir) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Medium
+	}).(pulumi.StringPtrOutput)
+}
+
+// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir.
+//
+// ***
+func (o ServiceTemplateSpecVolumeEmptyDirPtrOutput) SizeLimit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecVolumeEmptyDir) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SizeLimit
+	}).(pulumi.StringPtrOutput)
 }
 
 type ServiceTemplateSpecVolumeSecret struct {
@@ -6479,6 +6650,47 @@ func (i ServiceTemplateSpecVolumeSecretArgs) ToServiceTemplateSpecVolumeSecretOu
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecVolumeSecretOutput)
 }
 
+func (i ServiceTemplateSpecVolumeSecretArgs) ToServiceTemplateSpecVolumeSecretPtrOutput() ServiceTemplateSpecVolumeSecretPtrOutput {
+	return i.ToServiceTemplateSpecVolumeSecretPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateSpecVolumeSecretArgs) ToServiceTemplateSpecVolumeSecretPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecVolumeSecretPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecVolumeSecretOutput).ToServiceTemplateSpecVolumeSecretPtrOutputWithContext(ctx)
+}
+
+// ServiceTemplateSpecVolumeSecretPtrInput is an input type that accepts ServiceTemplateSpecVolumeSecretArgs, ServiceTemplateSpecVolumeSecretPtr and ServiceTemplateSpecVolumeSecretPtrOutput values.
+// You can construct a concrete instance of `ServiceTemplateSpecVolumeSecretPtrInput` via:
+//
+//	        ServiceTemplateSpecVolumeSecretArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTemplateSpecVolumeSecretPtrInput interface {
+	pulumi.Input
+
+	ToServiceTemplateSpecVolumeSecretPtrOutput() ServiceTemplateSpecVolumeSecretPtrOutput
+	ToServiceTemplateSpecVolumeSecretPtrOutputWithContext(context.Context) ServiceTemplateSpecVolumeSecretPtrOutput
+}
+
+type serviceTemplateSpecVolumeSecretPtrType ServiceTemplateSpecVolumeSecretArgs
+
+func ServiceTemplateSpecVolumeSecretPtr(v *ServiceTemplateSpecVolumeSecretArgs) ServiceTemplateSpecVolumeSecretPtrInput {
+	return (*serviceTemplateSpecVolumeSecretPtrType)(v)
+}
+
+func (*serviceTemplateSpecVolumeSecretPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateSpecVolumeSecret)(nil)).Elem()
+}
+
+func (i *serviceTemplateSpecVolumeSecretPtrType) ToServiceTemplateSpecVolumeSecretPtrOutput() ServiceTemplateSpecVolumeSecretPtrOutput {
+	return i.ToServiceTemplateSpecVolumeSecretPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTemplateSpecVolumeSecretPtrType) ToServiceTemplateSpecVolumeSecretPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecVolumeSecretPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateSpecVolumeSecretPtrOutput)
+}
+
 type ServiceTemplateSpecVolumeSecretOutput struct{ *pulumi.OutputState }
 
 func (ServiceTemplateSpecVolumeSecretOutput) ElementType() reflect.Type {
@@ -6491,6 +6703,16 @@ func (o ServiceTemplateSpecVolumeSecretOutput) ToServiceTemplateSpecVolumeSecret
 
 func (o ServiceTemplateSpecVolumeSecretOutput) ToServiceTemplateSpecVolumeSecretOutputWithContext(ctx context.Context) ServiceTemplateSpecVolumeSecretOutput {
 	return o
+}
+
+func (o ServiceTemplateSpecVolumeSecretOutput) ToServiceTemplateSpecVolumeSecretPtrOutput() ServiceTemplateSpecVolumeSecretPtrOutput {
+	return o.ToServiceTemplateSpecVolumeSecretPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTemplateSpecVolumeSecretOutput) ToServiceTemplateSpecVolumeSecretPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecVolumeSecretPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateSpecVolumeSecret) *ServiceTemplateSpecVolumeSecret {
+		return &v
+	}).(ServiceTemplateSpecVolumeSecretPtrOutput)
 }
 
 // Mode bits to use on created files by default. Must be a value between 0000
@@ -6524,6 +6746,76 @@ func (o ServiceTemplateSpecVolumeSecretOutput) SecretName() pulumi.StringOutput 
 	return o.ApplyT(func(v ServiceTemplateSpecVolumeSecret) string { return v.SecretName }).(pulumi.StringOutput)
 }
 
+type ServiceTemplateSpecVolumeSecretPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateSpecVolumeSecretPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateSpecVolumeSecret)(nil)).Elem()
+}
+
+func (o ServiceTemplateSpecVolumeSecretPtrOutput) ToServiceTemplateSpecVolumeSecretPtrOutput() ServiceTemplateSpecVolumeSecretPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecVolumeSecretPtrOutput) ToServiceTemplateSpecVolumeSecretPtrOutputWithContext(ctx context.Context) ServiceTemplateSpecVolumeSecretPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateSpecVolumeSecretPtrOutput) Elem() ServiceTemplateSpecVolumeSecretOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecVolumeSecret) ServiceTemplateSpecVolumeSecret {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateSpecVolumeSecret
+		return ret
+	}).(ServiceTemplateSpecVolumeSecretOutput)
+}
+
+// Mode bits to use on created files by default. Must be a value between 0000
+// and 0777. Defaults to 0644. Directories within the path are not affected by
+// this setting. This might be in conflict with other options that affect the
+// file mode, like fsGroup, and the result can be other mode bits set.
+func (o ServiceTemplateSpecVolumeSecretPtrOutput) DefaultMode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecVolumeSecret) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultMode
+	}).(pulumi.IntPtrOutput)
+}
+
+// If unspecified, the volume will expose a file whose name is the
+// secret_name.
+// If specified, the key will be used as the version to fetch from Cloud
+// Secret Manager and the path will be the name of the file exposed in the
+// volume. When items are defined, they must specify a key and a path.
+// Structure is documented below.
+func (o ServiceTemplateSpecVolumeSecretPtrOutput) Items() ServiceTemplateSpecVolumeSecretItemArrayOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecVolumeSecret) []ServiceTemplateSpecVolumeSecretItem {
+		if v == nil {
+			return nil
+		}
+		return v.Items
+	}).(ServiceTemplateSpecVolumeSecretItemArrayOutput)
+}
+
+// The name of the secret in Cloud Secret Manager. By default, the secret
+// is assumed to be in the same project.
+// If the secret is in another project, you must define an alias.
+// An alias definition has the form:
+// {alias}:projects/{project-id|project-number}/secrets/{secret-name}.
+// If multiple alias definitions are needed, they must be separated by
+// commas.
+// The alias definitions must be set on the run.googleapis.com/secrets
+// annotation.
+func (o ServiceTemplateSpecVolumeSecretPtrOutput) SecretName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateSpecVolumeSecret) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretName
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServiceTemplateSpecVolumeSecretItem struct {
 	// The Cloud Secret Manager secret version.
 	// Can be 'latest' for the latest value or an integer for a specific version.
@@ -6532,8 +6824,6 @@ type ServiceTemplateSpecVolumeSecretItem struct {
 	// not specified, the volume defaultMode will be used. This might be in
 	// conflict with other options that affect the file mode, like fsGroup, and
 	// the result can be other mode bits set.
-	//
-	// ***
 	Mode *int `pulumi:"mode"`
 	// The relative path of the file to map the key to.
 	// May not be an absolute path.
@@ -6561,8 +6851,6 @@ type ServiceTemplateSpecVolumeSecretItemArgs struct {
 	// not specified, the volume defaultMode will be used. This might be in
 	// conflict with other options that affect the file mode, like fsGroup, and
 	// the result can be other mode bits set.
-	//
-	// ***
 	Mode pulumi.IntPtrInput `pulumi:"mode"`
 	// The relative path of the file to map the key to.
 	// May not be an absolute path.
@@ -6632,8 +6920,6 @@ func (o ServiceTemplateSpecVolumeSecretItemOutput) Key() pulumi.StringOutput {
 // not specified, the volume defaultMode will be used. This might be in
 // conflict with other options that affect the file mode, like fsGroup, and
 // the result can be other mode bits set.
-//
-// ***
 func (o ServiceTemplateSpecVolumeSecretItemOutput) Mode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateSpecVolumeSecretItem) *int { return v.Mode }).(pulumi.IntPtrOutput)
 }
@@ -7547,11 +7833,13 @@ type GetServiceTemplateSpecContainer struct {
 	Envs           []GetServiceTemplateSpecContainerEnv           `pulumi:"envs"`
 	Image          string                                         `pulumi:"image"`
 	LivenessProbes []GetServiceTemplateSpecContainerLivenessProbe `pulumi:"livenessProbes"`
-	Ports          []GetServiceTemplateSpecContainerPort          `pulumi:"ports"`
-	Resources      []GetServiceTemplateSpecContainerResource      `pulumi:"resources"`
-	StartupProbes  []GetServiceTemplateSpecContainerStartupProbe  `pulumi:"startupProbes"`
-	VolumeMounts   []GetServiceTemplateSpecContainerVolumeMount   `pulumi:"volumeMounts"`
-	WorkingDir     string                                         `pulumi:"workingDir"`
+	// The name of the Cloud Run Service.
+	Name          string                                        `pulumi:"name"`
+	Ports         []GetServiceTemplateSpecContainerPort         `pulumi:"ports"`
+	Resources     []GetServiceTemplateSpecContainerResource     `pulumi:"resources"`
+	StartupProbes []GetServiceTemplateSpecContainerStartupProbe `pulumi:"startupProbes"`
+	VolumeMounts  []GetServiceTemplateSpecContainerVolumeMount  `pulumi:"volumeMounts"`
+	WorkingDir    string                                        `pulumi:"workingDir"`
 }
 
 // GetServiceTemplateSpecContainerInput is an input type that accepts GetServiceTemplateSpecContainerArgs and GetServiceTemplateSpecContainerOutput values.
@@ -7572,11 +7860,13 @@ type GetServiceTemplateSpecContainerArgs struct {
 	Envs           GetServiceTemplateSpecContainerEnvArrayInput           `pulumi:"envs"`
 	Image          pulumi.StringInput                                     `pulumi:"image"`
 	LivenessProbes GetServiceTemplateSpecContainerLivenessProbeArrayInput `pulumi:"livenessProbes"`
-	Ports          GetServiceTemplateSpecContainerPortArrayInput          `pulumi:"ports"`
-	Resources      GetServiceTemplateSpecContainerResourceArrayInput      `pulumi:"resources"`
-	StartupProbes  GetServiceTemplateSpecContainerStartupProbeArrayInput  `pulumi:"startupProbes"`
-	VolumeMounts   GetServiceTemplateSpecContainerVolumeMountArrayInput   `pulumi:"volumeMounts"`
-	WorkingDir     pulumi.StringInput                                     `pulumi:"workingDir"`
+	// The name of the Cloud Run Service.
+	Name          pulumi.StringInput                                    `pulumi:"name"`
+	Ports         GetServiceTemplateSpecContainerPortArrayInput         `pulumi:"ports"`
+	Resources     GetServiceTemplateSpecContainerResourceArrayInput     `pulumi:"resources"`
+	StartupProbes GetServiceTemplateSpecContainerStartupProbeArrayInput `pulumi:"startupProbes"`
+	VolumeMounts  GetServiceTemplateSpecContainerVolumeMountArrayInput  `pulumi:"volumeMounts"`
+	WorkingDir    pulumi.StringInput                                    `pulumi:"workingDir"`
 }
 
 func (GetServiceTemplateSpecContainerArgs) ElementType() reflect.Type {
@@ -7654,6 +7944,11 @@ func (o GetServiceTemplateSpecContainerOutput) LivenessProbes() GetServiceTempla
 	return o.ApplyT(func(v GetServiceTemplateSpecContainer) []GetServiceTemplateSpecContainerLivenessProbe {
 		return v.LivenessProbes
 	}).(GetServiceTemplateSpecContainerLivenessProbeArrayOutput)
+}
+
+// The name of the Cloud Run Service.
+func (o GetServiceTemplateSpecContainerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecContainer) string { return v.Name }).(pulumi.StringOutput)
 }
 
 func (o GetServiceTemplateSpecContainerOutput) Ports() GetServiceTemplateSpecContainerPortArrayOutput {
@@ -9811,6 +10106,7 @@ func (o GetServiceTemplateSpecContainerVolumeMountArrayOutput) Index(i pulumi.In
 }
 
 type GetServiceTemplateSpecVolume struct {
+	EmptyDirs []GetServiceTemplateSpecVolumeEmptyDir `pulumi:"emptyDirs"`
 	// The name of the Cloud Run Service.
 	Name    string                               `pulumi:"name"`
 	Secrets []GetServiceTemplateSpecVolumeSecret `pulumi:"secrets"`
@@ -9828,6 +10124,7 @@ type GetServiceTemplateSpecVolumeInput interface {
 }
 
 type GetServiceTemplateSpecVolumeArgs struct {
+	EmptyDirs GetServiceTemplateSpecVolumeEmptyDirArrayInput `pulumi:"emptyDirs"`
 	// The name of the Cloud Run Service.
 	Name    pulumi.StringInput                           `pulumi:"name"`
 	Secrets GetServiceTemplateSpecVolumeSecretArrayInput `pulumi:"secrets"`
@@ -9884,6 +10181,10 @@ func (o GetServiceTemplateSpecVolumeOutput) ToGetServiceTemplateSpecVolumeOutput
 	return o
 }
 
+func (o GetServiceTemplateSpecVolumeOutput) EmptyDirs() GetServiceTemplateSpecVolumeEmptyDirArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecVolume) []GetServiceTemplateSpecVolumeEmptyDir { return v.EmptyDirs }).(GetServiceTemplateSpecVolumeEmptyDirArrayOutput)
+}
+
 // The name of the Cloud Run Service.
 func (o GetServiceTemplateSpecVolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateSpecVolume) string { return v.Name }).(pulumi.StringOutput)
@@ -9911,6 +10212,106 @@ func (o GetServiceTemplateSpecVolumeArrayOutput) Index(i pulumi.IntInput) GetSer
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateSpecVolume {
 		return vs[0].([]GetServiceTemplateSpecVolume)[vs[1].(int)]
 	}).(GetServiceTemplateSpecVolumeOutput)
+}
+
+type GetServiceTemplateSpecVolumeEmptyDir struct {
+	Medium    string `pulumi:"medium"`
+	SizeLimit string `pulumi:"sizeLimit"`
+}
+
+// GetServiceTemplateSpecVolumeEmptyDirInput is an input type that accepts GetServiceTemplateSpecVolumeEmptyDirArgs and GetServiceTemplateSpecVolumeEmptyDirOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSpecVolumeEmptyDirInput` via:
+//
+//	GetServiceTemplateSpecVolumeEmptyDirArgs{...}
+type GetServiceTemplateSpecVolumeEmptyDirInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSpecVolumeEmptyDirOutput() GetServiceTemplateSpecVolumeEmptyDirOutput
+	ToGetServiceTemplateSpecVolumeEmptyDirOutputWithContext(context.Context) GetServiceTemplateSpecVolumeEmptyDirOutput
+}
+
+type GetServiceTemplateSpecVolumeEmptyDirArgs struct {
+	Medium    pulumi.StringInput `pulumi:"medium"`
+	SizeLimit pulumi.StringInput `pulumi:"sizeLimit"`
+}
+
+func (GetServiceTemplateSpecVolumeEmptyDirArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSpecVolumeEmptyDir)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSpecVolumeEmptyDirArgs) ToGetServiceTemplateSpecVolumeEmptyDirOutput() GetServiceTemplateSpecVolumeEmptyDirOutput {
+	return i.ToGetServiceTemplateSpecVolumeEmptyDirOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSpecVolumeEmptyDirArgs) ToGetServiceTemplateSpecVolumeEmptyDirOutputWithContext(ctx context.Context) GetServiceTemplateSpecVolumeEmptyDirOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSpecVolumeEmptyDirOutput)
+}
+
+// GetServiceTemplateSpecVolumeEmptyDirArrayInput is an input type that accepts GetServiceTemplateSpecVolumeEmptyDirArray and GetServiceTemplateSpecVolumeEmptyDirArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateSpecVolumeEmptyDirArrayInput` via:
+//
+//	GetServiceTemplateSpecVolumeEmptyDirArray{ GetServiceTemplateSpecVolumeEmptyDirArgs{...} }
+type GetServiceTemplateSpecVolumeEmptyDirArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateSpecVolumeEmptyDirArrayOutput() GetServiceTemplateSpecVolumeEmptyDirArrayOutput
+	ToGetServiceTemplateSpecVolumeEmptyDirArrayOutputWithContext(context.Context) GetServiceTemplateSpecVolumeEmptyDirArrayOutput
+}
+
+type GetServiceTemplateSpecVolumeEmptyDirArray []GetServiceTemplateSpecVolumeEmptyDirInput
+
+func (GetServiceTemplateSpecVolumeEmptyDirArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSpecVolumeEmptyDir)(nil)).Elem()
+}
+
+func (i GetServiceTemplateSpecVolumeEmptyDirArray) ToGetServiceTemplateSpecVolumeEmptyDirArrayOutput() GetServiceTemplateSpecVolumeEmptyDirArrayOutput {
+	return i.ToGetServiceTemplateSpecVolumeEmptyDirArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateSpecVolumeEmptyDirArray) ToGetServiceTemplateSpecVolumeEmptyDirArrayOutputWithContext(ctx context.Context) GetServiceTemplateSpecVolumeEmptyDirArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateSpecVolumeEmptyDirArrayOutput)
+}
+
+type GetServiceTemplateSpecVolumeEmptyDirOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSpecVolumeEmptyDirOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateSpecVolumeEmptyDir)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSpecVolumeEmptyDirOutput) ToGetServiceTemplateSpecVolumeEmptyDirOutput() GetServiceTemplateSpecVolumeEmptyDirOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecVolumeEmptyDirOutput) ToGetServiceTemplateSpecVolumeEmptyDirOutputWithContext(ctx context.Context) GetServiceTemplateSpecVolumeEmptyDirOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecVolumeEmptyDirOutput) Medium() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecVolumeEmptyDir) string { return v.Medium }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateSpecVolumeEmptyDirOutput) SizeLimit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateSpecVolumeEmptyDir) string { return v.SizeLimit }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateSpecVolumeEmptyDirArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateSpecVolumeEmptyDirArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateSpecVolumeEmptyDir)(nil)).Elem()
+}
+
+func (o GetServiceTemplateSpecVolumeEmptyDirArrayOutput) ToGetServiceTemplateSpecVolumeEmptyDirArrayOutput() GetServiceTemplateSpecVolumeEmptyDirArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecVolumeEmptyDirArrayOutput) ToGetServiceTemplateSpecVolumeEmptyDirArrayOutputWithContext(ctx context.Context) GetServiceTemplateSpecVolumeEmptyDirArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateSpecVolumeEmptyDirArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateSpecVolumeEmptyDirOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateSpecVolumeEmptyDir {
+		return vs[0].([]GetServiceTemplateSpecVolumeEmptyDir)[vs[1].(int)]
+	}).(GetServiceTemplateSpecVolumeEmptyDirOutput)
 }
 
 type GetServiceTemplateSpecVolumeSecret struct {
@@ -10314,7 +10715,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecContainerVolumeMountArrayInput)(nil)).Elem(), ServiceTemplateSpecContainerVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecVolumeInput)(nil)).Elem(), ServiceTemplateSpecVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecVolumeArrayInput)(nil)).Elem(), ServiceTemplateSpecVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecVolumeEmptyDirInput)(nil)).Elem(), ServiceTemplateSpecVolumeEmptyDirArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecVolumeEmptyDirPtrInput)(nil)).Elem(), ServiceTemplateSpecVolumeEmptyDirArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecVolumeSecretInput)(nil)).Elem(), ServiceTemplateSpecVolumeSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecVolumeSecretPtrInput)(nil)).Elem(), ServiceTemplateSpecVolumeSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecVolumeSecretItemInput)(nil)).Elem(), ServiceTemplateSpecVolumeSecretItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateSpecVolumeSecretItemArrayInput)(nil)).Elem(), ServiceTemplateSpecVolumeSecretItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTrafficInput)(nil)).Elem(), ServiceTrafficArgs{})
@@ -10375,6 +10779,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecContainerVolumeMountArrayInput)(nil)).Elem(), GetServiceTemplateSpecContainerVolumeMountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecVolumeInput)(nil)).Elem(), GetServiceTemplateSpecVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecVolumeArrayInput)(nil)).Elem(), GetServiceTemplateSpecVolumeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecVolumeEmptyDirInput)(nil)).Elem(), GetServiceTemplateSpecVolumeEmptyDirArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecVolumeEmptyDirArrayInput)(nil)).Elem(), GetServiceTemplateSpecVolumeEmptyDirArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecVolumeSecretInput)(nil)).Elem(), GetServiceTemplateSpecVolumeSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecVolumeSecretArrayInput)(nil)).Elem(), GetServiceTemplateSpecVolumeSecretArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateSpecVolumeSecretItemInput)(nil)).Elem(), GetServiceTemplateSpecVolumeSecretItemArgs{})
@@ -10451,7 +10857,10 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTemplateSpecContainerVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecVolumeOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecVolumeArrayOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSpecVolumeEmptyDirOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSpecVolumeEmptyDirPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecVolumeSecretOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateSpecVolumeSecretPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecVolumeSecretItemOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateSpecVolumeSecretItemArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTrafficOutput{})
@@ -10512,6 +10921,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceTemplateSpecContainerVolumeMountArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecVolumeOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecVolumeArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSpecVolumeEmptyDirOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateSpecVolumeEmptyDirArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecVolumeSecretOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecVolumeSecretArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateSpecVolumeSecretItemOutput{})

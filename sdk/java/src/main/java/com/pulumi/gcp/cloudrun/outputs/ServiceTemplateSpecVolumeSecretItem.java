@@ -24,8 +24,6 @@ public final class ServiceTemplateSpecVolumeSecretItem {
      * conflict with other options that affect the file mode, like fsGroup, and
      * the result can be other mode bits set.
      * 
-     * ***
-     * 
      */
     private @Nullable Integer mode;
     /**
@@ -51,8 +49,6 @@ public final class ServiceTemplateSpecVolumeSecretItem {
      * not specified, the volume defaultMode will be used. This might be in
      * conflict with other options that affect the file mode, like fsGroup, and
      * the result can be other mode bits set.
-     * 
-     * ***
      * 
      */
     public Optional<Integer> mode() {

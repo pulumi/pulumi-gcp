@@ -5,14 +5,24 @@ package com.pulumi.gcp.cloudrun.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecVolumeEmptyDirArgs;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecVolumeSecretArgs;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ServiceTemplateSpecVolumeArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ServiceTemplateSpecVolumeArgs Empty = new ServiceTemplateSpecVolumeArgs();
+
+    @Import(name="emptyDir")
+    private @Nullable Output<ServiceTemplateSpecVolumeEmptyDirArgs> emptyDir;
+
+    public Optional<Output<ServiceTemplateSpecVolumeEmptyDirArgs>> emptyDir() {
+        return Optional.ofNullable(this.emptyDir);
+    }
 
     /**
      * Volume&#39;s name.
@@ -36,8 +46,8 @@ public final class ServiceTemplateSpecVolumeArgs extends com.pulumi.resources.Re
      * Structure is documented below.
      * 
      */
-    @Import(name="secret", required=true)
-    private Output<ServiceTemplateSpecVolumeSecretArgs> secret;
+    @Import(name="secret")
+    private @Nullable Output<ServiceTemplateSpecVolumeSecretArgs> secret;
 
     /**
      * @return The secret&#39;s value will be presented as the content of a file whose
@@ -46,13 +56,14 @@ public final class ServiceTemplateSpecVolumeArgs extends com.pulumi.resources.Re
      * Structure is documented below.
      * 
      */
-    public Output<ServiceTemplateSpecVolumeSecretArgs> secret() {
-        return this.secret;
+    public Optional<Output<ServiceTemplateSpecVolumeSecretArgs>> secret() {
+        return Optional.ofNullable(this.secret);
     }
 
     private ServiceTemplateSpecVolumeArgs() {}
 
     private ServiceTemplateSpecVolumeArgs(ServiceTemplateSpecVolumeArgs $) {
+        this.emptyDir = $.emptyDir;
         this.name = $.name;
         this.secret = $.secret;
     }
@@ -73,6 +84,15 @@ public final class ServiceTemplateSpecVolumeArgs extends com.pulumi.resources.Re
 
         public Builder(ServiceTemplateSpecVolumeArgs defaults) {
             $ = new ServiceTemplateSpecVolumeArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder emptyDir(@Nullable Output<ServiceTemplateSpecVolumeEmptyDirArgs> emptyDir) {
+            $.emptyDir = emptyDir;
+            return this;
+        }
+
+        public Builder emptyDir(ServiceTemplateSpecVolumeEmptyDirArgs emptyDir) {
+            return emptyDir(Output.of(emptyDir));
         }
 
         /**
@@ -105,7 +125,7 @@ public final class ServiceTemplateSpecVolumeArgs extends com.pulumi.resources.Re
          * @return builder
          * 
          */
-        public Builder secret(Output<ServiceTemplateSpecVolumeSecretArgs> secret) {
+        public Builder secret(@Nullable Output<ServiceTemplateSpecVolumeSecretArgs> secret) {
             $.secret = secret;
             return this;
         }
@@ -125,7 +145,6 @@ public final class ServiceTemplateSpecVolumeArgs extends com.pulumi.resources.Re
 
         public ServiceTemplateSpecVolumeArgs build() {
             $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.secret = Objects.requireNonNull($.secret, "expected parameter 'secret' to be non-null");
             return $;
         }
     }

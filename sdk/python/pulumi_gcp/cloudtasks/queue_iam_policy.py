@@ -243,6 +243,10 @@ class QueueIamPolicy(pulumi.CustomResource):
         * `cloudtasks.QueueIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the queue are preserved.
         * `cloudtasks.QueueIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the queue are preserved.
 
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `cloudtasks.QueueIamPolicy`: Retrieves the IAM policy for the queue
+
         > **Note:** `cloudtasks.QueueIamPolicy` **cannot** be used in conjunction with `cloudtasks.QueueIamBinding` and `cloudtasks.QueueIamMember` or they will fight over what your policy should be.
 
         > **Note:** `cloudtasks.QueueIamBinding` resources **can be** used in conjunction with `cloudtasks.QueueIamMember` resources **only if** they do not grant privilege to the same role.
@@ -346,6 +350,10 @@ class QueueIamPolicy(pulumi.CustomResource):
         * `cloudtasks.QueueIamPolicy`: Authoritative. Sets the IAM policy for the queue and replaces any existing policy already attached.
         * `cloudtasks.QueueIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the queue are preserved.
         * `cloudtasks.QueueIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the queue are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `cloudtasks.QueueIamPolicy`: Retrieves the IAM policy for the queue
 
         > **Note:** `cloudtasks.QueueIamPolicy` **cannot** be used in conjunction with `cloudtasks.QueueIamBinding` and `cloudtasks.QueueIamMember` or they will fight over what your policy should be.
 

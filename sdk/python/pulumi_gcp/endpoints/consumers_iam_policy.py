@@ -140,6 +140,10 @@ class ConsumersIamPolicy(pulumi.CustomResource):
         * `endpoints.ConsumersIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the serviceconsumers are preserved.
         * `endpoints.ConsumersIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the serviceconsumers are preserved.
 
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `endpoints.ConsumersIamPolicy`: Retrieves the IAM policy for the serviceconsumers
+
         > **Note:** `endpoints.ConsumersIamPolicy` **cannot** be used in conjunction with `endpoints.ConsumersIamBinding` and `endpoints.ConsumersIamMember` or they will fight over what your policy should be.
 
         > **Note:** `endpoints.ConsumersIamBinding` resources **can be** used in conjunction with `endpoints.ConsumersIamMember` resources **only if** they do not grant privilege to the same role.
@@ -185,6 +189,10 @@ class ConsumersIamPolicy(pulumi.CustomResource):
         * `endpoints.ConsumersIamPolicy`: Authoritative. Sets the IAM policy for the serviceconsumers and replaces any existing policy already attached.
         * `endpoints.ConsumersIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the serviceconsumers are preserved.
         * `endpoints.ConsumersIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the serviceconsumers are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `endpoints.ConsumersIamPolicy`: Retrieves the IAM policy for the serviceconsumers
 
         > **Note:** `endpoints.ConsumersIamPolicy` **cannot** be used in conjunction with `endpoints.ConsumersIamBinding` and `endpoints.ConsumersIamMember` or they will fight over what your policy should be.
 

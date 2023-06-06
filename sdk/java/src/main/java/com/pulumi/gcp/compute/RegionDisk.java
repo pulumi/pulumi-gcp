@@ -12,6 +12,7 @@ import com.pulumi.gcp.compute.RegionDiskArgs;
 import com.pulumi.gcp.compute.inputs.RegionDiskState;
 import com.pulumi.gcp.compute.outputs.RegionDiskAsyncPrimaryDisk;
 import com.pulumi.gcp.compute.outputs.RegionDiskDiskEncryptionKey;
+import com.pulumi.gcp.compute.outputs.RegionDiskGuestOsFeature;
 import com.pulumi.gcp.compute.outputs.RegionDiskSourceSnapshotEncryptionKey;
 import java.lang.Integer;
 import java.lang.String;
@@ -150,6 +151,52 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Region Disk Features
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionDisk;
+ * import com.pulumi.gcp.compute.RegionDiskArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionDiskGuestOsFeatureArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var regiondisk = new RegionDisk(&#34;regiondisk&#34;, RegionDiskArgs.builder()        
+ *             .guestOsFeatures(            
+ *                 RegionDiskGuestOsFeatureArgs.builder()
+ *                     .type(&#34;SECURE_BOOT&#34;)
+ *                     .build(),
+ *                 RegionDiskGuestOsFeatureArgs.builder()
+ *                     .type(&#34;MULTI_IP_SUBNET&#34;)
+ *                     .build(),
+ *                 RegionDiskGuestOsFeatureArgs.builder()
+ *                     .type(&#34;WINDOWS&#34;)
+ *                     .build())
+ *             .licenses(&#34;https://www.googleapis.com/compute/v1/projects/windows-cloud/global/licenses/windows-server-core&#34;)
+ *             .physicalBlockSizeBytes(4096)
+ *             .region(&#34;us-central1&#34;)
+ *             .replicaZones(            
+ *                 &#34;us-central1-a&#34;,
+ *                 &#34;us-central1-f&#34;)
+ *             .type(&#34;pd-ssd&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -251,6 +298,24 @@ public class RegionDisk extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.diskEncryptionKey);
     }
     /**
+     * A list of features to enable on the guest operating system.
+     * Applicable only for bootable disks.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="guestOsFeatures", type=List.class, parameters={RegionDiskGuestOsFeature.class})
+    private Output<List<RegionDiskGuestOsFeature>> guestOsFeatures;
+
+    /**
+     * @return A list of features to enable on the guest operating system.
+     * Applicable only for bootable disks.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<RegionDiskGuestOsFeature>> guestOsFeatures() {
+        return this.guestOsFeatures;
+    }
+    /**
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      * 
      * @deprecated
@@ -325,6 +390,20 @@ public class RegionDisk extends com.pulumi.resources.CustomResource {
      */
     public Output<String> lastDetachTimestamp() {
         return this.lastDetachTimestamp;
+    }
+    /**
+     * Any applicable license URI.
+     * 
+     */
+    @Export(name="licenses", type=List.class, parameters={String.class})
+    private Output<List<String>> licenses;
+
+    /**
+     * @return Any applicable license URI.
+     * 
+     */
+    public Output<List<String>> licenses() {
+        return this.licenses;
     }
     /**
      * Name of the resource. Provided by the client when the resource is

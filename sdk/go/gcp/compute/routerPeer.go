@@ -120,6 +120,140 @@ import (
 //	}
 //
 // ```
+// ### Router Peer Router Appliance
+//
+// ```go
+// package main
+//
+// import (
+//
+// "github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// "github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+// "github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkconnectivity"
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+// AutoCreateSubnetworks: pulumi.Bool(false),
+// })
+// if err != nil {
+// return err
+// }
+// subnetwork, err := compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
+// Network: network.SelfLink,
+// IpCidrRange: pulumi.String("10.0.0.0/16"),
+// Region: pulumi.String("us-central1"),
+// })
+// if err != nil {
+// return err
+// }
+// addrIntf, err := compute.NewAddress(ctx, "addrIntf", &compute.AddressArgs{
+// Region: subnetwork.Region,
+// Subnetwork: subnetwork.ID(),
+// AddressType: pulumi.String("INTERNAL"),
+// })
+// if err != nil {
+// return err
+// }
+// addrIntfRedundant, err := compute.NewAddress(ctx, "addrIntfRedundant", &compute.AddressArgs{
+// Region: subnetwork.Region,
+// Subnetwork: subnetwork.ID(),
+// AddressType: pulumi.String("INTERNAL"),
+// })
+// if err != nil {
+// return err
+// }
+// addrPeer, err := compute.NewAddress(ctx, "addrPeer", &compute.AddressArgs{
+// Region: subnetwork.Region,
+// Subnetwork: subnetwork.ID(),
+// AddressType: pulumi.String("INTERNAL"),
+// })
+// if err != nil {
+// return err
+// }
+// instance, err := compute.NewInstance(ctx, "instance", &compute.InstanceArgs{
+// Zone: pulumi.String("us-central1-a"),
+// MachineType: pulumi.String("e2-medium"),
+// CanIpForward: pulumi.Bool(true),
+// BootDisk: &compute.InstanceBootDiskArgs{
+// InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+// Image: pulumi.String("debian-cloud/debian-11"),
+// },
+// },
+// NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+// &compute.InstanceNetworkInterfaceArgs{
+// NetworkIp: addrPeer.Address,
+// Subnetwork: subnetwork.SelfLink,
+// },
+// },
+// })
+// if err != nil {
+// return err
+// }
+// hub, err := networkconnectivity.NewHub(ctx, "hub", nil)
+// if err != nil {
+// return err
+// }
+// _, err = networkconnectivity.NewSpoke(ctx, "spoke", &networkconnectivity.SpokeArgs{
+// Location: subnetwork.Region,
+// Hub: hub.ID(),
+// LinkedRouterApplianceInstances: &networkconnectivity.SpokeLinkedRouterApplianceInstancesArgs{
+// Instances: networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArray{
+// &networkconnectivity.SpokeLinkedRouterApplianceInstancesInstanceArgs{
+// VirtualMachine: instance.SelfLink,
+// IpAddress: addrPeer.Address,
+// },
+// },
+// SiteToSiteDataTransfer: pulumi.Bool(false),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
+// Region: subnetwork.Region,
+// Network: network.SelfLink,
+// Bgp: &compute.RouterBgpArgs{
+// Asn: pulumi.Int(64514),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// interfaceRedundant, err := compute.NewRouterInterface(ctx, "interfaceRedundant", &compute.RouterInterfaceArgs{
+// Region: router.Region,
+// Router: router.Name,
+// Subnetwork: subnetwork.SelfLink,
+// PrivateIpAddress: addrIntfRedundant.Address,
+// })
+// if err != nil {
+// return err
+// }
+// interface, err := compute.NewRouterInterface(ctx, "interface", &compute.RouterInterfaceArgs{
+// Region: router.Region,
+// Router: router.Name,
+// Subnetwork: subnetwork.SelfLink,
+// PrivateIpAddress: addrIntf.Address,
+// RedundantInterface: interfaceRedundant.Name,
+// })
+// if err != nil {
+// return err
+// }
+// _, err = compute.NewRouterPeer(ctx, "peer", &compute.RouterPeerArgs{
+// Router: router.Name,
+// Region: router.Region,
+// Interface: interface.Name,
+// RouterApplianceInstance: instance.SelfLink,
+// PeerAsn: pulumi.Int(65513),
+// PeerIpAddress: addrPeer.Address,
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
 //
 // ## Import
 //

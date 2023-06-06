@@ -63,6 +63,8 @@ namespace Pulumi.Gcp.Workstations
     ///         WorkstationConfigId = "workstation-config",
     ///         WorkstationClusterId = defaultWorkstationCluster.WorkstationClusterId,
     ///         Location = "us-central1",
+    ///         IdleTimeout = "600s",
+    ///         RunningTimeout = "21600s",
     ///         Host = new Gcp.Workstations.Inputs.WorkstationConfigHostArgs
     ///         {
     ///             GceInstance = new Gcp.Workstations.Inputs.WorkstationConfigHostGceInstanceArgs
@@ -230,6 +232,8 @@ namespace Pulumi.Gcp.Workstations
     ///                 GcePd = new Gcp.Workstations.Inputs.WorkstationConfigPersistentDirectoryGcePdArgs
     ///                 {
     ///                     SizeGb = 200,
+    ///                     FsType = "ext4",
+    ///                     DiskType = "pd-standard",
     ///                     ReclaimPolicy = "DELETE",
     ///                 },
     ///             },
@@ -582,6 +586,13 @@ namespace Pulumi.Gcp.Workstations
         public Output<Outputs.WorkstationConfigHost> Host { get; private set; } = null!;
 
         /// <summary>
+        /// How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+        /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        /// </summary>
+        [Output("idleTimeout")]
+        public Output<string?> IdleTimeout { get; private set; } = null!;
+
+        /// <summary>
         /// Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         /// </summary>
         [Output("labels")]
@@ -615,6 +626,13 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+        /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        /// </summary>
+        [Output("runningTimeout")]
+        public Output<string?> RunningTimeout { get; private set; } = null!;
 
         /// <summary>
         /// The system-generated UID of the resource.
@@ -722,6 +740,13 @@ namespace Pulumi.Gcp.Workstations
         [Input("host")]
         public Input<Inputs.WorkstationConfigHostArgs>? Host { get; set; }
 
+        /// <summary>
+        /// How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+        /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        /// </summary>
+        [Input("idleTimeout")]
+        public Input<string>? IdleTimeout { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -762,6 +787,13 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+        /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        /// </summary>
+        [Input("runningTimeout")]
+        public Input<string>? RunningTimeout { get; set; }
 
         /// <summary>
         /// The ID of the parent workstation cluster.
@@ -857,6 +889,13 @@ namespace Pulumi.Gcp.Workstations
         [Input("host")]
         public Input<Inputs.WorkstationConfigHostGetArgs>? Host { get; set; }
 
+        /// <summary>
+        /// How long to wait before automatically stopping an instance that hasn't recently received any user traffic. A value of 0 indicates that this instance should never time out from idleness. Defaults to 20 minutes.
+        /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        /// </summary>
+        [Input("idleTimeout")]
+        public Input<string>? IdleTimeout { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -903,6 +942,13 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
+        /// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
+        /// </summary>
+        [Input("runningTimeout")]
+        public Input<string>? RunningTimeout { get; set; }
 
         /// <summary>
         /// The system-generated UID of the resource.

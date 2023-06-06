@@ -7,6 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs extends com.pulumi.resources.ResourceArgs {
@@ -17,15 +19,15 @@ public final class VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs extends
      * Hostname of the machine. VM&#39;s name will be used if this field is empty.
      * 
      */
-    @Import(name="hostname", required=true)
-    private Output<String> hostname;
+    @Import(name="hostname")
+    private @Nullable Output<String> hostname;
 
     /**
      * @return Hostname of the machine. VM&#39;s name will be used if this field is empty.
      * 
      */
-    public Output<String> hostname() {
-        return this.hostname;
+    public Optional<Output<String>> hostname() {
+        return Optional.ofNullable(this.hostname);
     }
 
     /**
@@ -74,7 +76,7 @@ public final class VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs extends
          * @return builder
          * 
          */
-        public Builder hostname(Output<String> hostname) {
+        public Builder hostname(@Nullable Output<String> hostname) {
             $.hostname = hostname;
             return this;
         }
@@ -111,7 +113,6 @@ public final class VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs extends
         }
 
         public VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs build() {
-            $.hostname = Objects.requireNonNull($.hostname, "expected parameter 'hostname' to be non-null");
             $.ip = Objects.requireNonNull($.ip, "expected parameter 'ip' to be non-null");
             return $;
         }

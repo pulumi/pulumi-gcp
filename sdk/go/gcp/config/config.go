@@ -325,7 +325,11 @@ func GetProject(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT").(string)
+	var value string
+	if d := getEnvOrDefault(nil, nil, "GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 func GetPubsubCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:pubsubCustomEndpoint")
@@ -344,7 +348,11 @@ func GetRegion(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION").(string)
+	var value string
+	if d := getEnvOrDefault(nil, nil, "GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 func GetRequestReason(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:requestReason")
@@ -432,5 +440,9 @@ func GetZone(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE").(string)
+	var value string
+	if d := getEnvOrDefault(nil, nil, "GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE"); d != nil {
+		value = d.(string)
+	}
+	return value
 }

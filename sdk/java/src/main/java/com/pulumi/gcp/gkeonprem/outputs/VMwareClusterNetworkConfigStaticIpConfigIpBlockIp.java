@@ -6,6 +6,8 @@ package com.pulumi.gcp.gkeonprem.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class VMwareClusterNetworkConfigStaticIpConfigIpBlockIp {
@@ -13,7 +15,7 @@ public final class VMwareClusterNetworkConfigStaticIpConfigIpBlockIp {
      * @return Hostname of the machine. VM&#39;s name will be used if this field is empty.
      * 
      */
-    private String hostname;
+    private @Nullable String hostname;
     /**
      * @return IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
      * 
@@ -25,8 +27,8 @@ public final class VMwareClusterNetworkConfigStaticIpConfigIpBlockIp {
      * @return Hostname of the machine. VM&#39;s name will be used if this field is empty.
      * 
      */
-    public String hostname() {
-        return this.hostname;
+    public Optional<String> hostname() {
+        return Optional.ofNullable(this.hostname);
     }
     /**
      * @return IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
@@ -45,7 +47,7 @@ public final class VMwareClusterNetworkConfigStaticIpConfigIpBlockIp {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String hostname;
+        private @Nullable String hostname;
         private String ip;
         public Builder() {}
         public Builder(VMwareClusterNetworkConfigStaticIpConfigIpBlockIp defaults) {
@@ -55,8 +57,8 @@ public final class VMwareClusterNetworkConfigStaticIpConfigIpBlockIp {
         }
 
         @CustomType.Setter
-        public Builder hostname(String hostname) {
-            this.hostname = Objects.requireNonNull(hostname);
+        public Builder hostname(@Nullable String hostname) {
+            this.hostname = hostname;
             return this;
         }
         @CustomType.Setter

@@ -2709,7 +2709,8 @@ class CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs:
 class CaPoolPublishingOptionsArgs:
     def __init__(__self__, *,
                  publish_ca_cert: pulumi.Input[bool],
-                 publish_crl: pulumi.Input[bool]):
+                 publish_crl: pulumi.Input[bool],
+                 encoding_format: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] publish_ca_cert: When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access"
                X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding
@@ -2718,9 +2719,15 @@ class CaPoolPublishingOptionsArgs:
                in all issued Certificates. If this is false, CRLs will not be published and the corresponding X.509 extension will not
                be written in issued certificates. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are
                also rebuilt shortly after a certificate is revoked.
+        :param pulumi.Input[str] encoding_format: Specifies the encoding format of each CertificateAuthority's CA
+               certificate and CRLs. If this is omitted, CA certificates and CRLs
+               will be published in PEM.
+               Possible values are: `PEM`, `DER`.
         """
         pulumi.set(__self__, "publish_ca_cert", publish_ca_cert)
         pulumi.set(__self__, "publish_crl", publish_crl)
+        if encoding_format is not None:
+            pulumi.set(__self__, "encoding_format", encoding_format)
 
     @property
     @pulumi.getter(name="publishCaCert")
@@ -2750,6 +2757,21 @@ class CaPoolPublishingOptionsArgs:
     @publish_crl.setter
     def publish_crl(self, value: pulumi.Input[bool]):
         pulumi.set(self, "publish_crl", value)
+
+    @property
+    @pulumi.getter(name="encodingFormat")
+    def encoding_format(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the encoding format of each CertificateAuthority's CA
+        certificate and CRLs. If this is omitted, CA certificates and CRLs
+        will be published in PEM.
+        Possible values are: `PEM`, `DER`.
+        """
+        return pulumi.get(self, "encoding_format")
+
+    @encoding_format.setter
+    def encoding_format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encoding_format", value)
 
 
 @pulumi.input_type
