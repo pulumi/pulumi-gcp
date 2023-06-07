@@ -240,10 +240,10 @@ import javax.annotation.Nullable;
  * ```
  * 
  * @deprecated
- * gcp.compute.Autoscalar has been deprecated in favor of gcp.compute.Autoscaler
+ * gcp.compute/autoscalar.Autoscalar has been deprecated in favor of gcp.compute/autoscaler.Autoscaler
  * 
  */
-@Deprecated /* gcp.compute.Autoscalar has been deprecated in favor of gcp.compute.Autoscaler */
+@Deprecated /* gcp.compute/autoscalar.Autoscalar has been deprecated in favor of gcp.compute/autoscaler.Autoscaler */
 @ResourceType(type="gcp:compute/autoscalar:Autoscalar")
 public class Autoscalar extends com.pulumi.resources.CustomResource {
     /**

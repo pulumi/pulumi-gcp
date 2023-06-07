@@ -241,7 +241,7 @@ import (
 //
 // ```
 //
-// Deprecated: gcp.compute.Autoscalar has been deprecated in favor of gcp.compute.Autoscaler
+// Deprecated: gcp.compute/autoscalar.Autoscalar has been deprecated in favor of gcp.compute/autoscaler.Autoscaler
 type Autoscalar struct {
 	pulumi.CustomResourceState
 

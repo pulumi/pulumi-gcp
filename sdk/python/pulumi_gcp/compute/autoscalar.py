@@ -315,11 +315,11 @@ class _AutoscalarState:
         pulumi.set(self, "zone", value)
 
 
-warnings.warn("""gcp.compute.Autoscalar has been deprecated in favor of gcp.compute.Autoscaler""", DeprecationWarning)
+warnings.warn("""gcp.compute/autoscalar.Autoscalar has been deprecated in favor of gcp.compute/autoscaler.Autoscaler""", DeprecationWarning)
 
 
 class Autoscalar(pulumi.CustomResource):
-    warnings.warn("""gcp.compute.Autoscalar has been deprecated in favor of gcp.compute.Autoscaler""", DeprecationWarning)
+    warnings.warn("""gcp.compute/autoscalar.Autoscalar has been deprecated in favor of gcp.compute/autoscaler.Autoscaler""", DeprecationWarning)
 
     @overload
     def __init__(__self__,
@@ -673,7 +673,7 @@ class Autoscalar(pulumi.CustomResource):
                  target: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
-        pulumi.log.warn("""Autoscalar is deprecated: gcp.compute.Autoscalar has been deprecated in favor of gcp.compute.Autoscaler""")
+        pulumi.log.warn("""Autoscalar is deprecated: gcp.compute/autoscalar.Autoscalar has been deprecated in favor of gcp.compute/autoscaler.Autoscaler""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

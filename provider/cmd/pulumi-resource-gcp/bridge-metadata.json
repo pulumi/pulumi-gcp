@@ -3847,52 +3847,14 @@
                 "majorVersion": 6
             },
             "google_compute_autoscaler": {
-                "current": "gcp:compute/autoscaler:Autoscaler",
-                "majorVersion": 6,
-                "fields": {
-                    "autoscaling_policy": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "cpu_utilization": {
-                                    "maxItemsOne": true
-                                },
-                                "load_balancing_utilization": {
-                                    "maxItemsOne": true
-                                },
-                                "metric": {
-                                    "maxItemsOne": false
-                                },
-                                "scale_down_control": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "max_scaled_down_replicas": {
-                                                "maxItemsOne": true
-                                            }
-                                        }
-                                    }
-                                },
-                                "scale_in_control": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "max_scaled_in_replicas": {
-                                                "maxItemsOne": true
-                                            }
-                                        }
-                                    }
-                                },
-                                "scaling_schedules": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    }
-                }
-            },
-            "google_compute_autoscaler_legacy": {
                 "current": "gcp:compute/autoscalar:Autoscalar",
+                "past": [
+                    {
+                        "name": "gcp:compute/autoscalar:Autoscalar",
+                        "inCodegen": true,
+                        "majorVersion": 6
+                    }
+                ],
                 "majorVersion": 6,
                 "fields": {
                     "autoscaling_policy": {
