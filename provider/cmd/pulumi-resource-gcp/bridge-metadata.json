@@ -2624,6 +2624,9 @@
                                                 "maxItemsOne": false,
                                                 "elem": {
                                                     "fields": {
+                                                        "empty_dir": {
+                                                            "maxItemsOne": true
+                                                        },
                                                         "secret": {
                                                             "maxItemsOne": true,
                                                             "elem": {
@@ -4155,6 +4158,12 @@
                     "disk_encryption_key": {
                         "maxItemsOne": true
                     },
+                    "guest_os_features": {
+                        "maxItemsOne": false
+                    },
+                    "licenses": {
+                        "maxItemsOne": false
+                    },
                     "resource_policies": {
                         "maxItemsOne": false
                     },
@@ -5545,6 +5554,12 @@
                     },
                     "disk_encryption_key": {
                         "maxItemsOne": true
+                    },
+                    "guest_os_features": {
+                        "maxItemsOne": false
+                    },
+                    "licenses": {
+                        "maxItemsOne": false
                     },
                     "replica_zones": {
                         "maxItemsOne": false
@@ -7414,6 +7429,31 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "google_container_analysis_note_iam_binding": {
+                "current": "gcp:containeranalysis/noteIamBinding:NoteIamBinding",
+                "majorVersion": 6,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_container_analysis_note_iam_member": {
+                "current": "gcp:containeranalysis/noteIamMember:NoteIamMember",
+                "majorVersion": 6,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_container_analysis_note_iam_policy": {
+                "current": "gcp:containeranalysis/noteIamPolicy:NoteIamPolicy",
+                "majorVersion": 6
             },
             "google_container_analysis_occurrence": {
                 "current": "gcp:containeranalysis/occurence:Occurence",
@@ -9607,7 +9647,13 @@
                                                 "maxItemsOne": true,
                                                 "elem": {
                                                     "fields": {
+                                                        "excluded_fields": {
+                                                            "maxItemsOne": false
+                                                        },
                                                         "identifying_fields": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "included_fields": {
                                                             "maxItemsOne": false
                                                         },
                                                         "table_reference": {
