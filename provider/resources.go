@@ -1048,19 +1048,12 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "compute_backend_service_signed_url_key.html.markdown",
 				},
 			},
-			"google_compute_disk":                        {Tok: gcpResource(gcpCompute, "Disk")},
-			"google_compute_firewall":                    {Tok: gcpResource(gcpCompute, "Firewall")},
-			"google_compute_firewall_policy":             {Tok: gcpResource(gcpCompute, "FirewallPolicy")},
-			"google_compute_firewall_policy_rule":        {Tok: gcpResource(gcpCompute, "FirewallPolicyRule")},
-			"google_compute_firewall_policy_association": {Tok: gcpResource(gcpCompute, "FirewallPolicyAssociation")},
-			"google_compute_forwarding_rule": {
-				Tok: gcpResource(gcpCompute, "ForwardingRule"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"service_directory_registrations": {
-						MaxItemsOne: boolRef(false),
-					},
-				},
-			},
+			"google_compute_disk":                          {Tok: gcpResource(gcpCompute, "Disk")},
+			"google_compute_firewall":                      {Tok: gcpResource(gcpCompute, "Firewall")},
+			"google_compute_firewall_policy":               {Tok: gcpResource(gcpCompute, "FirewallPolicy")},
+			"google_compute_firewall_policy_rule":          {Tok: gcpResource(gcpCompute, "FirewallPolicyRule")},
+			"google_compute_firewall_policy_association":   {Tok: gcpResource(gcpCompute, "FirewallPolicyAssociation")},
+			"google_compute_forwarding_rule":               {Tok: gcpResource(gcpCompute, "ForwardingRule")},
 			"google_compute_external_vpn_gateway":          {Tok: gcpResource(gcpCompute, "ExternalVpnGateway")},
 			"google_compute_global_address":                {Tok: gcpResource(gcpCompute, "GlobalAddress")},
 			"google_compute_global_forwarding_rule":        {Tok: gcpResource(gcpCompute, "GlobalForwardingRule")},
@@ -3000,23 +2993,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_eventarc_google_channel_config": {
 				Tok: gcpResource(gcpEventarc, "GoogleChannelConfig"),
 			},
-			"google_eventarc_trigger": {
-				Tok: gcpResource(gcpEventarc, "Trigger"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"transport": {
-						Name:        "transports",
-						MaxItemsOne: boolRef(false),
-						Elem: &tfbridge.SchemaInfo{
-							Fields: map[string]*tfbridge.SchemaInfo{
-								"pubsub": {
-									Name:        "pubsubs",
-									MaxItemsOne: boolRef(false),
-								},
-							},
-						},
-					},
-				},
-			},
+			"google_eventarc_trigger": {Tok: gcpResource(gcpEventarc, "Trigger")},
 
 			// GKE Backup
 			"google_gke_backup_backup_plan": {Tok: gcpResource(gcpGkeBackup, "BackupPlan")},
