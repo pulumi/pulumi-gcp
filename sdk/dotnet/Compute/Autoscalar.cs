@@ -247,7 +247,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/autoscalar:Autoscalar default {{name}}
     /// ```
     /// </summary>
-    [Obsolete(@"gcp.compute.Autoscalar has been deprecated in favor of gcp.compute.Autoscaler")]
+    [Obsolete(@"gcp.compute/autoscalar.Autoscalar has been deprecated in favor of gcp.compute/autoscaler.Autoscaler")]
     [GcpResourceType("gcp:compute/autoscalar:Autoscalar")]
     public partial class Autoscalar : global::Pulumi.CustomResource
     {
