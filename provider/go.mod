@@ -3,7 +3,7 @@ module github.com/pulumi/pulumi-gcp/provider/v6
 go 1.19
 
 require (
-	github.com/hashicorp/terraform-provider-google-beta v1.20.1-0.20210315160117-642085ce9b99
+	github.com/hashicorp/terraform-provider-google-beta v0.0.0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.11.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.49.0
 	github.com/pulumi/pulumi/pkg/v3 v3.69.0
@@ -12,7 +12,7 @@ require (
 
 replace (
 	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20220824175045-450992f2f5b9
-	github.com/hashicorp/terraform-provider-google-beta => github.com/pulumi/terraform-provider-google-beta v1.20.1-0.20230605233926-969874ef7510
+	github.com/hashicorp/terraform-provider-google-beta => ../upstream
 	github.com/hashicorp/vault => github.com/hashicorp/vault v1.2.0
 )
 
