@@ -63,13 +63,11 @@ jobs:
         committer: pulumi-bot <bot@pulumi.com>
         labels: impact/no-changelog-required
         team-reviewers: platform-integrations
-        title: Update pulumi-terraform-bridge to v${{ github.event.inputs.bridge_version
-          }}
+        title: Update pulumi-terraform-bridge to v${{ github.event.inputs.bridge_version }}
         token: ${{ secrets.PULUMI_BOT_TOKEN }}
     - if: steps.create-pr.outputs.pull-request-operation == 'created' &&
         github.event.inputs.automerge == 'true'
-      run: gh pr merge --auto --squash ${{ steps.create-pr.outputs.pull-request-number
-        }}
+      run: gh pr merge --auto --squash ${{ steps.create-pr.outputs.pull-request-number }}
 name: Update pulumi-terraform-bridge
 on:
   workflow_dispatch:
