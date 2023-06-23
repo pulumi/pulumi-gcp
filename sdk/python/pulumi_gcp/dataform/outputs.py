@@ -11,6 +11,7 @@ from .. import _utilities
 
 __all__ = [
     'RepositoryGitRemoteSettings',
+    'RepositoryWorkspaceCompilationOverrides',
 ]
 
 @pulumi.output_type
@@ -86,5 +87,69 @@ class RepositoryGitRemoteSettings(dict):
         Indicates the status of the Git access token. https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories#TokenStatus
         """
         return pulumi.get(self, "token_status")
+
+
+@pulumi.output_type
+class RepositoryWorkspaceCompilationOverrides(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultDatabase":
+            suggest = "default_database"
+        elif key == "schemaSuffix":
+            suggest = "schema_suffix"
+        elif key == "tablePrefix":
+            suggest = "table_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryWorkspaceCompilationOverrides. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryWorkspaceCompilationOverrides.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryWorkspaceCompilationOverrides.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_database: Optional[str] = None,
+                 schema_suffix: Optional[str] = None,
+                 table_prefix: Optional[str] = None):
+        """
+        :param str default_database: Optional. The default database (Google Cloud project ID).
+        :param str schema_suffix: Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+        :param str table_prefix: Optional. The prefix that should be prepended to all table names.
+        """
+        if default_database is not None:
+            pulumi.set(__self__, "default_database", default_database)
+        if schema_suffix is not None:
+            pulumi.set(__self__, "schema_suffix", schema_suffix)
+        if table_prefix is not None:
+            pulumi.set(__self__, "table_prefix", table_prefix)
+
+    @property
+    @pulumi.getter(name="defaultDatabase")
+    def default_database(self) -> Optional[str]:
+        """
+        Optional. The default database (Google Cloud project ID).
+        """
+        return pulumi.get(self, "default_database")
+
+    @property
+    @pulumi.getter(name="schemaSuffix")
+    def schema_suffix(self) -> Optional[str]:
+        """
+        Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+        """
+        return pulumi.get(self, "schema_suffix")
+
+    @property
+    @pulumi.getter(name="tablePrefix")
+    def table_prefix(self) -> Optional[str]:
+        """
+        Optional. The prefix that should be prepended to all table names.
+        """
+        return pulumi.get(self, "table_prefix")
 
 

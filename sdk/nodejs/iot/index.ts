@@ -10,6 +10,11 @@ export type Device = import("./device").Device;
 export const Device: typeof import("./device").Device = null as any;
 utilities.lazyLoad(exports, ["Device"], () => require("./device"));
 
+export { GetRegistryIamPolicyArgs, GetRegistryIamPolicyResult, GetRegistryIamPolicyOutputArgs } from "./getRegistryIamPolicy";
+export const getRegistryIamPolicy: typeof import("./getRegistryIamPolicy").getRegistryIamPolicy = null as any;
+export const getRegistryIamPolicyOutput: typeof import("./getRegistryIamPolicy").getRegistryIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRegistryIamPolicy","getRegistryIamPolicyOutput"], () => require("./getRegistryIamPolicy"));
+
 export { RegistryArgs, RegistryState } from "./registry";
 export type Registry = import("./registry").Registry;
 export const Registry: typeof import("./registry").Registry = null as any;

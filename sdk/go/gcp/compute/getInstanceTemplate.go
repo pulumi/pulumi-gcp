@@ -123,10 +123,7 @@ type LookupInstanceTemplateResult struct {
 	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`.
-	NamePrefix string `pulumi:"namePrefix"`
-	// Networks to attach to instances created from
-	// this template. This can be specified multiple times for multiple networks.
-	// Structure is documented below.
+	NamePrefix        string                                `pulumi:"namePrefix"`
 	NetworkInterfaces []GetInstanceTemplateNetworkInterface `pulumi:"networkInterfaces"`
 	// The network performance configuration setting
 	// for the instance, if set. Structure is documented below.
@@ -322,9 +319,6 @@ func (o LookupInstanceTemplateResultOutput) NamePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceTemplateResult) string { return v.NamePrefix }).(pulumi.StringOutput)
 }
 
-// Networks to attach to instances created from
-// this template. This can be specified multiple times for multiple networks.
-// Structure is documented below.
 func (o LookupInstanceTemplateResultOutput) NetworkInterfaces() GetInstanceTemplateNetworkInterfaceArrayOutput {
 	return o.ApplyT(func(v LookupInstanceTemplateResult) []GetInstanceTemplateNetworkInterface { return v.NetworkInterfaces }).(GetInstanceTemplateNetworkInterfaceArrayOutput)
 }

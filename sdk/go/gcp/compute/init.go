@@ -137,6 +137,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetworkEndpoint{}
 	case "gcp:compute/networkEndpointGroup:NetworkEndpointGroup":
 		r = &NetworkEndpointGroup{}
+	case "gcp:compute/networkEndpointList:NetworkEndpointList":
+		r = &NetworkEndpointList{}
 	case "gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy":
 		r = &NetworkFirewallPolicy{}
 	case "gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation":
@@ -586,6 +588,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/networkEndpointGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/networkEndpointList",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

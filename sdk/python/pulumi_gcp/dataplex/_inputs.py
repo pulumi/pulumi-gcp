@@ -20,6 +20,49 @@ __all__ = [
     'AssetResourceSpecArgs',
     'AssetResourceStatusArgs',
     'AssetSecurityStatusArgs',
+    'DatascanDataArgs',
+    'DatascanDataProfileResultArgs',
+    'DatascanDataProfileResultProfileArgs',
+    'DatascanDataProfileResultProfileFieldArgs',
+    'DatascanDataProfileResultProfileFieldProfileArgs',
+    'DatascanDataProfileResultProfileFieldProfileDoubleProfileArgs',
+    'DatascanDataProfileResultProfileFieldProfileIntegerProfileArgs',
+    'DatascanDataProfileResultProfileFieldProfileStringProfileArgs',
+    'DatascanDataProfileResultProfileFieldProfileTopNValuesArgs',
+    'DatascanDataProfileResultScannedDataArgs',
+    'DatascanDataProfileResultScannedDataIncrementalFieldArgs',
+    'DatascanDataProfileSpecArgs',
+    'DatascanDataQualityResultArgs',
+    'DatascanDataQualityResultDimensionArgs',
+    'DatascanDataQualityResultRuleArgs',
+    'DatascanDataQualityResultRuleRuleArgs',
+    'DatascanDataQualityResultRuleRuleNonNullExpectationArgs',
+    'DatascanDataQualityResultRuleRuleRangeExpectationArgs',
+    'DatascanDataQualityResultRuleRuleRegexExpectationArgs',
+    'DatascanDataQualityResultRuleRuleRowConditionExpectationArgs',
+    'DatascanDataQualityResultRuleRuleSetExpectationArgs',
+    'DatascanDataQualityResultRuleRuleStatisticRangeExpectationArgs',
+    'DatascanDataQualityResultRuleRuleTableConditionExpectationArgs',
+    'DatascanDataQualityResultRuleRuleUniquenessExpectationArgs',
+    'DatascanDataQualityResultScannedDataArgs',
+    'DatascanDataQualityResultScannedDataIncrementalFieldArgs',
+    'DatascanDataQualitySpecArgs',
+    'DatascanDataQualitySpecRuleArgs',
+    'DatascanDataQualitySpecRuleNonNullExpectationArgs',
+    'DatascanDataQualitySpecRuleRangeExpectationArgs',
+    'DatascanDataQualitySpecRuleRegexExpectationArgs',
+    'DatascanDataQualitySpecRuleRowConditionExpectationArgs',
+    'DatascanDataQualitySpecRuleSetExpectationArgs',
+    'DatascanDataQualitySpecRuleStatisticRangeExpectationArgs',
+    'DatascanDataQualitySpecRuleTableConditionExpectationArgs',
+    'DatascanDataQualitySpecRuleUniquenessExpectationArgs',
+    'DatascanExecutionSpecArgs',
+    'DatascanExecutionSpecTriggerArgs',
+    'DatascanExecutionSpecTriggerOnDemandArgs',
+    'DatascanExecutionSpecTriggerScheduleArgs',
+    'DatascanExecutionStatusArgs',
+    'DatascanIamBindingConditionArgs',
+    'DatascanIamMemberConditionArgs',
     'LakeAssetStatusArgs',
     'LakeIamBindingConditionArgs',
     'LakeIamMemberConditionArgs',
@@ -606,6 +649,2320 @@ class AssetSecurityStatusArgs:
     @update_time.setter
     def update_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update_time", value)
+
+
+@pulumi.input_type
+class DatascanDataArgs:
+    def __init__(__self__, *,
+                 entity: Optional[pulumi.Input[str]] = None,
+                 resource: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] entity: The Dataplex entity that represents the data source(e.g. BigQuery table) for Datascan.
+        :param pulumi.Input[str] resource: The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be:
+               (Cloud Storage bucket for DataDiscoveryScan)BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan.
+        """
+        if entity is not None:
+            pulumi.set(__self__, "entity", entity)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
+
+    @property
+    @pulumi.getter
+    def entity(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Dataplex entity that represents the data source(e.g. BigQuery table) for Datascan.
+        """
+        return pulumi.get(self, "entity")
+
+    @entity.setter
+    def entity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entity", value)
+
+    @property
+    @pulumi.getter
+    def resource(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be:
+        (Cloud Storage bucket for DataDiscoveryScan)BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan.
+        """
+        return pulumi.get(self, "resource")
+
+    @resource.setter
+    def resource(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource", value)
+
+
+@pulumi.input_type
+class DatascanDataProfileResultArgs:
+    def __init__(__self__, *,
+                 profiles: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultProfileArgs']]]] = None,
+                 row_count: Optional[pulumi.Input[str]] = None,
+                 scanned_datas: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultScannedDataArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultProfileArgs']]] profiles: Profile information for the corresponding field.
+               Structure is documented below.
+        :param pulumi.Input[str] row_count: The count of rows scanned.
+        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultScannedDataArgs']]] scanned_datas: (Output)
+               The data scanned for this result.
+               Structure is documented below.
+        """
+        if profiles is not None:
+            pulumi.set(__self__, "profiles", profiles)
+        if row_count is not None:
+            pulumi.set(__self__, "row_count", row_count)
+        if scanned_datas is not None:
+            pulumi.set(__self__, "scanned_datas", scanned_datas)
+
+    @property
+    @pulumi.getter
+    def profiles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultProfileArgs']]]]:
+        """
+        Profile information for the corresponding field.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "profiles")
+
+    @profiles.setter
+    def profiles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultProfileArgs']]]]):
+        pulumi.set(self, "profiles", value)
+
+    @property
+    @pulumi.getter(name="rowCount")
+    def row_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        The count of rows scanned.
+        """
+        return pulumi.get(self, "row_count")
+
+    @row_count.setter
+    def row_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "row_count", value)
+
+    @property
+    @pulumi.getter(name="scannedDatas")
+    def scanned_datas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultScannedDataArgs']]]]:
+        """
+        (Output)
+        The data scanned for this result.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scanned_datas")
+
+    @scanned_datas.setter
+    def scanned_datas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultScannedDataArgs']]]]):
+        pulumi.set(self, "scanned_datas", value)
+
+
+@pulumi.input_type
+class DatascanDataProfileResultProfileArgs:
+    def __init__(__self__, *,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultProfileFieldArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultProfileFieldArgs']]] fields: List of fields with structural and profile information for each field.
+               Structure is documented below.
+        """
+        if fields is not None:
+            pulumi.set(__self__, "fields", fields)
+
+    @property
+    @pulumi.getter
+    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultProfileFieldArgs']]]]:
+        """
+        List of fields with structural and profile information for each field.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultProfileFieldArgs']]]]):
+        pulumi.set(self, "fields", value)
+
+
+@pulumi.input_type
+class DatascanDataProfileResultProfileFieldArgs:
+    def __init__(__self__, *,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 profile: Optional[pulumi.Input['DatascanDataProfileResultProfileFieldProfileArgs']] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] mode: The mode of the field. Possible values include:
+               1. REQUIRED, if it is a required field.
+               2. NULLABLE, if it is an optional field.
+               3. REPEATED, if it is a repeated field.
+        :param pulumi.Input[str] name: The name of the field.
+        :param pulumi.Input['DatascanDataProfileResultProfileFieldProfileArgs'] profile: Profile information for the corresponding field.
+               Structure is documented below.
+        :param pulumi.Input[str] type: The field data type.
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if profile is not None:
+            pulumi.set(__self__, "profile", profile)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mode of the field. Possible values include:
+        1. REQUIRED, if it is a required field.
+        2. NULLABLE, if it is an optional field.
+        3. REPEATED, if it is a repeated field.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the field.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def profile(self) -> Optional[pulumi.Input['DatascanDataProfileResultProfileFieldProfileArgs']]:
+        """
+        Profile information for the corresponding field.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "profile")
+
+    @profile.setter
+    def profile(self, value: Optional[pulumi.Input['DatascanDataProfileResultProfileFieldProfileArgs']]):
+        pulumi.set(self, "profile", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The field data type.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class DatascanDataProfileResultProfileFieldProfileArgs:
+    def __init__(__self__, *,
+                 distinct_ratio: Optional[pulumi.Input[int]] = None,
+                 double_profiles: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultProfileFieldProfileDoubleProfileArgs']]]] = None,
+                 integer_profiles: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultProfileFieldProfileIntegerProfileArgs']]]] = None,
+                 null_ratio: Optional[pulumi.Input[int]] = None,
+                 string_profiles: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultProfileFieldProfileStringProfileArgs']]]] = None,
+                 top_n_values: Optional[pulumi.Input['DatascanDataProfileResultProfileFieldProfileTopNValuesArgs']] = None):
+        """
+        :param pulumi.Input[int] distinct_ratio: Ratio of rows with distinct values against total scanned rows. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
+        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultProfileFieldProfileDoubleProfileArgs']]] double_profiles: (Output)
+               Double type field information.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultProfileFieldProfileIntegerProfileArgs']]] integer_profiles: (Output)
+               Integer type field information.
+               Structure is documented below.
+        :param pulumi.Input[int] null_ratio: (Output)
+               Ratio of rows with null value against total scanned rows.
+        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultProfileFieldProfileStringProfileArgs']]] string_profiles: (Output)
+               String type field information.
+               Structure is documented below.
+        :param pulumi.Input['DatascanDataProfileResultProfileFieldProfileTopNValuesArgs'] top_n_values: The list of top N non-null values and number of times they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
+               Structure is documented below.
+        """
+        if distinct_ratio is not None:
+            pulumi.set(__self__, "distinct_ratio", distinct_ratio)
+        if double_profiles is not None:
+            pulumi.set(__self__, "double_profiles", double_profiles)
+        if integer_profiles is not None:
+            pulumi.set(__self__, "integer_profiles", integer_profiles)
+        if null_ratio is not None:
+            pulumi.set(__self__, "null_ratio", null_ratio)
+        if string_profiles is not None:
+            pulumi.set(__self__, "string_profiles", string_profiles)
+        if top_n_values is not None:
+            pulumi.set(__self__, "top_n_values", top_n_values)
+
+    @property
+    @pulumi.getter(name="distinctRatio")
+    def distinct_ratio(self) -> Optional[pulumi.Input[int]]:
+        """
+        Ratio of rows with distinct values against total scanned rows. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
+        """
+        return pulumi.get(self, "distinct_ratio")
+
+    @distinct_ratio.setter
+    def distinct_ratio(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "distinct_ratio", value)
+
+    @property
+    @pulumi.getter(name="doubleProfiles")
+    def double_profiles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultProfileFieldProfileDoubleProfileArgs']]]]:
+        """
+        (Output)
+        Double type field information.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "double_profiles")
+
+    @double_profiles.setter
+    def double_profiles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultProfileFieldProfileDoubleProfileArgs']]]]):
+        pulumi.set(self, "double_profiles", value)
+
+    @property
+    @pulumi.getter(name="integerProfiles")
+    def integer_profiles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultProfileFieldProfileIntegerProfileArgs']]]]:
+        """
+        (Output)
+        Integer type field information.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "integer_profiles")
+
+    @integer_profiles.setter
+    def integer_profiles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultProfileFieldProfileIntegerProfileArgs']]]]):
+        pulumi.set(self, "integer_profiles", value)
+
+    @property
+    @pulumi.getter(name="nullRatio")
+    def null_ratio(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Output)
+        Ratio of rows with null value against total scanned rows.
+        """
+        return pulumi.get(self, "null_ratio")
+
+    @null_ratio.setter
+    def null_ratio(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "null_ratio", value)
+
+    @property
+    @pulumi.getter(name="stringProfiles")
+    def string_profiles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultProfileFieldProfileStringProfileArgs']]]]:
+        """
+        (Output)
+        String type field information.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "string_profiles")
+
+    @string_profiles.setter
+    def string_profiles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataProfileResultProfileFieldProfileStringProfileArgs']]]]):
+        pulumi.set(self, "string_profiles", value)
+
+    @property
+    @pulumi.getter(name="topNValues")
+    def top_n_values(self) -> Optional[pulumi.Input['DatascanDataProfileResultProfileFieldProfileTopNValuesArgs']]:
+        """
+        The list of top N non-null values and number of times they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "top_n_values")
+
+    @top_n_values.setter
+    def top_n_values(self, value: Optional[pulumi.Input['DatascanDataProfileResultProfileFieldProfileTopNValuesArgs']]):
+        pulumi.set(self, "top_n_values", value)
+
+
+@pulumi.input_type
+class DatascanDataProfileResultProfileFieldProfileDoubleProfileArgs:
+    def __init__(__self__, *,
+                 average: Optional[pulumi.Input[int]] = None,
+                 max: Optional[pulumi.Input[str]] = None,
+                 min: Optional[pulumi.Input[str]] = None,
+                 quartiles: Optional[pulumi.Input[str]] = None,
+                 standard_deviation: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] average: Average of non-null values in the scanned data. NaN, if the field has a NaN.
+        :param pulumi.Input[str] max: Maximum of non-null values in the scanned data. NaN, if the field has a NaN.
+        :param pulumi.Input[str] min: Minimum of non-null values in the scanned data. NaN, if the field has a NaN.
+        :param pulumi.Input[str] quartiles: A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3.
+        :param pulumi.Input[int] standard_deviation: Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.
+        """
+        if average is not None:
+            pulumi.set(__self__, "average", average)
+        if max is not None:
+            pulumi.set(__self__, "max", max)
+        if min is not None:
+            pulumi.set(__self__, "min", min)
+        if quartiles is not None:
+            pulumi.set(__self__, "quartiles", quartiles)
+        if standard_deviation is not None:
+            pulumi.set(__self__, "standard_deviation", standard_deviation)
+
+    @property
+    @pulumi.getter
+    def average(self) -> Optional[pulumi.Input[int]]:
+        """
+        Average of non-null values in the scanned data. NaN, if the field has a NaN.
+        """
+        return pulumi.get(self, "average")
+
+    @average.setter
+    def average(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "average", value)
+
+    @property
+    @pulumi.getter
+    def max(self) -> Optional[pulumi.Input[str]]:
+        """
+        Maximum of non-null values in the scanned data. NaN, if the field has a NaN.
+        """
+        return pulumi.get(self, "max")
+
+    @max.setter
+    def max(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max", value)
+
+    @property
+    @pulumi.getter
+    def min(self) -> Optional[pulumi.Input[str]]:
+        """
+        Minimum of non-null values in the scanned data. NaN, if the field has a NaN.
+        """
+        return pulumi.get(self, "min")
+
+    @min.setter
+    def min(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min", value)
+
+    @property
+    @pulumi.getter
+    def quartiles(self) -> Optional[pulumi.Input[str]]:
+        """
+        A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3.
+        """
+        return pulumi.get(self, "quartiles")
+
+    @quartiles.setter
+    def quartiles(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "quartiles", value)
+
+    @property
+    @pulumi.getter(name="standardDeviation")
+    def standard_deviation(self) -> Optional[pulumi.Input[int]]:
+        """
+        Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.
+        """
+        return pulumi.get(self, "standard_deviation")
+
+    @standard_deviation.setter
+    def standard_deviation(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "standard_deviation", value)
+
+
+@pulumi.input_type
+class DatascanDataProfileResultProfileFieldProfileIntegerProfileArgs:
+    def __init__(__self__, *,
+                 average: Optional[pulumi.Input[int]] = None,
+                 max: Optional[pulumi.Input[str]] = None,
+                 min: Optional[pulumi.Input[str]] = None,
+                 quartiles: Optional[pulumi.Input[str]] = None,
+                 standard_deviation: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] average: Average of non-null values in the scanned data. NaN, if the field has a NaN.
+        :param pulumi.Input[str] max: Maximum of non-null values in the scanned data. NaN, if the field has a NaN.
+        :param pulumi.Input[str] min: Minimum of non-null values in the scanned data. NaN, if the field has a NaN.
+        :param pulumi.Input[str] quartiles: A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3.
+        :param pulumi.Input[int] standard_deviation: Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.
+        """
+        if average is not None:
+            pulumi.set(__self__, "average", average)
+        if max is not None:
+            pulumi.set(__self__, "max", max)
+        if min is not None:
+            pulumi.set(__self__, "min", min)
+        if quartiles is not None:
+            pulumi.set(__self__, "quartiles", quartiles)
+        if standard_deviation is not None:
+            pulumi.set(__self__, "standard_deviation", standard_deviation)
+
+    @property
+    @pulumi.getter
+    def average(self) -> Optional[pulumi.Input[int]]:
+        """
+        Average of non-null values in the scanned data. NaN, if the field has a NaN.
+        """
+        return pulumi.get(self, "average")
+
+    @average.setter
+    def average(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "average", value)
+
+    @property
+    @pulumi.getter
+    def max(self) -> Optional[pulumi.Input[str]]:
+        """
+        Maximum of non-null values in the scanned data. NaN, if the field has a NaN.
+        """
+        return pulumi.get(self, "max")
+
+    @max.setter
+    def max(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max", value)
+
+    @property
+    @pulumi.getter
+    def min(self) -> Optional[pulumi.Input[str]]:
+        """
+        Minimum of non-null values in the scanned data. NaN, if the field has a NaN.
+        """
+        return pulumi.get(self, "min")
+
+    @min.setter
+    def min(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min", value)
+
+    @property
+    @pulumi.getter
+    def quartiles(self) -> Optional[pulumi.Input[str]]:
+        """
+        A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3.
+        """
+        return pulumi.get(self, "quartiles")
+
+    @quartiles.setter
+    def quartiles(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "quartiles", value)
+
+    @property
+    @pulumi.getter(name="standardDeviation")
+    def standard_deviation(self) -> Optional[pulumi.Input[int]]:
+        """
+        Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.
+        """
+        return pulumi.get(self, "standard_deviation")
+
+    @standard_deviation.setter
+    def standard_deviation(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "standard_deviation", value)
+
+
+@pulumi.input_type
+class DatascanDataProfileResultProfileFieldProfileStringProfileArgs:
+    def __init__(__self__, *,
+                 average_length: Optional[pulumi.Input[int]] = None,
+                 max_length: Optional[pulumi.Input[str]] = None,
+                 min_length: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] average_length: Average length of non-null values in the scanned data.
+        :param pulumi.Input[str] max_length: Maximum length of non-null values in the scanned data.
+        :param pulumi.Input[str] min_length: Minimum length of non-null values in the scanned data.
+        """
+        if average_length is not None:
+            pulumi.set(__self__, "average_length", average_length)
+        if max_length is not None:
+            pulumi.set(__self__, "max_length", max_length)
+        if min_length is not None:
+            pulumi.set(__self__, "min_length", min_length)
+
+    @property
+    @pulumi.getter(name="averageLength")
+    def average_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Average length of non-null values in the scanned data.
+        """
+        return pulumi.get(self, "average_length")
+
+    @average_length.setter
+    def average_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "average_length", value)
+
+    @property
+    @pulumi.getter(name="maxLength")
+    def max_length(self) -> Optional[pulumi.Input[str]]:
+        """
+        Maximum length of non-null values in the scanned data.
+        """
+        return pulumi.get(self, "max_length")
+
+    @max_length.setter
+    def max_length(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_length", value)
+
+    @property
+    @pulumi.getter(name="minLength")
+    def min_length(self) -> Optional[pulumi.Input[str]]:
+        """
+        Minimum length of non-null values in the scanned data.
+        """
+        return pulumi.get(self, "min_length")
+
+    @min_length.setter
+    def min_length(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_length", value)
+
+
+@pulumi.input_type
+class DatascanDataProfileResultProfileFieldProfileTopNValuesArgs:
+    def __init__(__self__, *,
+                 count: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] count: Count of the corresponding value in the scanned data.
+        :param pulumi.Input[str] value: String value of a top N non-null value.
+        """
+        if count is not None:
+            pulumi.set(__self__, "count", count)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def count(self) -> Optional[pulumi.Input[str]]:
+        """
+        Count of the corresponding value in the scanned data.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "count", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        String value of a top N non-null value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class DatascanDataProfileResultScannedDataArgs:
+    def __init__(__self__, *,
+                 incremental_field: Optional[pulumi.Input['DatascanDataProfileResultScannedDataIncrementalFieldArgs']] = None):
+        """
+        :param pulumi.Input['DatascanDataProfileResultScannedDataIncrementalFieldArgs'] incremental_field: The range denoted by values of an incremental field
+               Structure is documented below.
+        """
+        if incremental_field is not None:
+            pulumi.set(__self__, "incremental_field", incremental_field)
+
+    @property
+    @pulumi.getter(name="incrementalField")
+    def incremental_field(self) -> Optional[pulumi.Input['DatascanDataProfileResultScannedDataIncrementalFieldArgs']]:
+        """
+        The range denoted by values of an incremental field
+        Structure is documented below.
+        """
+        return pulumi.get(self, "incremental_field")
+
+    @incremental_field.setter
+    def incremental_field(self, value: Optional[pulumi.Input['DatascanDataProfileResultScannedDataIncrementalFieldArgs']]):
+        pulumi.set(self, "incremental_field", value)
+
+
+@pulumi.input_type
+class DatascanDataProfileResultScannedDataIncrementalFieldArgs:
+    def __init__(__self__, *,
+                 end: Optional[pulumi.Input[str]] = None,
+                 field: Optional[pulumi.Input[str]] = None,
+                 start: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] end: Value that marks the end of the range.
+        :param pulumi.Input[str] field: The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
+        :param pulumi.Input[str] start: Value that marks the start of the range.
+        """
+        if end is not None:
+            pulumi.set(__self__, "end", end)
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if start is not None:
+            pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def end(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value that marks the end of the range.
+        """
+        return pulumi.get(self, "end")
+
+    @end.setter
+    def end(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end", value)
+
+    @property
+    @pulumi.getter
+    def field(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "field", value)
+
+    @property
+    @pulumi.getter
+    def start(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value that marks the start of the range.
+        """
+        return pulumi.get(self, "start")
+
+    @start.setter
+    def start(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start", value)
+
+
+@pulumi.input_type
+class DatascanDataProfileSpecArgs:
+    def __init__(__self__, *,
+                 row_filter: Optional[pulumi.Input[str]] = None,
+                 sampling_percent: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[str] row_filter: A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+        :param pulumi.Input[float] sampling_percent: The percentage of the records to be selected from the dataset for DataScan.
+        """
+        if row_filter is not None:
+            pulumi.set(__self__, "row_filter", row_filter)
+        if sampling_percent is not None:
+            pulumi.set(__self__, "sampling_percent", sampling_percent)
+
+    @property
+    @pulumi.getter(name="rowFilter")
+    def row_filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+        """
+        return pulumi.get(self, "row_filter")
+
+    @row_filter.setter
+    def row_filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "row_filter", value)
+
+    @property
+    @pulumi.getter(name="samplingPercent")
+    def sampling_percent(self) -> Optional[pulumi.Input[float]]:
+        """
+        The percentage of the records to be selected from the dataset for DataScan.
+        """
+        return pulumi.get(self, "sampling_percent")
+
+    @sampling_percent.setter
+    def sampling_percent(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "sampling_percent", value)
+
+
+@pulumi.input_type
+class DatascanDataQualityResultArgs:
+    def __init__(__self__, *,
+                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultDimensionArgs']]]] = None,
+                 passed: Optional[pulumi.Input[bool]] = None,
+                 row_count: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleArgs']]]] = None,
+                 scanned_datas: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultScannedDataArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultDimensionArgs']]] dimensions: A list of results at the dimension level.
+               Structure is documented below.
+        :param pulumi.Input[bool] passed: (Output)
+               Whether the rule passed or failed.
+        :param pulumi.Input[str] row_count: The count of rows scanned.
+        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleArgs']]] rules: The list of rules to evaluate against a data source. At least one rule is required.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultScannedDataArgs']]] scanned_datas: (Output)
+               The data scanned for this result.
+               Structure is documented below.
+        """
+        if dimensions is not None:
+            pulumi.set(__self__, "dimensions", dimensions)
+        if passed is not None:
+            pulumi.set(__self__, "passed", passed)
+        if row_count is not None:
+            pulumi.set(__self__, "row_count", row_count)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if scanned_datas is not None:
+            pulumi.set(__self__, "scanned_datas", scanned_datas)
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultDimensionArgs']]]]:
+        """
+        A list of results at the dimension level.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dimensions")
+
+    @dimensions.setter
+    def dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultDimensionArgs']]]]):
+        pulumi.set(self, "dimensions", value)
+
+    @property
+    @pulumi.getter
+    def passed(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Output)
+        Whether the rule passed or failed.
+        """
+        return pulumi.get(self, "passed")
+
+    @passed.setter
+    def passed(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "passed", value)
+
+    @property
+    @pulumi.getter(name="rowCount")
+    def row_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        The count of rows scanned.
+        """
+        return pulumi.get(self, "row_count")
+
+    @row_count.setter
+    def row_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "row_count", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleArgs']]]]:
+        """
+        The list of rules to evaluate against a data source. At least one rule is required.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter(name="scannedDatas")
+    def scanned_datas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultScannedDataArgs']]]]:
+        """
+        (Output)
+        The data scanned for this result.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scanned_datas")
+
+    @scanned_datas.setter
+    def scanned_datas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultScannedDataArgs']]]]):
+        pulumi.set(self, "scanned_datas", value)
+
+
+@pulumi.input_type
+class DatascanDataQualityResultDimensionArgs:
+    def __init__(__self__, *,
+                 passed: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] passed: (Output)
+               Whether the rule passed or failed.
+        """
+        if passed is not None:
+            pulumi.set(__self__, "passed", passed)
+
+    @property
+    @pulumi.getter
+    def passed(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Output)
+        Whether the rule passed or failed.
+        """
+        return pulumi.get(self, "passed")
+
+    @passed.setter
+    def passed(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "passed", value)
+
+
+@pulumi.input_type
+class DatascanDataQualityResultRuleArgs:
+    def __init__(__self__, *,
+                 evaluated_count: Optional[pulumi.Input[str]] = None,
+                 failing_rows_query: Optional[pulumi.Input[str]] = None,
+                 null_count: Optional[pulumi.Input[str]] = None,
+                 pass_ratio: Optional[pulumi.Input[int]] = None,
+                 passed: Optional[pulumi.Input[bool]] = None,
+                 passed_count: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleArgs']]]] = None):
+        """
+        :param pulumi.Input[str] evaluated_count: (Output)
+               The number of rows a rule was evaluated against. This field is only valid for ColumnMap type rules.
+               Evaluated count can be configured to either
+               1. include all rows (default) - with null rows automatically failing rule evaluation, or
+               2. exclude null rows from the evaluatedCount, by setting ignore_nulls = true.
+        :param pulumi.Input[str] failing_rows_query: (Output)
+               The query to find rows that did not pass this rule. Only applies to ColumnMap and RowCondition rules.
+        :param pulumi.Input[str] null_count: (Output)
+               The number of rows with null values in the specified column.
+        :param pulumi.Input[int] pass_ratio: (Output)
+               The ratio of passedCount / evaluatedCount. This field is only valid for ColumnMap type rules.
+        :param pulumi.Input[bool] passed: (Output)
+               Whether the rule passed or failed.
+        :param pulumi.Input[str] passed_count: (Output)
+               The number of rows which passed a rule evaluation. This field is only valid for ColumnMap type rules.
+        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleArgs']]] rules: (Output)
+               The rule specified in the DataQualitySpec, as is.
+               Structure is documented below.
+        """
+        if evaluated_count is not None:
+            pulumi.set(__self__, "evaluated_count", evaluated_count)
+        if failing_rows_query is not None:
+            pulumi.set(__self__, "failing_rows_query", failing_rows_query)
+        if null_count is not None:
+            pulumi.set(__self__, "null_count", null_count)
+        if pass_ratio is not None:
+            pulumi.set(__self__, "pass_ratio", pass_ratio)
+        if passed is not None:
+            pulumi.set(__self__, "passed", passed)
+        if passed_count is not None:
+            pulumi.set(__self__, "passed_count", passed_count)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter(name="evaluatedCount")
+    def evaluated_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The number of rows a rule was evaluated against. This field is only valid for ColumnMap type rules.
+        Evaluated count can be configured to either
+        1. include all rows (default) - with null rows automatically failing rule evaluation, or
+        2. exclude null rows from the evaluatedCount, by setting ignore_nulls = true.
+        """
+        return pulumi.get(self, "evaluated_count")
+
+    @evaluated_count.setter
+    def evaluated_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "evaluated_count", value)
+
+    @property
+    @pulumi.getter(name="failingRowsQuery")
+    def failing_rows_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The query to find rows that did not pass this rule. Only applies to ColumnMap and RowCondition rules.
+        """
+        return pulumi.get(self, "failing_rows_query")
+
+    @failing_rows_query.setter
+    def failing_rows_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "failing_rows_query", value)
+
+    @property
+    @pulumi.getter(name="nullCount")
+    def null_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The number of rows with null values in the specified column.
+        """
+        return pulumi.get(self, "null_count")
+
+    @null_count.setter
+    def null_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "null_count", value)
+
+    @property
+    @pulumi.getter(name="passRatio")
+    def pass_ratio(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Output)
+        The ratio of passedCount / evaluatedCount. This field is only valid for ColumnMap type rules.
+        """
+        return pulumi.get(self, "pass_ratio")
+
+    @pass_ratio.setter
+    def pass_ratio(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "pass_ratio", value)
+
+    @property
+    @pulumi.getter
+    def passed(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Output)
+        Whether the rule passed or failed.
+        """
+        return pulumi.get(self, "passed")
+
+    @passed.setter
+    def passed(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "passed", value)
+
+    @property
+    @pulumi.getter(name="passedCount")
+    def passed_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The number of rows which passed a rule evaluation. This field is only valid for ColumnMap type rules.
+        """
+        return pulumi.get(self, "passed_count")
+
+    @passed_count.setter
+    def passed_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "passed_count", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleArgs']]]]:
+        """
+        (Output)
+        The rule specified in the DataQualitySpec, as is.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+
+@pulumi.input_type
+class DatascanDataQualityResultRuleRuleArgs:
+    def __init__(__self__, *,
+                 column: Optional[pulumi.Input[str]] = None,
+                 dimension: Optional[pulumi.Input[str]] = None,
+                 ignore_null: Optional[pulumi.Input[bool]] = None,
+                 non_null_expectations: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleNonNullExpectationArgs']]]] = None,
+                 range_expectations: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleRangeExpectationArgs']]]] = None,
+                 regex_expectations: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleRegexExpectationArgs']]]] = None,
+                 row_condition_expectations: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleRowConditionExpectationArgs']]]] = None,
+                 set_expectations: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleSetExpectationArgs']]]] = None,
+                 statistic_range_expectations: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleStatisticRangeExpectationArgs']]]] = None,
+                 table_condition_expectations: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleTableConditionExpectationArgs']]]] = None,
+                 threshold: Optional[pulumi.Input[int]] = None,
+                 uniqueness_expectations: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleUniquenessExpectationArgs']]]] = None):
+        """
+        :param pulumi.Input[str] column: The unnested column which this rule is evaluated against.
+        :param pulumi.Input[str] dimension: The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
+        :param pulumi.Input[bool] ignore_null: Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. Only applicable to ColumnMap rules.
+        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleNonNullExpectationArgs']]] non_null_expectations: ColumnMap rule which evaluates whether each column value is null.
+        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleRangeExpectationArgs']]] range_expectations: ColumnMap rule which evaluates whether each column value lies between a specified range.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleRegexExpectationArgs']]] regex_expectations: ColumnMap rule which evaluates whether each column value matches a specified regex.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleRowConditionExpectationArgs']]] row_condition_expectations: Table rule which evaluates whether each row passes the specified condition.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleSetExpectationArgs']]] set_expectations: ColumnMap rule which evaluates whether each column value is contained by a specified set.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleStatisticRangeExpectationArgs']]] statistic_range_expectations: ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleTableConditionExpectationArgs']]] table_condition_expectations: Table rule which evaluates whether the provided expression is true.
+               Structure is documented below.
+        :param pulumi.Input[int] threshold: The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
+        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleUniquenessExpectationArgs']]] uniqueness_expectations: ColumnAggregate rule which evaluates whether the column has duplicates.
+        """
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if dimension is not None:
+            pulumi.set(__self__, "dimension", dimension)
+        if ignore_null is not None:
+            pulumi.set(__self__, "ignore_null", ignore_null)
+        if non_null_expectations is not None:
+            pulumi.set(__self__, "non_null_expectations", non_null_expectations)
+        if range_expectations is not None:
+            pulumi.set(__self__, "range_expectations", range_expectations)
+        if regex_expectations is not None:
+            pulumi.set(__self__, "regex_expectations", regex_expectations)
+        if row_condition_expectations is not None:
+            pulumi.set(__self__, "row_condition_expectations", row_condition_expectations)
+        if set_expectations is not None:
+            pulumi.set(__self__, "set_expectations", set_expectations)
+        if statistic_range_expectations is not None:
+            pulumi.set(__self__, "statistic_range_expectations", statistic_range_expectations)
+        if table_condition_expectations is not None:
+            pulumi.set(__self__, "table_condition_expectations", table_condition_expectations)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if uniqueness_expectations is not None:
+            pulumi.set(__self__, "uniqueness_expectations", uniqueness_expectations)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unnested column which this rule is evaluated against.
+        """
+        return pulumi.get(self, "column")
+
+    @column.setter
+    def column(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "column", value)
+
+    @property
+    @pulumi.getter
+    def dimension(self) -> Optional[pulumi.Input[str]]:
+        """
+        The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
+        """
+        return pulumi.get(self, "dimension")
+
+    @dimension.setter
+    def dimension(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dimension", value)
+
+    @property
+    @pulumi.getter(name="ignoreNull")
+    def ignore_null(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. Only applicable to ColumnMap rules.
+        """
+        return pulumi.get(self, "ignore_null")
+
+    @ignore_null.setter
+    def ignore_null(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ignore_null", value)
+
+    @property
+    @pulumi.getter(name="nonNullExpectations")
+    def non_null_expectations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleNonNullExpectationArgs']]]]:
+        """
+        ColumnMap rule which evaluates whether each column value is null.
+        """
+        return pulumi.get(self, "non_null_expectations")
+
+    @non_null_expectations.setter
+    def non_null_expectations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleNonNullExpectationArgs']]]]):
+        pulumi.set(self, "non_null_expectations", value)
+
+    @property
+    @pulumi.getter(name="rangeExpectations")
+    def range_expectations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleRangeExpectationArgs']]]]:
+        """
+        ColumnMap rule which evaluates whether each column value lies between a specified range.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "range_expectations")
+
+    @range_expectations.setter
+    def range_expectations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleRangeExpectationArgs']]]]):
+        pulumi.set(self, "range_expectations", value)
+
+    @property
+    @pulumi.getter(name="regexExpectations")
+    def regex_expectations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleRegexExpectationArgs']]]]:
+        """
+        ColumnMap rule which evaluates whether each column value matches a specified regex.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "regex_expectations")
+
+    @regex_expectations.setter
+    def regex_expectations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleRegexExpectationArgs']]]]):
+        pulumi.set(self, "regex_expectations", value)
+
+    @property
+    @pulumi.getter(name="rowConditionExpectations")
+    def row_condition_expectations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleRowConditionExpectationArgs']]]]:
+        """
+        Table rule which evaluates whether each row passes the specified condition.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "row_condition_expectations")
+
+    @row_condition_expectations.setter
+    def row_condition_expectations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleRowConditionExpectationArgs']]]]):
+        pulumi.set(self, "row_condition_expectations", value)
+
+    @property
+    @pulumi.getter(name="setExpectations")
+    def set_expectations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleSetExpectationArgs']]]]:
+        """
+        ColumnMap rule which evaluates whether each column value is contained by a specified set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "set_expectations")
+
+    @set_expectations.setter
+    def set_expectations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleSetExpectationArgs']]]]):
+        pulumi.set(self, "set_expectations", value)
+
+    @property
+    @pulumi.getter(name="statisticRangeExpectations")
+    def statistic_range_expectations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleStatisticRangeExpectationArgs']]]]:
+        """
+        ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "statistic_range_expectations")
+
+    @statistic_range_expectations.setter
+    def statistic_range_expectations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleStatisticRangeExpectationArgs']]]]):
+        pulumi.set(self, "statistic_range_expectations", value)
+
+    @property
+    @pulumi.getter(name="tableConditionExpectations")
+    def table_condition_expectations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleTableConditionExpectationArgs']]]]:
+        """
+        Table rule which evaluates whether the provided expression is true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "table_condition_expectations")
+
+    @table_condition_expectations.setter
+    def table_condition_expectations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleTableConditionExpectationArgs']]]]):
+        pulumi.set(self, "table_condition_expectations", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[pulumi.Input[int]]:
+        """
+        The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "threshold", value)
+
+    @property
+    @pulumi.getter(name="uniquenessExpectations")
+    def uniqueness_expectations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleUniquenessExpectationArgs']]]]:
+        """
+        ColumnAggregate rule which evaluates whether the column has duplicates.
+        """
+        return pulumi.get(self, "uniqueness_expectations")
+
+    @uniqueness_expectations.setter
+    def uniqueness_expectations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualityResultRuleRuleUniquenessExpectationArgs']]]]):
+        pulumi.set(self, "uniqueness_expectations", value)
+
+
+@pulumi.input_type
+class DatascanDataQualityResultRuleRuleNonNullExpectationArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class DatascanDataQualityResultRuleRuleRangeExpectationArgs:
+    def __init__(__self__, *,
+                 max_value: Optional[pulumi.Input[str]] = None,
+                 min_value: Optional[pulumi.Input[str]] = None,
+                 strict_max_enabled: Optional[pulumi.Input[bool]] = None,
+                 strict_min_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] max_value: The maximum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
+        :param pulumi.Input[str] min_value: The minimum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
+        :param pulumi.Input[bool] strict_max_enabled: Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+               Only relevant if a maxValue has been defined. Default = false.
+        :param pulumi.Input[bool] strict_min_enabled: Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+               Only relevant if a minValue has been defined. Default = false.
+        """
+        if max_value is not None:
+            pulumi.set(__self__, "max_value", max_value)
+        if min_value is not None:
+            pulumi.set(__self__, "min_value", min_value)
+        if strict_max_enabled is not None:
+            pulumi.set(__self__, "strict_max_enabled", strict_max_enabled)
+        if strict_min_enabled is not None:
+            pulumi.set(__self__, "strict_min_enabled", strict_min_enabled)
+
+    @property
+    @pulumi.getter(name="maxValue")
+    def max_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
+        """
+        return pulumi.get(self, "max_value")
+
+    @max_value.setter
+    def max_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_value", value)
+
+    @property
+    @pulumi.getter(name="minValue")
+    def min_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
+        """
+        return pulumi.get(self, "min_value")
+
+    @min_value.setter
+    def min_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_value", value)
+
+    @property
+    @pulumi.getter(name="strictMaxEnabled")
+    def strict_max_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+        Only relevant if a maxValue has been defined. Default = false.
+        """
+        return pulumi.get(self, "strict_max_enabled")
+
+    @strict_max_enabled.setter
+    def strict_max_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "strict_max_enabled", value)
+
+    @property
+    @pulumi.getter(name="strictMinEnabled")
+    def strict_min_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+        Only relevant if a minValue has been defined. Default = false.
+        """
+        return pulumi.get(self, "strict_min_enabled")
+
+    @strict_min_enabled.setter
+    def strict_min_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "strict_min_enabled", value)
+
+
+@pulumi.input_type
+class DatascanDataQualityResultRuleRuleRegexExpectationArgs:
+    def __init__(__self__, *,
+                 regex: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] regex: A regular expression the column value is expected to match.
+        """
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[pulumi.Input[str]]:
+        """
+        A regular expression the column value is expected to match.
+        """
+        return pulumi.get(self, "regex")
+
+    @regex.setter
+    def regex(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "regex", value)
+
+
+@pulumi.input_type
+class DatascanDataQualityResultRuleRuleRowConditionExpectationArgs:
+    def __init__(__self__, *,
+                 sql_expression: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] sql_expression: The SQL expression.
+        """
+        if sql_expression is not None:
+            pulumi.set(__self__, "sql_expression", sql_expression)
+
+    @property
+    @pulumi.getter(name="sqlExpression")
+    def sql_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SQL expression.
+        """
+        return pulumi.get(self, "sql_expression")
+
+    @sql_expression.setter
+    def sql_expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sql_expression", value)
+
+
+@pulumi.input_type
+class DatascanDataQualityResultRuleRuleSetExpectationArgs:
+    def __init__(__self__, *,
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Expected values for the column value.
+        """
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Expected values for the column value.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class DatascanDataQualityResultRuleRuleStatisticRangeExpectationArgs:
+    def __init__(__self__, *,
+                 max_value: Optional[pulumi.Input[str]] = None,
+                 min_value: Optional[pulumi.Input[str]] = None,
+                 statistic: Optional[pulumi.Input[str]] = None,
+                 strict_max_enabled: Optional[pulumi.Input[bool]] = None,
+                 strict_min_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] max_value: The maximum column statistic value allowed for a row to pass this validation.
+               At least one of minValue and maxValue need to be provided.
+        :param pulumi.Input[str] min_value: The minimum column statistic value allowed for a row to pass this validation.
+               At least one of minValue and maxValue need to be provided.
+        :param pulumi.Input[str] statistic: column statistics.
+               Possible values are: `STATISTIC_UNDEFINED`, `MEAN`, `MIN`, `MAX`.
+        :param pulumi.Input[bool] strict_max_enabled: Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+               Only relevant if a maxValue has been defined. Default = false.
+        :param pulumi.Input[bool] strict_min_enabled: Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+               Only relevant if a minValue has been defined. Default = false.
+        """
+        if max_value is not None:
+            pulumi.set(__self__, "max_value", max_value)
+        if min_value is not None:
+            pulumi.set(__self__, "min_value", min_value)
+        if statistic is not None:
+            pulumi.set(__self__, "statistic", statistic)
+        if strict_max_enabled is not None:
+            pulumi.set(__self__, "strict_max_enabled", strict_max_enabled)
+        if strict_min_enabled is not None:
+            pulumi.set(__self__, "strict_min_enabled", strict_min_enabled)
+
+    @property
+    @pulumi.getter(name="maxValue")
+    def max_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum column statistic value allowed for a row to pass this validation.
+        At least one of minValue and maxValue need to be provided.
+        """
+        return pulumi.get(self, "max_value")
+
+    @max_value.setter
+    def max_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_value", value)
+
+    @property
+    @pulumi.getter(name="minValue")
+    def min_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum column statistic value allowed for a row to pass this validation.
+        At least one of minValue and maxValue need to be provided.
+        """
+        return pulumi.get(self, "min_value")
+
+    @min_value.setter
+    def min_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_value", value)
+
+    @property
+    @pulumi.getter
+    def statistic(self) -> Optional[pulumi.Input[str]]:
+        """
+        column statistics.
+        Possible values are: `STATISTIC_UNDEFINED`, `MEAN`, `MIN`, `MAX`.
+        """
+        return pulumi.get(self, "statistic")
+
+    @statistic.setter
+    def statistic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "statistic", value)
+
+    @property
+    @pulumi.getter(name="strictMaxEnabled")
+    def strict_max_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+        Only relevant if a maxValue has been defined. Default = false.
+        """
+        return pulumi.get(self, "strict_max_enabled")
+
+    @strict_max_enabled.setter
+    def strict_max_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "strict_max_enabled", value)
+
+    @property
+    @pulumi.getter(name="strictMinEnabled")
+    def strict_min_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+        Only relevant if a minValue has been defined. Default = false.
+        """
+        return pulumi.get(self, "strict_min_enabled")
+
+    @strict_min_enabled.setter
+    def strict_min_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "strict_min_enabled", value)
+
+
+@pulumi.input_type
+class DatascanDataQualityResultRuleRuleTableConditionExpectationArgs:
+    def __init__(__self__, *,
+                 sql_expression: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] sql_expression: The SQL expression.
+        """
+        if sql_expression is not None:
+            pulumi.set(__self__, "sql_expression", sql_expression)
+
+    @property
+    @pulumi.getter(name="sqlExpression")
+    def sql_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SQL expression.
+        """
+        return pulumi.get(self, "sql_expression")
+
+    @sql_expression.setter
+    def sql_expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sql_expression", value)
+
+
+@pulumi.input_type
+class DatascanDataQualityResultRuleRuleUniquenessExpectationArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class DatascanDataQualityResultScannedDataArgs:
+    def __init__(__self__, *,
+                 incremental_field: Optional[pulumi.Input['DatascanDataQualityResultScannedDataIncrementalFieldArgs']] = None):
+        """
+        :param pulumi.Input['DatascanDataQualityResultScannedDataIncrementalFieldArgs'] incremental_field: The range denoted by values of an incremental field
+               Structure is documented below.
+        """
+        if incremental_field is not None:
+            pulumi.set(__self__, "incremental_field", incremental_field)
+
+    @property
+    @pulumi.getter(name="incrementalField")
+    def incremental_field(self) -> Optional[pulumi.Input['DatascanDataQualityResultScannedDataIncrementalFieldArgs']]:
+        """
+        The range denoted by values of an incremental field
+        Structure is documented below.
+        """
+        return pulumi.get(self, "incremental_field")
+
+    @incremental_field.setter
+    def incremental_field(self, value: Optional[pulumi.Input['DatascanDataQualityResultScannedDataIncrementalFieldArgs']]):
+        pulumi.set(self, "incremental_field", value)
+
+
+@pulumi.input_type
+class DatascanDataQualityResultScannedDataIncrementalFieldArgs:
+    def __init__(__self__, *,
+                 end: Optional[pulumi.Input[str]] = None,
+                 field: Optional[pulumi.Input[str]] = None,
+                 start: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] end: Value that marks the end of the range.
+        :param pulumi.Input[str] field: The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
+        :param pulumi.Input[str] start: Value that marks the start of the range.
+        """
+        if end is not None:
+            pulumi.set(__self__, "end", end)
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if start is not None:
+            pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def end(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value that marks the end of the range.
+        """
+        return pulumi.get(self, "end")
+
+    @end.setter
+    def end(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end", value)
+
+    @property
+    @pulumi.getter
+    def field(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "field", value)
+
+    @property
+    @pulumi.getter
+    def start(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value that marks the start of the range.
+        """
+        return pulumi.get(self, "start")
+
+    @start.setter
+    def start(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start", value)
+
+
+@pulumi.input_type
+class DatascanDataQualitySpecArgs:
+    def __init__(__self__, *,
+                 row_filter: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualitySpecRuleArgs']]]] = None,
+                 sampling_percent: Optional[pulumi.Input[float]] = None):
+        """
+        :param pulumi.Input[str] row_filter: A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+        :param pulumi.Input[Sequence[pulumi.Input['DatascanDataQualitySpecRuleArgs']]] rules: The list of rules to evaluate against a data source. At least one rule is required.
+               Structure is documented below.
+        :param pulumi.Input[float] sampling_percent: The percentage of the records to be selected from the dataset for DataScan.
+        """
+        if row_filter is not None:
+            pulumi.set(__self__, "row_filter", row_filter)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if sampling_percent is not None:
+            pulumi.set(__self__, "sampling_percent", sampling_percent)
+
+    @property
+    @pulumi.getter(name="rowFilter")
+    def row_filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+        """
+        return pulumi.get(self, "row_filter")
+
+    @row_filter.setter
+    def row_filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "row_filter", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualitySpecRuleArgs']]]]:
+        """
+        The list of rules to evaluate against a data source. At least one rule is required.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatascanDataQualitySpecRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter(name="samplingPercent")
+    def sampling_percent(self) -> Optional[pulumi.Input[float]]:
+        """
+        The percentage of the records to be selected from the dataset for DataScan.
+        """
+        return pulumi.get(self, "sampling_percent")
+
+    @sampling_percent.setter
+    def sampling_percent(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "sampling_percent", value)
+
+
+@pulumi.input_type
+class DatascanDataQualitySpecRuleArgs:
+    def __init__(__self__, *,
+                 dimension: pulumi.Input[str],
+                 column: Optional[pulumi.Input[str]] = None,
+                 ignore_null: Optional[pulumi.Input[bool]] = None,
+                 non_null_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleNonNullExpectationArgs']] = None,
+                 range_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleRangeExpectationArgs']] = None,
+                 regex_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleRegexExpectationArgs']] = None,
+                 row_condition_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleRowConditionExpectationArgs']] = None,
+                 set_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleSetExpectationArgs']] = None,
+                 statistic_range_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleStatisticRangeExpectationArgs']] = None,
+                 table_condition_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleTableConditionExpectationArgs']] = None,
+                 threshold: Optional[pulumi.Input[float]] = None,
+                 uniqueness_expectation: Optional[pulumi.Input['DatascanDataQualitySpecRuleUniquenessExpectationArgs']] = None):
+        """
+        :param pulumi.Input[str] dimension: The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
+        :param pulumi.Input[str] column: The unnested column which this rule is evaluated against.
+        :param pulumi.Input[bool] ignore_null: Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. Only applicable to ColumnMap rules.
+        :param pulumi.Input['DatascanDataQualitySpecRuleNonNullExpectationArgs'] non_null_expectation: ColumnMap rule which evaluates whether each column value is null.
+        :param pulumi.Input['DatascanDataQualitySpecRuleRangeExpectationArgs'] range_expectation: ColumnMap rule which evaluates whether each column value lies between a specified range.
+               Structure is documented below.
+        :param pulumi.Input['DatascanDataQualitySpecRuleRegexExpectationArgs'] regex_expectation: ColumnMap rule which evaluates whether each column value matches a specified regex.
+               Structure is documented below.
+        :param pulumi.Input['DatascanDataQualitySpecRuleRowConditionExpectationArgs'] row_condition_expectation: Table rule which evaluates whether each row passes the specified condition.
+               Structure is documented below.
+        :param pulumi.Input['DatascanDataQualitySpecRuleSetExpectationArgs'] set_expectation: ColumnMap rule which evaluates whether each column value is contained by a specified set.
+               Structure is documented below.
+        :param pulumi.Input['DatascanDataQualitySpecRuleStatisticRangeExpectationArgs'] statistic_range_expectation: ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+               Structure is documented below.
+        :param pulumi.Input['DatascanDataQualitySpecRuleTableConditionExpectationArgs'] table_condition_expectation: Table rule which evaluates whether the provided expression is true.
+               Structure is documented below.
+        :param pulumi.Input[float] threshold: The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
+        :param pulumi.Input['DatascanDataQualitySpecRuleUniquenessExpectationArgs'] uniqueness_expectation: ColumnAggregate rule which evaluates whether the column has duplicates.
+        """
+        pulumi.set(__self__, "dimension", dimension)
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if ignore_null is not None:
+            pulumi.set(__self__, "ignore_null", ignore_null)
+        if non_null_expectation is not None:
+            pulumi.set(__self__, "non_null_expectation", non_null_expectation)
+        if range_expectation is not None:
+            pulumi.set(__self__, "range_expectation", range_expectation)
+        if regex_expectation is not None:
+            pulumi.set(__self__, "regex_expectation", regex_expectation)
+        if row_condition_expectation is not None:
+            pulumi.set(__self__, "row_condition_expectation", row_condition_expectation)
+        if set_expectation is not None:
+            pulumi.set(__self__, "set_expectation", set_expectation)
+        if statistic_range_expectation is not None:
+            pulumi.set(__self__, "statistic_range_expectation", statistic_range_expectation)
+        if table_condition_expectation is not None:
+            pulumi.set(__self__, "table_condition_expectation", table_condition_expectation)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if uniqueness_expectation is not None:
+            pulumi.set(__self__, "uniqueness_expectation", uniqueness_expectation)
+
+    @property
+    @pulumi.getter
+    def dimension(self) -> pulumi.Input[str]:
+        """
+        The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
+        """
+        return pulumi.get(self, "dimension")
+
+    @dimension.setter
+    def dimension(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dimension", value)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unnested column which this rule is evaluated against.
+        """
+        return pulumi.get(self, "column")
+
+    @column.setter
+    def column(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "column", value)
+
+    @property
+    @pulumi.getter(name="ignoreNull")
+    def ignore_null(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. Only applicable to ColumnMap rules.
+        """
+        return pulumi.get(self, "ignore_null")
+
+    @ignore_null.setter
+    def ignore_null(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ignore_null", value)
+
+    @property
+    @pulumi.getter(name="nonNullExpectation")
+    def non_null_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleNonNullExpectationArgs']]:
+        """
+        ColumnMap rule which evaluates whether each column value is null.
+        """
+        return pulumi.get(self, "non_null_expectation")
+
+    @non_null_expectation.setter
+    def non_null_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleNonNullExpectationArgs']]):
+        pulumi.set(self, "non_null_expectation", value)
+
+    @property
+    @pulumi.getter(name="rangeExpectation")
+    def range_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleRangeExpectationArgs']]:
+        """
+        ColumnMap rule which evaluates whether each column value lies between a specified range.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "range_expectation")
+
+    @range_expectation.setter
+    def range_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleRangeExpectationArgs']]):
+        pulumi.set(self, "range_expectation", value)
+
+    @property
+    @pulumi.getter(name="regexExpectation")
+    def regex_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleRegexExpectationArgs']]:
+        """
+        ColumnMap rule which evaluates whether each column value matches a specified regex.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "regex_expectation")
+
+    @regex_expectation.setter
+    def regex_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleRegexExpectationArgs']]):
+        pulumi.set(self, "regex_expectation", value)
+
+    @property
+    @pulumi.getter(name="rowConditionExpectation")
+    def row_condition_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleRowConditionExpectationArgs']]:
+        """
+        Table rule which evaluates whether each row passes the specified condition.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "row_condition_expectation")
+
+    @row_condition_expectation.setter
+    def row_condition_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleRowConditionExpectationArgs']]):
+        pulumi.set(self, "row_condition_expectation", value)
+
+    @property
+    @pulumi.getter(name="setExpectation")
+    def set_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleSetExpectationArgs']]:
+        """
+        ColumnMap rule which evaluates whether each column value is contained by a specified set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "set_expectation")
+
+    @set_expectation.setter
+    def set_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleSetExpectationArgs']]):
+        pulumi.set(self, "set_expectation", value)
+
+    @property
+    @pulumi.getter(name="statisticRangeExpectation")
+    def statistic_range_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleStatisticRangeExpectationArgs']]:
+        """
+        ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "statistic_range_expectation")
+
+    @statistic_range_expectation.setter
+    def statistic_range_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleStatisticRangeExpectationArgs']]):
+        pulumi.set(self, "statistic_range_expectation", value)
+
+    @property
+    @pulumi.getter(name="tableConditionExpectation")
+    def table_condition_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleTableConditionExpectationArgs']]:
+        """
+        Table rule which evaluates whether the provided expression is true.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "table_condition_expectation")
+
+    @table_condition_expectation.setter
+    def table_condition_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleTableConditionExpectationArgs']]):
+        pulumi.set(self, "table_condition_expectation", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[pulumi.Input[float]]:
+        """
+        The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "threshold", value)
+
+    @property
+    @pulumi.getter(name="uniquenessExpectation")
+    def uniqueness_expectation(self) -> Optional[pulumi.Input['DatascanDataQualitySpecRuleUniquenessExpectationArgs']]:
+        """
+        ColumnAggregate rule which evaluates whether the column has duplicates.
+        """
+        return pulumi.get(self, "uniqueness_expectation")
+
+    @uniqueness_expectation.setter
+    def uniqueness_expectation(self, value: Optional[pulumi.Input['DatascanDataQualitySpecRuleUniquenessExpectationArgs']]):
+        pulumi.set(self, "uniqueness_expectation", value)
+
+
+@pulumi.input_type
+class DatascanDataQualitySpecRuleNonNullExpectationArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class DatascanDataQualitySpecRuleRangeExpectationArgs:
+    def __init__(__self__, *,
+                 max_value: Optional[pulumi.Input[str]] = None,
+                 min_value: Optional[pulumi.Input[str]] = None,
+                 strict_max_enabled: Optional[pulumi.Input[bool]] = None,
+                 strict_min_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] max_value: The maximum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
+        :param pulumi.Input[str] min_value: The minimum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
+        :param pulumi.Input[bool] strict_max_enabled: Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+               Only relevant if a maxValue has been defined. Default = false.
+        :param pulumi.Input[bool] strict_min_enabled: Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+               Only relevant if a minValue has been defined. Default = false.
+        """
+        if max_value is not None:
+            pulumi.set(__self__, "max_value", max_value)
+        if min_value is not None:
+            pulumi.set(__self__, "min_value", min_value)
+        if strict_max_enabled is not None:
+            pulumi.set(__self__, "strict_max_enabled", strict_max_enabled)
+        if strict_min_enabled is not None:
+            pulumi.set(__self__, "strict_min_enabled", strict_min_enabled)
+
+    @property
+    @pulumi.getter(name="maxValue")
+    def max_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
+        """
+        return pulumi.get(self, "max_value")
+
+    @max_value.setter
+    def max_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_value", value)
+
+    @property
+    @pulumi.getter(name="minValue")
+    def min_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
+        """
+        return pulumi.get(self, "min_value")
+
+    @min_value.setter
+    def min_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_value", value)
+
+    @property
+    @pulumi.getter(name="strictMaxEnabled")
+    def strict_max_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+        Only relevant if a maxValue has been defined. Default = false.
+        """
+        return pulumi.get(self, "strict_max_enabled")
+
+    @strict_max_enabled.setter
+    def strict_max_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "strict_max_enabled", value)
+
+    @property
+    @pulumi.getter(name="strictMinEnabled")
+    def strict_min_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+        Only relevant if a minValue has been defined. Default = false.
+        """
+        return pulumi.get(self, "strict_min_enabled")
+
+    @strict_min_enabled.setter
+    def strict_min_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "strict_min_enabled", value)
+
+
+@pulumi.input_type
+class DatascanDataQualitySpecRuleRegexExpectationArgs:
+    def __init__(__self__, *,
+                 regex: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] regex: A regular expression the column value is expected to match.
+        """
+        pulumi.set(__self__, "regex", regex)
+
+    @property
+    @pulumi.getter
+    def regex(self) -> pulumi.Input[str]:
+        """
+        A regular expression the column value is expected to match.
+        """
+        return pulumi.get(self, "regex")
+
+    @regex.setter
+    def regex(self, value: pulumi.Input[str]):
+        pulumi.set(self, "regex", value)
+
+
+@pulumi.input_type
+class DatascanDataQualitySpecRuleRowConditionExpectationArgs:
+    def __init__(__self__, *,
+                 sql_expression: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] sql_expression: The SQL expression.
+        """
+        pulumi.set(__self__, "sql_expression", sql_expression)
+
+    @property
+    @pulumi.getter(name="sqlExpression")
+    def sql_expression(self) -> pulumi.Input[str]:
+        """
+        The SQL expression.
+        """
+        return pulumi.get(self, "sql_expression")
+
+    @sql_expression.setter
+    def sql_expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "sql_expression", value)
+
+
+@pulumi.input_type
+class DatascanDataQualitySpecRuleSetExpectationArgs:
+    def __init__(__self__, *,
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Expected values for the column value.
+        """
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Expected values for the column value.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class DatascanDataQualitySpecRuleStatisticRangeExpectationArgs:
+    def __init__(__self__, *,
+                 statistic: pulumi.Input[str],
+                 max_value: Optional[pulumi.Input[str]] = None,
+                 min_value: Optional[pulumi.Input[str]] = None,
+                 strict_max_enabled: Optional[pulumi.Input[bool]] = None,
+                 strict_min_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] statistic: column statistics.
+               Possible values are: `STATISTIC_UNDEFINED`, `MEAN`, `MIN`, `MAX`.
+        :param pulumi.Input[str] max_value: The maximum column statistic value allowed for a row to pass this validation.
+               At least one of minValue and maxValue need to be provided.
+        :param pulumi.Input[str] min_value: The minimum column statistic value allowed for a row to pass this validation.
+               At least one of minValue and maxValue need to be provided.
+        :param pulumi.Input[bool] strict_max_enabled: Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+               Only relevant if a maxValue has been defined. Default = false.
+        :param pulumi.Input[bool] strict_min_enabled: Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+               Only relevant if a minValue has been defined. Default = false.
+        """
+        pulumi.set(__self__, "statistic", statistic)
+        if max_value is not None:
+            pulumi.set(__self__, "max_value", max_value)
+        if min_value is not None:
+            pulumi.set(__self__, "min_value", min_value)
+        if strict_max_enabled is not None:
+            pulumi.set(__self__, "strict_max_enabled", strict_max_enabled)
+        if strict_min_enabled is not None:
+            pulumi.set(__self__, "strict_min_enabled", strict_min_enabled)
+
+    @property
+    @pulumi.getter
+    def statistic(self) -> pulumi.Input[str]:
+        """
+        column statistics.
+        Possible values are: `STATISTIC_UNDEFINED`, `MEAN`, `MIN`, `MAX`.
+        """
+        return pulumi.get(self, "statistic")
+
+    @statistic.setter
+    def statistic(self, value: pulumi.Input[str]):
+        pulumi.set(self, "statistic", value)
+
+    @property
+    @pulumi.getter(name="maxValue")
+    def max_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum column statistic value allowed for a row to pass this validation.
+        At least one of minValue and maxValue need to be provided.
+        """
+        return pulumi.get(self, "max_value")
+
+    @max_value.setter
+    def max_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_value", value)
+
+    @property
+    @pulumi.getter(name="minValue")
+    def min_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum column statistic value allowed for a row to pass this validation.
+        At least one of minValue and maxValue need to be provided.
+        """
+        return pulumi.get(self, "min_value")
+
+    @min_value.setter
+    def min_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_value", value)
+
+    @property
+    @pulumi.getter(name="strictMaxEnabled")
+    def strict_max_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+        Only relevant if a maxValue has been defined. Default = false.
+        """
+        return pulumi.get(self, "strict_max_enabled")
+
+    @strict_max_enabled.setter
+    def strict_max_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "strict_max_enabled", value)
+
+    @property
+    @pulumi.getter(name="strictMinEnabled")
+    def strict_min_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+        Only relevant if a minValue has been defined. Default = false.
+        """
+        return pulumi.get(self, "strict_min_enabled")
+
+    @strict_min_enabled.setter
+    def strict_min_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "strict_min_enabled", value)
+
+
+@pulumi.input_type
+class DatascanDataQualitySpecRuleTableConditionExpectationArgs:
+    def __init__(__self__, *,
+                 sql_expression: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] sql_expression: The SQL expression.
+        """
+        pulumi.set(__self__, "sql_expression", sql_expression)
+
+    @property
+    @pulumi.getter(name="sqlExpression")
+    def sql_expression(self) -> pulumi.Input[str]:
+        """
+        The SQL expression.
+        """
+        return pulumi.get(self, "sql_expression")
+
+    @sql_expression.setter
+    def sql_expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "sql_expression", value)
+
+
+@pulumi.input_type
+class DatascanDataQualitySpecRuleUniquenessExpectationArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class DatascanExecutionSpecArgs:
+    def __init__(__self__, *,
+                 trigger: pulumi.Input['DatascanExecutionSpecTriggerArgs'],
+                 field: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['DatascanExecutionSpecTriggerArgs'] trigger: Spec related to how often and when a scan should be triggered.
+               Structure is documented below.
+        :param pulumi.Input[str] field: The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
+        """
+        pulumi.set(__self__, "trigger", trigger)
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+
+    @property
+    @pulumi.getter
+    def trigger(self) -> pulumi.Input['DatascanExecutionSpecTriggerArgs']:
+        """
+        Spec related to how often and when a scan should be triggered.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "trigger")
+
+    @trigger.setter
+    def trigger(self, value: pulumi.Input['DatascanExecutionSpecTriggerArgs']):
+        pulumi.set(self, "trigger", value)
+
+    @property
+    @pulumi.getter
+    def field(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "field", value)
+
+
+@pulumi.input_type
+class DatascanExecutionSpecTriggerArgs:
+    def __init__(__self__, *,
+                 on_demand: Optional[pulumi.Input['DatascanExecutionSpecTriggerOnDemandArgs']] = None,
+                 schedule: Optional[pulumi.Input['DatascanExecutionSpecTriggerScheduleArgs']] = None):
+        """
+        :param pulumi.Input['DatascanExecutionSpecTriggerOnDemandArgs'] on_demand: The scan runs once via dataScans.run API.
+        :param pulumi.Input['DatascanExecutionSpecTriggerScheduleArgs'] schedule: The scan is scheduled to run periodically.
+               Structure is documented below.
+        """
+        if on_demand is not None:
+            pulumi.set(__self__, "on_demand", on_demand)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+
+    @property
+    @pulumi.getter(name="onDemand")
+    def on_demand(self) -> Optional[pulumi.Input['DatascanExecutionSpecTriggerOnDemandArgs']]:
+        """
+        The scan runs once via dataScans.run API.
+        """
+        return pulumi.get(self, "on_demand")
+
+    @on_demand.setter
+    def on_demand(self, value: Optional[pulumi.Input['DatascanExecutionSpecTriggerOnDemandArgs']]):
+        pulumi.set(self, "on_demand", value)
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> Optional[pulumi.Input['DatascanExecutionSpecTriggerScheduleArgs']]:
+        """
+        The scan is scheduled to run periodically.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: Optional[pulumi.Input['DatascanExecutionSpecTriggerScheduleArgs']]):
+        pulumi.set(self, "schedule", value)
+
+
+@pulumi.input_type
+class DatascanExecutionSpecTriggerOnDemandArgs:
+    def __init__(__self__):
+        pass
+
+
+@pulumi.input_type
+class DatascanExecutionSpecTriggerScheduleArgs:
+    def __init__(__self__, *,
+                 cron: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] cron: Cron schedule for running scans periodically. This field is required for Schedule scans.
+               
+               - - -
+        """
+        pulumi.set(__self__, "cron", cron)
+
+    @property
+    @pulumi.getter
+    def cron(self) -> pulumi.Input[str]:
+        """
+        Cron schedule for running scans periodically. This field is required for Schedule scans.
+
+        - - -
+        """
+        return pulumi.get(self, "cron")
+
+    @cron.setter
+    def cron(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cron", value)
+
+
+@pulumi.input_type
+class DatascanExecutionStatusArgs:
+    def __init__(__self__, *,
+                 latest_job_end_time: Optional[pulumi.Input[str]] = None,
+                 latest_job_start_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] latest_job_end_time: (Output)
+               The time when the latest DataScanJob started.
+        :param pulumi.Input[str] latest_job_start_time: (Output)
+               The time when the latest DataScanJob ended.
+        """
+        if latest_job_end_time is not None:
+            pulumi.set(__self__, "latest_job_end_time", latest_job_end_time)
+        if latest_job_start_time is not None:
+            pulumi.set(__self__, "latest_job_start_time", latest_job_start_time)
+
+    @property
+    @pulumi.getter(name="latestJobEndTime")
+    def latest_job_end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The time when the latest DataScanJob started.
+        """
+        return pulumi.get(self, "latest_job_end_time")
+
+    @latest_job_end_time.setter
+    def latest_job_end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "latest_job_end_time", value)
+
+    @property
+    @pulumi.getter(name="latestJobStartTime")
+    def latest_job_start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The time when the latest DataScanJob ended.
+        """
+        return pulumi.get(self, "latest_job_start_time")
+
+    @latest_job_start_time.setter
+    def latest_job_start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "latest_job_start_time", value)
+
+
+@pulumi.input_type
+class DatascanIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class DatascanIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
 
 @pulumi.input_type

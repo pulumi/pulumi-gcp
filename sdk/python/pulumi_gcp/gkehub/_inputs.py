@@ -21,6 +21,10 @@ __all__ = [
     'FeatureMembershipMeshArgs',
     'FeatureResourceStateArgs',
     'FeatureSpecArgs',
+    'FeatureSpecFleetobservabilityArgs',
+    'FeatureSpecFleetobservabilityLoggingConfigArgs',
+    'FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs',
+    'FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs',
     'FeatureSpecMulticlusteringressArgs',
     'FeatureStateArgs',
     'FeatureStateStateArgs',
@@ -715,13 +719,25 @@ class FeatureResourceStateArgs:
 @pulumi.input_type
 class FeatureSpecArgs:
     def __init__(__self__, *,
+                 fleetobservability: Optional[pulumi.Input['FeatureSpecFleetobservabilityArgs']] = None,
                  multiclusteringress: Optional[pulumi.Input['FeatureSpecMulticlusteringressArgs']] = None):
         """
         :param pulumi.Input['FeatureSpecMulticlusteringressArgs'] multiclusteringress: Multicluster Ingress-specific spec.
                The `multiclusteringress` block supports:
         """
+        if fleetobservability is not None:
+            pulumi.set(__self__, "fleetobservability", fleetobservability)
         if multiclusteringress is not None:
             pulumi.set(__self__, "multiclusteringress", multiclusteringress)
+
+    @property
+    @pulumi.getter
+    def fleetobservability(self) -> Optional[pulumi.Input['FeatureSpecFleetobservabilityArgs']]:
+        return pulumi.get(self, "fleetobservability")
+
+    @fleetobservability.setter
+    def fleetobservability(self, value: Optional[pulumi.Input['FeatureSpecFleetobservabilityArgs']]):
+        pulumi.set(self, "fleetobservability", value)
 
     @property
     @pulumi.getter
@@ -735,6 +751,86 @@ class FeatureSpecArgs:
     @multiclusteringress.setter
     def multiclusteringress(self, value: Optional[pulumi.Input['FeatureSpecMulticlusteringressArgs']]):
         pulumi.set(self, "multiclusteringress", value)
+
+
+@pulumi.input_type
+class FeatureSpecFleetobservabilityArgs:
+    def __init__(__self__, *,
+                 logging_config: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigArgs']] = None):
+        if logging_config is not None:
+            pulumi.set(__self__, "logging_config", logging_config)
+
+    @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigArgs']]:
+        return pulumi.get(self, "logging_config")
+
+    @logging_config.setter
+    def logging_config(self, value: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigArgs']]):
+        pulumi.set(self, "logging_config", value)
+
+
+@pulumi.input_type
+class FeatureSpecFleetobservabilityLoggingConfigArgs:
+    def __init__(__self__, *,
+                 default_config: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs']] = None,
+                 fleet_scope_logs_config: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs']] = None):
+        if default_config is not None:
+            pulumi.set(__self__, "default_config", default_config)
+        if fleet_scope_logs_config is not None:
+            pulumi.set(__self__, "fleet_scope_logs_config", fleet_scope_logs_config)
+
+    @property
+    @pulumi.getter(name="defaultConfig")
+    def default_config(self) -> Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs']]:
+        return pulumi.get(self, "default_config")
+
+    @default_config.setter
+    def default_config(self, value: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs']]):
+        pulumi.set(self, "default_config", value)
+
+    @property
+    @pulumi.getter(name="fleetScopeLogsConfig")
+    def fleet_scope_logs_config(self) -> Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs']]:
+        return pulumi.get(self, "fleet_scope_logs_config")
+
+    @fleet_scope_logs_config.setter
+    def fleet_scope_logs_config(self, value: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs']]):
+        pulumi.set(self, "fleet_scope_logs_config", value)
+
+
+@pulumi.input_type
+class FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs:
+    def __init__(__self__, *,
+                 mode: Optional[pulumi.Input[str]] = None):
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+
+@pulumi.input_type
+class FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs:
+    def __init__(__self__, *,
+                 mode: Optional[pulumi.Input[str]] = None):
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
 
 
 @pulumi.input_type

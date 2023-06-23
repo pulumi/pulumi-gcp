@@ -403,6 +403,14 @@ class FirewallPolicyRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        basic_global_networksecurity_address_group = gcp.networksecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup",
+            parent="organizations/12345",
+            description="Sample global networksecurity_address_group",
+            location="global",
+            items=["208.80.154.224/32"],
+            type="IPV4",
+            capacity=100,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         default_firewall_policy = gcp.compute.FirewallPolicy("defaultFirewallPolicy",
             parent="organizations/12345",
             short_name="my-policy",
@@ -424,6 +432,10 @@ class FirewallPolicyRule(pulumi.CustomResource):
                     ],
                 )],
                 dest_ip_ranges=["11.100.0.1/32"],
+                dest_fqdns=["google.com"],
+                dest_region_codes=["US"],
+                dest_threat_intelligences=["iplist-public-clouds"],
+                dest_address_groups=[basic_global_networksecurity_address_group.id],
             ))
         ```
 
@@ -469,6 +481,14 @@ class FirewallPolicyRule(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        basic_global_networksecurity_address_group = gcp.networksecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup",
+            parent="organizations/12345",
+            description="Sample global networksecurity_address_group",
+            location="global",
+            items=["208.80.154.224/32"],
+            type="IPV4",
+            capacity=100,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         default_firewall_policy = gcp.compute.FirewallPolicy("defaultFirewallPolicy",
             parent="organizations/12345",
             short_name="my-policy",
@@ -490,6 +510,10 @@ class FirewallPolicyRule(pulumi.CustomResource):
                     ],
                 )],
                 dest_ip_ranges=["11.100.0.1/32"],
+                dest_fqdns=["google.com"],
+                dest_region_codes=["US"],
+                dest_threat_intelligences=["iplist-public-clouds"],
+                dest_address_groups=[basic_global_networksecurity_address_group.id],
             ))
         ```
 

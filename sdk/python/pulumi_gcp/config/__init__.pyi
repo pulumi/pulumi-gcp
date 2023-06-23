@@ -278,6 +278,8 @@ userProjectOverride: Optional[bool]
 
 vertexAiCustomEndpoint: Optional[str]
 
+vmwareengineCustomEndpoint: Optional[str]
+
 vpcAccessCustomEndpoint: Optional[str]
 
 workflowsCustomEndpoint: Optional[str]

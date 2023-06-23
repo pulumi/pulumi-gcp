@@ -38,6 +38,159 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Network Services Gateway Secure Web Proxy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultCertificate = new gcp.certificatemanager.Certificate("defaultCertificate", {
+ *     location: "us-central1",
+ *     selfManaged: {
+ *         pemCertificate: fs.readFileSync("test-fixtures/certificatemanager/cert.pem"),
+ *         pemPrivateKey: fs.readFileSync("test-fixtures/certificatemanager/private-key.pem"),
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {
+ *     routingMode: "REGIONAL",
+ *     autoCreateSubnetworks: false,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ *     purpose: "PRIVATE",
+ *     ipCidrRange: "10.128.0.0/20",
+ *     region: "us-central1",
+ *     network: defaultNetwork.id,
+ *     role: "ACTIVE",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const proxyonlysubnet = new gcp.compute.Subnetwork("proxyonlysubnet", {
+ *     purpose: "REGIONAL_MANAGED_PROXY",
+ *     ipCidrRange: "192.168.0.0/23",
+ *     region: "us-central1",
+ *     network: defaultNetwork.id,
+ *     role: "ACTIVE",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultGatewaySecurityPolicy = new gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", {location: "us-central1"}, {
+ *     provider: google_beta,
+ * });
+ * const defaultGatewaySecurityPolicyRule = new gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", {
+ *     location: "us-central1",
+ *     gatewaySecurityPolicy: defaultGatewaySecurityPolicy.name,
+ *     enabled: true,
+ *     priority: 1,
+ *     sessionMatcher: "host() == 'example.com'",
+ *     basicProfile: "ALLOW",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultGateway = new gcp.networkservices.Gateway("defaultGateway", {
+ *     location: "us-central1",
+ *     addresses: ["10.128.0.99"],
+ *     type: "SECURE_WEB_GATEWAY",
+ *     ports: [443],
+ *     scope: "my-default-scope1",
+ *     certificateUrls: [defaultCertificate.id],
+ *     gatewaySecurityPolicy: defaultGatewaySecurityPolicy.id,
+ *     network: defaultNetwork.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     deleteSwgAutogenRouterOnDestroy: true,
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [proxyonlysubnet],
+ * });
+ * ```
+ * ### Network Services Gateway Multiple Swp Same Network
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultCertificate = new gcp.certificatemanager.Certificate("defaultCertificate", {
+ *     location: "us-south1",
+ *     selfManaged: {
+ *         pemCertificate: fs.readFileSync("test-fixtures/certificatemanager/cert.pem"),
+ *         pemPrivateKey: fs.readFileSync("test-fixtures/certificatemanager/private-key.pem"),
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {
+ *     routingMode: "REGIONAL",
+ *     autoCreateSubnetworks: false,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ *     purpose: "PRIVATE",
+ *     ipCidrRange: "10.128.0.0/20",
+ *     region: "us-south1",
+ *     network: defaultNetwork.id,
+ *     role: "ACTIVE",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const proxyonlysubnet = new gcp.compute.Subnetwork("proxyonlysubnet", {
+ *     purpose: "REGIONAL_MANAGED_PROXY",
+ *     ipCidrRange: "192.168.0.0/23",
+ *     region: "us-south1",
+ *     network: defaultNetwork.id,
+ *     role: "ACTIVE",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultGatewaySecurityPolicy = new gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", {location: "us-south1"}, {
+ *     provider: google_beta,
+ * });
+ * const defaultGatewaySecurityPolicyRule = new gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", {
+ *     location: "us-south1",
+ *     gatewaySecurityPolicy: defaultGatewaySecurityPolicy.name,
+ *     enabled: true,
+ *     priority: 1,
+ *     sessionMatcher: "host() == 'example.com'",
+ *     basicProfile: "ALLOW",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultGateway = new gcp.networkservices.Gateway("defaultGateway", {
+ *     location: "us-south1",
+ *     addresses: ["10.128.0.99"],
+ *     type: "SECURE_WEB_GATEWAY",
+ *     ports: [443],
+ *     scope: "my-default-scope1",
+ *     certificateUrls: [defaultCertificate.id],
+ *     gatewaySecurityPolicy: defaultGatewaySecurityPolicy.id,
+ *     network: defaultNetwork.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     deleteSwgAutogenRouterOnDestroy: true,
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [proxyonlysubnet],
+ * });
+ * const gateway2 = new gcp.networkservices.Gateway("gateway2", {
+ *     location: "us-south1",
+ *     addresses: ["10.128.0.98"],
+ *     type: "SECURE_WEB_GATEWAY",
+ *     ports: [443],
+ *     scope: "my-default-scope2",
+ *     certificateUrls: [defaultCertificate.id],
+ *     gatewaySecurityPolicy: defaultGatewaySecurityPolicy.id,
+ *     network: defaultNetwork.id,
+ *     subnetwork: defaultSubnetwork.id,
+ *     deleteSwgAutogenRouterOnDestroy: true,
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [proxyonlysubnet],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -84,13 +237,35 @@ export class Gateway extends pulumi.CustomResource {
     }
 
     /**
+     * Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+     * an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+     * Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+     */
+    public readonly addresses!: pulumi.Output<string[] | undefined>;
+    /**
+     * A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+     * This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+     */
+    public readonly certificateUrls!: pulumi.Output<string[] | undefined>;
+    /**
      * Time the AccessPolicy was created in UTC.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
+     * If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
+     */
+    public readonly deleteSwgAutogenRouterOnDestroy!: pulumi.Output<boolean | undefined>;
+    /**
      * A free-text description of the resource. Max length 1024 characters.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+     * For example: `projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy`.
+     * This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+     */
+    public readonly gatewaySecurityPolicy!: pulumi.Output<string | undefined>;
     /**
      * Set of label tags associated with the Gateway resource.
      */
@@ -107,6 +282,12 @@ export class Gateway extends pulumi.CustomResource {
      * - - -
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The relative resource name identifying the VPC network that is using this configuration.
+     * For example: `projects/*&#47;global/networks/network-1`.
+     * Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+     */
+    public readonly network!: pulumi.Output<string | undefined>;
     /**
      * One or more port numbers (1-65535), on which the Gateway will receive traffic.
      * The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
@@ -135,6 +316,12 @@ export class Gateway extends pulumi.CustomResource {
      */
     public readonly serverTlsPolicy!: pulumi.Output<string | undefined>;
     /**
+     * The relative resource name identifying the subnetwork in which this SWG is allocated.
+     * For example: `projects/*&#47;regions/us-central1/subnetworks/network-1`.
+     * Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
+     */
+    public readonly subnetwork!: pulumi.Output<string | undefined>;
+    /**
      * Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
      * Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
      */
@@ -157,16 +344,22 @@ export class Gateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GatewayState | undefined;
+            resourceInputs["addresses"] = state ? state.addresses : undefined;
+            resourceInputs["certificateUrls"] = state ? state.certificateUrls : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["deleteSwgAutogenRouterOnDestroy"] = state ? state.deleteSwgAutogenRouterOnDestroy : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["gatewaySecurityPolicy"] = state ? state.gatewaySecurityPolicy : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["ports"] = state ? state.ports : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["scope"] = state ? state.scope : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["serverTlsPolicy"] = state ? state.serverTlsPolicy : undefined;
+            resourceInputs["subnetwork"] = state ? state.subnetwork : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -180,14 +373,20 @@ export class Gateway extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
+            resourceInputs["addresses"] = args ? args.addresses : undefined;
+            resourceInputs["certificateUrls"] = args ? args.certificateUrls : undefined;
+            resourceInputs["deleteSwgAutogenRouterOnDestroy"] = args ? args.deleteSwgAutogenRouterOnDestroy : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["gatewaySecurityPolicy"] = args ? args.gatewaySecurityPolicy : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["ports"] = args ? args.ports : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["scope"] = args ? args.scope : undefined;
             resourceInputs["serverTlsPolicy"] = args ? args.serverTlsPolicy : undefined;
+            resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -203,13 +402,35 @@ export class Gateway extends pulumi.CustomResource {
  */
 export interface GatewayState {
     /**
+     * Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+     * an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+     * Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+     */
+    addresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+     * This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+     */
+    certificateUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Time the AccessPolicy was created in UTC.
      */
     createTime?: pulumi.Input<string>;
     /**
+     * When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
+     * If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
+     */
+    deleteSwgAutogenRouterOnDestroy?: pulumi.Input<boolean>;
+    /**
      * A free-text description of the resource. Max length 1024 characters.
      */
     description?: pulumi.Input<string>;
+    /**
+     * A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+     * For example: `projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy`.
+     * This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+     */
+    gatewaySecurityPolicy?: pulumi.Input<string>;
     /**
      * Set of label tags associated with the Gateway resource.
      */
@@ -226,6 +447,12 @@ export interface GatewayState {
      * - - -
      */
     name?: pulumi.Input<string>;
+    /**
+     * The relative resource name identifying the VPC network that is using this configuration.
+     * For example: `projects/*&#47;global/networks/network-1`.
+     * Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+     */
+    network?: pulumi.Input<string>;
     /**
      * One or more port numbers (1-65535), on which the Gateway will receive traffic.
      * The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
@@ -254,6 +481,12 @@ export interface GatewayState {
      */
     serverTlsPolicy?: pulumi.Input<string>;
     /**
+     * The relative resource name identifying the subnetwork in which this SWG is allocated.
+     * For example: `projects/*&#47;regions/us-central1/subnetworks/network-1`.
+     * Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
+     */
+    subnetwork?: pulumi.Input<string>;
+    /**
      * Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
      * Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
      */
@@ -269,9 +502,31 @@ export interface GatewayState {
  */
 export interface GatewayArgs {
     /**
+     * Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+     * an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+     * Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+     */
+    addresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+     * This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+     */
+    certificateUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
+     * If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
+     */
+    deleteSwgAutogenRouterOnDestroy?: pulumi.Input<boolean>;
+    /**
      * A free-text description of the resource. Max length 1024 characters.
      */
     description?: pulumi.Input<string>;
+    /**
+     * A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+     * For example: `projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy`.
+     * This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+     */
+    gatewaySecurityPolicy?: pulumi.Input<string>;
     /**
      * Set of label tags associated with the Gateway resource.
      */
@@ -288,6 +543,12 @@ export interface GatewayArgs {
      * - - -
      */
     name?: pulumi.Input<string>;
+    /**
+     * The relative resource name identifying the VPC network that is using this configuration.
+     * For example: `projects/*&#47;global/networks/network-1`.
+     * Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+     */
+    network?: pulumi.Input<string>;
     /**
      * One or more port numbers (1-65535), on which the Gateway will receive traffic.
      * The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
@@ -311,6 +572,12 @@ export interface GatewayArgs {
      * If empty, TLS termination is disabled.
      */
     serverTlsPolicy?: pulumi.Input<string>;
+    /**
+     * The relative resource name identifying the subnetwork in which this SWG is allocated.
+     * For example: `projects/*&#47;regions/us-central1/subnetworks/network-1`.
+     * Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
+     */
+    subnetwork?: pulumi.Input<string>;
     /**
      * Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
      * Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.

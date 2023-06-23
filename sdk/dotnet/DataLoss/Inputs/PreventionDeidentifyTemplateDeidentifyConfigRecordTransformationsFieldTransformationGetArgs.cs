@@ -37,12 +37,21 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         }
 
         /// <summary>
-        /// Apply the transformation to the entire field.
-        /// The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
+        /// Treat the contents of the field as free text, and selectively transform content that matches an InfoType.
+        /// Only one of `primitive_transformation` or `info_type_transformations` must be specified.
         /// Structure is documented below.
         /// </summary>
-        [Input("primitiveTransformation", required: true)]
-        public Input<Inputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationGetArgs> PrimitiveTransformation { get; set; } = null!;
+        [Input("infoTypeTransformations")]
+        public Input<Inputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsGetArgs>? InfoTypeTransformations { get; set; }
+
+        /// <summary>
+        /// Apply the transformation to the entire field.
+        /// The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
+        /// Only one of `primitive_transformation` or `info_type_transformations` must be specified.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("primitiveTransformation")]
+        public Input<Inputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationGetArgs>? PrimitiveTransformation { get; set; }
 
         public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationGetArgs()
         {

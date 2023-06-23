@@ -257,6 +257,10 @@ type PreventionInspectTemplate struct {
 	//
 	// ***
 	Parent pulumi.StringOutput `pulumi:"parent"`
+	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+	// 100 characters. Can be empty to allow the system to generate one.
+	TemplateId pulumi.StringOutput `pulumi:"templateId"`
 }
 
 // NewPreventionInspectTemplate registers a new resource with the given unique name, arguments, and options.
@@ -329,6 +333,10 @@ type preventionInspectTemplateState struct {
 	//
 	// ***
 	Parent *string `pulumi:"parent"`
+	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+	// 100 characters. Can be empty to allow the system to generate one.
+	TemplateId *string `pulumi:"templateId"`
 }
 
 type PreventionInspectTemplateState struct {
@@ -370,6 +378,10 @@ type PreventionInspectTemplateState struct {
 	//
 	// ***
 	Parent pulumi.StringPtrInput
+	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+	// 100 characters. Can be empty to allow the system to generate one.
+	TemplateId pulumi.StringPtrInput
 }
 
 func (PreventionInspectTemplateState) ElementType() reflect.Type {
@@ -392,6 +404,10 @@ type preventionInspectTemplateArgs struct {
 	//
 	// ***
 	Parent string `pulumi:"parent"`
+	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+	// 100 characters. Can be empty to allow the system to generate one.
+	TemplateId *string `pulumi:"templateId"`
 }
 
 // The set of arguments for constructing a PreventionInspectTemplate resource.
@@ -411,6 +427,10 @@ type PreventionInspectTemplateArgs struct {
 	//
 	// ***
 	Parent pulumi.StringInput
+	// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+	// 100 characters. Can be empty to allow the system to generate one.
+	TemplateId pulumi.StringPtrInput
 }
 
 func (PreventionInspectTemplateArgs) ElementType() reflect.Type {
@@ -553,6 +573,13 @@ func (o PreventionInspectTemplateOutput) Name() pulumi.StringOutput {
 // ***
 func (o PreventionInspectTemplateOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionInspectTemplate) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
+}
+
+// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+// 100 characters. Can be empty to allow the system to generate one.
+func (o PreventionInspectTemplateOutput) TemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PreventionInspectTemplate) pulumi.StringOutput { return v.TemplateId }).(pulumi.StringOutput)
 }
 
 type PreventionInspectTemplateArrayOutput struct{ *pulumi.OutputState }

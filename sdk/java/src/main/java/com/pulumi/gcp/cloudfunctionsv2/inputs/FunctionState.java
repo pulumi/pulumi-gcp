@@ -202,6 +202,21 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.updateTime);
     }
 
+    /**
+     * Output only. The deployed url for the function.
+     * 
+     */
+    @Import(name="url")
+    private @Nullable Output<String> url;
+
+    /**
+     * @return Output only. The deployed url for the function.
+     * 
+     */
+    public Optional<Output<String>> url() {
+        return Optional.ofNullable(this.url);
+    }
+
     private FunctionState() {}
 
     private FunctionState(FunctionState $) {
@@ -216,6 +231,7 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
         this.serviceConfig = $.serviceConfig;
         this.state = $.state;
         this.updateTime = $.updateTime;
+        this.url = $.url;
     }
 
     public static Builder builder() {
@@ -483,6 +499,27 @@ public final class FunctionState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder updateTime(String updateTime) {
             return updateTime(Output.of(updateTime));
+        }
+
+        /**
+         * @param url Output only. The deployed url for the function.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder url(@Nullable Output<String> url) {
+            $.url = url;
+            return this;
+        }
+
+        /**
+         * @param url Output only. The deployed url for the function.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder url(String url) {
+            return url(Output.of(url));
         }
 
         public FunctionState build() {

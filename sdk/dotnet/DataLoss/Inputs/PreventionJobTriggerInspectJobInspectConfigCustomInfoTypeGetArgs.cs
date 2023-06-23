@@ -53,6 +53,13 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<Inputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegexGetArgs>? Regex { get; set; }
 
         /// <summary>
+        /// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sensitivityScore")]
+        public Input<Inputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScoreGetArgs>? SensitivityScore { get; set; }
+
+        /// <summary>
         /// A reference to a StoredInfoType to use with scanning.
         /// Structure is documented below.
         /// </summary>

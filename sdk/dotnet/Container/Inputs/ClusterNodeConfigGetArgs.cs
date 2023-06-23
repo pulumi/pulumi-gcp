@@ -300,6 +300,20 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterNodeConfigShieldedInstanceConfigGetArgs>? ShieldedInstanceConfig { get; set; }
 
         /// <summary>
+        /// Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+        /// 
+        /// sole_tenant_config {
+        /// node_affinity {
+        /// key = "compute.googleapis.com/node-group-name"
+        /// operator = "IN"
+        /// values = ["node-group-name"]
+        /// }
+        /// }
+        /// </summary>
+        [Input("soleTenantConfig")]
+        public Input<Inputs.ClusterNodeConfigSoleTenantConfigGetArgs>? SoleTenantConfig { get; set; }
+
+        /// <summary>
         /// A boolean that represents whether the underlying node VMs are spot.
         /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
         /// for more information. Defaults to false.

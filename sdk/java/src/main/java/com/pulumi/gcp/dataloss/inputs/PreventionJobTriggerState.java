@@ -243,6 +243,25 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
     }
 
     /**
+     * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+.
+     * The maximum length is 100 characters. Can be empty to allow the system to generate one.
+     * 
+     */
+    @Import(name="triggerId")
+    private @Nullable Output<String> triggerId;
+
+    /**
+     * @return The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+.
+     * The maximum length is 100 characters. Can be empty to allow the system to generate one.
+     * 
+     */
+    public Optional<Output<String>> triggerId() {
+        return Optional.ofNullable(this.triggerId);
+    }
+
+    /**
      * What event needs to occur for a new job to be started.
      * Structure is documented below.
      * 
@@ -285,6 +304,7 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
         this.name = $.name;
         this.parent = $.parent;
         this.status = $.status;
+        this.triggerId = $.triggerId;
         this.triggers = $.triggers;
         this.updateTime = $.updateTime;
     }
@@ -577,6 +597,31 @@ public final class PreventionJobTriggerState extends com.pulumi.resources.Resour
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param triggerId The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+         * that is, it must match the regular expression: [a-zA-Z\d-_]+.
+         * The maximum length is 100 characters. Can be empty to allow the system to generate one.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder triggerId(@Nullable Output<String> triggerId) {
+            $.triggerId = triggerId;
+            return this;
+        }
+
+        /**
+         * @param triggerId The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+         * that is, it must match the regular expression: [a-zA-Z\d-_]+.
+         * The maximum length is 100 characters. Can be empty to allow the system to generate one.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder triggerId(String triggerId) {
+            return triggerId(Output.of(triggerId));
         }
 
         /**

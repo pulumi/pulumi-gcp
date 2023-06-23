@@ -11,6 +11,7 @@ from .. import _utilities
 
 __all__ = [
     'RepositoryGitRemoteSettingsArgs',
+    'RepositoryWorkspaceCompilationOverridesArgs',
 ]
 
 @pulumi.input_type
@@ -81,5 +82,60 @@ class RepositoryGitRemoteSettingsArgs:
     @token_status.setter
     def token_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "token_status", value)
+
+
+@pulumi.input_type
+class RepositoryWorkspaceCompilationOverridesArgs:
+    def __init__(__self__, *,
+                 default_database: Optional[pulumi.Input[str]] = None,
+                 schema_suffix: Optional[pulumi.Input[str]] = None,
+                 table_prefix: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] default_database: Optional. The default database (Google Cloud project ID).
+        :param pulumi.Input[str] schema_suffix: Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+        :param pulumi.Input[str] table_prefix: Optional. The prefix that should be prepended to all table names.
+        """
+        if default_database is not None:
+            pulumi.set(__self__, "default_database", default_database)
+        if schema_suffix is not None:
+            pulumi.set(__self__, "schema_suffix", schema_suffix)
+        if table_prefix is not None:
+            pulumi.set(__self__, "table_prefix", table_prefix)
+
+    @property
+    @pulumi.getter(name="defaultDatabase")
+    def default_database(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The default database (Google Cloud project ID).
+        """
+        return pulumi.get(self, "default_database")
+
+    @default_database.setter
+    def default_database(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_database", value)
+
+    @property
+    @pulumi.getter(name="schemaSuffix")
+    def schema_suffix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+        """
+        return pulumi.get(self, "schema_suffix")
+
+    @schema_suffix.setter
+    def schema_suffix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema_suffix", value)
+
+    @property
+    @pulumi.getter(name="tablePrefix")
+    def table_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The prefix that should be prepended to all table names.
+        """
+        return pulumi.get(self, "table_prefix")
+
+    @table_prefix.setter
+    def table_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "table_prefix", value)
 
 

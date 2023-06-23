@@ -17,45 +17,77 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
 
     public static final FirewallPolicyRuleMatchArgs Empty = new FirewallPolicyRuleMatchArgs();
 
+    /**
+     * Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+     * 
+     */
     @Import(name="destAddressGroups")
     private @Nullable Output<List<String>> destAddressGroups;
 
+    /**
+     * @return Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+     * 
+     */
     public Optional<Output<List<String>>> destAddressGroups() {
         return Optional.ofNullable(this.destAddressGroups);
     }
 
+    /**
+     * Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+     * 
+     */
     @Import(name="destFqdns")
     private @Nullable Output<List<String>> destFqdns;
 
+    /**
+     * @return Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+     * 
+     */
     public Optional<Output<List<String>>> destFqdns() {
         return Optional.ofNullable(this.destFqdns);
     }
 
     /**
-     * CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+     * CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
      * 
      */
     @Import(name="destIpRanges")
     private @Nullable Output<List<String>> destIpRanges;
 
     /**
-     * @return CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+     * @return CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
      * 
      */
     public Optional<Output<List<String>>> destIpRanges() {
         return Optional.ofNullable(this.destIpRanges);
     }
 
+    /**
+     * The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+     * 
+     */
     @Import(name="destRegionCodes")
     private @Nullable Output<List<String>> destRegionCodes;
 
+    /**
+     * @return The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+     * 
+     */
     public Optional<Output<List<String>>> destRegionCodes() {
         return Optional.ofNullable(this.destRegionCodes);
     }
 
+    /**
+     * Name of the Google Cloud Threat Intelligence list.
+     * 
+     */
     @Import(name="destThreatIntelligences")
     private @Nullable Output<List<String>> destThreatIntelligences;
 
+    /**
+     * @return Name of the Google Cloud Threat Intelligence list.
+     * 
+     */
     public Optional<Output<List<String>>> destThreatIntelligences() {
         return Optional.ofNullable(this.destThreatIntelligences);
     }
@@ -75,49 +107,81 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         return this.layer4Configs;
     }
 
+    /**
+     * Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+     * 
+     */
     @Import(name="srcAddressGroups")
     private @Nullable Output<List<String>> srcAddressGroups;
 
+    /**
+     * @return Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+     * 
+     */
     public Optional<Output<List<String>>> srcAddressGroups() {
         return Optional.ofNullable(this.srcAddressGroups);
     }
 
+    /**
+     * Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+     * 
+     */
     @Import(name="srcFqdns")
     private @Nullable Output<List<String>> srcFqdns;
 
+    /**
+     * @return Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+     * 
+     */
     public Optional<Output<List<String>>> srcFqdns() {
         return Optional.ofNullable(this.srcFqdns);
     }
 
     /**
-     * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
-     * 
-     * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+     * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
      * 
      */
     @Import(name="srcIpRanges")
     private @Nullable Output<List<String>> srcIpRanges;
 
     /**
-     * @return CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
-     * 
-     * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+     * @return CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
      * 
      */
     public Optional<Output<List<String>>> srcIpRanges() {
         return Optional.ofNullable(this.srcIpRanges);
     }
 
+    /**
+     * The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+     * 
+     */
     @Import(name="srcRegionCodes")
     private @Nullable Output<List<String>> srcRegionCodes;
 
+    /**
+     * @return The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+     * 
+     */
     public Optional<Output<List<String>>> srcRegionCodes() {
         return Optional.ofNullable(this.srcRegionCodes);
     }
 
+    /**
+     * Name of the Google Cloud Threat Intelligence list.
+     * 
+     * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+     * 
+     */
     @Import(name="srcThreatIntelligences")
     private @Nullable Output<List<String>> srcThreatIntelligences;
 
+    /**
+     * @return Name of the Google Cloud Threat Intelligence list.
+     * 
+     * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+     * 
+     */
     public Optional<Output<List<String>>> srcThreatIntelligences() {
         return Optional.ofNullable(this.srcThreatIntelligences);
     }
@@ -156,34 +220,70 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
             $ = new FirewallPolicyRuleMatchArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param destAddressGroups Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destAddressGroups(@Nullable Output<List<String>> destAddressGroups) {
             $.destAddressGroups = destAddressGroups;
             return this;
         }
 
+        /**
+         * @param destAddressGroups Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destAddressGroups(List<String> destAddressGroups) {
             return destAddressGroups(Output.of(destAddressGroups));
         }
 
+        /**
+         * @param destAddressGroups Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destAddressGroups(String... destAddressGroups) {
             return destAddressGroups(List.of(destAddressGroups));
         }
 
+        /**
+         * @param destFqdns Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destFqdns(@Nullable Output<List<String>> destFqdns) {
             $.destFqdns = destFqdns;
             return this;
         }
 
+        /**
+         * @param destFqdns Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destFqdns(List<String> destFqdns) {
             return destFqdns(Output.of(destFqdns));
         }
 
+        /**
+         * @param destFqdns Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destFqdns(String... destFqdns) {
             return destFqdns(List.of(destFqdns));
         }
 
         /**
-         * @param destIpRanges CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+         * @param destIpRanges CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
          * 
          * @return builder
          * 
@@ -194,7 +294,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param destIpRanges CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+         * @param destIpRanges CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
          * 
          * @return builder
          * 
@@ -204,7 +304,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param destIpRanges CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+         * @param destIpRanges CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
          * 
          * @return builder
          * 
@@ -213,28 +313,64 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
             return destIpRanges(List.of(destIpRanges));
         }
 
+        /**
+         * @param destRegionCodes The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destRegionCodes(@Nullable Output<List<String>> destRegionCodes) {
             $.destRegionCodes = destRegionCodes;
             return this;
         }
 
+        /**
+         * @param destRegionCodes The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destRegionCodes(List<String> destRegionCodes) {
             return destRegionCodes(Output.of(destRegionCodes));
         }
 
+        /**
+         * @param destRegionCodes The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destRegionCodes(String... destRegionCodes) {
             return destRegionCodes(List.of(destRegionCodes));
         }
 
+        /**
+         * @param destThreatIntelligences Name of the Google Cloud Threat Intelligence list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destThreatIntelligences(@Nullable Output<List<String>> destThreatIntelligences) {
             $.destThreatIntelligences = destThreatIntelligences;
             return this;
         }
 
+        /**
+         * @param destThreatIntelligences Name of the Google Cloud Threat Intelligence list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destThreatIntelligences(List<String> destThreatIntelligences) {
             return destThreatIntelligences(Output.of(destThreatIntelligences));
         }
 
+        /**
+         * @param destThreatIntelligences Name of the Google Cloud Threat Intelligence list.
+         * 
+         * @return builder
+         * 
+         */
         public Builder destThreatIntelligences(String... destThreatIntelligences) {
             return destThreatIntelligences(List.of(destThreatIntelligences));
         }
@@ -270,36 +406,70 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
             return layer4Configs(List.of(layer4Configs));
         }
 
+        /**
+         * @param srcAddressGroups Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder srcAddressGroups(@Nullable Output<List<String>> srcAddressGroups) {
             $.srcAddressGroups = srcAddressGroups;
             return this;
         }
 
+        /**
+         * @param srcAddressGroups Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder srcAddressGroups(List<String> srcAddressGroups) {
             return srcAddressGroups(Output.of(srcAddressGroups));
         }
 
+        /**
+         * @param srcAddressGroups Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+         * 
+         * @return builder
+         * 
+         */
         public Builder srcAddressGroups(String... srcAddressGroups) {
             return srcAddressGroups(List.of(srcAddressGroups));
         }
 
+        /**
+         * @param srcFqdns Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+         * 
+         * @return builder
+         * 
+         */
         public Builder srcFqdns(@Nullable Output<List<String>> srcFqdns) {
             $.srcFqdns = srcFqdns;
             return this;
         }
 
+        /**
+         * @param srcFqdns Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+         * 
+         * @return builder
+         * 
+         */
         public Builder srcFqdns(List<String> srcFqdns) {
             return srcFqdns(Output.of(srcFqdns));
         }
 
+        /**
+         * @param srcFqdns Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+         * 
+         * @return builder
+         * 
+         */
         public Builder srcFqdns(String... srcFqdns) {
             return srcFqdns(List.of(srcFqdns));
         }
 
         /**
-         * @param srcIpRanges CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
-         * 
-         * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+         * @param srcIpRanges CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
          * 
          * @return builder
          * 
@@ -310,9 +480,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param srcIpRanges CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
-         * 
-         * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+         * @param srcIpRanges CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
          * 
          * @return builder
          * 
@@ -322,9 +490,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param srcIpRanges CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
-         * 
-         * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+         * @param srcIpRanges CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
          * 
          * @return builder
          * 
@@ -333,28 +499,70 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
             return srcIpRanges(List.of(srcIpRanges));
         }
 
+        /**
+         * @param srcRegionCodes The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+         * 
+         * @return builder
+         * 
+         */
         public Builder srcRegionCodes(@Nullable Output<List<String>> srcRegionCodes) {
             $.srcRegionCodes = srcRegionCodes;
             return this;
         }
 
+        /**
+         * @param srcRegionCodes The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+         * 
+         * @return builder
+         * 
+         */
         public Builder srcRegionCodes(List<String> srcRegionCodes) {
             return srcRegionCodes(Output.of(srcRegionCodes));
         }
 
+        /**
+         * @param srcRegionCodes The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+         * 
+         * @return builder
+         * 
+         */
         public Builder srcRegionCodes(String... srcRegionCodes) {
             return srcRegionCodes(List.of(srcRegionCodes));
         }
 
+        /**
+         * @param srcThreatIntelligences Name of the Google Cloud Threat Intelligence list.
+         * 
+         * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+         * 
+         * @return builder
+         * 
+         */
         public Builder srcThreatIntelligences(@Nullable Output<List<String>> srcThreatIntelligences) {
             $.srcThreatIntelligences = srcThreatIntelligences;
             return this;
         }
 
+        /**
+         * @param srcThreatIntelligences Name of the Google Cloud Threat Intelligence list.
+         * 
+         * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+         * 
+         * @return builder
+         * 
+         */
         public Builder srcThreatIntelligences(List<String> srcThreatIntelligences) {
             return srcThreatIntelligences(Output.of(srcThreatIntelligences));
         }
 
+        /**
+         * @param srcThreatIntelligences Name of the Google Cloud Threat Intelligence list.
+         * 
+         * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+         * 
+         * @return builder
+         * 
+         */
         public Builder srcThreatIntelligences(String... srcThreatIntelligences) {
             return srcThreatIntelligences(List.of(srcThreatIntelligences));
         }

@@ -129,6 +129,8 @@ __all__ = [
     'ClusterNodeConfigReservationAffinityArgs',
     'ClusterNodeConfigSandboxConfigArgs',
     'ClusterNodeConfigShieldedInstanceConfigArgs',
+    'ClusterNodeConfigSoleTenantConfigArgs',
+    'ClusterNodeConfigSoleTenantConfigNodeAffinityArgs',
     'ClusterNodeConfigTaintArgs',
     'ClusterNodeConfigWorkloadMetadataConfigArgs',
     'ClusterNodePoolArgs',
@@ -155,6 +157,8 @@ __all__ = [
     'ClusterNodePoolNodeConfigReservationAffinityArgs',
     'ClusterNodePoolNodeConfigSandboxConfigArgs',
     'ClusterNodePoolNodeConfigShieldedInstanceConfigArgs',
+    'ClusterNodePoolNodeConfigSoleTenantConfigArgs',
+    'ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs',
     'ClusterNodePoolNodeConfigTaintArgs',
     'ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs',
     'ClusterNodePoolPlacementPolicyArgs',
@@ -194,6 +198,8 @@ __all__ = [
     'NodePoolNodeConfigReservationAffinityArgs',
     'NodePoolNodeConfigSandboxConfigArgs',
     'NodePoolNodeConfigShieldedInstanceConfigArgs',
+    'NodePoolNodeConfigSoleTenantConfigArgs',
+    'NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs',
     'NodePoolNodeConfigTaintArgs',
     'NodePoolNodeConfigWorkloadMetadataConfigArgs',
     'NodePoolPlacementPolicyArgs',
@@ -5156,6 +5162,7 @@ class ClusterNodeConfigArgs:
                  sandbox_config: Optional[pulumi.Input['ClusterNodeConfigSandboxConfigArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  shielded_instance_config: Optional[pulumi.Input['ClusterNodeConfigShieldedInstanceConfigArgs']] = None,
+                 sole_tenant_config: Optional[pulumi.Input['ClusterNodeConfigSoleTenantConfigArgs']] = None,
                  spot: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigTaintArgs']]]] = None,
@@ -5249,6 +5256,15 @@ class ClusterNodeConfigArgs:
         :param pulumi.Input[str] service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         :param pulumi.Input['ClusterNodeConfigShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance options. Structure is documented below.
+        :param pulumi.Input['ClusterNodeConfigSoleTenantConfigArgs'] sole_tenant_config: Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+               
+               sole_tenant_config {
+               node_affinity {
+               key = "compute.googleapis.com/node-group-name"
+               operator = "IN"
+               values = ["node-group-name"]
+               }
+               }
         :param pulumi.Input[bool] spot: A boolean that represents whether the underlying node VMs are spot.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
                for more information. Defaults to false.
@@ -5319,6 +5335,8 @@ class ClusterNodeConfigArgs:
             pulumi.set(__self__, "service_account", service_account)
         if shielded_instance_config is not None:
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+        if sole_tenant_config is not None:
+            pulumi.set(__self__, "sole_tenant_config", sole_tenant_config)
         if spot is not None:
             pulumi.set(__self__, "spot", spot)
         if tags is not None:
@@ -5710,6 +5728,26 @@ class ClusterNodeConfigArgs:
     @shielded_instance_config.setter
     def shielded_instance_config(self, value: Optional[pulumi.Input['ClusterNodeConfigShieldedInstanceConfigArgs']]):
         pulumi.set(self, "shielded_instance_config", value)
+
+    @property
+    @pulumi.getter(name="soleTenantConfig")
+    def sole_tenant_config(self) -> Optional[pulumi.Input['ClusterNodeConfigSoleTenantConfigArgs']]:
+        """
+        Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+
+        sole_tenant_config {
+        node_affinity {
+        key = "compute.googleapis.com/node-group-name"
+        operator = "IN"
+        values = ["node-group-name"]
+        }
+        }
+        """
+        return pulumi.get(self, "sole_tenant_config")
+
+    @sole_tenant_config.setter
+    def sole_tenant_config(self, value: Optional[pulumi.Input['ClusterNodeConfigSoleTenantConfigArgs']]):
+        pulumi.set(self, "sole_tenant_config", value)
 
     @property
     @pulumi.getter
@@ -6272,6 +6310,74 @@ class ClusterNodeConfigShieldedInstanceConfigArgs:
     @enable_secure_boot.setter
     def enable_secure_boot(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_secure_boot", value)
+
+
+@pulumi.input_type
+class ClusterNodeConfigSoleTenantConfigArgs:
+    def __init__(__self__, *,
+                 node_affinities: pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigSoleTenantConfigNodeAffinityArgs']]]):
+        pulumi.set(__self__, "node_affinities", node_affinities)
+
+    @property
+    @pulumi.getter(name="nodeAffinities")
+    def node_affinities(self) -> pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigSoleTenantConfigNodeAffinityArgs']]]:
+        return pulumi.get(self, "node_affinities")
+
+    @node_affinities.setter
+    def node_affinities(self, value: pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigSoleTenantConfigNodeAffinityArgs']]]):
+        pulumi.set(self, "node_affinities", value)
+
+
+@pulumi.input_type
+class ClusterNodeConfigSoleTenantConfigNodeAffinityArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 operator: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[str] key: The default or custom node affinity label key name.
+        :param pulumi.Input[str] operator: Specifies affinity or anti-affinity. Accepted values are `"IN"` or `"NOT_IN"`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: List of node affinity label values as strings.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        The default or custom node affinity label key name.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[str]:
+        """
+        Specifies affinity or anti-affinity. Accepted values are `"IN"` or `"NOT_IN"`
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of node affinity label values as strings.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
@@ -7008,6 +7114,7 @@ class ClusterNodePoolNodeConfigArgs:
                  sandbox_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigSandboxConfigArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  shielded_instance_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigShieldedInstanceConfigArgs']] = None,
+                 sole_tenant_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigArgs']] = None,
                  spot: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigTaintArgs']]]] = None,
@@ -7101,6 +7208,15 @@ class ClusterNodePoolNodeConfigArgs:
         :param pulumi.Input[str] service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         :param pulumi.Input['ClusterNodePoolNodeConfigShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance options. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigArgs'] sole_tenant_config: Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+               
+               sole_tenant_config {
+               node_affinity {
+               key = "compute.googleapis.com/node-group-name"
+               operator = "IN"
+               values = ["node-group-name"]
+               }
+               }
         :param pulumi.Input[bool] spot: A boolean that represents whether the underlying node VMs are spot.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
                for more information. Defaults to false.
@@ -7171,6 +7287,8 @@ class ClusterNodePoolNodeConfigArgs:
             pulumi.set(__self__, "service_account", service_account)
         if shielded_instance_config is not None:
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+        if sole_tenant_config is not None:
+            pulumi.set(__self__, "sole_tenant_config", sole_tenant_config)
         if spot is not None:
             pulumi.set(__self__, "spot", spot)
         if tags is not None:
@@ -7562,6 +7680,26 @@ class ClusterNodePoolNodeConfigArgs:
     @shielded_instance_config.setter
     def shielded_instance_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigShieldedInstanceConfigArgs']]):
         pulumi.set(self, "shielded_instance_config", value)
+
+    @property
+    @pulumi.getter(name="soleTenantConfig")
+    def sole_tenant_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigArgs']]:
+        """
+        Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+
+        sole_tenant_config {
+        node_affinity {
+        key = "compute.googleapis.com/node-group-name"
+        operator = "IN"
+        values = ["node-group-name"]
+        }
+        }
+        """
+        return pulumi.get(self, "sole_tenant_config")
+
+    @sole_tenant_config.setter
+    def sole_tenant_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigArgs']]):
+        pulumi.set(self, "sole_tenant_config", value)
 
     @property
     @pulumi.getter
@@ -8124,6 +8262,74 @@ class ClusterNodePoolNodeConfigShieldedInstanceConfigArgs:
     @enable_secure_boot.setter
     def enable_secure_boot(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_secure_boot", value)
+
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigSoleTenantConfigArgs:
+    def __init__(__self__, *,
+                 node_affinities: pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs']]]):
+        pulumi.set(__self__, "node_affinities", node_affinities)
+
+    @property
+    @pulumi.getter(name="nodeAffinities")
+    def node_affinities(self) -> pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs']]]:
+        return pulumi.get(self, "node_affinities")
+
+    @node_affinities.setter
+    def node_affinities(self, value: pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs']]]):
+        pulumi.set(self, "node_affinities", value)
+
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 operator: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[str] key: The default or custom node affinity label key name.
+        :param pulumi.Input[str] operator: Specifies affinity or anti-affinity. Accepted values are `"IN"` or `"NOT_IN"`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: List of node affinity label values as strings.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        The default or custom node affinity label key name.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[str]:
+        """
+        Specifies affinity or anti-affinity. Accepted values are `"IN"` or `"NOT_IN"`
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of node affinity label values as strings.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "values", value)
 
 
 @pulumi.input_type
@@ -9330,6 +9536,7 @@ class NodePoolNodeConfigArgs:
                  sandbox_config: Optional[pulumi.Input['NodePoolNodeConfigSandboxConfigArgs']] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  shielded_instance_config: Optional[pulumi.Input['NodePoolNodeConfigShieldedInstanceConfigArgs']] = None,
+                 sole_tenant_config: Optional[pulumi.Input['NodePoolNodeConfigSoleTenantConfigArgs']] = None,
                  spot: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigTaintArgs']]]] = None,
@@ -9388,6 +9595,8 @@ class NodePoolNodeConfigArgs:
             pulumi.set(__self__, "service_account", service_account)
         if shielded_instance_config is not None:
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+        if sole_tenant_config is not None:
+            pulumi.set(__self__, "sole_tenant_config", sole_tenant_config)
         if spot is not None:
             pulumi.set(__self__, "spot", spot)
         if tags is not None:
@@ -9639,6 +9848,15 @@ class NodePoolNodeConfigArgs:
     @shielded_instance_config.setter
     def shielded_instance_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigShieldedInstanceConfigArgs']]):
         pulumi.set(self, "shielded_instance_config", value)
+
+    @property
+    @pulumi.getter(name="soleTenantConfig")
+    def sole_tenant_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigSoleTenantConfigArgs']]:
+        return pulumi.get(self, "sole_tenant_config")
+
+    @sole_tenant_config.setter
+    def sole_tenant_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigSoleTenantConfigArgs']]):
+        pulumi.set(self, "sole_tenant_config", value)
 
     @property
     @pulumi.getter
@@ -10012,6 +10230,60 @@ class NodePoolNodeConfigShieldedInstanceConfigArgs:
     @enable_secure_boot.setter
     def enable_secure_boot(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_secure_boot", value)
+
+
+@pulumi.input_type
+class NodePoolNodeConfigSoleTenantConfigArgs:
+    def __init__(__self__, *,
+                 node_affinities: pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs']]]):
+        pulumi.set(__self__, "node_affinities", node_affinities)
+
+    @property
+    @pulumi.getter(name="nodeAffinities")
+    def node_affinities(self) -> pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs']]]:
+        return pulumi.get(self, "node_affinities")
+
+    @node_affinities.setter
+    def node_affinities(self, value: pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs']]]):
+        pulumi.set(self, "node_affinities", value)
+
+
+@pulumi.input_type
+class NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 operator: pulumi.Input[str],
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "values", value)
 
 
 @pulumi.input_type

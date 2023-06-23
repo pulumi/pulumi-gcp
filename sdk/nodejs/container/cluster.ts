@@ -161,7 +161,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly databaseEncryption!: pulumi.Output<outputs.container.ClusterDatabaseEncryption>;
     /**
-     * The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+     * The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
      */
     public readonly datapathProvider!: pulumi.Output<string>;
     /**
@@ -736,7 +736,7 @@ export interface ClusterState {
      */
     databaseEncryption?: pulumi.Input<inputs.container.ClusterDatabaseEncryption>;
     /**
-     * The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+     * The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
      */
     datapathProvider?: pulumi.Input<string>;
     /**
@@ -1155,7 +1155,7 @@ export interface ClusterArgs {
      */
     databaseEncryption?: pulumi.Input<inputs.container.ClusterDatabaseEncryption>;
     /**
-     * The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+     * The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
      */
     datapathProvider?: pulumi.Input<string>;
     /**

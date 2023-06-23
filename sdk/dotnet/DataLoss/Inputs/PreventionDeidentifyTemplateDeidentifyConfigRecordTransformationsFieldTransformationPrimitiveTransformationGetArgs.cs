@@ -79,7 +79,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<Inputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfigGetArgs>? RedactConfig { get; set; }
 
         /// <summary>
-        /// Replace with a specified value.
+        /// Replace each input value with a given value.
         /// Structure is documented below.
         /// </summary>
         [Input("replaceConfig")]

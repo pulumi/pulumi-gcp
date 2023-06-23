@@ -25,6 +25,11 @@ export type AttestorIamPolicy = import("./attestorIamPolicy").AttestorIamPolicy;
 export const AttestorIamPolicy: typeof import("./attestorIamPolicy").AttestorIamPolicy = null as any;
 utilities.lazyLoad(exports, ["AttestorIamPolicy"], () => require("./attestorIamPolicy"));
 
+export { GetAttestorIamPolicyArgs, GetAttestorIamPolicyResult, GetAttestorIamPolicyOutputArgs } from "./getAttestorIamPolicy";
+export const getAttestorIamPolicy: typeof import("./getAttestorIamPolicy").getAttestorIamPolicy = null as any;
+export const getAttestorIamPolicyOutput: typeof import("./getAttestorIamPolicy").getAttestorIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAttestorIamPolicy","getAttestorIamPolicyOutput"], () => require("./getAttestorIamPolicy"));
+
 export { PolicyArgs, PolicyState } from "./policy";
 export type Policy = import("./policy").Policy;
 export const Policy: typeof import("./policy").Policy = null as any;

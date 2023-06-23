@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScore;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,6 +18,12 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
      */
     private @Nullable String name;
     /**
+     * @return Optional custom sensitivity for this InfoType. This only applies to data profiling.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScore sensitivityScore;
+    /**
      * @return Optional version name for this InfoType.
      * 
      */
@@ -29,6 +36,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
+    }
+    /**
+     * @return Optional custom sensitivity for this InfoType. This only applies to data profiling.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScore> sensitivityScore() {
+        return Optional.ofNullable(this.sensitivityScore);
     }
     /**
      * @return Optional version name for this InfoType.
@@ -48,17 +63,24 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String name;
+        private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScore sensitivityScore;
         private @Nullable String version;
         public Builder() {}
         public Builder(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
+    	      this.sensitivityScore = defaults.sensitivityScore;
     	      this.version = defaults.version;
         }
 
         @CustomType.Setter
         public Builder name(@Nullable String name) {
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sensitivityScore(@Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScore sensitivityScore) {
+            this.sensitivityScore = sensitivityScore;
             return this;
         }
         @CustomType.Setter
@@ -69,6 +91,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType build() {
             final var o = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType();
             o.name = name;
+            o.sensitivityScore = sensitivityScore;
             o.version = version;
             return o;
         }

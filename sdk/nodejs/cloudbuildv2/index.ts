@@ -25,6 +25,11 @@ export type ConnectionIAMPolicy = import("./connectionIAMPolicy").ConnectionIAMP
 export const ConnectionIAMPolicy: typeof import("./connectionIAMPolicy").ConnectionIAMPolicy = null as any;
 utilities.lazyLoad(exports, ["ConnectionIAMPolicy"], () => require("./connectionIAMPolicy"));
 
+export { GetConnectionIamPolicyArgs, GetConnectionIamPolicyResult, GetConnectionIamPolicyOutputArgs } from "./getConnectionIamPolicy";
+export const getConnectionIamPolicy: typeof import("./getConnectionIamPolicy").getConnectionIamPolicy = null as any;
+export const getConnectionIamPolicyOutput: typeof import("./getConnectionIamPolicy").getConnectionIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectionIamPolicy","getConnectionIamPolicyOutput"], () => require("./getConnectionIamPolicy"));
+
 export { RepositoryArgs, RepositoryState } from "./repository";
 export type Repository = import("./repository").Repository;
 export const Repository: typeof import("./repository").Repository = null as any;

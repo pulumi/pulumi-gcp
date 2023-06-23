@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { GetWorkstationConfigIamPolicyArgs, GetWorkstationConfigIamPolicyResult, GetWorkstationConfigIamPolicyOutputArgs } from "./getWorkstationConfigIamPolicy";
+export const getWorkstationConfigIamPolicy: typeof import("./getWorkstationConfigIamPolicy").getWorkstationConfigIamPolicy = null as any;
+export const getWorkstationConfigIamPolicyOutput: typeof import("./getWorkstationConfigIamPolicy").getWorkstationConfigIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkstationConfigIamPolicy","getWorkstationConfigIamPolicyOutput"], () => require("./getWorkstationConfigIamPolicy"));
+
+export { GetWorkstationIamPolicyArgs, GetWorkstationIamPolicyResult, GetWorkstationIamPolicyOutputArgs } from "./getWorkstationIamPolicy";
+export const getWorkstationIamPolicy: typeof import("./getWorkstationIamPolicy").getWorkstationIamPolicy = null as any;
+export const getWorkstationIamPolicyOutput: typeof import("./getWorkstationIamPolicy").getWorkstationIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkstationIamPolicy","getWorkstationIamPolicyOutput"], () => require("./getWorkstationIamPolicy"));
+
 export { WorkstationArgs, WorkstationState } from "./workstation";
 export type Workstation = import("./workstation").Workstation;
 export const Workstation: typeof import("./workstation").Workstation = null as any;

@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     [OutputType]
     public sealed class FeatureSpec
     {
+        public readonly Outputs.FeatureSpecFleetobservability? Fleetobservability;
         /// <summary>
         /// Multicluster Ingress-specific spec.
         /// The `multiclusteringress` block supports:
@@ -20,8 +21,12 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         public readonly Outputs.FeatureSpecMulticlusteringress? Multiclusteringress;
 
         [OutputConstructor]
-        private FeatureSpec(Outputs.FeatureSpecMulticlusteringress? multiclusteringress)
+        private FeatureSpec(
+            Outputs.FeatureSpecFleetobservability? fleetobservability,
+
+            Outputs.FeatureSpecMulticlusteringress? multiclusteringress)
         {
+            Fleetobservability = fleetobservability;
             Multiclusteringress = multiclusteringress;
         }
     }

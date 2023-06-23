@@ -59,9 +59,12 @@ type GetBillingAccountArgs struct {
 	BillingAccount *string `pulumi:"billingAccount"`
 	// The display name of the billing account.
 	DisplayName *string `pulumi:"displayName"`
-	// `true` if the billing account is open, `false` if the billing account is closed.
+	// `true` if projects associated with the billing account should be read, `false` if this step
+	// should be skipped. Setting `false` may be useful if the user permissions do not allow listing projects. Defaults to `true`.
 	//
 	// > **NOTE:** One of `billingAccount` or `displayName` must be specified.
+	LookupProjects *bool `pulumi:"lookupProjects"`
+	// `true` if the billing account is open, `false` if the billing account is closed.
 	Open *bool `pulumi:"open"`
 }
 
@@ -70,11 +73,13 @@ type GetBillingAccountResult struct {
 	BillingAccount *string `pulumi:"billingAccount"`
 	DisplayName    string  `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id             string `pulumi:"id"`
+	LookupProjects *bool  `pulumi:"lookupProjects"`
 	// The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
 	Name string `pulumi:"name"`
 	Open bool   `pulumi:"open"`
-	// The IDs of any projects associated with the billing account.
+	// The IDs of any projects associated with the billing account. `lookupProjects` must not be false
+	// for this to be populated.
 	ProjectIds []string `pulumi:"projectIds"`
 }
 
@@ -97,9 +102,12 @@ type GetBillingAccountOutputArgs struct {
 	BillingAccount pulumi.StringPtrInput `pulumi:"billingAccount"`
 	// The display name of the billing account.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// `true` if the billing account is open, `false` if the billing account is closed.
+	// `true` if projects associated with the billing account should be read, `false` if this step
+	// should be skipped. Setting `false` may be useful if the user permissions do not allow listing projects. Defaults to `true`.
 	//
 	// > **NOTE:** One of `billingAccount` or `displayName` must be specified.
+	LookupProjects pulumi.BoolPtrInput `pulumi:"lookupProjects"`
+	// `true` if the billing account is open, `false` if the billing account is closed.
 	Open pulumi.BoolPtrInput `pulumi:"open"`
 }
 
@@ -135,6 +143,10 @@ func (o GetBillingAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBillingAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+func (o GetBillingAccountResultOutput) LookupProjects() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetBillingAccountResult) *bool { return v.LookupProjects }).(pulumi.BoolPtrOutput)
+}
+
 // The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
 func (o GetBillingAccountResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBillingAccountResult) string { return v.Name }).(pulumi.StringOutput)
@@ -144,7 +156,8 @@ func (o GetBillingAccountResultOutput) Open() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetBillingAccountResult) bool { return v.Open }).(pulumi.BoolOutput)
 }
 
-// The IDs of any projects associated with the billing account.
+// The IDs of any projects associated with the billing account. `lookupProjects` must not be false
+// for this to be populated.
 func (o GetBillingAccountResultOutput) ProjectIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBillingAccountResult) []string { return v.ProjectIds }).(pulumi.StringArrayOutput)
 }

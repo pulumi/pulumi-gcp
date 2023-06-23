@@ -96,6 +96,10 @@ export class Connector extends pulumi.CustomResource {
     }
 
     /**
+     * List of projects using the connector.
+     */
+    public /*out*/ readonly connectedProjects!: pulumi.Output<string[]>;
+    /**
      * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
      */
     public readonly ipCidrRange!: pulumi.Output<string | undefined>;
@@ -166,6 +170,7 @@ export class Connector extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectorState | undefined;
+            resourceInputs["connectedProjects"] = state ? state.connectedProjects : undefined;
             resourceInputs["ipCidrRange"] = state ? state.ipCidrRange : undefined;
             resourceInputs["machineType"] = state ? state.machineType : undefined;
             resourceInputs["maxInstances"] = state ? state.maxInstances : undefined;
@@ -192,6 +197,7 @@ export class Connector extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["subnet"] = args ? args.subnet : undefined;
+            resourceInputs["connectedProjects"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
@@ -204,6 +210,10 @@ export class Connector extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Connector resources.
  */
 export interface ConnectorState {
+    /**
+     * List of projects using the connector.
+     */
+    connectedProjects?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
      */

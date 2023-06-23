@@ -41,6 +41,13 @@ __all__ = [
     'AiMetadataStoreEncryptionSpec',
     'AiMetadataStoreState',
     'AiTensorboardEncryptionSpec',
+    'GetAiIndexDeployedIndexResult',
+    'GetAiIndexIndexStatResult',
+    'GetAiIndexMetadataResult',
+    'GetAiIndexMetadataConfigResult',
+    'GetAiIndexMetadataConfigAlgorithmConfigResult',
+    'GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigResult',
+    'GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigResult',
 ]
 
 @pulumi.output_type
@@ -1697,5 +1704,153 @@ class AiTensorboardEncryptionSpec(dict):
         Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the resource is created.
         """
         return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class GetAiIndexDeployedIndexResult(dict):
+    def __init__(__self__, *,
+                 deployed_index_id: str,
+                 index_endpoint: str):
+        pulumi.set(__self__, "deployed_index_id", deployed_index_id)
+        pulumi.set(__self__, "index_endpoint", index_endpoint)
+
+    @property
+    @pulumi.getter(name="deployedIndexId")
+    def deployed_index_id(self) -> str:
+        return pulumi.get(self, "deployed_index_id")
+
+    @property
+    @pulumi.getter(name="indexEndpoint")
+    def index_endpoint(self) -> str:
+        return pulumi.get(self, "index_endpoint")
+
+
+@pulumi.output_type
+class GetAiIndexIndexStatResult(dict):
+    def __init__(__self__, *,
+                 shards_count: int,
+                 vectors_count: str):
+        pulumi.set(__self__, "shards_count", shards_count)
+        pulumi.set(__self__, "vectors_count", vectors_count)
+
+    @property
+    @pulumi.getter(name="shardsCount")
+    def shards_count(self) -> int:
+        return pulumi.get(self, "shards_count")
+
+    @property
+    @pulumi.getter(name="vectorsCount")
+    def vectors_count(self) -> str:
+        return pulumi.get(self, "vectors_count")
+
+
+@pulumi.output_type
+class GetAiIndexMetadataResult(dict):
+    def __init__(__self__, *,
+                 configs: Sequence['outputs.GetAiIndexMetadataConfigResult'],
+                 contents_delta_uri: str,
+                 is_complete_overwrite: bool):
+        pulumi.set(__self__, "configs", configs)
+        pulumi.set(__self__, "contents_delta_uri", contents_delta_uri)
+        pulumi.set(__self__, "is_complete_overwrite", is_complete_overwrite)
+
+    @property
+    @pulumi.getter
+    def configs(self) -> Sequence['outputs.GetAiIndexMetadataConfigResult']:
+        return pulumi.get(self, "configs")
+
+    @property
+    @pulumi.getter(name="contentsDeltaUri")
+    def contents_delta_uri(self) -> str:
+        return pulumi.get(self, "contents_delta_uri")
+
+    @property
+    @pulumi.getter(name="isCompleteOverwrite")
+    def is_complete_overwrite(self) -> bool:
+        return pulumi.get(self, "is_complete_overwrite")
+
+
+@pulumi.output_type
+class GetAiIndexMetadataConfigResult(dict):
+    def __init__(__self__, *,
+                 algorithm_configs: Sequence['outputs.GetAiIndexMetadataConfigAlgorithmConfigResult'],
+                 approximate_neighbors_count: int,
+                 dimensions: int,
+                 distance_measure_type: str,
+                 feature_norm_type: str):
+        pulumi.set(__self__, "algorithm_configs", algorithm_configs)
+        pulumi.set(__self__, "approximate_neighbors_count", approximate_neighbors_count)
+        pulumi.set(__self__, "dimensions", dimensions)
+        pulumi.set(__self__, "distance_measure_type", distance_measure_type)
+        pulumi.set(__self__, "feature_norm_type", feature_norm_type)
+
+    @property
+    @pulumi.getter(name="algorithmConfigs")
+    def algorithm_configs(self) -> Sequence['outputs.GetAiIndexMetadataConfigAlgorithmConfigResult']:
+        return pulumi.get(self, "algorithm_configs")
+
+    @property
+    @pulumi.getter(name="approximateNeighborsCount")
+    def approximate_neighbors_count(self) -> int:
+        return pulumi.get(self, "approximate_neighbors_count")
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> int:
+        return pulumi.get(self, "dimensions")
+
+    @property
+    @pulumi.getter(name="distanceMeasureType")
+    def distance_measure_type(self) -> str:
+        return pulumi.get(self, "distance_measure_type")
+
+    @property
+    @pulumi.getter(name="featureNormType")
+    def feature_norm_type(self) -> str:
+        return pulumi.get(self, "feature_norm_type")
+
+
+@pulumi.output_type
+class GetAiIndexMetadataConfigAlgorithmConfigResult(dict):
+    def __init__(__self__, *,
+                 brute_force_configs: Sequence['outputs.GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigResult'],
+                 tree_ah_configs: Sequence['outputs.GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigResult']):
+        pulumi.set(__self__, "brute_force_configs", brute_force_configs)
+        pulumi.set(__self__, "tree_ah_configs", tree_ah_configs)
+
+    @property
+    @pulumi.getter(name="bruteForceConfigs")
+    def brute_force_configs(self) -> Sequence['outputs.GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigResult']:
+        return pulumi.get(self, "brute_force_configs")
+
+    @property
+    @pulumi.getter(name="treeAhConfigs")
+    def tree_ah_configs(self) -> Sequence['outputs.GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigResult']:
+        return pulumi.get(self, "tree_ah_configs")
+
+
+@pulumi.output_type
+class GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigResult(dict):
+    def __init__(__self__):
+        pass
+
+
+@pulumi.output_type
+class GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigResult(dict):
+    def __init__(__self__, *,
+                 leaf_node_embedding_count: int,
+                 leaf_nodes_to_search_percent: int):
+        pulumi.set(__self__, "leaf_node_embedding_count", leaf_node_embedding_count)
+        pulumi.set(__self__, "leaf_nodes_to_search_percent", leaf_nodes_to_search_percent)
+
+    @property
+    @pulumi.getter(name="leafNodeEmbeddingCount")
+    def leaf_node_embedding_count(self) -> int:
+        return pulumi.get(self, "leaf_node_embedding_count")
+
+    @property
+    @pulumi.getter(name="leafNodesToSearchPercent")
+    def leaf_nodes_to_search_percent(self) -> int:
+        return pulumi.get(self, "leaf_nodes_to_search_percent")
 
 

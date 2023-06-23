@@ -123,6 +123,34 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// ### Dlp Stored Info Type With Id
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var withStoredInfoTypeId = new Gcp.DataLoss.PreventionStoredInfoType("withStoredInfoTypeId", new()
+    ///     {
+    ///         Description = "Description",
+    ///         DisplayName = "Displayname",
+    ///         Parent = "projects/my-project-name",
+    ///         Regex = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeRegexArgs
+    ///         {
+    ///             GroupIndexes = new[]
+    ///             {
+    ///                 2,
+    ///             },
+    ///             Pattern = "patient",
+    ///         },
+    ///         StoredInfoTypeId = "id-",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -190,6 +218,14 @@ namespace Pulumi.Gcp.DataLoss
         /// </summary>
         [Output("regex")]
         public Output<Outputs.PreventionStoredInfoTypeRegex?> Regex { get; private set; } = null!;
+
+        /// <summary>
+        /// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
+        /// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is 100
+        /// characters. Can be empty to allow the system to generate one.
+        /// </summary>
+        [Output("storedInfoTypeId")]
+        public Output<string> StoredInfoTypeId { get; private set; } = null!;
 
 
         /// <summary>
@@ -283,6 +319,14 @@ namespace Pulumi.Gcp.DataLoss
         [Input("regex")]
         public Input<Inputs.PreventionStoredInfoTypeRegexArgs>? Regex { get; set; }
 
+        /// <summary>
+        /// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
+        /// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is 100
+        /// characters. Can be empty to allow the system to generate one.
+        /// </summary>
+        [Input("storedInfoTypeId")]
+        public Input<string>? StoredInfoTypeId { get; set; }
+
         public PreventionStoredInfoTypeArgs()
         {
         }
@@ -342,6 +386,14 @@ namespace Pulumi.Gcp.DataLoss
         /// </summary>
         [Input("regex")]
         public Input<Inputs.PreventionStoredInfoTypeRegexGetArgs>? Regex { get; set; }
+
+        /// <summary>
+        /// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
+        /// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is 100
+        /// characters. Can be empty to allow the system to generate one.
+        /// </summary>
+        [Input("storedInfoTypeId")]
+        public Input<string>? StoredInfoTypeId { get; set; }
 
         public PreventionStoredInfoTypeState()
         {

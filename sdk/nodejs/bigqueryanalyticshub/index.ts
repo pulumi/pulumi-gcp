@@ -25,6 +25,16 @@ export type DataExchangeIamPolicy = import("./dataExchangeIamPolicy").DataExchan
 export const DataExchangeIamPolicy: typeof import("./dataExchangeIamPolicy").DataExchangeIamPolicy = null as any;
 utilities.lazyLoad(exports, ["DataExchangeIamPolicy"], () => require("./dataExchangeIamPolicy"));
 
+export { GetDataExchangeIamPolicyArgs, GetDataExchangeIamPolicyResult, GetDataExchangeIamPolicyOutputArgs } from "./getDataExchangeIamPolicy";
+export const getDataExchangeIamPolicy: typeof import("./getDataExchangeIamPolicy").getDataExchangeIamPolicy = null as any;
+export const getDataExchangeIamPolicyOutput: typeof import("./getDataExchangeIamPolicy").getDataExchangeIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getDataExchangeIamPolicy","getDataExchangeIamPolicyOutput"], () => require("./getDataExchangeIamPolicy"));
+
+export { GetListingIamPolicyArgs, GetListingIamPolicyResult, GetListingIamPolicyOutputArgs } from "./getListingIamPolicy";
+export const getListingIamPolicy: typeof import("./getListingIamPolicy").getListingIamPolicy = null as any;
+export const getListingIamPolicyOutput: typeof import("./getListingIamPolicy").getListingIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getListingIamPolicy","getListingIamPolicyOutput"], () => require("./getListingIamPolicy"));
+
 export { ListingArgs, ListingState } from "./listing";
 export type Listing = import("./listing").Listing;
 export const Listing: typeof import("./listing").Listing = null as any;

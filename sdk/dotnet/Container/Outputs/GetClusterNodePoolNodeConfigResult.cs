@@ -40,6 +40,7 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeConfigSandboxConfigResult> SandboxConfigs;
         public readonly string ServiceAccount;
         public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeConfigShieldedInstanceConfigResult> ShieldedInstanceConfigs;
+        public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeConfigSoleTenantConfigResult> SoleTenantConfigs;
         public readonly bool Spot;
         public readonly ImmutableArray<string> Tags;
         public readonly ImmutableArray<Outputs.GetClusterNodePoolNodeConfigTaintResult> Taints;
@@ -101,6 +102,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             ImmutableArray<Outputs.GetClusterNodePoolNodeConfigShieldedInstanceConfigResult> shieldedInstanceConfigs,
 
+            ImmutableArray<Outputs.GetClusterNodePoolNodeConfigSoleTenantConfigResult> soleTenantConfigs,
+
             bool spot,
 
             ImmutableArray<string> tags,
@@ -136,6 +139,7 @@ namespace Pulumi.Gcp.Container.Outputs
             SandboxConfigs = sandboxConfigs;
             ServiceAccount = serviceAccount;
             ShieldedInstanceConfigs = shieldedInstanceConfigs;
+            SoleTenantConfigs = soleTenantConfigs;
             Spot = spot;
             Tags = tags;
             Taints = taints;

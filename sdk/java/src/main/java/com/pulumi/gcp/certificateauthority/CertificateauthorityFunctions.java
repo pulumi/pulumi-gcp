@@ -10,7 +10,13 @@ import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityArgs;
 import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityPlainArgs;
+import com.pulumi.gcp.certificateauthority.inputs.GetCaPoolIamPolicyArgs;
+import com.pulumi.gcp.certificateauthority.inputs.GetCaPoolIamPolicyPlainArgs;
+import com.pulumi.gcp.certificateauthority.inputs.GetCertificateTemplateIamPolicyArgs;
+import com.pulumi.gcp.certificateauthority.inputs.GetCertificateTemplateIamPolicyPlainArgs;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityResult;
+import com.pulumi.gcp.certificateauthority.outputs.GetCaPoolIamPolicyResult;
+import com.pulumi.gcp.certificateauthority.outputs.GetCertificateTemplateIamPolicyResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class CertificateauthorityFunctions {
@@ -253,5 +259,301 @@ public final class CertificateauthorityFunctions {
      */
     public static CompletableFuture<GetAuthorityResult> getAuthorityPlain(GetAuthorityPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:certificateauthority/getAuthority:getAuthority", TypeShape.of(GetAuthorityResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for capool
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
+     * import com.pulumi.gcp.certificateauthority.inputs.GetCaPoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = CertificateauthorityFunctions.getCaPoolIamPolicy(GetCaPoolIamPolicyArgs.builder()
+     *             .caPool(google_privateca_ca_pool.default().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetCaPoolIamPolicyResult> getCaPoolIamPolicy(GetCaPoolIamPolicyArgs args) {
+        return getCaPoolIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for capool
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
+     * import com.pulumi.gcp.certificateauthority.inputs.GetCaPoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = CertificateauthorityFunctions.getCaPoolIamPolicy(GetCaPoolIamPolicyArgs.builder()
+     *             .caPool(google_privateca_ca_pool.default().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetCaPoolIamPolicyResult> getCaPoolIamPolicyPlain(GetCaPoolIamPolicyPlainArgs args) {
+        return getCaPoolIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for capool
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
+     * import com.pulumi.gcp.certificateauthority.inputs.GetCaPoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = CertificateauthorityFunctions.getCaPoolIamPolicy(GetCaPoolIamPolicyArgs.builder()
+     *             .caPool(google_privateca_ca_pool.default().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetCaPoolIamPolicyResult> getCaPoolIamPolicy(GetCaPoolIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:certificateauthority/getCaPoolIamPolicy:getCaPoolIamPolicy", TypeShape.of(GetCaPoolIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for capool
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
+     * import com.pulumi.gcp.certificateauthority.inputs.GetCaPoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = CertificateauthorityFunctions.getCaPoolIamPolicy(GetCaPoolIamPolicyArgs.builder()
+     *             .caPool(google_privateca_ca_pool.default().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetCaPoolIamPolicyResult> getCaPoolIamPolicyPlain(GetCaPoolIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:certificateauthority/getCaPoolIamPolicy:getCaPoolIamPolicy", TypeShape.of(GetCaPoolIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for certificatetemplate
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
+     * import com.pulumi.gcp.certificateauthority.inputs.GetCertificateTemplateIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = CertificateauthorityFunctions.getCertificateTemplateIamPolicy(GetCertificateTemplateIamPolicyArgs.builder()
+     *             .certificateTemplate(google_privateca_certificate_template.default().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetCertificateTemplateIamPolicyResult> getCertificateTemplateIamPolicy(GetCertificateTemplateIamPolicyArgs args) {
+        return getCertificateTemplateIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for certificatetemplate
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
+     * import com.pulumi.gcp.certificateauthority.inputs.GetCertificateTemplateIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = CertificateauthorityFunctions.getCertificateTemplateIamPolicy(GetCertificateTemplateIamPolicyArgs.builder()
+     *             .certificateTemplate(google_privateca_certificate_template.default().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetCertificateTemplateIamPolicyResult> getCertificateTemplateIamPolicyPlain(GetCertificateTemplateIamPolicyPlainArgs args) {
+        return getCertificateTemplateIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for certificatetemplate
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
+     * import com.pulumi.gcp.certificateauthority.inputs.GetCertificateTemplateIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = CertificateauthorityFunctions.getCertificateTemplateIamPolicy(GetCertificateTemplateIamPolicyArgs.builder()
+     *             .certificateTemplate(google_privateca_certificate_template.default().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetCertificateTemplateIamPolicyResult> getCertificateTemplateIamPolicy(GetCertificateTemplateIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:certificateauthority/getCertificateTemplateIamPolicy:getCertificateTemplateIamPolicy", TypeShape.of(GetCertificateTemplateIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for certificatetemplate
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
+     * import com.pulumi.gcp.certificateauthority.inputs.GetCertificateTemplateIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = CertificateauthorityFunctions.getCertificateTemplateIamPolicy(GetCertificateTemplateIamPolicyArgs.builder()
+     *             .certificateTemplate(google_privateca_certificate_template.default().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetCertificateTemplateIamPolicyResult> getCertificateTemplateIamPolicyPlain(GetCertificateTemplateIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:certificateauthority/getCertificateTemplateIamPolicy:getCertificateTemplateIamPolicy", TypeShape.of(GetCertificateTemplateIamPolicyResult.class), args, Utilities.withVersion(options));
     }
 }

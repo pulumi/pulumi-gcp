@@ -11,6 +11,8 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'CertificateIssuanceConfigCertificateAuthorityConfig',
+    'CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig',
     'CertificateManaged',
     'CertificateManagedAuthorizationAttemptInfo',
     'CertificateManagedProvisioningIssue',
@@ -19,6 +21,87 @@ __all__ = [
     'CertificateSelfManaged',
     'DnsAuthorizationDnsResourceRecord',
 ]
+
+@pulumi.output_type
+class CertificateIssuanceConfigCertificateAuthorityConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateAuthorityServiceConfig":
+            suggest = "certificate_authority_service_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateIssuanceConfigCertificateAuthorityConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateIssuanceConfigCertificateAuthorityConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateIssuanceConfigCertificateAuthorityConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 certificate_authority_service_config: Optional['outputs.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig'] = None):
+        """
+        :param 'CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs' certificate_authority_service_config: Defines a CertificateAuthorityServiceConfig.
+               Structure is documented below.
+        """
+        if certificate_authority_service_config is not None:
+            pulumi.set(__self__, "certificate_authority_service_config", certificate_authority_service_config)
+
+    @property
+    @pulumi.getter(name="certificateAuthorityServiceConfig")
+    def certificate_authority_service_config(self) -> Optional['outputs.CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig']:
+        """
+        Defines a CertificateAuthorityServiceConfig.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "certificate_authority_service_config")
+
+
+@pulumi.output_type
+class CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caPool":
+            suggest = "ca_pool"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ca_pool: str):
+        """
+        :param str ca_pool: A CA pool resource used to issue a certificate.
+               The CA pool string has a relative resource path following the form
+               "projects/{project}/locations/{location}/caPools/{caPool}".
+               
+               - - -
+        """
+        pulumi.set(__self__, "ca_pool", ca_pool)
+
+    @property
+    @pulumi.getter(name="caPool")
+    def ca_pool(self) -> str:
+        """
+        A CA pool resource used to issue a certificate.
+        The CA pool string has a relative resource path following the form
+        "projects/{project}/locations/{location}/caPools/{caPool}".
+
+        - - -
+        """
+        return pulumi.get(self, "ca_pool")
+
 
 @pulumi.output_type
 class CertificateManaged(dict):

@@ -15,6 +15,11 @@ export type FeatureMembership = import("./featureMembership").FeatureMembership;
 export const FeatureMembership: typeof import("./featureMembership").FeatureMembership = null as any;
 utilities.lazyLoad(exports, ["FeatureMembership"], () => require("./featureMembership"));
 
+export { GetMembershipIamPolicyArgs, GetMembershipIamPolicyResult, GetMembershipIamPolicyOutputArgs } from "./getMembershipIamPolicy";
+export const getMembershipIamPolicy: typeof import("./getMembershipIamPolicy").getMembershipIamPolicy = null as any;
+export const getMembershipIamPolicyOutput: typeof import("./getMembershipIamPolicy").getMembershipIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getMembershipIamPolicy","getMembershipIamPolicyOutput"], () => require("./getMembershipIamPolicy"));
+
 export { MembershipArgs, MembershipState } from "./membership";
 export type Membership = import("./membership").Membership;
 export const Membership: typeof import("./membership").Membership = null as any;

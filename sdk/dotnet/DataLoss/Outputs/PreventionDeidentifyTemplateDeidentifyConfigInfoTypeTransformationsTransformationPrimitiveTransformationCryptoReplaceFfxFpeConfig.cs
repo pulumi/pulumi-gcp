@@ -14,8 +14,8 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig
     {
         /// <summary>
-        /// Common alphabets.
-        /// Possible values are: `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
+        /// Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
+        /// Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
         /// </summary>
         public readonly string? CommonAlphabet;
         /// <summary>
@@ -38,11 +38,11 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey? CryptoKey;
         /// <summary>
         /// This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-        /// ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&amp;*()_-+={[}]|:;"'&lt;,&gt;.?/``
+        /// ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&amp;*()_-+={[}]|:;"'&lt;,&gt;.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
         /// </summary>
         public readonly string? CustomAlphabet;
         /// <summary>
-        /// The native way to select the alphabet. Must be in the range \[2, 95\].
+        /// The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
         /// </summary>
         public readonly int? Radix;
         /// <summary>

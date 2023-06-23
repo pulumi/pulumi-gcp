@@ -88,9 +88,16 @@ namespace Pulumi.Gcp.Organizations
         public string? DisplayName { get; set; }
 
         /// <summary>
-        /// `true` if the billing account is open, `false` if the billing account is closed.
+        /// `true` if projects associated with the billing account should be read, `false` if this step
+        /// should be skipped. Setting `false` may be useful if the user permissions do not allow listing projects. Defaults to `true`.
         /// 
         /// &gt; **NOTE:** One of `billing_account` or `display_name` must be specified.
+        /// </summary>
+        [Input("lookupProjects")]
+        public bool? LookupProjects { get; set; }
+
+        /// <summary>
+        /// `true` if the billing account is open, `false` if the billing account is closed.
         /// </summary>
         [Input("open")]
         public bool? Open { get; set; }
@@ -116,9 +123,16 @@ namespace Pulumi.Gcp.Organizations
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// `true` if the billing account is open, `false` if the billing account is closed.
+        /// `true` if projects associated with the billing account should be read, `false` if this step
+        /// should be skipped. Setting `false` may be useful if the user permissions do not allow listing projects. Defaults to `true`.
         /// 
         /// &gt; **NOTE:** One of `billing_account` or `display_name` must be specified.
+        /// </summary>
+        [Input("lookupProjects")]
+        public Input<bool>? LookupProjects { get; set; }
+
+        /// <summary>
+        /// `true` if the billing account is open, `false` if the billing account is closed.
         /// </summary>
         [Input("open")]
         public Input<bool>? Open { get; set; }
@@ -139,13 +153,15 @@ namespace Pulumi.Gcp.Organizations
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly bool? LookupProjects;
         /// <summary>
         /// The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
         /// </summary>
         public readonly string Name;
         public readonly bool Open;
         /// <summary>
-        /// The IDs of any projects associated with the billing account.
+        /// The IDs of any projects associated with the billing account. `lookup_projects` must not be false
+        /// for this to be populated.
         /// </summary>
         public readonly ImmutableArray<string> ProjectIds;
 
@@ -157,6 +173,8 @@ namespace Pulumi.Gcp.Organizations
 
             string id,
 
+            bool? lookupProjects,
+
             string name,
 
             bool open,
@@ -166,6 +184,7 @@ namespace Pulumi.Gcp.Organizations
             BillingAccount = billingAccount;
             DisplayName = displayName;
             Id = id;
+            LookupProjects = lookupProjects;
             Name = name;
             Open = open;
             ProjectIds = projectIds;

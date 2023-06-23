@@ -307,6 +307,14 @@ namespace Pulumi.Gcp.DataLoss
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
 
+        /// <summary>
+        /// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+        /// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+        /// 100 characters. Can be empty to allow the system to generate one.
+        /// </summary>
+        [Output("templateId")]
+        public Output<string> TemplateId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a PreventionInspectTemplate resource with the given unique name, arguments, and options.
@@ -385,6 +393,14 @@ namespace Pulumi.Gcp.DataLoss
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
 
+        /// <summary>
+        /// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+        /// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+        /// 100 characters. Can be empty to allow the system to generate one.
+        /// </summary>
+        [Input("templateId")]
+        public Input<string>? TemplateId { get; set; }
+
         public PreventionInspectTemplateArgs()
         {
         }
@@ -451,6 +467,14 @@ namespace Pulumi.Gcp.DataLoss
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
+
+        /// <summary>
+        /// The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+        /// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+        /// 100 characters. Can be empty to allow the system to generate one.
+        /// </summary>
+        [Input("templateId")]
+        public Input<string>? TemplateId { get; set; }
 
         public PreventionInspectTemplateState()
         {

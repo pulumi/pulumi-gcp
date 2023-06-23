@@ -453,6 +453,63 @@ import (
 //	}
 //
 // ```
+// ### Dlp Job Trigger With Id
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataloss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataloss.NewPreventionJobTrigger(ctx, "withTriggerId", &dataloss.PreventionJobTriggerArgs{
+//				Description: pulumi.String("Starting description"),
+//				DisplayName: pulumi.String("display"),
+//				InspectJob: &dataloss.PreventionJobTriggerInspectJobArgs{
+//					Actions: dataloss.PreventionJobTriggerInspectJobActionArray{
+//						&dataloss.PreventionJobTriggerInspectJobActionArgs{
+//							SaveFindings: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs{
+//								OutputConfig: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs{
+//									Table: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs{
+//										DatasetId: pulumi.String("dataset123"),
+//										ProjectId: pulumi.String("project"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//					InspectTemplateName: pulumi.String("fake"),
+//					StorageConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigArgs{
+//						CloudStorageOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs{
+//							FileSet: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs{
+//								Url: pulumi.String("gs://mybucket/directory/"),
+//							},
+//						},
+//					},
+//				},
+//				Parent:    pulumi.String("projects/my-project-name"),
+//				TriggerId: pulumi.String("id-"),
+//				Triggers: dataloss.PreventionJobTriggerTriggerArray{
+//					&dataloss.PreventionJobTriggerTriggerArgs{
+//						Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
+//							RecurrencePeriodDuration: pulumi.String("86400s"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -540,6 +597,10 @@ type PreventionJobTrigger struct {
 	// Default value is `HEALTHY`.
 	// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
 	Status pulumi.StringPtrOutput `pulumi:"status"`
+	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+.
+	// The maximum length is 100 characters. Can be empty to allow the system to generate one.
+	TriggerId pulumi.StringOutput `pulumi:"triggerId"`
 	// What event needs to occur for a new job to be started.
 	// Structure is documented below.
 	Triggers PreventionJobTriggerTriggerArrayOutput `pulumi:"triggers"`
@@ -650,6 +711,10 @@ type preventionJobTriggerState struct {
 	// Default value is `HEALTHY`.
 	// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
 	Status *string `pulumi:"status"`
+	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+.
+	// The maximum length is 100 characters. Can be empty to allow the system to generate one.
+	TriggerId *string `pulumi:"triggerId"`
 	// What event needs to occur for a new job to be started.
 	// Structure is documented below.
 	Triggers []PreventionJobTriggerTrigger `pulumi:"triggers"`
@@ -726,6 +791,10 @@ type PreventionJobTriggerState struct {
 	// Default value is `HEALTHY`.
 	// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
 	Status pulumi.StringPtrInput
+	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+.
+	// The maximum length is 100 characters. Can be empty to allow the system to generate one.
+	TriggerId pulumi.StringPtrInput
 	// What event needs to occur for a new job to be started.
 	// Structure is documented below.
 	Triggers PreventionJobTriggerTriggerArrayInput
@@ -755,6 +824,10 @@ type preventionJobTriggerArgs struct {
 	// Default value is `HEALTHY`.
 	// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
 	Status *string `pulumi:"status"`
+	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+.
+	// The maximum length is 100 characters. Can be empty to allow the system to generate one.
+	TriggerId *string `pulumi:"triggerId"`
 	// What event needs to occur for a new job to be started.
 	// Structure is documented below.
 	Triggers []PreventionJobTriggerTrigger `pulumi:"triggers"`
@@ -779,6 +852,10 @@ type PreventionJobTriggerArgs struct {
 	// Default value is `HEALTHY`.
 	// Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
 	Status pulumi.StringPtrInput
+	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+.
+	// The maximum length is 100 characters. Can be empty to allow the system to generate one.
+	TriggerId pulumi.StringPtrInput
 	// What event needs to occur for a new job to be started.
 	// Structure is documented below.
 	Triggers PreventionJobTriggerTriggerArrayInput
@@ -961,6 +1038,13 @@ func (o PreventionJobTriggerOutput) Parent() pulumi.StringOutput {
 // Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
 func (o PreventionJobTriggerOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+// that is, it must match the regular expression: [a-zA-Z\d-_]+.
+// The maximum length is 100 characters. Can be empty to allow the system to generate one.
+func (o PreventionJobTriggerOutput) TriggerId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PreventionJobTrigger) pulumi.StringOutput { return v.TriggerId }).(pulumi.StringOutput)
 }
 
 // What event needs to occur for a new job to be started.

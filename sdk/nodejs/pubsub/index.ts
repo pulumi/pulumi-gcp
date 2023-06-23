@@ -10,10 +10,20 @@ export const getSubscription: typeof import("./getSubscription").getSubscription
 export const getSubscriptionOutput: typeof import("./getSubscription").getSubscriptionOutput = null as any;
 utilities.lazyLoad(exports, ["getSubscription","getSubscriptionOutput"], () => require("./getSubscription"));
 
+export { GetSubscriptionIamPolicyArgs, GetSubscriptionIamPolicyResult, GetSubscriptionIamPolicyOutputArgs } from "./getSubscriptionIamPolicy";
+export const getSubscriptionIamPolicy: typeof import("./getSubscriptionIamPolicy").getSubscriptionIamPolicy = null as any;
+export const getSubscriptionIamPolicyOutput: typeof import("./getSubscriptionIamPolicy").getSubscriptionIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getSubscriptionIamPolicy","getSubscriptionIamPolicyOutput"], () => require("./getSubscriptionIamPolicy"));
+
 export { GetTopicArgs, GetTopicResult, GetTopicOutputArgs } from "./getTopic";
 export const getTopic: typeof import("./getTopic").getTopic = null as any;
 export const getTopicOutput: typeof import("./getTopic").getTopicOutput = null as any;
 utilities.lazyLoad(exports, ["getTopic","getTopicOutput"], () => require("./getTopic"));
+
+export { GetTopicIamPolicyArgs, GetTopicIamPolicyResult, GetTopicIamPolicyOutputArgs } from "./getTopicIamPolicy";
+export const getTopicIamPolicy: typeof import("./getTopicIamPolicy").getTopicIamPolicy = null as any;
+export const getTopicIamPolicyOutput: typeof import("./getTopicIamPolicy").getTopicIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getTopicIamPolicy","getTopicIamPolicyOutput"], () => require("./getTopicIamPolicy"));
 
 export { LiteReservationArgs, LiteReservationState } from "./liteReservation";
 export type LiteReservation = import("./liteReservation").LiteReservation;

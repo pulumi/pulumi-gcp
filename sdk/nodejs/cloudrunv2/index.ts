@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { GetJobIamPolicyArgs, GetJobIamPolicyResult, GetJobIamPolicyOutputArgs } from "./getJobIamPolicy";
+export const getJobIamPolicy: typeof import("./getJobIamPolicy").getJobIamPolicy = null as any;
+export const getJobIamPolicyOutput: typeof import("./getJobIamPolicy").getJobIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getJobIamPolicy","getJobIamPolicyOutput"], () => require("./getJobIamPolicy"));
+
+export { GetServiceIamPolicyArgs, GetServiceIamPolicyResult, GetServiceIamPolicyOutputArgs } from "./getServiceIamPolicy";
+export const getServiceIamPolicy: typeof import("./getServiceIamPolicy").getServiceIamPolicy = null as any;
+export const getServiceIamPolicyOutput: typeof import("./getServiceIamPolicy").getServiceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceIamPolicy","getServiceIamPolicyOutput"], () => require("./getServiceIamPolicy"));
+
 export { JobArgs, JobState } from "./job";
 export type Job = import("./job").Job;
 export const Job: typeof import("./job").Job = null as any;

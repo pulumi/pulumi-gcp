@@ -426,6 +426,9 @@ func GetUserProjectOverride(ctx *pulumi.Context) bool {
 func GetVertexAiCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:vertexAiCustomEndpoint")
 }
+func GetVmwareengineCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:vmwareengineCustomEndpoint")
+}
 func GetVpcAccessCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:vpcAccessCustomEndpoint")
 }

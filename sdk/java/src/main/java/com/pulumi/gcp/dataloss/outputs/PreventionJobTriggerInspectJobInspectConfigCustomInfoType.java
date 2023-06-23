@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegex;
+import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScore;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredType;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateType;
 import java.lang.String;
@@ -51,6 +52,12 @@ public final class PreventionJobTriggerInspectJobInspectConfigCustomInfoType {
      * 
      */
     private @Nullable PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegex regex;
+    /**
+     * @return Optional custom sensitivity for this InfoType. This only applies to data profiling.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScore sensitivityScore;
     /**
      * @return A reference to a StoredInfoType to use with scanning.
      * Structure is documented below.
@@ -110,6 +117,14 @@ public final class PreventionJobTriggerInspectJobInspectConfigCustomInfoType {
         return Optional.ofNullable(this.regex);
     }
     /**
+     * @return Optional custom sensitivity for this InfoType. This only applies to data profiling.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScore> sensitivityScore() {
+        return Optional.ofNullable(this.sensitivityScore);
+    }
+    /**
      * @return A reference to a StoredInfoType to use with scanning.
      * Structure is documented below.
      * 
@@ -139,6 +154,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigCustomInfoType {
         private PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType infoType;
         private @Nullable String likelihood;
         private @Nullable PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegex regex;
+        private @Nullable PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScore sensitivityScore;
         private @Nullable PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredType storedType;
         private @Nullable PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateType surrogateType;
         public Builder() {}
@@ -149,6 +165,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigCustomInfoType {
     	      this.infoType = defaults.infoType;
     	      this.likelihood = defaults.likelihood;
     	      this.regex = defaults.regex;
+    	      this.sensitivityScore = defaults.sensitivityScore;
     	      this.storedType = defaults.storedType;
     	      this.surrogateType = defaults.surrogateType;
         }
@@ -179,6 +196,11 @@ public final class PreventionJobTriggerInspectJobInspectConfigCustomInfoType {
             return this;
         }
         @CustomType.Setter
+        public Builder sensitivityScore(@Nullable PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScore sensitivityScore) {
+            this.sensitivityScore = sensitivityScore;
+            return this;
+        }
+        @CustomType.Setter
         public Builder storedType(@Nullable PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredType storedType) {
             this.storedType = storedType;
             return this;
@@ -195,6 +217,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigCustomInfoType {
             o.infoType = infoType;
             o.likelihood = likelihood;
             o.regex = regex;
+            o.sensitivityScore = sensitivityScore;
             o.storedType = storedType;
             o.surrogateType = surrogateType;
             return o;

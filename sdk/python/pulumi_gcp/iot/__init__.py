@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .device import *
+from .get_registry_iam_policy import *
 from .registry import *
 from .registry_iam_binding import *
 from .registry_iam_member import *

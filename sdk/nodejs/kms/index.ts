@@ -30,6 +30,11 @@ export type CryptoKeyVersion = import("./cryptoKeyVersion").CryptoKeyVersion;
 export const CryptoKeyVersion: typeof import("./cryptoKeyVersion").CryptoKeyVersion = null as any;
 utilities.lazyLoad(exports, ["CryptoKeyVersion"], () => require("./cryptoKeyVersion"));
 
+export { GetCryptoKeyIamPolicyArgs, GetCryptoKeyIamPolicyResult, GetCryptoKeyIamPolicyOutputArgs } from "./getCryptoKeyIamPolicy";
+export const getCryptoKeyIamPolicy: typeof import("./getCryptoKeyIamPolicy").getCryptoKeyIamPolicy = null as any;
+export const getCryptoKeyIamPolicyOutput: typeof import("./getCryptoKeyIamPolicy").getCryptoKeyIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getCryptoKeyIamPolicy","getCryptoKeyIamPolicyOutput"], () => require("./getCryptoKeyIamPolicy"));
+
 export { GetKMSCryptoKeyArgs, GetKMSCryptoKeyResult, GetKMSCryptoKeyOutputArgs } from "./getKMSCryptoKey";
 export const getKMSCryptoKey: typeof import("./getKMSCryptoKey").getKMSCryptoKey = null as any;
 export const getKMSCryptoKeyOutput: typeof import("./getKMSCryptoKey").getKMSCryptoKeyOutput = null as any;
@@ -59,6 +64,11 @@ export { GetKMSSecretCiphertextArgs, GetKMSSecretCiphertextResult, GetKMSSecretC
 export const getKMSSecretCiphertext: typeof import("./getKMSSecretCiphertext").getKMSSecretCiphertext = null as any;
 export const getKMSSecretCiphertextOutput: typeof import("./getKMSSecretCiphertext").getKMSSecretCiphertextOutput = null as any;
 utilities.lazyLoad(exports, ["getKMSSecretCiphertext","getKMSSecretCiphertextOutput"], () => require("./getKMSSecretCiphertext"));
+
+export { GetKeyRingIamPolicyArgs, GetKeyRingIamPolicyResult, GetKeyRingIamPolicyOutputArgs } from "./getKeyRingIamPolicy";
+export const getKeyRingIamPolicy: typeof import("./getKeyRingIamPolicy").getKeyRingIamPolicy = null as any;
+export const getKeyRingIamPolicyOutput: typeof import("./getKeyRingIamPolicy").getKeyRingIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getKeyRingIamPolicy","getKeyRingIamPolicyOutput"], () => require("./getKeyRingIamPolicy"));
 
 export { KeyRingArgs, KeyRingState } from "./keyRing";
 export type KeyRing = import("./keyRing").KeyRing;

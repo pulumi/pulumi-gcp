@@ -24,16 +24,16 @@ public final class PreventionJobTriggerInspectJobArgs extends com.pulumi.resourc
      * Structure is documented below.
      * 
      */
-    @Import(name="actions", required=true)
-    private Output<List<PreventionJobTriggerInspectJobActionArgs>> actions;
+    @Import(name="actions")
+    private @Nullable Output<List<PreventionJobTriggerInspectJobActionArgs>> actions;
 
     /**
      * @return A task to execute on the completion of a job.
      * Structure is documented below.
      * 
      */
-    public Output<List<PreventionJobTriggerInspectJobActionArgs>> actions() {
-        return this.actions;
+    public Optional<Output<List<PreventionJobTriggerInspectJobActionArgs>>> actions() {
+        return Optional.ofNullable(this.actions);
     }
 
     /**
@@ -57,15 +57,15 @@ public final class PreventionJobTriggerInspectJobArgs extends com.pulumi.resourc
      * The name of the template to run when this job is triggered.
      * 
      */
-    @Import(name="inspectTemplateName", required=true)
-    private Output<String> inspectTemplateName;
+    @Import(name="inspectTemplateName")
+    private @Nullable Output<String> inspectTemplateName;
 
     /**
      * @return The name of the template to run when this job is triggered.
      * 
      */
-    public Output<String> inspectTemplateName() {
-        return this.inspectTemplateName;
+    public Optional<Output<String>> inspectTemplateName() {
+        return Optional.ofNullable(this.inspectTemplateName);
     }
 
     /**
@@ -119,7 +119,7 @@ public final class PreventionJobTriggerInspectJobArgs extends com.pulumi.resourc
          * @return builder
          * 
          */
-        public Builder actions(Output<List<PreventionJobTriggerInspectJobActionArgs>> actions) {
+        public Builder actions(@Nullable Output<List<PreventionJobTriggerInspectJobActionArgs>> actions) {
             $.actions = actions;
             return this;
         }
@@ -175,7 +175,7 @@ public final class PreventionJobTriggerInspectJobArgs extends com.pulumi.resourc
          * @return builder
          * 
          */
-        public Builder inspectTemplateName(Output<String> inspectTemplateName) {
+        public Builder inspectTemplateName(@Nullable Output<String> inspectTemplateName) {
             $.inspectTemplateName = inspectTemplateName;
             return this;
         }
@@ -214,8 +214,6 @@ public final class PreventionJobTriggerInspectJobArgs extends com.pulumi.resourc
         }
 
         public PreventionJobTriggerInspectJobArgs build() {
-            $.actions = Objects.requireNonNull($.actions, "expected parameter 'actions' to be non-null");
-            $.inspectTemplateName = Objects.requireNonNull($.inspectTemplateName, "expected parameter 'inspectTemplateName' to be non-null");
             $.storageConfig = Objects.requireNonNull($.storageConfig, "expected parameter 'storageConfig' to be non-null");
             return $;
         }

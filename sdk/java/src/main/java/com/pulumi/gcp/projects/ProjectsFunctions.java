@@ -8,18 +8,169 @@ import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
+import com.pulumi.gcp.projects.inputs.GetIamPolicyArgs;
+import com.pulumi.gcp.projects.inputs.GetIamPolicyPlainArgs;
 import com.pulumi.gcp.projects.inputs.GetOrganizationPolicyArgs;
 import com.pulumi.gcp.projects.inputs.GetOrganizationPolicyPlainArgs;
 import com.pulumi.gcp.projects.inputs.GetProjectArgs;
 import com.pulumi.gcp.projects.inputs.GetProjectPlainArgs;
 import com.pulumi.gcp.projects.inputs.GetProjectServiceArgs;
 import com.pulumi.gcp.projects.inputs.GetProjectServicePlainArgs;
+import com.pulumi.gcp.projects.outputs.GetIamPolicyResult;
 import com.pulumi.gcp.projects.outputs.GetOrganizationPolicyResult;
 import com.pulumi.gcp.projects.outputs.GetProjectResult;
 import com.pulumi.gcp.projects.outputs.GetProjectServiceResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class ProjectsFunctions {
+    /**
+     * Retrieves the current IAM policy data for a project.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.projects.inputs.GetIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ProjectsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+     *             .project(&#34;myproject&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetIamPolicyResult> getIamPolicy(GetIamPolicyArgs args) {
+        return getIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for a project.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.projects.inputs.GetIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ProjectsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+     *             .project(&#34;myproject&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetIamPolicyResult> getIamPolicyPlain(GetIamPolicyPlainArgs args) {
+        return getIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for a project.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.projects.inputs.GetIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ProjectsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+     *             .project(&#34;myproject&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetIamPolicyResult> getIamPolicy(GetIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:projects/getIamPolicy:getIamPolicy", TypeShape.of(GetIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a project.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.projects.inputs.GetIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ProjectsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+     *             .project(&#34;myproject&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetIamPolicyResult> getIamPolicyPlain(GetIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:projects/getIamPolicy:getIamPolicy", TypeShape.of(GetIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Allows management of Organization policies for a Google Project. For more information see
      * [the official

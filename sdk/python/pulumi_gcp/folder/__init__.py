@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .access_approval_settings import *
+from .get_iam_policy import *
 from .get_organization_policy import *
 from .iam_audit_config import *
 from .iam_binding import *

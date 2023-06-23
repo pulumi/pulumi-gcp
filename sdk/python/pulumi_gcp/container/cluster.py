@@ -103,7 +103,7 @@ class ClusterArgs:
                [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
                Structure is documented below.
         :param pulumi.Input['ClusterDatabaseEncryptionArgs'] database_encryption: Structure is documented below.
-        :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+        :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
         :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods
                per node in this cluster. This doesn't work on "routes-based" clusters, clusters
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -529,7 +529,7 @@ class ClusterArgs:
     @pulumi.getter(name="datapathProvider")
     def datapath_provider(self) -> Optional[pulumi.Input[str]]:
         """
-        The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+        The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
         """
         return pulumi.get(self, "datapath_provider")
 
@@ -1367,7 +1367,7 @@ class _ClusterState:
                [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
                Structure is documented below.
         :param pulumi.Input['ClusterDatabaseEncryptionArgs'] database_encryption: Structure is documented below.
-        :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+        :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
         :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods
                per node in this cluster. This doesn't work on "routes-based" clusters, clusters
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -1820,7 +1820,7 @@ class _ClusterState:
     @pulumi.getter(name="datapathProvider")
     def datapath_provider(self) -> Optional[pulumi.Input[str]]:
         """
-        The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+        The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
         """
         return pulumi.get(self, "datapath_provider")
 
@@ -2812,7 +2812,7 @@ class Cluster(pulumi.CustomResource):
                [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']] database_encryption: Structure is documented below.
-        :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+        :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
         :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods
                per node in this cluster. This doesn't work on "routes-based" clusters, clusters
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -3326,7 +3326,7 @@ class Cluster(pulumi.CustomResource):
                [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterDatabaseEncryptionArgs']] database_encryption: Structure is documented below.
-        :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+        :param pulumi.Input[str] datapath_provider: The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
         :param pulumi.Input[int] default_max_pods_per_node: The default maximum number of pods
                per node in this cluster. This doesn't work on "routes-based" clusters, clusters
                that don't have IP Aliasing enabled. See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/flexible-pod-cidr)
@@ -3677,7 +3677,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="datapathProvider")
     def datapath_provider(self) -> pulumi.Output[str]:
         """
-        The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+        The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
         """
         return pulumi.get(self, "datapath_provider")
 

@@ -16,6 +16,7 @@ import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigLocalNvmeSsdBlo
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigReservationAffinity;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigSandboxConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigShieldedInstanceConfig;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigSoleTenantConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigTaint;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigWorkloadMetadataConfig;
 import java.lang.Boolean;
@@ -329,6 +330,19 @@ public final class ClusterNodePoolNodeConfig {
      * 
      */
     private @Nullable ClusterNodePoolNodeConfigShieldedInstanceConfig shieldedInstanceConfig;
+    /**
+     * @return Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+     * 
+     * sole_tenant_config {
+     * node_affinity {
+     * key = &#34;compute.googleapis.com/node-group-name&#34;
+     * operator = &#34;IN&#34;
+     * values = [&#34;node-group-name&#34;]
+     * }
+     * }
+     * 
+     */
+    private @Nullable ClusterNodePoolNodeConfigSoleTenantConfig soleTenantConfig;
     /**
      * @return A boolean that represents whether the underlying node VMs are spot.
      * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
@@ -717,6 +731,21 @@ public final class ClusterNodePoolNodeConfig {
         return Optional.ofNullable(this.shieldedInstanceConfig);
     }
     /**
+     * @return Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+     * 
+     * sole_tenant_config {
+     * node_affinity {
+     * key = &#34;compute.googleapis.com/node-group-name&#34;
+     * operator = &#34;IN&#34;
+     * values = [&#34;node-group-name&#34;]
+     * }
+     * }
+     * 
+     */
+    public Optional<ClusterNodePoolNodeConfigSoleTenantConfig> soleTenantConfig() {
+        return Optional.ofNullable(this.soleTenantConfig);
+    }
+    /**
      * @return A boolean that represents whether the underlying node VMs are spot.
      * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
      * for more information. Defaults to false.
@@ -792,6 +821,7 @@ public final class ClusterNodePoolNodeConfig {
         private @Nullable ClusterNodePoolNodeConfigSandboxConfig sandboxConfig;
         private @Nullable String serviceAccount;
         private @Nullable ClusterNodePoolNodeConfigShieldedInstanceConfig shieldedInstanceConfig;
+        private @Nullable ClusterNodePoolNodeConfigSoleTenantConfig soleTenantConfig;
         private @Nullable Boolean spot;
         private @Nullable List<String> tags;
         private @Nullable List<ClusterNodePoolNodeConfigTaint> taints;
@@ -826,6 +856,7 @@ public final class ClusterNodePoolNodeConfig {
     	      this.sandboxConfig = defaults.sandboxConfig;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.shieldedInstanceConfig = defaults.shieldedInstanceConfig;
+    	      this.soleTenantConfig = defaults.soleTenantConfig;
     	      this.spot = defaults.spot;
     	      this.tags = defaults.tags;
     	      this.taints = defaults.taints;
@@ -974,6 +1005,11 @@ public final class ClusterNodePoolNodeConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder soleTenantConfig(@Nullable ClusterNodePoolNodeConfigSoleTenantConfig soleTenantConfig) {
+            this.soleTenantConfig = soleTenantConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder spot(@Nullable Boolean spot) {
             this.spot = spot;
             return this;
@@ -1028,6 +1064,7 @@ public final class ClusterNodePoolNodeConfig {
             o.sandboxConfig = sandboxConfig;
             o.serviceAccount = serviceAccount;
             o.shieldedInstanceConfig = shieldedInstanceConfig;
+            o.soleTenantConfig = soleTenantConfig;
             o.spot = spot;
             o.tags = tags;
             o.taints = taints;

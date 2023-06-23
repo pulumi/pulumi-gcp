@@ -55,6 +55,11 @@ export const getBucket: typeof import("./getBucket").getBucket = null as any;
 export const getBucketOutput: typeof import("./getBucket").getBucketOutput = null as any;
 utilities.lazyLoad(exports, ["getBucket","getBucketOutput"], () => require("./getBucket"));
 
+export { GetBucketIamPolicyArgs, GetBucketIamPolicyResult, GetBucketIamPolicyOutputArgs } from "./getBucketIamPolicy";
+export const getBucketIamPolicy: typeof import("./getBucketIamPolicy").getBucketIamPolicy = null as any;
+export const getBucketIamPolicyOutput: typeof import("./getBucketIamPolicy").getBucketIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getBucketIamPolicy","getBucketIamPolicyOutput"], () => require("./getBucketIamPolicy"));
+
 export { GetBucketObjectArgs, GetBucketObjectResult, GetBucketObjectOutputArgs } from "./getBucketObject";
 export const getBucketObject: typeof import("./getBucketObject").getBucketObject = null as any;
 export const getBucketObjectOutput: typeof import("./getBucketObject").getBucketObjectOutput = null as any;

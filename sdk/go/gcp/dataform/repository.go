@@ -53,6 +53,11 @@ import (
 //					DefaultBranch:                    pulumi.String("main"),
 //					AuthenticationTokenSecretVersion: secretVersion.ID(),
 //				},
+//				WorkspaceCompilationOverrides: &dataform.RepositoryWorkspaceCompilationOverridesArgs{
+//					DefaultDatabase: pulumi.String("database"),
+//					SchemaSuffix:    pulumi.String("_suffix"),
+//					TablePrefix:     pulumi.String("prefix_"),
+//				},
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
@@ -105,6 +110,9 @@ type Repository struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// A reference to the region
 	Region pulumi.StringPtrOutput `pulumi:"region"`
+	// Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+	// Structure is documented below.
+	WorkspaceCompilationOverrides RepositoryWorkspaceCompilationOverridesPtrOutput `pulumi:"workspaceCompilationOverrides"`
 }
 
 // NewRepository registers a new resource with the given unique name, arguments, and options.
@@ -148,6 +156,9 @@ type repositoryState struct {
 	Project *string `pulumi:"project"`
 	// A reference to the region
 	Region *string `pulumi:"region"`
+	// Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+	// Structure is documented below.
+	WorkspaceCompilationOverrides *RepositoryWorkspaceCompilationOverrides `pulumi:"workspaceCompilationOverrides"`
 }
 
 type RepositoryState struct {
@@ -163,6 +174,9 @@ type RepositoryState struct {
 	Project pulumi.StringPtrInput
 	// A reference to the region
 	Region pulumi.StringPtrInput
+	// Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+	// Structure is documented below.
+	WorkspaceCompilationOverrides RepositoryWorkspaceCompilationOverridesPtrInput
 }
 
 func (RepositoryState) ElementType() reflect.Type {
@@ -182,6 +196,9 @@ type repositoryArgs struct {
 	Project *string `pulumi:"project"`
 	// A reference to the region
 	Region *string `pulumi:"region"`
+	// Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+	// Structure is documented below.
+	WorkspaceCompilationOverrides *RepositoryWorkspaceCompilationOverrides `pulumi:"workspaceCompilationOverrides"`
 }
 
 // The set of arguments for constructing a Repository resource.
@@ -198,6 +215,9 @@ type RepositoryArgs struct {
 	Project pulumi.StringPtrInput
 	// A reference to the region
 	Region pulumi.StringPtrInput
+	// Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+	// Structure is documented below.
+	WorkspaceCompilationOverrides RepositoryWorkspaceCompilationOverridesPtrInput
 }
 
 func (RepositoryArgs) ElementType() reflect.Type {
@@ -309,6 +329,14 @@ func (o RepositoryOutput) Project() pulumi.StringOutput {
 // A reference to the region
 func (o RepositoryOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+// Structure is documented below.
+func (o RepositoryOutput) WorkspaceCompilationOverrides() RepositoryWorkspaceCompilationOverridesPtrOutput {
+	return o.ApplyT(func(v *Repository) RepositoryWorkspaceCompilationOverridesPtrOutput {
+		return v.WorkspaceCompilationOverrides
+	}).(RepositoryWorkspaceCompilationOverridesPtrOutput)
 }
 
 type RepositoryArrayOutput struct{ *pulumi.OutputState }

@@ -45,10 +45,50 @@ export type Client = import("./client").Client;
 export const Client: typeof import("./client").Client = null as any;
 utilities.lazyLoad(exports, ["Client"], () => require("./client"));
 
+export { GetAppEngineServiceIamPolicyArgs, GetAppEngineServiceIamPolicyResult, GetAppEngineServiceIamPolicyOutputArgs } from "./getAppEngineServiceIamPolicy";
+export const getAppEngineServiceIamPolicy: typeof import("./getAppEngineServiceIamPolicy").getAppEngineServiceIamPolicy = null as any;
+export const getAppEngineServiceIamPolicyOutput: typeof import("./getAppEngineServiceIamPolicy").getAppEngineServiceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAppEngineServiceIamPolicy","getAppEngineServiceIamPolicyOutput"], () => require("./getAppEngineServiceIamPolicy"));
+
+export { GetAppEngineVersionIamPolicyArgs, GetAppEngineVersionIamPolicyResult, GetAppEngineVersionIamPolicyOutputArgs } from "./getAppEngineVersionIamPolicy";
+export const getAppEngineVersionIamPolicy: typeof import("./getAppEngineVersionIamPolicy").getAppEngineVersionIamPolicy = null as any;
+export const getAppEngineVersionIamPolicyOutput: typeof import("./getAppEngineVersionIamPolicy").getAppEngineVersionIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAppEngineVersionIamPolicy","getAppEngineVersionIamPolicyOutput"], () => require("./getAppEngineVersionIamPolicy"));
+
 export { GetClientArgs, GetClientResult, GetClientOutputArgs } from "./getClient";
 export const getClient: typeof import("./getClient").getClient = null as any;
 export const getClientOutput: typeof import("./getClient").getClientOutput = null as any;
 utilities.lazyLoad(exports, ["getClient","getClientOutput"], () => require("./getClient"));
+
+export { GetTunnelIamPolicyArgs, GetTunnelIamPolicyResult, GetTunnelIamPolicyOutputArgs } from "./getTunnelIamPolicy";
+export const getTunnelIamPolicy: typeof import("./getTunnelIamPolicy").getTunnelIamPolicy = null as any;
+export const getTunnelIamPolicyOutput: typeof import("./getTunnelIamPolicy").getTunnelIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getTunnelIamPolicy","getTunnelIamPolicyOutput"], () => require("./getTunnelIamPolicy"));
+
+export { GetTunnelInstanceIamPolicyArgs, GetTunnelInstanceIamPolicyResult, GetTunnelInstanceIamPolicyOutputArgs } from "./getTunnelInstanceIamPolicy";
+export const getTunnelInstanceIamPolicy: typeof import("./getTunnelInstanceIamPolicy").getTunnelInstanceIamPolicy = null as any;
+export const getTunnelInstanceIamPolicyOutput: typeof import("./getTunnelInstanceIamPolicy").getTunnelInstanceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getTunnelInstanceIamPolicy","getTunnelInstanceIamPolicyOutput"], () => require("./getTunnelInstanceIamPolicy"));
+
+export { GetWebBackendServiceIamPolicyArgs, GetWebBackendServiceIamPolicyResult, GetWebBackendServiceIamPolicyOutputArgs } from "./getWebBackendServiceIamPolicy";
+export const getWebBackendServiceIamPolicy: typeof import("./getWebBackendServiceIamPolicy").getWebBackendServiceIamPolicy = null as any;
+export const getWebBackendServiceIamPolicyOutput: typeof import("./getWebBackendServiceIamPolicy").getWebBackendServiceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getWebBackendServiceIamPolicy","getWebBackendServiceIamPolicyOutput"], () => require("./getWebBackendServiceIamPolicy"));
+
+export { GetWebIamPolicyArgs, GetWebIamPolicyResult, GetWebIamPolicyOutputArgs } from "./getWebIamPolicy";
+export const getWebIamPolicy: typeof import("./getWebIamPolicy").getWebIamPolicy = null as any;
+export const getWebIamPolicyOutput: typeof import("./getWebIamPolicy").getWebIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getWebIamPolicy","getWebIamPolicyOutput"], () => require("./getWebIamPolicy"));
+
+export { GetWebTypeAppEngineIamPolicyArgs, GetWebTypeAppEngineIamPolicyResult, GetWebTypeAppEngineIamPolicyOutputArgs } from "./getWebTypeAppEngineIamPolicy";
+export const getWebTypeAppEngineIamPolicy: typeof import("./getWebTypeAppEngineIamPolicy").getWebTypeAppEngineIamPolicy = null as any;
+export const getWebTypeAppEngineIamPolicyOutput: typeof import("./getWebTypeAppEngineIamPolicy").getWebTypeAppEngineIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getWebTypeAppEngineIamPolicy","getWebTypeAppEngineIamPolicyOutput"], () => require("./getWebTypeAppEngineIamPolicy"));
+
+export { GetWebTypeComputeIamPolicyArgs, GetWebTypeComputeIamPolicyResult, GetWebTypeComputeIamPolicyOutputArgs } from "./getWebTypeComputeIamPolicy";
+export const getWebTypeComputeIamPolicy: typeof import("./getWebTypeComputeIamPolicy").getWebTypeComputeIamPolicy = null as any;
+export const getWebTypeComputeIamPolicyOutput: typeof import("./getWebTypeComputeIamPolicy").getWebTypeComputeIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getWebTypeComputeIamPolicy","getWebTypeComputeIamPolicyOutput"], () => require("./getWebTypeComputeIamPolicy"));
 
 export { TunnelIamBindingArgs, TunnelIamBindingState } from "./tunnelIamBinding";
 export type TunnelIamBinding = import("./tunnelIamBinding").TunnelIamBinding;

@@ -80,7 +80,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
      */
     private @Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig redactConfig;
     /**
-     * @return Replace with a specified value.
+     * @return Replace each input value with a given value.
      * Structure is documented below.
      * 
      */
@@ -174,7 +174,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
         return Optional.ofNullable(this.redactConfig);
     }
     /**
-     * @return Replace with a specified value.
+     * @return Replace each input value with a given value.
      * Structure is documented below.
      * 
      */

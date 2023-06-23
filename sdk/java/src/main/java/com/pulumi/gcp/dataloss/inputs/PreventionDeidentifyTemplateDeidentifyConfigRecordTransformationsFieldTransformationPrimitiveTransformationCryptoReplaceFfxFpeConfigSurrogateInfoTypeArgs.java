@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,6 +32,23 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     }
 
     /**
+     * Optional custom sensitivity for this InfoType. This only applies to data profiling.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sensitivityScore")
+    private @Nullable Output<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgs> sensitivityScore;
+
+    /**
+     * @return Optional custom sensitivity for this InfoType. This only applies to data profiling.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgs>> sensitivityScore() {
+        return Optional.ofNullable(this.sensitivityScore);
+    }
+
+    /**
      * Optional version name for this InfoType.
      * 
      */
@@ -49,6 +67,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
     private PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeArgs $) {
         this.name = $.name;
+        this.sensitivityScore = $.sensitivityScore;
         this.version = $.version;
     }
 
@@ -89,6 +108,29 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param sensitivityScore Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sensitivityScore(@Nullable Output<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgs> sensitivityScore) {
+            $.sensitivityScore = sensitivityScore;
+            return this;
+        }
+
+        /**
+         * @param sensitivityScore Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sensitivityScore(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoTypeSensitivityScoreArgs sensitivityScore) {
+            return sensitivityScore(Output.of(sensitivityScore));
         }
 
         /**

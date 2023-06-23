@@ -25,6 +25,11 @@ export type BackupPlanIamPolicy = import("./backupPlanIamPolicy").BackupPlanIamP
 export const BackupPlanIamPolicy: typeof import("./backupPlanIamPolicy").BackupPlanIamPolicy = null as any;
 utilities.lazyLoad(exports, ["BackupPlanIamPolicy"], () => require("./backupPlanIamPolicy"));
 
+export { GetBackupPlanIamPolicyArgs, GetBackupPlanIamPolicyResult, GetBackupPlanIamPolicyOutputArgs } from "./getBackupPlanIamPolicy";
+export const getBackupPlanIamPolicy: typeof import("./getBackupPlanIamPolicy").getBackupPlanIamPolicy = null as any;
+export const getBackupPlanIamPolicyOutput: typeof import("./getBackupPlanIamPolicy").getBackupPlanIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getBackupPlanIamPolicy","getBackupPlanIamPolicyOutput"], () => require("./getBackupPlanIamPolicy"));
+
 
 const _module = {
     version: utilities.getVersion(),

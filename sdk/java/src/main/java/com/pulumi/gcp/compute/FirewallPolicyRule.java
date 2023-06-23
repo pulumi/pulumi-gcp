@@ -30,11 +30,14 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.networksecurity.AddressGroup;
+ * import com.pulumi.gcp.networksecurity.AddressGroupArgs;
  * import com.pulumi.gcp.compute.FirewallPolicy;
  * import com.pulumi.gcp.compute.FirewallPolicyArgs;
  * import com.pulumi.gcp.compute.FirewallPolicyRule;
  * import com.pulumi.gcp.compute.FirewallPolicyRuleArgs;
  * import com.pulumi.gcp.compute.inputs.FirewallPolicyRuleMatchArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -48,6 +51,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         var basicGlobalNetworksecurityAddressGroup = new AddressGroup(&#34;basicGlobalNetworksecurityAddressGroup&#34;, AddressGroupArgs.builder()        
+ *             .parent(&#34;organizations/12345&#34;)
+ *             .description(&#34;Sample global networksecurity_address_group&#34;)
+ *             .location(&#34;global&#34;)
+ *             .items(&#34;208.80.154.224/32&#34;)
+ *             .type(&#34;IPV4&#34;)
+ *             .capacity(100)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
  *         var defaultFirewallPolicy = new FirewallPolicy(&#34;defaultFirewallPolicy&#34;, FirewallPolicyArgs.builder()        
  *             .parent(&#34;organizations/12345&#34;)
  *             .shortName(&#34;my-policy&#34;)
@@ -70,6 +84,10 @@ import javax.annotation.Nullable;
  *                         8080)
  *                     .build())
  *                 .destIpRanges(&#34;11.100.0.1/32&#34;)
+ *                 .destFqdns(&#34;google.com&#34;)
+ *                 .destRegionCodes(&#34;US&#34;)
+ *                 .destThreatIntelligences(&#34;iplist-public-clouds&#34;)
+ *                 .destAddressGroups(basicGlobalNetworksecurityAddressGroup.id())
  *                 .build())
  *             .build());
  * 

@@ -492,6 +492,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
     }
     /**
      * Indicates how many IOPS must be provisioned for the disk.
+     * Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
      * 
      */
     @Export(name="provisionedIops", type=Integer.class, parameters={})
@@ -499,6 +500,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Indicates how many IOPS must be provisioned for the disk.
+     * Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
      * 
      */
     public Output<Integer> provisionedIops() {

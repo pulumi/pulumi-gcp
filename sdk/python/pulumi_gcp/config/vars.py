@@ -553,6 +553,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('vertexAiCustomEndpoint')
 
     @property
+    def vmwareengine_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('vmwareengineCustomEndpoint')
+
+    @property
     def vpc_access_custom_endpoint(self) -> Optional[str]:
         return __config__.get('vpcAccessCustomEndpoint')
 

@@ -67,6 +67,7 @@ export interface GetConnectorArgs {
  * A collection of values returned by getConnector.
  */
 export interface GetConnectorResult {
+    readonly connectedProjects: string[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */

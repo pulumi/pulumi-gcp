@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * const bbs_config = new gcp.cloudbuild.BitbucketServerConfig("bbs-config", {
  *     apiKey: "<api-key>",
- *     configId: "mybbsconfig",
+ *     configId: "bbs-config",
  *     hostUri: "https://bbs.com",
  *     location: "us-central1",
  *     secrets: {
@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  *
  * const bbs_config_with_repos = new gcp.cloudbuild.BitbucketServerConfig("bbs-config-with-repos", {
  *     apiKey: "<api-key>",
- *     configId: "mybbsconfig",
+ *     configId: "bbs-config",
  *     connectedRepositories: [
  *         {
  *             projectKey: "DEV",

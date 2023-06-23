@@ -9,7 +9,10 @@ import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryArgs;
+import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryIamPolicyArgs;
+import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryIamPolicyPlainArgs;
 import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryPlainArgs;
+import com.pulumi.gcp.sourcerepo.outputs.GetRepositoryIamPolicyResult;
 import com.pulumi.gcp.sourcerepo.outputs.GetRepositoryResult;
 import java.util.concurrent.CompletableFuture;
 
@@ -173,5 +176,157 @@ public final class SourcerepoFunctions {
      */
     public static CompletableFuture<GetRepositoryResult> getRepositoryPlain(GetRepositoryPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:sourcerepo/getRepository:getRepository", TypeShape.of(GetRepositoryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for repository
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.sourcerepo.SourcerepoFunctions;
+     * import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = SourcerepoFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
+     *             .project(google_sourcerepo_repository.my-repo().project())
+     *             .repository(google_sourcerepo_repository.my-repo().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRepositoryIamPolicyResult> getRepositoryIamPolicy(GetRepositoryIamPolicyArgs args) {
+        return getRepositoryIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for repository
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.sourcerepo.SourcerepoFunctions;
+     * import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = SourcerepoFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
+     *             .project(google_sourcerepo_repository.my-repo().project())
+     *             .repository(google_sourcerepo_repository.my-repo().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRepositoryIamPolicyResult> getRepositoryIamPolicyPlain(GetRepositoryIamPolicyPlainArgs args) {
+        return getRepositoryIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for repository
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.sourcerepo.SourcerepoFunctions;
+     * import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = SourcerepoFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
+     *             .project(google_sourcerepo_repository.my-repo().project())
+     *             .repository(google_sourcerepo_repository.my-repo().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRepositoryIamPolicyResult> getRepositoryIamPolicy(GetRepositoryIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:sourcerepo/getRepositoryIamPolicy:getRepositoryIamPolicy", TypeShape.of(GetRepositoryIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for repository
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.sourcerepo.SourcerepoFunctions;
+     * import com.pulumi.gcp.sourcerepo.inputs.GetRepositoryIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = SourcerepoFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
+     *             .project(google_sourcerepo_repository.my-repo().project())
+     *             .repository(google_sourcerepo_repository.my-repo().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRepositoryIamPolicyResult> getRepositoryIamPolicyPlain(GetRepositoryIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:sourcerepo/getRepositoryIamPolicy:getRepositoryIamPolicy", TypeShape.of(GetRepositoryIamPolicyResult.class), args, Utilities.withVersion(options));
     }
 }

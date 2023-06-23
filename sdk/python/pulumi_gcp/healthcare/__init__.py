@@ -21,6 +21,11 @@ from .fhir_store import *
 from .fhir_store_iam_binding import *
 from .fhir_store_iam_member import *
 from .fhir_store_iam_policy import *
+from .get_consent_store_iam_policy import *
+from .get_dataset_iam_policy import *
+from .get_dicom_store_iam_policy import *
+from .get_fhir_store_iam_policy import *
+from .get_hl7_v2_store_iam_policy import *
 from .hl7_store import *
 from .hl7_store_iam_binding import *
 from .hl7_store_iam_member import *

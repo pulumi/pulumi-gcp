@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataform.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataform.inputs.RepositoryGitRemoteSettingsArgs;
+import com.pulumi.gcp.dataform.inputs.RepositoryWorkspaceCompilationOverridesArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -84,6 +85,23 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.region);
     }
 
+    /**
+     * Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="workspaceCompilationOverrides")
+    private @Nullable Output<RepositoryWorkspaceCompilationOverridesArgs> workspaceCompilationOverrides;
+
+    /**
+     * @return Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RepositoryWorkspaceCompilationOverridesArgs>> workspaceCompilationOverrides() {
+        return Optional.ofNullable(this.workspaceCompilationOverrides);
+    }
+
     private RepositoryState() {}
 
     private RepositoryState(RepositoryState $) {
@@ -91,6 +109,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.region = $.region;
+        this.workspaceCompilationOverrides = $.workspaceCompilationOverrides;
     }
 
     public static Builder builder() {
@@ -201,6 +220,29 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param workspaceCompilationOverrides Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceCompilationOverrides(@Nullable Output<RepositoryWorkspaceCompilationOverridesArgs> workspaceCompilationOverrides) {
+            $.workspaceCompilationOverrides = workspaceCompilationOverrides;
+            return this;
+        }
+
+        /**
+         * @param workspaceCompilationOverrides Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceCompilationOverrides(RepositoryWorkspaceCompilationOverridesArgs workspaceCompilationOverrides) {
+            return workspaceCompilationOverrides(Output.of(workspaceCompilationOverrides));
         }
 
         public RepositoryState build() {

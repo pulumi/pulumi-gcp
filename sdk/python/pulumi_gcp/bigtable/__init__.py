@@ -6,6 +6,8 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .gc_policy import *
+from .get_instance_iam_policy import *
+from .get_table_iam_policy import *
 from .instance import *
 from .instance_iam_binding import *
 from .instance_iam_member import *

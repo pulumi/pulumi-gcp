@@ -13,6 +13,7 @@ import com.pulumi.gcp.vpcaccess.inputs.ConnectorState;
 import com.pulumi.gcp.vpcaccess.outputs.ConnectorSubnet;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -127,6 +128,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:vpcaccess/connector:Connector")
 public class Connector extends com.pulumi.resources.CustomResource {
+    /**
+     * List of projects using the connector.
+     * 
+     */
+    @Export(name="connectedProjects", type=List.class, parameters={String.class})
+    private Output<List<String>> connectedProjects;
+
+    /**
+     * @return List of projects using the connector.
+     * 
+     */
+    public Output<List<String>> connectedProjects() {
+        return this.connectedProjects;
+    }
     /**
      * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
      * 

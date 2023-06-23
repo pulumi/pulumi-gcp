@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigInfoTypeSensitivityScoreArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -33,6 +34,23 @@ public final class PreventionInspectTemplateInspectConfigInfoTypeArgs extends co
     }
 
     /**
+     * Optional custom sensitivity for this InfoType. This only applies to data profiling.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sensitivityScore")
+    private @Nullable Output<PreventionInspectTemplateInspectConfigInfoTypeSensitivityScoreArgs> sensitivityScore;
+
+    /**
+     * @return Optional custom sensitivity for this InfoType. This only applies to data profiling.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionInspectTemplateInspectConfigInfoTypeSensitivityScoreArgs>> sensitivityScore() {
+        return Optional.ofNullable(this.sensitivityScore);
+    }
+
+    /**
      * Version name for this InfoType.
      * 
      */
@@ -51,6 +69,7 @@ public final class PreventionInspectTemplateInspectConfigInfoTypeArgs extends co
 
     private PreventionInspectTemplateInspectConfigInfoTypeArgs(PreventionInspectTemplateInspectConfigInfoTypeArgs $) {
         this.name = $.name;
+        this.sensitivityScore = $.sensitivityScore;
         this.version = $.version;
     }
 
@@ -93,6 +112,29 @@ public final class PreventionInspectTemplateInspectConfigInfoTypeArgs extends co
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param sensitivityScore Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sensitivityScore(@Nullable Output<PreventionInspectTemplateInspectConfigInfoTypeSensitivityScoreArgs> sensitivityScore) {
+            $.sensitivityScore = sensitivityScore;
+            return this;
+        }
+
+        /**
+         * @param sensitivityScore Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sensitivityScore(PreventionInspectTemplateInspectConfigInfoTypeSensitivityScoreArgs sensitivityScore) {
+            return sensitivityScore(Output.of(sensitivityScore));
         }
 
         /**

@@ -20,6 +20,7 @@ public final class GetBillingAccountResult {
      * 
      */
     private String id;
+    private @Nullable Boolean lookupProjects;
     /**
      * @return The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
      * 
@@ -27,7 +28,8 @@ public final class GetBillingAccountResult {
     private String name;
     private Boolean open;
     /**
-     * @return The IDs of any projects associated with the billing account.
+     * @return The IDs of any projects associated with the billing account. `lookup_projects` must not be false
+     * for this to be populated.
      * 
      */
     private List<String> projectIds;
@@ -46,6 +48,9 @@ public final class GetBillingAccountResult {
     public String id() {
         return this.id;
     }
+    public Optional<Boolean> lookupProjects() {
+        return Optional.ofNullable(this.lookupProjects);
+    }
     /**
      * @return The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
      * 
@@ -57,7 +62,8 @@ public final class GetBillingAccountResult {
         return this.open;
     }
     /**
-     * @return The IDs of any projects associated with the billing account.
+     * @return The IDs of any projects associated with the billing account. `lookup_projects` must not be false
+     * for this to be populated.
      * 
      */
     public List<String> projectIds() {
@@ -76,6 +82,7 @@ public final class GetBillingAccountResult {
         private @Nullable String billingAccount;
         private String displayName;
         private String id;
+        private @Nullable Boolean lookupProjects;
         private String name;
         private Boolean open;
         private List<String> projectIds;
@@ -85,6 +92,7 @@ public final class GetBillingAccountResult {
     	      this.billingAccount = defaults.billingAccount;
     	      this.displayName = defaults.displayName;
     	      this.id = defaults.id;
+    	      this.lookupProjects = defaults.lookupProjects;
     	      this.name = defaults.name;
     	      this.open = defaults.open;
     	      this.projectIds = defaults.projectIds;
@@ -103,6 +111,11 @@ public final class GetBillingAccountResult {
         @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder lookupProjects(@Nullable Boolean lookupProjects) {
+            this.lookupProjects = lookupProjects;
             return this;
         }
         @CustomType.Setter
@@ -128,6 +141,7 @@ public final class GetBillingAccountResult {
             o.billingAccount = billingAccount;
             o.displayName = displayName;
             o.id = id;
+            o.lookupProjects = lookupProjects;
             o.name = name;
             o.open = open;
             o.projectIds = projectIds;

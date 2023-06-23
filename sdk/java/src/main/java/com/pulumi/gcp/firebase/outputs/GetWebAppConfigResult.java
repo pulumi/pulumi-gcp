@@ -27,10 +27,6 @@ public final class GetWebAppConfigResult {
      * 
      */
     private String databaseUrl;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
     /**
      * @return The ID of the project&#39;s default GCP resource location. The location is one of the available GCP resource
@@ -86,10 +82,6 @@ public final class GetWebAppConfigResult {
     public String databaseUrl() {
         return this.databaseUrl;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }

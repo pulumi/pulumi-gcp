@@ -9,11 +9,14 @@ import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.secretmanager.inputs.GetSecretArgs;
+import com.pulumi.gcp.secretmanager.inputs.GetSecretIamPolicyArgs;
+import com.pulumi.gcp.secretmanager.inputs.GetSecretIamPolicyPlainArgs;
 import com.pulumi.gcp.secretmanager.inputs.GetSecretPlainArgs;
 import com.pulumi.gcp.secretmanager.inputs.GetSecretVersionAccessArgs;
 import com.pulumi.gcp.secretmanager.inputs.GetSecretVersionAccessPlainArgs;
 import com.pulumi.gcp.secretmanager.inputs.GetSecretVersionArgs;
 import com.pulumi.gcp.secretmanager.inputs.GetSecretVersionPlainArgs;
+import com.pulumi.gcp.secretmanager.outputs.GetSecretIamPolicyResult;
 import com.pulumi.gcp.secretmanager.outputs.GetSecretResult;
 import com.pulumi.gcp.secretmanager.outputs.GetSecretVersionAccessResult;
 import com.pulumi.gcp.secretmanager.outputs.GetSecretVersionResult;
@@ -167,6 +170,158 @@ public final class SecretmanagerFunctions {
      */
     public static CompletableFuture<GetSecretResult> getSecretPlain(GetSecretPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:secretmanager/getSecret:getSecret", TypeShape.of(GetSecretResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for secret
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.secretmanager.inputs.GetSecretIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = SecretmanagerFunctions.getSecretIamPolicy(GetSecretIamPolicyArgs.builder()
+     *             .project(google_secret_manager_secret.secret-basic().project())
+     *             .secretId(google_secret_manager_secret.secret-basic().secret_id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSecretIamPolicyResult> getSecretIamPolicy(GetSecretIamPolicyArgs args) {
+        return getSecretIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for secret
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.secretmanager.inputs.GetSecretIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = SecretmanagerFunctions.getSecretIamPolicy(GetSecretIamPolicyArgs.builder()
+     *             .project(google_secret_manager_secret.secret-basic().project())
+     *             .secretId(google_secret_manager_secret.secret-basic().secret_id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSecretIamPolicyResult> getSecretIamPolicyPlain(GetSecretIamPolicyPlainArgs args) {
+        return getSecretIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for secret
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.secretmanager.inputs.GetSecretIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = SecretmanagerFunctions.getSecretIamPolicy(GetSecretIamPolicyArgs.builder()
+     *             .project(google_secret_manager_secret.secret-basic().project())
+     *             .secretId(google_secret_manager_secret.secret-basic().secret_id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSecretIamPolicyResult> getSecretIamPolicy(GetSecretIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:secretmanager/getSecretIamPolicy:getSecretIamPolicy", TypeShape.of(GetSecretIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for secret
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.secretmanager.SecretmanagerFunctions;
+     * import com.pulumi.gcp.secretmanager.inputs.GetSecretIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = SecretmanagerFunctions.getSecretIamPolicy(GetSecretIamPolicyArgs.builder()
+     *             .project(google_secret_manager_secret.secret-basic().project())
+     *             .secretId(google_secret_manager_secret.secret-basic().secret_id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSecretIamPolicyResult> getSecretIamPolicyPlain(GetSecretIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:secretmanager/getSecretIamPolicy:getSecretIamPolicy", TypeShape.of(GetSecretIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get the value and metadata from a Secret Manager secret version. For more information see the official documentation datasource.

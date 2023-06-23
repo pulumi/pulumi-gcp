@@ -456,6 +456,24 @@ public class PreventionInspectTemplate extends com.pulumi.resources.CustomResour
     public Output<String> parent() {
         return this.parent;
     }
+    /**
+     * The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+     * 100 characters. Can be empty to allow the system to generate one.
+     * 
+     */
+    @Export(name="templateId", type=String.class, parameters={})
+    private Output<String> templateId;
+
+    /**
+     * @return The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+     * 100 characters. Can be empty to allow the system to generate one.
+     * 
+     */
+    public Output<String> templateId() {
+        return this.templateId;
+    }
 
     /**
      *

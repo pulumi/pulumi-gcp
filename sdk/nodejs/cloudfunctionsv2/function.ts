@@ -319,6 +319,10 @@ export class Function extends pulumi.CustomResource {
      * The last update timestamp of a Cloud Function.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Output only. The deployed url for the function.
+     */
+    public /*out*/ readonly url!: pulumi.Output<string>;
 
     /**
      * Create a Function resource with the given unique name, arguments, and options.
@@ -344,6 +348,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["serviceConfig"] = state ? state.serviceConfig : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["url"] = state ? state.url : undefined;
         } else {
             const args = argsOrState as FunctionArgs | undefined;
             resourceInputs["buildConfig"] = args ? args.buildConfig : undefined;
@@ -357,6 +362,7 @@ export class Function extends pulumi.CustomResource {
             resourceInputs["environment"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Function.__pulumiType, name, resourceInputs, opts);
@@ -421,6 +427,10 @@ export interface FunctionState {
      * The last update timestamp of a Cloud Function.
      */
     updateTime?: pulumi.Input<string>;
+    /**
+     * Output only. The deployed url for the function.
+     */
+    url?: pulumi.Input<string>;
 }
 
 /**

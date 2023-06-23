@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkservices.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -17,6 +18,42 @@ import javax.annotation.Nullable;
 public final class GatewayState extends com.pulumi.resources.ResourceArgs {
 
     public static final GatewayState Empty = new GatewayState();
+
+    /**
+     * Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+     * an IP from the subnetwork is allocated This field only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+     * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0.
+     * 
+     */
+    @Import(name="addresses")
+    private @Nullable Output<List<String>> addresses;
+
+    /**
+     * @return Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+     * an IP from the subnetwork is allocated This field only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+     * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0.
+     * 
+     */
+    public Optional<Output<List<String>>> addresses() {
+        return Optional.ofNullable(this.addresses);
+    }
+
+    /**
+     * A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+     * This feature only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+     * 
+     */
+    @Import(name="certificateUrls")
+    private @Nullable Output<List<String>> certificateUrls;
+
+    /**
+     * @return A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+     * This feature only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+     * 
+     */
+    public Optional<Output<List<String>>> certificateUrls() {
+        return Optional.ofNullable(this.certificateUrls);
+    }
 
     /**
      * Time the AccessPolicy was created in UTC.
@@ -34,6 +71,23 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * When deleting a gateway of type &#39;SECURE_WEB_GATEWAY&#39;, this boolean option will also delete auto generated router by the gateway creation.
+     * If there is no other gateway of type &#39;SECURE_WEB_GATEWAY&#39; remaining for that region and network it will be deleted.
+     * 
+     */
+    @Import(name="deleteSwgAutogenRouterOnDestroy")
+    private @Nullable Output<Boolean> deleteSwgAutogenRouterOnDestroy;
+
+    /**
+     * @return When deleting a gateway of type &#39;SECURE_WEB_GATEWAY&#39;, this boolean option will also delete auto generated router by the gateway creation.
+     * If there is no other gateway of type &#39;SECURE_WEB_GATEWAY&#39; remaining for that region and network it will be deleted.
+     * 
+     */
+    public Optional<Output<Boolean>> deleteSwgAutogenRouterOnDestroy() {
+        return Optional.ofNullable(this.deleteSwgAutogenRouterOnDestroy);
+    }
+
+    /**
      * A free-text description of the resource. Max length 1024 characters.
      * 
      */
@@ -46,6 +100,25 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+     * For example: `projects/*{@literal /}locations/*{@literal /}gatewaySecurityPolicies/swg-policy`.
+     * This policy is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+     * 
+     */
+    @Import(name="gatewaySecurityPolicy")
+    private @Nullable Output<String> gatewaySecurityPolicy;
+
+    /**
+     * @return A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+     * For example: `projects/*{@literal /}locations/*{@literal /}gatewaySecurityPolicies/swg-policy`.
+     * This policy is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+     * 
+     */
+    public Optional<Output<String>> gatewaySecurityPolicy() {
+        return Optional.ofNullable(this.gatewaySecurityPolicy);
     }
 
     /**
@@ -97,6 +170,25 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * The relative resource name identifying the VPC network that is using this configuration.
+     * For example: `projects/*{@literal /}global/networks/network-1`.
+     * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+     * 
+     */
+    @Import(name="network")
+    private @Nullable Output<String> network;
+
+    /**
+     * @return The relative resource name identifying the VPC network that is using this configuration.
+     * For example: `projects/*{@literal /}global/networks/network-1`.
+     * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+     * 
+     */
+    public Optional<Output<String>> network() {
+        return Optional.ofNullable(this.network);
     }
 
     /**
@@ -189,6 +281,25 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The relative resource name identifying the subnetwork in which this SWG is allocated.
+     * For example: `projects/*{@literal /}regions/us-central1/subnetworks/network-1`.
+     * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY.
+     * 
+     */
+    @Import(name="subnetwork")
+    private @Nullable Output<String> subnetwork;
+
+    /**
+     * @return The relative resource name identifying the subnetwork in which this SWG is allocated.
+     * For example: `projects/*{@literal /}regions/us-central1/subnetworks/network-1`.
+     * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY.
+     * 
+     */
+    public Optional<Output<String>> subnetwork() {
+        return Optional.ofNullable(this.subnetwork);
+    }
+
+    /**
      * Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
      * Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
      * 
@@ -223,16 +334,22 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
     private GatewayState() {}
 
     private GatewayState(GatewayState $) {
+        this.addresses = $.addresses;
+        this.certificateUrls = $.certificateUrls;
         this.createTime = $.createTime;
+        this.deleteSwgAutogenRouterOnDestroy = $.deleteSwgAutogenRouterOnDestroy;
         this.description = $.description;
+        this.gatewaySecurityPolicy = $.gatewaySecurityPolicy;
         this.labels = $.labels;
         this.location = $.location;
         this.name = $.name;
+        this.network = $.network;
         this.ports = $.ports;
         this.project = $.project;
         this.scope = $.scope;
         this.selfLink = $.selfLink;
         this.serverTlsPolicy = $.serverTlsPolicy;
+        this.subnetwork = $.subnetwork;
         this.type = $.type;
         this.updateTime = $.updateTime;
     }
@@ -253,6 +370,77 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(GatewayState defaults) {
             $ = new GatewayState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param addresses Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+         * an IP from the subnetwork is allocated This field only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+         * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addresses(@Nullable Output<List<String>> addresses) {
+            $.addresses = addresses;
+            return this;
+        }
+
+        /**
+         * @param addresses Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+         * an IP from the subnetwork is allocated This field only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+         * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addresses(List<String> addresses) {
+            return addresses(Output.of(addresses));
+        }
+
+        /**
+         * @param addresses Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+         * an IP from the subnetwork is allocated This field only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+         * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder addresses(String... addresses) {
+            return addresses(List.of(addresses));
+        }
+
+        /**
+         * @param certificateUrls A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+         * This feature only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateUrls(@Nullable Output<List<String>> certificateUrls) {
+            $.certificateUrls = certificateUrls;
+            return this;
+        }
+
+        /**
+         * @param certificateUrls A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+         * This feature only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateUrls(List<String> certificateUrls) {
+            return certificateUrls(Output.of(certificateUrls));
+        }
+
+        /**
+         * @param certificateUrls A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+         * This feature only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateUrls(String... certificateUrls) {
+            return certificateUrls(List.of(certificateUrls));
         }
 
         /**
@@ -277,6 +465,29 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param deleteSwgAutogenRouterOnDestroy When deleting a gateway of type &#39;SECURE_WEB_GATEWAY&#39;, this boolean option will also delete auto generated router by the gateway creation.
+         * If there is no other gateway of type &#39;SECURE_WEB_GATEWAY&#39; remaining for that region and network it will be deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteSwgAutogenRouterOnDestroy(@Nullable Output<Boolean> deleteSwgAutogenRouterOnDestroy) {
+            $.deleteSwgAutogenRouterOnDestroy = deleteSwgAutogenRouterOnDestroy;
+            return this;
+        }
+
+        /**
+         * @param deleteSwgAutogenRouterOnDestroy When deleting a gateway of type &#39;SECURE_WEB_GATEWAY&#39;, this boolean option will also delete auto generated router by the gateway creation.
+         * If there is no other gateway of type &#39;SECURE_WEB_GATEWAY&#39; remaining for that region and network it will be deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteSwgAutogenRouterOnDestroy(Boolean deleteSwgAutogenRouterOnDestroy) {
+            return deleteSwgAutogenRouterOnDestroy(Output.of(deleteSwgAutogenRouterOnDestroy));
+        }
+
+        /**
          * @param description A free-text description of the resource. Max length 1024 characters.
          * 
          * @return builder
@@ -295,6 +506,31 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param gatewaySecurityPolicy A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+         * For example: `projects/*{@literal /}locations/*{@literal /}gatewaySecurityPolicies/swg-policy`.
+         * This policy is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewaySecurityPolicy(@Nullable Output<String> gatewaySecurityPolicy) {
+            $.gatewaySecurityPolicy = gatewaySecurityPolicy;
+            return this;
+        }
+
+        /**
+         * @param gatewaySecurityPolicy A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+         * For example: `projects/*{@literal /}locations/*{@literal /}gatewaySecurityPolicies/swg-policy`.
+         * This policy is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gatewaySecurityPolicy(String gatewaySecurityPolicy) {
+            return gatewaySecurityPolicy(Output.of(gatewaySecurityPolicy));
         }
 
         /**
@@ -364,6 +600,31 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param network The relative resource name identifying the VPC network that is using this configuration.
+         * For example: `projects/*{@literal /}global/networks/network-1`.
+         * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder network(@Nullable Output<String> network) {
+            $.network = network;
+            return this;
+        }
+
+        /**
+         * @param network The relative resource name identifying the VPC network that is using this configuration.
+         * For example: `projects/*{@literal /}global/networks/network-1`.
+         * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder network(String network) {
+            return network(Output.of(network));
         }
 
         /**
@@ -495,6 +756,31 @@ public final class GatewayState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder serverTlsPolicy(String serverTlsPolicy) {
             return serverTlsPolicy(Output.of(serverTlsPolicy));
+        }
+
+        /**
+         * @param subnetwork The relative resource name identifying the subnetwork in which this SWG is allocated.
+         * For example: `projects/*{@literal /}regions/us-central1/subnetworks/network-1`.
+         * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetwork(@Nullable Output<String> subnetwork) {
+            $.subnetwork = subnetwork;
+            return this;
+        }
+
+        /**
+         * @param subnetwork The relative resource name identifying the subnetwork in which this SWG is allocated.
+         * For example: `projects/*{@literal /}regions/us-central1/subnetworks/network-1`.
+         * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetwork(String subnetwork) {
+            return subnetwork(Output.of(subnetwork));
         }
 
         /**

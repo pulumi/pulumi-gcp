@@ -1081,6 +1081,14 @@ Object.defineProperty(exports, "vertexAiCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const vmwareengineCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "vmwareengineCustomEndpoint", {
+    get() {
+        return __config.get("vmwareengineCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const vpcAccessCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "vpcAccessCustomEndpoint", {
     get() {

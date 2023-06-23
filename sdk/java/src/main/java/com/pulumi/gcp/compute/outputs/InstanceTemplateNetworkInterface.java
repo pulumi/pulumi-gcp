@@ -54,6 +54,7 @@ public final class InstanceTemplateNetworkInterface {
      * 
      */
     private @Nullable String network;
+    private @Nullable String networkAttachment;
     /**
      * @return The private IP address to assign to the instance. If
      * empty, the address will be automatically assigned.
@@ -140,6 +141,9 @@ public final class InstanceTemplateNetworkInterface {
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
     }
+    public Optional<String> networkAttachment() {
+        return Optional.ofNullable(this.networkAttachment);
+    }
     /**
      * @return The private IP address to assign to the instance. If
      * empty, the address will be automatically assigned.
@@ -202,6 +206,7 @@ public final class InstanceTemplateNetworkInterface {
         private @Nullable String ipv6AccessType;
         private @Nullable String name;
         private @Nullable String network;
+        private @Nullable String networkAttachment;
         private @Nullable String networkIp;
         private @Nullable String nicType;
         private @Nullable Integer queueCount;
@@ -217,6 +222,7 @@ public final class InstanceTemplateNetworkInterface {
     	      this.ipv6AccessType = defaults.ipv6AccessType;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
+    	      this.networkAttachment = defaults.networkAttachment;
     	      this.networkIp = defaults.networkIp;
     	      this.nicType = defaults.nicType;
     	      this.queueCount = defaults.queueCount;
@@ -265,6 +271,11 @@ public final class InstanceTemplateNetworkInterface {
             return this;
         }
         @CustomType.Setter
+        public Builder networkAttachment(@Nullable String networkAttachment) {
+            this.networkAttachment = networkAttachment;
+            return this;
+        }
+        @CustomType.Setter
         public Builder networkIp(@Nullable String networkIp) {
             this.networkIp = networkIp;
             return this;
@@ -302,6 +313,7 @@ public final class InstanceTemplateNetworkInterface {
             o.ipv6AccessType = ipv6AccessType;
             o.name = name;
             o.network = network;
+            o.networkAttachment = networkAttachment;
             o.networkIp = networkIp;
             o.nicType = nicType;
             o.queueCount = queueCount;

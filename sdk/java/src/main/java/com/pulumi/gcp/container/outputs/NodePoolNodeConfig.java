@@ -16,6 +16,7 @@ import com.pulumi.gcp.container.outputs.NodePoolNodeConfigLocalNvmeSsdBlockConfi
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigReservationAffinity;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigSandboxConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigShieldedInstanceConfig;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigSoleTenantConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigTaint;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigWorkloadMetadataConfig;
 import java.lang.Boolean;
@@ -56,6 +57,7 @@ public final class NodePoolNodeConfig {
     private @Nullable NodePoolNodeConfigSandboxConfig sandboxConfig;
     private @Nullable String serviceAccount;
     private @Nullable NodePoolNodeConfigShieldedInstanceConfig shieldedInstanceConfig;
+    private @Nullable NodePoolNodeConfigSoleTenantConfig soleTenantConfig;
     private @Nullable Boolean spot;
     private @Nullable List<String> tags;
     private @Nullable List<NodePoolNodeConfigTaint> taints;
@@ -143,6 +145,9 @@ public final class NodePoolNodeConfig {
     public Optional<NodePoolNodeConfigShieldedInstanceConfig> shieldedInstanceConfig() {
         return Optional.ofNullable(this.shieldedInstanceConfig);
     }
+    public Optional<NodePoolNodeConfigSoleTenantConfig> soleTenantConfig() {
+        return Optional.ofNullable(this.soleTenantConfig);
+    }
     public Optional<Boolean> spot() {
         return Optional.ofNullable(this.spot);
     }
@@ -192,6 +197,7 @@ public final class NodePoolNodeConfig {
         private @Nullable NodePoolNodeConfigSandboxConfig sandboxConfig;
         private @Nullable String serviceAccount;
         private @Nullable NodePoolNodeConfigShieldedInstanceConfig shieldedInstanceConfig;
+        private @Nullable NodePoolNodeConfigSoleTenantConfig soleTenantConfig;
         private @Nullable Boolean spot;
         private @Nullable List<String> tags;
         private @Nullable List<NodePoolNodeConfigTaint> taints;
@@ -226,6 +232,7 @@ public final class NodePoolNodeConfig {
     	      this.sandboxConfig = defaults.sandboxConfig;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.shieldedInstanceConfig = defaults.shieldedInstanceConfig;
+    	      this.soleTenantConfig = defaults.soleTenantConfig;
     	      this.spot = defaults.spot;
     	      this.tags = defaults.tags;
     	      this.taints = defaults.taints;
@@ -374,6 +381,11 @@ public final class NodePoolNodeConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder soleTenantConfig(@Nullable NodePoolNodeConfigSoleTenantConfig soleTenantConfig) {
+            this.soleTenantConfig = soleTenantConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder spot(@Nullable Boolean spot) {
             this.spot = spot;
             return this;
@@ -428,6 +440,7 @@ public final class NodePoolNodeConfig {
             o.sandboxConfig = sandboxConfig;
             o.serviceAccount = serviceAccount;
             o.shieldedInstanceConfig = shieldedInstanceConfig;
+            o.soleTenantConfig = soleTenantConfig;
             o.spot = spot;
             o.tags = tags;
             o.taints = taints;

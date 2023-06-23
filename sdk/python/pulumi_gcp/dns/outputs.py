@@ -2022,20 +2022,18 @@ class GetKeysKeySigningKeyResult(dict):
 @pulumi.output_type
 class GetKeysKeySigningKeyDigestResult(dict):
     def __init__(__self__, *,
-                 digest: Optional[str] = None,
-                 type: Optional[str] = None):
+                 digest: str,
+                 type: str):
         """
         :param str digest: The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
         :param str type: Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
         """
-        if digest is not None:
-            pulumi.set(__self__, "digest", digest)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "digest", digest)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
-    def digest(self) -> Optional[str]:
+    def digest(self) -> str:
         """
         The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
         """
@@ -2043,7 +2041,7 @@ class GetKeysKeySigningKeyDigestResult(dict):
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[str]:
+    def type(self) -> str:
         """
         Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
         """
@@ -2159,20 +2157,18 @@ class GetKeysZoneSigningKeyResult(dict):
 @pulumi.output_type
 class GetKeysZoneSigningKeyDigestResult(dict):
     def __init__(__self__, *,
-                 digest: Optional[str] = None,
-                 type: Optional[str] = None):
+                 digest: str,
+                 type: str):
         """
         :param str digest: The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
         :param str type: Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
         """
-        if digest is not None:
-            pulumi.set(__self__, "digest", digest)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "digest", digest)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
-    def digest(self) -> Optional[str]:
+    def digest(self) -> str:
         """
         The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
         """
@@ -2180,7 +2176,7 @@ class GetKeysZoneSigningKeyDigestResult(dict):
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[str]:
+    def type(self) -> str:
         """
         Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
         """

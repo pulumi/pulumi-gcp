@@ -16,6 +16,7 @@ import com.pulumi.gcp.container.outputs.GetClusterNodeConfigLocalNvmeSsdBlockCon
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigReservationAffinity;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigSandboxConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigShieldedInstanceConfig;
+import com.pulumi.gcp.container.outputs.GetClusterNodeConfigSoleTenantConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigTaint;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigWorkloadMetadataConfig;
 import java.lang.Boolean;
@@ -54,6 +55,7 @@ public final class GetClusterNodeConfig {
     private List<GetClusterNodeConfigSandboxConfig> sandboxConfigs;
     private String serviceAccount;
     private List<GetClusterNodeConfigShieldedInstanceConfig> shieldedInstanceConfigs;
+    private List<GetClusterNodeConfigSoleTenantConfig> soleTenantConfigs;
     private Boolean spot;
     private List<String> tags;
     private List<GetClusterNodeConfigTaint> taints;
@@ -141,6 +143,9 @@ public final class GetClusterNodeConfig {
     public List<GetClusterNodeConfigShieldedInstanceConfig> shieldedInstanceConfigs() {
         return this.shieldedInstanceConfigs;
     }
+    public List<GetClusterNodeConfigSoleTenantConfig> soleTenantConfigs() {
+        return this.soleTenantConfigs;
+    }
     public Boolean spot() {
         return this.spot;
     }
@@ -190,6 +195,7 @@ public final class GetClusterNodeConfig {
         private List<GetClusterNodeConfigSandboxConfig> sandboxConfigs;
         private String serviceAccount;
         private List<GetClusterNodeConfigShieldedInstanceConfig> shieldedInstanceConfigs;
+        private List<GetClusterNodeConfigSoleTenantConfig> soleTenantConfigs;
         private Boolean spot;
         private List<String> tags;
         private List<GetClusterNodeConfigTaint> taints;
@@ -224,6 +230,7 @@ public final class GetClusterNodeConfig {
     	      this.sandboxConfigs = defaults.sandboxConfigs;
     	      this.serviceAccount = defaults.serviceAccount;
     	      this.shieldedInstanceConfigs = defaults.shieldedInstanceConfigs;
+    	      this.soleTenantConfigs = defaults.soleTenantConfigs;
     	      this.spot = defaults.spot;
     	      this.tags = defaults.tags;
     	      this.taints = defaults.taints;
@@ -405,6 +412,14 @@ public final class GetClusterNodeConfig {
             return shieldedInstanceConfigs(List.of(shieldedInstanceConfigs));
         }
         @CustomType.Setter
+        public Builder soleTenantConfigs(List<GetClusterNodeConfigSoleTenantConfig> soleTenantConfigs) {
+            this.soleTenantConfigs = Objects.requireNonNull(soleTenantConfigs);
+            return this;
+        }
+        public Builder soleTenantConfigs(GetClusterNodeConfigSoleTenantConfig... soleTenantConfigs) {
+            return soleTenantConfigs(List.of(soleTenantConfigs));
+        }
+        @CustomType.Setter
         public Builder spot(Boolean spot) {
             this.spot = Objects.requireNonNull(spot);
             return this;
@@ -462,6 +477,7 @@ public final class GetClusterNodeConfig {
             o.sandboxConfigs = sandboxConfigs;
             o.serviceAccount = serviceAccount;
             o.shieldedInstanceConfigs = shieldedInstanceConfigs;
+            o.soleTenantConfigs = soleTenantConfigs;
             o.spot = spot;
             o.tags = tags;
             o.taints = taints;

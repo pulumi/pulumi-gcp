@@ -410,6 +410,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Output only. The deployed url for the function.
+        /// </summary>
+        [Output("url")]
+        public Output<string> Url { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Function resource with the given unique name, arguments, and options.
@@ -609,6 +615,12 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
+
+        /// <summary>
+        /// Output only. The deployed url for the function.
+        /// </summary>
+        [Input("url")]
+        public Input<string>? Url { get; set; }
 
         public FunctionState()
         {

@@ -126,6 +126,13 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
         return Optional.ofNullable(this.network);
     }
 
+    @Import(name="networkAttachment")
+    private @Nullable Output<String> networkAttachment;
+
+    public Optional<Output<String>> networkAttachment() {
+        return Optional.ofNullable(this.networkAttachment);
+    }
+
     /**
      * The private IP address to assign to the instance. If
      * empty, the address will be automatically assigned.
@@ -233,6 +240,7 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
         this.ipv6AccessType = $.ipv6AccessType;
         this.name = $.name;
         this.network = $.network;
+        this.networkAttachment = $.networkAttachment;
         this.networkIp = $.networkIp;
         this.nicType = $.nicType;
         this.queueCount = $.queueCount;
@@ -434,6 +442,15 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
          */
         public Builder network(String network) {
             return network(Output.of(network));
+        }
+
+        public Builder networkAttachment(@Nullable Output<String> networkAttachment) {
+            $.networkAttachment = networkAttachment;
+            return this;
+        }
+
+        public Builder networkAttachment(String networkAttachment) {
+            return networkAttachment(Output.of(networkAttachment));
         }
 
         /**

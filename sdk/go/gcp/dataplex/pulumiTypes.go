@@ -1548,6 +1548,6200 @@ func (o AssetSecurityStatusArrayOutput) Index(i pulumi.IntInput) AssetSecuritySt
 	}).(AssetSecurityStatusOutput)
 }
 
+type DatascanData struct {
+	// The Dataplex entity that represents the data source(e.g. BigQuery table) for Datascan.
+	Entity *string `pulumi:"entity"`
+	// The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be:
+	// (Cloud Storage bucket for DataDiscoveryScan)BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan.
+	Resource *string `pulumi:"resource"`
+}
+
+// DatascanDataInput is an input type that accepts DatascanDataArgs and DatascanDataOutput values.
+// You can construct a concrete instance of `DatascanDataInput` via:
+//
+//	DatascanDataArgs{...}
+type DatascanDataInput interface {
+	pulumi.Input
+
+	ToDatascanDataOutput() DatascanDataOutput
+	ToDatascanDataOutputWithContext(context.Context) DatascanDataOutput
+}
+
+type DatascanDataArgs struct {
+	// The Dataplex entity that represents the data source(e.g. BigQuery table) for Datascan.
+	Entity pulumi.StringPtrInput `pulumi:"entity"`
+	// The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be:
+	// (Cloud Storage bucket for DataDiscoveryScan)BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan.
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
+}
+
+func (DatascanDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanData)(nil)).Elem()
+}
+
+func (i DatascanDataArgs) ToDatascanDataOutput() DatascanDataOutput {
+	return i.ToDatascanDataOutputWithContext(context.Background())
+}
+
+func (i DatascanDataArgs) ToDatascanDataOutputWithContext(ctx context.Context) DatascanDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataOutput)
+}
+
+func (i DatascanDataArgs) ToDatascanDataPtrOutput() DatascanDataPtrOutput {
+	return i.ToDatascanDataPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataArgs) ToDatascanDataPtrOutputWithContext(ctx context.Context) DatascanDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataOutput).ToDatascanDataPtrOutputWithContext(ctx)
+}
+
+// DatascanDataPtrInput is an input type that accepts DatascanDataArgs, DatascanDataPtr and DatascanDataPtrOutput values.
+// You can construct a concrete instance of `DatascanDataPtrInput` via:
+//
+//	        DatascanDataArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataPtrOutput() DatascanDataPtrOutput
+	ToDatascanDataPtrOutputWithContext(context.Context) DatascanDataPtrOutput
+}
+
+type datascanDataPtrType DatascanDataArgs
+
+func DatascanDataPtr(v *DatascanDataArgs) DatascanDataPtrInput {
+	return (*datascanDataPtrType)(v)
+}
+
+func (*datascanDataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanData)(nil)).Elem()
+}
+
+func (i *datascanDataPtrType) ToDatascanDataPtrOutput() DatascanDataPtrOutput {
+	return i.ToDatascanDataPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataPtrType) ToDatascanDataPtrOutputWithContext(ctx context.Context) DatascanDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataPtrOutput)
+}
+
+type DatascanDataOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanData)(nil)).Elem()
+}
+
+func (o DatascanDataOutput) ToDatascanDataOutput() DatascanDataOutput {
+	return o
+}
+
+func (o DatascanDataOutput) ToDatascanDataOutputWithContext(ctx context.Context) DatascanDataOutput {
+	return o
+}
+
+func (o DatascanDataOutput) ToDatascanDataPtrOutput() DatascanDataPtrOutput {
+	return o.ToDatascanDataPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataOutput) ToDatascanDataPtrOutputWithContext(ctx context.Context) DatascanDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanData) *DatascanData {
+		return &v
+	}).(DatascanDataPtrOutput)
+}
+
+// The Dataplex entity that represents the data source(e.g. BigQuery table) for Datascan.
+func (o DatascanDataOutput) Entity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanData) *string { return v.Entity }).(pulumi.StringPtrOutput)
+}
+
+// The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be:
+// (Cloud Storage bucket for DataDiscoveryScan)BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan.
+func (o DatascanDataOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanData) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+type DatascanDataPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanData)(nil)).Elem()
+}
+
+func (o DatascanDataPtrOutput) ToDatascanDataPtrOutput() DatascanDataPtrOutput {
+	return o
+}
+
+func (o DatascanDataPtrOutput) ToDatascanDataPtrOutputWithContext(ctx context.Context) DatascanDataPtrOutput {
+	return o
+}
+
+func (o DatascanDataPtrOutput) Elem() DatascanDataOutput {
+	return o.ApplyT(func(v *DatascanData) DatascanData {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanData
+		return ret
+	}).(DatascanDataOutput)
+}
+
+// The Dataplex entity that represents the data source(e.g. BigQuery table) for Datascan.
+func (o DatascanDataPtrOutput) Entity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Entity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be:
+// (Cloud Storage bucket for DataDiscoveryScan)BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan.
+func (o DatascanDataPtrOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanData) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatascanDataProfileResult struct {
+	// Profile information for the corresponding field.
+	// Structure is documented below.
+	Profiles []DatascanDataProfileResultProfile `pulumi:"profiles"`
+	// The count of rows scanned.
+	RowCount *string `pulumi:"rowCount"`
+	// (Output)
+	// The data scanned for this result.
+	// Structure is documented below.
+	ScannedDatas []DatascanDataProfileResultScannedData `pulumi:"scannedDatas"`
+}
+
+// DatascanDataProfileResultInput is an input type that accepts DatascanDataProfileResultArgs and DatascanDataProfileResultOutput values.
+// You can construct a concrete instance of `DatascanDataProfileResultInput` via:
+//
+//	DatascanDataProfileResultArgs{...}
+type DatascanDataProfileResultInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileResultOutput() DatascanDataProfileResultOutput
+	ToDatascanDataProfileResultOutputWithContext(context.Context) DatascanDataProfileResultOutput
+}
+
+type DatascanDataProfileResultArgs struct {
+	// Profile information for the corresponding field.
+	// Structure is documented below.
+	Profiles DatascanDataProfileResultProfileArrayInput `pulumi:"profiles"`
+	// The count of rows scanned.
+	RowCount pulumi.StringPtrInput `pulumi:"rowCount"`
+	// (Output)
+	// The data scanned for this result.
+	// Structure is documented below.
+	ScannedDatas DatascanDataProfileResultScannedDataArrayInput `pulumi:"scannedDatas"`
+}
+
+func (DatascanDataProfileResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileResult)(nil)).Elem()
+}
+
+func (i DatascanDataProfileResultArgs) ToDatascanDataProfileResultOutput() DatascanDataProfileResultOutput {
+	return i.ToDatascanDataProfileResultOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileResultArgs) ToDatascanDataProfileResultOutputWithContext(ctx context.Context) DatascanDataProfileResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileResultOutput)
+}
+
+// DatascanDataProfileResultArrayInput is an input type that accepts DatascanDataProfileResultArray and DatascanDataProfileResultArrayOutput values.
+// You can construct a concrete instance of `DatascanDataProfileResultArrayInput` via:
+//
+//	DatascanDataProfileResultArray{ DatascanDataProfileResultArgs{...} }
+type DatascanDataProfileResultArrayInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileResultArrayOutput() DatascanDataProfileResultArrayOutput
+	ToDatascanDataProfileResultArrayOutputWithContext(context.Context) DatascanDataProfileResultArrayOutput
+}
+
+type DatascanDataProfileResultArray []DatascanDataProfileResultInput
+
+func (DatascanDataProfileResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataProfileResult)(nil)).Elem()
+}
+
+func (i DatascanDataProfileResultArray) ToDatascanDataProfileResultArrayOutput() DatascanDataProfileResultArrayOutput {
+	return i.ToDatascanDataProfileResultArrayOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileResultArray) ToDatascanDataProfileResultArrayOutputWithContext(ctx context.Context) DatascanDataProfileResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileResultArrayOutput)
+}
+
+type DatascanDataProfileResultOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileResult)(nil)).Elem()
+}
+
+func (o DatascanDataProfileResultOutput) ToDatascanDataProfileResultOutput() DatascanDataProfileResultOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultOutput) ToDatascanDataProfileResultOutputWithContext(ctx context.Context) DatascanDataProfileResultOutput {
+	return o
+}
+
+// Profile information for the corresponding field.
+// Structure is documented below.
+func (o DatascanDataProfileResultOutput) Profiles() DatascanDataProfileResultProfileArrayOutput {
+	return o.ApplyT(func(v DatascanDataProfileResult) []DatascanDataProfileResultProfile { return v.Profiles }).(DatascanDataProfileResultProfileArrayOutput)
+}
+
+// The count of rows scanned.
+func (o DatascanDataProfileResultOutput) RowCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResult) *string { return v.RowCount }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The data scanned for this result.
+// Structure is documented below.
+func (o DatascanDataProfileResultOutput) ScannedDatas() DatascanDataProfileResultScannedDataArrayOutput {
+	return o.ApplyT(func(v DatascanDataProfileResult) []DatascanDataProfileResultScannedData { return v.ScannedDatas }).(DatascanDataProfileResultScannedDataArrayOutput)
+}
+
+type DatascanDataProfileResultArrayOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataProfileResult)(nil)).Elem()
+}
+
+func (o DatascanDataProfileResultArrayOutput) ToDatascanDataProfileResultArrayOutput() DatascanDataProfileResultArrayOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultArrayOutput) ToDatascanDataProfileResultArrayOutputWithContext(ctx context.Context) DatascanDataProfileResultArrayOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultArrayOutput) Index(i pulumi.IntInput) DatascanDataProfileResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanDataProfileResult {
+		return vs[0].([]DatascanDataProfileResult)[vs[1].(int)]
+	}).(DatascanDataProfileResultOutput)
+}
+
+type DatascanDataProfileResultProfile struct {
+	// List of fields with structural and profile information for each field.
+	// Structure is documented below.
+	Fields []DatascanDataProfileResultProfileField `pulumi:"fields"`
+}
+
+// DatascanDataProfileResultProfileInput is an input type that accepts DatascanDataProfileResultProfileArgs and DatascanDataProfileResultProfileOutput values.
+// You can construct a concrete instance of `DatascanDataProfileResultProfileInput` via:
+//
+//	DatascanDataProfileResultProfileArgs{...}
+type DatascanDataProfileResultProfileInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileResultProfileOutput() DatascanDataProfileResultProfileOutput
+	ToDatascanDataProfileResultProfileOutputWithContext(context.Context) DatascanDataProfileResultProfileOutput
+}
+
+type DatascanDataProfileResultProfileArgs struct {
+	// List of fields with structural and profile information for each field.
+	// Structure is documented below.
+	Fields DatascanDataProfileResultProfileFieldArrayInput `pulumi:"fields"`
+}
+
+func (DatascanDataProfileResultProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileResultProfile)(nil)).Elem()
+}
+
+func (i DatascanDataProfileResultProfileArgs) ToDatascanDataProfileResultProfileOutput() DatascanDataProfileResultProfileOutput {
+	return i.ToDatascanDataProfileResultProfileOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileResultProfileArgs) ToDatascanDataProfileResultProfileOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileResultProfileOutput)
+}
+
+// DatascanDataProfileResultProfileArrayInput is an input type that accepts DatascanDataProfileResultProfileArray and DatascanDataProfileResultProfileArrayOutput values.
+// You can construct a concrete instance of `DatascanDataProfileResultProfileArrayInput` via:
+//
+//	DatascanDataProfileResultProfileArray{ DatascanDataProfileResultProfileArgs{...} }
+type DatascanDataProfileResultProfileArrayInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileResultProfileArrayOutput() DatascanDataProfileResultProfileArrayOutput
+	ToDatascanDataProfileResultProfileArrayOutputWithContext(context.Context) DatascanDataProfileResultProfileArrayOutput
+}
+
+type DatascanDataProfileResultProfileArray []DatascanDataProfileResultProfileInput
+
+func (DatascanDataProfileResultProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataProfileResultProfile)(nil)).Elem()
+}
+
+func (i DatascanDataProfileResultProfileArray) ToDatascanDataProfileResultProfileArrayOutput() DatascanDataProfileResultProfileArrayOutput {
+	return i.ToDatascanDataProfileResultProfileArrayOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileResultProfileArray) ToDatascanDataProfileResultProfileArrayOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileResultProfileArrayOutput)
+}
+
+type DatascanDataProfileResultProfileOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileResultProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileResultProfile)(nil)).Elem()
+}
+
+func (o DatascanDataProfileResultProfileOutput) ToDatascanDataProfileResultProfileOutput() DatascanDataProfileResultProfileOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultProfileOutput) ToDatascanDataProfileResultProfileOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileOutput {
+	return o
+}
+
+// List of fields with structural and profile information for each field.
+// Structure is documented below.
+func (o DatascanDataProfileResultProfileOutput) Fields() DatascanDataProfileResultProfileFieldArrayOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfile) []DatascanDataProfileResultProfileField { return v.Fields }).(DatascanDataProfileResultProfileFieldArrayOutput)
+}
+
+type DatascanDataProfileResultProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileResultProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataProfileResultProfile)(nil)).Elem()
+}
+
+func (o DatascanDataProfileResultProfileArrayOutput) ToDatascanDataProfileResultProfileArrayOutput() DatascanDataProfileResultProfileArrayOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultProfileArrayOutput) ToDatascanDataProfileResultProfileArrayOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileArrayOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultProfileArrayOutput) Index(i pulumi.IntInput) DatascanDataProfileResultProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanDataProfileResultProfile {
+		return vs[0].([]DatascanDataProfileResultProfile)[vs[1].(int)]
+	}).(DatascanDataProfileResultProfileOutput)
+}
+
+type DatascanDataProfileResultProfileField struct {
+	// The mode of the field. Possible values include:
+	// 1. REQUIRED, if it is a required field.
+	// 2. NULLABLE, if it is an optional field.
+	// 3. REPEATED, if it is a repeated field.
+	Mode *string `pulumi:"mode"`
+	// The name of the field.
+	Name *string `pulumi:"name"`
+	// Profile information for the corresponding field.
+	// Structure is documented below.
+	Profile *DatascanDataProfileResultProfileFieldProfile `pulumi:"profile"`
+	// The field data type.
+	Type *string `pulumi:"type"`
+}
+
+// DatascanDataProfileResultProfileFieldInput is an input type that accepts DatascanDataProfileResultProfileFieldArgs and DatascanDataProfileResultProfileFieldOutput values.
+// You can construct a concrete instance of `DatascanDataProfileResultProfileFieldInput` via:
+//
+//	DatascanDataProfileResultProfileFieldArgs{...}
+type DatascanDataProfileResultProfileFieldInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileResultProfileFieldOutput() DatascanDataProfileResultProfileFieldOutput
+	ToDatascanDataProfileResultProfileFieldOutputWithContext(context.Context) DatascanDataProfileResultProfileFieldOutput
+}
+
+type DatascanDataProfileResultProfileFieldArgs struct {
+	// The mode of the field. Possible values include:
+	// 1. REQUIRED, if it is a required field.
+	// 2. NULLABLE, if it is an optional field.
+	// 3. REPEATED, if it is a repeated field.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The name of the field.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Profile information for the corresponding field.
+	// Structure is documented below.
+	Profile DatascanDataProfileResultProfileFieldProfilePtrInput `pulumi:"profile"`
+	// The field data type.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (DatascanDataProfileResultProfileFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileResultProfileField)(nil)).Elem()
+}
+
+func (i DatascanDataProfileResultProfileFieldArgs) ToDatascanDataProfileResultProfileFieldOutput() DatascanDataProfileResultProfileFieldOutput {
+	return i.ToDatascanDataProfileResultProfileFieldOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileResultProfileFieldArgs) ToDatascanDataProfileResultProfileFieldOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileResultProfileFieldOutput)
+}
+
+// DatascanDataProfileResultProfileFieldArrayInput is an input type that accepts DatascanDataProfileResultProfileFieldArray and DatascanDataProfileResultProfileFieldArrayOutput values.
+// You can construct a concrete instance of `DatascanDataProfileResultProfileFieldArrayInput` via:
+//
+//	DatascanDataProfileResultProfileFieldArray{ DatascanDataProfileResultProfileFieldArgs{...} }
+type DatascanDataProfileResultProfileFieldArrayInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileResultProfileFieldArrayOutput() DatascanDataProfileResultProfileFieldArrayOutput
+	ToDatascanDataProfileResultProfileFieldArrayOutputWithContext(context.Context) DatascanDataProfileResultProfileFieldArrayOutput
+}
+
+type DatascanDataProfileResultProfileFieldArray []DatascanDataProfileResultProfileFieldInput
+
+func (DatascanDataProfileResultProfileFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataProfileResultProfileField)(nil)).Elem()
+}
+
+func (i DatascanDataProfileResultProfileFieldArray) ToDatascanDataProfileResultProfileFieldArrayOutput() DatascanDataProfileResultProfileFieldArrayOutput {
+	return i.ToDatascanDataProfileResultProfileFieldArrayOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileResultProfileFieldArray) ToDatascanDataProfileResultProfileFieldArrayOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileResultProfileFieldArrayOutput)
+}
+
+type DatascanDataProfileResultProfileFieldOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileResultProfileFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileResultProfileField)(nil)).Elem()
+}
+
+func (o DatascanDataProfileResultProfileFieldOutput) ToDatascanDataProfileResultProfileFieldOutput() DatascanDataProfileResultProfileFieldOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultProfileFieldOutput) ToDatascanDataProfileResultProfileFieldOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldOutput {
+	return o
+}
+
+// The mode of the field. Possible values include:
+// 1. REQUIRED, if it is a required field.
+// 2. NULLABLE, if it is an optional field.
+// 3. REPEATED, if it is a repeated field.
+func (o DatascanDataProfileResultProfileFieldOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileField) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The name of the field.
+func (o DatascanDataProfileResultProfileFieldOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileField) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Profile information for the corresponding field.
+// Structure is documented below.
+func (o DatascanDataProfileResultProfileFieldOutput) Profile() DatascanDataProfileResultProfileFieldProfilePtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileField) *DatascanDataProfileResultProfileFieldProfile {
+		return v.Profile
+	}).(DatascanDataProfileResultProfileFieldProfilePtrOutput)
+}
+
+// The field data type.
+func (o DatascanDataProfileResultProfileFieldOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileField) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type DatascanDataProfileResultProfileFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileResultProfileFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataProfileResultProfileField)(nil)).Elem()
+}
+
+func (o DatascanDataProfileResultProfileFieldArrayOutput) ToDatascanDataProfileResultProfileFieldArrayOutput() DatascanDataProfileResultProfileFieldArrayOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultProfileFieldArrayOutput) ToDatascanDataProfileResultProfileFieldArrayOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldArrayOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultProfileFieldArrayOutput) Index(i pulumi.IntInput) DatascanDataProfileResultProfileFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanDataProfileResultProfileField {
+		return vs[0].([]DatascanDataProfileResultProfileField)[vs[1].(int)]
+	}).(DatascanDataProfileResultProfileFieldOutput)
+}
+
+type DatascanDataProfileResultProfileFieldProfile struct {
+	// Ratio of rows with distinct values against total scanned rows. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
+	DistinctRatio *int `pulumi:"distinctRatio"`
+	// (Output)
+	// Double type field information.
+	// Structure is documented below.
+	DoubleProfiles []DatascanDataProfileResultProfileFieldProfileDoubleProfile `pulumi:"doubleProfiles"`
+	// (Output)
+	// Integer type field information.
+	// Structure is documented below.
+	IntegerProfiles []DatascanDataProfileResultProfileFieldProfileIntegerProfile `pulumi:"integerProfiles"`
+	// (Output)
+	// Ratio of rows with null value against total scanned rows.
+	NullRatio *int `pulumi:"nullRatio"`
+	// (Output)
+	// String type field information.
+	// Structure is documented below.
+	StringProfiles []DatascanDataProfileResultProfileFieldProfileStringProfile `pulumi:"stringProfiles"`
+	// The list of top N non-null values and number of times they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
+	// Structure is documented below.
+	TopNValues *DatascanDataProfileResultProfileFieldProfileTopNValues `pulumi:"topNValues"`
+}
+
+// DatascanDataProfileResultProfileFieldProfileInput is an input type that accepts DatascanDataProfileResultProfileFieldProfileArgs and DatascanDataProfileResultProfileFieldProfileOutput values.
+// You can construct a concrete instance of `DatascanDataProfileResultProfileFieldProfileInput` via:
+//
+//	DatascanDataProfileResultProfileFieldProfileArgs{...}
+type DatascanDataProfileResultProfileFieldProfileInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileResultProfileFieldProfileOutput() DatascanDataProfileResultProfileFieldProfileOutput
+	ToDatascanDataProfileResultProfileFieldProfileOutputWithContext(context.Context) DatascanDataProfileResultProfileFieldProfileOutput
+}
+
+type DatascanDataProfileResultProfileFieldProfileArgs struct {
+	// Ratio of rows with distinct values against total scanned rows. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
+	DistinctRatio pulumi.IntPtrInput `pulumi:"distinctRatio"`
+	// (Output)
+	// Double type field information.
+	// Structure is documented below.
+	DoubleProfiles DatascanDataProfileResultProfileFieldProfileDoubleProfileArrayInput `pulumi:"doubleProfiles"`
+	// (Output)
+	// Integer type field information.
+	// Structure is documented below.
+	IntegerProfiles DatascanDataProfileResultProfileFieldProfileIntegerProfileArrayInput `pulumi:"integerProfiles"`
+	// (Output)
+	// Ratio of rows with null value against total scanned rows.
+	NullRatio pulumi.IntPtrInput `pulumi:"nullRatio"`
+	// (Output)
+	// String type field information.
+	// Structure is documented below.
+	StringProfiles DatascanDataProfileResultProfileFieldProfileStringProfileArrayInput `pulumi:"stringProfiles"`
+	// The list of top N non-null values and number of times they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
+	// Structure is documented below.
+	TopNValues DatascanDataProfileResultProfileFieldProfileTopNValuesPtrInput `pulumi:"topNValues"`
+}
+
+func (DatascanDataProfileResultProfileFieldProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileResultProfileFieldProfile)(nil)).Elem()
+}
+
+func (i DatascanDataProfileResultProfileFieldProfileArgs) ToDatascanDataProfileResultProfileFieldProfileOutput() DatascanDataProfileResultProfileFieldProfileOutput {
+	return i.ToDatascanDataProfileResultProfileFieldProfileOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileResultProfileFieldProfileArgs) ToDatascanDataProfileResultProfileFieldProfileOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileResultProfileFieldProfileOutput)
+}
+
+func (i DatascanDataProfileResultProfileFieldProfileArgs) ToDatascanDataProfileResultProfileFieldProfilePtrOutput() DatascanDataProfileResultProfileFieldProfilePtrOutput {
+	return i.ToDatascanDataProfileResultProfileFieldProfilePtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileResultProfileFieldProfileArgs) ToDatascanDataProfileResultProfileFieldProfilePtrOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileResultProfileFieldProfileOutput).ToDatascanDataProfileResultProfileFieldProfilePtrOutputWithContext(ctx)
+}
+
+// DatascanDataProfileResultProfileFieldProfilePtrInput is an input type that accepts DatascanDataProfileResultProfileFieldProfileArgs, DatascanDataProfileResultProfileFieldProfilePtr and DatascanDataProfileResultProfileFieldProfilePtrOutput values.
+// You can construct a concrete instance of `DatascanDataProfileResultProfileFieldProfilePtrInput` via:
+//
+//	        DatascanDataProfileResultProfileFieldProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataProfileResultProfileFieldProfilePtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileResultProfileFieldProfilePtrOutput() DatascanDataProfileResultProfileFieldProfilePtrOutput
+	ToDatascanDataProfileResultProfileFieldProfilePtrOutputWithContext(context.Context) DatascanDataProfileResultProfileFieldProfilePtrOutput
+}
+
+type datascanDataProfileResultProfileFieldProfilePtrType DatascanDataProfileResultProfileFieldProfileArgs
+
+func DatascanDataProfileResultProfileFieldProfilePtr(v *DatascanDataProfileResultProfileFieldProfileArgs) DatascanDataProfileResultProfileFieldProfilePtrInput {
+	return (*datascanDataProfileResultProfileFieldProfilePtrType)(v)
+}
+
+func (*datascanDataProfileResultProfileFieldProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataProfileResultProfileFieldProfile)(nil)).Elem()
+}
+
+func (i *datascanDataProfileResultProfileFieldProfilePtrType) ToDatascanDataProfileResultProfileFieldProfilePtrOutput() DatascanDataProfileResultProfileFieldProfilePtrOutput {
+	return i.ToDatascanDataProfileResultProfileFieldProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataProfileResultProfileFieldProfilePtrType) ToDatascanDataProfileResultProfileFieldProfilePtrOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileResultProfileFieldProfilePtrOutput)
+}
+
+type DatascanDataProfileResultProfileFieldProfileOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileResultProfileFieldProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileResultProfileFieldProfile)(nil)).Elem()
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileOutput) ToDatascanDataProfileResultProfileFieldProfileOutput() DatascanDataProfileResultProfileFieldProfileOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileOutput) ToDatascanDataProfileResultProfileFieldProfileOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldProfileOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileOutput) ToDatascanDataProfileResultProfileFieldProfilePtrOutput() DatascanDataProfileResultProfileFieldProfilePtrOutput {
+	return o.ToDatascanDataProfileResultProfileFieldProfilePtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileOutput) ToDatascanDataProfileResultProfileFieldProfilePtrOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataProfileResultProfileFieldProfile) *DatascanDataProfileResultProfileFieldProfile {
+		return &v
+	}).(DatascanDataProfileResultProfileFieldProfilePtrOutput)
+}
+
+// Ratio of rows with distinct values against total scanned rows. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
+func (o DatascanDataProfileResultProfileFieldProfileOutput) DistinctRatio() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileFieldProfile) *int { return v.DistinctRatio }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Double type field information.
+// Structure is documented below.
+func (o DatascanDataProfileResultProfileFieldProfileOutput) DoubleProfiles() DatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileFieldProfile) []DatascanDataProfileResultProfileFieldProfileDoubleProfile {
+		return v.DoubleProfiles
+	}).(DatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutput)
+}
+
+// (Output)
+// Integer type field information.
+// Structure is documented below.
+func (o DatascanDataProfileResultProfileFieldProfileOutput) IntegerProfiles() DatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileFieldProfile) []DatascanDataProfileResultProfileFieldProfileIntegerProfile {
+		return v.IntegerProfiles
+	}).(DatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutput)
+}
+
+// (Output)
+// Ratio of rows with null value against total scanned rows.
+func (o DatascanDataProfileResultProfileFieldProfileOutput) NullRatio() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileFieldProfile) *int { return v.NullRatio }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// String type field information.
+// Structure is documented below.
+func (o DatascanDataProfileResultProfileFieldProfileOutput) StringProfiles() DatascanDataProfileResultProfileFieldProfileStringProfileArrayOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileFieldProfile) []DatascanDataProfileResultProfileFieldProfileStringProfile {
+		return v.StringProfiles
+	}).(DatascanDataProfileResultProfileFieldProfileStringProfileArrayOutput)
+}
+
+// The list of top N non-null values and number of times they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
+// Structure is documented below.
+func (o DatascanDataProfileResultProfileFieldProfileOutput) TopNValues() DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileFieldProfile) *DatascanDataProfileResultProfileFieldProfileTopNValues {
+		return v.TopNValues
+	}).(DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput)
+}
+
+type DatascanDataProfileResultProfileFieldProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileResultProfileFieldProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataProfileResultProfileFieldProfile)(nil)).Elem()
+}
+
+func (o DatascanDataProfileResultProfileFieldProfilePtrOutput) ToDatascanDataProfileResultProfileFieldProfilePtrOutput() DatascanDataProfileResultProfileFieldProfilePtrOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultProfileFieldProfilePtrOutput) ToDatascanDataProfileResultProfileFieldProfilePtrOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldProfilePtrOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultProfileFieldProfilePtrOutput) Elem() DatascanDataProfileResultProfileFieldProfileOutput {
+	return o.ApplyT(func(v *DatascanDataProfileResultProfileFieldProfile) DatascanDataProfileResultProfileFieldProfile {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataProfileResultProfileFieldProfile
+		return ret
+	}).(DatascanDataProfileResultProfileFieldProfileOutput)
+}
+
+// Ratio of rows with distinct values against total scanned rows. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
+func (o DatascanDataProfileResultProfileFieldProfilePtrOutput) DistinctRatio() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatascanDataProfileResultProfileFieldProfile) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DistinctRatio
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Double type field information.
+// Structure is documented below.
+func (o DatascanDataProfileResultProfileFieldProfilePtrOutput) DoubleProfiles() DatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutput {
+	return o.ApplyT(func(v *DatascanDataProfileResultProfileFieldProfile) []DatascanDataProfileResultProfileFieldProfileDoubleProfile {
+		if v == nil {
+			return nil
+		}
+		return v.DoubleProfiles
+	}).(DatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutput)
+}
+
+// (Output)
+// Integer type field information.
+// Structure is documented below.
+func (o DatascanDataProfileResultProfileFieldProfilePtrOutput) IntegerProfiles() DatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutput {
+	return o.ApplyT(func(v *DatascanDataProfileResultProfileFieldProfile) []DatascanDataProfileResultProfileFieldProfileIntegerProfile {
+		if v == nil {
+			return nil
+		}
+		return v.IntegerProfiles
+	}).(DatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutput)
+}
+
+// (Output)
+// Ratio of rows with null value against total scanned rows.
+func (o DatascanDataProfileResultProfileFieldProfilePtrOutput) NullRatio() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatascanDataProfileResultProfileFieldProfile) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NullRatio
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// String type field information.
+// Structure is documented below.
+func (o DatascanDataProfileResultProfileFieldProfilePtrOutput) StringProfiles() DatascanDataProfileResultProfileFieldProfileStringProfileArrayOutput {
+	return o.ApplyT(func(v *DatascanDataProfileResultProfileFieldProfile) []DatascanDataProfileResultProfileFieldProfileStringProfile {
+		if v == nil {
+			return nil
+		}
+		return v.StringProfiles
+	}).(DatascanDataProfileResultProfileFieldProfileStringProfileArrayOutput)
+}
+
+// The list of top N non-null values and number of times they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
+// Structure is documented below.
+func (o DatascanDataProfileResultProfileFieldProfilePtrOutput) TopNValues() DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput {
+	return o.ApplyT(func(v *DatascanDataProfileResultProfileFieldProfile) *DatascanDataProfileResultProfileFieldProfileTopNValues {
+		if v == nil {
+			return nil
+		}
+		return v.TopNValues
+	}).(DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput)
+}
+
+type DatascanDataProfileResultProfileFieldProfileDoubleProfile struct {
+	// Average of non-null values in the scanned data. NaN, if the field has a NaN.
+	Average *int `pulumi:"average"`
+	// Maximum of non-null values in the scanned data. NaN, if the field has a NaN.
+	Max *string `pulumi:"max"`
+	// Minimum of non-null values in the scanned data. NaN, if the field has a NaN.
+	Min *string `pulumi:"min"`
+	// A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3.
+	Quartiles *string `pulumi:"quartiles"`
+	// Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.
+	StandardDeviation *int `pulumi:"standardDeviation"`
+}
+
+// DatascanDataProfileResultProfileFieldProfileDoubleProfileInput is an input type that accepts DatascanDataProfileResultProfileFieldProfileDoubleProfileArgs and DatascanDataProfileResultProfileFieldProfileDoubleProfileOutput values.
+// You can construct a concrete instance of `DatascanDataProfileResultProfileFieldProfileDoubleProfileInput` via:
+//
+//	DatascanDataProfileResultProfileFieldProfileDoubleProfileArgs{...}
+type DatascanDataProfileResultProfileFieldProfileDoubleProfileInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileResultProfileFieldProfileDoubleProfileOutput() DatascanDataProfileResultProfileFieldProfileDoubleProfileOutput
+	ToDatascanDataProfileResultProfileFieldProfileDoubleProfileOutputWithContext(context.Context) DatascanDataProfileResultProfileFieldProfileDoubleProfileOutput
+}
+
+type DatascanDataProfileResultProfileFieldProfileDoubleProfileArgs struct {
+	// Average of non-null values in the scanned data. NaN, if the field has a NaN.
+	Average pulumi.IntPtrInput `pulumi:"average"`
+	// Maximum of non-null values in the scanned data. NaN, if the field has a NaN.
+	Max pulumi.StringPtrInput `pulumi:"max"`
+	// Minimum of non-null values in the scanned data. NaN, if the field has a NaN.
+	Min pulumi.StringPtrInput `pulumi:"min"`
+	// A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3.
+	Quartiles pulumi.StringPtrInput `pulumi:"quartiles"`
+	// Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.
+	StandardDeviation pulumi.IntPtrInput `pulumi:"standardDeviation"`
+}
+
+func (DatascanDataProfileResultProfileFieldProfileDoubleProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileResultProfileFieldProfileDoubleProfile)(nil)).Elem()
+}
+
+func (i DatascanDataProfileResultProfileFieldProfileDoubleProfileArgs) ToDatascanDataProfileResultProfileFieldProfileDoubleProfileOutput() DatascanDataProfileResultProfileFieldProfileDoubleProfileOutput {
+	return i.ToDatascanDataProfileResultProfileFieldProfileDoubleProfileOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileResultProfileFieldProfileDoubleProfileArgs) ToDatascanDataProfileResultProfileFieldProfileDoubleProfileOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldProfileDoubleProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileResultProfileFieldProfileDoubleProfileOutput)
+}
+
+// DatascanDataProfileResultProfileFieldProfileDoubleProfileArrayInput is an input type that accepts DatascanDataProfileResultProfileFieldProfileDoubleProfileArray and DatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutput values.
+// You can construct a concrete instance of `DatascanDataProfileResultProfileFieldProfileDoubleProfileArrayInput` via:
+//
+//	DatascanDataProfileResultProfileFieldProfileDoubleProfileArray{ DatascanDataProfileResultProfileFieldProfileDoubleProfileArgs{...} }
+type DatascanDataProfileResultProfileFieldProfileDoubleProfileArrayInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutput() DatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutput
+	ToDatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutputWithContext(context.Context) DatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutput
+}
+
+type DatascanDataProfileResultProfileFieldProfileDoubleProfileArray []DatascanDataProfileResultProfileFieldProfileDoubleProfileInput
+
+func (DatascanDataProfileResultProfileFieldProfileDoubleProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataProfileResultProfileFieldProfileDoubleProfile)(nil)).Elem()
+}
+
+func (i DatascanDataProfileResultProfileFieldProfileDoubleProfileArray) ToDatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutput() DatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutput {
+	return i.ToDatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileResultProfileFieldProfileDoubleProfileArray) ToDatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutput)
+}
+
+type DatascanDataProfileResultProfileFieldProfileDoubleProfileOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileResultProfileFieldProfileDoubleProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileResultProfileFieldProfileDoubleProfile)(nil)).Elem()
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileDoubleProfileOutput) ToDatascanDataProfileResultProfileFieldProfileDoubleProfileOutput() DatascanDataProfileResultProfileFieldProfileDoubleProfileOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileDoubleProfileOutput) ToDatascanDataProfileResultProfileFieldProfileDoubleProfileOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldProfileDoubleProfileOutput {
+	return o
+}
+
+// Average of non-null values in the scanned data. NaN, if the field has a NaN.
+func (o DatascanDataProfileResultProfileFieldProfileDoubleProfileOutput) Average() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileFieldProfileDoubleProfile) *int { return v.Average }).(pulumi.IntPtrOutput)
+}
+
+// Maximum of non-null values in the scanned data. NaN, if the field has a NaN.
+func (o DatascanDataProfileResultProfileFieldProfileDoubleProfileOutput) Max() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileFieldProfileDoubleProfile) *string { return v.Max }).(pulumi.StringPtrOutput)
+}
+
+// Minimum of non-null values in the scanned data. NaN, if the field has a NaN.
+func (o DatascanDataProfileResultProfileFieldProfileDoubleProfileOutput) Min() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileFieldProfileDoubleProfile) *string { return v.Min }).(pulumi.StringPtrOutput)
+}
+
+// A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3.
+func (o DatascanDataProfileResultProfileFieldProfileDoubleProfileOutput) Quartiles() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileFieldProfileDoubleProfile) *string { return v.Quartiles }).(pulumi.StringPtrOutput)
+}
+
+// Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.
+func (o DatascanDataProfileResultProfileFieldProfileDoubleProfileOutput) StandardDeviation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileFieldProfileDoubleProfile) *int { return v.StandardDeviation }).(pulumi.IntPtrOutput)
+}
+
+type DatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataProfileResultProfileFieldProfileDoubleProfile)(nil)).Elem()
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutput) ToDatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutput() DatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutput) ToDatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutput) Index(i pulumi.IntInput) DatascanDataProfileResultProfileFieldProfileDoubleProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanDataProfileResultProfileFieldProfileDoubleProfile {
+		return vs[0].([]DatascanDataProfileResultProfileFieldProfileDoubleProfile)[vs[1].(int)]
+	}).(DatascanDataProfileResultProfileFieldProfileDoubleProfileOutput)
+}
+
+type DatascanDataProfileResultProfileFieldProfileIntegerProfile struct {
+	// Average of non-null values in the scanned data. NaN, if the field has a NaN.
+	Average *int `pulumi:"average"`
+	// Maximum of non-null values in the scanned data. NaN, if the field has a NaN.
+	Max *string `pulumi:"max"`
+	// Minimum of non-null values in the scanned data. NaN, if the field has a NaN.
+	Min *string `pulumi:"min"`
+	// A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3.
+	Quartiles *string `pulumi:"quartiles"`
+	// Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.
+	StandardDeviation *int `pulumi:"standardDeviation"`
+}
+
+// DatascanDataProfileResultProfileFieldProfileIntegerProfileInput is an input type that accepts DatascanDataProfileResultProfileFieldProfileIntegerProfileArgs and DatascanDataProfileResultProfileFieldProfileIntegerProfileOutput values.
+// You can construct a concrete instance of `DatascanDataProfileResultProfileFieldProfileIntegerProfileInput` via:
+//
+//	DatascanDataProfileResultProfileFieldProfileIntegerProfileArgs{...}
+type DatascanDataProfileResultProfileFieldProfileIntegerProfileInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileResultProfileFieldProfileIntegerProfileOutput() DatascanDataProfileResultProfileFieldProfileIntegerProfileOutput
+	ToDatascanDataProfileResultProfileFieldProfileIntegerProfileOutputWithContext(context.Context) DatascanDataProfileResultProfileFieldProfileIntegerProfileOutput
+}
+
+type DatascanDataProfileResultProfileFieldProfileIntegerProfileArgs struct {
+	// Average of non-null values in the scanned data. NaN, if the field has a NaN.
+	Average pulumi.IntPtrInput `pulumi:"average"`
+	// Maximum of non-null values in the scanned data. NaN, if the field has a NaN.
+	Max pulumi.StringPtrInput `pulumi:"max"`
+	// Minimum of non-null values in the scanned data. NaN, if the field has a NaN.
+	Min pulumi.StringPtrInput `pulumi:"min"`
+	// A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3.
+	Quartiles pulumi.StringPtrInput `pulumi:"quartiles"`
+	// Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.
+	StandardDeviation pulumi.IntPtrInput `pulumi:"standardDeviation"`
+}
+
+func (DatascanDataProfileResultProfileFieldProfileIntegerProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileResultProfileFieldProfileIntegerProfile)(nil)).Elem()
+}
+
+func (i DatascanDataProfileResultProfileFieldProfileIntegerProfileArgs) ToDatascanDataProfileResultProfileFieldProfileIntegerProfileOutput() DatascanDataProfileResultProfileFieldProfileIntegerProfileOutput {
+	return i.ToDatascanDataProfileResultProfileFieldProfileIntegerProfileOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileResultProfileFieldProfileIntegerProfileArgs) ToDatascanDataProfileResultProfileFieldProfileIntegerProfileOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldProfileIntegerProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileResultProfileFieldProfileIntegerProfileOutput)
+}
+
+// DatascanDataProfileResultProfileFieldProfileIntegerProfileArrayInput is an input type that accepts DatascanDataProfileResultProfileFieldProfileIntegerProfileArray and DatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutput values.
+// You can construct a concrete instance of `DatascanDataProfileResultProfileFieldProfileIntegerProfileArrayInput` via:
+//
+//	DatascanDataProfileResultProfileFieldProfileIntegerProfileArray{ DatascanDataProfileResultProfileFieldProfileIntegerProfileArgs{...} }
+type DatascanDataProfileResultProfileFieldProfileIntegerProfileArrayInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutput() DatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutput
+	ToDatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutputWithContext(context.Context) DatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutput
+}
+
+type DatascanDataProfileResultProfileFieldProfileIntegerProfileArray []DatascanDataProfileResultProfileFieldProfileIntegerProfileInput
+
+func (DatascanDataProfileResultProfileFieldProfileIntegerProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataProfileResultProfileFieldProfileIntegerProfile)(nil)).Elem()
+}
+
+func (i DatascanDataProfileResultProfileFieldProfileIntegerProfileArray) ToDatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutput() DatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutput {
+	return i.ToDatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileResultProfileFieldProfileIntegerProfileArray) ToDatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutput)
+}
+
+type DatascanDataProfileResultProfileFieldProfileIntegerProfileOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileResultProfileFieldProfileIntegerProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileResultProfileFieldProfileIntegerProfile)(nil)).Elem()
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileIntegerProfileOutput) ToDatascanDataProfileResultProfileFieldProfileIntegerProfileOutput() DatascanDataProfileResultProfileFieldProfileIntegerProfileOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileIntegerProfileOutput) ToDatascanDataProfileResultProfileFieldProfileIntegerProfileOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldProfileIntegerProfileOutput {
+	return o
+}
+
+// Average of non-null values in the scanned data. NaN, if the field has a NaN.
+func (o DatascanDataProfileResultProfileFieldProfileIntegerProfileOutput) Average() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileFieldProfileIntegerProfile) *int { return v.Average }).(pulumi.IntPtrOutput)
+}
+
+// Maximum of non-null values in the scanned data. NaN, if the field has a NaN.
+func (o DatascanDataProfileResultProfileFieldProfileIntegerProfileOutput) Max() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileFieldProfileIntegerProfile) *string { return v.Max }).(pulumi.StringPtrOutput)
+}
+
+// Minimum of non-null values in the scanned data. NaN, if the field has a NaN.
+func (o DatascanDataProfileResultProfileFieldProfileIntegerProfileOutput) Min() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileFieldProfileIntegerProfile) *string { return v.Min }).(pulumi.StringPtrOutput)
+}
+
+// A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3.
+func (o DatascanDataProfileResultProfileFieldProfileIntegerProfileOutput) Quartiles() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileFieldProfileIntegerProfile) *string { return v.Quartiles }).(pulumi.StringPtrOutput)
+}
+
+// Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.
+func (o DatascanDataProfileResultProfileFieldProfileIntegerProfileOutput) StandardDeviation() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileFieldProfileIntegerProfile) *int { return v.StandardDeviation }).(pulumi.IntPtrOutput)
+}
+
+type DatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataProfileResultProfileFieldProfileIntegerProfile)(nil)).Elem()
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutput) ToDatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutput() DatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutput) ToDatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutput) Index(i pulumi.IntInput) DatascanDataProfileResultProfileFieldProfileIntegerProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanDataProfileResultProfileFieldProfileIntegerProfile {
+		return vs[0].([]DatascanDataProfileResultProfileFieldProfileIntegerProfile)[vs[1].(int)]
+	}).(DatascanDataProfileResultProfileFieldProfileIntegerProfileOutput)
+}
+
+type DatascanDataProfileResultProfileFieldProfileStringProfile struct {
+	// Average length of non-null values in the scanned data.
+	AverageLength *int `pulumi:"averageLength"`
+	// Maximum length of non-null values in the scanned data.
+	MaxLength *string `pulumi:"maxLength"`
+	// Minimum length of non-null values in the scanned data.
+	MinLength *string `pulumi:"minLength"`
+}
+
+// DatascanDataProfileResultProfileFieldProfileStringProfileInput is an input type that accepts DatascanDataProfileResultProfileFieldProfileStringProfileArgs and DatascanDataProfileResultProfileFieldProfileStringProfileOutput values.
+// You can construct a concrete instance of `DatascanDataProfileResultProfileFieldProfileStringProfileInput` via:
+//
+//	DatascanDataProfileResultProfileFieldProfileStringProfileArgs{...}
+type DatascanDataProfileResultProfileFieldProfileStringProfileInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileResultProfileFieldProfileStringProfileOutput() DatascanDataProfileResultProfileFieldProfileStringProfileOutput
+	ToDatascanDataProfileResultProfileFieldProfileStringProfileOutputWithContext(context.Context) DatascanDataProfileResultProfileFieldProfileStringProfileOutput
+}
+
+type DatascanDataProfileResultProfileFieldProfileStringProfileArgs struct {
+	// Average length of non-null values in the scanned data.
+	AverageLength pulumi.IntPtrInput `pulumi:"averageLength"`
+	// Maximum length of non-null values in the scanned data.
+	MaxLength pulumi.StringPtrInput `pulumi:"maxLength"`
+	// Minimum length of non-null values in the scanned data.
+	MinLength pulumi.StringPtrInput `pulumi:"minLength"`
+}
+
+func (DatascanDataProfileResultProfileFieldProfileStringProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileResultProfileFieldProfileStringProfile)(nil)).Elem()
+}
+
+func (i DatascanDataProfileResultProfileFieldProfileStringProfileArgs) ToDatascanDataProfileResultProfileFieldProfileStringProfileOutput() DatascanDataProfileResultProfileFieldProfileStringProfileOutput {
+	return i.ToDatascanDataProfileResultProfileFieldProfileStringProfileOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileResultProfileFieldProfileStringProfileArgs) ToDatascanDataProfileResultProfileFieldProfileStringProfileOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldProfileStringProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileResultProfileFieldProfileStringProfileOutput)
+}
+
+// DatascanDataProfileResultProfileFieldProfileStringProfileArrayInput is an input type that accepts DatascanDataProfileResultProfileFieldProfileStringProfileArray and DatascanDataProfileResultProfileFieldProfileStringProfileArrayOutput values.
+// You can construct a concrete instance of `DatascanDataProfileResultProfileFieldProfileStringProfileArrayInput` via:
+//
+//	DatascanDataProfileResultProfileFieldProfileStringProfileArray{ DatascanDataProfileResultProfileFieldProfileStringProfileArgs{...} }
+type DatascanDataProfileResultProfileFieldProfileStringProfileArrayInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileResultProfileFieldProfileStringProfileArrayOutput() DatascanDataProfileResultProfileFieldProfileStringProfileArrayOutput
+	ToDatascanDataProfileResultProfileFieldProfileStringProfileArrayOutputWithContext(context.Context) DatascanDataProfileResultProfileFieldProfileStringProfileArrayOutput
+}
+
+type DatascanDataProfileResultProfileFieldProfileStringProfileArray []DatascanDataProfileResultProfileFieldProfileStringProfileInput
+
+func (DatascanDataProfileResultProfileFieldProfileStringProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataProfileResultProfileFieldProfileStringProfile)(nil)).Elem()
+}
+
+func (i DatascanDataProfileResultProfileFieldProfileStringProfileArray) ToDatascanDataProfileResultProfileFieldProfileStringProfileArrayOutput() DatascanDataProfileResultProfileFieldProfileStringProfileArrayOutput {
+	return i.ToDatascanDataProfileResultProfileFieldProfileStringProfileArrayOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileResultProfileFieldProfileStringProfileArray) ToDatascanDataProfileResultProfileFieldProfileStringProfileArrayOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldProfileStringProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileResultProfileFieldProfileStringProfileArrayOutput)
+}
+
+type DatascanDataProfileResultProfileFieldProfileStringProfileOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileResultProfileFieldProfileStringProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileResultProfileFieldProfileStringProfile)(nil)).Elem()
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileStringProfileOutput) ToDatascanDataProfileResultProfileFieldProfileStringProfileOutput() DatascanDataProfileResultProfileFieldProfileStringProfileOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileStringProfileOutput) ToDatascanDataProfileResultProfileFieldProfileStringProfileOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldProfileStringProfileOutput {
+	return o
+}
+
+// Average length of non-null values in the scanned data.
+func (o DatascanDataProfileResultProfileFieldProfileStringProfileOutput) AverageLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileFieldProfileStringProfile) *int { return v.AverageLength }).(pulumi.IntPtrOutput)
+}
+
+// Maximum length of non-null values in the scanned data.
+func (o DatascanDataProfileResultProfileFieldProfileStringProfileOutput) MaxLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileFieldProfileStringProfile) *string { return v.MaxLength }).(pulumi.StringPtrOutput)
+}
+
+// Minimum length of non-null values in the scanned data.
+func (o DatascanDataProfileResultProfileFieldProfileStringProfileOutput) MinLength() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileFieldProfileStringProfile) *string { return v.MinLength }).(pulumi.StringPtrOutput)
+}
+
+type DatascanDataProfileResultProfileFieldProfileStringProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileResultProfileFieldProfileStringProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataProfileResultProfileFieldProfileStringProfile)(nil)).Elem()
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileStringProfileArrayOutput) ToDatascanDataProfileResultProfileFieldProfileStringProfileArrayOutput() DatascanDataProfileResultProfileFieldProfileStringProfileArrayOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileStringProfileArrayOutput) ToDatascanDataProfileResultProfileFieldProfileStringProfileArrayOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldProfileStringProfileArrayOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileStringProfileArrayOutput) Index(i pulumi.IntInput) DatascanDataProfileResultProfileFieldProfileStringProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanDataProfileResultProfileFieldProfileStringProfile {
+		return vs[0].([]DatascanDataProfileResultProfileFieldProfileStringProfile)[vs[1].(int)]
+	}).(DatascanDataProfileResultProfileFieldProfileStringProfileOutput)
+}
+
+type DatascanDataProfileResultProfileFieldProfileTopNValues struct {
+	// Count of the corresponding value in the scanned data.
+	Count *string `pulumi:"count"`
+	// String value of a top N non-null value.
+	Value *string `pulumi:"value"`
+}
+
+// DatascanDataProfileResultProfileFieldProfileTopNValuesInput is an input type that accepts DatascanDataProfileResultProfileFieldProfileTopNValuesArgs and DatascanDataProfileResultProfileFieldProfileTopNValuesOutput values.
+// You can construct a concrete instance of `DatascanDataProfileResultProfileFieldProfileTopNValuesInput` via:
+//
+//	DatascanDataProfileResultProfileFieldProfileTopNValuesArgs{...}
+type DatascanDataProfileResultProfileFieldProfileTopNValuesInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileResultProfileFieldProfileTopNValuesOutput() DatascanDataProfileResultProfileFieldProfileTopNValuesOutput
+	ToDatascanDataProfileResultProfileFieldProfileTopNValuesOutputWithContext(context.Context) DatascanDataProfileResultProfileFieldProfileTopNValuesOutput
+}
+
+type DatascanDataProfileResultProfileFieldProfileTopNValuesArgs struct {
+	// Count of the corresponding value in the scanned data.
+	Count pulumi.StringPtrInput `pulumi:"count"`
+	// String value of a top N non-null value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (DatascanDataProfileResultProfileFieldProfileTopNValuesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileResultProfileFieldProfileTopNValues)(nil)).Elem()
+}
+
+func (i DatascanDataProfileResultProfileFieldProfileTopNValuesArgs) ToDatascanDataProfileResultProfileFieldProfileTopNValuesOutput() DatascanDataProfileResultProfileFieldProfileTopNValuesOutput {
+	return i.ToDatascanDataProfileResultProfileFieldProfileTopNValuesOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileResultProfileFieldProfileTopNValuesArgs) ToDatascanDataProfileResultProfileFieldProfileTopNValuesOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldProfileTopNValuesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileResultProfileFieldProfileTopNValuesOutput)
+}
+
+func (i DatascanDataProfileResultProfileFieldProfileTopNValuesArgs) ToDatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput() DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput {
+	return i.ToDatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileResultProfileFieldProfileTopNValuesArgs) ToDatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileResultProfileFieldProfileTopNValuesOutput).ToDatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutputWithContext(ctx)
+}
+
+// DatascanDataProfileResultProfileFieldProfileTopNValuesPtrInput is an input type that accepts DatascanDataProfileResultProfileFieldProfileTopNValuesArgs, DatascanDataProfileResultProfileFieldProfileTopNValuesPtr and DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput values.
+// You can construct a concrete instance of `DatascanDataProfileResultProfileFieldProfileTopNValuesPtrInput` via:
+//
+//	        DatascanDataProfileResultProfileFieldProfileTopNValuesArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataProfileResultProfileFieldProfileTopNValuesPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput() DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput
+	ToDatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutputWithContext(context.Context) DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput
+}
+
+type datascanDataProfileResultProfileFieldProfileTopNValuesPtrType DatascanDataProfileResultProfileFieldProfileTopNValuesArgs
+
+func DatascanDataProfileResultProfileFieldProfileTopNValuesPtr(v *DatascanDataProfileResultProfileFieldProfileTopNValuesArgs) DatascanDataProfileResultProfileFieldProfileTopNValuesPtrInput {
+	return (*datascanDataProfileResultProfileFieldProfileTopNValuesPtrType)(v)
+}
+
+func (*datascanDataProfileResultProfileFieldProfileTopNValuesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataProfileResultProfileFieldProfileTopNValues)(nil)).Elem()
+}
+
+func (i *datascanDataProfileResultProfileFieldProfileTopNValuesPtrType) ToDatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput() DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput {
+	return i.ToDatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataProfileResultProfileFieldProfileTopNValuesPtrType) ToDatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput)
+}
+
+type DatascanDataProfileResultProfileFieldProfileTopNValuesOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileResultProfileFieldProfileTopNValuesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileResultProfileFieldProfileTopNValues)(nil)).Elem()
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileTopNValuesOutput) ToDatascanDataProfileResultProfileFieldProfileTopNValuesOutput() DatascanDataProfileResultProfileFieldProfileTopNValuesOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileTopNValuesOutput) ToDatascanDataProfileResultProfileFieldProfileTopNValuesOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldProfileTopNValuesOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileTopNValuesOutput) ToDatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput() DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput {
+	return o.ToDatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileTopNValuesOutput) ToDatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataProfileResultProfileFieldProfileTopNValues) *DatascanDataProfileResultProfileFieldProfileTopNValues {
+		return &v
+	}).(DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput)
+}
+
+// Count of the corresponding value in the scanned data.
+func (o DatascanDataProfileResultProfileFieldProfileTopNValuesOutput) Count() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileFieldProfileTopNValues) *string { return v.Count }).(pulumi.StringPtrOutput)
+}
+
+// String value of a top N non-null value.
+func (o DatascanDataProfileResultProfileFieldProfileTopNValuesOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultProfileFieldProfileTopNValues) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataProfileResultProfileFieldProfileTopNValues)(nil)).Elem()
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput) ToDatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput() DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput) ToDatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutputWithContext(ctx context.Context) DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput) Elem() DatascanDataProfileResultProfileFieldProfileTopNValuesOutput {
+	return o.ApplyT(func(v *DatascanDataProfileResultProfileFieldProfileTopNValues) DatascanDataProfileResultProfileFieldProfileTopNValues {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataProfileResultProfileFieldProfileTopNValues
+		return ret
+	}).(DatascanDataProfileResultProfileFieldProfileTopNValuesOutput)
+}
+
+// Count of the corresponding value in the scanned data.
+func (o DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput) Count() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataProfileResultProfileFieldProfileTopNValues) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Count
+	}).(pulumi.StringPtrOutput)
+}
+
+// String value of a top N non-null value.
+func (o DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataProfileResultProfileFieldProfileTopNValues) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatascanDataProfileResultScannedData struct {
+	// The range denoted by values of an incremental field
+	// Structure is documented below.
+	IncrementalField *DatascanDataProfileResultScannedDataIncrementalField `pulumi:"incrementalField"`
+}
+
+// DatascanDataProfileResultScannedDataInput is an input type that accepts DatascanDataProfileResultScannedDataArgs and DatascanDataProfileResultScannedDataOutput values.
+// You can construct a concrete instance of `DatascanDataProfileResultScannedDataInput` via:
+//
+//	DatascanDataProfileResultScannedDataArgs{...}
+type DatascanDataProfileResultScannedDataInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileResultScannedDataOutput() DatascanDataProfileResultScannedDataOutput
+	ToDatascanDataProfileResultScannedDataOutputWithContext(context.Context) DatascanDataProfileResultScannedDataOutput
+}
+
+type DatascanDataProfileResultScannedDataArgs struct {
+	// The range denoted by values of an incremental field
+	// Structure is documented below.
+	IncrementalField DatascanDataProfileResultScannedDataIncrementalFieldPtrInput `pulumi:"incrementalField"`
+}
+
+func (DatascanDataProfileResultScannedDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileResultScannedData)(nil)).Elem()
+}
+
+func (i DatascanDataProfileResultScannedDataArgs) ToDatascanDataProfileResultScannedDataOutput() DatascanDataProfileResultScannedDataOutput {
+	return i.ToDatascanDataProfileResultScannedDataOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileResultScannedDataArgs) ToDatascanDataProfileResultScannedDataOutputWithContext(ctx context.Context) DatascanDataProfileResultScannedDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileResultScannedDataOutput)
+}
+
+// DatascanDataProfileResultScannedDataArrayInput is an input type that accepts DatascanDataProfileResultScannedDataArray and DatascanDataProfileResultScannedDataArrayOutput values.
+// You can construct a concrete instance of `DatascanDataProfileResultScannedDataArrayInput` via:
+//
+//	DatascanDataProfileResultScannedDataArray{ DatascanDataProfileResultScannedDataArgs{...} }
+type DatascanDataProfileResultScannedDataArrayInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileResultScannedDataArrayOutput() DatascanDataProfileResultScannedDataArrayOutput
+	ToDatascanDataProfileResultScannedDataArrayOutputWithContext(context.Context) DatascanDataProfileResultScannedDataArrayOutput
+}
+
+type DatascanDataProfileResultScannedDataArray []DatascanDataProfileResultScannedDataInput
+
+func (DatascanDataProfileResultScannedDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataProfileResultScannedData)(nil)).Elem()
+}
+
+func (i DatascanDataProfileResultScannedDataArray) ToDatascanDataProfileResultScannedDataArrayOutput() DatascanDataProfileResultScannedDataArrayOutput {
+	return i.ToDatascanDataProfileResultScannedDataArrayOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileResultScannedDataArray) ToDatascanDataProfileResultScannedDataArrayOutputWithContext(ctx context.Context) DatascanDataProfileResultScannedDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileResultScannedDataArrayOutput)
+}
+
+type DatascanDataProfileResultScannedDataOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileResultScannedDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileResultScannedData)(nil)).Elem()
+}
+
+func (o DatascanDataProfileResultScannedDataOutput) ToDatascanDataProfileResultScannedDataOutput() DatascanDataProfileResultScannedDataOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultScannedDataOutput) ToDatascanDataProfileResultScannedDataOutputWithContext(ctx context.Context) DatascanDataProfileResultScannedDataOutput {
+	return o
+}
+
+// The range denoted by values of an incremental field
+// Structure is documented below.
+func (o DatascanDataProfileResultScannedDataOutput) IncrementalField() DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultScannedData) *DatascanDataProfileResultScannedDataIncrementalField {
+		return v.IncrementalField
+	}).(DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput)
+}
+
+type DatascanDataProfileResultScannedDataArrayOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileResultScannedDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataProfileResultScannedData)(nil)).Elem()
+}
+
+func (o DatascanDataProfileResultScannedDataArrayOutput) ToDatascanDataProfileResultScannedDataArrayOutput() DatascanDataProfileResultScannedDataArrayOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultScannedDataArrayOutput) ToDatascanDataProfileResultScannedDataArrayOutputWithContext(ctx context.Context) DatascanDataProfileResultScannedDataArrayOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultScannedDataArrayOutput) Index(i pulumi.IntInput) DatascanDataProfileResultScannedDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanDataProfileResultScannedData {
+		return vs[0].([]DatascanDataProfileResultScannedData)[vs[1].(int)]
+	}).(DatascanDataProfileResultScannedDataOutput)
+}
+
+type DatascanDataProfileResultScannedDataIncrementalField struct {
+	// Value that marks the end of the range.
+	End *string `pulumi:"end"`
+	// The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
+	Field *string `pulumi:"field"`
+	// Value that marks the start of the range.
+	Start *string `pulumi:"start"`
+}
+
+// DatascanDataProfileResultScannedDataIncrementalFieldInput is an input type that accepts DatascanDataProfileResultScannedDataIncrementalFieldArgs and DatascanDataProfileResultScannedDataIncrementalFieldOutput values.
+// You can construct a concrete instance of `DatascanDataProfileResultScannedDataIncrementalFieldInput` via:
+//
+//	DatascanDataProfileResultScannedDataIncrementalFieldArgs{...}
+type DatascanDataProfileResultScannedDataIncrementalFieldInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileResultScannedDataIncrementalFieldOutput() DatascanDataProfileResultScannedDataIncrementalFieldOutput
+	ToDatascanDataProfileResultScannedDataIncrementalFieldOutputWithContext(context.Context) DatascanDataProfileResultScannedDataIncrementalFieldOutput
+}
+
+type DatascanDataProfileResultScannedDataIncrementalFieldArgs struct {
+	// Value that marks the end of the range.
+	End pulumi.StringPtrInput `pulumi:"end"`
+	// The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
+	Field pulumi.StringPtrInput `pulumi:"field"`
+	// Value that marks the start of the range.
+	Start pulumi.StringPtrInput `pulumi:"start"`
+}
+
+func (DatascanDataProfileResultScannedDataIncrementalFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileResultScannedDataIncrementalField)(nil)).Elem()
+}
+
+func (i DatascanDataProfileResultScannedDataIncrementalFieldArgs) ToDatascanDataProfileResultScannedDataIncrementalFieldOutput() DatascanDataProfileResultScannedDataIncrementalFieldOutput {
+	return i.ToDatascanDataProfileResultScannedDataIncrementalFieldOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileResultScannedDataIncrementalFieldArgs) ToDatascanDataProfileResultScannedDataIncrementalFieldOutputWithContext(ctx context.Context) DatascanDataProfileResultScannedDataIncrementalFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileResultScannedDataIncrementalFieldOutput)
+}
+
+func (i DatascanDataProfileResultScannedDataIncrementalFieldArgs) ToDatascanDataProfileResultScannedDataIncrementalFieldPtrOutput() DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput {
+	return i.ToDatascanDataProfileResultScannedDataIncrementalFieldPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileResultScannedDataIncrementalFieldArgs) ToDatascanDataProfileResultScannedDataIncrementalFieldPtrOutputWithContext(ctx context.Context) DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileResultScannedDataIncrementalFieldOutput).ToDatascanDataProfileResultScannedDataIncrementalFieldPtrOutputWithContext(ctx)
+}
+
+// DatascanDataProfileResultScannedDataIncrementalFieldPtrInput is an input type that accepts DatascanDataProfileResultScannedDataIncrementalFieldArgs, DatascanDataProfileResultScannedDataIncrementalFieldPtr and DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput values.
+// You can construct a concrete instance of `DatascanDataProfileResultScannedDataIncrementalFieldPtrInput` via:
+//
+//	        DatascanDataProfileResultScannedDataIncrementalFieldArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataProfileResultScannedDataIncrementalFieldPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileResultScannedDataIncrementalFieldPtrOutput() DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput
+	ToDatascanDataProfileResultScannedDataIncrementalFieldPtrOutputWithContext(context.Context) DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput
+}
+
+type datascanDataProfileResultScannedDataIncrementalFieldPtrType DatascanDataProfileResultScannedDataIncrementalFieldArgs
+
+func DatascanDataProfileResultScannedDataIncrementalFieldPtr(v *DatascanDataProfileResultScannedDataIncrementalFieldArgs) DatascanDataProfileResultScannedDataIncrementalFieldPtrInput {
+	return (*datascanDataProfileResultScannedDataIncrementalFieldPtrType)(v)
+}
+
+func (*datascanDataProfileResultScannedDataIncrementalFieldPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataProfileResultScannedDataIncrementalField)(nil)).Elem()
+}
+
+func (i *datascanDataProfileResultScannedDataIncrementalFieldPtrType) ToDatascanDataProfileResultScannedDataIncrementalFieldPtrOutput() DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput {
+	return i.ToDatascanDataProfileResultScannedDataIncrementalFieldPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataProfileResultScannedDataIncrementalFieldPtrType) ToDatascanDataProfileResultScannedDataIncrementalFieldPtrOutputWithContext(ctx context.Context) DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput)
+}
+
+type DatascanDataProfileResultScannedDataIncrementalFieldOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileResultScannedDataIncrementalFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileResultScannedDataIncrementalField)(nil)).Elem()
+}
+
+func (o DatascanDataProfileResultScannedDataIncrementalFieldOutput) ToDatascanDataProfileResultScannedDataIncrementalFieldOutput() DatascanDataProfileResultScannedDataIncrementalFieldOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultScannedDataIncrementalFieldOutput) ToDatascanDataProfileResultScannedDataIncrementalFieldOutputWithContext(ctx context.Context) DatascanDataProfileResultScannedDataIncrementalFieldOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultScannedDataIncrementalFieldOutput) ToDatascanDataProfileResultScannedDataIncrementalFieldPtrOutput() DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput {
+	return o.ToDatascanDataProfileResultScannedDataIncrementalFieldPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataProfileResultScannedDataIncrementalFieldOutput) ToDatascanDataProfileResultScannedDataIncrementalFieldPtrOutputWithContext(ctx context.Context) DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataProfileResultScannedDataIncrementalField) *DatascanDataProfileResultScannedDataIncrementalField {
+		return &v
+	}).(DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput)
+}
+
+// Value that marks the end of the range.
+func (o DatascanDataProfileResultScannedDataIncrementalFieldOutput) End() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultScannedDataIncrementalField) *string { return v.End }).(pulumi.StringPtrOutput)
+}
+
+// The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
+func (o DatascanDataProfileResultScannedDataIncrementalFieldOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultScannedDataIncrementalField) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+// Value that marks the start of the range.
+func (o DatascanDataProfileResultScannedDataIncrementalFieldOutput) Start() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileResultScannedDataIncrementalField) *string { return v.Start }).(pulumi.StringPtrOutput)
+}
+
+type DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataProfileResultScannedDataIncrementalField)(nil)).Elem()
+}
+
+func (o DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput) ToDatascanDataProfileResultScannedDataIncrementalFieldPtrOutput() DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput) ToDatascanDataProfileResultScannedDataIncrementalFieldPtrOutputWithContext(ctx context.Context) DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput {
+	return o
+}
+
+func (o DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput) Elem() DatascanDataProfileResultScannedDataIncrementalFieldOutput {
+	return o.ApplyT(func(v *DatascanDataProfileResultScannedDataIncrementalField) DatascanDataProfileResultScannedDataIncrementalField {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataProfileResultScannedDataIncrementalField
+		return ret
+	}).(DatascanDataProfileResultScannedDataIncrementalFieldOutput)
+}
+
+// Value that marks the end of the range.
+func (o DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput) End() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataProfileResultScannedDataIncrementalField) *string {
+		if v == nil {
+			return nil
+		}
+		return v.End
+	}).(pulumi.StringPtrOutput)
+}
+
+// The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
+func (o DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataProfileResultScannedDataIncrementalField) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Field
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value that marks the start of the range.
+func (o DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput) Start() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataProfileResultScannedDataIncrementalField) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Start
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatascanDataProfileSpec struct {
+	// A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+	RowFilter *string `pulumi:"rowFilter"`
+	// The percentage of the records to be selected from the dataset for DataScan.
+	SamplingPercent *float64 `pulumi:"samplingPercent"`
+}
+
+// DatascanDataProfileSpecInput is an input type that accepts DatascanDataProfileSpecArgs and DatascanDataProfileSpecOutput values.
+// You can construct a concrete instance of `DatascanDataProfileSpecInput` via:
+//
+//	DatascanDataProfileSpecArgs{...}
+type DatascanDataProfileSpecInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileSpecOutput() DatascanDataProfileSpecOutput
+	ToDatascanDataProfileSpecOutputWithContext(context.Context) DatascanDataProfileSpecOutput
+}
+
+type DatascanDataProfileSpecArgs struct {
+	// A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+	RowFilter pulumi.StringPtrInput `pulumi:"rowFilter"`
+	// The percentage of the records to be selected from the dataset for DataScan.
+	SamplingPercent pulumi.Float64PtrInput `pulumi:"samplingPercent"`
+}
+
+func (DatascanDataProfileSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileSpec)(nil)).Elem()
+}
+
+func (i DatascanDataProfileSpecArgs) ToDatascanDataProfileSpecOutput() DatascanDataProfileSpecOutput {
+	return i.ToDatascanDataProfileSpecOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileSpecArgs) ToDatascanDataProfileSpecOutputWithContext(ctx context.Context) DatascanDataProfileSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileSpecOutput)
+}
+
+func (i DatascanDataProfileSpecArgs) ToDatascanDataProfileSpecPtrOutput() DatascanDataProfileSpecPtrOutput {
+	return i.ToDatascanDataProfileSpecPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataProfileSpecArgs) ToDatascanDataProfileSpecPtrOutputWithContext(ctx context.Context) DatascanDataProfileSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileSpecOutput).ToDatascanDataProfileSpecPtrOutputWithContext(ctx)
+}
+
+// DatascanDataProfileSpecPtrInput is an input type that accepts DatascanDataProfileSpecArgs, DatascanDataProfileSpecPtr and DatascanDataProfileSpecPtrOutput values.
+// You can construct a concrete instance of `DatascanDataProfileSpecPtrInput` via:
+//
+//	        DatascanDataProfileSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataProfileSpecPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataProfileSpecPtrOutput() DatascanDataProfileSpecPtrOutput
+	ToDatascanDataProfileSpecPtrOutputWithContext(context.Context) DatascanDataProfileSpecPtrOutput
+}
+
+type datascanDataProfileSpecPtrType DatascanDataProfileSpecArgs
+
+func DatascanDataProfileSpecPtr(v *DatascanDataProfileSpecArgs) DatascanDataProfileSpecPtrInput {
+	return (*datascanDataProfileSpecPtrType)(v)
+}
+
+func (*datascanDataProfileSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataProfileSpec)(nil)).Elem()
+}
+
+func (i *datascanDataProfileSpecPtrType) ToDatascanDataProfileSpecPtrOutput() DatascanDataProfileSpecPtrOutput {
+	return i.ToDatascanDataProfileSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataProfileSpecPtrType) ToDatascanDataProfileSpecPtrOutputWithContext(ctx context.Context) DatascanDataProfileSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataProfileSpecPtrOutput)
+}
+
+type DatascanDataProfileSpecOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataProfileSpec)(nil)).Elem()
+}
+
+func (o DatascanDataProfileSpecOutput) ToDatascanDataProfileSpecOutput() DatascanDataProfileSpecOutput {
+	return o
+}
+
+func (o DatascanDataProfileSpecOutput) ToDatascanDataProfileSpecOutputWithContext(ctx context.Context) DatascanDataProfileSpecOutput {
+	return o
+}
+
+func (o DatascanDataProfileSpecOutput) ToDatascanDataProfileSpecPtrOutput() DatascanDataProfileSpecPtrOutput {
+	return o.ToDatascanDataProfileSpecPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataProfileSpecOutput) ToDatascanDataProfileSpecPtrOutputWithContext(ctx context.Context) DatascanDataProfileSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataProfileSpec) *DatascanDataProfileSpec {
+		return &v
+	}).(DatascanDataProfileSpecPtrOutput)
+}
+
+// A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+func (o DatascanDataProfileSpecOutput) RowFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileSpec) *string { return v.RowFilter }).(pulumi.StringPtrOutput)
+}
+
+// The percentage of the records to be selected from the dataset for DataScan.
+func (o DatascanDataProfileSpecOutput) SamplingPercent() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DatascanDataProfileSpec) *float64 { return v.SamplingPercent }).(pulumi.Float64PtrOutput)
+}
+
+type DatascanDataProfileSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataProfileSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataProfileSpec)(nil)).Elem()
+}
+
+func (o DatascanDataProfileSpecPtrOutput) ToDatascanDataProfileSpecPtrOutput() DatascanDataProfileSpecPtrOutput {
+	return o
+}
+
+func (o DatascanDataProfileSpecPtrOutput) ToDatascanDataProfileSpecPtrOutputWithContext(ctx context.Context) DatascanDataProfileSpecPtrOutput {
+	return o
+}
+
+func (o DatascanDataProfileSpecPtrOutput) Elem() DatascanDataProfileSpecOutput {
+	return o.ApplyT(func(v *DatascanDataProfileSpec) DatascanDataProfileSpec {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataProfileSpec
+		return ret
+	}).(DatascanDataProfileSpecOutput)
+}
+
+// A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+func (o DatascanDataProfileSpecPtrOutput) RowFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataProfileSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RowFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The percentage of the records to be selected from the dataset for DataScan.
+func (o DatascanDataProfileSpecPtrOutput) SamplingPercent() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DatascanDataProfileSpec) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SamplingPercent
+	}).(pulumi.Float64PtrOutput)
+}
+
+type DatascanDataQualityResult struct {
+	// A list of results at the dimension level.
+	// Structure is documented below.
+	Dimensions []DatascanDataQualityResultDimension `pulumi:"dimensions"`
+	// (Output)
+	// Whether the rule passed or failed.
+	Passed *bool `pulumi:"passed"`
+	// The count of rows scanned.
+	RowCount *string `pulumi:"rowCount"`
+	// The list of rules to evaluate against a data source. At least one rule is required.
+	// Structure is documented below.
+	Rules []DatascanDataQualityResultRule `pulumi:"rules"`
+	// (Output)
+	// The data scanned for this result.
+	// Structure is documented below.
+	ScannedDatas []DatascanDataQualityResultScannedData `pulumi:"scannedDatas"`
+}
+
+// DatascanDataQualityResultInput is an input type that accepts DatascanDataQualityResultArgs and DatascanDataQualityResultOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultInput` via:
+//
+//	DatascanDataQualityResultArgs{...}
+type DatascanDataQualityResultInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultOutput() DatascanDataQualityResultOutput
+	ToDatascanDataQualityResultOutputWithContext(context.Context) DatascanDataQualityResultOutput
+}
+
+type DatascanDataQualityResultArgs struct {
+	// A list of results at the dimension level.
+	// Structure is documented below.
+	Dimensions DatascanDataQualityResultDimensionArrayInput `pulumi:"dimensions"`
+	// (Output)
+	// Whether the rule passed or failed.
+	Passed pulumi.BoolPtrInput `pulumi:"passed"`
+	// The count of rows scanned.
+	RowCount pulumi.StringPtrInput `pulumi:"rowCount"`
+	// The list of rules to evaluate against a data source. At least one rule is required.
+	// Structure is documented below.
+	Rules DatascanDataQualityResultRuleArrayInput `pulumi:"rules"`
+	// (Output)
+	// The data scanned for this result.
+	// Structure is documented below.
+	ScannedDatas DatascanDataQualityResultScannedDataArrayInput `pulumi:"scannedDatas"`
+}
+
+func (DatascanDataQualityResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResult)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultArgs) ToDatascanDataQualityResultOutput() DatascanDataQualityResultOutput {
+	return i.ToDatascanDataQualityResultOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultArgs) ToDatascanDataQualityResultOutputWithContext(ctx context.Context) DatascanDataQualityResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultOutput)
+}
+
+// DatascanDataQualityResultArrayInput is an input type that accepts DatascanDataQualityResultArray and DatascanDataQualityResultArrayOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultArrayInput` via:
+//
+//	DatascanDataQualityResultArray{ DatascanDataQualityResultArgs{...} }
+type DatascanDataQualityResultArrayInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultArrayOutput() DatascanDataQualityResultArrayOutput
+	ToDatascanDataQualityResultArrayOutputWithContext(context.Context) DatascanDataQualityResultArrayOutput
+}
+
+type DatascanDataQualityResultArray []DatascanDataQualityResultInput
+
+func (DatascanDataQualityResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResult)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultArray) ToDatascanDataQualityResultArrayOutput() DatascanDataQualityResultArrayOutput {
+	return i.ToDatascanDataQualityResultArrayOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultArray) ToDatascanDataQualityResultArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultArrayOutput)
+}
+
+type DatascanDataQualityResultOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResult)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultOutput) ToDatascanDataQualityResultOutput() DatascanDataQualityResultOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultOutput) ToDatascanDataQualityResultOutputWithContext(ctx context.Context) DatascanDataQualityResultOutput {
+	return o
+}
+
+// A list of results at the dimension level.
+// Structure is documented below.
+func (o DatascanDataQualityResultOutput) Dimensions() DatascanDataQualityResultDimensionArrayOutput {
+	return o.ApplyT(func(v DatascanDataQualityResult) []DatascanDataQualityResultDimension { return v.Dimensions }).(DatascanDataQualityResultDimensionArrayOutput)
+}
+
+// (Output)
+// Whether the rule passed or failed.
+func (o DatascanDataQualityResultOutput) Passed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResult) *bool { return v.Passed }).(pulumi.BoolPtrOutput)
+}
+
+// The count of rows scanned.
+func (o DatascanDataQualityResultOutput) RowCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResult) *string { return v.RowCount }).(pulumi.StringPtrOutput)
+}
+
+// The list of rules to evaluate against a data source. At least one rule is required.
+// Structure is documented below.
+func (o DatascanDataQualityResultOutput) Rules() DatascanDataQualityResultRuleArrayOutput {
+	return o.ApplyT(func(v DatascanDataQualityResult) []DatascanDataQualityResultRule { return v.Rules }).(DatascanDataQualityResultRuleArrayOutput)
+}
+
+// (Output)
+// The data scanned for this result.
+// Structure is documented below.
+func (o DatascanDataQualityResultOutput) ScannedDatas() DatascanDataQualityResultScannedDataArrayOutput {
+	return o.ApplyT(func(v DatascanDataQualityResult) []DatascanDataQualityResultScannedData { return v.ScannedDatas }).(DatascanDataQualityResultScannedDataArrayOutput)
+}
+
+type DatascanDataQualityResultArrayOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResult)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultArrayOutput) ToDatascanDataQualityResultArrayOutput() DatascanDataQualityResultArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultArrayOutput) ToDatascanDataQualityResultArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultArrayOutput) Index(i pulumi.IntInput) DatascanDataQualityResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanDataQualityResult {
+		return vs[0].([]DatascanDataQualityResult)[vs[1].(int)]
+	}).(DatascanDataQualityResultOutput)
+}
+
+type DatascanDataQualityResultDimension struct {
+	// (Output)
+	// Whether the rule passed or failed.
+	Passed *bool `pulumi:"passed"`
+}
+
+// DatascanDataQualityResultDimensionInput is an input type that accepts DatascanDataQualityResultDimensionArgs and DatascanDataQualityResultDimensionOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultDimensionInput` via:
+//
+//	DatascanDataQualityResultDimensionArgs{...}
+type DatascanDataQualityResultDimensionInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultDimensionOutput() DatascanDataQualityResultDimensionOutput
+	ToDatascanDataQualityResultDimensionOutputWithContext(context.Context) DatascanDataQualityResultDimensionOutput
+}
+
+type DatascanDataQualityResultDimensionArgs struct {
+	// (Output)
+	// Whether the rule passed or failed.
+	Passed pulumi.BoolPtrInput `pulumi:"passed"`
+}
+
+func (DatascanDataQualityResultDimensionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultDimension)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultDimensionArgs) ToDatascanDataQualityResultDimensionOutput() DatascanDataQualityResultDimensionOutput {
+	return i.ToDatascanDataQualityResultDimensionOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultDimensionArgs) ToDatascanDataQualityResultDimensionOutputWithContext(ctx context.Context) DatascanDataQualityResultDimensionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultDimensionOutput)
+}
+
+// DatascanDataQualityResultDimensionArrayInput is an input type that accepts DatascanDataQualityResultDimensionArray and DatascanDataQualityResultDimensionArrayOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultDimensionArrayInput` via:
+//
+//	DatascanDataQualityResultDimensionArray{ DatascanDataQualityResultDimensionArgs{...} }
+type DatascanDataQualityResultDimensionArrayInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultDimensionArrayOutput() DatascanDataQualityResultDimensionArrayOutput
+	ToDatascanDataQualityResultDimensionArrayOutputWithContext(context.Context) DatascanDataQualityResultDimensionArrayOutput
+}
+
+type DatascanDataQualityResultDimensionArray []DatascanDataQualityResultDimensionInput
+
+func (DatascanDataQualityResultDimensionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResultDimension)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultDimensionArray) ToDatascanDataQualityResultDimensionArrayOutput() DatascanDataQualityResultDimensionArrayOutput {
+	return i.ToDatascanDataQualityResultDimensionArrayOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultDimensionArray) ToDatascanDataQualityResultDimensionArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultDimensionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultDimensionArrayOutput)
+}
+
+type DatascanDataQualityResultDimensionOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultDimensionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultDimension)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultDimensionOutput) ToDatascanDataQualityResultDimensionOutput() DatascanDataQualityResultDimensionOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultDimensionOutput) ToDatascanDataQualityResultDimensionOutputWithContext(ctx context.Context) DatascanDataQualityResultDimensionOutput {
+	return o
+}
+
+// (Output)
+// Whether the rule passed or failed.
+func (o DatascanDataQualityResultDimensionOutput) Passed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultDimension) *bool { return v.Passed }).(pulumi.BoolPtrOutput)
+}
+
+type DatascanDataQualityResultDimensionArrayOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultDimensionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResultDimension)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultDimensionArrayOutput) ToDatascanDataQualityResultDimensionArrayOutput() DatascanDataQualityResultDimensionArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultDimensionArrayOutput) ToDatascanDataQualityResultDimensionArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultDimensionArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultDimensionArrayOutput) Index(i pulumi.IntInput) DatascanDataQualityResultDimensionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanDataQualityResultDimension {
+		return vs[0].([]DatascanDataQualityResultDimension)[vs[1].(int)]
+	}).(DatascanDataQualityResultDimensionOutput)
+}
+
+type DatascanDataQualityResultRule struct {
+	// (Output)
+	// The number of rows a rule was evaluated against. This field is only valid for ColumnMap type rules.
+	// Evaluated count can be configured to either
+	// 1. include all rows (default) - with null rows automatically failing rule evaluation, or
+	// 2. exclude null rows from the evaluatedCount, by setting ignoreNulls = true.
+	EvaluatedCount *string `pulumi:"evaluatedCount"`
+	// (Output)
+	// The query to find rows that did not pass this rule. Only applies to ColumnMap and RowCondition rules.
+	FailingRowsQuery *string `pulumi:"failingRowsQuery"`
+	// (Output)
+	// The number of rows with null values in the specified column.
+	NullCount *string `pulumi:"nullCount"`
+	// (Output)
+	// The ratio of passedCount / evaluatedCount. This field is only valid for ColumnMap type rules.
+	PassRatio *int `pulumi:"passRatio"`
+	// (Output)
+	// Whether the rule passed or failed.
+	Passed *bool `pulumi:"passed"`
+	// (Output)
+	// The number of rows which passed a rule evaluation. This field is only valid for ColumnMap type rules.
+	PassedCount *string `pulumi:"passedCount"`
+	// (Output)
+	// The rule specified in the DataQualitySpec, as is.
+	// Structure is documented below.
+	Rules []DatascanDataQualityResultRuleRule `pulumi:"rules"`
+}
+
+// DatascanDataQualityResultRuleInput is an input type that accepts DatascanDataQualityResultRuleArgs and DatascanDataQualityResultRuleOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultRuleInput` via:
+//
+//	DatascanDataQualityResultRuleArgs{...}
+type DatascanDataQualityResultRuleInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultRuleOutput() DatascanDataQualityResultRuleOutput
+	ToDatascanDataQualityResultRuleOutputWithContext(context.Context) DatascanDataQualityResultRuleOutput
+}
+
+type DatascanDataQualityResultRuleArgs struct {
+	// (Output)
+	// The number of rows a rule was evaluated against. This field is only valid for ColumnMap type rules.
+	// Evaluated count can be configured to either
+	// 1. include all rows (default) - with null rows automatically failing rule evaluation, or
+	// 2. exclude null rows from the evaluatedCount, by setting ignoreNulls = true.
+	EvaluatedCount pulumi.StringPtrInput `pulumi:"evaluatedCount"`
+	// (Output)
+	// The query to find rows that did not pass this rule. Only applies to ColumnMap and RowCondition rules.
+	FailingRowsQuery pulumi.StringPtrInput `pulumi:"failingRowsQuery"`
+	// (Output)
+	// The number of rows with null values in the specified column.
+	NullCount pulumi.StringPtrInput `pulumi:"nullCount"`
+	// (Output)
+	// The ratio of passedCount / evaluatedCount. This field is only valid for ColumnMap type rules.
+	PassRatio pulumi.IntPtrInput `pulumi:"passRatio"`
+	// (Output)
+	// Whether the rule passed or failed.
+	Passed pulumi.BoolPtrInput `pulumi:"passed"`
+	// (Output)
+	// The number of rows which passed a rule evaluation. This field is only valid for ColumnMap type rules.
+	PassedCount pulumi.StringPtrInput `pulumi:"passedCount"`
+	// (Output)
+	// The rule specified in the DataQualitySpec, as is.
+	// Structure is documented below.
+	Rules DatascanDataQualityResultRuleRuleArrayInput `pulumi:"rules"`
+}
+
+func (DatascanDataQualityResultRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultRule)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultRuleArgs) ToDatascanDataQualityResultRuleOutput() DatascanDataQualityResultRuleOutput {
+	return i.ToDatascanDataQualityResultRuleOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultRuleArgs) ToDatascanDataQualityResultRuleOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultRuleOutput)
+}
+
+// DatascanDataQualityResultRuleArrayInput is an input type that accepts DatascanDataQualityResultRuleArray and DatascanDataQualityResultRuleArrayOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultRuleArrayInput` via:
+//
+//	DatascanDataQualityResultRuleArray{ DatascanDataQualityResultRuleArgs{...} }
+type DatascanDataQualityResultRuleArrayInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultRuleArrayOutput() DatascanDataQualityResultRuleArrayOutput
+	ToDatascanDataQualityResultRuleArrayOutputWithContext(context.Context) DatascanDataQualityResultRuleArrayOutput
+}
+
+type DatascanDataQualityResultRuleArray []DatascanDataQualityResultRuleInput
+
+func (DatascanDataQualityResultRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResultRule)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultRuleArray) ToDatascanDataQualityResultRuleArrayOutput() DatascanDataQualityResultRuleArrayOutput {
+	return i.ToDatascanDataQualityResultRuleArrayOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultRuleArray) ToDatascanDataQualityResultRuleArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultRuleArrayOutput)
+}
+
+type DatascanDataQualityResultRuleOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultRule)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultRuleOutput) ToDatascanDataQualityResultRuleOutput() DatascanDataQualityResultRuleOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleOutput) ToDatascanDataQualityResultRuleOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleOutput {
+	return o
+}
+
+// (Output)
+// The number of rows a rule was evaluated against. This field is only valid for ColumnMap type rules.
+// Evaluated count can be configured to either
+// 1. include all rows (default) - with null rows automatically failing rule evaluation, or
+// 2. exclude null rows from the evaluatedCount, by setting ignoreNulls = true.
+func (o DatascanDataQualityResultRuleOutput) EvaluatedCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRule) *string { return v.EvaluatedCount }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The query to find rows that did not pass this rule. Only applies to ColumnMap and RowCondition rules.
+func (o DatascanDataQualityResultRuleOutput) FailingRowsQuery() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRule) *string { return v.FailingRowsQuery }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The number of rows with null values in the specified column.
+func (o DatascanDataQualityResultRuleOutput) NullCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRule) *string { return v.NullCount }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The ratio of passedCount / evaluatedCount. This field is only valid for ColumnMap type rules.
+func (o DatascanDataQualityResultRuleOutput) PassRatio() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRule) *int { return v.PassRatio }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Whether the rule passed or failed.
+func (o DatascanDataQualityResultRuleOutput) Passed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRule) *bool { return v.Passed }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// The number of rows which passed a rule evaluation. This field is only valid for ColumnMap type rules.
+func (o DatascanDataQualityResultRuleOutput) PassedCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRule) *string { return v.PassedCount }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The rule specified in the DataQualitySpec, as is.
+// Structure is documented below.
+func (o DatascanDataQualityResultRuleOutput) Rules() DatascanDataQualityResultRuleRuleArrayOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRule) []DatascanDataQualityResultRuleRule { return v.Rules }).(DatascanDataQualityResultRuleRuleArrayOutput)
+}
+
+type DatascanDataQualityResultRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResultRule)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultRuleArrayOutput) ToDatascanDataQualityResultRuleArrayOutput() DatascanDataQualityResultRuleArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleArrayOutput) ToDatascanDataQualityResultRuleArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleArrayOutput) Index(i pulumi.IntInput) DatascanDataQualityResultRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanDataQualityResultRule {
+		return vs[0].([]DatascanDataQualityResultRule)[vs[1].(int)]
+	}).(DatascanDataQualityResultRuleOutput)
+}
+
+type DatascanDataQualityResultRuleRule struct {
+	// The unnested column which this rule is evaluated against.
+	Column *string `pulumi:"column"`
+	// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
+	Dimension *string `pulumi:"dimension"`
+	// Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. Only applicable to ColumnMap rules.
+	IgnoreNull *bool `pulumi:"ignoreNull"`
+	// ColumnMap rule which evaluates whether each column value is null.
+	NonNullExpectations []DatascanDataQualityResultRuleRuleNonNullExpectation `pulumi:"nonNullExpectations"`
+	// ColumnMap rule which evaluates whether each column value lies between a specified range.
+	// Structure is documented below.
+	RangeExpectations []DatascanDataQualityResultRuleRuleRangeExpectation `pulumi:"rangeExpectations"`
+	// ColumnMap rule which evaluates whether each column value matches a specified regex.
+	// Structure is documented below.
+	RegexExpectations []DatascanDataQualityResultRuleRuleRegexExpectation `pulumi:"regexExpectations"`
+	// Table rule which evaluates whether each row passes the specified condition.
+	// Structure is documented below.
+	RowConditionExpectations []DatascanDataQualityResultRuleRuleRowConditionExpectation `pulumi:"rowConditionExpectations"`
+	// ColumnMap rule which evaluates whether each column value is contained by a specified set.
+	// Structure is documented below.
+	SetExpectations []DatascanDataQualityResultRuleRuleSetExpectation `pulumi:"setExpectations"`
+	// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+	// Structure is documented below.
+	StatisticRangeExpectations []DatascanDataQualityResultRuleRuleStatisticRangeExpectation `pulumi:"statisticRangeExpectations"`
+	// Table rule which evaluates whether the provided expression is true.
+	// Structure is documented below.
+	TableConditionExpectations []DatascanDataQualityResultRuleRuleTableConditionExpectation `pulumi:"tableConditionExpectations"`
+	// The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
+	Threshold *int `pulumi:"threshold"`
+	// ColumnAggregate rule which evaluates whether the column has duplicates.
+	UniquenessExpectations []DatascanDataQualityResultRuleRuleUniquenessExpectation `pulumi:"uniquenessExpectations"`
+}
+
+// DatascanDataQualityResultRuleRuleInput is an input type that accepts DatascanDataQualityResultRuleRuleArgs and DatascanDataQualityResultRuleRuleOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultRuleRuleInput` via:
+//
+//	DatascanDataQualityResultRuleRuleArgs{...}
+type DatascanDataQualityResultRuleRuleInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultRuleRuleOutput() DatascanDataQualityResultRuleRuleOutput
+	ToDatascanDataQualityResultRuleRuleOutputWithContext(context.Context) DatascanDataQualityResultRuleRuleOutput
+}
+
+type DatascanDataQualityResultRuleRuleArgs struct {
+	// The unnested column which this rule is evaluated against.
+	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
+	Dimension pulumi.StringPtrInput `pulumi:"dimension"`
+	// Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. Only applicable to ColumnMap rules.
+	IgnoreNull pulumi.BoolPtrInput `pulumi:"ignoreNull"`
+	// ColumnMap rule which evaluates whether each column value is null.
+	NonNullExpectations DatascanDataQualityResultRuleRuleNonNullExpectationArrayInput `pulumi:"nonNullExpectations"`
+	// ColumnMap rule which evaluates whether each column value lies between a specified range.
+	// Structure is documented below.
+	RangeExpectations DatascanDataQualityResultRuleRuleRangeExpectationArrayInput `pulumi:"rangeExpectations"`
+	// ColumnMap rule which evaluates whether each column value matches a specified regex.
+	// Structure is documented below.
+	RegexExpectations DatascanDataQualityResultRuleRuleRegexExpectationArrayInput `pulumi:"regexExpectations"`
+	// Table rule which evaluates whether each row passes the specified condition.
+	// Structure is documented below.
+	RowConditionExpectations DatascanDataQualityResultRuleRuleRowConditionExpectationArrayInput `pulumi:"rowConditionExpectations"`
+	// ColumnMap rule which evaluates whether each column value is contained by a specified set.
+	// Structure is documented below.
+	SetExpectations DatascanDataQualityResultRuleRuleSetExpectationArrayInput `pulumi:"setExpectations"`
+	// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+	// Structure is documented below.
+	StatisticRangeExpectations DatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayInput `pulumi:"statisticRangeExpectations"`
+	// Table rule which evaluates whether the provided expression is true.
+	// Structure is documented below.
+	TableConditionExpectations DatascanDataQualityResultRuleRuleTableConditionExpectationArrayInput `pulumi:"tableConditionExpectations"`
+	// The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
+	Threshold pulumi.IntPtrInput `pulumi:"threshold"`
+	// ColumnAggregate rule which evaluates whether the column has duplicates.
+	UniquenessExpectations DatascanDataQualityResultRuleRuleUniquenessExpectationArrayInput `pulumi:"uniquenessExpectations"`
+}
+
+func (DatascanDataQualityResultRuleRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultRuleRule)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultRuleRuleArgs) ToDatascanDataQualityResultRuleRuleOutput() DatascanDataQualityResultRuleRuleOutput {
+	return i.ToDatascanDataQualityResultRuleRuleOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultRuleRuleArgs) ToDatascanDataQualityResultRuleRuleOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultRuleRuleOutput)
+}
+
+// DatascanDataQualityResultRuleRuleArrayInput is an input type that accepts DatascanDataQualityResultRuleRuleArray and DatascanDataQualityResultRuleRuleArrayOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultRuleRuleArrayInput` via:
+//
+//	DatascanDataQualityResultRuleRuleArray{ DatascanDataQualityResultRuleRuleArgs{...} }
+type DatascanDataQualityResultRuleRuleArrayInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultRuleRuleArrayOutput() DatascanDataQualityResultRuleRuleArrayOutput
+	ToDatascanDataQualityResultRuleRuleArrayOutputWithContext(context.Context) DatascanDataQualityResultRuleRuleArrayOutput
+}
+
+type DatascanDataQualityResultRuleRuleArray []DatascanDataQualityResultRuleRuleInput
+
+func (DatascanDataQualityResultRuleRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResultRuleRule)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultRuleRuleArray) ToDatascanDataQualityResultRuleRuleArrayOutput() DatascanDataQualityResultRuleRuleArrayOutput {
+	return i.ToDatascanDataQualityResultRuleRuleArrayOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultRuleRuleArray) ToDatascanDataQualityResultRuleRuleArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultRuleRuleArrayOutput)
+}
+
+type DatascanDataQualityResultRuleRuleOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultRuleRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultRuleRule)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultRuleRuleOutput) ToDatascanDataQualityResultRuleRuleOutput() DatascanDataQualityResultRuleRuleOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleOutput) ToDatascanDataQualityResultRuleRuleOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleOutput {
+	return o
+}
+
+// The unnested column which this rule is evaluated against.
+func (o DatascanDataQualityResultRuleRuleOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRule) *string { return v.Column }).(pulumi.StringPtrOutput)
+}
+
+// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
+func (o DatascanDataQualityResultRuleRuleOutput) Dimension() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRule) *string { return v.Dimension }).(pulumi.StringPtrOutput)
+}
+
+// Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. Only applicable to ColumnMap rules.
+func (o DatascanDataQualityResultRuleRuleOutput) IgnoreNull() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRule) *bool { return v.IgnoreNull }).(pulumi.BoolPtrOutput)
+}
+
+// ColumnMap rule which evaluates whether each column value is null.
+func (o DatascanDataQualityResultRuleRuleOutput) NonNullExpectations() DatascanDataQualityResultRuleRuleNonNullExpectationArrayOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRule) []DatascanDataQualityResultRuleRuleNonNullExpectation {
+		return v.NonNullExpectations
+	}).(DatascanDataQualityResultRuleRuleNonNullExpectationArrayOutput)
+}
+
+// ColumnMap rule which evaluates whether each column value lies between a specified range.
+// Structure is documented below.
+func (o DatascanDataQualityResultRuleRuleOutput) RangeExpectations() DatascanDataQualityResultRuleRuleRangeExpectationArrayOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRule) []DatascanDataQualityResultRuleRuleRangeExpectation {
+		return v.RangeExpectations
+	}).(DatascanDataQualityResultRuleRuleRangeExpectationArrayOutput)
+}
+
+// ColumnMap rule which evaluates whether each column value matches a specified regex.
+// Structure is documented below.
+func (o DatascanDataQualityResultRuleRuleOutput) RegexExpectations() DatascanDataQualityResultRuleRuleRegexExpectationArrayOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRule) []DatascanDataQualityResultRuleRuleRegexExpectation {
+		return v.RegexExpectations
+	}).(DatascanDataQualityResultRuleRuleRegexExpectationArrayOutput)
+}
+
+// Table rule which evaluates whether each row passes the specified condition.
+// Structure is documented below.
+func (o DatascanDataQualityResultRuleRuleOutput) RowConditionExpectations() DatascanDataQualityResultRuleRuleRowConditionExpectationArrayOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRule) []DatascanDataQualityResultRuleRuleRowConditionExpectation {
+		return v.RowConditionExpectations
+	}).(DatascanDataQualityResultRuleRuleRowConditionExpectationArrayOutput)
+}
+
+// ColumnMap rule which evaluates whether each column value is contained by a specified set.
+// Structure is documented below.
+func (o DatascanDataQualityResultRuleRuleOutput) SetExpectations() DatascanDataQualityResultRuleRuleSetExpectationArrayOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRule) []DatascanDataQualityResultRuleRuleSetExpectation {
+		return v.SetExpectations
+	}).(DatascanDataQualityResultRuleRuleSetExpectationArrayOutput)
+}
+
+// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+// Structure is documented below.
+func (o DatascanDataQualityResultRuleRuleOutput) StatisticRangeExpectations() DatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRule) []DatascanDataQualityResultRuleRuleStatisticRangeExpectation {
+		return v.StatisticRangeExpectations
+	}).(DatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayOutput)
+}
+
+// Table rule which evaluates whether the provided expression is true.
+// Structure is documented below.
+func (o DatascanDataQualityResultRuleRuleOutput) TableConditionExpectations() DatascanDataQualityResultRuleRuleTableConditionExpectationArrayOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRule) []DatascanDataQualityResultRuleRuleTableConditionExpectation {
+		return v.TableConditionExpectations
+	}).(DatascanDataQualityResultRuleRuleTableConditionExpectationArrayOutput)
+}
+
+// The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
+func (o DatascanDataQualityResultRuleRuleOutput) Threshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRule) *int { return v.Threshold }).(pulumi.IntPtrOutput)
+}
+
+// ColumnAggregate rule which evaluates whether the column has duplicates.
+func (o DatascanDataQualityResultRuleRuleOutput) UniquenessExpectations() DatascanDataQualityResultRuleRuleUniquenessExpectationArrayOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRule) []DatascanDataQualityResultRuleRuleUniquenessExpectation {
+		return v.UniquenessExpectations
+	}).(DatascanDataQualityResultRuleRuleUniquenessExpectationArrayOutput)
+}
+
+type DatascanDataQualityResultRuleRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultRuleRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResultRuleRule)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultRuleRuleArrayOutput) ToDatascanDataQualityResultRuleRuleArrayOutput() DatascanDataQualityResultRuleRuleArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleArrayOutput) ToDatascanDataQualityResultRuleRuleArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleArrayOutput) Index(i pulumi.IntInput) DatascanDataQualityResultRuleRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanDataQualityResultRuleRule {
+		return vs[0].([]DatascanDataQualityResultRuleRule)[vs[1].(int)]
+	}).(DatascanDataQualityResultRuleRuleOutput)
+}
+
+type DatascanDataQualityResultRuleRuleNonNullExpectation struct {
+}
+
+// DatascanDataQualityResultRuleRuleNonNullExpectationInput is an input type that accepts DatascanDataQualityResultRuleRuleNonNullExpectationArgs and DatascanDataQualityResultRuleRuleNonNullExpectationOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultRuleRuleNonNullExpectationInput` via:
+//
+//	DatascanDataQualityResultRuleRuleNonNullExpectationArgs{...}
+type DatascanDataQualityResultRuleRuleNonNullExpectationInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultRuleRuleNonNullExpectationOutput() DatascanDataQualityResultRuleRuleNonNullExpectationOutput
+	ToDatascanDataQualityResultRuleRuleNonNullExpectationOutputWithContext(context.Context) DatascanDataQualityResultRuleRuleNonNullExpectationOutput
+}
+
+type DatascanDataQualityResultRuleRuleNonNullExpectationArgs struct {
+}
+
+func (DatascanDataQualityResultRuleRuleNonNullExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultRuleRuleNonNullExpectation)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultRuleRuleNonNullExpectationArgs) ToDatascanDataQualityResultRuleRuleNonNullExpectationOutput() DatascanDataQualityResultRuleRuleNonNullExpectationOutput {
+	return i.ToDatascanDataQualityResultRuleRuleNonNullExpectationOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultRuleRuleNonNullExpectationArgs) ToDatascanDataQualityResultRuleRuleNonNullExpectationOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleNonNullExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultRuleRuleNonNullExpectationOutput)
+}
+
+// DatascanDataQualityResultRuleRuleNonNullExpectationArrayInput is an input type that accepts DatascanDataQualityResultRuleRuleNonNullExpectationArray and DatascanDataQualityResultRuleRuleNonNullExpectationArrayOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultRuleRuleNonNullExpectationArrayInput` via:
+//
+//	DatascanDataQualityResultRuleRuleNonNullExpectationArray{ DatascanDataQualityResultRuleRuleNonNullExpectationArgs{...} }
+type DatascanDataQualityResultRuleRuleNonNullExpectationArrayInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultRuleRuleNonNullExpectationArrayOutput() DatascanDataQualityResultRuleRuleNonNullExpectationArrayOutput
+	ToDatascanDataQualityResultRuleRuleNonNullExpectationArrayOutputWithContext(context.Context) DatascanDataQualityResultRuleRuleNonNullExpectationArrayOutput
+}
+
+type DatascanDataQualityResultRuleRuleNonNullExpectationArray []DatascanDataQualityResultRuleRuleNonNullExpectationInput
+
+func (DatascanDataQualityResultRuleRuleNonNullExpectationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResultRuleRuleNonNullExpectation)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultRuleRuleNonNullExpectationArray) ToDatascanDataQualityResultRuleRuleNonNullExpectationArrayOutput() DatascanDataQualityResultRuleRuleNonNullExpectationArrayOutput {
+	return i.ToDatascanDataQualityResultRuleRuleNonNullExpectationArrayOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultRuleRuleNonNullExpectationArray) ToDatascanDataQualityResultRuleRuleNonNullExpectationArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleNonNullExpectationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultRuleRuleNonNullExpectationArrayOutput)
+}
+
+type DatascanDataQualityResultRuleRuleNonNullExpectationOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultRuleRuleNonNullExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultRuleRuleNonNullExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultRuleRuleNonNullExpectationOutput) ToDatascanDataQualityResultRuleRuleNonNullExpectationOutput() DatascanDataQualityResultRuleRuleNonNullExpectationOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleNonNullExpectationOutput) ToDatascanDataQualityResultRuleRuleNonNullExpectationOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleNonNullExpectationOutput {
+	return o
+}
+
+type DatascanDataQualityResultRuleRuleNonNullExpectationArrayOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultRuleRuleNonNullExpectationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResultRuleRuleNonNullExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultRuleRuleNonNullExpectationArrayOutput) ToDatascanDataQualityResultRuleRuleNonNullExpectationArrayOutput() DatascanDataQualityResultRuleRuleNonNullExpectationArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleNonNullExpectationArrayOutput) ToDatascanDataQualityResultRuleRuleNonNullExpectationArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleNonNullExpectationArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleNonNullExpectationArrayOutput) Index(i pulumi.IntInput) DatascanDataQualityResultRuleRuleNonNullExpectationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanDataQualityResultRuleRuleNonNullExpectation {
+		return vs[0].([]DatascanDataQualityResultRuleRuleNonNullExpectation)[vs[1].(int)]
+	}).(DatascanDataQualityResultRuleRuleNonNullExpectationOutput)
+}
+
+type DatascanDataQualityResultRuleRuleRangeExpectation struct {
+	// The maximum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
+	MaxValue *string `pulumi:"maxValue"`
+	// The minimum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
+	MinValue *string `pulumi:"minValue"`
+	// Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+	// Only relevant if a maxValue has been defined. Default = false.
+	StrictMaxEnabled *bool `pulumi:"strictMaxEnabled"`
+	// Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+	// Only relevant if a minValue has been defined. Default = false.
+	StrictMinEnabled *bool `pulumi:"strictMinEnabled"`
+}
+
+// DatascanDataQualityResultRuleRuleRangeExpectationInput is an input type that accepts DatascanDataQualityResultRuleRuleRangeExpectationArgs and DatascanDataQualityResultRuleRuleRangeExpectationOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultRuleRuleRangeExpectationInput` via:
+//
+//	DatascanDataQualityResultRuleRuleRangeExpectationArgs{...}
+type DatascanDataQualityResultRuleRuleRangeExpectationInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultRuleRuleRangeExpectationOutput() DatascanDataQualityResultRuleRuleRangeExpectationOutput
+	ToDatascanDataQualityResultRuleRuleRangeExpectationOutputWithContext(context.Context) DatascanDataQualityResultRuleRuleRangeExpectationOutput
+}
+
+type DatascanDataQualityResultRuleRuleRangeExpectationArgs struct {
+	// The maximum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
+	MaxValue pulumi.StringPtrInput `pulumi:"maxValue"`
+	// The minimum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
+	MinValue pulumi.StringPtrInput `pulumi:"minValue"`
+	// Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+	// Only relevant if a maxValue has been defined. Default = false.
+	StrictMaxEnabled pulumi.BoolPtrInput `pulumi:"strictMaxEnabled"`
+	// Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+	// Only relevant if a minValue has been defined. Default = false.
+	StrictMinEnabled pulumi.BoolPtrInput `pulumi:"strictMinEnabled"`
+}
+
+func (DatascanDataQualityResultRuleRuleRangeExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultRuleRuleRangeExpectation)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultRuleRuleRangeExpectationArgs) ToDatascanDataQualityResultRuleRuleRangeExpectationOutput() DatascanDataQualityResultRuleRuleRangeExpectationOutput {
+	return i.ToDatascanDataQualityResultRuleRuleRangeExpectationOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultRuleRuleRangeExpectationArgs) ToDatascanDataQualityResultRuleRuleRangeExpectationOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleRangeExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultRuleRuleRangeExpectationOutput)
+}
+
+// DatascanDataQualityResultRuleRuleRangeExpectationArrayInput is an input type that accepts DatascanDataQualityResultRuleRuleRangeExpectationArray and DatascanDataQualityResultRuleRuleRangeExpectationArrayOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultRuleRuleRangeExpectationArrayInput` via:
+//
+//	DatascanDataQualityResultRuleRuleRangeExpectationArray{ DatascanDataQualityResultRuleRuleRangeExpectationArgs{...} }
+type DatascanDataQualityResultRuleRuleRangeExpectationArrayInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultRuleRuleRangeExpectationArrayOutput() DatascanDataQualityResultRuleRuleRangeExpectationArrayOutput
+	ToDatascanDataQualityResultRuleRuleRangeExpectationArrayOutputWithContext(context.Context) DatascanDataQualityResultRuleRuleRangeExpectationArrayOutput
+}
+
+type DatascanDataQualityResultRuleRuleRangeExpectationArray []DatascanDataQualityResultRuleRuleRangeExpectationInput
+
+func (DatascanDataQualityResultRuleRuleRangeExpectationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResultRuleRuleRangeExpectation)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultRuleRuleRangeExpectationArray) ToDatascanDataQualityResultRuleRuleRangeExpectationArrayOutput() DatascanDataQualityResultRuleRuleRangeExpectationArrayOutput {
+	return i.ToDatascanDataQualityResultRuleRuleRangeExpectationArrayOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultRuleRuleRangeExpectationArray) ToDatascanDataQualityResultRuleRuleRangeExpectationArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleRangeExpectationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultRuleRuleRangeExpectationArrayOutput)
+}
+
+type DatascanDataQualityResultRuleRuleRangeExpectationOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultRuleRuleRangeExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultRuleRuleRangeExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultRuleRuleRangeExpectationOutput) ToDatascanDataQualityResultRuleRuleRangeExpectationOutput() DatascanDataQualityResultRuleRuleRangeExpectationOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleRangeExpectationOutput) ToDatascanDataQualityResultRuleRuleRangeExpectationOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleRangeExpectationOutput {
+	return o
+}
+
+// The maximum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
+func (o DatascanDataQualityResultRuleRuleRangeExpectationOutput) MaxValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRuleRangeExpectation) *string { return v.MaxValue }).(pulumi.StringPtrOutput)
+}
+
+// The minimum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
+func (o DatascanDataQualityResultRuleRuleRangeExpectationOutput) MinValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRuleRangeExpectation) *string { return v.MinValue }).(pulumi.StringPtrOutput)
+}
+
+// Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+// Only relevant if a maxValue has been defined. Default = false.
+func (o DatascanDataQualityResultRuleRuleRangeExpectationOutput) StrictMaxEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRuleRangeExpectation) *bool { return v.StrictMaxEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+// Only relevant if a minValue has been defined. Default = false.
+func (o DatascanDataQualityResultRuleRuleRangeExpectationOutput) StrictMinEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRuleRangeExpectation) *bool { return v.StrictMinEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type DatascanDataQualityResultRuleRuleRangeExpectationArrayOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultRuleRuleRangeExpectationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResultRuleRuleRangeExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultRuleRuleRangeExpectationArrayOutput) ToDatascanDataQualityResultRuleRuleRangeExpectationArrayOutput() DatascanDataQualityResultRuleRuleRangeExpectationArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleRangeExpectationArrayOutput) ToDatascanDataQualityResultRuleRuleRangeExpectationArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleRangeExpectationArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleRangeExpectationArrayOutput) Index(i pulumi.IntInput) DatascanDataQualityResultRuleRuleRangeExpectationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanDataQualityResultRuleRuleRangeExpectation {
+		return vs[0].([]DatascanDataQualityResultRuleRuleRangeExpectation)[vs[1].(int)]
+	}).(DatascanDataQualityResultRuleRuleRangeExpectationOutput)
+}
+
+type DatascanDataQualityResultRuleRuleRegexExpectation struct {
+	// A regular expression the column value is expected to match.
+	Regex *string `pulumi:"regex"`
+}
+
+// DatascanDataQualityResultRuleRuleRegexExpectationInput is an input type that accepts DatascanDataQualityResultRuleRuleRegexExpectationArgs and DatascanDataQualityResultRuleRuleRegexExpectationOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultRuleRuleRegexExpectationInput` via:
+//
+//	DatascanDataQualityResultRuleRuleRegexExpectationArgs{...}
+type DatascanDataQualityResultRuleRuleRegexExpectationInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultRuleRuleRegexExpectationOutput() DatascanDataQualityResultRuleRuleRegexExpectationOutput
+	ToDatascanDataQualityResultRuleRuleRegexExpectationOutputWithContext(context.Context) DatascanDataQualityResultRuleRuleRegexExpectationOutput
+}
+
+type DatascanDataQualityResultRuleRuleRegexExpectationArgs struct {
+	// A regular expression the column value is expected to match.
+	Regex pulumi.StringPtrInput `pulumi:"regex"`
+}
+
+func (DatascanDataQualityResultRuleRuleRegexExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultRuleRuleRegexExpectation)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultRuleRuleRegexExpectationArgs) ToDatascanDataQualityResultRuleRuleRegexExpectationOutput() DatascanDataQualityResultRuleRuleRegexExpectationOutput {
+	return i.ToDatascanDataQualityResultRuleRuleRegexExpectationOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultRuleRuleRegexExpectationArgs) ToDatascanDataQualityResultRuleRuleRegexExpectationOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleRegexExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultRuleRuleRegexExpectationOutput)
+}
+
+// DatascanDataQualityResultRuleRuleRegexExpectationArrayInput is an input type that accepts DatascanDataQualityResultRuleRuleRegexExpectationArray and DatascanDataQualityResultRuleRuleRegexExpectationArrayOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultRuleRuleRegexExpectationArrayInput` via:
+//
+//	DatascanDataQualityResultRuleRuleRegexExpectationArray{ DatascanDataQualityResultRuleRuleRegexExpectationArgs{...} }
+type DatascanDataQualityResultRuleRuleRegexExpectationArrayInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultRuleRuleRegexExpectationArrayOutput() DatascanDataQualityResultRuleRuleRegexExpectationArrayOutput
+	ToDatascanDataQualityResultRuleRuleRegexExpectationArrayOutputWithContext(context.Context) DatascanDataQualityResultRuleRuleRegexExpectationArrayOutput
+}
+
+type DatascanDataQualityResultRuleRuleRegexExpectationArray []DatascanDataQualityResultRuleRuleRegexExpectationInput
+
+func (DatascanDataQualityResultRuleRuleRegexExpectationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResultRuleRuleRegexExpectation)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultRuleRuleRegexExpectationArray) ToDatascanDataQualityResultRuleRuleRegexExpectationArrayOutput() DatascanDataQualityResultRuleRuleRegexExpectationArrayOutput {
+	return i.ToDatascanDataQualityResultRuleRuleRegexExpectationArrayOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultRuleRuleRegexExpectationArray) ToDatascanDataQualityResultRuleRuleRegexExpectationArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleRegexExpectationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultRuleRuleRegexExpectationArrayOutput)
+}
+
+type DatascanDataQualityResultRuleRuleRegexExpectationOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultRuleRuleRegexExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultRuleRuleRegexExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultRuleRuleRegexExpectationOutput) ToDatascanDataQualityResultRuleRuleRegexExpectationOutput() DatascanDataQualityResultRuleRuleRegexExpectationOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleRegexExpectationOutput) ToDatascanDataQualityResultRuleRuleRegexExpectationOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleRegexExpectationOutput {
+	return o
+}
+
+// A regular expression the column value is expected to match.
+func (o DatascanDataQualityResultRuleRuleRegexExpectationOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRuleRegexExpectation) *string { return v.Regex }).(pulumi.StringPtrOutput)
+}
+
+type DatascanDataQualityResultRuleRuleRegexExpectationArrayOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultRuleRuleRegexExpectationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResultRuleRuleRegexExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultRuleRuleRegexExpectationArrayOutput) ToDatascanDataQualityResultRuleRuleRegexExpectationArrayOutput() DatascanDataQualityResultRuleRuleRegexExpectationArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleRegexExpectationArrayOutput) ToDatascanDataQualityResultRuleRuleRegexExpectationArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleRegexExpectationArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleRegexExpectationArrayOutput) Index(i pulumi.IntInput) DatascanDataQualityResultRuleRuleRegexExpectationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanDataQualityResultRuleRuleRegexExpectation {
+		return vs[0].([]DatascanDataQualityResultRuleRuleRegexExpectation)[vs[1].(int)]
+	}).(DatascanDataQualityResultRuleRuleRegexExpectationOutput)
+}
+
+type DatascanDataQualityResultRuleRuleRowConditionExpectation struct {
+	// The SQL expression.
+	SqlExpression *string `pulumi:"sqlExpression"`
+}
+
+// DatascanDataQualityResultRuleRuleRowConditionExpectationInput is an input type that accepts DatascanDataQualityResultRuleRuleRowConditionExpectationArgs and DatascanDataQualityResultRuleRuleRowConditionExpectationOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultRuleRuleRowConditionExpectationInput` via:
+//
+//	DatascanDataQualityResultRuleRuleRowConditionExpectationArgs{...}
+type DatascanDataQualityResultRuleRuleRowConditionExpectationInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultRuleRuleRowConditionExpectationOutput() DatascanDataQualityResultRuleRuleRowConditionExpectationOutput
+	ToDatascanDataQualityResultRuleRuleRowConditionExpectationOutputWithContext(context.Context) DatascanDataQualityResultRuleRuleRowConditionExpectationOutput
+}
+
+type DatascanDataQualityResultRuleRuleRowConditionExpectationArgs struct {
+	// The SQL expression.
+	SqlExpression pulumi.StringPtrInput `pulumi:"sqlExpression"`
+}
+
+func (DatascanDataQualityResultRuleRuleRowConditionExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultRuleRuleRowConditionExpectation)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultRuleRuleRowConditionExpectationArgs) ToDatascanDataQualityResultRuleRuleRowConditionExpectationOutput() DatascanDataQualityResultRuleRuleRowConditionExpectationOutput {
+	return i.ToDatascanDataQualityResultRuleRuleRowConditionExpectationOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultRuleRuleRowConditionExpectationArgs) ToDatascanDataQualityResultRuleRuleRowConditionExpectationOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleRowConditionExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultRuleRuleRowConditionExpectationOutput)
+}
+
+// DatascanDataQualityResultRuleRuleRowConditionExpectationArrayInput is an input type that accepts DatascanDataQualityResultRuleRuleRowConditionExpectationArray and DatascanDataQualityResultRuleRuleRowConditionExpectationArrayOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultRuleRuleRowConditionExpectationArrayInput` via:
+//
+//	DatascanDataQualityResultRuleRuleRowConditionExpectationArray{ DatascanDataQualityResultRuleRuleRowConditionExpectationArgs{...} }
+type DatascanDataQualityResultRuleRuleRowConditionExpectationArrayInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultRuleRuleRowConditionExpectationArrayOutput() DatascanDataQualityResultRuleRuleRowConditionExpectationArrayOutput
+	ToDatascanDataQualityResultRuleRuleRowConditionExpectationArrayOutputWithContext(context.Context) DatascanDataQualityResultRuleRuleRowConditionExpectationArrayOutput
+}
+
+type DatascanDataQualityResultRuleRuleRowConditionExpectationArray []DatascanDataQualityResultRuleRuleRowConditionExpectationInput
+
+func (DatascanDataQualityResultRuleRuleRowConditionExpectationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResultRuleRuleRowConditionExpectation)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultRuleRuleRowConditionExpectationArray) ToDatascanDataQualityResultRuleRuleRowConditionExpectationArrayOutput() DatascanDataQualityResultRuleRuleRowConditionExpectationArrayOutput {
+	return i.ToDatascanDataQualityResultRuleRuleRowConditionExpectationArrayOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultRuleRuleRowConditionExpectationArray) ToDatascanDataQualityResultRuleRuleRowConditionExpectationArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleRowConditionExpectationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultRuleRuleRowConditionExpectationArrayOutput)
+}
+
+type DatascanDataQualityResultRuleRuleRowConditionExpectationOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultRuleRuleRowConditionExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultRuleRuleRowConditionExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultRuleRuleRowConditionExpectationOutput) ToDatascanDataQualityResultRuleRuleRowConditionExpectationOutput() DatascanDataQualityResultRuleRuleRowConditionExpectationOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleRowConditionExpectationOutput) ToDatascanDataQualityResultRuleRuleRowConditionExpectationOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleRowConditionExpectationOutput {
+	return o
+}
+
+// The SQL expression.
+func (o DatascanDataQualityResultRuleRuleRowConditionExpectationOutput) SqlExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRuleRowConditionExpectation) *string { return v.SqlExpression }).(pulumi.StringPtrOutput)
+}
+
+type DatascanDataQualityResultRuleRuleRowConditionExpectationArrayOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultRuleRuleRowConditionExpectationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResultRuleRuleRowConditionExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultRuleRuleRowConditionExpectationArrayOutput) ToDatascanDataQualityResultRuleRuleRowConditionExpectationArrayOutput() DatascanDataQualityResultRuleRuleRowConditionExpectationArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleRowConditionExpectationArrayOutput) ToDatascanDataQualityResultRuleRuleRowConditionExpectationArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleRowConditionExpectationArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleRowConditionExpectationArrayOutput) Index(i pulumi.IntInput) DatascanDataQualityResultRuleRuleRowConditionExpectationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanDataQualityResultRuleRuleRowConditionExpectation {
+		return vs[0].([]DatascanDataQualityResultRuleRuleRowConditionExpectation)[vs[1].(int)]
+	}).(DatascanDataQualityResultRuleRuleRowConditionExpectationOutput)
+}
+
+type DatascanDataQualityResultRuleRuleSetExpectation struct {
+	// Expected values for the column value.
+	Values []string `pulumi:"values"`
+}
+
+// DatascanDataQualityResultRuleRuleSetExpectationInput is an input type that accepts DatascanDataQualityResultRuleRuleSetExpectationArgs and DatascanDataQualityResultRuleRuleSetExpectationOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultRuleRuleSetExpectationInput` via:
+//
+//	DatascanDataQualityResultRuleRuleSetExpectationArgs{...}
+type DatascanDataQualityResultRuleRuleSetExpectationInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultRuleRuleSetExpectationOutput() DatascanDataQualityResultRuleRuleSetExpectationOutput
+	ToDatascanDataQualityResultRuleRuleSetExpectationOutputWithContext(context.Context) DatascanDataQualityResultRuleRuleSetExpectationOutput
+}
+
+type DatascanDataQualityResultRuleRuleSetExpectationArgs struct {
+	// Expected values for the column value.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (DatascanDataQualityResultRuleRuleSetExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultRuleRuleSetExpectation)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultRuleRuleSetExpectationArgs) ToDatascanDataQualityResultRuleRuleSetExpectationOutput() DatascanDataQualityResultRuleRuleSetExpectationOutput {
+	return i.ToDatascanDataQualityResultRuleRuleSetExpectationOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultRuleRuleSetExpectationArgs) ToDatascanDataQualityResultRuleRuleSetExpectationOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleSetExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultRuleRuleSetExpectationOutput)
+}
+
+// DatascanDataQualityResultRuleRuleSetExpectationArrayInput is an input type that accepts DatascanDataQualityResultRuleRuleSetExpectationArray and DatascanDataQualityResultRuleRuleSetExpectationArrayOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultRuleRuleSetExpectationArrayInput` via:
+//
+//	DatascanDataQualityResultRuleRuleSetExpectationArray{ DatascanDataQualityResultRuleRuleSetExpectationArgs{...} }
+type DatascanDataQualityResultRuleRuleSetExpectationArrayInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultRuleRuleSetExpectationArrayOutput() DatascanDataQualityResultRuleRuleSetExpectationArrayOutput
+	ToDatascanDataQualityResultRuleRuleSetExpectationArrayOutputWithContext(context.Context) DatascanDataQualityResultRuleRuleSetExpectationArrayOutput
+}
+
+type DatascanDataQualityResultRuleRuleSetExpectationArray []DatascanDataQualityResultRuleRuleSetExpectationInput
+
+func (DatascanDataQualityResultRuleRuleSetExpectationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResultRuleRuleSetExpectation)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultRuleRuleSetExpectationArray) ToDatascanDataQualityResultRuleRuleSetExpectationArrayOutput() DatascanDataQualityResultRuleRuleSetExpectationArrayOutput {
+	return i.ToDatascanDataQualityResultRuleRuleSetExpectationArrayOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultRuleRuleSetExpectationArray) ToDatascanDataQualityResultRuleRuleSetExpectationArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleSetExpectationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultRuleRuleSetExpectationArrayOutput)
+}
+
+type DatascanDataQualityResultRuleRuleSetExpectationOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultRuleRuleSetExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultRuleRuleSetExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultRuleRuleSetExpectationOutput) ToDatascanDataQualityResultRuleRuleSetExpectationOutput() DatascanDataQualityResultRuleRuleSetExpectationOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleSetExpectationOutput) ToDatascanDataQualityResultRuleRuleSetExpectationOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleSetExpectationOutput {
+	return o
+}
+
+// Expected values for the column value.
+func (o DatascanDataQualityResultRuleRuleSetExpectationOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRuleSetExpectation) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type DatascanDataQualityResultRuleRuleSetExpectationArrayOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultRuleRuleSetExpectationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResultRuleRuleSetExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultRuleRuleSetExpectationArrayOutput) ToDatascanDataQualityResultRuleRuleSetExpectationArrayOutput() DatascanDataQualityResultRuleRuleSetExpectationArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleSetExpectationArrayOutput) ToDatascanDataQualityResultRuleRuleSetExpectationArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleSetExpectationArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleSetExpectationArrayOutput) Index(i pulumi.IntInput) DatascanDataQualityResultRuleRuleSetExpectationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanDataQualityResultRuleRuleSetExpectation {
+		return vs[0].([]DatascanDataQualityResultRuleRuleSetExpectation)[vs[1].(int)]
+	}).(DatascanDataQualityResultRuleRuleSetExpectationOutput)
+}
+
+type DatascanDataQualityResultRuleRuleStatisticRangeExpectation struct {
+	// The maximum column statistic value allowed for a row to pass this validation.
+	// At least one of minValue and maxValue need to be provided.
+	MaxValue *string `pulumi:"maxValue"`
+	// The minimum column statistic value allowed for a row to pass this validation.
+	// At least one of minValue and maxValue need to be provided.
+	MinValue *string `pulumi:"minValue"`
+	// column statistics.
+	// Possible values are: `STATISTIC_UNDEFINED`, `MEAN`, `MIN`, `MAX`.
+	Statistic *string `pulumi:"statistic"`
+	// Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+	// Only relevant if a maxValue has been defined. Default = false.
+	StrictMaxEnabled *bool `pulumi:"strictMaxEnabled"`
+	// Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+	// Only relevant if a minValue has been defined. Default = false.
+	StrictMinEnabled *bool `pulumi:"strictMinEnabled"`
+}
+
+// DatascanDataQualityResultRuleRuleStatisticRangeExpectationInput is an input type that accepts DatascanDataQualityResultRuleRuleStatisticRangeExpectationArgs and DatascanDataQualityResultRuleRuleStatisticRangeExpectationOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultRuleRuleStatisticRangeExpectationInput` via:
+//
+//	DatascanDataQualityResultRuleRuleStatisticRangeExpectationArgs{...}
+type DatascanDataQualityResultRuleRuleStatisticRangeExpectationInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultRuleRuleStatisticRangeExpectationOutput() DatascanDataQualityResultRuleRuleStatisticRangeExpectationOutput
+	ToDatascanDataQualityResultRuleRuleStatisticRangeExpectationOutputWithContext(context.Context) DatascanDataQualityResultRuleRuleStatisticRangeExpectationOutput
+}
+
+type DatascanDataQualityResultRuleRuleStatisticRangeExpectationArgs struct {
+	// The maximum column statistic value allowed for a row to pass this validation.
+	// At least one of minValue and maxValue need to be provided.
+	MaxValue pulumi.StringPtrInput `pulumi:"maxValue"`
+	// The minimum column statistic value allowed for a row to pass this validation.
+	// At least one of minValue and maxValue need to be provided.
+	MinValue pulumi.StringPtrInput `pulumi:"minValue"`
+	// column statistics.
+	// Possible values are: `STATISTIC_UNDEFINED`, `MEAN`, `MIN`, `MAX`.
+	Statistic pulumi.StringPtrInput `pulumi:"statistic"`
+	// Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+	// Only relevant if a maxValue has been defined. Default = false.
+	StrictMaxEnabled pulumi.BoolPtrInput `pulumi:"strictMaxEnabled"`
+	// Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+	// Only relevant if a minValue has been defined. Default = false.
+	StrictMinEnabled pulumi.BoolPtrInput `pulumi:"strictMinEnabled"`
+}
+
+func (DatascanDataQualityResultRuleRuleStatisticRangeExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultRuleRuleStatisticRangeExpectation)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultRuleRuleStatisticRangeExpectationArgs) ToDatascanDataQualityResultRuleRuleStatisticRangeExpectationOutput() DatascanDataQualityResultRuleRuleStatisticRangeExpectationOutput {
+	return i.ToDatascanDataQualityResultRuleRuleStatisticRangeExpectationOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultRuleRuleStatisticRangeExpectationArgs) ToDatascanDataQualityResultRuleRuleStatisticRangeExpectationOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleStatisticRangeExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultRuleRuleStatisticRangeExpectationOutput)
+}
+
+// DatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayInput is an input type that accepts DatascanDataQualityResultRuleRuleStatisticRangeExpectationArray and DatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayInput` via:
+//
+//	DatascanDataQualityResultRuleRuleStatisticRangeExpectationArray{ DatascanDataQualityResultRuleRuleStatisticRangeExpectationArgs{...} }
+type DatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayOutput() DatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayOutput
+	ToDatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayOutputWithContext(context.Context) DatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayOutput
+}
+
+type DatascanDataQualityResultRuleRuleStatisticRangeExpectationArray []DatascanDataQualityResultRuleRuleStatisticRangeExpectationInput
+
+func (DatascanDataQualityResultRuleRuleStatisticRangeExpectationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResultRuleRuleStatisticRangeExpectation)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultRuleRuleStatisticRangeExpectationArray) ToDatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayOutput() DatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayOutput {
+	return i.ToDatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultRuleRuleStatisticRangeExpectationArray) ToDatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayOutput)
+}
+
+type DatascanDataQualityResultRuleRuleStatisticRangeExpectationOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultRuleRuleStatisticRangeExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultRuleRuleStatisticRangeExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultRuleRuleStatisticRangeExpectationOutput) ToDatascanDataQualityResultRuleRuleStatisticRangeExpectationOutput() DatascanDataQualityResultRuleRuleStatisticRangeExpectationOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleStatisticRangeExpectationOutput) ToDatascanDataQualityResultRuleRuleStatisticRangeExpectationOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleStatisticRangeExpectationOutput {
+	return o
+}
+
+// The maximum column statistic value allowed for a row to pass this validation.
+// At least one of minValue and maxValue need to be provided.
+func (o DatascanDataQualityResultRuleRuleStatisticRangeExpectationOutput) MaxValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRuleStatisticRangeExpectation) *string { return v.MaxValue }).(pulumi.StringPtrOutput)
+}
+
+// The minimum column statistic value allowed for a row to pass this validation.
+// At least one of minValue and maxValue need to be provided.
+func (o DatascanDataQualityResultRuleRuleStatisticRangeExpectationOutput) MinValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRuleStatisticRangeExpectation) *string { return v.MinValue }).(pulumi.StringPtrOutput)
+}
+
+// column statistics.
+// Possible values are: `STATISTIC_UNDEFINED`, `MEAN`, `MIN`, `MAX`.
+func (o DatascanDataQualityResultRuleRuleStatisticRangeExpectationOutput) Statistic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRuleStatisticRangeExpectation) *string { return v.Statistic }).(pulumi.StringPtrOutput)
+}
+
+// Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+// Only relevant if a maxValue has been defined. Default = false.
+func (o DatascanDataQualityResultRuleRuleStatisticRangeExpectationOutput) StrictMaxEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRuleStatisticRangeExpectation) *bool { return v.StrictMaxEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+// Only relevant if a minValue has been defined. Default = false.
+func (o DatascanDataQualityResultRuleRuleStatisticRangeExpectationOutput) StrictMinEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRuleStatisticRangeExpectation) *bool { return v.StrictMinEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type DatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResultRuleRuleStatisticRangeExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayOutput) ToDatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayOutput() DatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayOutput) ToDatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayOutput) Index(i pulumi.IntInput) DatascanDataQualityResultRuleRuleStatisticRangeExpectationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanDataQualityResultRuleRuleStatisticRangeExpectation {
+		return vs[0].([]DatascanDataQualityResultRuleRuleStatisticRangeExpectation)[vs[1].(int)]
+	}).(DatascanDataQualityResultRuleRuleStatisticRangeExpectationOutput)
+}
+
+type DatascanDataQualityResultRuleRuleTableConditionExpectation struct {
+	// The SQL expression.
+	SqlExpression *string `pulumi:"sqlExpression"`
+}
+
+// DatascanDataQualityResultRuleRuleTableConditionExpectationInput is an input type that accepts DatascanDataQualityResultRuleRuleTableConditionExpectationArgs and DatascanDataQualityResultRuleRuleTableConditionExpectationOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultRuleRuleTableConditionExpectationInput` via:
+//
+//	DatascanDataQualityResultRuleRuleTableConditionExpectationArgs{...}
+type DatascanDataQualityResultRuleRuleTableConditionExpectationInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultRuleRuleTableConditionExpectationOutput() DatascanDataQualityResultRuleRuleTableConditionExpectationOutput
+	ToDatascanDataQualityResultRuleRuleTableConditionExpectationOutputWithContext(context.Context) DatascanDataQualityResultRuleRuleTableConditionExpectationOutput
+}
+
+type DatascanDataQualityResultRuleRuleTableConditionExpectationArgs struct {
+	// The SQL expression.
+	SqlExpression pulumi.StringPtrInput `pulumi:"sqlExpression"`
+}
+
+func (DatascanDataQualityResultRuleRuleTableConditionExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultRuleRuleTableConditionExpectation)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultRuleRuleTableConditionExpectationArgs) ToDatascanDataQualityResultRuleRuleTableConditionExpectationOutput() DatascanDataQualityResultRuleRuleTableConditionExpectationOutput {
+	return i.ToDatascanDataQualityResultRuleRuleTableConditionExpectationOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultRuleRuleTableConditionExpectationArgs) ToDatascanDataQualityResultRuleRuleTableConditionExpectationOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleTableConditionExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultRuleRuleTableConditionExpectationOutput)
+}
+
+// DatascanDataQualityResultRuleRuleTableConditionExpectationArrayInput is an input type that accepts DatascanDataQualityResultRuleRuleTableConditionExpectationArray and DatascanDataQualityResultRuleRuleTableConditionExpectationArrayOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultRuleRuleTableConditionExpectationArrayInput` via:
+//
+//	DatascanDataQualityResultRuleRuleTableConditionExpectationArray{ DatascanDataQualityResultRuleRuleTableConditionExpectationArgs{...} }
+type DatascanDataQualityResultRuleRuleTableConditionExpectationArrayInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultRuleRuleTableConditionExpectationArrayOutput() DatascanDataQualityResultRuleRuleTableConditionExpectationArrayOutput
+	ToDatascanDataQualityResultRuleRuleTableConditionExpectationArrayOutputWithContext(context.Context) DatascanDataQualityResultRuleRuleTableConditionExpectationArrayOutput
+}
+
+type DatascanDataQualityResultRuleRuleTableConditionExpectationArray []DatascanDataQualityResultRuleRuleTableConditionExpectationInput
+
+func (DatascanDataQualityResultRuleRuleTableConditionExpectationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResultRuleRuleTableConditionExpectation)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultRuleRuleTableConditionExpectationArray) ToDatascanDataQualityResultRuleRuleTableConditionExpectationArrayOutput() DatascanDataQualityResultRuleRuleTableConditionExpectationArrayOutput {
+	return i.ToDatascanDataQualityResultRuleRuleTableConditionExpectationArrayOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultRuleRuleTableConditionExpectationArray) ToDatascanDataQualityResultRuleRuleTableConditionExpectationArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleTableConditionExpectationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultRuleRuleTableConditionExpectationArrayOutput)
+}
+
+type DatascanDataQualityResultRuleRuleTableConditionExpectationOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultRuleRuleTableConditionExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultRuleRuleTableConditionExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultRuleRuleTableConditionExpectationOutput) ToDatascanDataQualityResultRuleRuleTableConditionExpectationOutput() DatascanDataQualityResultRuleRuleTableConditionExpectationOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleTableConditionExpectationOutput) ToDatascanDataQualityResultRuleRuleTableConditionExpectationOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleTableConditionExpectationOutput {
+	return o
+}
+
+// The SQL expression.
+func (o DatascanDataQualityResultRuleRuleTableConditionExpectationOutput) SqlExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultRuleRuleTableConditionExpectation) *string { return v.SqlExpression }).(pulumi.StringPtrOutput)
+}
+
+type DatascanDataQualityResultRuleRuleTableConditionExpectationArrayOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultRuleRuleTableConditionExpectationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResultRuleRuleTableConditionExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultRuleRuleTableConditionExpectationArrayOutput) ToDatascanDataQualityResultRuleRuleTableConditionExpectationArrayOutput() DatascanDataQualityResultRuleRuleTableConditionExpectationArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleTableConditionExpectationArrayOutput) ToDatascanDataQualityResultRuleRuleTableConditionExpectationArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleTableConditionExpectationArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleTableConditionExpectationArrayOutput) Index(i pulumi.IntInput) DatascanDataQualityResultRuleRuleTableConditionExpectationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanDataQualityResultRuleRuleTableConditionExpectation {
+		return vs[0].([]DatascanDataQualityResultRuleRuleTableConditionExpectation)[vs[1].(int)]
+	}).(DatascanDataQualityResultRuleRuleTableConditionExpectationOutput)
+}
+
+type DatascanDataQualityResultRuleRuleUniquenessExpectation struct {
+}
+
+// DatascanDataQualityResultRuleRuleUniquenessExpectationInput is an input type that accepts DatascanDataQualityResultRuleRuleUniquenessExpectationArgs and DatascanDataQualityResultRuleRuleUniquenessExpectationOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultRuleRuleUniquenessExpectationInput` via:
+//
+//	DatascanDataQualityResultRuleRuleUniquenessExpectationArgs{...}
+type DatascanDataQualityResultRuleRuleUniquenessExpectationInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultRuleRuleUniquenessExpectationOutput() DatascanDataQualityResultRuleRuleUniquenessExpectationOutput
+	ToDatascanDataQualityResultRuleRuleUniquenessExpectationOutputWithContext(context.Context) DatascanDataQualityResultRuleRuleUniquenessExpectationOutput
+}
+
+type DatascanDataQualityResultRuleRuleUniquenessExpectationArgs struct {
+}
+
+func (DatascanDataQualityResultRuleRuleUniquenessExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultRuleRuleUniquenessExpectation)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultRuleRuleUniquenessExpectationArgs) ToDatascanDataQualityResultRuleRuleUniquenessExpectationOutput() DatascanDataQualityResultRuleRuleUniquenessExpectationOutput {
+	return i.ToDatascanDataQualityResultRuleRuleUniquenessExpectationOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultRuleRuleUniquenessExpectationArgs) ToDatascanDataQualityResultRuleRuleUniquenessExpectationOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleUniquenessExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultRuleRuleUniquenessExpectationOutput)
+}
+
+// DatascanDataQualityResultRuleRuleUniquenessExpectationArrayInput is an input type that accepts DatascanDataQualityResultRuleRuleUniquenessExpectationArray and DatascanDataQualityResultRuleRuleUniquenessExpectationArrayOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultRuleRuleUniquenessExpectationArrayInput` via:
+//
+//	DatascanDataQualityResultRuleRuleUniquenessExpectationArray{ DatascanDataQualityResultRuleRuleUniquenessExpectationArgs{...} }
+type DatascanDataQualityResultRuleRuleUniquenessExpectationArrayInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultRuleRuleUniquenessExpectationArrayOutput() DatascanDataQualityResultRuleRuleUniquenessExpectationArrayOutput
+	ToDatascanDataQualityResultRuleRuleUniquenessExpectationArrayOutputWithContext(context.Context) DatascanDataQualityResultRuleRuleUniquenessExpectationArrayOutput
+}
+
+type DatascanDataQualityResultRuleRuleUniquenessExpectationArray []DatascanDataQualityResultRuleRuleUniquenessExpectationInput
+
+func (DatascanDataQualityResultRuleRuleUniquenessExpectationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResultRuleRuleUniquenessExpectation)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultRuleRuleUniquenessExpectationArray) ToDatascanDataQualityResultRuleRuleUniquenessExpectationArrayOutput() DatascanDataQualityResultRuleRuleUniquenessExpectationArrayOutput {
+	return i.ToDatascanDataQualityResultRuleRuleUniquenessExpectationArrayOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultRuleRuleUniquenessExpectationArray) ToDatascanDataQualityResultRuleRuleUniquenessExpectationArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleUniquenessExpectationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultRuleRuleUniquenessExpectationArrayOutput)
+}
+
+type DatascanDataQualityResultRuleRuleUniquenessExpectationOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultRuleRuleUniquenessExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultRuleRuleUniquenessExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultRuleRuleUniquenessExpectationOutput) ToDatascanDataQualityResultRuleRuleUniquenessExpectationOutput() DatascanDataQualityResultRuleRuleUniquenessExpectationOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleUniquenessExpectationOutput) ToDatascanDataQualityResultRuleRuleUniquenessExpectationOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleUniquenessExpectationOutput {
+	return o
+}
+
+type DatascanDataQualityResultRuleRuleUniquenessExpectationArrayOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultRuleRuleUniquenessExpectationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResultRuleRuleUniquenessExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultRuleRuleUniquenessExpectationArrayOutput) ToDatascanDataQualityResultRuleRuleUniquenessExpectationArrayOutput() DatascanDataQualityResultRuleRuleUniquenessExpectationArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleUniquenessExpectationArrayOutput) ToDatascanDataQualityResultRuleRuleUniquenessExpectationArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultRuleRuleUniquenessExpectationArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultRuleRuleUniquenessExpectationArrayOutput) Index(i pulumi.IntInput) DatascanDataQualityResultRuleRuleUniquenessExpectationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanDataQualityResultRuleRuleUniquenessExpectation {
+		return vs[0].([]DatascanDataQualityResultRuleRuleUniquenessExpectation)[vs[1].(int)]
+	}).(DatascanDataQualityResultRuleRuleUniquenessExpectationOutput)
+}
+
+type DatascanDataQualityResultScannedData struct {
+	// The range denoted by values of an incremental field
+	// Structure is documented below.
+	IncrementalField *DatascanDataQualityResultScannedDataIncrementalField `pulumi:"incrementalField"`
+}
+
+// DatascanDataQualityResultScannedDataInput is an input type that accepts DatascanDataQualityResultScannedDataArgs and DatascanDataQualityResultScannedDataOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultScannedDataInput` via:
+//
+//	DatascanDataQualityResultScannedDataArgs{...}
+type DatascanDataQualityResultScannedDataInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultScannedDataOutput() DatascanDataQualityResultScannedDataOutput
+	ToDatascanDataQualityResultScannedDataOutputWithContext(context.Context) DatascanDataQualityResultScannedDataOutput
+}
+
+type DatascanDataQualityResultScannedDataArgs struct {
+	// The range denoted by values of an incremental field
+	// Structure is documented below.
+	IncrementalField DatascanDataQualityResultScannedDataIncrementalFieldPtrInput `pulumi:"incrementalField"`
+}
+
+func (DatascanDataQualityResultScannedDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultScannedData)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultScannedDataArgs) ToDatascanDataQualityResultScannedDataOutput() DatascanDataQualityResultScannedDataOutput {
+	return i.ToDatascanDataQualityResultScannedDataOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultScannedDataArgs) ToDatascanDataQualityResultScannedDataOutputWithContext(ctx context.Context) DatascanDataQualityResultScannedDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultScannedDataOutput)
+}
+
+// DatascanDataQualityResultScannedDataArrayInput is an input type that accepts DatascanDataQualityResultScannedDataArray and DatascanDataQualityResultScannedDataArrayOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultScannedDataArrayInput` via:
+//
+//	DatascanDataQualityResultScannedDataArray{ DatascanDataQualityResultScannedDataArgs{...} }
+type DatascanDataQualityResultScannedDataArrayInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultScannedDataArrayOutput() DatascanDataQualityResultScannedDataArrayOutput
+	ToDatascanDataQualityResultScannedDataArrayOutputWithContext(context.Context) DatascanDataQualityResultScannedDataArrayOutput
+}
+
+type DatascanDataQualityResultScannedDataArray []DatascanDataQualityResultScannedDataInput
+
+func (DatascanDataQualityResultScannedDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResultScannedData)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultScannedDataArray) ToDatascanDataQualityResultScannedDataArrayOutput() DatascanDataQualityResultScannedDataArrayOutput {
+	return i.ToDatascanDataQualityResultScannedDataArrayOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultScannedDataArray) ToDatascanDataQualityResultScannedDataArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultScannedDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultScannedDataArrayOutput)
+}
+
+type DatascanDataQualityResultScannedDataOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultScannedDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultScannedData)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultScannedDataOutput) ToDatascanDataQualityResultScannedDataOutput() DatascanDataQualityResultScannedDataOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultScannedDataOutput) ToDatascanDataQualityResultScannedDataOutputWithContext(ctx context.Context) DatascanDataQualityResultScannedDataOutput {
+	return o
+}
+
+// The range denoted by values of an incremental field
+// Structure is documented below.
+func (o DatascanDataQualityResultScannedDataOutput) IncrementalField() DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultScannedData) *DatascanDataQualityResultScannedDataIncrementalField {
+		return v.IncrementalField
+	}).(DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput)
+}
+
+type DatascanDataQualityResultScannedDataArrayOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultScannedDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualityResultScannedData)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultScannedDataArrayOutput) ToDatascanDataQualityResultScannedDataArrayOutput() DatascanDataQualityResultScannedDataArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultScannedDataArrayOutput) ToDatascanDataQualityResultScannedDataArrayOutputWithContext(ctx context.Context) DatascanDataQualityResultScannedDataArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultScannedDataArrayOutput) Index(i pulumi.IntInput) DatascanDataQualityResultScannedDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanDataQualityResultScannedData {
+		return vs[0].([]DatascanDataQualityResultScannedData)[vs[1].(int)]
+	}).(DatascanDataQualityResultScannedDataOutput)
+}
+
+type DatascanDataQualityResultScannedDataIncrementalField struct {
+	// Value that marks the end of the range.
+	End *string `pulumi:"end"`
+	// The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
+	Field *string `pulumi:"field"`
+	// Value that marks the start of the range.
+	Start *string `pulumi:"start"`
+}
+
+// DatascanDataQualityResultScannedDataIncrementalFieldInput is an input type that accepts DatascanDataQualityResultScannedDataIncrementalFieldArgs and DatascanDataQualityResultScannedDataIncrementalFieldOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultScannedDataIncrementalFieldInput` via:
+//
+//	DatascanDataQualityResultScannedDataIncrementalFieldArgs{...}
+type DatascanDataQualityResultScannedDataIncrementalFieldInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultScannedDataIncrementalFieldOutput() DatascanDataQualityResultScannedDataIncrementalFieldOutput
+	ToDatascanDataQualityResultScannedDataIncrementalFieldOutputWithContext(context.Context) DatascanDataQualityResultScannedDataIncrementalFieldOutput
+}
+
+type DatascanDataQualityResultScannedDataIncrementalFieldArgs struct {
+	// Value that marks the end of the range.
+	End pulumi.StringPtrInput `pulumi:"end"`
+	// The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
+	Field pulumi.StringPtrInput `pulumi:"field"`
+	// Value that marks the start of the range.
+	Start pulumi.StringPtrInput `pulumi:"start"`
+}
+
+func (DatascanDataQualityResultScannedDataIncrementalFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultScannedDataIncrementalField)(nil)).Elem()
+}
+
+func (i DatascanDataQualityResultScannedDataIncrementalFieldArgs) ToDatascanDataQualityResultScannedDataIncrementalFieldOutput() DatascanDataQualityResultScannedDataIncrementalFieldOutput {
+	return i.ToDatascanDataQualityResultScannedDataIncrementalFieldOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultScannedDataIncrementalFieldArgs) ToDatascanDataQualityResultScannedDataIncrementalFieldOutputWithContext(ctx context.Context) DatascanDataQualityResultScannedDataIncrementalFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultScannedDataIncrementalFieldOutput)
+}
+
+func (i DatascanDataQualityResultScannedDataIncrementalFieldArgs) ToDatascanDataQualityResultScannedDataIncrementalFieldPtrOutput() DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput {
+	return i.ToDatascanDataQualityResultScannedDataIncrementalFieldPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualityResultScannedDataIncrementalFieldArgs) ToDatascanDataQualityResultScannedDataIncrementalFieldPtrOutputWithContext(ctx context.Context) DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultScannedDataIncrementalFieldOutput).ToDatascanDataQualityResultScannedDataIncrementalFieldPtrOutputWithContext(ctx)
+}
+
+// DatascanDataQualityResultScannedDataIncrementalFieldPtrInput is an input type that accepts DatascanDataQualityResultScannedDataIncrementalFieldArgs, DatascanDataQualityResultScannedDataIncrementalFieldPtr and DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput values.
+// You can construct a concrete instance of `DatascanDataQualityResultScannedDataIncrementalFieldPtrInput` via:
+//
+//	        DatascanDataQualityResultScannedDataIncrementalFieldArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataQualityResultScannedDataIncrementalFieldPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualityResultScannedDataIncrementalFieldPtrOutput() DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput
+	ToDatascanDataQualityResultScannedDataIncrementalFieldPtrOutputWithContext(context.Context) DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput
+}
+
+type datascanDataQualityResultScannedDataIncrementalFieldPtrType DatascanDataQualityResultScannedDataIncrementalFieldArgs
+
+func DatascanDataQualityResultScannedDataIncrementalFieldPtr(v *DatascanDataQualityResultScannedDataIncrementalFieldArgs) DatascanDataQualityResultScannedDataIncrementalFieldPtrInput {
+	return (*datascanDataQualityResultScannedDataIncrementalFieldPtrType)(v)
+}
+
+func (*datascanDataQualityResultScannedDataIncrementalFieldPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualityResultScannedDataIncrementalField)(nil)).Elem()
+}
+
+func (i *datascanDataQualityResultScannedDataIncrementalFieldPtrType) ToDatascanDataQualityResultScannedDataIncrementalFieldPtrOutput() DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput {
+	return i.ToDatascanDataQualityResultScannedDataIncrementalFieldPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataQualityResultScannedDataIncrementalFieldPtrType) ToDatascanDataQualityResultScannedDataIncrementalFieldPtrOutputWithContext(ctx context.Context) DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput)
+}
+
+type DatascanDataQualityResultScannedDataIncrementalFieldOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultScannedDataIncrementalFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualityResultScannedDataIncrementalField)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultScannedDataIncrementalFieldOutput) ToDatascanDataQualityResultScannedDataIncrementalFieldOutput() DatascanDataQualityResultScannedDataIncrementalFieldOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultScannedDataIncrementalFieldOutput) ToDatascanDataQualityResultScannedDataIncrementalFieldOutputWithContext(ctx context.Context) DatascanDataQualityResultScannedDataIncrementalFieldOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultScannedDataIncrementalFieldOutput) ToDatascanDataQualityResultScannedDataIncrementalFieldPtrOutput() DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput {
+	return o.ToDatascanDataQualityResultScannedDataIncrementalFieldPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataQualityResultScannedDataIncrementalFieldOutput) ToDatascanDataQualityResultScannedDataIncrementalFieldPtrOutputWithContext(ctx context.Context) DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataQualityResultScannedDataIncrementalField) *DatascanDataQualityResultScannedDataIncrementalField {
+		return &v
+	}).(DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput)
+}
+
+// Value that marks the end of the range.
+func (o DatascanDataQualityResultScannedDataIncrementalFieldOutput) End() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultScannedDataIncrementalField) *string { return v.End }).(pulumi.StringPtrOutput)
+}
+
+// The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
+func (o DatascanDataQualityResultScannedDataIncrementalFieldOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultScannedDataIncrementalField) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+// Value that marks the start of the range.
+func (o DatascanDataQualityResultScannedDataIncrementalFieldOutput) Start() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualityResultScannedDataIncrementalField) *string { return v.Start }).(pulumi.StringPtrOutput)
+}
+
+type DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualityResultScannedDataIncrementalField)(nil)).Elem()
+}
+
+func (o DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput) ToDatascanDataQualityResultScannedDataIncrementalFieldPtrOutput() DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput) ToDatascanDataQualityResultScannedDataIncrementalFieldPtrOutputWithContext(ctx context.Context) DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput) Elem() DatascanDataQualityResultScannedDataIncrementalFieldOutput {
+	return o.ApplyT(func(v *DatascanDataQualityResultScannedDataIncrementalField) DatascanDataQualityResultScannedDataIncrementalField {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataQualityResultScannedDataIncrementalField
+		return ret
+	}).(DatascanDataQualityResultScannedDataIncrementalFieldOutput)
+}
+
+// Value that marks the end of the range.
+func (o DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput) End() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualityResultScannedDataIncrementalField) *string {
+		if v == nil {
+			return nil
+		}
+		return v.End
+	}).(pulumi.StringPtrOutput)
+}
+
+// The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
+func (o DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualityResultScannedDataIncrementalField) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Field
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value that marks the start of the range.
+func (o DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput) Start() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualityResultScannedDataIncrementalField) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Start
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatascanDataQualitySpec struct {
+	// A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+	RowFilter *string `pulumi:"rowFilter"`
+	// The list of rules to evaluate against a data source. At least one rule is required.
+	// Structure is documented below.
+	Rules []DatascanDataQualitySpecRule `pulumi:"rules"`
+	// The percentage of the records to be selected from the dataset for DataScan.
+	SamplingPercent *float64 `pulumi:"samplingPercent"`
+}
+
+// DatascanDataQualitySpecInput is an input type that accepts DatascanDataQualitySpecArgs and DatascanDataQualitySpecOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecInput` via:
+//
+//	DatascanDataQualitySpecArgs{...}
+type DatascanDataQualitySpecInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecOutput() DatascanDataQualitySpecOutput
+	ToDatascanDataQualitySpecOutputWithContext(context.Context) DatascanDataQualitySpecOutput
+}
+
+type DatascanDataQualitySpecArgs struct {
+	// A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+	RowFilter pulumi.StringPtrInput `pulumi:"rowFilter"`
+	// The list of rules to evaluate against a data source. At least one rule is required.
+	// Structure is documented below.
+	Rules DatascanDataQualitySpecRuleArrayInput `pulumi:"rules"`
+	// The percentage of the records to be selected from the dataset for DataScan.
+	SamplingPercent pulumi.Float64PtrInput `pulumi:"samplingPercent"`
+}
+
+func (DatascanDataQualitySpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpec)(nil)).Elem()
+}
+
+func (i DatascanDataQualitySpecArgs) ToDatascanDataQualitySpecOutput() DatascanDataQualitySpecOutput {
+	return i.ToDatascanDataQualitySpecOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecArgs) ToDatascanDataQualitySpecOutputWithContext(ctx context.Context) DatascanDataQualitySpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecOutput)
+}
+
+func (i DatascanDataQualitySpecArgs) ToDatascanDataQualitySpecPtrOutput() DatascanDataQualitySpecPtrOutput {
+	return i.ToDatascanDataQualitySpecPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecArgs) ToDatascanDataQualitySpecPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecOutput).ToDatascanDataQualitySpecPtrOutputWithContext(ctx)
+}
+
+// DatascanDataQualitySpecPtrInput is an input type that accepts DatascanDataQualitySpecArgs, DatascanDataQualitySpecPtr and DatascanDataQualitySpecPtrOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecPtrInput` via:
+//
+//	        DatascanDataQualitySpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataQualitySpecPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecPtrOutput() DatascanDataQualitySpecPtrOutput
+	ToDatascanDataQualitySpecPtrOutputWithContext(context.Context) DatascanDataQualitySpecPtrOutput
+}
+
+type datascanDataQualitySpecPtrType DatascanDataQualitySpecArgs
+
+func DatascanDataQualitySpecPtr(v *DatascanDataQualitySpecArgs) DatascanDataQualitySpecPtrInput {
+	return (*datascanDataQualitySpecPtrType)(v)
+}
+
+func (*datascanDataQualitySpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpec)(nil)).Elem()
+}
+
+func (i *datascanDataQualitySpecPtrType) ToDatascanDataQualitySpecPtrOutput() DatascanDataQualitySpecPtrOutput {
+	return i.ToDatascanDataQualitySpecPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataQualitySpecPtrType) ToDatascanDataQualitySpecPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecPtrOutput)
+}
+
+type DatascanDataQualitySpecOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpec)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecOutput) ToDatascanDataQualitySpecOutput() DatascanDataQualitySpecOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecOutput) ToDatascanDataQualitySpecOutputWithContext(ctx context.Context) DatascanDataQualitySpecOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecOutput) ToDatascanDataQualitySpecPtrOutput() DatascanDataQualitySpecPtrOutput {
+	return o.ToDatascanDataQualitySpecPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataQualitySpecOutput) ToDatascanDataQualitySpecPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataQualitySpec) *DatascanDataQualitySpec {
+		return &v
+	}).(DatascanDataQualitySpecPtrOutput)
+}
+
+// A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+func (o DatascanDataQualitySpecOutput) RowFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpec) *string { return v.RowFilter }).(pulumi.StringPtrOutput)
+}
+
+// The list of rules to evaluate against a data source. At least one rule is required.
+// Structure is documented below.
+func (o DatascanDataQualitySpecOutput) Rules() DatascanDataQualitySpecRuleArrayOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpec) []DatascanDataQualitySpecRule { return v.Rules }).(DatascanDataQualitySpecRuleArrayOutput)
+}
+
+// The percentage of the records to be selected from the dataset for DataScan.
+func (o DatascanDataQualitySpecOutput) SamplingPercent() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpec) *float64 { return v.SamplingPercent }).(pulumi.Float64PtrOutput)
+}
+
+type DatascanDataQualitySpecPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpec)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecPtrOutput) ToDatascanDataQualitySpecPtrOutput() DatascanDataQualitySpecPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPtrOutput) ToDatascanDataQualitySpecPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecPtrOutput) Elem() DatascanDataQualitySpecOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpec) DatascanDataQualitySpec {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataQualitySpec
+		return ret
+	}).(DatascanDataQualitySpecOutput)
+}
+
+// A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 >= 0 AND col2 < 10
+func (o DatascanDataQualitySpecPtrOutput) RowFilter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RowFilter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of rules to evaluate against a data source. At least one rule is required.
+// Structure is documented below.
+func (o DatascanDataQualitySpecPtrOutput) Rules() DatascanDataQualitySpecRuleArrayOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpec) []DatascanDataQualitySpecRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(DatascanDataQualitySpecRuleArrayOutput)
+}
+
+// The percentage of the records to be selected from the dataset for DataScan.
+func (o DatascanDataQualitySpecPtrOutput) SamplingPercent() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpec) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SamplingPercent
+	}).(pulumi.Float64PtrOutput)
+}
+
+type DatascanDataQualitySpecRule struct {
+	// The unnested column which this rule is evaluated against.
+	Column *string `pulumi:"column"`
+	// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
+	Dimension string `pulumi:"dimension"`
+	// Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. Only applicable to ColumnMap rules.
+	IgnoreNull *bool `pulumi:"ignoreNull"`
+	// ColumnMap rule which evaluates whether each column value is null.
+	NonNullExpectation *DatascanDataQualitySpecRuleNonNullExpectation `pulumi:"nonNullExpectation"`
+	// ColumnMap rule which evaluates whether each column value lies between a specified range.
+	// Structure is documented below.
+	RangeExpectation *DatascanDataQualitySpecRuleRangeExpectation `pulumi:"rangeExpectation"`
+	// ColumnMap rule which evaluates whether each column value matches a specified regex.
+	// Structure is documented below.
+	RegexExpectation *DatascanDataQualitySpecRuleRegexExpectation `pulumi:"regexExpectation"`
+	// Table rule which evaluates whether each row passes the specified condition.
+	// Structure is documented below.
+	RowConditionExpectation *DatascanDataQualitySpecRuleRowConditionExpectation `pulumi:"rowConditionExpectation"`
+	// ColumnMap rule which evaluates whether each column value is contained by a specified set.
+	// Structure is documented below.
+	SetExpectation *DatascanDataQualitySpecRuleSetExpectation `pulumi:"setExpectation"`
+	// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+	// Structure is documented below.
+	StatisticRangeExpectation *DatascanDataQualitySpecRuleStatisticRangeExpectation `pulumi:"statisticRangeExpectation"`
+	// Table rule which evaluates whether the provided expression is true.
+	// Structure is documented below.
+	TableConditionExpectation *DatascanDataQualitySpecRuleTableConditionExpectation `pulumi:"tableConditionExpectation"`
+	// The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
+	Threshold *float64 `pulumi:"threshold"`
+	// ColumnAggregate rule which evaluates whether the column has duplicates.
+	UniquenessExpectation *DatascanDataQualitySpecRuleUniquenessExpectation `pulumi:"uniquenessExpectation"`
+}
+
+// DatascanDataQualitySpecRuleInput is an input type that accepts DatascanDataQualitySpecRuleArgs and DatascanDataQualitySpecRuleOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleInput` via:
+//
+//	DatascanDataQualitySpecRuleArgs{...}
+type DatascanDataQualitySpecRuleInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleOutput() DatascanDataQualitySpecRuleOutput
+	ToDatascanDataQualitySpecRuleOutputWithContext(context.Context) DatascanDataQualitySpecRuleOutput
+}
+
+type DatascanDataQualitySpecRuleArgs struct {
+	// The unnested column which this rule is evaluated against.
+	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
+	Dimension pulumi.StringInput `pulumi:"dimension"`
+	// Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. Only applicable to ColumnMap rules.
+	IgnoreNull pulumi.BoolPtrInput `pulumi:"ignoreNull"`
+	// ColumnMap rule which evaluates whether each column value is null.
+	NonNullExpectation DatascanDataQualitySpecRuleNonNullExpectationPtrInput `pulumi:"nonNullExpectation"`
+	// ColumnMap rule which evaluates whether each column value lies between a specified range.
+	// Structure is documented below.
+	RangeExpectation DatascanDataQualitySpecRuleRangeExpectationPtrInput `pulumi:"rangeExpectation"`
+	// ColumnMap rule which evaluates whether each column value matches a specified regex.
+	// Structure is documented below.
+	RegexExpectation DatascanDataQualitySpecRuleRegexExpectationPtrInput `pulumi:"regexExpectation"`
+	// Table rule which evaluates whether each row passes the specified condition.
+	// Structure is documented below.
+	RowConditionExpectation DatascanDataQualitySpecRuleRowConditionExpectationPtrInput `pulumi:"rowConditionExpectation"`
+	// ColumnMap rule which evaluates whether each column value is contained by a specified set.
+	// Structure is documented below.
+	SetExpectation DatascanDataQualitySpecRuleSetExpectationPtrInput `pulumi:"setExpectation"`
+	// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+	// Structure is documented below.
+	StatisticRangeExpectation DatascanDataQualitySpecRuleStatisticRangeExpectationPtrInput `pulumi:"statisticRangeExpectation"`
+	// Table rule which evaluates whether the provided expression is true.
+	// Structure is documented below.
+	TableConditionExpectation DatascanDataQualitySpecRuleTableConditionExpectationPtrInput `pulumi:"tableConditionExpectation"`
+	// The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
+	Threshold pulumi.Float64PtrInput `pulumi:"threshold"`
+	// ColumnAggregate rule which evaluates whether the column has duplicates.
+	UniquenessExpectation DatascanDataQualitySpecRuleUniquenessExpectationPtrInput `pulumi:"uniquenessExpectation"`
+}
+
+func (DatascanDataQualitySpecRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRule)(nil)).Elem()
+}
+
+func (i DatascanDataQualitySpecRuleArgs) ToDatascanDataQualitySpecRuleOutput() DatascanDataQualitySpecRuleOutput {
+	return i.ToDatascanDataQualitySpecRuleOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleArgs) ToDatascanDataQualitySpecRuleOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleOutput)
+}
+
+// DatascanDataQualitySpecRuleArrayInput is an input type that accepts DatascanDataQualitySpecRuleArray and DatascanDataQualitySpecRuleArrayOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleArrayInput` via:
+//
+//	DatascanDataQualitySpecRuleArray{ DatascanDataQualitySpecRuleArgs{...} }
+type DatascanDataQualitySpecRuleArrayInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleArrayOutput() DatascanDataQualitySpecRuleArrayOutput
+	ToDatascanDataQualitySpecRuleArrayOutputWithContext(context.Context) DatascanDataQualitySpecRuleArrayOutput
+}
+
+type DatascanDataQualitySpecRuleArray []DatascanDataQualitySpecRuleInput
+
+func (DatascanDataQualitySpecRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualitySpecRule)(nil)).Elem()
+}
+
+func (i DatascanDataQualitySpecRuleArray) ToDatascanDataQualitySpecRuleArrayOutput() DatascanDataQualitySpecRuleArrayOutput {
+	return i.ToDatascanDataQualitySpecRuleArrayOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleArray) ToDatascanDataQualitySpecRuleArrayOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleArrayOutput)
+}
+
+type DatascanDataQualitySpecRuleOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRule)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleOutput) ToDatascanDataQualitySpecRuleOutput() DatascanDataQualitySpecRuleOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleOutput) ToDatascanDataQualitySpecRuleOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleOutput {
+	return o
+}
+
+// The unnested column which this rule is evaluated against.
+func (o DatascanDataQualitySpecRuleOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRule) *string { return v.Column }).(pulumi.StringPtrOutput)
+}
+
+// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are ["COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"]
+func (o DatascanDataQualitySpecRuleOutput) Dimension() pulumi.StringOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRule) string { return v.Dimension }).(pulumi.StringOutput)
+}
+
+// Rows with null values will automatically fail a rule, unless ignoreNull is true. In that case, such null rows are trivially considered passing. Only applicable to ColumnMap rules.
+func (o DatascanDataQualitySpecRuleOutput) IgnoreNull() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRule) *bool { return v.IgnoreNull }).(pulumi.BoolPtrOutput)
+}
+
+// ColumnMap rule which evaluates whether each column value is null.
+func (o DatascanDataQualitySpecRuleOutput) NonNullExpectation() DatascanDataQualitySpecRuleNonNullExpectationPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRule) *DatascanDataQualitySpecRuleNonNullExpectation {
+		return v.NonNullExpectation
+	}).(DatascanDataQualitySpecRuleNonNullExpectationPtrOutput)
+}
+
+// ColumnMap rule which evaluates whether each column value lies between a specified range.
+// Structure is documented below.
+func (o DatascanDataQualitySpecRuleOutput) RangeExpectation() DatascanDataQualitySpecRuleRangeExpectationPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRule) *DatascanDataQualitySpecRuleRangeExpectation {
+		return v.RangeExpectation
+	}).(DatascanDataQualitySpecRuleRangeExpectationPtrOutput)
+}
+
+// ColumnMap rule which evaluates whether each column value matches a specified regex.
+// Structure is documented below.
+func (o DatascanDataQualitySpecRuleOutput) RegexExpectation() DatascanDataQualitySpecRuleRegexExpectationPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRule) *DatascanDataQualitySpecRuleRegexExpectation {
+		return v.RegexExpectation
+	}).(DatascanDataQualitySpecRuleRegexExpectationPtrOutput)
+}
+
+// Table rule which evaluates whether each row passes the specified condition.
+// Structure is documented below.
+func (o DatascanDataQualitySpecRuleOutput) RowConditionExpectation() DatascanDataQualitySpecRuleRowConditionExpectationPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRule) *DatascanDataQualitySpecRuleRowConditionExpectation {
+		return v.RowConditionExpectation
+	}).(DatascanDataQualitySpecRuleRowConditionExpectationPtrOutput)
+}
+
+// ColumnMap rule which evaluates whether each column value is contained by a specified set.
+// Structure is documented below.
+func (o DatascanDataQualitySpecRuleOutput) SetExpectation() DatascanDataQualitySpecRuleSetExpectationPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRule) *DatascanDataQualitySpecRuleSetExpectation {
+		return v.SetExpectation
+	}).(DatascanDataQualitySpecRuleSetExpectationPtrOutput)
+}
+
+// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+// Structure is documented below.
+func (o DatascanDataQualitySpecRuleOutput) StatisticRangeExpectation() DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRule) *DatascanDataQualitySpecRuleStatisticRangeExpectation {
+		return v.StatisticRangeExpectation
+	}).(DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput)
+}
+
+// Table rule which evaluates whether the provided expression is true.
+// Structure is documented below.
+func (o DatascanDataQualitySpecRuleOutput) TableConditionExpectation() DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRule) *DatascanDataQualitySpecRuleTableConditionExpectation {
+		return v.TableConditionExpectation
+	}).(DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput)
+}
+
+// The minimum ratio of passingRows / totalRows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0).
+func (o DatascanDataQualitySpecRuleOutput) Threshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRule) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
+}
+
+// ColumnAggregate rule which evaluates whether the column has duplicates.
+func (o DatascanDataQualitySpecRuleOutput) UniquenessExpectation() DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRule) *DatascanDataQualitySpecRuleUniquenessExpectation {
+		return v.UniquenessExpectation
+	}).(DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput)
+}
+
+type DatascanDataQualitySpecRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanDataQualitySpecRule)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleArrayOutput) ToDatascanDataQualitySpecRuleArrayOutput() DatascanDataQualitySpecRuleArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleArrayOutput) ToDatascanDataQualitySpecRuleArrayOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleArrayOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleArrayOutput) Index(i pulumi.IntInput) DatascanDataQualitySpecRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanDataQualitySpecRule {
+		return vs[0].([]DatascanDataQualitySpecRule)[vs[1].(int)]
+	}).(DatascanDataQualitySpecRuleOutput)
+}
+
+type DatascanDataQualitySpecRuleNonNullExpectation struct {
+}
+
+// DatascanDataQualitySpecRuleNonNullExpectationInput is an input type that accepts DatascanDataQualitySpecRuleNonNullExpectationArgs and DatascanDataQualitySpecRuleNonNullExpectationOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleNonNullExpectationInput` via:
+//
+//	DatascanDataQualitySpecRuleNonNullExpectationArgs{...}
+type DatascanDataQualitySpecRuleNonNullExpectationInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleNonNullExpectationOutput() DatascanDataQualitySpecRuleNonNullExpectationOutput
+	ToDatascanDataQualitySpecRuleNonNullExpectationOutputWithContext(context.Context) DatascanDataQualitySpecRuleNonNullExpectationOutput
+}
+
+type DatascanDataQualitySpecRuleNonNullExpectationArgs struct {
+}
+
+func (DatascanDataQualitySpecRuleNonNullExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRuleNonNullExpectation)(nil)).Elem()
+}
+
+func (i DatascanDataQualitySpecRuleNonNullExpectationArgs) ToDatascanDataQualitySpecRuleNonNullExpectationOutput() DatascanDataQualitySpecRuleNonNullExpectationOutput {
+	return i.ToDatascanDataQualitySpecRuleNonNullExpectationOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleNonNullExpectationArgs) ToDatascanDataQualitySpecRuleNonNullExpectationOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleNonNullExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleNonNullExpectationOutput)
+}
+
+func (i DatascanDataQualitySpecRuleNonNullExpectationArgs) ToDatascanDataQualitySpecRuleNonNullExpectationPtrOutput() DatascanDataQualitySpecRuleNonNullExpectationPtrOutput {
+	return i.ToDatascanDataQualitySpecRuleNonNullExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleNonNullExpectationArgs) ToDatascanDataQualitySpecRuleNonNullExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleNonNullExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleNonNullExpectationOutput).ToDatascanDataQualitySpecRuleNonNullExpectationPtrOutputWithContext(ctx)
+}
+
+// DatascanDataQualitySpecRuleNonNullExpectationPtrInput is an input type that accepts DatascanDataQualitySpecRuleNonNullExpectationArgs, DatascanDataQualitySpecRuleNonNullExpectationPtr and DatascanDataQualitySpecRuleNonNullExpectationPtrOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleNonNullExpectationPtrInput` via:
+//
+//	        DatascanDataQualitySpecRuleNonNullExpectationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataQualitySpecRuleNonNullExpectationPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleNonNullExpectationPtrOutput() DatascanDataQualitySpecRuleNonNullExpectationPtrOutput
+	ToDatascanDataQualitySpecRuleNonNullExpectationPtrOutputWithContext(context.Context) DatascanDataQualitySpecRuleNonNullExpectationPtrOutput
+}
+
+type datascanDataQualitySpecRuleNonNullExpectationPtrType DatascanDataQualitySpecRuleNonNullExpectationArgs
+
+func DatascanDataQualitySpecRuleNonNullExpectationPtr(v *DatascanDataQualitySpecRuleNonNullExpectationArgs) DatascanDataQualitySpecRuleNonNullExpectationPtrInput {
+	return (*datascanDataQualitySpecRuleNonNullExpectationPtrType)(v)
+}
+
+func (*datascanDataQualitySpecRuleNonNullExpectationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecRuleNonNullExpectation)(nil)).Elem()
+}
+
+func (i *datascanDataQualitySpecRuleNonNullExpectationPtrType) ToDatascanDataQualitySpecRuleNonNullExpectationPtrOutput() DatascanDataQualitySpecRuleNonNullExpectationPtrOutput {
+	return i.ToDatascanDataQualitySpecRuleNonNullExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataQualitySpecRuleNonNullExpectationPtrType) ToDatascanDataQualitySpecRuleNonNullExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleNonNullExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleNonNullExpectationPtrOutput)
+}
+
+type DatascanDataQualitySpecRuleNonNullExpectationOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleNonNullExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRuleNonNullExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleNonNullExpectationOutput) ToDatascanDataQualitySpecRuleNonNullExpectationOutput() DatascanDataQualitySpecRuleNonNullExpectationOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleNonNullExpectationOutput) ToDatascanDataQualitySpecRuleNonNullExpectationOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleNonNullExpectationOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleNonNullExpectationOutput) ToDatascanDataQualitySpecRuleNonNullExpectationPtrOutput() DatascanDataQualitySpecRuleNonNullExpectationPtrOutput {
+	return o.ToDatascanDataQualitySpecRuleNonNullExpectationPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataQualitySpecRuleNonNullExpectationOutput) ToDatascanDataQualitySpecRuleNonNullExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleNonNullExpectationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataQualitySpecRuleNonNullExpectation) *DatascanDataQualitySpecRuleNonNullExpectation {
+		return &v
+	}).(DatascanDataQualitySpecRuleNonNullExpectationPtrOutput)
+}
+
+type DatascanDataQualitySpecRuleNonNullExpectationPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleNonNullExpectationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecRuleNonNullExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleNonNullExpectationPtrOutput) ToDatascanDataQualitySpecRuleNonNullExpectationPtrOutput() DatascanDataQualitySpecRuleNonNullExpectationPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleNonNullExpectationPtrOutput) ToDatascanDataQualitySpecRuleNonNullExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleNonNullExpectationPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleNonNullExpectationPtrOutput) Elem() DatascanDataQualitySpecRuleNonNullExpectationOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleNonNullExpectation) DatascanDataQualitySpecRuleNonNullExpectation {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataQualitySpecRuleNonNullExpectation
+		return ret
+	}).(DatascanDataQualitySpecRuleNonNullExpectationOutput)
+}
+
+type DatascanDataQualitySpecRuleRangeExpectation struct {
+	// The maximum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
+	MaxValue *string `pulumi:"maxValue"`
+	// The minimum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
+	MinValue *string `pulumi:"minValue"`
+	// Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+	// Only relevant if a maxValue has been defined. Default = false.
+	StrictMaxEnabled *bool `pulumi:"strictMaxEnabled"`
+	// Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+	// Only relevant if a minValue has been defined. Default = false.
+	StrictMinEnabled *bool `pulumi:"strictMinEnabled"`
+}
+
+// DatascanDataQualitySpecRuleRangeExpectationInput is an input type that accepts DatascanDataQualitySpecRuleRangeExpectationArgs and DatascanDataQualitySpecRuleRangeExpectationOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleRangeExpectationInput` via:
+//
+//	DatascanDataQualitySpecRuleRangeExpectationArgs{...}
+type DatascanDataQualitySpecRuleRangeExpectationInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleRangeExpectationOutput() DatascanDataQualitySpecRuleRangeExpectationOutput
+	ToDatascanDataQualitySpecRuleRangeExpectationOutputWithContext(context.Context) DatascanDataQualitySpecRuleRangeExpectationOutput
+}
+
+type DatascanDataQualitySpecRuleRangeExpectationArgs struct {
+	// The maximum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
+	MaxValue pulumi.StringPtrInput `pulumi:"maxValue"`
+	// The minimum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
+	MinValue pulumi.StringPtrInput `pulumi:"minValue"`
+	// Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+	// Only relevant if a maxValue has been defined. Default = false.
+	StrictMaxEnabled pulumi.BoolPtrInput `pulumi:"strictMaxEnabled"`
+	// Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+	// Only relevant if a minValue has been defined. Default = false.
+	StrictMinEnabled pulumi.BoolPtrInput `pulumi:"strictMinEnabled"`
+}
+
+func (DatascanDataQualitySpecRuleRangeExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRuleRangeExpectation)(nil)).Elem()
+}
+
+func (i DatascanDataQualitySpecRuleRangeExpectationArgs) ToDatascanDataQualitySpecRuleRangeExpectationOutput() DatascanDataQualitySpecRuleRangeExpectationOutput {
+	return i.ToDatascanDataQualitySpecRuleRangeExpectationOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleRangeExpectationArgs) ToDatascanDataQualitySpecRuleRangeExpectationOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleRangeExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleRangeExpectationOutput)
+}
+
+func (i DatascanDataQualitySpecRuleRangeExpectationArgs) ToDatascanDataQualitySpecRuleRangeExpectationPtrOutput() DatascanDataQualitySpecRuleRangeExpectationPtrOutput {
+	return i.ToDatascanDataQualitySpecRuleRangeExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleRangeExpectationArgs) ToDatascanDataQualitySpecRuleRangeExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleRangeExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleRangeExpectationOutput).ToDatascanDataQualitySpecRuleRangeExpectationPtrOutputWithContext(ctx)
+}
+
+// DatascanDataQualitySpecRuleRangeExpectationPtrInput is an input type that accepts DatascanDataQualitySpecRuleRangeExpectationArgs, DatascanDataQualitySpecRuleRangeExpectationPtr and DatascanDataQualitySpecRuleRangeExpectationPtrOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleRangeExpectationPtrInput` via:
+//
+//	        DatascanDataQualitySpecRuleRangeExpectationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataQualitySpecRuleRangeExpectationPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleRangeExpectationPtrOutput() DatascanDataQualitySpecRuleRangeExpectationPtrOutput
+	ToDatascanDataQualitySpecRuleRangeExpectationPtrOutputWithContext(context.Context) DatascanDataQualitySpecRuleRangeExpectationPtrOutput
+}
+
+type datascanDataQualitySpecRuleRangeExpectationPtrType DatascanDataQualitySpecRuleRangeExpectationArgs
+
+func DatascanDataQualitySpecRuleRangeExpectationPtr(v *DatascanDataQualitySpecRuleRangeExpectationArgs) DatascanDataQualitySpecRuleRangeExpectationPtrInput {
+	return (*datascanDataQualitySpecRuleRangeExpectationPtrType)(v)
+}
+
+func (*datascanDataQualitySpecRuleRangeExpectationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecRuleRangeExpectation)(nil)).Elem()
+}
+
+func (i *datascanDataQualitySpecRuleRangeExpectationPtrType) ToDatascanDataQualitySpecRuleRangeExpectationPtrOutput() DatascanDataQualitySpecRuleRangeExpectationPtrOutput {
+	return i.ToDatascanDataQualitySpecRuleRangeExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataQualitySpecRuleRangeExpectationPtrType) ToDatascanDataQualitySpecRuleRangeExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleRangeExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleRangeExpectationPtrOutput)
+}
+
+type DatascanDataQualitySpecRuleRangeExpectationOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleRangeExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRuleRangeExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleRangeExpectationOutput) ToDatascanDataQualitySpecRuleRangeExpectationOutput() DatascanDataQualitySpecRuleRangeExpectationOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleRangeExpectationOutput) ToDatascanDataQualitySpecRuleRangeExpectationOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleRangeExpectationOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleRangeExpectationOutput) ToDatascanDataQualitySpecRuleRangeExpectationPtrOutput() DatascanDataQualitySpecRuleRangeExpectationPtrOutput {
+	return o.ToDatascanDataQualitySpecRuleRangeExpectationPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataQualitySpecRuleRangeExpectationOutput) ToDatascanDataQualitySpecRuleRangeExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleRangeExpectationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataQualitySpecRuleRangeExpectation) *DatascanDataQualitySpecRuleRangeExpectation {
+		return &v
+	}).(DatascanDataQualitySpecRuleRangeExpectationPtrOutput)
+}
+
+// The maximum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
+func (o DatascanDataQualitySpecRuleRangeExpectationOutput) MaxValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRuleRangeExpectation) *string { return v.MaxValue }).(pulumi.StringPtrOutput)
+}
+
+// The minimum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
+func (o DatascanDataQualitySpecRuleRangeExpectationOutput) MinValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRuleRangeExpectation) *string { return v.MinValue }).(pulumi.StringPtrOutput)
+}
+
+// Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+// Only relevant if a maxValue has been defined. Default = false.
+func (o DatascanDataQualitySpecRuleRangeExpectationOutput) StrictMaxEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRuleRangeExpectation) *bool { return v.StrictMaxEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+// Only relevant if a minValue has been defined. Default = false.
+func (o DatascanDataQualitySpecRuleRangeExpectationOutput) StrictMinEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRuleRangeExpectation) *bool { return v.StrictMinEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type DatascanDataQualitySpecRuleRangeExpectationPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleRangeExpectationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecRuleRangeExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleRangeExpectationPtrOutput) ToDatascanDataQualitySpecRuleRangeExpectationPtrOutput() DatascanDataQualitySpecRuleRangeExpectationPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleRangeExpectationPtrOutput) ToDatascanDataQualitySpecRuleRangeExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleRangeExpectationPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleRangeExpectationPtrOutput) Elem() DatascanDataQualitySpecRuleRangeExpectationOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleRangeExpectation) DatascanDataQualitySpecRuleRangeExpectation {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataQualitySpecRuleRangeExpectation
+		return ret
+	}).(DatascanDataQualitySpecRuleRangeExpectationOutput)
+}
+
+// The maximum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
+func (o DatascanDataQualitySpecRuleRangeExpectationPtrOutput) MaxValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleRangeExpectation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// The minimum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
+func (o DatascanDataQualitySpecRuleRangeExpectationPtrOutput) MinValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleRangeExpectation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+// Only relevant if a maxValue has been defined. Default = false.
+func (o DatascanDataQualitySpecRuleRangeExpectationPtrOutput) StrictMaxEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleRangeExpectation) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StrictMaxEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+// Only relevant if a minValue has been defined. Default = false.
+func (o DatascanDataQualitySpecRuleRangeExpectationPtrOutput) StrictMinEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleRangeExpectation) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StrictMinEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DatascanDataQualitySpecRuleRegexExpectation struct {
+	// A regular expression the column value is expected to match.
+	Regex string `pulumi:"regex"`
+}
+
+// DatascanDataQualitySpecRuleRegexExpectationInput is an input type that accepts DatascanDataQualitySpecRuleRegexExpectationArgs and DatascanDataQualitySpecRuleRegexExpectationOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleRegexExpectationInput` via:
+//
+//	DatascanDataQualitySpecRuleRegexExpectationArgs{...}
+type DatascanDataQualitySpecRuleRegexExpectationInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleRegexExpectationOutput() DatascanDataQualitySpecRuleRegexExpectationOutput
+	ToDatascanDataQualitySpecRuleRegexExpectationOutputWithContext(context.Context) DatascanDataQualitySpecRuleRegexExpectationOutput
+}
+
+type DatascanDataQualitySpecRuleRegexExpectationArgs struct {
+	// A regular expression the column value is expected to match.
+	Regex pulumi.StringInput `pulumi:"regex"`
+}
+
+func (DatascanDataQualitySpecRuleRegexExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRuleRegexExpectation)(nil)).Elem()
+}
+
+func (i DatascanDataQualitySpecRuleRegexExpectationArgs) ToDatascanDataQualitySpecRuleRegexExpectationOutput() DatascanDataQualitySpecRuleRegexExpectationOutput {
+	return i.ToDatascanDataQualitySpecRuleRegexExpectationOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleRegexExpectationArgs) ToDatascanDataQualitySpecRuleRegexExpectationOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleRegexExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleRegexExpectationOutput)
+}
+
+func (i DatascanDataQualitySpecRuleRegexExpectationArgs) ToDatascanDataQualitySpecRuleRegexExpectationPtrOutput() DatascanDataQualitySpecRuleRegexExpectationPtrOutput {
+	return i.ToDatascanDataQualitySpecRuleRegexExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleRegexExpectationArgs) ToDatascanDataQualitySpecRuleRegexExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleRegexExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleRegexExpectationOutput).ToDatascanDataQualitySpecRuleRegexExpectationPtrOutputWithContext(ctx)
+}
+
+// DatascanDataQualitySpecRuleRegexExpectationPtrInput is an input type that accepts DatascanDataQualitySpecRuleRegexExpectationArgs, DatascanDataQualitySpecRuleRegexExpectationPtr and DatascanDataQualitySpecRuleRegexExpectationPtrOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleRegexExpectationPtrInput` via:
+//
+//	        DatascanDataQualitySpecRuleRegexExpectationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataQualitySpecRuleRegexExpectationPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleRegexExpectationPtrOutput() DatascanDataQualitySpecRuleRegexExpectationPtrOutput
+	ToDatascanDataQualitySpecRuleRegexExpectationPtrOutputWithContext(context.Context) DatascanDataQualitySpecRuleRegexExpectationPtrOutput
+}
+
+type datascanDataQualitySpecRuleRegexExpectationPtrType DatascanDataQualitySpecRuleRegexExpectationArgs
+
+func DatascanDataQualitySpecRuleRegexExpectationPtr(v *DatascanDataQualitySpecRuleRegexExpectationArgs) DatascanDataQualitySpecRuleRegexExpectationPtrInput {
+	return (*datascanDataQualitySpecRuleRegexExpectationPtrType)(v)
+}
+
+func (*datascanDataQualitySpecRuleRegexExpectationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecRuleRegexExpectation)(nil)).Elem()
+}
+
+func (i *datascanDataQualitySpecRuleRegexExpectationPtrType) ToDatascanDataQualitySpecRuleRegexExpectationPtrOutput() DatascanDataQualitySpecRuleRegexExpectationPtrOutput {
+	return i.ToDatascanDataQualitySpecRuleRegexExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataQualitySpecRuleRegexExpectationPtrType) ToDatascanDataQualitySpecRuleRegexExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleRegexExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleRegexExpectationPtrOutput)
+}
+
+type DatascanDataQualitySpecRuleRegexExpectationOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleRegexExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRuleRegexExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleRegexExpectationOutput) ToDatascanDataQualitySpecRuleRegexExpectationOutput() DatascanDataQualitySpecRuleRegexExpectationOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleRegexExpectationOutput) ToDatascanDataQualitySpecRuleRegexExpectationOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleRegexExpectationOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleRegexExpectationOutput) ToDatascanDataQualitySpecRuleRegexExpectationPtrOutput() DatascanDataQualitySpecRuleRegexExpectationPtrOutput {
+	return o.ToDatascanDataQualitySpecRuleRegexExpectationPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataQualitySpecRuleRegexExpectationOutput) ToDatascanDataQualitySpecRuleRegexExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleRegexExpectationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataQualitySpecRuleRegexExpectation) *DatascanDataQualitySpecRuleRegexExpectation {
+		return &v
+	}).(DatascanDataQualitySpecRuleRegexExpectationPtrOutput)
+}
+
+// A regular expression the column value is expected to match.
+func (o DatascanDataQualitySpecRuleRegexExpectationOutput) Regex() pulumi.StringOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRuleRegexExpectation) string { return v.Regex }).(pulumi.StringOutput)
+}
+
+type DatascanDataQualitySpecRuleRegexExpectationPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleRegexExpectationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecRuleRegexExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleRegexExpectationPtrOutput) ToDatascanDataQualitySpecRuleRegexExpectationPtrOutput() DatascanDataQualitySpecRuleRegexExpectationPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleRegexExpectationPtrOutput) ToDatascanDataQualitySpecRuleRegexExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleRegexExpectationPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleRegexExpectationPtrOutput) Elem() DatascanDataQualitySpecRuleRegexExpectationOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleRegexExpectation) DatascanDataQualitySpecRuleRegexExpectation {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataQualitySpecRuleRegexExpectation
+		return ret
+	}).(DatascanDataQualitySpecRuleRegexExpectationOutput)
+}
+
+// A regular expression the column value is expected to match.
+func (o DatascanDataQualitySpecRuleRegexExpectationPtrOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleRegexExpectation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Regex
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatascanDataQualitySpecRuleRowConditionExpectation struct {
+	// The SQL expression.
+	SqlExpression string `pulumi:"sqlExpression"`
+}
+
+// DatascanDataQualitySpecRuleRowConditionExpectationInput is an input type that accepts DatascanDataQualitySpecRuleRowConditionExpectationArgs and DatascanDataQualitySpecRuleRowConditionExpectationOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleRowConditionExpectationInput` via:
+//
+//	DatascanDataQualitySpecRuleRowConditionExpectationArgs{...}
+type DatascanDataQualitySpecRuleRowConditionExpectationInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleRowConditionExpectationOutput() DatascanDataQualitySpecRuleRowConditionExpectationOutput
+	ToDatascanDataQualitySpecRuleRowConditionExpectationOutputWithContext(context.Context) DatascanDataQualitySpecRuleRowConditionExpectationOutput
+}
+
+type DatascanDataQualitySpecRuleRowConditionExpectationArgs struct {
+	// The SQL expression.
+	SqlExpression pulumi.StringInput `pulumi:"sqlExpression"`
+}
+
+func (DatascanDataQualitySpecRuleRowConditionExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRuleRowConditionExpectation)(nil)).Elem()
+}
+
+func (i DatascanDataQualitySpecRuleRowConditionExpectationArgs) ToDatascanDataQualitySpecRuleRowConditionExpectationOutput() DatascanDataQualitySpecRuleRowConditionExpectationOutput {
+	return i.ToDatascanDataQualitySpecRuleRowConditionExpectationOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleRowConditionExpectationArgs) ToDatascanDataQualitySpecRuleRowConditionExpectationOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleRowConditionExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleRowConditionExpectationOutput)
+}
+
+func (i DatascanDataQualitySpecRuleRowConditionExpectationArgs) ToDatascanDataQualitySpecRuleRowConditionExpectationPtrOutput() DatascanDataQualitySpecRuleRowConditionExpectationPtrOutput {
+	return i.ToDatascanDataQualitySpecRuleRowConditionExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleRowConditionExpectationArgs) ToDatascanDataQualitySpecRuleRowConditionExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleRowConditionExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleRowConditionExpectationOutput).ToDatascanDataQualitySpecRuleRowConditionExpectationPtrOutputWithContext(ctx)
+}
+
+// DatascanDataQualitySpecRuleRowConditionExpectationPtrInput is an input type that accepts DatascanDataQualitySpecRuleRowConditionExpectationArgs, DatascanDataQualitySpecRuleRowConditionExpectationPtr and DatascanDataQualitySpecRuleRowConditionExpectationPtrOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleRowConditionExpectationPtrInput` via:
+//
+//	        DatascanDataQualitySpecRuleRowConditionExpectationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataQualitySpecRuleRowConditionExpectationPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleRowConditionExpectationPtrOutput() DatascanDataQualitySpecRuleRowConditionExpectationPtrOutput
+	ToDatascanDataQualitySpecRuleRowConditionExpectationPtrOutputWithContext(context.Context) DatascanDataQualitySpecRuleRowConditionExpectationPtrOutput
+}
+
+type datascanDataQualitySpecRuleRowConditionExpectationPtrType DatascanDataQualitySpecRuleRowConditionExpectationArgs
+
+func DatascanDataQualitySpecRuleRowConditionExpectationPtr(v *DatascanDataQualitySpecRuleRowConditionExpectationArgs) DatascanDataQualitySpecRuleRowConditionExpectationPtrInput {
+	return (*datascanDataQualitySpecRuleRowConditionExpectationPtrType)(v)
+}
+
+func (*datascanDataQualitySpecRuleRowConditionExpectationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecRuleRowConditionExpectation)(nil)).Elem()
+}
+
+func (i *datascanDataQualitySpecRuleRowConditionExpectationPtrType) ToDatascanDataQualitySpecRuleRowConditionExpectationPtrOutput() DatascanDataQualitySpecRuleRowConditionExpectationPtrOutput {
+	return i.ToDatascanDataQualitySpecRuleRowConditionExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataQualitySpecRuleRowConditionExpectationPtrType) ToDatascanDataQualitySpecRuleRowConditionExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleRowConditionExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleRowConditionExpectationPtrOutput)
+}
+
+type DatascanDataQualitySpecRuleRowConditionExpectationOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleRowConditionExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRuleRowConditionExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleRowConditionExpectationOutput) ToDatascanDataQualitySpecRuleRowConditionExpectationOutput() DatascanDataQualitySpecRuleRowConditionExpectationOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleRowConditionExpectationOutput) ToDatascanDataQualitySpecRuleRowConditionExpectationOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleRowConditionExpectationOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleRowConditionExpectationOutput) ToDatascanDataQualitySpecRuleRowConditionExpectationPtrOutput() DatascanDataQualitySpecRuleRowConditionExpectationPtrOutput {
+	return o.ToDatascanDataQualitySpecRuleRowConditionExpectationPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataQualitySpecRuleRowConditionExpectationOutput) ToDatascanDataQualitySpecRuleRowConditionExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleRowConditionExpectationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataQualitySpecRuleRowConditionExpectation) *DatascanDataQualitySpecRuleRowConditionExpectation {
+		return &v
+	}).(DatascanDataQualitySpecRuleRowConditionExpectationPtrOutput)
+}
+
+// The SQL expression.
+func (o DatascanDataQualitySpecRuleRowConditionExpectationOutput) SqlExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRuleRowConditionExpectation) string { return v.SqlExpression }).(pulumi.StringOutput)
+}
+
+type DatascanDataQualitySpecRuleRowConditionExpectationPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleRowConditionExpectationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecRuleRowConditionExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleRowConditionExpectationPtrOutput) ToDatascanDataQualitySpecRuleRowConditionExpectationPtrOutput() DatascanDataQualitySpecRuleRowConditionExpectationPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleRowConditionExpectationPtrOutput) ToDatascanDataQualitySpecRuleRowConditionExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleRowConditionExpectationPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleRowConditionExpectationPtrOutput) Elem() DatascanDataQualitySpecRuleRowConditionExpectationOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleRowConditionExpectation) DatascanDataQualitySpecRuleRowConditionExpectation {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataQualitySpecRuleRowConditionExpectation
+		return ret
+	}).(DatascanDataQualitySpecRuleRowConditionExpectationOutput)
+}
+
+// The SQL expression.
+func (o DatascanDataQualitySpecRuleRowConditionExpectationPtrOutput) SqlExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleRowConditionExpectation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SqlExpression
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatascanDataQualitySpecRuleSetExpectation struct {
+	// Expected values for the column value.
+	Values []string `pulumi:"values"`
+}
+
+// DatascanDataQualitySpecRuleSetExpectationInput is an input type that accepts DatascanDataQualitySpecRuleSetExpectationArgs and DatascanDataQualitySpecRuleSetExpectationOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleSetExpectationInput` via:
+//
+//	DatascanDataQualitySpecRuleSetExpectationArgs{...}
+type DatascanDataQualitySpecRuleSetExpectationInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleSetExpectationOutput() DatascanDataQualitySpecRuleSetExpectationOutput
+	ToDatascanDataQualitySpecRuleSetExpectationOutputWithContext(context.Context) DatascanDataQualitySpecRuleSetExpectationOutput
+}
+
+type DatascanDataQualitySpecRuleSetExpectationArgs struct {
+	// Expected values for the column value.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (DatascanDataQualitySpecRuleSetExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRuleSetExpectation)(nil)).Elem()
+}
+
+func (i DatascanDataQualitySpecRuleSetExpectationArgs) ToDatascanDataQualitySpecRuleSetExpectationOutput() DatascanDataQualitySpecRuleSetExpectationOutput {
+	return i.ToDatascanDataQualitySpecRuleSetExpectationOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleSetExpectationArgs) ToDatascanDataQualitySpecRuleSetExpectationOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleSetExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleSetExpectationOutput)
+}
+
+func (i DatascanDataQualitySpecRuleSetExpectationArgs) ToDatascanDataQualitySpecRuleSetExpectationPtrOutput() DatascanDataQualitySpecRuleSetExpectationPtrOutput {
+	return i.ToDatascanDataQualitySpecRuleSetExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleSetExpectationArgs) ToDatascanDataQualitySpecRuleSetExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleSetExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleSetExpectationOutput).ToDatascanDataQualitySpecRuleSetExpectationPtrOutputWithContext(ctx)
+}
+
+// DatascanDataQualitySpecRuleSetExpectationPtrInput is an input type that accepts DatascanDataQualitySpecRuleSetExpectationArgs, DatascanDataQualitySpecRuleSetExpectationPtr and DatascanDataQualitySpecRuleSetExpectationPtrOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleSetExpectationPtrInput` via:
+//
+//	        DatascanDataQualitySpecRuleSetExpectationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataQualitySpecRuleSetExpectationPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleSetExpectationPtrOutput() DatascanDataQualitySpecRuleSetExpectationPtrOutput
+	ToDatascanDataQualitySpecRuleSetExpectationPtrOutputWithContext(context.Context) DatascanDataQualitySpecRuleSetExpectationPtrOutput
+}
+
+type datascanDataQualitySpecRuleSetExpectationPtrType DatascanDataQualitySpecRuleSetExpectationArgs
+
+func DatascanDataQualitySpecRuleSetExpectationPtr(v *DatascanDataQualitySpecRuleSetExpectationArgs) DatascanDataQualitySpecRuleSetExpectationPtrInput {
+	return (*datascanDataQualitySpecRuleSetExpectationPtrType)(v)
+}
+
+func (*datascanDataQualitySpecRuleSetExpectationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecRuleSetExpectation)(nil)).Elem()
+}
+
+func (i *datascanDataQualitySpecRuleSetExpectationPtrType) ToDatascanDataQualitySpecRuleSetExpectationPtrOutput() DatascanDataQualitySpecRuleSetExpectationPtrOutput {
+	return i.ToDatascanDataQualitySpecRuleSetExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataQualitySpecRuleSetExpectationPtrType) ToDatascanDataQualitySpecRuleSetExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleSetExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleSetExpectationPtrOutput)
+}
+
+type DatascanDataQualitySpecRuleSetExpectationOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleSetExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRuleSetExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleSetExpectationOutput) ToDatascanDataQualitySpecRuleSetExpectationOutput() DatascanDataQualitySpecRuleSetExpectationOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleSetExpectationOutput) ToDatascanDataQualitySpecRuleSetExpectationOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleSetExpectationOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleSetExpectationOutput) ToDatascanDataQualitySpecRuleSetExpectationPtrOutput() DatascanDataQualitySpecRuleSetExpectationPtrOutput {
+	return o.ToDatascanDataQualitySpecRuleSetExpectationPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataQualitySpecRuleSetExpectationOutput) ToDatascanDataQualitySpecRuleSetExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleSetExpectationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataQualitySpecRuleSetExpectation) *DatascanDataQualitySpecRuleSetExpectation {
+		return &v
+	}).(DatascanDataQualitySpecRuleSetExpectationPtrOutput)
+}
+
+// Expected values for the column value.
+func (o DatascanDataQualitySpecRuleSetExpectationOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRuleSetExpectation) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type DatascanDataQualitySpecRuleSetExpectationPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleSetExpectationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecRuleSetExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleSetExpectationPtrOutput) ToDatascanDataQualitySpecRuleSetExpectationPtrOutput() DatascanDataQualitySpecRuleSetExpectationPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleSetExpectationPtrOutput) ToDatascanDataQualitySpecRuleSetExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleSetExpectationPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleSetExpectationPtrOutput) Elem() DatascanDataQualitySpecRuleSetExpectationOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleSetExpectation) DatascanDataQualitySpecRuleSetExpectation {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataQualitySpecRuleSetExpectation
+		return ret
+	}).(DatascanDataQualitySpecRuleSetExpectationOutput)
+}
+
+// Expected values for the column value.
+func (o DatascanDataQualitySpecRuleSetExpectationPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleSetExpectation) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+type DatascanDataQualitySpecRuleStatisticRangeExpectation struct {
+	// The maximum column statistic value allowed for a row to pass this validation.
+	// At least one of minValue and maxValue need to be provided.
+	MaxValue *string `pulumi:"maxValue"`
+	// The minimum column statistic value allowed for a row to pass this validation.
+	// At least one of minValue and maxValue need to be provided.
+	MinValue *string `pulumi:"minValue"`
+	// column statistics.
+	// Possible values are: `STATISTIC_UNDEFINED`, `MEAN`, `MIN`, `MAX`.
+	Statistic string `pulumi:"statistic"`
+	// Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+	// Only relevant if a maxValue has been defined. Default = false.
+	StrictMaxEnabled *bool `pulumi:"strictMaxEnabled"`
+	// Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+	// Only relevant if a minValue has been defined. Default = false.
+	StrictMinEnabled *bool `pulumi:"strictMinEnabled"`
+}
+
+// DatascanDataQualitySpecRuleStatisticRangeExpectationInput is an input type that accepts DatascanDataQualitySpecRuleStatisticRangeExpectationArgs and DatascanDataQualitySpecRuleStatisticRangeExpectationOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleStatisticRangeExpectationInput` via:
+//
+//	DatascanDataQualitySpecRuleStatisticRangeExpectationArgs{...}
+type DatascanDataQualitySpecRuleStatisticRangeExpectationInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleStatisticRangeExpectationOutput() DatascanDataQualitySpecRuleStatisticRangeExpectationOutput
+	ToDatascanDataQualitySpecRuleStatisticRangeExpectationOutputWithContext(context.Context) DatascanDataQualitySpecRuleStatisticRangeExpectationOutput
+}
+
+type DatascanDataQualitySpecRuleStatisticRangeExpectationArgs struct {
+	// The maximum column statistic value allowed for a row to pass this validation.
+	// At least one of minValue and maxValue need to be provided.
+	MaxValue pulumi.StringPtrInput `pulumi:"maxValue"`
+	// The minimum column statistic value allowed for a row to pass this validation.
+	// At least one of minValue and maxValue need to be provided.
+	MinValue pulumi.StringPtrInput `pulumi:"minValue"`
+	// column statistics.
+	// Possible values are: `STATISTIC_UNDEFINED`, `MEAN`, `MIN`, `MAX`.
+	Statistic pulumi.StringInput `pulumi:"statistic"`
+	// Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+	// Only relevant if a maxValue has been defined. Default = false.
+	StrictMaxEnabled pulumi.BoolPtrInput `pulumi:"strictMaxEnabled"`
+	// Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+	// Only relevant if a minValue has been defined. Default = false.
+	StrictMinEnabled pulumi.BoolPtrInput `pulumi:"strictMinEnabled"`
+}
+
+func (DatascanDataQualitySpecRuleStatisticRangeExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRuleStatisticRangeExpectation)(nil)).Elem()
+}
+
+func (i DatascanDataQualitySpecRuleStatisticRangeExpectationArgs) ToDatascanDataQualitySpecRuleStatisticRangeExpectationOutput() DatascanDataQualitySpecRuleStatisticRangeExpectationOutput {
+	return i.ToDatascanDataQualitySpecRuleStatisticRangeExpectationOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleStatisticRangeExpectationArgs) ToDatascanDataQualitySpecRuleStatisticRangeExpectationOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleStatisticRangeExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleStatisticRangeExpectationOutput)
+}
+
+func (i DatascanDataQualitySpecRuleStatisticRangeExpectationArgs) ToDatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput() DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput {
+	return i.ToDatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleStatisticRangeExpectationArgs) ToDatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleStatisticRangeExpectationOutput).ToDatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutputWithContext(ctx)
+}
+
+// DatascanDataQualitySpecRuleStatisticRangeExpectationPtrInput is an input type that accepts DatascanDataQualitySpecRuleStatisticRangeExpectationArgs, DatascanDataQualitySpecRuleStatisticRangeExpectationPtr and DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleStatisticRangeExpectationPtrInput` via:
+//
+//	        DatascanDataQualitySpecRuleStatisticRangeExpectationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataQualitySpecRuleStatisticRangeExpectationPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput() DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput
+	ToDatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutputWithContext(context.Context) DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput
+}
+
+type datascanDataQualitySpecRuleStatisticRangeExpectationPtrType DatascanDataQualitySpecRuleStatisticRangeExpectationArgs
+
+func DatascanDataQualitySpecRuleStatisticRangeExpectationPtr(v *DatascanDataQualitySpecRuleStatisticRangeExpectationArgs) DatascanDataQualitySpecRuleStatisticRangeExpectationPtrInput {
+	return (*datascanDataQualitySpecRuleStatisticRangeExpectationPtrType)(v)
+}
+
+func (*datascanDataQualitySpecRuleStatisticRangeExpectationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecRuleStatisticRangeExpectation)(nil)).Elem()
+}
+
+func (i *datascanDataQualitySpecRuleStatisticRangeExpectationPtrType) ToDatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput() DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput {
+	return i.ToDatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataQualitySpecRuleStatisticRangeExpectationPtrType) ToDatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput)
+}
+
+type DatascanDataQualitySpecRuleStatisticRangeExpectationOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleStatisticRangeExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRuleStatisticRangeExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleStatisticRangeExpectationOutput) ToDatascanDataQualitySpecRuleStatisticRangeExpectationOutput() DatascanDataQualitySpecRuleStatisticRangeExpectationOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleStatisticRangeExpectationOutput) ToDatascanDataQualitySpecRuleStatisticRangeExpectationOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleStatisticRangeExpectationOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleStatisticRangeExpectationOutput) ToDatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput() DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput {
+	return o.ToDatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataQualitySpecRuleStatisticRangeExpectationOutput) ToDatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataQualitySpecRuleStatisticRangeExpectation) *DatascanDataQualitySpecRuleStatisticRangeExpectation {
+		return &v
+	}).(DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput)
+}
+
+// The maximum column statistic value allowed for a row to pass this validation.
+// At least one of minValue and maxValue need to be provided.
+func (o DatascanDataQualitySpecRuleStatisticRangeExpectationOutput) MaxValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRuleStatisticRangeExpectation) *string { return v.MaxValue }).(pulumi.StringPtrOutput)
+}
+
+// The minimum column statistic value allowed for a row to pass this validation.
+// At least one of minValue and maxValue need to be provided.
+func (o DatascanDataQualitySpecRuleStatisticRangeExpectationOutput) MinValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRuleStatisticRangeExpectation) *string { return v.MinValue }).(pulumi.StringPtrOutput)
+}
+
+// column statistics.
+// Possible values are: `STATISTIC_UNDEFINED`, `MEAN`, `MIN`, `MAX`.
+func (o DatascanDataQualitySpecRuleStatisticRangeExpectationOutput) Statistic() pulumi.StringOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRuleStatisticRangeExpectation) string { return v.Statistic }).(pulumi.StringOutput)
+}
+
+// Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+// Only relevant if a maxValue has been defined. Default = false.
+func (o DatascanDataQualitySpecRuleStatisticRangeExpectationOutput) StrictMaxEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRuleStatisticRangeExpectation) *bool { return v.StrictMaxEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+// Only relevant if a minValue has been defined. Default = false.
+func (o DatascanDataQualitySpecRuleStatisticRangeExpectationOutput) StrictMinEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRuleStatisticRangeExpectation) *bool { return v.StrictMinEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecRuleStatisticRangeExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput) ToDatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput() DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput) ToDatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput) Elem() DatascanDataQualitySpecRuleStatisticRangeExpectationOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleStatisticRangeExpectation) DatascanDataQualitySpecRuleStatisticRangeExpectation {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataQualitySpecRuleStatisticRangeExpectation
+		return ret
+	}).(DatascanDataQualitySpecRuleStatisticRangeExpectationOutput)
+}
+
+// The maximum column statistic value allowed for a row to pass this validation.
+// At least one of minValue and maxValue need to be provided.
+func (o DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput) MaxValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleStatisticRangeExpectation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// The minimum column statistic value allowed for a row to pass this validation.
+// At least one of minValue and maxValue need to be provided.
+func (o DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput) MinValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleStatisticRangeExpectation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// column statistics.
+// Possible values are: `STATISTIC_UNDEFINED`, `MEAN`, `MIN`, `MAX`.
+func (o DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput) Statistic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleStatisticRangeExpectation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Statistic
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.
+// Only relevant if a maxValue has been defined. Default = false.
+func (o DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput) StrictMaxEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleStatisticRangeExpectation) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StrictMaxEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.
+// Only relevant if a minValue has been defined. Default = false.
+func (o DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput) StrictMinEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleStatisticRangeExpectation) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StrictMinEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DatascanDataQualitySpecRuleTableConditionExpectation struct {
+	// The SQL expression.
+	SqlExpression string `pulumi:"sqlExpression"`
+}
+
+// DatascanDataQualitySpecRuleTableConditionExpectationInput is an input type that accepts DatascanDataQualitySpecRuleTableConditionExpectationArgs and DatascanDataQualitySpecRuleTableConditionExpectationOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleTableConditionExpectationInput` via:
+//
+//	DatascanDataQualitySpecRuleTableConditionExpectationArgs{...}
+type DatascanDataQualitySpecRuleTableConditionExpectationInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleTableConditionExpectationOutput() DatascanDataQualitySpecRuleTableConditionExpectationOutput
+	ToDatascanDataQualitySpecRuleTableConditionExpectationOutputWithContext(context.Context) DatascanDataQualitySpecRuleTableConditionExpectationOutput
+}
+
+type DatascanDataQualitySpecRuleTableConditionExpectationArgs struct {
+	// The SQL expression.
+	SqlExpression pulumi.StringInput `pulumi:"sqlExpression"`
+}
+
+func (DatascanDataQualitySpecRuleTableConditionExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRuleTableConditionExpectation)(nil)).Elem()
+}
+
+func (i DatascanDataQualitySpecRuleTableConditionExpectationArgs) ToDatascanDataQualitySpecRuleTableConditionExpectationOutput() DatascanDataQualitySpecRuleTableConditionExpectationOutput {
+	return i.ToDatascanDataQualitySpecRuleTableConditionExpectationOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleTableConditionExpectationArgs) ToDatascanDataQualitySpecRuleTableConditionExpectationOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleTableConditionExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleTableConditionExpectationOutput)
+}
+
+func (i DatascanDataQualitySpecRuleTableConditionExpectationArgs) ToDatascanDataQualitySpecRuleTableConditionExpectationPtrOutput() DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput {
+	return i.ToDatascanDataQualitySpecRuleTableConditionExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleTableConditionExpectationArgs) ToDatascanDataQualitySpecRuleTableConditionExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleTableConditionExpectationOutput).ToDatascanDataQualitySpecRuleTableConditionExpectationPtrOutputWithContext(ctx)
+}
+
+// DatascanDataQualitySpecRuleTableConditionExpectationPtrInput is an input type that accepts DatascanDataQualitySpecRuleTableConditionExpectationArgs, DatascanDataQualitySpecRuleTableConditionExpectationPtr and DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleTableConditionExpectationPtrInput` via:
+//
+//	        DatascanDataQualitySpecRuleTableConditionExpectationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataQualitySpecRuleTableConditionExpectationPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleTableConditionExpectationPtrOutput() DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput
+	ToDatascanDataQualitySpecRuleTableConditionExpectationPtrOutputWithContext(context.Context) DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput
+}
+
+type datascanDataQualitySpecRuleTableConditionExpectationPtrType DatascanDataQualitySpecRuleTableConditionExpectationArgs
+
+func DatascanDataQualitySpecRuleTableConditionExpectationPtr(v *DatascanDataQualitySpecRuleTableConditionExpectationArgs) DatascanDataQualitySpecRuleTableConditionExpectationPtrInput {
+	return (*datascanDataQualitySpecRuleTableConditionExpectationPtrType)(v)
+}
+
+func (*datascanDataQualitySpecRuleTableConditionExpectationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecRuleTableConditionExpectation)(nil)).Elem()
+}
+
+func (i *datascanDataQualitySpecRuleTableConditionExpectationPtrType) ToDatascanDataQualitySpecRuleTableConditionExpectationPtrOutput() DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput {
+	return i.ToDatascanDataQualitySpecRuleTableConditionExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataQualitySpecRuleTableConditionExpectationPtrType) ToDatascanDataQualitySpecRuleTableConditionExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput)
+}
+
+type DatascanDataQualitySpecRuleTableConditionExpectationOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleTableConditionExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRuleTableConditionExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleTableConditionExpectationOutput) ToDatascanDataQualitySpecRuleTableConditionExpectationOutput() DatascanDataQualitySpecRuleTableConditionExpectationOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleTableConditionExpectationOutput) ToDatascanDataQualitySpecRuleTableConditionExpectationOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleTableConditionExpectationOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleTableConditionExpectationOutput) ToDatascanDataQualitySpecRuleTableConditionExpectationPtrOutput() DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput {
+	return o.ToDatascanDataQualitySpecRuleTableConditionExpectationPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataQualitySpecRuleTableConditionExpectationOutput) ToDatascanDataQualitySpecRuleTableConditionExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataQualitySpecRuleTableConditionExpectation) *DatascanDataQualitySpecRuleTableConditionExpectation {
+		return &v
+	}).(DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput)
+}
+
+// The SQL expression.
+func (o DatascanDataQualitySpecRuleTableConditionExpectationOutput) SqlExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v DatascanDataQualitySpecRuleTableConditionExpectation) string { return v.SqlExpression }).(pulumi.StringOutput)
+}
+
+type DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecRuleTableConditionExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput) ToDatascanDataQualitySpecRuleTableConditionExpectationPtrOutput() DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput) ToDatascanDataQualitySpecRuleTableConditionExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput) Elem() DatascanDataQualitySpecRuleTableConditionExpectationOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleTableConditionExpectation) DatascanDataQualitySpecRuleTableConditionExpectation {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataQualitySpecRuleTableConditionExpectation
+		return ret
+	}).(DatascanDataQualitySpecRuleTableConditionExpectationOutput)
+}
+
+// The SQL expression.
+func (o DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput) SqlExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleTableConditionExpectation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SqlExpression
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatascanDataQualitySpecRuleUniquenessExpectation struct {
+}
+
+// DatascanDataQualitySpecRuleUniquenessExpectationInput is an input type that accepts DatascanDataQualitySpecRuleUniquenessExpectationArgs and DatascanDataQualitySpecRuleUniquenessExpectationOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleUniquenessExpectationInput` via:
+//
+//	DatascanDataQualitySpecRuleUniquenessExpectationArgs{...}
+type DatascanDataQualitySpecRuleUniquenessExpectationInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleUniquenessExpectationOutput() DatascanDataQualitySpecRuleUniquenessExpectationOutput
+	ToDatascanDataQualitySpecRuleUniquenessExpectationOutputWithContext(context.Context) DatascanDataQualitySpecRuleUniquenessExpectationOutput
+}
+
+type DatascanDataQualitySpecRuleUniquenessExpectationArgs struct {
+}
+
+func (DatascanDataQualitySpecRuleUniquenessExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRuleUniquenessExpectation)(nil)).Elem()
+}
+
+func (i DatascanDataQualitySpecRuleUniquenessExpectationArgs) ToDatascanDataQualitySpecRuleUniquenessExpectationOutput() DatascanDataQualitySpecRuleUniquenessExpectationOutput {
+	return i.ToDatascanDataQualitySpecRuleUniquenessExpectationOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleUniquenessExpectationArgs) ToDatascanDataQualitySpecRuleUniquenessExpectationOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleUniquenessExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleUniquenessExpectationOutput)
+}
+
+func (i DatascanDataQualitySpecRuleUniquenessExpectationArgs) ToDatascanDataQualitySpecRuleUniquenessExpectationPtrOutput() DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput {
+	return i.ToDatascanDataQualitySpecRuleUniquenessExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanDataQualitySpecRuleUniquenessExpectationArgs) ToDatascanDataQualitySpecRuleUniquenessExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleUniquenessExpectationOutput).ToDatascanDataQualitySpecRuleUniquenessExpectationPtrOutputWithContext(ctx)
+}
+
+// DatascanDataQualitySpecRuleUniquenessExpectationPtrInput is an input type that accepts DatascanDataQualitySpecRuleUniquenessExpectationArgs, DatascanDataQualitySpecRuleUniquenessExpectationPtr and DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput values.
+// You can construct a concrete instance of `DatascanDataQualitySpecRuleUniquenessExpectationPtrInput` via:
+//
+//	        DatascanDataQualitySpecRuleUniquenessExpectationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanDataQualitySpecRuleUniquenessExpectationPtrInput interface {
+	pulumi.Input
+
+	ToDatascanDataQualitySpecRuleUniquenessExpectationPtrOutput() DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput
+	ToDatascanDataQualitySpecRuleUniquenessExpectationPtrOutputWithContext(context.Context) DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput
+}
+
+type datascanDataQualitySpecRuleUniquenessExpectationPtrType DatascanDataQualitySpecRuleUniquenessExpectationArgs
+
+func DatascanDataQualitySpecRuleUniquenessExpectationPtr(v *DatascanDataQualitySpecRuleUniquenessExpectationArgs) DatascanDataQualitySpecRuleUniquenessExpectationPtrInput {
+	return (*datascanDataQualitySpecRuleUniquenessExpectationPtrType)(v)
+}
+
+func (*datascanDataQualitySpecRuleUniquenessExpectationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecRuleUniquenessExpectation)(nil)).Elem()
+}
+
+func (i *datascanDataQualitySpecRuleUniquenessExpectationPtrType) ToDatascanDataQualitySpecRuleUniquenessExpectationPtrOutput() DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput {
+	return i.ToDatascanDataQualitySpecRuleUniquenessExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanDataQualitySpecRuleUniquenessExpectationPtrType) ToDatascanDataQualitySpecRuleUniquenessExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput)
+}
+
+type DatascanDataQualitySpecRuleUniquenessExpectationOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleUniquenessExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanDataQualitySpecRuleUniquenessExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleUniquenessExpectationOutput) ToDatascanDataQualitySpecRuleUniquenessExpectationOutput() DatascanDataQualitySpecRuleUniquenessExpectationOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleUniquenessExpectationOutput) ToDatascanDataQualitySpecRuleUniquenessExpectationOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleUniquenessExpectationOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleUniquenessExpectationOutput) ToDatascanDataQualitySpecRuleUniquenessExpectationPtrOutput() DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput {
+	return o.ToDatascanDataQualitySpecRuleUniquenessExpectationPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanDataQualitySpecRuleUniquenessExpectationOutput) ToDatascanDataQualitySpecRuleUniquenessExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanDataQualitySpecRuleUniquenessExpectation) *DatascanDataQualitySpecRuleUniquenessExpectation {
+		return &v
+	}).(DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput)
+}
+
+type DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanDataQualitySpecRuleUniquenessExpectation)(nil)).Elem()
+}
+
+func (o DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput) ToDatascanDataQualitySpecRuleUniquenessExpectationPtrOutput() DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput) ToDatascanDataQualitySpecRuleUniquenessExpectationPtrOutputWithContext(ctx context.Context) DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput {
+	return o
+}
+
+func (o DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput) Elem() DatascanDataQualitySpecRuleUniquenessExpectationOutput {
+	return o.ApplyT(func(v *DatascanDataQualitySpecRuleUniquenessExpectation) DatascanDataQualitySpecRuleUniquenessExpectation {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanDataQualitySpecRuleUniquenessExpectation
+		return ret
+	}).(DatascanDataQualitySpecRuleUniquenessExpectationOutput)
+}
+
+type DatascanExecutionSpec struct {
+	// The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
+	Field *string `pulumi:"field"`
+	// Spec related to how often and when a scan should be triggered.
+	// Structure is documented below.
+	Trigger DatascanExecutionSpecTrigger `pulumi:"trigger"`
+}
+
+// DatascanExecutionSpecInput is an input type that accepts DatascanExecutionSpecArgs and DatascanExecutionSpecOutput values.
+// You can construct a concrete instance of `DatascanExecutionSpecInput` via:
+//
+//	DatascanExecutionSpecArgs{...}
+type DatascanExecutionSpecInput interface {
+	pulumi.Input
+
+	ToDatascanExecutionSpecOutput() DatascanExecutionSpecOutput
+	ToDatascanExecutionSpecOutputWithContext(context.Context) DatascanExecutionSpecOutput
+}
+
+type DatascanExecutionSpecArgs struct {
+	// The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
+	Field pulumi.StringPtrInput `pulumi:"field"`
+	// Spec related to how often and when a scan should be triggered.
+	// Structure is documented below.
+	Trigger DatascanExecutionSpecTriggerInput `pulumi:"trigger"`
+}
+
+func (DatascanExecutionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanExecutionSpec)(nil)).Elem()
+}
+
+func (i DatascanExecutionSpecArgs) ToDatascanExecutionSpecOutput() DatascanExecutionSpecOutput {
+	return i.ToDatascanExecutionSpecOutputWithContext(context.Background())
+}
+
+func (i DatascanExecutionSpecArgs) ToDatascanExecutionSpecOutputWithContext(ctx context.Context) DatascanExecutionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionSpecOutput)
+}
+
+func (i DatascanExecutionSpecArgs) ToDatascanExecutionSpecPtrOutput() DatascanExecutionSpecPtrOutput {
+	return i.ToDatascanExecutionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanExecutionSpecArgs) ToDatascanExecutionSpecPtrOutputWithContext(ctx context.Context) DatascanExecutionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionSpecOutput).ToDatascanExecutionSpecPtrOutputWithContext(ctx)
+}
+
+// DatascanExecutionSpecPtrInput is an input type that accepts DatascanExecutionSpecArgs, DatascanExecutionSpecPtr and DatascanExecutionSpecPtrOutput values.
+// You can construct a concrete instance of `DatascanExecutionSpecPtrInput` via:
+//
+//	        DatascanExecutionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanExecutionSpecPtrInput interface {
+	pulumi.Input
+
+	ToDatascanExecutionSpecPtrOutput() DatascanExecutionSpecPtrOutput
+	ToDatascanExecutionSpecPtrOutputWithContext(context.Context) DatascanExecutionSpecPtrOutput
+}
+
+type datascanExecutionSpecPtrType DatascanExecutionSpecArgs
+
+func DatascanExecutionSpecPtr(v *DatascanExecutionSpecArgs) DatascanExecutionSpecPtrInput {
+	return (*datascanExecutionSpecPtrType)(v)
+}
+
+func (*datascanExecutionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanExecutionSpec)(nil)).Elem()
+}
+
+func (i *datascanExecutionSpecPtrType) ToDatascanExecutionSpecPtrOutput() DatascanExecutionSpecPtrOutput {
+	return i.ToDatascanExecutionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanExecutionSpecPtrType) ToDatascanExecutionSpecPtrOutputWithContext(ctx context.Context) DatascanExecutionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionSpecPtrOutput)
+}
+
+type DatascanExecutionSpecOutput struct{ *pulumi.OutputState }
+
+func (DatascanExecutionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanExecutionSpec)(nil)).Elem()
+}
+
+func (o DatascanExecutionSpecOutput) ToDatascanExecutionSpecOutput() DatascanExecutionSpecOutput {
+	return o
+}
+
+func (o DatascanExecutionSpecOutput) ToDatascanExecutionSpecOutputWithContext(ctx context.Context) DatascanExecutionSpecOutput {
+	return o
+}
+
+func (o DatascanExecutionSpecOutput) ToDatascanExecutionSpecPtrOutput() DatascanExecutionSpecPtrOutput {
+	return o.ToDatascanExecutionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanExecutionSpecOutput) ToDatascanExecutionSpecPtrOutputWithContext(ctx context.Context) DatascanExecutionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanExecutionSpec) *DatascanExecutionSpec {
+		return &v
+	}).(DatascanExecutionSpecPtrOutput)
+}
+
+// The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
+func (o DatascanExecutionSpecOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanExecutionSpec) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+// Spec related to how often and when a scan should be triggered.
+// Structure is documented below.
+func (o DatascanExecutionSpecOutput) Trigger() DatascanExecutionSpecTriggerOutput {
+	return o.ApplyT(func(v DatascanExecutionSpec) DatascanExecutionSpecTrigger { return v.Trigger }).(DatascanExecutionSpecTriggerOutput)
+}
+
+type DatascanExecutionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanExecutionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanExecutionSpec)(nil)).Elem()
+}
+
+func (o DatascanExecutionSpecPtrOutput) ToDatascanExecutionSpecPtrOutput() DatascanExecutionSpecPtrOutput {
+	return o
+}
+
+func (o DatascanExecutionSpecPtrOutput) ToDatascanExecutionSpecPtrOutputWithContext(ctx context.Context) DatascanExecutionSpecPtrOutput {
+	return o
+}
+
+func (o DatascanExecutionSpecPtrOutput) Elem() DatascanExecutionSpecOutput {
+	return o.ApplyT(func(v *DatascanExecutionSpec) DatascanExecutionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanExecutionSpec
+		return ret
+	}).(DatascanExecutionSpecOutput)
+}
+
+// The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time. If not specified, a data scan will run for all data in the table.
+func (o DatascanExecutionSpecPtrOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanExecutionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Field
+	}).(pulumi.StringPtrOutput)
+}
+
+// Spec related to how often and when a scan should be triggered.
+// Structure is documented below.
+func (o DatascanExecutionSpecPtrOutput) Trigger() DatascanExecutionSpecTriggerPtrOutput {
+	return o.ApplyT(func(v *DatascanExecutionSpec) *DatascanExecutionSpecTrigger {
+		if v == nil {
+			return nil
+		}
+		return &v.Trigger
+	}).(DatascanExecutionSpecTriggerPtrOutput)
+}
+
+type DatascanExecutionSpecTrigger struct {
+	// The scan runs once via dataScans.run API.
+	OnDemand *DatascanExecutionSpecTriggerOnDemand `pulumi:"onDemand"`
+	// The scan is scheduled to run periodically.
+	// Structure is documented below.
+	Schedule *DatascanExecutionSpecTriggerSchedule `pulumi:"schedule"`
+}
+
+// DatascanExecutionSpecTriggerInput is an input type that accepts DatascanExecutionSpecTriggerArgs and DatascanExecutionSpecTriggerOutput values.
+// You can construct a concrete instance of `DatascanExecutionSpecTriggerInput` via:
+//
+//	DatascanExecutionSpecTriggerArgs{...}
+type DatascanExecutionSpecTriggerInput interface {
+	pulumi.Input
+
+	ToDatascanExecutionSpecTriggerOutput() DatascanExecutionSpecTriggerOutput
+	ToDatascanExecutionSpecTriggerOutputWithContext(context.Context) DatascanExecutionSpecTriggerOutput
+}
+
+type DatascanExecutionSpecTriggerArgs struct {
+	// The scan runs once via dataScans.run API.
+	OnDemand DatascanExecutionSpecTriggerOnDemandPtrInput `pulumi:"onDemand"`
+	// The scan is scheduled to run periodically.
+	// Structure is documented below.
+	Schedule DatascanExecutionSpecTriggerSchedulePtrInput `pulumi:"schedule"`
+}
+
+func (DatascanExecutionSpecTriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanExecutionSpecTrigger)(nil)).Elem()
+}
+
+func (i DatascanExecutionSpecTriggerArgs) ToDatascanExecutionSpecTriggerOutput() DatascanExecutionSpecTriggerOutput {
+	return i.ToDatascanExecutionSpecTriggerOutputWithContext(context.Background())
+}
+
+func (i DatascanExecutionSpecTriggerArgs) ToDatascanExecutionSpecTriggerOutputWithContext(ctx context.Context) DatascanExecutionSpecTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionSpecTriggerOutput)
+}
+
+func (i DatascanExecutionSpecTriggerArgs) ToDatascanExecutionSpecTriggerPtrOutput() DatascanExecutionSpecTriggerPtrOutput {
+	return i.ToDatascanExecutionSpecTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanExecutionSpecTriggerArgs) ToDatascanExecutionSpecTriggerPtrOutputWithContext(ctx context.Context) DatascanExecutionSpecTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionSpecTriggerOutput).ToDatascanExecutionSpecTriggerPtrOutputWithContext(ctx)
+}
+
+// DatascanExecutionSpecTriggerPtrInput is an input type that accepts DatascanExecutionSpecTriggerArgs, DatascanExecutionSpecTriggerPtr and DatascanExecutionSpecTriggerPtrOutput values.
+// You can construct a concrete instance of `DatascanExecutionSpecTriggerPtrInput` via:
+//
+//	        DatascanExecutionSpecTriggerArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanExecutionSpecTriggerPtrInput interface {
+	pulumi.Input
+
+	ToDatascanExecutionSpecTriggerPtrOutput() DatascanExecutionSpecTriggerPtrOutput
+	ToDatascanExecutionSpecTriggerPtrOutputWithContext(context.Context) DatascanExecutionSpecTriggerPtrOutput
+}
+
+type datascanExecutionSpecTriggerPtrType DatascanExecutionSpecTriggerArgs
+
+func DatascanExecutionSpecTriggerPtr(v *DatascanExecutionSpecTriggerArgs) DatascanExecutionSpecTriggerPtrInput {
+	return (*datascanExecutionSpecTriggerPtrType)(v)
+}
+
+func (*datascanExecutionSpecTriggerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanExecutionSpecTrigger)(nil)).Elem()
+}
+
+func (i *datascanExecutionSpecTriggerPtrType) ToDatascanExecutionSpecTriggerPtrOutput() DatascanExecutionSpecTriggerPtrOutput {
+	return i.ToDatascanExecutionSpecTriggerPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanExecutionSpecTriggerPtrType) ToDatascanExecutionSpecTriggerPtrOutputWithContext(ctx context.Context) DatascanExecutionSpecTriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionSpecTriggerPtrOutput)
+}
+
+type DatascanExecutionSpecTriggerOutput struct{ *pulumi.OutputState }
+
+func (DatascanExecutionSpecTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanExecutionSpecTrigger)(nil)).Elem()
+}
+
+func (o DatascanExecutionSpecTriggerOutput) ToDatascanExecutionSpecTriggerOutput() DatascanExecutionSpecTriggerOutput {
+	return o
+}
+
+func (o DatascanExecutionSpecTriggerOutput) ToDatascanExecutionSpecTriggerOutputWithContext(ctx context.Context) DatascanExecutionSpecTriggerOutput {
+	return o
+}
+
+func (o DatascanExecutionSpecTriggerOutput) ToDatascanExecutionSpecTriggerPtrOutput() DatascanExecutionSpecTriggerPtrOutput {
+	return o.ToDatascanExecutionSpecTriggerPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanExecutionSpecTriggerOutput) ToDatascanExecutionSpecTriggerPtrOutputWithContext(ctx context.Context) DatascanExecutionSpecTriggerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanExecutionSpecTrigger) *DatascanExecutionSpecTrigger {
+		return &v
+	}).(DatascanExecutionSpecTriggerPtrOutput)
+}
+
+// The scan runs once via dataScans.run API.
+func (o DatascanExecutionSpecTriggerOutput) OnDemand() DatascanExecutionSpecTriggerOnDemandPtrOutput {
+	return o.ApplyT(func(v DatascanExecutionSpecTrigger) *DatascanExecutionSpecTriggerOnDemand { return v.OnDemand }).(DatascanExecutionSpecTriggerOnDemandPtrOutput)
+}
+
+// The scan is scheduled to run periodically.
+// Structure is documented below.
+func (o DatascanExecutionSpecTriggerOutput) Schedule() DatascanExecutionSpecTriggerSchedulePtrOutput {
+	return o.ApplyT(func(v DatascanExecutionSpecTrigger) *DatascanExecutionSpecTriggerSchedule { return v.Schedule }).(DatascanExecutionSpecTriggerSchedulePtrOutput)
+}
+
+type DatascanExecutionSpecTriggerPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanExecutionSpecTriggerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanExecutionSpecTrigger)(nil)).Elem()
+}
+
+func (o DatascanExecutionSpecTriggerPtrOutput) ToDatascanExecutionSpecTriggerPtrOutput() DatascanExecutionSpecTriggerPtrOutput {
+	return o
+}
+
+func (o DatascanExecutionSpecTriggerPtrOutput) ToDatascanExecutionSpecTriggerPtrOutputWithContext(ctx context.Context) DatascanExecutionSpecTriggerPtrOutput {
+	return o
+}
+
+func (o DatascanExecutionSpecTriggerPtrOutput) Elem() DatascanExecutionSpecTriggerOutput {
+	return o.ApplyT(func(v *DatascanExecutionSpecTrigger) DatascanExecutionSpecTrigger {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanExecutionSpecTrigger
+		return ret
+	}).(DatascanExecutionSpecTriggerOutput)
+}
+
+// The scan runs once via dataScans.run API.
+func (o DatascanExecutionSpecTriggerPtrOutput) OnDemand() DatascanExecutionSpecTriggerOnDemandPtrOutput {
+	return o.ApplyT(func(v *DatascanExecutionSpecTrigger) *DatascanExecutionSpecTriggerOnDemand {
+		if v == nil {
+			return nil
+		}
+		return v.OnDemand
+	}).(DatascanExecutionSpecTriggerOnDemandPtrOutput)
+}
+
+// The scan is scheduled to run periodically.
+// Structure is documented below.
+func (o DatascanExecutionSpecTriggerPtrOutput) Schedule() DatascanExecutionSpecTriggerSchedulePtrOutput {
+	return o.ApplyT(func(v *DatascanExecutionSpecTrigger) *DatascanExecutionSpecTriggerSchedule {
+		if v == nil {
+			return nil
+		}
+		return v.Schedule
+	}).(DatascanExecutionSpecTriggerSchedulePtrOutput)
+}
+
+type DatascanExecutionSpecTriggerOnDemand struct {
+}
+
+// DatascanExecutionSpecTriggerOnDemandInput is an input type that accepts DatascanExecutionSpecTriggerOnDemandArgs and DatascanExecutionSpecTriggerOnDemandOutput values.
+// You can construct a concrete instance of `DatascanExecutionSpecTriggerOnDemandInput` via:
+//
+//	DatascanExecutionSpecTriggerOnDemandArgs{...}
+type DatascanExecutionSpecTriggerOnDemandInput interface {
+	pulumi.Input
+
+	ToDatascanExecutionSpecTriggerOnDemandOutput() DatascanExecutionSpecTriggerOnDemandOutput
+	ToDatascanExecutionSpecTriggerOnDemandOutputWithContext(context.Context) DatascanExecutionSpecTriggerOnDemandOutput
+}
+
+type DatascanExecutionSpecTriggerOnDemandArgs struct {
+}
+
+func (DatascanExecutionSpecTriggerOnDemandArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanExecutionSpecTriggerOnDemand)(nil)).Elem()
+}
+
+func (i DatascanExecutionSpecTriggerOnDemandArgs) ToDatascanExecutionSpecTriggerOnDemandOutput() DatascanExecutionSpecTriggerOnDemandOutput {
+	return i.ToDatascanExecutionSpecTriggerOnDemandOutputWithContext(context.Background())
+}
+
+func (i DatascanExecutionSpecTriggerOnDemandArgs) ToDatascanExecutionSpecTriggerOnDemandOutputWithContext(ctx context.Context) DatascanExecutionSpecTriggerOnDemandOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionSpecTriggerOnDemandOutput)
+}
+
+func (i DatascanExecutionSpecTriggerOnDemandArgs) ToDatascanExecutionSpecTriggerOnDemandPtrOutput() DatascanExecutionSpecTriggerOnDemandPtrOutput {
+	return i.ToDatascanExecutionSpecTriggerOnDemandPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanExecutionSpecTriggerOnDemandArgs) ToDatascanExecutionSpecTriggerOnDemandPtrOutputWithContext(ctx context.Context) DatascanExecutionSpecTriggerOnDemandPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionSpecTriggerOnDemandOutput).ToDatascanExecutionSpecTriggerOnDemandPtrOutputWithContext(ctx)
+}
+
+// DatascanExecutionSpecTriggerOnDemandPtrInput is an input type that accepts DatascanExecutionSpecTriggerOnDemandArgs, DatascanExecutionSpecTriggerOnDemandPtr and DatascanExecutionSpecTriggerOnDemandPtrOutput values.
+// You can construct a concrete instance of `DatascanExecutionSpecTriggerOnDemandPtrInput` via:
+//
+//	        DatascanExecutionSpecTriggerOnDemandArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanExecutionSpecTriggerOnDemandPtrInput interface {
+	pulumi.Input
+
+	ToDatascanExecutionSpecTriggerOnDemandPtrOutput() DatascanExecutionSpecTriggerOnDemandPtrOutput
+	ToDatascanExecutionSpecTriggerOnDemandPtrOutputWithContext(context.Context) DatascanExecutionSpecTriggerOnDemandPtrOutput
+}
+
+type datascanExecutionSpecTriggerOnDemandPtrType DatascanExecutionSpecTriggerOnDemandArgs
+
+func DatascanExecutionSpecTriggerOnDemandPtr(v *DatascanExecutionSpecTriggerOnDemandArgs) DatascanExecutionSpecTriggerOnDemandPtrInput {
+	return (*datascanExecutionSpecTriggerOnDemandPtrType)(v)
+}
+
+func (*datascanExecutionSpecTriggerOnDemandPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanExecutionSpecTriggerOnDemand)(nil)).Elem()
+}
+
+func (i *datascanExecutionSpecTriggerOnDemandPtrType) ToDatascanExecutionSpecTriggerOnDemandPtrOutput() DatascanExecutionSpecTriggerOnDemandPtrOutput {
+	return i.ToDatascanExecutionSpecTriggerOnDemandPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanExecutionSpecTriggerOnDemandPtrType) ToDatascanExecutionSpecTriggerOnDemandPtrOutputWithContext(ctx context.Context) DatascanExecutionSpecTriggerOnDemandPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionSpecTriggerOnDemandPtrOutput)
+}
+
+type DatascanExecutionSpecTriggerOnDemandOutput struct{ *pulumi.OutputState }
+
+func (DatascanExecutionSpecTriggerOnDemandOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanExecutionSpecTriggerOnDemand)(nil)).Elem()
+}
+
+func (o DatascanExecutionSpecTriggerOnDemandOutput) ToDatascanExecutionSpecTriggerOnDemandOutput() DatascanExecutionSpecTriggerOnDemandOutput {
+	return o
+}
+
+func (o DatascanExecutionSpecTriggerOnDemandOutput) ToDatascanExecutionSpecTriggerOnDemandOutputWithContext(ctx context.Context) DatascanExecutionSpecTriggerOnDemandOutput {
+	return o
+}
+
+func (o DatascanExecutionSpecTriggerOnDemandOutput) ToDatascanExecutionSpecTriggerOnDemandPtrOutput() DatascanExecutionSpecTriggerOnDemandPtrOutput {
+	return o.ToDatascanExecutionSpecTriggerOnDemandPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanExecutionSpecTriggerOnDemandOutput) ToDatascanExecutionSpecTriggerOnDemandPtrOutputWithContext(ctx context.Context) DatascanExecutionSpecTriggerOnDemandPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanExecutionSpecTriggerOnDemand) *DatascanExecutionSpecTriggerOnDemand {
+		return &v
+	}).(DatascanExecutionSpecTriggerOnDemandPtrOutput)
+}
+
+type DatascanExecutionSpecTriggerOnDemandPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanExecutionSpecTriggerOnDemandPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanExecutionSpecTriggerOnDemand)(nil)).Elem()
+}
+
+func (o DatascanExecutionSpecTriggerOnDemandPtrOutput) ToDatascanExecutionSpecTriggerOnDemandPtrOutput() DatascanExecutionSpecTriggerOnDemandPtrOutput {
+	return o
+}
+
+func (o DatascanExecutionSpecTriggerOnDemandPtrOutput) ToDatascanExecutionSpecTriggerOnDemandPtrOutputWithContext(ctx context.Context) DatascanExecutionSpecTriggerOnDemandPtrOutput {
+	return o
+}
+
+func (o DatascanExecutionSpecTriggerOnDemandPtrOutput) Elem() DatascanExecutionSpecTriggerOnDemandOutput {
+	return o.ApplyT(func(v *DatascanExecutionSpecTriggerOnDemand) DatascanExecutionSpecTriggerOnDemand {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanExecutionSpecTriggerOnDemand
+		return ret
+	}).(DatascanExecutionSpecTriggerOnDemandOutput)
+}
+
+type DatascanExecutionSpecTriggerSchedule struct {
+	// Cron schedule for running scans periodically. This field is required for Schedule scans.
+	//
+	// ***
+	Cron string `pulumi:"cron"`
+}
+
+// DatascanExecutionSpecTriggerScheduleInput is an input type that accepts DatascanExecutionSpecTriggerScheduleArgs and DatascanExecutionSpecTriggerScheduleOutput values.
+// You can construct a concrete instance of `DatascanExecutionSpecTriggerScheduleInput` via:
+//
+//	DatascanExecutionSpecTriggerScheduleArgs{...}
+type DatascanExecutionSpecTriggerScheduleInput interface {
+	pulumi.Input
+
+	ToDatascanExecutionSpecTriggerScheduleOutput() DatascanExecutionSpecTriggerScheduleOutput
+	ToDatascanExecutionSpecTriggerScheduleOutputWithContext(context.Context) DatascanExecutionSpecTriggerScheduleOutput
+}
+
+type DatascanExecutionSpecTriggerScheduleArgs struct {
+	// Cron schedule for running scans periodically. This field is required for Schedule scans.
+	//
+	// ***
+	Cron pulumi.StringInput `pulumi:"cron"`
+}
+
+func (DatascanExecutionSpecTriggerScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanExecutionSpecTriggerSchedule)(nil)).Elem()
+}
+
+func (i DatascanExecutionSpecTriggerScheduleArgs) ToDatascanExecutionSpecTriggerScheduleOutput() DatascanExecutionSpecTriggerScheduleOutput {
+	return i.ToDatascanExecutionSpecTriggerScheduleOutputWithContext(context.Background())
+}
+
+func (i DatascanExecutionSpecTriggerScheduleArgs) ToDatascanExecutionSpecTriggerScheduleOutputWithContext(ctx context.Context) DatascanExecutionSpecTriggerScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionSpecTriggerScheduleOutput)
+}
+
+func (i DatascanExecutionSpecTriggerScheduleArgs) ToDatascanExecutionSpecTriggerSchedulePtrOutput() DatascanExecutionSpecTriggerSchedulePtrOutput {
+	return i.ToDatascanExecutionSpecTriggerSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i DatascanExecutionSpecTriggerScheduleArgs) ToDatascanExecutionSpecTriggerSchedulePtrOutputWithContext(ctx context.Context) DatascanExecutionSpecTriggerSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionSpecTriggerScheduleOutput).ToDatascanExecutionSpecTriggerSchedulePtrOutputWithContext(ctx)
+}
+
+// DatascanExecutionSpecTriggerSchedulePtrInput is an input type that accepts DatascanExecutionSpecTriggerScheduleArgs, DatascanExecutionSpecTriggerSchedulePtr and DatascanExecutionSpecTriggerSchedulePtrOutput values.
+// You can construct a concrete instance of `DatascanExecutionSpecTriggerSchedulePtrInput` via:
+//
+//	        DatascanExecutionSpecTriggerScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanExecutionSpecTriggerSchedulePtrInput interface {
+	pulumi.Input
+
+	ToDatascanExecutionSpecTriggerSchedulePtrOutput() DatascanExecutionSpecTriggerSchedulePtrOutput
+	ToDatascanExecutionSpecTriggerSchedulePtrOutputWithContext(context.Context) DatascanExecutionSpecTriggerSchedulePtrOutput
+}
+
+type datascanExecutionSpecTriggerSchedulePtrType DatascanExecutionSpecTriggerScheduleArgs
+
+func DatascanExecutionSpecTriggerSchedulePtr(v *DatascanExecutionSpecTriggerScheduleArgs) DatascanExecutionSpecTriggerSchedulePtrInput {
+	return (*datascanExecutionSpecTriggerSchedulePtrType)(v)
+}
+
+func (*datascanExecutionSpecTriggerSchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanExecutionSpecTriggerSchedule)(nil)).Elem()
+}
+
+func (i *datascanExecutionSpecTriggerSchedulePtrType) ToDatascanExecutionSpecTriggerSchedulePtrOutput() DatascanExecutionSpecTriggerSchedulePtrOutput {
+	return i.ToDatascanExecutionSpecTriggerSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *datascanExecutionSpecTriggerSchedulePtrType) ToDatascanExecutionSpecTriggerSchedulePtrOutputWithContext(ctx context.Context) DatascanExecutionSpecTriggerSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionSpecTriggerSchedulePtrOutput)
+}
+
+type DatascanExecutionSpecTriggerScheduleOutput struct{ *pulumi.OutputState }
+
+func (DatascanExecutionSpecTriggerScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanExecutionSpecTriggerSchedule)(nil)).Elem()
+}
+
+func (o DatascanExecutionSpecTriggerScheduleOutput) ToDatascanExecutionSpecTriggerScheduleOutput() DatascanExecutionSpecTriggerScheduleOutput {
+	return o
+}
+
+func (o DatascanExecutionSpecTriggerScheduleOutput) ToDatascanExecutionSpecTriggerScheduleOutputWithContext(ctx context.Context) DatascanExecutionSpecTriggerScheduleOutput {
+	return o
+}
+
+func (o DatascanExecutionSpecTriggerScheduleOutput) ToDatascanExecutionSpecTriggerSchedulePtrOutput() DatascanExecutionSpecTriggerSchedulePtrOutput {
+	return o.ToDatascanExecutionSpecTriggerSchedulePtrOutputWithContext(context.Background())
+}
+
+func (o DatascanExecutionSpecTriggerScheduleOutput) ToDatascanExecutionSpecTriggerSchedulePtrOutputWithContext(ctx context.Context) DatascanExecutionSpecTriggerSchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanExecutionSpecTriggerSchedule) *DatascanExecutionSpecTriggerSchedule {
+		return &v
+	}).(DatascanExecutionSpecTriggerSchedulePtrOutput)
+}
+
+// Cron schedule for running scans periodically. This field is required for Schedule scans.
+//
+// ***
+func (o DatascanExecutionSpecTriggerScheduleOutput) Cron() pulumi.StringOutput {
+	return o.ApplyT(func(v DatascanExecutionSpecTriggerSchedule) string { return v.Cron }).(pulumi.StringOutput)
+}
+
+type DatascanExecutionSpecTriggerSchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanExecutionSpecTriggerSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanExecutionSpecTriggerSchedule)(nil)).Elem()
+}
+
+func (o DatascanExecutionSpecTriggerSchedulePtrOutput) ToDatascanExecutionSpecTriggerSchedulePtrOutput() DatascanExecutionSpecTriggerSchedulePtrOutput {
+	return o
+}
+
+func (o DatascanExecutionSpecTriggerSchedulePtrOutput) ToDatascanExecutionSpecTriggerSchedulePtrOutputWithContext(ctx context.Context) DatascanExecutionSpecTriggerSchedulePtrOutput {
+	return o
+}
+
+func (o DatascanExecutionSpecTriggerSchedulePtrOutput) Elem() DatascanExecutionSpecTriggerScheduleOutput {
+	return o.ApplyT(func(v *DatascanExecutionSpecTriggerSchedule) DatascanExecutionSpecTriggerSchedule {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanExecutionSpecTriggerSchedule
+		return ret
+	}).(DatascanExecutionSpecTriggerScheduleOutput)
+}
+
+// Cron schedule for running scans periodically. This field is required for Schedule scans.
+//
+// ***
+func (o DatascanExecutionSpecTriggerSchedulePtrOutput) Cron() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanExecutionSpecTriggerSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Cron
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatascanExecutionStatus struct {
+	// (Output)
+	// The time when the latest DataScanJob started.
+	LatestJobEndTime *string `pulumi:"latestJobEndTime"`
+	// (Output)
+	// The time when the latest DataScanJob ended.
+	LatestJobStartTime *string `pulumi:"latestJobStartTime"`
+}
+
+// DatascanExecutionStatusInput is an input type that accepts DatascanExecutionStatusArgs and DatascanExecutionStatusOutput values.
+// You can construct a concrete instance of `DatascanExecutionStatusInput` via:
+//
+//	DatascanExecutionStatusArgs{...}
+type DatascanExecutionStatusInput interface {
+	pulumi.Input
+
+	ToDatascanExecutionStatusOutput() DatascanExecutionStatusOutput
+	ToDatascanExecutionStatusOutputWithContext(context.Context) DatascanExecutionStatusOutput
+}
+
+type DatascanExecutionStatusArgs struct {
+	// (Output)
+	// The time when the latest DataScanJob started.
+	LatestJobEndTime pulumi.StringPtrInput `pulumi:"latestJobEndTime"`
+	// (Output)
+	// The time when the latest DataScanJob ended.
+	LatestJobStartTime pulumi.StringPtrInput `pulumi:"latestJobStartTime"`
+}
+
+func (DatascanExecutionStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanExecutionStatus)(nil)).Elem()
+}
+
+func (i DatascanExecutionStatusArgs) ToDatascanExecutionStatusOutput() DatascanExecutionStatusOutput {
+	return i.ToDatascanExecutionStatusOutputWithContext(context.Background())
+}
+
+func (i DatascanExecutionStatusArgs) ToDatascanExecutionStatusOutputWithContext(ctx context.Context) DatascanExecutionStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionStatusOutput)
+}
+
+// DatascanExecutionStatusArrayInput is an input type that accepts DatascanExecutionStatusArray and DatascanExecutionStatusArrayOutput values.
+// You can construct a concrete instance of `DatascanExecutionStatusArrayInput` via:
+//
+//	DatascanExecutionStatusArray{ DatascanExecutionStatusArgs{...} }
+type DatascanExecutionStatusArrayInput interface {
+	pulumi.Input
+
+	ToDatascanExecutionStatusArrayOutput() DatascanExecutionStatusArrayOutput
+	ToDatascanExecutionStatusArrayOutputWithContext(context.Context) DatascanExecutionStatusArrayOutput
+}
+
+type DatascanExecutionStatusArray []DatascanExecutionStatusInput
+
+func (DatascanExecutionStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanExecutionStatus)(nil)).Elem()
+}
+
+func (i DatascanExecutionStatusArray) ToDatascanExecutionStatusArrayOutput() DatascanExecutionStatusArrayOutput {
+	return i.ToDatascanExecutionStatusArrayOutputWithContext(context.Background())
+}
+
+func (i DatascanExecutionStatusArray) ToDatascanExecutionStatusArrayOutputWithContext(ctx context.Context) DatascanExecutionStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanExecutionStatusArrayOutput)
+}
+
+type DatascanExecutionStatusOutput struct{ *pulumi.OutputState }
+
+func (DatascanExecutionStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanExecutionStatus)(nil)).Elem()
+}
+
+func (o DatascanExecutionStatusOutput) ToDatascanExecutionStatusOutput() DatascanExecutionStatusOutput {
+	return o
+}
+
+func (o DatascanExecutionStatusOutput) ToDatascanExecutionStatusOutputWithContext(ctx context.Context) DatascanExecutionStatusOutput {
+	return o
+}
+
+// (Output)
+// The time when the latest DataScanJob started.
+func (o DatascanExecutionStatusOutput) LatestJobEndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanExecutionStatus) *string { return v.LatestJobEndTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The time when the latest DataScanJob ended.
+func (o DatascanExecutionStatusOutput) LatestJobStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanExecutionStatus) *string { return v.LatestJobStartTime }).(pulumi.StringPtrOutput)
+}
+
+type DatascanExecutionStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (DatascanExecutionStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatascanExecutionStatus)(nil)).Elem()
+}
+
+func (o DatascanExecutionStatusArrayOutput) ToDatascanExecutionStatusArrayOutput() DatascanExecutionStatusArrayOutput {
+	return o
+}
+
+func (o DatascanExecutionStatusArrayOutput) ToDatascanExecutionStatusArrayOutputWithContext(ctx context.Context) DatascanExecutionStatusArrayOutput {
+	return o
+}
+
+func (o DatascanExecutionStatusArrayOutput) Index(i pulumi.IntInput) DatascanExecutionStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatascanExecutionStatus {
+		return vs[0].([]DatascanExecutionStatus)[vs[1].(int)]
+	}).(DatascanExecutionStatusOutput)
+}
+
+type DatascanIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// DatascanIamBindingConditionInput is an input type that accepts DatascanIamBindingConditionArgs and DatascanIamBindingConditionOutput values.
+// You can construct a concrete instance of `DatascanIamBindingConditionInput` via:
+//
+//	DatascanIamBindingConditionArgs{...}
+type DatascanIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToDatascanIamBindingConditionOutput() DatascanIamBindingConditionOutput
+	ToDatascanIamBindingConditionOutputWithContext(context.Context) DatascanIamBindingConditionOutput
+}
+
+type DatascanIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (DatascanIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanIamBindingCondition)(nil)).Elem()
+}
+
+func (i DatascanIamBindingConditionArgs) ToDatascanIamBindingConditionOutput() DatascanIamBindingConditionOutput {
+	return i.ToDatascanIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i DatascanIamBindingConditionArgs) ToDatascanIamBindingConditionOutputWithContext(ctx context.Context) DatascanIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanIamBindingConditionOutput)
+}
+
+func (i DatascanIamBindingConditionArgs) ToDatascanIamBindingConditionPtrOutput() DatascanIamBindingConditionPtrOutput {
+	return i.ToDatascanIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanIamBindingConditionArgs) ToDatascanIamBindingConditionPtrOutputWithContext(ctx context.Context) DatascanIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanIamBindingConditionOutput).ToDatascanIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// DatascanIamBindingConditionPtrInput is an input type that accepts DatascanIamBindingConditionArgs, DatascanIamBindingConditionPtr and DatascanIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `DatascanIamBindingConditionPtrInput` via:
+//
+//	        DatascanIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToDatascanIamBindingConditionPtrOutput() DatascanIamBindingConditionPtrOutput
+	ToDatascanIamBindingConditionPtrOutputWithContext(context.Context) DatascanIamBindingConditionPtrOutput
+}
+
+type datascanIamBindingConditionPtrType DatascanIamBindingConditionArgs
+
+func DatascanIamBindingConditionPtr(v *DatascanIamBindingConditionArgs) DatascanIamBindingConditionPtrInput {
+	return (*datascanIamBindingConditionPtrType)(v)
+}
+
+func (*datascanIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanIamBindingCondition)(nil)).Elem()
+}
+
+func (i *datascanIamBindingConditionPtrType) ToDatascanIamBindingConditionPtrOutput() DatascanIamBindingConditionPtrOutput {
+	return i.ToDatascanIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanIamBindingConditionPtrType) ToDatascanIamBindingConditionPtrOutputWithContext(ctx context.Context) DatascanIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanIamBindingConditionPtrOutput)
+}
+
+type DatascanIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (DatascanIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanIamBindingCondition)(nil)).Elem()
+}
+
+func (o DatascanIamBindingConditionOutput) ToDatascanIamBindingConditionOutput() DatascanIamBindingConditionOutput {
+	return o
+}
+
+func (o DatascanIamBindingConditionOutput) ToDatascanIamBindingConditionOutputWithContext(ctx context.Context) DatascanIamBindingConditionOutput {
+	return o
+}
+
+func (o DatascanIamBindingConditionOutput) ToDatascanIamBindingConditionPtrOutput() DatascanIamBindingConditionPtrOutput {
+	return o.ToDatascanIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanIamBindingConditionOutput) ToDatascanIamBindingConditionPtrOutputWithContext(ctx context.Context) DatascanIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanIamBindingCondition) *DatascanIamBindingCondition {
+		return &v
+	}).(DatascanIamBindingConditionPtrOutput)
+}
+
+func (o DatascanIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o DatascanIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v DatascanIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o DatascanIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v DatascanIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type DatascanIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanIamBindingCondition)(nil)).Elem()
+}
+
+func (o DatascanIamBindingConditionPtrOutput) ToDatascanIamBindingConditionPtrOutput() DatascanIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o DatascanIamBindingConditionPtrOutput) ToDatascanIamBindingConditionPtrOutputWithContext(ctx context.Context) DatascanIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o DatascanIamBindingConditionPtrOutput) Elem() DatascanIamBindingConditionOutput {
+	return o.ApplyT(func(v *DatascanIamBindingCondition) DatascanIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanIamBindingCondition
+		return ret
+	}).(DatascanIamBindingConditionOutput)
+}
+
+func (o DatascanIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DatascanIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DatascanIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatascanIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// DatascanIamMemberConditionInput is an input type that accepts DatascanIamMemberConditionArgs and DatascanIamMemberConditionOutput values.
+// You can construct a concrete instance of `DatascanIamMemberConditionInput` via:
+//
+//	DatascanIamMemberConditionArgs{...}
+type DatascanIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToDatascanIamMemberConditionOutput() DatascanIamMemberConditionOutput
+	ToDatascanIamMemberConditionOutputWithContext(context.Context) DatascanIamMemberConditionOutput
+}
+
+type DatascanIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (DatascanIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanIamMemberCondition)(nil)).Elem()
+}
+
+func (i DatascanIamMemberConditionArgs) ToDatascanIamMemberConditionOutput() DatascanIamMemberConditionOutput {
+	return i.ToDatascanIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i DatascanIamMemberConditionArgs) ToDatascanIamMemberConditionOutputWithContext(ctx context.Context) DatascanIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanIamMemberConditionOutput)
+}
+
+func (i DatascanIamMemberConditionArgs) ToDatascanIamMemberConditionPtrOutput() DatascanIamMemberConditionPtrOutput {
+	return i.ToDatascanIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i DatascanIamMemberConditionArgs) ToDatascanIamMemberConditionPtrOutputWithContext(ctx context.Context) DatascanIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanIamMemberConditionOutput).ToDatascanIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// DatascanIamMemberConditionPtrInput is an input type that accepts DatascanIamMemberConditionArgs, DatascanIamMemberConditionPtr and DatascanIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `DatascanIamMemberConditionPtrInput` via:
+//
+//	        DatascanIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatascanIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToDatascanIamMemberConditionPtrOutput() DatascanIamMemberConditionPtrOutput
+	ToDatascanIamMemberConditionPtrOutputWithContext(context.Context) DatascanIamMemberConditionPtrOutput
+}
+
+type datascanIamMemberConditionPtrType DatascanIamMemberConditionArgs
+
+func DatascanIamMemberConditionPtr(v *DatascanIamMemberConditionArgs) DatascanIamMemberConditionPtrInput {
+	return (*datascanIamMemberConditionPtrType)(v)
+}
+
+func (*datascanIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanIamMemberCondition)(nil)).Elem()
+}
+
+func (i *datascanIamMemberConditionPtrType) ToDatascanIamMemberConditionPtrOutput() DatascanIamMemberConditionPtrOutput {
+	return i.ToDatascanIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *datascanIamMemberConditionPtrType) ToDatascanIamMemberConditionPtrOutputWithContext(ctx context.Context) DatascanIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatascanIamMemberConditionPtrOutput)
+}
+
+type DatascanIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (DatascanIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatascanIamMemberCondition)(nil)).Elem()
+}
+
+func (o DatascanIamMemberConditionOutput) ToDatascanIamMemberConditionOutput() DatascanIamMemberConditionOutput {
+	return o
+}
+
+func (o DatascanIamMemberConditionOutput) ToDatascanIamMemberConditionOutputWithContext(ctx context.Context) DatascanIamMemberConditionOutput {
+	return o
+}
+
+func (o DatascanIamMemberConditionOutput) ToDatascanIamMemberConditionPtrOutput() DatascanIamMemberConditionPtrOutput {
+	return o.ToDatascanIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o DatascanIamMemberConditionOutput) ToDatascanIamMemberConditionPtrOutputWithContext(ctx context.Context) DatascanIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatascanIamMemberCondition) *DatascanIamMemberCondition {
+		return &v
+	}).(DatascanIamMemberConditionPtrOutput)
+}
+
+func (o DatascanIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatascanIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o DatascanIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v DatascanIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o DatascanIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v DatascanIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type DatascanIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (DatascanIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatascanIamMemberCondition)(nil)).Elem()
+}
+
+func (o DatascanIamMemberConditionPtrOutput) ToDatascanIamMemberConditionPtrOutput() DatascanIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o DatascanIamMemberConditionPtrOutput) ToDatascanIamMemberConditionPtrOutputWithContext(ctx context.Context) DatascanIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o DatascanIamMemberConditionPtrOutput) Elem() DatascanIamMemberConditionOutput {
+	return o.ApplyT(func(v *DatascanIamMemberCondition) DatascanIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret DatascanIamMemberCondition
+		return ret
+	}).(DatascanIamMemberConditionOutput)
+}
+
+func (o DatascanIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DatascanIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DatascanIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatascanIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type LakeAssetStatus struct {
 	ActiveAssets                 *int `pulumi:"activeAssets"`
 	SecurityPolicyApplyingAssets *int `pulumi:"securityPolicyApplyingAssets"`
@@ -3421,6 +9615,92 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetResourceStatusArrayInput)(nil)).Elem(), AssetResourceStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetSecurityStatusInput)(nil)).Elem(), AssetSecurityStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AssetSecurityStatusArrayInput)(nil)).Elem(), AssetSecurityStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataInput)(nil)).Elem(), DatascanDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataPtrInput)(nil)).Elem(), DatascanDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileResultInput)(nil)).Elem(), DatascanDataProfileResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileResultArrayInput)(nil)).Elem(), DatascanDataProfileResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileResultProfileInput)(nil)).Elem(), DatascanDataProfileResultProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileResultProfileArrayInput)(nil)).Elem(), DatascanDataProfileResultProfileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileResultProfileFieldInput)(nil)).Elem(), DatascanDataProfileResultProfileFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileResultProfileFieldArrayInput)(nil)).Elem(), DatascanDataProfileResultProfileFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileResultProfileFieldProfileInput)(nil)).Elem(), DatascanDataProfileResultProfileFieldProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileResultProfileFieldProfilePtrInput)(nil)).Elem(), DatascanDataProfileResultProfileFieldProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileResultProfileFieldProfileDoubleProfileInput)(nil)).Elem(), DatascanDataProfileResultProfileFieldProfileDoubleProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileResultProfileFieldProfileDoubleProfileArrayInput)(nil)).Elem(), DatascanDataProfileResultProfileFieldProfileDoubleProfileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileResultProfileFieldProfileIntegerProfileInput)(nil)).Elem(), DatascanDataProfileResultProfileFieldProfileIntegerProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileResultProfileFieldProfileIntegerProfileArrayInput)(nil)).Elem(), DatascanDataProfileResultProfileFieldProfileIntegerProfileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileResultProfileFieldProfileStringProfileInput)(nil)).Elem(), DatascanDataProfileResultProfileFieldProfileStringProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileResultProfileFieldProfileStringProfileArrayInput)(nil)).Elem(), DatascanDataProfileResultProfileFieldProfileStringProfileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileResultProfileFieldProfileTopNValuesInput)(nil)).Elem(), DatascanDataProfileResultProfileFieldProfileTopNValuesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileResultProfileFieldProfileTopNValuesPtrInput)(nil)).Elem(), DatascanDataProfileResultProfileFieldProfileTopNValuesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileResultScannedDataInput)(nil)).Elem(), DatascanDataProfileResultScannedDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileResultScannedDataArrayInput)(nil)).Elem(), DatascanDataProfileResultScannedDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileResultScannedDataIncrementalFieldInput)(nil)).Elem(), DatascanDataProfileResultScannedDataIncrementalFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileResultScannedDataIncrementalFieldPtrInput)(nil)).Elem(), DatascanDataProfileResultScannedDataIncrementalFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileSpecInput)(nil)).Elem(), DatascanDataProfileSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataProfileSpecPtrInput)(nil)).Elem(), DatascanDataProfileSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultInput)(nil)).Elem(), DatascanDataQualityResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultArrayInput)(nil)).Elem(), DatascanDataQualityResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultDimensionInput)(nil)).Elem(), DatascanDataQualityResultDimensionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultDimensionArrayInput)(nil)).Elem(), DatascanDataQualityResultDimensionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultRuleInput)(nil)).Elem(), DatascanDataQualityResultRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultRuleArrayInput)(nil)).Elem(), DatascanDataQualityResultRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultRuleRuleInput)(nil)).Elem(), DatascanDataQualityResultRuleRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultRuleRuleArrayInput)(nil)).Elem(), DatascanDataQualityResultRuleRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultRuleRuleNonNullExpectationInput)(nil)).Elem(), DatascanDataQualityResultRuleRuleNonNullExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultRuleRuleNonNullExpectationArrayInput)(nil)).Elem(), DatascanDataQualityResultRuleRuleNonNullExpectationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultRuleRuleRangeExpectationInput)(nil)).Elem(), DatascanDataQualityResultRuleRuleRangeExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultRuleRuleRangeExpectationArrayInput)(nil)).Elem(), DatascanDataQualityResultRuleRuleRangeExpectationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultRuleRuleRegexExpectationInput)(nil)).Elem(), DatascanDataQualityResultRuleRuleRegexExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultRuleRuleRegexExpectationArrayInput)(nil)).Elem(), DatascanDataQualityResultRuleRuleRegexExpectationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultRuleRuleRowConditionExpectationInput)(nil)).Elem(), DatascanDataQualityResultRuleRuleRowConditionExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultRuleRuleRowConditionExpectationArrayInput)(nil)).Elem(), DatascanDataQualityResultRuleRuleRowConditionExpectationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultRuleRuleSetExpectationInput)(nil)).Elem(), DatascanDataQualityResultRuleRuleSetExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultRuleRuleSetExpectationArrayInput)(nil)).Elem(), DatascanDataQualityResultRuleRuleSetExpectationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultRuleRuleStatisticRangeExpectationInput)(nil)).Elem(), DatascanDataQualityResultRuleRuleStatisticRangeExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayInput)(nil)).Elem(), DatascanDataQualityResultRuleRuleStatisticRangeExpectationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultRuleRuleTableConditionExpectationInput)(nil)).Elem(), DatascanDataQualityResultRuleRuleTableConditionExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultRuleRuleTableConditionExpectationArrayInput)(nil)).Elem(), DatascanDataQualityResultRuleRuleTableConditionExpectationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultRuleRuleUniquenessExpectationInput)(nil)).Elem(), DatascanDataQualityResultRuleRuleUniquenessExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultRuleRuleUniquenessExpectationArrayInput)(nil)).Elem(), DatascanDataQualityResultRuleRuleUniquenessExpectationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultScannedDataInput)(nil)).Elem(), DatascanDataQualityResultScannedDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultScannedDataArrayInput)(nil)).Elem(), DatascanDataQualityResultScannedDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultScannedDataIncrementalFieldInput)(nil)).Elem(), DatascanDataQualityResultScannedDataIncrementalFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualityResultScannedDataIncrementalFieldPtrInput)(nil)).Elem(), DatascanDataQualityResultScannedDataIncrementalFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecInput)(nil)).Elem(), DatascanDataQualitySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecPtrInput)(nil)).Elem(), DatascanDataQualitySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleInput)(nil)).Elem(), DatascanDataQualitySpecRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleArrayInput)(nil)).Elem(), DatascanDataQualitySpecRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleNonNullExpectationInput)(nil)).Elem(), DatascanDataQualitySpecRuleNonNullExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleNonNullExpectationPtrInput)(nil)).Elem(), DatascanDataQualitySpecRuleNonNullExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleRangeExpectationInput)(nil)).Elem(), DatascanDataQualitySpecRuleRangeExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleRangeExpectationPtrInput)(nil)).Elem(), DatascanDataQualitySpecRuleRangeExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleRegexExpectationInput)(nil)).Elem(), DatascanDataQualitySpecRuleRegexExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleRegexExpectationPtrInput)(nil)).Elem(), DatascanDataQualitySpecRuleRegexExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleRowConditionExpectationInput)(nil)).Elem(), DatascanDataQualitySpecRuleRowConditionExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleRowConditionExpectationPtrInput)(nil)).Elem(), DatascanDataQualitySpecRuleRowConditionExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleSetExpectationInput)(nil)).Elem(), DatascanDataQualitySpecRuleSetExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleSetExpectationPtrInput)(nil)).Elem(), DatascanDataQualitySpecRuleSetExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleStatisticRangeExpectationInput)(nil)).Elem(), DatascanDataQualitySpecRuleStatisticRangeExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleStatisticRangeExpectationPtrInput)(nil)).Elem(), DatascanDataQualitySpecRuleStatisticRangeExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleTableConditionExpectationInput)(nil)).Elem(), DatascanDataQualitySpecRuleTableConditionExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleTableConditionExpectationPtrInput)(nil)).Elem(), DatascanDataQualitySpecRuleTableConditionExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleUniquenessExpectationInput)(nil)).Elem(), DatascanDataQualitySpecRuleUniquenessExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanDataQualitySpecRuleUniquenessExpectationPtrInput)(nil)).Elem(), DatascanDataQualitySpecRuleUniquenessExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionSpecInput)(nil)).Elem(), DatascanExecutionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionSpecPtrInput)(nil)).Elem(), DatascanExecutionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionSpecTriggerInput)(nil)).Elem(), DatascanExecutionSpecTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionSpecTriggerPtrInput)(nil)).Elem(), DatascanExecutionSpecTriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionSpecTriggerOnDemandInput)(nil)).Elem(), DatascanExecutionSpecTriggerOnDemandArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionSpecTriggerOnDemandPtrInput)(nil)).Elem(), DatascanExecutionSpecTriggerOnDemandArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionSpecTriggerScheduleInput)(nil)).Elem(), DatascanExecutionSpecTriggerScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionSpecTriggerSchedulePtrInput)(nil)).Elem(), DatascanExecutionSpecTriggerScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionStatusInput)(nil)).Elem(), DatascanExecutionStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanExecutionStatusArrayInput)(nil)).Elem(), DatascanExecutionStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanIamBindingConditionInput)(nil)).Elem(), DatascanIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanIamBindingConditionPtrInput)(nil)).Elem(), DatascanIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanIamMemberConditionInput)(nil)).Elem(), DatascanIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatascanIamMemberConditionPtrInput)(nil)).Elem(), DatascanIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeAssetStatusInput)(nil)).Elem(), LakeAssetStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeAssetStatusArrayInput)(nil)).Elem(), LakeAssetStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeIamBindingConditionInput)(nil)).Elem(), LakeIamBindingConditionArgs{})
@@ -3465,6 +9745,92 @@ func init() {
 	pulumi.RegisterOutputType(AssetResourceStatusArrayOutput{})
 	pulumi.RegisterOutputType(AssetSecurityStatusOutput{})
 	pulumi.RegisterOutputType(AssetSecurityStatusArrayOutput{})
+	pulumi.RegisterOutputType(DatascanDataOutput{})
+	pulumi.RegisterOutputType(DatascanDataPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileResultOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileResultArrayOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileResultProfileOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileResultProfileArrayOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileResultProfileFieldOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileResultProfileFieldArrayOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileResultProfileFieldProfileOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileResultProfileFieldProfilePtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileResultProfileFieldProfileDoubleProfileOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileResultProfileFieldProfileDoubleProfileArrayOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileResultProfileFieldProfileIntegerProfileOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileResultProfileFieldProfileIntegerProfileArrayOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileResultProfileFieldProfileStringProfileOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileResultProfileFieldProfileStringProfileArrayOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileResultProfileFieldProfileTopNValuesOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileResultProfileFieldProfileTopNValuesPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileResultScannedDataOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileResultScannedDataArrayOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileResultScannedDataIncrementalFieldOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileResultScannedDataIncrementalFieldPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileSpecOutput{})
+	pulumi.RegisterOutputType(DatascanDataProfileSpecPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultArrayOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultDimensionOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultDimensionArrayOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultRuleOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultRuleArrayOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultRuleRuleOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultRuleRuleArrayOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultRuleRuleNonNullExpectationOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultRuleRuleNonNullExpectationArrayOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultRuleRuleRangeExpectationOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultRuleRuleRangeExpectationArrayOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultRuleRuleRegexExpectationOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultRuleRuleRegexExpectationArrayOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultRuleRuleRowConditionExpectationOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultRuleRuleRowConditionExpectationArrayOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultRuleRuleSetExpectationOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultRuleRuleSetExpectationArrayOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultRuleRuleStatisticRangeExpectationOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultRuleRuleStatisticRangeExpectationArrayOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultRuleRuleTableConditionExpectationOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultRuleRuleTableConditionExpectationArrayOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultRuleRuleUniquenessExpectationOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultRuleRuleUniquenessExpectationArrayOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultScannedDataOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultScannedDataArrayOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultScannedDataIncrementalFieldOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualityResultScannedDataIncrementalFieldPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleArrayOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleNonNullExpectationOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleNonNullExpectationPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleRangeExpectationOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleRangeExpectationPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleRegexExpectationOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleRegexExpectationPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleRowConditionExpectationOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleRowConditionExpectationPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleSetExpectationOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleSetExpectationPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleStatisticRangeExpectationOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleStatisticRangeExpectationPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleTableConditionExpectationOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleTableConditionExpectationPtrOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleUniquenessExpectationOutput{})
+	pulumi.RegisterOutputType(DatascanDataQualitySpecRuleUniquenessExpectationPtrOutput{})
+	pulumi.RegisterOutputType(DatascanExecutionSpecOutput{})
+	pulumi.RegisterOutputType(DatascanExecutionSpecPtrOutput{})
+	pulumi.RegisterOutputType(DatascanExecutionSpecTriggerOutput{})
+	pulumi.RegisterOutputType(DatascanExecutionSpecTriggerPtrOutput{})
+	pulumi.RegisterOutputType(DatascanExecutionSpecTriggerOnDemandOutput{})
+	pulumi.RegisterOutputType(DatascanExecutionSpecTriggerOnDemandPtrOutput{})
+	pulumi.RegisterOutputType(DatascanExecutionSpecTriggerScheduleOutput{})
+	pulumi.RegisterOutputType(DatascanExecutionSpecTriggerSchedulePtrOutput{})
+	pulumi.RegisterOutputType(DatascanExecutionStatusOutput{})
+	pulumi.RegisterOutputType(DatascanExecutionStatusArrayOutput{})
+	pulumi.RegisterOutputType(DatascanIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(DatascanIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(DatascanIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(DatascanIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(LakeAssetStatusOutput{})
 	pulumi.RegisterOutputType(LakeAssetStatusArrayOutput{})
 	pulumi.RegisterOutputType(LakeIamBindingConditionOutput{})

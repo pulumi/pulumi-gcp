@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScore;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -18,6 +19,12 @@ public final class PreventionJobTriggerInspectJobInspectConfigInfoType {
      */
     private String name;
     /**
+     * @return Optional custom sensitivity for this InfoType. This only applies to data profiling.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScore sensitivityScore;
+    /**
      * @return Version of the information type to use. By default, the version is set to stable.
      * 
      */
@@ -31,6 +38,14 @@ public final class PreventionJobTriggerInspectJobInspectConfigInfoType {
      */
     public String name() {
         return this.name;
+    }
+    /**
+     * @return Optional custom sensitivity for this InfoType. This only applies to data profiling.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScore> sensitivityScore() {
+        return Optional.ofNullable(this.sensitivityScore);
     }
     /**
      * @return Version of the information type to use. By default, the version is set to stable.
@@ -50,17 +65,24 @@ public final class PreventionJobTriggerInspectJobInspectConfigInfoType {
     @CustomType.Builder
     public static final class Builder {
         private String name;
+        private @Nullable PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScore sensitivityScore;
         private @Nullable String version;
         public Builder() {}
         public Builder(PreventionJobTriggerInspectJobInspectConfigInfoType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
+    	      this.sensitivityScore = defaults.sensitivityScore;
     	      this.version = defaults.version;
         }
 
         @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sensitivityScore(@Nullable PreventionJobTriggerInspectJobInspectConfigInfoTypeSensitivityScore sensitivityScore) {
+            this.sensitivityScore = sensitivityScore;
             return this;
         }
         @CustomType.Setter
@@ -71,6 +93,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigInfoType {
         public PreventionJobTriggerInspectJobInspectConfigInfoType build() {
             final var o = new PreventionJobTriggerInspectJobInspectConfigInfoType();
             o.name = name;
+            o.sensitivityScore = sensitivityScore;
             o.version = version;
             return o;
         }

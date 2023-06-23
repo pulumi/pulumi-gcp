@@ -164,6 +164,43 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Dlp Stored Info Type With Id
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataloss.PreventionStoredInfoType;
+ * import com.pulumi.gcp.dataloss.PreventionStoredInfoTypeArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionStoredInfoTypeRegexArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var withStoredInfoTypeId = new PreventionStoredInfoType(&#34;withStoredInfoTypeId&#34;, PreventionStoredInfoTypeArgs.builder()        
+ *             .description(&#34;Description&#34;)
+ *             .displayName(&#34;Displayname&#34;)
+ *             .parent(&#34;projects/my-project-name&#34;)
+ *             .regex(PreventionStoredInfoTypeRegexArgs.builder()
+ *                 .groupIndexes(2)
+ *                 .pattern(&#34;patient&#34;)
+ *                 .build())
+ *             .storedInfoTypeId(&#34;id-&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -295,6 +332,24 @@ public class PreventionStoredInfoType extends com.pulumi.resources.CustomResourc
      */
     public Output<Optional<PreventionStoredInfoTypeRegex>> regex() {
         return Codegen.optional(this.regex);
+    }
+    /**
+     * The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is 100
+     * characters. Can be empty to allow the system to generate one.
+     * 
+     */
+    @Export(name="storedInfoTypeId", type=String.class, parameters={})
+    private Output<String> storedInfoTypeId;
+
+    /**
+     * @return The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is 100
+     * characters. Can be empty to allow the system to generate one.
+     * 
+     */
+    public Output<String> storedInfoTypeId() {
+        return this.storedInfoTypeId;
     }
 
     /**

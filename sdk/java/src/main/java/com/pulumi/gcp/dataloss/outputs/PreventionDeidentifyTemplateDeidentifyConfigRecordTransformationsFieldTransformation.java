@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataloss.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField;
+import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformations;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation;
 import java.util.List;
 import java.util.Objects;
@@ -31,12 +32,20 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
      */
     private List<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField> fields;
     /**
-     * @return Apply the transformation to the entire field.
-     * The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
+     * @return Treat the contents of the field as free text, and selectively transform content that matches an InfoType.
+     * Only one of `primitive_transformation` or `info_type_transformations` must be specified.
      * Structure is documented below.
      * 
      */
-    private PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation primitiveTransformation;
+    private @Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformations infoTypeTransformations;
+    /**
+     * @return Apply the transformation to the entire field.
+     * The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
+     * Only one of `primitive_transformation` or `info_type_transformations` must be specified.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation primitiveTransformation;
 
     private PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation() {}
     /**
@@ -60,13 +69,23 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
         return this.fields;
     }
     /**
-     * @return Apply the transformation to the entire field.
-     * The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
+     * @return Treat the contents of the field as free text, and selectively transform content that matches an InfoType.
+     * Only one of `primitive_transformation` or `info_type_transformations` must be specified.
      * Structure is documented below.
      * 
      */
-    public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation primitiveTransformation() {
-        return this.primitiveTransformation;
+    public Optional<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformations> infoTypeTransformations() {
+        return Optional.ofNullable(this.infoTypeTransformations);
+    }
+    /**
+     * @return Apply the transformation to the entire field.
+     * The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
+     * Only one of `primitive_transformation` or `info_type_transformations` must be specified.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation> primitiveTransformation() {
+        return Optional.ofNullable(this.primitiveTransformation);
     }
 
     public static Builder builder() {
@@ -80,12 +99,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     public static final class Builder {
         private @Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition condition;
         private List<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField> fields;
-        private PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation primitiveTransformation;
+        private @Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformations infoTypeTransformations;
+        private @Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation primitiveTransformation;
         public Builder() {}
         public Builder(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.condition = defaults.condition;
     	      this.fields = defaults.fields;
+    	      this.infoTypeTransformations = defaults.infoTypeTransformations;
     	      this.primitiveTransformation = defaults.primitiveTransformation;
         }
 
@@ -103,14 +124,20 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
             return fields(List.of(fields));
         }
         @CustomType.Setter
-        public Builder primitiveTransformation(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation primitiveTransformation) {
-            this.primitiveTransformation = Objects.requireNonNull(primitiveTransformation);
+        public Builder infoTypeTransformations(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformations infoTypeTransformations) {
+            this.infoTypeTransformations = infoTypeTransformations;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder primitiveTransformation(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation primitiveTransformation) {
+            this.primitiveTransformation = primitiveTransformation;
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation build() {
             final var o = new PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation();
             o.condition = condition;
             o.fields = fields;
+            o.infoTypeTransformations = infoTypeTransformations;
             o.primitiveTransformation = primitiveTransformation;
             return o;
         }

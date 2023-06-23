@@ -10,6 +10,304 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type CertificateIssuanceConfigCertificateAuthorityConfig struct {
+	// Defines a CertificateAuthorityServiceConfig.
+	// Structure is documented below.
+	CertificateAuthorityServiceConfig *CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig `pulumi:"certificateAuthorityServiceConfig"`
+}
+
+// CertificateIssuanceConfigCertificateAuthorityConfigInput is an input type that accepts CertificateIssuanceConfigCertificateAuthorityConfigArgs and CertificateIssuanceConfigCertificateAuthorityConfigOutput values.
+// You can construct a concrete instance of `CertificateIssuanceConfigCertificateAuthorityConfigInput` via:
+//
+//	CertificateIssuanceConfigCertificateAuthorityConfigArgs{...}
+type CertificateIssuanceConfigCertificateAuthorityConfigInput interface {
+	pulumi.Input
+
+	ToCertificateIssuanceConfigCertificateAuthorityConfigOutput() CertificateIssuanceConfigCertificateAuthorityConfigOutput
+	ToCertificateIssuanceConfigCertificateAuthorityConfigOutputWithContext(context.Context) CertificateIssuanceConfigCertificateAuthorityConfigOutput
+}
+
+type CertificateIssuanceConfigCertificateAuthorityConfigArgs struct {
+	// Defines a CertificateAuthorityServiceConfig.
+	// Structure is documented below.
+	CertificateAuthorityServiceConfig CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrInput `pulumi:"certificateAuthorityServiceConfig"`
+}
+
+func (CertificateIssuanceConfigCertificateAuthorityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateIssuanceConfigCertificateAuthorityConfig)(nil)).Elem()
+}
+
+func (i CertificateIssuanceConfigCertificateAuthorityConfigArgs) ToCertificateIssuanceConfigCertificateAuthorityConfigOutput() CertificateIssuanceConfigCertificateAuthorityConfigOutput {
+	return i.ToCertificateIssuanceConfigCertificateAuthorityConfigOutputWithContext(context.Background())
+}
+
+func (i CertificateIssuanceConfigCertificateAuthorityConfigArgs) ToCertificateIssuanceConfigCertificateAuthorityConfigOutputWithContext(ctx context.Context) CertificateIssuanceConfigCertificateAuthorityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateIssuanceConfigCertificateAuthorityConfigOutput)
+}
+
+func (i CertificateIssuanceConfigCertificateAuthorityConfigArgs) ToCertificateIssuanceConfigCertificateAuthorityConfigPtrOutput() CertificateIssuanceConfigCertificateAuthorityConfigPtrOutput {
+	return i.ToCertificateIssuanceConfigCertificateAuthorityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateIssuanceConfigCertificateAuthorityConfigArgs) ToCertificateIssuanceConfigCertificateAuthorityConfigPtrOutputWithContext(ctx context.Context) CertificateIssuanceConfigCertificateAuthorityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateIssuanceConfigCertificateAuthorityConfigOutput).ToCertificateIssuanceConfigCertificateAuthorityConfigPtrOutputWithContext(ctx)
+}
+
+// CertificateIssuanceConfigCertificateAuthorityConfigPtrInput is an input type that accepts CertificateIssuanceConfigCertificateAuthorityConfigArgs, CertificateIssuanceConfigCertificateAuthorityConfigPtr and CertificateIssuanceConfigCertificateAuthorityConfigPtrOutput values.
+// You can construct a concrete instance of `CertificateIssuanceConfigCertificateAuthorityConfigPtrInput` via:
+//
+//	        CertificateIssuanceConfigCertificateAuthorityConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CertificateIssuanceConfigCertificateAuthorityConfigPtrInput interface {
+	pulumi.Input
+
+	ToCertificateIssuanceConfigCertificateAuthorityConfigPtrOutput() CertificateIssuanceConfigCertificateAuthorityConfigPtrOutput
+	ToCertificateIssuanceConfigCertificateAuthorityConfigPtrOutputWithContext(context.Context) CertificateIssuanceConfigCertificateAuthorityConfigPtrOutput
+}
+
+type certificateIssuanceConfigCertificateAuthorityConfigPtrType CertificateIssuanceConfigCertificateAuthorityConfigArgs
+
+func CertificateIssuanceConfigCertificateAuthorityConfigPtr(v *CertificateIssuanceConfigCertificateAuthorityConfigArgs) CertificateIssuanceConfigCertificateAuthorityConfigPtrInput {
+	return (*certificateIssuanceConfigCertificateAuthorityConfigPtrType)(v)
+}
+
+func (*certificateIssuanceConfigCertificateAuthorityConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateIssuanceConfigCertificateAuthorityConfig)(nil)).Elem()
+}
+
+func (i *certificateIssuanceConfigCertificateAuthorityConfigPtrType) ToCertificateIssuanceConfigCertificateAuthorityConfigPtrOutput() CertificateIssuanceConfigCertificateAuthorityConfigPtrOutput {
+	return i.ToCertificateIssuanceConfigCertificateAuthorityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateIssuanceConfigCertificateAuthorityConfigPtrType) ToCertificateIssuanceConfigCertificateAuthorityConfigPtrOutputWithContext(ctx context.Context) CertificateIssuanceConfigCertificateAuthorityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateIssuanceConfigCertificateAuthorityConfigPtrOutput)
+}
+
+type CertificateIssuanceConfigCertificateAuthorityConfigOutput struct{ *pulumi.OutputState }
+
+func (CertificateIssuanceConfigCertificateAuthorityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateIssuanceConfigCertificateAuthorityConfig)(nil)).Elem()
+}
+
+func (o CertificateIssuanceConfigCertificateAuthorityConfigOutput) ToCertificateIssuanceConfigCertificateAuthorityConfigOutput() CertificateIssuanceConfigCertificateAuthorityConfigOutput {
+	return o
+}
+
+func (o CertificateIssuanceConfigCertificateAuthorityConfigOutput) ToCertificateIssuanceConfigCertificateAuthorityConfigOutputWithContext(ctx context.Context) CertificateIssuanceConfigCertificateAuthorityConfigOutput {
+	return o
+}
+
+func (o CertificateIssuanceConfigCertificateAuthorityConfigOutput) ToCertificateIssuanceConfigCertificateAuthorityConfigPtrOutput() CertificateIssuanceConfigCertificateAuthorityConfigPtrOutput {
+	return o.ToCertificateIssuanceConfigCertificateAuthorityConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateIssuanceConfigCertificateAuthorityConfigOutput) ToCertificateIssuanceConfigCertificateAuthorityConfigPtrOutputWithContext(ctx context.Context) CertificateIssuanceConfigCertificateAuthorityConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateIssuanceConfigCertificateAuthorityConfig) *CertificateIssuanceConfigCertificateAuthorityConfig {
+		return &v
+	}).(CertificateIssuanceConfigCertificateAuthorityConfigPtrOutput)
+}
+
+// Defines a CertificateAuthorityServiceConfig.
+// Structure is documented below.
+func (o CertificateIssuanceConfigCertificateAuthorityConfigOutput) CertificateAuthorityServiceConfig() CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput {
+	return o.ApplyT(func(v CertificateIssuanceConfigCertificateAuthorityConfig) *CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig {
+		return v.CertificateAuthorityServiceConfig
+	}).(CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput)
+}
+
+type CertificateIssuanceConfigCertificateAuthorityConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateIssuanceConfigCertificateAuthorityConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateIssuanceConfigCertificateAuthorityConfig)(nil)).Elem()
+}
+
+func (o CertificateIssuanceConfigCertificateAuthorityConfigPtrOutput) ToCertificateIssuanceConfigCertificateAuthorityConfigPtrOutput() CertificateIssuanceConfigCertificateAuthorityConfigPtrOutput {
+	return o
+}
+
+func (o CertificateIssuanceConfigCertificateAuthorityConfigPtrOutput) ToCertificateIssuanceConfigCertificateAuthorityConfigPtrOutputWithContext(ctx context.Context) CertificateIssuanceConfigCertificateAuthorityConfigPtrOutput {
+	return o
+}
+
+func (o CertificateIssuanceConfigCertificateAuthorityConfigPtrOutput) Elem() CertificateIssuanceConfigCertificateAuthorityConfigOutput {
+	return o.ApplyT(func(v *CertificateIssuanceConfigCertificateAuthorityConfig) CertificateIssuanceConfigCertificateAuthorityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateIssuanceConfigCertificateAuthorityConfig
+		return ret
+	}).(CertificateIssuanceConfigCertificateAuthorityConfigOutput)
+}
+
+// Defines a CertificateAuthorityServiceConfig.
+// Structure is documented below.
+func (o CertificateIssuanceConfigCertificateAuthorityConfigPtrOutput) CertificateAuthorityServiceConfig() CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput {
+	return o.ApplyT(func(v *CertificateIssuanceConfigCertificateAuthorityConfig) *CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateAuthorityServiceConfig
+	}).(CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput)
+}
+
+type CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig struct {
+	// A CA pool resource used to issue a certificate.
+	// The CA pool string has a relative resource path following the form
+	// "projects/{project}/locations/{location}/caPools/{caPool}".
+	//
+	// ***
+	CaPool string `pulumi:"caPool"`
+}
+
+// CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigInput is an input type that accepts CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs and CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput values.
+// You can construct a concrete instance of `CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigInput` via:
+//
+//	CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs{...}
+type CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigInput interface {
+	pulumi.Input
+
+	ToCertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput() CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput
+	ToCertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutputWithContext(context.Context) CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput
+}
+
+type CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs struct {
+	// A CA pool resource used to issue a certificate.
+	// The CA pool string has a relative resource path following the form
+	// "projects/{project}/locations/{location}/caPools/{caPool}".
+	//
+	// ***
+	CaPool pulumi.StringInput `pulumi:"caPool"`
+}
+
+func (CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig)(nil)).Elem()
+}
+
+func (i CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs) ToCertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput() CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput {
+	return i.ToCertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutputWithContext(context.Background())
+}
+
+func (i CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs) ToCertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutputWithContext(ctx context.Context) CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput)
+}
+
+func (i CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs) ToCertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput() CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput {
+	return i.ToCertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs) ToCertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutputWithContext(ctx context.Context) CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput).ToCertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutputWithContext(ctx)
+}
+
+// CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrInput is an input type that accepts CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs, CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtr and CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput values.
+// You can construct a concrete instance of `CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrInput` via:
+//
+//	        CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrInput interface {
+	pulumi.Input
+
+	ToCertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput() CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput
+	ToCertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutputWithContext(context.Context) CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput
+}
+
+type certificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrType CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs
+
+func CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtr(v *CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs) CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrInput {
+	return (*certificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrType)(v)
+}
+
+func (*certificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig)(nil)).Elem()
+}
+
+func (i *certificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrType) ToCertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput() CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput {
+	return i.ToCertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrType) ToCertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutputWithContext(ctx context.Context) CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput)
+}
+
+type CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput struct{ *pulumi.OutputState }
+
+func (CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig)(nil)).Elem()
+}
+
+func (o CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput) ToCertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput() CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput {
+	return o
+}
+
+func (o CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput) ToCertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutputWithContext(ctx context.Context) CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput {
+	return o
+}
+
+func (o CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput) ToCertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput() CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput {
+	return o.ToCertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput) ToCertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutputWithContext(ctx context.Context) CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig) *CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig {
+		return &v
+	}).(CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput)
+}
+
+// A CA pool resource used to issue a certificate.
+// The CA pool string has a relative resource path following the form
+// "projects/{project}/locations/{location}/caPools/{caPool}".
+//
+// ***
+func (o CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput) CaPool() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig) string {
+		return v.CaPool
+	}).(pulumi.StringOutput)
+}
+
+type CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig)(nil)).Elem()
+}
+
+func (o CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput) ToCertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput() CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput {
+	return o
+}
+
+func (o CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput) ToCertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutputWithContext(ctx context.Context) CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput {
+	return o
+}
+
+func (o CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput) Elem() CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput {
+	return o.ApplyT(func(v *CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig) CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig
+		return ret
+	}).(CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput)
+}
+
+// A CA pool resource used to issue a certificate.
+// The CA pool string has a relative resource path following the form
+// "projects/{project}/locations/{location}/caPools/{caPool}".
+//
+// ***
+func (o CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput) CaPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CaPool
+	}).(pulumi.StringPtrOutput)
+}
+
 type CertificateManaged struct {
 	// (Output)
 	// Detailed state of the latest authorization attempt for each domain
@@ -1184,6 +1482,10 @@ func (o DnsAuthorizationDnsResourceRecordArrayOutput) Index(i pulumi.IntInput) D
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateIssuanceConfigCertificateAuthorityConfigInput)(nil)).Elem(), CertificateIssuanceConfigCertificateAuthorityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateIssuanceConfigCertificateAuthorityConfigPtrInput)(nil)).Elem(), CertificateIssuanceConfigCertificateAuthorityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigInput)(nil)).Elem(), CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrInput)(nil)).Elem(), CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateManagedInput)(nil)).Elem(), CertificateManagedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateManagedPtrInput)(nil)).Elem(), CertificateManagedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateManagedAuthorizationAttemptInfoInput)(nil)).Elem(), CertificateManagedAuthorizationAttemptInfoArgs{})
@@ -1198,6 +1500,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateSelfManagedPtrInput)(nil)).Elem(), CertificateSelfManagedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsAuthorizationDnsResourceRecordInput)(nil)).Elem(), DnsAuthorizationDnsResourceRecordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsAuthorizationDnsResourceRecordArrayInput)(nil)).Elem(), DnsAuthorizationDnsResourceRecordArray{})
+	pulumi.RegisterOutputType(CertificateIssuanceConfigCertificateAuthorityConfigOutput{})
+	pulumi.RegisterOutputType(CertificateIssuanceConfigCertificateAuthorityConfigPtrOutput{})
+	pulumi.RegisterOutputType(CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigOutput{})
+	pulumi.RegisterOutputType(CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigPtrOutput{})
 	pulumi.RegisterOutputType(CertificateManagedOutput{})
 	pulumi.RegisterOutputType(CertificateManagedPtrOutput{})
 	pulumi.RegisterOutputType(CertificateManagedAuthorizationAttemptInfoOutput{})

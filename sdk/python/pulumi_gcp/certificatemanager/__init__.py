@@ -6,6 +6,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .certificate import *
+from .certificate_issuance_config import *
 from .certificate_map import *
 from .certificate_map_entry import *
 from .dns_authorization import *

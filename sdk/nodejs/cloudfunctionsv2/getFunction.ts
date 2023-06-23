@@ -73,6 +73,7 @@ export interface GetFunctionResult {
     readonly serviceConfigs: outputs.cloudfunctionsv2.GetFunctionServiceConfig[];
     readonly state: string;
     readonly updateTime: string;
+    readonly url: string;
 }
 /**
  * Get information about a Google Cloud Function (2nd gen). For more information see:

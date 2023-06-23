@@ -15,6 +15,7 @@ from .bucket_object import *
 from .default_object_access_control import *
 from .default_object_acl import *
 from .get_bucket import *
+from .get_bucket_iam_policy import *
 from .get_bucket_object import *
 from .get_bucket_object_content import *
 from .get_object_signed_url import *

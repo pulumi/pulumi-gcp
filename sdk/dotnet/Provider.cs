@@ -405,6 +405,9 @@ namespace Pulumi.Gcp
         [Output("vertexAiCustomEndpoint")]
         public Output<string?> VertexAiCustomEndpoint { get; private set; } = null!;
 
+        [Output("vmwareengineCustomEndpoint")]
+        public Output<string?> VmwareengineCustomEndpoint { get; private set; } = null!;
+
         [Output("vpcAccessCustomEndpoint")]
         public Output<string?> VpcAccessCustomEndpoint { get; private set; } = null!;
 
@@ -856,6 +859,9 @@ namespace Pulumi.Gcp
 
         [Input("vertexAiCustomEndpoint")]
         public Input<string>? VertexAiCustomEndpoint { get; set; }
+
+        [Input("vmwareengineCustomEndpoint")]
+        public Input<string>? VmwareengineCustomEndpoint { get; set; }
 
         [Input("vpcAccessCustomEndpoint")]
         public Input<string>? VpcAccessCustomEndpoint { get; set; }

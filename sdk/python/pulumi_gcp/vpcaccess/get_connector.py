@@ -22,7 +22,10 @@ class GetConnectorResult:
     """
     A collection of values returned by getConnector.
     """
-    def __init__(__self__, id=None, ip_cidr_range=None, machine_type=None, max_instances=None, max_throughput=None, min_instances=None, min_throughput=None, name=None, network=None, project=None, region=None, self_link=None, state=None, subnets=None):
+    def __init__(__self__, connected_projects=None, id=None, ip_cidr_range=None, machine_type=None, max_instances=None, max_throughput=None, min_instances=None, min_throughput=None, name=None, network=None, project=None, region=None, self_link=None, state=None, subnets=None):
+        if connected_projects and not isinstance(connected_projects, list):
+            raise TypeError("Expected argument 'connected_projects' to be a list")
+        pulumi.set(__self__, "connected_projects", connected_projects)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -65,6 +68,11 @@ class GetConnectorResult:
         if subnets and not isinstance(subnets, list):
             raise TypeError("Expected argument 'subnets' to be a list")
         pulumi.set(__self__, "subnets", subnets)
+
+    @property
+    @pulumi.getter(name="connectedProjects")
+    def connected_projects(self) -> Sequence[str]:
+        return pulumi.get(self, "connected_projects")
 
     @property
     @pulumi.getter
@@ -146,6 +154,7 @@ class AwaitableGetConnectorResult(GetConnectorResult):
         if False:
             yield self
         return GetConnectorResult(
+            connected_projects=self.connected_projects,
             id=self.id,
             ip_cidr_range=self.ip_cidr_range,
             machine_type=self.machine_type,
@@ -205,6 +214,7 @@ def get_connector(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:vpcaccess/getConnector:getConnector', __args__, opts=opts, typ=GetConnectorResult).value
 
     return AwaitableGetConnectorResult(
+        connected_projects=__ret__.connected_projects,
         id=__ret__.id,
         ip_cidr_range=__ret__.ip_cidr_range,
         machine_type=__ret__.machine_type,

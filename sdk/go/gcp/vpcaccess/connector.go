@@ -119,6 +119,8 @@ import (
 type Connector struct {
 	pulumi.CustomResourceState
 
+	// List of projects using the connector.
+	ConnectedProjects pulumi.StringArrayOutput `pulumi:"connectedProjects"`
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange pulumi.StringPtrOutput `pulumi:"ipCidrRange"`
 	// Machine type of VM Instance underlying connector. Default is e2-micro
@@ -180,6 +182,8 @@ func GetConnector(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connector resources.
 type connectorState struct {
+	// List of projects using the connector.
+	ConnectedProjects []string `pulumi:"connectedProjects"`
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
 	// Machine type of VM Instance underlying connector. Default is e2-micro
@@ -213,6 +217,8 @@ type connectorState struct {
 }
 
 type ConnectorState struct {
+	// List of projects using the connector.
+	ConnectedProjects pulumi.StringArrayInput
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange pulumi.StringPtrInput
 	// Machine type of VM Instance underlying connector. Default is e2-micro
@@ -393,6 +399,11 @@ func (o ConnectorOutput) ToConnectorOutput() ConnectorOutput {
 
 func (o ConnectorOutput) ToConnectorOutputWithContext(ctx context.Context) ConnectorOutput {
 	return o
+}
+
+// List of projects using the connector.
+func (o ConnectorOutput) ConnectedProjects() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Connector) pulumi.StringArrayOutput { return v.ConnectedProjects }).(pulumi.StringArrayOutput)
 }
 
 // The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.

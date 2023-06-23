@@ -44,6 +44,11 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly Outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeRegex? Regex;
         /// <summary>
+        /// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore? SensitivityScore;
+        /// <summary>
         /// A reference to a StoredInfoType to use with scanning.
         /// Structure is documented below.
         /// </summary>
@@ -65,6 +70,8 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
             Outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeRegex? regex,
 
+            Outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore? sensitivityScore,
+
             Outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType? storedType,
 
             Outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateType? surrogateType)
@@ -74,6 +81,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
             InfoType = infoType;
             Likelihood = likelihood;
             Regex = regex;
+            SensitivityScore = sensitivityScore;
             StoredType = storedType;
             SurrogateType = surrogateType;
         }

@@ -796,6 +796,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> vertexAiCustomEndpoint() {
         return Codegen.optional(this.vertexAiCustomEndpoint);
     }
+    @Export(name="vmwareengineCustomEndpoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> vmwareengineCustomEndpoint;
+
+    public Output<Optional<String>> vmwareengineCustomEndpoint() {
+        return Codegen.optional(this.vmwareengineCustomEndpoint);
+    }
     @Export(name="vpcAccessCustomEndpoint", type=String.class, parameters={})
     private Output</* @Nullable */ String> vpcAccessCustomEndpoint;
 

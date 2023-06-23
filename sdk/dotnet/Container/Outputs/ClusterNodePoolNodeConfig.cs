@@ -217,6 +217,18 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterNodePoolNodeConfigShieldedInstanceConfig? ShieldedInstanceConfig;
         /// <summary>
+        /// Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+        /// 
+        /// sole_tenant_config {
+        /// node_affinity {
+        /// key = "compute.googleapis.com/node-group-name"
+        /// operator = "IN"
+        /// values = ["node-group-name"]
+        /// }
+        /// }
+        /// </summary>
+        public readonly Outputs.ClusterNodePoolNodeConfigSoleTenantConfig? SoleTenantConfig;
+        /// <summary>
         /// A boolean that represents whether the underlying node VMs are spot.
         /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
         /// for more information. Defaults to false.
@@ -300,6 +312,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             Outputs.ClusterNodePoolNodeConfigShieldedInstanceConfig? shieldedInstanceConfig,
 
+            Outputs.ClusterNodePoolNodeConfigSoleTenantConfig? soleTenantConfig,
+
             bool? spot,
 
             ImmutableArray<string> tags,
@@ -335,6 +349,7 @@ namespace Pulumi.Gcp.Container.Outputs
             SandboxConfig = sandboxConfig;
             ServiceAccount = serviceAccount;
             ShieldedInstanceConfig = shieldedInstanceConfig;
+            SoleTenantConfig = soleTenantConfig;
             Spot = spot;
             Tags = tags;
             Taints = taints;

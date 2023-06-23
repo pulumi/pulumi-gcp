@@ -95,6 +95,12 @@ namespace Pulumi.Gcp.VpcAccess
     public partial class Connector : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// List of projects using the connector.
+        /// </summary>
+        [Output("connectedProjects")]
+        public Output<ImmutableArray<string>> ConnectedProjects { get; private set; } = null!;
+
+        /// <summary>
         /// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         /// </summary>
         [Output("ipCidrRange")]
@@ -302,6 +308,18 @@ namespace Pulumi.Gcp.VpcAccess
 
     public sealed class ConnectorState : global::Pulumi.ResourceArgs
     {
+        [Input("connectedProjects")]
+        private InputList<string>? _connectedProjects;
+
+        /// <summary>
+        /// List of projects using the connector.
+        /// </summary>
+        public InputList<string> ConnectedProjects
+        {
+            get => _connectedProjects ?? (_connectedProjects = new InputList<string>());
+            set => _connectedProjects = value;
+        }
+
         /// <summary>
         /// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         /// </summary>

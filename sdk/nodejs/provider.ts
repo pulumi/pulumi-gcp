@@ -156,6 +156,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly tagsLocationCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly tpuCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly vertexAiCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly vmwareengineCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly vpcAccessCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly workflowsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly workstationsCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -306,6 +307,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["tpuCustomEndpoint"] = args ? args.tpuCustomEndpoint : undefined;
             resourceInputs["userProjectOverride"] = pulumi.output(args ? args.userProjectOverride : undefined).apply(JSON.stringify);
             resourceInputs["vertexAiCustomEndpoint"] = args ? args.vertexAiCustomEndpoint : undefined;
+            resourceInputs["vmwareengineCustomEndpoint"] = args ? args.vmwareengineCustomEndpoint : undefined;
             resourceInputs["vpcAccessCustomEndpoint"] = args ? args.vpcAccessCustomEndpoint : undefined;
             resourceInputs["workflowsCustomEndpoint"] = args ? args.workflowsCustomEndpoint : undefined;
             resourceInputs["workstationsCustomEndpoint"] = args ? args.workstationsCustomEndpoint : undefined;
@@ -454,6 +456,7 @@ export interface ProviderArgs {
     tpuCustomEndpoint?: pulumi.Input<string>;
     userProjectOverride?: pulumi.Input<boolean>;
     vertexAiCustomEndpoint?: pulumi.Input<string>;
+    vmwareengineCustomEndpoint?: pulumi.Input<string>;
     vpcAccessCustomEndpoint?: pulumi.Input<string>;
     workflowsCustomEndpoint?: pulumi.Input<string>;
     workstationsCustomEndpoint?: pulumi.Input<string>;

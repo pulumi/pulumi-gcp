@@ -13,14 +13,20 @@ import com.pulumi.gcp.compute.inputs.GetAddressPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetAddressesArgs;
 import com.pulumi.gcp.compute.inputs.GetAddressesPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetBackendBucketArgs;
+import com.pulumi.gcp.compute.inputs.GetBackendBucketIamPolicyArgs;
+import com.pulumi.gcp.compute.inputs.GetBackendBucketIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetBackendBucketPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetBackendServiceArgs;
+import com.pulumi.gcp.compute.inputs.GetBackendServiceIamPolicyArgs;
+import com.pulumi.gcp.compute.inputs.GetBackendServiceIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetBackendServicePlainArgs;
 import com.pulumi.gcp.compute.inputs.GetCertificateArgs;
 import com.pulumi.gcp.compute.inputs.GetCertificatePlainArgs;
 import com.pulumi.gcp.compute.inputs.GetDefaultServiceAccountArgs;
 import com.pulumi.gcp.compute.inputs.GetDefaultServiceAccountPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetDiskArgs;
+import com.pulumi.gcp.compute.inputs.GetDiskIamPolicyArgs;
+import com.pulumi.gcp.compute.inputs.GetDiskIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetDiskPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetForwardingRuleArgs;
 import com.pulumi.gcp.compute.inputs.GetForwardingRulePlainArgs;
@@ -33,17 +39,23 @@ import com.pulumi.gcp.compute.inputs.GetHcVpnGatewayPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetHealthCheckArgs;
 import com.pulumi.gcp.compute.inputs.GetHealthCheckPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetImageArgs;
+import com.pulumi.gcp.compute.inputs.GetImageIamPolicyArgs;
+import com.pulumi.gcp.compute.inputs.GetImageIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetImagePlainArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceGroupArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceGroupManagerArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceGroupManagerPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceGroupPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetInstanceIamPolicyArgs;
+import com.pulumi.gcp.compute.inputs.GetInstanceIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetInstancePlainArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceTemplateArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceTemplatePlainArgs;
+import com.pulumi.gcp.compute.inputs.GetMachineImageIamPolicyArgs;
+import com.pulumi.gcp.compute.inputs.GetMachineImageIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesArgs;
 import com.pulumi.gcp.compute.inputs.GetNetblockIPRangesPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkArgs;
@@ -54,6 +66,10 @@ import com.pulumi.gcp.compute.inputs.GetNetworkPeeringPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetNetworkPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
 import com.pulumi.gcp.compute.inputs.GetNodeTypesPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceIamPolicyArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceIamPolicyPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionDiskIamPolicyArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionDiskIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionInstanceTemplateArgs;
@@ -75,8 +91,12 @@ import com.pulumi.gcp.compute.inputs.GetRouterStatusPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetSSLPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetSSLPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetSnapshotArgs;
+import com.pulumi.gcp.compute.inputs.GetSnapshotIamPolicyArgs;
+import com.pulumi.gcp.compute.inputs.GetSnapshotIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetSnapshotPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetSubnetworkArgs;
+import com.pulumi.gcp.compute.inputs.GetSubnetworkIamPolicyArgs;
+import com.pulumi.gcp.compute.inputs.GetSubnetworkIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetSubnetworkPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetVPNGatewayArgs;
 import com.pulumi.gcp.compute.inputs.GetVPNGatewayPlainArgs;
@@ -86,28 +106,36 @@ import com.pulumi.gcp.compute.inputs.RouterStatusArgs;
 import com.pulumi.gcp.compute.inputs.RouterStatusPlainArgs;
 import com.pulumi.gcp.compute.outputs.GetAddressResult;
 import com.pulumi.gcp.compute.outputs.GetAddressesResult;
+import com.pulumi.gcp.compute.outputs.GetBackendBucketIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetBackendBucketResult;
+import com.pulumi.gcp.compute.outputs.GetBackendServiceIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceResult;
 import com.pulumi.gcp.compute.outputs.GetCertificateResult;
 import com.pulumi.gcp.compute.outputs.GetDefaultServiceAccountResult;
+import com.pulumi.gcp.compute.outputs.GetDiskIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetDiskResult;
 import com.pulumi.gcp.compute.outputs.GetForwardingRuleResult;
 import com.pulumi.gcp.compute.outputs.GetGlobalAddressResult;
 import com.pulumi.gcp.compute.outputs.GetGlobalForwardingRuleResult;
 import com.pulumi.gcp.compute.outputs.GetHcVpnGatewayResult;
 import com.pulumi.gcp.compute.outputs.GetHealthCheckResult;
+import com.pulumi.gcp.compute.outputs.GetImageIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetImageResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupResult;
+import com.pulumi.gcp.compute.outputs.GetInstanceIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceSerialPortResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceTemplateResult;
 import com.pulumi.gcp.compute.outputs.GetLBIPRangesResult;
+import com.pulumi.gcp.compute.outputs.GetMachineImageIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetNetblockIPRangesResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkEndpointGroupResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkPeeringResult;
 import com.pulumi.gcp.compute.outputs.GetNetworkResult;
 import com.pulumi.gcp.compute.outputs.GetNodeTypesResult;
+import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceIamPolicyResult;
+import com.pulumi.gcp.compute.outputs.GetRegionDiskIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupResult;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateResult;
 import com.pulumi.gcp.compute.outputs.GetRegionNetworkEndpointGroupResult;
@@ -118,7 +146,9 @@ import com.pulumi.gcp.compute.outputs.GetRouterNatResult;
 import com.pulumi.gcp.compute.outputs.GetRouterResult;
 import com.pulumi.gcp.compute.outputs.GetRouterStatusResult;
 import com.pulumi.gcp.compute.outputs.GetSSLPolicyResult;
+import com.pulumi.gcp.compute.outputs.GetSnapshotIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetSnapshotResult;
+import com.pulumi.gcp.compute.outputs.GetSubnetworkIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetSubnetworkResult;
 import com.pulumi.gcp.compute.outputs.GetVPNGatewayResult;
 import com.pulumi.gcp.compute.outputs.GetZonesResult;
@@ -545,6 +575,18 @@ public final class ComputeFunctions {
     public static CompletableFuture<GetBackendBucketResult> getBackendBucketPlain(GetBackendBucketPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getBackendBucket:getBackendBucket", TypeShape.of(GetBackendBucketResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetBackendBucketIamPolicyResult> getBackendBucketIamPolicy(GetBackendBucketIamPolicyArgs args) {
+        return getBackendBucketIamPolicy(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetBackendBucketIamPolicyResult> getBackendBucketIamPolicyPlain(GetBackendBucketIamPolicyPlainArgs args) {
+        return getBackendBucketIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetBackendBucketIamPolicyResult> getBackendBucketIamPolicy(GetBackendBucketIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getBackendBucketIamPolicy:getBackendBucketIamPolicy", TypeShape.of(GetBackendBucketIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetBackendBucketIamPolicyResult> getBackendBucketIamPolicyPlain(GetBackendBucketIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getBackendBucketIamPolicy:getBackendBucketIamPolicy", TypeShape.of(GetBackendBucketIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Provide access to a Backend Service&#39;s attribute. For more information
      * see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
@@ -580,6 +622,18 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetBackendServiceResult> getBackendServicePlain(GetBackendServicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getBackendService:getBackendService", TypeShape.of(GetBackendServiceResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetBackendServiceIamPolicyResult> getBackendServiceIamPolicy(GetBackendServiceIamPolicyArgs args) {
+        return getBackendServiceIamPolicy(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetBackendServiceIamPolicyResult> getBackendServiceIamPolicyPlain(GetBackendServiceIamPolicyPlainArgs args) {
+        return getBackendServiceIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetBackendServiceIamPolicyResult> getBackendServiceIamPolicy(GetBackendServiceIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getBackendServiceIamPolicy:getBackendServiceIamPolicy", TypeShape.of(GetBackendServiceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetBackendServiceIamPolicyResult> getBackendServiceIamPolicyPlain(GetBackendServiceIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getBackendServiceIamPolicy:getBackendServiceIamPolicy", TypeShape.of(GetBackendServiceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get info about a Google Compute SSL Certificate from its name.
@@ -1156,6 +1210,162 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetDiskResult> getDiskPlain(GetDiskPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getDisk:getDisk", TypeShape.of(GetDiskResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for disk
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetDiskIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getDiskIamPolicy(GetDiskIamPolicyArgs.builder()
+     *             .project(google_compute_disk.default().project())
+     *             .zone(google_compute_disk.default().zone())
+     *             .name(google_compute_disk.default().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDiskIamPolicyResult> getDiskIamPolicy(GetDiskIamPolicyArgs args) {
+        return getDiskIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for disk
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetDiskIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getDiskIamPolicy(GetDiskIamPolicyArgs.builder()
+     *             .project(google_compute_disk.default().project())
+     *             .zone(google_compute_disk.default().zone())
+     *             .name(google_compute_disk.default().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDiskIamPolicyResult> getDiskIamPolicyPlain(GetDiskIamPolicyPlainArgs args) {
+        return getDiskIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for disk
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetDiskIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getDiskIamPolicy(GetDiskIamPolicyArgs.builder()
+     *             .project(google_compute_disk.default().project())
+     *             .zone(google_compute_disk.default().zone())
+     *             .name(google_compute_disk.default().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDiskIamPolicyResult> getDiskIamPolicy(GetDiskIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getDiskIamPolicy:getDiskIamPolicy", TypeShape.of(GetDiskIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for disk
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetDiskIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getDiskIamPolicy(GetDiskIamPolicyArgs.builder()
+     *             .project(google_compute_disk.default().project())
+     *             .zone(google_compute_disk.default().zone())
+     *             .name(google_compute_disk.default().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDiskIamPolicyResult> getDiskIamPolicyPlain(GetDiskIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getDiskIamPolicy:getDiskIamPolicy", TypeShape.of(GetDiskIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get a forwarding rule within GCE from its name.
@@ -2272,6 +2482,158 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invokeAsync("gcp:compute/getImage:getImage", TypeShape.of(GetImageResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for image
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetImageIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getImageIamPolicy(GetImageIamPolicyArgs.builder()
+     *             .project(google_compute_image.example().project())
+     *             .image(google_compute_image.example().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetImageIamPolicyResult> getImageIamPolicy(GetImageIamPolicyArgs args) {
+        return getImageIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for image
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetImageIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getImageIamPolicy(GetImageIamPolicyArgs.builder()
+     *             .project(google_compute_image.example().project())
+     *             .image(google_compute_image.example().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetImageIamPolicyResult> getImageIamPolicyPlain(GetImageIamPolicyPlainArgs args) {
+        return getImageIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for image
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetImageIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getImageIamPolicy(GetImageIamPolicyArgs.builder()
+     *             .project(google_compute_image.example().project())
+     *             .image(google_compute_image.example().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetImageIamPolicyResult> getImageIamPolicy(GetImageIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getImageIamPolicy:getImageIamPolicy", TypeShape.of(GetImageIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for image
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetImageIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getImageIamPolicy(GetImageIamPolicyArgs.builder()
+     *             .project(google_compute_image.example().project())
+     *             .image(google_compute_image.example().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetImageIamPolicyResult> getImageIamPolicyPlain(GetImageIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getImageIamPolicy:getImageIamPolicy", TypeShape.of(GetImageIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Get information about a VM instance resource within GCE. For more information see
      * [the official documentation](https://cloud.google.com/compute/docs/instances)
      * and
@@ -3008,6 +3370,162 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetInstanceGroupManagerResult> getInstanceGroupManagerPlain(GetInstanceGroupManagerPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getInstanceGroupManager:getInstanceGroupManager", TypeShape.of(GetInstanceGroupManagerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for instance
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
+     *             .project(google_compute_instance.default().project())
+     *             .zone(google_compute_instance.default().zone())
+     *             .instanceName(google_compute_instance.default().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInstanceIamPolicyResult> getInstanceIamPolicy(GetInstanceIamPolicyArgs args) {
+        return getInstanceIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for instance
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
+     *             .project(google_compute_instance.default().project())
+     *             .zone(google_compute_instance.default().zone())
+     *             .instanceName(google_compute_instance.default().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInstanceIamPolicyResult> getInstanceIamPolicyPlain(GetInstanceIamPolicyPlainArgs args) {
+        return getInstanceIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for instance
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
+     *             .project(google_compute_instance.default().project())
+     *             .zone(google_compute_instance.default().zone())
+     *             .instanceName(google_compute_instance.default().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInstanceIamPolicyResult> getInstanceIamPolicy(GetInstanceIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getInstanceIamPolicy:getInstanceIamPolicy", TypeShape.of(GetInstanceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for instance
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
+     *             .project(google_compute_instance.default().project())
+     *             .zone(google_compute_instance.default().zone())
+     *             .instanceName(google_compute_instance.default().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInstanceIamPolicyResult> getInstanceIamPolicyPlain(GetInstanceIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getInstanceIamPolicy:getInstanceIamPolicy", TypeShape.of(GetInstanceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get the serial port output from a Compute Instance. For more information see
@@ -4020,6 +4538,18 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetLBIPRangesResult> getLBIPRangesPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getLBIPRanges:getLBIPRanges", TypeShape.of(GetLBIPRangesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetMachineImageIamPolicyResult> getMachineImageIamPolicy(GetMachineImageIamPolicyArgs args) {
+        return getMachineImageIamPolicy(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetMachineImageIamPolicyResult> getMachineImageIamPolicyPlain(GetMachineImageIamPolicyPlainArgs args) {
+        return getMachineImageIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetMachineImageIamPolicyResult> getMachineImageIamPolicy(GetMachineImageIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getMachineImageIamPolicy:getMachineImageIamPolicy", TypeShape.of(GetMachineImageIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetMachineImageIamPolicyResult> getMachineImageIamPolicyPlain(GetMachineImageIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getMachineImageIamPolicy:getMachineImageIamPolicy", TypeShape.of(GetMachineImageIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.
@@ -5452,6 +5982,174 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetNodeTypesResult> getNodeTypesPlain(GetNodeTypesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getNodeTypes:getNodeTypes", TypeShape.of(GetNodeTypesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetRegionBackendServiceIamPolicyResult> getRegionBackendServiceIamPolicy(GetRegionBackendServiceIamPolicyArgs args) {
+        return getRegionBackendServiceIamPolicy(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetRegionBackendServiceIamPolicyResult> getRegionBackendServiceIamPolicyPlain(GetRegionBackendServiceIamPolicyPlainArgs args) {
+        return getRegionBackendServiceIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetRegionBackendServiceIamPolicyResult> getRegionBackendServiceIamPolicy(GetRegionBackendServiceIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy", TypeShape.of(GetRegionBackendServiceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetRegionBackendServiceIamPolicyResult> getRegionBackendServiceIamPolicyPlain(GetRegionBackendServiceIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy", TypeShape.of(GetRegionBackendServiceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for regiondisk
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionDiskIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getRegionDiskIamPolicy(GetRegionDiskIamPolicyArgs.builder()
+     *             .project(google_compute_region_disk.regiondisk().project())
+     *             .region(google_compute_region_disk.regiondisk().region())
+     *             .name(google_compute_region_disk.regiondisk().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRegionDiskIamPolicyResult> getRegionDiskIamPolicy(GetRegionDiskIamPolicyArgs args) {
+        return getRegionDiskIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for regiondisk
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionDiskIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getRegionDiskIamPolicy(GetRegionDiskIamPolicyArgs.builder()
+     *             .project(google_compute_region_disk.regiondisk().project())
+     *             .region(google_compute_region_disk.regiondisk().region())
+     *             .name(google_compute_region_disk.regiondisk().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRegionDiskIamPolicyResult> getRegionDiskIamPolicyPlain(GetRegionDiskIamPolicyPlainArgs args) {
+        return getRegionDiskIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for regiondisk
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionDiskIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getRegionDiskIamPolicy(GetRegionDiskIamPolicyArgs.builder()
+     *             .project(google_compute_region_disk.regiondisk().project())
+     *             .region(google_compute_region_disk.regiondisk().region())
+     *             .name(google_compute_region_disk.regiondisk().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRegionDiskIamPolicyResult> getRegionDiskIamPolicy(GetRegionDiskIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRegionDiskIamPolicy:getRegionDiskIamPolicy", TypeShape.of(GetRegionDiskIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for regiondisk
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionDiskIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getRegionDiskIamPolicy(GetRegionDiskIamPolicyArgs.builder()
+     *             .project(google_compute_region_disk.regiondisk().project())
+     *             .region(google_compute_region_disk.regiondisk().region())
+     *             .name(google_compute_region_disk.regiondisk().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRegionDiskIamPolicyResult> getRegionDiskIamPolicyPlain(GetRegionDiskIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getRegionDiskIamPolicy:getRegionDiskIamPolicy", TypeShape.of(GetRegionDiskIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get a Compute Region Instance Group within GCE.
@@ -7454,6 +8152,158 @@ public final class ComputeFunctions {
         return Deployment.getInstance().invokeAsync("gcp:compute/getSnapshot:getSnapshot", TypeShape.of(GetSnapshotResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for snapshot
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSnapshotIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getSnapshotIamPolicy(GetSnapshotIamPolicyArgs.builder()
+     *             .project(google_compute_snapshot.snapshot().project())
+     *             .name(google_compute_snapshot.snapshot().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSnapshotIamPolicyResult> getSnapshotIamPolicy(GetSnapshotIamPolicyArgs args) {
+        return getSnapshotIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for snapshot
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSnapshotIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getSnapshotIamPolicy(GetSnapshotIamPolicyArgs.builder()
+     *             .project(google_compute_snapshot.snapshot().project())
+     *             .name(google_compute_snapshot.snapshot().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSnapshotIamPolicyResult> getSnapshotIamPolicyPlain(GetSnapshotIamPolicyPlainArgs args) {
+        return getSnapshotIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for snapshot
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSnapshotIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getSnapshotIamPolicy(GetSnapshotIamPolicyArgs.builder()
+     *             .project(google_compute_snapshot.snapshot().project())
+     *             .name(google_compute_snapshot.snapshot().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSnapshotIamPolicyResult> getSnapshotIamPolicy(GetSnapshotIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getSnapshotIamPolicy:getSnapshotIamPolicy", TypeShape.of(GetSnapshotIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for snapshot
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSnapshotIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getSnapshotIamPolicy(GetSnapshotIamPolicyArgs.builder()
+     *             .project(google_compute_snapshot.snapshot().project())
+     *             .name(google_compute_snapshot.snapshot().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSnapshotIamPolicyResult> getSnapshotIamPolicyPlain(GetSnapshotIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getSnapshotIamPolicy:getSnapshotIamPolicy", TypeShape.of(GetSnapshotIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Get a subnetwork within GCE from its name and region.
      * 
      * ## Example Usage
@@ -7680,6 +8530,162 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetSubnetworkResult> getSubnetworkPlain(GetSubnetworkPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getSubnetwork:getSubnetwork", TypeShape.of(GetSubnetworkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for subnetwork
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSubnetworkIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getSubnetworkIamPolicy(GetSubnetworkIamPolicyArgs.builder()
+     *             .project(google_compute_subnetwork.network-with-private-secondary-ip-ranges().project())
+     *             .region(google_compute_subnetwork.network-with-private-secondary-ip-ranges().region())
+     *             .subnetwork(google_compute_subnetwork.network-with-private-secondary-ip-ranges().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSubnetworkIamPolicyResult> getSubnetworkIamPolicy(GetSubnetworkIamPolicyArgs args) {
+        return getSubnetworkIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for subnetwork
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSubnetworkIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getSubnetworkIamPolicy(GetSubnetworkIamPolicyArgs.builder()
+     *             .project(google_compute_subnetwork.network-with-private-secondary-ip-ranges().project())
+     *             .region(google_compute_subnetwork.network-with-private-secondary-ip-ranges().region())
+     *             .subnetwork(google_compute_subnetwork.network-with-private-secondary-ip-ranges().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSubnetworkIamPolicyResult> getSubnetworkIamPolicyPlain(GetSubnetworkIamPolicyPlainArgs args) {
+        return getSubnetworkIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for subnetwork
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSubnetworkIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getSubnetworkIamPolicy(GetSubnetworkIamPolicyArgs.builder()
+     *             .project(google_compute_subnetwork.network-with-private-secondary-ip-ranges().project())
+     *             .region(google_compute_subnetwork.network-with-private-secondary-ip-ranges().region())
+     *             .subnetwork(google_compute_subnetwork.network-with-private-secondary-ip-ranges().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSubnetworkIamPolicyResult> getSubnetworkIamPolicy(GetSubnetworkIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getSubnetworkIamPolicy:getSubnetworkIamPolicy", TypeShape.of(GetSubnetworkIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for subnetwork
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetSubnetworkIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getSubnetworkIamPolicy(GetSubnetworkIamPolicyArgs.builder()
+     *             .project(google_compute_subnetwork.network-with-private-secondary-ip-ranges().project())
+     *             .region(google_compute_subnetwork.network-with-private-secondary-ip-ranges().region())
+     *             .subnetwork(google_compute_subnetwork.network-with-private-secondary-ip-ranges().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSubnetworkIamPolicyResult> getSubnetworkIamPolicyPlain(GetSubnetworkIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getSubnetworkIamPolicy:getSubnetworkIamPolicy", TypeShape.of(GetSubnetworkIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get a VPN gateway within GCE from its name.

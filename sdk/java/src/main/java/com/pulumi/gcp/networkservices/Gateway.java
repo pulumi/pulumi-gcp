@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.networkservices.GatewayArgs;
 import com.pulumi.gcp.networkservices.inputs.GatewayState;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -89,6 +90,236 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Network Services Gateway Secure Web Proxy
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificatemanager.Certificate;
+ * import com.pulumi.gcp.certificatemanager.CertificateArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.CertificateSelfManagedArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicy;
+ * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyArgs;
+ * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyRule;
+ * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyRuleArgs;
+ * import com.pulumi.gcp.networkservices.Gateway;
+ * import com.pulumi.gcp.networkservices.GatewayArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultCertificate = new Certificate(&#34;defaultCertificate&#34;, CertificateArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .selfManaged(CertificateSelfManagedArgs.builder()
+ *                 .pemCertificate(Files.readString(Paths.get(&#34;test-fixtures/certificatemanager/cert.pem&#34;)))
+ *                 .pemPrivateKey(Files.readString(Paths.get(&#34;test-fixtures/certificatemanager/private-key.pem&#34;)))
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .routingMode(&#34;REGIONAL&#34;)
+ *             .autoCreateSubnetworks(false)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .purpose(&#34;PRIVATE&#34;)
+ *             .ipCidrRange(&#34;10.128.0.0/20&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .network(defaultNetwork.id())
+ *             .role(&#34;ACTIVE&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var proxyonlysubnet = new Subnetwork(&#34;proxyonlysubnet&#34;, SubnetworkArgs.builder()        
+ *             .purpose(&#34;REGIONAL_MANAGED_PROXY&#34;)
+ *             .ipCidrRange(&#34;192.168.0.0/23&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .network(defaultNetwork.id())
+ *             .role(&#34;ACTIVE&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy(&#34;defaultGatewaySecurityPolicy&#34;, GatewaySecurityPolicyArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule(&#34;defaultGatewaySecurityPolicyRule&#34;, GatewaySecurityPolicyRuleArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .gatewaySecurityPolicy(defaultGatewaySecurityPolicy.name())
+ *             .enabled(true)
+ *             .priority(1)
+ *             .sessionMatcher(&#34;host() == &#39;example.com&#39;&#34;)
+ *             .basicProfile(&#34;ALLOW&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .addresses(&#34;10.128.0.99&#34;)
+ *             .type(&#34;SECURE_WEB_GATEWAY&#34;)
+ *             .ports(443)
+ *             .scope(&#34;my-default-scope1&#34;)
+ *             .certificateUrls(defaultCertificate.id())
+ *             .gatewaySecurityPolicy(defaultGatewaySecurityPolicy.id())
+ *             .network(defaultNetwork.id())
+ *             .subnetwork(defaultSubnetwork.id())
+ *             .deleteSwgAutogenRouterOnDestroy(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .dependsOn(proxyonlysubnet)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Network Services Gateway Multiple Swp Same Network
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.certificatemanager.Certificate;
+ * import com.pulumi.gcp.certificatemanager.CertificateArgs;
+ * import com.pulumi.gcp.certificatemanager.inputs.CertificateSelfManagedArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicy;
+ * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyArgs;
+ * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyRule;
+ * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyRuleArgs;
+ * import com.pulumi.gcp.networkservices.Gateway;
+ * import com.pulumi.gcp.networkservices.GatewayArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultCertificate = new Certificate(&#34;defaultCertificate&#34;, CertificateArgs.builder()        
+ *             .location(&#34;us-south1&#34;)
+ *             .selfManaged(CertificateSelfManagedArgs.builder()
+ *                 .pemCertificate(Files.readString(Paths.get(&#34;test-fixtures/certificatemanager/cert.pem&#34;)))
+ *                 .pemPrivateKey(Files.readString(Paths.get(&#34;test-fixtures/certificatemanager/private-key.pem&#34;)))
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *             .routingMode(&#34;REGIONAL&#34;)
+ *             .autoCreateSubnetworks(false)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .purpose(&#34;PRIVATE&#34;)
+ *             .ipCidrRange(&#34;10.128.0.0/20&#34;)
+ *             .region(&#34;us-south1&#34;)
+ *             .network(defaultNetwork.id())
+ *             .role(&#34;ACTIVE&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var proxyonlysubnet = new Subnetwork(&#34;proxyonlysubnet&#34;, SubnetworkArgs.builder()        
+ *             .purpose(&#34;REGIONAL_MANAGED_PROXY&#34;)
+ *             .ipCidrRange(&#34;192.168.0.0/23&#34;)
+ *             .region(&#34;us-south1&#34;)
+ *             .network(defaultNetwork.id())
+ *             .role(&#34;ACTIVE&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy(&#34;defaultGatewaySecurityPolicy&#34;, GatewaySecurityPolicyArgs.builder()        
+ *             .location(&#34;us-south1&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule(&#34;defaultGatewaySecurityPolicyRule&#34;, GatewaySecurityPolicyRuleArgs.builder()        
+ *             .location(&#34;us-south1&#34;)
+ *             .gatewaySecurityPolicy(defaultGatewaySecurityPolicy.name())
+ *             .enabled(true)
+ *             .priority(1)
+ *             .sessionMatcher(&#34;host() == &#39;example.com&#39;&#34;)
+ *             .basicProfile(&#34;ALLOW&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
+ *             .location(&#34;us-south1&#34;)
+ *             .addresses(&#34;10.128.0.99&#34;)
+ *             .type(&#34;SECURE_WEB_GATEWAY&#34;)
+ *             .ports(443)
+ *             .scope(&#34;my-default-scope1&#34;)
+ *             .certificateUrls(defaultCertificate.id())
+ *             .gatewaySecurityPolicy(defaultGatewaySecurityPolicy.id())
+ *             .network(defaultNetwork.id())
+ *             .subnetwork(defaultSubnetwork.id())
+ *             .deleteSwgAutogenRouterOnDestroy(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .dependsOn(proxyonlysubnet)
+ *                 .build());
+ * 
+ *         var gateway2 = new Gateway(&#34;gateway2&#34;, GatewayArgs.builder()        
+ *             .location(&#34;us-south1&#34;)
+ *             .addresses(&#34;10.128.0.98&#34;)
+ *             .type(&#34;SECURE_WEB_GATEWAY&#34;)
+ *             .ports(443)
+ *             .scope(&#34;my-default-scope2&#34;)
+ *             .certificateUrls(defaultCertificate.id())
+ *             .gatewaySecurityPolicy(defaultGatewaySecurityPolicy.id())
+ *             .network(defaultNetwork.id())
+ *             .subnetwork(defaultSubnetwork.id())
+ *             .deleteSwgAutogenRouterOnDestroy(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .dependsOn(proxyonlysubnet)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -110,6 +341,40 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:networkservices/gateway:Gateway")
 public class Gateway extends com.pulumi.resources.CustomResource {
     /**
+     * Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+     * an IP from the subnetwork is allocated This field only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+     * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0.
+     * 
+     */
+    @Export(name="addresses", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> addresses;
+
+    /**
+     * @return Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+     * an IP from the subnetwork is allocated This field only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+     * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0.
+     * 
+     */
+    public Output<Optional<List<String>>> addresses() {
+        return Codegen.optional(this.addresses);
+    }
+    /**
+     * A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+     * This feature only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+     * 
+     */
+    @Export(name="certificateUrls", type=List.class, parameters={String.class})
+    private Output</* @Nullable */ List<String>> certificateUrls;
+
+    /**
+     * @return A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+     * This feature only applies to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+     * 
+     */
+    public Output<Optional<List<String>>> certificateUrls() {
+        return Codegen.optional(this.certificateUrls);
+    }
+    /**
      * Time the AccessPolicy was created in UTC.
      * 
      */
@@ -124,6 +389,22 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
+     * When deleting a gateway of type &#39;SECURE_WEB_GATEWAY&#39;, this boolean option will also delete auto generated router by the gateway creation.
+     * If there is no other gateway of type &#39;SECURE_WEB_GATEWAY&#39; remaining for that region and network it will be deleted.
+     * 
+     */
+    @Export(name="deleteSwgAutogenRouterOnDestroy", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> deleteSwgAutogenRouterOnDestroy;
+
+    /**
+     * @return When deleting a gateway of type &#39;SECURE_WEB_GATEWAY&#39;, this boolean option will also delete auto generated router by the gateway creation.
+     * If there is no other gateway of type &#39;SECURE_WEB_GATEWAY&#39; remaining for that region and network it will be deleted.
+     * 
+     */
+    public Output<Optional<Boolean>> deleteSwgAutogenRouterOnDestroy() {
+        return Codegen.optional(this.deleteSwgAutogenRouterOnDestroy);
+    }
+    /**
      * A free-text description of the resource. Max length 1024 characters.
      * 
      */
@@ -136,6 +417,24 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+     * For example: `projects/*{@literal /}locations/*{@literal /}gatewaySecurityPolicies/swg-policy`.
+     * This policy is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+     * 
+     */
+    @Export(name="gatewaySecurityPolicy", type=String.class, parameters={})
+    private Output</* @Nullable */ String> gatewaySecurityPolicy;
+
+    /**
+     * @return A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+     * For example: `projects/*{@literal /}locations/*{@literal /}gatewaySecurityPolicies/swg-policy`.
+     * This policy is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+     * 
+     */
+    public Output<Optional<String>> gatewaySecurityPolicy() {
+        return Codegen.optional(this.gatewaySecurityPolicy);
     }
     /**
      * Set of label tags associated with the Gateway resource.
@@ -184,6 +483,24 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The relative resource name identifying the VPC network that is using this configuration.
+     * For example: `projects/*{@literal /}global/networks/network-1`.
+     * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+     * 
+     */
+    @Export(name="network", type=String.class, parameters={})
+    private Output</* @Nullable */ String> network;
+
+    /**
+     * @return The relative resource name identifying the VPC network that is using this configuration.
+     * For example: `projects/*{@literal /}global/networks/network-1`.
+     * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY&#39;.
+     * 
+     */
+    public Output<Optional<String>> network() {
+        return Codegen.optional(this.network);
     }
     /**
      * One or more port numbers (1-65535), on which the Gateway will receive traffic.
@@ -268,6 +585,24 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> serverTlsPolicy() {
         return Codegen.optional(this.serverTlsPolicy);
+    }
+    /**
+     * The relative resource name identifying the subnetwork in which this SWG is allocated.
+     * For example: `projects/*{@literal /}regions/us-central1/subnetworks/network-1`.
+     * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY.
+     * 
+     */
+    @Export(name="subnetwork", type=String.class, parameters={})
+    private Output</* @Nullable */ String> subnetwork;
+
+    /**
+     * @return The relative resource name identifying the subnetwork in which this SWG is allocated.
+     * For example: `projects/*{@literal /}regions/us-central1/subnetworks/network-1`.
+     * Currently, this field is specific to gateways of type &#39;SECURE_WEB_GATEWAY.
+     * 
+     */
+    public Output<Optional<String>> subnetwork() {
+        return Codegen.optional(this.subnetwork);
     }
     /**
      * Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.

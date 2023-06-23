@@ -30,6 +30,26 @@ export type EntryGroupIamPolicy = import("./entryGroupIamPolicy").EntryGroupIamP
 export const EntryGroupIamPolicy: typeof import("./entryGroupIamPolicy").EntryGroupIamPolicy = null as any;
 utilities.lazyLoad(exports, ["EntryGroupIamPolicy"], () => require("./entryGroupIamPolicy"));
 
+export { GetEntryGroupIamPolicyArgs, GetEntryGroupIamPolicyResult, GetEntryGroupIamPolicyOutputArgs } from "./getEntryGroupIamPolicy";
+export const getEntryGroupIamPolicy: typeof import("./getEntryGroupIamPolicy").getEntryGroupIamPolicy = null as any;
+export const getEntryGroupIamPolicyOutput: typeof import("./getEntryGroupIamPolicy").getEntryGroupIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getEntryGroupIamPolicy","getEntryGroupIamPolicyOutput"], () => require("./getEntryGroupIamPolicy"));
+
+export { GetPolicyTagIamPolicyArgs, GetPolicyTagIamPolicyResult, GetPolicyTagIamPolicyOutputArgs } from "./getPolicyTagIamPolicy";
+export const getPolicyTagIamPolicy: typeof import("./getPolicyTagIamPolicy").getPolicyTagIamPolicy = null as any;
+export const getPolicyTagIamPolicyOutput: typeof import("./getPolicyTagIamPolicy").getPolicyTagIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getPolicyTagIamPolicy","getPolicyTagIamPolicyOutput"], () => require("./getPolicyTagIamPolicy"));
+
+export { GetTagTemplateIamPolicyArgs, GetTagTemplateIamPolicyResult, GetTagTemplateIamPolicyOutputArgs } from "./getTagTemplateIamPolicy";
+export const getTagTemplateIamPolicy: typeof import("./getTagTemplateIamPolicy").getTagTemplateIamPolicy = null as any;
+export const getTagTemplateIamPolicyOutput: typeof import("./getTagTemplateIamPolicy").getTagTemplateIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getTagTemplateIamPolicy","getTagTemplateIamPolicyOutput"], () => require("./getTagTemplateIamPolicy"));
+
+export { GetTaxonomyIamPolicyArgs, GetTaxonomyIamPolicyResult, GetTaxonomyIamPolicyOutputArgs } from "./getTaxonomyIamPolicy";
+export const getTaxonomyIamPolicy: typeof import("./getTaxonomyIamPolicy").getTaxonomyIamPolicy = null as any;
+export const getTaxonomyIamPolicyOutput: typeof import("./getTaxonomyIamPolicy").getTaxonomyIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getTaxonomyIamPolicy","getTaxonomyIamPolicyOutput"], () => require("./getTaxonomyIamPolicy"));
+
 export { PolicyTagArgs, PolicyTagState } from "./policyTag";
 export type PolicyTag = import("./policyTag").PolicyTag;
 export const PolicyTag: typeof import("./policyTag").PolicyTag = null as any;

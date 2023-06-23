@@ -957,6 +957,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.vertexAiCustomEndpoint);
     }
 
+    @Import(name="vmwareengineCustomEndpoint")
+    private @Nullable Output<String> vmwareengineCustomEndpoint;
+
+    public Optional<Output<String>> vmwareengineCustomEndpoint() {
+        return Optional.ofNullable(this.vmwareengineCustomEndpoint);
+    }
+
     @Import(name="vpcAccessCustomEndpoint")
     private @Nullable Output<String> vpcAccessCustomEndpoint;
 
@@ -1122,6 +1129,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.tpuCustomEndpoint = $.tpuCustomEndpoint;
         this.userProjectOverride = $.userProjectOverride;
         this.vertexAiCustomEndpoint = $.vertexAiCustomEndpoint;
+        this.vmwareengineCustomEndpoint = $.vmwareengineCustomEndpoint;
         this.vpcAccessCustomEndpoint = $.vpcAccessCustomEndpoint;
         this.workflowsCustomEndpoint = $.workflowsCustomEndpoint;
         this.workstationsCustomEndpoint = $.workstationsCustomEndpoint;
@@ -2358,6 +2366,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder vertexAiCustomEndpoint(String vertexAiCustomEndpoint) {
             return vertexAiCustomEndpoint(Output.of(vertexAiCustomEndpoint));
+        }
+
+        public Builder vmwareengineCustomEndpoint(@Nullable Output<String> vmwareengineCustomEndpoint) {
+            $.vmwareengineCustomEndpoint = vmwareengineCustomEndpoint;
+            return this;
+        }
+
+        public Builder vmwareengineCustomEndpoint(String vmwareengineCustomEndpoint) {
+            return vmwareengineCustomEndpoint(Output.of(vmwareengineCustomEndpoint));
         }
 
         public Builder vpcAccessCustomEndpoint(@Nullable Output<String> vpcAccessCustomEndpoint) {

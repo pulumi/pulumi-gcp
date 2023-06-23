@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.dataform.RepositoryArgs;
 import com.pulumi.gcp.dataform.inputs.RepositoryState;
 import com.pulumi.gcp.dataform.outputs.RepositoryGitRemoteSettings;
+import com.pulumi.gcp.dataform.outputs.RepositoryWorkspaceCompilationOverrides;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -34,6 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dataform.Repository;
  * import com.pulumi.gcp.dataform.RepositoryArgs;
  * import com.pulumi.gcp.dataform.inputs.RepositoryGitRemoteSettingsArgs;
+ * import com.pulumi.gcp.dataform.inputs.RepositoryWorkspaceCompilationOverridesArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -73,6 +75,11 @@ import javax.annotation.Nullable;
  *                 .url(gitRepository.url())
  *                 .defaultBranch(&#34;main&#34;)
  *                 .authenticationTokenSecretVersion(secretVersion.id())
+ *                 .build())
+ *             .workspaceCompilationOverrides(RepositoryWorkspaceCompilationOverridesArgs.builder()
+ *                 .defaultDatabase(&#34;database&#34;)
+ *                 .schemaSuffix(&#34;_suffix&#34;)
+ *                 .tablePrefix(&#34;prefix_&#34;)
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
@@ -168,6 +175,22 @@ public class Repository extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> region() {
         return Codegen.optional(this.region);
+    }
+    /**
+     * Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="workspaceCompilationOverrides", type=RepositoryWorkspaceCompilationOverrides.class, parameters={})
+    private Output</* @Nullable */ RepositoryWorkspaceCompilationOverrides> workspaceCompilationOverrides;
+
+    /**
+     * @return Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RepositoryWorkspaceCompilationOverrides>> workspaceCompilationOverrides() {
+        return Codegen.optional(this.workspaceCompilationOverrides);
     }
 
     /**

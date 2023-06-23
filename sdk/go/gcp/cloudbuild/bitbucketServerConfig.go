@@ -36,7 +36,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudbuild.NewBitbucketServerConfig(ctx, "bbs-config", &cloudbuild.BitbucketServerConfigArgs{
 //				ApiKey:   pulumi.String("<api-key>"),
-//				ConfigId: pulumi.String("mybbsconfig"),
+//				ConfigId: pulumi.String("bbs-config"),
 //				HostUri:  pulumi.String("https://bbs.com"),
 //				Location: pulumi.String("us-central1"),
 //				Secrets: &cloudbuild.BitbucketServerConfigSecretsArgs{
@@ -70,7 +70,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudbuild.NewBitbucketServerConfig(ctx, "bbs-config-with-repos", &cloudbuild.BitbucketServerConfigArgs{
 //				ApiKey:   pulumi.String("<api-key>"),
-//				ConfigId: pulumi.String("mybbsconfig"),
+//				ConfigId: pulumi.String("bbs-config"),
 //				ConnectedRepositories: cloudbuild.BitbucketServerConfigConnectedRepositoryArray{
 //					&cloudbuild.BitbucketServerConfigConnectedRepositoryArgs{
 //						ProjectKey: pulumi.String("DEV"),

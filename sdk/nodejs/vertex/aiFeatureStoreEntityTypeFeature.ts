@@ -155,6 +155,10 @@ export class AiFeatureStoreEntityTypeFeature extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The region of the feature
+     */
+    public /*out*/ readonly region!: pulumi.Output<string>;
+    /**
      * The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -182,6 +186,7 @@ export class AiFeatureStoreEntityTypeFeature extends pulumi.CustomResource {
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
             resourceInputs["valueType"] = state ? state.valueType : undefined;
         } else {
@@ -199,6 +204,7 @@ export class AiFeatureStoreEntityTypeFeature extends pulumi.CustomResource {
             resourceInputs["valueType"] = args ? args.valueType : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["region"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -237,6 +243,10 @@ export interface AiFeatureStoreEntityTypeFeatureState {
      * The name of the feature. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The region of the feature
+     */
+    region?: pulumi.Input<string>;
     /**
      * The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
      */

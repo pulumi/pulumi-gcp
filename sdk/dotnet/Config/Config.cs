@@ -970,6 +970,13 @@ namespace Pulumi.Gcp
             set => _vertexAiCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _vmwareengineCustomEndpoint = new __Value<string?>(() => __config.Get("vmwareengineCustomEndpoint"));
+        public static string? VmwareengineCustomEndpoint
+        {
+            get => _vmwareengineCustomEndpoint.Get();
+            set => _vmwareengineCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _vpcAccessCustomEndpoint = new __Value<string?>(() => __config.Get("vpcAccessCustomEndpoint"));
         public static string? VpcAccessCustomEndpoint
         {

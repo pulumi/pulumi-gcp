@@ -35,7 +35,7 @@ class DatabaseInstanceArgs:
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
                SQL Server version to use. Supported values include `MYSQL_5_6`,
                `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
-               `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `SQLSERVER_2017_STANDARD`,
+               `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`, `SQLSERVER_2017_STANDARD`,
                `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
                `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
                `SQLSERVER_2019_WEB`.
@@ -114,7 +114,7 @@ class DatabaseInstanceArgs:
         The MySQL, PostgreSQL or
         SQL Server version to use. Supported values include `MYSQL_5_6`,
         `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
-        `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `SQLSERVER_2017_STANDARD`,
+        `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`, `SQLSERVER_2017_STANDARD`,
         `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
         `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
         `SQLSERVER_2019_WEB`.
@@ -345,7 +345,7 @@ class _DatabaseInstanceState:
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
                SQL Server version to use. Supported values include `MYSQL_5_6`,
                `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
-               `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `SQLSERVER_2017_STANDARD`,
+               `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`, `SQLSERVER_2017_STANDARD`,
                `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
                `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
                `SQLSERVER_2019_WEB`.
@@ -485,7 +485,7 @@ class _DatabaseInstanceState:
         The MySQL, PostgreSQL or
         SQL Server version to use. Supported values include `MYSQL_5_6`,
         `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
-        `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `SQLSERVER_2017_STANDARD`,
+        `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`, `SQLSERVER_2017_STANDARD`,
         `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
         `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
         `SQLSERVER_2019_WEB`.
@@ -785,7 +785,7 @@ class DatabaseInstance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         main = gcp.sql.DatabaseInstance("main",
-            database_version="POSTGRES_14",
+            database_version="POSTGRES_15",
             region="us-central1",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
@@ -853,7 +853,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
                SQL Server version to use. Supported values include `MYSQL_5_6`,
                `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
-               `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `SQLSERVER_2017_STANDARD`,
+               `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`, `SQLSERVER_2017_STANDARD`,
                `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
                `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
                `SQLSERVER_2019_WEB`.
@@ -921,7 +921,7 @@ class DatabaseInstance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         main = gcp.sql.DatabaseInstance("main",
-            database_version="POSTGRES_14",
+            database_version="POSTGRES_15",
             region="us-central1",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
@@ -1095,7 +1095,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
                SQL Server version to use. Supported values include `MYSQL_5_6`,
                `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
-               `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `SQLSERVER_2017_STANDARD`,
+               `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`, `SQLSERVER_2017_STANDARD`,
                `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
                `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
                `SQLSERVER_2019_WEB`.
@@ -1205,7 +1205,7 @@ class DatabaseInstance(pulumi.CustomResource):
         The MySQL, PostgreSQL or
         SQL Server version to use. Supported values include `MYSQL_5_6`,
         `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
-        `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `SQLSERVER_2017_STANDARD`,
+        `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`, `POSTGRES_15`, `SQLSERVER_2017_STANDARD`,
         `SQLSERVER_2017_ENTERPRISE`, `SQLSERVER_2017_EXPRESS`, `SQLSERVER_2017_WEB`.
         `SQLSERVER_2019_STANDARD`, `SQLSERVER_2019_ENTERPRISE`, `SQLSERVER_2019_EXPRESS`,
         `SQLSERVER_2019_WEB`.

@@ -20,6 +20,11 @@ export const getService: typeof import("./getService").getService = null as any;
 export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
 utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
 
+export { GetServiceIamPolicyArgs, GetServiceIamPolicyResult, GetServiceIamPolicyOutputArgs } from "./getServiceIamPolicy";
+export const getServiceIamPolicy: typeof import("./getServiceIamPolicy").getServiceIamPolicy = null as any;
+export const getServiceIamPolicyOutput: typeof import("./getServiceIamPolicy").getServiceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceIamPolicy","getServiceIamPolicyOutput"], () => require("./getServiceIamPolicy"));
+
 export { IamBindingArgs, IamBindingState } from "./iamBinding";
 export type IamBinding = import("./iamBinding").IamBinding;
 export const IamBinding: typeof import("./iamBinding").IamBinding = null as any;

@@ -132,8 +132,7 @@ namespace Pulumi.Gcp.Kms
         /// The immutable purpose of this CryptoKey. See the
         /// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
         /// for possible inputs.
-        /// Default value is `ENCRYPT_DECRYPT`.
-        /// Possible values are: `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, `ASYMMETRIC_DECRYPT`, `MAC`.
+        /// Default value is "ENCRYPT_DECRYPT".
         /// </summary>
         [Output("purpose")]
         public Output<string?> Purpose { get; private set; } = null!;
@@ -252,8 +251,7 @@ namespace Pulumi.Gcp.Kms
         /// The immutable purpose of this CryptoKey. See the
         /// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
         /// for possible inputs.
-        /// Default value is `ENCRYPT_DECRYPT`.
-        /// Possible values are: `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, `ASYMMETRIC_DECRYPT`, `MAC`.
+        /// Default value is "ENCRYPT_DECRYPT".
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
@@ -334,8 +332,7 @@ namespace Pulumi.Gcp.Kms
         /// The immutable purpose of this CryptoKey. See the
         /// [purpose reference](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys#CryptoKeyPurpose)
         /// for possible inputs.
-        /// Default value is `ENCRYPT_DECRYPT`.
-        /// Possible values are: `ENCRYPT_DECRYPT`, `ASYMMETRIC_SIGN`, `ASYMMETRIC_DECRYPT`, `MAC`.
+        /// Default value is "ENCRYPT_DECRYPT".
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }

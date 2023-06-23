@@ -25,6 +25,11 @@ export type DataPolicyIamPolicy = import("./dataPolicyIamPolicy").DataPolicyIamP
 export const DataPolicyIamPolicy: typeof import("./dataPolicyIamPolicy").DataPolicyIamPolicy = null as any;
 utilities.lazyLoad(exports, ["DataPolicyIamPolicy"], () => require("./dataPolicyIamPolicy"));
 
+export { GetIamPolicyArgs, GetIamPolicyResult, GetIamPolicyOutputArgs } from "./getIamPolicy";
+export const getIamPolicy: typeof import("./getIamPolicy").getIamPolicy = null as any;
+export const getIamPolicyOutput: typeof import("./getIamPolicy").getIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getIamPolicy","getIamPolicyOutput"], () => require("./getIamPolicy"));
+
 
 const _module = {
     version: utilities.getVersion(),

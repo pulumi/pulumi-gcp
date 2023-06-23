@@ -22,6 +22,10 @@ __all__ = [
     'FeatureMembershipMesh',
     'FeatureResourceState',
     'FeatureSpec',
+    'FeatureSpecFleetobservability',
+    'FeatureSpecFleetobservabilityLoggingConfig',
+    'FeatureSpecFleetobservabilityLoggingConfigDefaultConfig',
+    'FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig',
     'FeatureSpecMulticlusteringress',
     'FeatureState',
     'FeatureStateState',
@@ -733,13 +737,21 @@ class FeatureResourceState(dict):
 @pulumi.output_type
 class FeatureSpec(dict):
     def __init__(__self__, *,
+                 fleetobservability: Optional['outputs.FeatureSpecFleetobservability'] = None,
                  multiclusteringress: Optional['outputs.FeatureSpecMulticlusteringress'] = None):
         """
         :param 'FeatureSpecMulticlusteringressArgs' multiclusteringress: Multicluster Ingress-specific spec.
                The `multiclusteringress` block supports:
         """
+        if fleetobservability is not None:
+            pulumi.set(__self__, "fleetobservability", fleetobservability)
         if multiclusteringress is not None:
             pulumi.set(__self__, "multiclusteringress", multiclusteringress)
+
+    @property
+    @pulumi.getter
+    def fleetobservability(self) -> Optional['outputs.FeatureSpecFleetobservability']:
+        return pulumi.get(self, "fleetobservability")
 
     @property
     @pulumi.getter
@@ -749,6 +761,102 @@ class FeatureSpec(dict):
         The `multiclusteringress` block supports:
         """
         return pulumi.get(self, "multiclusteringress")
+
+
+@pulumi.output_type
+class FeatureSpecFleetobservability(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "loggingConfig":
+            suggest = "logging_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureSpecFleetobservability. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureSpecFleetobservability.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureSpecFleetobservability.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 logging_config: Optional['outputs.FeatureSpecFleetobservabilityLoggingConfig'] = None):
+        if logging_config is not None:
+            pulumi.set(__self__, "logging_config", logging_config)
+
+    @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> Optional['outputs.FeatureSpecFleetobservabilityLoggingConfig']:
+        return pulumi.get(self, "logging_config")
+
+
+@pulumi.output_type
+class FeatureSpecFleetobservabilityLoggingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultConfig":
+            suggest = "default_config"
+        elif key == "fleetScopeLogsConfig":
+            suggest = "fleet_scope_logs_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureSpecFleetobservabilityLoggingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureSpecFleetobservabilityLoggingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureSpecFleetobservabilityLoggingConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_config: Optional['outputs.FeatureSpecFleetobservabilityLoggingConfigDefaultConfig'] = None,
+                 fleet_scope_logs_config: Optional['outputs.FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig'] = None):
+        if default_config is not None:
+            pulumi.set(__self__, "default_config", default_config)
+        if fleet_scope_logs_config is not None:
+            pulumi.set(__self__, "fleet_scope_logs_config", fleet_scope_logs_config)
+
+    @property
+    @pulumi.getter(name="defaultConfig")
+    def default_config(self) -> Optional['outputs.FeatureSpecFleetobservabilityLoggingConfigDefaultConfig']:
+        return pulumi.get(self, "default_config")
+
+    @property
+    @pulumi.getter(name="fleetScopeLogsConfig")
+    def fleet_scope_logs_config(self) -> Optional['outputs.FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig']:
+        return pulumi.get(self, "fleet_scope_logs_config")
+
+
+@pulumi.output_type
+class FeatureSpecFleetobservabilityLoggingConfigDefaultConfig(dict):
+    def __init__(__self__, *,
+                 mode: Optional[str] = None):
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig(dict):
+    def __init__(__self__, *,
+                 mode: Optional[str] = None):
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        return pulumi.get(self, "mode")
 
 
 @pulumi.output_type

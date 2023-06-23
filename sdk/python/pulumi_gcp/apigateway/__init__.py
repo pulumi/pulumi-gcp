@@ -17,5 +17,8 @@ from .gateway import *
 from .gateway_iam_binding import *
 from .gateway_iam_member import *
 from .gateway_iam_policy import *
+from .get_api_config_iam_policy import *
+from .get_api_iam_policy import *
+from .get_gateway_iam_policy import *
 from ._inputs import *
 from . import outputs

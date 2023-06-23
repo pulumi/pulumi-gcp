@@ -13,10 +13,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetRecordSetResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
     private String managedZone;
     private String name;
@@ -34,10 +30,6 @@ public final class GetRecordSetResult {
     private String type;
 
     private GetRecordSetResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }

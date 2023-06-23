@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.vpcaccess.inputs.ConnectorSubnetArgs;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class ConnectorState extends com.pulumi.resources.ResourceArgs {
 
     public static final ConnectorState Empty = new ConnectorState();
+
+    /**
+     * List of projects using the connector.
+     * 
+     */
+    @Import(name="connectedProjects")
+    private @Nullable Output<List<String>> connectedProjects;
+
+    /**
+     * @return List of projects using the connector.
+     * 
+     */
+    public Optional<Output<List<String>>> connectedProjects() {
+        return Optional.ofNullable(this.connectedProjects);
+    }
 
     /**
      * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
@@ -223,6 +239,7 @@ public final class ConnectorState extends com.pulumi.resources.ResourceArgs {
     private ConnectorState() {}
 
     private ConnectorState(ConnectorState $) {
+        this.connectedProjects = $.connectedProjects;
         this.ipCidrRange = $.ipCidrRange;
         this.machineType = $.machineType;
         this.maxInstances = $.maxInstances;
@@ -254,6 +271,37 @@ public final class ConnectorState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ConnectorState defaults) {
             $ = new ConnectorState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param connectedProjects List of projects using the connector.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectedProjects(@Nullable Output<List<String>> connectedProjects) {
+            $.connectedProjects = connectedProjects;
+            return this;
+        }
+
+        /**
+         * @param connectedProjects List of projects using the connector.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectedProjects(List<String> connectedProjects) {
+            return connectedProjects(Output.of(connectedProjects));
+        }
+
+        /**
+         * @param connectedProjects List of projects using the connector.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder connectedProjects(String... connectedProjects) {
+            return connectedProjects(List.of(connectedProjects));
         }
 
         /**

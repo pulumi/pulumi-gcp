@@ -146,6 +146,40 @@ import (
 //	}
 //
 // ```
+// ### Dlp Stored Info Type With Id
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/dataloss"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataloss.NewPreventionStoredInfoType(ctx, "withStoredInfoTypeId", &dataloss.PreventionStoredInfoTypeArgs{
+//				Description: pulumi.String("Description"),
+//				DisplayName: pulumi.String("Displayname"),
+//				Parent:      pulumi.String("projects/my-project-name"),
+//				Regex: &dataloss.PreventionStoredInfoTypeRegexArgs{
+//					GroupIndexes: pulumi.IntArray{
+//						pulumi.Int(2),
+//					},
+//					Pattern: pulumi.String("patient"),
+//				},
+//				StoredInfoTypeId: pulumi.String("id-"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -188,6 +222,10 @@ type PreventionStoredInfoType struct {
 	// Regular expression which defines the rule.
 	// Structure is documented below.
 	Regex PreventionStoredInfoTypeRegexPtrOutput `pulumi:"regex"`
+	// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is 100
+	// characters. Can be empty to allow the system to generate one.
+	StoredInfoTypeId pulumi.StringOutput `pulumi:"storedInfoTypeId"`
 }
 
 // NewPreventionStoredInfoType registers a new resource with the given unique name, arguments, and options.
@@ -245,6 +283,10 @@ type preventionStoredInfoTypeState struct {
 	// Regular expression which defines the rule.
 	// Structure is documented below.
 	Regex *PreventionStoredInfoTypeRegex `pulumi:"regex"`
+	// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is 100
+	// characters. Can be empty to allow the system to generate one.
+	StoredInfoTypeId *string `pulumi:"storedInfoTypeId"`
 }
 
 type PreventionStoredInfoTypeState struct {
@@ -271,6 +313,10 @@ type PreventionStoredInfoTypeState struct {
 	// Regular expression which defines the rule.
 	// Structure is documented below.
 	Regex PreventionStoredInfoTypeRegexPtrInput
+	// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is 100
+	// characters. Can be empty to allow the system to generate one.
+	StoredInfoTypeId pulumi.StringPtrInput
 }
 
 func (PreventionStoredInfoTypeState) ElementType() reflect.Type {
@@ -299,6 +345,10 @@ type preventionStoredInfoTypeArgs struct {
 	// Regular expression which defines the rule.
 	// Structure is documented below.
 	Regex *PreventionStoredInfoTypeRegex `pulumi:"regex"`
+	// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is 100
+	// characters. Can be empty to allow the system to generate one.
+	StoredInfoTypeId *string `pulumi:"storedInfoTypeId"`
 }
 
 // The set of arguments for constructing a PreventionStoredInfoType resource.
@@ -324,6 +374,10 @@ type PreventionStoredInfoTypeArgs struct {
 	// Regular expression which defines the rule.
 	// Structure is documented below.
 	Regex PreventionStoredInfoTypeRegexPtrInput
+	// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
+	// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is 100
+	// characters. Can be empty to allow the system to generate one.
+	StoredInfoTypeId pulumi.StringPtrInput
 }
 
 func (PreventionStoredInfoTypeArgs) ElementType() reflect.Type {
@@ -457,6 +511,13 @@ func (o PreventionStoredInfoTypeOutput) Parent() pulumi.StringOutput {
 // Structure is documented below.
 func (o PreventionStoredInfoTypeOutput) Regex() PreventionStoredInfoTypeRegexPtrOutput {
 	return o.ApplyT(func(v *PreventionStoredInfoType) PreventionStoredInfoTypeRegexPtrOutput { return v.Regex }).(PreventionStoredInfoTypeRegexPtrOutput)
+}
+
+// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
+// that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is 100
+// characters. Can be empty to allow the system to generate one.
+func (o PreventionStoredInfoTypeOutput) StoredInfoTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PreventionStoredInfoType) pulumi.StringOutput { return v.StoredInfoTypeId }).(pulumi.StringOutput)
 }
 
 type PreventionStoredInfoTypeArrayOutput struct{ *pulumi.OutputState }

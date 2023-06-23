@@ -249,6 +249,7 @@ export class Disk extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * Indicates how many IOPS must be provisioned for the disk.
+     * Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
      */
     public readonly provisionedIops!: pulumi.Output<number>;
     /**
@@ -535,6 +536,7 @@ export interface DiskState {
     project?: pulumi.Input<string>;
     /**
      * Indicates how many IOPS must be provisioned for the disk.
+     * Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
      */
     provisionedIops?: pulumi.Input<number>;
     /**
@@ -724,6 +726,7 @@ export interface DiskArgs {
     project?: pulumi.Input<string>;
     /**
      * Indicates how many IOPS must be provisioned for the disk.
+     * Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
      */
     provisionedIops?: pulumi.Input<number>;
     /**

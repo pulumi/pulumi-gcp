@@ -21,7 +21,8 @@ class PreventionJobTriggerArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  inspect_job: Optional[pulumi.Input['PreventionJobTriggerInspectJobArgs']] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input[str]] = None,
+                 trigger_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PreventionJobTrigger resource.
         :param pulumi.Input[str] parent: The parent of the trigger, either in the format `projects/{{project}}`
@@ -38,6 +39,9 @@ class PreventionJobTriggerArgs:
         :param pulumi.Input[str] status: Whether the trigger is currently active.
                Default value is `HEALTHY`.
                Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
+        :param pulumi.Input[str] trigger_id: The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+               that is, it must match the regular expression: [a-zA-Z\\d-_]+.
+               The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
         pulumi.set(__self__, "parent", parent)
         pulumi.set(__self__, "triggers", triggers)
@@ -49,6 +53,8 @@ class PreventionJobTriggerArgs:
             pulumi.set(__self__, "inspect_job", inspect_job)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if trigger_id is not None:
+            pulumi.set(__self__, "trigger_id", trigger_id)
 
     @property
     @pulumi.getter
@@ -130,6 +136,20 @@ class PreventionJobTriggerArgs:
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
 
+    @property
+    @pulumi.getter(name="triggerId")
+    def trigger_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+        that is, it must match the regular expression: [a-zA-Z\\d-_]+.
+        The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        """
+        return pulumi.get(self, "trigger_id")
+
+    @trigger_id.setter
+    def trigger_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "trigger_id", value)
+
 
 @pulumi.input_type
 class _PreventionJobTriggerState:
@@ -142,6 +162,7 @@ class _PreventionJobTriggerState:
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 trigger_id: Optional[pulumi.Input[str]] = None,
                  triggers: Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerTriggerArgs']]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
@@ -206,6 +227,9 @@ class _PreventionJobTriggerState:
         :param pulumi.Input[str] status: Whether the trigger is currently active.
                Default value is `HEALTHY`.
                Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
+        :param pulumi.Input[str] trigger_id: The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+               that is, it must match the regular expression: [a-zA-Z\\d-_]+.
+               The maximum length is 100 characters. Can be empty to allow the system to generate one.
         :param pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerTriggerArgs']]] triggers: What event needs to occur for a new job to be started.
                Structure is documented below.
         :param pulumi.Input[str] update_time: The last update timestamp of an inspectTemplate. Set by the server.
@@ -226,6 +250,8 @@ class _PreventionJobTriggerState:
             pulumi.set(__self__, "parent", parent)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if trigger_id is not None:
+            pulumi.set(__self__, "trigger_id", trigger_id)
         if triggers is not None:
             pulumi.set(__self__, "triggers", triggers)
         if update_time is not None:
@@ -380,6 +406,20 @@ class _PreventionJobTriggerState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter(name="triggerId")
+    def trigger_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+        that is, it must match the regular expression: [a-zA-Z\\d-_]+.
+        The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        """
+        return pulumi.get(self, "trigger_id")
+
+    @trigger_id.setter
+    def trigger_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "trigger_id", value)
+
+    @property
     @pulumi.getter
     def triggers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PreventionJobTriggerTriggerArgs']]]]:
         """
@@ -415,6 +455,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                  inspect_job: Optional[pulumi.Input[pulumi.InputType['PreventionJobTriggerInspectJobArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 trigger_id: Optional[pulumi.Input[str]] = None,
                  triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionJobTriggerTriggerArgs']]]]] = None,
                  __props__=None):
         """
@@ -721,6 +762,43 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 ),
             )])
         ```
+        ### Dlp Job Trigger With Id
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        with_trigger_id = gcp.dataloss.PreventionJobTrigger("withTriggerId",
+            description="Starting description",
+            display_name="display",
+            inspect_job=gcp.dataloss.PreventionJobTriggerInspectJobArgs(
+                actions=[gcp.dataloss.PreventionJobTriggerInspectJobActionArgs(
+                    save_findings=gcp.dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs(
+                        output_config=gcp.dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs(
+                            table=gcp.dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs(
+                                dataset_id="dataset123",
+                                project_id="project",
+                            ),
+                        ),
+                    ),
+                )],
+                inspect_template_name="fake",
+                storage_config=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigArgs(
+                    cloud_storage_options=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs(
+                        file_set=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs(
+                            url="gs://mybucket/directory/",
+                        ),
+                    ),
+                ),
+            ),
+            parent="projects/my-project-name",
+            trigger_id="id-",
+            triggers=[gcp.dataloss.PreventionJobTriggerTriggerArgs(
+                schedule=gcp.dataloss.PreventionJobTriggerTriggerScheduleArgs(
+                    recurrence_period_duration="86400s",
+                ),
+            )])
+        ```
 
         ## Import
 
@@ -748,6 +826,9 @@ class PreventionJobTrigger(pulumi.CustomResource):
         :param pulumi.Input[str] status: Whether the trigger is currently active.
                Default value is `HEALTHY`.
                Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
+        :param pulumi.Input[str] trigger_id: The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+               that is, it must match the regular expression: [a-zA-Z\\d-_]+.
+               The maximum length is 100 characters. Can be empty to allow the system to generate one.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionJobTriggerTriggerArgs']]]] triggers: What event needs to occur for a new job to be started.
                Structure is documented below.
         """
@@ -1061,6 +1142,43 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 ),
             )])
         ```
+        ### Dlp Job Trigger With Id
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        with_trigger_id = gcp.dataloss.PreventionJobTrigger("withTriggerId",
+            description="Starting description",
+            display_name="display",
+            inspect_job=gcp.dataloss.PreventionJobTriggerInspectJobArgs(
+                actions=[gcp.dataloss.PreventionJobTriggerInspectJobActionArgs(
+                    save_findings=gcp.dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs(
+                        output_config=gcp.dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs(
+                            table=gcp.dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs(
+                                dataset_id="dataset123",
+                                project_id="project",
+                            ),
+                        ),
+                    ),
+                )],
+                inspect_template_name="fake",
+                storage_config=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigArgs(
+                    cloud_storage_options=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs(
+                        file_set=gcp.dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs(
+                            url="gs://mybucket/directory/",
+                        ),
+                    ),
+                ),
+            ),
+            parent="projects/my-project-name",
+            trigger_id="id-",
+            triggers=[gcp.dataloss.PreventionJobTriggerTriggerArgs(
+                schedule=gcp.dataloss.PreventionJobTriggerTriggerScheduleArgs(
+                    recurrence_period_duration="86400s",
+                ),
+            )])
+        ```
 
         ## Import
 
@@ -1094,6 +1212,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                  inspect_job: Optional[pulumi.Input[pulumi.InputType['PreventionJobTriggerInspectJobArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 trigger_id: Optional[pulumi.Input[str]] = None,
                  triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionJobTriggerTriggerArgs']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1111,6 +1230,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
             __props__.__dict__["status"] = status
+            __props__.__dict__["trigger_id"] = trigger_id
             if triggers is None and not opts.urn:
                 raise TypeError("Missing required property 'triggers'")
             __props__.__dict__["triggers"] = triggers
@@ -1136,6 +1256,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            trigger_id: Optional[pulumi.Input[str]] = None,
             triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionJobTriggerTriggerArgs']]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'PreventionJobTrigger':
         """
@@ -1205,6 +1326,9 @@ class PreventionJobTrigger(pulumi.CustomResource):
         :param pulumi.Input[str] status: Whether the trigger is currently active.
                Default value is `HEALTHY`.
                Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
+        :param pulumi.Input[str] trigger_id: The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+               that is, it must match the regular expression: [a-zA-Z\\d-_]+.
+               The maximum length is 100 characters. Can be empty to allow the system to generate one.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PreventionJobTriggerTriggerArgs']]]] triggers: What event needs to occur for a new job to be started.
                Structure is documented below.
         :param pulumi.Input[str] update_time: The last update timestamp of an inspectTemplate. Set by the server.
@@ -1221,6 +1345,7 @@ class PreventionJobTrigger(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
         __props__.__dict__["status"] = status
+        __props__.__dict__["trigger_id"] = trigger_id
         __props__.__dict__["triggers"] = triggers
         __props__.__dict__["update_time"] = update_time
         return PreventionJobTrigger(resource_name, opts=opts, __props__=__props__)
@@ -1340,6 +1465,16 @@ class PreventionJobTrigger(pulumi.CustomResource):
         Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="triggerId")
+    def trigger_id(self) -> pulumi.Output[str]:
+        """
+        The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+        that is, it must match the regular expression: [a-zA-Z\\d-_]+.
+        The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        """
+        return pulumi.get(self, "trigger_id")
 
     @property
     @pulumi.getter

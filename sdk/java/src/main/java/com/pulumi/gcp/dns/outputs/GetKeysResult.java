@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetKeysResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Unique identifier for the resource; defined by the server.
      * 
      */
     private String id;
@@ -32,7 +32,7 @@ public final class GetKeysResult {
 
     private GetKeysResult() {}
     /**
-     * @return The provider-assigned unique ID for this managed resource.
+     * @return Unique identifier for the resource; defined by the server.
      * 
      */
     public String id() {

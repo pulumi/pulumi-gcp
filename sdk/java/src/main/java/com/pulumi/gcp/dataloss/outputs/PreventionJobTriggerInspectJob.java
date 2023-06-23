@@ -20,7 +20,7 @@ public final class PreventionJobTriggerInspectJob {
      * Structure is documented below.
      * 
      */
-    private List<PreventionJobTriggerInspectJobAction> actions;
+    private @Nullable List<PreventionJobTriggerInspectJobAction> actions;
     /**
      * @return The core content of the template.
      * Structure is documented below.
@@ -31,7 +31,7 @@ public final class PreventionJobTriggerInspectJob {
      * @return The name of the template to run when this job is triggered.
      * 
      */
-    private String inspectTemplateName;
+    private @Nullable String inspectTemplateName;
     /**
      * @return Information on where to inspect
      * Structure is documented below.
@@ -46,7 +46,7 @@ public final class PreventionJobTriggerInspectJob {
      * 
      */
     public List<PreventionJobTriggerInspectJobAction> actions() {
-        return this.actions;
+        return this.actions == null ? List.of() : this.actions;
     }
     /**
      * @return The core content of the template.
@@ -60,8 +60,8 @@ public final class PreventionJobTriggerInspectJob {
      * @return The name of the template to run when this job is triggered.
      * 
      */
-    public String inspectTemplateName() {
-        return this.inspectTemplateName;
+    public Optional<String> inspectTemplateName() {
+        return Optional.ofNullable(this.inspectTemplateName);
     }
     /**
      * @return Information on where to inspect
@@ -81,9 +81,9 @@ public final class PreventionJobTriggerInspectJob {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<PreventionJobTriggerInspectJobAction> actions;
+        private @Nullable List<PreventionJobTriggerInspectJobAction> actions;
         private @Nullable PreventionJobTriggerInspectJobInspectConfig inspectConfig;
-        private String inspectTemplateName;
+        private @Nullable String inspectTemplateName;
         private PreventionJobTriggerInspectJobStorageConfig storageConfig;
         public Builder() {}
         public Builder(PreventionJobTriggerInspectJob defaults) {
@@ -95,8 +95,8 @@ public final class PreventionJobTriggerInspectJob {
         }
 
         @CustomType.Setter
-        public Builder actions(List<PreventionJobTriggerInspectJobAction> actions) {
-            this.actions = Objects.requireNonNull(actions);
+        public Builder actions(@Nullable List<PreventionJobTriggerInspectJobAction> actions) {
+            this.actions = actions;
             return this;
         }
         public Builder actions(PreventionJobTriggerInspectJobAction... actions) {
@@ -108,8 +108,8 @@ public final class PreventionJobTriggerInspectJob {
             return this;
         }
         @CustomType.Setter
-        public Builder inspectTemplateName(String inspectTemplateName) {
-            this.inspectTemplateName = Objects.requireNonNull(inspectTemplateName);
+        public Builder inspectTemplateName(@Nullable String inspectTemplateName) {
+            this.inspectTemplateName = inspectTemplateName;
             return this;
         }
         @CustomType.Setter

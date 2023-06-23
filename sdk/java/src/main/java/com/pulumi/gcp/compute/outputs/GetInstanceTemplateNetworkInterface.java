@@ -45,6 +45,7 @@ public final class GetInstanceTemplateNetworkInterface {
      * 
      */
     private String network;
+    private String networkAttachment;
     /**
      * @return The private IP address to assign to the instance. If
      * empty, the address will be automatically assigned.
@@ -112,6 +113,9 @@ public final class GetInstanceTemplateNetworkInterface {
     public String network() {
         return this.network;
     }
+    public String networkAttachment() {
+        return this.networkAttachment;
+    }
     /**
      * @return The private IP address to assign to the instance. If
      * empty, the address will be automatically assigned.
@@ -162,6 +166,7 @@ public final class GetInstanceTemplateNetworkInterface {
         private String ipv6AccessType;
         private String name;
         private String network;
+        private String networkAttachment;
         private String networkIp;
         private String nicType;
         private Integer queueCount;
@@ -177,6 +182,7 @@ public final class GetInstanceTemplateNetworkInterface {
     	      this.ipv6AccessType = defaults.ipv6AccessType;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
+    	      this.networkAttachment = defaults.networkAttachment;
     	      this.networkIp = defaults.networkIp;
     	      this.nicType = defaults.nicType;
     	      this.queueCount = defaults.queueCount;
@@ -225,6 +231,11 @@ public final class GetInstanceTemplateNetworkInterface {
             return this;
         }
         @CustomType.Setter
+        public Builder networkAttachment(String networkAttachment) {
+            this.networkAttachment = Objects.requireNonNull(networkAttachment);
+            return this;
+        }
+        @CustomType.Setter
         public Builder networkIp(String networkIp) {
             this.networkIp = Objects.requireNonNull(networkIp);
             return this;
@@ -262,6 +273,7 @@ public final class GetInstanceTemplateNetworkInterface {
             o.ipv6AccessType = ipv6AccessType;
             o.name = name;
             o.network = network;
+            o.networkAttachment = networkAttachment;
             o.networkIp = networkIp;
             o.nicType = nicType;
             o.queueCount = queueCount;

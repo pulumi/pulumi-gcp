@@ -280,6 +280,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Indicates how many IOPS must be provisioned for the disk.
+     * Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
      * 
      */
     @Import(name="provisionedIops")
@@ -287,6 +288,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Indicates how many IOPS must be provisioned for the disk.
+     * Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
      * 
      */
     public Optional<Output<Integer>> provisionedIops() {
@@ -869,6 +871,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param provisionedIops Indicates how many IOPS must be provisioned for the disk.
+         * Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
          * 
          * @return builder
          * 
@@ -880,6 +883,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param provisionedIops Indicates how many IOPS must be provisioned for the disk.
+         * Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
          * 
          * @return builder
          * 

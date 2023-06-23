@@ -30,6 +30,11 @@ export const getFunction: typeof import("./getFunction").getFunction = null as a
 export const getFunctionOutput: typeof import("./getFunction").getFunctionOutput = null as any;
 utilities.lazyLoad(exports, ["getFunction","getFunctionOutput"], () => require("./getFunction"));
 
+export { GetFunctionIamPolicyArgs, GetFunctionIamPolicyResult, GetFunctionIamPolicyOutputArgs } from "./getFunctionIamPolicy";
+export const getFunctionIamPolicy: typeof import("./getFunctionIamPolicy").getFunctionIamPolicy = null as any;
+export const getFunctionIamPolicyOutput: typeof import("./getFunctionIamPolicy").getFunctionIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getFunctionIamPolicy","getFunctionIamPolicyOutput"], () => require("./getFunctionIamPolicy"));
+
 
 const _module = {
     version: utilities.getVersion(),

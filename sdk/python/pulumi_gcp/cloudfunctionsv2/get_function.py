@@ -22,7 +22,7 @@ class GetFunctionResult:
     """
     A collection of values returned by getFunction.
     """
-    def __init__(__self__, build_configs=None, description=None, environment=None, event_triggers=None, id=None, labels=None, location=None, name=None, project=None, service_configs=None, state=None, update_time=None):
+    def __init__(__self__, build_configs=None, description=None, environment=None, event_triggers=None, id=None, labels=None, location=None, name=None, project=None, service_configs=None, state=None, update_time=None, url=None):
         if build_configs and not isinstance(build_configs, list):
             raise TypeError("Expected argument 'build_configs' to be a list")
         pulumi.set(__self__, "build_configs", build_configs)
@@ -59,6 +59,9 @@ class GetFunctionResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+        if url and not isinstance(url, str):
+            raise TypeError("Expected argument 'url' to be a str")
+        pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter(name="buildConfigs")
@@ -123,6 +126,11 @@ class GetFunctionResult:
     def update_time(self) -> str:
         return pulumi.get(self, "update_time")
 
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        return pulumi.get(self, "url")
+
 
 class AwaitableGetFunctionResult(GetFunctionResult):
     # pylint: disable=using-constant-test
@@ -141,7 +149,8 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             project=self.project,
             service_configs=self.service_configs,
             state=self.state,
-            update_time=self.update_time)
+            update_time=self.update_time,
+            url=self.url)
 
 
 def get_function(location: Optional[str] = None,
@@ -190,7 +199,8 @@ def get_function(location: Optional[str] = None,
         project=__ret__.project,
         service_configs=__ret__.service_configs,
         state=__ret__.state,
-        update_time=__ret__.update_time)
+        update_time=__ret__.update_time,
+        url=__ret__.url)
 
 
 @_utilities.lift_output_func(get_function)

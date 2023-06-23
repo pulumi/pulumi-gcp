@@ -206,6 +206,8 @@ if typing.TYPE_CHECKING:
     tpu = __tpu
     import pulumi_gcp.vertex as __vertex
     vertex = __vertex
+    import pulumi_gcp.vmwareengine as __vmwareengine
+    vmwareengine = __vmwareengine
     import pulumi_gcp.vpcaccess as __vpcaccess
     vpcaccess = __vpcaccess
     import pulumi_gcp.workflows as __workflows
@@ -311,6 +313,7 @@ else:
     tags = _utilities.lazy_import('pulumi_gcp.tags')
     tpu = _utilities.lazy_import('pulumi_gcp.tpu')
     vertex = _utilities.lazy_import('pulumi_gcp.vertex')
+    vmwareengine = _utilities.lazy_import('pulumi_gcp.vmwareengine')
     vpcaccess = _utilities.lazy_import('pulumi_gcp.vpcaccess')
     workflows = _utilities.lazy_import('pulumi_gcp.workflows')
     workstations = _utilities.lazy_import('pulumi_gcp.workstations')
@@ -412,6 +415,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.accesscontextmanager",
   "classes": {
    "gcp:accesscontextmanager/servicePerimeter:ServicePerimeter": "ServicePerimeter"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "accesscontextmanager/servicePerimeterEgressPolicy",
+  "fqn": "pulumi_gcp.accesscontextmanager",
+  "classes": {
+   "gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy": "ServicePerimeterEgressPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "accesscontextmanager/servicePerimeterIngressPolicy",
+  "fqn": "pulumi_gcp.accesscontextmanager",
+  "classes": {
+   "gcp:accesscontextmanager/servicePerimeterIngressPolicy:ServicePerimeterIngressPolicy": "ServicePerimeterIngressPolicy"
   }
  },
  {
@@ -1368,6 +1387,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "certificatemanager/certificateIssuanceConfig",
+  "fqn": "pulumi_gcp.certificatemanager",
+  "classes": {
+   "gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig": "CertificateIssuanceConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "certificatemanager/certificateMap",
   "fqn": "pulumi_gcp.certificatemanager",
   "classes": {
@@ -2196,6 +2223,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/networkEndpointGroup:NetworkEndpointGroup": "NetworkEndpointGroup"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/networkEndpointList",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/networkEndpointList:NetworkEndpointList": "NetworkEndpointList"
   }
  },
  {
@@ -3148,6 +3183,38 @@ _utilities.register(
   "fqn": "pulumi_gcp.dataplex",
   "classes": {
    "gcp:dataplex/assetIamPolicy:AssetIamPolicy": "AssetIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/datascan",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/datascan:Datascan": "Datascan"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/datascanIamBinding",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/datascanIamBinding:DatascanIamBinding": "DatascanIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/datascanIamMember",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/datascanIamMember:DatascanIamMember": "DatascanIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/datascanIamPolicy",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/datascanIamPolicy:DatascanIamPolicy": "DatascanIamPolicy"
   }
  },
  {
@@ -6208,6 +6275,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "vertex/aiIndexEndpoint",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiIndexEndpoint:AiIndexEndpoint": "AiIndexEndpoint"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "vertex/aiMetadataStore",
   "fqn": "pulumi_gcp.vertex",
   "classes": {
@@ -6220,6 +6295,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiTensorboard:AiTensorboard": "AiTensorboard"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vmwareengine/network",
+  "fqn": "pulumi_gcp.vmwareengine",
+  "classes": {
+   "gcp:vmwareengine/network:Network": "Network"
   }
  },
  {

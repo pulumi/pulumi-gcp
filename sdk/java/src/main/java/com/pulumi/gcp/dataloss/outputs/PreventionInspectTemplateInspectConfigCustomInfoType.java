@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeRegex;
+import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateType;
 import java.lang.String;
@@ -51,6 +52,12 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
      * 
      */
     private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeRegex regex;
+    /**
+     * @return Optional custom sensitivity for this InfoType. This only applies to data profiling.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore sensitivityScore;
     /**
      * @return A reference to a StoredInfoType to use with scanning.
      * Structure is documented below.
@@ -110,6 +117,14 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
         return Optional.ofNullable(this.regex);
     }
     /**
+     * @return Optional custom sensitivity for this InfoType. This only applies to data profiling.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore> sensitivityScore() {
+        return Optional.ofNullable(this.sensitivityScore);
+    }
+    /**
      * @return A reference to a StoredInfoType to use with scanning.
      * Structure is documented below.
      * 
@@ -139,6 +154,7 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
         private PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType infoType;
         private @Nullable String likelihood;
         private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeRegex regex;
+        private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore sensitivityScore;
         private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType storedType;
         private @Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateType surrogateType;
         public Builder() {}
@@ -149,6 +165,7 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
     	      this.infoType = defaults.infoType;
     	      this.likelihood = defaults.likelihood;
     	      this.regex = defaults.regex;
+    	      this.sensitivityScore = defaults.sensitivityScore;
     	      this.storedType = defaults.storedType;
     	      this.surrogateType = defaults.surrogateType;
         }
@@ -179,6 +196,11 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
             return this;
         }
         @CustomType.Setter
+        public Builder sensitivityScore(@Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore sensitivityScore) {
+            this.sensitivityScore = sensitivityScore;
+            return this;
+        }
+        @CustomType.Setter
         public Builder storedType(@Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType storedType) {
             this.storedType = storedType;
             return this;
@@ -195,6 +217,7 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
             o.infoType = infoType;
             o.likelihood = likelihood;
             o.regex = regex;
+            o.sensitivityScore = sensitivityScore;
             o.storedType = storedType;
             o.surrogateType = surrogateType;
             return o;

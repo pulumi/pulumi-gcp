@@ -279,11 +279,6 @@ class GetInstanceTemplateResult:
     @property
     @pulumi.getter(name="networkInterfaces")
     def network_interfaces(self) -> Sequence['outputs.GetInstanceTemplateNetworkInterfaceResult']:
-        """
-        Networks to attach to instances created from
-        this template. This can be specified multiple times for multiple networks.
-        Structure is documented below.
-        """
         return pulumi.get(self, "network_interfaces")
 
     @property

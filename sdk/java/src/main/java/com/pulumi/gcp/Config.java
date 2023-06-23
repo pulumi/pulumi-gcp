@@ -416,6 +416,9 @@ public final class Config {
     public Optional<String> vertexAiCustomEndpoint() {
         return Codegen.stringProp("vertexAiCustomEndpoint").config(config).get();
     }
+    public Optional<String> vmwareengineCustomEndpoint() {
+        return Codegen.stringProp("vmwareengineCustomEndpoint").config(config).get();
+    }
     public Optional<String> vpcAccessCustomEndpoint() {
         return Codegen.stringProp("vpcAccessCustomEndpoint").config(config).get();
     }

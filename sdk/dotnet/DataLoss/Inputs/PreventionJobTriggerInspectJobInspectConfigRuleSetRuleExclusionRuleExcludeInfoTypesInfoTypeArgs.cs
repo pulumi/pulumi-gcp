@@ -20,6 +20,13 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
+        /// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sensitivityScore")]
+        public Input<Inputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScoreArgs>? SensitivityScore { get; set; }
+
+        /// <summary>
         /// Version of the information type to use. By default, the version is set to stable.
         /// </summary>
         [Input("version")]

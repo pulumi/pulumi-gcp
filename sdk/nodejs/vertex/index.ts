@@ -65,6 +65,11 @@ export type AiIndex = import("./aiIndex").AiIndex;
 export const AiIndex: typeof import("./aiIndex").AiIndex = null as any;
 utilities.lazyLoad(exports, ["AiIndex"], () => require("./aiIndex"));
 
+export { AiIndexEndpointArgs, AiIndexEndpointState } from "./aiIndexEndpoint";
+export type AiIndexEndpoint = import("./aiIndexEndpoint").AiIndexEndpoint;
+export const AiIndexEndpoint: typeof import("./aiIndexEndpoint").AiIndexEndpoint = null as any;
+utilities.lazyLoad(exports, ["AiIndexEndpoint"], () => require("./aiIndexEndpoint"));
+
 export { AiMetadataStoreArgs, AiMetadataStoreState } from "./aiMetadataStore";
 export type AiMetadataStore = import("./aiMetadataStore").AiMetadataStore;
 export const AiMetadataStore: typeof import("./aiMetadataStore").AiMetadataStore = null as any;
@@ -74,6 +79,21 @@ export { AiTensorboardArgs, AiTensorboardState } from "./aiTensorboard";
 export type AiTensorboard = import("./aiTensorboard").AiTensorboard;
 export const AiTensorboard: typeof import("./aiTensorboard").AiTensorboard = null as any;
 utilities.lazyLoad(exports, ["AiTensorboard"], () => require("./aiTensorboard"));
+
+export { GetAiFeaturestoreEntitytypeIamPolicyArgs, GetAiFeaturestoreEntitytypeIamPolicyResult, GetAiFeaturestoreEntitytypeIamPolicyOutputArgs } from "./getAiFeaturestoreEntitytypeIamPolicy";
+export const getAiFeaturestoreEntitytypeIamPolicy: typeof import("./getAiFeaturestoreEntitytypeIamPolicy").getAiFeaturestoreEntitytypeIamPolicy = null as any;
+export const getAiFeaturestoreEntitytypeIamPolicyOutput: typeof import("./getAiFeaturestoreEntitytypeIamPolicy").getAiFeaturestoreEntitytypeIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAiFeaturestoreEntitytypeIamPolicy","getAiFeaturestoreEntitytypeIamPolicyOutput"], () => require("./getAiFeaturestoreEntitytypeIamPolicy"));
+
+export { GetAiFeaturestoreIamPolicyArgs, GetAiFeaturestoreIamPolicyResult, GetAiFeaturestoreIamPolicyOutputArgs } from "./getAiFeaturestoreIamPolicy";
+export const getAiFeaturestoreIamPolicy: typeof import("./getAiFeaturestoreIamPolicy").getAiFeaturestoreIamPolicy = null as any;
+export const getAiFeaturestoreIamPolicyOutput: typeof import("./getAiFeaturestoreIamPolicy").getAiFeaturestoreIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAiFeaturestoreIamPolicy","getAiFeaturestoreIamPolicyOutput"], () => require("./getAiFeaturestoreIamPolicy"));
+
+export { GetAiIndexArgs, GetAiIndexResult, GetAiIndexOutputArgs } from "./getAiIndex";
+export const getAiIndex: typeof import("./getAiIndex").getAiIndex = null as any;
+export const getAiIndexOutput: typeof import("./getAiIndex").getAiIndexOutput = null as any;
+utilities.lazyLoad(exports, ["getAiIndex","getAiIndexOutput"], () => require("./getAiIndex"));
 
 
 const _module = {
@@ -104,6 +124,8 @@ const _module = {
                 return new AiFeatureStoreIamPolicy(name, <any>undefined, { urn })
             case "gcp:vertex/aiIndex:AiIndex":
                 return new AiIndex(name, <any>undefined, { urn })
+            case "gcp:vertex/aiIndexEndpoint:AiIndexEndpoint":
+                return new AiIndexEndpoint(name, <any>undefined, { urn })
             case "gcp:vertex/aiMetadataStore:AiMetadataStore":
                 return new AiMetadataStore(name, <any>undefined, { urn })
             case "gcp:vertex/aiTensorboard:AiTensorboard":
@@ -125,5 +147,6 @@ pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureStoreIamBinding", 
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureStoreIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureStoreIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiIndex", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiIndexEndpoint", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiMetadataStore", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiTensorboard", _module)

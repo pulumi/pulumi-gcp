@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -33,6 +34,23 @@ public final class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfo
     }
 
     /**
+     * Optional custom sensitivity for this InfoType. This only applies to data profiling.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sensitivityScore")
+    private @Nullable Output<PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs> sensitivityScore;
+
+    /**
+     * @return Optional custom sensitivity for this InfoType. This only applies to data profiling.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs>> sensitivityScore() {
+        return Optional.ofNullable(this.sensitivityScore);
+    }
+
+    /**
      * Version of the information type to use. By default, the version is set to stable.
      * 
      */
@@ -51,6 +69,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfo
 
     private PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeArgs(PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeArgs $) {
         this.name = $.name;
+        this.sensitivityScore = $.sensitivityScore;
         this.version = $.version;
     }
 
@@ -93,6 +112,29 @@ public final class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfo
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param sensitivityScore Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sensitivityScore(@Nullable Output<PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs> sensitivityScore) {
+            $.sensitivityScore = sensitivityScore;
+            return this;
+        }
+
+        /**
+         * @param sensitivityScore Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sensitivityScore(PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScoreArgs sensitivityScore) {
+            return sensitivityScore(Output.of(sensitivityScore));
         }
 
         /**
