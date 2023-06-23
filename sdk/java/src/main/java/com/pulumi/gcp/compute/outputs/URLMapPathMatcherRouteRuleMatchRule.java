@@ -55,6 +55,18 @@ public final class URLMapPathMatcherRouteRuleMatchRule {
      */
     private @Nullable List<URLMapPathMatcherRouteRuleMatchRuleMetadataFilter> metadataFilters;
     /**
+     * @return For satisfying the matchRule condition, the path of the request
+     * must match the wildcard pattern specified in pathTemplateMatch
+     * after removing any query parameters and anchor that may be part
+     * of the original URL.
+     * pathTemplateMatch must be between 1 and 255 characters
+     * (inclusive).  The pattern specified by pathTemplateMatch may
+     * have at most 5 wildcard operators and at most 5 variable
+     * captures in total.
+     * 
+     */
+    private @Nullable String pathTemplateMatch;
+    /**
      * @return For satisfying the matchRule condition, the request&#39;s path must begin with the
      * specified prefixMatch. prefixMatch must begin with a /. The value must be
      * between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or
@@ -127,6 +139,20 @@ public final class URLMapPathMatcherRouteRuleMatchRule {
         return this.metadataFilters == null ? List.of() : this.metadataFilters;
     }
     /**
+     * @return For satisfying the matchRule condition, the path of the request
+     * must match the wildcard pattern specified in pathTemplateMatch
+     * after removing any query parameters and anchor that may be part
+     * of the original URL.
+     * pathTemplateMatch must be between 1 and 255 characters
+     * (inclusive).  The pattern specified by pathTemplateMatch may
+     * have at most 5 wildcard operators and at most 5 variable
+     * captures in total.
+     * 
+     */
+    public Optional<String> pathTemplateMatch() {
+        return Optional.ofNullable(this.pathTemplateMatch);
+    }
+    /**
      * @return For satisfying the matchRule condition, the request&#39;s path must begin with the
      * specified prefixMatch. prefixMatch must begin with a /. The value must be
      * between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or
@@ -170,6 +196,7 @@ public final class URLMapPathMatcherRouteRuleMatchRule {
         private @Nullable List<URLMapPathMatcherRouteRuleMatchRuleHeaderMatch> headerMatches;
         private @Nullable Boolean ignoreCase;
         private @Nullable List<URLMapPathMatcherRouteRuleMatchRuleMetadataFilter> metadataFilters;
+        private @Nullable String pathTemplateMatch;
         private @Nullable String prefixMatch;
         private @Nullable List<URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch> queryParameterMatches;
         private @Nullable String regexMatch;
@@ -180,6 +207,7 @@ public final class URLMapPathMatcherRouteRuleMatchRule {
     	      this.headerMatches = defaults.headerMatches;
     	      this.ignoreCase = defaults.ignoreCase;
     	      this.metadataFilters = defaults.metadataFilters;
+    	      this.pathTemplateMatch = defaults.pathTemplateMatch;
     	      this.prefixMatch = defaults.prefixMatch;
     	      this.queryParameterMatches = defaults.queryParameterMatches;
     	      this.regexMatch = defaults.regexMatch;
@@ -212,6 +240,11 @@ public final class URLMapPathMatcherRouteRuleMatchRule {
             return metadataFilters(List.of(metadataFilters));
         }
         @CustomType.Setter
+        public Builder pathTemplateMatch(@Nullable String pathTemplateMatch) {
+            this.pathTemplateMatch = pathTemplateMatch;
+            return this;
+        }
+        @CustomType.Setter
         public Builder prefixMatch(@Nullable String prefixMatch) {
             this.prefixMatch = prefixMatch;
             return this;
@@ -235,6 +268,7 @@ public final class URLMapPathMatcherRouteRuleMatchRule {
             o.headerMatches = headerMatches;
             o.ignoreCase = ignoreCase;
             o.metadataFilters = metadataFilters;
+            o.pathTemplateMatch = pathTemplateMatch;
             o.prefixMatch = prefixMatch;
             o.queryParameterMatches = queryParameterMatches;
             o.regexMatch = regexMatch;

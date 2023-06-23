@@ -10,6 +10,11 @@ export type Certificate = import("./certificate").Certificate;
 export const Certificate: typeof import("./certificate").Certificate = null as any;
 utilities.lazyLoad(exports, ["Certificate"], () => require("./certificate"));
 
+export { CertificateIssuanceConfigArgs, CertificateIssuanceConfigState } from "./certificateIssuanceConfig";
+export type CertificateIssuanceConfig = import("./certificateIssuanceConfig").CertificateIssuanceConfig;
+export const CertificateIssuanceConfig: typeof import("./certificateIssuanceConfig").CertificateIssuanceConfig = null as any;
+utilities.lazyLoad(exports, ["CertificateIssuanceConfig"], () => require("./certificateIssuanceConfig"));
+
 export { CertificateMapArgs, CertificateMapState } from "./certificateMap";
 export type CertificateMap = import("./certificateMap").CertificateMap;
 export const CertificateMap: typeof import("./certificateMap").CertificateMap = null as any;
@@ -32,6 +37,8 @@ const _module = {
         switch (type) {
             case "gcp:certificatemanager/certificate:Certificate":
                 return new Certificate(name, <any>undefined, { urn })
+            case "gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig":
+                return new CertificateIssuanceConfig(name, <any>undefined, { urn })
             case "gcp:certificatemanager/certificateMap:CertificateMap":
                 return new CertificateMap(name, <any>undefined, { urn })
             case "gcp:certificatemanager/certificateMapEntry:CertificateMapEntry":
@@ -44,6 +51,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "certificatemanager/certificate", _module)
+pulumi.runtime.registerResourceModule("gcp", "certificatemanager/certificateIssuanceConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "certificatemanager/certificateMap", _module)
 pulumi.runtime.registerResourceModule("gcp", "certificatemanager/certificateMapEntry", _module)
 pulumi.runtime.registerResourceModule("gcp", "certificatemanager/dnsAuthorization", _module)

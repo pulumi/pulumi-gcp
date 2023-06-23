@@ -20,6 +20,11 @@ export type DefaultServiceAccounts = import("./defaultServiceAccounts").DefaultS
 export const DefaultServiceAccounts: typeof import("./defaultServiceAccounts").DefaultServiceAccounts = null as any;
 utilities.lazyLoad(exports, ["DefaultServiceAccounts"], () => require("./defaultServiceAccounts"));
 
+export { GetIamPolicyArgs, GetIamPolicyResult, GetIamPolicyOutputArgs } from "./getIamPolicy";
+export const getIamPolicy: typeof import("./getIamPolicy").getIamPolicy = null as any;
+export const getIamPolicyOutput: typeof import("./getIamPolicy").getIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getIamPolicy","getIamPolicyOutput"], () => require("./getIamPolicy"));
+
 export { GetOrganizationPolicyArgs, GetOrganizationPolicyResult, GetOrganizationPolicyOutputArgs } from "./getOrganizationPolicy";
 export const getOrganizationPolicy: typeof import("./getOrganizationPolicy").getOrganizationPolicy = null as any;
 export const getOrganizationPolicyOutput: typeof import("./getOrganizationPolicy").getOrganizationPolicyOutput = null as any;

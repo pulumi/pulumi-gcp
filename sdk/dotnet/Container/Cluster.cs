@@ -181,7 +181,7 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterDatabaseEncryption> DatabaseEncryption { get; private set; } = null!;
 
         /// <summary>
-        /// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+        /// The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
         /// </summary>
         [Output("datapathProvider")]
         public Output<string> DatapathProvider { get; private set; } = null!;
@@ -774,7 +774,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterDatabaseEncryptionArgs>? DatabaseEncryption { get; set; }
 
         /// <summary>
-        /// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+        /// The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
         /// </summary>
         [Input("datapathProvider")]
         public Input<string>? DatapathProvider { get; set; }
@@ -1301,7 +1301,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterDatabaseEncryptionGetArgs>? DatabaseEncryption { get; set; }
 
         /// <summary>
-        /// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+        /// The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
         /// </summary>
         [Input("datapathProvider")]
         public Input<string>? DatapathProvider { get; set; }

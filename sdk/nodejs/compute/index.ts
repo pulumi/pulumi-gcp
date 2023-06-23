@@ -150,10 +150,20 @@ export const getBackendBucket: typeof import("./getBackendBucket").getBackendBuc
 export const getBackendBucketOutput: typeof import("./getBackendBucket").getBackendBucketOutput = null as any;
 utilities.lazyLoad(exports, ["getBackendBucket","getBackendBucketOutput"], () => require("./getBackendBucket"));
 
+export { GetBackendBucketIamPolicyArgs, GetBackendBucketIamPolicyResult, GetBackendBucketIamPolicyOutputArgs } from "./getBackendBucketIamPolicy";
+export const getBackendBucketIamPolicy: typeof import("./getBackendBucketIamPolicy").getBackendBucketIamPolicy = null as any;
+export const getBackendBucketIamPolicyOutput: typeof import("./getBackendBucketIamPolicy").getBackendBucketIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getBackendBucketIamPolicy","getBackendBucketIamPolicyOutput"], () => require("./getBackendBucketIamPolicy"));
+
 export { GetBackendServiceArgs, GetBackendServiceResult, GetBackendServiceOutputArgs } from "./getBackendService";
 export const getBackendService: typeof import("./getBackendService").getBackendService = null as any;
 export const getBackendServiceOutput: typeof import("./getBackendService").getBackendServiceOutput = null as any;
 utilities.lazyLoad(exports, ["getBackendService","getBackendServiceOutput"], () => require("./getBackendService"));
+
+export { GetBackendServiceIamPolicyArgs, GetBackendServiceIamPolicyResult, GetBackendServiceIamPolicyOutputArgs } from "./getBackendServiceIamPolicy";
+export const getBackendServiceIamPolicy: typeof import("./getBackendServiceIamPolicy").getBackendServiceIamPolicy = null as any;
+export const getBackendServiceIamPolicyOutput: typeof import("./getBackendServiceIamPolicy").getBackendServiceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getBackendServiceIamPolicy","getBackendServiceIamPolicyOutput"], () => require("./getBackendServiceIamPolicy"));
 
 export { GetCertificateArgs, GetCertificateResult, GetCertificateOutputArgs } from "./getCertificate";
 export const getCertificate: typeof import("./getCertificate").getCertificate = null as any;
@@ -169,6 +179,11 @@ export { GetDiskArgs, GetDiskResult, GetDiskOutputArgs } from "./getDisk";
 export const getDisk: typeof import("./getDisk").getDisk = null as any;
 export const getDiskOutput: typeof import("./getDisk").getDiskOutput = null as any;
 utilities.lazyLoad(exports, ["getDisk","getDiskOutput"], () => require("./getDisk"));
+
+export { GetDiskIamPolicyArgs, GetDiskIamPolicyResult, GetDiskIamPolicyOutputArgs } from "./getDiskIamPolicy";
+export const getDiskIamPolicy: typeof import("./getDiskIamPolicy").getDiskIamPolicy = null as any;
+export const getDiskIamPolicyOutput: typeof import("./getDiskIamPolicy").getDiskIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getDiskIamPolicy","getDiskIamPolicyOutput"], () => require("./getDiskIamPolicy"));
 
 export { GetForwardingRuleArgs, GetForwardingRuleResult, GetForwardingRuleOutputArgs } from "./getForwardingRule";
 export const getForwardingRule: typeof import("./getForwardingRule").getForwardingRule = null as any;
@@ -200,6 +215,11 @@ export const getImage: typeof import("./getImage").getImage = null as any;
 export const getImageOutput: typeof import("./getImage").getImageOutput = null as any;
 utilities.lazyLoad(exports, ["getImage","getImageOutput"], () => require("./getImage"));
 
+export { GetImageIamPolicyArgs, GetImageIamPolicyResult, GetImageIamPolicyOutputArgs } from "./getImageIamPolicy";
+export const getImageIamPolicy: typeof import("./getImageIamPolicy").getImageIamPolicy = null as any;
+export const getImageIamPolicyOutput: typeof import("./getImageIamPolicy").getImageIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getImageIamPolicy","getImageIamPolicyOutput"], () => require("./getImageIamPolicy"));
+
 export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
 export const getInstance: typeof import("./getInstance").getInstance = null as any;
 export const getInstanceOutput: typeof import("./getInstance").getInstanceOutput = null as any;
@@ -215,6 +235,11 @@ export const getInstanceGroupManager: typeof import("./getInstanceGroupManager")
 export const getInstanceGroupManagerOutput: typeof import("./getInstanceGroupManager").getInstanceGroupManagerOutput = null as any;
 utilities.lazyLoad(exports, ["getInstanceGroupManager","getInstanceGroupManagerOutput"], () => require("./getInstanceGroupManager"));
 
+export { GetInstanceIamPolicyArgs, GetInstanceIamPolicyResult, GetInstanceIamPolicyOutputArgs } from "./getInstanceIamPolicy";
+export const getInstanceIamPolicy: typeof import("./getInstanceIamPolicy").getInstanceIamPolicy = null as any;
+export const getInstanceIamPolicyOutput: typeof import("./getInstanceIamPolicy").getInstanceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceIamPolicy","getInstanceIamPolicyOutput"], () => require("./getInstanceIamPolicy"));
+
 export { GetInstanceSerialPortArgs, GetInstanceSerialPortResult, GetInstanceSerialPortOutputArgs } from "./getInstanceSerialPort";
 export const getInstanceSerialPort: typeof import("./getInstanceSerialPort").getInstanceSerialPort = null as any;
 export const getInstanceSerialPortOutput: typeof import("./getInstanceSerialPort").getInstanceSerialPortOutput = null as any;
@@ -228,6 +253,11 @@ utilities.lazyLoad(exports, ["getInstanceTemplate","getInstanceTemplateOutput"],
 export { GetLBIPRangesResult } from "./getLBIPRanges";
 export const getLBIPRanges: typeof import("./getLBIPRanges").getLBIPRanges = null as any;
 utilities.lazyLoad(exports, ["getLBIPRanges"], () => require("./getLBIPRanges"));
+
+export { GetMachineImageIamPolicyArgs, GetMachineImageIamPolicyResult, GetMachineImageIamPolicyOutputArgs } from "./getMachineImageIamPolicy";
+export const getMachineImageIamPolicy: typeof import("./getMachineImageIamPolicy").getMachineImageIamPolicy = null as any;
+export const getMachineImageIamPolicyOutput: typeof import("./getMachineImageIamPolicy").getMachineImageIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getMachineImageIamPolicy","getMachineImageIamPolicyOutput"], () => require("./getMachineImageIamPolicy"));
 
 export { GetNetblockIPRangesArgs, GetNetblockIPRangesResult, GetNetblockIPRangesOutputArgs } from "./getNetblockIPRanges";
 export const getNetblockIPRanges: typeof import("./getNetblockIPRanges").getNetblockIPRanges = null as any;
@@ -253,6 +283,16 @@ export { GetNodeTypesArgs, GetNodeTypesResult, GetNodeTypesOutputArgs } from "./
 export const getNodeTypes: typeof import("./getNodeTypes").getNodeTypes = null as any;
 export const getNodeTypesOutput: typeof import("./getNodeTypes").getNodeTypesOutput = null as any;
 utilities.lazyLoad(exports, ["getNodeTypes","getNodeTypesOutput"], () => require("./getNodeTypes"));
+
+export { GetRegionBackendServiceIamPolicyArgs, GetRegionBackendServiceIamPolicyResult, GetRegionBackendServiceIamPolicyOutputArgs } from "./getRegionBackendServiceIamPolicy";
+export const getRegionBackendServiceIamPolicy: typeof import("./getRegionBackendServiceIamPolicy").getRegionBackendServiceIamPolicy = null as any;
+export const getRegionBackendServiceIamPolicyOutput: typeof import("./getRegionBackendServiceIamPolicy").getRegionBackendServiceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionBackendServiceIamPolicy","getRegionBackendServiceIamPolicyOutput"], () => require("./getRegionBackendServiceIamPolicy"));
+
+export { GetRegionDiskIamPolicyArgs, GetRegionDiskIamPolicyResult, GetRegionDiskIamPolicyOutputArgs } from "./getRegionDiskIamPolicy";
+export const getRegionDiskIamPolicy: typeof import("./getRegionDiskIamPolicy").getRegionDiskIamPolicy = null as any;
+export const getRegionDiskIamPolicyOutput: typeof import("./getRegionDiskIamPolicy").getRegionDiskIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionDiskIamPolicy","getRegionDiskIamPolicyOutput"], () => require("./getRegionDiskIamPolicy"));
 
 export { GetRegionInstanceGroupArgs, GetRegionInstanceGroupResult, GetRegionInstanceGroupOutputArgs } from "./getRegionInstanceGroup";
 export const getRegionInstanceGroup: typeof import("./getRegionInstanceGroup").getRegionInstanceGroup = null as any;
@@ -309,10 +349,20 @@ export const getSnapshot: typeof import("./getSnapshot").getSnapshot = null as a
 export const getSnapshotOutput: typeof import("./getSnapshot").getSnapshotOutput = null as any;
 utilities.lazyLoad(exports, ["getSnapshot","getSnapshotOutput"], () => require("./getSnapshot"));
 
+export { GetSnapshotIamPolicyArgs, GetSnapshotIamPolicyResult, GetSnapshotIamPolicyOutputArgs } from "./getSnapshotIamPolicy";
+export const getSnapshotIamPolicy: typeof import("./getSnapshotIamPolicy").getSnapshotIamPolicy = null as any;
+export const getSnapshotIamPolicyOutput: typeof import("./getSnapshotIamPolicy").getSnapshotIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getSnapshotIamPolicy","getSnapshotIamPolicyOutput"], () => require("./getSnapshotIamPolicy"));
+
 export { GetSubnetworkArgs, GetSubnetworkResult, GetSubnetworkOutputArgs } from "./getSubnetwork";
 export const getSubnetwork: typeof import("./getSubnetwork").getSubnetwork = null as any;
 export const getSubnetworkOutput: typeof import("./getSubnetwork").getSubnetworkOutput = null as any;
 utilities.lazyLoad(exports, ["getSubnetwork","getSubnetworkOutput"], () => require("./getSubnetwork"));
+
+export { GetSubnetworkIamPolicyArgs, GetSubnetworkIamPolicyResult, GetSubnetworkIamPolicyOutputArgs } from "./getSubnetworkIamPolicy";
+export const getSubnetworkIamPolicy: typeof import("./getSubnetworkIamPolicy").getSubnetworkIamPolicy = null as any;
+export const getSubnetworkIamPolicyOutput: typeof import("./getSubnetworkIamPolicy").getSubnetworkIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getSubnetworkIamPolicy","getSubnetworkIamPolicyOutput"], () => require("./getSubnetworkIamPolicy"));
 
 export { GetVPNGatewayArgs, GetVPNGatewayResult, GetVPNGatewayOutputArgs } from "./getVPNGateway";
 export const getVPNGateway: typeof import("./getVPNGateway").getVPNGateway = null as any;
@@ -483,6 +533,11 @@ export { NetworkEndpointGroupArgs, NetworkEndpointGroupState } from "./networkEn
 export type NetworkEndpointGroup = import("./networkEndpointGroup").NetworkEndpointGroup;
 export const NetworkEndpointGroup: typeof import("./networkEndpointGroup").NetworkEndpointGroup = null as any;
 utilities.lazyLoad(exports, ["NetworkEndpointGroup"], () => require("./networkEndpointGroup"));
+
+export { NetworkEndpointListArgs, NetworkEndpointListState } from "./networkEndpointList";
+export type NetworkEndpointList = import("./networkEndpointList").NetworkEndpointList;
+export const NetworkEndpointList: typeof import("./networkEndpointList").NetworkEndpointList = null as any;
+utilities.lazyLoad(exports, ["NetworkEndpointList"], () => require("./networkEndpointList"));
 
 export { NetworkFirewallPolicyArgs, NetworkFirewallPolicyState } from "./networkFirewallPolicy";
 export type NetworkFirewallPolicy = import("./networkFirewallPolicy").NetworkFirewallPolicy;
@@ -980,6 +1035,8 @@ const _module = {
                 return new NetworkEndpoint(name, <any>undefined, { urn })
             case "gcp:compute/networkEndpointGroup:NetworkEndpointGroup":
                 return new NetworkEndpointGroup(name, <any>undefined, { urn })
+            case "gcp:compute/networkEndpointList:NetworkEndpointList":
+                return new NetworkEndpointList(name, <any>undefined, { urn })
             case "gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy":
                 return new NetworkFirewallPolicy(name, <any>undefined, { urn })
             case "gcp:compute/networkFirewallPolicyAssociation:NetworkFirewallPolicyAssociation":
@@ -1191,6 +1248,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/mangedSslCertificate", _mo
 pulumi.runtime.registerResourceModule("gcp", "compute/network", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkEndpoint", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkEndpointGroup", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/networkEndpointList", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkFirewallPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkFirewallPolicyAssociation", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkFirewallPolicyRule", _module)

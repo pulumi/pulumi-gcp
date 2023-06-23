@@ -112,6 +112,7 @@ import * as tags from "./tags";
 import * as tpu from "./tpu";
 import * as types from "./types";
 import * as vertex from "./vertex";
+import * as vmwareengine from "./vmwareengine";
 import * as vpcaccess from "./vpcaccess";
 import * as workflows from "./workflows";
 import * as workstations from "./workstations";
@@ -216,6 +217,7 @@ export {
     tpu,
     types,
     vertex,
+    vmwareengine,
     vpcaccess,
     workflows,
     workstations,

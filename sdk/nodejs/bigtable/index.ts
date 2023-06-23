@@ -10,6 +10,16 @@ export type GCPolicy = import("./gcpolicy").GCPolicy;
 export const GCPolicy: typeof import("./gcpolicy").GCPolicy = null as any;
 utilities.lazyLoad(exports, ["GCPolicy"], () => require("./gcpolicy"));
 
+export { GetInstanceIamPolicyArgs, GetInstanceIamPolicyResult, GetInstanceIamPolicyOutputArgs } from "./getInstanceIamPolicy";
+export const getInstanceIamPolicy: typeof import("./getInstanceIamPolicy").getInstanceIamPolicy = null as any;
+export const getInstanceIamPolicyOutput: typeof import("./getInstanceIamPolicy").getInstanceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceIamPolicy","getInstanceIamPolicyOutput"], () => require("./getInstanceIamPolicy"));
+
+export { GetTableIamPolicyArgs, GetTableIamPolicyResult, GetTableIamPolicyOutputArgs } from "./getTableIamPolicy";
+export const getTableIamPolicy: typeof import("./getTableIamPolicy").getTableIamPolicy = null as any;
+export const getTableIamPolicyOutput: typeof import("./getTableIamPolicy").getTableIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getTableIamPolicy","getTableIamPolicyOutput"], () => require("./getTableIamPolicy"));
+
 export { InstanceArgs, InstanceState } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;

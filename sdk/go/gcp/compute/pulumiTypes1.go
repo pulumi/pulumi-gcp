@@ -10,6 +10,156 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendService struct {
+	// The full or partial URL to the default BackendService resource. Before forwarding the
+	// request to backendService, the loadbalancer applies any relevant headerActions
+	// specified as part of this backendServiceWeight.
+	BackendService string `pulumi:"backendService"`
+	// Specifies changes to request and response headers that need to take effect for
+	// the selected backendService.
+	// headerAction specified here take effect before headerAction in the enclosing
+	// HttpRouteRule, PathMatcher and UrlMap.
+	// Structure is documented below.
+	HeaderAction *URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction `pulumi:"headerAction"`
+	// Specifies the fraction of traffic sent to backendService, computed as
+	// weight / (sum of all weightedBackendService weights in routeAction) .
+	// The selection of a backend service is determined only for new traffic. Once a user's request
+	// has been directed to a backendService, subsequent requests will be sent to the same backendService
+	// as determined by the BackendService's session affinity policy.
+	// The value must be between 0 and 1000
+	Weight int `pulumi:"weight"`
+}
+
+// URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs and URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceInput` via:
+//
+//	URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs{...}
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput
+	ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput
+}
+
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs struct {
+	// The full or partial URL to the default BackendService resource. Before forwarding the
+	// request to backendService, the loadbalancer applies any relevant headerActions
+	// specified as part of this backendServiceWeight.
+	BackendService pulumi.StringInput `pulumi:"backendService"`
+	// Specifies changes to request and response headers that need to take effect for
+	// the selected backendService.
+	// headerAction specified here take effect before headerAction in the enclosing
+	// HttpRouteRule, PathMatcher and UrlMap.
+	// Structure is documented below.
+	HeaderAction URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrInput `pulumi:"headerAction"`
+	// Specifies the fraction of traffic sent to backendService, computed as
+	// weight / (sum of all weightedBackendService weights in routeAction) .
+	// The selection of a backend service is determined only for new traffic. Once a user's request
+	// has been directed to a backendService, subsequent requests will be sent to the same backendService
+	// as determined by the BackendService's session affinity policy.
+	// The value must be between 0 and 1000
+	Weight pulumi.IntInput `pulumi:"weight"`
+}
+
+func (URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendService)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput)
+}
+
+// URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArray and URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayInput` via:
+//
+//	URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArray{ URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs{...} }
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput
+	ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput
+}
+
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArray []URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceInput
+
+func (URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherRouteRuleRouteActionWeightedBackendService)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArray) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArray) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendService)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput {
+	return o
+}
+
+// The full or partial URL to the default BackendService resource. Before forwarding the
+// request to backendService, the loadbalancer applies any relevant headerActions
+// specified as part of this backendServiceWeight.
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput) BackendService() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionWeightedBackendService) string { return v.BackendService }).(pulumi.StringOutput)
+}
+
+// Specifies changes to request and response headers that need to take effect for
+// the selected backendService.
+// headerAction specified here take effect before headerAction in the enclosing
+// HttpRouteRule, PathMatcher and UrlMap.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput) HeaderAction() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionWeightedBackendService) *URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction {
+		return v.HeaderAction
+	}).(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput)
+}
+
+// Specifies the fraction of traffic sent to backendService, computed as
+// weight / (sum of all weightedBackendService weights in routeAction) .
+// The selection of a backend service is determined only for new traffic. Once a user's request
+// has been directed to a backendService, subsequent requests will be sent to the same backendService
+// as determined by the BackendService's session affinity policy.
+// The value must be between 0 and 1000
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionWeightedBackendService) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMapPathMatcherRouteRuleRouteActionWeightedBackendService)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput() URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput) ToURLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput) Index(i pulumi.IntInput) URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMapPathMatcherRouteRuleRouteActionWeightedBackendService {
+		return vs[0].([]URLMapPathMatcherRouteRuleRouteActionWeightedBackendService)[vs[1].(int)]
+	}).(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput)
+}
+
 type URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderAction struct {
 	// Headers to add to a matching request prior to forwarding the request to the backendService.
 	// Structure is documented below.
@@ -10307,7 +10457,8 @@ type GetInstanceTemplateNetworkInterface struct {
 	// The name or selfLink of the network to attach this interface to.
 	// Use `network` attribute for Legacy or Auto subnetted networks and
 	// `subnetwork` for custom subnetted networks.
-	Network string `pulumi:"network"`
+	Network           string `pulumi:"network"`
+	NetworkAttachment string `pulumi:"networkAttachment"`
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp  string `pulumi:"networkIp"`
@@ -10353,7 +10504,8 @@ type GetInstanceTemplateNetworkInterfaceArgs struct {
 	// The name or selfLink of the network to attach this interface to.
 	// Use `network` attribute for Legacy or Auto subnetted networks and
 	// `subnetwork` for custom subnetted networks.
-	Network pulumi.StringInput `pulumi:"network"`
+	Network           pulumi.StringInput `pulumi:"network"`
+	NetworkAttachment pulumi.StringInput `pulumi:"networkAttachment"`
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp  pulumi.StringInput `pulumi:"networkIp"`
@@ -10461,6 +10613,10 @@ func (o GetInstanceTemplateNetworkInterfaceOutput) Name() pulumi.StringOutput {
 // `subnetwork` for custom subnetted networks.
 func (o GetInstanceTemplateNetworkInterfaceOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceTemplateNetworkInterfaceOutput) NetworkAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.NetworkAttachment }).(pulumi.StringOutput)
 }
 
 // The private IP address to assign to the instance. If
@@ -17599,6 +17755,8 @@ func (o GetSubnetworkSecondaryIpRangeArrayOutput) Index(i pulumi.IntInput) GetSu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs{})
@@ -17895,6 +18053,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKeyArrayInput)(nil)).Elem(), GetSnapshotSourceDiskEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddOutput{})

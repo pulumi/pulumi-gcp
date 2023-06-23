@@ -20,6 +20,16 @@ export type ConsumersIamPolicy = import("./consumersIamPolicy").ConsumersIamPoli
 export const ConsumersIamPolicy: typeof import("./consumersIamPolicy").ConsumersIamPolicy = null as any;
 utilities.lazyLoad(exports, ["ConsumersIamPolicy"], () => require("./consumersIamPolicy"));
 
+export { GetServiceConsumersIamPolicyArgs, GetServiceConsumersIamPolicyResult, GetServiceConsumersIamPolicyOutputArgs } from "./getServiceConsumersIamPolicy";
+export const getServiceConsumersIamPolicy: typeof import("./getServiceConsumersIamPolicy").getServiceConsumersIamPolicy = null as any;
+export const getServiceConsumersIamPolicyOutput: typeof import("./getServiceConsumersIamPolicy").getServiceConsumersIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceConsumersIamPolicy","getServiceConsumersIamPolicyOutput"], () => require("./getServiceConsumersIamPolicy"));
+
+export { GetServiceIamPolicyArgs, GetServiceIamPolicyResult, GetServiceIamPolicyOutputArgs } from "./getServiceIamPolicy";
+export const getServiceIamPolicy: typeof import("./getServiceIamPolicy").getServiceIamPolicy = null as any;
+export const getServiceIamPolicyOutput: typeof import("./getServiceIamPolicy").getServiceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceIamPolicy","getServiceIamPolicyOutput"], () => require("./getServiceIamPolicy"));
+
 export { ServiceArgs, ServiceState } from "./service";
 export type Service = import("./service").Service;
 export const Service: typeof import("./service").Service = null as any;

@@ -10,6 +10,11 @@ export type AccessApprovalSettings = import("./accessApprovalSettings").AccessAp
 export const AccessApprovalSettings: typeof import("./accessApprovalSettings").AccessApprovalSettings = null as any;
 utilities.lazyLoad(exports, ["AccessApprovalSettings"], () => require("./accessApprovalSettings"));
 
+export { GetIamPolicyArgs, GetIamPolicyResult, GetIamPolicyOutputArgs } from "./getIamPolicy";
+export const getIamPolicy: typeof import("./getIamPolicy").getIamPolicy = null as any;
+export const getIamPolicyOutput: typeof import("./getIamPolicy").getIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getIamPolicy","getIamPolicyOutput"], () => require("./getIamPolicy"));
+
 export { GetOrganizationPolicyArgs, GetOrganizationPolicyResult, GetOrganizationPolicyOutputArgs } from "./getOrganizationPolicy";
 export const getOrganizationPolicy: typeof import("./getOrganizationPolicy").getOrganizationPolicy = null as any;
 export const getOrganizationPolicyOutput: typeof import("./getOrganizationPolicy").getOrganizationPolicyOutput = null as any;

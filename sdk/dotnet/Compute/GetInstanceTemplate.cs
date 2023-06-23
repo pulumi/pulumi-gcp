@@ -255,11 +255,6 @@ namespace Pulumi.Gcp.Compute
         /// prefix. Conflicts with `name`.
         /// </summary>
         public readonly string NamePrefix;
-        /// <summary>
-        /// Networks to attach to instances created from
-        /// this template. This can be specified multiple times for multiple networks.
-        /// Structure is documented below.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTemplateNetworkInterfaceResult> NetworkInterfaces;
         /// <summary>
         /// The network performance configuration setting

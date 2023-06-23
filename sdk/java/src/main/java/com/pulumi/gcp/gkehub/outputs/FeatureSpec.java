@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkehub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.gkehub.outputs.FeatureSpecFleetobservability;
 import com.pulumi.gcp.gkehub.outputs.FeatureSpecMulticlusteringress;
 import java.util.Objects;
 import java.util.Optional;
@@ -11,6 +12,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureSpec {
+    private @Nullable FeatureSpecFleetobservability fleetobservability;
     /**
      * @return Multicluster Ingress-specific spec.
      * The `multiclusteringress` block supports:
@@ -19,6 +21,9 @@ public final class FeatureSpec {
     private @Nullable FeatureSpecMulticlusteringress multiclusteringress;
 
     private FeatureSpec() {}
+    public Optional<FeatureSpecFleetobservability> fleetobservability() {
+        return Optional.ofNullable(this.fleetobservability);
+    }
     /**
      * @return Multicluster Ingress-specific spec.
      * The `multiclusteringress` block supports:
@@ -37,13 +42,20 @@ public final class FeatureSpec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable FeatureSpecFleetobservability fleetobservability;
         private @Nullable FeatureSpecMulticlusteringress multiclusteringress;
         public Builder() {}
         public Builder(FeatureSpec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.fleetobservability = defaults.fleetobservability;
     	      this.multiclusteringress = defaults.multiclusteringress;
         }
 
+        @CustomType.Setter
+        public Builder fleetobservability(@Nullable FeatureSpecFleetobservability fleetobservability) {
+            this.fleetobservability = fleetobservability;
+            return this;
+        }
         @CustomType.Setter
         public Builder multiclusteringress(@Nullable FeatureSpecMulticlusteringress multiclusteringress) {
             this.multiclusteringress = multiclusteringress;
@@ -51,6 +63,7 @@ public final class FeatureSpec {
         }
         public FeatureSpec build() {
             final var o = new FeatureSpec();
+            o.fleetobservability = fleetobservability;
             o.multiclusteringress = multiclusteringress;
             return o;
         }

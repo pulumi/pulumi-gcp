@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { GetSourceIamPolicyArgs, GetSourceIamPolicyResult, GetSourceIamPolicyOutputArgs } from "./getSourceIamPolicy";
+export const getSourceIamPolicy: typeof import("./getSourceIamPolicy").getSourceIamPolicy = null as any;
+export const getSourceIamPolicyOutput: typeof import("./getSourceIamPolicy").getSourceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getSourceIamPolicy","getSourceIamPolicyOutput"], () => require("./getSourceIamPolicy"));
+
 export { InstanceIamBindingArgs, InstanceIamBindingState } from "./instanceIamBinding";
 export type InstanceIamBinding = import("./instanceIamBinding").InstanceIamBinding;
 export const InstanceIamBinding: typeof import("./instanceIamBinding").InstanceIamBinding = null as any;

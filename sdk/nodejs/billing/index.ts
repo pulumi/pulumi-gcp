@@ -25,6 +25,11 @@ export type Budget = import("./budget").Budget;
 export const Budget: typeof import("./budget").Budget = null as any;
 utilities.lazyLoad(exports, ["Budget"], () => require("./budget"));
 
+export { GetAccountIamPolicyArgs, GetAccountIamPolicyResult, GetAccountIamPolicyOutputArgs } from "./getAccountIamPolicy";
+export const getAccountIamPolicy: typeof import("./getAccountIamPolicy").getAccountIamPolicy = null as any;
+export const getAccountIamPolicyOutput: typeof import("./getAccountIamPolicy").getAccountIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAccountIamPolicy","getAccountIamPolicyOutput"], () => require("./getAccountIamPolicy"));
+
 export { SubAccountArgs, SubAccountState } from "./subAccount";
 export type SubAccount = import("./subAccount").SubAccount;
 export const SubAccount: typeof import("./subAccount").SubAccount = null as any;

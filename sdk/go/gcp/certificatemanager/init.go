@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:certificatemanager/certificate:Certificate":
 		r = &Certificate{}
+	case "gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig":
+		r = &CertificateIssuanceConfig{}
 	case "gcp:certificatemanager/certificateMap:CertificateMap":
 		r = &CertificateMapResource{}
 	case "gcp:certificatemanager/certificateMapEntry:CertificateMapEntry":
@@ -45,6 +47,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"certificatemanager/certificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"certificatemanager/certificateIssuanceConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

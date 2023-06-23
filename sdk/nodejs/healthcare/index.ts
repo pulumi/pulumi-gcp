@@ -85,6 +85,31 @@ export type FhirStoreIamPolicy = import("./fhirStoreIamPolicy").FhirStoreIamPoli
 export const FhirStoreIamPolicy: typeof import("./fhirStoreIamPolicy").FhirStoreIamPolicy = null as any;
 utilities.lazyLoad(exports, ["FhirStoreIamPolicy"], () => require("./fhirStoreIamPolicy"));
 
+export { GetConsentStoreIamPolicyArgs, GetConsentStoreIamPolicyResult, GetConsentStoreIamPolicyOutputArgs } from "./getConsentStoreIamPolicy";
+export const getConsentStoreIamPolicy: typeof import("./getConsentStoreIamPolicy").getConsentStoreIamPolicy = null as any;
+export const getConsentStoreIamPolicyOutput: typeof import("./getConsentStoreIamPolicy").getConsentStoreIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getConsentStoreIamPolicy","getConsentStoreIamPolicyOutput"], () => require("./getConsentStoreIamPolicy"));
+
+export { GetDatasetIamPolicyArgs, GetDatasetIamPolicyResult, GetDatasetIamPolicyOutputArgs } from "./getDatasetIamPolicy";
+export const getDatasetIamPolicy: typeof import("./getDatasetIamPolicy").getDatasetIamPolicy = null as any;
+export const getDatasetIamPolicyOutput: typeof import("./getDatasetIamPolicy").getDatasetIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getDatasetIamPolicy","getDatasetIamPolicyOutput"], () => require("./getDatasetIamPolicy"));
+
+export { GetDicomStoreIamPolicyArgs, GetDicomStoreIamPolicyResult, GetDicomStoreIamPolicyOutputArgs } from "./getDicomStoreIamPolicy";
+export const getDicomStoreIamPolicy: typeof import("./getDicomStoreIamPolicy").getDicomStoreIamPolicy = null as any;
+export const getDicomStoreIamPolicyOutput: typeof import("./getDicomStoreIamPolicy").getDicomStoreIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getDicomStoreIamPolicy","getDicomStoreIamPolicyOutput"], () => require("./getDicomStoreIamPolicy"));
+
+export { GetFhirStoreIamPolicyArgs, GetFhirStoreIamPolicyResult, GetFhirStoreIamPolicyOutputArgs } from "./getFhirStoreIamPolicy";
+export const getFhirStoreIamPolicy: typeof import("./getFhirStoreIamPolicy").getFhirStoreIamPolicy = null as any;
+export const getFhirStoreIamPolicyOutput: typeof import("./getFhirStoreIamPolicy").getFhirStoreIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getFhirStoreIamPolicy","getFhirStoreIamPolicyOutput"], () => require("./getFhirStoreIamPolicy"));
+
+export { GetHl7V2StoreIamPolicyArgs, GetHl7V2StoreIamPolicyResult, GetHl7V2StoreIamPolicyOutputArgs } from "./getHl7V2StoreIamPolicy";
+export const getHl7V2StoreIamPolicy: typeof import("./getHl7V2StoreIamPolicy").getHl7V2StoreIamPolicy = null as any;
+export const getHl7V2StoreIamPolicyOutput: typeof import("./getHl7V2StoreIamPolicy").getHl7V2StoreIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getHl7V2StoreIamPolicy","getHl7V2StoreIamPolicyOutput"], () => require("./getHl7V2StoreIamPolicy"));
+
 export { Hl7StoreArgs, Hl7StoreState } from "./hl7Store";
 export type Hl7Store = import("./hl7Store").Hl7Store;
 export const Hl7Store: typeof import("./hl7Store").Hl7Store = null as any;

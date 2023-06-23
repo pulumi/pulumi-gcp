@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.GkeHub.Inputs
 
     public sealed class FeatureSpecArgs : global::Pulumi.ResourceArgs
     {
+        [Input("fleetobservability")]
+        public Input<Inputs.FeatureSpecFleetobservabilityArgs>? Fleetobservability { get; set; }
+
         /// <summary>
         /// Multicluster Ingress-specific spec.
         /// The `multiclusteringress` block supports:

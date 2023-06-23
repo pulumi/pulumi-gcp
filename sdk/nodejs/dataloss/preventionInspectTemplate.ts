@@ -232,6 +232,12 @@ export class PreventionInspectTemplate extends pulumi.CustomResource {
      * - - -
      */
     public readonly parent!: pulumi.Output<string>;
+    /**
+     * The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+     * 100 characters. Can be empty to allow the system to generate one.
+     */
+    public readonly templateId!: pulumi.Output<string>;
 
     /**
      * Create a PreventionInspectTemplate resource with the given unique name, arguments, and options.
@@ -251,6 +257,7 @@ export class PreventionInspectTemplate extends pulumi.CustomResource {
             resourceInputs["inspectConfig"] = state ? state.inspectConfig : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["parent"] = state ? state.parent : undefined;
+            resourceInputs["templateId"] = state ? state.templateId : undefined;
         } else {
             const args = argsOrState as PreventionInspectTemplateArgs | undefined;
             if ((!args || args.parent === undefined) && !opts.urn) {
@@ -260,6 +267,7 @@ export class PreventionInspectTemplate extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["inspectConfig"] = args ? args.inspectConfig : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["templateId"] = args ? args.templateId : undefined;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -320,6 +328,12 @@ export interface PreventionInspectTemplateState {
      * - - -
      */
     parent?: pulumi.Input<string>;
+    /**
+     * The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+     * 100 characters. Can be empty to allow the system to generate one.
+     */
+    templateId?: pulumi.Input<string>;
 }
 
 /**
@@ -350,4 +364,10 @@ export interface PreventionInspectTemplateArgs {
      * - - -
      */
     parent: pulumi.Input<string>;
+    /**
+     * The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+     * 100 characters. Can be empty to allow the system to generate one.
+     */
+    templateId?: pulumi.Input<string>;
 }

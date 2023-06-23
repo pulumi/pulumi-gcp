@@ -1896,6 +1896,7 @@ func (o FeatureResourceStateArrayOutput) Index(i pulumi.IntInput) FeatureResourc
 }
 
 type FeatureSpec struct {
+	Fleetobservability *FeatureSpecFleetobservability `pulumi:"fleetobservability"`
 	// Multicluster Ingress-specific spec.
 	// The `multiclusteringress` block supports:
 	Multiclusteringress *FeatureSpecMulticlusteringress `pulumi:"multiclusteringress"`
@@ -1913,6 +1914,7 @@ type FeatureSpecInput interface {
 }
 
 type FeatureSpecArgs struct {
+	Fleetobservability FeatureSpecFleetobservabilityPtrInput `pulumi:"fleetobservability"`
 	// Multicluster Ingress-specific spec.
 	// The `multiclusteringress` block supports:
 	Multiclusteringress FeatureSpecMulticlusteringressPtrInput `pulumi:"multiclusteringress"`
@@ -1995,6 +1997,10 @@ func (o FeatureSpecOutput) ToFeatureSpecPtrOutputWithContext(ctx context.Context
 	}).(FeatureSpecPtrOutput)
 }
 
+func (o FeatureSpecOutput) Fleetobservability() FeatureSpecFleetobservabilityPtrOutput {
+	return o.ApplyT(func(v FeatureSpec) *FeatureSpecFleetobservability { return v.Fleetobservability }).(FeatureSpecFleetobservabilityPtrOutput)
+}
+
 // Multicluster Ingress-specific spec.
 // The `multiclusteringress` block supports:
 func (o FeatureSpecOutput) Multiclusteringress() FeatureSpecMulticlusteringressPtrOutput {
@@ -2025,6 +2031,15 @@ func (o FeatureSpecPtrOutput) Elem() FeatureSpecOutput {
 	}).(FeatureSpecOutput)
 }
 
+func (o FeatureSpecPtrOutput) Fleetobservability() FeatureSpecFleetobservabilityPtrOutput {
+	return o.ApplyT(func(v *FeatureSpec) *FeatureSpecFleetobservability {
+		if v == nil {
+			return nil
+		}
+		return v.Fleetobservability
+	}).(FeatureSpecFleetobservabilityPtrOutput)
+}
+
 // Multicluster Ingress-specific spec.
 // The `multiclusteringress` block supports:
 func (o FeatureSpecPtrOutput) Multiclusteringress() FeatureSpecMulticlusteringressPtrOutput {
@@ -2034,6 +2049,559 @@ func (o FeatureSpecPtrOutput) Multiclusteringress() FeatureSpecMulticlusteringre
 		}
 		return v.Multiclusteringress
 	}).(FeatureSpecMulticlusteringressPtrOutput)
+}
+
+type FeatureSpecFleetobservability struct {
+	LoggingConfig *FeatureSpecFleetobservabilityLoggingConfig `pulumi:"loggingConfig"`
+}
+
+// FeatureSpecFleetobservabilityInput is an input type that accepts FeatureSpecFleetobservabilityArgs and FeatureSpecFleetobservabilityOutput values.
+// You can construct a concrete instance of `FeatureSpecFleetobservabilityInput` via:
+//
+//	FeatureSpecFleetobservabilityArgs{...}
+type FeatureSpecFleetobservabilityInput interface {
+	pulumi.Input
+
+	ToFeatureSpecFleetobservabilityOutput() FeatureSpecFleetobservabilityOutput
+	ToFeatureSpecFleetobservabilityOutputWithContext(context.Context) FeatureSpecFleetobservabilityOutput
+}
+
+type FeatureSpecFleetobservabilityArgs struct {
+	LoggingConfig FeatureSpecFleetobservabilityLoggingConfigPtrInput `pulumi:"loggingConfig"`
+}
+
+func (FeatureSpecFleetobservabilityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecFleetobservability)(nil)).Elem()
+}
+
+func (i FeatureSpecFleetobservabilityArgs) ToFeatureSpecFleetobservabilityOutput() FeatureSpecFleetobservabilityOutput {
+	return i.ToFeatureSpecFleetobservabilityOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecFleetobservabilityArgs) ToFeatureSpecFleetobservabilityOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityOutput)
+}
+
+func (i FeatureSpecFleetobservabilityArgs) ToFeatureSpecFleetobservabilityPtrOutput() FeatureSpecFleetobservabilityPtrOutput {
+	return i.ToFeatureSpecFleetobservabilityPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecFleetobservabilityArgs) ToFeatureSpecFleetobservabilityPtrOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityOutput).ToFeatureSpecFleetobservabilityPtrOutputWithContext(ctx)
+}
+
+// FeatureSpecFleetobservabilityPtrInput is an input type that accepts FeatureSpecFleetobservabilityArgs, FeatureSpecFleetobservabilityPtr and FeatureSpecFleetobservabilityPtrOutput values.
+// You can construct a concrete instance of `FeatureSpecFleetobservabilityPtrInput` via:
+//
+//	        FeatureSpecFleetobservabilityArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureSpecFleetobservabilityPtrInput interface {
+	pulumi.Input
+
+	ToFeatureSpecFleetobservabilityPtrOutput() FeatureSpecFleetobservabilityPtrOutput
+	ToFeatureSpecFleetobservabilityPtrOutputWithContext(context.Context) FeatureSpecFleetobservabilityPtrOutput
+}
+
+type featureSpecFleetobservabilityPtrType FeatureSpecFleetobservabilityArgs
+
+func FeatureSpecFleetobservabilityPtr(v *FeatureSpecFleetobservabilityArgs) FeatureSpecFleetobservabilityPtrInput {
+	return (*featureSpecFleetobservabilityPtrType)(v)
+}
+
+func (*featureSpecFleetobservabilityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSpecFleetobservability)(nil)).Elem()
+}
+
+func (i *featureSpecFleetobservabilityPtrType) ToFeatureSpecFleetobservabilityPtrOutput() FeatureSpecFleetobservabilityPtrOutput {
+	return i.ToFeatureSpecFleetobservabilityPtrOutputWithContext(context.Background())
+}
+
+func (i *featureSpecFleetobservabilityPtrType) ToFeatureSpecFleetobservabilityPtrOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityPtrOutput)
+}
+
+type FeatureSpecFleetobservabilityOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecFleetobservabilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecFleetobservability)(nil)).Elem()
+}
+
+func (o FeatureSpecFleetobservabilityOutput) ToFeatureSpecFleetobservabilityOutput() FeatureSpecFleetobservabilityOutput {
+	return o
+}
+
+func (o FeatureSpecFleetobservabilityOutput) ToFeatureSpecFleetobservabilityOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityOutput {
+	return o
+}
+
+func (o FeatureSpecFleetobservabilityOutput) ToFeatureSpecFleetobservabilityPtrOutput() FeatureSpecFleetobservabilityPtrOutput {
+	return o.ToFeatureSpecFleetobservabilityPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureSpecFleetobservabilityOutput) ToFeatureSpecFleetobservabilityPtrOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureSpecFleetobservability) *FeatureSpecFleetobservability {
+		return &v
+	}).(FeatureSpecFleetobservabilityPtrOutput)
+}
+
+func (o FeatureSpecFleetobservabilityOutput) LoggingConfig() FeatureSpecFleetobservabilityLoggingConfigPtrOutput {
+	return o.ApplyT(func(v FeatureSpecFleetobservability) *FeatureSpecFleetobservabilityLoggingConfig {
+		return v.LoggingConfig
+	}).(FeatureSpecFleetobservabilityLoggingConfigPtrOutput)
+}
+
+type FeatureSpecFleetobservabilityPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecFleetobservabilityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSpecFleetobservability)(nil)).Elem()
+}
+
+func (o FeatureSpecFleetobservabilityPtrOutput) ToFeatureSpecFleetobservabilityPtrOutput() FeatureSpecFleetobservabilityPtrOutput {
+	return o
+}
+
+func (o FeatureSpecFleetobservabilityPtrOutput) ToFeatureSpecFleetobservabilityPtrOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityPtrOutput {
+	return o
+}
+
+func (o FeatureSpecFleetobservabilityPtrOutput) Elem() FeatureSpecFleetobservabilityOutput {
+	return o.ApplyT(func(v *FeatureSpecFleetobservability) FeatureSpecFleetobservability {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureSpecFleetobservability
+		return ret
+	}).(FeatureSpecFleetobservabilityOutput)
+}
+
+func (o FeatureSpecFleetobservabilityPtrOutput) LoggingConfig() FeatureSpecFleetobservabilityLoggingConfigPtrOutput {
+	return o.ApplyT(func(v *FeatureSpecFleetobservability) *FeatureSpecFleetobservabilityLoggingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingConfig
+	}).(FeatureSpecFleetobservabilityLoggingConfigPtrOutput)
+}
+
+type FeatureSpecFleetobservabilityLoggingConfig struct {
+	DefaultConfig        *FeatureSpecFleetobservabilityLoggingConfigDefaultConfig        `pulumi:"defaultConfig"`
+	FleetScopeLogsConfig *FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig `pulumi:"fleetScopeLogsConfig"`
+}
+
+// FeatureSpecFleetobservabilityLoggingConfigInput is an input type that accepts FeatureSpecFleetobservabilityLoggingConfigArgs and FeatureSpecFleetobservabilityLoggingConfigOutput values.
+// You can construct a concrete instance of `FeatureSpecFleetobservabilityLoggingConfigInput` via:
+//
+//	FeatureSpecFleetobservabilityLoggingConfigArgs{...}
+type FeatureSpecFleetobservabilityLoggingConfigInput interface {
+	pulumi.Input
+
+	ToFeatureSpecFleetobservabilityLoggingConfigOutput() FeatureSpecFleetobservabilityLoggingConfigOutput
+	ToFeatureSpecFleetobservabilityLoggingConfigOutputWithContext(context.Context) FeatureSpecFleetobservabilityLoggingConfigOutput
+}
+
+type FeatureSpecFleetobservabilityLoggingConfigArgs struct {
+	DefaultConfig        FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrInput        `pulumi:"defaultConfig"`
+	FleetScopeLogsConfig FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrInput `pulumi:"fleetScopeLogsConfig"`
+}
+
+func (FeatureSpecFleetobservabilityLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecFleetobservabilityLoggingConfig)(nil)).Elem()
+}
+
+func (i FeatureSpecFleetobservabilityLoggingConfigArgs) ToFeatureSpecFleetobservabilityLoggingConfigOutput() FeatureSpecFleetobservabilityLoggingConfigOutput {
+	return i.ToFeatureSpecFleetobservabilityLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecFleetobservabilityLoggingConfigArgs) ToFeatureSpecFleetobservabilityLoggingConfigOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityLoggingConfigOutput)
+}
+
+func (i FeatureSpecFleetobservabilityLoggingConfigArgs) ToFeatureSpecFleetobservabilityLoggingConfigPtrOutput() FeatureSpecFleetobservabilityLoggingConfigPtrOutput {
+	return i.ToFeatureSpecFleetobservabilityLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecFleetobservabilityLoggingConfigArgs) ToFeatureSpecFleetobservabilityLoggingConfigPtrOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityLoggingConfigOutput).ToFeatureSpecFleetobservabilityLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// FeatureSpecFleetobservabilityLoggingConfigPtrInput is an input type that accepts FeatureSpecFleetobservabilityLoggingConfigArgs, FeatureSpecFleetobservabilityLoggingConfigPtr and FeatureSpecFleetobservabilityLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `FeatureSpecFleetobservabilityLoggingConfigPtrInput` via:
+//
+//	        FeatureSpecFleetobservabilityLoggingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureSpecFleetobservabilityLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToFeatureSpecFleetobservabilityLoggingConfigPtrOutput() FeatureSpecFleetobservabilityLoggingConfigPtrOutput
+	ToFeatureSpecFleetobservabilityLoggingConfigPtrOutputWithContext(context.Context) FeatureSpecFleetobservabilityLoggingConfigPtrOutput
+}
+
+type featureSpecFleetobservabilityLoggingConfigPtrType FeatureSpecFleetobservabilityLoggingConfigArgs
+
+func FeatureSpecFleetobservabilityLoggingConfigPtr(v *FeatureSpecFleetobservabilityLoggingConfigArgs) FeatureSpecFleetobservabilityLoggingConfigPtrInput {
+	return (*featureSpecFleetobservabilityLoggingConfigPtrType)(v)
+}
+
+func (*featureSpecFleetobservabilityLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSpecFleetobservabilityLoggingConfig)(nil)).Elem()
+}
+
+func (i *featureSpecFleetobservabilityLoggingConfigPtrType) ToFeatureSpecFleetobservabilityLoggingConfigPtrOutput() FeatureSpecFleetobservabilityLoggingConfigPtrOutput {
+	return i.ToFeatureSpecFleetobservabilityLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *featureSpecFleetobservabilityLoggingConfigPtrType) ToFeatureSpecFleetobservabilityLoggingConfigPtrOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityLoggingConfigPtrOutput)
+}
+
+type FeatureSpecFleetobservabilityLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecFleetobservabilityLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecFleetobservabilityLoggingConfig)(nil)).Elem()
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigOutput) ToFeatureSpecFleetobservabilityLoggingConfigOutput() FeatureSpecFleetobservabilityLoggingConfigOutput {
+	return o
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigOutput) ToFeatureSpecFleetobservabilityLoggingConfigOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityLoggingConfigOutput {
+	return o
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigOutput) ToFeatureSpecFleetobservabilityLoggingConfigPtrOutput() FeatureSpecFleetobservabilityLoggingConfigPtrOutput {
+	return o.ToFeatureSpecFleetobservabilityLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigOutput) ToFeatureSpecFleetobservabilityLoggingConfigPtrOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityLoggingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureSpecFleetobservabilityLoggingConfig) *FeatureSpecFleetobservabilityLoggingConfig {
+		return &v
+	}).(FeatureSpecFleetobservabilityLoggingConfigPtrOutput)
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigOutput) DefaultConfig() FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput {
+	return o.ApplyT(func(v FeatureSpecFleetobservabilityLoggingConfig) *FeatureSpecFleetobservabilityLoggingConfigDefaultConfig {
+		return v.DefaultConfig
+	}).(FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput)
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigOutput) FleetScopeLogsConfig() FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput {
+	return o.ApplyT(func(v FeatureSpecFleetobservabilityLoggingConfig) *FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig {
+		return v.FleetScopeLogsConfig
+	}).(FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput)
+}
+
+type FeatureSpecFleetobservabilityLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecFleetobservabilityLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSpecFleetobservabilityLoggingConfig)(nil)).Elem()
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigPtrOutput) ToFeatureSpecFleetobservabilityLoggingConfigPtrOutput() FeatureSpecFleetobservabilityLoggingConfigPtrOutput {
+	return o
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigPtrOutput) ToFeatureSpecFleetobservabilityLoggingConfigPtrOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityLoggingConfigPtrOutput {
+	return o
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigPtrOutput) Elem() FeatureSpecFleetobservabilityLoggingConfigOutput {
+	return o.ApplyT(func(v *FeatureSpecFleetobservabilityLoggingConfig) FeatureSpecFleetobservabilityLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureSpecFleetobservabilityLoggingConfig
+		return ret
+	}).(FeatureSpecFleetobservabilityLoggingConfigOutput)
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigPtrOutput) DefaultConfig() FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput {
+	return o.ApplyT(func(v *FeatureSpecFleetobservabilityLoggingConfig) *FeatureSpecFleetobservabilityLoggingConfigDefaultConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultConfig
+	}).(FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput)
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigPtrOutput) FleetScopeLogsConfig() FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput {
+	return o.ApplyT(func(v *FeatureSpecFleetobservabilityLoggingConfig) *FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.FleetScopeLogsConfig
+	}).(FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput)
+}
+
+type FeatureSpecFleetobservabilityLoggingConfigDefaultConfig struct {
+	Mode *string `pulumi:"mode"`
+}
+
+// FeatureSpecFleetobservabilityLoggingConfigDefaultConfigInput is an input type that accepts FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs and FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput values.
+// You can construct a concrete instance of `FeatureSpecFleetobservabilityLoggingConfigDefaultConfigInput` via:
+//
+//	FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs{...}
+type FeatureSpecFleetobservabilityLoggingConfigDefaultConfigInput interface {
+	pulumi.Input
+
+	ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput() FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput
+	ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutputWithContext(context.Context) FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput
+}
+
+type FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs struct {
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+}
+
+func (FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecFleetobservabilityLoggingConfigDefaultConfig)(nil)).Elem()
+}
+
+func (i FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs) ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput() FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput {
+	return i.ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs) ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput)
+}
+
+func (i FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs) ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput() FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput {
+	return i.ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs) ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput).ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutputWithContext(ctx)
+}
+
+// FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrInput is an input type that accepts FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs, FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtr and FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput values.
+// You can construct a concrete instance of `FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrInput` via:
+//
+//	        FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrInput interface {
+	pulumi.Input
+
+	ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput() FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput
+	ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutputWithContext(context.Context) FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput
+}
+
+type featureSpecFleetobservabilityLoggingConfigDefaultConfigPtrType FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs
+
+func FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtr(v *FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs) FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrInput {
+	return (*featureSpecFleetobservabilityLoggingConfigDefaultConfigPtrType)(v)
+}
+
+func (*featureSpecFleetobservabilityLoggingConfigDefaultConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSpecFleetobservabilityLoggingConfigDefaultConfig)(nil)).Elem()
+}
+
+func (i *featureSpecFleetobservabilityLoggingConfigDefaultConfigPtrType) ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput() FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput {
+	return i.ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *featureSpecFleetobservabilityLoggingConfigDefaultConfigPtrType) ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput)
+}
+
+type FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecFleetobservabilityLoggingConfigDefaultConfig)(nil)).Elem()
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput) ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput() FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput {
+	return o
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput) ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput {
+	return o
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput) ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput() FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput {
+	return o.ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput) ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureSpecFleetobservabilityLoggingConfigDefaultConfig) *FeatureSpecFleetobservabilityLoggingConfigDefaultConfig {
+		return &v
+	}).(FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput)
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureSpecFleetobservabilityLoggingConfigDefaultConfig) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+type FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSpecFleetobservabilityLoggingConfigDefaultConfig)(nil)).Elem()
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput) ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput() FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput {
+	return o
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput) ToFeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput {
+	return o
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput) Elem() FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput {
+	return o.ApplyT(func(v *FeatureSpecFleetobservabilityLoggingConfigDefaultConfig) FeatureSpecFleetobservabilityLoggingConfigDefaultConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureSpecFleetobservabilityLoggingConfigDefaultConfig
+		return ret
+	}).(FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput)
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureSpecFleetobservabilityLoggingConfigDefaultConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig struct {
+	Mode *string `pulumi:"mode"`
+}
+
+// FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigInput is an input type that accepts FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs and FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput values.
+// You can construct a concrete instance of `FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigInput` via:
+//
+//	FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs{...}
+type FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigInput interface {
+	pulumi.Input
+
+	ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput() FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput
+	ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutputWithContext(context.Context) FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput
+}
+
+type FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs struct {
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+}
+
+func (FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig)(nil)).Elem()
+}
+
+func (i FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs) ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput() FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput {
+	return i.ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs) ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput)
+}
+
+func (i FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs) ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput() FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput {
+	return i.ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs) ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput).ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutputWithContext(ctx)
+}
+
+// FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrInput is an input type that accepts FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs, FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtr and FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput values.
+// You can construct a concrete instance of `FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrInput` via:
+//
+//	        FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrInput interface {
+	pulumi.Input
+
+	ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput() FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput
+	ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutputWithContext(context.Context) FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput
+}
+
+type featureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrType FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs
+
+func FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtr(v *FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs) FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrInput {
+	return (*featureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrType)(v)
+}
+
+func (*featureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig)(nil)).Elem()
+}
+
+func (i *featureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrType) ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput() FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput {
+	return i.ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *featureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrType) ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput)
+}
+
+type FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig)(nil)).Elem()
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput) ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput() FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput {
+	return o
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput) ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput {
+	return o
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput) ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput() FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput {
+	return o.ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput) ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig) *FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig {
+		return &v
+	}).(FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput)
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+type FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig)(nil)).Elem()
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput) ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput() FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput {
+	return o
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput) ToFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutputWithContext(ctx context.Context) FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput {
+	return o
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput) Elem() FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput {
+	return o.ApplyT(func(v *FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig) FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig
+		return ret
+	}).(FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput)
+}
+
+func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
 }
 
 type FeatureSpecMulticlusteringress struct {
@@ -3132,6 +3700,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureResourceStateArrayInput)(nil)).Elem(), FeatureResourceStateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecInput)(nil)).Elem(), FeatureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecPtrInput)(nil)).Elem(), FeatureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecFleetobservabilityInput)(nil)).Elem(), FeatureSpecFleetobservabilityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecFleetobservabilityPtrInput)(nil)).Elem(), FeatureSpecFleetobservabilityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecFleetobservabilityLoggingConfigInput)(nil)).Elem(), FeatureSpecFleetobservabilityLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecFleetobservabilityLoggingConfigPtrInput)(nil)).Elem(), FeatureSpecFleetobservabilityLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecFleetobservabilityLoggingConfigDefaultConfigInput)(nil)).Elem(), FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrInput)(nil)).Elem(), FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigInput)(nil)).Elem(), FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrInput)(nil)).Elem(), FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecMulticlusteringressInput)(nil)).Elem(), FeatureSpecMulticlusteringressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecMulticlusteringressPtrInput)(nil)).Elem(), FeatureSpecMulticlusteringressArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureStateTypeInput)(nil)).Elem(), FeatureStateTypeArgs{})
@@ -3170,6 +3746,14 @@ func init() {
 	pulumi.RegisterOutputType(FeatureResourceStateArrayOutput{})
 	pulumi.RegisterOutputType(FeatureSpecOutput{})
 	pulumi.RegisterOutputType(FeatureSpecPtrOutput{})
+	pulumi.RegisterOutputType(FeatureSpecFleetobservabilityOutput{})
+	pulumi.RegisterOutputType(FeatureSpecFleetobservabilityPtrOutput{})
+	pulumi.RegisterOutputType(FeatureSpecFleetobservabilityLoggingConfigOutput{})
+	pulumi.RegisterOutputType(FeatureSpecFleetobservabilityLoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput{})
+	pulumi.RegisterOutputType(FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput{})
+	pulumi.RegisterOutputType(FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput{})
+	pulumi.RegisterOutputType(FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput{})
 	pulumi.RegisterOutputType(FeatureSpecMulticlusteringressOutput{})
 	pulumi.RegisterOutputType(FeatureSpecMulticlusteringressPtrOutput{})
 	pulumi.RegisterOutputType(FeatureStateTypeOutput{})

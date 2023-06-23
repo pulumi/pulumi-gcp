@@ -74,6 +74,247 @@ import (
 //	}
 //
 // ```
+// ### Network Services Gateway Secure Web Proxy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"os"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := os.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultCertificate, err := certificatemanager.NewCertificate(ctx, "defaultCertificate", &certificatemanager.CertificateArgs{
+//				Location: pulumi.String("us-central1"),
+//				SelfManaged: &certificatemanager.CertificateSelfManagedArgs{
+//					PemCertificate: readFileOrPanic("test-fixtures/certificatemanager/cert.pem"),
+//					PemPrivateKey:  readFileOrPanic("test-fixtures/certificatemanager/private-key.pem"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
+//				RoutingMode:           pulumi.String("REGIONAL"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+//				Purpose:     pulumi.String("PRIVATE"),
+//				IpCidrRange: pulumi.String("10.128.0.0/20"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     defaultNetwork.ID(),
+//				Role:        pulumi.String("ACTIVE"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			proxyonlysubnet, err := compute.NewSubnetwork(ctx, "proxyonlysubnet", &compute.SubnetworkArgs{
+//				Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
+//				IpCidrRange: pulumi.String("192.168.0.0/23"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     defaultNetwork.ID(),
+//				Role:        pulumi.String("ACTIVE"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			defaultGatewaySecurityPolicy, err := networksecurity.NewGatewaySecurityPolicy(ctx, "defaultGatewaySecurityPolicy", &networksecurity.GatewaySecurityPolicyArgs{
+//				Location: pulumi.String("us-central1"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networksecurity.NewGatewaySecurityPolicyRule(ctx, "defaultGatewaySecurityPolicyRule", &networksecurity.GatewaySecurityPolicyRuleArgs{
+//				Location:              pulumi.String("us-central1"),
+//				GatewaySecurityPolicy: defaultGatewaySecurityPolicy.Name,
+//				Enabled:               pulumi.Bool(true),
+//				Priority:              pulumi.Int(1),
+//				SessionMatcher:        pulumi.String("host() == 'example.com'"),
+//				BasicProfile:          pulumi.String("ALLOW"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkservices.NewGateway(ctx, "defaultGateway", &networkservices.GatewayArgs{
+//				Location: pulumi.String("us-central1"),
+//				Addresses: pulumi.StringArray{
+//					pulumi.String("10.128.0.99"),
+//				},
+//				Type: pulumi.String("SECURE_WEB_GATEWAY"),
+//				Ports: pulumi.IntArray{
+//					pulumi.Int(443),
+//				},
+//				Scope: pulumi.String("my-default-scope1"),
+//				CertificateUrls: pulumi.StringArray{
+//					defaultCertificate.ID(),
+//				},
+//				GatewaySecurityPolicy:           defaultGatewaySecurityPolicy.ID(),
+//				Network:                         defaultNetwork.ID(),
+//				Subnetwork:                      defaultSubnetwork.ID(),
+//				DeleteSwgAutogenRouterOnDestroy: pulumi.Bool(true),
+//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+//				proxyonlysubnet,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Network Services Gateway Multiple Swp Same Network
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"os"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificatemanager"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networkservices"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := os.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultCertificate, err := certificatemanager.NewCertificate(ctx, "defaultCertificate", &certificatemanager.CertificateArgs{
+//				Location: pulumi.String("us-south1"),
+//				SelfManaged: &certificatemanager.CertificateSelfManagedArgs{
+//					PemCertificate: readFileOrPanic("test-fixtures/certificatemanager/cert.pem"),
+//					PemPrivateKey:  readFileOrPanic("test-fixtures/certificatemanager/private-key.pem"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
+//				RoutingMode:           pulumi.String("REGIONAL"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+//				Purpose:     pulumi.String("PRIVATE"),
+//				IpCidrRange: pulumi.String("10.128.0.0/20"),
+//				Region:      pulumi.String("us-south1"),
+//				Network:     defaultNetwork.ID(),
+//				Role:        pulumi.String("ACTIVE"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			proxyonlysubnet, err := compute.NewSubnetwork(ctx, "proxyonlysubnet", &compute.SubnetworkArgs{
+//				Purpose:     pulumi.String("REGIONAL_MANAGED_PROXY"),
+//				IpCidrRange: pulumi.String("192.168.0.0/23"),
+//				Region:      pulumi.String("us-south1"),
+//				Network:     defaultNetwork.ID(),
+//				Role:        pulumi.String("ACTIVE"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			defaultGatewaySecurityPolicy, err := networksecurity.NewGatewaySecurityPolicy(ctx, "defaultGatewaySecurityPolicy", &networksecurity.GatewaySecurityPolicyArgs{
+//				Location: pulumi.String("us-south1"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networksecurity.NewGatewaySecurityPolicyRule(ctx, "defaultGatewaySecurityPolicyRule", &networksecurity.GatewaySecurityPolicyRuleArgs{
+//				Location:              pulumi.String("us-south1"),
+//				GatewaySecurityPolicy: defaultGatewaySecurityPolicy.Name,
+//				Enabled:               pulumi.Bool(true),
+//				Priority:              pulumi.Int(1),
+//				SessionMatcher:        pulumi.String("host() == 'example.com'"),
+//				BasicProfile:          pulumi.String("ALLOW"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkservices.NewGateway(ctx, "defaultGateway", &networkservices.GatewayArgs{
+//				Location: pulumi.String("us-south1"),
+//				Addresses: pulumi.StringArray{
+//					pulumi.String("10.128.0.99"),
+//				},
+//				Type: pulumi.String("SECURE_WEB_GATEWAY"),
+//				Ports: pulumi.IntArray{
+//					pulumi.Int(443),
+//				},
+//				Scope: pulumi.String("my-default-scope1"),
+//				CertificateUrls: pulumi.StringArray{
+//					defaultCertificate.ID(),
+//				},
+//				GatewaySecurityPolicy:           defaultGatewaySecurityPolicy.ID(),
+//				Network:                         defaultNetwork.ID(),
+//				Subnetwork:                      defaultSubnetwork.ID(),
+//				DeleteSwgAutogenRouterOnDestroy: pulumi.Bool(true),
+//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+//				proxyonlysubnet,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkservices.NewGateway(ctx, "gateway2", &networkservices.GatewayArgs{
+//				Location: pulumi.String("us-south1"),
+//				Addresses: pulumi.StringArray{
+//					pulumi.String("10.128.0.98"),
+//				},
+//				Type: pulumi.String("SECURE_WEB_GATEWAY"),
+//				Ports: pulumi.IntArray{
+//					pulumi.Int(443),
+//				},
+//				Scope: pulumi.String("my-default-scope2"),
+//				CertificateUrls: pulumi.StringArray{
+//					defaultCertificate.ID(),
+//				},
+//				GatewaySecurityPolicy:           defaultGatewaySecurityPolicy.ID(),
+//				Network:                         defaultNetwork.ID(),
+//				Subnetwork:                      defaultSubnetwork.ID(),
+//				DeleteSwgAutogenRouterOnDestroy: pulumi.Bool(true),
+//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+//				proxyonlysubnet,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -99,10 +340,24 @@ import (
 type Gateway struct {
 	pulumi.CustomResourceState
 
+	// Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+	// an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+	// Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+	Addresses pulumi.StringArrayOutput `pulumi:"addresses"`
+	// A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+	// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+	CertificateUrls pulumi.StringArrayOutput `pulumi:"certificateUrls"`
 	// Time the AccessPolicy was created in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
+	// If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
+	DeleteSwgAutogenRouterOnDestroy pulumi.BoolPtrOutput `pulumi:"deleteSwgAutogenRouterOnDestroy"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+	// For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+	// This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+	GatewaySecurityPolicy pulumi.StringPtrOutput `pulumi:"gatewaySecurityPolicy"`
 	// Set of label tags associated with the Gateway resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location of the gateway.
@@ -112,6 +367,10 @@ type Gateway struct {
 	//
 	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The relative resource name identifying the VPC network that is using this configuration.
+	// For example: `projects/*/global/networks/network-1`.
+	// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+	Network pulumi.StringPtrOutput `pulumi:"network"`
 	// One or more port numbers (1-65535), on which the Gateway will receive traffic.
 	// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
 	// limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
@@ -129,6 +388,10 @@ type Gateway struct {
 	// A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
 	// If empty, TLS termination is disabled.
 	ServerTlsPolicy pulumi.StringPtrOutput `pulumi:"serverTlsPolicy"`
+	// The relative resource name identifying the subnetwork in which this SWG is allocated.
+	// For example: `projects/*/regions/us-central1/subnetworks/network-1`.
+	// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
+	Subnetwork pulumi.StringPtrOutput `pulumi:"subnetwork"`
 	// Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
 	// Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -174,10 +437,24 @@ func GetGateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Gateway resources.
 type gatewayState struct {
+	// Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+	// an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+	// Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+	Addresses []string `pulumi:"addresses"`
+	// A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+	// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+	CertificateUrls []string `pulumi:"certificateUrls"`
 	// Time the AccessPolicy was created in UTC.
 	CreateTime *string `pulumi:"createTime"`
+	// When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
+	// If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
+	DeleteSwgAutogenRouterOnDestroy *bool `pulumi:"deleteSwgAutogenRouterOnDestroy"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
+	// A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+	// For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+	// This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+	GatewaySecurityPolicy *string `pulumi:"gatewaySecurityPolicy"`
 	// Set of label tags associated with the Gateway resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the gateway.
@@ -187,6 +464,10 @@ type gatewayState struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
+	// The relative resource name identifying the VPC network that is using this configuration.
+	// For example: `projects/*/global/networks/network-1`.
+	// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+	Network *string `pulumi:"network"`
 	// One or more port numbers (1-65535), on which the Gateway will receive traffic.
 	// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
 	// limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
@@ -204,6 +485,10 @@ type gatewayState struct {
 	// A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
 	// If empty, TLS termination is disabled.
 	ServerTlsPolicy *string `pulumi:"serverTlsPolicy"`
+	// The relative resource name identifying the subnetwork in which this SWG is allocated.
+	// For example: `projects/*/regions/us-central1/subnetworks/network-1`.
+	// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
+	Subnetwork *string `pulumi:"subnetwork"`
 	// Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
 	// Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
 	Type *string `pulumi:"type"`
@@ -212,10 +497,24 @@ type gatewayState struct {
 }
 
 type GatewayState struct {
+	// Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+	// an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+	// Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+	Addresses pulumi.StringArrayInput
+	// A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+	// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+	CertificateUrls pulumi.StringArrayInput
 	// Time the AccessPolicy was created in UTC.
 	CreateTime pulumi.StringPtrInput
+	// When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
+	// If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
+	DeleteSwgAutogenRouterOnDestroy pulumi.BoolPtrInput
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
+	// A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+	// For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+	// This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+	GatewaySecurityPolicy pulumi.StringPtrInput
 	// Set of label tags associated with the Gateway resource.
 	Labels pulumi.StringMapInput
 	// The location of the gateway.
@@ -225,6 +524,10 @@ type GatewayState struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput
+	// The relative resource name identifying the VPC network that is using this configuration.
+	// For example: `projects/*/global/networks/network-1`.
+	// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+	Network pulumi.StringPtrInput
 	// One or more port numbers (1-65535), on which the Gateway will receive traffic.
 	// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
 	// limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
@@ -242,6 +545,10 @@ type GatewayState struct {
 	// A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
 	// If empty, TLS termination is disabled.
 	ServerTlsPolicy pulumi.StringPtrInput
+	// The relative resource name identifying the subnetwork in which this SWG is allocated.
+	// For example: `projects/*/regions/us-central1/subnetworks/network-1`.
+	// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
+	Subnetwork pulumi.StringPtrInput
 	// Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
 	// Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
 	Type pulumi.StringPtrInput
@@ -254,8 +561,22 @@ func (GatewayState) ElementType() reflect.Type {
 }
 
 type gatewayArgs struct {
+	// Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+	// an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+	// Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+	Addresses []string `pulumi:"addresses"`
+	// A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+	// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+	CertificateUrls []string `pulumi:"certificateUrls"`
+	// When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
+	// If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
+	DeleteSwgAutogenRouterOnDestroy *bool `pulumi:"deleteSwgAutogenRouterOnDestroy"`
 	// A free-text description of the resource. Max length 1024 characters.
 	Description *string `pulumi:"description"`
+	// A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+	// For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+	// This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+	GatewaySecurityPolicy *string `pulumi:"gatewaySecurityPolicy"`
 	// Set of label tags associated with the Gateway resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the gateway.
@@ -265,6 +586,10 @@ type gatewayArgs struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
+	// The relative resource name identifying the VPC network that is using this configuration.
+	// For example: `projects/*/global/networks/network-1`.
+	// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+	Network *string `pulumi:"network"`
 	// One or more port numbers (1-65535), on which the Gateway will receive traffic.
 	// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
 	// limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
@@ -280,6 +605,10 @@ type gatewayArgs struct {
 	// A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
 	// If empty, TLS termination is disabled.
 	ServerTlsPolicy *string `pulumi:"serverTlsPolicy"`
+	// The relative resource name identifying the subnetwork in which this SWG is allocated.
+	// For example: `projects/*/regions/us-central1/subnetworks/network-1`.
+	// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
+	Subnetwork *string `pulumi:"subnetwork"`
 	// Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
 	// Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
 	Type string `pulumi:"type"`
@@ -287,8 +616,22 @@ type gatewayArgs struct {
 
 // The set of arguments for constructing a Gateway resource.
 type GatewayArgs struct {
+	// Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+	// an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+	// Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+	Addresses pulumi.StringArrayInput
+	// A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+	// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+	CertificateUrls pulumi.StringArrayInput
+	// When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
+	// If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
+	DeleteSwgAutogenRouterOnDestroy pulumi.BoolPtrInput
 	// A free-text description of the resource. Max length 1024 characters.
 	Description pulumi.StringPtrInput
+	// A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+	// For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+	// This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+	GatewaySecurityPolicy pulumi.StringPtrInput
 	// Set of label tags associated with the Gateway resource.
 	Labels pulumi.StringMapInput
 	// The location of the gateway.
@@ -298,6 +641,10 @@ type GatewayArgs struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput
+	// The relative resource name identifying the VPC network that is using this configuration.
+	// For example: `projects/*/global/networks/network-1`.
+	// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+	Network pulumi.StringPtrInput
 	// One or more port numbers (1-65535), on which the Gateway will receive traffic.
 	// The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
 	// limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
@@ -313,6 +660,10 @@ type GatewayArgs struct {
 	// A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
 	// If empty, TLS termination is disabled.
 	ServerTlsPolicy pulumi.StringPtrInput
+	// The relative resource name identifying the subnetwork in which this SWG is allocated.
+	// For example: `projects/*/regions/us-central1/subnetworks/network-1`.
+	// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
+	Subnetwork pulumi.StringPtrInput
 	// Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
 	// Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
 	Type pulumi.StringInput
@@ -405,14 +756,40 @@ func (o GatewayOutput) ToGatewayOutputWithContext(ctx context.Context) GatewayOu
 	return o
 }
 
+// Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+// an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+// Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+func (o GatewayOutput) Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringArrayOutput { return v.Addresses }).(pulumi.StringArrayOutput)
+}
+
+// A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+func (o GatewayOutput) CertificateUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringArrayOutput { return v.CertificateUrls }).(pulumi.StringArrayOutput)
+}
+
 // Time the AccessPolicy was created in UTC.
 func (o GatewayOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
+// If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
+func (o GatewayOutput) DeleteSwgAutogenRouterOnDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.BoolPtrOutput { return v.DeleteSwgAutogenRouterOnDestroy }).(pulumi.BoolPtrOutput)
+}
+
 // A free-text description of the resource. Max length 1024 characters.
 func (o GatewayOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+// For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+// This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+func (o GatewayOutput) GatewaySecurityPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.GatewaySecurityPolicy }).(pulumi.StringPtrOutput)
 }
 
 // Set of label tags associated with the Gateway resource.
@@ -431,6 +808,13 @@ func (o GatewayOutput) Location() pulumi.StringPtrOutput {
 // ***
 func (o GatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The relative resource name identifying the VPC network that is using this configuration.
+// For example: `projects/*/global/networks/network-1`.
+// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+func (o GatewayOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.Network }).(pulumi.StringPtrOutput)
 }
 
 // One or more port numbers (1-65535), on which the Gateway will receive traffic.
@@ -463,6 +847,13 @@ func (o GatewayOutput) SelfLink() pulumi.StringOutput {
 // If empty, TLS termination is disabled.
 func (o GatewayOutput) ServerTlsPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.ServerTlsPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The relative resource name identifying the subnetwork in which this SWG is allocated.
+// For example: `projects/*/regions/us-central1/subnetworks/network-1`.
+// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
+func (o GatewayOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Gateway) pulumi.StringPtrOutput { return v.Subnetwork }).(pulumi.StringPtrOutput)
 }
 
 // Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.

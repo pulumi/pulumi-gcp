@@ -17,6 +17,7 @@ import com.pulumi.gcp.container.inputs.NodePoolNodeConfigLocalNvmeSsdBlockConfig
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigReservationAffinityArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigSandboxConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigShieldedInstanceConfigArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigSoleTenantConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigTaintArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigWorkloadMetadataConfigArgs;
 import java.lang.Boolean;
@@ -222,6 +223,13 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.shieldedInstanceConfig);
     }
 
+    @Import(name="soleTenantConfig")
+    private @Nullable Output<NodePoolNodeConfigSoleTenantConfigArgs> soleTenantConfig;
+
+    public Optional<Output<NodePoolNodeConfigSoleTenantConfigArgs>> soleTenantConfig() {
+        return Optional.ofNullable(this.soleTenantConfig);
+    }
+
     @Import(name="spot")
     private @Nullable Output<Boolean> spot;
 
@@ -280,6 +288,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         this.sandboxConfig = $.sandboxConfig;
         this.serviceAccount = $.serviceAccount;
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
+        this.soleTenantConfig = $.soleTenantConfig;
         this.spot = $.spot;
         this.tags = $.tags;
         this.taints = $.taints;
@@ -553,6 +562,15 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
 
         public Builder shieldedInstanceConfig(NodePoolNodeConfigShieldedInstanceConfigArgs shieldedInstanceConfig) {
             return shieldedInstanceConfig(Output.of(shieldedInstanceConfig));
+        }
+
+        public Builder soleTenantConfig(@Nullable Output<NodePoolNodeConfigSoleTenantConfigArgs> soleTenantConfig) {
+            $.soleTenantConfig = soleTenantConfig;
+            return this;
+        }
+
+        public Builder soleTenantConfig(NodePoolNodeConfigSoleTenantConfigArgs soleTenantConfig) {
+            return soleTenantConfig(Output.of(soleTenantConfig));
         }
 
         public Builder spot(@Nullable Output<Boolean> spot) {

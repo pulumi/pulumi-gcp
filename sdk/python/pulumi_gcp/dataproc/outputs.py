@@ -24,6 +24,8 @@ __all__ = [
     'ClusterClusterConfigEncryptionConfig',
     'ClusterClusterConfigEndpointConfig',
     'ClusterClusterConfigGceClusterConfig',
+    'ClusterClusterConfigGceClusterConfigNodeGroupAffinity',
+    'ClusterClusterConfigGceClusterConfigReservationAffinity',
     'ClusterClusterConfigGceClusterConfigShieldedInstanceConfig',
     'ClusterClusterConfigInitializationAction',
     'ClusterClusterConfigLifecycleConfig',
@@ -1065,6 +1067,10 @@ class ClusterClusterConfigGceClusterConfig(dict):
         suggest = None
         if key == "internalIpOnly":
             suggest = "internal_ip_only"
+        elif key == "nodeGroupAffinity":
+            suggest = "node_group_affinity"
+        elif key == "reservationAffinity":
+            suggest = "reservation_affinity"
         elif key == "serviceAccount":
             suggest = "service_account"
         elif key == "serviceAccountScopes":
@@ -1087,6 +1093,8 @@ class ClusterClusterConfigGceClusterConfig(dict):
                  internal_ip_only: Optional[bool] = None,
                  metadata: Optional[Mapping[str, str]] = None,
                  network: Optional[str] = None,
+                 node_group_affinity: Optional['outputs.ClusterClusterConfigGceClusterConfigNodeGroupAffinity'] = None,
+                 reservation_affinity: Optional['outputs.ClusterClusterConfigGceClusterConfigReservationAffinity'] = None,
                  service_account: Optional[str] = None,
                  service_account_scopes: Optional[Sequence[str]] = None,
                  shielded_instance_config: Optional['outputs.ClusterClusterConfigGceClusterConfigShieldedInstanceConfig'] = None,
@@ -1104,6 +1112,8 @@ class ClusterClusterConfigGceClusterConfig(dict):
         :param str network: The name or self_link of the Google Compute Engine
                network to the cluster will be part of. Conflicts with `subnetwork`.
                If neither is specified, this defaults to the "default" network.
+        :param 'ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs' node_group_affinity: Node Group Affinity for sole-tenant clusters.
+        :param 'ClusterClusterConfigGceClusterConfigReservationAffinityArgs' reservation_affinity: Reservation Affinity for consuming zonal reservation.
         :param str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         :param Sequence[str] service_account_scopes: The set of Google API scopes
@@ -1132,6 +1142,10 @@ class ClusterClusterConfigGceClusterConfig(dict):
             pulumi.set(__self__, "metadata", metadata)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if node_group_affinity is not None:
+            pulumi.set(__self__, "node_group_affinity", node_group_affinity)
+        if reservation_affinity is not None:
+            pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
         if service_account_scopes is not None:
@@ -1175,6 +1189,22 @@ class ClusterClusterConfigGceClusterConfig(dict):
         If neither is specified, this defaults to the "default" network.
         """
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="nodeGroupAffinity")
+    def node_group_affinity(self) -> Optional['outputs.ClusterClusterConfigGceClusterConfigNodeGroupAffinity']:
+        """
+        Node Group Affinity for sole-tenant clusters.
+        """
+        return pulumi.get(self, "node_group_affinity")
+
+    @property
+    @pulumi.getter(name="reservationAffinity")
+    def reservation_affinity(self) -> Optional['outputs.ClusterClusterConfigGceClusterConfigReservationAffinity']:
+        """
+        Reservation Affinity for consuming zonal reservation.
+        """
+        return pulumi.get(self, "reservation_affinity")
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -1238,6 +1268,101 @@ class ClusterClusterConfigGceClusterConfig(dict):
         `cluster_config.master_config.machine_type` and `cluster_config.worker_config.machine_type`.
         """
         return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
+class ClusterClusterConfigGceClusterConfigNodeGroupAffinity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeGroupUri":
+            suggest = "node_group_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterConfigGceClusterConfigNodeGroupAffinity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterConfigGceClusterConfigNodeGroupAffinity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterConfigGceClusterConfigNodeGroupAffinity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node_group_uri: str):
+        """
+        :param str node_group_uri: The URI of a sole-tenant node group resource that the cluster will be created on.
+        """
+        pulumi.set(__self__, "node_group_uri", node_group_uri)
+
+    @property
+    @pulumi.getter(name="nodeGroupUri")
+    def node_group_uri(self) -> str:
+        """
+        The URI of a sole-tenant node group resource that the cluster will be created on.
+        """
+        return pulumi.get(self, "node_group_uri")
+
+
+@pulumi.output_type
+class ClusterClusterConfigGceClusterConfigReservationAffinity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "consumeReservationType":
+            suggest = "consume_reservation_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterConfigGceClusterConfigReservationAffinity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterConfigGceClusterConfigReservationAffinity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterConfigGceClusterConfigReservationAffinity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 consume_reservation_type: Optional[str] = None,
+                 key: Optional[str] = None,
+                 values: Optional[Sequence[str]] = None):
+        """
+        :param str consume_reservation_type: Corresponds to the type of reservation consumption.
+        :param str key: Corresponds to the label key of reservation resource.
+        :param Sequence[str] values: Corresponds to the label values of reservation resource.
+        """
+        if consume_reservation_type is not None:
+            pulumi.set(__self__, "consume_reservation_type", consume_reservation_type)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter(name="consumeReservationType")
+    def consume_reservation_type(self) -> Optional[str]:
+        """
+        Corresponds to the type of reservation consumption.
+        """
+        return pulumi.get(self, "consume_reservation_type")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        Corresponds to the label key of reservation resource.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[Sequence[str]]:
+        """
+        Corresponds to the label values of reservation resource.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type

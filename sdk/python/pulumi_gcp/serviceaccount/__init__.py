@@ -11,6 +11,7 @@ from .get_account_access_token import *
 from .get_account_id_token import *
 from .get_account_jwt import *
 from .get_account_key import *
+from .get_iam_policy import *
 from .iam_binding import *
 from .iam_member import *
 from .iam_policy import *

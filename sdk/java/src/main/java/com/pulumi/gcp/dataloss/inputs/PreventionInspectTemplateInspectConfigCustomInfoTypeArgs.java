@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoTypeArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScoreArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeStoredTypeArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateTypeArgs;
 import java.lang.String;
@@ -116,6 +117,23 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeArgs exte
     }
 
     /**
+     * Optional custom sensitivity for this InfoType. This only applies to data profiling.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sensitivityScore")
+    private @Nullable Output<PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScoreArgs> sensitivityScore;
+
+    /**
+     * @return Optional custom sensitivity for this InfoType. This only applies to data profiling.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScoreArgs>> sensitivityScore() {
+        return Optional.ofNullable(this.sensitivityScore);
+    }
+
+    /**
      * A reference to a StoredInfoType to use with scanning.
      * Structure is documented below.
      * 
@@ -155,6 +173,7 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeArgs exte
         this.infoType = $.infoType;
         this.likelihood = $.likelihood;
         this.regex = $.regex;
+        this.sensitivityScore = $.sensitivityScore;
         this.storedType = $.storedType;
         this.surrogateType = $.surrogateType;
     }
@@ -300,6 +319,29 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeArgs exte
          */
         public Builder regex(PreventionInspectTemplateInspectConfigCustomInfoTypeRegexArgs regex) {
             return regex(Output.of(regex));
+        }
+
+        /**
+         * @param sensitivityScore Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sensitivityScore(@Nullable Output<PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScoreArgs> sensitivityScore) {
+            $.sensitivityScore = sensitivityScore;
+            return this;
+        }
+
+        /**
+         * @param sensitivityScore Optional custom sensitivity for this InfoType. This only applies to data profiling.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sensitivityScore(PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScoreArgs sensitivityScore) {
+            return sensitivityScore(Output.of(sensitivityScore));
         }
 
         /**

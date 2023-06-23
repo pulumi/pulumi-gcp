@@ -441,7 +441,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
 
         bbs_config = gcp.cloudbuild.BitbucketServerConfig("bbs-config",
             api_key="<api-key>",
-            config_id="mybbsconfig",
+            config_id="bbs-config",
             host_uri="https://bbs.com",
             location="us-central1",
             secrets=gcp.cloudbuild.BitbucketServerConfigSecretsArgs(
@@ -459,7 +459,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
 
         bbs_config_with_repos = gcp.cloudbuild.BitbucketServerConfig("bbs-config-with-repos",
             api_key="<api-key>",
-            config_id="mybbsconfig",
+            config_id="bbs-config",
             connected_repositories=[
                 gcp.cloudbuild.BitbucketServerConfigConnectedRepositoryArgs(
                     project_key="DEV",
@@ -541,7 +541,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
 
         bbs_config = gcp.cloudbuild.BitbucketServerConfig("bbs-config",
             api_key="<api-key>",
-            config_id="mybbsconfig",
+            config_id="bbs-config",
             host_uri="https://bbs.com",
             location="us-central1",
             secrets=gcp.cloudbuild.BitbucketServerConfigSecretsArgs(
@@ -559,7 +559,7 @@ class BitbucketServerConfig(pulumi.CustomResource):
 
         bbs_config_with_repos = gcp.cloudbuild.BitbucketServerConfig("bbs-config-with-repos",
             api_key="<api-key>",
-            config_id="mybbsconfig",
+            config_id="bbs-config",
             connected_repositories=[
                 gcp.cloudbuild.BitbucketServerConfigConnectedRepositoryArgs(
                     project_key="DEV",

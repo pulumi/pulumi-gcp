@@ -9,10 +9,16 @@ import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.pubsub.inputs.GetSubscriptionArgs;
+import com.pulumi.gcp.pubsub.inputs.GetSubscriptionIamPolicyArgs;
+import com.pulumi.gcp.pubsub.inputs.GetSubscriptionIamPolicyPlainArgs;
 import com.pulumi.gcp.pubsub.inputs.GetSubscriptionPlainArgs;
 import com.pulumi.gcp.pubsub.inputs.GetTopicArgs;
+import com.pulumi.gcp.pubsub.inputs.GetTopicIamPolicyArgs;
+import com.pulumi.gcp.pubsub.inputs.GetTopicIamPolicyPlainArgs;
 import com.pulumi.gcp.pubsub.inputs.GetTopicPlainArgs;
+import com.pulumi.gcp.pubsub.outputs.GetSubscriptionIamPolicyResult;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionResult;
+import com.pulumi.gcp.pubsub.outputs.GetTopicIamPolicyResult;
 import com.pulumi.gcp.pubsub.outputs.GetTopicResult;
 import java.util.concurrent.CompletableFuture;
 
@@ -174,6 +180,154 @@ public final class PubsubFunctions {
         return Deployment.getInstance().invokeAsync("gcp:pubsub/getSubscription:getSubscription", TypeShape.of(GetSubscriptionResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for a Pubsub subscription.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.pubsub.PubsubFunctions;
+     * import com.pulumi.gcp.pubsub.inputs.GetSubscriptionIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = PubsubFunctions.getSubscriptionIamPolicy(GetSubscriptionIamPolicyArgs.builder()
+     *             .subscription(google_pubsub_subscription.subscription().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSubscriptionIamPolicyResult> getSubscriptionIamPolicy(GetSubscriptionIamPolicyArgs args) {
+        return getSubscriptionIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for a Pubsub subscription.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.pubsub.PubsubFunctions;
+     * import com.pulumi.gcp.pubsub.inputs.GetSubscriptionIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = PubsubFunctions.getSubscriptionIamPolicy(GetSubscriptionIamPolicyArgs.builder()
+     *             .subscription(google_pubsub_subscription.subscription().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSubscriptionIamPolicyResult> getSubscriptionIamPolicyPlain(GetSubscriptionIamPolicyPlainArgs args) {
+        return getSubscriptionIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for a Pubsub subscription.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.pubsub.PubsubFunctions;
+     * import com.pulumi.gcp.pubsub.inputs.GetSubscriptionIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = PubsubFunctions.getSubscriptionIamPolicy(GetSubscriptionIamPolicyArgs.builder()
+     *             .subscription(google_pubsub_subscription.subscription().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSubscriptionIamPolicyResult> getSubscriptionIamPolicy(GetSubscriptionIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:pubsub/getSubscriptionIamPolicy:getSubscriptionIamPolicy", TypeShape.of(GetSubscriptionIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a Pubsub subscription.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.pubsub.PubsubFunctions;
+     * import com.pulumi.gcp.pubsub.inputs.GetSubscriptionIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = PubsubFunctions.getSubscriptionIamPolicy(GetSubscriptionIamPolicyArgs.builder()
+     *             .subscription(google_pubsub_subscription.subscription().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSubscriptionIamPolicyResult> getSubscriptionIamPolicyPlain(GetSubscriptionIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:pubsub/getSubscriptionIamPolicy:getSubscriptionIamPolicy", TypeShape.of(GetSubscriptionIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Get information about a Google Cloud Pub/Sub Topic. For more information see
      * the [official documentation](https://cloud.google.com/pubsub/docs/)
      * and [API](https://cloud.google.com/pubsub/docs/apis).
@@ -328,5 +482,157 @@ public final class PubsubFunctions {
      */
     public static CompletableFuture<GetTopicResult> getTopicPlain(GetTopicPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:pubsub/getTopic:getTopic", TypeShape.of(GetTopicResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for topic
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.pubsub.PubsubFunctions;
+     * import com.pulumi.gcp.pubsub.inputs.GetTopicIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = PubsubFunctions.getTopicIamPolicy(GetTopicIamPolicyArgs.builder()
+     *             .project(google_pubsub_topic.example().project())
+     *             .topic(google_pubsub_topic.example().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTopicIamPolicyResult> getTopicIamPolicy(GetTopicIamPolicyArgs args) {
+        return getTopicIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for topic
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.pubsub.PubsubFunctions;
+     * import com.pulumi.gcp.pubsub.inputs.GetTopicIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = PubsubFunctions.getTopicIamPolicy(GetTopicIamPolicyArgs.builder()
+     *             .project(google_pubsub_topic.example().project())
+     *             .topic(google_pubsub_topic.example().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTopicIamPolicyResult> getTopicIamPolicyPlain(GetTopicIamPolicyPlainArgs args) {
+        return getTopicIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for topic
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.pubsub.PubsubFunctions;
+     * import com.pulumi.gcp.pubsub.inputs.GetTopicIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = PubsubFunctions.getTopicIamPolicy(GetTopicIamPolicyArgs.builder()
+     *             .project(google_pubsub_topic.example().project())
+     *             .topic(google_pubsub_topic.example().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTopicIamPolicyResult> getTopicIamPolicy(GetTopicIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:pubsub/getTopicIamPolicy:getTopicIamPolicy", TypeShape.of(GetTopicIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for topic
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.pubsub.PubsubFunctions;
+     * import com.pulumi.gcp.pubsub.inputs.GetTopicIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = PubsubFunctions.getTopicIamPolicy(GetTopicIamPolicyArgs.builder()
+     *             .project(google_pubsub_topic.example().project())
+     *             .topic(google_pubsub_topic.example().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTopicIamPolicyResult> getTopicIamPolicyPlain(GetTopicIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:pubsub/getTopicIamPolicy:getTopicIamPolicy", TypeShape.of(GetTopicIamPolicyResult.class), args, Utilities.withVersion(options));
     }
 }

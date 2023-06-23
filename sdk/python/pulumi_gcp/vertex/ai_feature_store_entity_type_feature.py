@@ -112,6 +112,7 @@ class _AiFeatureStoreEntityTypeFeatureState:
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  value_type: Optional[pulumi.Input[str]] = None):
         """
@@ -125,6 +126,7 @@ class _AiFeatureStoreEntityTypeFeatureState:
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the feature.
         :param pulumi.Input[str] name: The name of the feature. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
+        :param pulumi.Input[str] region: The region of the feature
         :param pulumi.Input[str] update_time: The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[str] value_type: Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
         """
@@ -140,6 +142,8 @@ class _AiFeatureStoreEntityTypeFeatureState:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
         if value_type is not None:
@@ -219,6 +223,18 @@ class _AiFeatureStoreEntityTypeFeatureState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of the feature
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter(name="updateTime")
@@ -485,6 +501,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
             __props__.__dict__["value_type"] = value_type
             __props__.__dict__["create_time"] = None
             __props__.__dict__["etag"] = None
+            __props__.__dict__["region"] = None
             __props__.__dict__["update_time"] = None
         super(AiFeatureStoreEntityTypeFeature, __self__).__init__(
             'gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature',
@@ -502,6 +519,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
             etag: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            region: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             value_type: Optional[pulumi.Input[str]] = None) -> 'AiFeatureStoreEntityTypeFeature':
         """
@@ -520,6 +538,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
         :param pulumi.Input[str] etag: Used to perform consistent read-modify-write updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the feature.
         :param pulumi.Input[str] name: The name of the feature. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
+        :param pulumi.Input[str] region: The region of the feature
         :param pulumi.Input[str] update_time: The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         :param pulumi.Input[str] value_type: Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
         """
@@ -533,6 +552,7 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
         __props__.__dict__["etag"] = etag
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
+        __props__.__dict__["region"] = region
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["value_type"] = value_type
         return AiFeatureStoreEntityTypeFeature(resource_name, opts=opts, __props__=__props__)
@@ -587,6 +607,14 @@ class AiFeatureStoreEntityTypeFeature(pulumi.CustomResource):
         The name of the feature. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        The region of the feature
+        """
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="updateTime")

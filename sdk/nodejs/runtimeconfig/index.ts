@@ -30,6 +30,11 @@ export const getConfig: typeof import("./getConfig").getConfig = null as any;
 export const getConfigOutput: typeof import("./getConfig").getConfigOutput = null as any;
 utilities.lazyLoad(exports, ["getConfig","getConfigOutput"], () => require("./getConfig"));
 
+export { GetConfigIamPolicyArgs, GetConfigIamPolicyResult, GetConfigIamPolicyOutputArgs } from "./getConfigIamPolicy";
+export const getConfigIamPolicy: typeof import("./getConfigIamPolicy").getConfigIamPolicy = null as any;
+export const getConfigIamPolicyOutput: typeof import("./getConfigIamPolicy").getConfigIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getConfigIamPolicy","getConfigIamPolicyOutput"], () => require("./getConfigIamPolicy"));
+
 export { GetVariableArgs, GetVariableResult, GetVariableOutputArgs } from "./getVariable";
 export const getVariable: typeof import("./getVariable").getVariable = null as any;
 export const getVariableOutput: typeof import("./getVariable").getVariableOutput = null as any;

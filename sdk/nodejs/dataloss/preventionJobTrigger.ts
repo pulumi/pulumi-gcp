@@ -319,6 +319,44 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
+ * ### Dlp Job Trigger With Id
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const withTriggerId = new gcp.dataloss.PreventionJobTrigger("withTriggerId", {
+ *     description: "Starting description",
+ *     displayName: "display",
+ *     inspectJob: {
+ *         actions: [{
+ *             saveFindings: {
+ *                 outputConfig: {
+ *                     table: {
+ *                         datasetId: "dataset123",
+ *                         projectId: "project",
+ *                     },
+ *                 },
+ *             },
+ *         }],
+ *         inspectTemplateName: "fake",
+ *         storageConfig: {
+ *             cloudStorageOptions: {
+ *                 fileSet: {
+ *                     url: "gs://mybucket/directory/",
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     parent: "projects/my-project-name",
+ *     triggerId: "id-",
+ *     triggers: [{
+ *         schedule: {
+ *             recurrencePeriodDuration: "86400s",
+ *         },
+ *     }],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -445,6 +483,12 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
      */
     public readonly status!: pulumi.Output<string | undefined>;
     /**
+     * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+.
+     * The maximum length is 100 characters. Can be empty to allow the system to generate one.
+     */
+    public readonly triggerId!: pulumi.Output<string>;
+    /**
      * What event needs to occur for a new job to be started.
      * Structure is documented below.
      */
@@ -475,6 +519,7 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["parent"] = state ? state.parent : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["triggerId"] = state ? state.triggerId : undefined;
             resourceInputs["triggers"] = state ? state.triggers : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
@@ -490,6 +535,7 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
             resourceInputs["inspectJob"] = args ? args.inspectJob : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
+            resourceInputs["triggerId"] = args ? args.triggerId : undefined;
             resourceInputs["triggers"] = args ? args.triggers : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["lastRunTime"] = undefined /*out*/;
@@ -590,6 +636,12 @@ export interface PreventionJobTriggerState {
      */
     status?: pulumi.Input<string>;
     /**
+     * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+.
+     * The maximum length is 100 characters. Can be empty to allow the system to generate one.
+     */
+    triggerId?: pulumi.Input<string>;
+    /**
      * What event needs to occur for a new job to be started.
      * Structure is documented below.
      */
@@ -631,6 +683,12 @@ export interface PreventionJobTriggerArgs {
      * Possible values are: `PAUSED`, `HEALTHY`, `CANCELLED`.
      */
     status?: pulumi.Input<string>;
+    /**
+     * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+.
+     * The maximum length is 100 characters. Can be empty to allow the system to generate one.
+     */
+    triggerId?: pulumi.Input<string>;
     /**
      * What event needs to occur for a new job to be started.
      * Structure is documented below.

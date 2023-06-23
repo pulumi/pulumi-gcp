@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationConditionArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationFieldArgs;
+import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgs;
 import java.util.List;
 import java.util.Objects;
@@ -61,22 +62,43 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     }
 
     /**
-     * Apply the transformation to the entire field.
-     * The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
+     * Treat the contents of the field as free text, and selectively transform content that matches an InfoType.
+     * Only one of `primitive_transformation` or `info_type_transformations` must be specified.
      * Structure is documented below.
      * 
      */
-    @Import(name="primitiveTransformation", required=true)
-    private Output<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgs> primitiveTransformation;
+    @Import(name="infoTypeTransformations")
+    private @Nullable Output<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsArgs> infoTypeTransformations;
+
+    /**
+     * @return Treat the contents of the field as free text, and selectively transform content that matches an InfoType.
+     * Only one of `primitive_transformation` or `info_type_transformations` must be specified.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsArgs>> infoTypeTransformations() {
+        return Optional.ofNullable(this.infoTypeTransformations);
+    }
+
+    /**
+     * Apply the transformation to the entire field.
+     * The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
+     * Only one of `primitive_transformation` or `info_type_transformations` must be specified.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="primitiveTransformation")
+    private @Nullable Output<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgs> primitiveTransformation;
 
     /**
      * @return Apply the transformation to the entire field.
      * The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
+     * Only one of `primitive_transformation` or `info_type_transformations` must be specified.
      * Structure is documented below.
      * 
      */
-    public Output<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgs> primitiveTransformation() {
-        return this.primitiveTransformation;
+    public Optional<Output<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgs>> primitiveTransformation() {
+        return Optional.ofNullable(this.primitiveTransformation);
     }
 
     private PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgs() {}
@@ -84,6 +106,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     private PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgs(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgs $) {
         this.condition = $.condition;
         this.fields = $.fields;
+        this.infoTypeTransformations = $.infoTypeTransformations;
         this.primitiveTransformation = $.primitiveTransformation;
     }
 
@@ -172,14 +195,40 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
         }
 
         /**
-         * @param primitiveTransformation Apply the transformation to the entire field.
-         * The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
+         * @param infoTypeTransformations Treat the contents of the field as free text, and selectively transform content that matches an InfoType.
+         * Only one of `primitive_transformation` or `info_type_transformations` must be specified.
          * Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder primitiveTransformation(Output<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgs> primitiveTransformation) {
+        public Builder infoTypeTransformations(@Nullable Output<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsArgs> infoTypeTransformations) {
+            $.infoTypeTransformations = infoTypeTransformations;
+            return this;
+        }
+
+        /**
+         * @param infoTypeTransformations Treat the contents of the field as free text, and selectively transform content that matches an InfoType.
+         * Only one of `primitive_transformation` or `info_type_transformations` must be specified.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder infoTypeTransformations(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsArgs infoTypeTransformations) {
+            return infoTypeTransformations(Output.of(infoTypeTransformations));
+        }
+
+        /**
+         * @param primitiveTransformation Apply the transformation to the entire field.
+         * The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
+         * Only one of `primitive_transformation` or `info_type_transformations` must be specified.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primitiveTransformation(@Nullable Output<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationArgs> primitiveTransformation) {
             $.primitiveTransformation = primitiveTransformation;
             return this;
         }
@@ -187,6 +236,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
         /**
          * @param primitiveTransformation Apply the transformation to the entire field.
          * The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
+         * Only one of `primitive_transformation` or `info_type_transformations` must be specified.
          * Structure is documented below.
          * 
          * @return builder
@@ -198,7 +248,6 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
         public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationArgs build() {
             $.fields = Objects.requireNonNull($.fields, "expected parameter 'fields' to be non-null");
-            $.primitiveTransformation = Objects.requireNonNull($.primitiveTransformation, "expected parameter 'primitiveTransformation' to be non-null");
             return $;
         }
     }

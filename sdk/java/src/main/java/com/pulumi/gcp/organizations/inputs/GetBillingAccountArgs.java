@@ -47,9 +47,28 @@ public final class GetBillingAccountArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * `true` if the billing account is open, `false` if the billing account is closed.
+     * `true` if projects associated with the billing account should be read, `false` if this step
+     * should be skipped. Setting `false` may be useful if the user permissions do not allow listing projects. Defaults to `true`.
      * 
      * &gt; **NOTE:** One of `billing_account` or `display_name` must be specified.
+     * 
+     */
+    @Import(name="lookupProjects")
+    private @Nullable Output<Boolean> lookupProjects;
+
+    /**
+     * @return `true` if projects associated with the billing account should be read, `false` if this step
+     * should be skipped. Setting `false` may be useful if the user permissions do not allow listing projects. Defaults to `true`.
+     * 
+     * &gt; **NOTE:** One of `billing_account` or `display_name` must be specified.
+     * 
+     */
+    public Optional<Output<Boolean>> lookupProjects() {
+        return Optional.ofNullable(this.lookupProjects);
+    }
+
+    /**
+     * `true` if the billing account is open, `false` if the billing account is closed.
      * 
      */
     @Import(name="open")
@@ -57,8 +76,6 @@ public final class GetBillingAccountArgs extends com.pulumi.resources.InvokeArgs
 
     /**
      * @return `true` if the billing account is open, `false` if the billing account is closed.
-     * 
-     * &gt; **NOTE:** One of `billing_account` or `display_name` must be specified.
      * 
      */
     public Optional<Output<Boolean>> open() {
@@ -70,6 +87,7 @@ public final class GetBillingAccountArgs extends com.pulumi.resources.InvokeArgs
     private GetBillingAccountArgs(GetBillingAccountArgs $) {
         this.billingAccount = $.billingAccount;
         this.displayName = $.displayName;
+        this.lookupProjects = $.lookupProjects;
         this.open = $.open;
     }
 
@@ -134,9 +152,34 @@ public final class GetBillingAccountArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param open `true` if the billing account is open, `false` if the billing account is closed.
+         * @param lookupProjects `true` if projects associated with the billing account should be read, `false` if this step
+         * should be skipped. Setting `false` may be useful if the user permissions do not allow listing projects. Defaults to `true`.
          * 
          * &gt; **NOTE:** One of `billing_account` or `display_name` must be specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lookupProjects(@Nullable Output<Boolean> lookupProjects) {
+            $.lookupProjects = lookupProjects;
+            return this;
+        }
+
+        /**
+         * @param lookupProjects `true` if projects associated with the billing account should be read, `false` if this step
+         * should be skipped. Setting `false` may be useful if the user permissions do not allow listing projects. Defaults to `true`.
+         * 
+         * &gt; **NOTE:** One of `billing_account` or `display_name` must be specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lookupProjects(Boolean lookupProjects) {
+            return lookupProjects(Output.of(lookupProjects));
+        }
+
+        /**
+         * @param open `true` if the billing account is open, `false` if the billing account is closed.
          * 
          * @return builder
          * 
@@ -148,8 +191,6 @@ public final class GetBillingAccountArgs extends com.pulumi.resources.InvokeArgs
 
         /**
          * @param open `true` if the billing account is open, `false` if the billing account is closed.
-         * 
-         * &gt; **NOTE:** One of `billing_account` or `display_name` must be specified.
          * 
          * @return builder
          * 

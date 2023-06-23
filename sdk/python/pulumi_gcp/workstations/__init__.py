@@ -5,6 +5,8 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .get_workstation_config_iam_policy import *
+from .get_workstation_iam_policy import *
 from .workstation import *
 from .workstation_cluster import *
 from .workstation_config import *

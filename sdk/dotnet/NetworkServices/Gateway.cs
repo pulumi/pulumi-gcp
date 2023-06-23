@@ -66,6 +66,256 @@ namespace Pulumi.Gcp.NetworkServices
     /// 
     /// });
     /// ```
+    /// ### Network Services Gateway Secure Web Proxy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultCertificate = new Gcp.CertificateManager.Certificate("defaultCertificate", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         SelfManaged = new Gcp.CertificateManager.Inputs.CertificateSelfManagedArgs
+    ///         {
+    ///             PemCertificate = File.ReadAllText("test-fixtures/certificatemanager/cert.pem"),
+    ///             PemPrivateKey = File.ReadAllText("test-fixtures/certificatemanager/private-key.pem"),
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
+    ///     {
+    ///         RoutingMode = "REGIONAL",
+    ///         AutoCreateSubnetworks = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     {
+    ///         Purpose = "PRIVATE",
+    ///         IpCidrRange = "10.128.0.0/20",
+    ///         Region = "us-central1",
+    ///         Network = defaultNetwork.Id,
+    ///         Role = "ACTIVE",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var proxyonlysubnet = new Gcp.Compute.Subnetwork("proxyonlysubnet", new()
+    ///     {
+    ///         Purpose = "REGIONAL_MANAGED_PROXY",
+    ///         IpCidrRange = "192.168.0.0/23",
+    ///         Region = "us-central1",
+    ///         Network = defaultNetwork.Id,
+    ///         Role = "ACTIVE",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultGatewaySecurityPolicy = new Gcp.NetworkSecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultGatewaySecurityPolicyRule = new Gcp.NetworkSecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         GatewaySecurityPolicy = defaultGatewaySecurityPolicy.Name,
+    ///         Enabled = true,
+    ///         Priority = 1,
+    ///         SessionMatcher = "host() == 'example.com'",
+    ///         BasicProfile = "ALLOW",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultGateway = new Gcp.NetworkServices.Gateway("defaultGateway", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Addresses = new[]
+    ///         {
+    ///             "10.128.0.99",
+    ///         },
+    ///         Type = "SECURE_WEB_GATEWAY",
+    ///         Ports = new[]
+    ///         {
+    ///             443,
+    ///         },
+    ///         Scope = "my-default-scope1",
+    ///         CertificateUrls = new[]
+    ///         {
+    ///             defaultCertificate.Id,
+    ///         },
+    ///         GatewaySecurityPolicy = defaultGatewaySecurityPolicy.Id,
+    ///         Network = defaultNetwork.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         DeleteSwgAutogenRouterOnDestroy = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///         DependsOn = new[]
+    ///         {
+    ///             proxyonlysubnet,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Network Services Gateway Multiple Swp Same Network
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultCertificate = new Gcp.CertificateManager.Certificate("defaultCertificate", new()
+    ///     {
+    ///         Location = "us-south1",
+    ///         SelfManaged = new Gcp.CertificateManager.Inputs.CertificateSelfManagedArgs
+    ///         {
+    ///             PemCertificate = File.ReadAllText("test-fixtures/certificatemanager/cert.pem"),
+    ///             PemPrivateKey = File.ReadAllText("test-fixtures/certificatemanager/private-key.pem"),
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
+    ///     {
+    ///         RoutingMode = "REGIONAL",
+    ///         AutoCreateSubnetworks = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
+    ///     {
+    ///         Purpose = "PRIVATE",
+    ///         IpCidrRange = "10.128.0.0/20",
+    ///         Region = "us-south1",
+    ///         Network = defaultNetwork.Id,
+    ///         Role = "ACTIVE",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var proxyonlysubnet = new Gcp.Compute.Subnetwork("proxyonlysubnet", new()
+    ///     {
+    ///         Purpose = "REGIONAL_MANAGED_PROXY",
+    ///         IpCidrRange = "192.168.0.0/23",
+    ///         Region = "us-south1",
+    ///         Network = defaultNetwork.Id,
+    ///         Role = "ACTIVE",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultGatewaySecurityPolicy = new Gcp.NetworkSecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", new()
+    ///     {
+    ///         Location = "us-south1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultGatewaySecurityPolicyRule = new Gcp.NetworkSecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", new()
+    ///     {
+    ///         Location = "us-south1",
+    ///         GatewaySecurityPolicy = defaultGatewaySecurityPolicy.Name,
+    ///         Enabled = true,
+    ///         Priority = 1,
+    ///         SessionMatcher = "host() == 'example.com'",
+    ///         BasicProfile = "ALLOW",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultGateway = new Gcp.NetworkServices.Gateway("defaultGateway", new()
+    ///     {
+    ///         Location = "us-south1",
+    ///         Addresses = new[]
+    ///         {
+    ///             "10.128.0.99",
+    ///         },
+    ///         Type = "SECURE_WEB_GATEWAY",
+    ///         Ports = new[]
+    ///         {
+    ///             443,
+    ///         },
+    ///         Scope = "my-default-scope1",
+    ///         CertificateUrls = new[]
+    ///         {
+    ///             defaultCertificate.Id,
+    ///         },
+    ///         GatewaySecurityPolicy = defaultGatewaySecurityPolicy.Id,
+    ///         Network = defaultNetwork.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         DeleteSwgAutogenRouterOnDestroy = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///         DependsOn = new[]
+    ///         {
+    ///             proxyonlysubnet,
+    ///         },
+    ///     });
+    /// 
+    ///     var gateway2 = new Gcp.NetworkServices.Gateway("gateway2", new()
+    ///     {
+    ///         Location = "us-south1",
+    ///         Addresses = new[]
+    ///         {
+    ///             "10.128.0.98",
+    ///         },
+    ///         Type = "SECURE_WEB_GATEWAY",
+    ///         Ports = new[]
+    ///         {
+    ///             443,
+    ///         },
+    ///         Scope = "my-default-scope2",
+    ///         CertificateUrls = new[]
+    ///         {
+    ///             defaultCertificate.Id,
+    ///         },
+    ///         GatewaySecurityPolicy = defaultGatewaySecurityPolicy.Id,
+    ///         Network = defaultNetwork.Id,
+    ///         Subnetwork = defaultSubnetwork.Id,
+    ///         DeleteSwgAutogenRouterOnDestroy = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///         DependsOn = new[]
+    ///         {
+    ///             proxyonlysubnet,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -87,16 +337,46 @@ namespace Pulumi.Gcp.NetworkServices
     public partial class Gateway : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+        /// an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        /// Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+        /// </summary>
+        [Output("addresses")]
+        public Output<ImmutableArray<string>> Addresses { get; private set; } = null!;
+
+        /// <summary>
+        /// A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+        /// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        /// </summary>
+        [Output("certificateUrls")]
+        public Output<ImmutableArray<string>> CertificateUrls { get; private set; } = null!;
+
+        /// <summary>
         /// Time the AccessPolicy was created in UTC.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
+        /// If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
+        /// </summary>
+        [Output("deleteSwgAutogenRouterOnDestroy")]
+        public Output<bool?> DeleteSwgAutogenRouterOnDestroy { get; private set; } = null!;
+
+        /// <summary>
         /// A free-text description of the resource. Max length 1024 characters.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+        /// For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+        /// This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        /// </summary>
+        [Output("gatewaySecurityPolicy")]
+        public Output<string?> GatewaySecurityPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Set of label tags associated with the Gateway resource.
@@ -119,6 +399,14 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The relative resource name identifying the VPC network that is using this configuration.
+        /// For example: `projects/*/global/networks/network-1`.
+        /// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        /// </summary>
+        [Output("network")]
+        public Output<string?> Network { get; private set; } = null!;
 
         /// <summary>
         /// One or more port numbers (1-65535), on which the Gateway will receive traffic.
@@ -156,6 +444,14 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Output("serverTlsPolicy")]
         public Output<string?> ServerTlsPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// The relative resource name identifying the subnetwork in which this SWG is allocated.
+        /// For example: `projects/*/regions/us-central1/subnetworks/network-1`.
+        /// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
+        /// </summary>
+        [Output("subnetwork")]
+        public Output<string?> Subnetwork { get; private set; } = null!;
 
         /// <summary>
         /// Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
@@ -216,11 +512,53 @@ namespace Pulumi.Gcp.NetworkServices
 
     public sealed class GatewayArgs : global::Pulumi.ResourceArgs
     {
+        [Input("addresses")]
+        private InputList<string>? _addresses;
+
+        /// <summary>
+        /// Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+        /// an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        /// Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+        /// </summary>
+        public InputList<string> Addresses
+        {
+            get => _addresses ?? (_addresses = new InputList<string>());
+            set => _addresses = value;
+        }
+
+        [Input("certificateUrls")]
+        private InputList<string>? _certificateUrls;
+
+        /// <summary>
+        /// A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+        /// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        /// </summary>
+        public InputList<string> CertificateUrls
+        {
+            get => _certificateUrls ?? (_certificateUrls = new InputList<string>());
+            set => _certificateUrls = value;
+        }
+
+        /// <summary>
+        /// When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
+        /// If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
+        /// </summary>
+        [Input("deleteSwgAutogenRouterOnDestroy")]
+        public Input<bool>? DeleteSwgAutogenRouterOnDestroy { get; set; }
+
         /// <summary>
         /// A free-text description of the resource. Max length 1024 characters.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+        /// For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+        /// This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        /// </summary>
+        [Input("gatewaySecurityPolicy")]
+        public Input<string>? GatewaySecurityPolicy { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -249,6 +587,14 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The relative resource name identifying the VPC network that is using this configuration.
+        /// For example: `projects/*/global/networks/network-1`.
+        /// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
 
         [Input("ports", required: true)]
         private InputList<int>? _ports;
@@ -288,6 +634,14 @@ namespace Pulumi.Gcp.NetworkServices
         public Input<string>? ServerTlsPolicy { get; set; }
 
         /// <summary>
+        /// The relative resource name identifying the subnetwork in which this SWG is allocated.
+        /// For example: `projects/*/regions/us-central1/subnetworks/network-1`.
+        /// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
+        /// </summary>
+        [Input("subnetwork")]
+        public Input<string>? Subnetwork { get; set; }
+
+        /// <summary>
         /// Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
         /// Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         /// </summary>
@@ -302,6 +656,33 @@ namespace Pulumi.Gcp.NetworkServices
 
     public sealed class GatewayState : global::Pulumi.ResourceArgs
     {
+        [Input("addresses")]
+        private InputList<string>? _addresses;
+
+        /// <summary>
+        /// Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+        /// an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        /// Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+        /// </summary>
+        public InputList<string> Addresses
+        {
+            get => _addresses ?? (_addresses = new InputList<string>());
+            set => _addresses = value;
+        }
+
+        [Input("certificateUrls")]
+        private InputList<string>? _certificateUrls;
+
+        /// <summary>
+        /// A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+        /// This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        /// </summary>
+        public InputList<string> CertificateUrls
+        {
+            get => _certificateUrls ?? (_certificateUrls = new InputList<string>());
+            set => _certificateUrls = value;
+        }
+
         /// <summary>
         /// Time the AccessPolicy was created in UTC.
         /// </summary>
@@ -309,10 +690,25 @@ namespace Pulumi.Gcp.NetworkServices
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
+        /// When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
+        /// If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
+        /// </summary>
+        [Input("deleteSwgAutogenRouterOnDestroy")]
+        public Input<bool>? DeleteSwgAutogenRouterOnDestroy { get; set; }
+
+        /// <summary>
         /// A free-text description of the resource. Max length 1024 characters.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+        /// For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+        /// This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        /// </summary>
+        [Input("gatewaySecurityPolicy")]
+        public Input<string>? GatewaySecurityPolicy { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -341,6 +737,14 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The relative resource name identifying the VPC network that is using this configuration.
+        /// For example: `projects/*/global/networks/network-1`.
+        /// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
 
         [Input("ports")]
         private InputList<int>? _ports;
@@ -384,6 +788,14 @@ namespace Pulumi.Gcp.NetworkServices
         /// </summary>
         [Input("serverTlsPolicy")]
         public Input<string>? ServerTlsPolicy { get; set; }
+
+        /// <summary>
+        /// The relative resource name identifying the subnetwork in which this SWG is allocated.
+        /// For example: `projects/*/regions/us-central1/subnetworks/network-1`.
+        /// Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
+        /// </summary>
+        [Input("subnetwork")]
+        public Input<string>? Subnetwork { get; set; }
 
         /// <summary>
         /// Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.

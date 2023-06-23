@@ -130,6 +130,8 @@ __all__ = [
     'ClusterNodeConfigReservationAffinity',
     'ClusterNodeConfigSandboxConfig',
     'ClusterNodeConfigShieldedInstanceConfig',
+    'ClusterNodeConfigSoleTenantConfig',
+    'ClusterNodeConfigSoleTenantConfigNodeAffinity',
     'ClusterNodeConfigTaint',
     'ClusterNodeConfigWorkloadMetadataConfig',
     'ClusterNodePool',
@@ -156,6 +158,8 @@ __all__ = [
     'ClusterNodePoolNodeConfigReservationAffinity',
     'ClusterNodePoolNodeConfigSandboxConfig',
     'ClusterNodePoolNodeConfigShieldedInstanceConfig',
+    'ClusterNodePoolNodeConfigSoleTenantConfig',
+    'ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity',
     'ClusterNodePoolNodeConfigTaint',
     'ClusterNodePoolNodeConfigWorkloadMetadataConfig',
     'ClusterNodePoolPlacementPolicy',
@@ -195,6 +199,8 @@ __all__ = [
     'NodePoolNodeConfigReservationAffinity',
     'NodePoolNodeConfigSandboxConfig',
     'NodePoolNodeConfigShieldedInstanceConfig',
+    'NodePoolNodeConfigSoleTenantConfig',
+    'NodePoolNodeConfigSoleTenantConfigNodeAffinity',
     'NodePoolNodeConfigTaint',
     'NodePoolNodeConfigWorkloadMetadataConfig',
     'NodePoolPlacementPolicy',
@@ -263,6 +269,8 @@ __all__ = [
     'GetClusterNodeConfigReservationAffinityResult',
     'GetClusterNodeConfigSandboxConfigResult',
     'GetClusterNodeConfigShieldedInstanceConfigResult',
+    'GetClusterNodeConfigSoleTenantConfigResult',
+    'GetClusterNodeConfigSoleTenantConfigNodeAffinityResult',
     'GetClusterNodeConfigTaintResult',
     'GetClusterNodeConfigWorkloadMetadataConfigResult',
     'GetClusterNodePoolResult',
@@ -289,6 +297,8 @@ __all__ = [
     'GetClusterNodePoolNodeConfigReservationAffinityResult',
     'GetClusterNodePoolNodeConfigSandboxConfigResult',
     'GetClusterNodePoolNodeConfigShieldedInstanceConfigResult',
+    'GetClusterNodePoolNodeConfigSoleTenantConfigResult',
+    'GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityResult',
     'GetClusterNodePoolNodeConfigTaintResult',
     'GetClusterNodePoolNodeConfigWorkloadMetadataConfigResult',
     'GetClusterNodePoolPlacementPolicyResult',
@@ -5771,6 +5781,8 @@ class ClusterNodeConfig(dict):
             suggest = "service_account"
         elif key == "shieldedInstanceConfig":
             suggest = "shielded_instance_config"
+        elif key == "soleTenantConfig":
+            suggest = "sole_tenant_config"
         elif key == "workloadMetadataConfig":
             suggest = "workload_metadata_config"
 
@@ -5813,6 +5825,7 @@ class ClusterNodeConfig(dict):
                  sandbox_config: Optional['outputs.ClusterNodeConfigSandboxConfig'] = None,
                  service_account: Optional[str] = None,
                  shielded_instance_config: Optional['outputs.ClusterNodeConfigShieldedInstanceConfig'] = None,
+                 sole_tenant_config: Optional['outputs.ClusterNodeConfigSoleTenantConfig'] = None,
                  spot: Optional[bool] = None,
                  tags: Optional[Sequence[str]] = None,
                  taints: Optional[Sequence['outputs.ClusterNodeConfigTaint']] = None,
@@ -5906,6 +5919,15 @@ class ClusterNodeConfig(dict):
         :param str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         :param 'ClusterNodeConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance options. Structure is documented below.
+        :param 'ClusterNodeConfigSoleTenantConfigArgs' sole_tenant_config: Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+               
+               sole_tenant_config {
+               node_affinity {
+               key = "compute.googleapis.com/node-group-name"
+               operator = "IN"
+               values = ["node-group-name"]
+               }
+               }
         :param bool spot: A boolean that represents whether the underlying node VMs are spot.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
                for more information. Defaults to false.
@@ -5976,6 +5998,8 @@ class ClusterNodeConfig(dict):
             pulumi.set(__self__, "service_account", service_account)
         if shielded_instance_config is not None:
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+        if sole_tenant_config is not None:
+            pulumi.set(__self__, "sole_tenant_config", sole_tenant_config)
         if spot is not None:
             pulumi.set(__self__, "spot", spot)
         if tags is not None:
@@ -6259,6 +6283,22 @@ class ClusterNodeConfig(dict):
         Shielded Instance options. Structure is documented below.
         """
         return pulumi.get(self, "shielded_instance_config")
+
+    @property
+    @pulumi.getter(name="soleTenantConfig")
+    def sole_tenant_config(self) -> Optional['outputs.ClusterNodeConfigSoleTenantConfig']:
+        """
+        Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+
+        sole_tenant_config {
+        node_affinity {
+        key = "compute.googleapis.com/node-group-name"
+        operator = "IN"
+        values = ["node-group-name"]
+        }
+        }
+        """
+        return pulumi.get(self, "sole_tenant_config")
 
     @property
     @pulumi.getter
@@ -6895,6 +6935,75 @@ class ClusterNodeConfigShieldedInstanceConfig(dict):
         Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.  Defaults to `false`.
         """
         return pulumi.get(self, "enable_secure_boot")
+
+
+@pulumi.output_type
+class ClusterNodeConfigSoleTenantConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeAffinities":
+            suggest = "node_affinities"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeConfigSoleTenantConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeConfigSoleTenantConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeConfigSoleTenantConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node_affinities: Sequence['outputs.ClusterNodeConfigSoleTenantConfigNodeAffinity']):
+        pulumi.set(__self__, "node_affinities", node_affinities)
+
+    @property
+    @pulumi.getter(name="nodeAffinities")
+    def node_affinities(self) -> Sequence['outputs.ClusterNodeConfigSoleTenantConfigNodeAffinity']:
+        return pulumi.get(self, "node_affinities")
+
+
+@pulumi.output_type
+class ClusterNodeConfigSoleTenantConfigNodeAffinity(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 operator: str,
+                 values: Sequence[str]):
+        """
+        :param str key: The default or custom node affinity label key name.
+        :param str operator: Specifies affinity or anti-affinity. Accepted values are `"IN"` or `"NOT_IN"`
+        :param Sequence[str] values: List of node affinity label values as strings.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The default or custom node affinity label key name.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Specifies affinity or anti-affinity. Accepted values are `"IN"` or `"NOT_IN"`
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        List of node affinity label values as strings.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -7659,6 +7768,8 @@ class ClusterNodePoolNodeConfig(dict):
             suggest = "service_account"
         elif key == "shieldedInstanceConfig":
             suggest = "shielded_instance_config"
+        elif key == "soleTenantConfig":
+            suggest = "sole_tenant_config"
         elif key == "workloadMetadataConfig":
             suggest = "workload_metadata_config"
 
@@ -7701,6 +7812,7 @@ class ClusterNodePoolNodeConfig(dict):
                  sandbox_config: Optional['outputs.ClusterNodePoolNodeConfigSandboxConfig'] = None,
                  service_account: Optional[str] = None,
                  shielded_instance_config: Optional['outputs.ClusterNodePoolNodeConfigShieldedInstanceConfig'] = None,
+                 sole_tenant_config: Optional['outputs.ClusterNodePoolNodeConfigSoleTenantConfig'] = None,
                  spot: Optional[bool] = None,
                  tags: Optional[Sequence[str]] = None,
                  taints: Optional[Sequence['outputs.ClusterNodePoolNodeConfigTaint']] = None,
@@ -7794,6 +7906,15 @@ class ClusterNodePoolNodeConfig(dict):
         :param str service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
         :param 'ClusterNodePoolNodeConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance options. Structure is documented below.
+        :param 'ClusterNodePoolNodeConfigSoleTenantConfigArgs' sole_tenant_config: Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+               
+               sole_tenant_config {
+               node_affinity {
+               key = "compute.googleapis.com/node-group-name"
+               operator = "IN"
+               values = ["node-group-name"]
+               }
+               }
         :param bool spot: A boolean that represents whether the underlying node VMs are spot.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
                for more information. Defaults to false.
@@ -7864,6 +7985,8 @@ class ClusterNodePoolNodeConfig(dict):
             pulumi.set(__self__, "service_account", service_account)
         if shielded_instance_config is not None:
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+        if sole_tenant_config is not None:
+            pulumi.set(__self__, "sole_tenant_config", sole_tenant_config)
         if spot is not None:
             pulumi.set(__self__, "spot", spot)
         if tags is not None:
@@ -8147,6 +8270,22 @@ class ClusterNodePoolNodeConfig(dict):
         Shielded Instance options. Structure is documented below.
         """
         return pulumi.get(self, "shielded_instance_config")
+
+    @property
+    @pulumi.getter(name="soleTenantConfig")
+    def sole_tenant_config(self) -> Optional['outputs.ClusterNodePoolNodeConfigSoleTenantConfig']:
+        """
+        Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+
+        sole_tenant_config {
+        node_affinity {
+        key = "compute.googleapis.com/node-group-name"
+        operator = "IN"
+        values = ["node-group-name"]
+        }
+        }
+        """
+        return pulumi.get(self, "sole_tenant_config")
 
     @property
     @pulumi.getter
@@ -8783,6 +8922,75 @@ class ClusterNodePoolNodeConfigShieldedInstanceConfig(dict):
         Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails.  Defaults to `false`.
         """
         return pulumi.get(self, "enable_secure_boot")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigSoleTenantConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeAffinities":
+            suggest = "node_affinities"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNodeConfigSoleTenantConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNodeConfigSoleTenantConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNodeConfigSoleTenantConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node_affinities: Sequence['outputs.ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity']):
+        pulumi.set(__self__, "node_affinities", node_affinities)
+
+    @property
+    @pulumi.getter(name="nodeAffinities")
+    def node_affinities(self) -> Sequence['outputs.ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity']:
+        return pulumi.get(self, "node_affinities")
+
+
+@pulumi.output_type
+class ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 operator: str,
+                 values: Sequence[str]):
+        """
+        :param str key: The default or custom node affinity label key name.
+        :param str operator: Specifies affinity or anti-affinity. Accepted values are `"IN"` or `"NOT_IN"`
+        :param Sequence[str] values: List of node affinity label values as strings.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The default or custom node affinity label key name.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Specifies affinity or anti-affinity. Accepted values are `"IN"` or `"NOT_IN"`
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        """
+        List of node affinity label values as strings.
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -10074,6 +10282,8 @@ class NodePoolNodeConfig(dict):
             suggest = "service_account"
         elif key == "shieldedInstanceConfig":
             suggest = "shielded_instance_config"
+        elif key == "soleTenantConfig":
+            suggest = "sole_tenant_config"
         elif key == "workloadMetadataConfig":
             suggest = "workload_metadata_config"
 
@@ -10116,6 +10326,7 @@ class NodePoolNodeConfig(dict):
                  sandbox_config: Optional['outputs.NodePoolNodeConfigSandboxConfig'] = None,
                  service_account: Optional[str] = None,
                  shielded_instance_config: Optional['outputs.NodePoolNodeConfigShieldedInstanceConfig'] = None,
+                 sole_tenant_config: Optional['outputs.NodePoolNodeConfigSoleTenantConfig'] = None,
                  spot: Optional[bool] = None,
                  tags: Optional[Sequence[str]] = None,
                  taints: Optional[Sequence['outputs.NodePoolNodeConfigTaint']] = None,
@@ -10174,6 +10385,8 @@ class NodePoolNodeConfig(dict):
             pulumi.set(__self__, "service_account", service_account)
         if shielded_instance_config is not None:
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+        if sole_tenant_config is not None:
+            pulumi.set(__self__, "sole_tenant_config", sole_tenant_config)
         if spot is not None:
             pulumi.set(__self__, "spot", spot)
         if tags is not None:
@@ -10317,6 +10530,11 @@ class NodePoolNodeConfig(dict):
     @pulumi.getter(name="shieldedInstanceConfig")
     def shielded_instance_config(self) -> Optional['outputs.NodePoolNodeConfigShieldedInstanceConfig']:
         return pulumi.get(self, "shielded_instance_config")
+
+    @property
+    @pulumi.getter(name="soleTenantConfig")
+    def sole_tenant_config(self) -> Optional['outputs.NodePoolNodeConfigSoleTenantConfig']:
+        return pulumi.get(self, "sole_tenant_config")
 
     @property
     @pulumi.getter
@@ -10764,6 +10982,61 @@ class NodePoolNodeConfigShieldedInstanceConfig(dict):
     @pulumi.getter(name="enableSecureBoot")
     def enable_secure_boot(self) -> Optional[bool]:
         return pulumi.get(self, "enable_secure_boot")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigSoleTenantConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeAffinities":
+            suggest = "node_affinities"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNodeConfigSoleTenantConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNodeConfigSoleTenantConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNodeConfigSoleTenantConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node_affinities: Sequence['outputs.NodePoolNodeConfigSoleTenantConfigNodeAffinity']):
+        pulumi.set(__self__, "node_affinities", node_affinities)
+
+    @property
+    @pulumi.getter(name="nodeAffinities")
+    def node_affinities(self) -> Sequence['outputs.NodePoolNodeConfigSoleTenantConfigNodeAffinity']:
+        return pulumi.get(self, "node_affinities")
+
+
+@pulumi.output_type
+class NodePoolNodeConfigSoleTenantConfigNodeAffinity(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 operator: str,
+                 values: Sequence[str]):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -12064,6 +12337,7 @@ class GetClusterNodeConfigResult(dict):
                  sandbox_configs: Sequence['outputs.GetClusterNodeConfigSandboxConfigResult'],
                  service_account: str,
                  shielded_instance_configs: Sequence['outputs.GetClusterNodeConfigShieldedInstanceConfigResult'],
+                 sole_tenant_configs: Sequence['outputs.GetClusterNodeConfigSoleTenantConfigResult'],
                  spot: bool,
                  tags: Sequence[str],
                  taints: Sequence['outputs.GetClusterNodeConfigTaintResult'],
@@ -12095,6 +12369,7 @@ class GetClusterNodeConfigResult(dict):
         pulumi.set(__self__, "sandbox_configs", sandbox_configs)
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "shielded_instance_configs", shielded_instance_configs)
+        pulumi.set(__self__, "sole_tenant_configs", sole_tenant_configs)
         pulumi.set(__self__, "spot", spot)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "taints", taints)
@@ -12234,6 +12509,11 @@ class GetClusterNodeConfigResult(dict):
     @pulumi.getter(name="shieldedInstanceConfigs")
     def shielded_instance_configs(self) -> Sequence['outputs.GetClusterNodeConfigShieldedInstanceConfigResult']:
         return pulumi.get(self, "shielded_instance_configs")
+
+    @property
+    @pulumi.getter(name="soleTenantConfigs")
+    def sole_tenant_configs(self) -> Sequence['outputs.GetClusterNodeConfigSoleTenantConfigResult']:
+        return pulumi.get(self, "sole_tenant_configs")
 
     @property
     @pulumi.getter
@@ -12480,6 +12760,44 @@ class GetClusterNodeConfigShieldedInstanceConfigResult(dict):
     @pulumi.getter(name="enableSecureBoot")
     def enable_secure_boot(self) -> bool:
         return pulumi.get(self, "enable_secure_boot")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigSoleTenantConfigResult(dict):
+    def __init__(__self__, *,
+                 node_affinities: Sequence['outputs.GetClusterNodeConfigSoleTenantConfigNodeAffinityResult']):
+        pulumi.set(__self__, "node_affinities", node_affinities)
+
+    @property
+    @pulumi.getter(name="nodeAffinities")
+    def node_affinities(self) -> Sequence['outputs.GetClusterNodeConfigSoleTenantConfigNodeAffinityResult']:
+        return pulumi.get(self, "node_affinities")
+
+
+@pulumi.output_type
+class GetClusterNodeConfigSoleTenantConfigNodeAffinityResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 operator: str,
+                 values: Sequence[str]):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -12844,6 +13162,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
                  sandbox_configs: Sequence['outputs.GetClusterNodePoolNodeConfigSandboxConfigResult'],
                  service_account: str,
                  shielded_instance_configs: Sequence['outputs.GetClusterNodePoolNodeConfigShieldedInstanceConfigResult'],
+                 sole_tenant_configs: Sequence['outputs.GetClusterNodePoolNodeConfigSoleTenantConfigResult'],
                  spot: bool,
                  tags: Sequence[str],
                  taints: Sequence['outputs.GetClusterNodePoolNodeConfigTaintResult'],
@@ -12875,6 +13194,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         pulumi.set(__self__, "sandbox_configs", sandbox_configs)
         pulumi.set(__self__, "service_account", service_account)
         pulumi.set(__self__, "shielded_instance_configs", shielded_instance_configs)
+        pulumi.set(__self__, "sole_tenant_configs", sole_tenant_configs)
         pulumi.set(__self__, "spot", spot)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "taints", taints)
@@ -13014,6 +13334,11 @@ class GetClusterNodePoolNodeConfigResult(dict):
     @pulumi.getter(name="shieldedInstanceConfigs")
     def shielded_instance_configs(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigShieldedInstanceConfigResult']:
         return pulumi.get(self, "shielded_instance_configs")
+
+    @property
+    @pulumi.getter(name="soleTenantConfigs")
+    def sole_tenant_configs(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigSoleTenantConfigResult']:
+        return pulumi.get(self, "sole_tenant_configs")
 
     @property
     @pulumi.getter
@@ -13260,6 +13585,44 @@ class GetClusterNodePoolNodeConfigShieldedInstanceConfigResult(dict):
     @pulumi.getter(name="enableSecureBoot")
     def enable_secure_boot(self) -> bool:
         return pulumi.get(self, "enable_secure_boot")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigSoleTenantConfigResult(dict):
+    def __init__(__self__, *,
+                 node_affinities: Sequence['outputs.GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityResult']):
+        pulumi.set(__self__, "node_affinities", node_affinities)
+
+    @property
+    @pulumi.getter(name="nodeAffinities")
+    def node_affinities(self) -> Sequence['outputs.GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityResult']:
+        return pulumi.get(self, "node_affinities")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 operator: str,
+                 values: Sequence[str]):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type

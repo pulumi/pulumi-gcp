@@ -17,6 +17,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const basicGlobalNetworksecurityAddressGroup = new gcp.networksecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup", {
+ *     parent: "organizations/12345",
+ *     description: "Sample global networksecurity_address_group",
+ *     location: "global",
+ *     items: ["208.80.154.224/32"],
+ *     type: "IPV4",
+ *     capacity: 100,
+ * }, {
+ *     provider: google_beta,
+ * });
  * const defaultFirewallPolicy = new gcp.compute.FirewallPolicy("defaultFirewallPolicy", {
  *     parent: "organizations/12345",
  *     shortName: "my-policy",
@@ -39,6 +49,10 @@ import * as utilities from "../utilities";
  *             ],
  *         }],
  *         destIpRanges: ["11.100.0.1/32"],
+ *         destFqdns: ["google.com"],
+ *         destRegionCodes: ["US"],
+ *         destThreatIntelligences: ["iplist-public-clouds"],
+ *         destAddressGroups: [basicGlobalNetworksecurityAddressGroup.id],
  *     },
  * });
  * ```

@@ -10,6 +10,8 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'CertificateIssuanceConfigCertificateAuthorityConfigArgs',
+    'CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs',
     'CertificateManagedArgs',
     'CertificateManagedAuthorizationAttemptInfoArgs',
     'CertificateManagedProvisioningIssueArgs',
@@ -18,6 +20,61 @@ __all__ = [
     'CertificateSelfManagedArgs',
     'DnsAuthorizationDnsResourceRecordArgs',
 ]
+
+@pulumi.input_type
+class CertificateIssuanceConfigCertificateAuthorityConfigArgs:
+    def __init__(__self__, *,
+                 certificate_authority_service_config: Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs']] = None):
+        """
+        :param pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs'] certificate_authority_service_config: Defines a CertificateAuthorityServiceConfig.
+               Structure is documented below.
+        """
+        if certificate_authority_service_config is not None:
+            pulumi.set(__self__, "certificate_authority_service_config", certificate_authority_service_config)
+
+    @property
+    @pulumi.getter(name="certificateAuthorityServiceConfig")
+    def certificate_authority_service_config(self) -> Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs']]:
+        """
+        Defines a CertificateAuthorityServiceConfig.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "certificate_authority_service_config")
+
+    @certificate_authority_service_config.setter
+    def certificate_authority_service_config(self, value: Optional[pulumi.Input['CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs']]):
+        pulumi.set(self, "certificate_authority_service_config", value)
+
+
+@pulumi.input_type
+class CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfigArgs:
+    def __init__(__self__, *,
+                 ca_pool: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ca_pool: A CA pool resource used to issue a certificate.
+               The CA pool string has a relative resource path following the form
+               "projects/{project}/locations/{location}/caPools/{caPool}".
+               
+               - - -
+        """
+        pulumi.set(__self__, "ca_pool", ca_pool)
+
+    @property
+    @pulumi.getter(name="caPool")
+    def ca_pool(self) -> pulumi.Input[str]:
+        """
+        A CA pool resource used to issue a certificate.
+        The CA pool string has a relative resource path following the form
+        "projects/{project}/locations/{location}/caPools/{caPool}".
+
+        - - -
+        """
+        return pulumi.get(self, "ca_pool")
+
+    @ca_pool.setter
+    def ca_pool(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ca_pool", value)
+
 
 @pulumi.input_type
 class CertificateManagedArgs:

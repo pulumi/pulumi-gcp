@@ -65,6 +65,21 @@ export type GatewayIamPolicy = import("./gatewayIamPolicy").GatewayIamPolicy;
 export const GatewayIamPolicy: typeof import("./gatewayIamPolicy").GatewayIamPolicy = null as any;
 utilities.lazyLoad(exports, ["GatewayIamPolicy"], () => require("./gatewayIamPolicy"));
 
+export { GetApiConfigIamPolicyArgs, GetApiConfigIamPolicyResult, GetApiConfigIamPolicyOutputArgs } from "./getApiConfigIamPolicy";
+export const getApiConfigIamPolicy: typeof import("./getApiConfigIamPolicy").getApiConfigIamPolicy = null as any;
+export const getApiConfigIamPolicyOutput: typeof import("./getApiConfigIamPolicy").getApiConfigIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getApiConfigIamPolicy","getApiConfigIamPolicyOutput"], () => require("./getApiConfigIamPolicy"));
+
+export { GetApiIamPolicyArgs, GetApiIamPolicyResult, GetApiIamPolicyOutputArgs } from "./getApiIamPolicy";
+export const getApiIamPolicy: typeof import("./getApiIamPolicy").getApiIamPolicy = null as any;
+export const getApiIamPolicyOutput: typeof import("./getApiIamPolicy").getApiIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getApiIamPolicy","getApiIamPolicyOutput"], () => require("./getApiIamPolicy"));
+
+export { GetGatewayIamPolicyArgs, GetGatewayIamPolicyResult, GetGatewayIamPolicyOutputArgs } from "./getGatewayIamPolicy";
+export const getGatewayIamPolicy: typeof import("./getGatewayIamPolicy").getGatewayIamPolicy = null as any;
+export const getGatewayIamPolicyOutput: typeof import("./getGatewayIamPolicy").getGatewayIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getGatewayIamPolicy","getGatewayIamPolicyOutput"], () => require("./getGatewayIamPolicy"));
+
 
 const _module = {
     version: utilities.getVersion(),

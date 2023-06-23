@@ -1,0 +1,82 @@
+From 5865c102114f72cdde4b66438c0cb3c0126a6865 Mon Sep 17 00:00:00 2001
+From: Daniel Bradley <daniel@pulumi.com>
+Date: Tue, 7 Mar 2023 11:50:33 +0000
+Subject: [PATCH 2/9] Add nil checks for sql database instance flattening
+
+---
+ google-beta/resource_sql_database_instance.go | 24 +++++++++++++++++++
+ 1 file changed, 24 insertions(+)
+
+diff --git a/google-beta/resource_sql_database_instance.go b/google-beta/resource_sql_database_instance.go
+index 8f74ad6d1..1f7a1a78a 100644
+--- a/google-beta/resource_sql_database_instance.go
++++ b/google-beta/resource_sql_database_instance.go
+@@ -1901,6 +1901,10 @@ func resourceSqlDatabaseInstanceImport(d *schema.ResourceData, meta interface{})
+ }
+ 
+ func flattenSettings(settings *sqladmin.Settings) []map[string]interface{} {
++	if settings == nil {
++		return nil
++	}
++
+ 	data := map[string]interface{}{
+ 		"version":                     settings.SettingsVersion,
+ 		"tier":                        settings.Tier,
+@@ -1972,6 +1976,10 @@ func flattenSettings(settings *sqladmin.Settings) []map[string]interface{} {
+ }
+ 
+ func flattenBackupConfiguration(backupConfiguration *sqladmin.BackupConfiguration) []map[string]interface{} {
++	if backupConfiguration == nil {
++		return nil
++	}
++
+ 	data := map[string]interface{}{
+ 		"binary_log_enabled":             backupConfiguration.BinaryLogEnabled,
+ 		"enabled":                        backupConfiguration.Enabled,
+@@ -2064,6 +2072,10 @@ func flattenDatabaseFlags(databaseFlags []*sqladmin.DatabaseFlags) []map[string]
+ }
+ 
+ func flattenIpConfiguration(ipConfiguration *sqladmin.IpConfiguration) interface{} {
++	if ipConfiguration == nil {
++		return nil
++	}
++
+ 	data := map[string]interface{}{
+ 		"ipv4_enabled":       ipConfiguration.Ipv4Enabled,
+ 		"private_network":    ipConfiguration.PrivateNetwork,
+@@ -2096,6 +2108,10 @@ func flattenAuthorizedNetworks(entries []*sqladmin.AclEntry) interface{} {
+ }
+ 
+ func flattenLocationPreference(locationPreference *sqladmin.LocationPreference) interface{} {
++	if locationPreference == nil {
++		return nil
++	}
++
+ 	data := map[string]interface{}{
+ 		"follow_gae_application": locationPreference.FollowGaeApplication,
+ 		"zone":                   locationPreference.Zone,
+@@ -2106,6 +2122,10 @@ func flattenLocationPreference(locationPreference *sqladmin.LocationPreference)
+ }
+ 
+ func flattenMaintenanceWindow(maintenanceWindow *sqladmin.MaintenanceWindow) interface{} {
++	if maintenanceWindow == nil {
++		return nil
++	}
++
+ 	data := map[string]interface{}{
+ 		"day":          maintenanceWindow.Day,
+ 		"hour":         maintenanceWindow.Hour,
+@@ -2180,6 +2200,10 @@ func flattenServerCaCerts(caCerts []*sqladmin.SslCert) []map[string]interface{}
+ }
+ 
+ func flattenInsightsConfig(insightsConfig *sqladmin.InsightsConfig) interface{} {
++	if insightsConfig == nil {
++		return nil
++	}
++
+ 	data := map[string]interface{}{
+ 		"query_insights_enabled":  insightsConfig.QueryInsightsEnabled,
+ 		"query_string_length":     insightsConfig.QueryStringLength,
+-- 
+2.40.0
+

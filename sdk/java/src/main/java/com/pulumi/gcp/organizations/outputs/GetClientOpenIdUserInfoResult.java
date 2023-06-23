@@ -14,10 +14,6 @@ public final class GetClientOpenIdUserInfoResult {
      * 
      */
     private String email;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
 
     private GetClientOpenIdUserInfoResult() {}
@@ -28,10 +24,6 @@ public final class GetClientOpenIdUserInfoResult {
     public String email() {
         return this.email;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }

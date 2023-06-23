@@ -493,6 +493,67 @@ namespace Pulumi.Gcp.DataLoss
     /// 
     /// });
     /// ```
+    /// ### Dlp Job Trigger With Id
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var withTriggerId = new Gcp.DataLoss.PreventionJobTrigger("withTriggerId", new()
+    ///     {
+    ///         Description = "Starting description",
+    ///         DisplayName = "display",
+    ///         InspectJob = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobArgs
+    ///         {
+    ///             Actions = new[]
+    ///             {
+    ///                 new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionArgs
+    ///                 {
+    ///                     SaveFindings = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs
+    ///                     {
+    ///                         OutputConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs
+    ///                         {
+    ///                             Table = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs
+    ///                             {
+    ///                                 DatasetId = "dataset123",
+    ///                                 ProjectId = "project",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             InspectTemplateName = "fake",
+    ///             StorageConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigArgs
+    ///             {
+    ///                 CloudStorageOptions = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs
+    ///                 {
+    ///                     FileSet = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs
+    ///                     {
+    ///                         Url = "gs://mybucket/directory/",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Parent = "projects/my-project-name",
+    ///         TriggerId = "id-",
+    ///         Triggers = new[]
+    ///         {
+    ///             new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerArgs
+    ///             {
+    ///                 Schedule = new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerScheduleArgs
+    ///                 {
+    ///                     RecurrencePeriodDuration = "86400s",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -610,6 +671,14 @@ namespace Pulumi.Gcp.DataLoss
         public Output<string?> Status { get; private set; } = null!;
 
         /// <summary>
+        /// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+        /// that is, it must match the regular expression: [a-zA-Z\d-_]+.
+        /// The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        /// </summary>
+        [Output("triggerId")]
+        public Output<string> TriggerId { get; private set; } = null!;
+
+        /// <summary>
         /// What event needs to occur for a new job to be started.
         /// Structure is documented below.
         /// </summary>
@@ -704,6 +773,14 @@ namespace Pulumi.Gcp.DataLoss
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+        /// that is, it must match the regular expression: [a-zA-Z\d-_]+.
+        /// The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        /// </summary>
+        [Input("triggerId")]
+        public Input<string>? TriggerId { get; set; }
 
         [Input("triggers", required: true)]
         private InputList<Inputs.PreventionJobTriggerTriggerArgs>? _triggers;
@@ -825,6 +902,14 @@ namespace Pulumi.Gcp.DataLoss
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
+
+        /// <summary>
+        /// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+        /// that is, it must match the regular expression: [a-zA-Z\d-_]+.
+        /// The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        /// </summary>
+        [Input("triggerId")]
+        public Input<string>? TriggerId { get; set; }
 
         [Input("triggers")]
         private InputList<Inputs.PreventionJobTriggerTriggerGetArgs>? _triggers;

@@ -12,7 +12,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
 
     public sealed class PreventionJobTriggerInspectJobGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("actions", required: true)]
+        [Input("actions")]
         private InputList<Inputs.PreventionJobTriggerInspectJobActionGetArgs>? _actions;
 
         /// <summary>
@@ -35,8 +35,8 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         /// <summary>
         /// The name of the template to run when this job is triggered.
         /// </summary>
-        [Input("inspectTemplateName", required: true)]
-        public Input<string> InspectTemplateName { get; set; } = null!;
+        [Input("inspectTemplateName")]
+        public Input<string>? InspectTemplateName { get; set; }
 
         /// <summary>
         /// Information on where to inspect

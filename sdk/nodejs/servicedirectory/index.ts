@@ -10,6 +10,16 @@ export type Endpoint = import("./endpoint").Endpoint;
 export const Endpoint: typeof import("./endpoint").Endpoint = null as any;
 utilities.lazyLoad(exports, ["Endpoint"], () => require("./endpoint"));
 
+export { GetNamespaceIamPolicyArgs, GetNamespaceIamPolicyResult, GetNamespaceIamPolicyOutputArgs } from "./getNamespaceIamPolicy";
+export const getNamespaceIamPolicy: typeof import("./getNamespaceIamPolicy").getNamespaceIamPolicy = null as any;
+export const getNamespaceIamPolicyOutput: typeof import("./getNamespaceIamPolicy").getNamespaceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getNamespaceIamPolicy","getNamespaceIamPolicyOutput"], () => require("./getNamespaceIamPolicy"));
+
+export { GetServiceIamPolicyArgs, GetServiceIamPolicyResult, GetServiceIamPolicyOutputArgs } from "./getServiceIamPolicy";
+export const getServiceIamPolicy: typeof import("./getServiceIamPolicy").getServiceIamPolicy = null as any;
+export const getServiceIamPolicyOutput: typeof import("./getServiceIamPolicy").getServiceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceIamPolicy","getServiceIamPolicyOutput"], () => require("./getServiceIamPolicy"));
+
 export { NamespaceArgs, NamespaceState } from "./namespace";
 export type Namespace = import("./namespace").Namespace;
 export const Namespace: typeof import("./namespace").Namespace = null as any;

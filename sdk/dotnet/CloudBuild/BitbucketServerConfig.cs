@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.CloudBuild
     ///     var bbs_config = new Gcp.CloudBuild.BitbucketServerConfig("bbs-config", new()
     ///     {
     ///         ApiKey = "&lt;api-key&gt;",
-    ///         ConfigId = "mybbsconfig",
+    ///         ConfigId = "bbs-config",
     ///         HostUri = "https://bbs.com",
     ///         Location = "us-central1",
     ///         Secrets = new Gcp.CloudBuild.Inputs.BitbucketServerConfigSecretsArgs
@@ -59,7 +59,7 @@ namespace Pulumi.Gcp.CloudBuild
     ///     var bbs_config_with_repos = new Gcp.CloudBuild.BitbucketServerConfig("bbs-config-with-repos", new()
     ///     {
     ///         ApiKey = "&lt;api-key&gt;",
-    ///         ConfigId = "mybbsconfig",
+    ///         ConfigId = "bbs-config",
     ///         ConnectedRepositories = new[]
     ///         {
     ///             new Gcp.CloudBuild.Inputs.BitbucketServerConfigConnectedRepositoryArgs

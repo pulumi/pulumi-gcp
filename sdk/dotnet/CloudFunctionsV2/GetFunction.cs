@@ -152,6 +152,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         public readonly ImmutableArray<Outputs.GetFunctionServiceConfigResult> ServiceConfigs;
         public readonly string State;
         public readonly string UpdateTime;
+        public readonly string Url;
 
         [OutputConstructor]
         private GetFunctionResult(
@@ -177,7 +178,9 @@ namespace Pulumi.Gcp.CloudFunctionsV2
 
             string state,
 
-            string updateTime)
+            string updateTime,
+
+            string url)
         {
             BuildConfigs = buildConfigs;
             Description = description;
@@ -191,6 +194,7 @@ namespace Pulumi.Gcp.CloudFunctionsV2
             ServiceConfigs = serviceConfigs;
             State = state;
             UpdateTime = updateTime;
+            Url = url;
         }
     }
 }

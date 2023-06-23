@@ -16,8 +16,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig {
     /**
-     * @return Common alphabets.
-     * Possible values are: `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
+     * @return Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
+     * Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
      * 
      */
     private @Nullable String commonAlphabet;
@@ -43,12 +43,12 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey cryptoKey;
     /**
      * @return This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-     * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&amp;*()_-+={[}]|:;&#34;&#39;&lt;,&gt;.?/``
+     * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&amp;*()_-+={[}]|:;&#34;&#39;&lt;,&gt;.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
      * 
      */
     private @Nullable String customAlphabet;
     /**
-     * @return The native way to select the alphabet. Must be in the range \[2, 95\].
+     * @return The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
      * 
      */
     private @Nullable Integer radix;
@@ -64,8 +64,8 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
     private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig() {}
     /**
-     * @return Common alphabets.
-     * Possible values are: `FFX_COMMON_NATIVE_ALPHABET_UNSPECIFIED`, `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
+     * @return Common alphabets. Only one of this, `custom_alphabet` or `radix` must be specified.
+     * Possible values are: `NUMERIC`, `HEXADECIMAL`, `UPPER_CASE_ALPHA_NUMERIC`, `ALPHA_NUMERIC`.
      * 
      */
     public Optional<String> commonAlphabet() {
@@ -97,14 +97,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     }
     /**
      * @return This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range \[2, 95\]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is:
-     * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&amp;*()_-+={[}]|:;&#34;&#39;&lt;,&gt;.?/``
+     * ``0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&amp;*()_-+={[}]|:;&#34;&#39;&lt;,&gt;.?/``. Only one of this, `common_alphabet` or `radix` must be specified.
      * 
      */
     public Optional<String> customAlphabet() {
         return Optional.ofNullable(this.customAlphabet);
     }
     /**
-     * @return The native way to select the alphabet. Must be in the range \[2, 95\].
+     * @return The native way to select the alphabet. Must be in the range \[2, 95\]. Only one of this, `custom_alphabet` or `common_alphabet` must be specified.
      * 
      */
     public Optional<Integer> radix() {

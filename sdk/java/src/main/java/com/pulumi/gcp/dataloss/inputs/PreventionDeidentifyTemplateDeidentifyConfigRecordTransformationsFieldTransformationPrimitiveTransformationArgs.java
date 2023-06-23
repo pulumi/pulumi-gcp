@@ -182,7 +182,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     }
 
     /**
-     * Replace with a specified value.
+     * Replace each input value with a given value.
      * Structure is documented below.
      * 
      */
@@ -190,7 +190,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
     private @Nullable Output<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfigArgs> replaceConfig;
 
     /**
-     * @return Replace with a specified value.
+     * @return Replace each input value with a given value.
      * Structure is documented below.
      * 
      */
@@ -471,7 +471,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
         }
 
         /**
-         * @param replaceConfig Replace with a specified value.
+         * @param replaceConfig Replace each input value with a given value.
          * Structure is documented below.
          * 
          * @return builder
@@ -483,7 +483,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
         }
 
         /**
-         * @param replaceConfig Replace with a specified value.
+         * @param replaceConfig Replace each input value with a given value.
          * Structure is documented below.
          * 
          * @return builder

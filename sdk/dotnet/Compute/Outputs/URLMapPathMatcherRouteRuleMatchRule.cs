@@ -48,6 +48,17 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.URLMapPathMatcherRouteRuleMatchRuleMetadataFilter> MetadataFilters;
         /// <summary>
+        /// For satisfying the matchRule condition, the path of the request
+        /// must match the wildcard pattern specified in pathTemplateMatch
+        /// after removing any query parameters and anchor that may be part
+        /// of the original URL.
+        /// pathTemplateMatch must be between 1 and 255 characters
+        /// (inclusive).  The pattern specified by pathTemplateMatch may
+        /// have at most 5 wildcard operators and at most 5 variable
+        /// captures in total.
+        /// </summary>
+        public readonly string? PathTemplateMatch;
+        /// <summary>
         /// For satisfying the matchRule condition, the request's path must begin with the
         /// specified prefixMatch. prefixMatch must begin with a /. The value must be
         /// between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or
@@ -79,6 +90,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<Outputs.URLMapPathMatcherRouteRuleMatchRuleMetadataFilter> metadataFilters,
 
+            string? pathTemplateMatch,
+
             string? prefixMatch,
 
             ImmutableArray<Outputs.URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch> queryParameterMatches,
@@ -89,6 +102,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             HeaderMatches = headerMatches;
             IgnoreCase = ignoreCase;
             MetadataFilters = metadataFilters;
+            PathTemplateMatch = pathTemplateMatch;
             PrefixMatch = prefixMatch;
             QueryParameterMatches = queryParameterMatches;
             RegexMatch = regexMatch;

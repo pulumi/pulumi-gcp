@@ -13,27 +13,51 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class FirewallPolicyRuleMatch
     {
+        /// <summary>
+        /// Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+        /// </summary>
         public readonly ImmutableArray<string> DestAddressGroups;
+        /// <summary>
+        /// Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+        /// </summary>
         public readonly ImmutableArray<string> DestFqdns;
         /// <summary>
-        /// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+        /// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         /// </summary>
         public readonly ImmutableArray<string> DestIpRanges;
+        /// <summary>
+        /// The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+        /// </summary>
         public readonly ImmutableArray<string> DestRegionCodes;
+        /// <summary>
+        /// Name of the Google Cloud Threat Intelligence list.
+        /// </summary>
         public readonly ImmutableArray<string> DestThreatIntelligences;
         /// <summary>
         /// Pairs of IP protocols and ports that the rule should match. Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.FirewallPolicyRuleMatchLayer4Config> Layer4Configs;
+        /// <summary>
+        /// Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+        /// </summary>
         public readonly ImmutableArray<string> SrcAddressGroups;
+        /// <summary>
+        /// Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+        /// </summary>
         public readonly ImmutableArray<string> SrcFqdns;
         /// <summary>
-        /// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+        /// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        /// </summary>
+        public readonly ImmutableArray<string> SrcIpRanges;
+        /// <summary>
+        /// The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+        /// </summary>
+        public readonly ImmutableArray<string> SrcRegionCodes;
+        /// <summary>
+        /// Name of the Google Cloud Threat Intelligence list.
         /// 
         /// &lt;a name="nested_layer4_configs"&gt;&lt;/a&gt;The `layer4_configs` block supports:
         /// </summary>
-        public readonly ImmutableArray<string> SrcIpRanges;
-        public readonly ImmutableArray<string> SrcRegionCodes;
         public readonly ImmutableArray<string> SrcThreatIntelligences;
 
         [OutputConstructor]

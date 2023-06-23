@@ -246,6 +246,7 @@ type Disk struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Indicates how many IOPS must be provisioned for the disk.
+	// Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
 	ProvisionedIops pulumi.IntOutput `pulumi:"provisionedIops"`
 	// Resource policies applied to this disk for automatic snapshot creations.
 	// ~>**NOTE** This value does not support updating the
@@ -416,6 +417,7 @@ type diskState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Indicates how many IOPS must be provisioned for the disk.
+	// Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
 	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// Resource policies applied to this disk for automatic snapshot creations.
 	// ~>**NOTE** This value does not support updating the
@@ -558,6 +560,7 @@ type DiskState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Indicates how many IOPS must be provisioned for the disk.
+	// Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
 	ProvisionedIops pulumi.IntPtrInput
 	// Resource policies applied to this disk for automatic snapshot creations.
 	// ~>**NOTE** This value does not support updating the
@@ -695,6 +698,7 @@ type diskArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Indicates how many IOPS must be provisioned for the disk.
+	// Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
 	ProvisionedIops *int `pulumi:"provisionedIops"`
 	// Resource policies applied to this disk for automatic snapshot creations.
 	// ~>**NOTE** This value does not support updating the
@@ -807,6 +811,7 @@ type DiskArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Indicates how many IOPS must be provisioned for the disk.
+	// Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
 	ProvisionedIops pulumi.IntPtrInput
 	// Resource policies applied to this disk for automatic snapshot creations.
 	// ~>**NOTE** This value does not support updating the
@@ -1061,6 +1066,7 @@ func (o DiskOutput) Project() pulumi.StringOutput {
 }
 
 // Indicates how many IOPS must be provisioned for the disk.
+// Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
 func (o DiskOutput) ProvisionedIops() pulumi.IntOutput {
 	return o.ApplyT(func(v *Disk) pulumi.IntOutput { return v.ProvisionedIops }).(pulumi.IntOutput)
 }

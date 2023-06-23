@@ -19,7 +19,8 @@ class PreventionInspectTemplateArgs:
                  parent: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 inspect_config: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArgs']] = None):
+                 inspect_config: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArgs']] = None,
+                 template_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PreventionInspectTemplate resource.
         :param pulumi.Input[str] parent: The parent of the inspect template in any of the following formats:
@@ -34,6 +35,9 @@ class PreventionInspectTemplateArgs:
         :param pulumi.Input[str] display_name: User set display name of the inspect template.
         :param pulumi.Input['PreventionInspectTemplateInspectConfigArgs'] inspect_config: The core content of the template.
                Structure is documented below.
+        :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+               that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
+               100 characters. Can be empty to allow the system to generate one.
         """
         pulumi.set(__self__, "parent", parent)
         if description is not None:
@@ -42,6 +46,8 @@ class PreventionInspectTemplateArgs:
             pulumi.set(__self__, "display_name", display_name)
         if inspect_config is not None:
             pulumi.set(__self__, "inspect_config", inspect_config)
+        if template_id is not None:
+            pulumi.set(__self__, "template_id", template_id)
 
     @property
     @pulumi.getter
@@ -99,6 +105,20 @@ class PreventionInspectTemplateArgs:
     def inspect_config(self, value: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArgs']]):
         pulumi.set(self, "inspect_config", value)
 
+    @property
+    @pulumi.getter(name="templateId")
+    def template_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+        that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
+        100 characters. Can be empty to allow the system to generate one.
+        """
+        return pulumi.get(self, "template_id")
+
+    @template_id.setter
+    def template_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_id", value)
+
 
 @pulumi.input_type
 class _PreventionInspectTemplateState:
@@ -107,7 +127,8 @@ class _PreventionInspectTemplateState:
                  display_name: Optional[pulumi.Input[str]] = None,
                  inspect_config: Optional[pulumi.Input['PreventionInspectTemplateInspectConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None):
+                 parent: Optional[pulumi.Input[str]] = None,
+                 template_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PreventionInspectTemplate resources.
         :param pulumi.Input[str] description: A description of the inspect template.
@@ -144,6 +165,9 @@ class _PreventionInspectTemplateState:
                
                
                - - -
+        :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+               that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
+               100 characters. Can be empty to allow the system to generate one.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -155,6 +179,8 @@ class _PreventionInspectTemplateState:
             pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+        if template_id is not None:
+            pulumi.set(__self__, "template_id", template_id)
 
     @property
     @pulumi.getter
@@ -245,6 +271,20 @@ class _PreventionInspectTemplateState:
     def parent(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parent", value)
 
+    @property
+    @pulumi.getter(name="templateId")
+    def template_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+        that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
+        100 characters. Can be empty to allow the system to generate one.
+        """
+        return pulumi.get(self, "template_id")
+
+    @template_id.setter
+    def template_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_id", value)
+
 
 class PreventionInspectTemplate(pulumi.CustomResource):
     @overload
@@ -255,6 +295,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  inspect_config: Optional[pulumi.Input[pulumi.InputType['PreventionInspectTemplateInspectConfigArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 template_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         An inspect job template.
@@ -417,6 +458,9 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+               that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
+               100 characters. Can be empty to allow the system to generate one.
         """
         ...
     @overload
@@ -590,6 +634,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  inspect_config: Optional[pulumi.Input[pulumi.InputType['PreventionInspectTemplateInspectConfigArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 template_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -605,6 +650,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
+            __props__.__dict__["template_id"] = template_id
             __props__.__dict__["name"] = None
         super(PreventionInspectTemplate, __self__).__init__(
             'gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate',
@@ -620,7 +666,8 @@ class PreventionInspectTemplate(pulumi.CustomResource):
             display_name: Optional[pulumi.Input[str]] = None,
             inspect_config: Optional[pulumi.Input[pulumi.InputType['PreventionInspectTemplateInspectConfigArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            parent: Optional[pulumi.Input[str]] = None) -> 'PreventionInspectTemplate':
+            parent: Optional[pulumi.Input[str]] = None,
+            template_id: Optional[pulumi.Input[str]] = None) -> 'PreventionInspectTemplate':
         """
         Get an existing PreventionInspectTemplate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -662,6 +709,9 @@ class PreventionInspectTemplate(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+               that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
+               100 characters. Can be empty to allow the system to generate one.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -672,6 +722,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
         __props__.__dict__["inspect_config"] = inspect_config
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
+        __props__.__dict__["template_id"] = template_id
         return PreventionInspectTemplate(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -742,4 +793,14 @@ class PreventionInspectTemplate(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "parent")
+
+    @property
+    @pulumi.getter(name="templateId")
+    def template_id(self) -> pulumi.Output[str]:
+        """
+        The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+        that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is
+        100 characters. Can be empty to allow the system to generate one.
+        """
+        return pulumi.get(self, "template_id")
 

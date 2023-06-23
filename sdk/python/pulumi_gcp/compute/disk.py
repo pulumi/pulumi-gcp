@@ -86,6 +86,7 @@ class DiskArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] provisioned_iops: Indicates how many IOPS must be provisioned for the disk.
+               Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
                ~>**NOTE** This value does not support updating the
                resource policy, as resource policies can not be updated more than
@@ -355,6 +356,7 @@ class DiskArgs:
     def provisioned_iops(self) -> Optional[pulumi.Input[int]]:
         """
         Indicates how many IOPS must be provisioned for the disk.
+        Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
         """
         return pulumi.get(self, "provisioned_iops")
 
@@ -577,6 +579,7 @@ class _DiskState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] provisioned_iops: Indicates how many IOPS must be provisioned for the disk.
+               Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
                ~>**NOTE** This value does not support updating the
                resource policy, as resource policies can not be updated more than
@@ -930,6 +933,7 @@ class _DiskState:
     def provisioned_iops(self) -> Optional[pulumi.Input[int]]:
         """
         Indicates how many IOPS must be provisioned for the disk.
+        Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
         """
         return pulumi.get(self, "provisioned_iops")
 
@@ -1319,6 +1323,7 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] provisioned_iops: Indicates how many IOPS must be provisioned for the disk.
+               Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
                ~>**NOTE** This value does not support updating the
                resource policy, as resource policies can not be updated more than
@@ -1648,6 +1653,7 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] provisioned_iops: Indicates how many IOPS must be provisioned for the disk.
+               Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
                ~>**NOTE** This value does not support updating the
                resource policy, as resource policies can not be updated more than
@@ -1909,6 +1915,7 @@ class Disk(pulumi.CustomResource):
     def provisioned_iops(self) -> pulumi.Output[int]:
         """
         Indicates how many IOPS must be provisioned for the disk.
+        Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
         """
         return pulumi.get(self, "provisioned_iops")
 

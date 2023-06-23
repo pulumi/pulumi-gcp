@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeSensitivityScore;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -17,6 +18,12 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
      */
     private String name;
     /**
+     * @return Optional custom sensitivity for this InfoType. This only applies to data profiling.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeSensitivityScore sensitivityScore;
+    /**
      * @return Version name for this InfoType.
      * 
      */
@@ -29,6 +36,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
      */
     public String name() {
         return this.name;
+    }
+    /**
+     * @return Optional custom sensitivity for this InfoType. This only applies to data profiling.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeSensitivityScore> sensitivityScore() {
+        return Optional.ofNullable(this.sensitivityScore);
     }
     /**
      * @return Version name for this InfoType.
@@ -48,17 +63,24 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     @CustomType.Builder
     public static final class Builder {
         private String name;
+        private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeSensitivityScore sensitivityScore;
         private @Nullable String version;
         public Builder() {}
         public Builder(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.name = defaults.name;
+    	      this.sensitivityScore = defaults.sensitivityScore;
     	      this.version = defaults.version;
         }
 
         @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder sensitivityScore(@Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeSensitivityScore sensitivityScore) {
+            this.sensitivityScore = sensitivityScore;
             return this;
         }
         @CustomType.Setter
@@ -69,6 +91,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType build() {
             final var o = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType();
             o.name = name;
+            o.sensitivityScore = sensitivityScore;
             o.version = version;
             return o;
         }

@@ -23,12 +23,26 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			basicGlobalNetworksecurityAddressGroup, err := networksecurity.NewAddressGroup(ctx, "basicGlobalNetworksecurityAddressGroup", &networksecurity.AddressGroupArgs{
+//				Parent:      pulumi.String("organizations/12345"),
+//				Description: pulumi.String("Sample global networksecurity_address_group"),
+//				Location:    pulumi.String("global"),
+//				Items: pulumi.StringArray{
+//					pulumi.String("208.80.154.224/32"),
+//				},
+//				Type:     pulumi.String("IPV4"),
+//				Capacity: pulumi.Int(100),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
 //			defaultFirewallPolicy, err := compute.NewFirewallPolicy(ctx, "defaultFirewallPolicy", &compute.FirewallPolicyArgs{
 //				Parent:      pulumi.String("organizations/12345"),
 //				ShortName:   pulumi.String("my-policy"),
@@ -57,6 +71,18 @@ import (
 //					},
 //					DestIpRanges: pulumi.StringArray{
 //						pulumi.String("11.100.0.1/32"),
+//					},
+//					DestFqdns: pulumi.StringArray{
+//						pulumi.String("google.com"),
+//					},
+//					DestRegionCodes: pulumi.StringArray{
+//						pulumi.String("US"),
+//					},
+//					DestThreatIntelligences: pulumi.StringArray{
+//						pulumi.String("iplist-public-clouds"),
+//					},
+//					DestAddressGroups: pulumi.StringArray{
+//						basicGlobalNetworksecurityAddressGroup.ID(),
 //					},
 //				},
 //			})

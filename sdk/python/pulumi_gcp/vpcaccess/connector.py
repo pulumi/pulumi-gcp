@@ -210,6 +210,7 @@ class ConnectorArgs:
 @pulumi.input_type
 class _ConnectorState:
     def __init__(__self__, *,
+                 connected_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  max_instances: Optional[pulumi.Input[int]] = None,
@@ -225,6 +226,7 @@ class _ConnectorState:
                  subnet: Optional[pulumi.Input['ConnectorSubnetArgs']] = None):
         """
         Input properties used for looking up and filtering Connector resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] connected_projects: List of projects using the connector.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         :param pulumi.Input[str] machine_type: Machine type of VM Instance underlying connector. Default is e2-micro
         :param pulumi.Input[int] max_instances: Maximum value of instances in autoscaling group underlying the connector.
@@ -244,6 +246,8 @@ class _ConnectorState:
         :param pulumi.Input['ConnectorSubnetArgs'] subnet: The subnet in which to house the connector
                Structure is documented below.
         """
+        if connected_projects is not None:
+            pulumi.set(__self__, "connected_projects", connected_projects)
         if ip_cidr_range is not None:
             pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         if machine_type is not None:
@@ -270,6 +274,18 @@ class _ConnectorState:
             pulumi.set(__self__, "state", state)
         if subnet is not None:
             pulumi.set(__self__, "subnet", subnet)
+
+    @property
+    @pulumi.getter(name="connectedProjects")
+    def connected_projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of projects using the connector.
+        """
+        return pulumi.get(self, "connected_projects")
+
+    @connected_projects.setter
+    def connected_projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "connected_projects", value)
 
     @property
     @pulumi.getter(name="ipCidrRange")
@@ -637,6 +653,7 @@ class Connector(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["subnet"] = subnet
+            __props__.__dict__["connected_projects"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["state"] = None
         super(Connector, __self__).__init__(
@@ -649,6 +666,7 @@ class Connector(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            connected_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ip_cidr_range: Optional[pulumi.Input[str]] = None,
             machine_type: Optional[pulumi.Input[str]] = None,
             max_instances: Optional[pulumi.Input[int]] = None,
@@ -669,6 +687,7 @@ class Connector(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] connected_projects: List of projects using the connector.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         :param pulumi.Input[str] machine_type: Machine type of VM Instance underlying connector. Default is e2-micro
         :param pulumi.Input[int] max_instances: Maximum value of instances in autoscaling group underlying the connector.
@@ -692,6 +711,7 @@ class Connector(pulumi.CustomResource):
 
         __props__ = _ConnectorState.__new__(_ConnectorState)
 
+        __props__.__dict__["connected_projects"] = connected_projects
         __props__.__dict__["ip_cidr_range"] = ip_cidr_range
         __props__.__dict__["machine_type"] = machine_type
         __props__.__dict__["max_instances"] = max_instances
@@ -706,6 +726,14 @@ class Connector(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["subnet"] = subnet
         return Connector(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="connectedProjects")
+    def connected_projects(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List of projects using the connector.
+        """
+        return pulumi.get(self, "connected_projects")
 
     @property
     @pulumi.getter(name="ipCidrRange")

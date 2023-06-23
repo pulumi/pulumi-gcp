@@ -25,6 +25,46 @@ export type AssetIamPolicy = import("./assetIamPolicy").AssetIamPolicy;
 export const AssetIamPolicy: typeof import("./assetIamPolicy").AssetIamPolicy = null as any;
 utilities.lazyLoad(exports, ["AssetIamPolicy"], () => require("./assetIamPolicy"));
 
+export { DatascanArgs, DatascanState } from "./datascan";
+export type Datascan = import("./datascan").Datascan;
+export const Datascan: typeof import("./datascan").Datascan = null as any;
+utilities.lazyLoad(exports, ["Datascan"], () => require("./datascan"));
+
+export { DatascanIamBindingArgs, DatascanIamBindingState } from "./datascanIamBinding";
+export type DatascanIamBinding = import("./datascanIamBinding").DatascanIamBinding;
+export const DatascanIamBinding: typeof import("./datascanIamBinding").DatascanIamBinding = null as any;
+utilities.lazyLoad(exports, ["DatascanIamBinding"], () => require("./datascanIamBinding"));
+
+export { DatascanIamMemberArgs, DatascanIamMemberState } from "./datascanIamMember";
+export type DatascanIamMember = import("./datascanIamMember").DatascanIamMember;
+export const DatascanIamMember: typeof import("./datascanIamMember").DatascanIamMember = null as any;
+utilities.lazyLoad(exports, ["DatascanIamMember"], () => require("./datascanIamMember"));
+
+export { DatascanIamPolicyArgs, DatascanIamPolicyState } from "./datascanIamPolicy";
+export type DatascanIamPolicy = import("./datascanIamPolicy").DatascanIamPolicy;
+export const DatascanIamPolicy: typeof import("./datascanIamPolicy").DatascanIamPolicy = null as any;
+utilities.lazyLoad(exports, ["DatascanIamPolicy"], () => require("./datascanIamPolicy"));
+
+export { GetAssetIamPolicyArgs, GetAssetIamPolicyResult, GetAssetIamPolicyOutputArgs } from "./getAssetIamPolicy";
+export const getAssetIamPolicy: typeof import("./getAssetIamPolicy").getAssetIamPolicy = null as any;
+export const getAssetIamPolicyOutput: typeof import("./getAssetIamPolicy").getAssetIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAssetIamPolicy","getAssetIamPolicyOutput"], () => require("./getAssetIamPolicy"));
+
+export { GetDatascanIamPolicyArgs, GetDatascanIamPolicyResult, GetDatascanIamPolicyOutputArgs } from "./getDatascanIamPolicy";
+export const getDatascanIamPolicy: typeof import("./getDatascanIamPolicy").getDatascanIamPolicy = null as any;
+export const getDatascanIamPolicyOutput: typeof import("./getDatascanIamPolicy").getDatascanIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getDatascanIamPolicy","getDatascanIamPolicyOutput"], () => require("./getDatascanIamPolicy"));
+
+export { GetLakeIamPolicyArgs, GetLakeIamPolicyResult, GetLakeIamPolicyOutputArgs } from "./getLakeIamPolicy";
+export const getLakeIamPolicy: typeof import("./getLakeIamPolicy").getLakeIamPolicy = null as any;
+export const getLakeIamPolicyOutput: typeof import("./getLakeIamPolicy").getLakeIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getLakeIamPolicy","getLakeIamPolicyOutput"], () => require("./getLakeIamPolicy"));
+
+export { GetZoneIamPolicyArgs, GetZoneIamPolicyResult, GetZoneIamPolicyOutputArgs } from "./getZoneIamPolicy";
+export const getZoneIamPolicy: typeof import("./getZoneIamPolicy").getZoneIamPolicy = null as any;
+export const getZoneIamPolicyOutput: typeof import("./getZoneIamPolicy").getZoneIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getZoneIamPolicy","getZoneIamPolicyOutput"], () => require("./getZoneIamPolicy"));
+
 export { LakeArgs, LakeState } from "./lake";
 export type Lake = import("./lake").Lake;
 export const Lake: typeof import("./lake").Lake = null as any;
@@ -78,6 +118,14 @@ const _module = {
                 return new AssetIamMember(name, <any>undefined, { urn })
             case "gcp:dataplex/assetIamPolicy:AssetIamPolicy":
                 return new AssetIamPolicy(name, <any>undefined, { urn })
+            case "gcp:dataplex/datascan:Datascan":
+                return new Datascan(name, <any>undefined, { urn })
+            case "gcp:dataplex/datascanIamBinding:DatascanIamBinding":
+                return new DatascanIamBinding(name, <any>undefined, { urn })
+            case "gcp:dataplex/datascanIamMember:DatascanIamMember":
+                return new DatascanIamMember(name, <any>undefined, { urn })
+            case "gcp:dataplex/datascanIamPolicy:DatascanIamPolicy":
+                return new DatascanIamPolicy(name, <any>undefined, { urn })
             case "gcp:dataplex/lake:Lake":
                 return new Lake(name, <any>undefined, { urn })
             case "gcp:dataplex/lakeIamBinding:LakeIamBinding":
@@ -103,6 +151,10 @@ pulumi.runtime.registerResourceModule("gcp", "dataplex/asset", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/assetIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/assetIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/assetIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/datascan", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/datascanIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/datascanIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "dataplex/datascanIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/lake", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/lakeIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "dataplex/lakeIamMember", _module)

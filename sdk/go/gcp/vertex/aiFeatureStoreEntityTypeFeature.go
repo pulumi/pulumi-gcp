@@ -159,6 +159,8 @@ type AiFeatureStoreEntityTypeFeature struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the feature. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The region of the feature
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
@@ -214,6 +216,8 @@ type aiFeatureStoreEntityTypeFeatureState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the feature. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
 	Name *string `pulumi:"name"`
+	// The region of the feature
+	Region *string `pulumi:"region"`
 	// The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
@@ -235,6 +239,8 @@ type AiFeatureStoreEntityTypeFeatureState struct {
 	Labels pulumi.StringMapInput
 	// The name of the feature. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
 	Name pulumi.StringPtrInput
+	// The region of the feature
+	Region pulumi.StringPtrInput
 	// The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	UpdateTime pulumi.StringPtrInput
 	// Type of Feature value. Immutable. https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.featurestores.entityTypes.features#ValueType
@@ -393,6 +399,11 @@ func (o AiFeatureStoreEntityTypeFeatureOutput) Labels() pulumi.StringMapOutput {
 // The name of the feature. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type.
 func (o AiFeatureStoreEntityTypeFeatureOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityTypeFeature) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The region of the feature
+func (o AiFeatureStoreEntityTypeFeatureOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *AiFeatureStoreEntityTypeFeature) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.

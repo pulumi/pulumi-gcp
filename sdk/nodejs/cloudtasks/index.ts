@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { GetQueueIamPolicyArgs, GetQueueIamPolicyResult, GetQueueIamPolicyOutputArgs } from "./getQueueIamPolicy";
+export const getQueueIamPolicy: typeof import("./getQueueIamPolicy").getQueueIamPolicy = null as any;
+export const getQueueIamPolicyOutput: typeof import("./getQueueIamPolicy").getQueueIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getQueueIamPolicy","getQueueIamPolicyOutput"], () => require("./getQueueIamPolicy"));
+
 export { QueueArgs, QueueState } from "./queue";
 export type Queue = import("./queue").Queue;
 export const Queue: typeof import("./queue").Queue = null as any;

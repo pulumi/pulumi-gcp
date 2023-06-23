@@ -30,9 +30,6 @@ export interface GetClientConfigResult {
      * The OAuth2 access token used by the client to authenticate against the Google Cloud API.
      */
     readonly accessToken: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
     readonly id: string;
     /**
      * The ID of the project to apply any resources to.

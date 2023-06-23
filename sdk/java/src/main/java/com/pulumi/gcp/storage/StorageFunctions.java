@@ -9,6 +9,8 @@ import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.storage.inputs.GetBucketArgs;
+import com.pulumi.gcp.storage.inputs.GetBucketIamPolicyArgs;
+import com.pulumi.gcp.storage.inputs.GetBucketIamPolicyPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetBucketObjectArgs;
 import com.pulumi.gcp.storage.inputs.GetBucketObjectContentArgs;
 import com.pulumi.gcp.storage.inputs.GetBucketObjectContentPlainArgs;
@@ -22,6 +24,7 @@ import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
 import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountPlainArgs;
 import com.pulumi.gcp.storage.inputs.GetTransferProjectServieAccountArgs;
 import com.pulumi.gcp.storage.inputs.GetTransferProjectServieAccountPlainArgs;
+import com.pulumi.gcp.storage.outputs.GetBucketIamPolicyResult;
 import com.pulumi.gcp.storage.outputs.GetBucketObjectContentResult;
 import com.pulumi.gcp.storage.outputs.GetBucketObjectResult;
 import com.pulumi.gcp.storage.outputs.GetBucketResult;
@@ -191,6 +194,154 @@ public final class StorageFunctions {
      */
     public static CompletableFuture<GetBucketResult> getBucketPlain(GetBucketPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:storage/getBucket:getBucket", TypeShape.of(GetBucketResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for bucket
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = StorageFunctions.getBucketIamPolicy(GetBucketIamPolicyArgs.builder()
+     *             .bucket(google_storage_bucket.default().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetBucketIamPolicyResult> getBucketIamPolicy(GetBucketIamPolicyArgs args) {
+        return getBucketIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for bucket
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = StorageFunctions.getBucketIamPolicy(GetBucketIamPolicyArgs.builder()
+     *             .bucket(google_storage_bucket.default().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetBucketIamPolicyResult> getBucketIamPolicyPlain(GetBucketIamPolicyPlainArgs args) {
+        return getBucketIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for bucket
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = StorageFunctions.getBucketIamPolicy(GetBucketIamPolicyArgs.builder()
+     *             .bucket(google_storage_bucket.default().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetBucketIamPolicyResult> getBucketIamPolicy(GetBucketIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getBucketIamPolicy:getBucketIamPolicy", TypeShape.of(GetBucketIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for bucket
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = StorageFunctions.getBucketIamPolicy(GetBucketIamPolicyArgs.builder()
+     *             .bucket(google_storage_bucket.default().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetBucketIamPolicyResult> getBucketIamPolicyPlain(GetBucketIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:storage/getBucketIamPolicy:getBucketIamPolicy", TypeShape.of(GetBucketIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Gets an existing object inside an existing bucket in Google Cloud Storage service (GCS).

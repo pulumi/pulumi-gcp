@@ -17,12 +17,18 @@ class GatewayArgs:
                  ports: pulumi.Input[Sequence[pulumi.Input[int]]],
                  scope: pulumi.Input[str],
                  type: pulumi.Input[str],
+                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 gateway_security_policy: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 server_tls_policy: Optional[pulumi.Input[str]] = None):
+                 server_tls_policy: Optional[pulumi.Input[str]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Gateway resource.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] ports: One or more port numbers (1-65535), on which the Gateway will receive traffic.
@@ -34,7 +40,17 @@ class GatewayArgs:
                Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
         :param pulumi.Input[str] type: Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
                Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+               an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+               Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_urls: A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+               This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        :param pulumi.Input[bool] delete_swg_autogen_router_on_destroy: When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
+               If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
+        :param pulumi.Input[str] gateway_security_policy: A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+               For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+               This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Gateway resource.
         :param pulumi.Input[str] location: The location of the gateway.
                The default value is `global`.
@@ -42,26 +58,44 @@ class GatewayArgs:
                
                
                - - -
+        :param pulumi.Input[str] network: The relative resource name identifying the VPC network that is using this configuration.
+               For example: `projects/*/global/networks/network-1`.
+               Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] server_tls_policy: A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
                If empty, TLS termination is disabled.
+        :param pulumi.Input[str] subnetwork: The relative resource name identifying the subnetwork in which this SWG is allocated.
+               For example: `projects/*/regions/us-central1/subnetworks/network-1`.
+               Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
         """
         pulumi.set(__self__, "ports", ports)
         pulumi.set(__self__, "scope", scope)
         pulumi.set(__self__, "type", type)
+        if addresses is not None:
+            pulumi.set(__self__, "addresses", addresses)
+        if certificate_urls is not None:
+            pulumi.set(__self__, "certificate_urls", certificate_urls)
+        if delete_swg_autogen_router_on_destroy is not None:
+            pulumi.set(__self__, "delete_swg_autogen_router_on_destroy", delete_swg_autogen_router_on_destroy)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if gateway_security_policy is not None:
+            pulumi.set(__self__, "gateway_security_policy", gateway_security_policy)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if server_tls_policy is not None:
             pulumi.set(__self__, "server_tls_policy", server_tls_policy)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
 
     @property
     @pulumi.getter
@@ -107,6 +141,46 @@ class GatewayArgs:
 
     @property
     @pulumi.getter
+    def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+        an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+        """
+        return pulumi.get(self, "addresses")
+
+    @addresses.setter
+    def addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "addresses", value)
+
+    @property
+    @pulumi.getter(name="certificateUrls")
+    def certificate_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+        This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        """
+        return pulumi.get(self, "certificate_urls")
+
+    @certificate_urls.setter
+    def certificate_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "certificate_urls", value)
+
+    @property
+    @pulumi.getter(name="deleteSwgAutogenRouterOnDestroy")
+    def delete_swg_autogen_router_on_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
+        If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
+        """
+        return pulumi.get(self, "delete_swg_autogen_router_on_destroy")
+
+    @delete_swg_autogen_router_on_destroy.setter
+    def delete_swg_autogen_router_on_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_swg_autogen_router_on_destroy", value)
+
+    @property
+    @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         A free-text description of the resource. Max length 1024 characters.
@@ -116,6 +190,20 @@ class GatewayArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="gatewaySecurityPolicy")
+    def gateway_security_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+        For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+        This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        """
+        return pulumi.get(self, "gateway_security_policy")
+
+    @gateway_security_policy.setter
+    def gateway_security_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gateway_security_policy", value)
 
     @property
     @pulumi.getter
@@ -156,6 +244,20 @@ class GatewayArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relative resource name identifying the VPC network that is using this configuration.
+        For example: `projects/*/global/networks/network-1`.
+        Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
 
     @property
     @pulumi.getter
@@ -183,26 +285,56 @@ class GatewayArgs:
     def server_tls_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "server_tls_policy", value)
 
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relative resource name identifying the subnetwork in which this SWG is allocated.
+        For example: `projects/*/regions/us-central1/subnetworks/network-1`.
+        Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @subnetwork.setter
+    def subnetwork(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnetwork", value)
+
 
 @pulumi.input_type
 class _GatewayState:
     def __init__(__self__, *,
+                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 gateway_security_policy: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Gateway resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+               an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+               Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_urls: A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+               This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[str] create_time: Time the AccessPolicy was created in UTC.
+        :param pulumi.Input[bool] delete_swg_autogen_router_on_destroy: When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
+               If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
+        :param pulumi.Input[str] gateway_security_policy: A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+               For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+               This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Gateway resource.
         :param pulumi.Input[str] location: The location of the gateway.
                The default value is `global`.
@@ -210,6 +342,9 @@ class _GatewayState:
                
                
                - - -
+        :param pulumi.Input[str] network: The relative resource name identifying the VPC network that is using this configuration.
+               For example: `projects/*/global/networks/network-1`.
+               Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] ports: One or more port numbers (1-65535), on which the Gateway will receive traffic.
                The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
                limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
@@ -222,20 +357,33 @@ class _GatewayState:
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[str] server_tls_policy: A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
                If empty, TLS termination is disabled.
+        :param pulumi.Input[str] subnetwork: The relative resource name identifying the subnetwork in which this SWG is allocated.
+               For example: `projects/*/regions/us-central1/subnetworks/network-1`.
+               Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
         :param pulumi.Input[str] type: Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
                Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         :param pulumi.Input[str] update_time: Time the AccessPolicy was updated in UTC.
         """
+        if addresses is not None:
+            pulumi.set(__self__, "addresses", addresses)
+        if certificate_urls is not None:
+            pulumi.set(__self__, "certificate_urls", certificate_urls)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if delete_swg_autogen_router_on_destroy is not None:
+            pulumi.set(__self__, "delete_swg_autogen_router_on_destroy", delete_swg_autogen_router_on_destroy)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if gateway_security_policy is not None:
+            pulumi.set(__self__, "gateway_security_policy", gateway_security_policy)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
         if ports is not None:
             pulumi.set(__self__, "ports", ports)
         if project is not None:
@@ -246,10 +394,39 @@ class _GatewayState:
             pulumi.set(__self__, "self_link", self_link)
         if server_tls_policy is not None:
             pulumi.set(__self__, "server_tls_policy", server_tls_policy)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+        an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+        """
+        return pulumi.get(self, "addresses")
+
+    @addresses.setter
+    def addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "addresses", value)
+
+    @property
+    @pulumi.getter(name="certificateUrls")
+    def certificate_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+        This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        """
+        return pulumi.get(self, "certificate_urls")
+
+    @certificate_urls.setter
+    def certificate_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "certificate_urls", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -264,6 +441,19 @@ class _GatewayState:
         pulumi.set(self, "create_time", value)
 
     @property
+    @pulumi.getter(name="deleteSwgAutogenRouterOnDestroy")
+    def delete_swg_autogen_router_on_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
+        If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
+        """
+        return pulumi.get(self, "delete_swg_autogen_router_on_destroy")
+
+    @delete_swg_autogen_router_on_destroy.setter
+    def delete_swg_autogen_router_on_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "delete_swg_autogen_router_on_destroy", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -274,6 +464,20 @@ class _GatewayState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="gatewaySecurityPolicy")
+    def gateway_security_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+        For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+        This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        """
+        return pulumi.get(self, "gateway_security_policy")
+
+    @gateway_security_policy.setter
+    def gateway_security_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gateway_security_policy", value)
 
     @property
     @pulumi.getter
@@ -314,6 +518,20 @@ class _GatewayState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relative resource name identifying the VPC network that is using this configuration.
+        For example: `projects/*/global/networks/network-1`.
+        Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
 
     @property
     @pulumi.getter
@@ -384,6 +602,20 @@ class _GatewayState:
 
     @property
     @pulumi.getter
+    def subnetwork(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relative resource name identifying the subnetwork in which this SWG is allocated.
+        For example: `projects/*/regions/us-central1/subnetworks/network-1`.
+        Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @subnetwork.setter
+    def subnetwork(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subnetwork", value)
+
+    @property
+    @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
@@ -413,14 +645,20 @@ class Gateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 gateway_security_policy: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -453,6 +691,129 @@ class Gateway(pulumi.CustomResource):
             scope="default-scope-advance",
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Network Services Gateway Secure Web Proxy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_certificate = gcp.certificatemanager.Certificate("defaultCertificate",
+            location="us-central1",
+            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
+                pem_certificate=(lambda path: open(path).read())("test-fixtures/certificatemanager/cert.pem"),
+                pem_private_key=(lambda path: open(path).read())("test-fixtures/certificatemanager/private-key.pem"),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_network = gcp.compute.Network("defaultNetwork",
+            routing_mode="REGIONAL",
+            auto_create_subnetworks=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            purpose="PRIVATE",
+            ip_cidr_range="10.128.0.0/20",
+            region="us-central1",
+            network=default_network.id,
+            role="ACTIVE",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        proxyonlysubnet = gcp.compute.Subnetwork("proxyonlysubnet",
+            purpose="REGIONAL_MANAGED_PROXY",
+            ip_cidr_range="192.168.0.0/23",
+            region="us-central1",
+            network=default_network.id,
+            role="ACTIVE",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", location="us-central1",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
+            location="us-central1",
+            gateway_security_policy=default_gateway_security_policy.name,
+            enabled=True,
+            priority=1,
+            session_matcher="host() == 'example.com'",
+            basic_profile="ALLOW",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_gateway = gcp.networkservices.Gateway("defaultGateway",
+            location="us-central1",
+            addresses=["10.128.0.99"],
+            type="SECURE_WEB_GATEWAY",
+            ports=[443],
+            scope="my-default-scope1",
+            certificate_urls=[default_certificate.id],
+            gateway_security_policy=default_gateway_security_policy.id,
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            delete_swg_autogen_router_on_destroy=True,
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[proxyonlysubnet]))
+        ```
+        ### Network Services Gateway Multiple Swp Same Network
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_certificate = gcp.certificatemanager.Certificate("defaultCertificate",
+            location="us-south1",
+            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
+                pem_certificate=(lambda path: open(path).read())("test-fixtures/certificatemanager/cert.pem"),
+                pem_private_key=(lambda path: open(path).read())("test-fixtures/certificatemanager/private-key.pem"),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_network = gcp.compute.Network("defaultNetwork",
+            routing_mode="REGIONAL",
+            auto_create_subnetworks=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            purpose="PRIVATE",
+            ip_cidr_range="10.128.0.0/20",
+            region="us-south1",
+            network=default_network.id,
+            role="ACTIVE",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        proxyonlysubnet = gcp.compute.Subnetwork("proxyonlysubnet",
+            purpose="REGIONAL_MANAGED_PROXY",
+            ip_cidr_range="192.168.0.0/23",
+            region="us-south1",
+            network=default_network.id,
+            role="ACTIVE",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", location="us-south1",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
+            location="us-south1",
+            gateway_security_policy=default_gateway_security_policy.name,
+            enabled=True,
+            priority=1,
+            session_matcher="host() == 'example.com'",
+            basic_profile="ALLOW",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_gateway = gcp.networkservices.Gateway("defaultGateway",
+            location="us-south1",
+            addresses=["10.128.0.99"],
+            type="SECURE_WEB_GATEWAY",
+            ports=[443],
+            scope="my-default-scope1",
+            certificate_urls=[default_certificate.id],
+            gateway_security_policy=default_gateway_security_policy.id,
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            delete_swg_autogen_router_on_destroy=True,
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[proxyonlysubnet]))
+        gateway2 = gcp.networkservices.Gateway("gateway2",
+            location="us-south1",
+            addresses=["10.128.0.98"],
+            type="SECURE_WEB_GATEWAY",
+            ports=[443],
+            scope="my-default-scope2",
+            certificate_urls=[default_certificate.id],
+            gateway_security_policy=default_gateway_security_policy.id,
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            delete_swg_autogen_router_on_destroy=True,
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[proxyonlysubnet]))
+        ```
 
         ## Import
 
@@ -472,7 +833,17 @@ class Gateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+               an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+               Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_urls: A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+               This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        :param pulumi.Input[bool] delete_swg_autogen_router_on_destroy: When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
+               If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
+        :param pulumi.Input[str] gateway_security_policy: A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+               For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+               This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Gateway resource.
         :param pulumi.Input[str] location: The location of the gateway.
                The default value is `global`.
@@ -480,6 +851,9 @@ class Gateway(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[str] network: The relative resource name identifying the VPC network that is using this configuration.
+               For example: `projects/*/global/networks/network-1`.
+               Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] ports: One or more port numbers (1-65535), on which the Gateway will receive traffic.
                The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
                limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
@@ -491,6 +865,9 @@ class Gateway(pulumi.CustomResource):
                Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
         :param pulumi.Input[str] server_tls_policy: A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
                If empty, TLS termination is disabled.
+        :param pulumi.Input[str] subnetwork: The relative resource name identifying the subnetwork in which this SWG is allocated.
+               For example: `projects/*/regions/us-central1/subnetworks/network-1`.
+               Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
         :param pulumi.Input[str] type: Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
                Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         """
@@ -530,6 +907,129 @@ class Gateway(pulumi.CustomResource):
             scope="default-scope-advance",
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Network Services Gateway Secure Web Proxy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_certificate = gcp.certificatemanager.Certificate("defaultCertificate",
+            location="us-central1",
+            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
+                pem_certificate=(lambda path: open(path).read())("test-fixtures/certificatemanager/cert.pem"),
+                pem_private_key=(lambda path: open(path).read())("test-fixtures/certificatemanager/private-key.pem"),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_network = gcp.compute.Network("defaultNetwork",
+            routing_mode="REGIONAL",
+            auto_create_subnetworks=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            purpose="PRIVATE",
+            ip_cidr_range="10.128.0.0/20",
+            region="us-central1",
+            network=default_network.id,
+            role="ACTIVE",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        proxyonlysubnet = gcp.compute.Subnetwork("proxyonlysubnet",
+            purpose="REGIONAL_MANAGED_PROXY",
+            ip_cidr_range="192.168.0.0/23",
+            region="us-central1",
+            network=default_network.id,
+            role="ACTIVE",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", location="us-central1",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
+            location="us-central1",
+            gateway_security_policy=default_gateway_security_policy.name,
+            enabled=True,
+            priority=1,
+            session_matcher="host() == 'example.com'",
+            basic_profile="ALLOW",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_gateway = gcp.networkservices.Gateway("defaultGateway",
+            location="us-central1",
+            addresses=["10.128.0.99"],
+            type="SECURE_WEB_GATEWAY",
+            ports=[443],
+            scope="my-default-scope1",
+            certificate_urls=[default_certificate.id],
+            gateway_security_policy=default_gateway_security_policy.id,
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            delete_swg_autogen_router_on_destroy=True,
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[proxyonlysubnet]))
+        ```
+        ### Network Services Gateway Multiple Swp Same Network
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_certificate = gcp.certificatemanager.Certificate("defaultCertificate",
+            location="us-south1",
+            self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
+                pem_certificate=(lambda path: open(path).read())("test-fixtures/certificatemanager/cert.pem"),
+                pem_private_key=(lambda path: open(path).read())("test-fixtures/certificatemanager/private-key.pem"),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_network = gcp.compute.Network("defaultNetwork",
+            routing_mode="REGIONAL",
+            auto_create_subnetworks=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            purpose="PRIVATE",
+            ip_cidr_range="10.128.0.0/20",
+            region="us-south1",
+            network=default_network.id,
+            role="ACTIVE",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        proxyonlysubnet = gcp.compute.Subnetwork("proxyonlysubnet",
+            purpose="REGIONAL_MANAGED_PROXY",
+            ip_cidr_range="192.168.0.0/23",
+            region="us-south1",
+            network=default_network.id,
+            role="ACTIVE",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", location="us-south1",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
+            location="us-south1",
+            gateway_security_policy=default_gateway_security_policy.name,
+            enabled=True,
+            priority=1,
+            session_matcher="host() == 'example.com'",
+            basic_profile="ALLOW",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_gateway = gcp.networkservices.Gateway("defaultGateway",
+            location="us-south1",
+            addresses=["10.128.0.99"],
+            type="SECURE_WEB_GATEWAY",
+            ports=[443],
+            scope="my-default-scope1",
+            certificate_urls=[default_certificate.id],
+            gateway_security_policy=default_gateway_security_policy.id,
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            delete_swg_autogen_router_on_destroy=True,
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[proxyonlysubnet]))
+        gateway2 = gcp.networkservices.Gateway("gateway2",
+            location="us-south1",
+            addresses=["10.128.0.98"],
+            type="SECURE_WEB_GATEWAY",
+            ports=[443],
+            scope="my-default-scope2",
+            certificate_urls=[default_certificate.id],
+            gateway_security_policy=default_gateway_security_policy.id,
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            delete_swg_autogen_router_on_destroy=True,
+            opts=pulumi.ResourceOptions(provider=google_beta,
+                depends_on=[proxyonlysubnet]))
+        ```
 
         ## Import
 
@@ -562,14 +1062,20 @@ class Gateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 gateway_security_policy: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  scope: Optional[pulumi.Input[str]] = None,
                  server_tls_policy: Optional[pulumi.Input[str]] = None,
+                 subnetwork: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -580,10 +1086,15 @@ class Gateway(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GatewayArgs.__new__(GatewayArgs)
 
+            __props__.__dict__["addresses"] = addresses
+            __props__.__dict__["certificate_urls"] = certificate_urls
+            __props__.__dict__["delete_swg_autogen_router_on_destroy"] = delete_swg_autogen_router_on_destroy
             __props__.__dict__["description"] = description
+            __props__.__dict__["gateway_security_policy"] = gateway_security_policy
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
+            __props__.__dict__["network"] = network
             if ports is None and not opts.urn:
                 raise TypeError("Missing required property 'ports'")
             __props__.__dict__["ports"] = ports
@@ -592,6 +1103,7 @@ class Gateway(pulumi.CustomResource):
                 raise TypeError("Missing required property 'scope'")
             __props__.__dict__["scope"] = scope
             __props__.__dict__["server_tls_policy"] = server_tls_policy
+            __props__.__dict__["subnetwork"] = subnetwork
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
@@ -608,16 +1120,22 @@ class Gateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            delete_swg_autogen_router_on_destroy: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            gateway_security_policy: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            network: Optional[pulumi.Input[str]] = None,
             ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             scope: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             server_tls_policy: Optional[pulumi.Input[str]] = None,
+            subnetwork: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Gateway':
         """
@@ -627,8 +1145,18 @@ class Gateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+               an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+               Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] certificate_urls: A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+               This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[str] create_time: Time the AccessPolicy was created in UTC.
+        :param pulumi.Input[bool] delete_swg_autogen_router_on_destroy: When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
+               If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
         :param pulumi.Input[str] description: A free-text description of the resource. Max length 1024 characters.
+        :param pulumi.Input[str] gateway_security_policy: A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+               For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+               This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of label tags associated with the Gateway resource.
         :param pulumi.Input[str] location: The location of the gateway.
                The default value is `global`.
@@ -636,6 +1164,9 @@ class Gateway(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[str] network: The relative resource name identifying the VPC network that is using this configuration.
+               For example: `projects/*/global/networks/network-1`.
+               Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] ports: One or more port numbers (1-65535), on which the Gateway will receive traffic.
                The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are
                limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
@@ -648,6 +1179,9 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
         :param pulumi.Input[str] server_tls_policy: A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
                If empty, TLS termination is disabled.
+        :param pulumi.Input[str] subnetwork: The relative resource name identifying the subnetwork in which this SWG is allocated.
+               For example: `projects/*/regions/us-central1/subnetworks/network-1`.
+               Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
         :param pulumi.Input[str] type: Immutable. The type of the customer-managed gateway. Possible values are: * OPEN_MESH * SECURE_WEB_GATEWAY.
                Possible values are: `TYPE_UNSPECIFIED`, `OPEN_MESH`, `SECURE_WEB_GATEWAY`.
         :param pulumi.Input[str] update_time: Time the AccessPolicy was updated in UTC.
@@ -656,19 +1190,44 @@ class Gateway(pulumi.CustomResource):
 
         __props__ = _GatewayState.__new__(_GatewayState)
 
+        __props__.__dict__["addresses"] = addresses
+        __props__.__dict__["certificate_urls"] = certificate_urls
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["delete_swg_autogen_router_on_destroy"] = delete_swg_autogen_router_on_destroy
         __props__.__dict__["description"] = description
+        __props__.__dict__["gateway_security_policy"] = gateway_security_policy
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
+        __props__.__dict__["network"] = network
         __props__.__dict__["ports"] = ports
         __props__.__dict__["project"] = project
         __props__.__dict__["scope"] = scope
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["server_tls_policy"] = server_tls_policy
+        __props__.__dict__["subnetwork"] = subnetwork
         __props__.__dict__["type"] = type
         __props__.__dict__["update_time"] = update_time
         return Gateway(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def addresses(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
+        an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+        """
+        return pulumi.get(self, "addresses")
+
+    @property
+    @pulumi.getter(name="certificateUrls")
+    def certificate_urls(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
+        This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        """
+        return pulumi.get(self, "certificate_urls")
 
     @property
     @pulumi.getter(name="createTime")
@@ -679,12 +1238,31 @@ class Gateway(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter(name="deleteSwgAutogenRouterOnDestroy")
+    def delete_swg_autogen_router_on_destroy(self) -> pulumi.Output[Optional[bool]]:
+        """
+        When deleting a gateway of type 'SECURE_WEB_GATEWAY', this boolean option will also delete auto generated router by the gateway creation.
+        If there is no other gateway of type 'SECURE_WEB_GATEWAY' remaining for that region and network it will be deleted.
+        """
+        return pulumi.get(self, "delete_swg_autogen_router_on_destroy")
+
+    @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
         A free-text description of the resource. Max length 1024 characters.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="gatewaySecurityPolicy")
+    def gateway_security_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections.
+        For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`.
+        This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        """
+        return pulumi.get(self, "gateway_security_policy")
 
     @property
     @pulumi.getter
@@ -713,6 +1291,16 @@ class Gateway(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Output[Optional[str]]:
+        """
+        The relative resource name identifying the VPC network that is using this configuration.
+        For example: `projects/*/global/networks/network-1`.
+        Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        """
+        return pulumi.get(self, "network")
 
     @property
     @pulumi.getter
@@ -760,6 +1348,16 @@ class Gateway(pulumi.CustomResource):
         If empty, TLS termination is disabled.
         """
         return pulumi.get(self, "server_tls_policy")
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> pulumi.Output[Optional[str]]:
+        """
+        The relative resource name identifying the subnetwork in which this SWG is allocated.
+        For example: `projects/*/regions/us-central1/subnetworks/network-1`.
+        Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY.
+        """
+        return pulumi.get(self, "subnetwork")
 
     @property
     @pulumi.getter

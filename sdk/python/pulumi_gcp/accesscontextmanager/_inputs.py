@@ -27,6 +27,15 @@ __all__ = [
     'AccessLevelsAccessLevelCustomExprArgs',
     'AccessPolicyIamBindingConditionArgs',
     'AccessPolicyIamMemberConditionArgs',
+    'ServicePerimeterEgressPolicyEgressFromArgs',
+    'ServicePerimeterEgressPolicyEgressToArgs',
+    'ServicePerimeterEgressPolicyEgressToOperationArgs',
+    'ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgs',
+    'ServicePerimeterIngressPolicyIngressFromArgs',
+    'ServicePerimeterIngressPolicyIngressFromSourceArgs',
+    'ServicePerimeterIngressPolicyIngressToArgs',
+    'ServicePerimeterIngressPolicyIngressToOperationArgs',
+    'ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs',
     'ServicePerimeterSpecArgs',
     'ServicePerimeterSpecEgressPolicyArgs',
     'ServicePerimeterSpecEgressPolicyEgressFromArgs',
@@ -1362,6 +1371,505 @@ class AccessPolicyIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class ServicePerimeterEgressPolicyEgressFromArgs:
+    def __init__(__self__, *,
+                 identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 identity_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this `EgressPolicy`.
+               Should be in the format of email address. The email address should
+               represent individual user or service account only.
+        :param pulumi.Input[str] identity_type: Specifies the type of identities that are allowed access to outside the
+               perimeter. If left unspecified, then members of `identities` field will
+               be allowed access.
+               Possible values are: `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
+        """
+        if identities is not None:
+            pulumi.set(__self__, "identities", identities)
+        if identity_type is not None:
+            pulumi.set(__self__, "identity_type", identity_type)
+
+    @property
+    @pulumi.getter
+    def identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of identities that are allowed access through this `EgressPolicy`.
+        Should be in the format of email address. The email address should
+        represent individual user or service account only.
+        """
+        return pulumi.get(self, "identities")
+
+    @identities.setter
+    def identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "identities", value)
+
+    @property
+    @pulumi.getter(name="identityType")
+    def identity_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the type of identities that are allowed access to outside the
+        perimeter. If left unspecified, then members of `identities` field will
+        be allowed access.
+        Possible values are: `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
+        """
+        return pulumi.get(self, "identity_type")
+
+    @identity_type.setter
+    def identity_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_type", value)
+
+
+@pulumi.input_type
+class ServicePerimeterEgressPolicyEgressToArgs:
+    def __init__(__self__, *,
+                 external_resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationArgs']]]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_resources: A list of external resources that are allowed to be accessed. A request
+               matches if it contains an external resource in this list (Example:
+               s3://bucket/path). Currently '*' is not allowed.
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationArgs']]] operations: A list of `ApiOperations` that this egress rule applies to. A request matches
+               if it contains an operation/service in this list.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: A list of resources, currently only projects in the form
+               `projects/<projectnumber>`, that match this to stanza. A request matches
+               if it contains a resource in this list. If * is specified for resources,
+               then this `EgressTo` rule will authorize access to all resources outside
+               the perimeter.
+        """
+        if external_resources is not None:
+            pulumi.set(__self__, "external_resources", external_resources)
+        if operations is not None:
+            pulumi.set(__self__, "operations", operations)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter(name="externalResources")
+    def external_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of external resources that are allowed to be accessed. A request
+        matches if it contains an external resource in this list (Example:
+        s3://bucket/path). Currently '*' is not allowed.
+        """
+        return pulumi.get(self, "external_resources")
+
+    @external_resources.setter
+    def external_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "external_resources", value)
+
+    @property
+    @pulumi.getter
+    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationArgs']]]]:
+        """
+        A list of `ApiOperations` that this egress rule applies to. A request matches
+        if it contains an operation/service in this list.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "operations")
+
+    @operations.setter
+    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationArgs']]]]):
+        pulumi.set(self, "operations", value)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of resources, currently only projects in the form
+        `projects/<projectnumber>`, that match this to stanza. A request matches
+        if it contains a resource in this list. If * is specified for resources,
+        then this `EgressTo` rule will authorize access to all resources outside
+        the perimeter.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "resources", value)
+
+
+@pulumi.input_type
+class ServicePerimeterEgressPolicyEgressToOperationArgs:
+    def __init__(__self__, *,
+                 method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgs']]]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgs']]] method_selectors: API methods or permissions to allow. Method or permission must belong
+               to the service specified by `serviceName` field. A single MethodSelector
+               entry with `*` specified for the `method` field will allow all methods
+               AND permissions for the service specified in `serviceName`.
+               Structure is documented below.
+        :param pulumi.Input[str] service_name: The name of the API whose methods or permissions the `IngressPolicy` or
+               `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+               field set to `*` will allow all methods AND permissions for all services.
+        """
+        if method_selectors is not None:
+            pulumi.set(__self__, "method_selectors", method_selectors)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter(name="methodSelectors")
+    def method_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgs']]]]:
+        """
+        API methods or permissions to allow. Method or permission must belong
+        to the service specified by `serviceName` field. A single MethodSelector
+        entry with `*` specified for the `method` field will allow all methods
+        AND permissions for the service specified in `serviceName`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "method_selectors")
+
+    @method_selectors.setter
+    def method_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgs']]]]):
+        pulumi.set(self, "method_selectors", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the API whose methods or permissions the `IngressPolicy` or
+        `EgressPolicy` want to allow. A single `ApiOperation` with serviceName
+        field set to `*` will allow all methods AND permissions for all services.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_name", value)
+
+
+@pulumi.input_type
+class ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArgs:
+    def __init__(__self__, *,
+                 method: Optional[pulumi.Input[str]] = None,
+                 permission: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] method: Value for `method` should be a valid method name for the corresponding
+               `serviceName` in `ApiOperation`. If `*` used as value for method,
+               then ALL methods and permissions are allowed.
+        :param pulumi.Input[str] permission: Value for permission should be a valid Cloud IAM permission for the
+               corresponding `serviceName` in `ApiOperation`.
+        """
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+        if permission is not None:
+            pulumi.set(__self__, "permission", permission)
+
+    @property
+    @pulumi.getter
+    def method(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value for `method` should be a valid method name for the corresponding
+        `serviceName` in `ApiOperation`. If `*` used as value for method,
+        then ALL methods and permissions are allowed.
+        """
+        return pulumi.get(self, "method")
+
+    @method.setter
+    def method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "method", value)
+
+    @property
+    @pulumi.getter
+    def permission(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value for permission should be a valid Cloud IAM permission for the
+        corresponding `serviceName` in `ApiOperation`.
+        """
+        return pulumi.get(self, "permission")
+
+    @permission.setter
+    def permission(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "permission", value)
+
+
+@pulumi.input_type
+class ServicePerimeterIngressPolicyIngressFromArgs:
+    def __init__(__self__, *,
+                 identities: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 identity_type: Optional[pulumi.Input[str]] = None,
+                 sources: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressFromSourceArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identities: A list of identities that are allowed access through this ingress policy.
+               Should be in the format of email address. The email address should represent
+               individual user or service account only.
+        :param pulumi.Input[str] identity_type: Specifies the type of identities that are allowed access from outside the
+               perimeter. If left unspecified, then members of `identities` field will be
+               allowed access.
+               Possible values are: `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressFromSourceArgs']]] sources: Sources that this `IngressPolicy` authorizes access from.
+               Structure is documented below.
+        """
+        if identities is not None:
+            pulumi.set(__self__, "identities", identities)
+        if identity_type is not None:
+            pulumi.set(__self__, "identity_type", identity_type)
+        if sources is not None:
+            pulumi.set(__self__, "sources", sources)
+
+    @property
+    @pulumi.getter
+    def identities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of identities that are allowed access through this ingress policy.
+        Should be in the format of email address. The email address should represent
+        individual user or service account only.
+        """
+        return pulumi.get(self, "identities")
+
+    @identities.setter
+    def identities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "identities", value)
+
+    @property
+    @pulumi.getter(name="identityType")
+    def identity_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the type of identities that are allowed access from outside the
+        perimeter. If left unspecified, then members of `identities` field will be
+        allowed access.
+        Possible values are: `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, `ANY_SERVICE_ACCOUNT`.
+        """
+        return pulumi.get(self, "identity_type")
+
+    @identity_type.setter
+    def identity_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "identity_type", value)
+
+    @property
+    @pulumi.getter
+    def sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressFromSourceArgs']]]]:
+        """
+        Sources that this `IngressPolicy` authorizes access from.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "sources")
+
+    @sources.setter
+    def sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressFromSourceArgs']]]]):
+        pulumi.set(self, "sources", value)
+
+
+@pulumi.input_type
+class ServicePerimeterIngressPolicyIngressFromSourceArgs:
+    def __init__(__self__, *,
+                 access_level: Optional[pulumi.Input[str]] = None,
+                 resource: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] access_level: An `AccessLevel` resource name that allow resources within the
+               `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
+               must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
+               `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
+               resources within the perimeter can only be accessed via Google Cloud calls
+               with request origins within the perimeter.
+               Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
+               If * is specified, then all IngressSources will be allowed.
+        :param pulumi.Input[str] resource: A Google Cloud resource that is allowed to ingress the perimeter.
+               Requests from these resources will be allowed to access perimeter data.
+               Currently only projects are allowed. Format `projects/{project_number}`
+               The project may be in any Google Cloud organization, not just the
+               organization that the perimeter is defined in. `*` is not allowed, the case
+               of allowing all Google Cloud resources only is not supported.
+        """
+        if access_level is not None:
+            pulumi.set(__self__, "access_level", access_level)
+        if resource is not None:
+            pulumi.set(__self__, "resource", resource)
+
+    @property
+    @pulumi.getter(name="accessLevel")
+    def access_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        An `AccessLevel` resource name that allow resources within the
+        `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed
+        must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent
+        `AccessLevel` will cause an error. If no `AccessLevel` names are listed,
+        resources within the perimeter can only be accessed via Google Cloud calls
+        with request origins within the perimeter.
+        Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.`
+        If * is specified, then all IngressSources will be allowed.
+        """
+        return pulumi.get(self, "access_level")
+
+    @access_level.setter
+    def access_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_level", value)
+
+    @property
+    @pulumi.getter
+    def resource(self) -> Optional[pulumi.Input[str]]:
+        """
+        A Google Cloud resource that is allowed to ingress the perimeter.
+        Requests from these resources will be allowed to access perimeter data.
+        Currently only projects are allowed. Format `projects/{project_number}`
+        The project may be in any Google Cloud organization, not just the
+        organization that the perimeter is defined in. `*` is not allowed, the case
+        of allowing all Google Cloud resources only is not supported.
+        """
+        return pulumi.get(self, "resource")
+
+    @resource.setter
+    def resource(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource", value)
+
+
+@pulumi.input_type
+class ServicePerimeterIngressPolicyIngressToArgs:
+    def __init__(__self__, *,
+                 operations: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationArgs']]]] = None,
+                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationArgs']]] operations: A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
+               are allowed to perform in this `ServicePerimeter`.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: A list of resources, currently only projects in the form
+               `projects/<projectnumber>`, protected by this `ServicePerimeter`
+               that are allowed to be accessed by sources defined in the
+               corresponding `IngressFrom`. A request matches if it contains
+               a resource in this list. If `*` is specified for resources,
+               then this `IngressTo` rule will authorize access to all
+               resources inside the perimeter, provided that the request
+               also matches the `operations` field.
+        """
+        if operations is not None:
+            pulumi.set(__self__, "operations", operations)
+        if resources is not None:
+            pulumi.set(__self__, "resources", resources)
+
+    @property
+    @pulumi.getter
+    def operations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationArgs']]]]:
+        """
+        A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
+        are allowed to perform in this `ServicePerimeter`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "operations")
+
+    @operations.setter
+    def operations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationArgs']]]]):
+        pulumi.set(self, "operations", value)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of resources, currently only projects in the form
+        `projects/<projectnumber>`, protected by this `ServicePerimeter`
+        that are allowed to be accessed by sources defined in the
+        corresponding `IngressFrom`. A request matches if it contains
+        a resource in this list. If `*` is specified for resources,
+        then this `IngressTo` rule will authorize access to all
+        resources inside the perimeter, provided that the request
+        also matches the `operations` field.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "resources", value)
+
+
+@pulumi.input_type
+class ServicePerimeterIngressPolicyIngressToOperationArgs:
+    def __init__(__self__, *,
+                 method_selectors: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs']]]] = None,
+                 service_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs']]] method_selectors: API methods or permissions to allow. Method or permission must belong to
+               the service specified by serviceName field. A single `MethodSelector` entry
+               with `*` specified for the method field will allow all methods AND
+               permissions for the service specified in `serviceName`.
+               Structure is documented below.
+        :param pulumi.Input[str] service_name: The name of the API whose methods or permissions the `IngressPolicy` or
+               `EgressPolicy` want to allow. A single `ApiOperation` with `serviceName`
+               field set to `*` will allow all methods AND permissions for all services.
+        """
+        if method_selectors is not None:
+            pulumi.set(__self__, "method_selectors", method_selectors)
+        if service_name is not None:
+            pulumi.set(__self__, "service_name", service_name)
+
+    @property
+    @pulumi.getter(name="methodSelectors")
+    def method_selectors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs']]]]:
+        """
+        API methods or permissions to allow. Method or permission must belong to
+        the service specified by serviceName field. A single `MethodSelector` entry
+        with `*` specified for the method field will allow all methods AND
+        permissions for the service specified in `serviceName`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "method_selectors")
+
+    @method_selectors.setter
+    def method_selectors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs']]]]):
+        pulumi.set(self, "method_selectors", value)
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the API whose methods or permissions the `IngressPolicy` or
+        `EgressPolicy` want to allow. A single `ApiOperation` with `serviceName`
+        field set to `*` will allow all methods AND permissions for all services.
+        """
+        return pulumi.get(self, "service_name")
+
+    @service_name.setter
+    def service_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_name", value)
+
+
+@pulumi.input_type
+class ServicePerimeterIngressPolicyIngressToOperationMethodSelectorArgs:
+    def __init__(__self__, *,
+                 method: Optional[pulumi.Input[str]] = None,
+                 permission: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] method: Value for method should be a valid method name for the corresponding
+               serviceName in `ApiOperation`. If `*` used as value for `method`, then
+               ALL methods and permissions are allowed.
+        :param pulumi.Input[str] permission: Value for permission should be a valid Cloud IAM permission for the
+               corresponding `serviceName` in `ApiOperation`.
+        """
+        if method is not None:
+            pulumi.set(__self__, "method", method)
+        if permission is not None:
+            pulumi.set(__self__, "permission", permission)
+
+    @property
+    @pulumi.getter
+    def method(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value for method should be a valid method name for the corresponding
+        serviceName in `ApiOperation`. If `*` used as value for `method`, then
+        ALL methods and permissions are allowed.
+        """
+        return pulumi.get(self, "method")
+
+    @method.setter
+    def method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "method", value)
+
+    @property
+    @pulumi.getter
+    def permission(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value for permission should be a valid Cloud IAM permission for the
+        corresponding `serviceName` in `ApiOperation`.
+        """
+        return pulumi.get(self, "permission")
+
+    @permission.setter
+    def permission(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "permission", value)
 
 
 @pulumi.input_type

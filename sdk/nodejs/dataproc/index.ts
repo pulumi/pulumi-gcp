@@ -45,6 +45,31 @@ export type ClusterIAMPolicy = import("./clusterIAMPolicy").ClusterIAMPolicy;
 export const ClusterIAMPolicy: typeof import("./clusterIAMPolicy").ClusterIAMPolicy = null as any;
 utilities.lazyLoad(exports, ["ClusterIAMPolicy"], () => require("./clusterIAMPolicy"));
 
+export { GetAutoscalingPolicyIamPolicyArgs, GetAutoscalingPolicyIamPolicyResult, GetAutoscalingPolicyIamPolicyOutputArgs } from "./getAutoscalingPolicyIamPolicy";
+export const getAutoscalingPolicyIamPolicy: typeof import("./getAutoscalingPolicyIamPolicy").getAutoscalingPolicyIamPolicy = null as any;
+export const getAutoscalingPolicyIamPolicyOutput: typeof import("./getAutoscalingPolicyIamPolicy").getAutoscalingPolicyIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAutoscalingPolicyIamPolicy","getAutoscalingPolicyIamPolicyOutput"], () => require("./getAutoscalingPolicyIamPolicy"));
+
+export { GetClusterIamPolicyArgs, GetClusterIamPolicyResult, GetClusterIamPolicyOutputArgs } from "./getClusterIamPolicy";
+export const getClusterIamPolicy: typeof import("./getClusterIamPolicy").getClusterIamPolicy = null as any;
+export const getClusterIamPolicyOutput: typeof import("./getClusterIamPolicy").getClusterIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getClusterIamPolicy","getClusterIamPolicyOutput"], () => require("./getClusterIamPolicy"));
+
+export { GetJobIamPolicyArgs, GetJobIamPolicyResult, GetJobIamPolicyOutputArgs } from "./getJobIamPolicy";
+export const getJobIamPolicy: typeof import("./getJobIamPolicy").getJobIamPolicy = null as any;
+export const getJobIamPolicyOutput: typeof import("./getJobIamPolicy").getJobIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getJobIamPolicy","getJobIamPolicyOutput"], () => require("./getJobIamPolicy"));
+
+export { GetMetastoreFederationIamPolicyArgs, GetMetastoreFederationIamPolicyResult, GetMetastoreFederationIamPolicyOutputArgs } from "./getMetastoreFederationIamPolicy";
+export const getMetastoreFederationIamPolicy: typeof import("./getMetastoreFederationIamPolicy").getMetastoreFederationIamPolicy = null as any;
+export const getMetastoreFederationIamPolicyOutput: typeof import("./getMetastoreFederationIamPolicy").getMetastoreFederationIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getMetastoreFederationIamPolicy","getMetastoreFederationIamPolicyOutput"], () => require("./getMetastoreFederationIamPolicy"));
+
+export { GetMetastoreServiceIamPolicyArgs, GetMetastoreServiceIamPolicyResult, GetMetastoreServiceIamPolicyOutputArgs } from "./getMetastoreServiceIamPolicy";
+export const getMetastoreServiceIamPolicy: typeof import("./getMetastoreServiceIamPolicy").getMetastoreServiceIamPolicy = null as any;
+export const getMetastoreServiceIamPolicyOutput: typeof import("./getMetastoreServiceIamPolicy").getMetastoreServiceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getMetastoreServiceIamPolicy","getMetastoreServiceIamPolicyOutput"], () => require("./getMetastoreServiceIamPolicy"));
+
 export { JobArgs, JobState } from "./job";
 export type Job = import("./job").Job;
 export const Job: typeof import("./job").Job = null as any;

@@ -12,49 +12,97 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FirewallPolicyRuleMatch {
+    /**
+     * @return Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+     * 
+     */
     private @Nullable List<String> destAddressGroups;
+    /**
+     * @return Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+     * 
+     */
     private @Nullable List<String> destFqdns;
     /**
-     * @return CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+     * @return CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
      * 
      */
     private @Nullable List<String> destIpRanges;
+    /**
+     * @return The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+     * 
+     */
     private @Nullable List<String> destRegionCodes;
+    /**
+     * @return Name of the Google Cloud Threat Intelligence list.
+     * 
+     */
     private @Nullable List<String> destThreatIntelligences;
     /**
      * @return Pairs of IP protocols and ports that the rule should match. Structure is documented below.
      * 
      */
     private List<FirewallPolicyRuleMatchLayer4Config> layer4Configs;
+    /**
+     * @return Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+     * 
+     */
     private @Nullable List<String> srcAddressGroups;
+    /**
+     * @return Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+     * 
+     */
     private @Nullable List<String> srcFqdns;
     /**
-     * @return CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+     * @return CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+     * 
+     */
+    private @Nullable List<String> srcIpRanges;
+    /**
+     * @return The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+     * 
+     */
+    private @Nullable List<String> srcRegionCodes;
+    /**
+     * @return Name of the Google Cloud Threat Intelligence list.
      * 
      * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
      * 
      */
-    private @Nullable List<String> srcIpRanges;
-    private @Nullable List<String> srcRegionCodes;
     private @Nullable List<String> srcThreatIntelligences;
 
     private FirewallPolicyRuleMatch() {}
+    /**
+     * @return Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+     * 
+     */
     public List<String> destAddressGroups() {
         return this.destAddressGroups == null ? List.of() : this.destAddressGroups;
     }
+    /**
+     * @return Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+     * 
+     */
     public List<String> destFqdns() {
         return this.destFqdns == null ? List.of() : this.destFqdns;
     }
     /**
-     * @return CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+     * @return CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
      * 
      */
     public List<String> destIpRanges() {
         return this.destIpRanges == null ? List.of() : this.destIpRanges;
     }
+    /**
+     * @return The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+     * 
+     */
     public List<String> destRegionCodes() {
         return this.destRegionCodes == null ? List.of() : this.destRegionCodes;
     }
+    /**
+     * @return Name of the Google Cloud Threat Intelligence list.
+     * 
+     */
     public List<String> destThreatIntelligences() {
         return this.destThreatIntelligences == null ? List.of() : this.destThreatIntelligences;
     }
@@ -65,24 +113,40 @@ public final class FirewallPolicyRuleMatch {
     public List<FirewallPolicyRuleMatchLayer4Config> layer4Configs() {
         return this.layer4Configs;
     }
+    /**
+     * @return Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+     * 
+     */
     public List<String> srcAddressGroups() {
         return this.srcAddressGroups == null ? List.of() : this.srcAddressGroups;
     }
+    /**
+     * @return Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+     * 
+     */
     public List<String> srcFqdns() {
         return this.srcFqdns == null ? List.of() : this.srcFqdns;
     }
     /**
-     * @return CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
-     * 
-     * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+     * @return CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
      * 
      */
     public List<String> srcIpRanges() {
         return this.srcIpRanges == null ? List.of() : this.srcIpRanges;
     }
+    /**
+     * @return The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+     * 
+     */
     public List<String> srcRegionCodes() {
         return this.srcRegionCodes == null ? List.of() : this.srcRegionCodes;
     }
+    /**
+     * @return Name of the Google Cloud Threat Intelligence list.
+     * 
+     * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+     * 
+     */
     public List<String> srcThreatIntelligences() {
         return this.srcThreatIntelligences == null ? List.of() : this.srcThreatIntelligences;
     }

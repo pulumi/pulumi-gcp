@@ -126,6 +126,25 @@ public final class PreventionStoredInfoTypeArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.regex);
     }
 
+    /**
+     * The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is 100
+     * characters. Can be empty to allow the system to generate one.
+     * 
+     */
+    @Import(name="storedInfoTypeId")
+    private @Nullable Output<String> storedInfoTypeId;
+
+    /**
+     * @return The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is 100
+     * characters. Can be empty to allow the system to generate one.
+     * 
+     */
+    public Optional<Output<String>> storedInfoTypeId() {
+        return Optional.ofNullable(this.storedInfoTypeId);
+    }
+
     private PreventionStoredInfoTypeArgs() {}
 
     private PreventionStoredInfoTypeArgs(PreventionStoredInfoTypeArgs $) {
@@ -135,6 +154,7 @@ public final class PreventionStoredInfoTypeArgs extends com.pulumi.resources.Res
         this.largeCustomDictionary = $.largeCustomDictionary;
         this.parent = $.parent;
         this.regex = $.regex;
+        this.storedInfoTypeId = $.storedInfoTypeId;
     }
 
     public static Builder builder() {
@@ -297,6 +317,31 @@ public final class PreventionStoredInfoTypeArgs extends com.pulumi.resources.Res
          */
         public Builder regex(PreventionStoredInfoTypeRegexArgs regex) {
             return regex(Output.of(regex));
+        }
+
+        /**
+         * @param storedInfoTypeId The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
+         * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is 100
+         * characters. Can be empty to allow the system to generate one.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storedInfoTypeId(@Nullable Output<String> storedInfoTypeId) {
+            $.storedInfoTypeId = storedInfoTypeId;
+            return this;
+        }
+
+        /**
+         * @param storedInfoTypeId The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
+         * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is 100
+         * characters. Can be empty to allow the system to generate one.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storedInfoTypeId(String storedInfoTypeId) {
+            return storedInfoTypeId(Output.of(storedInfoTypeId));
         }
 
         public PreventionStoredInfoTypeArgs build() {

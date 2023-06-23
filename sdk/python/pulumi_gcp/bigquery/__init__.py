@@ -17,7 +17,10 @@ from .dataset_access import *
 from .dataset_iam_binding import *
 from .dataset_iam_member import *
 from .dataset_iam_policy import *
+from .get_connection_iam_policy import *
+from .get_dataset_iam_policy import *
 from .get_default_service_account import *
+from .get_table_iam_policy import *
 from .iam_binding import *
 from .iam_member import *
 from .iam_policy import *

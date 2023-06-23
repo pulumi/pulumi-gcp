@@ -208,9 +208,188 @@ func (o RepositoryGitRemoteSettingsPtrOutput) Url() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type RepositoryWorkspaceCompilationOverrides struct {
+	// Optional. The default database (Google Cloud project ID).
+	DefaultDatabase *string `pulumi:"defaultDatabase"`
+	// Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+	SchemaSuffix *string `pulumi:"schemaSuffix"`
+	// Optional. The prefix that should be prepended to all table names.
+	TablePrefix *string `pulumi:"tablePrefix"`
+}
+
+// RepositoryWorkspaceCompilationOverridesInput is an input type that accepts RepositoryWorkspaceCompilationOverridesArgs and RepositoryWorkspaceCompilationOverridesOutput values.
+// You can construct a concrete instance of `RepositoryWorkspaceCompilationOverridesInput` via:
+//
+//	RepositoryWorkspaceCompilationOverridesArgs{...}
+type RepositoryWorkspaceCompilationOverridesInput interface {
+	pulumi.Input
+
+	ToRepositoryWorkspaceCompilationOverridesOutput() RepositoryWorkspaceCompilationOverridesOutput
+	ToRepositoryWorkspaceCompilationOverridesOutputWithContext(context.Context) RepositoryWorkspaceCompilationOverridesOutput
+}
+
+type RepositoryWorkspaceCompilationOverridesArgs struct {
+	// Optional. The default database (Google Cloud project ID).
+	DefaultDatabase pulumi.StringPtrInput `pulumi:"defaultDatabase"`
+	// Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+	SchemaSuffix pulumi.StringPtrInput `pulumi:"schemaSuffix"`
+	// Optional. The prefix that should be prepended to all table names.
+	TablePrefix pulumi.StringPtrInput `pulumi:"tablePrefix"`
+}
+
+func (RepositoryWorkspaceCompilationOverridesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryWorkspaceCompilationOverrides)(nil)).Elem()
+}
+
+func (i RepositoryWorkspaceCompilationOverridesArgs) ToRepositoryWorkspaceCompilationOverridesOutput() RepositoryWorkspaceCompilationOverridesOutput {
+	return i.ToRepositoryWorkspaceCompilationOverridesOutputWithContext(context.Background())
+}
+
+func (i RepositoryWorkspaceCompilationOverridesArgs) ToRepositoryWorkspaceCompilationOverridesOutputWithContext(ctx context.Context) RepositoryWorkspaceCompilationOverridesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkspaceCompilationOverridesOutput)
+}
+
+func (i RepositoryWorkspaceCompilationOverridesArgs) ToRepositoryWorkspaceCompilationOverridesPtrOutput() RepositoryWorkspaceCompilationOverridesPtrOutput {
+	return i.ToRepositoryWorkspaceCompilationOverridesPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryWorkspaceCompilationOverridesArgs) ToRepositoryWorkspaceCompilationOverridesPtrOutputWithContext(ctx context.Context) RepositoryWorkspaceCompilationOverridesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkspaceCompilationOverridesOutput).ToRepositoryWorkspaceCompilationOverridesPtrOutputWithContext(ctx)
+}
+
+// RepositoryWorkspaceCompilationOverridesPtrInput is an input type that accepts RepositoryWorkspaceCompilationOverridesArgs, RepositoryWorkspaceCompilationOverridesPtr and RepositoryWorkspaceCompilationOverridesPtrOutput values.
+// You can construct a concrete instance of `RepositoryWorkspaceCompilationOverridesPtrInput` via:
+//
+//	        RepositoryWorkspaceCompilationOverridesArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryWorkspaceCompilationOverridesPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryWorkspaceCompilationOverridesPtrOutput() RepositoryWorkspaceCompilationOverridesPtrOutput
+	ToRepositoryWorkspaceCompilationOverridesPtrOutputWithContext(context.Context) RepositoryWorkspaceCompilationOverridesPtrOutput
+}
+
+type repositoryWorkspaceCompilationOverridesPtrType RepositoryWorkspaceCompilationOverridesArgs
+
+func RepositoryWorkspaceCompilationOverridesPtr(v *RepositoryWorkspaceCompilationOverridesArgs) RepositoryWorkspaceCompilationOverridesPtrInput {
+	return (*repositoryWorkspaceCompilationOverridesPtrType)(v)
+}
+
+func (*repositoryWorkspaceCompilationOverridesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryWorkspaceCompilationOverrides)(nil)).Elem()
+}
+
+func (i *repositoryWorkspaceCompilationOverridesPtrType) ToRepositoryWorkspaceCompilationOverridesPtrOutput() RepositoryWorkspaceCompilationOverridesPtrOutput {
+	return i.ToRepositoryWorkspaceCompilationOverridesPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryWorkspaceCompilationOverridesPtrType) ToRepositoryWorkspaceCompilationOverridesPtrOutputWithContext(ctx context.Context) RepositoryWorkspaceCompilationOverridesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryWorkspaceCompilationOverridesPtrOutput)
+}
+
+type RepositoryWorkspaceCompilationOverridesOutput struct{ *pulumi.OutputState }
+
+func (RepositoryWorkspaceCompilationOverridesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryWorkspaceCompilationOverrides)(nil)).Elem()
+}
+
+func (o RepositoryWorkspaceCompilationOverridesOutput) ToRepositoryWorkspaceCompilationOverridesOutput() RepositoryWorkspaceCompilationOverridesOutput {
+	return o
+}
+
+func (o RepositoryWorkspaceCompilationOverridesOutput) ToRepositoryWorkspaceCompilationOverridesOutputWithContext(ctx context.Context) RepositoryWorkspaceCompilationOverridesOutput {
+	return o
+}
+
+func (o RepositoryWorkspaceCompilationOverridesOutput) ToRepositoryWorkspaceCompilationOverridesPtrOutput() RepositoryWorkspaceCompilationOverridesPtrOutput {
+	return o.ToRepositoryWorkspaceCompilationOverridesPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryWorkspaceCompilationOverridesOutput) ToRepositoryWorkspaceCompilationOverridesPtrOutputWithContext(ctx context.Context) RepositoryWorkspaceCompilationOverridesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryWorkspaceCompilationOverrides) *RepositoryWorkspaceCompilationOverrides {
+		return &v
+	}).(RepositoryWorkspaceCompilationOverridesPtrOutput)
+}
+
+// Optional. The default database (Google Cloud project ID).
+func (o RepositoryWorkspaceCompilationOverridesOutput) DefaultDatabase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryWorkspaceCompilationOverrides) *string { return v.DefaultDatabase }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+func (o RepositoryWorkspaceCompilationOverridesOutput) SchemaSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryWorkspaceCompilationOverrides) *string { return v.SchemaSuffix }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The prefix that should be prepended to all table names.
+func (o RepositoryWorkspaceCompilationOverridesOutput) TablePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryWorkspaceCompilationOverrides) *string { return v.TablePrefix }).(pulumi.StringPtrOutput)
+}
+
+type RepositoryWorkspaceCompilationOverridesPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryWorkspaceCompilationOverridesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryWorkspaceCompilationOverrides)(nil)).Elem()
+}
+
+func (o RepositoryWorkspaceCompilationOverridesPtrOutput) ToRepositoryWorkspaceCompilationOverridesPtrOutput() RepositoryWorkspaceCompilationOverridesPtrOutput {
+	return o
+}
+
+func (o RepositoryWorkspaceCompilationOverridesPtrOutput) ToRepositoryWorkspaceCompilationOverridesPtrOutputWithContext(ctx context.Context) RepositoryWorkspaceCompilationOverridesPtrOutput {
+	return o
+}
+
+func (o RepositoryWorkspaceCompilationOverridesPtrOutput) Elem() RepositoryWorkspaceCompilationOverridesOutput {
+	return o.ApplyT(func(v *RepositoryWorkspaceCompilationOverrides) RepositoryWorkspaceCompilationOverrides {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryWorkspaceCompilationOverrides
+		return ret
+	}).(RepositoryWorkspaceCompilationOverridesOutput)
+}
+
+// Optional. The default database (Google Cloud project ID).
+func (o RepositoryWorkspaceCompilationOverridesPtrOutput) DefaultDatabase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryWorkspaceCompilationOverrides) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultDatabase
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+func (o RepositoryWorkspaceCompilationOverridesPtrOutput) SchemaSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryWorkspaceCompilationOverrides) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaSuffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The prefix that should be prepended to all table names.
+func (o RepositoryWorkspaceCompilationOverridesPtrOutput) TablePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryWorkspaceCompilationOverrides) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TablePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryGitRemoteSettingsInput)(nil)).Elem(), RepositoryGitRemoteSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryGitRemoteSettingsPtrInput)(nil)).Elem(), RepositoryGitRemoteSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryWorkspaceCompilationOverridesInput)(nil)).Elem(), RepositoryWorkspaceCompilationOverridesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryWorkspaceCompilationOverridesPtrInput)(nil)).Elem(), RepositoryWorkspaceCompilationOverridesArgs{})
 	pulumi.RegisterOutputType(RepositoryGitRemoteSettingsOutput{})
 	pulumi.RegisterOutputType(RepositoryGitRemoteSettingsPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryWorkspaceCompilationOverridesOutput{})
+	pulumi.RegisterOutputType(RepositoryWorkspaceCompilationOverridesPtrOutput{})
 }

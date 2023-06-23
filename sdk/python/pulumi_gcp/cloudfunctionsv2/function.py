@@ -182,7 +182,8 @@ class _FunctionState:
                  project: Optional[pulumi.Input[str]] = None,
                  service_config: Optional[pulumi.Input['FunctionServiceConfigArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None):
+                 update_time: Optional[pulumi.Input[str]] = None,
+                 url: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Function resources.
         :param pulumi.Input['FunctionBuildConfigArgs'] build_config: Describes the Build step of the function that builds a container
@@ -206,6 +207,7 @@ class _FunctionState:
                Structure is documented below.
         :param pulumi.Input[str] state: Describes the current state of the function.
         :param pulumi.Input[str] update_time: The last update timestamp of a Cloud Function.
+        :param pulumi.Input[str] url: Output only. The deployed url for the function.
         """
         if build_config is not None:
             pulumi.set(__self__, "build_config", build_config)
@@ -229,6 +231,8 @@ class _FunctionState:
             pulumi.set(__self__, "state", state)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter(name="buildConfig")
@@ -371,6 +375,18 @@ class _FunctionState:
     @update_time.setter
     def update_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update_time", value)
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. The deployed url for the function.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "url", value)
 
 
 class Function(pulumi.CustomResource):
@@ -871,6 +887,7 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["environment"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["update_time"] = None
+            __props__.__dict__["url"] = None
         super(Function, __self__).__init__(
             'gcp:cloudfunctionsv2/function:Function',
             resource_name,
@@ -891,7 +908,8 @@ class Function(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             service_config: Optional[pulumi.Input[pulumi.InputType['FunctionServiceConfigArgs']]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            update_time: Optional[pulumi.Input[str]] = None) -> 'Function':
+            update_time: Optional[pulumi.Input[str]] = None,
+            url: Optional[pulumi.Input[str]] = None) -> 'Function':
         """
         Get an existing Function resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -920,6 +938,7 @@ class Function(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] state: Describes the current state of the function.
         :param pulumi.Input[str] update_time: The last update timestamp of a Cloud Function.
+        :param pulumi.Input[str] url: Output only. The deployed url for the function.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -936,6 +955,7 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["service_config"] = service_config
         __props__.__dict__["state"] = state
         __props__.__dict__["update_time"] = update_time
+        __props__.__dict__["url"] = url
         return Function(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1035,4 +1055,12 @@ class Function(pulumi.CustomResource):
         The last update timestamp of a Cloud Function.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Output[str]:
+        """
+        Output only. The deployed url for the function.
+        """
+        return pulumi.get(self, "url")
 

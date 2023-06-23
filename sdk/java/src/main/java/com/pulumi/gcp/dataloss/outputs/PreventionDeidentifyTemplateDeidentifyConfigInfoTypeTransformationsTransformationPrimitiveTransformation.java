@@ -4,11 +4,17 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfig;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig;
+import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfig;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig;
+import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig;
+import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfig;
+import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfig;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfig;
+import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfig;
 import java.lang.Boolean;
 import java.util.Objects;
 import java.util.Optional;
@@ -16,6 +22,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation {
+    /**
+     * @return Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 &gt; LOW 31-65 &gt; MEDIUM 66-100 &gt; HIGH
+     * This can be used on data of type: number, long, string, timestamp.
+     * If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
+     * See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfig bucketingConfig;
     /**
      * @return Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we&#39;ll attempt to preserve the original data&#39;s type. (This allows you to take a long like 123 and modify it to a string like **3).
      * Structure is documented below.
@@ -29,6 +44,15 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
      */
     private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig cryptoDeterministicConfig;
     /**
+     * @return Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
+     * Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
+     * Currently, only string and integer values can be hashed.
+     * See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfig cryptoHashConfig;
+    /**
      * @return Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
      * Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
      * Structure is documented below.
@@ -36,7 +60,28 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
      */
     private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig cryptoReplaceFfxFpeConfig;
     /**
-     * @return Replace with a specified value.
+     * @return Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig dateShiftConfig;
+    /**
+     * @return Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies.
+     * The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with &#34;10-20&#34;.
+     * This can be used on data of type: double, long.
+     * If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
+     * See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfig fixedSizeBucketingConfig;
+    /**
+     * @return Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input &#39;My phone number is 206-555-0123&#39;, the output would be &#39;My phone number is &#39;.
+     * 
+     */
+    private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfig redactConfig;
+    /**
+     * @return Replace each input value with a given value.
      * Structure is documented below.
      * 
      */
@@ -52,8 +97,25 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
      * 
      */
     private @Nullable Boolean replaceWithInfoTypeConfig;
+    /**
+     * @return For use with Date, Timestamp, and TimeOfDay, extract or preserve a portion of the value.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfig timePartConfig;
 
     private PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation() {}
+    /**
+     * @return Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 &gt; LOW 31-65 &gt; MEDIUM 66-100 &gt; HIGH
+     * This can be used on data of type: number, long, string, timestamp.
+     * If the provided value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
+     * See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfig> bucketingConfig() {
+        return Optional.ofNullable(this.bucketingConfig);
+    }
     /**
      * @return Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we&#39;ll attempt to preserve the original data&#39;s type. (This allows you to take a long like 123 and modify it to a string like **3).
      * Structure is documented below.
@@ -71,6 +133,17 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         return Optional.ofNullable(this.cryptoDeterministicConfig);
     }
     /**
+     * @return Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes.
+     * Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=).
+     * Currently, only string and integer values can be hashed.
+     * See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfig> cryptoHashConfig() {
+        return Optional.ofNullable(this.cryptoHashConfig);
+    }
+    /**
      * @return Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `content.reidentify` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See [https://cloud.google.com/dlp/docs/pseudonymization](https://cloud.google.com/dlp/docs/pseudonymization) to learn more.
      * Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
      * Structure is documented below.
@@ -80,7 +153,34 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         return Optional.ofNullable(this.cryptoReplaceFfxFpeConfig);
     }
     /**
-     * @return Replace with a specified value.
+     * @return Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig> dateShiftConfig() {
+        return Optional.ofNullable(this.dateShiftConfig);
+    }
+    /**
+     * @return Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies.
+     * The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}. For example, if lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with &#34;10-20&#34;.
+     * This can be used on data of type: double, long.
+     * If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing.
+     * See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfig> fixedSizeBucketingConfig() {
+        return Optional.ofNullable(this.fixedSizeBucketingConfig);
+    }
+    /**
+     * @return Redact a given value. For example, if used with an InfoTypeTransformation transforming PHONE_NUMBER, and input &#39;My phone number is 206-555-0123&#39;, the output would be &#39;My phone number is &#39;.
+     * 
+     */
+    public Optional<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfig> redactConfig() {
+        return Optional.ofNullable(this.redactConfig);
+    }
+    /**
+     * @return Replace each input value with a given value.
      * Structure is documented below.
      * 
      */
@@ -102,6 +202,14 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     public Optional<Boolean> replaceWithInfoTypeConfig() {
         return Optional.ofNullable(this.replaceWithInfoTypeConfig);
     }
+    /**
+     * @return For use with Date, Timestamp, and TimeOfDay, extract or preserve a portion of the value.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfig> timePartConfig() {
+        return Optional.ofNullable(this.timePartConfig);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -112,23 +220,40 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfig bucketingConfig;
         private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig characterMaskConfig;
         private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig cryptoDeterministicConfig;
+        private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfig cryptoHashConfig;
         private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig cryptoReplaceFfxFpeConfig;
+        private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig dateShiftConfig;
+        private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfig fixedSizeBucketingConfig;
+        private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfig redactConfig;
         private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfig replaceConfig;
         private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfig replaceDictionaryConfig;
         private @Nullable Boolean replaceWithInfoTypeConfig;
+        private @Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfig timePartConfig;
         public Builder() {}
         public Builder(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bucketingConfig = defaults.bucketingConfig;
     	      this.characterMaskConfig = defaults.characterMaskConfig;
     	      this.cryptoDeterministicConfig = defaults.cryptoDeterministicConfig;
+    	      this.cryptoHashConfig = defaults.cryptoHashConfig;
     	      this.cryptoReplaceFfxFpeConfig = defaults.cryptoReplaceFfxFpeConfig;
+    	      this.dateShiftConfig = defaults.dateShiftConfig;
+    	      this.fixedSizeBucketingConfig = defaults.fixedSizeBucketingConfig;
+    	      this.redactConfig = defaults.redactConfig;
     	      this.replaceConfig = defaults.replaceConfig;
     	      this.replaceDictionaryConfig = defaults.replaceDictionaryConfig;
     	      this.replaceWithInfoTypeConfig = defaults.replaceWithInfoTypeConfig;
+    	      this.timePartConfig = defaults.timePartConfig;
         }
 
+        @CustomType.Setter
+        public Builder bucketingConfig(@Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfig bucketingConfig) {
+            this.bucketingConfig = bucketingConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder characterMaskConfig(@Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig characterMaskConfig) {
             this.characterMaskConfig = characterMaskConfig;
@@ -140,8 +265,28 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
             return this;
         }
         @CustomType.Setter
+        public Builder cryptoHashConfig(@Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfig cryptoHashConfig) {
+            this.cryptoHashConfig = cryptoHashConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder cryptoReplaceFfxFpeConfig(@Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig cryptoReplaceFfxFpeConfig) {
             this.cryptoReplaceFfxFpeConfig = cryptoReplaceFfxFpeConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder dateShiftConfig(@Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig dateShiftConfig) {
+            this.dateShiftConfig = dateShiftConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fixedSizeBucketingConfig(@Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationFixedSizeBucketingConfig fixedSizeBucketingConfig) {
+            this.fixedSizeBucketingConfig = fixedSizeBucketingConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder redactConfig(@Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationRedactConfig redactConfig) {
+            this.redactConfig = redactConfig;
             return this;
         }
         @CustomType.Setter
@@ -159,14 +304,25 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
             this.replaceWithInfoTypeConfig = replaceWithInfoTypeConfig;
             return this;
         }
+        @CustomType.Setter
+        public Builder timePartConfig(@Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationTimePartConfig timePartConfig) {
+            this.timePartConfig = timePartConfig;
+            return this;
+        }
         public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation build() {
             final var o = new PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformation();
+            o.bucketingConfig = bucketingConfig;
             o.characterMaskConfig = characterMaskConfig;
             o.cryptoDeterministicConfig = cryptoDeterministicConfig;
+            o.cryptoHashConfig = cryptoHashConfig;
             o.cryptoReplaceFfxFpeConfig = cryptoReplaceFfxFpeConfig;
+            o.dateShiftConfig = dateShiftConfig;
+            o.fixedSizeBucketingConfig = fixedSizeBucketingConfig;
+            o.redactConfig = redactConfig;
             o.replaceConfig = replaceConfig;
             o.replaceDictionaryConfig = replaceDictionaryConfig;
             o.replaceWithInfoTypeConfig = replaceWithInfoTypeConfig;
+            o.timePartConfig = timePartConfig;
             return o;
         }
     }

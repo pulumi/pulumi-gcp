@@ -25,10 +25,20 @@ export type DatabaseIAMPolicy = import("./databaseIAMPolicy").DatabaseIAMPolicy;
 export const DatabaseIAMPolicy: typeof import("./databaseIAMPolicy").DatabaseIAMPolicy = null as any;
 utilities.lazyLoad(exports, ["DatabaseIAMPolicy"], () => require("./databaseIAMPolicy"));
 
+export { GetDatabaseIamPolicyArgs, GetDatabaseIamPolicyResult, GetDatabaseIamPolicyOutputArgs } from "./getDatabaseIamPolicy";
+export const getDatabaseIamPolicy: typeof import("./getDatabaseIamPolicy").getDatabaseIamPolicy = null as any;
+export const getDatabaseIamPolicyOutput: typeof import("./getDatabaseIamPolicy").getDatabaseIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getDatabaseIamPolicy","getDatabaseIamPolicyOutput"], () => require("./getDatabaseIamPolicy"));
+
 export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
 export const getInstance: typeof import("./getInstance").getInstance = null as any;
 export const getInstanceOutput: typeof import("./getInstance").getInstanceOutput = null as any;
 utilities.lazyLoad(exports, ["getInstance","getInstanceOutput"], () => require("./getInstance"));
+
+export { GetInstanceIamPolicyArgs, GetInstanceIamPolicyResult, GetInstanceIamPolicyOutputArgs } from "./getInstanceIamPolicy";
+export const getInstanceIamPolicy: typeof import("./getInstanceIamPolicy").getInstanceIamPolicy = null as any;
+export const getInstanceIamPolicyOutput: typeof import("./getInstanceIamPolicy").getInstanceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceIamPolicy","getInstanceIamPolicyOutput"], () => require("./getInstanceIamPolicy"));
 
 export { InstanceArgs, InstanceState } from "./instance";
 export type Instance = import("./instance").Instance;

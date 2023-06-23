@@ -60,6 +60,16 @@ export const getAuthority: typeof import("./getAuthority").getAuthority = null a
 export const getAuthorityOutput: typeof import("./getAuthority").getAuthorityOutput = null as any;
 utilities.lazyLoad(exports, ["getAuthority","getAuthorityOutput"], () => require("./getAuthority"));
 
+export { GetCaPoolIamPolicyArgs, GetCaPoolIamPolicyResult, GetCaPoolIamPolicyOutputArgs } from "./getCaPoolIamPolicy";
+export const getCaPoolIamPolicy: typeof import("./getCaPoolIamPolicy").getCaPoolIamPolicy = null as any;
+export const getCaPoolIamPolicyOutput: typeof import("./getCaPoolIamPolicy").getCaPoolIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getCaPoolIamPolicy","getCaPoolIamPolicyOutput"], () => require("./getCaPoolIamPolicy"));
+
+export { GetCertificateTemplateIamPolicyArgs, GetCertificateTemplateIamPolicyResult, GetCertificateTemplateIamPolicyOutputArgs } from "./getCertificateTemplateIamPolicy";
+export const getCertificateTemplateIamPolicy: typeof import("./getCertificateTemplateIamPolicy").getCertificateTemplateIamPolicy = null as any;
+export const getCertificateTemplateIamPolicyOutput: typeof import("./getCertificateTemplateIamPolicy").getCertificateTemplateIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getCertificateTemplateIamPolicy","getCertificateTemplateIamPolicyOutput"], () => require("./getCertificateTemplateIamPolicy"));
+
 
 const _module = {
     version: utilities.getVersion(),

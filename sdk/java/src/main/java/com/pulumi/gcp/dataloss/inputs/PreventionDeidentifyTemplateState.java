@@ -102,6 +102,15 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
      * (Optional)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
      * 
+     * (Required)
+     * Name describing the field.
+     * 
+     * (Required)
+     * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+     * 
+     * (Required)
+     * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+     * 
      * (Optional)
      * Name describing the field.
      * 
@@ -133,6 +142,36 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
      * 
      * (Optional)
+     * Name describing the field.
+     * 
+     * (Required)
+     * Name of the information type.
+     * 
+     * (Required)
+     * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+     * 
+     * (Required)
+     * Name describing the field.
+     * 
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+     * 
+     * (Required)
+     * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+     * 
+     * (Required)
+     * Name describing the field.
+     * 
+     * (Required)
+     * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+     * 
+     * (Required)
+     * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+     * 
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+     * 
+     * (Required)
      * Name describing the field.
      * 
      * (Optional)
@@ -166,6 +205,15 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
      * (Optional)
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
      * 
+     * (Required)
+     * Name describing the field.
+     * 
+     * (Required)
+     * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+     * 
+     * (Required)
+     * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+     * 
      * (Optional)
      * Name describing the field.
      * 
@@ -197,6 +245,36 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
      * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
      * 
      * (Optional)
+     * Name describing the field.
+     * 
+     * (Required)
+     * Name of the information type.
+     * 
+     * (Required)
+     * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+     * 
+     * (Required)
+     * Name describing the field.
+     * 
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+     * 
+     * (Required)
+     * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+     * 
+     * (Required)
+     * Name describing the field.
+     * 
+     * (Required)
+     * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+     * 
+     * (Required)
+     * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+     * 
+     * (Required)
+     * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+     * 
+     * (Required)
      * Name describing the field.
      * 
      * (Optional)
@@ -231,6 +309,25 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
     }
 
     /**
+     * The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+     * 100 characters. Can be empty to allow the system to generate one.
+     * 
+     */
+    @Import(name="templateId")
+    private @Nullable Output<String> templateId;
+
+    /**
+     * @return The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+     * 100 characters. Can be empty to allow the system to generate one.
+     * 
+     */
+    public Optional<Output<String>> templateId() {
+        return Optional.ofNullable(this.templateId);
+    }
+
+    /**
      * The last update timestamp of an deidentifyTemplate. Set by the server.
      * 
      */
@@ -254,6 +351,7 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
         this.displayName = $.displayName;
         this.name = $.name;
         this.parent = $.parent;
+        this.templateId = $.templateId;
         this.updateTime = $.updateTime;
     }
 
@@ -385,6 +483,15 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
          * (Optional)
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
          * 
+         * (Required)
+         * Name describing the field.
+         * 
+         * (Required)
+         * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+         * 
+         * (Required)
+         * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+         * 
          * (Optional)
          * Name describing the field.
          * 
@@ -416,6 +523,36 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
          * 
          * (Optional)
+         * Name describing the field.
+         * 
+         * (Required)
+         * Name of the information type.
+         * 
+         * (Required)
+         * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+         * 
+         * (Required)
+         * Name describing the field.
+         * 
+         * (Required)
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         * 
+         * (Required)
+         * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+         * 
+         * (Required)
+         * Name describing the field.
+         * 
+         * (Required)
+         * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+         * 
+         * (Required)
+         * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+         * 
+         * (Required)
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         * 
+         * (Required)
          * Name describing the field.
          * 
          * (Optional)
@@ -453,6 +590,15 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
          * (Optional)
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
          * 
+         * (Required)
+         * Name describing the field.
+         * 
+         * (Required)
+         * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+         * 
+         * (Required)
+         * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+         * 
          * (Optional)
          * Name describing the field.
          * 
@@ -484,6 +630,36 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
          * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
          * 
          * (Optional)
+         * Name describing the field.
+         * 
+         * (Required)
+         * Name of the information type.
+         * 
+         * (Required)
+         * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+         * 
+         * (Required)
+         * Name describing the field.
+         * 
+         * (Required)
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         * 
+         * (Required)
+         * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+         * 
+         * (Required)
+         * Name describing the field.
+         * 
+         * (Required)
+         * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+         * 
+         * (Required)
+         * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+         * 
+         * (Required)
+         * Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at [https://cloud.google.com/dlp/docs/infotypes-reference](https://cloud.google.com/dlp/docs/infotypes-reference) when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
+         * 
+         * (Required)
          * Name describing the field.
          * 
          * (Optional)
@@ -523,6 +699,31 @@ public final class PreventionDeidentifyTemplateState extends com.pulumi.resource
          */
         public Builder parent(String parent) {
             return parent(Output.of(parent));
+        }
+
+        /**
+         * @param templateId The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+         * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+         * 100 characters. Can be empty to allow the system to generate one.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templateId(@Nullable Output<String> templateId) {
+            $.templateId = templateId;
+            return this;
+        }
+
+        /**
+         * @param templateId The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+         * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+         * 100 characters. Can be empty to allow the system to generate one.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templateId(String templateId) {
+            return templateId(Output.of(templateId));
         }
 
         /**

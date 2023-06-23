@@ -134,6 +134,7 @@ const (
 	gcpVpcAccess                = "VpcAccess"                // VPC Access
 	gcpWorkflows                = "Workflows"                // Workflows
 	gcpWorkstations             = "Workstations"             // Workstations
+	gcpVMwareEngine             = "VMwareEngine"             // VMWare Engine
 )
 
 var moduleMapping = map[string]string{
@@ -235,6 +236,7 @@ var moduleMapping = map[string]string{
 	"vpc_access":                      gcpVpcAccess,
 	"workflows":                       gcpWorkflows,
 	"workstations":                    gcpWorkstations,
+	"vmwareengine":                    gcpVMwareEngine,
 }
 
 var namespaceMap = map[string]string{
@@ -358,7 +360,7 @@ var metadata []byte
 
 // Provider returns additional overlaid schema and metadata associated with the gcp package.
 func Provider() tfbridge.ProviderInfo {
-	p := pf.MuxShimWithPF(
+	p := pf.MuxShimWithDisjointgPF(
 		context.Background(),
 		shimv2.NewProvider(google.Provider()),
 		google.New(version.Version)) // this probably should be TF version but it does not seem to matter
@@ -3080,6 +3082,27 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{
 					Source: "tags_tag_value_iam.html.markdown",
 				},
+			},
+			"google_dataplex_datascan_iam_binding": {
+				Tok: gcpResource(gcpDataPlex, "DatascanIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "dataplex_datascan_iam.html.markdown",
+				},
+			},
+			"google_dataplex_datascan_iam_member": {
+				Tok: gcpResource(gcpDataPlex, "DatascanIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "dataplex_datascan_iam.html.markdown",
+				},
+			},
+			"google_dataplex_datascan_iam_policy": {
+				Tok: gcpResource(gcpDataPlex, "DatascanIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "dataplex_datascan_iam.html.markdown",
+				},
+			},
+			"google_compute_network_endpoints": {
+				Tok: gcpResource(gcpCompute, "NetworkEndpointList"),
 			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{

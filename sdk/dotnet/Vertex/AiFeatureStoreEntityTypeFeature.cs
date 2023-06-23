@@ -184,6 +184,12 @@ namespace Pulumi.Gcp.Vertex
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The region of the feature
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
         /// The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
         /// </summary>
         [Output("updateTime")]
@@ -332,6 +338,12 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The region of the feature
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// The timestamp when the entity type was most recently updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.

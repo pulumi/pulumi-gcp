@@ -149,6 +149,7 @@ class ProviderArgs:
                  tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  user_project_override: Optional[pulumi.Input[bool]] = None,
                  vertex_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 vmwareengine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  vpc_access_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  workflows_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  workstations_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -428,6 +429,8 @@ class ProviderArgs:
             pulumi.set(__self__, "user_project_override", user_project_override)
         if vertex_ai_custom_endpoint is not None:
             pulumi.set(__self__, "vertex_ai_custom_endpoint", vertex_ai_custom_endpoint)
+        if vmwareengine_custom_endpoint is not None:
+            pulumi.set(__self__, "vmwareengine_custom_endpoint", vmwareengine_custom_endpoint)
         if vpc_access_custom_endpoint is not None:
             pulumi.set(__self__, "vpc_access_custom_endpoint", vpc_access_custom_endpoint)
         if workflows_custom_endpoint is not None:
@@ -1646,6 +1649,15 @@ class ProviderArgs:
         pulumi.set(self, "vertex_ai_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="vmwareengineCustomEndpoint")
+    def vmwareengine_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "vmwareengine_custom_endpoint")
+
+    @vmwareengine_custom_endpoint.setter
+    def vmwareengine_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vmwareengine_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="vpcAccessCustomEndpoint")
     def vpc_access_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "vpc_access_custom_endpoint")
@@ -1821,6 +1833,7 @@ class Provider(pulumi.ProviderResource):
                  tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  user_project_override: Optional[pulumi.Input[bool]] = None,
                  vertex_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 vmwareengine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  vpc_access_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  workflows_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  workstations_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1996,6 +2009,7 @@ class Provider(pulumi.ProviderResource):
                  tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  user_project_override: Optional[pulumi.Input[bool]] = None,
                  vertex_ai_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 vmwareengine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  vpc_access_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  workflows_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  workstations_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2147,6 +2161,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["tpu_custom_endpoint"] = tpu_custom_endpoint
             __props__.__dict__["user_project_override"] = pulumi.Output.from_input(user_project_override).apply(pulumi.runtime.to_json) if user_project_override is not None else None
             __props__.__dict__["vertex_ai_custom_endpoint"] = vertex_ai_custom_endpoint
+            __props__.__dict__["vmwareengine_custom_endpoint"] = vmwareengine_custom_endpoint
             __props__.__dict__["vpc_access_custom_endpoint"] = vpc_access_custom_endpoint
             __props__.__dict__["workflows_custom_endpoint"] = workflows_custom_endpoint
             __props__.__dict__["workstations_custom_endpoint"] = workstations_custom_endpoint
@@ -2803,6 +2818,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="vertexAiCustomEndpoint")
     def vertex_ai_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "vertex_ai_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="vmwareengineCustomEndpoint")
+    def vmwareengine_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "vmwareengine_custom_endpoint")
 
     @property
     @pulumi.getter(name="vpcAccessCustomEndpoint")

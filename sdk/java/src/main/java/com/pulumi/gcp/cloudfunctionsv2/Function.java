@@ -484,6 +484,20 @@ public class Function extends com.pulumi.resources.CustomResource {
     public Output<String> updateTime() {
         return this.updateTime;
     }
+    /**
+     * Output only. The deployed url for the function.
+     * 
+     */
+    @Export(name="url", type=String.class, parameters={})
+    private Output<String> url;
+
+    /**
+     * @return Output only. The deployed url for the function.
+     * 
+     */
+    public Output<String> url() {
+        return this.url;
+    }
 
     /**
      *

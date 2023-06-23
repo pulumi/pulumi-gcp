@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// <summary>
         /// The name of the template to run when this job is triggered.
         /// </summary>
-        public readonly string InspectTemplateName;
+        public readonly string? InspectTemplateName;
         /// <summary>
         /// Information on where to inspect
         /// Structure is documented below.
@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
             Outputs.PreventionJobTriggerInspectJobInspectConfig? inspectConfig,
 
-            string inspectTemplateName,
+            string? inspectTemplateName,
 
             Outputs.PreventionJobTriggerInspectJobStorageConfig storageConfig)
         {

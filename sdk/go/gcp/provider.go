@@ -146,6 +146,7 @@ type Provider struct {
 	TagsLocationCustomEndpoint             pulumi.StringPtrOutput `pulumi:"tagsLocationCustomEndpoint"`
 	TpuCustomEndpoint                      pulumi.StringPtrOutput `pulumi:"tpuCustomEndpoint"`
 	VertexAiCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"vertexAiCustomEndpoint"`
+	VmwareengineCustomEndpoint             pulumi.StringPtrOutput `pulumi:"vmwareengineCustomEndpoint"`
 	VpcAccessCustomEndpoint                pulumi.StringPtrOutput `pulumi:"vpcAccessCustomEndpoint"`
 	WorkflowsCustomEndpoint                pulumi.StringPtrOutput `pulumi:"workflowsCustomEndpoint"`
 	WorkstationsCustomEndpoint             pulumi.StringPtrOutput `pulumi:"workstationsCustomEndpoint"`
@@ -317,6 +318,7 @@ type providerArgs struct {
 	TpuCustomEndpoint                      *string           `pulumi:"tpuCustomEndpoint"`
 	UserProjectOverride                    *bool             `pulumi:"userProjectOverride"`
 	VertexAiCustomEndpoint                 *string           `pulumi:"vertexAiCustomEndpoint"`
+	VmwareengineCustomEndpoint             *string           `pulumi:"vmwareengineCustomEndpoint"`
 	VpcAccessCustomEndpoint                *string           `pulumi:"vpcAccessCustomEndpoint"`
 	WorkflowsCustomEndpoint                *string           `pulumi:"workflowsCustomEndpoint"`
 	WorkstationsCustomEndpoint             *string           `pulumi:"workstationsCustomEndpoint"`
@@ -459,6 +461,7 @@ type ProviderArgs struct {
 	TpuCustomEndpoint                      pulumi.StringPtrInput
 	UserProjectOverride                    pulumi.BoolPtrInput
 	VertexAiCustomEndpoint                 pulumi.StringPtrInput
+	VmwareengineCustomEndpoint             pulumi.StringPtrInput
 	VpcAccessCustomEndpoint                pulumi.StringPtrInput
 	WorkflowsCustomEndpoint                pulumi.StringPtrInput
 	WorkstationsCustomEndpoint             pulumi.StringPtrInput
@@ -1016,6 +1019,10 @@ func (o ProviderOutput) TpuCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) VertexAiCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.VertexAiCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) VmwareengineCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.VmwareengineCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) VpcAccessCustomEndpoint() pulumi.StringPtrOutput {

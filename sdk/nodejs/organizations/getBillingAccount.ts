@@ -29,6 +29,7 @@ export function getBillingAccount(args?: GetBillingAccountArgs, opts?: pulumi.In
     return pulumi.runtime.invoke("gcp:organizations/getBillingAccount:getBillingAccount", {
         "billingAccount": args.billingAccount,
         "displayName": args.displayName,
+        "lookupProjects": args.lookupProjects,
         "open": args.open,
     }, opts);
 }
@@ -46,9 +47,14 @@ export interface GetBillingAccountArgs {
      */
     displayName?: string;
     /**
-     * `true` if the billing account is open, `false` if the billing account is closed.
+     * `true` if projects associated with the billing account should be read, `false` if this step
+     * should be skipped. Setting `false` may be useful if the user permissions do not allow listing projects. Defaults to `true`.
      *
      * > **NOTE:** One of `billingAccount` or `displayName` must be specified.
+     */
+    lookupProjects?: boolean;
+    /**
+     * `true` if the billing account is open, `false` if the billing account is closed.
      */
     open?: boolean;
 }
@@ -63,13 +69,15 @@ export interface GetBillingAccountResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly lookupProjects?: boolean;
     /**
      * The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
      */
     readonly name: string;
     readonly open: boolean;
     /**
-     * The IDs of any projects associated with the billing account.
+     * The IDs of any projects associated with the billing account. `lookupProjects` must not be false
+     * for this to be populated.
      */
     readonly projectIds: string[];
 }
@@ -108,9 +116,14 @@ export interface GetBillingAccountOutputArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * `true` if the billing account is open, `false` if the billing account is closed.
+     * `true` if projects associated with the billing account should be read, `false` if this step
+     * should be skipped. Setting `false` may be useful if the user permissions do not allow listing projects. Defaults to `true`.
      *
      * > **NOTE:** One of `billingAccount` or `displayName` must be specified.
+     */
+    lookupProjects?: pulumi.Input<boolean>;
+    /**
+     * `true` if the billing account is open, `false` if the billing account is closed.
      */
     open?: pulumi.Input<boolean>;
 }

@@ -30,6 +30,11 @@ export const getManagedZone: typeof import("./getManagedZone").getManagedZone = 
 export const getManagedZoneOutput: typeof import("./getManagedZone").getManagedZoneOutput = null as any;
 utilities.lazyLoad(exports, ["getManagedZone","getManagedZoneOutput"], () => require("./getManagedZone"));
 
+export { GetManagedZoneIamPolicyArgs, GetManagedZoneIamPolicyResult, GetManagedZoneIamPolicyOutputArgs } from "./getManagedZoneIamPolicy";
+export const getManagedZoneIamPolicy: typeof import("./getManagedZoneIamPolicy").getManagedZoneIamPolicy = null as any;
+export const getManagedZoneIamPolicyOutput: typeof import("./getManagedZoneIamPolicy").getManagedZoneIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getManagedZoneIamPolicy","getManagedZoneIamPolicyOutput"], () => require("./getManagedZoneIamPolicy"));
+
 export { GetRecordSetArgs, GetRecordSetResult, GetRecordSetOutputArgs } from "./getRecordSet";
 export const getRecordSet: typeof import("./getRecordSet").getRecordSet = null as any;
 export const getRecordSetOutput: typeof import("./getRecordSet").getRecordSetOutput = null as any;

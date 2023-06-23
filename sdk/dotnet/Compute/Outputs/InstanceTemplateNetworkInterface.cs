@@ -46,6 +46,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// `subnetwork` for custom subnetted networks.
         /// </summary>
         public readonly string? Network;
+        public readonly string? NetworkAttachment;
         /// <summary>
         /// The private IP address to assign to the instance. If
         /// empty, the address will be automatically assigned.
@@ -89,6 +90,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? network,
 
+            string? networkAttachment,
+
             string? networkIp,
 
             string? nicType,
@@ -107,6 +110,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             Ipv6AccessType = ipv6AccessType;
             Name = name;
             Network = network;
+            NetworkAttachment = networkAttachment;
             NetworkIp = networkIp;
             NicType = nicType;
             QueueCount = queueCount;

@@ -154,11 +154,6 @@ export interface GetInstanceTemplateResult {
      * prefix. Conflicts with `name`.
      */
     readonly namePrefix: string;
-    /**
-     * Networks to attach to instances created from
-     * this template. This can be specified multiple times for multiple networks.
-     * Structure is documented below.
-     */
     readonly networkInterfaces: outputs.compute.GetInstanceTemplateNetworkInterface[];
     /**
      * The network performance configuration setting

@@ -57,6 +57,12 @@ namespace Pulumi.Gcp.Dataform
     ///             DefaultBranch = "main",
     ///             AuthenticationTokenSecretVersion = secretVersion.Id,
     ///         },
+    ///         WorkspaceCompilationOverrides = new Gcp.Dataform.Inputs.RepositoryWorkspaceCompilationOverridesArgs
+    ///         {
+    ///             DefaultDatabase = "database",
+    ///             SchemaSuffix = "_suffix",
+    ///             TablePrefix = "prefix_",
+    ///         },
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,
@@ -116,6 +122,13 @@ namespace Pulumi.Gcp.Dataform
         /// </summary>
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("workspaceCompilationOverrides")]
+        public Output<Outputs.RepositoryWorkspaceCompilationOverrides?> WorkspaceCompilationOverrides { get; private set; } = null!;
 
 
         /// <summary>
@@ -192,6 +205,13 @@ namespace Pulumi.Gcp.Dataform
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("workspaceCompilationOverrides")]
+        public Input<Inputs.RepositoryWorkspaceCompilationOverridesArgs>? WorkspaceCompilationOverrides { get; set; }
+
         public RepositoryArgs()
         {
         }
@@ -228,6 +248,13 @@ namespace Pulumi.Gcp.Dataform
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("workspaceCompilationOverrides")]
+        public Input<Inputs.RepositoryWorkspaceCompilationOverridesGetArgs>? WorkspaceCompilationOverrides { get; set; }
 
         public RepositoryState()
         {

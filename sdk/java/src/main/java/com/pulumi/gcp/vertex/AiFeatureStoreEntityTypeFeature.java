@@ -247,6 +247,20 @@ public class AiFeatureStoreEntityTypeFeature extends com.pulumi.resources.Custom
         return this.name;
     }
     /**
+     * The region of the feature
+     * 
+     */
+    @Export(name="region", type=String.class, parameters={})
+    private Output<String> region;
+
+    /**
+     * @return The region of the feature
+     * 
+     */
+    public Output<String> region() {
+        return this.region;
+    }
+    /**
      * The timestamp when the entity type was most recently updated in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits.
      * 
      */

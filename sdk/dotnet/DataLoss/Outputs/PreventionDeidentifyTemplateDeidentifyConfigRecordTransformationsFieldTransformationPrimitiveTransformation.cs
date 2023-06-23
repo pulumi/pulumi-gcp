@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig? RedactConfig;
         /// <summary>
-        /// Replace with a specified value.
+        /// Replace each input value with a given value.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig? ReplaceConfig;

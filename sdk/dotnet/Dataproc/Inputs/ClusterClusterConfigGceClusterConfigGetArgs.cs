@@ -44,6 +44,18 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<string>? Network { get; set; }
 
         /// <summary>
+        /// Node Group Affinity for sole-tenant clusters.
+        /// </summary>
+        [Input("nodeGroupAffinity")]
+        public Input<Inputs.ClusterClusterConfigGceClusterConfigNodeGroupAffinityGetArgs>? NodeGroupAffinity { get; set; }
+
+        /// <summary>
+        /// Reservation Affinity for consuming zonal reservation.
+        /// </summary>
+        [Input("reservationAffinity")]
+        public Input<Inputs.ClusterClusterConfigGceClusterConfigReservationAffinityGetArgs>? ReservationAffinity { get; set; }
+
+        /// <summary>
         /// The service account to be used by the Node VMs.
         /// If not specified, the "default" service account is used.
         /// </summary>

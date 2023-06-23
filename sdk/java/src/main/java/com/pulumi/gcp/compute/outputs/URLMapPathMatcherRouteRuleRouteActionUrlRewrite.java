@@ -25,6 +25,21 @@ public final class URLMapPathMatcherRouteRuleRouteActionUrlRewrite {
      * 
      */
     private @Nullable String pathPrefixRewrite;
+    /**
+     * @return Prior to forwarding the request to the selected origin, if the
+     * request matched a pathTemplateMatch, the matching portion of the
+     * request&#39;s path is replaced re-written using the pattern specified
+     * by pathTemplateRewrite.
+     * pathTemplateRewrite must be between 1 and 255 characters
+     * (inclusive), must start with a &#39;/&#39;, and must only use variables
+     * captured by the route&#39;s pathTemplate matchers.
+     * pathTemplateRewrite may only be used when all of a route&#39;s
+     * MatchRules specify pathTemplate.
+     * Only one of pathPrefixRewrite and pathTemplateRewrite may be
+     * specified.
+     * 
+     */
+    private @Nullable String pathTemplateRewrite;
 
     private URLMapPathMatcherRouteRuleRouteActionUrlRewrite() {}
     /**
@@ -45,6 +60,23 @@ public final class URLMapPathMatcherRouteRuleRouteActionUrlRewrite {
     public Optional<String> pathPrefixRewrite() {
         return Optional.ofNullable(this.pathPrefixRewrite);
     }
+    /**
+     * @return Prior to forwarding the request to the selected origin, if the
+     * request matched a pathTemplateMatch, the matching portion of the
+     * request&#39;s path is replaced re-written using the pattern specified
+     * by pathTemplateRewrite.
+     * pathTemplateRewrite must be between 1 and 255 characters
+     * (inclusive), must start with a &#39;/&#39;, and must only use variables
+     * captured by the route&#39;s pathTemplate matchers.
+     * pathTemplateRewrite may only be used when all of a route&#39;s
+     * MatchRules specify pathTemplate.
+     * Only one of pathPrefixRewrite and pathTemplateRewrite may be
+     * specified.
+     * 
+     */
+    public Optional<String> pathTemplateRewrite() {
+        return Optional.ofNullable(this.pathTemplateRewrite);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -57,11 +89,13 @@ public final class URLMapPathMatcherRouteRuleRouteActionUrlRewrite {
     public static final class Builder {
         private @Nullable String hostRewrite;
         private @Nullable String pathPrefixRewrite;
+        private @Nullable String pathTemplateRewrite;
         public Builder() {}
         public Builder(URLMapPathMatcherRouteRuleRouteActionUrlRewrite defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.hostRewrite = defaults.hostRewrite;
     	      this.pathPrefixRewrite = defaults.pathPrefixRewrite;
+    	      this.pathTemplateRewrite = defaults.pathTemplateRewrite;
         }
 
         @CustomType.Setter
@@ -74,10 +108,16 @@ public final class URLMapPathMatcherRouteRuleRouteActionUrlRewrite {
             this.pathPrefixRewrite = pathPrefixRewrite;
             return this;
         }
+        @CustomType.Setter
+        public Builder pathTemplateRewrite(@Nullable String pathTemplateRewrite) {
+            this.pathTemplateRewrite = pathTemplateRewrite;
+            return this;
+        }
         public URLMapPathMatcherRouteRuleRouteActionUrlRewrite build() {
             final var o = new URLMapPathMatcherRouteRuleRouteActionUrlRewrite();
             o.hostRewrite = hostRewrite;
             o.pathPrefixRewrite = pathPrefixRewrite;
+            o.pathTemplateRewrite = pathTemplateRewrite;
             return o;
         }
     }

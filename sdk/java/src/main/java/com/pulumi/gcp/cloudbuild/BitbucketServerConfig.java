@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var bbs_config = new BitbucketServerConfig(&#34;bbs-config&#34;, BitbucketServerConfigArgs.builder()        
  *             .apiKey(&#34;&lt;api-key&gt;&#34;)
- *             .configId(&#34;mybbsconfig&#34;)
+ *             .configId(&#34;bbs-config&#34;)
  *             .hostUri(&#34;https://bbs.com&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .secrets(BitbucketServerConfigSecretsArgs.builder()
@@ -92,7 +92,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var bbs_config_with_repos = new BitbucketServerConfig(&#34;bbs-config-with-repos&#34;, BitbucketServerConfigArgs.builder()        
  *             .apiKey(&#34;&lt;api-key&gt;&#34;)
- *             .configId(&#34;mybbsconfig&#34;)
+ *             .configId(&#34;bbs-config&#34;)
  *             .connectedRepositories(            
  *                 BitbucketServerConfigConnectedRepositoryArgs.builder()
  *                     .projectKey(&#34;DEV&#34;)

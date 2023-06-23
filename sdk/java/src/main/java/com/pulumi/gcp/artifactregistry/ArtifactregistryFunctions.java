@@ -9,7 +9,10 @@ import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryArgs;
+import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryIamPolicyArgs;
+import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryIamPolicyPlainArgs;
 import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryPlainArgs;
+import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryIamPolicyResult;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryResult;
 import java.util.concurrent.CompletableFuture;
 
@@ -173,5 +176,161 @@ public final class ArtifactregistryFunctions {
      */
     public static CompletableFuture<GetRepositoryResult> getRepositoryPlain(GetRepositoryPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:artifactregistry/getRepository:getRepository", TypeShape.of(GetRepositoryResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for repository
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ArtifactregistryFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
+     *             .project(google_artifact_registry_repository.my-repo().project())
+     *             .location(google_artifact_registry_repository.my-repo().location())
+     *             .repository(google_artifact_registry_repository.my-repo().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRepositoryIamPolicyResult> getRepositoryIamPolicy(GetRepositoryIamPolicyArgs args) {
+        return getRepositoryIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for repository
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ArtifactregistryFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
+     *             .project(google_artifact_registry_repository.my-repo().project())
+     *             .location(google_artifact_registry_repository.my-repo().location())
+     *             .repository(google_artifact_registry_repository.my-repo().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRepositoryIamPolicyResult> getRepositoryIamPolicyPlain(GetRepositoryIamPolicyPlainArgs args) {
+        return getRepositoryIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for repository
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ArtifactregistryFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
+     *             .project(google_artifact_registry_repository.my-repo().project())
+     *             .location(google_artifact_registry_repository.my-repo().location())
+     *             .repository(google_artifact_registry_repository.my-repo().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRepositoryIamPolicyResult> getRepositoryIamPolicy(GetRepositoryIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:artifactregistry/getRepositoryIamPolicy:getRepositoryIamPolicy", TypeShape.of(GetRepositoryIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for repository
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.artifactregistry.ArtifactregistryFunctions;
+     * import com.pulumi.gcp.artifactregistry.inputs.GetRepositoryIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ArtifactregistryFunctions.getRepositoryIamPolicy(GetRepositoryIamPolicyArgs.builder()
+     *             .project(google_artifact_registry_repository.my-repo().project())
+     *             .location(google_artifact_registry_repository.my-repo().location())
+     *             .repository(google_artifact_registry_repository.my-repo().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRepositoryIamPolicyResult> getRepositoryIamPolicyPlain(GetRepositoryIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:artifactregistry/getRepositoryIamPolicy:getRepositoryIamPolicy", TypeShape.of(GetRepositoryIamPolicyResult.class), args, Utilities.withVersion(options));
     }
 }

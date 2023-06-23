@@ -118,6 +118,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("shieldedInstanceConfig")]
         public Input<Inputs.NodePoolNodeConfigShieldedInstanceConfigGetArgs>? ShieldedInstanceConfig { get; set; }
 
+        [Input("soleTenantConfig")]
+        public Input<Inputs.NodePoolNodeConfigSoleTenantConfigGetArgs>? SoleTenantConfig { get; set; }
+
         [Input("spot")]
         public Input<bool>? Spot { get; set; }
 

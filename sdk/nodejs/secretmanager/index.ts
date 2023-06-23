@@ -10,6 +10,11 @@ export const getSecret: typeof import("./getSecret").getSecret = null as any;
 export const getSecretOutput: typeof import("./getSecret").getSecretOutput = null as any;
 utilities.lazyLoad(exports, ["getSecret","getSecretOutput"], () => require("./getSecret"));
 
+export { GetSecretIamPolicyArgs, GetSecretIamPolicyResult, GetSecretIamPolicyOutputArgs } from "./getSecretIamPolicy";
+export const getSecretIamPolicy: typeof import("./getSecretIamPolicy").getSecretIamPolicy = null as any;
+export const getSecretIamPolicyOutput: typeof import("./getSecretIamPolicy").getSecretIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getSecretIamPolicy","getSecretIamPolicyOutput"], () => require("./getSecretIamPolicy"));
+
 export { GetSecretVersionArgs, GetSecretVersionResult, GetSecretVersionOutputArgs } from "./getSecretVersion";
 export const getSecretVersion: typeof import("./getSecretVersion").getSecretVersion = null as any;
 export const getSecretVersionOutput: typeof import("./getSecretVersion").getSecretVersionOutput = null as any;

@@ -67,6 +67,19 @@ namespace Pulumi.Gcp.Compute.Inputs
         }
 
         /// <summary>
+        /// For satisfying the matchRule condition, the path of the request
+        /// must match the wildcard pattern specified in pathTemplateMatch
+        /// after removing any query parameters and anchor that may be part
+        /// of the original URL.
+        /// pathTemplateMatch must be between 1 and 255 characters
+        /// (inclusive).  The pattern specified by pathTemplateMatch may
+        /// have at most 5 wildcard operators and at most 5 variable
+        /// captures in total.
+        /// </summary>
+        [Input("pathTemplateMatch")]
+        public Input<string>? PathTemplateMatch { get; set; }
+
+        /// <summary>
         /// For satisfying the matchRule condition, the request's path must begin with the
         /// specified prefixMatch. prefixMatch must begin with a /. The value must be
         /// between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or

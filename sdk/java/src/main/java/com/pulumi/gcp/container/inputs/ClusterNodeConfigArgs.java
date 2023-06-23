@@ -17,6 +17,7 @@ import com.pulumi.gcp.container.inputs.ClusterNodeConfigLocalNvmeSsdBlockConfigA
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigReservationAffinityArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigSandboxConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigShieldedInstanceConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodeConfigSoleTenantConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigTaintArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigWorkloadMetadataConfigArgs;
 import java.lang.Boolean;
@@ -769,6 +770,37 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+     * 
+     * sole_tenant_config {
+     * node_affinity {
+     * key = &#34;compute.googleapis.com/node-group-name&#34;
+     * operator = &#34;IN&#34;
+     * values = [&#34;node-group-name&#34;]
+     * }
+     * }
+     * 
+     */
+    @Import(name="soleTenantConfig")
+    private @Nullable Output<ClusterNodeConfigSoleTenantConfigArgs> soleTenantConfig;
+
+    /**
+     * @return Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+     * 
+     * sole_tenant_config {
+     * node_affinity {
+     * key = &#34;compute.googleapis.com/node-group-name&#34;
+     * operator = &#34;IN&#34;
+     * values = [&#34;node-group-name&#34;]
+     * }
+     * }
+     * 
+     */
+    public Optional<Output<ClusterNodeConfigSoleTenantConfigArgs>> soleTenantConfig() {
+        return Optional.ofNullable(this.soleTenantConfig);
+    }
+
+    /**
      * A boolean that represents whether the underlying node VMs are spot.
      * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
      * for more information. Defaults to false.
@@ -880,6 +912,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         this.sandboxConfig = $.sandboxConfig;
         this.serviceAccount = $.serviceAccount;
         this.shieldedInstanceConfig = $.shieldedInstanceConfig;
+        this.soleTenantConfig = $.soleTenantConfig;
         this.spot = $.spot;
         this.tags = $.tags;
         this.taints = $.taints;
@@ -1820,6 +1853,43 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder shieldedInstanceConfig(ClusterNodeConfigShieldedInstanceConfigArgs shieldedInstanceConfig) {
             return shieldedInstanceConfig(Output.of(shieldedInstanceConfig));
+        }
+
+        /**
+         * @param soleTenantConfig Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+         * 
+         * sole_tenant_config {
+         * node_affinity {
+         * key = &#34;compute.googleapis.com/node-group-name&#34;
+         * operator = &#34;IN&#34;
+         * values = [&#34;node-group-name&#34;]
+         * }
+         * }
+         * 
+         * @return builder
+         * 
+         */
+        public Builder soleTenantConfig(@Nullable Output<ClusterNodeConfigSoleTenantConfigArgs> soleTenantConfig) {
+            $.soleTenantConfig = soleTenantConfig;
+            return this;
+        }
+
+        /**
+         * @param soleTenantConfig Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+         * 
+         * sole_tenant_config {
+         * node_affinity {
+         * key = &#34;compute.googleapis.com/node-group-name&#34;
+         * operator = &#34;IN&#34;
+         * values = [&#34;node-group-name&#34;]
+         * }
+         * }
+         * 
+         * @return builder
+         * 
+         */
+        public Builder soleTenantConfig(ClusterNodeConfigSoleTenantConfigArgs soleTenantConfig) {
+            return soleTenantConfig(Output.of(soleTenantConfig));
         }
 
         /**

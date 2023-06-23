@@ -75,6 +75,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("network")]
         public Input<string>? Network { get; set; }
 
+        [Input("networkAttachment")]
+        public Input<string>? NetworkAttachment { get; set; }
+
         /// <summary>
         /// The private IP address to assign to the instance. If
         /// empty, the address will be automatically assigned.

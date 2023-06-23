@@ -17552,6 +17552,16 @@ type ClusterNodeConfig struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig *ClusterNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
+	// Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
+	//
+	// soleTenantConfig {
+	// nodeAffinity {
+	// key = "compute.googleapis.com/node-group-name"
+	// operator = "IN"
+	// values = ["node-group-name"]
+	// }
+	// }
+	SoleTenantConfig *ClusterNodeConfigSoleTenantConfig `pulumi:"soleTenantConfig"`
 	// A boolean that represents whether the underlying node VMs are spot.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
 	// for more information. Defaults to false.
@@ -17759,6 +17769,16 @@ type ClusterNodeConfigArgs struct {
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig ClusterNodeConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
+	// Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
+	//
+	// soleTenantConfig {
+	// nodeAffinity {
+	// key = "compute.googleapis.com/node-group-name"
+	// operator = "IN"
+	// values = ["node-group-name"]
+	// }
+	// }
+	SoleTenantConfig ClusterNodeConfigSoleTenantConfigPtrInput `pulumi:"soleTenantConfig"`
 	// A boolean that represents whether the underlying node VMs are spot.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
 	// for more information. Defaults to false.
@@ -18130,6 +18150,19 @@ func (o ClusterNodeConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
 // Shielded Instance options. Structure is documented below.
 func (o ClusterNodeConfigOutput) ShieldedInstanceConfig() ClusterNodeConfigShieldedInstanceConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(ClusterNodeConfigShieldedInstanceConfigPtrOutput)
+}
+
+// Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
+//
+// soleTenantConfig {
+// nodeAffinity {
+// key = "compute.googleapis.com/node-group-name"
+// operator = "IN"
+// values = ["node-group-name"]
+// }
+// }
+func (o ClusterNodeConfigOutput) SoleTenantConfig() ClusterNodeConfigSoleTenantConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigSoleTenantConfig { return v.SoleTenantConfig }).(ClusterNodeConfigSoleTenantConfigPtrOutput)
 }
 
 // A boolean that represents whether the underlying node VMs are spot.
@@ -18593,6 +18626,24 @@ func (o ClusterNodeConfigPtrOutput) ShieldedInstanceConfig() ClusterNodeConfigSh
 		}
 		return v.ShieldedInstanceConfig
 	}).(ClusterNodeConfigShieldedInstanceConfigPtrOutput)
+}
+
+// Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
+//
+// soleTenantConfig {
+// nodeAffinity {
+// key = "compute.googleapis.com/node-group-name"
+// operator = "IN"
+// values = ["node-group-name"]
+// }
+// }
+func (o ClusterNodeConfigPtrOutput) SoleTenantConfig() ClusterNodeConfigSoleTenantConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigSoleTenantConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SoleTenantConfig
+	}).(ClusterNodeConfigSoleTenantConfigPtrOutput)
 }
 
 // A boolean that represents whether the underlying node VMs are spot.
@@ -20663,6 +20714,256 @@ func (o ClusterNodeConfigShieldedInstanceConfigPtrOutput) EnableSecureBoot() pul
 		}
 		return v.EnableSecureBoot
 	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterNodeConfigSoleTenantConfig struct {
+	NodeAffinities []ClusterNodeConfigSoleTenantConfigNodeAffinity `pulumi:"nodeAffinities"`
+}
+
+// ClusterNodeConfigSoleTenantConfigInput is an input type that accepts ClusterNodeConfigSoleTenantConfigArgs and ClusterNodeConfigSoleTenantConfigOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigSoleTenantConfigInput` via:
+//
+//	ClusterNodeConfigSoleTenantConfigArgs{...}
+type ClusterNodeConfigSoleTenantConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigSoleTenantConfigOutput() ClusterNodeConfigSoleTenantConfigOutput
+	ToClusterNodeConfigSoleTenantConfigOutputWithContext(context.Context) ClusterNodeConfigSoleTenantConfigOutput
+}
+
+type ClusterNodeConfigSoleTenantConfigArgs struct {
+	NodeAffinities ClusterNodeConfigSoleTenantConfigNodeAffinityArrayInput `pulumi:"nodeAffinities"`
+}
+
+func (ClusterNodeConfigSoleTenantConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigSoleTenantConfig)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigSoleTenantConfigArgs) ToClusterNodeConfigSoleTenantConfigOutput() ClusterNodeConfigSoleTenantConfigOutput {
+	return i.ToClusterNodeConfigSoleTenantConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigSoleTenantConfigArgs) ToClusterNodeConfigSoleTenantConfigOutputWithContext(ctx context.Context) ClusterNodeConfigSoleTenantConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigSoleTenantConfigOutput)
+}
+
+func (i ClusterNodeConfigSoleTenantConfigArgs) ToClusterNodeConfigSoleTenantConfigPtrOutput() ClusterNodeConfigSoleTenantConfigPtrOutput {
+	return i.ToClusterNodeConfigSoleTenantConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigSoleTenantConfigArgs) ToClusterNodeConfigSoleTenantConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigSoleTenantConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigSoleTenantConfigOutput).ToClusterNodeConfigSoleTenantConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeConfigSoleTenantConfigPtrInput is an input type that accepts ClusterNodeConfigSoleTenantConfigArgs, ClusterNodeConfigSoleTenantConfigPtr and ClusterNodeConfigSoleTenantConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigSoleTenantConfigPtrInput` via:
+//
+//	        ClusterNodeConfigSoleTenantConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodeConfigSoleTenantConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigSoleTenantConfigPtrOutput() ClusterNodeConfigSoleTenantConfigPtrOutput
+	ToClusterNodeConfigSoleTenantConfigPtrOutputWithContext(context.Context) ClusterNodeConfigSoleTenantConfigPtrOutput
+}
+
+type clusterNodeConfigSoleTenantConfigPtrType ClusterNodeConfigSoleTenantConfigArgs
+
+func ClusterNodeConfigSoleTenantConfigPtr(v *ClusterNodeConfigSoleTenantConfigArgs) ClusterNodeConfigSoleTenantConfigPtrInput {
+	return (*clusterNodeConfigSoleTenantConfigPtrType)(v)
+}
+
+func (*clusterNodeConfigSoleTenantConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigSoleTenantConfig)(nil)).Elem()
+}
+
+func (i *clusterNodeConfigSoleTenantConfigPtrType) ToClusterNodeConfigSoleTenantConfigPtrOutput() ClusterNodeConfigSoleTenantConfigPtrOutput {
+	return i.ToClusterNodeConfigSoleTenantConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeConfigSoleTenantConfigPtrType) ToClusterNodeConfigSoleTenantConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigSoleTenantConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigSoleTenantConfigPtrOutput)
+}
+
+type ClusterNodeConfigSoleTenantConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigSoleTenantConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigSoleTenantConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigSoleTenantConfigOutput) ToClusterNodeConfigSoleTenantConfigOutput() ClusterNodeConfigSoleTenantConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigSoleTenantConfigOutput) ToClusterNodeConfigSoleTenantConfigOutputWithContext(ctx context.Context) ClusterNodeConfigSoleTenantConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigSoleTenantConfigOutput) ToClusterNodeConfigSoleTenantConfigPtrOutput() ClusterNodeConfigSoleTenantConfigPtrOutput {
+	return o.ToClusterNodeConfigSoleTenantConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeConfigSoleTenantConfigOutput) ToClusterNodeConfigSoleTenantConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigSoleTenantConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodeConfigSoleTenantConfig) *ClusterNodeConfigSoleTenantConfig {
+		return &v
+	}).(ClusterNodeConfigSoleTenantConfigPtrOutput)
+}
+
+func (o ClusterNodeConfigSoleTenantConfigOutput) NodeAffinities() ClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return o.ApplyT(func(v ClusterNodeConfigSoleTenantConfig) []ClusterNodeConfigSoleTenantConfigNodeAffinity {
+		return v.NodeAffinities
+	}).(ClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput)
+}
+
+type ClusterNodeConfigSoleTenantConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigSoleTenantConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigSoleTenantConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigSoleTenantConfigPtrOutput) ToClusterNodeConfigSoleTenantConfigPtrOutput() ClusterNodeConfigSoleTenantConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigSoleTenantConfigPtrOutput) ToClusterNodeConfigSoleTenantConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigSoleTenantConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigSoleTenantConfigPtrOutput) Elem() ClusterNodeConfigSoleTenantConfigOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigSoleTenantConfig) ClusterNodeConfigSoleTenantConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodeConfigSoleTenantConfig
+		return ret
+	}).(ClusterNodeConfigSoleTenantConfigOutput)
+}
+
+func (o ClusterNodeConfigSoleTenantConfigPtrOutput) NodeAffinities() ClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigSoleTenantConfig) []ClusterNodeConfigSoleTenantConfigNodeAffinity {
+		if v == nil {
+			return nil
+		}
+		return v.NodeAffinities
+	}).(ClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput)
+}
+
+type ClusterNodeConfigSoleTenantConfigNodeAffinity struct {
+	// The default or custom node affinity label key name.
+	Key string `pulumi:"key"`
+	// Specifies affinity or anti-affinity. Accepted values are `"IN"` or `"NOT_IN"`
+	Operator string `pulumi:"operator"`
+	// List of node affinity label values as strings.
+	Values []string `pulumi:"values"`
+}
+
+// ClusterNodeConfigSoleTenantConfigNodeAffinityInput is an input type that accepts ClusterNodeConfigSoleTenantConfigNodeAffinityArgs and ClusterNodeConfigSoleTenantConfigNodeAffinityOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigSoleTenantConfigNodeAffinityInput` via:
+//
+//	ClusterNodeConfigSoleTenantConfigNodeAffinityArgs{...}
+type ClusterNodeConfigSoleTenantConfigNodeAffinityInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigSoleTenantConfigNodeAffinityOutput() ClusterNodeConfigSoleTenantConfigNodeAffinityOutput
+	ToClusterNodeConfigSoleTenantConfigNodeAffinityOutputWithContext(context.Context) ClusterNodeConfigSoleTenantConfigNodeAffinityOutput
+}
+
+type ClusterNodeConfigSoleTenantConfigNodeAffinityArgs struct {
+	// The default or custom node affinity label key name.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Specifies affinity or anti-affinity. Accepted values are `"IN"` or `"NOT_IN"`
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// List of node affinity label values as strings.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (ClusterNodeConfigSoleTenantConfigNodeAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigSoleTenantConfigNodeAffinity)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigSoleTenantConfigNodeAffinityArgs) ToClusterNodeConfigSoleTenantConfigNodeAffinityOutput() ClusterNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return i.ToClusterNodeConfigSoleTenantConfigNodeAffinityOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigSoleTenantConfigNodeAffinityArgs) ToClusterNodeConfigSoleTenantConfigNodeAffinityOutputWithContext(ctx context.Context) ClusterNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigSoleTenantConfigNodeAffinityOutput)
+}
+
+// ClusterNodeConfigSoleTenantConfigNodeAffinityArrayInput is an input type that accepts ClusterNodeConfigSoleTenantConfigNodeAffinityArray and ClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigSoleTenantConfigNodeAffinityArrayInput` via:
+//
+//	ClusterNodeConfigSoleTenantConfigNodeAffinityArray{ ClusterNodeConfigSoleTenantConfigNodeAffinityArgs{...} }
+type ClusterNodeConfigSoleTenantConfigNodeAffinityArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput() ClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput
+	ToClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutputWithContext(context.Context) ClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput
+}
+
+type ClusterNodeConfigSoleTenantConfigNodeAffinityArray []ClusterNodeConfigSoleTenantConfigNodeAffinityInput
+
+func (ClusterNodeConfigSoleTenantConfigNodeAffinityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeConfigSoleTenantConfigNodeAffinity)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigSoleTenantConfigNodeAffinityArray) ToClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput() ClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return i.ToClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigSoleTenantConfigNodeAffinityArray) ToClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutputWithContext(ctx context.Context) ClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput)
+}
+
+type ClusterNodeConfigSoleTenantConfigNodeAffinityOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigSoleTenantConfigNodeAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigSoleTenantConfigNodeAffinity)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigSoleTenantConfigNodeAffinityOutput) ToClusterNodeConfigSoleTenantConfigNodeAffinityOutput() ClusterNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return o
+}
+
+func (o ClusterNodeConfigSoleTenantConfigNodeAffinityOutput) ToClusterNodeConfigSoleTenantConfigNodeAffinityOutputWithContext(ctx context.Context) ClusterNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return o
+}
+
+// The default or custom node affinity label key name.
+func (o ClusterNodeConfigSoleTenantConfigNodeAffinityOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeConfigSoleTenantConfigNodeAffinity) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Specifies affinity or anti-affinity. Accepted values are `"IN"` or `"NOT_IN"`
+func (o ClusterNodeConfigSoleTenantConfigNodeAffinityOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeConfigSoleTenantConfigNodeAffinity) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// List of node affinity label values as strings.
+func (o ClusterNodeConfigSoleTenantConfigNodeAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterNodeConfigSoleTenantConfigNodeAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type ClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeConfigSoleTenantConfigNodeAffinity)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput) ToClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput() ClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return o
+}
+
+func (o ClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput) ToClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutputWithContext(ctx context.Context) ClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return o
+}
+
+func (o ClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput) Index(i pulumi.IntInput) ClusterNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeConfigSoleTenantConfigNodeAffinity {
+		return vs[0].([]ClusterNodeConfigSoleTenantConfigNodeAffinity)[vs[1].(int)]
+	}).(ClusterNodeConfigSoleTenantConfigNodeAffinityOutput)
 }
 
 type ClusterNodeConfigTaint struct {
@@ -22871,6 +23172,16 @@ type ClusterNodePoolNodeConfig struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig *ClusterNodePoolNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
+	// Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
+	//
+	// soleTenantConfig {
+	// nodeAffinity {
+	// key = "compute.googleapis.com/node-group-name"
+	// operator = "IN"
+	// values = ["node-group-name"]
+	// }
+	// }
+	SoleTenantConfig *ClusterNodePoolNodeConfigSoleTenantConfig `pulumi:"soleTenantConfig"`
 	// A boolean that represents whether the underlying node VMs are spot.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
 	// for more information. Defaults to false.
@@ -23078,6 +23389,16 @@ type ClusterNodePoolNodeConfigArgs struct {
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig ClusterNodePoolNodeConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
+	// Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
+	//
+	// soleTenantConfig {
+	// nodeAffinity {
+	// key = "compute.googleapis.com/node-group-name"
+	// operator = "IN"
+	// values = ["node-group-name"]
+	// }
+	// }
+	SoleTenantConfig ClusterNodePoolNodeConfigSoleTenantConfigPtrInput `pulumi:"soleTenantConfig"`
 	// A boolean that represents whether the underlying node VMs are spot.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
 	// for more information. Defaults to false.
@@ -23461,6 +23782,21 @@ func (o ClusterNodePoolNodeConfigOutput) ShieldedInstanceConfig() ClusterNodePoo
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigShieldedInstanceConfig {
 		return v.ShieldedInstanceConfig
 	}).(ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput)
+}
+
+// Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
+//
+// soleTenantConfig {
+// nodeAffinity {
+// key = "compute.googleapis.com/node-group-name"
+// operator = "IN"
+// values = ["node-group-name"]
+// }
+// }
+func (o ClusterNodePoolNodeConfigOutput) SoleTenantConfig() ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSoleTenantConfig {
+		return v.SoleTenantConfig
+	}).(ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput)
 }
 
 // A boolean that represents whether the underlying node VMs are spot.
@@ -23926,6 +24262,24 @@ func (o ClusterNodePoolNodeConfigPtrOutput) ShieldedInstanceConfig() ClusterNode
 		}
 		return v.ShieldedInstanceConfig
 	}).(ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput)
+}
+
+// Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
+//
+// soleTenantConfig {
+// nodeAffinity {
+// key = "compute.googleapis.com/node-group-name"
+// operator = "IN"
+// values = ["node-group-name"]
+// }
+// }
+func (o ClusterNodePoolNodeConfigPtrOutput) SoleTenantConfig() ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSoleTenantConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SoleTenantConfig
+	}).(ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput)
 }
 
 // A boolean that represents whether the underlying node VMs are spot.
@@ -25996,6 +26350,256 @@ func (o ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput) EnableSecureBo
 		}
 		return v.EnableSecureBoot
 	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigSoleTenantConfig struct {
+	NodeAffinities []ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity `pulumi:"nodeAffinities"`
+}
+
+// ClusterNodePoolNodeConfigSoleTenantConfigInput is an input type that accepts ClusterNodePoolNodeConfigSoleTenantConfigArgs and ClusterNodePoolNodeConfigSoleTenantConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigSoleTenantConfigInput` via:
+//
+//	ClusterNodePoolNodeConfigSoleTenantConfigArgs{...}
+type ClusterNodePoolNodeConfigSoleTenantConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigSoleTenantConfigOutput() ClusterNodePoolNodeConfigSoleTenantConfigOutput
+	ToClusterNodePoolNodeConfigSoleTenantConfigOutputWithContext(context.Context) ClusterNodePoolNodeConfigSoleTenantConfigOutput
+}
+
+type ClusterNodePoolNodeConfigSoleTenantConfigArgs struct {
+	NodeAffinities ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayInput `pulumi:"nodeAffinities"`
+}
+
+func (ClusterNodePoolNodeConfigSoleTenantConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigSoleTenantConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigSoleTenantConfigArgs) ToClusterNodePoolNodeConfigSoleTenantConfigOutput() ClusterNodePoolNodeConfigSoleTenantConfigOutput {
+	return i.ToClusterNodePoolNodeConfigSoleTenantConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigSoleTenantConfigArgs) ToClusterNodePoolNodeConfigSoleTenantConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigSoleTenantConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigSoleTenantConfigOutput)
+}
+
+func (i ClusterNodePoolNodeConfigSoleTenantConfigArgs) ToClusterNodePoolNodeConfigSoleTenantConfigPtrOutput() ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput {
+	return i.ToClusterNodePoolNodeConfigSoleTenantConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigSoleTenantConfigArgs) ToClusterNodePoolNodeConfigSoleTenantConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigSoleTenantConfigOutput).ToClusterNodePoolNodeConfigSoleTenantConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolNodeConfigSoleTenantConfigPtrInput is an input type that accepts ClusterNodePoolNodeConfigSoleTenantConfigArgs, ClusterNodePoolNodeConfigSoleTenantConfigPtr and ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigSoleTenantConfigPtrInput` via:
+//
+//	        ClusterNodePoolNodeConfigSoleTenantConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolNodeConfigSoleTenantConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigSoleTenantConfigPtrOutput() ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput
+	ToClusterNodePoolNodeConfigSoleTenantConfigPtrOutputWithContext(context.Context) ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput
+}
+
+type clusterNodePoolNodeConfigSoleTenantConfigPtrType ClusterNodePoolNodeConfigSoleTenantConfigArgs
+
+func ClusterNodePoolNodeConfigSoleTenantConfigPtr(v *ClusterNodePoolNodeConfigSoleTenantConfigArgs) ClusterNodePoolNodeConfigSoleTenantConfigPtrInput {
+	return (*clusterNodePoolNodeConfigSoleTenantConfigPtrType)(v)
+}
+
+func (*clusterNodePoolNodeConfigSoleTenantConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigSoleTenantConfig)(nil)).Elem()
+}
+
+func (i *clusterNodePoolNodeConfigSoleTenantConfigPtrType) ToClusterNodePoolNodeConfigSoleTenantConfigPtrOutput() ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput {
+	return i.ToClusterNodePoolNodeConfigSoleTenantConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolNodeConfigSoleTenantConfigPtrType) ToClusterNodePoolNodeConfigSoleTenantConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigSoleTenantConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigSoleTenantConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigSoleTenantConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigSoleTenantConfigOutput) ToClusterNodePoolNodeConfigSoleTenantConfigOutput() ClusterNodePoolNodeConfigSoleTenantConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigSoleTenantConfigOutput) ToClusterNodePoolNodeConfigSoleTenantConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigSoleTenantConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigSoleTenantConfigOutput) ToClusterNodePoolNodeConfigSoleTenantConfigPtrOutput() ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput {
+	return o.ToClusterNodePoolNodeConfigSoleTenantConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolNodeConfigSoleTenantConfigOutput) ToClusterNodePoolNodeConfigSoleTenantConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolNodeConfigSoleTenantConfig) *ClusterNodePoolNodeConfigSoleTenantConfig {
+		return &v
+	}).(ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput)
+}
+
+func (o ClusterNodePoolNodeConfigSoleTenantConfigOutput) NodeAffinities() ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigSoleTenantConfig) []ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity {
+		return v.NodeAffinities
+	}).(ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput)
+}
+
+type ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigSoleTenantConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput) ToClusterNodePoolNodeConfigSoleTenantConfigPtrOutput() ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput) ToClusterNodePoolNodeConfigSoleTenantConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput) Elem() ClusterNodePoolNodeConfigSoleTenantConfigOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigSoleTenantConfig) ClusterNodePoolNodeConfigSoleTenantConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolNodeConfigSoleTenantConfig
+		return ret
+	}).(ClusterNodePoolNodeConfigSoleTenantConfigOutput)
+}
+
+func (o ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput) NodeAffinities() ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigSoleTenantConfig) []ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity {
+		if v == nil {
+			return nil
+		}
+		return v.NodeAffinities
+	}).(ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput)
+}
+
+type ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity struct {
+	// The default or custom node affinity label key name.
+	Key string `pulumi:"key"`
+	// Specifies affinity or anti-affinity. Accepted values are `"IN"` or `"NOT_IN"`
+	Operator string `pulumi:"operator"`
+	// List of node affinity label values as strings.
+	Values []string `pulumi:"values"`
+}
+
+// ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityInput is an input type that accepts ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs and ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityInput` via:
+//
+//	ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs{...}
+type ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput() ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput
+	ToClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutputWithContext(context.Context) ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput
+}
+
+type ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs struct {
+	// The default or custom node affinity label key name.
+	Key pulumi.StringInput `pulumi:"key"`
+	// Specifies affinity or anti-affinity. Accepted values are `"IN"` or `"NOT_IN"`
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// List of node affinity label values as strings.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs) ToClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput() ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return i.ToClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs) ToClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput)
+}
+
+// ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayInput is an input type that accepts ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArray and ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayInput` via:
+//
+//	ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArray{ ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs{...} }
+type ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput() ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput
+	ToClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutputWithContext(context.Context) ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput
+}
+
+type ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArray []ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityInput
+
+func (ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArray) ToClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput() ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return i.ToClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArray) ToClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput)
+}
+
+type ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput) ToClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput() ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput) ToClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return o
+}
+
+// The default or custom node affinity label key name.
+func (o ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Specifies affinity or anti-affinity. Accepted values are `"IN"` or `"NOT_IN"`
+func (o ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// List of node affinity label values as strings.
+func (o ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput) ToClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput() ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput) ToClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput) Index(i pulumi.IntInput) ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity {
+		return vs[0].([]ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity)[vs[1].(int)]
+	}).(ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput)
 }
 
 type ClusterNodePoolNodeConfigTaint struct {
@@ -30374,6 +30978,7 @@ type NodePoolNodeConfig struct {
 	SandboxConfig                  *NodePoolNodeConfigSandboxConfig                  `pulumi:"sandboxConfig"`
 	ServiceAccount                 *string                                           `pulumi:"serviceAccount"`
 	ShieldedInstanceConfig         *NodePoolNodeConfigShieldedInstanceConfig         `pulumi:"shieldedInstanceConfig"`
+	SoleTenantConfig               *NodePoolNodeConfigSoleTenantConfig               `pulumi:"soleTenantConfig"`
 	Spot                           *bool                                             `pulumi:"spot"`
 	Tags                           []string                                          `pulumi:"tags"`
 	Taints                         []NodePoolNodeConfigTaint                         `pulumi:"taints"`
@@ -30419,6 +31024,7 @@ type NodePoolNodeConfigArgs struct {
 	SandboxConfig                  NodePoolNodeConfigSandboxConfigPtrInput                  `pulumi:"sandboxConfig"`
 	ServiceAccount                 pulumi.StringPtrInput                                    `pulumi:"serviceAccount"`
 	ShieldedInstanceConfig         NodePoolNodeConfigShieldedInstanceConfigPtrInput         `pulumi:"shieldedInstanceConfig"`
+	SoleTenantConfig               NodePoolNodeConfigSoleTenantConfigPtrInput               `pulumi:"soleTenantConfig"`
 	Spot                           pulumi.BoolPtrInput                                      `pulumi:"spot"`
 	Tags                           pulumi.StringArrayInput                                  `pulumi:"tags"`
 	Taints                         NodePoolNodeConfigTaintArrayInput                        `pulumi:"taints"`
@@ -30614,6 +31220,10 @@ func (o NodePoolNodeConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
 
 func (o NodePoolNodeConfigOutput) ShieldedInstanceConfig() NodePoolNodeConfigShieldedInstanceConfigPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(NodePoolNodeConfigShieldedInstanceConfigPtrOutput)
+}
+
+func (o NodePoolNodeConfigOutput) SoleTenantConfig() NodePoolNodeConfigSoleTenantConfigPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigSoleTenantConfig { return v.SoleTenantConfig }).(NodePoolNodeConfigSoleTenantConfigPtrOutput)
 }
 
 func (o NodePoolNodeConfigOutput) Spot() pulumi.BoolPtrOutput {
@@ -30897,6 +31507,15 @@ func (o NodePoolNodeConfigPtrOutput) ShieldedInstanceConfig() NodePoolNodeConfig
 		}
 		return v.ShieldedInstanceConfig
 	}).(NodePoolNodeConfigShieldedInstanceConfigPtrOutput)
+}
+
+func (o NodePoolNodeConfigPtrOutput) SoleTenantConfig() NodePoolNodeConfigSoleTenantConfigPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) *NodePoolNodeConfigSoleTenantConfig {
+		if v == nil {
+			return nil
+		}
+		return v.SoleTenantConfig
+	}).(NodePoolNodeConfigSoleTenantConfigPtrOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) Spot() pulumi.BoolPtrOutput {
@@ -32757,6 +33376,247 @@ func (o NodePoolNodeConfigShieldedInstanceConfigPtrOutput) EnableSecureBoot() pu
 		}
 		return v.EnableSecureBoot
 	}).(pulumi.BoolPtrOutput)
+}
+
+type NodePoolNodeConfigSoleTenantConfig struct {
+	NodeAffinities []NodePoolNodeConfigSoleTenantConfigNodeAffinity `pulumi:"nodeAffinities"`
+}
+
+// NodePoolNodeConfigSoleTenantConfigInput is an input type that accepts NodePoolNodeConfigSoleTenantConfigArgs and NodePoolNodeConfigSoleTenantConfigOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigSoleTenantConfigInput` via:
+//
+//	NodePoolNodeConfigSoleTenantConfigArgs{...}
+type NodePoolNodeConfigSoleTenantConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigSoleTenantConfigOutput() NodePoolNodeConfigSoleTenantConfigOutput
+	ToNodePoolNodeConfigSoleTenantConfigOutputWithContext(context.Context) NodePoolNodeConfigSoleTenantConfigOutput
+}
+
+type NodePoolNodeConfigSoleTenantConfigArgs struct {
+	NodeAffinities NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayInput `pulumi:"nodeAffinities"`
+}
+
+func (NodePoolNodeConfigSoleTenantConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigSoleTenantConfig)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigSoleTenantConfigArgs) ToNodePoolNodeConfigSoleTenantConfigOutput() NodePoolNodeConfigSoleTenantConfigOutput {
+	return i.ToNodePoolNodeConfigSoleTenantConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigSoleTenantConfigArgs) ToNodePoolNodeConfigSoleTenantConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigSoleTenantConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigSoleTenantConfigOutput)
+}
+
+func (i NodePoolNodeConfigSoleTenantConfigArgs) ToNodePoolNodeConfigSoleTenantConfigPtrOutput() NodePoolNodeConfigSoleTenantConfigPtrOutput {
+	return i.ToNodePoolNodeConfigSoleTenantConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigSoleTenantConfigArgs) ToNodePoolNodeConfigSoleTenantConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigSoleTenantConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigSoleTenantConfigOutput).ToNodePoolNodeConfigSoleTenantConfigPtrOutputWithContext(ctx)
+}
+
+// NodePoolNodeConfigSoleTenantConfigPtrInput is an input type that accepts NodePoolNodeConfigSoleTenantConfigArgs, NodePoolNodeConfigSoleTenantConfigPtr and NodePoolNodeConfigSoleTenantConfigPtrOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigSoleTenantConfigPtrInput` via:
+//
+//	        NodePoolNodeConfigSoleTenantConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolNodeConfigSoleTenantConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigSoleTenantConfigPtrOutput() NodePoolNodeConfigSoleTenantConfigPtrOutput
+	ToNodePoolNodeConfigSoleTenantConfigPtrOutputWithContext(context.Context) NodePoolNodeConfigSoleTenantConfigPtrOutput
+}
+
+type nodePoolNodeConfigSoleTenantConfigPtrType NodePoolNodeConfigSoleTenantConfigArgs
+
+func NodePoolNodeConfigSoleTenantConfigPtr(v *NodePoolNodeConfigSoleTenantConfigArgs) NodePoolNodeConfigSoleTenantConfigPtrInput {
+	return (*nodePoolNodeConfigSoleTenantConfigPtrType)(v)
+}
+
+func (*nodePoolNodeConfigSoleTenantConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigSoleTenantConfig)(nil)).Elem()
+}
+
+func (i *nodePoolNodeConfigSoleTenantConfigPtrType) ToNodePoolNodeConfigSoleTenantConfigPtrOutput() NodePoolNodeConfigSoleTenantConfigPtrOutput {
+	return i.ToNodePoolNodeConfigSoleTenantConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolNodeConfigSoleTenantConfigPtrType) ToNodePoolNodeConfigSoleTenantConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigSoleTenantConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigSoleTenantConfigPtrOutput)
+}
+
+type NodePoolNodeConfigSoleTenantConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigSoleTenantConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigSoleTenantConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigSoleTenantConfigOutput) ToNodePoolNodeConfigSoleTenantConfigOutput() NodePoolNodeConfigSoleTenantConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigSoleTenantConfigOutput) ToNodePoolNodeConfigSoleTenantConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigSoleTenantConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigSoleTenantConfigOutput) ToNodePoolNodeConfigSoleTenantConfigPtrOutput() NodePoolNodeConfigSoleTenantConfigPtrOutput {
+	return o.ToNodePoolNodeConfigSoleTenantConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolNodeConfigSoleTenantConfigOutput) ToNodePoolNodeConfigSoleTenantConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigSoleTenantConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolNodeConfigSoleTenantConfig) *NodePoolNodeConfigSoleTenantConfig {
+		return &v
+	}).(NodePoolNodeConfigSoleTenantConfigPtrOutput)
+}
+
+func (o NodePoolNodeConfigSoleTenantConfigOutput) NodeAffinities() NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigSoleTenantConfig) []NodePoolNodeConfigSoleTenantConfigNodeAffinity {
+		return v.NodeAffinities
+	}).(NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput)
+}
+
+type NodePoolNodeConfigSoleTenantConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigSoleTenantConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigSoleTenantConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigSoleTenantConfigPtrOutput) ToNodePoolNodeConfigSoleTenantConfigPtrOutput() NodePoolNodeConfigSoleTenantConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigSoleTenantConfigPtrOutput) ToNodePoolNodeConfigSoleTenantConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigSoleTenantConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigSoleTenantConfigPtrOutput) Elem() NodePoolNodeConfigSoleTenantConfigOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigSoleTenantConfig) NodePoolNodeConfigSoleTenantConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolNodeConfigSoleTenantConfig
+		return ret
+	}).(NodePoolNodeConfigSoleTenantConfigOutput)
+}
+
+func (o NodePoolNodeConfigSoleTenantConfigPtrOutput) NodeAffinities() NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigSoleTenantConfig) []NodePoolNodeConfigSoleTenantConfigNodeAffinity {
+		if v == nil {
+			return nil
+		}
+		return v.NodeAffinities
+	}).(NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput)
+}
+
+type NodePoolNodeConfigSoleTenantConfigNodeAffinity struct {
+	Key      string   `pulumi:"key"`
+	Operator string   `pulumi:"operator"`
+	Values   []string `pulumi:"values"`
+}
+
+// NodePoolNodeConfigSoleTenantConfigNodeAffinityInput is an input type that accepts NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs and NodePoolNodeConfigSoleTenantConfigNodeAffinityOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigSoleTenantConfigNodeAffinityInput` via:
+//
+//	NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs{...}
+type NodePoolNodeConfigSoleTenantConfigNodeAffinityInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput() NodePoolNodeConfigSoleTenantConfigNodeAffinityOutput
+	ToNodePoolNodeConfigSoleTenantConfigNodeAffinityOutputWithContext(context.Context) NodePoolNodeConfigSoleTenantConfigNodeAffinityOutput
+}
+
+type NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs struct {
+	Key      pulumi.StringInput      `pulumi:"key"`
+	Operator pulumi.StringInput      `pulumi:"operator"`
+	Values   pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigSoleTenantConfigNodeAffinity)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs) ToNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput() NodePoolNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return i.ToNodePoolNodeConfigSoleTenantConfigNodeAffinityOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs) ToNodePoolNodeConfigSoleTenantConfigNodeAffinityOutputWithContext(ctx context.Context) NodePoolNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigSoleTenantConfigNodeAffinityOutput)
+}
+
+// NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayInput is an input type that accepts NodePoolNodeConfigSoleTenantConfigNodeAffinityArray and NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayInput` via:
+//
+//	NodePoolNodeConfigSoleTenantConfigNodeAffinityArray{ NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs{...} }
+type NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput() NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput
+	ToNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutputWithContext(context.Context) NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput
+}
+
+type NodePoolNodeConfigSoleTenantConfigNodeAffinityArray []NodePoolNodeConfigSoleTenantConfigNodeAffinityInput
+
+func (NodePoolNodeConfigSoleTenantConfigNodeAffinityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolNodeConfigSoleTenantConfigNodeAffinity)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigSoleTenantConfigNodeAffinityArray) ToNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput() NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return i.ToNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigSoleTenantConfigNodeAffinityArray) ToNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutputWithContext(ctx context.Context) NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput)
+}
+
+type NodePoolNodeConfigSoleTenantConfigNodeAffinityOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigSoleTenantConfigNodeAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigSoleTenantConfigNodeAffinity)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigSoleTenantConfigNodeAffinityOutput) ToNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput() NodePoolNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigSoleTenantConfigNodeAffinityOutput) ToNodePoolNodeConfigSoleTenantConfigNodeAffinityOutputWithContext(ctx context.Context) NodePoolNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigSoleTenantConfigNodeAffinityOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigSoleTenantConfigNodeAffinity) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o NodePoolNodeConfigSoleTenantConfigNodeAffinityOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigSoleTenantConfigNodeAffinity) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+func (o NodePoolNodeConfigSoleTenantConfigNodeAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigSoleTenantConfigNodeAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePoolNodeConfigSoleTenantConfigNodeAffinity)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput) ToNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput() NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput) ToNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutputWithContext(ctx context.Context) NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput) Index(i pulumi.IntInput) NodePoolNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolNodeConfigSoleTenantConfigNodeAffinity {
+		return vs[0].([]NodePoolNodeConfigSoleTenantConfigNodeAffinity)[vs[1].(int)]
+	}).(NodePoolNodeConfigSoleTenantConfigNodeAffinityOutput)
 }
 
 type NodePoolNodeConfigTaint struct {
@@ -38674,6 +39534,7 @@ type GetClusterNodeConfig struct {
 	SandboxConfigs                  []GetClusterNodeConfigSandboxConfig                  `pulumi:"sandboxConfigs"`
 	ServiceAccount                  string                                               `pulumi:"serviceAccount"`
 	ShieldedInstanceConfigs         []GetClusterNodeConfigShieldedInstanceConfig         `pulumi:"shieldedInstanceConfigs"`
+	SoleTenantConfigs               []GetClusterNodeConfigSoleTenantConfig               `pulumi:"soleTenantConfigs"`
 	Spot                            bool                                                 `pulumi:"spot"`
 	Tags                            []string                                             `pulumi:"tags"`
 	Taints                          []GetClusterNodeConfigTaint                          `pulumi:"taints"`
@@ -38719,6 +39580,7 @@ type GetClusterNodeConfigArgs struct {
 	SandboxConfigs                  GetClusterNodeConfigSandboxConfigArrayInput                  `pulumi:"sandboxConfigs"`
 	ServiceAccount                  pulumi.StringInput                                           `pulumi:"serviceAccount"`
 	ShieldedInstanceConfigs         GetClusterNodeConfigShieldedInstanceConfigArrayInput         `pulumi:"shieldedInstanceConfigs"`
+	SoleTenantConfigs               GetClusterNodeConfigSoleTenantConfigArrayInput               `pulumi:"soleTenantConfigs"`
 	Spot                            pulumi.BoolInput                                             `pulumi:"spot"`
 	Tags                            pulumi.StringArrayInput                                      `pulumi:"tags"`
 	Taints                          GetClusterNodeConfigTaintArrayInput                          `pulumi:"taints"`
@@ -38892,6 +39754,10 @@ func (o GetClusterNodeConfigOutput) ShieldedInstanceConfigs() GetClusterNodeConf
 	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigShieldedInstanceConfig {
 		return v.ShieldedInstanceConfigs
 	}).(GetClusterNodeConfigShieldedInstanceConfigArrayOutput)
+}
+
+func (o GetClusterNodeConfigOutput) SoleTenantConfigs() GetClusterNodeConfigSoleTenantConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigSoleTenantConfig { return v.SoleTenantConfigs }).(GetClusterNodeConfigSoleTenantConfigArrayOutput)
 }
 
 func (o GetClusterNodeConfigOutput) Spot() pulumi.BoolOutput {
@@ -40216,6 +41082,208 @@ func (o GetClusterNodeConfigShieldedInstanceConfigArrayOutput) Index(i pulumi.In
 	}).(GetClusterNodeConfigShieldedInstanceConfigOutput)
 }
 
+type GetClusterNodeConfigSoleTenantConfig struct {
+	NodeAffinities []GetClusterNodeConfigSoleTenantConfigNodeAffinity `pulumi:"nodeAffinities"`
+}
+
+// GetClusterNodeConfigSoleTenantConfigInput is an input type that accepts GetClusterNodeConfigSoleTenantConfigArgs and GetClusterNodeConfigSoleTenantConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigSoleTenantConfigInput` via:
+//
+//	GetClusterNodeConfigSoleTenantConfigArgs{...}
+type GetClusterNodeConfigSoleTenantConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigSoleTenantConfigOutput() GetClusterNodeConfigSoleTenantConfigOutput
+	ToGetClusterNodeConfigSoleTenantConfigOutputWithContext(context.Context) GetClusterNodeConfigSoleTenantConfigOutput
+}
+
+type GetClusterNodeConfigSoleTenantConfigArgs struct {
+	NodeAffinities GetClusterNodeConfigSoleTenantConfigNodeAffinityArrayInput `pulumi:"nodeAffinities"`
+}
+
+func (GetClusterNodeConfigSoleTenantConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigSoleTenantConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigSoleTenantConfigArgs) ToGetClusterNodeConfigSoleTenantConfigOutput() GetClusterNodeConfigSoleTenantConfigOutput {
+	return i.ToGetClusterNodeConfigSoleTenantConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigSoleTenantConfigArgs) ToGetClusterNodeConfigSoleTenantConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigSoleTenantConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigSoleTenantConfigOutput)
+}
+
+// GetClusterNodeConfigSoleTenantConfigArrayInput is an input type that accepts GetClusterNodeConfigSoleTenantConfigArray and GetClusterNodeConfigSoleTenantConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigSoleTenantConfigArrayInput` via:
+//
+//	GetClusterNodeConfigSoleTenantConfigArray{ GetClusterNodeConfigSoleTenantConfigArgs{...} }
+type GetClusterNodeConfigSoleTenantConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigSoleTenantConfigArrayOutput() GetClusterNodeConfigSoleTenantConfigArrayOutput
+	ToGetClusterNodeConfigSoleTenantConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigSoleTenantConfigArrayOutput
+}
+
+type GetClusterNodeConfigSoleTenantConfigArray []GetClusterNodeConfigSoleTenantConfigInput
+
+func (GetClusterNodeConfigSoleTenantConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigSoleTenantConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigSoleTenantConfigArray) ToGetClusterNodeConfigSoleTenantConfigArrayOutput() GetClusterNodeConfigSoleTenantConfigArrayOutput {
+	return i.ToGetClusterNodeConfigSoleTenantConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigSoleTenantConfigArray) ToGetClusterNodeConfigSoleTenantConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigSoleTenantConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigSoleTenantConfigArrayOutput)
+}
+
+type GetClusterNodeConfigSoleTenantConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigSoleTenantConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigSoleTenantConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigSoleTenantConfigOutput) ToGetClusterNodeConfigSoleTenantConfigOutput() GetClusterNodeConfigSoleTenantConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigSoleTenantConfigOutput) ToGetClusterNodeConfigSoleTenantConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigSoleTenantConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigSoleTenantConfigOutput) NodeAffinities() GetClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigSoleTenantConfig) []GetClusterNodeConfigSoleTenantConfigNodeAffinity {
+		return v.NodeAffinities
+	}).(GetClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput)
+}
+
+type GetClusterNodeConfigSoleTenantConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigSoleTenantConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigSoleTenantConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigSoleTenantConfigArrayOutput) ToGetClusterNodeConfigSoleTenantConfigArrayOutput() GetClusterNodeConfigSoleTenantConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigSoleTenantConfigArrayOutput) ToGetClusterNodeConfigSoleTenantConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigSoleTenantConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigSoleTenantConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigSoleTenantConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigSoleTenantConfig {
+		return vs[0].([]GetClusterNodeConfigSoleTenantConfig)[vs[1].(int)]
+	}).(GetClusterNodeConfigSoleTenantConfigOutput)
+}
+
+type GetClusterNodeConfigSoleTenantConfigNodeAffinity struct {
+	Key      string   `pulumi:"key"`
+	Operator string   `pulumi:"operator"`
+	Values   []string `pulumi:"values"`
+}
+
+// GetClusterNodeConfigSoleTenantConfigNodeAffinityInput is an input type that accepts GetClusterNodeConfigSoleTenantConfigNodeAffinityArgs and GetClusterNodeConfigSoleTenantConfigNodeAffinityOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigSoleTenantConfigNodeAffinityInput` via:
+//
+//	GetClusterNodeConfigSoleTenantConfigNodeAffinityArgs{...}
+type GetClusterNodeConfigSoleTenantConfigNodeAffinityInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigSoleTenantConfigNodeAffinityOutput() GetClusterNodeConfigSoleTenantConfigNodeAffinityOutput
+	ToGetClusterNodeConfigSoleTenantConfigNodeAffinityOutputWithContext(context.Context) GetClusterNodeConfigSoleTenantConfigNodeAffinityOutput
+}
+
+type GetClusterNodeConfigSoleTenantConfigNodeAffinityArgs struct {
+	Key      pulumi.StringInput      `pulumi:"key"`
+	Operator pulumi.StringInput      `pulumi:"operator"`
+	Values   pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetClusterNodeConfigSoleTenantConfigNodeAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigSoleTenantConfigNodeAffinity)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigSoleTenantConfigNodeAffinityArgs) ToGetClusterNodeConfigSoleTenantConfigNodeAffinityOutput() GetClusterNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return i.ToGetClusterNodeConfigSoleTenantConfigNodeAffinityOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigSoleTenantConfigNodeAffinityArgs) ToGetClusterNodeConfigSoleTenantConfigNodeAffinityOutputWithContext(ctx context.Context) GetClusterNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigSoleTenantConfigNodeAffinityOutput)
+}
+
+// GetClusterNodeConfigSoleTenantConfigNodeAffinityArrayInput is an input type that accepts GetClusterNodeConfigSoleTenantConfigNodeAffinityArray and GetClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigSoleTenantConfigNodeAffinityArrayInput` via:
+//
+//	GetClusterNodeConfigSoleTenantConfigNodeAffinityArray{ GetClusterNodeConfigSoleTenantConfigNodeAffinityArgs{...} }
+type GetClusterNodeConfigSoleTenantConfigNodeAffinityArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput() GetClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput
+	ToGetClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutputWithContext(context.Context) GetClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput
+}
+
+type GetClusterNodeConfigSoleTenantConfigNodeAffinityArray []GetClusterNodeConfigSoleTenantConfigNodeAffinityInput
+
+func (GetClusterNodeConfigSoleTenantConfigNodeAffinityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigSoleTenantConfigNodeAffinity)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigSoleTenantConfigNodeAffinityArray) ToGetClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput() GetClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return i.ToGetClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigSoleTenantConfigNodeAffinityArray) ToGetClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput)
+}
+
+type GetClusterNodeConfigSoleTenantConfigNodeAffinityOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigSoleTenantConfigNodeAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigSoleTenantConfigNodeAffinity)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigSoleTenantConfigNodeAffinityOutput) ToGetClusterNodeConfigSoleTenantConfigNodeAffinityOutput() GetClusterNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigSoleTenantConfigNodeAffinityOutput) ToGetClusterNodeConfigSoleTenantConfigNodeAffinityOutputWithContext(ctx context.Context) GetClusterNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigSoleTenantConfigNodeAffinityOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigSoleTenantConfigNodeAffinity) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodeConfigSoleTenantConfigNodeAffinityOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigSoleTenantConfigNodeAffinity) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodeConfigSoleTenantConfigNodeAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigSoleTenantConfigNodeAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigSoleTenantConfigNodeAffinity)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput) ToGetClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput() GetClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput) ToGetClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigSoleTenantConfigNodeAffinity {
+		return vs[0].([]GetClusterNodeConfigSoleTenantConfigNodeAffinity)[vs[1].(int)]
+	}).(GetClusterNodeConfigSoleTenantConfigNodeAffinityOutput)
+}
+
 type GetClusterNodeConfigTaint struct {
 	Effect string `pulumi:"effect"`
 	Key    string `pulumi:"key"`
@@ -41537,6 +42605,7 @@ type GetClusterNodePoolNodeConfig struct {
 	SandboxConfigs                  []GetClusterNodePoolNodeConfigSandboxConfig                  `pulumi:"sandboxConfigs"`
 	ServiceAccount                  string                                                       `pulumi:"serviceAccount"`
 	ShieldedInstanceConfigs         []GetClusterNodePoolNodeConfigShieldedInstanceConfig         `pulumi:"shieldedInstanceConfigs"`
+	SoleTenantConfigs               []GetClusterNodePoolNodeConfigSoleTenantConfig               `pulumi:"soleTenantConfigs"`
 	Spot                            bool                                                         `pulumi:"spot"`
 	Tags                            []string                                                     `pulumi:"tags"`
 	Taints                          []GetClusterNodePoolNodeConfigTaint                          `pulumi:"taints"`
@@ -41582,6 +42651,7 @@ type GetClusterNodePoolNodeConfigArgs struct {
 	SandboxConfigs                  GetClusterNodePoolNodeConfigSandboxConfigArrayInput                  `pulumi:"sandboxConfigs"`
 	ServiceAccount                  pulumi.StringInput                                                   `pulumi:"serviceAccount"`
 	ShieldedInstanceConfigs         GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayInput         `pulumi:"shieldedInstanceConfigs"`
+	SoleTenantConfigs               GetClusterNodePoolNodeConfigSoleTenantConfigArrayInput               `pulumi:"soleTenantConfigs"`
 	Spot                            pulumi.BoolInput                                                     `pulumi:"spot"`
 	Tags                            pulumi.StringArrayInput                                              `pulumi:"tags"`
 	Taints                          GetClusterNodePoolNodeConfigTaintArrayInput                          `pulumi:"taints"`
@@ -41765,6 +42835,12 @@ func (o GetClusterNodePoolNodeConfigOutput) ShieldedInstanceConfigs() GetCluster
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigShieldedInstanceConfig {
 		return v.ShieldedInstanceConfigs
 	}).(GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayOutput)
+}
+
+func (o GetClusterNodePoolNodeConfigOutput) SoleTenantConfigs() GetClusterNodePoolNodeConfigSoleTenantConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigSoleTenantConfig {
+		return v.SoleTenantConfigs
+	}).(GetClusterNodePoolNodeConfigSoleTenantConfigArrayOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) Spot() pulumi.BoolOutput {
@@ -43091,6 +44167,208 @@ func (o GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayOutput) Index(i p
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigShieldedInstanceConfig {
 		return vs[0].([]GetClusterNodePoolNodeConfigShieldedInstanceConfig)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigShieldedInstanceConfigOutput)
+}
+
+type GetClusterNodePoolNodeConfigSoleTenantConfig struct {
+	NodeAffinities []GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity `pulumi:"nodeAffinities"`
+}
+
+// GetClusterNodePoolNodeConfigSoleTenantConfigInput is an input type that accepts GetClusterNodePoolNodeConfigSoleTenantConfigArgs and GetClusterNodePoolNodeConfigSoleTenantConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigSoleTenantConfigInput` via:
+//
+//	GetClusterNodePoolNodeConfigSoleTenantConfigArgs{...}
+type GetClusterNodePoolNodeConfigSoleTenantConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigSoleTenantConfigOutput() GetClusterNodePoolNodeConfigSoleTenantConfigOutput
+	ToGetClusterNodePoolNodeConfigSoleTenantConfigOutputWithContext(context.Context) GetClusterNodePoolNodeConfigSoleTenantConfigOutput
+}
+
+type GetClusterNodePoolNodeConfigSoleTenantConfigArgs struct {
+	NodeAffinities GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayInput `pulumi:"nodeAffinities"`
+}
+
+func (GetClusterNodePoolNodeConfigSoleTenantConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigSoleTenantConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigSoleTenantConfigArgs) ToGetClusterNodePoolNodeConfigSoleTenantConfigOutput() GetClusterNodePoolNodeConfigSoleTenantConfigOutput {
+	return i.ToGetClusterNodePoolNodeConfigSoleTenantConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigSoleTenantConfigArgs) ToGetClusterNodePoolNodeConfigSoleTenantConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigSoleTenantConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigSoleTenantConfigOutput)
+}
+
+// GetClusterNodePoolNodeConfigSoleTenantConfigArrayInput is an input type that accepts GetClusterNodePoolNodeConfigSoleTenantConfigArray and GetClusterNodePoolNodeConfigSoleTenantConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigSoleTenantConfigArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigSoleTenantConfigArray{ GetClusterNodePoolNodeConfigSoleTenantConfigArgs{...} }
+type GetClusterNodePoolNodeConfigSoleTenantConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigSoleTenantConfigArrayOutput() GetClusterNodePoolNodeConfigSoleTenantConfigArrayOutput
+	ToGetClusterNodePoolNodeConfigSoleTenantConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigSoleTenantConfigArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigSoleTenantConfigArray []GetClusterNodePoolNodeConfigSoleTenantConfigInput
+
+func (GetClusterNodePoolNodeConfigSoleTenantConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigSoleTenantConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigSoleTenantConfigArray) ToGetClusterNodePoolNodeConfigSoleTenantConfigArrayOutput() GetClusterNodePoolNodeConfigSoleTenantConfigArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigSoleTenantConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigSoleTenantConfigArray) ToGetClusterNodePoolNodeConfigSoleTenantConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigSoleTenantConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigSoleTenantConfigArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigSoleTenantConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigSoleTenantConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigSoleTenantConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigSoleTenantConfigOutput) ToGetClusterNodePoolNodeConfigSoleTenantConfigOutput() GetClusterNodePoolNodeConfigSoleTenantConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigSoleTenantConfigOutput) ToGetClusterNodePoolNodeConfigSoleTenantConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigSoleTenantConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigSoleTenantConfigOutput) NodeAffinities() GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigSoleTenantConfig) []GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity {
+		return v.NodeAffinities
+	}).(GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigSoleTenantConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigSoleTenantConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigSoleTenantConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigSoleTenantConfigArrayOutput) ToGetClusterNodePoolNodeConfigSoleTenantConfigArrayOutput() GetClusterNodePoolNodeConfigSoleTenantConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigSoleTenantConfigArrayOutput) ToGetClusterNodePoolNodeConfigSoleTenantConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigSoleTenantConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigSoleTenantConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigSoleTenantConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigSoleTenantConfig {
+		return vs[0].([]GetClusterNodePoolNodeConfigSoleTenantConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigSoleTenantConfigOutput)
+}
+
+type GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity struct {
+	Key      string   `pulumi:"key"`
+	Operator string   `pulumi:"operator"`
+	Values   []string `pulumi:"values"`
+}
+
+// GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityInput is an input type that accepts GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs and GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityInput` via:
+//
+//	GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs{...}
+type GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput() GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput
+	ToGetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutputWithContext(context.Context) GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput
+}
+
+type GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs struct {
+	Key      pulumi.StringInput      `pulumi:"key"`
+	Operator pulumi.StringInput      `pulumi:"operator"`
+	Values   pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs) ToGetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput() GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return i.ToGetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs) ToGetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput)
+}
+
+// GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayInput is an input type that accepts GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArray and GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArray{ GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs{...} }
+type GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput() GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput
+	ToGetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArray []GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityInput
+
+func (GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArray) ToGetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput() GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArray) ToGetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput) ToGetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput() GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput) ToGetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput) ToGetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput() GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput) ToGetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity {
+		return vs[0].([]GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput)
 }
 
 type GetClusterNodePoolNodeConfigTaint struct {
@@ -45454,6 +46732,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigSandboxConfigPtrInput)(nil)).Elem(), ClusterNodeConfigSandboxConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigShieldedInstanceConfigInput)(nil)).Elem(), ClusterNodeConfigShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigShieldedInstanceConfigPtrInput)(nil)).Elem(), ClusterNodeConfigShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigSoleTenantConfigInput)(nil)).Elem(), ClusterNodeConfigSoleTenantConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigSoleTenantConfigPtrInput)(nil)).Elem(), ClusterNodeConfigSoleTenantConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigSoleTenantConfigNodeAffinityInput)(nil)).Elem(), ClusterNodeConfigSoleTenantConfigNodeAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigSoleTenantConfigNodeAffinityArrayInput)(nil)).Elem(), ClusterNodeConfigSoleTenantConfigNodeAffinityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigTaintInput)(nil)).Elem(), ClusterNodeConfigTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigTaintArrayInput)(nil)).Elem(), ClusterNodeConfigTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigWorkloadMetadataConfigInput)(nil)).Elem(), ClusterNodeConfigWorkloadMetadataConfigArgs{})
@@ -45506,6 +46788,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigSandboxConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigSandboxConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigShieldedInstanceConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigShieldedInstanceConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigSoleTenantConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigSoleTenantConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigSoleTenantConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigSoleTenantConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityInput)(nil)).Elem(), ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayInput)(nil)).Elem(), ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigTaintInput)(nil)).Elem(), ClusterNodePoolNodeConfigTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigTaintArrayInput)(nil)).Elem(), ClusterNodePoolNodeConfigTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigWorkloadMetadataConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs{})
@@ -45584,6 +46870,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigSandboxConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigSandboxConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigShieldedInstanceConfigInput)(nil)).Elem(), NodePoolNodeConfigShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigShieldedInstanceConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigSoleTenantConfigInput)(nil)).Elem(), NodePoolNodeConfigSoleTenantConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigSoleTenantConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigSoleTenantConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigSoleTenantConfigNodeAffinityInput)(nil)).Elem(), NodePoolNodeConfigSoleTenantConfigNodeAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayInput)(nil)).Elem(), NodePoolNodeConfigSoleTenantConfigNodeAffinityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigTaintInput)(nil)).Elem(), NodePoolNodeConfigTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigTaintArrayInput)(nil)).Elem(), NodePoolNodeConfigTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigWorkloadMetadataConfigInput)(nil)).Elem(), NodePoolNodeConfigWorkloadMetadataConfigArgs{})
@@ -45720,6 +47010,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigSandboxConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigSandboxConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigShieldedInstanceConfigInput)(nil)).Elem(), GetClusterNodeConfigShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigShieldedInstanceConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigShieldedInstanceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigSoleTenantConfigInput)(nil)).Elem(), GetClusterNodeConfigSoleTenantConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigSoleTenantConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigSoleTenantConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigSoleTenantConfigNodeAffinityInput)(nil)).Elem(), GetClusterNodeConfigSoleTenantConfigNodeAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigSoleTenantConfigNodeAffinityArrayInput)(nil)).Elem(), GetClusterNodeConfigSoleTenantConfigNodeAffinityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigTaintInput)(nil)).Elem(), GetClusterNodeConfigTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigTaintArrayInput)(nil)).Elem(), GetClusterNodeConfigTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigWorkloadMetadataConfigInput)(nil)).Elem(), GetClusterNodeConfigWorkloadMetadataConfigArgs{})
@@ -45772,6 +47066,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigSandboxConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigSandboxConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigShieldedInstanceConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigShieldedInstanceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigSoleTenantConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigSoleTenantConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigSoleTenantConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigSoleTenantConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityInput)(nil)).Elem(), GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigTaintInput)(nil)).Elem(), GetClusterNodePoolNodeConfigTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigTaintArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigWorkloadMetadataConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigWorkloadMetadataConfigArgs{})
@@ -46052,6 +47350,10 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeConfigSandboxConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigShieldedInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigSoleTenantConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigSoleTenantConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigSoleTenantConfigNodeAffinityOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigTaintOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigTaintArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigWorkloadMetadataConfigOutput{})
@@ -46104,6 +47406,10 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigSandboxConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigShieldedInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigSoleTenantConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigTaintOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigTaintArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigWorkloadMetadataConfigOutput{})
@@ -46182,6 +47488,10 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolNodeConfigSandboxConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigShieldedInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigSoleTenantConfigOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigSoleTenantConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigSoleTenantConfigNodeAffinityOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigTaintOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigTaintArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigWorkloadMetadataConfigOutput{})
@@ -46318,6 +47628,10 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodeConfigSandboxConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigShieldedInstanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigSoleTenantConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigSoleTenantConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigSoleTenantConfigNodeAffinityOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigSoleTenantConfigNodeAffinityArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigTaintOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigTaintArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigWorkloadMetadataConfigOutput{})
@@ -46370,6 +47684,10 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigSandboxConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigShieldedInstanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigSoleTenantConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigSoleTenantConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigTaintOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigTaintArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigWorkloadMetadataConfigOutput{})

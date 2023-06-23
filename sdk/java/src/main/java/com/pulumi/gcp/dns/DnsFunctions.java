@@ -11,10 +11,13 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.dns.inputs.GetKeysArgs;
 import com.pulumi.gcp.dns.inputs.GetKeysPlainArgs;
 import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
+import com.pulumi.gcp.dns.inputs.GetManagedZoneIamPolicyArgs;
+import com.pulumi.gcp.dns.inputs.GetManagedZoneIamPolicyPlainArgs;
 import com.pulumi.gcp.dns.inputs.GetManagedZonePlainArgs;
 import com.pulumi.gcp.dns.inputs.GetRecordSetArgs;
 import com.pulumi.gcp.dns.inputs.GetRecordSetPlainArgs;
 import com.pulumi.gcp.dns.outputs.GetKeysResult;
+import com.pulumi.gcp.dns.outputs.GetManagedZoneIamPolicyResult;
 import com.pulumi.gcp.dns.outputs.GetManagedZoneResult;
 import com.pulumi.gcp.dns.outputs.GetRecordSetResult;
 import java.util.concurrent.CompletableFuture;
@@ -419,6 +422,158 @@ public final class DnsFunctions {
      */
     public static CompletableFuture<GetManagedZoneResult> getManagedZonePlain(GetManagedZonePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:dns/getManagedZone:getManagedZone", TypeShape.of(GetManagedZoneResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for managedzone
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZoneIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DnsFunctions.getManagedZoneIamPolicy(GetManagedZoneIamPolicyArgs.builder()
+     *             .project(google_dns_managed_zone.default().project())
+     *             .managedZone(google_dns_managed_zone.default().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetManagedZoneIamPolicyResult> getManagedZoneIamPolicy(GetManagedZoneIamPolicyArgs args) {
+        return getManagedZoneIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for managedzone
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZoneIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DnsFunctions.getManagedZoneIamPolicy(GetManagedZoneIamPolicyArgs.builder()
+     *             .project(google_dns_managed_zone.default().project())
+     *             .managedZone(google_dns_managed_zone.default().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetManagedZoneIamPolicyResult> getManagedZoneIamPolicyPlain(GetManagedZoneIamPolicyPlainArgs args) {
+        return getManagedZoneIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for managedzone
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZoneIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DnsFunctions.getManagedZoneIamPolicy(GetManagedZoneIamPolicyArgs.builder()
+     *             .project(google_dns_managed_zone.default().project())
+     *             .managedZone(google_dns_managed_zone.default().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetManagedZoneIamPolicyResult> getManagedZoneIamPolicy(GetManagedZoneIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:dns/getManagedZoneIamPolicy:getManagedZoneIamPolicy", TypeShape.of(GetManagedZoneIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for managedzone
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dns.DnsFunctions;
+     * import com.pulumi.gcp.dns.inputs.GetManagedZoneIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DnsFunctions.getManagedZoneIamPolicy(GetManagedZoneIamPolicyArgs.builder()
+     *             .project(google_dns_managed_zone.default().project())
+     *             .managedZone(google_dns_managed_zone.default().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetManagedZoneIamPolicyResult> getManagedZoneIamPolicyPlain(GetManagedZoneIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:dns/getManagedZoneIamPolicy:getManagedZoneIamPolicy", TypeShape.of(GetManagedZoneIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get a DNS record set within Google Cloud DNS

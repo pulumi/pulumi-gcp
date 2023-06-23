@@ -73,7 +73,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
      * List of file type groups to include in the scan. If empty, all files are scanned and available data
      * format processors are applied. In addition, the binary content of the selected files is always scanned as well.
      * Images are scanned only as binary if the specified region does not support image inspection and no fileTypes were specified.
-     * Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`.
+     * Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`, `POWERPOINT`, `EXCEL`.
      * 
      */
     @Import(name="fileTypes")
@@ -83,7 +83,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
      * @return List of file type groups to include in the scan. If empty, all files are scanned and available data
      * format processors are applied. In addition, the binary content of the selected files is always scanned as well.
      * Images are scanned only as binary if the specified region does not support image inspection and no fileTypes were specified.
-     * Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`.
+     * Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`, `POWERPOINT`, `EXCEL`.
      * 
      */
     public Optional<Output<List<String>>> fileTypes() {
@@ -228,7 +228,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
          * @param fileTypes List of file type groups to include in the scan. If empty, all files are scanned and available data
          * format processors are applied. In addition, the binary content of the selected files is always scanned as well.
          * Images are scanned only as binary if the specified region does not support image inspection and no fileTypes were specified.
-         * Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`.
+         * Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`, `POWERPOINT`, `EXCEL`.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
          * @param fileTypes List of file type groups to include in the scan. If empty, all files are scanned and available data
          * format processors are applied. In addition, the binary content of the selected files is always scanned as well.
          * Images are scanned only as binary if the specified region does not support image inspection and no fileTypes were specified.
-         * Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`.
+         * Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`, `POWERPOINT`, `EXCEL`.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
          * @param fileTypes List of file type groups to include in the scan. If empty, all files are scanned and available data
          * format processors are applied. In addition, the binary content of the selected files is always scanned as well.
          * Images are scanned only as binary if the specified region does not support image inspection and no fileTypes were specified.
-         * Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`.
+         * Each value may be one of: `BINARY_FILE`, `TEXT_FILE`, `IMAGE`, `WORD`, `PDF`, `AVRO`, `CSV`, `TSV`, `POWERPOINT`, `EXCEL`.
          * 
          * @return builder
          * 

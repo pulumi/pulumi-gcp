@@ -9,10 +9,16 @@ import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.tags.inputs.GetTagKeyArgs;
+import com.pulumi.gcp.tags.inputs.GetTagKeyIamPolicyArgs;
+import com.pulumi.gcp.tags.inputs.GetTagKeyIamPolicyPlainArgs;
 import com.pulumi.gcp.tags.inputs.GetTagKeyPlainArgs;
 import com.pulumi.gcp.tags.inputs.GetTagValueArgs;
+import com.pulumi.gcp.tags.inputs.GetTagValueIamPolicyArgs;
+import com.pulumi.gcp.tags.inputs.GetTagValueIamPolicyPlainArgs;
 import com.pulumi.gcp.tags.inputs.GetTagValuePlainArgs;
+import com.pulumi.gcp.tags.outputs.GetTagKeyIamPolicyResult;
 import com.pulumi.gcp.tags.outputs.GetTagKeyResult;
+import com.pulumi.gcp.tags.outputs.GetTagValueIamPolicyResult;
 import com.pulumi.gcp.tags.outputs.GetTagValueResult;
 import java.util.concurrent.CompletableFuture;
 
@@ -286,6 +292,154 @@ public final class TagsFunctions {
         return Deployment.getInstance().invokeAsync("gcp:tags/getTagKey:getTagKey", TypeShape.of(GetTagKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the current IAM policy data for tagkey
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tags.TagsFunctions;
+     * import com.pulumi.gcp.tags.inputs.GetTagKeyIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = TagsFunctions.getTagKeyIamPolicy(GetTagKeyIamPolicyArgs.builder()
+     *             .tagKey(google_tags_tag_key.key().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTagKeyIamPolicyResult> getTagKeyIamPolicy(GetTagKeyIamPolicyArgs args) {
+        return getTagKeyIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for tagkey
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tags.TagsFunctions;
+     * import com.pulumi.gcp.tags.inputs.GetTagKeyIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = TagsFunctions.getTagKeyIamPolicy(GetTagKeyIamPolicyArgs.builder()
+     *             .tagKey(google_tags_tag_key.key().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTagKeyIamPolicyResult> getTagKeyIamPolicyPlain(GetTagKeyIamPolicyPlainArgs args) {
+        return getTagKeyIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for tagkey
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tags.TagsFunctions;
+     * import com.pulumi.gcp.tags.inputs.GetTagKeyIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = TagsFunctions.getTagKeyIamPolicy(GetTagKeyIamPolicyArgs.builder()
+     *             .tagKey(google_tags_tag_key.key().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTagKeyIamPolicyResult> getTagKeyIamPolicy(GetTagKeyIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:tags/getTagKeyIamPolicy:getTagKeyIamPolicy", TypeShape.of(GetTagKeyIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for tagkey
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tags.TagsFunctions;
+     * import com.pulumi.gcp.tags.inputs.GetTagKeyIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = TagsFunctions.getTagKeyIamPolicy(GetTagKeyIamPolicyArgs.builder()
+     *             .tagKey(google_tags_tag_key.key().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTagKeyIamPolicyResult> getTagKeyIamPolicyPlain(GetTagKeyIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:tags/getTagKeyIamPolicy:getTagKeyIamPolicy", TypeShape.of(GetTagKeyIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Get a tag value by `parent` key and `short_name`.
      * 
      * ## Example Usage
@@ -436,5 +590,153 @@ public final class TagsFunctions {
      */
     public static CompletableFuture<GetTagValueResult> getTagValuePlain(GetTagValuePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:tags/getTagValue:getTagValue", TypeShape.of(GetTagValueResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for tagvalue
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tags.TagsFunctions;
+     * import com.pulumi.gcp.tags.inputs.GetTagValueIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = TagsFunctions.getTagValueIamPolicy(GetTagValueIamPolicyArgs.builder()
+     *             .tagValue(google_tags_tag_value.value().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTagValueIamPolicyResult> getTagValueIamPolicy(GetTagValueIamPolicyArgs args) {
+        return getTagValueIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for tagvalue
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tags.TagsFunctions;
+     * import com.pulumi.gcp.tags.inputs.GetTagValueIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = TagsFunctions.getTagValueIamPolicy(GetTagValueIamPolicyArgs.builder()
+     *             .tagValue(google_tags_tag_value.value().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTagValueIamPolicyResult> getTagValueIamPolicyPlain(GetTagValueIamPolicyPlainArgs args) {
+        return getTagValueIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for tagvalue
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tags.TagsFunctions;
+     * import com.pulumi.gcp.tags.inputs.GetTagValueIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = TagsFunctions.getTagValueIamPolicy(GetTagValueIamPolicyArgs.builder()
+     *             .tagValue(google_tags_tag_value.value().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetTagValueIamPolicyResult> getTagValueIamPolicy(GetTagValueIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:tags/getTagValueIamPolicy:getTagValueIamPolicy", TypeShape.of(GetTagValueIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for tagvalue
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.tags.TagsFunctions;
+     * import com.pulumi.gcp.tags.inputs.GetTagValueIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = TagsFunctions.getTagValueIamPolicy(GetTagValueIamPolicyArgs.builder()
+     *             .tagValue(google_tags_tag_value.value().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetTagValueIamPolicyResult> getTagValueIamPolicyPlain(GetTagValueIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:tags/getTagValueIamPolicy:getTagValueIamPolicy", TypeShape.of(GetTagValueIamPolicyResult.class), args, Utilities.withVersion(options));
     }
 }

@@ -747,6 +747,106 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Url Map Path Template Match
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HttpHealthCheck;
+ * import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.compute.BackendBucket;
+ * import com.pulumi.gcp.compute.BackendBucketArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new HttpHealthCheck(&#34;default&#34;, HttpHealthCheckArgs.builder()        
+ *             .requestPath(&#34;/&#34;)
+ *             .checkIntervalSec(1)
+ *             .timeoutSec(1)
+ *             .build());
+ * 
+ *         var cart_backend = new BackendService(&#34;cart-backend&#34;, BackendServiceArgs.builder()        
+ *             .portName(&#34;http&#34;)
+ *             .protocol(&#34;HTTP&#34;)
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme(&#34;EXTERNAL_MANAGED&#34;)
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var user_backend = new BackendService(&#34;user-backend&#34;, BackendServiceArgs.builder()        
+ *             .portName(&#34;http&#34;)
+ *             .protocol(&#34;HTTP&#34;)
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme(&#34;EXTERNAL_MANAGED&#34;)
+ *             .healthChecks(default_.id())
+ *             .build());
+ * 
+ *         var staticBucket = new Bucket(&#34;staticBucket&#34;, BucketArgs.builder()        
+ *             .location(&#34;US&#34;)
+ *             .build());
+ * 
+ *         var staticBackendBucket = new BackendBucket(&#34;staticBackendBucket&#34;, BackendBucketArgs.builder()        
+ *             .bucketName(staticBucket.name())
+ *             .enableCdn(true)
+ *             .build());
+ * 
+ *         var urlmap = new URLMap(&#34;urlmap&#34;, URLMapArgs.builder()        
+ *             .description(&#34;a description&#34;)
+ *             .defaultService(staticBackendBucket.id())
+ *             .hostRules(URLMapHostRuleArgs.builder()
+ *                 .hosts(&#34;mysite.com&#34;)
+ *                 .pathMatcher(&#34;mysite&#34;)
+ *                 .build())
+ *             .pathMatchers(URLMapPathMatcherArgs.builder()
+ *                 .name(&#34;mysite&#34;)
+ *                 .defaultService(staticBackendBucket.id())
+ *                 .routeRules(                
+ *                     URLMapPathMatcherRouteRuleArgs.builder()
+ *                         .matchRules(URLMapPathMatcherRouteRuleMatchRuleArgs.builder()
+ *                             .pathTemplateMatch(&#34;/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}&#34;)
+ *                             .build())
+ *                         .service(cart_backend.id())
+ *                         .priority(1)
+ *                         .routeAction(URLMapPathMatcherRouteRuleRouteActionArgs.builder()
+ *                             .urlRewrite(URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs.builder()
+ *                                 .pathTemplateRewrite(&#34;/{username}-{cartid}/&#34;)
+ *                                 .build())
+ *                             .build())
+ *                         .build(),
+ *                     URLMapPathMatcherRouteRuleArgs.builder()
+ *                         .matchRules(URLMapPathMatcherRouteRuleMatchRuleArgs.builder()
+ *                             .pathTemplateMatch(&#34;/xyzwebservices/v2/xyz/users/*{@literal /}accountinfo/*&#34;)
+ *                             .build())
+ *                         .service(user_backend.id())
+ *                         .priority(2)
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

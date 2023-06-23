@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         /// <summary>
         /// A 128/192/256 bit key.
         /// A base64-encoded string.
+        /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;

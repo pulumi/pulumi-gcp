@@ -35,6 +35,11 @@ export const getAccountKey: typeof import("./getAccountKey").getAccountKey = nul
 export const getAccountKeyOutput: typeof import("./getAccountKey").getAccountKeyOutput = null as any;
 utilities.lazyLoad(exports, ["getAccountKey","getAccountKeyOutput"], () => require("./getAccountKey"));
 
+export { GetIamPolicyArgs, GetIamPolicyResult, GetIamPolicyOutputArgs } from "./getIamPolicy";
+export const getIamPolicy: typeof import("./getIamPolicy").getIamPolicy = null as any;
+export const getIamPolicyOutput: typeof import("./getIamPolicy").getIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getIamPolicy","getIamPolicyOutput"], () => require("./getIamPolicy"));
+
 export { IAMBindingArgs, IAMBindingState } from "./iambinding";
 export type IAMBinding = import("./iambinding").IAMBinding;
 export const IAMBinding: typeof import("./iambinding").IAMBinding = null as any;

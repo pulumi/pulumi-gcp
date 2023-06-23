@@ -168,7 +168,7 @@ type Cluster struct {
 	CostManagementConfig ClusterCostManagementConfigOutput `pulumi:"costManagementConfig"`
 	// Structure is documented below.
 	DatabaseEncryption ClusterDatabaseEncryptionOutput `pulumi:"databaseEncryption"`
-	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+	// The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
 	DatapathProvider pulumi.StringOutput `pulumi:"datapathProvider"`
 	// The default maximum number of pods
 	// per node in this cluster. This doesn't work on "routes-based" clusters, clusters
@@ -478,7 +478,7 @@ type clusterState struct {
 	CostManagementConfig *ClusterCostManagementConfig `pulumi:"costManagementConfig"`
 	// Structure is documented below.
 	DatabaseEncryption *ClusterDatabaseEncryption `pulumi:"databaseEncryption"`
-	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+	// The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
 	DatapathProvider *string `pulumi:"datapathProvider"`
 	// The default maximum number of pods
 	// per node in this cluster. This doesn't work on "routes-based" clusters, clusters
@@ -760,7 +760,7 @@ type ClusterState struct {
 	CostManagementConfig ClusterCostManagementConfigPtrInput
 	// Structure is documented below.
 	DatabaseEncryption ClusterDatabaseEncryptionPtrInput
-	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+	// The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
 	DatapathProvider pulumi.StringPtrInput
 	// The default maximum number of pods
 	// per node in this cluster. This doesn't work on "routes-based" clusters, clusters
@@ -1046,7 +1046,7 @@ type clusterArgs struct {
 	CostManagementConfig *ClusterCostManagementConfig `pulumi:"costManagementConfig"`
 	// Structure is documented below.
 	DatabaseEncryption *ClusterDatabaseEncryption `pulumi:"databaseEncryption"`
-	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+	// The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
 	DatapathProvider *string `pulumi:"datapathProvider"`
 	// The default maximum number of pods
 	// per node in this cluster. This doesn't work on "routes-based" clusters, clusters
@@ -1309,7 +1309,7 @@ type ClusterArgs struct {
 	CostManagementConfig ClusterCostManagementConfigPtrInput
 	// Structure is documented below.
 	DatabaseEncryption ClusterDatabaseEncryptionPtrInput
-	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+	// The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
 	DatapathProvider pulumi.StringPtrInput
 	// The default maximum number of pods
 	// per node in this cluster. This doesn't work on "routes-based" clusters, clusters
@@ -1684,7 +1684,7 @@ func (o ClusterOutput) DatabaseEncryption() ClusterDatabaseEncryptionOutput {
 	return o.ApplyT(func(v *Cluster) ClusterDatabaseEncryptionOutput { return v.DatabaseEncryption }).(ClusterDatabaseEncryptionOutput)
 }
 
-// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+// The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
 func (o ClusterOutput) DatapathProvider() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DatapathProvider }).(pulumi.StringOutput)
 }

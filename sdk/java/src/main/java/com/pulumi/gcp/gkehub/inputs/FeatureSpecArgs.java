@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.gkehub.inputs.FeatureSpecFleetobservabilityArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureSpecMulticlusteringressArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,13 @@ import javax.annotation.Nullable;
 public final class FeatureSpecArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FeatureSpecArgs Empty = new FeatureSpecArgs();
+
+    @Import(name="fleetobservability")
+    private @Nullable Output<FeatureSpecFleetobservabilityArgs> fleetobservability;
+
+    public Optional<Output<FeatureSpecFleetobservabilityArgs>> fleetobservability() {
+        return Optional.ofNullable(this.fleetobservability);
+    }
 
     /**
      * Multicluster Ingress-specific spec.
@@ -35,6 +43,7 @@ public final class FeatureSpecArgs extends com.pulumi.resources.ResourceArgs {
     private FeatureSpecArgs() {}
 
     private FeatureSpecArgs(FeatureSpecArgs $) {
+        this.fleetobservability = $.fleetobservability;
         this.multiclusteringress = $.multiclusteringress;
     }
 
@@ -54,6 +63,15 @@ public final class FeatureSpecArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(FeatureSpecArgs defaults) {
             $ = new FeatureSpecArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder fleetobservability(@Nullable Output<FeatureSpecFleetobservabilityArgs> fleetobservability) {
+            $.fleetobservability = fleetobservability;
+            return this;
+        }
+
+        public Builder fleetobservability(FeatureSpecFleetobservabilityArgs fleetobservability) {
+            return fleetobservability(Output.of(fleetobservability));
         }
 
         /**

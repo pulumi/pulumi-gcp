@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         [Input("destAddressGroups")]
         private InputList<string>? _destAddressGroups;
+
+        /// <summary>
+        /// Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+        /// </summary>
         public InputList<string> DestAddressGroups
         {
             get => _destAddressGroups ?? (_destAddressGroups = new InputList<string>());
@@ -22,6 +26,10 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         [Input("destFqdns")]
         private InputList<string>? _destFqdns;
+
+        /// <summary>
+        /// Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+        /// </summary>
         public InputList<string> DestFqdns
         {
             get => _destFqdns ?? (_destFqdns = new InputList<string>());
@@ -32,7 +40,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<string>? _destIpRanges;
 
         /// <summary>
-        /// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+        /// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         /// </summary>
         public InputList<string> DestIpRanges
         {
@@ -42,6 +50,10 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         [Input("destRegionCodes")]
         private InputList<string>? _destRegionCodes;
+
+        /// <summary>
+        /// The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+        /// </summary>
         public InputList<string> DestRegionCodes
         {
             get => _destRegionCodes ?? (_destRegionCodes = new InputList<string>());
@@ -50,6 +62,10 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         [Input("destThreatIntelligences")]
         private InputList<string>? _destThreatIntelligences;
+
+        /// <summary>
+        /// Name of the Google Cloud Threat Intelligence list.
+        /// </summary>
         public InputList<string> DestThreatIntelligences
         {
             get => _destThreatIntelligences ?? (_destThreatIntelligences = new InputList<string>());
@@ -70,6 +86,10 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         [Input("srcAddressGroups")]
         private InputList<string>? _srcAddressGroups;
+
+        /// <summary>
+        /// Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+        /// </summary>
         public InputList<string> SrcAddressGroups
         {
             get => _srcAddressGroups ?? (_srcAddressGroups = new InputList<string>());
@@ -78,6 +98,10 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         [Input("srcFqdns")]
         private InputList<string>? _srcFqdns;
+
+        /// <summary>
+        /// Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+        /// </summary>
         public InputList<string> SrcFqdns
         {
             get => _srcFqdns ?? (_srcFqdns = new InputList<string>());
@@ -88,9 +112,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<string>? _srcIpRanges;
 
         /// <summary>
-        /// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
-        /// 
-        /// &lt;a name="nested_layer4_configs"&gt;&lt;/a&gt;The `layer4_configs` block supports:
+        /// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         /// </summary>
         public InputList<string> SrcIpRanges
         {
@@ -100,6 +122,10 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         [Input("srcRegionCodes")]
         private InputList<string>? _srcRegionCodes;
+
+        /// <summary>
+        /// The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+        /// </summary>
         public InputList<string> SrcRegionCodes
         {
             get => _srcRegionCodes ?? (_srcRegionCodes = new InputList<string>());
@@ -108,6 +134,12 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         [Input("srcThreatIntelligences")]
         private InputList<string>? _srcThreatIntelligences;
+
+        /// <summary>
+        /// Name of the Google Cloud Threat Intelligence list.
+        /// 
+        /// &lt;a name="nested_layer4_configs"&gt;&lt;/a&gt;The `layer4_configs` block supports:
+        /// </summary>
         public InputList<string> SrcThreatIntelligences
         {
             get => _srcThreatIntelligences ?? (_srcThreatIntelligences = new InputList<string>());

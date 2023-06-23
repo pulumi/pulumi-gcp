@@ -21,7 +21,8 @@ class PreventionStoredInfoTypeArgs:
                  dictionary: Optional[pulumi.Input['PreventionStoredInfoTypeDictionaryArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  large_custom_dictionary: Optional[pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryArgs']] = None,
-                 regex: Optional[pulumi.Input['PreventionStoredInfoTypeRegexArgs']] = None):
+                 regex: Optional[pulumi.Input['PreventionStoredInfoTypeRegexArgs']] = None,
+                 stored_info_type_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PreventionStoredInfoType resource.
         :param pulumi.Input[str] parent: The parent of the info type in any of the following formats:
@@ -40,6 +41,9 @@ class PreventionStoredInfoTypeArgs:
                Structure is documented below.
         :param pulumi.Input['PreventionStoredInfoTypeRegexArgs'] regex: Regular expression which defines the rule.
                Structure is documented below.
+        :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
+               that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is 100
+               characters. Can be empty to allow the system to generate one.
         """
         pulumi.set(__self__, "parent", parent)
         if description is not None:
@@ -52,6 +56,8 @@ class PreventionStoredInfoTypeArgs:
             pulumi.set(__self__, "large_custom_dictionary", large_custom_dictionary)
         if regex is not None:
             pulumi.set(__self__, "regex", regex)
+        if stored_info_type_id is not None:
+            pulumi.set(__self__, "stored_info_type_id", stored_info_type_id)
 
     @property
     @pulumi.getter
@@ -135,6 +141,20 @@ class PreventionStoredInfoTypeArgs:
     def regex(self, value: Optional[pulumi.Input['PreventionStoredInfoTypeRegexArgs']]):
         pulumi.set(self, "regex", value)
 
+    @property
+    @pulumi.getter(name="storedInfoTypeId")
+    def stored_info_type_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
+        that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is 100
+        characters. Can be empty to allow the system to generate one.
+        """
+        return pulumi.get(self, "stored_info_type_id")
+
+    @stored_info_type_id.setter
+    def stored_info_type_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stored_info_type_id", value)
+
 
 @pulumi.input_type
 class _PreventionStoredInfoTypeState:
@@ -145,7 +165,8 @@ class _PreventionStoredInfoTypeState:
                  large_custom_dictionary: Optional[pulumi.Input['PreventionStoredInfoTypeLargeCustomDictionaryArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 regex: Optional[pulumi.Input['PreventionStoredInfoTypeRegexArgs']] = None):
+                 regex: Optional[pulumi.Input['PreventionStoredInfoTypeRegexArgs']] = None,
+                 stored_info_type_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering PreventionStoredInfoType resources.
         :param pulumi.Input[str] description: A description of the info type.
@@ -165,6 +186,9 @@ class _PreventionStoredInfoTypeState:
                - - -
         :param pulumi.Input['PreventionStoredInfoTypeRegexArgs'] regex: Regular expression which defines the rule.
                Structure is documented below.
+        :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
+               that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is 100
+               characters. Can be empty to allow the system to generate one.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -180,6 +204,8 @@ class _PreventionStoredInfoTypeState:
             pulumi.set(__self__, "parent", parent)
         if regex is not None:
             pulumi.set(__self__, "regex", regex)
+        if stored_info_type_id is not None:
+            pulumi.set(__self__, "stored_info_type_id", stored_info_type_id)
 
     @property
     @pulumi.getter
@@ -275,6 +301,20 @@ class _PreventionStoredInfoTypeState:
     def regex(self, value: Optional[pulumi.Input['PreventionStoredInfoTypeRegexArgs']]):
         pulumi.set(self, "regex", value)
 
+    @property
+    @pulumi.getter(name="storedInfoTypeId")
+    def stored_info_type_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
+        that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is 100
+        characters. Can be empty to allow the system to generate one.
+        """
+        return pulumi.get(self, "stored_info_type_id")
+
+    @stored_info_type_id.setter
+    def stored_info_type_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stored_info_type_id", value)
+
 
 class PreventionStoredInfoType(pulumi.CustomResource):
     @overload
@@ -287,6 +327,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                  large_custom_dictionary: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeLargeCustomDictionaryArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  regex: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeRegexArgs']]] = None,
+                 stored_info_type_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Allows creation of custom info types.
@@ -357,6 +398,22 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                 ),
             ))
         ```
+        ### Dlp Stored Info Type With Id
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        with_stored_info_type_id = gcp.dataloss.PreventionStoredInfoType("withStoredInfoTypeId",
+            description="Description",
+            display_name="Displayname",
+            parent="projects/my-project-name",
+            regex=gcp.dataloss.PreventionStoredInfoTypeRegexArgs(
+                group_indexes=[2],
+                pattern="patient",
+            ),
+            stored_info_type_id="id-")
+        ```
 
         ## Import
 
@@ -388,6 +445,9 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                - - -
         :param pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeRegexArgs']] regex: Regular expression which defines the rule.
                Structure is documented below.
+        :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
+               that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is 100
+               characters. Can be empty to allow the system to generate one.
         """
         ...
     @overload
@@ -464,6 +524,22 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                 ),
             ))
         ```
+        ### Dlp Stored Info Type With Id
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        with_stored_info_type_id = gcp.dataloss.PreventionStoredInfoType("withStoredInfoTypeId",
+            description="Description",
+            display_name="Displayname",
+            parent="projects/my-project-name",
+            regex=gcp.dataloss.PreventionStoredInfoTypeRegexArgs(
+                group_indexes=[2],
+                pattern="patient",
+            ),
+            stored_info_type_id="id-")
+        ```
 
         ## Import
 
@@ -498,6 +574,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                  large_custom_dictionary: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeLargeCustomDictionaryArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  regex: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeRegexArgs']]] = None,
+                 stored_info_type_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -515,6 +592,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
             __props__.__dict__["regex"] = regex
+            __props__.__dict__["stored_info_type_id"] = stored_info_type_id
             __props__.__dict__["name"] = None
         super(PreventionStoredInfoType, __self__).__init__(
             'gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType',
@@ -532,7 +610,8 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             large_custom_dictionary: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeLargeCustomDictionaryArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
-            regex: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeRegexArgs']]] = None) -> 'PreventionStoredInfoType':
+            regex: Optional[pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeRegexArgs']]] = None,
+            stored_info_type_id: Optional[pulumi.Input[str]] = None) -> 'PreventionStoredInfoType':
         """
         Get an existing PreventionStoredInfoType resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -557,6 +636,9 @@ class PreventionStoredInfoType(pulumi.CustomResource):
                - - -
         :param pulumi.Input[pulumi.InputType['PreventionStoredInfoTypeRegexArgs']] regex: Regular expression which defines the rule.
                Structure is documented below.
+        :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
+               that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is 100
+               characters. Can be empty to allow the system to generate one.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -569,6 +651,7 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
         __props__.__dict__["regex"] = regex
+        __props__.__dict__["stored_info_type_id"] = stored_info_type_id
         return PreventionStoredInfoType(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -636,4 +719,14 @@ class PreventionStoredInfoType(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "regex")
+
+    @property
+    @pulumi.getter(name="storedInfoTypeId")
+    def stored_info_type_id(self) -> pulumi.Output[str]:
+        """
+        The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
+        that is, it must match the regular expression: [a-zA-Z\\d-_]+. The maximum length is 100
+        characters. Can be empty to allow the system to generate one.
+        """
+        return pulumi.get(self, "stored_info_type_id")
 

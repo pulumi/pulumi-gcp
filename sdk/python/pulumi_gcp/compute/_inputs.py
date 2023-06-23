@@ -185,6 +185,7 @@ __all__ = [
     'MachineImageMachineImageEncryptionKeyArgs',
     'ManagedSslCertificateManagedArgs',
     'MangedSslCertificateManagedArgs',
+    'NetworkEndpointListNetworkEndpointArgs',
     'NetworkFirewallPolicyRuleMatchArgs',
     'NetworkFirewallPolicyRuleMatchLayer4ConfigArgs',
     'NetworkFirewallPolicyRuleMatchSrcSecureTagArgs',
@@ -4868,8 +4869,16 @@ class FirewallPolicyRuleMatchArgs:
                  src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match. Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_fqdns: Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_region_codes: The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_threat_intelligences: Name of the Google Cloud Threat Intelligence list.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_fqdns: Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_threat_intelligences: Name of the Google Cloud Threat Intelligence list.
                
                <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
         """
@@ -4910,6 +4919,9 @@ class FirewallPolicyRuleMatchArgs:
     @property
     @pulumi.getter(name="destAddressGroups")
     def dest_address_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+        """
         return pulumi.get(self, "dest_address_groups")
 
     @dest_address_groups.setter
@@ -4919,6 +4931,9 @@ class FirewallPolicyRuleMatchArgs:
     @property
     @pulumi.getter(name="destFqdns")
     def dest_fqdns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+        """
         return pulumi.get(self, "dest_fqdns")
 
     @dest_fqdns.setter
@@ -4929,7 +4944,7 @@ class FirewallPolicyRuleMatchArgs:
     @pulumi.getter(name="destIpRanges")
     def dest_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         """
         return pulumi.get(self, "dest_ip_ranges")
 
@@ -4940,6 +4955,9 @@ class FirewallPolicyRuleMatchArgs:
     @property
     @pulumi.getter(name="destRegionCodes")
     def dest_region_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+        """
         return pulumi.get(self, "dest_region_codes")
 
     @dest_region_codes.setter
@@ -4949,6 +4967,9 @@ class FirewallPolicyRuleMatchArgs:
     @property
     @pulumi.getter(name="destThreatIntelligences")
     def dest_threat_intelligences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Name of the Google Cloud Threat Intelligence list.
+        """
         return pulumi.get(self, "dest_threat_intelligences")
 
     @dest_threat_intelligences.setter
@@ -4958,6 +4979,9 @@ class FirewallPolicyRuleMatchArgs:
     @property
     @pulumi.getter(name="srcAddressGroups")
     def src_address_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+        """
         return pulumi.get(self, "src_address_groups")
 
     @src_address_groups.setter
@@ -4967,6 +4991,9 @@ class FirewallPolicyRuleMatchArgs:
     @property
     @pulumi.getter(name="srcFqdns")
     def src_fqdns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+        """
         return pulumi.get(self, "src_fqdns")
 
     @src_fqdns.setter
@@ -4977,9 +5004,7 @@ class FirewallPolicyRuleMatchArgs:
     @pulumi.getter(name="srcIpRanges")
     def src_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
-
-        <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
+        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
         """
         return pulumi.get(self, "src_ip_ranges")
 
@@ -4990,6 +5015,9 @@ class FirewallPolicyRuleMatchArgs:
     @property
     @pulumi.getter(name="srcRegionCodes")
     def src_region_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+        """
         return pulumi.get(self, "src_region_codes")
 
     @src_region_codes.setter
@@ -4999,6 +5027,11 @@ class FirewallPolicyRuleMatchArgs:
     @property
     @pulumi.getter(name="srcThreatIntelligences")
     def src_threat_intelligences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Name of the Google Cloud Threat Intelligence list.
+
+        <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
+        """
         return pulumi.get(self, "src_threat_intelligences")
 
     @src_threat_intelligences.setter
@@ -11275,6 +11308,7 @@ class InstanceTemplateNetworkInterfaceArgs:
                  ipv6_access_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 network_attachment: Optional[pulumi.Input[str]] = None,
                  network_ip: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input[str]] = None,
                  queue_count: Optional[pulumi.Input[int]] = None,
@@ -11322,6 +11356,8 @@ class InstanceTemplateNetworkInterfaceArgs:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if network_attachment is not None:
+            pulumi.set(__self__, "network_attachment", network_attachment)
         if network_ip is not None:
             pulumi.set(__self__, "network_ip", network_ip)
         if nic_type is not None:
@@ -11415,6 +11451,15 @@ class InstanceTemplateNetworkInterfaceArgs:
     @network.setter
     def network(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "network_attachment")
+
+    @network_attachment.setter
+    def network_attachment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_attachment", value)
 
     @property
     @pulumi.getter(name="networkIp")
@@ -12405,6 +12450,72 @@ class MangedSslCertificateManagedArgs:
     @domains.setter
     def domains(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "domains", value)
+
+
+@pulumi.input_type
+class NetworkEndpointListNetworkEndpointArgs:
+    def __init__(__self__, *,
+                 ip_address: pulumi.Input[str],
+                 instance: Optional[pulumi.Input[str]] = None,
+                 port: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] ip_address: IPv4 address of network endpoint. The IP address must belong
+               to a VM in GCE (either the primary IP or as part of an aliased IP
+               range).
+        :param pulumi.Input[str] instance: The name for a specific VM instance that the IP address belongs to.
+               This is required for network endpoints of type GCE_VM_IP_PORT.
+               The instance must be in the same zone as the network endpoint group.
+        :param pulumi.Input[int] port: Port number of network endpoint.
+               **Note** `port` is required unless the Network Endpoint Group is created
+               with the type of `GCE_VM_IP`
+        """
+        pulumi.set(__self__, "ip_address", ip_address)
+        if instance is not None:
+            pulumi.set(__self__, "instance", instance)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> pulumi.Input[str]:
+        """
+        IPv4 address of network endpoint. The IP address must belong
+        to a VM in GCE (either the primary IP or as part of an aliased IP
+        range).
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter
+    def instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name for a specific VM instance that the IP address belongs to.
+        This is required for network endpoints of type GCE_VM_IP_PORT.
+        The instance must be in the same zone as the network endpoint group.
+        """
+        return pulumi.get(self, "instance")
+
+    @instance.setter
+    def instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port number of network endpoint.
+        **Note** `port` is required unless the Network Endpoint Group is created
+        with the type of `GCE_VM_IP`
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
 
 
 @pulumi.input_type
@@ -33580,6 +33691,7 @@ class URLMapPathMatcherRouteRuleMatchRuleArgs:
                  header_matches: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs']]]] = None,
                  ignore_case: Optional[pulumi.Input[bool]] = None,
                  metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs']]]] = None,
+                 path_template_match: Optional[pulumi.Input[str]] = None,
                  prefix_match: Optional[pulumi.Input[str]] = None,
                  query_parameter_matches: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs']]]] = None,
                  regex_match: Optional[pulumi.Input[str]] = None):
@@ -33606,6 +33718,14 @@ class URLMapPathMatcherRouteRuleMatchRuleArgs:
                UrlMap. metadataFilters only applies to Loadbalancers that have their
                loadBalancingScheme set to INTERNAL_SELF_MANAGED.
                Structure is documented below.
+        :param pulumi.Input[str] path_template_match: For satisfying the matchRule condition, the path of the request
+               must match the wildcard pattern specified in pathTemplateMatch
+               after removing any query parameters and anchor that may be part
+               of the original URL.
+               pathTemplateMatch must be between 1 and 255 characters
+               (inclusive).  The pattern specified by pathTemplateMatch may
+               have at most 5 wildcard operators and at most 5 variable
+               captures in total.
         :param pulumi.Input[str] prefix_match: For satisfying the matchRule condition, the request's path must begin with the
                specified prefixMatch. prefixMatch must begin with a /. The value must be
                between 1 and 1024 characters. Only one of prefixMatch, fullPathMatch or
@@ -33627,6 +33747,8 @@ class URLMapPathMatcherRouteRuleMatchRuleArgs:
             pulumi.set(__self__, "ignore_case", ignore_case)
         if metadata_filters is not None:
             pulumi.set(__self__, "metadata_filters", metadata_filters)
+        if path_template_match is not None:
+            pulumi.set(__self__, "path_template_match", path_template_match)
         if prefix_match is not None:
             pulumi.set(__self__, "prefix_match", prefix_match)
         if query_parameter_matches is not None:
@@ -33699,6 +33821,25 @@ class URLMapPathMatcherRouteRuleMatchRuleArgs:
     @metadata_filters.setter
     def metadata_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs']]]]):
         pulumi.set(self, "metadata_filters", value)
+
+    @property
+    @pulumi.getter(name="pathTemplateMatch")
+    def path_template_match(self) -> Optional[pulumi.Input[str]]:
+        """
+        For satisfying the matchRule condition, the path of the request
+        must match the wildcard pattern specified in pathTemplateMatch
+        after removing any query parameters and anchor that may be part
+        of the original URL.
+        pathTemplateMatch must be between 1 and 255 characters
+        (inclusive).  The pattern specified by pathTemplateMatch may
+        have at most 5 wildcard operators and at most 5 variable
+        captures in total.
+        """
+        return pulumi.get(self, "path_template_match")
+
+    @path_template_match.setter
+    def path_template_match(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path_template_match", value)
 
     @property
     @pulumi.getter(name="prefixMatch")
@@ -34834,7 +34975,8 @@ class URLMapPathMatcherRouteRuleRouteActionTimeoutArgs:
 class URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
     def __init__(__self__, *,
                  host_rewrite: Optional[pulumi.Input[str]] = None,
-                 path_prefix_rewrite: Optional[pulumi.Input[str]] = None):
+                 path_prefix_rewrite: Optional[pulumi.Input[str]] = None,
+                 path_template_rewrite: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] host_rewrite: Prior to forwarding the request to the selected service, the request's host header is replaced
                with contents of hostRewrite.
@@ -34842,11 +34984,24 @@ class URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
         :param pulumi.Input[str] path_prefix_rewrite: Prior to forwarding the request to the selected backend service, the matching portion of the
                request's path is replaced by pathPrefixRewrite.
                The value must be between 1 and 1024 characters.
+        :param pulumi.Input[str] path_template_rewrite: Prior to forwarding the request to the selected origin, if the
+               request matched a pathTemplateMatch, the matching portion of the
+               request's path is replaced re-written using the pattern specified
+               by pathTemplateRewrite.
+               pathTemplateRewrite must be between 1 and 255 characters
+               (inclusive), must start with a '/', and must only use variables
+               captured by the route's pathTemplate matchers.
+               pathTemplateRewrite may only be used when all of a route's
+               MatchRules specify pathTemplate.
+               Only one of pathPrefixRewrite and pathTemplateRewrite may be
+               specified.
         """
         if host_rewrite is not None:
             pulumi.set(__self__, "host_rewrite", host_rewrite)
         if path_prefix_rewrite is not None:
             pulumi.set(__self__, "path_prefix_rewrite", path_prefix_rewrite)
+        if path_template_rewrite is not None:
+            pulumi.set(__self__, "path_template_rewrite", path_template_rewrite)
 
     @property
     @pulumi.getter(name="hostRewrite")
@@ -34875,6 +35030,28 @@ class URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs:
     @path_prefix_rewrite.setter
     def path_prefix_rewrite(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path_prefix_rewrite", value)
+
+    @property
+    @pulumi.getter(name="pathTemplateRewrite")
+    def path_template_rewrite(self) -> Optional[pulumi.Input[str]]:
+        """
+        Prior to forwarding the request to the selected origin, if the
+        request matched a pathTemplateMatch, the matching portion of the
+        request's path is replaced re-written using the pattern specified
+        by pathTemplateRewrite.
+        pathTemplateRewrite must be between 1 and 255 characters
+        (inclusive), must start with a '/', and must only use variables
+        captured by the route's pathTemplate matchers.
+        pathTemplateRewrite may only be used when all of a route's
+        MatchRules specify pathTemplate.
+        Only one of pathPrefixRewrite and pathTemplateRewrite may be
+        specified.
+        """
+        return pulumi.get(self, "path_template_rewrite")
+
+    @path_template_rewrite.setter
+    def path_template_rewrite(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path_template_rewrite", value)
 
 
 @pulumi.input_type

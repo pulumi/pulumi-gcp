@@ -32,6 +32,7 @@ public final class GetFunctionResult {
     private List<GetFunctionServiceConfig> serviceConfigs;
     private String state;
     private String updateTime;
+    private String url;
 
     private GetFunctionResult() {}
     public List<GetFunctionBuildConfig> buildConfigs() {
@@ -74,6 +75,9 @@ public final class GetFunctionResult {
     public String updateTime() {
         return this.updateTime;
     }
+    public String url() {
+        return this.url;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -96,6 +100,7 @@ public final class GetFunctionResult {
         private List<GetFunctionServiceConfig> serviceConfigs;
         private String state;
         private String updateTime;
+        private String url;
         public Builder() {}
         public Builder(GetFunctionResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -111,6 +116,7 @@ public final class GetFunctionResult {
     	      this.serviceConfigs = defaults.serviceConfigs;
     	      this.state = defaults.state;
     	      this.updateTime = defaults.updateTime;
+    	      this.url = defaults.url;
         }
 
         @CustomType.Setter
@@ -182,6 +188,11 @@ public final class GetFunctionResult {
             this.updateTime = Objects.requireNonNull(updateTime);
             return this;
         }
+        @CustomType.Setter
+        public Builder url(String url) {
+            this.url = Objects.requireNonNull(url);
+            return this;
+        }
         public GetFunctionResult build() {
             final var o = new GetFunctionResult();
             o.buildConfigs = buildConfigs;
@@ -196,6 +207,7 @@ public final class GetFunctionResult {
             o.serviceConfigs = serviceConfigs;
             o.state = state;
             o.updateTime = updateTime;
+            o.url = url;
             return o;
         }
     }

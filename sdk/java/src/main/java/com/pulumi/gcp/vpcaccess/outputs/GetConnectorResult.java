@@ -14,6 +14,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetConnectorResult {
+    private List<String> connectedProjects;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -34,6 +35,9 @@ public final class GetConnectorResult {
     private List<GetConnectorSubnet> subnets;
 
     private GetConnectorResult() {}
+    public List<String> connectedProjects() {
+        return this.connectedProjects;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -90,6 +94,7 @@ public final class GetConnectorResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<String> connectedProjects;
         private String id;
         private String ipCidrRange;
         private String machineType;
@@ -107,6 +112,7 @@ public final class GetConnectorResult {
         public Builder() {}
         public Builder(GetConnectorResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.connectedProjects = defaults.connectedProjects;
     	      this.id = defaults.id;
     	      this.ipCidrRange = defaults.ipCidrRange;
     	      this.machineType = defaults.machineType;
@@ -123,6 +129,14 @@ public final class GetConnectorResult {
     	      this.subnets = defaults.subnets;
         }
 
+        @CustomType.Setter
+        public Builder connectedProjects(List<String> connectedProjects) {
+            this.connectedProjects = Objects.requireNonNull(connectedProjects);
+            return this;
+        }
+        public Builder connectedProjects(String... connectedProjects) {
+            return connectedProjects(List.of(connectedProjects));
+        }
         @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
@@ -198,6 +212,7 @@ public final class GetConnectorResult {
         }
         public GetConnectorResult build() {
             final var o = new GetConnectorResult();
+            o.connectedProjects = connectedProjects;
             o.id = id;
             o.ipCidrRange = ipCidrRange;
             o.machineType = machineType;

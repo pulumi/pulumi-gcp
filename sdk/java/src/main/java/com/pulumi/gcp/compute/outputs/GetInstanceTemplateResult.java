@@ -121,12 +121,6 @@ public final class GetInstanceTemplateResult {
      * 
      */
     private String namePrefix;
-    /**
-     * @return Networks to attach to instances created from
-     * this template. This can be specified multiple times for multiple networks.
-     * Structure is documented below.
-     * 
-     */
     private List<GetInstanceTemplateNetworkInterface> networkInterfaces;
     /**
      * @return The network performance configuration setting
@@ -330,12 +324,6 @@ public final class GetInstanceTemplateResult {
     public String namePrefix() {
         return this.namePrefix;
     }
-    /**
-     * @return Networks to attach to instances created from
-     * this template. This can be specified multiple times for multiple networks.
-     * Structure is documented below.
-     * 
-     */
     public List<GetInstanceTemplateNetworkInterface> networkInterfaces() {
         return this.networkInterfaces;
     }

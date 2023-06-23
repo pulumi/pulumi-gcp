@@ -18,11 +18,14 @@ import com.pulumi.gcp.serviceAccount.inputs.GetAccountJwtPlainArgs;
 import com.pulumi.gcp.serviceAccount.inputs.GetAccountKeyArgs;
 import com.pulumi.gcp.serviceAccount.inputs.GetAccountKeyPlainArgs;
 import com.pulumi.gcp.serviceAccount.inputs.GetAccountPlainArgs;
+import com.pulumi.gcp.serviceAccount.inputs.GetIamPolicyArgs;
+import com.pulumi.gcp.serviceAccount.inputs.GetIamPolicyPlainArgs;
 import com.pulumi.gcp.serviceAccount.outputs.GetAccountAccessTokenResult;
 import com.pulumi.gcp.serviceAccount.outputs.GetAccountIdTokenResult;
 import com.pulumi.gcp.serviceAccount.outputs.GetAccountJwtResult;
 import com.pulumi.gcp.serviceAccount.outputs.GetAccountKeyResult;
 import com.pulumi.gcp.serviceAccount.outputs.GetAccountResult;
+import com.pulumi.gcp.serviceAccount.outputs.GetIamPolicyResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class ServiceAccountFunctions {
@@ -689,5 +692,153 @@ public final class ServiceAccountFunctions {
      */
     public static CompletableFuture<GetAccountKeyResult> getAccountKeyPlain(GetAccountKeyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:serviceAccount/getAccountKey:getAccountKey", TypeShape.of(GetAccountKeyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a service account.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceAccount.ServiceAccountFunctions;
+     * import com.pulumi.gcp.serviceAccount.inputs.GetIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = ServiceAccountFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+     *             .serviceAccountId(google_service_account.test_account().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetIamPolicyResult> getIamPolicy(GetIamPolicyArgs args) {
+        return getIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for a service account.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceAccount.ServiceAccountFunctions;
+     * import com.pulumi.gcp.serviceAccount.inputs.GetIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = ServiceAccountFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+     *             .serviceAccountId(google_service_account.test_account().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetIamPolicyResult> getIamPolicyPlain(GetIamPolicyPlainArgs args) {
+        return getIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for a service account.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceAccount.ServiceAccountFunctions;
+     * import com.pulumi.gcp.serviceAccount.inputs.GetIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = ServiceAccountFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+     *             .serviceAccountId(google_service_account.test_account().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetIamPolicyResult> getIamPolicy(GetIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:serviceAccount/getIamPolicy:getIamPolicy", TypeShape.of(GetIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a service account.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceAccount.ServiceAccountFunctions;
+     * import com.pulumi.gcp.serviceAccount.inputs.GetIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = ServiceAccountFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+     *             .serviceAccountId(google_service_account.test_account().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetIamPolicyResult> getIamPolicyPlain(GetIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:serviceAccount/getIamPolicy:getIamPolicy", TypeShape.of(GetIamPolicyResult.class), args, Utilities.withVersion(options));
     }
 }

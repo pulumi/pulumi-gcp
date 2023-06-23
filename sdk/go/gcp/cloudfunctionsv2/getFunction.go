@@ -77,6 +77,7 @@ type LookupFunctionResult struct {
 	ServiceConfigs []GetFunctionServiceConfig `pulumi:"serviceConfigs"`
 	State          string                     `pulumi:"state"`
 	UpdateTime     string                     `pulumi:"updateTime"`
+	Url            string                     `pulumi:"url"`
 }
 
 func LookupFunctionOutput(ctx *pulumi.Context, args LookupFunctionOutputArgs, opts ...pulumi.InvokeOption) LookupFunctionResultOutput {
@@ -171,6 +172,10 @@ func (o LookupFunctionResultOutput) State() pulumi.StringOutput {
 
 func (o LookupFunctionResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupFunctionResultOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFunctionResult) string { return v.Url }).(pulumi.StringOutput)
 }
 
 func init() {

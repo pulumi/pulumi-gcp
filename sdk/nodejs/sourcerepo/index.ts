@@ -10,6 +10,11 @@ export const getRepository: typeof import("./getRepository").getRepository = nul
 export const getRepositoryOutput: typeof import("./getRepository").getRepositoryOutput = null as any;
 utilities.lazyLoad(exports, ["getRepository","getRepositoryOutput"], () => require("./getRepository"));
 
+export { GetRepositoryIamPolicyArgs, GetRepositoryIamPolicyResult, GetRepositoryIamPolicyOutputArgs } from "./getRepositoryIamPolicy";
+export const getRepositoryIamPolicy: typeof import("./getRepositoryIamPolicy").getRepositoryIamPolicy = null as any;
+export const getRepositoryIamPolicyOutput: typeof import("./getRepositoryIamPolicy").getRepositoryIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRepositoryIamPolicy","getRepositoryIamPolicyOutput"], () => require("./getRepositoryIamPolicy"));
+
 export { RepositoryArgs, RepositoryState } from "./repository";
 export type Repository = import("./repository").Repository;
 export const Repository: typeof import("./repository").Repository = null as any;

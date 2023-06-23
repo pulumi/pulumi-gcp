@@ -20,7 +20,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
      */
     private @Nullable List<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoType> infoTypes;
     /**
-     * @return Primitive transformation to apply to the infoType.
+     * @return Apply the transformation to the entire field.
      * The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
      * Structure is documented below.
      * 
@@ -38,7 +38,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         return this.infoTypes == null ? List.of() : this.infoTypes;
     }
     /**
-     * @return Primitive transformation to apply to the infoType.
+     * @return Apply the transformation to the entire field.
      * The `primitive_transformation` block must only contain one argument, corresponding to the type of transformation.
      * Structure is documented below.
      * 

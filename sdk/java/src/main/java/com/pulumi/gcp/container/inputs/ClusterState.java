@@ -219,14 +219,14 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+     * The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
      * 
      */
     @Import(name="datapathProvider")
     private @Nullable Output<String> datapathProvider;
 
     /**
-     * @return The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+     * @return The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
      * 
      */
     public Optional<Output<String>> datapathProvider() {
@@ -1668,7 +1668,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param datapathProvider The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+         * @param datapathProvider The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
          * 
          * @return builder
          * 
@@ -1679,7 +1679,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param datapathProvider The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+         * @param datapathProvider The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
          * 
          * @return builder
          * 

@@ -16,6 +16,7 @@ from .environment_iam_binding import *
 from .environment_iam_member import *
 from .environment_iam_policy import *
 from .flowhook import *
+from .get_environment_iam_policy import *
 from .instance import *
 from .instance_attachment import *
 from .keystores_aliases_key_cert_file import *

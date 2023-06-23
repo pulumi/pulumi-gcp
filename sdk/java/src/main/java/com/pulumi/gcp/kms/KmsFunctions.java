@@ -8,6 +8,8 @@ import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
+import com.pulumi.gcp.kms.inputs.GetCryptoKeyIamPolicyArgs;
+import com.pulumi.gcp.kms.inputs.GetCryptoKeyIamPolicyPlainArgs;
 import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyArgs;
 import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyPlainArgs;
 import com.pulumi.gcp.kms.inputs.GetKMSCryptoKeyVersionArgs;
@@ -20,15 +22,167 @@ import com.pulumi.gcp.kms.inputs.GetKMSSecretAsymmetricPlainArgs;
 import com.pulumi.gcp.kms.inputs.GetKMSSecretCiphertextArgs;
 import com.pulumi.gcp.kms.inputs.GetKMSSecretCiphertextPlainArgs;
 import com.pulumi.gcp.kms.inputs.GetKMSSecretPlainArgs;
+import com.pulumi.gcp.kms.inputs.GetKeyRingIamPolicyArgs;
+import com.pulumi.gcp.kms.inputs.GetKeyRingIamPolicyPlainArgs;
+import com.pulumi.gcp.kms.outputs.GetCryptoKeyIamPolicyResult;
 import com.pulumi.gcp.kms.outputs.GetKMSCryptoKeyResult;
 import com.pulumi.gcp.kms.outputs.GetKMSCryptoKeyVersionResult;
 import com.pulumi.gcp.kms.outputs.GetKMSKeyRingResult;
 import com.pulumi.gcp.kms.outputs.GetKMSSecretAsymmetricResult;
 import com.pulumi.gcp.kms.outputs.GetKMSSecretCiphertextResult;
 import com.pulumi.gcp.kms.outputs.GetKMSSecretResult;
+import com.pulumi.gcp.kms.outputs.GetKeyRingIamPolicyResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class KmsFunctions {
+    /**
+     * Retrieves the current IAM policy data for a Google Cloud KMS crypto key.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetCryptoKeyIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = KmsFunctions.getCryptoKeyIamPolicy(GetCryptoKeyIamPolicyArgs.builder()
+     *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetCryptoKeyIamPolicyResult> getCryptoKeyIamPolicy(GetCryptoKeyIamPolicyArgs args) {
+        return getCryptoKeyIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for a Google Cloud KMS crypto key.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetCryptoKeyIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = KmsFunctions.getCryptoKeyIamPolicy(GetCryptoKeyIamPolicyArgs.builder()
+     *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetCryptoKeyIamPolicyResult> getCryptoKeyIamPolicyPlain(GetCryptoKeyIamPolicyPlainArgs args) {
+        return getCryptoKeyIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for a Google Cloud KMS crypto key.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetCryptoKeyIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = KmsFunctions.getCryptoKeyIamPolicy(GetCryptoKeyIamPolicyArgs.builder()
+     *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetCryptoKeyIamPolicyResult> getCryptoKeyIamPolicy(GetCryptoKeyIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy", TypeShape.of(GetCryptoKeyIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a Google Cloud KMS crypto key.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetCryptoKeyIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = KmsFunctions.getCryptoKeyIamPolicy(GetCryptoKeyIamPolicyArgs.builder()
+     *             .cryptoKeyId(google_kms_crypto_key.crypto_key().id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetCryptoKeyIamPolicyResult> getCryptoKeyIamPolicyPlain(GetCryptoKeyIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy", TypeShape.of(GetCryptoKeyIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Provides access to a Google Cloud Platform KMS CryptoKey. For more information see
      * [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key)
@@ -920,5 +1074,153 @@ public final class KmsFunctions {
      */
     public static CompletableFuture<GetKMSSecretCiphertextResult> getKMSSecretCiphertextPlain(GetKMSSecretCiphertextPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", TypeShape.of(GetKMSSecretCiphertextResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a Google Cloud KMS key ring.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKeyRingIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testKeyRingIamPolicy = KmsFunctions.getKeyRingIamPolicy(GetKeyRingIamPolicyArgs.builder()
+     *             .keyRingId(&#34;{project_id}/{location_name}/{key_ring_name}&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetKeyRingIamPolicyResult> getKeyRingIamPolicy(GetKeyRingIamPolicyArgs args) {
+        return getKeyRingIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for a Google Cloud KMS key ring.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKeyRingIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testKeyRingIamPolicy = KmsFunctions.getKeyRingIamPolicy(GetKeyRingIamPolicyArgs.builder()
+     *             .keyRingId(&#34;{project_id}/{location_name}/{key_ring_name}&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetKeyRingIamPolicyResult> getKeyRingIamPolicyPlain(GetKeyRingIamPolicyPlainArgs args) {
+        return getKeyRingIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for a Google Cloud KMS key ring.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKeyRingIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testKeyRingIamPolicy = KmsFunctions.getKeyRingIamPolicy(GetKeyRingIamPolicyArgs.builder()
+     *             .keyRingId(&#34;{project_id}/{location_name}/{key_ring_name}&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetKeyRingIamPolicyResult> getKeyRingIamPolicy(GetKeyRingIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy", TypeShape.of(GetKeyRingIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a Google Cloud KMS key ring.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKeyRingIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testKeyRingIamPolicy = KmsFunctions.getKeyRingIamPolicy(GetKeyRingIamPolicyArgs.builder()
+     *             .keyRingId(&#34;{project_id}/{location_name}/{key_ring_name}&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetKeyRingIamPolicyResult> getKeyRingIamPolicyPlain(GetKeyRingIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy", TypeShape.of(GetKeyRingIamPolicyResult.class), args, Utilities.withVersion(options));
     }
 }

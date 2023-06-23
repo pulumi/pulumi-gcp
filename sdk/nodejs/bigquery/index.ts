@@ -65,10 +65,25 @@ export type DatasetIamPolicy = import("./datasetIamPolicy").DatasetIamPolicy;
 export const DatasetIamPolicy: typeof import("./datasetIamPolicy").DatasetIamPolicy = null as any;
 utilities.lazyLoad(exports, ["DatasetIamPolicy"], () => require("./datasetIamPolicy"));
 
+export { GetConnectionIamPolicyArgs, GetConnectionIamPolicyResult, GetConnectionIamPolicyOutputArgs } from "./getConnectionIamPolicy";
+export const getConnectionIamPolicy: typeof import("./getConnectionIamPolicy").getConnectionIamPolicy = null as any;
+export const getConnectionIamPolicyOutput: typeof import("./getConnectionIamPolicy").getConnectionIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getConnectionIamPolicy","getConnectionIamPolicyOutput"], () => require("./getConnectionIamPolicy"));
+
+export { GetDatasetIamPolicyArgs, GetDatasetIamPolicyResult, GetDatasetIamPolicyOutputArgs } from "./getDatasetIamPolicy";
+export const getDatasetIamPolicy: typeof import("./getDatasetIamPolicy").getDatasetIamPolicy = null as any;
+export const getDatasetIamPolicyOutput: typeof import("./getDatasetIamPolicy").getDatasetIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getDatasetIamPolicy","getDatasetIamPolicyOutput"], () => require("./getDatasetIamPolicy"));
+
 export { GetDefaultServiceAccountArgs, GetDefaultServiceAccountResult, GetDefaultServiceAccountOutputArgs } from "./getDefaultServiceAccount";
 export const getDefaultServiceAccount: typeof import("./getDefaultServiceAccount").getDefaultServiceAccount = null as any;
 export const getDefaultServiceAccountOutput: typeof import("./getDefaultServiceAccount").getDefaultServiceAccountOutput = null as any;
 utilities.lazyLoad(exports, ["getDefaultServiceAccount","getDefaultServiceAccountOutput"], () => require("./getDefaultServiceAccount"));
+
+export { GetTableIamPolicyArgs, GetTableIamPolicyResult, GetTableIamPolicyOutputArgs } from "./getTableIamPolicy";
+export const getTableIamPolicy: typeof import("./getTableIamPolicy").getTableIamPolicy = null as any;
+export const getTableIamPolicyOutput: typeof import("./getTableIamPolicy").getTableIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getTableIamPolicy","getTableIamPolicyOutput"], () => require("./getTableIamPolicy"));
 
 export { IamBindingArgs, IamBindingState } from "./iamBinding";
 export type IamBinding = import("./iamBinding").IamBinding;

@@ -31,11 +31,18 @@ import * as utilities from "../utilities";
  * }, {
  *     provider: google_beta,
  * });
- * const dataformRespository = new gcp.dataform.Repository("dataformRespository", {gitRemoteSettings: {
- *     url: gitRepository.url,
- *     defaultBranch: "main",
- *     authenticationTokenSecretVersion: secretVersion.id,
- * }}, {
+ * const dataformRespository = new gcp.dataform.Repository("dataformRespository", {
+ *     gitRemoteSettings: {
+ *         url: gitRepository.url,
+ *         defaultBranch: "main",
+ *         authenticationTokenSecretVersion: secretVersion.id,
+ *     },
+ *     workspaceCompilationOverrides: {
+ *         defaultDatabase: "database",
+ *         schemaSuffix: "_suffix",
+ *         tablePrefix: "prefix_",
+ *     },
+ * }, {
  *     provider: google_beta,
  * });
  * ```
@@ -109,6 +116,11 @@ export class Repository extends pulumi.CustomResource {
      * A reference to the region
      */
     public readonly region!: pulumi.Output<string | undefined>;
+    /**
+     * Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+     * Structure is documented below.
+     */
+    public readonly workspaceCompilationOverrides!: pulumi.Output<outputs.dataform.RepositoryWorkspaceCompilationOverrides | undefined>;
 
     /**
      * Create a Repository resource with the given unique name, arguments, and options.
@@ -127,12 +139,14 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["workspaceCompilationOverrides"] = state ? state.workspaceCompilationOverrides : undefined;
         } else {
             const args = argsOrState as RepositoryArgs | undefined;
             resourceInputs["gitRemoteSettings"] = args ? args.gitRemoteSettings : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["workspaceCompilationOverrides"] = args ? args.workspaceCompilationOverrides : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Repository.__pulumiType, name, resourceInputs, opts);
@@ -164,6 +178,11 @@ export interface RepositoryState {
      * A reference to the region
      */
     region?: pulumi.Input<string>;
+    /**
+     * Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+     * Structure is documented below.
+     */
+    workspaceCompilationOverrides?: pulumi.Input<inputs.dataform.RepositoryWorkspaceCompilationOverrides>;
 }
 
 /**
@@ -191,4 +210,9 @@ export interface RepositoryArgs {
      * A reference to the region
      */
     region?: pulumi.Input<string>;
+    /**
+     * Optional. If set, fields of workspaceCompilationOverrides override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results.
+     * Structure is documented below.
+     */
+    workspaceCompilationOverrides?: pulumi.Input<inputs.dataform.RepositoryWorkspaceCompilationOverrides>;
 }

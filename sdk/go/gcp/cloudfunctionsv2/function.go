@@ -364,6 +364,8 @@ type Function struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// The last update timestamp of a Cloud Function.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Output only. The deployed url for the function.
+	Url pulumi.StringOutput `pulumi:"url"`
 }
 
 // NewFunction registers a new resource with the given unique name, arguments, and options.
@@ -426,6 +428,8 @@ type functionState struct {
 	State *string `pulumi:"state"`
 	// The last update timestamp of a Cloud Function.
 	UpdateTime *string `pulumi:"updateTime"`
+	// Output only. The deployed url for the function.
+	Url *string `pulumi:"url"`
 }
 
 type FunctionState struct {
@@ -460,6 +464,8 @@ type FunctionState struct {
 	State pulumi.StringPtrInput
 	// The last update timestamp of a Cloud Function.
 	UpdateTime pulumi.StringPtrInput
+	// Output only. The deployed url for the function.
+	Url pulumi.StringPtrInput
 }
 
 func (FunctionState) ElementType() reflect.Type {
@@ -672,6 +678,11 @@ func (o FunctionOutput) State() pulumi.StringOutput {
 // The last update timestamp of a Cloud Function.
 func (o FunctionOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Output only. The deployed url for the function.
+func (o FunctionOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Url }).(pulumi.StringOutput)
 }
 
 type FunctionArrayOutput struct{ *pulumi.OutputState }

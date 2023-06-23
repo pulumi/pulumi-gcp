@@ -10,6 +10,16 @@ export type Environment = import("./environment").Environment;
 export const Environment: typeof import("./environment").Environment = null as any;
 utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
 
+export { GetInstanceIamPolicyArgs, GetInstanceIamPolicyResult, GetInstanceIamPolicyOutputArgs } from "./getInstanceIamPolicy";
+export const getInstanceIamPolicy: typeof import("./getInstanceIamPolicy").getInstanceIamPolicy = null as any;
+export const getInstanceIamPolicyOutput: typeof import("./getInstanceIamPolicy").getInstanceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceIamPolicy","getInstanceIamPolicyOutput"], () => require("./getInstanceIamPolicy"));
+
+export { GetRuntimeIamPolicyArgs, GetRuntimeIamPolicyResult, GetRuntimeIamPolicyOutputArgs } from "./getRuntimeIamPolicy";
+export const getRuntimeIamPolicy: typeof import("./getRuntimeIamPolicy").getRuntimeIamPolicy = null as any;
+export const getRuntimeIamPolicyOutput: typeof import("./getRuntimeIamPolicy").getRuntimeIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRuntimeIamPolicy","getRuntimeIamPolicyOutput"], () => require("./getRuntimeIamPolicy"));
+
 export { InstanceArgs, InstanceState } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;

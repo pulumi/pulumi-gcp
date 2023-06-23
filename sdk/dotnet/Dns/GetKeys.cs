@@ -148,7 +148,7 @@ namespace Pulumi.Gcp.Dns
     public sealed class GetKeysResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
+        /// Unique identifier for the resource; defined by the server.
         /// </summary>
         public readonly string Id;
         /// <summary>

@@ -383,14 +383,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.databaseEncryption;
     }
     /**
-     * The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+     * The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
      * 
      */
     @Export(name="datapathProvider", type=String.class, parameters={})
     private Output<String> datapathProvider;
 
     /**
-     * @return The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+     * @return The desired datapath provider for this cluster. This is set to `LEGACY_DATAPATH` by default, which uses the IPTables-based kube-proxy implementation. Set to `ADVANCED_DATAPATH` to enable Dataplane v2.
      * 
      */
     public Output<String> datapathProvider() {

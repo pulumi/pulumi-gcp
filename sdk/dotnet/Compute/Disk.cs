@@ -292,6 +292,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Indicates how many IOPS must be provisioned for the disk.
+        /// Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
         /// </summary>
         [Output("provisionedIops")]
         public Output<int> ProvisionedIops { get; private set; } = null!;
@@ -589,6 +590,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Indicates how many IOPS must be provisioned for the disk.
+        /// Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
         /// </summary>
         [Input("provisionedIops")]
         public Input<int>? ProvisionedIops { get; set; }
@@ -837,6 +839,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Indicates how many IOPS must be provisioned for the disk.
+        /// Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
         /// </summary>
         [Input("provisionedIops")]
         public Input<int>? ProvisionedIops { get; set; }

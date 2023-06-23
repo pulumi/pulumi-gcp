@@ -21,7 +21,7 @@ class GetBillingAccountResult:
     """
     A collection of values returned by getBillingAccount.
     """
-    def __init__(__self__, billing_account=None, display_name=None, id=None, name=None, open=None, project_ids=None):
+    def __init__(__self__, billing_account=None, display_name=None, id=None, lookup_projects=None, name=None, open=None, project_ids=None):
         if billing_account and not isinstance(billing_account, str):
             raise TypeError("Expected argument 'billing_account' to be a str")
         pulumi.set(__self__, "billing_account", billing_account)
@@ -31,6 +31,9 @@ class GetBillingAccountResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if lookup_projects and not isinstance(lookup_projects, bool):
+            raise TypeError("Expected argument 'lookup_projects' to be a bool")
+        pulumi.set(__self__, "lookup_projects", lookup_projects)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -60,6 +63,11 @@ class GetBillingAccountResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="lookupProjects")
+    def lookup_projects(self) -> Optional[bool]:
+        return pulumi.get(self, "lookup_projects")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -76,7 +84,8 @@ class GetBillingAccountResult:
     @pulumi.getter(name="projectIds")
     def project_ids(self) -> Sequence[str]:
         """
-        The IDs of any projects associated with the billing account.
+        The IDs of any projects associated with the billing account. `lookup_projects` must not be false
+        for this to be populated.
         """
         return pulumi.get(self, "project_ids")
 
@@ -90,6 +99,7 @@ class AwaitableGetBillingAccountResult(GetBillingAccountResult):
             billing_account=self.billing_account,
             display_name=self.display_name,
             id=self.id,
+            lookup_projects=self.lookup_projects,
             name=self.name,
             open=self.open,
             project_ids=self.project_ids)
@@ -97,6 +107,7 @@ class AwaitableGetBillingAccountResult(GetBillingAccountResult):
 
 def get_billing_account(billing_account: Optional[str] = None,
                         display_name: Optional[str] = None,
+                        lookup_projects: Optional[bool] = None,
                         open: Optional[bool] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBillingAccountResult:
     """
@@ -117,13 +128,16 @@ def get_billing_account(billing_account: Optional[str] = None,
 
     :param str billing_account: The name of the billing account in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
     :param str display_name: The display name of the billing account.
-    :param bool open: `true` if the billing account is open, `false` if the billing account is closed.
+    :param bool lookup_projects: `true` if projects associated with the billing account should be read, `false` if this step
+           should be skipped. Setting `false` may be useful if the user permissions do not allow listing projects. Defaults to `true`.
            
            > **NOTE:** One of `billing_account` or `display_name` must be specified.
+    :param bool open: `true` if the billing account is open, `false` if the billing account is closed.
     """
     __args__ = dict()
     __args__['billingAccount'] = billing_account
     __args__['displayName'] = display_name
+    __args__['lookupProjects'] = lookup_projects
     __args__['open'] = open
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getBillingAccount:getBillingAccount', __args__, opts=opts, typ=GetBillingAccountResult).value
@@ -132,6 +146,7 @@ def get_billing_account(billing_account: Optional[str] = None,
         billing_account=__ret__.billing_account,
         display_name=__ret__.display_name,
         id=__ret__.id,
+        lookup_projects=__ret__.lookup_projects,
         name=__ret__.name,
         open=__ret__.open,
         project_ids=__ret__.project_ids)
@@ -140,6 +155,7 @@ def get_billing_account(billing_account: Optional[str] = None,
 @_utilities.lift_output_func(get_billing_account)
 def get_billing_account_output(billing_account: Optional[pulumi.Input[Optional[str]]] = None,
                                display_name: Optional[pulumi.Input[Optional[str]]] = None,
+                               lookup_projects: Optional[pulumi.Input[Optional[bool]]] = None,
                                open: Optional[pulumi.Input[Optional[bool]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBillingAccountResult]:
     """
@@ -160,8 +176,10 @@ def get_billing_account_output(billing_account: Optional[pulumi.Input[Optional[s
 
     :param str billing_account: The name of the billing account in the form `{billing_account_id}` or `billingAccounts/{billing_account_id}`.
     :param str display_name: The display name of the billing account.
-    :param bool open: `true` if the billing account is open, `false` if the billing account is closed.
+    :param bool lookup_projects: `true` if projects associated with the billing account should be read, `false` if this step
+           should be skipped. Setting `false` may be useful if the user permissions do not allow listing projects. Defaults to `true`.
            
            > **NOTE:** One of `billing_account` or `display_name` must be specified.
+    :param bool open: `true` if the billing account is open, `false` if the billing account is closed.
     """
     ...

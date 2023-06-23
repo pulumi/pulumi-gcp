@@ -19,6 +19,11 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Optional custom sensitivity for this InfoType. This only applies to data profiling.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScore? SensitivityScore;
+        /// <summary>
         /// Version of the information type to use. By default, the version is set to stable.
         /// </summary>
         public readonly string? Version;
@@ -27,9 +32,12 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         private PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType(
             string name,
 
+            Outputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeSensitivityScore? sensitivityScore,
+
             string? version)
         {
             Name = name;
+            SensitivityScore = sensitivityScore;
             Version = version;
         }
     }

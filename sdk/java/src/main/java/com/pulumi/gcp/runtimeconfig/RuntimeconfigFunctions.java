@@ -9,9 +9,12 @@ import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.runtimeconfig.inputs.GetConfigArgs;
+import com.pulumi.gcp.runtimeconfig.inputs.GetConfigIamPolicyArgs;
+import com.pulumi.gcp.runtimeconfig.inputs.GetConfigIamPolicyPlainArgs;
 import com.pulumi.gcp.runtimeconfig.inputs.GetConfigPlainArgs;
 import com.pulumi.gcp.runtimeconfig.inputs.GetVariableArgs;
 import com.pulumi.gcp.runtimeconfig.inputs.GetVariablePlainArgs;
+import com.pulumi.gcp.runtimeconfig.outputs.GetConfigIamPolicyResult;
 import com.pulumi.gcp.runtimeconfig.outputs.GetConfigResult;
 import com.pulumi.gcp.runtimeconfig.outputs.GetVariableResult;
 import java.util.concurrent.CompletableFuture;
@@ -156,6 +159,18 @@ public final class RuntimeconfigFunctions {
      */
     public static CompletableFuture<GetConfigResult> getConfigPlain(GetConfigPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:runtimeconfig/getConfig:getConfig", TypeShape.of(GetConfigResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetConfigIamPolicyResult> getConfigIamPolicy(GetConfigIamPolicyArgs args) {
+        return getConfigIamPolicy(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetConfigIamPolicyResult> getConfigIamPolicyPlain(GetConfigIamPolicyPlainArgs args) {
+        return getConfigIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetConfigIamPolicyResult> getConfigIamPolicy(GetConfigIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:runtimeconfig/getConfigIamPolicy:getConfigIamPolicy", TypeShape.of(GetConfigIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetConfigIamPolicyResult> getConfigIamPolicyPlain(GetConfigIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:runtimeconfig/getConfigIamPolicy:getConfigIamPolicy", TypeShape.of(GetConfigIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage

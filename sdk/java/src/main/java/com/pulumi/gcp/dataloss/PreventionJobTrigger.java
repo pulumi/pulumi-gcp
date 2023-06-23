@@ -593,6 +593,69 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Dlp Job Trigger With Id
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataloss.PreventionJobTrigger;
+ * import com.pulumi.gcp.dataloss.PreventionJobTriggerArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerArgs;
+ * import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerScheduleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var withTriggerId = new PreventionJobTrigger(&#34;withTriggerId&#34;, PreventionJobTriggerArgs.builder()        
+ *             .description(&#34;Starting description&#34;)
+ *             .displayName(&#34;display&#34;)
+ *             .inspectJob(PreventionJobTriggerInspectJobArgs.builder()
+ *                 .actions(PreventionJobTriggerInspectJobActionArgs.builder()
+ *                     .saveFindings(PreventionJobTriggerInspectJobActionSaveFindingsArgs.builder()
+ *                         .outputConfig(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs.builder()
+ *                             .table(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs.builder()
+ *                                 .datasetId(&#34;dataset123&#34;)
+ *                                 .projectId(&#34;project&#34;)
+ *                                 .build())
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .inspectTemplateName(&#34;fake&#34;)
+ *                 .storageConfig(PreventionJobTriggerInspectJobStorageConfigArgs.builder()
+ *                     .cloudStorageOptions(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs.builder()
+ *                         .fileSet(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs.builder()
+ *                             .url(&#34;gs://mybucket/directory/&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .parent(&#34;projects/my-project-name&#34;)
+ *             .triggerId(&#34;id-&#34;)
+ *             .triggers(PreventionJobTriggerTriggerArgs.builder()
+ *                 .schedule(PreventionJobTriggerTriggerScheduleArgs.builder()
+ *                     .recurrencePeriodDuration(&#34;86400s&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -824,6 +887,24 @@ public class PreventionJobTrigger extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> status() {
         return Codegen.optional(this.status);
+    }
+    /**
+     * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+.
+     * The maximum length is 100 characters. Can be empty to allow the system to generate one.
+     * 
+     */
+    @Export(name="triggerId", type=String.class, parameters={})
+    private Output<String> triggerId;
+
+    /**
+     * @return The trigger id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+.
+     * The maximum length is 100 characters. Can be empty to allow the system to generate one.
+     * 
+     */
+    public Output<String> triggerId() {
+        return this.triggerId;
     }
     /**
      * What event needs to occur for a new job to be started.

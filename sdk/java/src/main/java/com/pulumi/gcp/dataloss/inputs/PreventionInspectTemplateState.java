@@ -147,6 +147,25 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
         return Optional.ofNullable(this.parent);
     }
 
+    /**
+     * The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+     * 100 characters. Can be empty to allow the system to generate one.
+     * 
+     */
+    @Import(name="templateId")
+    private @Nullable Output<String> templateId;
+
+    /**
+     * @return The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+     * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+     * 100 characters. Can be empty to allow the system to generate one.
+     * 
+     */
+    public Optional<Output<String>> templateId() {
+        return Optional.ofNullable(this.templateId);
+    }
+
     private PreventionInspectTemplateState() {}
 
     private PreventionInspectTemplateState(PreventionInspectTemplateState $) {
@@ -155,6 +174,7 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
         this.inspectConfig = $.inspectConfig;
         this.name = $.name;
         this.parent = $.parent;
+        this.templateId = $.templateId;
     }
 
     public static Builder builder() {
@@ -334,6 +354,31 @@ public final class PreventionInspectTemplateState extends com.pulumi.resources.R
          */
         public Builder parent(String parent) {
             return parent(Output.of(parent));
+        }
+
+        /**
+         * @param templateId The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+         * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+         * 100 characters. Can be empty to allow the system to generate one.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templateId(@Nullable Output<String> templateId) {
+            $.templateId = templateId;
+            return this;
+        }
+
+        /**
+         * @param templateId The template id can contain uppercase and lowercase letters, numbers, and hyphens;
+         * that is, it must match the regular expression: [a-zA-Z\d-_]+. The maximum length is
+         * 100 characters. Can be empty to allow the system to generate one.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder templateId(String templateId) {
+            return templateId(Output.of(templateId));
         }
 
         public PreventionInspectTemplateState build() {

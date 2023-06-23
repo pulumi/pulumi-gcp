@@ -6,6 +6,8 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .environment import *
+from .get_instance_iam_policy import *
+from .get_runtime_iam_policy import *
 from .instance import *
 from .instance_iam_binding import *
 from .instance_iam_member import *

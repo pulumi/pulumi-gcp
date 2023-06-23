@@ -60,6 +60,11 @@ export type Flowhook = import("./flowhook").Flowhook;
 export const Flowhook: typeof import("./flowhook").Flowhook = null as any;
 utilities.lazyLoad(exports, ["Flowhook"], () => require("./flowhook"));
 
+export { GetEnvironmentIamPolicyArgs, GetEnvironmentIamPolicyResult, GetEnvironmentIamPolicyOutputArgs } from "./getEnvironmentIamPolicy";
+export const getEnvironmentIamPolicy: typeof import("./getEnvironmentIamPolicy").getEnvironmentIamPolicy = null as any;
+export const getEnvironmentIamPolicyOutput: typeof import("./getEnvironmentIamPolicy").getEnvironmentIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getEnvironmentIamPolicy","getEnvironmentIamPolicyOutput"], () => require("./getEnvironmentIamPolicy"));
+
 export { InstanceArgs, InstanceState } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;

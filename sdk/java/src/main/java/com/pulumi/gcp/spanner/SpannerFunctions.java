@@ -8,12 +8,174 @@ import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
+import com.pulumi.gcp.spanner.inputs.GetDatabaseIamPolicyArgs;
+import com.pulumi.gcp.spanner.inputs.GetDatabaseIamPolicyPlainArgs;
 import com.pulumi.gcp.spanner.inputs.GetInstanceArgs;
+import com.pulumi.gcp.spanner.inputs.GetInstanceIamPolicyArgs;
+import com.pulumi.gcp.spanner.inputs.GetInstanceIamPolicyPlainArgs;
 import com.pulumi.gcp.spanner.inputs.GetInstancePlainArgs;
+import com.pulumi.gcp.spanner.outputs.GetDatabaseIamPolicyResult;
+import com.pulumi.gcp.spanner.outputs.GetInstanceIamPolicyResult;
 import com.pulumi.gcp.spanner.outputs.GetInstanceResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class SpannerFunctions {
+    /**
+     * Retrieves the current IAM policy data for a Spanner database.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.spanner.SpannerFunctions;
+     * import com.pulumi.gcp.spanner.inputs.GetDatabaseIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = SpannerFunctions.getDatabaseIamPolicy(GetDatabaseIamPolicyArgs.builder()
+     *             .project(google_spanner_database.database().project())
+     *             .database(google_spanner_database.database().name())
+     *             .instance(google_spanner_database.database().instance())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDatabaseIamPolicyResult> getDatabaseIamPolicy(GetDatabaseIamPolicyArgs args) {
+        return getDatabaseIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for a Spanner database.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.spanner.SpannerFunctions;
+     * import com.pulumi.gcp.spanner.inputs.GetDatabaseIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = SpannerFunctions.getDatabaseIamPolicy(GetDatabaseIamPolicyArgs.builder()
+     *             .project(google_spanner_database.database().project())
+     *             .database(google_spanner_database.database().name())
+     *             .instance(google_spanner_database.database().instance())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDatabaseIamPolicyResult> getDatabaseIamPolicyPlain(GetDatabaseIamPolicyPlainArgs args) {
+        return getDatabaseIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for a Spanner database.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.spanner.SpannerFunctions;
+     * import com.pulumi.gcp.spanner.inputs.GetDatabaseIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = SpannerFunctions.getDatabaseIamPolicy(GetDatabaseIamPolicyArgs.builder()
+     *             .project(google_spanner_database.database().project())
+     *             .database(google_spanner_database.database().name())
+     *             .instance(google_spanner_database.database().instance())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDatabaseIamPolicyResult> getDatabaseIamPolicy(GetDatabaseIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:spanner/getDatabaseIamPolicy:getDatabaseIamPolicy", TypeShape.of(GetDatabaseIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a Spanner database.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.spanner.SpannerFunctions;
+     * import com.pulumi.gcp.spanner.inputs.GetDatabaseIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = SpannerFunctions.getDatabaseIamPolicy(GetDatabaseIamPolicyArgs.builder()
+     *             .project(google_spanner_database.database().project())
+     *             .database(google_spanner_database.database().name())
+     *             .instance(google_spanner_database.database().instance())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDatabaseIamPolicyResult> getDatabaseIamPolicyPlain(GetDatabaseIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:spanner/getDatabaseIamPolicy:getDatabaseIamPolicy", TypeShape.of(GetDatabaseIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Get a spanner instance from Google Cloud by its name.
      * 
@@ -161,5 +323,157 @@ public final class SpannerFunctions {
      */
     public static CompletableFuture<GetInstanceResult> getInstancePlain(GetInstancePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:spanner/getInstance:getInstance", TypeShape.of(GetInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a Spanner instance.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.spanner.SpannerFunctions;
+     * import com.pulumi.gcp.spanner.inputs.GetInstanceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = SpannerFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
+     *             .project(google_spanner_instance.instance().project())
+     *             .instance(google_spanner_instance.instance().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInstanceIamPolicyResult> getInstanceIamPolicy(GetInstanceIamPolicyArgs args) {
+        return getInstanceIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for a Spanner instance.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.spanner.SpannerFunctions;
+     * import com.pulumi.gcp.spanner.inputs.GetInstanceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = SpannerFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
+     *             .project(google_spanner_instance.instance().project())
+     *             .instance(google_spanner_instance.instance().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInstanceIamPolicyResult> getInstanceIamPolicyPlain(GetInstanceIamPolicyPlainArgs args) {
+        return getInstanceIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for a Spanner instance.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.spanner.SpannerFunctions;
+     * import com.pulumi.gcp.spanner.inputs.GetInstanceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = SpannerFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
+     *             .project(google_spanner_instance.instance().project())
+     *             .instance(google_spanner_instance.instance().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetInstanceIamPolicyResult> getInstanceIamPolicy(GetInstanceIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:spanner/getInstanceIamPolicy:getInstanceIamPolicy", TypeShape.of(GetInstanceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a Spanner instance.
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.spanner.SpannerFunctions;
+     * import com.pulumi.gcp.spanner.inputs.GetInstanceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = SpannerFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
+     *             .project(google_spanner_instance.instance().project())
+     *             .instance(google_spanner_instance.instance().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetInstanceIamPolicyResult> getInstanceIamPolicyPlain(GetInstanceIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:spanner/getInstanceIamPolicy:getInstanceIamPolicy", TypeShape.of(GetInstanceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
 }

@@ -4649,6 +4649,722 @@ func (o AiTensorboardEncryptionSpecPtrOutput) KmsKeyName() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetAiIndexDeployedIndex struct {
+	DeployedIndexId string `pulumi:"deployedIndexId"`
+	IndexEndpoint   string `pulumi:"indexEndpoint"`
+}
+
+// GetAiIndexDeployedIndexInput is an input type that accepts GetAiIndexDeployedIndexArgs and GetAiIndexDeployedIndexOutput values.
+// You can construct a concrete instance of `GetAiIndexDeployedIndexInput` via:
+//
+//	GetAiIndexDeployedIndexArgs{...}
+type GetAiIndexDeployedIndexInput interface {
+	pulumi.Input
+
+	ToGetAiIndexDeployedIndexOutput() GetAiIndexDeployedIndexOutput
+	ToGetAiIndexDeployedIndexOutputWithContext(context.Context) GetAiIndexDeployedIndexOutput
+}
+
+type GetAiIndexDeployedIndexArgs struct {
+	DeployedIndexId pulumi.StringInput `pulumi:"deployedIndexId"`
+	IndexEndpoint   pulumi.StringInput `pulumi:"indexEndpoint"`
+}
+
+func (GetAiIndexDeployedIndexArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiIndexDeployedIndex)(nil)).Elem()
+}
+
+func (i GetAiIndexDeployedIndexArgs) ToGetAiIndexDeployedIndexOutput() GetAiIndexDeployedIndexOutput {
+	return i.ToGetAiIndexDeployedIndexOutputWithContext(context.Background())
+}
+
+func (i GetAiIndexDeployedIndexArgs) ToGetAiIndexDeployedIndexOutputWithContext(ctx context.Context) GetAiIndexDeployedIndexOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexDeployedIndexOutput)
+}
+
+// GetAiIndexDeployedIndexArrayInput is an input type that accepts GetAiIndexDeployedIndexArray and GetAiIndexDeployedIndexArrayOutput values.
+// You can construct a concrete instance of `GetAiIndexDeployedIndexArrayInput` via:
+//
+//	GetAiIndexDeployedIndexArray{ GetAiIndexDeployedIndexArgs{...} }
+type GetAiIndexDeployedIndexArrayInput interface {
+	pulumi.Input
+
+	ToGetAiIndexDeployedIndexArrayOutput() GetAiIndexDeployedIndexArrayOutput
+	ToGetAiIndexDeployedIndexArrayOutputWithContext(context.Context) GetAiIndexDeployedIndexArrayOutput
+}
+
+type GetAiIndexDeployedIndexArray []GetAiIndexDeployedIndexInput
+
+func (GetAiIndexDeployedIndexArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiIndexDeployedIndex)(nil)).Elem()
+}
+
+func (i GetAiIndexDeployedIndexArray) ToGetAiIndexDeployedIndexArrayOutput() GetAiIndexDeployedIndexArrayOutput {
+	return i.ToGetAiIndexDeployedIndexArrayOutputWithContext(context.Background())
+}
+
+func (i GetAiIndexDeployedIndexArray) ToGetAiIndexDeployedIndexArrayOutputWithContext(ctx context.Context) GetAiIndexDeployedIndexArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexDeployedIndexArrayOutput)
+}
+
+type GetAiIndexDeployedIndexOutput struct{ *pulumi.OutputState }
+
+func (GetAiIndexDeployedIndexOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiIndexDeployedIndex)(nil)).Elem()
+}
+
+func (o GetAiIndexDeployedIndexOutput) ToGetAiIndexDeployedIndexOutput() GetAiIndexDeployedIndexOutput {
+	return o
+}
+
+func (o GetAiIndexDeployedIndexOutput) ToGetAiIndexDeployedIndexOutputWithContext(ctx context.Context) GetAiIndexDeployedIndexOutput {
+	return o
+}
+
+func (o GetAiIndexDeployedIndexOutput) DeployedIndexId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiIndexDeployedIndex) string { return v.DeployedIndexId }).(pulumi.StringOutput)
+}
+
+func (o GetAiIndexDeployedIndexOutput) IndexEndpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiIndexDeployedIndex) string { return v.IndexEndpoint }).(pulumi.StringOutput)
+}
+
+type GetAiIndexDeployedIndexArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAiIndexDeployedIndexArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiIndexDeployedIndex)(nil)).Elem()
+}
+
+func (o GetAiIndexDeployedIndexArrayOutput) ToGetAiIndexDeployedIndexArrayOutput() GetAiIndexDeployedIndexArrayOutput {
+	return o
+}
+
+func (o GetAiIndexDeployedIndexArrayOutput) ToGetAiIndexDeployedIndexArrayOutputWithContext(ctx context.Context) GetAiIndexDeployedIndexArrayOutput {
+	return o
+}
+
+func (o GetAiIndexDeployedIndexArrayOutput) Index(i pulumi.IntInput) GetAiIndexDeployedIndexOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAiIndexDeployedIndex {
+		return vs[0].([]GetAiIndexDeployedIndex)[vs[1].(int)]
+	}).(GetAiIndexDeployedIndexOutput)
+}
+
+type GetAiIndexIndexStat struct {
+	ShardsCount  int    `pulumi:"shardsCount"`
+	VectorsCount string `pulumi:"vectorsCount"`
+}
+
+// GetAiIndexIndexStatInput is an input type that accepts GetAiIndexIndexStatArgs and GetAiIndexIndexStatOutput values.
+// You can construct a concrete instance of `GetAiIndexIndexStatInput` via:
+//
+//	GetAiIndexIndexStatArgs{...}
+type GetAiIndexIndexStatInput interface {
+	pulumi.Input
+
+	ToGetAiIndexIndexStatOutput() GetAiIndexIndexStatOutput
+	ToGetAiIndexIndexStatOutputWithContext(context.Context) GetAiIndexIndexStatOutput
+}
+
+type GetAiIndexIndexStatArgs struct {
+	ShardsCount  pulumi.IntInput    `pulumi:"shardsCount"`
+	VectorsCount pulumi.StringInput `pulumi:"vectorsCount"`
+}
+
+func (GetAiIndexIndexStatArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiIndexIndexStat)(nil)).Elem()
+}
+
+func (i GetAiIndexIndexStatArgs) ToGetAiIndexIndexStatOutput() GetAiIndexIndexStatOutput {
+	return i.ToGetAiIndexIndexStatOutputWithContext(context.Background())
+}
+
+func (i GetAiIndexIndexStatArgs) ToGetAiIndexIndexStatOutputWithContext(ctx context.Context) GetAiIndexIndexStatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexIndexStatOutput)
+}
+
+// GetAiIndexIndexStatArrayInput is an input type that accepts GetAiIndexIndexStatArray and GetAiIndexIndexStatArrayOutput values.
+// You can construct a concrete instance of `GetAiIndexIndexStatArrayInput` via:
+//
+//	GetAiIndexIndexStatArray{ GetAiIndexIndexStatArgs{...} }
+type GetAiIndexIndexStatArrayInput interface {
+	pulumi.Input
+
+	ToGetAiIndexIndexStatArrayOutput() GetAiIndexIndexStatArrayOutput
+	ToGetAiIndexIndexStatArrayOutputWithContext(context.Context) GetAiIndexIndexStatArrayOutput
+}
+
+type GetAiIndexIndexStatArray []GetAiIndexIndexStatInput
+
+func (GetAiIndexIndexStatArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiIndexIndexStat)(nil)).Elem()
+}
+
+func (i GetAiIndexIndexStatArray) ToGetAiIndexIndexStatArrayOutput() GetAiIndexIndexStatArrayOutput {
+	return i.ToGetAiIndexIndexStatArrayOutputWithContext(context.Background())
+}
+
+func (i GetAiIndexIndexStatArray) ToGetAiIndexIndexStatArrayOutputWithContext(ctx context.Context) GetAiIndexIndexStatArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexIndexStatArrayOutput)
+}
+
+type GetAiIndexIndexStatOutput struct{ *pulumi.OutputState }
+
+func (GetAiIndexIndexStatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiIndexIndexStat)(nil)).Elem()
+}
+
+func (o GetAiIndexIndexStatOutput) ToGetAiIndexIndexStatOutput() GetAiIndexIndexStatOutput {
+	return o
+}
+
+func (o GetAiIndexIndexStatOutput) ToGetAiIndexIndexStatOutputWithContext(ctx context.Context) GetAiIndexIndexStatOutput {
+	return o
+}
+
+func (o GetAiIndexIndexStatOutput) ShardsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAiIndexIndexStat) int { return v.ShardsCount }).(pulumi.IntOutput)
+}
+
+func (o GetAiIndexIndexStatOutput) VectorsCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiIndexIndexStat) string { return v.VectorsCount }).(pulumi.StringOutput)
+}
+
+type GetAiIndexIndexStatArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAiIndexIndexStatArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiIndexIndexStat)(nil)).Elem()
+}
+
+func (o GetAiIndexIndexStatArrayOutput) ToGetAiIndexIndexStatArrayOutput() GetAiIndexIndexStatArrayOutput {
+	return o
+}
+
+func (o GetAiIndexIndexStatArrayOutput) ToGetAiIndexIndexStatArrayOutputWithContext(ctx context.Context) GetAiIndexIndexStatArrayOutput {
+	return o
+}
+
+func (o GetAiIndexIndexStatArrayOutput) Index(i pulumi.IntInput) GetAiIndexIndexStatOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAiIndexIndexStat {
+		return vs[0].([]GetAiIndexIndexStat)[vs[1].(int)]
+	}).(GetAiIndexIndexStatOutput)
+}
+
+type GetAiIndexMetadata struct {
+	Configs             []GetAiIndexMetadataConfig `pulumi:"configs"`
+	ContentsDeltaUri    string                     `pulumi:"contentsDeltaUri"`
+	IsCompleteOverwrite bool                       `pulumi:"isCompleteOverwrite"`
+}
+
+// GetAiIndexMetadataInput is an input type that accepts GetAiIndexMetadataArgs and GetAiIndexMetadataOutput values.
+// You can construct a concrete instance of `GetAiIndexMetadataInput` via:
+//
+//	GetAiIndexMetadataArgs{...}
+type GetAiIndexMetadataInput interface {
+	pulumi.Input
+
+	ToGetAiIndexMetadataOutput() GetAiIndexMetadataOutput
+	ToGetAiIndexMetadataOutputWithContext(context.Context) GetAiIndexMetadataOutput
+}
+
+type GetAiIndexMetadataArgs struct {
+	Configs             GetAiIndexMetadataConfigArrayInput `pulumi:"configs"`
+	ContentsDeltaUri    pulumi.StringInput                 `pulumi:"contentsDeltaUri"`
+	IsCompleteOverwrite pulumi.BoolInput                   `pulumi:"isCompleteOverwrite"`
+}
+
+func (GetAiIndexMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiIndexMetadata)(nil)).Elem()
+}
+
+func (i GetAiIndexMetadataArgs) ToGetAiIndexMetadataOutput() GetAiIndexMetadataOutput {
+	return i.ToGetAiIndexMetadataOutputWithContext(context.Background())
+}
+
+func (i GetAiIndexMetadataArgs) ToGetAiIndexMetadataOutputWithContext(ctx context.Context) GetAiIndexMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexMetadataOutput)
+}
+
+// GetAiIndexMetadataArrayInput is an input type that accepts GetAiIndexMetadataArray and GetAiIndexMetadataArrayOutput values.
+// You can construct a concrete instance of `GetAiIndexMetadataArrayInput` via:
+//
+//	GetAiIndexMetadataArray{ GetAiIndexMetadataArgs{...} }
+type GetAiIndexMetadataArrayInput interface {
+	pulumi.Input
+
+	ToGetAiIndexMetadataArrayOutput() GetAiIndexMetadataArrayOutput
+	ToGetAiIndexMetadataArrayOutputWithContext(context.Context) GetAiIndexMetadataArrayOutput
+}
+
+type GetAiIndexMetadataArray []GetAiIndexMetadataInput
+
+func (GetAiIndexMetadataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiIndexMetadata)(nil)).Elem()
+}
+
+func (i GetAiIndexMetadataArray) ToGetAiIndexMetadataArrayOutput() GetAiIndexMetadataArrayOutput {
+	return i.ToGetAiIndexMetadataArrayOutputWithContext(context.Background())
+}
+
+func (i GetAiIndexMetadataArray) ToGetAiIndexMetadataArrayOutputWithContext(ctx context.Context) GetAiIndexMetadataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexMetadataArrayOutput)
+}
+
+type GetAiIndexMetadataOutput struct{ *pulumi.OutputState }
+
+func (GetAiIndexMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiIndexMetadata)(nil)).Elem()
+}
+
+func (o GetAiIndexMetadataOutput) ToGetAiIndexMetadataOutput() GetAiIndexMetadataOutput {
+	return o
+}
+
+func (o GetAiIndexMetadataOutput) ToGetAiIndexMetadataOutputWithContext(ctx context.Context) GetAiIndexMetadataOutput {
+	return o
+}
+
+func (o GetAiIndexMetadataOutput) Configs() GetAiIndexMetadataConfigArrayOutput {
+	return o.ApplyT(func(v GetAiIndexMetadata) []GetAiIndexMetadataConfig { return v.Configs }).(GetAiIndexMetadataConfigArrayOutput)
+}
+
+func (o GetAiIndexMetadataOutput) ContentsDeltaUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiIndexMetadata) string { return v.ContentsDeltaUri }).(pulumi.StringOutput)
+}
+
+func (o GetAiIndexMetadataOutput) IsCompleteOverwrite() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAiIndexMetadata) bool { return v.IsCompleteOverwrite }).(pulumi.BoolOutput)
+}
+
+type GetAiIndexMetadataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAiIndexMetadataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiIndexMetadata)(nil)).Elem()
+}
+
+func (o GetAiIndexMetadataArrayOutput) ToGetAiIndexMetadataArrayOutput() GetAiIndexMetadataArrayOutput {
+	return o
+}
+
+func (o GetAiIndexMetadataArrayOutput) ToGetAiIndexMetadataArrayOutputWithContext(ctx context.Context) GetAiIndexMetadataArrayOutput {
+	return o
+}
+
+func (o GetAiIndexMetadataArrayOutput) Index(i pulumi.IntInput) GetAiIndexMetadataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAiIndexMetadata {
+		return vs[0].([]GetAiIndexMetadata)[vs[1].(int)]
+	}).(GetAiIndexMetadataOutput)
+}
+
+type GetAiIndexMetadataConfig struct {
+	AlgorithmConfigs          []GetAiIndexMetadataConfigAlgorithmConfig `pulumi:"algorithmConfigs"`
+	ApproximateNeighborsCount int                                       `pulumi:"approximateNeighborsCount"`
+	Dimensions                int                                       `pulumi:"dimensions"`
+	DistanceMeasureType       string                                    `pulumi:"distanceMeasureType"`
+	FeatureNormType           string                                    `pulumi:"featureNormType"`
+}
+
+// GetAiIndexMetadataConfigInput is an input type that accepts GetAiIndexMetadataConfigArgs and GetAiIndexMetadataConfigOutput values.
+// You can construct a concrete instance of `GetAiIndexMetadataConfigInput` via:
+//
+//	GetAiIndexMetadataConfigArgs{...}
+type GetAiIndexMetadataConfigInput interface {
+	pulumi.Input
+
+	ToGetAiIndexMetadataConfigOutput() GetAiIndexMetadataConfigOutput
+	ToGetAiIndexMetadataConfigOutputWithContext(context.Context) GetAiIndexMetadataConfigOutput
+}
+
+type GetAiIndexMetadataConfigArgs struct {
+	AlgorithmConfigs          GetAiIndexMetadataConfigAlgorithmConfigArrayInput `pulumi:"algorithmConfigs"`
+	ApproximateNeighborsCount pulumi.IntInput                                   `pulumi:"approximateNeighborsCount"`
+	Dimensions                pulumi.IntInput                                   `pulumi:"dimensions"`
+	DistanceMeasureType       pulumi.StringInput                                `pulumi:"distanceMeasureType"`
+	FeatureNormType           pulumi.StringInput                                `pulumi:"featureNormType"`
+}
+
+func (GetAiIndexMetadataConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiIndexMetadataConfig)(nil)).Elem()
+}
+
+func (i GetAiIndexMetadataConfigArgs) ToGetAiIndexMetadataConfigOutput() GetAiIndexMetadataConfigOutput {
+	return i.ToGetAiIndexMetadataConfigOutputWithContext(context.Background())
+}
+
+func (i GetAiIndexMetadataConfigArgs) ToGetAiIndexMetadataConfigOutputWithContext(ctx context.Context) GetAiIndexMetadataConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexMetadataConfigOutput)
+}
+
+// GetAiIndexMetadataConfigArrayInput is an input type that accepts GetAiIndexMetadataConfigArray and GetAiIndexMetadataConfigArrayOutput values.
+// You can construct a concrete instance of `GetAiIndexMetadataConfigArrayInput` via:
+//
+//	GetAiIndexMetadataConfigArray{ GetAiIndexMetadataConfigArgs{...} }
+type GetAiIndexMetadataConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetAiIndexMetadataConfigArrayOutput() GetAiIndexMetadataConfigArrayOutput
+	ToGetAiIndexMetadataConfigArrayOutputWithContext(context.Context) GetAiIndexMetadataConfigArrayOutput
+}
+
+type GetAiIndexMetadataConfigArray []GetAiIndexMetadataConfigInput
+
+func (GetAiIndexMetadataConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiIndexMetadataConfig)(nil)).Elem()
+}
+
+func (i GetAiIndexMetadataConfigArray) ToGetAiIndexMetadataConfigArrayOutput() GetAiIndexMetadataConfigArrayOutput {
+	return i.ToGetAiIndexMetadataConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetAiIndexMetadataConfigArray) ToGetAiIndexMetadataConfigArrayOutputWithContext(ctx context.Context) GetAiIndexMetadataConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexMetadataConfigArrayOutput)
+}
+
+type GetAiIndexMetadataConfigOutput struct{ *pulumi.OutputState }
+
+func (GetAiIndexMetadataConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiIndexMetadataConfig)(nil)).Elem()
+}
+
+func (o GetAiIndexMetadataConfigOutput) ToGetAiIndexMetadataConfigOutput() GetAiIndexMetadataConfigOutput {
+	return o
+}
+
+func (o GetAiIndexMetadataConfigOutput) ToGetAiIndexMetadataConfigOutputWithContext(ctx context.Context) GetAiIndexMetadataConfigOutput {
+	return o
+}
+
+func (o GetAiIndexMetadataConfigOutput) AlgorithmConfigs() GetAiIndexMetadataConfigAlgorithmConfigArrayOutput {
+	return o.ApplyT(func(v GetAiIndexMetadataConfig) []GetAiIndexMetadataConfigAlgorithmConfig { return v.AlgorithmConfigs }).(GetAiIndexMetadataConfigAlgorithmConfigArrayOutput)
+}
+
+func (o GetAiIndexMetadataConfigOutput) ApproximateNeighborsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAiIndexMetadataConfig) int { return v.ApproximateNeighborsCount }).(pulumi.IntOutput)
+}
+
+func (o GetAiIndexMetadataConfigOutput) Dimensions() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAiIndexMetadataConfig) int { return v.Dimensions }).(pulumi.IntOutput)
+}
+
+func (o GetAiIndexMetadataConfigOutput) DistanceMeasureType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiIndexMetadataConfig) string { return v.DistanceMeasureType }).(pulumi.StringOutput)
+}
+
+func (o GetAiIndexMetadataConfigOutput) FeatureNormType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiIndexMetadataConfig) string { return v.FeatureNormType }).(pulumi.StringOutput)
+}
+
+type GetAiIndexMetadataConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAiIndexMetadataConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiIndexMetadataConfig)(nil)).Elem()
+}
+
+func (o GetAiIndexMetadataConfigArrayOutput) ToGetAiIndexMetadataConfigArrayOutput() GetAiIndexMetadataConfigArrayOutput {
+	return o
+}
+
+func (o GetAiIndexMetadataConfigArrayOutput) ToGetAiIndexMetadataConfigArrayOutputWithContext(ctx context.Context) GetAiIndexMetadataConfigArrayOutput {
+	return o
+}
+
+func (o GetAiIndexMetadataConfigArrayOutput) Index(i pulumi.IntInput) GetAiIndexMetadataConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAiIndexMetadataConfig {
+		return vs[0].([]GetAiIndexMetadataConfig)[vs[1].(int)]
+	}).(GetAiIndexMetadataConfigOutput)
+}
+
+type GetAiIndexMetadataConfigAlgorithmConfig struct {
+	BruteForceConfigs []GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig `pulumi:"bruteForceConfigs"`
+	TreeAhConfigs     []GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig     `pulumi:"treeAhConfigs"`
+}
+
+// GetAiIndexMetadataConfigAlgorithmConfigInput is an input type that accepts GetAiIndexMetadataConfigAlgorithmConfigArgs and GetAiIndexMetadataConfigAlgorithmConfigOutput values.
+// You can construct a concrete instance of `GetAiIndexMetadataConfigAlgorithmConfigInput` via:
+//
+//	GetAiIndexMetadataConfigAlgorithmConfigArgs{...}
+type GetAiIndexMetadataConfigAlgorithmConfigInput interface {
+	pulumi.Input
+
+	ToGetAiIndexMetadataConfigAlgorithmConfigOutput() GetAiIndexMetadataConfigAlgorithmConfigOutput
+	ToGetAiIndexMetadataConfigAlgorithmConfigOutputWithContext(context.Context) GetAiIndexMetadataConfigAlgorithmConfigOutput
+}
+
+type GetAiIndexMetadataConfigAlgorithmConfigArgs struct {
+	BruteForceConfigs GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayInput `pulumi:"bruteForceConfigs"`
+	TreeAhConfigs     GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayInput     `pulumi:"treeAhConfigs"`
+}
+
+func (GetAiIndexMetadataConfigAlgorithmConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiIndexMetadataConfigAlgorithmConfig)(nil)).Elem()
+}
+
+func (i GetAiIndexMetadataConfigAlgorithmConfigArgs) ToGetAiIndexMetadataConfigAlgorithmConfigOutput() GetAiIndexMetadataConfigAlgorithmConfigOutput {
+	return i.ToGetAiIndexMetadataConfigAlgorithmConfigOutputWithContext(context.Background())
+}
+
+func (i GetAiIndexMetadataConfigAlgorithmConfigArgs) ToGetAiIndexMetadataConfigAlgorithmConfigOutputWithContext(ctx context.Context) GetAiIndexMetadataConfigAlgorithmConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexMetadataConfigAlgorithmConfigOutput)
+}
+
+// GetAiIndexMetadataConfigAlgorithmConfigArrayInput is an input type that accepts GetAiIndexMetadataConfigAlgorithmConfigArray and GetAiIndexMetadataConfigAlgorithmConfigArrayOutput values.
+// You can construct a concrete instance of `GetAiIndexMetadataConfigAlgorithmConfigArrayInput` via:
+//
+//	GetAiIndexMetadataConfigAlgorithmConfigArray{ GetAiIndexMetadataConfigAlgorithmConfigArgs{...} }
+type GetAiIndexMetadataConfigAlgorithmConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetAiIndexMetadataConfigAlgorithmConfigArrayOutput() GetAiIndexMetadataConfigAlgorithmConfigArrayOutput
+	ToGetAiIndexMetadataConfigAlgorithmConfigArrayOutputWithContext(context.Context) GetAiIndexMetadataConfigAlgorithmConfigArrayOutput
+}
+
+type GetAiIndexMetadataConfigAlgorithmConfigArray []GetAiIndexMetadataConfigAlgorithmConfigInput
+
+func (GetAiIndexMetadataConfigAlgorithmConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiIndexMetadataConfigAlgorithmConfig)(nil)).Elem()
+}
+
+func (i GetAiIndexMetadataConfigAlgorithmConfigArray) ToGetAiIndexMetadataConfigAlgorithmConfigArrayOutput() GetAiIndexMetadataConfigAlgorithmConfigArrayOutput {
+	return i.ToGetAiIndexMetadataConfigAlgorithmConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetAiIndexMetadataConfigAlgorithmConfigArray) ToGetAiIndexMetadataConfigAlgorithmConfigArrayOutputWithContext(ctx context.Context) GetAiIndexMetadataConfigAlgorithmConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexMetadataConfigAlgorithmConfigArrayOutput)
+}
+
+type GetAiIndexMetadataConfigAlgorithmConfigOutput struct{ *pulumi.OutputState }
+
+func (GetAiIndexMetadataConfigAlgorithmConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiIndexMetadataConfigAlgorithmConfig)(nil)).Elem()
+}
+
+func (o GetAiIndexMetadataConfigAlgorithmConfigOutput) ToGetAiIndexMetadataConfigAlgorithmConfigOutput() GetAiIndexMetadataConfigAlgorithmConfigOutput {
+	return o
+}
+
+func (o GetAiIndexMetadataConfigAlgorithmConfigOutput) ToGetAiIndexMetadataConfigAlgorithmConfigOutputWithContext(ctx context.Context) GetAiIndexMetadataConfigAlgorithmConfigOutput {
+	return o
+}
+
+func (o GetAiIndexMetadataConfigAlgorithmConfigOutput) BruteForceConfigs() GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput {
+	return o.ApplyT(func(v GetAiIndexMetadataConfigAlgorithmConfig) []GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig {
+		return v.BruteForceConfigs
+	}).(GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput)
+}
+
+func (o GetAiIndexMetadataConfigAlgorithmConfigOutput) TreeAhConfigs() GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput {
+	return o.ApplyT(func(v GetAiIndexMetadataConfigAlgorithmConfig) []GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
+		return v.TreeAhConfigs
+	}).(GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput)
+}
+
+type GetAiIndexMetadataConfigAlgorithmConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAiIndexMetadataConfigAlgorithmConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiIndexMetadataConfigAlgorithmConfig)(nil)).Elem()
+}
+
+func (o GetAiIndexMetadataConfigAlgorithmConfigArrayOutput) ToGetAiIndexMetadataConfigAlgorithmConfigArrayOutput() GetAiIndexMetadataConfigAlgorithmConfigArrayOutput {
+	return o
+}
+
+func (o GetAiIndexMetadataConfigAlgorithmConfigArrayOutput) ToGetAiIndexMetadataConfigAlgorithmConfigArrayOutputWithContext(ctx context.Context) GetAiIndexMetadataConfigAlgorithmConfigArrayOutput {
+	return o
+}
+
+func (o GetAiIndexMetadataConfigAlgorithmConfigArrayOutput) Index(i pulumi.IntInput) GetAiIndexMetadataConfigAlgorithmConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAiIndexMetadataConfigAlgorithmConfig {
+		return vs[0].([]GetAiIndexMetadataConfigAlgorithmConfig)[vs[1].(int)]
+	}).(GetAiIndexMetadataConfigAlgorithmConfigOutput)
+}
+
+type GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig struct {
+}
+
+// GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigInput is an input type that accepts GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs and GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput values.
+// You can construct a concrete instance of `GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigInput` via:
+//
+//	GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs{...}
+type GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigInput interface {
+	pulumi.Input
+
+	ToGetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput() GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput
+	ToGetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutputWithContext(context.Context) GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput
+}
+
+type GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs struct {
+}
+
+func (GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig)(nil)).Elem()
+}
+
+func (i GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs) ToGetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput() GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput {
+	return i.ToGetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutputWithContext(context.Background())
+}
+
+func (i GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs) ToGetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutputWithContext(ctx context.Context) GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput)
+}
+
+// GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayInput is an input type that accepts GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArray and GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput values.
+// You can construct a concrete instance of `GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayInput` via:
+//
+//	GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArray{ GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs{...} }
+type GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput() GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput
+	ToGetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutputWithContext(context.Context) GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput
+}
+
+type GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArray []GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigInput
+
+func (GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig)(nil)).Elem()
+}
+
+func (i GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArray) ToGetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput() GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput {
+	return i.ToGetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArray) ToGetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutputWithContext(ctx context.Context) GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput)
+}
+
+type GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig)(nil)).Elem()
+}
+
+func (o GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput) ToGetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput() GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput {
+	return o
+}
+
+func (o GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput) ToGetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutputWithContext(ctx context.Context) GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput {
+	return o
+}
+
+type GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig)(nil)).Elem()
+}
+
+func (o GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput) ToGetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput() GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput {
+	return o
+}
+
+func (o GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput) ToGetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutputWithContext(ctx context.Context) GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput {
+	return o
+}
+
+func (o GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput) Index(i pulumi.IntInput) GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig {
+		return vs[0].([]GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig)[vs[1].(int)]
+	}).(GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput)
+}
+
+type GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig struct {
+	LeafNodeEmbeddingCount   int `pulumi:"leafNodeEmbeddingCount"`
+	LeafNodesToSearchPercent int `pulumi:"leafNodesToSearchPercent"`
+}
+
+// GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigInput is an input type that accepts GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs and GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput values.
+// You can construct a concrete instance of `GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigInput` via:
+//
+//	GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs{...}
+type GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigInput interface {
+	pulumi.Input
+
+	ToGetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput() GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput
+	ToGetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutputWithContext(context.Context) GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput
+}
+
+type GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs struct {
+	LeafNodeEmbeddingCount   pulumi.IntInput `pulumi:"leafNodeEmbeddingCount"`
+	LeafNodesToSearchPercent pulumi.IntInput `pulumi:"leafNodesToSearchPercent"`
+}
+
+func (GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig)(nil)).Elem()
+}
+
+func (i GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs) ToGetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput() GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput {
+	return i.ToGetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutputWithContext(context.Background())
+}
+
+func (i GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs) ToGetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutputWithContext(ctx context.Context) GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput)
+}
+
+// GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayInput is an input type that accepts GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArray and GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput values.
+// You can construct a concrete instance of `GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayInput` via:
+//
+//	GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArray{ GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs{...} }
+type GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput() GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput
+	ToGetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutputWithContext(context.Context) GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput
+}
+
+type GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArray []GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigInput
+
+func (GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig)(nil)).Elem()
+}
+
+func (i GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArray) ToGetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput() GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput {
+	return i.ToGetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArray) ToGetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutputWithContext(ctx context.Context) GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput)
+}
+
+type GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput struct{ *pulumi.OutputState }
+
+func (GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig)(nil)).Elem()
+}
+
+func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) ToGetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput() GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput {
+	return o
+}
+
+func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) ToGetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutputWithContext(ctx context.Context) GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput {
+	return o
+}
+
+func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) LeafNodeEmbeddingCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig) int { return v.LeafNodeEmbeddingCount }).(pulumi.IntOutput)
+}
+
+func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput) LeafNodesToSearchPercent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig) int { return v.LeafNodesToSearchPercent }).(pulumi.IntOutput)
+}
+
+type GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig)(nil)).Elem()
+}
+
+func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput) ToGetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput() GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput {
+	return o
+}
+
+func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput) ToGetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutputWithContext(ctx context.Context) GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput {
+	return o
+}
+
+func (o GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput) Index(i pulumi.IntInput) GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
+		return vs[0].([]GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig)[vs[1].(int)]
+	}).(GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiDatasetEncryptionSpecInput)(nil)).Elem(), AiDatasetEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiDatasetEncryptionSpecPtrInput)(nil)).Elem(), AiDatasetEncryptionSpecArgs{})
@@ -4710,6 +5426,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiMetadataStoreStateTypeArrayInput)(nil)).Elem(), AiMetadataStoreStateTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiTensorboardEncryptionSpecInput)(nil)).Elem(), AiTensorboardEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiTensorboardEncryptionSpecPtrInput)(nil)).Elem(), AiTensorboardEncryptionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexDeployedIndexInput)(nil)).Elem(), GetAiIndexDeployedIndexArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexDeployedIndexArrayInput)(nil)).Elem(), GetAiIndexDeployedIndexArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexIndexStatInput)(nil)).Elem(), GetAiIndexIndexStatArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexIndexStatArrayInput)(nil)).Elem(), GetAiIndexIndexStatArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexMetadataInput)(nil)).Elem(), GetAiIndexMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexMetadataArrayInput)(nil)).Elem(), GetAiIndexMetadataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexMetadataConfigInput)(nil)).Elem(), GetAiIndexMetadataConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexMetadataConfigArrayInput)(nil)).Elem(), GetAiIndexMetadataConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexMetadataConfigAlgorithmConfigInput)(nil)).Elem(), GetAiIndexMetadataConfigAlgorithmConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexMetadataConfigAlgorithmConfigArrayInput)(nil)).Elem(), GetAiIndexMetadataConfigAlgorithmConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigInput)(nil)).Elem(), GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayInput)(nil)).Elem(), GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigInput)(nil)).Elem(), GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayInput)(nil)).Elem(), GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArray{})
 	pulumi.RegisterOutputType(AiDatasetEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiDatasetEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiEndpointDeployedModelOutput{})
@@ -4770,4 +5500,18 @@ func init() {
 	pulumi.RegisterOutputType(AiMetadataStoreStateTypeArrayOutput{})
 	pulumi.RegisterOutputType(AiTensorboardEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiTensorboardEncryptionSpecPtrOutput{})
+	pulumi.RegisterOutputType(GetAiIndexDeployedIndexOutput{})
+	pulumi.RegisterOutputType(GetAiIndexDeployedIndexArrayOutput{})
+	pulumi.RegisterOutputType(GetAiIndexIndexStatOutput{})
+	pulumi.RegisterOutputType(GetAiIndexIndexStatArrayOutput{})
+	pulumi.RegisterOutputType(GetAiIndexMetadataOutput{})
+	pulumi.RegisterOutputType(GetAiIndexMetadataArrayOutput{})
+	pulumi.RegisterOutputType(GetAiIndexMetadataConfigOutput{})
+	pulumi.RegisterOutputType(GetAiIndexMetadataConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetAiIndexMetadataConfigAlgorithmConfigOutput{})
+	pulumi.RegisterOutputType(GetAiIndexMetadataConfigAlgorithmConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigOutput{})
+	pulumi.RegisterOutputType(GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigOutput{})
+	pulumi.RegisterOutputType(GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfigArrayOutput{})
 }

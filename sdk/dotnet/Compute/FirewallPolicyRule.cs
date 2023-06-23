@@ -24,6 +24,22 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var basicGlobalNetworksecurityAddressGroup = new Gcp.NetworkSecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup", new()
+    ///     {
+    ///         Parent = "organizations/12345",
+    ///         Description = "Sample global networksecurity_address_group",
+    ///         Location = "global",
+    ///         Items = new[]
+    ///         {
+    ///             "208.80.154.224/32",
+    ///         },
+    ///         Type = "IPV4",
+    ///         Capacity = 100,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
     ///     var defaultFirewallPolicy = new Gcp.Compute.FirewallPolicy("defaultFirewallPolicy", new()
     ///     {
     ///         Parent = "organizations/12345",
@@ -57,6 +73,22 @@ namespace Pulumi.Gcp.Compute
     ///             DestIpRanges = new[]
     ///             {
     ///                 "11.100.0.1/32",
+    ///             },
+    ///             DestFqdns = new[]
+    ///             {
+    ///                 "google.com",
+    ///             },
+    ///             DestRegionCodes = new[]
+    ///             {
+    ///                 "US",
+    ///             },
+    ///             DestThreatIntelligences = new[]
+    ///             {
+    ///                 "iplist-public-clouds",
+    ///             },
+    ///             DestAddressGroups = new[]
+    ///             {
+    ///                 basicGlobalNetworksecurityAddressGroup.Id,
     ///             },
     ///         },
     ///     });

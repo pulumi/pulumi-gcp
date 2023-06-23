@@ -15,8 +15,11 @@ from .access_policy_iam_policy import *
 from .authorized_orgs_desc import *
 from .egress_policy import *
 from .gcp_user_access_binding import *
+from .get_access_policy_iam_policy import *
 from .ingress_policy import *
 from .service_perimeter import *
+from .service_perimeter_egress_policy import *
+from .service_perimeter_ingress_policy import *
 from .service_perimeter_resource import *
 from .service_perimeters import *
 from ._inputs import *
