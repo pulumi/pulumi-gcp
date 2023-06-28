@@ -36,6 +36,7 @@ class InstanceArgs:
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_performance_config: Optional[pulumi.Input['InstanceNetworkPerformanceConfigArgs']] = None,
+                 params: Optional[pulumi.Input['InstanceParamsArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input['InstanceReservationAffinityArgs']] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
@@ -114,6 +115,8 @@ class InstanceArgs:
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
                in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
                in order for this setting to take effect.
+        :param pulumi.Input['InstanceParamsArgs'] params: Additional instance parameters.
+               .
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input['InstanceReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
@@ -169,6 +172,8 @@ class InstanceArgs:
             pulumi.set(__self__, "name", name)
         if network_performance_config is not None:
             pulumi.set(__self__, "network_performance_config", network_performance_config)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if reservation_affinity is not None:
@@ -477,6 +482,19 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['InstanceParamsArgs']]:
+        """
+        Additional instance parameters.
+        .
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['InstanceParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the project in which the resource belongs. If it
@@ -620,6 +638,7 @@ class _InstanceState:
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkInterfaceArgs']]]] = None,
                  network_performance_config: Optional[pulumi.Input['InstanceNetworkPerformanceConfigArgs']] = None,
+                 params: Optional[pulumi.Input['InstanceParamsArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input['InstanceReservationAffinityArgs']] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
@@ -705,6 +724,8 @@ class _InstanceState:
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
                in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
                in order for this setting to take effect.
+        :param pulumi.Input['InstanceParamsArgs'] params: Additional instance parameters.
+               .
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input['InstanceReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
@@ -775,6 +796,8 @@ class _InstanceState:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
         if network_performance_config is not None:
             pulumi.set(__self__, "network_performance_config", network_performance_config)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if reservation_affinity is not None:
@@ -1147,6 +1170,19 @@ class _InstanceState:
 
     @property
     @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['InstanceParamsArgs']]:
+        """
+        Additional instance parameters.
+        .
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['InstanceParamsArgs']]):
+        pulumi.set(self, "params", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the project in which the resource belongs. If it
@@ -1311,6 +1347,7 @@ class Instance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkInterfaceArgs']]]]] = None,
                  network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArgs']]] = None,
+                 params: Optional[pulumi.Input[pulumi.InputType['InstanceParamsArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']]] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
@@ -1455,6 +1492,8 @@ class Instance(pulumi.CustomResource):
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
                in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
                in order for this setting to take effect.
+        :param pulumi.Input[pulumi.InputType['InstanceParamsArgs']] params: Additional instance parameters.
+               .
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
@@ -1579,6 +1618,7 @@ class Instance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkInterfaceArgs']]]]] = None,
                  network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArgs']]] = None,
+                 params: Optional[pulumi.Input[pulumi.InputType['InstanceParamsArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']]] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
@@ -1623,6 +1663,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'network_interfaces'")
             __props__.__dict__["network_interfaces"] = network_interfaces
             __props__.__dict__["network_performance_config"] = network_performance_config
+            __props__.__dict__["params"] = params
             __props__.__dict__["project"] = project
             __props__.__dict__["reservation_affinity"] = reservation_affinity
             __props__.__dict__["resource_policies"] = resource_policies
@@ -1674,6 +1715,7 @@ class Instance(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceNetworkInterfaceArgs']]]]] = None,
             network_performance_config: Optional[pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArgs']]] = None,
+            params: Optional[pulumi.Input[pulumi.InputType['InstanceParamsArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             reservation_affinity: Optional[pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']]] = None,
             resource_policies: Optional[pulumi.Input[str]] = None,
@@ -1764,6 +1806,8 @@ class Instance(pulumi.CustomResource):
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
                in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
                in order for this setting to take effect.
+        :param pulumi.Input[pulumi.InputType['InstanceParamsArgs']] params: Additional instance parameters.
+               .
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['InstanceReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
@@ -1813,6 +1857,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["network_interfaces"] = network_interfaces
         __props__.__dict__["network_performance_config"] = network_performance_config
+        __props__.__dict__["params"] = params
         __props__.__dict__["project"] = project
         __props__.__dict__["reservation_affinity"] = reservation_affinity
         __props__.__dict__["resource_policies"] = resource_policies
@@ -2072,6 +2117,15 @@ class Instance(pulumi.CustomResource):
         in order for this setting to take effect.
         """
         return pulumi.get(self, "network_performance_config")
+
+    @property
+    @pulumi.getter
+    def params(self) -> pulumi.Output[Optional['outputs.InstanceParams']]:
+        """
+        Additional instance parameters.
+        .
+        """
+        return pulumi.get(self, "params")
 
     @property
     @pulumi.getter

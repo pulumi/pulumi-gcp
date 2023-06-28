@@ -34,6 +34,7 @@ public final class GetEnvironmentConfig {
     private Integer nodeCount;
     private List<GetEnvironmentConfigPrivateEnvironmentConfig> privateEnvironmentConfigs;
     private List<GetEnvironmentConfigRecoveryConfig> recoveryConfigs;
+    private String resilienceMode;
     private List<GetEnvironmentConfigSoftwareConfig> softwareConfigs;
     private List<GetEnvironmentConfigWebServerConfig> webServerConfigs;
     private List<GetEnvironmentConfigWebServerNetworkAccessControl> webServerNetworkAccessControls;
@@ -76,6 +77,9 @@ public final class GetEnvironmentConfig {
     public List<GetEnvironmentConfigRecoveryConfig> recoveryConfigs() {
         return this.recoveryConfigs;
     }
+    public String resilienceMode() {
+        return this.resilienceMode;
+    }
     public List<GetEnvironmentConfigSoftwareConfig> softwareConfigs() {
         return this.softwareConfigs;
     }
@@ -110,6 +114,7 @@ public final class GetEnvironmentConfig {
         private Integer nodeCount;
         private List<GetEnvironmentConfigPrivateEnvironmentConfig> privateEnvironmentConfigs;
         private List<GetEnvironmentConfigRecoveryConfig> recoveryConfigs;
+        private String resilienceMode;
         private List<GetEnvironmentConfigSoftwareConfig> softwareConfigs;
         private List<GetEnvironmentConfigWebServerConfig> webServerConfigs;
         private List<GetEnvironmentConfigWebServerNetworkAccessControl> webServerNetworkAccessControls;
@@ -129,6 +134,7 @@ public final class GetEnvironmentConfig {
     	      this.nodeCount = defaults.nodeCount;
     	      this.privateEnvironmentConfigs = defaults.privateEnvironmentConfigs;
     	      this.recoveryConfigs = defaults.recoveryConfigs;
+    	      this.resilienceMode = defaults.resilienceMode;
     	      this.softwareConfigs = defaults.softwareConfigs;
     	      this.webServerConfigs = defaults.webServerConfigs;
     	      this.webServerNetworkAccessControls = defaults.webServerNetworkAccessControls;
@@ -217,6 +223,11 @@ public final class GetEnvironmentConfig {
             return recoveryConfigs(List.of(recoveryConfigs));
         }
         @CustomType.Setter
+        public Builder resilienceMode(String resilienceMode) {
+            this.resilienceMode = Objects.requireNonNull(resilienceMode);
+            return this;
+        }
+        @CustomType.Setter
         public Builder softwareConfigs(List<GetEnvironmentConfigSoftwareConfig> softwareConfigs) {
             this.softwareConfigs = Objects.requireNonNull(softwareConfigs);
             return this;
@@ -262,6 +273,7 @@ public final class GetEnvironmentConfig {
             o.nodeCount = nodeCount;
             o.privateEnvironmentConfigs = privateEnvironmentConfigs;
             o.recoveryConfigs = recoveryConfigs;
+            o.resilienceMode = resilienceMode;
             o.softwareConfigs = softwareConfigs;
             o.webServerConfigs = webServerConfigs;
             o.webServerNetworkAccessControls = webServerNetworkAccessControls;

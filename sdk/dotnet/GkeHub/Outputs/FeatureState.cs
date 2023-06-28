@@ -13,6 +13,11 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     [OutputType]
     public sealed class FeatureState
     {
+        /// <summary>
+        /// (Output)
+        /// Output only. The "running state" of the Feature in this Hub.
+        /// Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.FeatureStateState> States;
 
         [OutputConstructor]

@@ -12,6 +12,7 @@ import com.pulumi.gcp.compute.inputs.InstanceConfidentialInstanceConfigArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGuestAcceleratorArgs;
 import com.pulumi.gcp.compute.inputs.InstanceNetworkInterfaceArgs;
 import com.pulumi.gcp.compute.inputs.InstanceNetworkPerformanceConfigArgs;
+import com.pulumi.gcp.compute.inputs.InstanceParamsArgs;
 import com.pulumi.gcp.compute.inputs.InstanceReservationAffinityArgs;
 import com.pulumi.gcp.compute.inputs.InstanceSchedulingArgs;
 import com.pulumi.gcp.compute.inputs.InstanceScratchDiskArgs;
@@ -425,6 +426,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Additional instance parameters.
+     * .
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<InstanceParamsArgs> params;
+
+    /**
+     * @return Additional instance parameters.
+     * .
+     * 
+     */
+    public Optional<Output<InstanceParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
+    }
+
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      * 
@@ -598,6 +616,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.networkInterfaces = $.networkInterfaces;
         this.networkPerformanceConfig = $.networkPerformanceConfig;
+        this.params = $.params;
         this.project = $.project;
         this.reservationAffinity = $.reservationAffinity;
         this.resourcePolicies = $.resourcePolicies;
@@ -1173,6 +1192,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder networkPerformanceConfig(InstanceNetworkPerformanceConfigArgs networkPerformanceConfig) {
             return networkPerformanceConfig(Output.of(networkPerformanceConfig));
+        }
+
+        /**
+         * @param params Additional instance parameters.
+         * .
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<InstanceParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Additional instance parameters.
+         * .
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(InstanceParamsArgs params) {
+            return params(Output.of(params));
         }
 
         /**

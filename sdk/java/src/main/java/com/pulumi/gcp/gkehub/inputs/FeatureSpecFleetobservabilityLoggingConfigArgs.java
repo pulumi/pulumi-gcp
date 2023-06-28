@@ -16,16 +16,36 @@ public final class FeatureSpecFleetobservabilityLoggingConfigArgs extends com.pu
 
     public static final FeatureSpecFleetobservabilityLoggingConfigArgs Empty = new FeatureSpecFleetobservabilityLoggingConfigArgs();
 
+    /**
+     * Specified if applying the default routing config to logs not specified in other configs.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="defaultConfig")
     private @Nullable Output<FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs> defaultConfig;
 
+    /**
+     * @return Specified if applying the default routing config to logs not specified in other configs.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs>> defaultConfig() {
         return Optional.ofNullable(this.defaultConfig);
     }
 
+    /**
+     * Specified if applying the routing config to all logs for all fleet scopes.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="fleetScopeLogsConfig")
     private @Nullable Output<FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs> fleetScopeLogsConfig;
 
+    /**
+     * @return Specified if applying the routing config to all logs for all fleet scopes.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs>> fleetScopeLogsConfig() {
         return Optional.ofNullable(this.fleetScopeLogsConfig);
     }
@@ -55,20 +75,48 @@ public final class FeatureSpecFleetobservabilityLoggingConfigArgs extends com.pu
             $ = new FeatureSpecFleetobservabilityLoggingConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param defaultConfig Specified if applying the default routing config to logs not specified in other configs.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultConfig(@Nullable Output<FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs> defaultConfig) {
             $.defaultConfig = defaultConfig;
             return this;
         }
 
+        /**
+         * @param defaultConfig Specified if applying the default routing config to logs not specified in other configs.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder defaultConfig(FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs defaultConfig) {
             return defaultConfig(Output.of(defaultConfig));
         }
 
+        /**
+         * @param fleetScopeLogsConfig Specified if applying the routing config to all logs for all fleet scopes.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fleetScopeLogsConfig(@Nullable Output<FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs> fleetScopeLogsConfig) {
             $.fleetScopeLogsConfig = fleetScopeLogsConfig;
             return this;
         }
 
+        /**
+         * @param fleetScopeLogsConfig Specified if applying the routing config to all logs for all fleet scopes.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fleetScopeLogsConfig(FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs fleetScopeLogsConfig) {
             return fleetScopeLogsConfig(Output.of(fleetScopeLogsConfig));
         }

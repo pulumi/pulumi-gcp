@@ -321,6 +321,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('gkeBackupCustomEndpoint')
 
     @property
+    def gke_hub2_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('gkeHub2CustomEndpoint')
+
+    @property
     def gke_hub_custom_endpoint(self) -> Optional[str]:
         return __config__.get('gkeHubCustomEndpoint')
 

@@ -10,6 +10,332 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type FeatureIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// FeatureIamBindingConditionInput is an input type that accepts FeatureIamBindingConditionArgs and FeatureIamBindingConditionOutput values.
+// You can construct a concrete instance of `FeatureIamBindingConditionInput` via:
+//
+//	FeatureIamBindingConditionArgs{...}
+type FeatureIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToFeatureIamBindingConditionOutput() FeatureIamBindingConditionOutput
+	ToFeatureIamBindingConditionOutputWithContext(context.Context) FeatureIamBindingConditionOutput
+}
+
+type FeatureIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (FeatureIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureIamBindingCondition)(nil)).Elem()
+}
+
+func (i FeatureIamBindingConditionArgs) ToFeatureIamBindingConditionOutput() FeatureIamBindingConditionOutput {
+	return i.ToFeatureIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i FeatureIamBindingConditionArgs) ToFeatureIamBindingConditionOutputWithContext(ctx context.Context) FeatureIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureIamBindingConditionOutput)
+}
+
+func (i FeatureIamBindingConditionArgs) ToFeatureIamBindingConditionPtrOutput() FeatureIamBindingConditionPtrOutput {
+	return i.ToFeatureIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureIamBindingConditionArgs) ToFeatureIamBindingConditionPtrOutputWithContext(ctx context.Context) FeatureIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureIamBindingConditionOutput).ToFeatureIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// FeatureIamBindingConditionPtrInput is an input type that accepts FeatureIamBindingConditionArgs, FeatureIamBindingConditionPtr and FeatureIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `FeatureIamBindingConditionPtrInput` via:
+//
+//	        FeatureIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToFeatureIamBindingConditionPtrOutput() FeatureIamBindingConditionPtrOutput
+	ToFeatureIamBindingConditionPtrOutputWithContext(context.Context) FeatureIamBindingConditionPtrOutput
+}
+
+type featureIamBindingConditionPtrType FeatureIamBindingConditionArgs
+
+func FeatureIamBindingConditionPtr(v *FeatureIamBindingConditionArgs) FeatureIamBindingConditionPtrInput {
+	return (*featureIamBindingConditionPtrType)(v)
+}
+
+func (*featureIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureIamBindingCondition)(nil)).Elem()
+}
+
+func (i *featureIamBindingConditionPtrType) ToFeatureIamBindingConditionPtrOutput() FeatureIamBindingConditionPtrOutput {
+	return i.ToFeatureIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *featureIamBindingConditionPtrType) ToFeatureIamBindingConditionPtrOutputWithContext(ctx context.Context) FeatureIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureIamBindingConditionPtrOutput)
+}
+
+type FeatureIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (FeatureIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureIamBindingCondition)(nil)).Elem()
+}
+
+func (o FeatureIamBindingConditionOutput) ToFeatureIamBindingConditionOutput() FeatureIamBindingConditionOutput {
+	return o
+}
+
+func (o FeatureIamBindingConditionOutput) ToFeatureIamBindingConditionOutputWithContext(ctx context.Context) FeatureIamBindingConditionOutput {
+	return o
+}
+
+func (o FeatureIamBindingConditionOutput) ToFeatureIamBindingConditionPtrOutput() FeatureIamBindingConditionPtrOutput {
+	return o.ToFeatureIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureIamBindingConditionOutput) ToFeatureIamBindingConditionPtrOutputWithContext(ctx context.Context) FeatureIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureIamBindingCondition) *FeatureIamBindingCondition {
+		return &v
+	}).(FeatureIamBindingConditionPtrOutput)
+}
+
+func (o FeatureIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o FeatureIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type FeatureIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureIamBindingCondition)(nil)).Elem()
+}
+
+func (o FeatureIamBindingConditionPtrOutput) ToFeatureIamBindingConditionPtrOutput() FeatureIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o FeatureIamBindingConditionPtrOutput) ToFeatureIamBindingConditionPtrOutputWithContext(ctx context.Context) FeatureIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o FeatureIamBindingConditionPtrOutput) Elem() FeatureIamBindingConditionOutput {
+	return o.ApplyT(func(v *FeatureIamBindingCondition) FeatureIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureIamBindingCondition
+		return ret
+	}).(FeatureIamBindingConditionOutput)
+}
+
+func (o FeatureIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// FeatureIamMemberConditionInput is an input type that accepts FeatureIamMemberConditionArgs and FeatureIamMemberConditionOutput values.
+// You can construct a concrete instance of `FeatureIamMemberConditionInput` via:
+//
+//	FeatureIamMemberConditionArgs{...}
+type FeatureIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToFeatureIamMemberConditionOutput() FeatureIamMemberConditionOutput
+	ToFeatureIamMemberConditionOutputWithContext(context.Context) FeatureIamMemberConditionOutput
+}
+
+type FeatureIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (FeatureIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureIamMemberCondition)(nil)).Elem()
+}
+
+func (i FeatureIamMemberConditionArgs) ToFeatureIamMemberConditionOutput() FeatureIamMemberConditionOutput {
+	return i.ToFeatureIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i FeatureIamMemberConditionArgs) ToFeatureIamMemberConditionOutputWithContext(ctx context.Context) FeatureIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureIamMemberConditionOutput)
+}
+
+func (i FeatureIamMemberConditionArgs) ToFeatureIamMemberConditionPtrOutput() FeatureIamMemberConditionPtrOutput {
+	return i.ToFeatureIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureIamMemberConditionArgs) ToFeatureIamMemberConditionPtrOutputWithContext(ctx context.Context) FeatureIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureIamMemberConditionOutput).ToFeatureIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// FeatureIamMemberConditionPtrInput is an input type that accepts FeatureIamMemberConditionArgs, FeatureIamMemberConditionPtr and FeatureIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `FeatureIamMemberConditionPtrInput` via:
+//
+//	        FeatureIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToFeatureIamMemberConditionPtrOutput() FeatureIamMemberConditionPtrOutput
+	ToFeatureIamMemberConditionPtrOutputWithContext(context.Context) FeatureIamMemberConditionPtrOutput
+}
+
+type featureIamMemberConditionPtrType FeatureIamMemberConditionArgs
+
+func FeatureIamMemberConditionPtr(v *FeatureIamMemberConditionArgs) FeatureIamMemberConditionPtrInput {
+	return (*featureIamMemberConditionPtrType)(v)
+}
+
+func (*featureIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureIamMemberCondition)(nil)).Elem()
+}
+
+func (i *featureIamMemberConditionPtrType) ToFeatureIamMemberConditionPtrOutput() FeatureIamMemberConditionPtrOutput {
+	return i.ToFeatureIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *featureIamMemberConditionPtrType) ToFeatureIamMemberConditionPtrOutputWithContext(ctx context.Context) FeatureIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureIamMemberConditionPtrOutput)
+}
+
+type FeatureIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (FeatureIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureIamMemberCondition)(nil)).Elem()
+}
+
+func (o FeatureIamMemberConditionOutput) ToFeatureIamMemberConditionOutput() FeatureIamMemberConditionOutput {
+	return o
+}
+
+func (o FeatureIamMemberConditionOutput) ToFeatureIamMemberConditionOutputWithContext(ctx context.Context) FeatureIamMemberConditionOutput {
+	return o
+}
+
+func (o FeatureIamMemberConditionOutput) ToFeatureIamMemberConditionPtrOutput() FeatureIamMemberConditionPtrOutput {
+	return o.ToFeatureIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureIamMemberConditionOutput) ToFeatureIamMemberConditionPtrOutputWithContext(ctx context.Context) FeatureIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureIamMemberCondition) *FeatureIamMemberCondition {
+		return &v
+	}).(FeatureIamMemberConditionPtrOutput)
+}
+
+func (o FeatureIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o FeatureIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type FeatureIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureIamMemberCondition)(nil)).Elem()
+}
+
+func (o FeatureIamMemberConditionPtrOutput) ToFeatureIamMemberConditionPtrOutput() FeatureIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o FeatureIamMemberConditionPtrOutput) ToFeatureIamMemberConditionPtrOutputWithContext(ctx context.Context) FeatureIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o FeatureIamMemberConditionPtrOutput) Elem() FeatureIamMemberConditionOutput {
+	return o.ApplyT(func(v *FeatureIamMemberCondition) FeatureIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureIamMemberCondition
+		return ret
+	}).(FeatureIamMemberConditionOutput)
+}
+
+func (o FeatureIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FeatureIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type FeatureMembershipConfigmanagement struct {
 	// Binauthz configuration for the cluster. Structure is documented below.
 	Binauthz *FeatureMembershipConfigmanagementBinauthz `pulumi:"binauthz"`
@@ -1796,8 +2122,13 @@ func (o FeatureMembershipMeshPtrOutput) Management() pulumi.StringPtrOutput {
 }
 
 type FeatureResourceState struct {
-	HasResources *bool   `pulumi:"hasResources"`
-	State        *string `pulumi:"state"`
+	// (Output)
+	// Whether this Feature has outstanding resources that need to be cleaned up before it can be disabled.
+	HasResources *bool `pulumi:"hasResources"`
+	// (Output)
+	// Output only. The "running state" of the Feature in this Hub.
+	// Structure is documented below.
+	State *string `pulumi:"state"`
 }
 
 // FeatureResourceStateInput is an input type that accepts FeatureResourceStateArgs and FeatureResourceStateOutput values.
@@ -1812,8 +2143,13 @@ type FeatureResourceStateInput interface {
 }
 
 type FeatureResourceStateArgs struct {
-	HasResources pulumi.BoolPtrInput   `pulumi:"hasResources"`
-	State        pulumi.StringPtrInput `pulumi:"state"`
+	// (Output)
+	// Whether this Feature has outstanding resources that need to be cleaned up before it can be disabled.
+	HasResources pulumi.BoolPtrInput `pulumi:"hasResources"`
+	// (Output)
+	// Output only. The "running state" of the Feature in this Hub.
+	// Structure is documented below.
+	State pulumi.StringPtrInput `pulumi:"state"`
 }
 
 func (FeatureResourceStateArgs) ElementType() reflect.Type {
@@ -1867,10 +2203,15 @@ func (o FeatureResourceStateOutput) ToFeatureResourceStateOutputWithContext(ctx 
 	return o
 }
 
+// (Output)
+// Whether this Feature has outstanding resources that need to be cleaned up before it can be disabled.
 func (o FeatureResourceStateOutput) HasResources() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FeatureResourceState) *bool { return v.HasResources }).(pulumi.BoolPtrOutput)
 }
 
+// (Output)
+// Output only. The "running state" of the Feature in this Hub.
+// Structure is documented below.
 func (o FeatureResourceStateOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureResourceState) *string { return v.State }).(pulumi.StringPtrOutput)
 }
@@ -1898,7 +2239,7 @@ func (o FeatureResourceStateArrayOutput) Index(i pulumi.IntInput) FeatureResourc
 type FeatureSpec struct {
 	Fleetobservability *FeatureSpecFleetobservability `pulumi:"fleetobservability"`
 	// Multicluster Ingress-specific spec.
-	// The `multiclusteringress` block supports:
+	// Structure is documented below.
 	Multiclusteringress *FeatureSpecMulticlusteringress `pulumi:"multiclusteringress"`
 }
 
@@ -1916,7 +2257,7 @@ type FeatureSpecInput interface {
 type FeatureSpecArgs struct {
 	Fleetobservability FeatureSpecFleetobservabilityPtrInput `pulumi:"fleetobservability"`
 	// Multicluster Ingress-specific spec.
-	// The `multiclusteringress` block supports:
+	// Structure is documented below.
 	Multiclusteringress FeatureSpecMulticlusteringressPtrInput `pulumi:"multiclusteringress"`
 }
 
@@ -2002,7 +2343,7 @@ func (o FeatureSpecOutput) Fleetobservability() FeatureSpecFleetobservabilityPtr
 }
 
 // Multicluster Ingress-specific spec.
-// The `multiclusteringress` block supports:
+// Structure is documented below.
 func (o FeatureSpecOutput) Multiclusteringress() FeatureSpecMulticlusteringressPtrOutput {
 	return o.ApplyT(func(v FeatureSpec) *FeatureSpecMulticlusteringress { return v.Multiclusteringress }).(FeatureSpecMulticlusteringressPtrOutput)
 }
@@ -2041,7 +2382,7 @@ func (o FeatureSpecPtrOutput) Fleetobservability() FeatureSpecFleetobservability
 }
 
 // Multicluster Ingress-specific spec.
-// The `multiclusteringress` block supports:
+// Structure is documented below.
 func (o FeatureSpecPtrOutput) Multiclusteringress() FeatureSpecMulticlusteringressPtrOutput {
 	return o.ApplyT(func(v *FeatureSpec) *FeatureSpecMulticlusteringress {
 		if v == nil {
@@ -2052,6 +2393,8 @@ func (o FeatureSpecPtrOutput) Multiclusteringress() FeatureSpecMulticlusteringre
 }
 
 type FeatureSpecFleetobservability struct {
+	// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+	// Structure is documented below.
 	LoggingConfig *FeatureSpecFleetobservabilityLoggingConfig `pulumi:"loggingConfig"`
 }
 
@@ -2067,6 +2410,8 @@ type FeatureSpecFleetobservabilityInput interface {
 }
 
 type FeatureSpecFleetobservabilityArgs struct {
+	// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+	// Structure is documented below.
 	LoggingConfig FeatureSpecFleetobservabilityLoggingConfigPtrInput `pulumi:"loggingConfig"`
 }
 
@@ -2147,6 +2492,8 @@ func (o FeatureSpecFleetobservabilityOutput) ToFeatureSpecFleetobservabilityPtrO
 	}).(FeatureSpecFleetobservabilityPtrOutput)
 }
 
+// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+// Structure is documented below.
 func (o FeatureSpecFleetobservabilityOutput) LoggingConfig() FeatureSpecFleetobservabilityLoggingConfigPtrOutput {
 	return o.ApplyT(func(v FeatureSpecFleetobservability) *FeatureSpecFleetobservabilityLoggingConfig {
 		return v.LoggingConfig
@@ -2177,6 +2524,8 @@ func (o FeatureSpecFleetobservabilityPtrOutput) Elem() FeatureSpecFleetobservabi
 	}).(FeatureSpecFleetobservabilityOutput)
 }
 
+// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+// Structure is documented below.
 func (o FeatureSpecFleetobservabilityPtrOutput) LoggingConfig() FeatureSpecFleetobservabilityLoggingConfigPtrOutput {
 	return o.ApplyT(func(v *FeatureSpecFleetobservability) *FeatureSpecFleetobservabilityLoggingConfig {
 		if v == nil {
@@ -2187,7 +2536,11 @@ func (o FeatureSpecFleetobservabilityPtrOutput) LoggingConfig() FeatureSpecFleet
 }
 
 type FeatureSpecFleetobservabilityLoggingConfig struct {
-	DefaultConfig        *FeatureSpecFleetobservabilityLoggingConfigDefaultConfig        `pulumi:"defaultConfig"`
+	// Specified if applying the default routing config to logs not specified in other configs.
+	// Structure is documented below.
+	DefaultConfig *FeatureSpecFleetobservabilityLoggingConfigDefaultConfig `pulumi:"defaultConfig"`
+	// Specified if applying the routing config to all logs for all fleet scopes.
+	// Structure is documented below.
 	FleetScopeLogsConfig *FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig `pulumi:"fleetScopeLogsConfig"`
 }
 
@@ -2203,7 +2556,11 @@ type FeatureSpecFleetobservabilityLoggingConfigInput interface {
 }
 
 type FeatureSpecFleetobservabilityLoggingConfigArgs struct {
-	DefaultConfig        FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrInput        `pulumi:"defaultConfig"`
+	// Specified if applying the default routing config to logs not specified in other configs.
+	// Structure is documented below.
+	DefaultConfig FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrInput `pulumi:"defaultConfig"`
+	// Specified if applying the routing config to all logs for all fleet scopes.
+	// Structure is documented below.
 	FleetScopeLogsConfig FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrInput `pulumi:"fleetScopeLogsConfig"`
 }
 
@@ -2284,12 +2641,16 @@ func (o FeatureSpecFleetobservabilityLoggingConfigOutput) ToFeatureSpecFleetobse
 	}).(FeatureSpecFleetobservabilityLoggingConfigPtrOutput)
 }
 
+// Specified if applying the default routing config to logs not specified in other configs.
+// Structure is documented below.
 func (o FeatureSpecFleetobservabilityLoggingConfigOutput) DefaultConfig() FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput {
 	return o.ApplyT(func(v FeatureSpecFleetobservabilityLoggingConfig) *FeatureSpecFleetobservabilityLoggingConfigDefaultConfig {
 		return v.DefaultConfig
 	}).(FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput)
 }
 
+// Specified if applying the routing config to all logs for all fleet scopes.
+// Structure is documented below.
 func (o FeatureSpecFleetobservabilityLoggingConfigOutput) FleetScopeLogsConfig() FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput {
 	return o.ApplyT(func(v FeatureSpecFleetobservabilityLoggingConfig) *FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig {
 		return v.FleetScopeLogsConfig
@@ -2320,6 +2681,8 @@ func (o FeatureSpecFleetobservabilityLoggingConfigPtrOutput) Elem() FeatureSpecF
 	}).(FeatureSpecFleetobservabilityLoggingConfigOutput)
 }
 
+// Specified if applying the default routing config to logs not specified in other configs.
+// Structure is documented below.
 func (o FeatureSpecFleetobservabilityLoggingConfigPtrOutput) DefaultConfig() FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput {
 	return o.ApplyT(func(v *FeatureSpecFleetobservabilityLoggingConfig) *FeatureSpecFleetobservabilityLoggingConfigDefaultConfig {
 		if v == nil {
@@ -2329,6 +2692,8 @@ func (o FeatureSpecFleetobservabilityLoggingConfigPtrOutput) DefaultConfig() Fea
 	}).(FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput)
 }
 
+// Specified if applying the routing config to all logs for all fleet scopes.
+// Structure is documented below.
 func (o FeatureSpecFleetobservabilityLoggingConfigPtrOutput) FleetScopeLogsConfig() FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput {
 	return o.ApplyT(func(v *FeatureSpecFleetobservabilityLoggingConfig) *FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig {
 		if v == nil {
@@ -2339,6 +2704,8 @@ func (o FeatureSpecFleetobservabilityLoggingConfigPtrOutput) FleetScopeLogsConfi
 }
 
 type FeatureSpecFleetobservabilityLoggingConfigDefaultConfig struct {
+	// Specified if fleet logging feature is enabled.
+	// Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
 	Mode *string `pulumi:"mode"`
 }
 
@@ -2354,6 +2721,8 @@ type FeatureSpecFleetobservabilityLoggingConfigDefaultConfigInput interface {
 }
 
 type FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs struct {
+	// Specified if fleet logging feature is enabled.
+	// Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 }
 
@@ -2434,6 +2803,8 @@ func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput) ToFeature
 	}).(FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput)
 }
 
+// Specified if fleet logging feature is enabled.
+// Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
 func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureSpecFleetobservabilityLoggingConfigDefaultConfig) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -2462,6 +2833,8 @@ func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput) Elem()
 	}).(FeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput)
 }
 
+// Specified if fleet logging feature is enabled.
+// Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
 func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureSpecFleetobservabilityLoggingConfigDefaultConfig) *string {
 		if v == nil {
@@ -2472,6 +2845,8 @@ func (o FeatureSpecFleetobservabilityLoggingConfigDefaultConfigPtrOutput) Mode()
 }
 
 type FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig struct {
+	// Specified if fleet logging feature is enabled.
+	// Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
 	Mode *string `pulumi:"mode"`
 }
 
@@ -2487,6 +2862,8 @@ type FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigInput interfa
 }
 
 type FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs struct {
+	// Specified if fleet logging feature is enabled.
+	// Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 }
 
@@ -2567,6 +2944,8 @@ func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput) To
 	}).(FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput)
 }
 
+// Specified if fleet logging feature is enabled.
+// Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
 func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig) *string { return v.Mode }).(pulumi.StringPtrOutput)
 }
@@ -2595,6 +2974,8 @@ func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput)
 	}).(FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput)
 }
 
+// Specified if fleet logging feature is enabled.
+// Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
 func (o FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigPtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig) *string {
 		if v == nil {
@@ -2742,6 +3123,9 @@ func (o FeatureSpecMulticlusteringressPtrOutput) ConfigMembership() pulumi.Strin
 }
 
 type FeatureStateType struct {
+	// (Output)
+	// Output only. The "running state" of the Feature in this Hub.
+	// Structure is documented below.
 	States []FeatureStateState `pulumi:"states"`
 }
 
@@ -2757,6 +3141,9 @@ type FeatureStateTypeInput interface {
 }
 
 type FeatureStateTypeArgs struct {
+	// (Output)
+	// Output only. The "running state" of the Feature in this Hub.
+	// Structure is documented below.
 	States FeatureStateStateArrayInput `pulumi:"states"`
 }
 
@@ -2811,6 +3198,9 @@ func (o FeatureStateTypeOutput) ToFeatureStateTypeOutputWithContext(ctx context.
 	return o
 }
 
+// (Output)
+// Output only. The "running state" of the Feature in this Hub.
+// Structure is documented below.
 func (o FeatureStateTypeOutput) States() FeatureStateStateArrayOutput {
 	return o.ApplyT(func(v FeatureStateType) []FeatureStateState { return v.States }).(FeatureStateStateArrayOutput)
 }
@@ -2836,9 +3226,14 @@ func (o FeatureStateTypeArrayOutput) Index(i pulumi.IntInput) FeatureStateTypeOu
 }
 
 type FeatureStateState struct {
-	Code        *string `pulumi:"code"`
+	// (Output)
+	// The high-level, machine-readable status of this Feature.
+	Code *string `pulumi:"code"`
+	// (Output)
+	// A human-readable description of the current status.
 	Description *string `pulumi:"description"`
-	// Output only. When the Feature resource was last updated.
+	// (Output)
+	// The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
@@ -2854,9 +3249,14 @@ type FeatureStateStateInput interface {
 }
 
 type FeatureStateStateArgs struct {
-	Code        pulumi.StringPtrInput `pulumi:"code"`
+	// (Output)
+	// The high-level, machine-readable status of this Feature.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+	// (Output)
+	// A human-readable description of the current status.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Output only. When the Feature resource was last updated.
+	// (Output)
+	// The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
 }
 
@@ -2911,15 +3311,20 @@ func (o FeatureStateStateOutput) ToFeatureStateStateOutputWithContext(ctx contex
 	return o
 }
 
+// (Output)
+// The high-level, machine-readable status of this Feature.
 func (o FeatureStateStateOutput) Code() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureStateState) *string { return v.Code }).(pulumi.StringPtrOutput)
 }
 
+// (Output)
+// A human-readable description of the current status.
 func (o FeatureStateStateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureStateState) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Output only. When the Feature resource was last updated.
+// (Output)
+// The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 func (o FeatureStateStateOutput) UpdateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureStateState) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
 }
@@ -3678,6 +4083,10 @@ func (o MembershipIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureIamBindingConditionInput)(nil)).Elem(), FeatureIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureIamBindingConditionPtrInput)(nil)).Elem(), FeatureIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureIamMemberConditionInput)(nil)).Elem(), FeatureIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureIamMemberConditionPtrInput)(nil)).Elem(), FeatureIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementInput)(nil)).Elem(), FeatureMembershipConfigmanagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementPtrInput)(nil)).Elem(), FeatureMembershipConfigmanagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementBinauthzInput)(nil)).Elem(), FeatureMembershipConfigmanagementBinauthzArgs{})
@@ -3724,6 +4133,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipIamBindingConditionPtrInput)(nil)).Elem(), MembershipIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipIamMemberConditionInput)(nil)).Elem(), MembershipIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipIamMemberConditionPtrInput)(nil)).Elem(), MembershipIamMemberConditionArgs{})
+	pulumi.RegisterOutputType(FeatureIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(FeatureIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(FeatureIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(FeatureIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementPtrOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementBinauthzOutput{})

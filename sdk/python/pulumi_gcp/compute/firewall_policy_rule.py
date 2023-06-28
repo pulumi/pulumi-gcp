@@ -28,10 +28,10 @@ class FirewallPolicyRuleArgs:
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a FirewallPolicyRule resource.
-        :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         :param pulumi.Input[str] direction: The direction in which this rule applies. Possible values: INGRESS, EGRESS
         :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
-        :param pulumi.Input['FirewallPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
+        :param pulumi.Input['FirewallPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         :param pulumi.Input[str] description: An optional description for this resource.
         :param pulumi.Input[bool] disabled: Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
@@ -59,7 +59,7 @@ class FirewallPolicyRuleArgs:
     @pulumi.getter
     def action(self) -> pulumi.Input[str]:
         """
-        The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         """
         return pulumi.get(self, "action")
 
@@ -95,7 +95,7 @@ class FirewallPolicyRuleArgs:
     @pulumi.getter
     def match(self) -> pulumi.Input['FirewallPolicyRuleMatchArgs']:
         """
-        A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
+        A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         """
         return pulumi.get(self, "match")
 
@@ -193,14 +193,14 @@ class _FirewallPolicyRuleState:
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering FirewallPolicyRule resources.
-        :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         :param pulumi.Input[str] description: An optional description for this resource.
         :param pulumi.Input[str] direction: The direction in which this rule applies. Possible values: INGRESS, EGRESS
         :param pulumi.Input[bool] disabled: Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
         :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
         :param pulumi.Input[str] kind: Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
-        :param pulumi.Input['FirewallPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
+        :param pulumi.Input['FirewallPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         :param pulumi.Input[int] rule_tuple_count: Calculation of the complexity of a single firewall policy rule.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
@@ -235,7 +235,7 @@ class _FirewallPolicyRuleState:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
         """
-        The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         """
         return pulumi.get(self, "action")
 
@@ -319,7 +319,7 @@ class _FirewallPolicyRuleState:
     @pulumi.getter
     def match(self) -> Optional[pulumi.Input['FirewallPolicyRuleMatchArgs']]:
         """
-        A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
+        A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         """
         return pulumi.get(self, "match")
 
@@ -393,50 +393,59 @@ class FirewallPolicyRule(pulumi.CustomResource):
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Hierarchical firewall policy rules let you create and enforce a consistent firewall policy across your organization. Rules can explicitly allow or deny connections or delegate evaluation to lower level policies.
-
-        For more information see the [official documentation](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
+        The Compute FirewallPolicyRule resource
 
         ## Example Usage
-
+        ### Basic_fir_sec_rule_addr_groups
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         basic_global_networksecurity_address_group = gcp.networksecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup",
-            parent="organizations/12345",
+            parent="organizations/123456789",
             description="Sample global networksecurity_address_group",
             location="global",
             items=["208.80.154.224/32"],
             type="IPV4",
             capacity=100,
             opts=pulumi.ResourceOptions(provider=google_beta))
-        default_firewall_policy = gcp.compute.FirewallPolicy("defaultFirewallPolicy",
-            parent="organizations/12345",
-            short_name="my-policy",
-            description="Example Resource")
-        default_firewall_policy_rule = gcp.compute.FirewallPolicyRule("defaultFirewallPolicyRule",
-            firewall_policy=default_firewall_policy.id,
-            description="Example Resource",
+        folder = gcp.organizations.Folder("folder",
+            display_name="policy",
+            parent="organizations/123456789",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.compute.FirewallPolicy("default",
+            parent=folder.id,
+            short_name="policy",
+            description="Resource created for Terraform acceptance testing",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        primary = gcp.compute.FirewallPolicyRule("primary",
+            firewall_policy=default.name,
+            description="Resource created for Terraform acceptance testing",
             priority=9000,
             enable_logging=True,
             action="allow",
             direction="EGRESS",
             disabled=False,
             match=gcp.compute.FirewallPolicyRuleMatchArgs(
-                layer4_configs=[gcp.compute.FirewallPolicyRuleMatchLayer4ConfigArgs(
-                    ip_protocol="tcp",
-                    ports=[
-                        "80",
-                        "8080",
-                    ],
-                )],
+                layer4_configs=[
+                    gcp.compute.FirewallPolicyRuleMatchLayer4ConfigArgs(
+                        ip_protocol="tcp",
+                        ports=["8080"],
+                    ),
+                    gcp.compute.FirewallPolicyRuleMatchLayer4ConfigArgs(
+                        ip_protocol="udp",
+                        ports=["22"],
+                    ),
+                ],
                 dest_ip_ranges=["11.100.0.1/32"],
-                dest_fqdns=["google.com"],
+                dest_fqdns=[],
                 dest_region_codes=["US"],
-                dest_threat_intelligences=["iplist-public-clouds"],
+                dest_threat_intelligences=["iplist-known-malicious-ips"],
+                src_address_groups=[],
                 dest_address_groups=[basic_global_networksecurity_address_group.id],
-            ))
+            ),
+            target_service_accounts=["my@service-account.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -453,13 +462,13 @@ class FirewallPolicyRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         :param pulumi.Input[str] description: An optional description for this resource.
         :param pulumi.Input[str] direction: The direction in which this rule applies. Possible values: INGRESS, EGRESS
         :param pulumi.Input[bool] disabled: Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
         :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
-        :param pulumi.Input[pulumi.InputType['FirewallPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['FirewallPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
@@ -471,50 +480,59 @@ class FirewallPolicyRule(pulumi.CustomResource):
                  args: FirewallPolicyRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Hierarchical firewall policy rules let you create and enforce a consistent firewall policy across your organization. Rules can explicitly allow or deny connections or delegate evaluation to lower level policies.
-
-        For more information see the [official documentation](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
+        The Compute FirewallPolicyRule resource
 
         ## Example Usage
-
+        ### Basic_fir_sec_rule_addr_groups
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
         basic_global_networksecurity_address_group = gcp.networksecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup",
-            parent="organizations/12345",
+            parent="organizations/123456789",
             description="Sample global networksecurity_address_group",
             location="global",
             items=["208.80.154.224/32"],
             type="IPV4",
             capacity=100,
             opts=pulumi.ResourceOptions(provider=google_beta))
-        default_firewall_policy = gcp.compute.FirewallPolicy("defaultFirewallPolicy",
-            parent="organizations/12345",
-            short_name="my-policy",
-            description="Example Resource")
-        default_firewall_policy_rule = gcp.compute.FirewallPolicyRule("defaultFirewallPolicyRule",
-            firewall_policy=default_firewall_policy.id,
-            description="Example Resource",
+        folder = gcp.organizations.Folder("folder",
+            display_name="policy",
+            parent="organizations/123456789",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.compute.FirewallPolicy("default",
+            parent=folder.id,
+            short_name="policy",
+            description="Resource created for Terraform acceptance testing",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        primary = gcp.compute.FirewallPolicyRule("primary",
+            firewall_policy=default.name,
+            description="Resource created for Terraform acceptance testing",
             priority=9000,
             enable_logging=True,
             action="allow",
             direction="EGRESS",
             disabled=False,
             match=gcp.compute.FirewallPolicyRuleMatchArgs(
-                layer4_configs=[gcp.compute.FirewallPolicyRuleMatchLayer4ConfigArgs(
-                    ip_protocol="tcp",
-                    ports=[
-                        "80",
-                        "8080",
-                    ],
-                )],
+                layer4_configs=[
+                    gcp.compute.FirewallPolicyRuleMatchLayer4ConfigArgs(
+                        ip_protocol="tcp",
+                        ports=["8080"],
+                    ),
+                    gcp.compute.FirewallPolicyRuleMatchLayer4ConfigArgs(
+                        ip_protocol="udp",
+                        ports=["22"],
+                    ),
+                ],
                 dest_ip_ranges=["11.100.0.1/32"],
-                dest_fqdns=["google.com"],
+                dest_fqdns=[],
                 dest_region_codes=["US"],
-                dest_threat_intelligences=["iplist-public-clouds"],
+                dest_threat_intelligences=["iplist-known-malicious-ips"],
+                src_address_groups=[],
                 dest_address_groups=[basic_global_networksecurity_address_group.id],
-            ))
+            ),
+            target_service_accounts=["my@service-account.com"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -614,14 +632,14 @@ class FirewallPolicyRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         :param pulumi.Input[str] description: An optional description for this resource.
         :param pulumi.Input[str] direction: The direction in which this rule applies. Possible values: INGRESS, EGRESS
         :param pulumi.Input[bool] disabled: Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
         :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
         :param pulumi.Input[str] kind: Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
-        :param pulumi.Input[pulumi.InputType['FirewallPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['FirewallPolicyRuleMatchArgs']] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         :param pulumi.Input[int] rule_tuple_count: Calculation of the complexity of a single firewall policy rule.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
@@ -649,7 +667,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
     @pulumi.getter
     def action(self) -> pulumi.Output[str]:
         """
-        The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         """
         return pulumi.get(self, "action")
 
@@ -705,7 +723,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
     @pulumi.getter
     def match(self) -> pulumi.Output['outputs.FirewallPolicyRuleMatch']:
         """
-        A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
+        A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         """
         return pulumi.get(self, "match")
 

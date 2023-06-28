@@ -101,6 +101,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly firestoreCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gameServicesCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gkeBackupCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly gkeHub2CustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gkeHubCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gkehubFeatureCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gkeonpremCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -249,6 +250,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["firestoreCustomEndpoint"] = args ? args.firestoreCustomEndpoint : undefined;
             resourceInputs["gameServicesCustomEndpoint"] = args ? args.gameServicesCustomEndpoint : undefined;
             resourceInputs["gkeBackupCustomEndpoint"] = args ? args.gkeBackupCustomEndpoint : undefined;
+            resourceInputs["gkeHub2CustomEndpoint"] = args ? args.gkeHub2CustomEndpoint : undefined;
             resourceInputs["gkeHubCustomEndpoint"] = args ? args.gkeHubCustomEndpoint : undefined;
             resourceInputs["gkehubFeatureCustomEndpoint"] = args ? args.gkehubFeatureCustomEndpoint : undefined;
             resourceInputs["gkeonpremCustomEndpoint"] = args ? args.gkeonpremCustomEndpoint : undefined;
@@ -398,6 +400,7 @@ export interface ProviderArgs {
     firestoreCustomEndpoint?: pulumi.Input<string>;
     gameServicesCustomEndpoint?: pulumi.Input<string>;
     gkeBackupCustomEndpoint?: pulumi.Input<string>;
+    gkeHub2CustomEndpoint?: pulumi.Input<string>;
     gkeHubCustomEndpoint?: pulumi.Input<string>;
     gkehubFeatureCustomEndpoint?: pulumi.Input<string>;
     gkeonpremCustomEndpoint?: pulumi.Input<string>;

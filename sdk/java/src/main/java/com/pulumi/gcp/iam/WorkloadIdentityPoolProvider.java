@@ -215,6 +215,64 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Iam Workload Identity Pool Provider Oidc Upload Key
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPool;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPoolArgs;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPoolProvider;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPoolProviderArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderOidcArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var pool = new WorkloadIdentityPool(&#34;pool&#34;, WorkloadIdentityPoolArgs.builder()        
+ *             .workloadIdentityPoolId(&#34;example-pool&#34;)
+ *             .build());
+ * 
+ *         var example = new WorkloadIdentityPoolProvider(&#34;example&#34;, WorkloadIdentityPoolProviderArgs.builder()        
+ *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
+ *             .workloadIdentityPoolProviderId(&#34;example-prvdr&#34;)
+ *             .displayName(&#34;Name of provider&#34;)
+ *             .description(&#34;OIDC identity pool provider for automated test&#34;)
+ *             .disabled(true)
+ *             .attributeCondition(&#34;\&#34;e968c2ef-047c-498d-8d79-16ca1b61e77e\&#34; in assertion.groups&#34;)
+ *             .attributeMapping(Map.ofEntries(
+ *                 Map.entry(&#34;google.subject&#34;, &#34;\&#34;azure::\&#34; + assertion.tid + \&#34;::\&#34; + assertion.sub&#34;),
+ *                 Map.entry(&#34;attribute.tid&#34;, &#34;assertion.tid&#34;),
+ *                 Map.entry(&#34;attribute.managed_identity_name&#34;, &#34;&#34;&#34;
+ *       {
+ *         &#34;8bb39bdb-1cc5-4447-b7db-a19e920eb111&#34;:&#34;workload1&#34;,
+ *         &#34;55d36609-9bcf-48e0-a366-a3cf19027d2a&#34;:&#34;workload2&#34;
+ *       }[assertion.oid]
+ *                 &#34;&#34;&#34;)
+ *             ))
+ *             .oidc(WorkloadIdentityPoolProviderOidcArgs.builder()
+ *                 .allowedAudiences(                
+ *                     &#34;https://example.com/gcp-oidc-federation&#34;,
+ *                     &#34;example.com/gcp-oidc-federation&#34;)
+ *                 .issuerUri(&#34;https://sts.windows.net/azure-tenant-id&#34;)
+ *                 .jwksJson(&#34;{\&#34;keys\&#34;:[{\&#34;kty\&#34;:\&#34;RSA\&#34;,\&#34;alg\&#34;:\&#34;RS256\&#34;,\&#34;kid\&#34;:\&#34;sif0AR-F6MuvksAyAOv-Pds08Bcf2eUMlxE30NofddA\&#34;,\&#34;use\&#34;:\&#34;sig\&#34;,\&#34;e\&#34;:\&#34;AQAB\&#34;,\&#34;n\&#34;:\&#34;ylH1Chl1tpfti3lh51E1g5dPogzXDaQseqjsefGLknaNl5W6Wd4frBhHyE2t41Q5zgz_Ll0-NvWm0FlaG6brhrN9QZu6sJP1bM8WPfJVPgXOanxi7d7TXCkeNubGeiLTf5R3UXtS9Lm_guemU7MxDjDTelxnlgGCihOVTcL526suNJUdfXtpwUsvdU6_ZnAp9IpsuYjCtwPm9hPumlcZGMbxstdh07O4y4O90cVQClJOKSGQjAUCKJWXIQ0cqffGS_HuS_725CPzQ85SzYZzaNpgfhAER7kx_9P16ARM3BJz0PI5fe2hECE61J4GYU_BY43sxDfs7HyJpEXKLU9eWw\&#34;}]}&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

@@ -12,6 +12,7 @@ import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageConfidentialInstanc
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageGuestAcceleratorArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageNetworkInterfaceArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageNetworkPerformanceConfigArgs;
+import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageParamsArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageReservationAffinityArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageSchedulingArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageScratchDiskArgs;
@@ -422,6 +423,21 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
     }
 
     /**
+     * Stores additional params passed with the request, but not persisted as part of resource payload.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<InstanceFromMachineImageParamsArgs> params;
+
+    /**
+     * @return Stores additional params passed with the request, but not persisted as part of resource payload.
+     * 
+     */
+    public Optional<Output<InstanceFromMachineImageParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
+    }
+
+    /**
      * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
      * self_link nor project are provided, the provider project is used.
      * 
@@ -651,6 +667,7 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
         this.name = $.name;
         this.networkInterfaces = $.networkInterfaces;
         this.networkPerformanceConfig = $.networkPerformanceConfig;
+        this.params = $.params;
         this.project = $.project;
         this.reservationAffinity = $.reservationAffinity;
         this.resourcePolicies = $.resourcePolicies;
@@ -1262,6 +1279,27 @@ public final class InstanceFromMachineImageState extends com.pulumi.resources.Re
          */
         public Builder networkPerformanceConfig(InstanceFromMachineImageNetworkPerformanceConfigArgs networkPerformanceConfig) {
             return networkPerformanceConfig(Output.of(networkPerformanceConfig));
+        }
+
+        /**
+         * @param params Stores additional params passed with the request, but not persisted as part of resource payload.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<InstanceFromMachineImageParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Stores additional params passed with the request, but not persisted as part of resource payload.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(InstanceFromMachineImageParamsArgs params) {
+            return params(Output.of(params));
         }
 
         /**

@@ -516,7 +516,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * Name must be unique within a Google Cloud project and region.
      * Is required when creating resources. Name is primarily intended
      * for creation idempotence and configuration definition. Cannot be updated.
-     * More info: http://kubernetes.io/docs/user-guide/identifiers#names
+     * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
      * 
      */
     @Export(name="name", type=String.class, parameters={})
@@ -526,7 +526,7 @@ public class Service extends com.pulumi.resources.CustomResource {
      * @return Name must be unique within a Google Cloud project and region.
      * Is required when creating resources. Name is primarily intended
      * for creation idempotence and configuration definition. Cannot be updated.
-     * More info: http://kubernetes.io/docs/user-guide/identifiers#names
+     * More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
      * 
      */
     public Output<String> name() {

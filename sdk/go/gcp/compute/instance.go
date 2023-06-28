@@ -209,6 +209,9 @@ type Instance struct {
 	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
 	// in order for this setting to take effect.
 	NetworkPerformanceConfig InstanceNetworkPerformanceConfigPtrOutput `pulumi:"networkPerformanceConfig"`
+	// Additional instance parameters.
+	// .
+	Params InstanceParamsPtrOutput `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -376,6 +379,9 @@ type instanceState struct {
 	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
 	// in order for this setting to take effect.
 	NetworkPerformanceConfig *InstanceNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
+	// Additional instance parameters.
+	// .
+	Params *InstanceParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -506,6 +512,9 @@ type InstanceState struct {
 	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
 	// in order for this setting to take effect.
 	NetworkPerformanceConfig InstanceNetworkPerformanceConfigPtrInput
+	// Additional instance parameters.
+	// .
+	Params InstanceParamsPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -630,6 +639,9 @@ type instanceArgs struct {
 	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
 	// in order for this setting to take effect.
 	NetworkPerformanceConfig *InstanceNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
+	// Additional instance parameters.
+	// .
+	Params *InstanceParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -747,6 +759,9 @@ type InstanceArgs struct {
 	// in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
 	// in order for this setting to take effect.
 	NetworkPerformanceConfig InstanceNetworkPerformanceConfigPtrInput
+	// Additional instance parameters.
+	// .
+	Params InstanceParamsPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -1032,6 +1047,12 @@ func (o InstanceOutput) NetworkInterfaces() InstanceNetworkInterfaceArrayOutput 
 // in order for this setting to take effect.
 func (o InstanceOutput) NetworkPerformanceConfig() InstanceNetworkPerformanceConfigPtrOutput {
 	return o.ApplyT(func(v *Instance) InstanceNetworkPerformanceConfigPtrOutput { return v.NetworkPerformanceConfig }).(InstanceNetworkPerformanceConfigPtrOutput)
+}
+
+// Additional instance parameters.
+// .
+func (o InstanceOutput) Params() InstanceParamsPtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceParamsPtrOutput { return v.Params }).(InstanceParamsPtrOutput)
 }
 
 // The ID of the project in which the resource belongs. If it

@@ -85,6 +85,8 @@ class EnvironmentConfig(dict):
             suggest = "private_environment_config"
         elif key == "recoveryConfig":
             suggest = "recovery_config"
+        elif key == "resilienceMode":
+            suggest = "resilience_mode"
         elif key == "softwareConfig":
             suggest = "software_config"
         elif key == "webServerConfig":
@@ -118,6 +120,7 @@ class EnvironmentConfig(dict):
                  node_count: Optional[int] = None,
                  private_environment_config: Optional['outputs.EnvironmentConfigPrivateEnvironmentConfig'] = None,
                  recovery_config: Optional['outputs.EnvironmentConfigRecoveryConfig'] = None,
+                 resilience_mode: Optional[str] = None,
                  software_config: Optional['outputs.EnvironmentConfigSoftwareConfig'] = None,
                  web_server_config: Optional['outputs.EnvironmentConfigWebServerConfig'] = None,
                  web_server_network_access_control: Optional['outputs.EnvironmentConfigWebServerNetworkAccessControl'] = None,
@@ -146,6 +149,8 @@ class EnvironmentConfig(dict):
             pulumi.set(__self__, "private_environment_config", private_environment_config)
         if recovery_config is not None:
             pulumi.set(__self__, "recovery_config", recovery_config)
+        if resilience_mode is not None:
+            pulumi.set(__self__, "resilience_mode", resilience_mode)
         if software_config is not None:
             pulumi.set(__self__, "software_config", software_config)
         if web_server_config is not None:
@@ -214,6 +219,11 @@ class EnvironmentConfig(dict):
     @pulumi.getter(name="recoveryConfig")
     def recovery_config(self) -> Optional['outputs.EnvironmentConfigRecoveryConfig']:
         return pulumi.get(self, "recovery_config")
+
+    @property
+    @pulumi.getter(name="resilienceMode")
+    def resilience_mode(self) -> Optional[str]:
+        return pulumi.get(self, "resilience_mode")
 
     @property
     @pulumi.getter(name="softwareConfig")
@@ -1249,6 +1259,7 @@ class GetEnvironmentConfigResult(dict):
                  node_count: int,
                  private_environment_configs: Sequence['outputs.GetEnvironmentConfigPrivateEnvironmentConfigResult'],
                  recovery_configs: Sequence['outputs.GetEnvironmentConfigRecoveryConfigResult'],
+                 resilience_mode: str,
                  software_configs: Sequence['outputs.GetEnvironmentConfigSoftwareConfigResult'],
                  web_server_configs: Sequence['outputs.GetEnvironmentConfigWebServerConfigResult'],
                  web_server_network_access_controls: Sequence['outputs.GetEnvironmentConfigWebServerNetworkAccessControlResult'],
@@ -1265,6 +1276,7 @@ class GetEnvironmentConfigResult(dict):
         pulumi.set(__self__, "node_count", node_count)
         pulumi.set(__self__, "private_environment_configs", private_environment_configs)
         pulumi.set(__self__, "recovery_configs", recovery_configs)
+        pulumi.set(__self__, "resilience_mode", resilience_mode)
         pulumi.set(__self__, "software_configs", software_configs)
         pulumi.set(__self__, "web_server_configs", web_server_configs)
         pulumi.set(__self__, "web_server_network_access_controls", web_server_network_access_controls)
@@ -1329,6 +1341,11 @@ class GetEnvironmentConfigResult(dict):
     @pulumi.getter(name="recoveryConfigs")
     def recovery_configs(self) -> Sequence['outputs.GetEnvironmentConfigRecoveryConfigResult']:
         return pulumi.get(self, "recovery_configs")
+
+    @property
+    @pulumi.getter(name="resilienceMode")
+    def resilience_mode(self) -> str:
+        return pulumi.get(self, "resilience_mode")
 
     @property
     @pulumi.getter(name="softwareConfigs")

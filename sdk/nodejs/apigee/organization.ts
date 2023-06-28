@@ -135,6 +135,10 @@ export class Organization extends pulumi.CustomResource {
      */
     public readonly analyticsRegion!: pulumi.Output<string | undefined>;
     /**
+     * Output only. Project ID of the Apigee Tenant Project.
+     */
+    public /*out*/ readonly apigeeProjectId!: pulumi.Output<string>;
+    /**
      * Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
      * See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
      * Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
@@ -215,6 +219,7 @@ export class Organization extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as OrganizationState | undefined;
             resourceInputs["analyticsRegion"] = state ? state.analyticsRegion : undefined;
+            resourceInputs["apigeeProjectId"] = state ? state.apigeeProjectId : undefined;
             resourceInputs["authorizedNetwork"] = state ? state.authorizedNetwork : undefined;
             resourceInputs["billingType"] = state ? state.billingType : undefined;
             resourceInputs["caCertificate"] = state ? state.caCertificate : undefined;
@@ -242,6 +247,7 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["retention"] = args ? args.retention : undefined;
             resourceInputs["runtimeDatabaseEncryptionKeyName"] = args ? args.runtimeDatabaseEncryptionKeyName : undefined;
             resourceInputs["runtimeType"] = args ? args.runtimeType : undefined;
+            resourceInputs["apigeeProjectId"] = undefined /*out*/;
             resourceInputs["caCertificate"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["subscriptionType"] = undefined /*out*/;
@@ -259,6 +265,10 @@ export interface OrganizationState {
      * Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
      */
     analyticsRegion?: pulumi.Input<string>;
+    /**
+     * Output only. Project ID of the Apigee Tenant Project.
+     */
+    apigeeProjectId?: pulumi.Input<string>;
     /**
      * Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
      * See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).

@@ -10,10 +10,30 @@ export type Feature = import("./feature").Feature;
 export const Feature: typeof import("./feature").Feature = null as any;
 utilities.lazyLoad(exports, ["Feature"], () => require("./feature"));
 
+export { FeatureIamBindingArgs, FeatureIamBindingState } from "./featureIamBinding";
+export type FeatureIamBinding = import("./featureIamBinding").FeatureIamBinding;
+export const FeatureIamBinding: typeof import("./featureIamBinding").FeatureIamBinding = null as any;
+utilities.lazyLoad(exports, ["FeatureIamBinding"], () => require("./featureIamBinding"));
+
+export { FeatureIamMemberArgs, FeatureIamMemberState } from "./featureIamMember";
+export type FeatureIamMember = import("./featureIamMember").FeatureIamMember;
+export const FeatureIamMember: typeof import("./featureIamMember").FeatureIamMember = null as any;
+utilities.lazyLoad(exports, ["FeatureIamMember"], () => require("./featureIamMember"));
+
+export { FeatureIamPolicyArgs, FeatureIamPolicyState } from "./featureIamPolicy";
+export type FeatureIamPolicy = import("./featureIamPolicy").FeatureIamPolicy;
+export const FeatureIamPolicy: typeof import("./featureIamPolicy").FeatureIamPolicy = null as any;
+utilities.lazyLoad(exports, ["FeatureIamPolicy"], () => require("./featureIamPolicy"));
+
 export { FeatureMembershipArgs, FeatureMembershipState } from "./featureMembership";
 export type FeatureMembership = import("./featureMembership").FeatureMembership;
 export const FeatureMembership: typeof import("./featureMembership").FeatureMembership = null as any;
 utilities.lazyLoad(exports, ["FeatureMembership"], () => require("./featureMembership"));
+
+export { GetFeatureIamPolicyArgs, GetFeatureIamPolicyResult, GetFeatureIamPolicyOutputArgs } from "./getFeatureIamPolicy";
+export const getFeatureIamPolicy: typeof import("./getFeatureIamPolicy").getFeatureIamPolicy = null as any;
+export const getFeatureIamPolicyOutput: typeof import("./getFeatureIamPolicy").getFeatureIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getFeatureIamPolicy","getFeatureIamPolicyOutput"], () => require("./getFeatureIamPolicy"));
 
 export { GetMembershipIamPolicyArgs, GetMembershipIamPolicyResult, GetMembershipIamPolicyOutputArgs } from "./getMembershipIamPolicy";
 export const getMembershipIamPolicy: typeof import("./getMembershipIamPolicy").getMembershipIamPolicy = null as any;
@@ -47,6 +67,12 @@ const _module = {
         switch (type) {
             case "gcp:gkehub/feature:Feature":
                 return new Feature(name, <any>undefined, { urn })
+            case "gcp:gkehub/featureIamBinding:FeatureIamBinding":
+                return new FeatureIamBinding(name, <any>undefined, { urn })
+            case "gcp:gkehub/featureIamMember:FeatureIamMember":
+                return new FeatureIamMember(name, <any>undefined, { urn })
+            case "gcp:gkehub/featureIamPolicy:FeatureIamPolicy":
+                return new FeatureIamPolicy(name, <any>undefined, { urn })
             case "gcp:gkehub/featureMembership:FeatureMembership":
                 return new FeatureMembership(name, <any>undefined, { urn })
             case "gcp:gkehub/membership:Membership":
@@ -63,6 +89,9 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "gkehub/feature", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkehub/featureIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkehub/featureIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkehub/featureIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkehub/featureMembership", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkehub/membership", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkehub/membershipIamBinding", _module)

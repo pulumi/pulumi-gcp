@@ -10,12 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
-    /// Hierarchical firewall policy rules let you create and enforce a consistent firewall policy across your organization. Rules can explicitly allow or deny connections or delegate evaluation to lower level policies.
-    /// 
-    /// For more information see the [official documentation](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
+    /// The Compute FirewallPolicyRule resource
     /// 
     /// ## Example Usage
-    /// 
+    /// ### Basic_fir_sec_rule_addr_groups
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -26,7 +24,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var basicGlobalNetworksecurityAddressGroup = new Gcp.NetworkSecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup", new()
     ///     {
-    ///         Parent = "organizations/12345",
+    ///         Parent = "organizations/123456789",
     ///         Description = "Sample global networksecurity_address_group",
     ///         Location = "global",
     ///         Items = new[]
@@ -40,17 +38,29 @@ namespace Pulumi.Gcp.Compute
     ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultFirewallPolicy = new Gcp.Compute.FirewallPolicy("defaultFirewallPolicy", new()
+    ///     var folder = new Gcp.Organizations.Folder("folder", new()
     ///     {
-    ///         Parent = "organizations/12345",
-    ///         ShortName = "my-policy",
-    ///         Description = "Example Resource",
+    ///         DisplayName = "policy",
+    ///         Parent = "organizations/123456789",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var defaultFirewallPolicyRule = new Gcp.Compute.FirewallPolicyRule("defaultFirewallPolicyRule", new()
+    ///     var @default = new Gcp.Compute.FirewallPolicy("default", new()
     ///     {
-    ///         FirewallPolicy = defaultFirewallPolicy.Id,
-    ///         Description = "Example Resource",
+    ///         Parent = folder.Id,
+    ///         ShortName = "policy",
+    ///         Description = "Resource created for Terraform acceptance testing",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Compute.FirewallPolicyRule("primary", new()
+    ///     {
+    ///         FirewallPolicy = @default.Name,
+    ///         Description = "Resource created for Terraform acceptance testing",
     ///         Priority = 9000,
     ///         EnableLogging = true,
     ///         Action = "allow",
@@ -65,8 +75,15 @@ namespace Pulumi.Gcp.Compute
     ///                     IpProtocol = "tcp",
     ///                     Ports = new[]
     ///                     {
-    ///                         "80",
     ///                         "8080",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.FirewallPolicyRuleMatchLayer4ConfigArgs
+    ///                 {
+    ///                     IpProtocol = "udp",
+    ///                     Ports = new[]
+    ///                     {
+    ///                         "22",
     ///                     },
     ///                 },
     ///             },
@@ -74,23 +91,28 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 "11.100.0.1/32",
     ///             },
-    ///             DestFqdns = new[]
-    ///             {
-    ///                 "google.com",
-    ///             },
+    ///             DestFqdns = new[] {},
     ///             DestRegionCodes = new[]
     ///             {
     ///                 "US",
     ///             },
     ///             DestThreatIntelligences = new[]
     ///             {
-    ///                 "iplist-public-clouds",
+    ///                 "iplist-known-malicious-ips",
     ///             },
+    ///             SrcAddressGroups = new[] {},
     ///             DestAddressGroups = new[]
     ///             {
     ///                 basicGlobalNetworksecurityAddressGroup.Id,
     ///             },
     ///         },
+    ///         TargetServiceAccounts = new[]
+    ///         {
+    ///             "my@service-account.com",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -112,7 +134,7 @@ namespace Pulumi.Gcp.Compute
     public partial class FirewallPolicyRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -154,7 +176,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
+        /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         /// </summary>
         [Output("match")]
         public Output<Outputs.FirewallPolicyRuleMatch> Match { get; private set; } = null!;
@@ -230,7 +252,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class FirewallPolicyRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -266,7 +288,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string> FirewallPolicy { get; set; } = null!;
 
         /// <summary>
-        /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
+        /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         /// </summary>
         [Input("match", required: true)]
         public Input<Inputs.FirewallPolicyRuleMatchArgs> Match { get; set; } = null!;
@@ -310,7 +332,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class FirewallPolicyRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -352,7 +374,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
+        /// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         /// </summary>
         [Input("match")]
         public Input<Inputs.FirewallPolicyRuleMatchGetArgs>? Match { get; set; }

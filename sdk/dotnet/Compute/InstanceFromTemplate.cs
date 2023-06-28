@@ -236,6 +236,12 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.InstanceFromTemplateNetworkPerformanceConfig> NetworkPerformanceConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Stores additional params passed with the request, but not persisted as part of resource payload.
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.InstanceFromTemplateParams> Params { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
         /// self_link nor project are provided, the provider project is used.
         /// </summary>
@@ -520,6 +526,12 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.InstanceFromTemplateNetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }
 
         /// <summary>
+        /// Stores additional params passed with the request, but not persisted as part of resource payload.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.InstanceFromTemplateParamsArgs>? Params { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
         /// self_link nor project are provided, the provider project is used.
         /// </summary>
@@ -796,6 +808,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("networkPerformanceConfig")]
         public Input<Inputs.InstanceFromTemplateNetworkPerformanceConfigGetArgs>? NetworkPerformanceConfig { get; set; }
+
+        /// <summary>
+        /// Stores additional params passed with the request, but not persisted as part of resource payload.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.InstanceFromTemplateParamsGetArgs>? Params { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither

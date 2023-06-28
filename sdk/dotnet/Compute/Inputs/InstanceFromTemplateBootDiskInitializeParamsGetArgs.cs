@@ -23,6 +23,14 @@ namespace Pulumi.Gcp.Compute.Inputs
             set => _labels = value;
         }
 
+        [Input("resourceManagerTags")]
+        private InputMap<object>? _resourceManagerTags;
+        public InputMap<object> ResourceManagerTags
+        {
+            get => _resourceManagerTags ?? (_resourceManagerTags = new InputMap<object>());
+            set => _resourceManagerTags = value;
+        }
+
         [Input("size")]
         public Input<int>? Size { get; set; }
 

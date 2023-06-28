@@ -25,7 +25,7 @@ public final class FeatureSpecArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Multicluster Ingress-specific spec.
-     * The `multiclusteringress` block supports:
+     * Structure is documented below.
      * 
      */
     @Import(name="multiclusteringress")
@@ -33,7 +33,7 @@ public final class FeatureSpecArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Multicluster Ingress-specific spec.
-     * The `multiclusteringress` block supports:
+     * Structure is documented below.
      * 
      */
     public Optional<Output<FeatureSpecMulticlusteringressArgs>> multiclusteringress() {
@@ -76,7 +76,7 @@ public final class FeatureSpecArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param multiclusteringress Multicluster Ingress-specific spec.
-         * The `multiclusteringress` block supports:
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -88,7 +88,7 @@ public final class FeatureSpecArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param multiclusteringress Multicluster Ingress-specific spec.
-         * The `multiclusteringress` block supports:
+         * Structure is documented below.
          * 
          * @return builder
          * 

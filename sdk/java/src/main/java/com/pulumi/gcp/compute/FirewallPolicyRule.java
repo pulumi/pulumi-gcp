@@ -19,11 +19,10 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Hierarchical firewall policy rules let you create and enforce a consistent firewall policy across your organization. Rules can explicitly allow or deny connections or delegate evaluation to lower level policies.
- * 
- * For more information see the [official documentation](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
+ * The Compute FirewallPolicyRule resource
  * 
  * ## Example Usage
+ * ### Basic_fir_sec_rule_addr_groups
  * ```java
  * package generated_program;
  * 
@@ -32,6 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.networksecurity.AddressGroup;
  * import com.pulumi.gcp.networksecurity.AddressGroupArgs;
+ * import com.pulumi.gcp.organizations.Folder;
+ * import com.pulumi.gcp.organizations.FolderArgs;
  * import com.pulumi.gcp.compute.FirewallPolicy;
  * import com.pulumi.gcp.compute.FirewallPolicyArgs;
  * import com.pulumi.gcp.compute.FirewallPolicyRule;
@@ -52,7 +53,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var basicGlobalNetworksecurityAddressGroup = new AddressGroup(&#34;basicGlobalNetworksecurityAddressGroup&#34;, AddressGroupArgs.builder()        
- *             .parent(&#34;organizations/12345&#34;)
+ *             .parent(&#34;organizations/123456789&#34;)
  *             .description(&#34;Sample global networksecurity_address_group&#34;)
  *             .location(&#34;global&#34;)
  *             .items(&#34;208.80.154.224/32&#34;)
@@ -62,34 +63,50 @@ import javax.annotation.Nullable;
  *                 .provider(google_beta)
  *                 .build());
  * 
- *         var defaultFirewallPolicy = new FirewallPolicy(&#34;defaultFirewallPolicy&#34;, FirewallPolicyArgs.builder()        
- *             .parent(&#34;organizations/12345&#34;)
- *             .shortName(&#34;my-policy&#34;)
- *             .description(&#34;Example Resource&#34;)
- *             .build());
+ *         var folder = new Folder(&#34;folder&#34;, FolderArgs.builder()        
+ *             .displayName(&#34;policy&#34;)
+ *             .parent(&#34;organizations/123456789&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
- *         var defaultFirewallPolicyRule = new FirewallPolicyRule(&#34;defaultFirewallPolicyRule&#34;, FirewallPolicyRuleArgs.builder()        
- *             .firewallPolicy(defaultFirewallPolicy.id())
- *             .description(&#34;Example Resource&#34;)
+ *         var default_ = new FirewallPolicy(&#34;default&#34;, FirewallPolicyArgs.builder()        
+ *             .parent(folder.id())
+ *             .shortName(&#34;policy&#34;)
+ *             .description(&#34;Resource created for Terraform acceptance testing&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var primary = new FirewallPolicyRule(&#34;primary&#34;, FirewallPolicyRuleArgs.builder()        
+ *             .firewallPolicy(default_.name())
+ *             .description(&#34;Resource created for Terraform acceptance testing&#34;)
  *             .priority(9000)
  *             .enableLogging(true)
  *             .action(&#34;allow&#34;)
  *             .direction(&#34;EGRESS&#34;)
  *             .disabled(false)
  *             .match(FirewallPolicyRuleMatchArgs.builder()
- *                 .layer4Configs(FirewallPolicyRuleMatchLayer4ConfigArgs.builder()
- *                     .ipProtocol(&#34;tcp&#34;)
- *                     .ports(                    
- *                         80,
- *                         8080)
- *                     .build())
+ *                 .layer4Configs(                
+ *                     FirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+ *                         .ipProtocol(&#34;tcp&#34;)
+ *                         .ports(8080)
+ *                         .build(),
+ *                     FirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+ *                         .ipProtocol(&#34;udp&#34;)
+ *                         .ports(22)
+ *                         .build())
  *                 .destIpRanges(&#34;11.100.0.1/32&#34;)
- *                 .destFqdns(&#34;google.com&#34;)
+ *                 .destFqdns()
  *                 .destRegionCodes(&#34;US&#34;)
- *                 .destThreatIntelligences(&#34;iplist-public-clouds&#34;)
+ *                 .destThreatIntelligences(&#34;iplist-known-malicious-ips&#34;)
+ *                 .srcAddressGroups()
  *                 .destAddressGroups(basicGlobalNetworksecurityAddressGroup.id())
  *                 .build())
- *             .build());
+ *             .targetServiceAccounts(&#34;my@service-account.com&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
  *     }
  * }
@@ -111,14 +128,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/firewallPolicyRule:FirewallPolicyRule")
 public class FirewallPolicyRule extends com.pulumi.resources.CustomResource {
     /**
-     * The Action to perform when the client connection triggers the rule. Can currently be either &#34;allow&#34; or &#34;deny()&#34; where valid values for status are 403, 404, and 502.
+     * The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34; and &#34;goto_next&#34;.
      * 
      */
     @Export(name="action", type=String.class, parameters={})
     private Output<String> action;
 
     /**
-     * @return The Action to perform when the client connection triggers the rule. Can currently be either &#34;allow&#34; or &#34;deny()&#34; where valid values for status are 403, 404, and 502.
+     * @return The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34; and &#34;goto_next&#34;.
      * 
      */
     public Output<String> action() {
@@ -209,14 +226,14 @@ public class FirewallPolicyRule extends com.pulumi.resources.CustomResource {
         return this.kind;
     }
     /**
-     * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced. Structure is documented below.
+     * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced.
      * 
      */
     @Export(name="match", type=FirewallPolicyRuleMatch.class, parameters={})
     private Output<FirewallPolicyRuleMatch> match;
 
     /**
-     * @return A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced. Structure is documented below.
+     * @return A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced.
      * 
      */
     public Output<FirewallPolicyRuleMatch> match() {

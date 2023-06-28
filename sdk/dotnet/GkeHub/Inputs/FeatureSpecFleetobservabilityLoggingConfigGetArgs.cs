@@ -12,9 +12,17 @@ namespace Pulumi.Gcp.GkeHub.Inputs
 
     public sealed class FeatureSpecFleetobservabilityLoggingConfigGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specified if applying the default routing config to logs not specified in other configs.
+        /// Structure is documented below.
+        /// </summary>
         [Input("defaultConfig")]
         public Input<Inputs.FeatureSpecFleetobservabilityLoggingConfigDefaultConfigGetArgs>? DefaultConfig { get; set; }
 
+        /// <summary>
+        /// Specified if applying the routing config to all logs for all fleet scopes.
+        /// Structure is documented below.
+        /// </summary>
         [Input("fleetScopeLogsConfig")]
         public Input<Inputs.FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigGetArgs>? FleetScopeLogsConfig { get; set; }
 

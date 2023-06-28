@@ -15,9 +15,19 @@ public final class FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs e
 
     public static final FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs Empty = new FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs();
 
+    /**
+     * Specified if fleet logging feature is enabled.
+     * Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
+     * 
+     */
     @Import(name="mode")
     private @Nullable Output<String> mode;
 
+    /**
+     * @return Specified if fleet logging feature is enabled.
+     * Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
+     * 
+     */
     public Optional<Output<String>> mode() {
         return Optional.ofNullable(this.mode);
     }
@@ -46,11 +56,25 @@ public final class FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs e
             $ = new FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param mode Specified if fleet logging feature is enabled.
+         * Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mode(@Nullable Output<String> mode) {
             $.mode = mode;
             return this;
         }
 
+        /**
+         * @param mode Specified if fleet logging feature is enabled.
+         * Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder mode(String mode) {
             return mode(Output.of(mode));
         }

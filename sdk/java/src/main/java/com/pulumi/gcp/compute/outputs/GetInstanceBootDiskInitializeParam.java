@@ -22,6 +22,7 @@ public final class GetInstanceBootDiskInitializeParam {
      * 
      */
     private Map<String,Object> labels;
+    private Map<String,Object> resourceManagerTags;
     /**
      * @return The size of the image in gigabytes.
      * 
@@ -47,6 +48,9 @@ public final class GetInstanceBootDiskInitializeParam {
      */
     public Map<String,Object> labels() {
         return this.labels;
+    }
+    public Map<String,Object> resourceManagerTags() {
+        return this.resourceManagerTags;
     }
     /**
      * @return The size of the image in gigabytes.
@@ -74,6 +78,7 @@ public final class GetInstanceBootDiskInitializeParam {
     public static final class Builder {
         private String image;
         private Map<String,Object> labels;
+        private Map<String,Object> resourceManagerTags;
         private Integer size;
         private String type;
         public Builder() {}
@@ -81,6 +86,7 @@ public final class GetInstanceBootDiskInitializeParam {
     	      Objects.requireNonNull(defaults);
     	      this.image = defaults.image;
     	      this.labels = defaults.labels;
+    	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.size = defaults.size;
     	      this.type = defaults.type;
         }
@@ -93,6 +99,11 @@ public final class GetInstanceBootDiskInitializeParam {
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
             this.labels = Objects.requireNonNull(labels);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder resourceManagerTags(Map<String,Object> resourceManagerTags) {
+            this.resourceManagerTags = Objects.requireNonNull(resourceManagerTags);
             return this;
         }
         @CustomType.Setter
@@ -109,6 +120,7 @@ public final class GetInstanceBootDiskInitializeParam {
             final var o = new GetInstanceBootDiskInitializeParam();
             o.image = image;
             o.labels = labels;
+            o.resourceManagerTags = resourceManagerTags;
             o.size = size;
             o.type = type;
             return o;

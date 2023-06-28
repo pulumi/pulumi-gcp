@@ -12,6 +12,7 @@ import java.util.Objects;
 public final class GetWorkloadIdentityPoolProviderOidc {
     private List<String> allowedAudiences;
     private String issuerUri;
+    private String jwksJson;
 
     private GetWorkloadIdentityPoolProviderOidc() {}
     public List<String> allowedAudiences() {
@@ -19,6 +20,9 @@ public final class GetWorkloadIdentityPoolProviderOidc {
     }
     public String issuerUri() {
         return this.issuerUri;
+    }
+    public String jwksJson() {
+        return this.jwksJson;
     }
 
     public static Builder builder() {
@@ -32,11 +36,13 @@ public final class GetWorkloadIdentityPoolProviderOidc {
     public static final class Builder {
         private List<String> allowedAudiences;
         private String issuerUri;
+        private String jwksJson;
         public Builder() {}
         public Builder(GetWorkloadIdentityPoolProviderOidc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedAudiences = defaults.allowedAudiences;
     	      this.issuerUri = defaults.issuerUri;
+    	      this.jwksJson = defaults.jwksJson;
         }
 
         @CustomType.Setter
@@ -52,10 +58,16 @@ public final class GetWorkloadIdentityPoolProviderOidc {
             this.issuerUri = Objects.requireNonNull(issuerUri);
             return this;
         }
+        @CustomType.Setter
+        public Builder jwksJson(String jwksJson) {
+            this.jwksJson = Objects.requireNonNull(jwksJson);
+            return this;
+        }
         public GetWorkloadIdentityPoolProviderOidc build() {
             final var o = new GetWorkloadIdentityPoolProviderOidc();
             o.allowedAudiences = allowedAudiences;
             o.issuerUri = issuerUri;
+            o.jwksJson = jwksJson;
             return o;
         }
     }

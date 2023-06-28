@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DestFqdns;
         /// <summary>
-        /// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        /// CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
         /// </summary>
         public readonly ImmutableArray<string> DestIpRanges;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DestThreatIntelligences;
         /// <summary>
-        /// Pairs of IP protocols and ports that the rule should match. Structure is documented below.
+        /// Pairs of IP protocols and ports that the rule should match.
         /// </summary>
         public readonly ImmutableArray<Outputs.FirewallPolicyRuleMatchLayer4Config> Layer4Configs;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<string> SrcFqdns;
         /// <summary>
-        /// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        /// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
         /// </summary>
         public readonly ImmutableArray<string> SrcIpRanges;
         /// <summary>
@@ -56,7 +56,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// <summary>
         /// Name of the Google Cloud Threat Intelligence list.
         /// 
-        /// &lt;a name="nested_layer4_configs"&gt;&lt;/a&gt;The `layer4_configs` block supports:
+        /// The `layer4_configs` block supports:
         /// </summary>
         public readonly ImmutableArray<string> SrcThreatIntelligences;
 

@@ -216,6 +216,7 @@ class OrganizationArgs:
 class _OrganizationState:
     def __init__(__self__, *,
                  analytics_region: Optional[pulumi.Input[str]] = None,
+                 apigee_project_id: Optional[pulumi.Input[str]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  billing_type: Optional[pulumi.Input[str]] = None,
                  ca_certificate: Optional[pulumi.Input[str]] = None,
@@ -231,6 +232,7 @@ class _OrganizationState:
         """
         Input properties used for looking up and filtering Organization resources.
         :param pulumi.Input[str] analytics_region: Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        :param pulumi.Input[str] apigee_project_id: Output only. Project ID of the Apigee Tenant Project.
         :param pulumi.Input[str] authorized_network: Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
                See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
                Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
@@ -264,6 +266,8 @@ class _OrganizationState:
         """
         if analytics_region is not None:
             pulumi.set(__self__, "analytics_region", analytics_region)
+        if apigee_project_id is not None:
+            pulumi.set(__self__, "apigee_project_id", apigee_project_id)
         if authorized_network is not None:
             pulumi.set(__self__, "authorized_network", authorized_network)
         if billing_type is not None:
@@ -300,6 +304,18 @@ class _OrganizationState:
     @analytics_region.setter
     def analytics_region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "analytics_region", value)
+
+    @property
+    @pulumi.getter(name="apigeeProjectId")
+    def apigee_project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. Project ID of the Apigee Tenant Project.
+        """
+        return pulumi.get(self, "apigee_project_id")
+
+    @apigee_project_id.setter
+    def apigee_project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "apigee_project_id", value)
 
     @property
     @pulumi.getter(name="authorizedNetwork")
@@ -731,6 +747,7 @@ class Organization(pulumi.CustomResource):
             __props__.__dict__["retention"] = retention
             __props__.__dict__["runtime_database_encryption_key_name"] = runtime_database_encryption_key_name
             __props__.__dict__["runtime_type"] = runtime_type
+            __props__.__dict__["apigee_project_id"] = None
             __props__.__dict__["ca_certificate"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["subscription_type"] = None
@@ -745,6 +762,7 @@ class Organization(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             analytics_region: Optional[pulumi.Input[str]] = None,
+            apigee_project_id: Optional[pulumi.Input[str]] = None,
             authorized_network: Optional[pulumi.Input[str]] = None,
             billing_type: Optional[pulumi.Input[str]] = None,
             ca_certificate: Optional[pulumi.Input[str]] = None,
@@ -765,6 +783,7 @@ class Organization(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] analytics_region: Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        :param pulumi.Input[str] apigee_project_id: Output only. Project ID of the Apigee Tenant Project.
         :param pulumi.Input[str] authorized_network: Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
                See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
                Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
@@ -801,6 +820,7 @@ class Organization(pulumi.CustomResource):
         __props__ = _OrganizationState.__new__(_OrganizationState)
 
         __props__.__dict__["analytics_region"] = analytics_region
+        __props__.__dict__["apigee_project_id"] = apigee_project_id
         __props__.__dict__["authorized_network"] = authorized_network
         __props__.__dict__["billing_type"] = billing_type
         __props__.__dict__["ca_certificate"] = ca_certificate
@@ -822,6 +842,14 @@ class Organization(pulumi.CustomResource):
         Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         """
         return pulumi.get(self, "analytics_region")
+
+    @property
+    @pulumi.getter(name="apigeeProjectId")
+    def apigee_project_id(self) -> pulumi.Output[str]:
+        """
+        Output only. Project ID of the Apigee Tenant Project.
+        """
+        return pulumi.get(self, "apigee_project_id")
 
     @property
     @pulumi.getter(name="authorizedNetwork")

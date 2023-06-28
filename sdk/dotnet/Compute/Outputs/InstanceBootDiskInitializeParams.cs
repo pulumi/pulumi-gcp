@@ -31,6 +31,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Labels;
         /// <summary>
+        /// A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
+        /// </summary>
+        public readonly ImmutableDictionary<string, object>? ResourceManagerTags;
+        /// <summary>
         /// The size of the image in gigabytes. If not specified, it
         /// will inherit the size of its base image.
         /// </summary>
@@ -46,12 +50,15 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableDictionary<string, object>? labels,
 
+            ImmutableDictionary<string, object>? resourceManagerTags,
+
             int? size,
 
             string? type)
         {
             Image = image;
             Labels = labels;
+            ResourceManagerTags = resourceManagerTags;
             Size = size;
             Type = type;
         }

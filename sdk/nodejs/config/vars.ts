@@ -617,6 +617,14 @@ Object.defineProperty(exports, "gkeBackupCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const gkeHub2CustomEndpoint: string | undefined;
+Object.defineProperty(exports, "gkeHub2CustomEndpoint", {
+    get() {
+        return __config.get("gkeHub2CustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const gkeHubCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "gkeHubCustomEndpoint", {
     get() {

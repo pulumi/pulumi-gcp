@@ -32,6 +32,21 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Output only. Project ID of the Apigee Tenant Project.
+     * 
+     */
+    @Import(name="apigeeProjectId")
+    private @Nullable Output<String> apigeeProjectId;
+
+    /**
+     * @return Output only. Project ID of the Apigee Tenant Project.
+     * 
+     */
+    public Optional<Output<String>> apigeeProjectId() {
+        return Optional.ofNullable(this.apigeeProjectId);
+    }
+
+    /**
      * Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
      * See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
      * Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: &#34;default&#34;.
@@ -249,6 +264,7 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
 
     private OrganizationState(OrganizationState $) {
         this.analyticsRegion = $.analyticsRegion;
+        this.apigeeProjectId = $.apigeeProjectId;
         this.authorizedNetwork = $.authorizedNetwork;
         this.billingType = $.billingType;
         this.caCertificate = $.caCertificate;
@@ -300,6 +316,27 @@ public final class OrganizationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder analyticsRegion(String analyticsRegion) {
             return analyticsRegion(Output.of(analyticsRegion));
+        }
+
+        /**
+         * @param apigeeProjectId Output only. Project ID of the Apigee Tenant Project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apigeeProjectId(@Nullable Output<String> apigeeProjectId) {
+            $.apigeeProjectId = apigeeProjectId;
+            return this;
+        }
+
+        /**
+         * @param apigeeProjectId Output only. Project ID of the Apigee Tenant Project.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder apigeeProjectId(String apigeeProjectId) {
+            return apigeeProjectId(Output.of(apigeeProjectId));
         }
 
         /**

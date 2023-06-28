@@ -23,6 +23,7 @@ type EnvironmentConfig struct {
 	NodeCount                      *int                                             `pulumi:"nodeCount"`
 	PrivateEnvironmentConfig       *EnvironmentConfigPrivateEnvironmentConfig       `pulumi:"privateEnvironmentConfig"`
 	RecoveryConfig                 *EnvironmentConfigRecoveryConfig                 `pulumi:"recoveryConfig"`
+	ResilienceMode                 *string                                          `pulumi:"resilienceMode"`
 	SoftwareConfig                 *EnvironmentConfigSoftwareConfig                 `pulumi:"softwareConfig"`
 	WebServerConfig                *EnvironmentConfigWebServerConfig                `pulumi:"webServerConfig"`
 	WebServerNetworkAccessControl  *EnvironmentConfigWebServerNetworkAccessControl  `pulumi:"webServerNetworkAccessControl"`
@@ -53,6 +54,7 @@ type EnvironmentConfigArgs struct {
 	NodeCount                      pulumi.IntPtrInput                                      `pulumi:"nodeCount"`
 	PrivateEnvironmentConfig       EnvironmentConfigPrivateEnvironmentConfigPtrInput       `pulumi:"privateEnvironmentConfig"`
 	RecoveryConfig                 EnvironmentConfigRecoveryConfigPtrInput                 `pulumi:"recoveryConfig"`
+	ResilienceMode                 pulumi.StringPtrInput                                   `pulumi:"resilienceMode"`
 	SoftwareConfig                 EnvironmentConfigSoftwareConfigPtrInput                 `pulumi:"softwareConfig"`
 	WebServerConfig                EnvironmentConfigWebServerConfigPtrInput                `pulumi:"webServerConfig"`
 	WebServerNetworkAccessControl  EnvironmentConfigWebServerNetworkAccessControlPtrInput  `pulumi:"webServerNetworkAccessControl"`
@@ -186,6 +188,10 @@ func (o EnvironmentConfigOutput) PrivateEnvironmentConfig() EnvironmentConfigPri
 
 func (o EnvironmentConfigOutput) RecoveryConfig() EnvironmentConfigRecoveryConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigRecoveryConfig { return v.RecoveryConfig }).(EnvironmentConfigRecoveryConfigPtrOutput)
+}
+
+func (o EnvironmentConfigOutput) ResilienceMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *string { return v.ResilienceMode }).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigOutput) SoftwareConfig() EnvironmentConfigSoftwareConfigPtrOutput {
@@ -336,6 +342,15 @@ func (o EnvironmentConfigPtrOutput) RecoveryConfig() EnvironmentConfigRecoveryCo
 		}
 		return v.RecoveryConfig
 	}).(EnvironmentConfigRecoveryConfigPtrOutput)
+}
+
+func (o EnvironmentConfigPtrOutput) ResilienceMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResilienceMode
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigPtrOutput) SoftwareConfig() EnvironmentConfigSoftwareConfigPtrOutput {
@@ -3689,6 +3704,7 @@ type GetEnvironmentConfig struct {
 	NodeCount                       int                                                  `pulumi:"nodeCount"`
 	PrivateEnvironmentConfigs       []GetEnvironmentConfigPrivateEnvironmentConfig       `pulumi:"privateEnvironmentConfigs"`
 	RecoveryConfigs                 []GetEnvironmentConfigRecoveryConfig                 `pulumi:"recoveryConfigs"`
+	ResilienceMode                  string                                               `pulumi:"resilienceMode"`
 	SoftwareConfigs                 []GetEnvironmentConfigSoftwareConfig                 `pulumi:"softwareConfigs"`
 	WebServerConfigs                []GetEnvironmentConfigWebServerConfig                `pulumi:"webServerConfigs"`
 	WebServerNetworkAccessControls  []GetEnvironmentConfigWebServerNetworkAccessControl  `pulumi:"webServerNetworkAccessControls"`
@@ -3719,6 +3735,7 @@ type GetEnvironmentConfigArgs struct {
 	NodeCount                       pulumi.IntInput                                              `pulumi:"nodeCount"`
 	PrivateEnvironmentConfigs       GetEnvironmentConfigPrivateEnvironmentConfigArrayInput       `pulumi:"privateEnvironmentConfigs"`
 	RecoveryConfigs                 GetEnvironmentConfigRecoveryConfigArrayInput                 `pulumi:"recoveryConfigs"`
+	ResilienceMode                  pulumi.StringInput                                           `pulumi:"resilienceMode"`
 	SoftwareConfigs                 GetEnvironmentConfigSoftwareConfigArrayInput                 `pulumi:"softwareConfigs"`
 	WebServerConfigs                GetEnvironmentConfigWebServerConfigArrayInput                `pulumi:"webServerConfigs"`
 	WebServerNetworkAccessControls  GetEnvironmentConfigWebServerNetworkAccessControlArrayInput  `pulumi:"webServerNetworkAccessControls"`
@@ -3826,6 +3843,10 @@ func (o GetEnvironmentConfigOutput) PrivateEnvironmentConfigs() GetEnvironmentCo
 
 func (o GetEnvironmentConfigOutput) RecoveryConfigs() GetEnvironmentConfigRecoveryConfigArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) []GetEnvironmentConfigRecoveryConfig { return v.RecoveryConfigs }).(GetEnvironmentConfigRecoveryConfigArrayOutput)
+}
+
+func (o GetEnvironmentConfigOutput) ResilienceMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfig) string { return v.ResilienceMode }).(pulumi.StringOutput)
 }
 
 func (o GetEnvironmentConfigOutput) SoftwareConfigs() GetEnvironmentConfigSoftwareConfigArrayOutput {

@@ -48,6 +48,7 @@ class EnvironmentConfigArgs:
                  node_count: Optional[pulumi.Input[int]] = None,
                  private_environment_config: Optional[pulumi.Input['EnvironmentConfigPrivateEnvironmentConfigArgs']] = None,
                  recovery_config: Optional[pulumi.Input['EnvironmentConfigRecoveryConfigArgs']] = None,
+                 resilience_mode: Optional[pulumi.Input[str]] = None,
                  software_config: Optional[pulumi.Input['EnvironmentConfigSoftwareConfigArgs']] = None,
                  web_server_config: Optional[pulumi.Input['EnvironmentConfigWebServerConfigArgs']] = None,
                  web_server_network_access_control: Optional[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlArgs']] = None,
@@ -76,6 +77,8 @@ class EnvironmentConfigArgs:
             pulumi.set(__self__, "private_environment_config", private_environment_config)
         if recovery_config is not None:
             pulumi.set(__self__, "recovery_config", recovery_config)
+        if resilience_mode is not None:
+            pulumi.set(__self__, "resilience_mode", resilience_mode)
         if software_config is not None:
             pulumi.set(__self__, "software_config", software_config)
         if web_server_config is not None:
@@ -192,6 +195,15 @@ class EnvironmentConfigArgs:
     @recovery_config.setter
     def recovery_config(self, value: Optional[pulumi.Input['EnvironmentConfigRecoveryConfigArgs']]):
         pulumi.set(self, "recovery_config", value)
+
+    @property
+    @pulumi.getter(name="resilienceMode")
+    def resilience_mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "resilience_mode")
+
+    @resilience_mode.setter
+    def resilience_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resilience_mode", value)
 
     @property
     @pulumi.getter(name="softwareConfig")

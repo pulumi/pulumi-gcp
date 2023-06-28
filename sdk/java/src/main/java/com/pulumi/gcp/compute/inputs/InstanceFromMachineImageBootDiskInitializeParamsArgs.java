@@ -32,6 +32,13 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsArgs extends 
         return Optional.ofNullable(this.labels);
     }
 
+    @Import(name="resourceManagerTags")
+    private @Nullable Output<Map<String,Object>> resourceManagerTags;
+
+    public Optional<Output<Map<String,Object>>> resourceManagerTags() {
+        return Optional.ofNullable(this.resourceManagerTags);
+    }
+
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
@@ -51,6 +58,7 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsArgs extends 
     private InstanceFromMachineImageBootDiskInitializeParamsArgs(InstanceFromMachineImageBootDiskInitializeParamsArgs $) {
         this.image = $.image;
         this.labels = $.labels;
+        this.resourceManagerTags = $.resourceManagerTags;
         this.size = $.size;
         this.type = $.type;
     }
@@ -89,6 +97,15 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsArgs extends 
 
         public Builder labels(Map<String,Object> labels) {
             return labels(Output.of(labels));
+        }
+
+        public Builder resourceManagerTags(@Nullable Output<Map<String,Object>> resourceManagerTags) {
+            $.resourceManagerTags = resourceManagerTags;
+            return this;
+        }
+
+        public Builder resourceManagerTags(Map<String,Object> resourceManagerTags) {
+            return resourceManagerTags(Output.of(resourceManagerTags));
         }
 
         public Builder size(@Nullable Output<Integer> size) {

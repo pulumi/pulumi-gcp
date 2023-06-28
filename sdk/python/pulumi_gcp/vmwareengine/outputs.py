@@ -8,11 +8,94 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
 
 __all__ = [
+    'ClusterNodeTypeConfig',
     'NetworkVpcNetwork',
+    'PrivateCloudHcx',
+    'PrivateCloudManagementCluster',
+    'PrivateCloudManagementClusterNodeTypeConfig',
+    'PrivateCloudNetworkConfig',
+    'PrivateCloudNsx',
+    'PrivateCloudVcenter',
+    'GetClusterNodeTypeConfigResult',
     'GetNetworkVpcNetworkResult',
+    'GetPrivateCloudHcxResult',
+    'GetPrivateCloudManagementClusterResult',
+    'GetPrivateCloudManagementClusterNodeTypeConfigResult',
+    'GetPrivateCloudNetworkConfigResult',
+    'GetPrivateCloudNsxResult',
+    'GetPrivateCloudVcenterResult',
 ]
+
+@pulumi.output_type
+class ClusterNodeTypeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeCount":
+            suggest = "node_count"
+        elif key == "nodeTypeId":
+            suggest = "node_type_id"
+        elif key == "customCoreCount":
+            suggest = "custom_core_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodeTypeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodeTypeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodeTypeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node_count: int,
+                 node_type_id: str,
+                 custom_core_count: Optional[int] = None):
+        """
+        :param int node_count: The number of nodes of this type in the cluster.
+        :param str node_type_id: The identifier for this object. Format specified above.
+        :param int custom_core_count: Customized number of cores available to each node of the type.
+               This number must always be one of `nodeType.availableCustomCoreCounts`.
+               If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
+               Once the customer is created then corecount cannot be changed.
+        """
+        pulumi.set(__self__, "node_count", node_count)
+        pulumi.set(__self__, "node_type_id", node_type_id)
+        if custom_core_count is not None:
+            pulumi.set(__self__, "custom_core_count", custom_core_count)
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> int:
+        """
+        The number of nodes of this type in the cluster.
+        """
+        return pulumi.get(self, "node_count")
+
+    @property
+    @pulumi.getter(name="nodeTypeId")
+    def node_type_id(self) -> str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "node_type_id")
+
+    @property
+    @pulumi.getter(name="customCoreCount")
+    def custom_core_count(self) -> Optional[int]:
+        """
+        Customized number of cores available to each node of the type.
+        This number must always be one of `nodeType.availableCustomCoreCounts`.
+        If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
+        Once the customer is created then corecount cannot be changed.
+        """
+        return pulumi.get(self, "custom_core_count")
+
 
 @pulumi.output_type
 class NetworkVpcNetwork(dict):
@@ -52,6 +135,486 @@ class NetworkVpcNetwork(dict):
 
 
 @pulumi.output_type
+class PrivateCloudHcx(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "internalIp":
+            suggest = "internal_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateCloudHcx. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateCloudHcx.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateCloudHcx.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fqdn: Optional[str] = None,
+                 internal_ip: Optional[str] = None,
+                 state: Optional[str] = None,
+                 version: Optional[str] = None):
+        """
+        :param str fqdn: Fully qualified domain name of the appliance.
+        :param str internal_ip: Internal IP address of the appliance.
+        :param str state: State of the appliance.
+               Possible values are: `ACTIVE`, `CREATING`.
+        :param str version: Version of the appliance.
+        """
+        if fqdn is not None:
+            pulumi.set(__self__, "fqdn", fqdn)
+        if internal_ip is not None:
+            pulumi.set(__self__, "internal_ip", internal_ip)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> Optional[str]:
+        """
+        Fully qualified domain name of the appliance.
+        """
+        return pulumi.get(self, "fqdn")
+
+    @property
+    @pulumi.getter(name="internalIp")
+    def internal_ip(self) -> Optional[str]:
+        """
+        Internal IP address of the appliance.
+        """
+        return pulumi.get(self, "internal_ip")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        State of the appliance.
+        Possible values are: `ACTIVE`, `CREATING`.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        Version of the appliance.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class PrivateCloudManagementCluster(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterId":
+            suggest = "cluster_id"
+        elif key == "nodeTypeConfigs":
+            suggest = "node_type_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateCloudManagementCluster. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateCloudManagementCluster.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateCloudManagementCluster.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_id: str,
+                 node_type_configs: Optional[Sequence['outputs.PrivateCloudManagementClusterNodeTypeConfig']] = None):
+        """
+        :param str cluster_id: The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
+               * Only contains 1-63 alphanumeric characters and hyphens
+               * Begins with an alphabetical character
+               * Ends with a non-hyphen character
+               * Not formatted as a UUID
+               * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+        :param Sequence['PrivateCloudManagementClusterNodeTypeConfigArgs'] node_type_configs: The map of cluster node types in this cluster,
+               where the key is canonical identifier of the node type (corresponds to the NodeType).
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        if node_type_configs is not None:
+            pulumi.set(__self__, "node_type_configs", node_type_configs)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        """
+        The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
+        * Only contains 1-63 alphanumeric characters and hyphens
+        * Begins with an alphabetical character
+        * Ends with a non-hyphen character
+        * Not formatted as a UUID
+        * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="nodeTypeConfigs")
+    def node_type_configs(self) -> Optional[Sequence['outputs.PrivateCloudManagementClusterNodeTypeConfig']]:
+        """
+        The map of cluster node types in this cluster,
+        where the key is canonical identifier of the node type (corresponds to the NodeType).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "node_type_configs")
+
+
+@pulumi.output_type
+class PrivateCloudManagementClusterNodeTypeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeCount":
+            suggest = "node_count"
+        elif key == "nodeTypeId":
+            suggest = "node_type_id"
+        elif key == "customCoreCount":
+            suggest = "custom_core_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateCloudManagementClusterNodeTypeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateCloudManagementClusterNodeTypeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateCloudManagementClusterNodeTypeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node_count: int,
+                 node_type_id: str,
+                 custom_core_count: Optional[int] = None):
+        """
+        :param int node_count: The number of nodes of this type in the cluster.
+        :param str node_type_id: The identifier for this object. Format specified above.
+        :param int custom_core_count: Customized number of cores available to each node of the type.
+               This number must always be one of `nodeType.availableCustomCoreCounts`.
+               If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
+               This cannot be changed once the PrivateCloud is created.
+               
+               - - -
+        """
+        pulumi.set(__self__, "node_count", node_count)
+        pulumi.set(__self__, "node_type_id", node_type_id)
+        if custom_core_count is not None:
+            pulumi.set(__self__, "custom_core_count", custom_core_count)
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> int:
+        """
+        The number of nodes of this type in the cluster.
+        """
+        return pulumi.get(self, "node_count")
+
+    @property
+    @pulumi.getter(name="nodeTypeId")
+    def node_type_id(self) -> str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "node_type_id")
+
+    @property
+    @pulumi.getter(name="customCoreCount")
+    def custom_core_count(self) -> Optional[int]:
+        """
+        Customized number of cores available to each node of the type.
+        This number must always be one of `nodeType.availableCustomCoreCounts`.
+        If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
+        This cannot be changed once the PrivateCloud is created.
+
+        - - -
+        """
+        return pulumi.get(self, "custom_core_count")
+
+
+@pulumi.output_type
+class PrivateCloudNetworkConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "managementCidr":
+            suggest = "management_cidr"
+        elif key == "managementIpAddressLayoutVersion":
+            suggest = "management_ip_address_layout_version"
+        elif key == "vmwareEngineNetwork":
+            suggest = "vmware_engine_network"
+        elif key == "vmwareEngineNetworkCanonical":
+            suggest = "vmware_engine_network_canonical"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateCloudNetworkConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateCloudNetworkConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateCloudNetworkConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 management_cidr: str,
+                 management_ip_address_layout_version: Optional[int] = None,
+                 vmware_engine_network: Optional[str] = None,
+                 vmware_engine_network_canonical: Optional[str] = None):
+        """
+        :param str management_cidr: Management CIDR used by VMware management appliances.
+        :param int management_ip_address_layout_version: (Output)
+               The IP address layout version of the management IP address range.
+               Possible versions include:
+               * managementIpAddressLayoutVersion=1: Indicates the legacy IP address layout used by some existing private clouds. This is no longer supported for new private clouds
+               as it does not support all features.
+               * managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
+               used by all newly created private clouds. This version supports all current features.
+        :param str vmware_engine_network: The relative resource name of the VMware Engine network attached to the private cloud.
+               Specify the name in the following form: projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+               where {project} can either be a project number or a project ID.
+        :param str vmware_engine_network_canonical: (Output)
+               The canonical name of the VMware Engine network in
+               the form: projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+        """
+        pulumi.set(__self__, "management_cidr", management_cidr)
+        if management_ip_address_layout_version is not None:
+            pulumi.set(__self__, "management_ip_address_layout_version", management_ip_address_layout_version)
+        if vmware_engine_network is not None:
+            pulumi.set(__self__, "vmware_engine_network", vmware_engine_network)
+        if vmware_engine_network_canonical is not None:
+            pulumi.set(__self__, "vmware_engine_network_canonical", vmware_engine_network_canonical)
+
+    @property
+    @pulumi.getter(name="managementCidr")
+    def management_cidr(self) -> str:
+        """
+        Management CIDR used by VMware management appliances.
+        """
+        return pulumi.get(self, "management_cidr")
+
+    @property
+    @pulumi.getter(name="managementIpAddressLayoutVersion")
+    def management_ip_address_layout_version(self) -> Optional[int]:
+        """
+        (Output)
+        The IP address layout version of the management IP address range.
+        Possible versions include:
+        * managementIpAddressLayoutVersion=1: Indicates the legacy IP address layout used by some existing private clouds. This is no longer supported for new private clouds
+        as it does not support all features.
+        * managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
+        used by all newly created private clouds. This version supports all current features.
+        """
+        return pulumi.get(self, "management_ip_address_layout_version")
+
+    @property
+    @pulumi.getter(name="vmwareEngineNetwork")
+    def vmware_engine_network(self) -> Optional[str]:
+        """
+        The relative resource name of the VMware Engine network attached to the private cloud.
+        Specify the name in the following form: projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+        where {project} can either be a project number or a project ID.
+        """
+        return pulumi.get(self, "vmware_engine_network")
+
+    @property
+    @pulumi.getter(name="vmwareEngineNetworkCanonical")
+    def vmware_engine_network_canonical(self) -> Optional[str]:
+        """
+        (Output)
+        The canonical name of the VMware Engine network in
+        the form: projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+        """
+        return pulumi.get(self, "vmware_engine_network_canonical")
+
+
+@pulumi.output_type
+class PrivateCloudNsx(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "internalIp":
+            suggest = "internal_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateCloudNsx. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateCloudNsx.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateCloudNsx.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fqdn: Optional[str] = None,
+                 internal_ip: Optional[str] = None,
+                 state: Optional[str] = None,
+                 version: Optional[str] = None):
+        """
+        :param str fqdn: Fully qualified domain name of the appliance.
+        :param str internal_ip: Internal IP address of the appliance.
+        :param str state: State of the appliance.
+               Possible values are: `ACTIVE`, `CREATING`.
+        :param str version: Version of the appliance.
+        """
+        if fqdn is not None:
+            pulumi.set(__self__, "fqdn", fqdn)
+        if internal_ip is not None:
+            pulumi.set(__self__, "internal_ip", internal_ip)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> Optional[str]:
+        """
+        Fully qualified domain name of the appliance.
+        """
+        return pulumi.get(self, "fqdn")
+
+    @property
+    @pulumi.getter(name="internalIp")
+    def internal_ip(self) -> Optional[str]:
+        """
+        Internal IP address of the appliance.
+        """
+        return pulumi.get(self, "internal_ip")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        State of the appliance.
+        Possible values are: `ACTIVE`, `CREATING`.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        Version of the appliance.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class PrivateCloudVcenter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "internalIp":
+            suggest = "internal_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateCloudVcenter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateCloudVcenter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateCloudVcenter.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fqdn: Optional[str] = None,
+                 internal_ip: Optional[str] = None,
+                 state: Optional[str] = None,
+                 version: Optional[str] = None):
+        """
+        :param str fqdn: Fully qualified domain name of the appliance.
+        :param str internal_ip: Internal IP address of the appliance.
+        :param str state: State of the appliance.
+               Possible values are: `ACTIVE`, `CREATING`.
+        :param str version: Version of the appliance.
+        """
+        if fqdn is not None:
+            pulumi.set(__self__, "fqdn", fqdn)
+        if internal_ip is not None:
+            pulumi.set(__self__, "internal_ip", internal_ip)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> Optional[str]:
+        """
+        Fully qualified domain name of the appliance.
+        """
+        return pulumi.get(self, "fqdn")
+
+    @property
+    @pulumi.getter(name="internalIp")
+    def internal_ip(self) -> Optional[str]:
+        """
+        Internal IP address of the appliance.
+        """
+        return pulumi.get(self, "internal_ip")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        State of the appliance.
+        Possible values are: `ACTIVE`, `CREATING`.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        Version of the appliance.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetClusterNodeTypeConfigResult(dict):
+    def __init__(__self__, *,
+                 custom_core_count: int,
+                 node_count: int,
+                 node_type_id: str):
+        pulumi.set(__self__, "custom_core_count", custom_core_count)
+        pulumi.set(__self__, "node_count", node_count)
+        pulumi.set(__self__, "node_type_id", node_type_id)
+
+    @property
+    @pulumi.getter(name="customCoreCount")
+    def custom_core_count(self) -> int:
+        return pulumi.get(self, "custom_core_count")
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> int:
+        return pulumi.get(self, "node_count")
+
+    @property
+    @pulumi.getter(name="nodeTypeId")
+    def node_type_id(self) -> str:
+        return pulumi.get(self, "node_type_id")
+
+
+@pulumi.output_type
 class GetNetworkVpcNetworkResult(dict):
     def __init__(__self__, *,
                  network: str,
@@ -68,5 +631,182 @@ class GetNetworkVpcNetworkResult(dict):
     @pulumi.getter
     def type(self) -> str:
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetPrivateCloudHcxResult(dict):
+    def __init__(__self__, *,
+                 fqdn: str,
+                 internal_ip: str,
+                 state: str,
+                 version: str):
+        pulumi.set(__self__, "fqdn", fqdn)
+        pulumi.set(__self__, "internal_ip", internal_ip)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> str:
+        return pulumi.get(self, "fqdn")
+
+    @property
+    @pulumi.getter(name="internalIp")
+    def internal_ip(self) -> str:
+        return pulumi.get(self, "internal_ip")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetPrivateCloudManagementClusterResult(dict):
+    def __init__(__self__, *,
+                 cluster_id: str,
+                 node_type_configs: Sequence['outputs.GetPrivateCloudManagementClusterNodeTypeConfigResult']):
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "node_type_configs", node_type_configs)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter(name="nodeTypeConfigs")
+    def node_type_configs(self) -> Sequence['outputs.GetPrivateCloudManagementClusterNodeTypeConfigResult']:
+        return pulumi.get(self, "node_type_configs")
+
+
+@pulumi.output_type
+class GetPrivateCloudManagementClusterNodeTypeConfigResult(dict):
+    def __init__(__self__, *,
+                 custom_core_count: int,
+                 node_count: int,
+                 node_type_id: str):
+        pulumi.set(__self__, "custom_core_count", custom_core_count)
+        pulumi.set(__self__, "node_count", node_count)
+        pulumi.set(__self__, "node_type_id", node_type_id)
+
+    @property
+    @pulumi.getter(name="customCoreCount")
+    def custom_core_count(self) -> int:
+        return pulumi.get(self, "custom_core_count")
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> int:
+        return pulumi.get(self, "node_count")
+
+    @property
+    @pulumi.getter(name="nodeTypeId")
+    def node_type_id(self) -> str:
+        return pulumi.get(self, "node_type_id")
+
+
+@pulumi.output_type
+class GetPrivateCloudNetworkConfigResult(dict):
+    def __init__(__self__, *,
+                 management_cidr: str,
+                 management_ip_address_layout_version: int,
+                 vmware_engine_network: str,
+                 vmware_engine_network_canonical: str):
+        pulumi.set(__self__, "management_cidr", management_cidr)
+        pulumi.set(__self__, "management_ip_address_layout_version", management_ip_address_layout_version)
+        pulumi.set(__self__, "vmware_engine_network", vmware_engine_network)
+        pulumi.set(__self__, "vmware_engine_network_canonical", vmware_engine_network_canonical)
+
+    @property
+    @pulumi.getter(name="managementCidr")
+    def management_cidr(self) -> str:
+        return pulumi.get(self, "management_cidr")
+
+    @property
+    @pulumi.getter(name="managementIpAddressLayoutVersion")
+    def management_ip_address_layout_version(self) -> int:
+        return pulumi.get(self, "management_ip_address_layout_version")
+
+    @property
+    @pulumi.getter(name="vmwareEngineNetwork")
+    def vmware_engine_network(self) -> str:
+        return pulumi.get(self, "vmware_engine_network")
+
+    @property
+    @pulumi.getter(name="vmwareEngineNetworkCanonical")
+    def vmware_engine_network_canonical(self) -> str:
+        return pulumi.get(self, "vmware_engine_network_canonical")
+
+
+@pulumi.output_type
+class GetPrivateCloudNsxResult(dict):
+    def __init__(__self__, *,
+                 fqdn: str,
+                 internal_ip: str,
+                 state: str,
+                 version: str):
+        pulumi.set(__self__, "fqdn", fqdn)
+        pulumi.set(__self__, "internal_ip", internal_ip)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> str:
+        return pulumi.get(self, "fqdn")
+
+    @property
+    @pulumi.getter(name="internalIp")
+    def internal_ip(self) -> str:
+        return pulumi.get(self, "internal_ip")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetPrivateCloudVcenterResult(dict):
+    def __init__(__self__, *,
+                 fqdn: str,
+                 internal_ip: str,
+                 state: str,
+                 version: str):
+        pulumi.set(__self__, "fqdn", fqdn)
+        pulumi.set(__self__, "internal_ip", internal_ip)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def fqdn(self) -> str:
+        return pulumi.get(self, "fqdn")
+
+    @property
+    @pulumi.getter(name="internalIp")
+    def internal_ip(self) -> str:
+        return pulumi.get(self, "internal_ip")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        return pulumi.get(self, "version")
 
 

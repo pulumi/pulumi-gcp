@@ -15,15 +15,19 @@ namespace Pulumi.Gcp.Iam.Outputs
     {
         public readonly ImmutableArray<string> AllowedAudiences;
         public readonly string IssuerUri;
+        public readonly string JwksJson;
 
         [OutputConstructor]
         private GetWorkloadIdentityPoolProviderOidcResult(
             ImmutableArray<string> allowedAudiences,
 
-            string issuerUri)
+            string issuerUri,
+
+            string jwksJson)
         {
             AllowedAudiences = allowedAudiences;
             IssuerUri = issuerUri;
+            JwksJson = jwksJson;
         }
     }
 }

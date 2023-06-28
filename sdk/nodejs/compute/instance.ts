@@ -249,6 +249,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly networkPerformanceConfig!: pulumi.Output<outputs.compute.InstanceNetworkPerformanceConfig | undefined>;
     /**
+     * Additional instance parameters.
+     * .
+     */
+    public readonly params!: pulumi.Output<outputs.compute.InstanceParams | undefined>;
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
@@ -339,6 +344,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             resourceInputs["networkPerformanceConfig"] = state ? state.networkPerformanceConfig : undefined;
+            resourceInputs["params"] = state ? state.params : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["reservationAffinity"] = state ? state.reservationAffinity : undefined;
             resourceInputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
@@ -381,6 +387,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             resourceInputs["networkPerformanceConfig"] = args ? args.networkPerformanceConfig : undefined;
+            resourceInputs["params"] = args ? args.params : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
             resourceInputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
@@ -554,6 +561,11 @@ export interface InstanceState {
      * in order for this setting to take effect.
      */
     networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceNetworkPerformanceConfig>;
+    /**
+     * Additional instance parameters.
+     * .
+     */
+    params?: pulumi.Input<inputs.compute.InstanceParams>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -739,6 +751,11 @@ export interface InstanceArgs {
      * in order for this setting to take effect.
      */
     networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceNetworkPerformanceConfig>;
+    /**
+     * Additional instance parameters.
+     * .
+     */
+    params?: pulumi.Input<inputs.compute.InstanceParams>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.

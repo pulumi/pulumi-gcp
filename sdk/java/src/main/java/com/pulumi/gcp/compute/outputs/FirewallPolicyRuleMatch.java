@@ -23,7 +23,7 @@ public final class FirewallPolicyRuleMatch {
      */
     private @Nullable List<String> destFqdns;
     /**
-     * @return CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+     * @return CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
      * 
      */
     private @Nullable List<String> destIpRanges;
@@ -38,7 +38,7 @@ public final class FirewallPolicyRuleMatch {
      */
     private @Nullable List<String> destThreatIntelligences;
     /**
-     * @return Pairs of IP protocols and ports that the rule should match. Structure is documented below.
+     * @return Pairs of IP protocols and ports that the rule should match.
      * 
      */
     private List<FirewallPolicyRuleMatchLayer4Config> layer4Configs;
@@ -53,7 +53,7 @@ public final class FirewallPolicyRuleMatch {
      */
     private @Nullable List<String> srcFqdns;
     /**
-     * @return CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+     * @return CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
      * 
      */
     private @Nullable List<String> srcIpRanges;
@@ -65,7 +65,7 @@ public final class FirewallPolicyRuleMatch {
     /**
      * @return Name of the Google Cloud Threat Intelligence list.
      * 
-     * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+     * The `layer4_configs` block supports:
      * 
      */
     private @Nullable List<String> srcThreatIntelligences;
@@ -86,7 +86,7 @@ public final class FirewallPolicyRuleMatch {
         return this.destFqdns == null ? List.of() : this.destFqdns;
     }
     /**
-     * @return CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+     * @return CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
      * 
      */
     public List<String> destIpRanges() {
@@ -107,7 +107,7 @@ public final class FirewallPolicyRuleMatch {
         return this.destThreatIntelligences == null ? List.of() : this.destThreatIntelligences;
     }
     /**
-     * @return Pairs of IP protocols and ports that the rule should match. Structure is documented below.
+     * @return Pairs of IP protocols and ports that the rule should match.
      * 
      */
     public List<FirewallPolicyRuleMatchLayer4Config> layer4Configs() {
@@ -128,7 +128,7 @@ public final class FirewallPolicyRuleMatch {
         return this.srcFqdns == null ? List.of() : this.srcFqdns;
     }
     /**
-     * @return CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+     * @return CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
      * 
      */
     public List<String> srcIpRanges() {
@@ -144,7 +144,7 @@ public final class FirewallPolicyRuleMatch {
     /**
      * @return Name of the Google Cloud Threat Intelligence list.
      * 
-     * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
+     * The `layer4_configs` block supports:
      * 
      */
     public List<String> srcThreatIntelligences() {

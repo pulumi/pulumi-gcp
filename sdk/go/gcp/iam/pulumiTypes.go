@@ -1769,6 +1769,26 @@ type WorkloadIdentityPoolProviderOidc struct {
 	AllowedAudiences []string `pulumi:"allowedAudiences"`
 	// The OIDC issuer URL.
 	IssuerUri string `pulumi:"issuerUri"`
+	// OIDC JWKs in JSON String format. For details on definition of a
+	// JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+	// use the `jwksUri` from the discovery document fetched from the
+	// .well-known path for the `issuerUri`. Currently, RSA and EC asymmetric
+	// keys are supported. The JWK must use following format and include only
+	// the following fields:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	JwksJson *string `pulumi:"jwksJson"`
 }
 
 // WorkloadIdentityPoolProviderOidcInput is an input type that accepts WorkloadIdentityPoolProviderOidcArgs and WorkloadIdentityPoolProviderOidcOutput values.
@@ -1806,6 +1826,26 @@ type WorkloadIdentityPoolProviderOidcArgs struct {
 	AllowedAudiences pulumi.StringArrayInput `pulumi:"allowedAudiences"`
 	// The OIDC issuer URL.
 	IssuerUri pulumi.StringInput `pulumi:"issuerUri"`
+	// OIDC JWKs in JSON String format. For details on definition of a
+	// JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+	// use the `jwksUri` from the discovery document fetched from the
+	// .well-known path for the `issuerUri`. Currently, RSA and EC asymmetric
+	// keys are supported. The JWK must use following format and include only
+	// the following fields:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	JwksJson pulumi.StringPtrInput `pulumi:"jwksJson"`
 }
 
 func (WorkloadIdentityPoolProviderOidcArgs) ElementType() reflect.Type {
@@ -1917,6 +1957,32 @@ func (o WorkloadIdentityPoolProviderOidcOutput) IssuerUri() pulumi.StringOutput 
 	return o.ApplyT(func(v WorkloadIdentityPoolProviderOidc) string { return v.IssuerUri }).(pulumi.StringOutput)
 }
 
+// OIDC JWKs in JSON String format. For details on definition of a
+// JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+// use the `jwksUri` from the discovery document fetched from the
+// .well-known path for the `issuerUri`. Currently, RSA and EC asymmetric
+// keys are supported. The JWK must use following format and include only
+// the following fields:
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+func (o WorkloadIdentityPoolProviderOidcOutput) JwksJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkloadIdentityPoolProviderOidc) *string { return v.JwksJson }).(pulumi.StringPtrOutput)
+}
+
 type WorkloadIdentityPoolProviderOidcPtrOutput struct{ *pulumi.OutputState }
 
 func (WorkloadIdentityPoolProviderOidcPtrOutput) ElementType() reflect.Type {
@@ -1980,6 +2046,37 @@ func (o WorkloadIdentityPoolProviderOidcPtrOutput) IssuerUri() pulumi.StringPtrO
 			return nil
 		}
 		return &v.IssuerUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// OIDC JWKs in JSON String format. For details on definition of a
+// JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+// use the `jwksUri` from the discovery document fetched from the
+// .well-known path for the `issuerUri`. Currently, RSA and EC asymmetric
+// keys are supported. The JWK must use following format and include only
+// the following fields:
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+func (o WorkloadIdentityPoolProviderOidcPtrOutput) JwksJson() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPoolProviderOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JwksJson
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2213,6 +2310,7 @@ func (o GetWorkloadIdentityPoolProviderAwArrayOutput) Index(i pulumi.IntInput) G
 type GetWorkloadIdentityPoolProviderOidc struct {
 	AllowedAudiences []string `pulumi:"allowedAudiences"`
 	IssuerUri        string   `pulumi:"issuerUri"`
+	JwksJson         string   `pulumi:"jwksJson"`
 }
 
 // GetWorkloadIdentityPoolProviderOidcInput is an input type that accepts GetWorkloadIdentityPoolProviderOidcArgs and GetWorkloadIdentityPoolProviderOidcOutput values.
@@ -2229,6 +2327,7 @@ type GetWorkloadIdentityPoolProviderOidcInput interface {
 type GetWorkloadIdentityPoolProviderOidcArgs struct {
 	AllowedAudiences pulumi.StringArrayInput `pulumi:"allowedAudiences"`
 	IssuerUri        pulumi.StringInput      `pulumi:"issuerUri"`
+	JwksJson         pulumi.StringInput      `pulumi:"jwksJson"`
 }
 
 func (GetWorkloadIdentityPoolProviderOidcArgs) ElementType() reflect.Type {
@@ -2288,6 +2387,10 @@ func (o GetWorkloadIdentityPoolProviderOidcOutput) AllowedAudiences() pulumi.Str
 
 func (o GetWorkloadIdentityPoolProviderOidcOutput) IssuerUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkloadIdentityPoolProviderOidc) string { return v.IssuerUri }).(pulumi.StringOutput)
+}
+
+func (o GetWorkloadIdentityPoolProviderOidcOutput) JwksJson() pulumi.StringOutput {
+	return o.ApplyT(func(v GetWorkloadIdentityPoolProviderOidc) string { return v.JwksJson }).(pulumi.StringOutput)
 }
 
 type GetWorkloadIdentityPoolProviderOidcArrayOutput struct{ *pulumi.OutputState }

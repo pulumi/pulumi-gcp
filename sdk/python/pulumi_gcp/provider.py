@@ -91,6 +91,7 @@ class ProviderArgs:
                  firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  game_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_backup_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 gke_hub2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gkehub_feature_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gkeonprem_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -309,6 +310,8 @@ class ProviderArgs:
             pulumi.set(__self__, "game_services_custom_endpoint", game_services_custom_endpoint)
         if gke_backup_custom_endpoint is not None:
             pulumi.set(__self__, "gke_backup_custom_endpoint", gke_backup_custom_endpoint)
+        if gke_hub2_custom_endpoint is not None:
+            pulumi.set(__self__, "gke_hub2_custom_endpoint", gke_hub2_custom_endpoint)
         if gke_hub_custom_endpoint is not None:
             pulumi.set(__self__, "gke_hub_custom_endpoint", gke_hub_custom_endpoint)
         if gkehub_feature_custom_endpoint is not None:
@@ -1127,6 +1130,15 @@ class ProviderArgs:
         pulumi.set(self, "gke_backup_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="gkeHub2CustomEndpoint")
+    def gke_hub2_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "gke_hub2_custom_endpoint")
+
+    @gke_hub2_custom_endpoint.setter
+    def gke_hub2_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gke_hub2_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="gkeHubCustomEndpoint")
     def gke_hub_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "gke_hub_custom_endpoint")
@@ -1775,6 +1787,7 @@ class Provider(pulumi.ProviderResource):
                  firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  game_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_backup_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 gke_hub2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gkehub_feature_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gkeonprem_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1951,6 +1964,7 @@ class Provider(pulumi.ProviderResource):
                  firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  game_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_backup_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 gke_hub2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gkehub_feature_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  gkeonprem_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2099,6 +2113,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["firestore_custom_endpoint"] = firestore_custom_endpoint
             __props__.__dict__["game_services_custom_endpoint"] = game_services_custom_endpoint
             __props__.__dict__["gke_backup_custom_endpoint"] = gke_backup_custom_endpoint
+            __props__.__dict__["gke_hub2_custom_endpoint"] = gke_hub2_custom_endpoint
             __props__.__dict__["gke_hub_custom_endpoint"] = gke_hub_custom_endpoint
             __props__.__dict__["gkehub_feature_custom_endpoint"] = gkehub_feature_custom_endpoint
             __props__.__dict__["gkeonprem_custom_endpoint"] = gkeonprem_custom_endpoint
@@ -2543,6 +2558,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="gkeBackupCustomEndpoint")
     def gke_backup_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "gke_backup_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="gkeHub2CustomEndpoint")
+    def gke_hub2_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "gke_hub2_custom_endpoint")
 
     @property
     @pulumi.getter(name="gkeHubCustomEndpoint")

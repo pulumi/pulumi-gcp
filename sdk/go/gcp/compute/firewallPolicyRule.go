@@ -11,12 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Hierarchical firewall policy rules let you create and enforce a consistent firewall policy across your organization. Rules can explicitly allow or deny connections or delegate evaluation to lower level policies.
-//
-// For more information see the [official documentation](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
+// The Compute FirewallPolicyRule resource
 //
 // ## Example Usage
-//
+// ### Basic_fir_sec_rule_addr_groups
 // ```go
 // package main
 //
@@ -24,6 +22,7 @@ import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -31,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			basicGlobalNetworksecurityAddressGroup, err := networksecurity.NewAddressGroup(ctx, "basicGlobalNetworksecurityAddressGroup", &networksecurity.AddressGroupArgs{
-//				Parent:      pulumi.String("organizations/12345"),
+//				Parent:      pulumi.String("organizations/123456789"),
 //				Description: pulumi.String("Sample global networksecurity_address_group"),
 //				Location:    pulumi.String("global"),
 //				Items: pulumi.StringArray{
@@ -43,17 +42,24 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultFirewallPolicy, err := compute.NewFirewallPolicy(ctx, "defaultFirewallPolicy", &compute.FirewallPolicyArgs{
-//				Parent:      pulumi.String("organizations/12345"),
-//				ShortName:   pulumi.String("my-policy"),
-//				Description: pulumi.String("Example Resource"),
-//			})
+//			folder, err := organizations.NewFolder(ctx, "folder", &organizations.FolderArgs{
+//				DisplayName: pulumi.String("policy"),
+//				Parent:      pulumi.String("organizations/123456789"),
+//			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewFirewallPolicyRule(ctx, "defaultFirewallPolicyRule", &compute.FirewallPolicyRuleArgs{
-//				FirewallPolicy: defaultFirewallPolicy.ID(),
-//				Description:    pulumi.String("Example Resource"),
+//			_, err = compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
+//				Parent:      folder.ID(),
+//				ShortName:   pulumi.String("policy"),
+//				Description: pulumi.String("Resource created for Terraform acceptance testing"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewFirewallPolicyRule(ctx, "primary", &compute.FirewallPolicyRuleArgs{
+//				FirewallPolicy: _default.Name,
+//				Description:    pulumi.String("Resource created for Terraform acceptance testing"),
 //				Priority:       pulumi.Int(9000),
 //				EnableLogging:  pulumi.Bool(true),
 //				Action:         pulumi.String("allow"),
@@ -64,28 +70,35 @@ import (
 //						&compute.FirewallPolicyRuleMatchLayer4ConfigArgs{
 //							IpProtocol: pulumi.String("tcp"),
 //							Ports: pulumi.StringArray{
-//								pulumi.String("80"),
 //								pulumi.String("8080"),
+//							},
+//						},
+//						&compute.FirewallPolicyRuleMatchLayer4ConfigArgs{
+//							IpProtocol: pulumi.String("udp"),
+//							Ports: pulumi.StringArray{
+//								pulumi.String("22"),
 //							},
 //						},
 //					},
 //					DestIpRanges: pulumi.StringArray{
 //						pulumi.String("11.100.0.1/32"),
 //					},
-//					DestFqdns: pulumi.StringArray{
-//						pulumi.String("google.com"),
-//					},
+//					DestFqdns: pulumi.StringArray{},
 //					DestRegionCodes: pulumi.StringArray{
 //						pulumi.String("US"),
 //					},
 //					DestThreatIntelligences: pulumi.StringArray{
-//						pulumi.String("iplist-public-clouds"),
+//						pulumi.String("iplist-known-malicious-ips"),
 //					},
+//					SrcAddressGroups: pulumi.StringArray{},
 //					DestAddressGroups: pulumi.StringArray{
 //						basicGlobalNetworksecurityAddressGroup.ID(),
 //					},
 //				},
-//			})
+//				TargetServiceAccounts: pulumi.StringArray{
+//					pulumi.String("my@service-account.com"),
+//				},
+//			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
 //			}
@@ -113,7 +126,7 @@ import (
 type FirewallPolicyRule struct {
 	pulumi.CustomResourceState
 
-	// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
 	Action pulumi.StringOutput `pulumi:"action"`
 	// An optional description for this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -127,7 +140,7 @@ type FirewallPolicyRule struct {
 	FirewallPolicy pulumi.StringOutput `pulumi:"firewallPolicy"`
 	// Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
+	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match FirewallPolicyRuleMatchOutput `pulumi:"match"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority pulumi.IntOutput `pulumi:"priority"`
@@ -183,7 +196,7 @@ func GetFirewallPolicyRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FirewallPolicyRule resources.
 type firewallPolicyRuleState struct {
-	// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
 	Action *string `pulumi:"action"`
 	// An optional description for this resource.
 	Description *string `pulumi:"description"`
@@ -197,7 +210,7 @@ type firewallPolicyRuleState struct {
 	FirewallPolicy *string `pulumi:"firewallPolicy"`
 	// Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
 	Kind *string `pulumi:"kind"`
-	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
+	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match *FirewallPolicyRuleMatch `pulumi:"match"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority *int `pulumi:"priority"`
@@ -210,7 +223,7 @@ type firewallPolicyRuleState struct {
 }
 
 type FirewallPolicyRuleState struct {
-	// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
 	Action pulumi.StringPtrInput
 	// An optional description for this resource.
 	Description pulumi.StringPtrInput
@@ -224,7 +237,7 @@ type FirewallPolicyRuleState struct {
 	FirewallPolicy pulumi.StringPtrInput
 	// Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
 	Kind pulumi.StringPtrInput
-	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
+	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match FirewallPolicyRuleMatchPtrInput
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority pulumi.IntPtrInput
@@ -241,7 +254,7 @@ func (FirewallPolicyRuleState) ElementType() reflect.Type {
 }
 
 type firewallPolicyRuleArgs struct {
-	// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
 	Action string `pulumi:"action"`
 	// An optional description for this resource.
 	Description *string `pulumi:"description"`
@@ -253,7 +266,7 @@ type firewallPolicyRuleArgs struct {
 	EnableLogging *bool `pulumi:"enableLogging"`
 	// The firewall policy of the resource.
 	FirewallPolicy string `pulumi:"firewallPolicy"`
-	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
+	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match FirewallPolicyRuleMatch `pulumi:"match"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority int `pulumi:"priority"`
@@ -265,7 +278,7 @@ type firewallPolicyRuleArgs struct {
 
 // The set of arguments for constructing a FirewallPolicyRule resource.
 type FirewallPolicyRuleArgs struct {
-	// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
 	Action pulumi.StringInput
 	// An optional description for this resource.
 	Description pulumi.StringPtrInput
@@ -277,7 +290,7 @@ type FirewallPolicyRuleArgs struct {
 	EnableLogging pulumi.BoolPtrInput
 	// The firewall policy of the resource.
 	FirewallPolicy pulumi.StringInput
-	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
+	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match FirewallPolicyRuleMatchInput
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority pulumi.IntInput
@@ -374,7 +387,7 @@ func (o FirewallPolicyRuleOutput) ToFirewallPolicyRuleOutputWithContext(ctx cont
 	return o
 }
 
-// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
 func (o FirewallPolicyRuleOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallPolicyRule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }
@@ -409,7 +422,7 @@ func (o FirewallPolicyRuleOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallPolicyRule) pulumi.StringOutput { return v.Kind }).(pulumi.StringOutput)
 }
 
-// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
+// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 func (o FirewallPolicyRuleOutput) Match() FirewallPolicyRuleMatchOutput {
 	return o.ApplyT(func(v *FirewallPolicyRule) FirewallPolicyRuleMatchOutput { return v.Match }).(FirewallPolicyRuleMatchOutput)
 }

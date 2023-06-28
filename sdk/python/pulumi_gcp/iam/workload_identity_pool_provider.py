@@ -732,6 +732,38 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 issuer_uri="https://sts.windows.net/azure-tenant-id",
             ))
         ```
+        ### Iam Workload Identity Pool Provider Oidc Upload Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
+        example = gcp.iam.WorkloadIdentityPoolProvider("example",
+            workload_identity_pool_id=pool.workload_identity_pool_id,
+            workload_identity_pool_provider_id="example-prvdr",
+            display_name="Name of provider",
+            description="OIDC identity pool provider for automated test",
+            disabled=True,
+            attribute_condition="\\"e968c2ef-047c-498d-8d79-16ca1b61e77e\\" in assertion.groups",
+            attribute_mapping={
+                "google.subject": "\\"azure::\\" + assertion.tid + \\"::\\" + assertion.sub",
+                "attribute.tid": "assertion.tid",
+                "attribute.managed_identity_name": \"\"\"      {
+                "8bb39bdb-1cc5-4447-b7db-a19e920eb111":"workload1",
+                "55d36609-9bcf-48e0-a366-a3cf19027d2a":"workload2"
+              }[assertion.oid]
+        \"\"\",
+            },
+            oidc=gcp.iam.WorkloadIdentityPoolProviderOidcArgs(
+                allowed_audiences=[
+                    "https://example.com/gcp-oidc-federation",
+                    "example.com/gcp-oidc-federation",
+                ],
+                issuer_uri="https://sts.windows.net/azure-tenant-id",
+                jwks_json="{\\"keys\\":[{\\"kty\\":\\"RSA\\",\\"alg\\":\\"RS256\\",\\"kid\\":\\"sif0AR-F6MuvksAyAOv-Pds08Bcf2eUMlxE30NofddA\\",\\"use\\":\\"sig\\",\\"e\\":\\"AQAB\\",\\"n\\":\\"ylH1Chl1tpfti3lh51E1g5dPogzXDaQseqjsefGLknaNl5W6Wd4frBhHyE2t41Q5zgz_Ll0-NvWm0FlaG6brhrN9QZu6sJP1bM8WPfJVPgXOanxi7d7TXCkeNubGeiLTf5R3UXtS9Lm_guemU7MxDjDTelxnlgGCihOVTcL526suNJUdfXtpwUsvdU6_ZnAp9IpsuYjCtwPm9hPumlcZGMbxstdh07O4y4O90cVQClJOKSGQjAUCKJWXIQ0cqffGS_HuS_725CPzQ85SzYZzaNpgfhAER7kx_9P16ARM3BJz0PI5fe2hECE61J4GYU_BY43sxDfs7HyJpEXKLU9eWw\\"}]}",
+            ))
+        ```
 
         ## Import
 
@@ -918,6 +950,38 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                     "example.com/gcp-oidc-federation",
                 ],
                 issuer_uri="https://sts.windows.net/azure-tenant-id",
+            ))
+        ```
+        ### Iam Workload Identity Pool Provider Oidc Upload Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
+        example = gcp.iam.WorkloadIdentityPoolProvider("example",
+            workload_identity_pool_id=pool.workload_identity_pool_id,
+            workload_identity_pool_provider_id="example-prvdr",
+            display_name="Name of provider",
+            description="OIDC identity pool provider for automated test",
+            disabled=True,
+            attribute_condition="\\"e968c2ef-047c-498d-8d79-16ca1b61e77e\\" in assertion.groups",
+            attribute_mapping={
+                "google.subject": "\\"azure::\\" + assertion.tid + \\"::\\" + assertion.sub",
+                "attribute.tid": "assertion.tid",
+                "attribute.managed_identity_name": \"\"\"      {
+                "8bb39bdb-1cc5-4447-b7db-a19e920eb111":"workload1",
+                "55d36609-9bcf-48e0-a366-a3cf19027d2a":"workload2"
+              }[assertion.oid]
+        \"\"\",
+            },
+            oidc=gcp.iam.WorkloadIdentityPoolProviderOidcArgs(
+                allowed_audiences=[
+                    "https://example.com/gcp-oidc-federation",
+                    "example.com/gcp-oidc-federation",
+                ],
+                issuer_uri="https://sts.windows.net/azure-tenant-id",
+                jwks_json="{\\"keys\\":[{\\"kty\\":\\"RSA\\",\\"alg\\":\\"RS256\\",\\"kid\\":\\"sif0AR-F6MuvksAyAOv-Pds08Bcf2eUMlxE30NofddA\\",\\"use\\":\\"sig\\",\\"e\\":\\"AQAB\\",\\"n\\":\\"ylH1Chl1tpfti3lh51E1g5dPogzXDaQseqjsefGLknaNl5W6Wd4frBhHyE2t41Q5zgz_Ll0-NvWm0FlaG6brhrN9QZu6sJP1bM8WPfJVPgXOanxi7d7TXCkeNubGeiLTf5R3UXtS9Lm_guemU7MxDjDTelxnlgGCihOVTcL526suNJUdfXtpwUsvdU6_ZnAp9IpsuYjCtwPm9hPumlcZGMbxstdh07O4y4O90cVQClJOKSGQjAUCKJWXIQ0cqffGS_HuS_725CPzQ85SzYZzaNpgfhAER7kx_9P16ARM3BJz0PI5fe2hECE61J4GYU_BY43sxDfs7HyJpEXKLU9eWw\\"}]}",
             ))
         ```
 

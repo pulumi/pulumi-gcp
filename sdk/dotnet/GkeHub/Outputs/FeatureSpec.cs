@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         public readonly Outputs.FeatureSpecFleetobservability? Fleetobservability;
         /// <summary>
         /// Multicluster Ingress-specific spec.
-        /// The `multiclusteringress` block supports:
+        /// Structure is documented below.
         /// </summary>
         public readonly Outputs.FeatureSpecMulticlusteringress? Multiclusteringress;
 

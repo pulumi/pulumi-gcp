@@ -204,6 +204,20 @@ public class Organization extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.analyticsRegion);
     }
     /**
+     * Output only. Project ID of the Apigee Tenant Project.
+     * 
+     */
+    @Export(name="apigeeProjectId", type=String.class, parameters={})
+    private Output<String> apigeeProjectId;
+
+    /**
+     * @return Output only. Project ID of the Apigee Tenant Project.
+     * 
+     */
+    public Output<String> apigeeProjectId() {
+        return this.apigeeProjectId;
+    }
+    /**
      * Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
      * See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
      * Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: &#34;default&#34;.

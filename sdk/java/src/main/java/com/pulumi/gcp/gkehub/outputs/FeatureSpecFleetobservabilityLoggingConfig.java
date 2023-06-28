@@ -12,13 +12,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureSpecFleetobservabilityLoggingConfig {
+    /**
+     * @return Specified if applying the default routing config to logs not specified in other configs.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable FeatureSpecFleetobservabilityLoggingConfigDefaultConfig defaultConfig;
+    /**
+     * @return Specified if applying the routing config to all logs for all fleet scopes.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig fleetScopeLogsConfig;
 
     private FeatureSpecFleetobservabilityLoggingConfig() {}
+    /**
+     * @return Specified if applying the default routing config to logs not specified in other configs.
+     * Structure is documented below.
+     * 
+     */
     public Optional<FeatureSpecFleetobservabilityLoggingConfigDefaultConfig> defaultConfig() {
         return Optional.ofNullable(this.defaultConfig);
     }
+    /**
+     * @return Specified if applying the routing config to all logs for all fleet scopes.
+     * Structure is documented below.
+     * 
+     */
     public Optional<FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig> fleetScopeLogsConfig() {
         return Optional.ofNullable(this.fleetScopeLogsConfig);
     }

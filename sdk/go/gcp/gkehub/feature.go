@@ -11,8 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Feature represents the settings and status of any Hub Feature.
+//
+// To get more information about Feature, see:
+//
+// * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.features)
+// * How-to Guides
+//   - [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+//
 // ## Example Usage
-// ### Multi Cluster Ingress
+// ### Gkehub Feature Multi Cluster Ingress
 //
 // ```go
 // package main
@@ -32,7 +40,7 @@ import (
 //			cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
 //				Location:         pulumi.String("us-central1-a"),
 //				InitialNodeCount: pulumi.Int(1),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -46,7 +54,7 @@ import (
 //					},
 //				},
 //				Description: pulumi.String("Membership"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -55,6 +63,93 @@ import (
 //				Spec: &gkehub.FeatureSpecArgs{
 //					Multiclusteringress: &gkehub.FeatureSpecMulticlusteringressArgs{
 //						ConfigMembership: membership.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Gkehub Feature Multi Cluster Service Discovery
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar"),
+//				},
+//				Location: pulumi.String("global"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Gkehub Feature Anthos Service Mesh
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Location: pulumi.String("global"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Enable Fleet Observability For Default Logs With Copy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Location: pulumi.String("global"),
+//				Spec: &gkehub.FeatureSpecArgs{
+//					Fleetobservability: &gkehub.FeatureSpecFleetobservabilityArgs{
+//						LoggingConfig: &gkehub.FeatureSpecFleetobservabilityLoggingConfigArgs{
+//							DefaultConfig: &gkehub.FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs{
+//								Mode: pulumi.String("COPY"),
+//							},
+//						},
 //					},
 //				},
 //			}, pulumi.Provider(google_beta))
@@ -66,7 +161,7 @@ import (
 //	}
 //
 // ```
-// ### Multi Cluster Service Discovery
+// ### Enable Fleet Observability For Scope Logs With Move
 //
 // ```go
 // package main
@@ -82,8 +177,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
 //				Location: pulumi.String("global"),
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar"),
+//				Spec: &gkehub.FeatureSpecArgs{
+//					Fleetobservability: &gkehub.FeatureSpecFleetobservabilityArgs{
+//						LoggingConfig: &gkehub.FeatureSpecFleetobservabilityLoggingConfigArgs{
+//							FleetScopeLogsConfig: &gkehub.FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs{
+//								Mode: pulumi.String("MOVE"),
+//							},
+//						},
+//					},
 //				},
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
@@ -94,7 +195,7 @@ import (
 //	}
 //
 // ```
-// ### Enable Anthos Service Mesh
+// ### Enable Fleet Observability For Both Default And Scope Logs
 //
 // ```go
 // package main
@@ -110,6 +211,18 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
 //				Location: pulumi.String("global"),
+//				Spec: &gkehub.FeatureSpecArgs{
+//					Fleetobservability: &gkehub.FeatureSpecFleetobservabilityArgs{
+//						LoggingConfig: &gkehub.FeatureSpecFleetobservabilityLoggingConfigArgs{
+//							DefaultConfig: &gkehub.FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs{
+//								Mode: pulumi.String("COPY"),
+//							},
+//							FleetScopeLogsConfig: &gkehub.FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs{
+//								Mode: pulumi.String("MOVE"),
+//							},
+//						},
+//					},
+//				},
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
@@ -156,15 +269,21 @@ type Feature struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The full, unique name of this Feature resource
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// State of the Feature resource itself.
+	// Structure is documented below.
 	ResourceStates FeatureResourceStateArrayOutput `pulumi:"resourceStates"`
 	// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+	// Structure is documented below.
 	Spec FeatureSpecPtrOutput `pulumi:"spec"`
-	// Output only. The Hub-wide Feature state
+	// (Output)
+	// Output only. The "running state" of the Feature in this Hub.
+	// Structure is documented below.
 	States FeatureStateTypeArrayOutput `pulumi:"states"`
-	// Output only. When the Feature resource was last updated.
+	// (Output)
+	// The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -212,15 +331,21 @@ type featureState struct {
 	Location *string `pulumi:"location"`
 	// The full, unique name of this Feature resource
 	Name *string `pulumi:"name"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// State of the Feature resource itself.
+	// Structure is documented below.
 	ResourceStates []FeatureResourceState `pulumi:"resourceStates"`
 	// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+	// Structure is documented below.
 	Spec *FeatureSpec `pulumi:"spec"`
-	// Output only. The Hub-wide Feature state
+	// (Output)
+	// Output only. The "running state" of the Feature in this Hub.
+	// Structure is documented below.
 	States []FeatureStateType `pulumi:"states"`
-	// Output only. When the Feature resource was last updated.
+	// (Output)
+	// The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
@@ -237,15 +362,21 @@ type FeatureState struct {
 	Location pulumi.StringPtrInput
 	// The full, unique name of this Feature resource
 	Name pulumi.StringPtrInput
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// State of the Feature resource itself.
+	// Structure is documented below.
 	ResourceStates FeatureResourceStateArrayInput
 	// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+	// Structure is documented below.
 	Spec FeatureSpecPtrInput
-	// Output only. The Hub-wide Feature state
+	// (Output)
+	// Output only. The "running state" of the Feature in this Hub.
+	// Structure is documented below.
 	States FeatureStateTypeArrayInput
-	// Output only. When the Feature resource was last updated.
+	// (Output)
+	// The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -262,9 +393,11 @@ type featureArgs struct {
 	Location string `pulumi:"location"`
 	// The full, unique name of this Feature resource
 	Name *string `pulumi:"name"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+	// Structure is documented below.
 	Spec *FeatureSpec `pulumi:"spec"`
 }
 
@@ -278,9 +411,11 @@ type FeatureArgs struct {
 	Location pulumi.StringInput
 	// The full, unique name of this Feature resource
 	Name pulumi.StringPtrInput
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+	// Structure is documented below.
 	Spec FeatureSpecPtrInput
 }
 
@@ -398,27 +533,33 @@ func (o FeatureOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Feature) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The project for the resource
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o FeatureOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Feature) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // State of the Feature resource itself.
+// Structure is documented below.
 func (o FeatureOutput) ResourceStates() FeatureResourceStateArrayOutput {
 	return o.ApplyT(func(v *Feature) FeatureResourceStateArrayOutput { return v.ResourceStates }).(FeatureResourceStateArrayOutput)
 }
 
 // Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+// Structure is documented below.
 func (o FeatureOutput) Spec() FeatureSpecPtrOutput {
 	return o.ApplyT(func(v *Feature) FeatureSpecPtrOutput { return v.Spec }).(FeatureSpecPtrOutput)
 }
 
-// Output only. The Hub-wide Feature state
+// (Output)
+// Output only. The "running state" of the Feature in this Hub.
+// Structure is documented below.
 func (o FeatureOutput) States() FeatureStateTypeArrayOutput {
 	return o.ApplyT(func(v *Feature) FeatureStateTypeArrayOutput { return v.States }).(FeatureStateTypeArrayOutput)
 }
 
-// Output only. When the Feature resource was last updated.
+// (Output)
+// The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
 func (o FeatureOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Feature) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

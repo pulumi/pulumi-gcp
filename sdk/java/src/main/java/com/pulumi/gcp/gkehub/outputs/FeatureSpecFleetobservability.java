@@ -11,9 +11,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureSpecFleetobservability {
+    /**
+     * @return Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable FeatureSpecFleetobservabilityLoggingConfig loggingConfig;
 
     private FeatureSpecFleetobservability() {}
+    /**
+     * @return Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+     * Structure is documented below.
+     * 
+     */
     public Optional<FeatureSpecFleetobservabilityLoggingConfig> loggingConfig() {
         return Optional.ofNullable(this.loggingConfig);
     }

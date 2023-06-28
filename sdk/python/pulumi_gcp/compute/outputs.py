@@ -102,6 +102,7 @@ __all__ = [
     'InstanceFromMachineImageNetworkInterfaceAliasIpRange',
     'InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig',
     'InstanceFromMachineImageNetworkPerformanceConfig',
+    'InstanceFromMachineImageParams',
     'InstanceFromMachineImageReservationAffinity',
     'InstanceFromMachineImageReservationAffinitySpecificReservation',
     'InstanceFromMachineImageScheduling',
@@ -121,6 +122,7 @@ __all__ = [
     'InstanceFromTemplateNetworkInterfaceAliasIpRange',
     'InstanceFromTemplateNetworkInterfaceIpv6AccessConfig',
     'InstanceFromTemplateNetworkPerformanceConfig',
+    'InstanceFromTemplateParams',
     'InstanceFromTemplateReservationAffinity',
     'InstanceFromTemplateReservationAffinitySpecificReservation',
     'InstanceFromTemplateScheduling',
@@ -153,6 +155,7 @@ __all__ = [
     'InstanceNetworkInterfaceAliasIpRange',
     'InstanceNetworkInterfaceIpv6AccessConfig',
     'InstanceNetworkPerformanceConfig',
+    'InstanceParams',
     'InstanceReservationAffinity',
     'InstanceReservationAffinitySpecificReservation',
     'InstanceScheduling',
@@ -584,6 +587,7 @@ __all__ = [
     'GetInstanceNetworkInterfaceAliasIpRangeResult',
     'GetInstanceNetworkInterfaceIpv6AccessConfigResult',
     'GetInstanceNetworkPerformanceConfigResult',
+    'GetInstanceParamResult',
     'GetInstanceReservationAffinityResult',
     'GetInstanceReservationAffinitySpecificReservationResult',
     'GetInstanceSchedulingResult',
@@ -4933,19 +4937,19 @@ class FirewallPolicyRuleMatch(dict):
                  src_region_codes: Optional[Sequence[str]] = None,
                  src_threat_intelligences: Optional[Sequence[str]] = None):
         """
-        :param Sequence['FirewallPolicyRuleMatchLayer4ConfigArgs'] layer4_configs: Pairs of IP protocols and ports that the rule should match. Structure is documented below.
+        :param Sequence['FirewallPolicyRuleMatchLayer4ConfigArgs'] layer4_configs: Pairs of IP protocols and ports that the rule should match.
         :param Sequence[str] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
         :param Sequence[str] dest_fqdns: Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
-        :param Sequence[str] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        :param Sequence[str] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
         :param Sequence[str] dest_region_codes: The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
         :param Sequence[str] dest_threat_intelligences: Name of the Google Cloud Threat Intelligence list.
         :param Sequence[str] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
         :param Sequence[str] src_fqdns: Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
-        :param Sequence[str] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        :param Sequence[str] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
         :param Sequence[str] src_region_codes: The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
         :param Sequence[str] src_threat_intelligences: Name of the Google Cloud Threat Intelligence list.
                
-               <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
+               The `layer4_configs` block supports:
         """
         pulumi.set(__self__, "layer4_configs", layer4_configs)
         if dest_address_groups is not None:
@@ -4973,7 +4977,7 @@ class FirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="layer4Configs")
     def layer4_configs(self) -> Sequence['outputs.FirewallPolicyRuleMatchLayer4Config']:
         """
-        Pairs of IP protocols and ports that the rule should match. Structure is documented below.
+        Pairs of IP protocols and ports that the rule should match.
         """
         return pulumi.get(self, "layer4_configs")
 
@@ -4997,7 +5001,7 @@ class FirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="destIpRanges")
     def dest_ip_ranges(self) -> Optional[Sequence[str]]:
         """
-        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
         """
         return pulumi.get(self, "dest_ip_ranges")
 
@@ -5037,7 +5041,7 @@ class FirewallPolicyRuleMatch(dict):
     @pulumi.getter(name="srcIpRanges")
     def src_ip_ranges(self) -> Optional[Sequence[str]]:
         """
-        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
         """
         return pulumi.get(self, "src_ip_ranges")
 
@@ -5055,7 +5059,7 @@ class FirewallPolicyRuleMatch(dict):
         """
         Name of the Google Cloud Threat Intelligence list.
 
-        <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
+        The `layer4_configs` block supports:
         """
         return pulumi.get(self, "src_threat_intelligences")
 
@@ -6898,9 +6902,27 @@ class InstanceBootDisk(dict):
 
 @pulumi.output_type
 class InstanceBootDiskInitializeParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceBootDiskInitializeParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceBootDiskInitializeParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceBootDiskInitializeParams.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  image: Optional[str] = None,
                  labels: Optional[Mapping[str, Any]] = None,
+                 resource_manager_tags: Optional[Mapping[str, Any]] = None,
                  size: Optional[int] = None,
                  type: Optional[str] = None):
         """
@@ -6915,6 +6937,7 @@ class InstanceBootDiskInitializeParams(dict):
                These images can be referred by family name here.
         :param Mapping[str, Any] labels: A set of key/value label pairs assigned to the disk. This  
                field is only applicable for persistent disks.
+        :param Mapping[str, Any] resource_manager_tags: A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
         :param int size: The size of the image in gigabytes. If not specified, it
                will inherit the size of its base image.
         :param str type: The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
@@ -6923,6 +6946,8 @@ class InstanceBootDiskInitializeParams(dict):
             pulumi.set(__self__, "image", image)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if type is not None:
@@ -6952,6 +6977,14 @@ class InstanceBootDiskInitializeParams(dict):
         field is only applicable for persistent disks.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
     @property
     @pulumi.getter
@@ -7229,15 +7262,35 @@ class InstanceFromMachineImageBootDisk(dict):
 
 @pulumi.output_type
 class InstanceFromMachineImageBootDiskInitializeParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceFromMachineImageBootDiskInitializeParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceFromMachineImageBootDiskInitializeParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceFromMachineImageBootDiskInitializeParams.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  image: Optional[str] = None,
                  labels: Optional[Mapping[str, Any]] = None,
+                 resource_manager_tags: Optional[Mapping[str, Any]] = None,
                  size: Optional[int] = None,
                  type: Optional[str] = None):
         if image is not None:
             pulumi.set(__self__, "image", image)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if type is not None:
@@ -7252,6 +7305,11 @@ class InstanceFromMachineImageBootDiskInitializeParams(dict):
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, Any]]:
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "resource_manager_tags")
 
     @property
     @pulumi.getter
@@ -7629,6 +7687,36 @@ class InstanceFromMachineImageNetworkPerformanceConfig(dict):
     @pulumi.getter(name="totalEgressBandwidthTier")
     def total_egress_bandwidth_tier(self) -> str:
         return pulumi.get(self, "total_egress_bandwidth_tier")
+
+
+@pulumi.output_type
+class InstanceFromMachineImageParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceFromMachineImageParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceFromMachineImageParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceFromMachineImageParams.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[Mapping[str, Any]] = None):
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "resource_manager_tags")
 
 
 @pulumi.output_type
@@ -8154,15 +8242,35 @@ class InstanceFromTemplateBootDisk(dict):
 
 @pulumi.output_type
 class InstanceFromTemplateBootDiskInitializeParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceFromTemplateBootDiskInitializeParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceFromTemplateBootDiskInitializeParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceFromTemplateBootDiskInitializeParams.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  image: Optional[str] = None,
                  labels: Optional[Mapping[str, Any]] = None,
+                 resource_manager_tags: Optional[Mapping[str, Any]] = None,
                  size: Optional[int] = None,
                  type: Optional[str] = None):
         if image is not None:
             pulumi.set(__self__, "image", image)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if type is not None:
@@ -8177,6 +8285,11 @@ class InstanceFromTemplateBootDiskInitializeParams(dict):
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, Any]]:
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "resource_manager_tags")
 
     @property
     @pulumi.getter
@@ -8554,6 +8667,36 @@ class InstanceFromTemplateNetworkPerformanceConfig(dict):
     @pulumi.getter(name="totalEgressBandwidthTier")
     def total_egress_bandwidth_tier(self) -> str:
         return pulumi.get(self, "total_egress_bandwidth_tier")
+
+
+@pulumi.output_type
+class InstanceFromTemplateParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceFromTemplateParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceFromTemplateParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceFromTemplateParams.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[Mapping[str, Any]] = None):
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, Any]]:
+        return pulumi.get(self, "resource_manager_tags")
 
 
 @pulumi.output_type
@@ -10247,6 +10390,42 @@ class InstanceNetworkPerformanceConfig(dict):
         Possible values: TIER_1, DEFAULT
         """
         return pulumi.get(self, "total_egress_bandwidth_tier")
+
+
+@pulumi.output_type
+class InstanceParams(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceParams. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceParams.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceParams.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[Mapping[str, Any]] = None):
+        """
+        :param Mapping[str, Any] resource_manager_tags: A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, Any]]:
+        """
+        A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
 
 @pulumi.output_type
@@ -38033,6 +38212,7 @@ class GetInstanceBootDiskInitializeParamResult(dict):
     def __init__(__self__, *,
                  image: str,
                  labels: Mapping[str, Any],
+                 resource_manager_tags: Mapping[str, Any],
                  size: int,
                  type: str):
         """
@@ -38043,6 +38223,7 @@ class GetInstanceBootDiskInitializeParamResult(dict):
         """
         pulumi.set(__self__, "image", image)
         pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "type", type)
 
@@ -38061,6 +38242,11 @@ class GetInstanceBootDiskInitializeParamResult(dict):
         A set of key/value label pairs assigned to the disk.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "resource_manager_tags")
 
     @property
     @pulumi.getter
@@ -38739,6 +38925,18 @@ class GetInstanceNetworkPerformanceConfigResult(dict):
         The egress bandwidth tier for the instance.
         """
         return pulumi.get(self, "total_egress_bandwidth_tier")
+
+
+@pulumi.output_type
+class GetInstanceParamResult(dict):
+    def __init__(__self__, *,
+                 resource_manager_tags: Mapping[str, Any]):
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Mapping[str, Any]:
+        return pulumi.get(self, "resource_manager_tags")
 
 
 @pulumi.output_type

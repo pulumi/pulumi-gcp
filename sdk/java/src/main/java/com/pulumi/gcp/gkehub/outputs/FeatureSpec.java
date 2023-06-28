@@ -15,7 +15,7 @@ public final class FeatureSpec {
     private @Nullable FeatureSpecFleetobservability fleetobservability;
     /**
      * @return Multicluster Ingress-specific spec.
-     * The `multiclusteringress` block supports:
+     * Structure is documented below.
      * 
      */
     private @Nullable FeatureSpecMulticlusteringress multiclusteringress;
@@ -26,7 +26,7 @@ public final class FeatureSpec {
     }
     /**
      * @return Multicluster Ingress-specific spec.
-     * The `multiclusteringress` block supports:
+     * Structure is documented below.
      * 
      */
     public Optional<FeatureSpecMulticlusteringress> multiclusteringress() {

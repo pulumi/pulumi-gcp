@@ -4576,6 +4576,9 @@
                     "network_performance_config": {
                         "maxItemsOne": true
                     },
+                    "params": {
+                        "maxItemsOne": true
+                    },
                     "reservation_affinity": {
                         "maxItemsOne": true,
                         "elem": {
@@ -4682,6 +4685,9 @@
                     "network_performance_config": {
                         "maxItemsOne": true
                     },
+                    "params": {
+                        "maxItemsOne": true
+                    },
                     "reservation_affinity": {
                         "maxItemsOne": true,
                         "elem": {
@@ -4786,6 +4792,9 @@
                         }
                     },
                     "network_performance_config": {
+                        "maxItemsOne": true
+                    },
+                    "params": {
                         "maxItemsOne": true
                     },
                     "reservation_affinity": {
@@ -13490,6 +13499,31 @@
                     }
                 }
             },
+            "google_gke_hub_feature_iam_binding": {
+                "current": "gcp:gkehub/featureIamBinding:FeatureIamBinding",
+                "majorVersion": 6,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_gke_hub_feature_iam_member": {
+                "current": "gcp:gkehub/featureIamMember:FeatureIamMember",
+                "majorVersion": 6,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_gke_hub_feature_iam_policy": {
+                "current": "gcp:gkehub/featureIamPolicy:FeatureIamPolicy",
+                "majorVersion": 6
+            },
             "google_gke_hub_feature_membership": {
                 "current": "gcp:gkehub/featureMembership:FeatureMembership",
                 "majorVersion": 6,
@@ -19280,11 +19314,48 @@
                     }
                 }
             },
+            "google_vmwareengine_cluster": {
+                "current": "gcp:vmwareengine/cluster:Cluster",
+                "majorVersion": 6,
+                "fields": {
+                    "node_type_configs": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_vmwareengine_network": {
                 "current": "gcp:vmwareengine/network:Network",
                 "majorVersion": 6,
                 "fields": {
                     "vpc_networks": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_vmwareengine_private_cloud": {
+                "current": "gcp:vmwareengine/privateCloud:PrivateCloud",
+                "majorVersion": 6,
+                "fields": {
+                    "hcx": {
+                        "maxItemsOne": false
+                    },
+                    "management_cluster": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "node_type_configs": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "network_config": {
+                        "maxItemsOne": true
+                    },
+                    "nsx": {
+                        "maxItemsOne": false
+                    },
+                    "vcenter": {
                         "maxItemsOne": false
                     }
                 }
@@ -19865,6 +19936,9 @@
             "google_gke_backup_backup_plan_iam_policy": {
                 "current": "gcp:gkebackup/getBackupPlanIamPolicy:getBackupPlanIamPolicy"
             },
+            "google_gke_hub_feature_iam_policy": {
+                "current": "gcp:gkehub/getFeatureIamPolicy:getFeatureIamPolicy"
+            },
             "google_gke_hub_membership_iam_policy": {
                 "current": "gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy"
             },
@@ -20165,8 +20239,14 @@
             "google_vertex_ai_index": {
                 "current": "gcp:vertex/getAiIndex:getAiIndex"
             },
+            "google_vmwareengine_cluster": {
+                "current": "gcp:vmwareengine/getCluster:getCluster"
+            },
             "google_vmwareengine_network": {
                 "current": "gcp:vmwareengine/getNetwork:getNetwork"
+            },
+            "google_vmwareengine_private_cloud": {
+                "current": "gcp:vmwareengine/getPrivateCloud:getPrivateCloud"
             },
             "google_vpc_access_connector": {
                 "current": "gcp:vpcaccess/getConnector:getConnector"
@@ -20646,6 +20726,9 @@
             "gcp:gkebackup/backupPlanIamMember:BackupPlanIamMember": 0,
             "gcp:gkebackup/backupPlanIamPolicy:BackupPlanIamPolicy": 0,
             "gcp:gkehub/feature:Feature": 0,
+            "gcp:gkehub/featureIamBinding:FeatureIamBinding": 0,
+            "gcp:gkehub/featureIamMember:FeatureIamMember": 0,
+            "gcp:gkehub/featureIamPolicy:FeatureIamPolicy": 0,
             "gcp:gkehub/featureMembership:FeatureMembership": 0,
             "gcp:gkehub/membership:Membership": 0,
             "gcp:gkehub/membershipIamBinding:MembershipIamBinding": 0,
@@ -20928,7 +21011,9 @@
             "gcp:vertex/aiIndexEndpoint:AiIndexEndpoint": 0,
             "gcp:vertex/aiMetadataStore:AiMetadataStore": 0,
             "gcp:vertex/aiTensorboard:AiTensorboard": 0,
+            "gcp:vmwareengine/cluster:Cluster": 0,
             "gcp:vmwareengine/network:Network": 0,
+            "gcp:vmwareengine/privateCloud:PrivateCloud": 0,
             "gcp:vpcaccess/connector:Connector": 0,
             "gcp:workflows/workflow:Workflow": 0,
             "gcp:workstations/workstation:Workstation": 0,
@@ -21079,6 +21164,7 @@
             "gcp:folder/getOrganizationPolicy:getOrganizationPolicy": 0,
             "gcp:gameservices/getGameServerDeploymentRollout:getGameServerDeploymentRollout": 0,
             "gcp:gkebackup/getBackupPlanIamPolicy:getBackupPlanIamPolicy": 0,
+            "gcp:gkehub/getFeatureIamPolicy:getFeatureIamPolicy": 0,
             "gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy": 0,
             "gcp:healthcare/getConsentStoreIamPolicy:getConsentStoreIamPolicy": 0,
             "gcp:healthcare/getDatasetIamPolicy:getDatasetIamPolicy": 0,
@@ -21181,7 +21267,9 @@
             "gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy": 0,
             "gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy": 0,
             "gcp:vertex/getAiIndex:getAiIndex": 0,
+            "gcp:vmwareengine/getCluster:getCluster": 0,
             "gcp:vmwareengine/getNetwork:getNetwork": 0,
+            "gcp:vmwareengine/getPrivateCloud:getPrivateCloud": 0,
             "gcp:vpcaccess/getConnector:getConnector": 0,
             "gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy": 0,
             "gcp:workstations/getWorkstationIamPolicy:getWorkstationIamPolicy": 0
@@ -21654,6 +21742,9 @@
             "gcp:gkebackup/backupPlanIamMember:BackupPlanIamMember": "google_gke_backup_backup_plan_iam_member",
             "gcp:gkebackup/backupPlanIamPolicy:BackupPlanIamPolicy": "google_gke_backup_backup_plan_iam_policy",
             "gcp:gkehub/feature:Feature": "google_gke_hub_feature",
+            "gcp:gkehub/featureIamBinding:FeatureIamBinding": "google_gke_hub_feature_iam_binding",
+            "gcp:gkehub/featureIamMember:FeatureIamMember": "google_gke_hub_feature_iam_member",
+            "gcp:gkehub/featureIamPolicy:FeatureIamPolicy": "google_gke_hub_feature_iam_policy",
             "gcp:gkehub/featureMembership:FeatureMembership": "google_gke_hub_feature_membership",
             "gcp:gkehub/membership:Membership": "google_gke_hub_membership",
             "gcp:gkehub/membershipIamBinding:MembershipIamBinding": "google_gke_hub_membership_iam_binding",
@@ -21936,7 +22027,9 @@
             "gcp:vertex/aiIndexEndpoint:AiIndexEndpoint": "google_vertex_ai_index_endpoint",
             "gcp:vertex/aiMetadataStore:AiMetadataStore": "google_vertex_ai_metadata_store",
             "gcp:vertex/aiTensorboard:AiTensorboard": "google_vertex_ai_tensorboard",
+            "gcp:vmwareengine/cluster:Cluster": "google_vmwareengine_cluster",
             "gcp:vmwareengine/network:Network": "google_vmwareengine_network",
+            "gcp:vmwareengine/privateCloud:PrivateCloud": "google_vmwareengine_private_cloud",
             "gcp:vpcaccess/connector:Connector": "google_vpc_access_connector",
             "gcp:workflows/workflow:Workflow": "google_workflows_workflow",
             "gcp:workstations/workstation:Workstation": "google_workstations_workstation",
@@ -22087,6 +22180,7 @@
             "gcp:folder/getOrganizationPolicy:getOrganizationPolicy": "google_folder_organization_policy",
             "gcp:gameservices/getGameServerDeploymentRollout:getGameServerDeploymentRollout": "google_game_services_game_server_deployment_rollout",
             "gcp:gkebackup/getBackupPlanIamPolicy:getBackupPlanIamPolicy": "google_gke_backup_backup_plan_iam_policy",
+            "gcp:gkehub/getFeatureIamPolicy:getFeatureIamPolicy": "google_gke_hub_feature_iam_policy",
             "gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy": "google_gke_hub_membership_iam_policy",
             "gcp:healthcare/getConsentStoreIamPolicy:getConsentStoreIamPolicy": "google_healthcare_consent_store_iam_policy",
             "gcp:healthcare/getDatasetIamPolicy:getDatasetIamPolicy": "google_healthcare_dataset_iam_policy",
@@ -22189,7 +22283,9 @@
             "gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy": "google_vertex_ai_featurestore_entitytype_iam_policy",
             "gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy": "google_vertex_ai_featurestore_iam_policy",
             "gcp:vertex/getAiIndex:getAiIndex": "google_vertex_ai_index",
+            "gcp:vmwareengine/getCluster:getCluster": "google_vmwareengine_cluster",
             "gcp:vmwareengine/getNetwork:getNetwork": "google_vmwareengine_network",
+            "gcp:vmwareengine/getPrivateCloud:getPrivateCloud": "google_vmwareengine_private_cloud",
             "gcp:vpcaccess/getConnector:getConnector": "google_vpc_access_connector",
             "gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy": "google_workstations_workstation_config_iam_policy",
             "gcp:workstations/getWorkstationIamPolicy:getWorkstationIamPolicy": "google_workstations_workstation_iam_policy"
@@ -22835,6 +22931,7 @@
             },
             "gcp:apigee/organization:Organization": {
                 "analyticsRegion": "analytics_region",
+                "apigeeProjectId": "apigee_project_id",
                 "authorizedNetwork": "authorized_network",
                 "billingType": "billing_type",
                 "caCertificate": "ca_certificate",
@@ -25728,6 +25825,7 @@
                 "nodeCount": "node_count",
                 "privateEnvironmentConfig": "private_environment_config",
                 "recoveryConfig": "recovery_config",
+                "resilienceMode": "resilience_mode",
                 "softwareConfig": "software_config",
                 "webServerConfig": "web_server_config",
                 "webServerNetworkAccessControl": "web_server_network_access_control",
@@ -25834,6 +25932,7 @@
                 "nodeCount": "node_count",
                 "privateEnvironmentConfigs": "private_environment_config",
                 "recoveryConfigs": "recovery_config",
+                "resilienceMode": "resilience_mode",
                 "softwareConfigs": "software_config",
                 "webServerConfigs": "web_server_config",
                 "webServerNetworkAccessControls": "web_server_network_access_control",
@@ -26191,6 +26290,9 @@
                 "initializeParams": "initialize_params",
                 "kmsKeySelfLink": "kms_key_self_link"
             },
+            "gcp:compute/InstanceBootDiskInitializeParams:InstanceBootDiskInitializeParams": {
+                "resourceManagerTags": "resource_manager_tags"
+            },
             "gcp:compute/InstanceConfidentialInstanceConfig:InstanceConfidentialInstanceConfig": {
                 "enableConfidentialCompute": "enable_confidential_compute"
             },
@@ -26212,6 +26314,9 @@
                 "diskEncryptionKeySha256": "disk_encryption_key_sha256",
                 "initializeParams": "initialize_params",
                 "kmsKeySelfLink": "kms_key_self_link"
+            },
+            "gcp:compute/InstanceFromMachineImageBootDiskInitializeParams:InstanceFromMachineImageBootDiskInitializeParams": {
+                "resourceManagerTags": "resource_manager_tags"
             },
             "gcp:compute/InstanceFromMachineImageConfidentialInstanceConfig:InstanceFromMachineImageConfidentialInstanceConfig": {
                 "enableConfidentialCompute": "enable_confidential_compute"
@@ -26244,6 +26349,9 @@
             },
             "gcp:compute/InstanceFromMachineImageNetworkPerformanceConfig:InstanceFromMachineImageNetworkPerformanceConfig": {
                 "totalEgressBandwidthTier": "total_egress_bandwidth_tier"
+            },
+            "gcp:compute/InstanceFromMachineImageParams:InstanceFromMachineImageParams": {
+                "resourceManagerTags": "resource_manager_tags"
             },
             "gcp:compute/InstanceFromMachineImageReservationAffinity:InstanceFromMachineImageReservationAffinity": {
                 "specificReservation": "specific_reservation"
@@ -26282,6 +26390,9 @@
                 "initializeParams": "initialize_params",
                 "kmsKeySelfLink": "kms_key_self_link"
             },
+            "gcp:compute/InstanceFromTemplateBootDiskInitializeParams:InstanceFromTemplateBootDiskInitializeParams": {
+                "resourceManagerTags": "resource_manager_tags"
+            },
             "gcp:compute/InstanceFromTemplateConfidentialInstanceConfig:InstanceFromTemplateConfidentialInstanceConfig": {
                 "enableConfidentialCompute": "enable_confidential_compute"
             },
@@ -26313,6 +26424,9 @@
             },
             "gcp:compute/InstanceFromTemplateNetworkPerformanceConfig:InstanceFromTemplateNetworkPerformanceConfig": {
                 "totalEgressBandwidthTier": "total_egress_bandwidth_tier"
+            },
+            "gcp:compute/InstanceFromTemplateParams:InstanceFromTemplateParams": {
+                "resourceManagerTags": "resource_manager_tags"
             },
             "gcp:compute/InstanceFromTemplateReservationAffinity:InstanceFromTemplateReservationAffinity": {
                 "specificReservation": "specific_reservation"
@@ -26409,6 +26523,9 @@
             },
             "gcp:compute/InstanceNetworkPerformanceConfig:InstanceNetworkPerformanceConfig": {
                 "totalEgressBandwidthTier": "total_egress_bandwidth_tier"
+            },
+            "gcp:compute/InstanceParams:InstanceParams": {
+                "resourceManagerTags": "resource_manager_tags"
             },
             "gcp:compute/InstanceReservationAffinity:InstanceReservationAffinity": {
                 "specificReservation": "specific_reservation"
@@ -28263,6 +28380,9 @@
                 "initializeParams": "initialize_params",
                 "kmsKeySelfLink": "kms_key_self_link"
             },
+            "gcp:compute/getInstanceBootDiskInitializeParam:getInstanceBootDiskInitializeParam": {
+                "resourceManagerTags": "resource_manager_tags"
+            },
             "gcp:compute/getInstanceConfidentialInstanceConfig:getInstanceConfidentialInstanceConfig": {
                 "enableConfidentialCompute": "enable_confidential_compute"
             },
@@ -28371,6 +28491,9 @@
             },
             "gcp:compute/getInstanceNetworkPerformanceConfig:getInstanceNetworkPerformanceConfig": {
                 "totalEgressBandwidthTier": "total_egress_bandwidth_tier"
+            },
+            "gcp:compute/getInstanceParam:getInstanceParam": {
+                "resourceManagerTags": "resource_manager_tags"
             },
             "gcp:compute/getInstanceReservationAffinity:getInstanceReservationAffinity": {
                 "specificReservations": "specific_reservation"
@@ -34093,6 +34216,12 @@
                 "states": "state",
                 "updateTime": "update_time"
             },
+            "gcp:gkehub/featureIamPolicy:FeatureIamPolicy": {
+                "policyData": "policy_data"
+            },
+            "gcp:gkehub/getFeatureIamPolicy:getFeatureIamPolicy": {
+                "policyData": "policy_data"
+            },
             "gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy": {
                 "membershipId": "membership_id",
                 "policyData": "policy_data"
@@ -34581,7 +34710,8 @@
             },
             "gcp:iam/WorkloadIdentityPoolProviderOidc:WorkloadIdentityPoolProviderOidc": {
                 "allowedAudiences": "allowed_audiences",
-                "issuerUri": "issuer_uri"
+                "issuerUri": "issuer_uri",
+                "jwksJson": "jwks_json"
             },
             "gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy": {
                 "displayName": "display_name"
@@ -34617,7 +34747,8 @@
             },
             "gcp:iam/getWorkloadIdentityPoolProviderOidc:getWorkloadIdentityPoolProviderOidc": {
                 "allowedAudiences": "allowed_audiences",
-                "issuerUri": "issuer_uri"
+                "issuerUri": "issuer_uri",
+                "jwksJson": "jwks_json"
             },
             "gcp:iam/workforcePool:WorkforcePool": {
                 "displayName": "display_name",
@@ -34910,6 +35041,7 @@
                 "firestoreCustomEndpoint": "firestore_custom_endpoint",
                 "gameServicesCustomEndpoint": "game_services_custom_endpoint",
                 "gkeBackupCustomEndpoint": "gke_backup_custom_endpoint",
+                "gkeHub2CustomEndpoint": "gke_hub2_custom_endpoint",
                 "gkeHubCustomEndpoint": "gke_hub_custom_endpoint",
                 "gkehubFeatureCustomEndpoint": "gkehub_feature_custom_endpoint",
                 "gkeonpremCustomEndpoint": "gkeonprem_custom_endpoint",
@@ -38321,11 +38453,89 @@
                 "leafNodeEmbeddingCount": "leaf_node_embedding_count",
                 "leafNodesToSearchPercent": "leaf_nodes_to_search_percent"
             },
+            "gcp:vmwareengine/ClusterNodeTypeConfig:ClusterNodeTypeConfig": {
+                "customCoreCount": "custom_core_count",
+                "nodeCount": "node_count",
+                "nodeTypeId": "node_type_id"
+            },
+            "gcp:vmwareengine/PrivateCloudHcx:PrivateCloudHcx": {
+                "internalIp": "internal_ip"
+            },
+            "gcp:vmwareengine/PrivateCloudManagementCluster:PrivateCloudManagementCluster": {
+                "clusterId": "cluster_id",
+                "nodeTypeConfigs": "node_type_configs"
+            },
+            "gcp:vmwareengine/PrivateCloudManagementClusterNodeTypeConfig:PrivateCloudManagementClusterNodeTypeConfig": {
+                "customCoreCount": "custom_core_count",
+                "nodeCount": "node_count",
+                "nodeTypeId": "node_type_id"
+            },
+            "gcp:vmwareengine/PrivateCloudNetworkConfig:PrivateCloudNetworkConfig": {
+                "managementCidr": "management_cidr",
+                "managementIpAddressLayoutVersion": "management_ip_address_layout_version",
+                "vmwareEngineNetwork": "vmware_engine_network",
+                "vmwareEngineNetworkCanonical": "vmware_engine_network_canonical"
+            },
+            "gcp:vmwareengine/PrivateCloudNsx:PrivateCloudNsx": {
+                "internalIp": "internal_ip"
+            },
+            "gcp:vmwareengine/PrivateCloudVcenter:PrivateCloudVcenter": {
+                "internalIp": "internal_ip"
+            },
+            "gcp:vmwareengine/cluster:Cluster": {
+                "nodeTypeConfigs": "node_type_configs"
+            },
+            "gcp:vmwareengine/getCluster:getCluster": {
+                "nodeTypeConfigs": "node_type_configs"
+            },
+            "gcp:vmwareengine/getClusterNodeTypeConfig:getClusterNodeTypeConfig": {
+                "customCoreCount": "custom_core_count",
+                "nodeCount": "node_count",
+                "nodeTypeId": "node_type_id"
+            },
             "gcp:vmwareengine/getNetwork:getNetwork": {
                 "vpcNetworks": "vpc_networks"
             },
+            "gcp:vmwareengine/getPrivateCloud:getPrivateCloud": {
+                "hcxes": "hcx",
+                "managementClusters": "management_cluster",
+                "networkConfigs": "network_config",
+                "nsxes": "nsx",
+                "vcenters": "vcenter"
+            },
+            "gcp:vmwareengine/getPrivateCloudHcx:getPrivateCloudHcx": {
+                "internalIp": "internal_ip"
+            },
+            "gcp:vmwareengine/getPrivateCloudManagementCluster:getPrivateCloudManagementCluster": {
+                "clusterId": "cluster_id",
+                "nodeTypeConfigs": "node_type_configs"
+            },
+            "gcp:vmwareengine/getPrivateCloudManagementClusterNodeTypeConfig:getPrivateCloudManagementClusterNodeTypeConfig": {
+                "customCoreCount": "custom_core_count",
+                "nodeCount": "node_count",
+                "nodeTypeId": "node_type_id"
+            },
+            "gcp:vmwareengine/getPrivateCloudNetworkConfig:getPrivateCloudNetworkConfig": {
+                "managementCidr": "management_cidr",
+                "managementIpAddressLayoutVersion": "management_ip_address_layout_version",
+                "vmwareEngineNetwork": "vmware_engine_network",
+                "vmwareEngineNetworkCanonical": "vmware_engine_network_canonical"
+            },
+            "gcp:vmwareengine/getPrivateCloudNsx:getPrivateCloudNsx": {
+                "internalIp": "internal_ip"
+            },
+            "gcp:vmwareengine/getPrivateCloudVcenter:getPrivateCloudVcenter": {
+                "internalIp": "internal_ip"
+            },
             "gcp:vmwareengine/network:Network": {
                 "vpcNetworks": "vpc_networks"
+            },
+            "gcp:vmwareengine/privateCloud:PrivateCloud": {
+                "hcxes": "hcx",
+                "managementCluster": "management_cluster",
+                "networkConfig": "network_config",
+                "nsxes": "nsx",
+                "vcenters": "vcenter"
             },
             "gcp:vpcaccess/ConnectorSubnet:ConnectorSubnet": {
                 "projectId": "project_id"
@@ -38547,6 +38757,7 @@
             "firestoreCustomEndpoint": "firestore_custom_endpoint",
             "gameServicesCustomEndpoint": "game_services_custom_endpoint",
             "gkeBackupCustomEndpoint": "gke_backup_custom_endpoint",
+            "gkeHub2CustomEndpoint": "gke_hub2_custom_endpoint",
             "gkeHubCustomEndpoint": "gke_hub_custom_endpoint",
             "gkehubFeatureCustomEndpoint": "gkehub_feature_custom_endpoint",
             "gkeonpremCustomEndpoint": "gkeonprem_custom_endpoint",

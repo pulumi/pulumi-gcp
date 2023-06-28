@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.GkeHub.Inputs
     {
         [Input("states")]
         private InputList<Inputs.FeatureStateStateGetArgs>? _states;
+
+        /// <summary>
+        /// (Output)
+        /// Output only. The "running state" of the Feature in this Hub.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.FeatureStateStateGetArgs> States
         {
             get => _states ?? (_states = new InputList<Inputs.FeatureStateStateGetArgs>());

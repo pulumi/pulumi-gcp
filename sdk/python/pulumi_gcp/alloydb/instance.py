@@ -38,7 +38,12 @@ class InstanceArgs:
         :param pulumi.Input[str] instance_type: The type of the instance. If the instance type is READ_POOL, provide the associated PRIMARY instance in the `depends_on` meta-data attribute.
                Possible values are: `PRIMARY`, `READ_POOL`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
-        :param pulumi.Input[str] availability_type: Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
+        :param pulumi.Input[str] availability_type: 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
+               Note that primary and read instances can have different availability types.
+               Only READ_POOL instance supports ZONAL type. Users can't specify the zone for READ_POOL instance.
+               Zone is automatically chosen from the list of zones in the region specified.
+               Read pool of size 1 can only have zonal availability. Read pools with node count of 2 or more
+               can have regional availability (nodes are present in 2 or more zones in a region).'
                Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] database_flags: Database flags. Set at instance level. * They are copied from primary instance on read instance creation. * Read instances can set new or override existing flags that are relevant for reads, e.g. for enabling columnar cache on a read instance. Flags set on read instance may or may not be present on primary.
         :param pulumi.Input[str] display_name: User-settable and human-readable display name for the Instance.
@@ -126,7 +131,12 @@ class InstanceArgs:
     @pulumi.getter(name="availabilityType")
     def availability_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
+        'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
+        Note that primary and read instances can have different availability types.
+        Only READ_POOL instance supports ZONAL type. Users can't specify the zone for READ_POOL instance.
+        Zone is automatically chosen from the list of zones in the region specified.
+        Read pool of size 1 can only have zonal availability. Read pools with node count of 2 or more
+        can have regional availability (nodes are present in 2 or more zones in a region).'
         Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
         """
         return pulumi.get(self, "availability_type")
@@ -234,7 +244,12 @@ class _InstanceState:
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
-        :param pulumi.Input[str] availability_type: Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
+        :param pulumi.Input[str] availability_type: 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
+               Note that primary and read instances can have different availability types.
+               Only READ_POOL instance supports ZONAL type. Users can't specify the zone for READ_POOL instance.
+               Zone is automatically chosen from the list of zones in the region specified.
+               Read pool of size 1 can only have zonal availability. Read pools with node count of 2 or more
+               can have regional availability (nodes are present in 2 or more zones in a region).'
                Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
         :param pulumi.Input[str] cluster: Identifies the alloydb cluster. Must be in the format
                'projects/{project}/locations/{location}/clusters/{cluster_id}'
@@ -313,7 +328,12 @@ class _InstanceState:
     @pulumi.getter(name="availabilityType")
     def availability_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
+        'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
+        Note that primary and read instances can have different availability types.
+        Only READ_POOL instance supports ZONAL type. Users can't specify the zone for READ_POOL instance.
+        Zone is automatically chosen from the list of zones in the region specified.
+        Read pool of size 1 can only have zonal availability. Read pools with node count of 2 or more
+        can have regional availability (nodes are present in 2 or more zones in a region).'
         Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
         """
         return pulumi.get(self, "availability_type")
@@ -598,7 +618,12 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
-        :param pulumi.Input[str] availability_type: Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
+        :param pulumi.Input[str] availability_type: 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
+               Note that primary and read instances can have different availability types.
+               Only READ_POOL instance supports ZONAL type. Users can't specify the zone for READ_POOL instance.
+               Zone is automatically chosen from the list of zones in the region specified.
+               Read pool of size 1 can only have zonal availability. Read pools with node count of 2 or more
+               can have regional availability (nodes are present in 2 or more zones in a region).'
                Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
         :param pulumi.Input[str] cluster: Identifies the alloydb cluster. Must be in the format
                'projects/{project}/locations/{location}/clusters/{cluster_id}'
@@ -774,7 +799,12 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
-        :param pulumi.Input[str] availability_type: Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
+        :param pulumi.Input[str] availability_type: 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
+               Note that primary and read instances can have different availability types.
+               Only READ_POOL instance supports ZONAL type. Users can't specify the zone for READ_POOL instance.
+               Zone is automatically chosen from the list of zones in the region specified.
+               Read pool of size 1 can only have zonal availability. Read pools with node count of 2 or more
+               can have regional availability (nodes are present in 2 or more zones in a region).'
                Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
         :param pulumi.Input[str] cluster: Identifies the alloydb cluster. Must be in the format
                'projects/{project}/locations/{location}/clusters/{cluster_id}'
@@ -836,7 +866,12 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="availabilityType")
     def availability_type(self) -> pulumi.Output[str]:
         """
-        Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
+        'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
+        Note that primary and read instances can have different availability types.
+        Only READ_POOL instance supports ZONAL type. Users can't specify the zone for READ_POOL instance.
+        Zone is automatically chosen from the list of zones in the region specified.
+        Read pool of size 1 can only have zonal availability. Read pools with node count of 2 or more
+        can have regional availability (nodes are present in 2 or more zones in a region).'
         Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
         """
         return pulumi.get(self, "availability_type")

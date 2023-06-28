@@ -39,6 +39,18 @@ namespace Pulumi.Gcp.Compute.Inputs
             set => _labels = value;
         }
 
+        [Input("resourceManagerTags")]
+        private InputMap<object>? _resourceManagerTags;
+
+        /// <summary>
+        /// A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
+        /// </summary>
+        public InputMap<object> ResourceManagerTags
+        {
+            get => _resourceManagerTags ?? (_resourceManagerTags = new InputMap<object>());
+            set => _resourceManagerTags = value;
+        }
+
         /// <summary>
         /// The size of the image in gigabytes. If not specified, it
         /// will inherit the size of its base image.

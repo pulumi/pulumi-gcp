@@ -25,11 +25,14 @@ class FeatureArgs:
         The set of arguments for constructing a Feature resource.
         :param pulumi.Input[str] location: The location for the resource
                
+               
                - - -
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
         :param pulumi.Input[str] name: The full, unique name of this Feature resource
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input['FeatureSpecArgs'] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+               Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
         if labels is not None:
@@ -46,6 +49,7 @@ class FeatureArgs:
     def location(self) -> pulumi.Input[str]:
         """
         The location for the resource
+
 
         - - -
         """
@@ -83,7 +87,8 @@ class FeatureArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -96,6 +101,7 @@ class FeatureArgs:
     def spec(self) -> Optional[pulumi.Input['FeatureSpecArgs']]:
         """
         Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+        Structure is documented below.
         """
         return pulumi.get(self, "spec")
 
@@ -124,13 +130,20 @@ class _FeatureState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
         :param pulumi.Input[str] location: The location for the resource
                
+               
                - - -
         :param pulumi.Input[str] name: The full, unique name of this Feature resource
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['FeatureResourceStateArgs']]] resource_states: State of the Feature resource itself.
+               Structure is documented below.
         :param pulumi.Input['FeatureSpecArgs'] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
-        :param pulumi.Input[Sequence[pulumi.Input['FeatureStateArgs']]] states: Output only. The Hub-wide Feature state
-        :param pulumi.Input[str] update_time: Output only. When the Feature resource was last updated.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureStateArgs']]] states: (Output)
+               Output only. The "running state" of the Feature in this Hub.
+               Structure is documented below.
+        :param pulumi.Input[str] update_time: (Output)
+               The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -195,6 +208,7 @@ class _FeatureState:
         """
         The location for the resource
 
+
         - - -
         """
         return pulumi.get(self, "location")
@@ -219,7 +233,8 @@ class _FeatureState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -232,6 +247,7 @@ class _FeatureState:
     def resource_states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureResourceStateArgs']]]]:
         """
         State of the Feature resource itself.
+        Structure is documented below.
         """
         return pulumi.get(self, "resource_states")
 
@@ -244,6 +260,7 @@ class _FeatureState:
     def spec(self) -> Optional[pulumi.Input['FeatureSpecArgs']]:
         """
         Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+        Structure is documented below.
         """
         return pulumi.get(self, "spec")
 
@@ -255,7 +272,9 @@ class _FeatureState:
     @pulumi.getter
     def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateArgs']]]]:
         """
-        Output only. The Hub-wide Feature state
+        (Output)
+        Output only. The "running state" of the Feature in this Hub.
+        Structure is documented below.
         """
         return pulumi.get(self, "states")
 
@@ -267,7 +286,8 @@ class _FeatureState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. When the Feature resource was last updated.
+        (Output)
+        The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         """
         return pulumi.get(self, "update_time")
 
@@ -288,8 +308,16 @@ class Feature(pulumi.CustomResource):
                  spec: Optional[pulumi.Input[pulumi.InputType['FeatureSpecArgs']]] = None,
                  __props__=None):
         """
+        Feature represents the settings and status of any Hub Feature.
+
+        To get more information about Feature, see:
+
+        * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.features)
+        * How-to Guides
+            * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+
         ## Example Usage
-        ### Multi Cluster Ingress
+        ### Gkehub Feature Multi Cluster Ingress
 
         ```python
         import pulumi
@@ -297,8 +325,7 @@ class Feature(pulumi.CustomResource):
 
         cluster = gcp.container.Cluster("cluster",
             location="us-central1-a",
-            initial_node_count=1,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
             endpoint=gcp.gkehub.MembershipEndpointArgs(
@@ -306,18 +333,36 @@ class Feature(pulumi.CustomResource):
                     resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 ),
             ),
-            description="Membership",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            description="Membership")
         feature = gcp.gkehub.Feature("feature",
             location="global",
             spec=gcp.gkehub.FeatureSpecArgs(
                 multiclusteringress=gcp.gkehub.FeatureSpecMulticlusteringressArgs(
                     config_membership=membership.id,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
-        ### Multi Cluster Service Discovery
+        ### Gkehub Feature Multi Cluster Service Discovery
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        feature = gcp.gkehub.Feature("feature",
+            labels={
+                "foo": "bar",
+            },
+            location="global")
+        ```
+        ### Gkehub Feature Anthos Service Mesh
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        feature = gcp.gkehub.Feature("feature", location="global")
+        ```
+        ### Enable Fleet Observability For Default Logs With Copy
 
         ```python
         import pulumi
@@ -325,19 +370,57 @@ class Feature(pulumi.CustomResource):
 
         feature = gcp.gkehub.Feature("feature",
             location="global",
-            labels={
-                "foo": "bar",
-            },
+            spec=gcp.gkehub.FeatureSpecArgs(
+                fleetobservability=gcp.gkehub.FeatureSpecFleetobservabilityArgs(
+                    logging_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigArgs(
+                        default_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs(
+                            mode="COPY",
+                        ),
+                    ),
+                ),
+            ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
-        ### Enable Anthos Service Mesh
+        ### Enable Fleet Observability For Scope Logs With Move
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        feature = gcp.gkehub.Feature("feature", location="global",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        feature = gcp.gkehub.Feature("feature",
+            location="global",
+            spec=gcp.gkehub.FeatureSpecArgs(
+                fleetobservability=gcp.gkehub.FeatureSpecFleetobservabilityArgs(
+                    logging_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigArgs(
+                        fleet_scope_logs_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs(
+                            mode="MOVE",
+                        ),
+                    ),
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Enable Fleet Observability For Both Default And Scope Logs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        feature = gcp.gkehub.Feature("feature",
+            location="global",
+            spec=gcp.gkehub.FeatureSpecArgs(
+                fleetobservability=gcp.gkehub.FeatureSpecFleetobservabilityArgs(
+                    logging_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigArgs(
+                        default_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs(
+                            mode="COPY",
+                        ),
+                        fleet_scope_logs_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs(
+                            mode="MOVE",
+                        ),
+                    ),
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -361,10 +444,13 @@ class Feature(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
         :param pulumi.Input[str] location: The location for the resource
                
+               
                - - -
         :param pulumi.Input[str] name: The full, unique name of this Feature resource
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['FeatureSpecArgs']] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+               Structure is documented below.
         """
         ...
     @overload
@@ -373,8 +459,16 @@ class Feature(pulumi.CustomResource):
                  args: FeatureArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Feature represents the settings and status of any Hub Feature.
+
+        To get more information about Feature, see:
+
+        * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.features)
+        * How-to Guides
+            * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+
         ## Example Usage
-        ### Multi Cluster Ingress
+        ### Gkehub Feature Multi Cluster Ingress
 
         ```python
         import pulumi
@@ -382,8 +476,7 @@ class Feature(pulumi.CustomResource):
 
         cluster = gcp.container.Cluster("cluster",
             location="us-central1-a",
-            initial_node_count=1,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
             endpoint=gcp.gkehub.MembershipEndpointArgs(
@@ -391,18 +484,36 @@ class Feature(pulumi.CustomResource):
                     resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 ),
             ),
-            description="Membership",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            description="Membership")
         feature = gcp.gkehub.Feature("feature",
             location="global",
             spec=gcp.gkehub.FeatureSpecArgs(
                 multiclusteringress=gcp.gkehub.FeatureSpecMulticlusteringressArgs(
                     config_membership=membership.id,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
-        ### Multi Cluster Service Discovery
+        ### Gkehub Feature Multi Cluster Service Discovery
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        feature = gcp.gkehub.Feature("feature",
+            labels={
+                "foo": "bar",
+            },
+            location="global")
+        ```
+        ### Gkehub Feature Anthos Service Mesh
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        feature = gcp.gkehub.Feature("feature", location="global")
+        ```
+        ### Enable Fleet Observability For Default Logs With Copy
 
         ```python
         import pulumi
@@ -410,19 +521,57 @@ class Feature(pulumi.CustomResource):
 
         feature = gcp.gkehub.Feature("feature",
             location="global",
-            labels={
-                "foo": "bar",
-            },
+            spec=gcp.gkehub.FeatureSpecArgs(
+                fleetobservability=gcp.gkehub.FeatureSpecFleetobservabilityArgs(
+                    logging_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigArgs(
+                        default_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs(
+                            mode="COPY",
+                        ),
+                    ),
+                ),
+            ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
-        ### Enable Anthos Service Mesh
+        ### Enable Fleet Observability For Scope Logs With Move
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        feature = gcp.gkehub.Feature("feature", location="global",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        feature = gcp.gkehub.Feature("feature",
+            location="global",
+            spec=gcp.gkehub.FeatureSpecArgs(
+                fleetobservability=gcp.gkehub.FeatureSpecFleetobservabilityArgs(
+                    logging_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigArgs(
+                        fleet_scope_logs_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs(
+                            mode="MOVE",
+                        ),
+                    ),
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Enable Fleet Observability For Both Default And Scope Logs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        feature = gcp.gkehub.Feature("feature",
+            location="global",
+            spec=gcp.gkehub.FeatureSpecArgs(
+                fleetobservability=gcp.gkehub.FeatureSpecFleetobservabilityArgs(
+                    logging_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigArgs(
+                        default_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs(
+                            mode="COPY",
+                        ),
+                        fleet_scope_logs_config=gcp.gkehub.FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs(
+                            mode="MOVE",
+                        ),
+                    ),
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -514,13 +663,20 @@ class Feature(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: GCP labels for this Feature.
         :param pulumi.Input[str] location: The location for the resource
                
+               
                - - -
         :param pulumi.Input[str] name: The full, unique name of this Feature resource
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureResourceStateArgs']]]] resource_states: State of the Feature resource itself.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['FeatureSpecArgs']] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureStateArgs']]]] states: Output only. The Hub-wide Feature state
-        :param pulumi.Input[str] update_time: Output only. When the Feature resource was last updated.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FeatureStateArgs']]]] states: (Output)
+               Output only. The "running state" of the Feature in this Hub.
+               Structure is documented below.
+        :param pulumi.Input[str] update_time: (Output)
+               The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -568,6 +724,7 @@ class Feature(pulumi.CustomResource):
         """
         The location for the resource
 
+
         - - -
         """
         return pulumi.get(self, "location")
@@ -584,7 +741,8 @@ class Feature(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -593,6 +751,7 @@ class Feature(pulumi.CustomResource):
     def resource_states(self) -> pulumi.Output[Sequence['outputs.FeatureResourceState']]:
         """
         State of the Feature resource itself.
+        Structure is documented below.
         """
         return pulumi.get(self, "resource_states")
 
@@ -601,6 +760,7 @@ class Feature(pulumi.CustomResource):
     def spec(self) -> pulumi.Output[Optional['outputs.FeatureSpec']]:
         """
         Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+        Structure is documented below.
         """
         return pulumi.get(self, "spec")
 
@@ -608,7 +768,9 @@ class Feature(pulumi.CustomResource):
     @pulumi.getter
     def states(self) -> pulumi.Output[Sequence['outputs.FeatureState']]:
         """
-        Output only. The Hub-wide Feature state
+        (Output)
+        Output only. The "running state" of the Feature in this Hub.
+        Structure is documented below.
         """
         return pulumi.get(self, "states")
 
@@ -616,7 +778,8 @@ class Feature(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        Output only. When the Feature resource was last updated.
+        (Output)
+        The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         """
         return pulumi.get(self, "update_time")
 

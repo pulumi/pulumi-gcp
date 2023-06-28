@@ -12,6 +12,10 @@ namespace Pulumi.Gcp.GkeHub.Inputs
 
     public sealed class FeatureSpecFleetobservabilityGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+        /// Structure is documented below.
+        /// </summary>
         [Input("loggingConfig")]
         public Input<Inputs.FeatureSpecFleetobservabilityLoggingConfigGetArgs>? LoggingConfig { get; set; }
 

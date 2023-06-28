@@ -466,6 +466,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> gkeBackupCustomEndpoint() {
         return Codegen.optional(this.gkeBackupCustomEndpoint);
     }
+    @Export(name="gkeHub2CustomEndpoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> gkeHub2CustomEndpoint;
+
+    public Output<Optional<String>> gkeHub2CustomEndpoint() {
+        return Codegen.optional(this.gkeHub2CustomEndpoint);
+    }
     @Export(name="gkeHubCustomEndpoint", type=String.class, parameters={})
     private Output</* @Nullable */ String> gkeHubCustomEndpoint;
 

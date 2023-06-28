@@ -19,8 +19,16 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Feature represents the settings and status of any Hub Feature.
+ * 
+ * To get more information about Feature, see:
+ * 
+ * * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.features)
+ * * How-to Guides
+ *     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+ * 
  * ## Example Usage
- * ### Multi Cluster Ingress
+ * ### Gkehub Feature Multi Cluster Ingress
  * ```java
  * package generated_program;
  * 
@@ -37,7 +45,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.gkehub.FeatureArgs;
  * import com.pulumi.gcp.gkehub.inputs.FeatureSpecArgs;
  * import com.pulumi.gcp.gkehub.inputs.FeatureSpecMulticlusteringressArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -54,9 +61,7 @@ import javax.annotation.Nullable;
  *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
  *             .location(&#34;us-central1-a&#34;)
  *             .initialNodeCount(1)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
  *             .membershipId(&#34;my-membership&#34;)
@@ -66,15 +71,115 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .description(&#34;Membership&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
  *             .location(&#34;global&#34;)
  *             .spec(FeatureSpecArgs.builder()
  *                 .multiclusteringress(FeatureSpecMulticlusteringressArgs.builder()
  *                     .configMembership(membership.id())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Gkehub Feature Multi Cluster Service Discovery
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.gkehub.Feature;
+ * import com.pulumi.gcp.gkehub.FeatureArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .location(&#34;global&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Gkehub Feature Anthos Service Mesh
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.gkehub.Feature;
+ * import com.pulumi.gcp.gkehub.FeatureArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .location(&#34;global&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Enable Fleet Observability For Default Logs With Copy
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.gkehub.Feature;
+ * import com.pulumi.gcp.gkehub.FeatureArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureSpecArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureSpecFleetobservabilityArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureSpecFleetobservabilityLoggingConfigArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .location(&#34;global&#34;)
+ *             .spec(FeatureSpecArgs.builder()
+ *                 .fleetobservability(FeatureSpecFleetobservabilityArgs.builder()
+ *                     .loggingConfig(FeatureSpecFleetobservabilityLoggingConfigArgs.builder()
+ *                         .defaultConfig(FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs.builder()
+ *                             .mode(&#34;COPY&#34;)
+ *                             .build())
+ *                         .build())
  *                     .build())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
@@ -84,7 +189,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Multi Cluster Service Discovery
+ * ### Enable Fleet Observability For Scope Logs With Move
  * ```java
  * package generated_program;
  * 
@@ -93,6 +198,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.gkehub.Feature;
  * import com.pulumi.gcp.gkehub.FeatureArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureSpecArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureSpecFleetobservabilityArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureSpecFleetobservabilityLoggingConfigArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -109,7 +218,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
  *             .location(&#34;global&#34;)
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .spec(FeatureSpecArgs.builder()
+ *                 .fleetobservability(FeatureSpecFleetobservabilityArgs.builder()
+ *                     .loggingConfig(FeatureSpecFleetobservabilityLoggingConfigArgs.builder()
+ *                         .fleetScopeLogsConfig(FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs.builder()
+ *                             .mode(&#34;MOVE&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());
@@ -117,7 +234,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Enable Anthos Service Mesh
+ * ### Enable Fleet Observability For Both Default And Scope Logs
  * ```java
  * package generated_program;
  * 
@@ -126,6 +243,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.gkehub.Feature;
  * import com.pulumi.gcp.gkehub.FeatureArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureSpecArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureSpecFleetobservabilityArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureSpecFleetobservabilityLoggingConfigArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -142,6 +264,18 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
  *             .location(&#34;global&#34;)
+ *             .spec(FeatureSpecArgs.builder()
+ *                 .fleetobservability(FeatureSpecFleetobservabilityArgs.builder()
+ *                     .loggingConfig(FeatureSpecFleetobservabilityLoggingConfigArgs.builder()
+ *                         .defaultConfig(FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs.builder()
+ *                             .mode(&#34;COPY&#34;)
+ *                             .build())
+ *                         .fleetScopeLogsConfig(FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs.builder()
+ *                             .mode(&#34;MOVE&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());
@@ -244,14 +378,16 @@ public class Feature extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Output<String> project() {
@@ -259,6 +395,7 @@ public class Feature extends com.pulumi.resources.CustomResource {
     }
     /**
      * State of the Feature resource itself.
+     * Structure is documented below.
      * 
      */
     @Export(name="resourceStates", type=List.class, parameters={FeatureResourceState.class})
@@ -266,6 +403,7 @@ public class Feature extends com.pulumi.resources.CustomResource {
 
     /**
      * @return State of the Feature resource itself.
+     * Structure is documented below.
      * 
      */
     public Output<List<FeatureResourceState>> resourceStates() {
@@ -273,6 +411,7 @@ public class Feature extends com.pulumi.resources.CustomResource {
     }
     /**
      * Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+     * Structure is documented below.
      * 
      */
     @Export(name="spec", type=FeatureSpec.class, parameters={})
@@ -280,34 +419,41 @@ public class Feature extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<FeatureSpec>> spec() {
         return Codegen.optional(this.spec);
     }
     /**
-     * Output only. The Hub-wide Feature state
+     * (Output)
+     * Output only. The &#34;running state&#34; of the Feature in this Hub.
+     * Structure is documented below.
      * 
      */
     @Export(name="states", type=List.class, parameters={FeatureState.class})
     private Output<List<FeatureState>> states;
 
     /**
-     * @return Output only. The Hub-wide Feature state
+     * @return (Output)
+     * Output only. The &#34;running state&#34; of the Feature in this Hub.
+     * Structure is documented below.
      * 
      */
     public Output<List<FeatureState>> states() {
         return this.states;
     }
     /**
-     * Output only. When the Feature resource was last updated.
+     * (Output)
+     * The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;
      * 
      */
     @Export(name="updateTime", type=String.class, parameters={})
     private Output<String> updateTime;
 
     /**
-     * @return Output only. When the Feature resource was last updated.
+     * @return (Output)
+     * The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;
      * 
      */
     public Output<String> updateTime() {

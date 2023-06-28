@@ -169,6 +169,12 @@ namespace Pulumi.Gcp.Apigee
         public Output<string?> AnalyticsRegion { get; private set; } = null!;
 
         /// <summary>
+        /// Output only. Project ID of the Apigee Tenant Project.
+        /// </summary>
+        [Output("apigeeProjectId")]
+        public Output<string> ApigeeProjectId { get; private set; } = null!;
+
+        /// <summary>
         /// Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
         /// See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
         /// Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
@@ -393,6 +399,12 @@ namespace Pulumi.Gcp.Apigee
         /// </summary>
         [Input("analyticsRegion")]
         public Input<string>? AnalyticsRegion { get; set; }
+
+        /// <summary>
+        /// Output only. Project ID of the Apigee Tenant Project.
+        /// </summary>
+        [Input("apigeeProjectId")]
+        public Input<string>? ApigeeProjectId { get; set; }
 
         /// <summary>
         /// Compute Engine network used for Service Networking to be peered with Apigee runtime instances.

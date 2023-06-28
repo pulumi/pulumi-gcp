@@ -16,6 +16,7 @@ import javax.annotation.Nullable;
 public final class InstanceFromTemplateBootDiskInitializeParams {
     private @Nullable String image;
     private @Nullable Map<String,Object> labels;
+    private @Nullable Map<String,Object> resourceManagerTags;
     private @Nullable Integer size;
     private @Nullable String type;
 
@@ -25,6 +26,9 @@ public final class InstanceFromTemplateBootDiskInitializeParams {
     }
     public Map<String,Object> labels() {
         return this.labels == null ? Map.of() : this.labels;
+    }
+    public Map<String,Object> resourceManagerTags() {
+        return this.resourceManagerTags == null ? Map.of() : this.resourceManagerTags;
     }
     public Optional<Integer> size() {
         return Optional.ofNullable(this.size);
@@ -44,6 +48,7 @@ public final class InstanceFromTemplateBootDiskInitializeParams {
     public static final class Builder {
         private @Nullable String image;
         private @Nullable Map<String,Object> labels;
+        private @Nullable Map<String,Object> resourceManagerTags;
         private @Nullable Integer size;
         private @Nullable String type;
         public Builder() {}
@@ -51,6 +56,7 @@ public final class InstanceFromTemplateBootDiskInitializeParams {
     	      Objects.requireNonNull(defaults);
     	      this.image = defaults.image;
     	      this.labels = defaults.labels;
+    	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.size = defaults.size;
     	      this.type = defaults.type;
         }
@@ -63,6 +69,11 @@ public final class InstanceFromTemplateBootDiskInitializeParams {
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
             this.labels = labels;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder resourceManagerTags(@Nullable Map<String,Object> resourceManagerTags) {
+            this.resourceManagerTags = resourceManagerTags;
             return this;
         }
         @CustomType.Setter
@@ -79,6 +90,7 @@ public final class InstanceFromTemplateBootDiskInitializeParams {
             final var o = new InstanceFromTemplateBootDiskInitializeParams();
             o.image = image;
             o.labels = labels;
+            o.resourceManagerTags = resourceManagerTags;
             o.size = size;
             o.type = type;
             return o;
