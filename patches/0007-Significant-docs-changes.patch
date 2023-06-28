@@ -1,4 +1,4 @@
-From 5c854c219320c5ef715c420dc2b62d2693c99702 Mon Sep 17 00:00:00 2001
+From 1e24837b22e385f9a4f82b42d8009f1c837d7c03 Mon Sep 17 00:00:00 2001
 From: Daniel Bradley <daniel@pulumi.com>
 Date: Tue, 7 Mar 2023 12:56:24 +0000
 Subject: [PATCH 7/9] Significant docs changes
@@ -271,7 +271,7 @@ index 023796a57..087d81619 100644
    org_id                   = google_apigee_organization.apigee_org.id
    disk_encryption_key_name = google_kms_crypto_key.apigee_key.id
 diff --git a/website/docs/r/apigee_organization.html.markdown b/website/docs/r/apigee_organization.html.markdown
-index e98b60311..12b92a221 100644
+index 681bec156..47a67724f 100644
 --- a/website/docs/r/apigee_organization.html.markdown
 +++ b/website/docs/r/apigee_organization.html.markdown
 @@ -115,7 +115,7 @@ resource "google_kms_crypto_key_iam_binding" "apigee_sa_keyuser" {
@@ -408,7 +408,7 @@ index 46550c28d..cc06739c8 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/bigtable_instance.html.markdown b/website/docs/r/bigtable_instance.html.markdown
-index 65180545a..0984a09a5 100644
+index a7ccdaeed..d4fbc0dc0 100644
 --- a/website/docs/r/bigtable_instance.html.markdown
 +++ b/website/docs/r/bigtable_instance.html.markdown
 @@ -1,4 +1,4 @@
@@ -584,12 +584,12 @@ index 0544e308a..90d4f7d17 100644
    Structure is [documented below](#nested_member_key).
  
 diff --git a/website/docs/r/cloud_run_domain_mapping.html.markdown b/website/docs/r/cloud_run_domain_mapping.html.markdown
-index 2aa88eb2e..f3a309b9f 100644
+index 9c575000f..b016c5883 100644
 --- a/website/docs/r/cloud_run_domain_mapping.html.markdown
 +++ b/website/docs/r/cloud_run_domain_mapping.html.markdown
 @@ -152,7 +152,7 @@ The following arguments are supported:
    may be set by external tools to store and retrieve arbitrary metadata. More
-   info: http://kubernetes.io/docs/user-guide/annotations
+   info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
    **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 -  If terraform plan shows a diff where a server-side annotation is added, you can add it to your config
 +  If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
@@ -597,7 +597,7 @@ index 2aa88eb2e..f3a309b9f 100644
  
  - - -
 diff --git a/website/docs/r/cloud_run_service.html.markdown b/website/docs/r/cloud_run_service.html.markdown
-index 3fd9ce3eb..9bda55f56 100644
+index dd284c097..52a56a750 100644
 --- a/website/docs/r/cloud_run_service.html.markdown
 +++ b/website/docs/r/cloud_run_service.html.markdown
 @@ -31,9 +31,64 @@ To get more information about Service, see:
@@ -677,7 +677,7 @@ index 3fd9ce3eb..9bda55f56 100644
    }
 @@ -342,7 +397,7 @@ The following arguments are supported:
    may be set by external tools to store and retrieve arbitrary metadata. More
-   info: http://kubernetes.io/docs/user-guide/annotations
+   info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
    **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 -  If terraform plan shows a diff where a server-side annotation is added, you can add it to your config
 +  If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
@@ -709,7 +709,7 @@ index 3fd9ce3eb..9bda55f56 100644
  
 @@ -947,7 +1003,7 @@ this field is set to false, the revision name will still autogenerate.)
    may be set by external tools to store and retrieve arbitrary metadata. More
-   info: http://kubernetes.io/docs/user-guide/annotations
+   info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
    **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
 -  If terraform plan shows a diff where a server-side annotation is added, you can add it to your config
 +  If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
@@ -730,7 +730,7 @@ index c359fce15..c4c5a2984 100644
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
 diff --git a/website/docs/r/composer_environment.html.markdown b/website/docs/r/composer_environment.html.markdown
-index 7a7d97ff9..117a8ec6e 100644
+index 863c2c4f7..55da0046a 100644
 --- a/website/docs/r/composer_environment.html.markdown
 +++ b/website/docs/r/composer_environment.html.markdown
 @@ -27,17 +27,18 @@ To get more information about Environments, see:
@@ -793,7 +793,7 @@ index 7a7d97ff9..117a8ec6e 100644
  
  <a name="nested_cidr_blocks"></a>The `cidr_blocks` supports:
  
-@@ -892,7 +892,7 @@ The `ip_allocation_policy` block supports:
+@@ -898,7 +898,7 @@ The `ip_allocation_policy` block supports:
  
  * `recurrence` -
    (Required)
@@ -1042,7 +1042,7 @@ index c3c7a08e5..afe1e7197 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index 1c66ac038..df95acc55 100644
+index 637df56b7..9f6fdc63c 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -87,7 +87,7 @@ The following arguments are supported:
@@ -4103,5 +4103,5 @@ index f56436c17..0ffee5cc6 100644
    network = google_service_networking_connection.private_service_connection.network
  
 -- 
-2.40.0
+2.41.0
 
