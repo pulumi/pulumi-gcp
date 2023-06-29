@@ -17,6 +17,7 @@ import com.pulumi.gcp.compute.outputs.InstanceConfidentialInstanceConfig;
 import com.pulumi.gcp.compute.outputs.InstanceGuestAccelerator;
 import com.pulumi.gcp.compute.outputs.InstanceNetworkInterface;
 import com.pulumi.gcp.compute.outputs.InstanceNetworkPerformanceConfig;
+import com.pulumi.gcp.compute.outputs.InstanceParams;
 import com.pulumi.gcp.compute.outputs.InstanceReservationAffinity;
 import com.pulumi.gcp.compute.outputs.InstanceScheduling;
 import com.pulumi.gcp.compute.outputs.InstanceScratchDisk;
@@ -564,6 +565,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<InstanceNetworkPerformanceConfig>> networkPerformanceConfig() {
         return Codegen.optional(this.networkPerformanceConfig);
+    }
+    /**
+     * Additional instance parameters.
+     * .
+     * 
+     */
+    @Export(name="params", type=InstanceParams.class, parameters={})
+    private Output</* @Nullable */ InstanceParams> params;
+
+    /**
+     * @return Additional instance parameters.
+     * .
+     * 
+     */
+    public Output<Optional<InstanceParams>> params() {
+        return Codegen.optional(this.params);
     }
     /**
      * The ID of the project in which the resource belongs. If it

@@ -48,6 +48,9 @@ namespace Pulumi.Gcp.Composer.Inputs
         [Input("recoveryConfig")]
         public Input<Inputs.EnvironmentConfigRecoveryConfigArgs>? RecoveryConfig { get; set; }
 
+        [Input("resilienceMode")]
+        public Input<string>? ResilienceMode { get; set; }
+
         [Input("softwareConfig")]
         public Input<Inputs.EnvironmentConfigSoftwareConfigArgs>? SoftwareConfig { get; set; }
 

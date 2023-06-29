@@ -160,6 +160,53 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// ### Iam Workload Identity Pool Provider Oidc Upload Key
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var pool = new Gcp.Iam.WorkloadIdentityPool("pool", new()
+    ///     {
+    ///         WorkloadIdentityPoolId = "example-pool",
+    ///     });
+    /// 
+    ///     var example = new Gcp.Iam.WorkloadIdentityPoolProvider("example", new()
+    ///     {
+    ///         WorkloadIdentityPoolId = pool.WorkloadIdentityPoolId,
+    ///         WorkloadIdentityPoolProviderId = "example-prvdr",
+    ///         DisplayName = "Name of provider",
+    ///         Description = "OIDC identity pool provider for automated test",
+    ///         Disabled = true,
+    ///         AttributeCondition = "\"e968c2ef-047c-498d-8d79-16ca1b61e77e\" in assertion.groups",
+    ///         AttributeMapping = 
+    ///         {
+    ///             { "google.subject", "\"azure::\" + assertion.tid + \"::\" + assertion.sub" },
+    ///             { "attribute.tid", "assertion.tid" },
+    ///             { "attribute.managed_identity_name", @"      {
+    ///         ""8bb39bdb-1cc5-4447-b7db-a19e920eb111"":""workload1"",
+    ///         ""55d36609-9bcf-48e0-a366-a3cf19027d2a"":""workload2""
+    ///       }[assertion.oid]
+    /// " },
+    ///         },
+    ///         Oidc = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderOidcArgs
+    ///         {
+    ///             AllowedAudiences = new[]
+    ///             {
+    ///                 "https://example.com/gcp-oidc-federation",
+    ///                 "example.com/gcp-oidc-federation",
+    ///             },
+    ///             IssuerUri = "https://sts.windows.net/azure-tenant-id",
+    ///             JwksJson = "{\"keys\":[{\"kty\":\"RSA\",\"alg\":\"RS256\",\"kid\":\"sif0AR-F6MuvksAyAOv-Pds08Bcf2eUMlxE30NofddA\",\"use\":\"sig\",\"e\":\"AQAB\",\"n\":\"ylH1Chl1tpfti3lh51E1g5dPogzXDaQseqjsefGLknaNl5W6Wd4frBhHyE2t41Q5zgz_Ll0-NvWm0FlaG6brhrN9QZu6sJP1bM8WPfJVPgXOanxi7d7TXCkeNubGeiLTf5R3UXtS9Lm_guemU7MxDjDTelxnlgGCihOVTcL526suNJUdfXtpwUsvdU6_ZnAp9IpsuYjCtwPm9hPumlcZGMbxstdh07O4y4O90cVQClJOKSGQjAUCKJWXIQ0cqffGS_HuS_725CPzQ85SzYZzaNpgfhAER7kx_9P16ARM3BJz0PI5fe2hECE61J4GYU_BY43sxDfs7HyJpEXKLU9eWw\"}]}",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

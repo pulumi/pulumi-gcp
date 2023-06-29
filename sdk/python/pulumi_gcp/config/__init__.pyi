@@ -162,6 +162,8 @@ gameServicesCustomEndpoint: Optional[str]
 
 gkeBackupCustomEndpoint: Optional[str]
 
+gkeHub2CustomEndpoint: Optional[str]
+
 gkeHubCustomEndpoint: Optional[str]
 
 gkehubFeatureCustomEndpoint: Optional[str]

@@ -12,6 +12,7 @@ import com.pulumi.gcp.compute.inputs.InstanceFromTemplateConfidentialInstanceCon
 import com.pulumi.gcp.compute.inputs.InstanceFromTemplateGuestAcceleratorArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromTemplateNetworkInterfaceArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromTemplateNetworkPerformanceConfigArgs;
+import com.pulumi.gcp.compute.inputs.InstanceFromTemplateParamsArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromTemplateReservationAffinityArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromTemplateSchedulingArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromTemplateScratchDiskArgs;
@@ -343,6 +344,21 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Stores additional params passed with the request, but not persisted as part of resource payload.
+     * 
+     */
+    @Import(name="params")
+    private @Nullable Output<InstanceFromTemplateParamsArgs> params;
+
+    /**
+     * @return Stores additional params passed with the request, but not persisted as part of resource payload.
+     * 
+     */
+    public Optional<Output<InstanceFromTemplateParamsArgs>> params() {
+        return Optional.ofNullable(this.params);
+    }
+
+    /**
      * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
      * self_link nor project are provided, the provider project is used.
      * 
@@ -535,6 +551,7 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
         this.name = $.name;
         this.networkInterfaces = $.networkInterfaces;
         this.networkPerformanceConfig = $.networkPerformanceConfig;
+        this.params = $.params;
         this.project = $.project;
         this.reservationAffinity = $.reservationAffinity;
         this.resourcePolicies = $.resourcePolicies;
@@ -1025,6 +1042,27 @@ public final class InstanceFromTemplateArgs extends com.pulumi.resources.Resourc
          */
         public Builder networkPerformanceConfig(InstanceFromTemplateNetworkPerformanceConfigArgs networkPerformanceConfig) {
             return networkPerformanceConfig(Output.of(networkPerformanceConfig));
+        }
+
+        /**
+         * @param params Stores additional params passed with the request, but not persisted as part of resource payload.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(@Nullable Output<InstanceFromTemplateParamsArgs> params) {
+            $.params = params;
+            return this;
+        }
+
+        /**
+         * @param params Stores additional params passed with the request, but not persisted as part of resource payload.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder params(InstanceFromTemplateParamsArgs params) {
+            return params(Output.of(params));
         }
 
         /**

@@ -1,4 +1,4 @@
-From 30d2e6b8bf02ae15c5ee824fa13a9787d7d6bc17 Mon Sep 17 00:00:00 2001
+From 088ff54d4ab901c5a9058a8b82cc2bfaf1ce3676 Mon Sep 17 00:00:00 2001
 From: Daniel Bradley <daniel@pulumi.com>
 Date: Tue, 7 Mar 2023 11:09:59 +0000
 Subject: [PATCH 1/9] Change user agent
@@ -12,10 +12,10 @@ Add options to set or disable partner name.
  2 files changed, 31 insertions(+), 3 deletions(-)
 
 diff --git a/google-beta/provider.go b/google-beta/provider.go
-index 23ceee51f..cf8f23f49 100644
+index 3469e3543..52246cbe5 100644
 --- a/google-beta/provider.go
 +++ b/google-beta/provider.go
-@@ -223,6 +223,19 @@ func Provider() *schema.Provider {
+@@ -230,6 +230,19 @@ func Provider() *schema.Provider {
  				Optional: true,
  			},
  
@@ -35,7 +35,7 @@ index 23ceee51f..cf8f23f49 100644
  			"request_reason": {
  				Type:     schema.TypeString,
  				Optional: true,
-@@ -1789,6 +1802,21 @@ func providerConfigure(ctx context.Context, d *schema.ResourceData, p *schema.Pr
+@@ -1810,6 +1823,21 @@ func providerConfigure(ctx context.Context, d *schema.ResourceData, p *schema.Pr
  		UserAgent:           p.UserAgent("terraform-provider-google-beta", version.ProviderVersion),
  	}
  
@@ -58,10 +58,10 @@ index 23ceee51f..cf8f23f49 100644
  	if ext := os.Getenv("GOOGLE_TERRAFORM_USERAGENT_EXTENSION"); ext != "" {
  		ua := config.UserAgent
 diff --git a/google-beta/utils.go b/google-beta/utils.go
-index b1537f630..f207fe180 100644
+index 31e866363..eb0f240c6 100644
 --- a/google-beta/utils.go
 +++ b/google-beta/utils.go
-@@ -284,10 +284,10 @@ func changeFieldSchemaToForceNew(sch *schema.Schema) {
+@@ -283,10 +283,10 @@ func changeFieldSchemaToForceNew(sch *schema.Schema) {
  	tpgresource.ChangeFieldSchemaToForceNew(sch)
  }
  
@@ -76,5 +76,5 @@ index b1537f630..f207fe180 100644
  
  // Deprecated: For backward compatibility snakeToPascalCase is still working,
 -- 
-2.40.0
+2.41.0
 

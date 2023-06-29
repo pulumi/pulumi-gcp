@@ -11,23 +11,45 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureStateState {
+    /**
+     * @return (Output)
+     * The high-level, machine-readable status of this Feature.
+     * 
+     */
     private @Nullable String code;
+    /**
+     * @return (Output)
+     * A human-readable description of the current status.
+     * 
+     */
     private @Nullable String description;
     /**
-     * @return Output only. When the Feature resource was last updated.
+     * @return (Output)
+     * The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;
      * 
      */
     private @Nullable String updateTime;
 
     private FeatureStateState() {}
+    /**
+     * @return (Output)
+     * The high-level, machine-readable status of this Feature.
+     * 
+     */
     public Optional<String> code() {
         return Optional.ofNullable(this.code);
     }
+    /**
+     * @return (Output)
+     * A human-readable description of the current status.
+     * 
+     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return Output only. When the Feature resource was last updated.
+     * @return (Output)
+     * The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;
      * 
      */
     public Optional<String> updateTime() {

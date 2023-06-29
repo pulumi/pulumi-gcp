@@ -91,6 +91,7 @@ type Provider struct {
 	FirestoreCustomEndpoint                pulumi.StringPtrOutput `pulumi:"firestoreCustomEndpoint"`
 	GameServicesCustomEndpoint             pulumi.StringPtrOutput `pulumi:"gameServicesCustomEndpoint"`
 	GkeBackupCustomEndpoint                pulumi.StringPtrOutput `pulumi:"gkeBackupCustomEndpoint"`
+	GkeHub2CustomEndpoint                  pulumi.StringPtrOutput `pulumi:"gkeHub2CustomEndpoint"`
 	GkeHubCustomEndpoint                   pulumi.StringPtrOutput `pulumi:"gkeHubCustomEndpoint"`
 	GkehubFeatureCustomEndpoint            pulumi.StringPtrOutput `pulumi:"gkehubFeatureCustomEndpoint"`
 	GkeonpremCustomEndpoint                pulumi.StringPtrOutput `pulumi:"gkeonpremCustomEndpoint"`
@@ -260,6 +261,7 @@ type providerArgs struct {
 	FirestoreCustomEndpoint                *string           `pulumi:"firestoreCustomEndpoint"`
 	GameServicesCustomEndpoint             *string           `pulumi:"gameServicesCustomEndpoint"`
 	GkeBackupCustomEndpoint                *string           `pulumi:"gkeBackupCustomEndpoint"`
+	GkeHub2CustomEndpoint                  *string           `pulumi:"gkeHub2CustomEndpoint"`
 	GkeHubCustomEndpoint                   *string           `pulumi:"gkeHubCustomEndpoint"`
 	GkehubFeatureCustomEndpoint            *string           `pulumi:"gkehubFeatureCustomEndpoint"`
 	GkeonpremCustomEndpoint                *string           `pulumi:"gkeonpremCustomEndpoint"`
@@ -403,6 +405,7 @@ type ProviderArgs struct {
 	FirestoreCustomEndpoint                pulumi.StringPtrInput
 	GameServicesCustomEndpoint             pulumi.StringPtrInput
 	GkeBackupCustomEndpoint                pulumi.StringPtrInput
+	GkeHub2CustomEndpoint                  pulumi.StringPtrInput
 	GkeHubCustomEndpoint                   pulumi.StringPtrInput
 	GkehubFeatureCustomEndpoint            pulumi.StringPtrInput
 	GkeonpremCustomEndpoint                pulumi.StringPtrInput
@@ -799,6 +802,10 @@ func (o ProviderOutput) GameServicesCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) GkeBackupCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.GkeBackupCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) GkeHub2CustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.GkeHub2CustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) GkeHubCustomEndpoint() pulumi.StringPtrOutput {

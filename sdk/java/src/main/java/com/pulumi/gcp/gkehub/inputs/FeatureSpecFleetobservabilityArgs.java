@@ -15,9 +15,19 @@ public final class FeatureSpecFleetobservabilityArgs extends com.pulumi.resource
 
     public static final FeatureSpecFleetobservabilityArgs Empty = new FeatureSpecFleetobservabilityArgs();
 
+    /**
+     * Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="loggingConfig")
     private @Nullable Output<FeatureSpecFleetobservabilityLoggingConfigArgs> loggingConfig;
 
+    /**
+     * @return Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<FeatureSpecFleetobservabilityLoggingConfigArgs>> loggingConfig() {
         return Optional.ofNullable(this.loggingConfig);
     }
@@ -46,11 +56,25 @@ public final class FeatureSpecFleetobservabilityArgs extends com.pulumi.resource
             $ = new FeatureSpecFleetobservabilityArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param loggingConfig Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder loggingConfig(@Nullable Output<FeatureSpecFleetobservabilityLoggingConfigArgs> loggingConfig) {
             $.loggingConfig = loggingConfig;
             return this;
         }
 
+        /**
+         * @param loggingConfig Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder loggingConfig(FeatureSpecFleetobservabilityLoggingConfigArgs loggingConfig) {
             return loggingConfig(Output.of(loggingConfig));
         }

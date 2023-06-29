@@ -67,14 +67,16 @@ public final class FeatureArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -83,6 +85,7 @@ public final class FeatureArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+     * Structure is documented below.
      * 
      */
     @Import(name="spec")
@@ -90,6 +93,7 @@ public final class FeatureArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<FeatureSpecArgs>> spec() {
@@ -192,7 +196,8 @@ public final class FeatureArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -203,7 +208,8 @@ public final class FeatureArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -214,6 +220,7 @@ public final class FeatureArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param spec Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -225,6 +232,7 @@ public final class FeatureArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param spec Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+         * Structure is documented below.
          * 
          * @return builder
          * 

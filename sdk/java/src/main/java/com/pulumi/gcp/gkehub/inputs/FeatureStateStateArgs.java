@@ -15,29 +15,51 @@ public final class FeatureStateStateArgs extends com.pulumi.resources.ResourceAr
 
     public static final FeatureStateStateArgs Empty = new FeatureStateStateArgs();
 
+    /**
+     * (Output)
+     * The high-level, machine-readable status of this Feature.
+     * 
+     */
     @Import(name="code")
     private @Nullable Output<String> code;
 
+    /**
+     * @return (Output)
+     * The high-level, machine-readable status of this Feature.
+     * 
+     */
     public Optional<Output<String>> code() {
         return Optional.ofNullable(this.code);
     }
 
+    /**
+     * (Output)
+     * A human-readable description of the current status.
+     * 
+     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
+    /**
+     * @return (Output)
+     * A human-readable description of the current status.
+     * 
+     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
     /**
-     * Output only. When the Feature resource was last updated.
+     * (Output)
+     * The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Output only. When the Feature resource was last updated.
+     * @return (Output)
+     * The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -70,26 +92,55 @@ public final class FeatureStateStateArgs extends com.pulumi.resources.ResourceAr
             $ = new FeatureStateStateArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param code (Output)
+         * The high-level, machine-readable status of this Feature.
+         * 
+         * @return builder
+         * 
+         */
         public Builder code(@Nullable Output<String> code) {
             $.code = code;
             return this;
         }
 
+        /**
+         * @param code (Output)
+         * The high-level, machine-readable status of this Feature.
+         * 
+         * @return builder
+         * 
+         */
         public Builder code(String code) {
             return code(Output.of(code));
         }
 
+        /**
+         * @param description (Output)
+         * A human-readable description of the current status.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
+        /**
+         * @param description (Output)
+         * A human-readable description of the current status.
+         * 
+         * @return builder
+         * 
+         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
         /**
-         * @param updateTime Output only. When the Feature resource was last updated.
+         * @param updateTime (Output)
+         * The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;
          * 
          * @return builder
          * 
@@ -100,7 +151,8 @@ public final class FeatureStateStateArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param updateTime Output only. When the Feature resource was last updated.
+         * @param updateTime (Output)
+         * The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;
          * 
          * @return builder
          * 

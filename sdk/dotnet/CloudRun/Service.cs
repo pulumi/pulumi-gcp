@@ -471,7 +471,7 @@ namespace Pulumi.Gcp.CloudRun
         /// Name must be unique within a Google Cloud project and region.
         /// Is required when creating resources. Name is primarily intended
         /// for creation idempotence and configuration definition. Cannot be updated.
-        /// More info: http://kubernetes.io/docs/user-guide/identifiers#names
+        /// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -591,7 +591,7 @@ namespace Pulumi.Gcp.CloudRun
         /// Name must be unique within a Google Cloud project and region.
         /// Is required when creating resources. Name is primarily intended
         /// for creation idempotence and configuration definition. Cannot be updated.
-        /// More info: http://kubernetes.io/docs/user-guide/identifiers#names
+        /// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -672,7 +672,7 @@ namespace Pulumi.Gcp.CloudRun
         /// Name must be unique within a Google Cloud project and region.
         /// Is required when creating resources. Name is primarily intended
         /// for creation idempotence and configuration definition. Cannot be updated.
-        /// More info: http://kubernetes.io/docs/user-guide/identifiers#names
+        /// More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

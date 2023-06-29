@@ -10,8 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.GkeHub
 {
     /// <summary>
+    /// Feature represents the settings and status of any Hub Feature.
+    /// 
+    /// To get more information about Feature, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.features)
+    /// * How-to Guides
+    ///     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+    /// 
     /// ## Example Usage
-    /// ### Multi Cluster Ingress
+    /// ### Gkehub Feature Multi Cluster Ingress
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -25,9 +33,6 @@ namespace Pulumi.Gcp.GkeHub
     ///     {
     ///         Location = "us-central1-a",
     ///         InitialNodeCount = 1,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var membership = new Gcp.GkeHub.Membership("membership", new()
@@ -41,9 +46,6 @@ namespace Pulumi.Gcp.GkeHub
     ///             },
     ///         },
     ///         Description = "Membership",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
@@ -56,14 +58,32 @@ namespace Pulumi.Gcp.GkeHub
     ///                 ConfigMembership = membership.Id,
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
     /// ```
-    /// ### Multi Cluster Service Discovery
+    /// ### Gkehub Feature Multi Cluster Service Discovery
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
+    ///     {
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar" },
+    ///         },
+    ///         Location = "global",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Gkehub Feature Anthos Service Mesh
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -76,9 +96,35 @@ namespace Pulumi.Gcp.GkeHub
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
     ///         Location = "global",
-    ///         Labels = 
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Enable Fleet Observability For Default Logs With Copy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
+    ///     {
+    ///         Location = "global",
+    ///         Spec = new Gcp.GkeHub.Inputs.FeatureSpecArgs
     ///         {
-    ///             { "foo", "bar" },
+    ///             Fleetobservability = new Gcp.GkeHub.Inputs.FeatureSpecFleetobservabilityArgs
+    ///             {
+    ///                 LoggingConfig = new Gcp.GkeHub.Inputs.FeatureSpecFleetobservabilityLoggingConfigArgs
+    ///                 {
+    ///                     DefaultConfig = new Gcp.GkeHub.Inputs.FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs
+    ///                     {
+    ///                         Mode = "COPY",
+    ///                     },
+    ///                 },
+    ///             },
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
@@ -87,7 +133,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
-    /// ### Enable Anthos Service Mesh
+    /// ### Enable Fleet Observability For Scope Logs With Move
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -100,6 +146,56 @@ namespace Pulumi.Gcp.GkeHub
     ///     var feature = new Gcp.GkeHub.Feature("feature", new()
     ///     {
     ///         Location = "global",
+    ///         Spec = new Gcp.GkeHub.Inputs.FeatureSpecArgs
+    ///         {
+    ///             Fleetobservability = new Gcp.GkeHub.Inputs.FeatureSpecFleetobservabilityArgs
+    ///             {
+    ///                 LoggingConfig = new Gcp.GkeHub.Inputs.FeatureSpecFleetobservabilityLoggingConfigArgs
+    ///                 {
+    ///                     FleetScopeLogsConfig = new Gcp.GkeHub.Inputs.FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs
+    ///                     {
+    ///                         Mode = "MOVE",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Enable Fleet Observability For Both Default And Scope Logs
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
+    ///     {
+    ///         Location = "global",
+    ///         Spec = new Gcp.GkeHub.Inputs.FeatureSpecArgs
+    ///         {
+    ///             Fleetobservability = new Gcp.GkeHub.Inputs.FeatureSpecFleetobservabilityArgs
+    ///             {
+    ///                 LoggingConfig = new Gcp.GkeHub.Inputs.FeatureSpecFleetobservabilityLoggingConfigArgs
+    ///                 {
+    ///                     DefaultConfig = new Gcp.GkeHub.Inputs.FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs
+    ///                     {
+    ///                         Mode = "COPY",
+    ///                     },
+    ///                     FleetScopeLogsConfig = new Gcp.GkeHub.Inputs.FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs
+    ///                     {
+    ///                         Mode = "MOVE",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,
@@ -148,6 +244,7 @@ namespace Pulumi.Gcp.GkeHub
         /// <summary>
         /// The location for the resource
         /// 
+        /// 
         /// - - -
         /// </summary>
         [Output("location")]
@@ -160,31 +257,37 @@ namespace Pulumi.Gcp.GkeHub
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// State of the Feature resource itself.
+        /// Structure is documented below.
         /// </summary>
         [Output("resourceStates")]
         public Output<ImmutableArray<Outputs.FeatureResourceState>> ResourceStates { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+        /// Structure is documented below.
         /// </summary>
         [Output("spec")]
         public Output<Outputs.FeatureSpec?> Spec { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. The Hub-wide Feature state
+        /// (Output)
+        /// Output only. The "running state" of the Feature in this Hub.
+        /// Structure is documented below.
         /// </summary>
         [Output("states")]
         public Output<ImmutableArray<Outputs.FeatureState>> States { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. When the Feature resource was last updated.
+        /// (Output)
+        /// The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -250,6 +353,7 @@ namespace Pulumi.Gcp.GkeHub
         /// <summary>
         /// The location for the resource
         /// 
+        /// 
         /// - - -
         /// </summary>
         [Input("location", required: true)]
@@ -262,13 +366,15 @@ namespace Pulumi.Gcp.GkeHub
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+        /// Structure is documented below.
         /// </summary>
         [Input("spec")]
         public Input<Inputs.FeatureSpecArgs>? Spec { get; set; }
@@ -308,6 +414,7 @@ namespace Pulumi.Gcp.GkeHub
         /// <summary>
         /// The location for the resource
         /// 
+        /// 
         /// - - -
         /// </summary>
         [Input("location")]
@@ -320,7 +427,8 @@ namespace Pulumi.Gcp.GkeHub
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -330,6 +438,7 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// State of the Feature resource itself.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.FeatureResourceStateGetArgs> ResourceStates
         {
@@ -339,6 +448,7 @@ namespace Pulumi.Gcp.GkeHub
 
         /// <summary>
         /// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+        /// Structure is documented below.
         /// </summary>
         [Input("spec")]
         public Input<Inputs.FeatureSpecGetArgs>? Spec { get; set; }
@@ -347,7 +457,9 @@ namespace Pulumi.Gcp.GkeHub
         private InputList<Inputs.FeatureStateGetArgs>? _states;
 
         /// <summary>
-        /// Output only. The Hub-wide Feature state
+        /// (Output)
+        /// Output only. The "running state" of the Feature in this Hub.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.FeatureStateGetArgs> States
         {
@@ -356,7 +468,8 @@ namespace Pulumi.Gcp.GkeHub
         }
 
         /// <summary>
-        /// Output only. When the Feature resource was last updated.
+        /// (Output)
+        /// The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

@@ -240,6 +240,9 @@ namespace Pulumi.Gcp
         [Output("gkeBackupCustomEndpoint")]
         public Output<string?> GkeBackupCustomEndpoint { get; private set; } = null!;
 
+        [Output("gkeHub2CustomEndpoint")]
+        public Output<string?> GkeHub2CustomEndpoint { get; private set; } = null!;
+
         [Output("gkeHubCustomEndpoint")]
         public Output<string?> GkeHubCustomEndpoint { get; private set; } = null!;
 
@@ -675,6 +678,9 @@ namespace Pulumi.Gcp
 
         [Input("gkeBackupCustomEndpoint")]
         public Input<string>? GkeBackupCustomEndpoint { get; set; }
+
+        [Input("gkeHub2CustomEndpoint")]
+        public Input<string>? GkeHub2CustomEndpoint { get; set; }
 
         [Input("gkeHubCustomEndpoint")]
         public Input<string>? GkeHubCustomEndpoint { get; set; }

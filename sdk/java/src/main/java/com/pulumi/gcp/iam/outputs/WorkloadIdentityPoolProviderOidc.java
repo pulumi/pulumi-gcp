@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -49,6 +50,38 @@ public final class WorkloadIdentityPoolProviderOidc {
      * 
      */
     private String issuerUri;
+    /**
+     * @return OIDC JWKs in JSON String format. For details on definition of a
+     * JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+     * use the `jwks_uri` from the discovery document fetched from the
+     * .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
+     * keys are supported. The JWK must use following format and include only
+     * the following fields:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
+     */
+    private @Nullable String jwksJson;
 
     private WorkloadIdentityPoolProviderOidc() {}
     /**
@@ -93,6 +126,40 @@ public final class WorkloadIdentityPoolProviderOidc {
     public String issuerUri() {
         return this.issuerUri;
     }
+    /**
+     * @return OIDC JWKs in JSON String format. For details on definition of a
+     * JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+     * use the `jwks_uri` from the discovery document fetched from the
+     * .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
+     * keys are supported. The JWK must use following format and include only
+     * the following fields:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public Optional<String> jwksJson() {
+        return Optional.ofNullable(this.jwksJson);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -105,11 +172,13 @@ public final class WorkloadIdentityPoolProviderOidc {
     public static final class Builder {
         private @Nullable List<String> allowedAudiences;
         private String issuerUri;
+        private @Nullable String jwksJson;
         public Builder() {}
         public Builder(WorkloadIdentityPoolProviderOidc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedAudiences = defaults.allowedAudiences;
     	      this.issuerUri = defaults.issuerUri;
+    	      this.jwksJson = defaults.jwksJson;
         }
 
         @CustomType.Setter
@@ -125,10 +194,16 @@ public final class WorkloadIdentityPoolProviderOidc {
             this.issuerUri = Objects.requireNonNull(issuerUri);
             return this;
         }
+        @CustomType.Setter
+        public Builder jwksJson(@Nullable String jwksJson) {
+            this.jwksJson = jwksJson;
+            return this;
+        }
         public WorkloadIdentityPoolProviderOidc build() {
             final var o = new WorkloadIdentityPoolProviderOidc();
             o.allowedAudiences = allowedAudiences;
             o.issuerUri = issuerUri;
+            o.jwksJson = jwksJson;
             return o;
         }
     }

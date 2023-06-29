@@ -7,18 +7,16 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Hierarchical firewall policy rules let you create and enforce a consistent firewall policy across your organization. Rules can explicitly allow or deny connections or delegate evaluation to lower level policies.
- *
- * For more information see the [official documentation](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
+ * The Compute FirewallPolicyRule resource
  *
  * ## Example Usage
- *
+ * ### Basic_fir_sec_rule_addr_groups
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
  * const basicGlobalNetworksecurityAddressGroup = new gcp.networksecurity.AddressGroup("basicGlobalNetworksecurityAddressGroup", {
- *     parent: "organizations/12345",
+ *     parent: "organizations/123456789",
  *     description: "Sample global networksecurity_address_group",
  *     location: "global",
  *     items: ["208.80.154.224/32"],
@@ -27,33 +25,48 @@ import * as utilities from "../utilities";
  * }, {
  *     provider: google_beta,
  * });
- * const defaultFirewallPolicy = new gcp.compute.FirewallPolicy("defaultFirewallPolicy", {
- *     parent: "organizations/12345",
- *     shortName: "my-policy",
- *     description: "Example Resource",
+ * const folder = new gcp.organizations.Folder("folder", {
+ *     displayName: "policy",
+ *     parent: "organizations/123456789",
+ * }, {
+ *     provider: google_beta,
  * });
- * const defaultFirewallPolicyRule = new gcp.compute.FirewallPolicyRule("defaultFirewallPolicyRule", {
- *     firewallPolicy: defaultFirewallPolicy.id,
- *     description: "Example Resource",
+ * const _default = new gcp.compute.FirewallPolicy("default", {
+ *     parent: folder.id,
+ *     shortName: "policy",
+ *     description: "Resource created for Terraform acceptance testing",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const primary = new gcp.compute.FirewallPolicyRule("primary", {
+ *     firewallPolicy: _default.name,
+ *     description: "Resource created for Terraform acceptance testing",
  *     priority: 9000,
  *     enableLogging: true,
  *     action: "allow",
  *     direction: "EGRESS",
  *     disabled: false,
  *     match: {
- *         layer4Configs: [{
- *             ipProtocol: "tcp",
- *             ports: [
- *                 "80",
- *                 "8080",
- *             ],
- *         }],
+ *         layer4Configs: [
+ *             {
+ *                 ipProtocol: "tcp",
+ *                 ports: ["8080"],
+ *             },
+ *             {
+ *                 ipProtocol: "udp",
+ *                 ports: ["22"],
+ *             },
+ *         ],
  *         destIpRanges: ["11.100.0.1/32"],
- *         destFqdns: ["google.com"],
+ *         destFqdns: [],
  *         destRegionCodes: ["US"],
- *         destThreatIntelligences: ["iplist-public-clouds"],
+ *         destThreatIntelligences: ["iplist-known-malicious-ips"],
+ *         srcAddressGroups: [],
  *         destAddressGroups: [basicGlobalNetworksecurityAddressGroup.id],
  *     },
+ *     targetServiceAccounts: ["my@service-account.com"],
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *
@@ -98,7 +111,7 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
     }
 
     /**
-     * The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+     * The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
      */
     public readonly action!: pulumi.Output<string>;
     /**
@@ -126,7 +139,7 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
-     * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
+     * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
      */
     public readonly match!: pulumi.Output<outputs.compute.FirewallPolicyRuleMatch>;
     /**
@@ -211,7 +224,7 @@ export class FirewallPolicyRule extends pulumi.CustomResource {
  */
 export interface FirewallPolicyRuleState {
     /**
-     * The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+     * The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
      */
     action?: pulumi.Input<string>;
     /**
@@ -239,7 +252,7 @@ export interface FirewallPolicyRuleState {
      */
     kind?: pulumi.Input<string>;
     /**
-     * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
+     * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
      */
     match?: pulumi.Input<inputs.compute.FirewallPolicyRuleMatch>;
     /**
@@ -265,7 +278,7 @@ export interface FirewallPolicyRuleState {
  */
 export interface FirewallPolicyRuleArgs {
     /**
-     * The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+     * The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
      */
     action: pulumi.Input<string>;
     /**
@@ -289,7 +302,7 @@ export interface FirewallPolicyRuleArgs {
      */
     firewallPolicy: pulumi.Input<string>;
     /**
-     * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced. Structure is documented below.
+     * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
      */
     match: pulumi.Input<inputs.compute.FirewallPolicyRuleMatch>;
     /**

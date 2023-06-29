@@ -101,6 +101,7 @@ __all__ = [
     'InstanceFromMachineImageNetworkInterfaceAliasIpRangeArgs',
     'InstanceFromMachineImageNetworkInterfaceIpv6AccessConfigArgs',
     'InstanceFromMachineImageNetworkPerformanceConfigArgs',
+    'InstanceFromMachineImageParamsArgs',
     'InstanceFromMachineImageReservationAffinityArgs',
     'InstanceFromMachineImageReservationAffinitySpecificReservationArgs',
     'InstanceFromMachineImageSchedulingArgs',
@@ -120,6 +121,7 @@ __all__ = [
     'InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs',
     'InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs',
     'InstanceFromTemplateNetworkPerformanceConfigArgs',
+    'InstanceFromTemplateParamsArgs',
     'InstanceFromTemplateReservationAffinityArgs',
     'InstanceFromTemplateReservationAffinitySpecificReservationArgs',
     'InstanceFromTemplateSchedulingArgs',
@@ -152,6 +154,7 @@ __all__ = [
     'InstanceNetworkInterfaceAliasIpRangeArgs',
     'InstanceNetworkInterfaceIpv6AccessConfigArgs',
     'InstanceNetworkPerformanceConfigArgs',
+    'InstanceParamsArgs',
     'InstanceReservationAffinityArgs',
     'InstanceReservationAffinitySpecificReservationArgs',
     'InstanceSchedulingArgs',
@@ -4868,19 +4871,19 @@ class FirewallPolicyRuleMatchArgs:
                  src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_fqdns: Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_region_codes: The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_threat_intelligences: Name of the Google Cloud Threat Intelligence list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_fqdns: Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_threat_intelligences: Name of the Google Cloud Threat Intelligence list.
                
-               <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
+               The `layer4_configs` block supports:
         """
         pulumi.set(__self__, "layer4_configs", layer4_configs)
         if dest_address_groups is not None:
@@ -4908,7 +4911,7 @@ class FirewallPolicyRuleMatchArgs:
     @pulumi.getter(name="layer4Configs")
     def layer4_configs(self) -> pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatchLayer4ConfigArgs']]]:
         """
-        Pairs of IP protocols and ports that the rule should match. Structure is documented below.
+        Pairs of IP protocols and ports that the rule should match.
         """
         return pulumi.get(self, "layer4_configs")
 
@@ -4944,7 +4947,7 @@ class FirewallPolicyRuleMatchArgs:
     @pulumi.getter(name="destIpRanges")
     def dest_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
         """
         return pulumi.get(self, "dest_ip_ranges")
 
@@ -5004,7 +5007,7 @@ class FirewallPolicyRuleMatchArgs:
     @pulumi.getter(name="srcIpRanges")
     def src_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
         """
         return pulumi.get(self, "src_ip_ranges")
 
@@ -5030,7 +5033,7 @@ class FirewallPolicyRuleMatchArgs:
         """
         Name of the Google Cloud Threat Intelligence list.
 
-        <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
+        The `layer4_configs` block supports:
         """
         return pulumi.get(self, "src_threat_intelligences")
 
@@ -6898,6 +6901,7 @@ class InstanceBootDiskInitializeParamsArgs:
     def __init__(__self__, *,
                  image: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
@@ -6912,6 +6916,7 @@ class InstanceBootDiskInitializeParamsArgs:
                These images can be referred by family name here.
         :param pulumi.Input[Mapping[str, Any]] labels: A set of key/value label pairs assigned to the disk. This  
                field is only applicable for persistent disks.
+        :param pulumi.Input[Mapping[str, Any]] resource_manager_tags: A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
         :param pulumi.Input[int] size: The size of the image in gigabytes. If not specified, it
                will inherit the size of its base image.
         :param pulumi.Input[str] type: The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
@@ -6920,6 +6925,8 @@ class InstanceBootDiskInitializeParamsArgs:
             pulumi.set(__self__, "image", image)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if type is not None:
@@ -6957,6 +6964,18 @@ class InstanceBootDiskInitializeParamsArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
     @property
     @pulumi.getter
@@ -7229,12 +7248,15 @@ class InstanceFromMachineImageBootDiskInitializeParamsArgs:
     def __init__(__self__, *,
                  image: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         if image is not None:
             pulumi.set(__self__, "image", image)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if type is not None:
@@ -7257,6 +7279,15 @@ class InstanceFromMachineImageBootDiskInitializeParamsArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
     @property
     @pulumi.getter
@@ -7612,6 +7643,23 @@ class InstanceFromMachineImageNetworkPerformanceConfigArgs:
     @total_egress_bandwidth_tier.setter
     def total_egress_bandwidth_tier(self, value: pulumi.Input[str]):
         pulumi.set(self, "total_egress_bandwidth_tier", value)
+
+
+@pulumi.input_type
+class InstanceFromMachineImageParamsArgs:
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
 
 @pulumi.input_type
@@ -8168,12 +8216,15 @@ class InstanceFromTemplateBootDiskInitializeParamsArgs:
     def __init__(__self__, *,
                  image: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         if image is not None:
             pulumi.set(__self__, "image", image)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if type is not None:
@@ -8196,6 +8247,15 @@ class InstanceFromTemplateBootDiskInitializeParamsArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
     @property
     @pulumi.getter
@@ -8551,6 +8611,23 @@ class InstanceFromTemplateNetworkPerformanceConfigArgs:
     @total_egress_bandwidth_tier.setter
     def total_egress_bandwidth_tier(self, value: pulumi.Input[str]):
         pulumi.set(self, "total_egress_bandwidth_tier", value)
+
+
+@pulumi.input_type
+class InstanceFromTemplateParamsArgs:
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
 
 @pulumi.input_type
@@ -10217,6 +10294,29 @@ class InstanceNetworkPerformanceConfigArgs:
     @total_egress_bandwidth_tier.setter
     def total_egress_bandwidth_tier(self, value: pulumi.Input[str]):
         pulumi.set(self, "total_egress_bandwidth_tier", value)
+
+
+@pulumi.input_type
+class InstanceParamsArgs:
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, Any]] resource_manager_tags: A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        A tag is a key-value pair that can be attached to a Google Cloud resource. You can use tags to conditionally allow or deny policies based on whether a resource has a specific tag.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
 
 @pulumi.input_type

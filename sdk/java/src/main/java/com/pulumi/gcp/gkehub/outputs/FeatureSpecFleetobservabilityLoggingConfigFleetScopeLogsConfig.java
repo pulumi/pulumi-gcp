@@ -11,9 +11,19 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig {
+    /**
+     * @return Specified if fleet logging feature is enabled.
+     * Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
+     * 
+     */
     private @Nullable String mode;
 
     private FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig() {}
+    /**
+     * @return Specified if fleet logging feature is enabled.
+     * Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
+     * 
+     */
     public Optional<String> mode() {
         return Optional.ofNullable(this.mode);
     }

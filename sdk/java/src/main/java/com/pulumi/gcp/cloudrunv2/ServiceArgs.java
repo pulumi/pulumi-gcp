@@ -24,7 +24,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
      * KRM-style annotations for the resource.
      * 
      * (Optional)
-     * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. This field follows Kubernetes annotations&#39; namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+     * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. This field follows Kubernetes annotations&#39; namespacing, limits, and rules. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
      * 
      */
     @Import(name="annotations")
@@ -34,7 +34,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
      * @return KRM-style annotations for the resource.
      * 
      * (Optional)
-     * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. This field follows Kubernetes annotations&#39; namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+     * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. This field follows Kubernetes annotations&#39; namespacing, limits, and rules. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -283,7 +283,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
          * @param annotations KRM-style annotations for the resource.
          * 
          * (Optional)
-         * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. This field follows Kubernetes annotations&#39; namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+         * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. This field follows Kubernetes annotations&#39; namespacing, limits, and rules. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
          * @param annotations KRM-style annotations for the resource.
          * 
          * (Optional)
-         * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. This field follows Kubernetes annotations&#39; namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
+         * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using &#39;run.googleapis.com&#39; or &#39;serving.knative.dev&#39; namespaces. This field follows Kubernetes annotations&#39; namespacing, limits, and rules. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations
          * 
          * @return builder
          * 

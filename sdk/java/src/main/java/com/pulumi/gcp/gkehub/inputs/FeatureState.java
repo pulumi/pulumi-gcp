@@ -100,14 +100,16 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -116,6 +118,7 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * State of the Feature resource itself.
+     * Structure is documented below.
      * 
      */
     @Import(name="resourceStates")
@@ -123,6 +126,7 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return State of the Feature resource itself.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<FeatureResourceStateArgs>>> resourceStates() {
@@ -131,6 +135,7 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+     * Structure is documented below.
      * 
      */
     @Import(name="spec")
@@ -138,6 +143,7 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<FeatureSpecArgs>> spec() {
@@ -145,14 +151,18 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. The Hub-wide Feature state
+     * (Output)
+     * Output only. The &#34;running state&#34; of the Feature in this Hub.
+     * Structure is documented below.
      * 
      */
     @Import(name="states")
     private @Nullable Output<List<FeatureStateArgs>> states;
 
     /**
-     * @return Output only. The Hub-wide Feature state
+     * @return (Output)
+     * Output only. The &#34;running state&#34; of the Feature in this Hub.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<FeatureStateArgs>>> states() {
@@ -160,14 +170,16 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. When the Feature resource was last updated.
+     * (Output)
+     * The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Output only. When the Feature resource was last updated.
+     * @return (Output)
+     * The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -317,7 +329,8 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -328,7 +341,8 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -339,6 +353,7 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resourceStates State of the Feature resource itself.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -350,6 +365,7 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resourceStates State of the Feature resource itself.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -360,6 +376,7 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param resourceStates State of the Feature resource itself.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -370,6 +387,7 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param spec Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -381,6 +399,7 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param spec Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -390,7 +409,9 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param states Output only. The Hub-wide Feature state
+         * @param states (Output)
+         * Output only. The &#34;running state&#34; of the Feature in this Hub.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -401,7 +422,9 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param states Output only. The Hub-wide Feature state
+         * @param states (Output)
+         * Output only. The &#34;running state&#34; of the Feature in this Hub.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -411,7 +434,9 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param states Output only. The Hub-wide Feature state
+         * @param states (Output)
+         * Output only. The &#34;running state&#34; of the Feature in this Hub.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -421,7 +446,8 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime Output only. When the Feature resource was last updated.
+         * @param updateTime (Output)
+         * The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;
          * 
          * @return builder
          * 
@@ -432,7 +458,8 @@ public final class FeatureState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime Output only. When the Feature resource was last updated.
+         * @param updateTime (Output)
+         * The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond resolution and up to nine fractional digits. Examples: &#34;2014-10-02T15:01:23Z&#34; and &#34;2014-10-02T15:01:23.045123456Z&#34;
          * 
          * @return builder
          * 

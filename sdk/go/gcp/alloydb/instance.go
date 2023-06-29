@@ -118,7 +118,12 @@ type Instance struct {
 
 	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
-	// Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
+	// 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
+	// Note that primary and read instances can have different availability types.
+	// Only READ_POOL instance supports ZONAL type. Users can't specify the zone for READ_POOL instance.
+	// Zone is automatically chosen from the list of zones in the region specified.
+	// Read pool of size 1 can only have zonal availability. Read pools with node count of 2 or more
+	// can have regional availability (nodes are present in 2 or more zones in a region).'
 	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
 	AvailabilityType pulumi.StringOutput `pulumi:"availabilityType"`
 	// Identifies the alloydb cluster. Must be in the format
@@ -201,7 +206,12 @@ func GetInstance(ctx *pulumi.Context,
 type instanceState struct {
 	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
+	// 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
+	// Note that primary and read instances can have different availability types.
+	// Only READ_POOL instance supports ZONAL type. Users can't specify the zone for READ_POOL instance.
+	// Zone is automatically chosen from the list of zones in the region specified.
+	// Read pool of size 1 can only have zonal availability. Read pools with node count of 2 or more
+	// can have regional availability (nodes are present in 2 or more zones in a region).'
 	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
 	AvailabilityType *string `pulumi:"availabilityType"`
 	// Identifies the alloydb cluster. Must be in the format
@@ -247,7 +257,12 @@ type instanceState struct {
 type InstanceState struct {
 	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
 	Annotations pulumi.StringMapInput
-	// Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
+	// 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
+	// Note that primary and read instances can have different availability types.
+	// Only READ_POOL instance supports ZONAL type. Users can't specify the zone for READ_POOL instance.
+	// Zone is automatically chosen from the list of zones in the region specified.
+	// Read pool of size 1 can only have zonal availability. Read pools with node count of 2 or more
+	// can have regional availability (nodes are present in 2 or more zones in a region).'
 	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
 	AvailabilityType pulumi.StringPtrInput
 	// Identifies the alloydb cluster. Must be in the format
@@ -297,7 +312,12 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
 	Annotations map[string]string `pulumi:"annotations"`
-	// Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
+	// 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
+	// Note that primary and read instances can have different availability types.
+	// Only READ_POOL instance supports ZONAL type. Users can't specify the zone for READ_POOL instance.
+	// Zone is automatically chosen from the list of zones in the region specified.
+	// Read pool of size 1 can only have zonal availability. Read pools with node count of 2 or more
+	// can have regional availability (nodes are present in 2 or more zones in a region).'
 	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
 	AvailabilityType *string `pulumi:"availabilityType"`
 	// Identifies the alloydb cluster. Must be in the format
@@ -330,7 +350,12 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// Annotations to allow client tools to store small amount of arbitrary data. This is distinct from labels.
 	Annotations pulumi.StringMapInput
-	// Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
+	// 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
+	// Note that primary and read instances can have different availability types.
+	// Only READ_POOL instance supports ZONAL type. Users can't specify the zone for READ_POOL instance.
+	// Zone is automatically chosen from the list of zones in the region specified.
+	// Read pool of size 1 can only have zonal availability. Read pools with node count of 2 or more
+	// can have regional availability (nodes are present in 2 or more zones in a region).'
 	// Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
 	AvailabilityType pulumi.StringPtrInput
 	// Identifies the alloydb cluster. Must be in the format
@@ -451,7 +476,12 @@ func (o InstanceOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
+// 'Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
+// Note that primary and read instances can have different availability types.
+// Only READ_POOL instance supports ZONAL type. Users can't specify the zone for READ_POOL instance.
+// Zone is automatically chosen from the list of zones in the region specified.
+// Read pool of size 1 can only have zonal availability. Read pools with node count of 2 or more
+// can have regional availability (nodes are present in 2 or more zones in a region).'
 // Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
 func (o InstanceOutput) AvailabilityType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AvailabilityType }).(pulumi.StringOutput)

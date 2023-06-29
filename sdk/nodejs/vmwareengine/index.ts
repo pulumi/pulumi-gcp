@@ -5,26 +5,52 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { ClusterArgs, ClusterState } from "./cluster";
+export type Cluster = import("./cluster").Cluster;
+export const Cluster: typeof import("./cluster").Cluster = null as any;
+utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
+
+export { GetClusterArgs, GetClusterResult, GetClusterOutputArgs } from "./getCluster";
+export const getCluster: typeof import("./getCluster").getCluster = null as any;
+export const getClusterOutput: typeof import("./getCluster").getClusterOutput = null as any;
+utilities.lazyLoad(exports, ["getCluster","getClusterOutput"], () => require("./getCluster"));
+
 export { GetNetworkArgs, GetNetworkResult, GetNetworkOutputArgs } from "./getNetwork";
 export const getNetwork: typeof import("./getNetwork").getNetwork = null as any;
 export const getNetworkOutput: typeof import("./getNetwork").getNetworkOutput = null as any;
 utilities.lazyLoad(exports, ["getNetwork","getNetworkOutput"], () => require("./getNetwork"));
+
+export { GetPrivateCloudArgs, GetPrivateCloudResult, GetPrivateCloudOutputArgs } from "./getPrivateCloud";
+export const getPrivateCloud: typeof import("./getPrivateCloud").getPrivateCloud = null as any;
+export const getPrivateCloudOutput: typeof import("./getPrivateCloud").getPrivateCloudOutput = null as any;
+utilities.lazyLoad(exports, ["getPrivateCloud","getPrivateCloudOutput"], () => require("./getPrivateCloud"));
 
 export { NetworkArgs, NetworkState } from "./network";
 export type Network = import("./network").Network;
 export const Network: typeof import("./network").Network = null as any;
 utilities.lazyLoad(exports, ["Network"], () => require("./network"));
 
+export { PrivateCloudArgs, PrivateCloudState } from "./privateCloud";
+export type PrivateCloud = import("./privateCloud").PrivateCloud;
+export const PrivateCloud: typeof import("./privateCloud").PrivateCloud = null as any;
+utilities.lazyLoad(exports, ["PrivateCloud"], () => require("./privateCloud"));
+
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:vmwareengine/cluster:Cluster":
+                return new Cluster(name, <any>undefined, { urn })
             case "gcp:vmwareengine/network:Network":
                 return new Network(name, <any>undefined, { urn })
+            case "gcp:vmwareengine/privateCloud:PrivateCloud":
+                return new PrivateCloud(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "vmwareengine/cluster", _module)
 pulumi.runtime.registerResourceModule("gcp", "vmwareengine/network", _module)
+pulumi.runtime.registerResourceModule("gcp", "vmwareengine/privateCloud", _module)

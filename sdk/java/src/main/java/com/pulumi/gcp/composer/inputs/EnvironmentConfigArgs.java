@@ -111,6 +111,13 @@ public final class EnvironmentConfigArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.recoveryConfig);
     }
 
+    @Import(name="resilienceMode")
+    private @Nullable Output<String> resilienceMode;
+
+    public Optional<Output<String>> resilienceMode() {
+        return Optional.ofNullable(this.resilienceMode);
+    }
+
     @Import(name="softwareConfig")
     private @Nullable Output<EnvironmentConfigSoftwareConfigArgs> softwareConfig;
 
@@ -154,6 +161,7 @@ public final class EnvironmentConfigArgs extends com.pulumi.resources.ResourceAr
         this.nodeCount = $.nodeCount;
         this.privateEnvironmentConfig = $.privateEnvironmentConfig;
         this.recoveryConfig = $.recoveryConfig;
+        this.resilienceMode = $.resilienceMode;
         this.softwareConfig = $.softwareConfig;
         this.webServerConfig = $.webServerConfig;
         this.webServerNetworkAccessControl = $.webServerNetworkAccessControl;
@@ -284,6 +292,15 @@ public final class EnvironmentConfigArgs extends com.pulumi.resources.ResourceAr
 
         public Builder recoveryConfig(EnvironmentConfigRecoveryConfigArgs recoveryConfig) {
             return recoveryConfig(Output.of(recoveryConfig));
+        }
+
+        public Builder resilienceMode(@Nullable Output<String> resilienceMode) {
+            $.resilienceMode = resilienceMode;
+            return this;
+        }
+
+        public Builder resilienceMode(String resilienceMode) {
+            return resilienceMode(Output.of(resilienceMode));
         }
 
         public Builder softwareConfig(@Nullable Output<EnvironmentConfigSoftwareConfigArgs> softwareConfig) {

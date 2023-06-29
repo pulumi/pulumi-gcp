@@ -17,6 +17,7 @@ import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageConfidentialInstan
 import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageGuestAccelerator;
 import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageNetworkInterface;
 import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageNetworkPerformanceConfig;
+import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageParams;
 import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageReservationAffinity;
 import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageScheduling;
 import com.pulumi.gcp.compute.outputs.InstanceFromMachineImageScratchDisk;
@@ -442,6 +443,20 @@ public class InstanceFromMachineImage extends com.pulumi.resources.CustomResourc
      */
     public Output<InstanceFromMachineImageNetworkPerformanceConfig> networkPerformanceConfig() {
         return this.networkPerformanceConfig;
+    }
+    /**
+     * Stores additional params passed with the request, but not persisted as part of resource payload.
+     * 
+     */
+    @Export(name="params", type=InstanceFromMachineImageParams.class, parameters={})
+    private Output<InstanceFromMachineImageParams> params;
+
+    /**
+     * @return Stores additional params passed with the request, but not persisted as part of resource payload.
+     * 
+     */
+    public Output<InstanceFromMachineImageParams> params() {
+        return this.params;
     }
     /**
      * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither

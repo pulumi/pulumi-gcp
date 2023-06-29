@@ -10,6 +10,130 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type ClusterNodeTypeConfig struct {
+	// Customized number of cores available to each node of the type.
+	// This number must always be one of `nodeType.availableCustomCoreCounts`.
+	// If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
+	// Once the customer is created then corecount cannot be changed.
+	CustomCoreCount *int `pulumi:"customCoreCount"`
+	// The number of nodes of this type in the cluster.
+	NodeCount int `pulumi:"nodeCount"`
+	// The identifier for this object. Format specified above.
+	NodeTypeId string `pulumi:"nodeTypeId"`
+}
+
+// ClusterNodeTypeConfigInput is an input type that accepts ClusterNodeTypeConfigArgs and ClusterNodeTypeConfigOutput values.
+// You can construct a concrete instance of `ClusterNodeTypeConfigInput` via:
+//
+//	ClusterNodeTypeConfigArgs{...}
+type ClusterNodeTypeConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodeTypeConfigOutput() ClusterNodeTypeConfigOutput
+	ToClusterNodeTypeConfigOutputWithContext(context.Context) ClusterNodeTypeConfigOutput
+}
+
+type ClusterNodeTypeConfigArgs struct {
+	// Customized number of cores available to each node of the type.
+	// This number must always be one of `nodeType.availableCustomCoreCounts`.
+	// If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
+	// Once the customer is created then corecount cannot be changed.
+	CustomCoreCount pulumi.IntPtrInput `pulumi:"customCoreCount"`
+	// The number of nodes of this type in the cluster.
+	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
+	// The identifier for this object. Format specified above.
+	NodeTypeId pulumi.StringInput `pulumi:"nodeTypeId"`
+}
+
+func (ClusterNodeTypeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeTypeConfig)(nil)).Elem()
+}
+
+func (i ClusterNodeTypeConfigArgs) ToClusterNodeTypeConfigOutput() ClusterNodeTypeConfigOutput {
+	return i.ToClusterNodeTypeConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeTypeConfigArgs) ToClusterNodeTypeConfigOutputWithContext(ctx context.Context) ClusterNodeTypeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeTypeConfigOutput)
+}
+
+// ClusterNodeTypeConfigArrayInput is an input type that accepts ClusterNodeTypeConfigArray and ClusterNodeTypeConfigArrayOutput values.
+// You can construct a concrete instance of `ClusterNodeTypeConfigArrayInput` via:
+//
+//	ClusterNodeTypeConfigArray{ ClusterNodeTypeConfigArgs{...} }
+type ClusterNodeTypeConfigArrayInput interface {
+	pulumi.Input
+
+	ToClusterNodeTypeConfigArrayOutput() ClusterNodeTypeConfigArrayOutput
+	ToClusterNodeTypeConfigArrayOutputWithContext(context.Context) ClusterNodeTypeConfigArrayOutput
+}
+
+type ClusterNodeTypeConfigArray []ClusterNodeTypeConfigInput
+
+func (ClusterNodeTypeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeTypeConfig)(nil)).Elem()
+}
+
+func (i ClusterNodeTypeConfigArray) ToClusterNodeTypeConfigArrayOutput() ClusterNodeTypeConfigArrayOutput {
+	return i.ToClusterNodeTypeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeTypeConfigArray) ToClusterNodeTypeConfigArrayOutputWithContext(ctx context.Context) ClusterNodeTypeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeTypeConfigArrayOutput)
+}
+
+type ClusterNodeTypeConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeTypeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeTypeConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeTypeConfigOutput) ToClusterNodeTypeConfigOutput() ClusterNodeTypeConfigOutput {
+	return o
+}
+
+func (o ClusterNodeTypeConfigOutput) ToClusterNodeTypeConfigOutputWithContext(ctx context.Context) ClusterNodeTypeConfigOutput {
+	return o
+}
+
+// Customized number of cores available to each node of the type.
+// This number must always be one of `nodeType.availableCustomCoreCounts`.
+// If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
+// Once the customer is created then corecount cannot be changed.
+func (o ClusterNodeTypeConfigOutput) CustomCoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterNodeTypeConfig) *int { return v.CustomCoreCount }).(pulumi.IntPtrOutput)
+}
+
+// The number of nodes of this type in the cluster.
+func (o ClusterNodeTypeConfigOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterNodeTypeConfig) int { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o ClusterNodeTypeConfigOutput) NodeTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeTypeConfig) string { return v.NodeTypeId }).(pulumi.StringOutput)
+}
+
+type ClusterNodeTypeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeTypeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterNodeTypeConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeTypeConfigArrayOutput) ToClusterNodeTypeConfigArrayOutput() ClusterNodeTypeConfigArrayOutput {
+	return o
+}
+
+func (o ClusterNodeTypeConfigArrayOutput) ToClusterNodeTypeConfigArrayOutputWithContext(ctx context.Context) ClusterNodeTypeConfigArrayOutput {
+	return o
+}
+
+func (o ClusterNodeTypeConfigArrayOutput) Index(i pulumi.IntInput) ClusterNodeTypeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeTypeConfig {
+		return vs[0].([]ClusterNodeTypeConfig)[vs[1].(int)]
+	}).(ClusterNodeTypeConfigOutput)
+}
+
 type NetworkVpcNetwork struct {
 	// (Output)
 	// The relative resource name of the service VPC network this VMware Engine network is attached to.
@@ -125,6 +249,1043 @@ func (o NetworkVpcNetworkArrayOutput) Index(i pulumi.IntInput) NetworkVpcNetwork
 	}).(NetworkVpcNetworkOutput)
 }
 
+type PrivateCloudHcx struct {
+	// Fully qualified domain name of the appliance.
+	Fqdn *string `pulumi:"fqdn"`
+	// Internal IP address of the appliance.
+	InternalIp *string `pulumi:"internalIp"`
+	// State of the appliance.
+	// Possible values are: `ACTIVE`, `CREATING`.
+	State *string `pulumi:"state"`
+	// Version of the appliance.
+	Version *string `pulumi:"version"`
+}
+
+// PrivateCloudHcxInput is an input type that accepts PrivateCloudHcxArgs and PrivateCloudHcxOutput values.
+// You can construct a concrete instance of `PrivateCloudHcxInput` via:
+//
+//	PrivateCloudHcxArgs{...}
+type PrivateCloudHcxInput interface {
+	pulumi.Input
+
+	ToPrivateCloudHcxOutput() PrivateCloudHcxOutput
+	ToPrivateCloudHcxOutputWithContext(context.Context) PrivateCloudHcxOutput
+}
+
+type PrivateCloudHcxArgs struct {
+	// Fully qualified domain name of the appliance.
+	Fqdn pulumi.StringPtrInput `pulumi:"fqdn"`
+	// Internal IP address of the appliance.
+	InternalIp pulumi.StringPtrInput `pulumi:"internalIp"`
+	// State of the appliance.
+	// Possible values are: `ACTIVE`, `CREATING`.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// Version of the appliance.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (PrivateCloudHcxArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudHcx)(nil)).Elem()
+}
+
+func (i PrivateCloudHcxArgs) ToPrivateCloudHcxOutput() PrivateCloudHcxOutput {
+	return i.ToPrivateCloudHcxOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudHcxArgs) ToPrivateCloudHcxOutputWithContext(ctx context.Context) PrivateCloudHcxOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudHcxOutput)
+}
+
+// PrivateCloudHcxArrayInput is an input type that accepts PrivateCloudHcxArray and PrivateCloudHcxArrayOutput values.
+// You can construct a concrete instance of `PrivateCloudHcxArrayInput` via:
+//
+//	PrivateCloudHcxArray{ PrivateCloudHcxArgs{...} }
+type PrivateCloudHcxArrayInput interface {
+	pulumi.Input
+
+	ToPrivateCloudHcxArrayOutput() PrivateCloudHcxArrayOutput
+	ToPrivateCloudHcxArrayOutputWithContext(context.Context) PrivateCloudHcxArrayOutput
+}
+
+type PrivateCloudHcxArray []PrivateCloudHcxInput
+
+func (PrivateCloudHcxArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateCloudHcx)(nil)).Elem()
+}
+
+func (i PrivateCloudHcxArray) ToPrivateCloudHcxArrayOutput() PrivateCloudHcxArrayOutput {
+	return i.ToPrivateCloudHcxArrayOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudHcxArray) ToPrivateCloudHcxArrayOutputWithContext(ctx context.Context) PrivateCloudHcxArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudHcxArrayOutput)
+}
+
+type PrivateCloudHcxOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudHcxOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudHcx)(nil)).Elem()
+}
+
+func (o PrivateCloudHcxOutput) ToPrivateCloudHcxOutput() PrivateCloudHcxOutput {
+	return o
+}
+
+func (o PrivateCloudHcxOutput) ToPrivateCloudHcxOutputWithContext(ctx context.Context) PrivateCloudHcxOutput {
+	return o
+}
+
+// Fully qualified domain name of the appliance.
+func (o PrivateCloudHcxOutput) Fqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateCloudHcx) *string { return v.Fqdn }).(pulumi.StringPtrOutput)
+}
+
+// Internal IP address of the appliance.
+func (o PrivateCloudHcxOutput) InternalIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateCloudHcx) *string { return v.InternalIp }).(pulumi.StringPtrOutput)
+}
+
+// State of the appliance.
+// Possible values are: `ACTIVE`, `CREATING`.
+func (o PrivateCloudHcxOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateCloudHcx) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Version of the appliance.
+func (o PrivateCloudHcxOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateCloudHcx) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type PrivateCloudHcxArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudHcxArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateCloudHcx)(nil)).Elem()
+}
+
+func (o PrivateCloudHcxArrayOutput) ToPrivateCloudHcxArrayOutput() PrivateCloudHcxArrayOutput {
+	return o
+}
+
+func (o PrivateCloudHcxArrayOutput) ToPrivateCloudHcxArrayOutputWithContext(ctx context.Context) PrivateCloudHcxArrayOutput {
+	return o
+}
+
+func (o PrivateCloudHcxArrayOutput) Index(i pulumi.IntInput) PrivateCloudHcxOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateCloudHcx {
+		return vs[0].([]PrivateCloudHcx)[vs[1].(int)]
+	}).(PrivateCloudHcxOutput)
+}
+
+type PrivateCloudManagementCluster struct {
+	// The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
+	// * Only contains 1-63 alphanumeric characters and hyphens
+	// * Begins with an alphabetical character
+	// * Ends with a non-hyphen character
+	// * Not formatted as a UUID
+	// * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+	ClusterId string `pulumi:"clusterId"`
+	// The map of cluster node types in this cluster,
+	// where the key is canonical identifier of the node type (corresponds to the NodeType).
+	// Structure is documented below.
+	NodeTypeConfigs []PrivateCloudManagementClusterNodeTypeConfig `pulumi:"nodeTypeConfigs"`
+}
+
+// PrivateCloudManagementClusterInput is an input type that accepts PrivateCloudManagementClusterArgs and PrivateCloudManagementClusterOutput values.
+// You can construct a concrete instance of `PrivateCloudManagementClusterInput` via:
+//
+//	PrivateCloudManagementClusterArgs{...}
+type PrivateCloudManagementClusterInput interface {
+	pulumi.Input
+
+	ToPrivateCloudManagementClusterOutput() PrivateCloudManagementClusterOutput
+	ToPrivateCloudManagementClusterOutputWithContext(context.Context) PrivateCloudManagementClusterOutput
+}
+
+type PrivateCloudManagementClusterArgs struct {
+	// The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
+	// * Only contains 1-63 alphanumeric characters and hyphens
+	// * Begins with an alphabetical character
+	// * Ends with a non-hyphen character
+	// * Not formatted as a UUID
+	// * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// The map of cluster node types in this cluster,
+	// where the key is canonical identifier of the node type (corresponds to the NodeType).
+	// Structure is documented below.
+	NodeTypeConfigs PrivateCloudManagementClusterNodeTypeConfigArrayInput `pulumi:"nodeTypeConfigs"`
+}
+
+func (PrivateCloudManagementClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudManagementCluster)(nil)).Elem()
+}
+
+func (i PrivateCloudManagementClusterArgs) ToPrivateCloudManagementClusterOutput() PrivateCloudManagementClusterOutput {
+	return i.ToPrivateCloudManagementClusterOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudManagementClusterArgs) ToPrivateCloudManagementClusterOutputWithContext(ctx context.Context) PrivateCloudManagementClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterOutput)
+}
+
+func (i PrivateCloudManagementClusterArgs) ToPrivateCloudManagementClusterPtrOutput() PrivateCloudManagementClusterPtrOutput {
+	return i.ToPrivateCloudManagementClusterPtrOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudManagementClusterArgs) ToPrivateCloudManagementClusterPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterOutput).ToPrivateCloudManagementClusterPtrOutputWithContext(ctx)
+}
+
+// PrivateCloudManagementClusterPtrInput is an input type that accepts PrivateCloudManagementClusterArgs, PrivateCloudManagementClusterPtr and PrivateCloudManagementClusterPtrOutput values.
+// You can construct a concrete instance of `PrivateCloudManagementClusterPtrInput` via:
+//
+//	        PrivateCloudManagementClusterArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateCloudManagementClusterPtrInput interface {
+	pulumi.Input
+
+	ToPrivateCloudManagementClusterPtrOutput() PrivateCloudManagementClusterPtrOutput
+	ToPrivateCloudManagementClusterPtrOutputWithContext(context.Context) PrivateCloudManagementClusterPtrOutput
+}
+
+type privateCloudManagementClusterPtrType PrivateCloudManagementClusterArgs
+
+func PrivateCloudManagementClusterPtr(v *PrivateCloudManagementClusterArgs) PrivateCloudManagementClusterPtrInput {
+	return (*privateCloudManagementClusterPtrType)(v)
+}
+
+func (*privateCloudManagementClusterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateCloudManagementCluster)(nil)).Elem()
+}
+
+func (i *privateCloudManagementClusterPtrType) ToPrivateCloudManagementClusterPtrOutput() PrivateCloudManagementClusterPtrOutput {
+	return i.ToPrivateCloudManagementClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *privateCloudManagementClusterPtrType) ToPrivateCloudManagementClusterPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterPtrOutput)
+}
+
+type PrivateCloudManagementClusterOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudManagementClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudManagementCluster)(nil)).Elem()
+}
+
+func (o PrivateCloudManagementClusterOutput) ToPrivateCloudManagementClusterOutput() PrivateCloudManagementClusterOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterOutput) ToPrivateCloudManagementClusterOutputWithContext(ctx context.Context) PrivateCloudManagementClusterOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterOutput) ToPrivateCloudManagementClusterPtrOutput() PrivateCloudManagementClusterPtrOutput {
+	return o.ToPrivateCloudManagementClusterPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateCloudManagementClusterOutput) ToPrivateCloudManagementClusterPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateCloudManagementCluster) *PrivateCloudManagementCluster {
+		return &v
+	}).(PrivateCloudManagementClusterPtrOutput)
+}
+
+// The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
+// * Only contains 1-63 alphanumeric characters and hyphens
+// * Begins with an alphabetical character
+// * Ends with a non-hyphen character
+// * Not formatted as a UUID
+// * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+func (o PrivateCloudManagementClusterOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateCloudManagementCluster) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// The map of cluster node types in this cluster,
+// where the key is canonical identifier of the node type (corresponds to the NodeType).
+// Structure is documented below.
+func (o PrivateCloudManagementClusterOutput) NodeTypeConfigs() PrivateCloudManagementClusterNodeTypeConfigArrayOutput {
+	return o.ApplyT(func(v PrivateCloudManagementCluster) []PrivateCloudManagementClusterNodeTypeConfig {
+		return v.NodeTypeConfigs
+	}).(PrivateCloudManagementClusterNodeTypeConfigArrayOutput)
+}
+
+type PrivateCloudManagementClusterPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudManagementClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateCloudManagementCluster)(nil)).Elem()
+}
+
+func (o PrivateCloudManagementClusterPtrOutput) ToPrivateCloudManagementClusterPtrOutput() PrivateCloudManagementClusterPtrOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterPtrOutput) ToPrivateCloudManagementClusterPtrOutputWithContext(ctx context.Context) PrivateCloudManagementClusterPtrOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterPtrOutput) Elem() PrivateCloudManagementClusterOutput {
+	return o.ApplyT(func(v *PrivateCloudManagementCluster) PrivateCloudManagementCluster {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateCloudManagementCluster
+		return ret
+	}).(PrivateCloudManagementClusterOutput)
+}
+
+// The user-provided identifier of the new Cluster. The identifier must meet the following requirements:
+// * Only contains 1-63 alphanumeric characters and hyphens
+// * Begins with an alphabetical character
+// * Ends with a non-hyphen character
+// * Not formatted as a UUID
+// * Complies with RFC 1034 (https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+func (o PrivateCloudManagementClusterPtrOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateCloudManagementCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The map of cluster node types in this cluster,
+// where the key is canonical identifier of the node type (corresponds to the NodeType).
+// Structure is documented below.
+func (o PrivateCloudManagementClusterPtrOutput) NodeTypeConfigs() PrivateCloudManagementClusterNodeTypeConfigArrayOutput {
+	return o.ApplyT(func(v *PrivateCloudManagementCluster) []PrivateCloudManagementClusterNodeTypeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.NodeTypeConfigs
+	}).(PrivateCloudManagementClusterNodeTypeConfigArrayOutput)
+}
+
+type PrivateCloudManagementClusterNodeTypeConfig struct {
+	// Customized number of cores available to each node of the type.
+	// This number must always be one of `nodeType.availableCustomCoreCounts`.
+	// If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
+	// This cannot be changed once the PrivateCloud is created.
+	//
+	// ***
+	CustomCoreCount *int `pulumi:"customCoreCount"`
+	// The number of nodes of this type in the cluster.
+	NodeCount int `pulumi:"nodeCount"`
+	// The identifier for this object. Format specified above.
+	NodeTypeId string `pulumi:"nodeTypeId"`
+}
+
+// PrivateCloudManagementClusterNodeTypeConfigInput is an input type that accepts PrivateCloudManagementClusterNodeTypeConfigArgs and PrivateCloudManagementClusterNodeTypeConfigOutput values.
+// You can construct a concrete instance of `PrivateCloudManagementClusterNodeTypeConfigInput` via:
+//
+//	PrivateCloudManagementClusterNodeTypeConfigArgs{...}
+type PrivateCloudManagementClusterNodeTypeConfigInput interface {
+	pulumi.Input
+
+	ToPrivateCloudManagementClusterNodeTypeConfigOutput() PrivateCloudManagementClusterNodeTypeConfigOutput
+	ToPrivateCloudManagementClusterNodeTypeConfigOutputWithContext(context.Context) PrivateCloudManagementClusterNodeTypeConfigOutput
+}
+
+type PrivateCloudManagementClusterNodeTypeConfigArgs struct {
+	// Customized number of cores available to each node of the type.
+	// This number must always be one of `nodeType.availableCustomCoreCounts`.
+	// If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
+	// This cannot be changed once the PrivateCloud is created.
+	//
+	// ***
+	CustomCoreCount pulumi.IntPtrInput `pulumi:"customCoreCount"`
+	// The number of nodes of this type in the cluster.
+	NodeCount pulumi.IntInput `pulumi:"nodeCount"`
+	// The identifier for this object. Format specified above.
+	NodeTypeId pulumi.StringInput `pulumi:"nodeTypeId"`
+}
+
+func (PrivateCloudManagementClusterNodeTypeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudManagementClusterNodeTypeConfig)(nil)).Elem()
+}
+
+func (i PrivateCloudManagementClusterNodeTypeConfigArgs) ToPrivateCloudManagementClusterNodeTypeConfigOutput() PrivateCloudManagementClusterNodeTypeConfigOutput {
+	return i.ToPrivateCloudManagementClusterNodeTypeConfigOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudManagementClusterNodeTypeConfigArgs) ToPrivateCloudManagementClusterNodeTypeConfigOutputWithContext(ctx context.Context) PrivateCloudManagementClusterNodeTypeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterNodeTypeConfigOutput)
+}
+
+// PrivateCloudManagementClusterNodeTypeConfigArrayInput is an input type that accepts PrivateCloudManagementClusterNodeTypeConfigArray and PrivateCloudManagementClusterNodeTypeConfigArrayOutput values.
+// You can construct a concrete instance of `PrivateCloudManagementClusterNodeTypeConfigArrayInput` via:
+//
+//	PrivateCloudManagementClusterNodeTypeConfigArray{ PrivateCloudManagementClusterNodeTypeConfigArgs{...} }
+type PrivateCloudManagementClusterNodeTypeConfigArrayInput interface {
+	pulumi.Input
+
+	ToPrivateCloudManagementClusterNodeTypeConfigArrayOutput() PrivateCloudManagementClusterNodeTypeConfigArrayOutput
+	ToPrivateCloudManagementClusterNodeTypeConfigArrayOutputWithContext(context.Context) PrivateCloudManagementClusterNodeTypeConfigArrayOutput
+}
+
+type PrivateCloudManagementClusterNodeTypeConfigArray []PrivateCloudManagementClusterNodeTypeConfigInput
+
+func (PrivateCloudManagementClusterNodeTypeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateCloudManagementClusterNodeTypeConfig)(nil)).Elem()
+}
+
+func (i PrivateCloudManagementClusterNodeTypeConfigArray) ToPrivateCloudManagementClusterNodeTypeConfigArrayOutput() PrivateCloudManagementClusterNodeTypeConfigArrayOutput {
+	return i.ToPrivateCloudManagementClusterNodeTypeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudManagementClusterNodeTypeConfigArray) ToPrivateCloudManagementClusterNodeTypeConfigArrayOutputWithContext(ctx context.Context) PrivateCloudManagementClusterNodeTypeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudManagementClusterNodeTypeConfigArrayOutput)
+}
+
+type PrivateCloudManagementClusterNodeTypeConfigOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudManagementClusterNodeTypeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudManagementClusterNodeTypeConfig)(nil)).Elem()
+}
+
+func (o PrivateCloudManagementClusterNodeTypeConfigOutput) ToPrivateCloudManagementClusterNodeTypeConfigOutput() PrivateCloudManagementClusterNodeTypeConfigOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterNodeTypeConfigOutput) ToPrivateCloudManagementClusterNodeTypeConfigOutputWithContext(ctx context.Context) PrivateCloudManagementClusterNodeTypeConfigOutput {
+	return o
+}
+
+// Customized number of cores available to each node of the type.
+// This number must always be one of `nodeType.availableCustomCoreCounts`.
+// If zero is provided max value from `nodeType.availableCustomCoreCounts` will be used.
+// This cannot be changed once the PrivateCloud is created.
+//
+// ***
+func (o PrivateCloudManagementClusterNodeTypeConfigOutput) CustomCoreCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PrivateCloudManagementClusterNodeTypeConfig) *int { return v.CustomCoreCount }).(pulumi.IntPtrOutput)
+}
+
+// The number of nodes of this type in the cluster.
+func (o PrivateCloudManagementClusterNodeTypeConfigOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v PrivateCloudManagementClusterNodeTypeConfig) int { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o PrivateCloudManagementClusterNodeTypeConfigOutput) NodeTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateCloudManagementClusterNodeTypeConfig) string { return v.NodeTypeId }).(pulumi.StringOutput)
+}
+
+type PrivateCloudManagementClusterNodeTypeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudManagementClusterNodeTypeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateCloudManagementClusterNodeTypeConfig)(nil)).Elem()
+}
+
+func (o PrivateCloudManagementClusterNodeTypeConfigArrayOutput) ToPrivateCloudManagementClusterNodeTypeConfigArrayOutput() PrivateCloudManagementClusterNodeTypeConfigArrayOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterNodeTypeConfigArrayOutput) ToPrivateCloudManagementClusterNodeTypeConfigArrayOutputWithContext(ctx context.Context) PrivateCloudManagementClusterNodeTypeConfigArrayOutput {
+	return o
+}
+
+func (o PrivateCloudManagementClusterNodeTypeConfigArrayOutput) Index(i pulumi.IntInput) PrivateCloudManagementClusterNodeTypeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateCloudManagementClusterNodeTypeConfig {
+		return vs[0].([]PrivateCloudManagementClusterNodeTypeConfig)[vs[1].(int)]
+	}).(PrivateCloudManagementClusterNodeTypeConfigOutput)
+}
+
+type PrivateCloudNetworkConfig struct {
+	// Management CIDR used by VMware management appliances.
+	ManagementCidr string `pulumi:"managementCidr"`
+	// (Output)
+	// The IP address layout version of the management IP address range.
+	// Possible versions include:
+	// * managementIpAddressLayoutVersion=1: Indicates the legacy IP address layout used by some existing private clouds. This is no longer supported for new private clouds
+	//   as it does not support all features.
+	// * managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
+	//   used by all newly created private clouds. This version supports all current features.
+	ManagementIpAddressLayoutVersion *int `pulumi:"managementIpAddressLayoutVersion"`
+	// The relative resource name of the VMware Engine network attached to the private cloud.
+	// Specify the name in the following form: projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+	// where {project} can either be a project number or a project ID.
+	VmwareEngineNetwork *string `pulumi:"vmwareEngineNetwork"`
+	// (Output)
+	// The canonical name of the VMware Engine network in
+	// the form: projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+	VmwareEngineNetworkCanonical *string `pulumi:"vmwareEngineNetworkCanonical"`
+}
+
+// PrivateCloudNetworkConfigInput is an input type that accepts PrivateCloudNetworkConfigArgs and PrivateCloudNetworkConfigOutput values.
+// You can construct a concrete instance of `PrivateCloudNetworkConfigInput` via:
+//
+//	PrivateCloudNetworkConfigArgs{...}
+type PrivateCloudNetworkConfigInput interface {
+	pulumi.Input
+
+	ToPrivateCloudNetworkConfigOutput() PrivateCloudNetworkConfigOutput
+	ToPrivateCloudNetworkConfigOutputWithContext(context.Context) PrivateCloudNetworkConfigOutput
+}
+
+type PrivateCloudNetworkConfigArgs struct {
+	// Management CIDR used by VMware management appliances.
+	ManagementCidr pulumi.StringInput `pulumi:"managementCidr"`
+	// (Output)
+	// The IP address layout version of the management IP address range.
+	// Possible versions include:
+	// * managementIpAddressLayoutVersion=1: Indicates the legacy IP address layout used by some existing private clouds. This is no longer supported for new private clouds
+	//   as it does not support all features.
+	// * managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
+	//   used by all newly created private clouds. This version supports all current features.
+	ManagementIpAddressLayoutVersion pulumi.IntPtrInput `pulumi:"managementIpAddressLayoutVersion"`
+	// The relative resource name of the VMware Engine network attached to the private cloud.
+	// Specify the name in the following form: projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+	// where {project} can either be a project number or a project ID.
+	VmwareEngineNetwork pulumi.StringPtrInput `pulumi:"vmwareEngineNetwork"`
+	// (Output)
+	// The canonical name of the VMware Engine network in
+	// the form: projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+	VmwareEngineNetworkCanonical pulumi.StringPtrInput `pulumi:"vmwareEngineNetworkCanonical"`
+}
+
+func (PrivateCloudNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudNetworkConfig)(nil)).Elem()
+}
+
+func (i PrivateCloudNetworkConfigArgs) ToPrivateCloudNetworkConfigOutput() PrivateCloudNetworkConfigOutput {
+	return i.ToPrivateCloudNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudNetworkConfigArgs) ToPrivateCloudNetworkConfigOutputWithContext(ctx context.Context) PrivateCloudNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudNetworkConfigOutput)
+}
+
+func (i PrivateCloudNetworkConfigArgs) ToPrivateCloudNetworkConfigPtrOutput() PrivateCloudNetworkConfigPtrOutput {
+	return i.ToPrivateCloudNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudNetworkConfigArgs) ToPrivateCloudNetworkConfigPtrOutputWithContext(ctx context.Context) PrivateCloudNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudNetworkConfigOutput).ToPrivateCloudNetworkConfigPtrOutputWithContext(ctx)
+}
+
+// PrivateCloudNetworkConfigPtrInput is an input type that accepts PrivateCloudNetworkConfigArgs, PrivateCloudNetworkConfigPtr and PrivateCloudNetworkConfigPtrOutput values.
+// You can construct a concrete instance of `PrivateCloudNetworkConfigPtrInput` via:
+//
+//	        PrivateCloudNetworkConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateCloudNetworkConfigPtrInput interface {
+	pulumi.Input
+
+	ToPrivateCloudNetworkConfigPtrOutput() PrivateCloudNetworkConfigPtrOutput
+	ToPrivateCloudNetworkConfigPtrOutputWithContext(context.Context) PrivateCloudNetworkConfigPtrOutput
+}
+
+type privateCloudNetworkConfigPtrType PrivateCloudNetworkConfigArgs
+
+func PrivateCloudNetworkConfigPtr(v *PrivateCloudNetworkConfigArgs) PrivateCloudNetworkConfigPtrInput {
+	return (*privateCloudNetworkConfigPtrType)(v)
+}
+
+func (*privateCloudNetworkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateCloudNetworkConfig)(nil)).Elem()
+}
+
+func (i *privateCloudNetworkConfigPtrType) ToPrivateCloudNetworkConfigPtrOutput() PrivateCloudNetworkConfigPtrOutput {
+	return i.ToPrivateCloudNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *privateCloudNetworkConfigPtrType) ToPrivateCloudNetworkConfigPtrOutputWithContext(ctx context.Context) PrivateCloudNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudNetworkConfigPtrOutput)
+}
+
+type PrivateCloudNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudNetworkConfig)(nil)).Elem()
+}
+
+func (o PrivateCloudNetworkConfigOutput) ToPrivateCloudNetworkConfigOutput() PrivateCloudNetworkConfigOutput {
+	return o
+}
+
+func (o PrivateCloudNetworkConfigOutput) ToPrivateCloudNetworkConfigOutputWithContext(ctx context.Context) PrivateCloudNetworkConfigOutput {
+	return o
+}
+
+func (o PrivateCloudNetworkConfigOutput) ToPrivateCloudNetworkConfigPtrOutput() PrivateCloudNetworkConfigPtrOutput {
+	return o.ToPrivateCloudNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateCloudNetworkConfigOutput) ToPrivateCloudNetworkConfigPtrOutputWithContext(ctx context.Context) PrivateCloudNetworkConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateCloudNetworkConfig) *PrivateCloudNetworkConfig {
+		return &v
+	}).(PrivateCloudNetworkConfigPtrOutput)
+}
+
+// Management CIDR used by VMware management appliances.
+func (o PrivateCloudNetworkConfigOutput) ManagementCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateCloudNetworkConfig) string { return v.ManagementCidr }).(pulumi.StringOutput)
+}
+
+// (Output)
+// The IP address layout version of the management IP address range.
+// Possible versions include:
+//   - managementIpAddressLayoutVersion=1: Indicates the legacy IP address layout used by some existing private clouds. This is no longer supported for new private clouds
+//     as it does not support all features.
+//   - managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
+//     used by all newly created private clouds. This version supports all current features.
+func (o PrivateCloudNetworkConfigOutput) ManagementIpAddressLayoutVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PrivateCloudNetworkConfig) *int { return v.ManagementIpAddressLayoutVersion }).(pulumi.IntPtrOutput)
+}
+
+// The relative resource name of the VMware Engine network attached to the private cloud.
+// Specify the name in the following form: projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+// where {project} can either be a project number or a project ID.
+func (o PrivateCloudNetworkConfigOutput) VmwareEngineNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateCloudNetworkConfig) *string { return v.VmwareEngineNetwork }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The canonical name of the VMware Engine network in
+// the form: projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+func (o PrivateCloudNetworkConfigOutput) VmwareEngineNetworkCanonical() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateCloudNetworkConfig) *string { return v.VmwareEngineNetworkCanonical }).(pulumi.StringPtrOutput)
+}
+
+type PrivateCloudNetworkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudNetworkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateCloudNetworkConfig)(nil)).Elem()
+}
+
+func (o PrivateCloudNetworkConfigPtrOutput) ToPrivateCloudNetworkConfigPtrOutput() PrivateCloudNetworkConfigPtrOutput {
+	return o
+}
+
+func (o PrivateCloudNetworkConfigPtrOutput) ToPrivateCloudNetworkConfigPtrOutputWithContext(ctx context.Context) PrivateCloudNetworkConfigPtrOutput {
+	return o
+}
+
+func (o PrivateCloudNetworkConfigPtrOutput) Elem() PrivateCloudNetworkConfigOutput {
+	return o.ApplyT(func(v *PrivateCloudNetworkConfig) PrivateCloudNetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateCloudNetworkConfig
+		return ret
+	}).(PrivateCloudNetworkConfigOutput)
+}
+
+// Management CIDR used by VMware management appliances.
+func (o PrivateCloudNetworkConfigPtrOutput) ManagementCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateCloudNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ManagementCidr
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The IP address layout version of the management IP address range.
+// Possible versions include:
+//   - managementIpAddressLayoutVersion=1: Indicates the legacy IP address layout used by some existing private clouds. This is no longer supported for new private clouds
+//     as it does not support all features.
+//   - managementIpAddressLayoutVersion=2: Indicates the latest IP address layout
+//     used by all newly created private clouds. This version supports all current features.
+func (o PrivateCloudNetworkConfigPtrOutput) ManagementIpAddressLayoutVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PrivateCloudNetworkConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ManagementIpAddressLayoutVersion
+	}).(pulumi.IntPtrOutput)
+}
+
+// The relative resource name of the VMware Engine network attached to the private cloud.
+// Specify the name in the following form: projects/{project}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+// where {project} can either be a project number or a project ID.
+func (o PrivateCloudNetworkConfigPtrOutput) VmwareEngineNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateCloudNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VmwareEngineNetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The canonical name of the VMware Engine network in
+// the form: projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmwareEngineNetworkId}
+func (o PrivateCloudNetworkConfigPtrOutput) VmwareEngineNetworkCanonical() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateCloudNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VmwareEngineNetworkCanonical
+	}).(pulumi.StringPtrOutput)
+}
+
+type PrivateCloudNsx struct {
+	// Fully qualified domain name of the appliance.
+	Fqdn *string `pulumi:"fqdn"`
+	// Internal IP address of the appliance.
+	InternalIp *string `pulumi:"internalIp"`
+	// State of the appliance.
+	// Possible values are: `ACTIVE`, `CREATING`.
+	State *string `pulumi:"state"`
+	// Version of the appliance.
+	Version *string `pulumi:"version"`
+}
+
+// PrivateCloudNsxInput is an input type that accepts PrivateCloudNsxArgs and PrivateCloudNsxOutput values.
+// You can construct a concrete instance of `PrivateCloudNsxInput` via:
+//
+//	PrivateCloudNsxArgs{...}
+type PrivateCloudNsxInput interface {
+	pulumi.Input
+
+	ToPrivateCloudNsxOutput() PrivateCloudNsxOutput
+	ToPrivateCloudNsxOutputWithContext(context.Context) PrivateCloudNsxOutput
+}
+
+type PrivateCloudNsxArgs struct {
+	// Fully qualified domain name of the appliance.
+	Fqdn pulumi.StringPtrInput `pulumi:"fqdn"`
+	// Internal IP address of the appliance.
+	InternalIp pulumi.StringPtrInput `pulumi:"internalIp"`
+	// State of the appliance.
+	// Possible values are: `ACTIVE`, `CREATING`.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// Version of the appliance.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (PrivateCloudNsxArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudNsx)(nil)).Elem()
+}
+
+func (i PrivateCloudNsxArgs) ToPrivateCloudNsxOutput() PrivateCloudNsxOutput {
+	return i.ToPrivateCloudNsxOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudNsxArgs) ToPrivateCloudNsxOutputWithContext(ctx context.Context) PrivateCloudNsxOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudNsxOutput)
+}
+
+// PrivateCloudNsxArrayInput is an input type that accepts PrivateCloudNsxArray and PrivateCloudNsxArrayOutput values.
+// You can construct a concrete instance of `PrivateCloudNsxArrayInput` via:
+//
+//	PrivateCloudNsxArray{ PrivateCloudNsxArgs{...} }
+type PrivateCloudNsxArrayInput interface {
+	pulumi.Input
+
+	ToPrivateCloudNsxArrayOutput() PrivateCloudNsxArrayOutput
+	ToPrivateCloudNsxArrayOutputWithContext(context.Context) PrivateCloudNsxArrayOutput
+}
+
+type PrivateCloudNsxArray []PrivateCloudNsxInput
+
+func (PrivateCloudNsxArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateCloudNsx)(nil)).Elem()
+}
+
+func (i PrivateCloudNsxArray) ToPrivateCloudNsxArrayOutput() PrivateCloudNsxArrayOutput {
+	return i.ToPrivateCloudNsxArrayOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudNsxArray) ToPrivateCloudNsxArrayOutputWithContext(ctx context.Context) PrivateCloudNsxArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudNsxArrayOutput)
+}
+
+type PrivateCloudNsxOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudNsxOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudNsx)(nil)).Elem()
+}
+
+func (o PrivateCloudNsxOutput) ToPrivateCloudNsxOutput() PrivateCloudNsxOutput {
+	return o
+}
+
+func (o PrivateCloudNsxOutput) ToPrivateCloudNsxOutputWithContext(ctx context.Context) PrivateCloudNsxOutput {
+	return o
+}
+
+// Fully qualified domain name of the appliance.
+func (o PrivateCloudNsxOutput) Fqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateCloudNsx) *string { return v.Fqdn }).(pulumi.StringPtrOutput)
+}
+
+// Internal IP address of the appliance.
+func (o PrivateCloudNsxOutput) InternalIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateCloudNsx) *string { return v.InternalIp }).(pulumi.StringPtrOutput)
+}
+
+// State of the appliance.
+// Possible values are: `ACTIVE`, `CREATING`.
+func (o PrivateCloudNsxOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateCloudNsx) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Version of the appliance.
+func (o PrivateCloudNsxOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateCloudNsx) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type PrivateCloudNsxArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudNsxArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateCloudNsx)(nil)).Elem()
+}
+
+func (o PrivateCloudNsxArrayOutput) ToPrivateCloudNsxArrayOutput() PrivateCloudNsxArrayOutput {
+	return o
+}
+
+func (o PrivateCloudNsxArrayOutput) ToPrivateCloudNsxArrayOutputWithContext(ctx context.Context) PrivateCloudNsxArrayOutput {
+	return o
+}
+
+func (o PrivateCloudNsxArrayOutput) Index(i pulumi.IntInput) PrivateCloudNsxOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateCloudNsx {
+		return vs[0].([]PrivateCloudNsx)[vs[1].(int)]
+	}).(PrivateCloudNsxOutput)
+}
+
+type PrivateCloudVcenter struct {
+	// Fully qualified domain name of the appliance.
+	Fqdn *string `pulumi:"fqdn"`
+	// Internal IP address of the appliance.
+	InternalIp *string `pulumi:"internalIp"`
+	// State of the appliance.
+	// Possible values are: `ACTIVE`, `CREATING`.
+	State *string `pulumi:"state"`
+	// Version of the appliance.
+	Version *string `pulumi:"version"`
+}
+
+// PrivateCloudVcenterInput is an input type that accepts PrivateCloudVcenterArgs and PrivateCloudVcenterOutput values.
+// You can construct a concrete instance of `PrivateCloudVcenterInput` via:
+//
+//	PrivateCloudVcenterArgs{...}
+type PrivateCloudVcenterInput interface {
+	pulumi.Input
+
+	ToPrivateCloudVcenterOutput() PrivateCloudVcenterOutput
+	ToPrivateCloudVcenterOutputWithContext(context.Context) PrivateCloudVcenterOutput
+}
+
+type PrivateCloudVcenterArgs struct {
+	// Fully qualified domain name of the appliance.
+	Fqdn pulumi.StringPtrInput `pulumi:"fqdn"`
+	// Internal IP address of the appliance.
+	InternalIp pulumi.StringPtrInput `pulumi:"internalIp"`
+	// State of the appliance.
+	// Possible values are: `ACTIVE`, `CREATING`.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// Version of the appliance.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (PrivateCloudVcenterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudVcenter)(nil)).Elem()
+}
+
+func (i PrivateCloudVcenterArgs) ToPrivateCloudVcenterOutput() PrivateCloudVcenterOutput {
+	return i.ToPrivateCloudVcenterOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudVcenterArgs) ToPrivateCloudVcenterOutputWithContext(ctx context.Context) PrivateCloudVcenterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudVcenterOutput)
+}
+
+// PrivateCloudVcenterArrayInput is an input type that accepts PrivateCloudVcenterArray and PrivateCloudVcenterArrayOutput values.
+// You can construct a concrete instance of `PrivateCloudVcenterArrayInput` via:
+//
+//	PrivateCloudVcenterArray{ PrivateCloudVcenterArgs{...} }
+type PrivateCloudVcenterArrayInput interface {
+	pulumi.Input
+
+	ToPrivateCloudVcenterArrayOutput() PrivateCloudVcenterArrayOutput
+	ToPrivateCloudVcenterArrayOutputWithContext(context.Context) PrivateCloudVcenterArrayOutput
+}
+
+type PrivateCloudVcenterArray []PrivateCloudVcenterInput
+
+func (PrivateCloudVcenterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateCloudVcenter)(nil)).Elem()
+}
+
+func (i PrivateCloudVcenterArray) ToPrivateCloudVcenterArrayOutput() PrivateCloudVcenterArrayOutput {
+	return i.ToPrivateCloudVcenterArrayOutputWithContext(context.Background())
+}
+
+func (i PrivateCloudVcenterArray) ToPrivateCloudVcenterArrayOutputWithContext(ctx context.Context) PrivateCloudVcenterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateCloudVcenterArrayOutput)
+}
+
+type PrivateCloudVcenterOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudVcenterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateCloudVcenter)(nil)).Elem()
+}
+
+func (o PrivateCloudVcenterOutput) ToPrivateCloudVcenterOutput() PrivateCloudVcenterOutput {
+	return o
+}
+
+func (o PrivateCloudVcenterOutput) ToPrivateCloudVcenterOutputWithContext(ctx context.Context) PrivateCloudVcenterOutput {
+	return o
+}
+
+// Fully qualified domain name of the appliance.
+func (o PrivateCloudVcenterOutput) Fqdn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateCloudVcenter) *string { return v.Fqdn }).(pulumi.StringPtrOutput)
+}
+
+// Internal IP address of the appliance.
+func (o PrivateCloudVcenterOutput) InternalIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateCloudVcenter) *string { return v.InternalIp }).(pulumi.StringPtrOutput)
+}
+
+// State of the appliance.
+// Possible values are: `ACTIVE`, `CREATING`.
+func (o PrivateCloudVcenterOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateCloudVcenter) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Version of the appliance.
+func (o PrivateCloudVcenterOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateCloudVcenter) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type PrivateCloudVcenterArrayOutput struct{ *pulumi.OutputState }
+
+func (PrivateCloudVcenterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrivateCloudVcenter)(nil)).Elem()
+}
+
+func (o PrivateCloudVcenterArrayOutput) ToPrivateCloudVcenterArrayOutput() PrivateCloudVcenterArrayOutput {
+	return o
+}
+
+func (o PrivateCloudVcenterArrayOutput) ToPrivateCloudVcenterArrayOutputWithContext(ctx context.Context) PrivateCloudVcenterArrayOutput {
+	return o
+}
+
+func (o PrivateCloudVcenterArrayOutput) Index(i pulumi.IntInput) PrivateCloudVcenterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrivateCloudVcenter {
+		return vs[0].([]PrivateCloudVcenter)[vs[1].(int)]
+	}).(PrivateCloudVcenterOutput)
+}
+
+type GetClusterNodeTypeConfig struct {
+	CustomCoreCount int    `pulumi:"customCoreCount"`
+	NodeCount       int    `pulumi:"nodeCount"`
+	NodeTypeId      string `pulumi:"nodeTypeId"`
+}
+
+// GetClusterNodeTypeConfigInput is an input type that accepts GetClusterNodeTypeConfigArgs and GetClusterNodeTypeConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeTypeConfigInput` via:
+//
+//	GetClusterNodeTypeConfigArgs{...}
+type GetClusterNodeTypeConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeTypeConfigOutput() GetClusterNodeTypeConfigOutput
+	ToGetClusterNodeTypeConfigOutputWithContext(context.Context) GetClusterNodeTypeConfigOutput
+}
+
+type GetClusterNodeTypeConfigArgs struct {
+	CustomCoreCount pulumi.IntInput    `pulumi:"customCoreCount"`
+	NodeCount       pulumi.IntInput    `pulumi:"nodeCount"`
+	NodeTypeId      pulumi.StringInput `pulumi:"nodeTypeId"`
+}
+
+func (GetClusterNodeTypeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeTypeConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeTypeConfigArgs) ToGetClusterNodeTypeConfigOutput() GetClusterNodeTypeConfigOutput {
+	return i.ToGetClusterNodeTypeConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeTypeConfigArgs) ToGetClusterNodeTypeConfigOutputWithContext(ctx context.Context) GetClusterNodeTypeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeTypeConfigOutput)
+}
+
+// GetClusterNodeTypeConfigArrayInput is an input type that accepts GetClusterNodeTypeConfigArray and GetClusterNodeTypeConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeTypeConfigArrayInput` via:
+//
+//	GetClusterNodeTypeConfigArray{ GetClusterNodeTypeConfigArgs{...} }
+type GetClusterNodeTypeConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeTypeConfigArrayOutput() GetClusterNodeTypeConfigArrayOutput
+	ToGetClusterNodeTypeConfigArrayOutputWithContext(context.Context) GetClusterNodeTypeConfigArrayOutput
+}
+
+type GetClusterNodeTypeConfigArray []GetClusterNodeTypeConfigInput
+
+func (GetClusterNodeTypeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeTypeConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeTypeConfigArray) ToGetClusterNodeTypeConfigArrayOutput() GetClusterNodeTypeConfigArrayOutput {
+	return i.ToGetClusterNodeTypeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeTypeConfigArray) ToGetClusterNodeTypeConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeTypeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeTypeConfigArrayOutput)
+}
+
+type GetClusterNodeTypeConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeTypeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeTypeConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeTypeConfigOutput) ToGetClusterNodeTypeConfigOutput() GetClusterNodeTypeConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeTypeConfigOutput) ToGetClusterNodeTypeConfigOutputWithContext(ctx context.Context) GetClusterNodeTypeConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeTypeConfigOutput) CustomCoreCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeTypeConfig) int { return v.CustomCoreCount }).(pulumi.IntOutput)
+}
+
+func (o GetClusterNodeTypeConfigOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeTypeConfig) int { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+func (o GetClusterNodeTypeConfigOutput) NodeTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeTypeConfig) string { return v.NodeTypeId }).(pulumi.StringOutput)
+}
+
+type GetClusterNodeTypeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeTypeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeTypeConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeTypeConfigArrayOutput) ToGetClusterNodeTypeConfigArrayOutput() GetClusterNodeTypeConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeTypeConfigArrayOutput) ToGetClusterNodeTypeConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeTypeConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeTypeConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeTypeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeTypeConfig {
+		return vs[0].([]GetClusterNodeTypeConfig)[vs[1].(int)]
+	}).(GetClusterNodeTypeConfigOutput)
+}
+
 type GetNetworkVpcNetwork struct {
 	Network string `pulumi:"network"`
 	Type    string `pulumi:"type"`
@@ -225,13 +1386,725 @@ func (o GetNetworkVpcNetworkArrayOutput) Index(i pulumi.IntInput) GetNetworkVpcN
 	}).(GetNetworkVpcNetworkOutput)
 }
 
+type GetPrivateCloudHcx struct {
+	Fqdn       string `pulumi:"fqdn"`
+	InternalIp string `pulumi:"internalIp"`
+	State      string `pulumi:"state"`
+	Version    string `pulumi:"version"`
+}
+
+// GetPrivateCloudHcxInput is an input type that accepts GetPrivateCloudHcxArgs and GetPrivateCloudHcxOutput values.
+// You can construct a concrete instance of `GetPrivateCloudHcxInput` via:
+//
+//	GetPrivateCloudHcxArgs{...}
+type GetPrivateCloudHcxInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudHcxOutput() GetPrivateCloudHcxOutput
+	ToGetPrivateCloudHcxOutputWithContext(context.Context) GetPrivateCloudHcxOutput
+}
+
+type GetPrivateCloudHcxArgs struct {
+	Fqdn       pulumi.StringInput `pulumi:"fqdn"`
+	InternalIp pulumi.StringInput `pulumi:"internalIp"`
+	State      pulumi.StringInput `pulumi:"state"`
+	Version    pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetPrivateCloudHcxArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudHcx)(nil)).Elem()
+}
+
+func (i GetPrivateCloudHcxArgs) ToGetPrivateCloudHcxOutput() GetPrivateCloudHcxOutput {
+	return i.ToGetPrivateCloudHcxOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudHcxArgs) ToGetPrivateCloudHcxOutputWithContext(ctx context.Context) GetPrivateCloudHcxOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudHcxOutput)
+}
+
+// GetPrivateCloudHcxArrayInput is an input type that accepts GetPrivateCloudHcxArray and GetPrivateCloudHcxArrayOutput values.
+// You can construct a concrete instance of `GetPrivateCloudHcxArrayInput` via:
+//
+//	GetPrivateCloudHcxArray{ GetPrivateCloudHcxArgs{...} }
+type GetPrivateCloudHcxArrayInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudHcxArrayOutput() GetPrivateCloudHcxArrayOutput
+	ToGetPrivateCloudHcxArrayOutputWithContext(context.Context) GetPrivateCloudHcxArrayOutput
+}
+
+type GetPrivateCloudHcxArray []GetPrivateCloudHcxInput
+
+func (GetPrivateCloudHcxArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudHcx)(nil)).Elem()
+}
+
+func (i GetPrivateCloudHcxArray) ToGetPrivateCloudHcxArrayOutput() GetPrivateCloudHcxArrayOutput {
+	return i.ToGetPrivateCloudHcxArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudHcxArray) ToGetPrivateCloudHcxArrayOutputWithContext(ctx context.Context) GetPrivateCloudHcxArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudHcxArrayOutput)
+}
+
+type GetPrivateCloudHcxOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudHcxOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudHcx)(nil)).Elem()
+}
+
+func (o GetPrivateCloudHcxOutput) ToGetPrivateCloudHcxOutput() GetPrivateCloudHcxOutput {
+	return o
+}
+
+func (o GetPrivateCloudHcxOutput) ToGetPrivateCloudHcxOutputWithContext(ctx context.Context) GetPrivateCloudHcxOutput {
+	return o
+}
+
+func (o GetPrivateCloudHcxOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudHcx) string { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+func (o GetPrivateCloudHcxOutput) InternalIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudHcx) string { return v.InternalIp }).(pulumi.StringOutput)
+}
+
+func (o GetPrivateCloudHcxOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudHcx) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o GetPrivateCloudHcxOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudHcx) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetPrivateCloudHcxArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudHcxArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudHcx)(nil)).Elem()
+}
+
+func (o GetPrivateCloudHcxArrayOutput) ToGetPrivateCloudHcxArrayOutput() GetPrivateCloudHcxArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudHcxArrayOutput) ToGetPrivateCloudHcxArrayOutputWithContext(ctx context.Context) GetPrivateCloudHcxArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudHcxArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudHcxOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivateCloudHcx {
+		return vs[0].([]GetPrivateCloudHcx)[vs[1].(int)]
+	}).(GetPrivateCloudHcxOutput)
+}
+
+type GetPrivateCloudManagementCluster struct {
+	ClusterId       string                                           `pulumi:"clusterId"`
+	NodeTypeConfigs []GetPrivateCloudManagementClusterNodeTypeConfig `pulumi:"nodeTypeConfigs"`
+}
+
+// GetPrivateCloudManagementClusterInput is an input type that accepts GetPrivateCloudManagementClusterArgs and GetPrivateCloudManagementClusterOutput values.
+// You can construct a concrete instance of `GetPrivateCloudManagementClusterInput` via:
+//
+//	GetPrivateCloudManagementClusterArgs{...}
+type GetPrivateCloudManagementClusterInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudManagementClusterOutput() GetPrivateCloudManagementClusterOutput
+	ToGetPrivateCloudManagementClusterOutputWithContext(context.Context) GetPrivateCloudManagementClusterOutput
+}
+
+type GetPrivateCloudManagementClusterArgs struct {
+	ClusterId       pulumi.StringInput                                       `pulumi:"clusterId"`
+	NodeTypeConfigs GetPrivateCloudManagementClusterNodeTypeConfigArrayInput `pulumi:"nodeTypeConfigs"`
+}
+
+func (GetPrivateCloudManagementClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudManagementCluster)(nil)).Elem()
+}
+
+func (i GetPrivateCloudManagementClusterArgs) ToGetPrivateCloudManagementClusterOutput() GetPrivateCloudManagementClusterOutput {
+	return i.ToGetPrivateCloudManagementClusterOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudManagementClusterArgs) ToGetPrivateCloudManagementClusterOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudManagementClusterOutput)
+}
+
+// GetPrivateCloudManagementClusterArrayInput is an input type that accepts GetPrivateCloudManagementClusterArray and GetPrivateCloudManagementClusterArrayOutput values.
+// You can construct a concrete instance of `GetPrivateCloudManagementClusterArrayInput` via:
+//
+//	GetPrivateCloudManagementClusterArray{ GetPrivateCloudManagementClusterArgs{...} }
+type GetPrivateCloudManagementClusterArrayInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudManagementClusterArrayOutput() GetPrivateCloudManagementClusterArrayOutput
+	ToGetPrivateCloudManagementClusterArrayOutputWithContext(context.Context) GetPrivateCloudManagementClusterArrayOutput
+}
+
+type GetPrivateCloudManagementClusterArray []GetPrivateCloudManagementClusterInput
+
+func (GetPrivateCloudManagementClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudManagementCluster)(nil)).Elem()
+}
+
+func (i GetPrivateCloudManagementClusterArray) ToGetPrivateCloudManagementClusterArrayOutput() GetPrivateCloudManagementClusterArrayOutput {
+	return i.ToGetPrivateCloudManagementClusterArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudManagementClusterArray) ToGetPrivateCloudManagementClusterArrayOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudManagementClusterArrayOutput)
+}
+
+type GetPrivateCloudManagementClusterOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudManagementClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudManagementCluster)(nil)).Elem()
+}
+
+func (o GetPrivateCloudManagementClusterOutput) ToGetPrivateCloudManagementClusterOutput() GetPrivateCloudManagementClusterOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterOutput) ToGetPrivateCloudManagementClusterOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementCluster) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+func (o GetPrivateCloudManagementClusterOutput) NodeTypeConfigs() GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementCluster) []GetPrivateCloudManagementClusterNodeTypeConfig {
+		return v.NodeTypeConfigs
+	}).(GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput)
+}
+
+type GetPrivateCloudManagementClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudManagementClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudManagementCluster)(nil)).Elem()
+}
+
+func (o GetPrivateCloudManagementClusterArrayOutput) ToGetPrivateCloudManagementClusterArrayOutput() GetPrivateCloudManagementClusterArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterArrayOutput) ToGetPrivateCloudManagementClusterArrayOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudManagementClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivateCloudManagementCluster {
+		return vs[0].([]GetPrivateCloudManagementCluster)[vs[1].(int)]
+	}).(GetPrivateCloudManagementClusterOutput)
+}
+
+type GetPrivateCloudManagementClusterNodeTypeConfig struct {
+	CustomCoreCount int    `pulumi:"customCoreCount"`
+	NodeCount       int    `pulumi:"nodeCount"`
+	NodeTypeId      string `pulumi:"nodeTypeId"`
+}
+
+// GetPrivateCloudManagementClusterNodeTypeConfigInput is an input type that accepts GetPrivateCloudManagementClusterNodeTypeConfigArgs and GetPrivateCloudManagementClusterNodeTypeConfigOutput values.
+// You can construct a concrete instance of `GetPrivateCloudManagementClusterNodeTypeConfigInput` via:
+//
+//	GetPrivateCloudManagementClusterNodeTypeConfigArgs{...}
+type GetPrivateCloudManagementClusterNodeTypeConfigInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudManagementClusterNodeTypeConfigOutput() GetPrivateCloudManagementClusterNodeTypeConfigOutput
+	ToGetPrivateCloudManagementClusterNodeTypeConfigOutputWithContext(context.Context) GetPrivateCloudManagementClusterNodeTypeConfigOutput
+}
+
+type GetPrivateCloudManagementClusterNodeTypeConfigArgs struct {
+	CustomCoreCount pulumi.IntInput    `pulumi:"customCoreCount"`
+	NodeCount       pulumi.IntInput    `pulumi:"nodeCount"`
+	NodeTypeId      pulumi.StringInput `pulumi:"nodeTypeId"`
+}
+
+func (GetPrivateCloudManagementClusterNodeTypeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudManagementClusterNodeTypeConfig)(nil)).Elem()
+}
+
+func (i GetPrivateCloudManagementClusterNodeTypeConfigArgs) ToGetPrivateCloudManagementClusterNodeTypeConfigOutput() GetPrivateCloudManagementClusterNodeTypeConfigOutput {
+	return i.ToGetPrivateCloudManagementClusterNodeTypeConfigOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudManagementClusterNodeTypeConfigArgs) ToGetPrivateCloudManagementClusterNodeTypeConfigOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterNodeTypeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudManagementClusterNodeTypeConfigOutput)
+}
+
+// GetPrivateCloudManagementClusterNodeTypeConfigArrayInput is an input type that accepts GetPrivateCloudManagementClusterNodeTypeConfigArray and GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput values.
+// You can construct a concrete instance of `GetPrivateCloudManagementClusterNodeTypeConfigArrayInput` via:
+//
+//	GetPrivateCloudManagementClusterNodeTypeConfigArray{ GetPrivateCloudManagementClusterNodeTypeConfigArgs{...} }
+type GetPrivateCloudManagementClusterNodeTypeConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudManagementClusterNodeTypeConfigArrayOutput() GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput
+	ToGetPrivateCloudManagementClusterNodeTypeConfigArrayOutputWithContext(context.Context) GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput
+}
+
+type GetPrivateCloudManagementClusterNodeTypeConfigArray []GetPrivateCloudManagementClusterNodeTypeConfigInput
+
+func (GetPrivateCloudManagementClusterNodeTypeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudManagementClusterNodeTypeConfig)(nil)).Elem()
+}
+
+func (i GetPrivateCloudManagementClusterNodeTypeConfigArray) ToGetPrivateCloudManagementClusterNodeTypeConfigArrayOutput() GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput {
+	return i.ToGetPrivateCloudManagementClusterNodeTypeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudManagementClusterNodeTypeConfigArray) ToGetPrivateCloudManagementClusterNodeTypeConfigArrayOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput)
+}
+
+type GetPrivateCloudManagementClusterNodeTypeConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudManagementClusterNodeTypeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudManagementClusterNodeTypeConfig)(nil)).Elem()
+}
+
+func (o GetPrivateCloudManagementClusterNodeTypeConfigOutput) ToGetPrivateCloudManagementClusterNodeTypeConfigOutput() GetPrivateCloudManagementClusterNodeTypeConfigOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterNodeTypeConfigOutput) ToGetPrivateCloudManagementClusterNodeTypeConfigOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterNodeTypeConfigOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterNodeTypeConfigOutput) CustomCoreCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementClusterNodeTypeConfig) int { return v.CustomCoreCount }).(pulumi.IntOutput)
+}
+
+func (o GetPrivateCloudManagementClusterNodeTypeConfigOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementClusterNodeTypeConfig) int { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+func (o GetPrivateCloudManagementClusterNodeTypeConfigOutput) NodeTypeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudManagementClusterNodeTypeConfig) string { return v.NodeTypeId }).(pulumi.StringOutput)
+}
+
+type GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudManagementClusterNodeTypeConfig)(nil)).Elem()
+}
+
+func (o GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput) ToGetPrivateCloudManagementClusterNodeTypeConfigArrayOutput() GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput) ToGetPrivateCloudManagementClusterNodeTypeConfigArrayOutputWithContext(ctx context.Context) GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudManagementClusterNodeTypeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivateCloudManagementClusterNodeTypeConfig {
+		return vs[0].([]GetPrivateCloudManagementClusterNodeTypeConfig)[vs[1].(int)]
+	}).(GetPrivateCloudManagementClusterNodeTypeConfigOutput)
+}
+
+type GetPrivateCloudNetworkConfig struct {
+	ManagementCidr                   string `pulumi:"managementCidr"`
+	ManagementIpAddressLayoutVersion int    `pulumi:"managementIpAddressLayoutVersion"`
+	VmwareEngineNetwork              string `pulumi:"vmwareEngineNetwork"`
+	VmwareEngineNetworkCanonical     string `pulumi:"vmwareEngineNetworkCanonical"`
+}
+
+// GetPrivateCloudNetworkConfigInput is an input type that accepts GetPrivateCloudNetworkConfigArgs and GetPrivateCloudNetworkConfigOutput values.
+// You can construct a concrete instance of `GetPrivateCloudNetworkConfigInput` via:
+//
+//	GetPrivateCloudNetworkConfigArgs{...}
+type GetPrivateCloudNetworkConfigInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudNetworkConfigOutput() GetPrivateCloudNetworkConfigOutput
+	ToGetPrivateCloudNetworkConfigOutputWithContext(context.Context) GetPrivateCloudNetworkConfigOutput
+}
+
+type GetPrivateCloudNetworkConfigArgs struct {
+	ManagementCidr                   pulumi.StringInput `pulumi:"managementCidr"`
+	ManagementIpAddressLayoutVersion pulumi.IntInput    `pulumi:"managementIpAddressLayoutVersion"`
+	VmwareEngineNetwork              pulumi.StringInput `pulumi:"vmwareEngineNetwork"`
+	VmwareEngineNetworkCanonical     pulumi.StringInput `pulumi:"vmwareEngineNetworkCanonical"`
+}
+
+func (GetPrivateCloudNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudNetworkConfig)(nil)).Elem()
+}
+
+func (i GetPrivateCloudNetworkConfigArgs) ToGetPrivateCloudNetworkConfigOutput() GetPrivateCloudNetworkConfigOutput {
+	return i.ToGetPrivateCloudNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudNetworkConfigArgs) ToGetPrivateCloudNetworkConfigOutputWithContext(ctx context.Context) GetPrivateCloudNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudNetworkConfigOutput)
+}
+
+// GetPrivateCloudNetworkConfigArrayInput is an input type that accepts GetPrivateCloudNetworkConfigArray and GetPrivateCloudNetworkConfigArrayOutput values.
+// You can construct a concrete instance of `GetPrivateCloudNetworkConfigArrayInput` via:
+//
+//	GetPrivateCloudNetworkConfigArray{ GetPrivateCloudNetworkConfigArgs{...} }
+type GetPrivateCloudNetworkConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudNetworkConfigArrayOutput() GetPrivateCloudNetworkConfigArrayOutput
+	ToGetPrivateCloudNetworkConfigArrayOutputWithContext(context.Context) GetPrivateCloudNetworkConfigArrayOutput
+}
+
+type GetPrivateCloudNetworkConfigArray []GetPrivateCloudNetworkConfigInput
+
+func (GetPrivateCloudNetworkConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudNetworkConfig)(nil)).Elem()
+}
+
+func (i GetPrivateCloudNetworkConfigArray) ToGetPrivateCloudNetworkConfigArrayOutput() GetPrivateCloudNetworkConfigArrayOutput {
+	return i.ToGetPrivateCloudNetworkConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudNetworkConfigArray) ToGetPrivateCloudNetworkConfigArrayOutputWithContext(ctx context.Context) GetPrivateCloudNetworkConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudNetworkConfigArrayOutput)
+}
+
+type GetPrivateCloudNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudNetworkConfig)(nil)).Elem()
+}
+
+func (o GetPrivateCloudNetworkConfigOutput) ToGetPrivateCloudNetworkConfigOutput() GetPrivateCloudNetworkConfigOutput {
+	return o
+}
+
+func (o GetPrivateCloudNetworkConfigOutput) ToGetPrivateCloudNetworkConfigOutputWithContext(ctx context.Context) GetPrivateCloudNetworkConfigOutput {
+	return o
+}
+
+func (o GetPrivateCloudNetworkConfigOutput) ManagementCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudNetworkConfig) string { return v.ManagementCidr }).(pulumi.StringOutput)
+}
+
+func (o GetPrivateCloudNetworkConfigOutput) ManagementIpAddressLayoutVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPrivateCloudNetworkConfig) int { return v.ManagementIpAddressLayoutVersion }).(pulumi.IntOutput)
+}
+
+func (o GetPrivateCloudNetworkConfigOutput) VmwareEngineNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudNetworkConfig) string { return v.VmwareEngineNetwork }).(pulumi.StringOutput)
+}
+
+func (o GetPrivateCloudNetworkConfigOutput) VmwareEngineNetworkCanonical() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudNetworkConfig) string { return v.VmwareEngineNetworkCanonical }).(pulumi.StringOutput)
+}
+
+type GetPrivateCloudNetworkConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudNetworkConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudNetworkConfig)(nil)).Elem()
+}
+
+func (o GetPrivateCloudNetworkConfigArrayOutput) ToGetPrivateCloudNetworkConfigArrayOutput() GetPrivateCloudNetworkConfigArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudNetworkConfigArrayOutput) ToGetPrivateCloudNetworkConfigArrayOutputWithContext(ctx context.Context) GetPrivateCloudNetworkConfigArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudNetworkConfigArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudNetworkConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivateCloudNetworkConfig {
+		return vs[0].([]GetPrivateCloudNetworkConfig)[vs[1].(int)]
+	}).(GetPrivateCloudNetworkConfigOutput)
+}
+
+type GetPrivateCloudNsx struct {
+	Fqdn       string `pulumi:"fqdn"`
+	InternalIp string `pulumi:"internalIp"`
+	State      string `pulumi:"state"`
+	Version    string `pulumi:"version"`
+}
+
+// GetPrivateCloudNsxInput is an input type that accepts GetPrivateCloudNsxArgs and GetPrivateCloudNsxOutput values.
+// You can construct a concrete instance of `GetPrivateCloudNsxInput` via:
+//
+//	GetPrivateCloudNsxArgs{...}
+type GetPrivateCloudNsxInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudNsxOutput() GetPrivateCloudNsxOutput
+	ToGetPrivateCloudNsxOutputWithContext(context.Context) GetPrivateCloudNsxOutput
+}
+
+type GetPrivateCloudNsxArgs struct {
+	Fqdn       pulumi.StringInput `pulumi:"fqdn"`
+	InternalIp pulumi.StringInput `pulumi:"internalIp"`
+	State      pulumi.StringInput `pulumi:"state"`
+	Version    pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetPrivateCloudNsxArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudNsx)(nil)).Elem()
+}
+
+func (i GetPrivateCloudNsxArgs) ToGetPrivateCloudNsxOutput() GetPrivateCloudNsxOutput {
+	return i.ToGetPrivateCloudNsxOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudNsxArgs) ToGetPrivateCloudNsxOutputWithContext(ctx context.Context) GetPrivateCloudNsxOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudNsxOutput)
+}
+
+// GetPrivateCloudNsxArrayInput is an input type that accepts GetPrivateCloudNsxArray and GetPrivateCloudNsxArrayOutput values.
+// You can construct a concrete instance of `GetPrivateCloudNsxArrayInput` via:
+//
+//	GetPrivateCloudNsxArray{ GetPrivateCloudNsxArgs{...} }
+type GetPrivateCloudNsxArrayInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudNsxArrayOutput() GetPrivateCloudNsxArrayOutput
+	ToGetPrivateCloudNsxArrayOutputWithContext(context.Context) GetPrivateCloudNsxArrayOutput
+}
+
+type GetPrivateCloudNsxArray []GetPrivateCloudNsxInput
+
+func (GetPrivateCloudNsxArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudNsx)(nil)).Elem()
+}
+
+func (i GetPrivateCloudNsxArray) ToGetPrivateCloudNsxArrayOutput() GetPrivateCloudNsxArrayOutput {
+	return i.ToGetPrivateCloudNsxArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudNsxArray) ToGetPrivateCloudNsxArrayOutputWithContext(ctx context.Context) GetPrivateCloudNsxArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudNsxArrayOutput)
+}
+
+type GetPrivateCloudNsxOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudNsxOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudNsx)(nil)).Elem()
+}
+
+func (o GetPrivateCloudNsxOutput) ToGetPrivateCloudNsxOutput() GetPrivateCloudNsxOutput {
+	return o
+}
+
+func (o GetPrivateCloudNsxOutput) ToGetPrivateCloudNsxOutputWithContext(ctx context.Context) GetPrivateCloudNsxOutput {
+	return o
+}
+
+func (o GetPrivateCloudNsxOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudNsx) string { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+func (o GetPrivateCloudNsxOutput) InternalIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudNsx) string { return v.InternalIp }).(pulumi.StringOutput)
+}
+
+func (o GetPrivateCloudNsxOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudNsx) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o GetPrivateCloudNsxOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudNsx) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetPrivateCloudNsxArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudNsxArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudNsx)(nil)).Elem()
+}
+
+func (o GetPrivateCloudNsxArrayOutput) ToGetPrivateCloudNsxArrayOutput() GetPrivateCloudNsxArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudNsxArrayOutput) ToGetPrivateCloudNsxArrayOutputWithContext(ctx context.Context) GetPrivateCloudNsxArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudNsxArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudNsxOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivateCloudNsx {
+		return vs[0].([]GetPrivateCloudNsx)[vs[1].(int)]
+	}).(GetPrivateCloudNsxOutput)
+}
+
+type GetPrivateCloudVcenter struct {
+	Fqdn       string `pulumi:"fqdn"`
+	InternalIp string `pulumi:"internalIp"`
+	State      string `pulumi:"state"`
+	Version    string `pulumi:"version"`
+}
+
+// GetPrivateCloudVcenterInput is an input type that accepts GetPrivateCloudVcenterArgs and GetPrivateCloudVcenterOutput values.
+// You can construct a concrete instance of `GetPrivateCloudVcenterInput` via:
+//
+//	GetPrivateCloudVcenterArgs{...}
+type GetPrivateCloudVcenterInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudVcenterOutput() GetPrivateCloudVcenterOutput
+	ToGetPrivateCloudVcenterOutputWithContext(context.Context) GetPrivateCloudVcenterOutput
+}
+
+type GetPrivateCloudVcenterArgs struct {
+	Fqdn       pulumi.StringInput `pulumi:"fqdn"`
+	InternalIp pulumi.StringInput `pulumi:"internalIp"`
+	State      pulumi.StringInput `pulumi:"state"`
+	Version    pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetPrivateCloudVcenterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudVcenter)(nil)).Elem()
+}
+
+func (i GetPrivateCloudVcenterArgs) ToGetPrivateCloudVcenterOutput() GetPrivateCloudVcenterOutput {
+	return i.ToGetPrivateCloudVcenterOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudVcenterArgs) ToGetPrivateCloudVcenterOutputWithContext(ctx context.Context) GetPrivateCloudVcenterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudVcenterOutput)
+}
+
+// GetPrivateCloudVcenterArrayInput is an input type that accepts GetPrivateCloudVcenterArray and GetPrivateCloudVcenterArrayOutput values.
+// You can construct a concrete instance of `GetPrivateCloudVcenterArrayInput` via:
+//
+//	GetPrivateCloudVcenterArray{ GetPrivateCloudVcenterArgs{...} }
+type GetPrivateCloudVcenterArrayInput interface {
+	pulumi.Input
+
+	ToGetPrivateCloudVcenterArrayOutput() GetPrivateCloudVcenterArrayOutput
+	ToGetPrivateCloudVcenterArrayOutputWithContext(context.Context) GetPrivateCloudVcenterArrayOutput
+}
+
+type GetPrivateCloudVcenterArray []GetPrivateCloudVcenterInput
+
+func (GetPrivateCloudVcenterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudVcenter)(nil)).Elem()
+}
+
+func (i GetPrivateCloudVcenterArray) ToGetPrivateCloudVcenterArrayOutput() GetPrivateCloudVcenterArrayOutput {
+	return i.ToGetPrivateCloudVcenterArrayOutputWithContext(context.Background())
+}
+
+func (i GetPrivateCloudVcenterArray) ToGetPrivateCloudVcenterArrayOutputWithContext(ctx context.Context) GetPrivateCloudVcenterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPrivateCloudVcenterArrayOutput)
+}
+
+type GetPrivateCloudVcenterOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudVcenterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPrivateCloudVcenter)(nil)).Elem()
+}
+
+func (o GetPrivateCloudVcenterOutput) ToGetPrivateCloudVcenterOutput() GetPrivateCloudVcenterOutput {
+	return o
+}
+
+func (o GetPrivateCloudVcenterOutput) ToGetPrivateCloudVcenterOutputWithContext(ctx context.Context) GetPrivateCloudVcenterOutput {
+	return o
+}
+
+func (o GetPrivateCloudVcenterOutput) Fqdn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudVcenter) string { return v.Fqdn }).(pulumi.StringOutput)
+}
+
+func (o GetPrivateCloudVcenterOutput) InternalIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudVcenter) string { return v.InternalIp }).(pulumi.StringOutput)
+}
+
+func (o GetPrivateCloudVcenterOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudVcenter) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o GetPrivateCloudVcenterOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudVcenter) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetPrivateCloudVcenterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPrivateCloudVcenterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPrivateCloudVcenter)(nil)).Elem()
+}
+
+func (o GetPrivateCloudVcenterArrayOutput) ToGetPrivateCloudVcenterArrayOutput() GetPrivateCloudVcenterArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudVcenterArrayOutput) ToGetPrivateCloudVcenterArrayOutputWithContext(ctx context.Context) GetPrivateCloudVcenterArrayOutput {
+	return o
+}
+
+func (o GetPrivateCloudVcenterArrayOutput) Index(i pulumi.IntInput) GetPrivateCloudVcenterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPrivateCloudVcenter {
+		return vs[0].([]GetPrivateCloudVcenter)[vs[1].(int)]
+	}).(GetPrivateCloudVcenterOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeTypeConfigInput)(nil)).Elem(), ClusterNodeTypeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeTypeConfigArrayInput)(nil)).Elem(), ClusterNodeTypeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkVpcNetworkInput)(nil)).Elem(), NetworkVpcNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkVpcNetworkArrayInput)(nil)).Elem(), NetworkVpcNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudHcxInput)(nil)).Elem(), PrivateCloudHcxArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudHcxArrayInput)(nil)).Elem(), PrivateCloudHcxArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudManagementClusterInput)(nil)).Elem(), PrivateCloudManagementClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudManagementClusterPtrInput)(nil)).Elem(), PrivateCloudManagementClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudManagementClusterNodeTypeConfigInput)(nil)).Elem(), PrivateCloudManagementClusterNodeTypeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudManagementClusterNodeTypeConfigArrayInput)(nil)).Elem(), PrivateCloudManagementClusterNodeTypeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudNetworkConfigInput)(nil)).Elem(), PrivateCloudNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudNetworkConfigPtrInput)(nil)).Elem(), PrivateCloudNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudNsxInput)(nil)).Elem(), PrivateCloudNsxArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudNsxArrayInput)(nil)).Elem(), PrivateCloudNsxArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudVcenterInput)(nil)).Elem(), PrivateCloudVcenterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudVcenterArrayInput)(nil)).Elem(), PrivateCloudVcenterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeTypeConfigInput)(nil)).Elem(), GetClusterNodeTypeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeTypeConfigArrayInput)(nil)).Elem(), GetClusterNodeTypeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkVpcNetworkInput)(nil)).Elem(), GetNetworkVpcNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkVpcNetworkArrayInput)(nil)).Elem(), GetNetworkVpcNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudHcxInput)(nil)).Elem(), GetPrivateCloudHcxArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudHcxArrayInput)(nil)).Elem(), GetPrivateCloudHcxArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudManagementClusterInput)(nil)).Elem(), GetPrivateCloudManagementClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudManagementClusterArrayInput)(nil)).Elem(), GetPrivateCloudManagementClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudManagementClusterNodeTypeConfigInput)(nil)).Elem(), GetPrivateCloudManagementClusterNodeTypeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudManagementClusterNodeTypeConfigArrayInput)(nil)).Elem(), GetPrivateCloudManagementClusterNodeTypeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudNetworkConfigInput)(nil)).Elem(), GetPrivateCloudNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudNetworkConfigArrayInput)(nil)).Elem(), GetPrivateCloudNetworkConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudNsxInput)(nil)).Elem(), GetPrivateCloudNsxArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudNsxArrayInput)(nil)).Elem(), GetPrivateCloudNsxArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudVcenterInput)(nil)).Elem(), GetPrivateCloudVcenterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudVcenterArrayInput)(nil)).Elem(), GetPrivateCloudVcenterArray{})
+	pulumi.RegisterOutputType(ClusterNodeTypeConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodeTypeConfigArrayOutput{})
 	pulumi.RegisterOutputType(NetworkVpcNetworkOutput{})
 	pulumi.RegisterOutputType(NetworkVpcNetworkArrayOutput{})
+	pulumi.RegisterOutputType(PrivateCloudHcxOutput{})
+	pulumi.RegisterOutputType(PrivateCloudHcxArrayOutput{})
+	pulumi.RegisterOutputType(PrivateCloudManagementClusterOutput{})
+	pulumi.RegisterOutputType(PrivateCloudManagementClusterPtrOutput{})
+	pulumi.RegisterOutputType(PrivateCloudManagementClusterNodeTypeConfigOutput{})
+	pulumi.RegisterOutputType(PrivateCloudManagementClusterNodeTypeConfigArrayOutput{})
+	pulumi.RegisterOutputType(PrivateCloudNetworkConfigOutput{})
+	pulumi.RegisterOutputType(PrivateCloudNetworkConfigPtrOutput{})
+	pulumi.RegisterOutputType(PrivateCloudNsxOutput{})
+	pulumi.RegisterOutputType(PrivateCloudNsxArrayOutput{})
+	pulumi.RegisterOutputType(PrivateCloudVcenterOutput{})
+	pulumi.RegisterOutputType(PrivateCloudVcenterArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeTypeConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeTypeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkVpcNetworkOutput{})
 	pulumi.RegisterOutputType(GetNetworkVpcNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudHcxOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudHcxArrayOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudManagementClusterOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudManagementClusterArrayOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudManagementClusterNodeTypeConfigOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudNetworkConfigOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudNetworkConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudNsxOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudNsxArrayOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudVcenterOutput{})
+	pulumi.RegisterOutputType(GetPrivateCloudVcenterArrayOutput{})
 }

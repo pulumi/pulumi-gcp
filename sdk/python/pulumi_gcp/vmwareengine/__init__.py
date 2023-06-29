@@ -5,7 +5,11 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .cluster import *
+from .get_cluster import *
 from .get_network import *
+from .get_private_cloud import *
 from .network import *
+from .private_cloud import *
 from ._inputs import *
 from . import outputs

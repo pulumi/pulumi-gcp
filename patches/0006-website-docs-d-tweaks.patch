@@ -1,4 +1,4 @@
-From 8f55bce7765c1879486388c16f08621a8b6da1fc Mon Sep 17 00:00:00 2001
+From 6b8d606139f4097e8f9100375443e12532e81f37 Mon Sep 17 00:00:00 2001
 From: Daniel Bradley <daniel@pulumi.com>
 Date: Tue, 7 Mar 2023 11:16:06 +0000
 Subject: [PATCH 6/9] website/docs/d tweaks
@@ -503,5 +503,5 @@ index d0494f08b..0ebec0d7e 100644
  For more information see
  [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
 -- 
-2.40.0
+2.41.0
 

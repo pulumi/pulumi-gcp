@@ -15,6 +15,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         public readonly string? Image;
         public readonly ImmutableDictionary<string, object>? Labels;
+        public readonly ImmutableDictionary<string, object>? ResourceManagerTags;
         public readonly int? Size;
         public readonly string? Type;
 
@@ -24,12 +25,15 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableDictionary<string, object>? labels,
 
+            ImmutableDictionary<string, object>? resourceManagerTags,
+
             int? size,
 
             string? type)
         {
             Image = image;
             Labels = labels;
+            ResourceManagerTags = resourceManagerTags;
             Size = size;
             Type = type;
         }

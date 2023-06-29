@@ -13,7 +13,16 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     [OutputType]
     public sealed class FeatureResourceState
     {
+        /// <summary>
+        /// (Output)
+        /// Whether this Feature has outstanding resources that need to be cleaned up before it can be disabled.
+        /// </summary>
         public readonly bool? HasResources;
+        /// <summary>
+        /// (Output)
+        /// Output only. The "running state" of the Feature in this Hub.
+        /// Structure is documented below.
+        /// </summary>
         public readonly string? State;
 
         [OutputConstructor]

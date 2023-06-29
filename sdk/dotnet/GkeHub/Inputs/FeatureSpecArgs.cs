@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.GkeHub.Inputs
 
         /// <summary>
         /// Multicluster Ingress-specific spec.
-        /// The `multiclusteringress` block supports:
+        /// Structure is documented below.
         /// </summary>
         [Input("multiclusteringress")]
         public Input<Inputs.FeatureSpecMulticlusteringressArgs>? Multiclusteringress { get; set; }

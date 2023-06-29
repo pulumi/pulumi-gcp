@@ -208,6 +208,12 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.InstanceFromMachineImageNetworkPerformanceConfig> NetworkPerformanceConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Stores additional params passed with the request, but not persisted as part of resource payload.
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.InstanceFromMachineImageParams> Params { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
         /// self_link nor project are provided, the provider project is used.
         /// </summary>
@@ -473,6 +479,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("networkPerformanceConfig")]
         public Input<Inputs.InstanceFromMachineImageNetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }
+
+        /// <summary>
+        /// Stores additional params passed with the request, but not persisted as part of resource payload.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.InstanceFromMachineImageParamsArgs>? Params { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
@@ -746,6 +758,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("networkPerformanceConfig")]
         public Input<Inputs.InstanceFromMachineImageNetworkPerformanceConfigGetArgs>? NetworkPerformanceConfig { get; set; }
+
+        /// <summary>
+        /// Stores additional params passed with the request, but not persisted as part of resource payload.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.InstanceFromMachineImageParamsGetArgs>? Params { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither

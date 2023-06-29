@@ -20,14 +20,14 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
     public static final FirewallPolicyRuleState Empty = new FirewallPolicyRuleState();
 
     /**
-     * The Action to perform when the client connection triggers the rule. Can currently be either &#34;allow&#34; or &#34;deny()&#34; where valid values for status are 403, 404, and 502.
+     * The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34; and &#34;goto_next&#34;.
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return The Action to perform when the client connection triggers the rule. Can currently be either &#34;allow&#34; or &#34;deny()&#34; where valid values for status are 403, 404, and 502.
+     * @return The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34; and &#34;goto_next&#34;.
      * 
      */
     public Optional<Output<String>> action() {
@@ -125,14 +125,14 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
     }
 
     /**
-     * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced. Structure is documented below.
+     * A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced.
      * 
      */
     @Import(name="match")
     private @Nullable Output<FirewallPolicyRuleMatchArgs> match;
 
     /**
-     * @return A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced. Structure is documented below.
+     * @return A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced.
      * 
      */
     public Optional<Output<FirewallPolicyRuleMatchArgs>> match() {
@@ -235,7 +235,7 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param action The Action to perform when the client connection triggers the rule. Can currently be either &#34;allow&#34; or &#34;deny()&#34; where valid values for status are 403, 404, and 502.
+         * @param action The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34; and &#34;goto_next&#34;.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param action The Action to perform when the client connection triggers the rule. Can currently be either &#34;allow&#34; or &#34;deny()&#34; where valid values for status are 403, 404, and 502.
+         * @param action The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34; and &#34;goto_next&#34;.
          * 
          * @return builder
          * 
@@ -382,7 +382,7 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param match A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced. Structure is documented below.
+         * @param match A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced.
          * 
          * @return builder
          * 
@@ -393,7 +393,7 @@ public final class FirewallPolicyRuleState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param match A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced. Structure is documented below.
+         * @param match A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding &#39;action&#39; is enforced.
          * 
          * @return builder
          * 

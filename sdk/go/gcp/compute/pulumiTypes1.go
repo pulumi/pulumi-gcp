@@ -10,6 +10,565 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+	// represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos *int `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds string `pulumi:"seconds"`
+}
+
+// URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs and URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutInput` via:
+//
+//	URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs{...}
+type URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutput() URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutput
+	ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutput
+}
+
+type URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+	// represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds pulumi.StringInput `pulumi:"seconds"`
+}
+
+func (URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs) ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutput() URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs) ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutput)
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs) ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput() URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs) ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutput).ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs, URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtr and URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrInput` via:
+//
+//	        URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput() URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput
+	ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput
+}
+
+type urlmapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrType URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs
+
+func URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtr(v *URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs) URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrInput {
+	return (*urlmapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrType)(v)
+}
+
+func (*urlmapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrType) ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput() URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrType) ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutput) ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutput() URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutput) ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutput) ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput() URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return o.ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutput) ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout) *URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout {
+		return &v
+	}).(URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput)
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+// represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutput) Seconds() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout) string { return v.Seconds }).(pulumi.StringOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput) ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput() URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput) ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput) Elem() URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout) URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout
+		return ret
+	}).(URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutput)
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
+// represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput) Seconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Seconds
+	}).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionTimeout struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos *int `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds string `pulumi:"seconds"`
+}
+
+// URLMapPathMatcherRouteRuleRouteActionTimeoutInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionTimeoutArgs and URLMapPathMatcherRouteRuleRouteActionTimeoutOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionTimeoutInput` via:
+//
+//	URLMapPathMatcherRouteRuleRouteActionTimeoutArgs{...}
+type URLMapPathMatcherRouteRuleRouteActionTimeoutInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionTimeoutOutput() URLMapPathMatcherRouteRuleRouteActionTimeoutOutput
+	ToURLMapPathMatcherRouteRuleRouteActionTimeoutOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionTimeoutOutput
+}
+
+type URLMapPathMatcherRouteRuleRouteActionTimeoutArgs struct {
+	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+	// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+	// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+	Seconds pulumi.StringInput `pulumi:"seconds"`
+}
+
+func (URLMapPathMatcherRouteRuleRouteActionTimeoutArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionTimeout)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionTimeoutArgs) ToURLMapPathMatcherRouteRuleRouteActionTimeoutOutput() URLMapPathMatcherRouteRuleRouteActionTimeoutOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionTimeoutOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionTimeoutArgs) ToURLMapPathMatcherRouteRuleRouteActionTimeoutOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionTimeoutOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionTimeoutOutput)
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionTimeoutArgs) ToURLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput() URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionTimeoutArgs) ToURLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionTimeoutOutput).ToURLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherRouteRuleRouteActionTimeoutPtrInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionTimeoutArgs, URLMapPathMatcherRouteRuleRouteActionTimeoutPtr and URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionTimeoutPtrInput` via:
+//
+//	        URLMapPathMatcherRouteRuleRouteActionTimeoutArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherRouteRuleRouteActionTimeoutPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput() URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput
+	ToURLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput
+}
+
+type urlmapPathMatcherRouteRuleRouteActionTimeoutPtrType URLMapPathMatcherRouteRuleRouteActionTimeoutArgs
+
+func URLMapPathMatcherRouteRuleRouteActionTimeoutPtr(v *URLMapPathMatcherRouteRuleRouteActionTimeoutArgs) URLMapPathMatcherRouteRuleRouteActionTimeoutPtrInput {
+	return (*urlmapPathMatcherRouteRuleRouteActionTimeoutPtrType)(v)
+}
+
+func (*urlmapPathMatcherRouteRuleRouteActionTimeoutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteActionTimeout)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionTimeoutPtrType) ToURLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput() URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionTimeoutPtrType) ToURLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionTimeoutOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionTimeoutOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionTimeout)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionTimeoutOutput) ToURLMapPathMatcherRouteRuleRouteActionTimeoutOutput() URLMapPathMatcherRouteRuleRouteActionTimeoutOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionTimeoutOutput) ToURLMapPathMatcherRouteRuleRouteActionTimeoutOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionTimeoutOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionTimeoutOutput) ToURLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput() URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput {
+	return o.ToURLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionTimeoutOutput) ToURLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherRouteRuleRouteActionTimeout) *URLMapPathMatcherRouteRuleRouteActionTimeout {
+		return &v
+	}).(URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput)
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o URLMapPathMatcherRouteRuleRouteActionTimeoutOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionTimeout) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o URLMapPathMatcherRouteRuleRouteActionTimeoutOutput) Seconds() pulumi.StringOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionTimeout) string { return v.Seconds }).(pulumi.StringOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteActionTimeout)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput) ToURLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput() URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput) ToURLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput) Elem() URLMapPathMatcherRouteRuleRouteActionTimeoutOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionTimeout) URLMapPathMatcherRouteRuleRouteActionTimeout {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherRouteRuleRouteActionTimeout
+		return ret
+	}).(URLMapPathMatcherRouteRuleRouteActionTimeoutOutput)
+}
+
+// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented
+// with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+func (o URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionTimeout) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
+// Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+func (o URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput) Seconds() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionTimeout) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Seconds
+	}).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionUrlRewrite struct {
+	// Prior to forwarding the request to the selected service, the request's host header is replaced
+	// with contents of hostRewrite.
+	// The value must be between 1 and 255 characters.
+	HostRewrite *string `pulumi:"hostRewrite"`
+	// Prior to forwarding the request to the selected backend service, the matching portion of the
+	// request's path is replaced by pathPrefixRewrite.
+	// The value must be between 1 and 1024 characters.
+	PathPrefixRewrite *string `pulumi:"pathPrefixRewrite"`
+	// Prior to forwarding the request to the selected origin, if the
+	// request matched a pathTemplateMatch, the matching portion of the
+	// request's path is replaced re-written using the pattern specified
+	// by pathTemplateRewrite.
+	// pathTemplateRewrite must be between 1 and 255 characters
+	// (inclusive), must start with a '/', and must only use variables
+	// captured by the route's pathTemplate matchers.
+	// pathTemplateRewrite may only be used when all of a route's
+	// MatchRules specify pathTemplate.
+	// Only one of pathPrefixRewrite and pathTemplateRewrite may be
+	// specified.
+	PathTemplateRewrite *string `pulumi:"pathTemplateRewrite"`
+}
+
+// URLMapPathMatcherRouteRuleRouteActionUrlRewriteInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs and URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionUrlRewriteInput` via:
+//
+//	URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs{...}
+type URLMapPathMatcherRouteRuleRouteActionUrlRewriteInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput() URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput
+	ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput
+}
+
+type URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs struct {
+	// Prior to forwarding the request to the selected service, the request's host header is replaced
+	// with contents of hostRewrite.
+	// The value must be between 1 and 255 characters.
+	HostRewrite pulumi.StringPtrInput `pulumi:"hostRewrite"`
+	// Prior to forwarding the request to the selected backend service, the matching portion of the
+	// request's path is replaced by pathPrefixRewrite.
+	// The value must be between 1 and 1024 characters.
+	PathPrefixRewrite pulumi.StringPtrInput `pulumi:"pathPrefixRewrite"`
+	// Prior to forwarding the request to the selected origin, if the
+	// request matched a pathTemplateMatch, the matching portion of the
+	// request's path is replaced re-written using the pattern specified
+	// by pathTemplateRewrite.
+	// pathTemplateRewrite must be between 1 and 255 characters
+	// (inclusive), must start with a '/', and must only use variables
+	// captured by the route's pathTemplate matchers.
+	// pathTemplateRewrite may only be used when all of a route's
+	// MatchRules specify pathTemplate.
+	// Only one of pathPrefixRewrite and pathTemplateRewrite may be
+	// specified.
+	PathTemplateRewrite pulumi.StringPtrInput `pulumi:"pathTemplateRewrite"`
+}
+
+func (URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionUrlRewrite)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs) ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput() URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs) ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput)
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs) ToURLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput() URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs) ToURLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput).ToURLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs, URLMapPathMatcherRouteRuleRouteActionUrlRewritePtr and URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrInput` via:
+//
+//	        URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput() URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput
+	ToURLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput
+}
+
+type urlmapPathMatcherRouteRuleRouteActionUrlRewritePtrType URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs
+
+func URLMapPathMatcherRouteRuleRouteActionUrlRewritePtr(v *URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs) URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrInput {
+	return (*urlmapPathMatcherRouteRuleRouteActionUrlRewritePtrType)(v)
+}
+
+func (*urlmapPathMatcherRouteRuleRouteActionUrlRewritePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteActionUrlRewrite)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionUrlRewritePtrType) ToURLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput() URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionUrlRewritePtrType) ToURLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionUrlRewrite)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput) ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput() URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput) ToURLMapPathMatcherRouteRuleRouteActionUrlRewriteOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput) ToURLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput() URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput {
+	return o.ToURLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput) ToURLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherRouteRuleRouteActionUrlRewrite) *URLMapPathMatcherRouteRuleRouteActionUrlRewrite {
+		return &v
+	}).(URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput)
+}
+
+// Prior to forwarding the request to the selected service, the request's host header is replaced
+// with contents of hostRewrite.
+// The value must be between 1 and 255 characters.
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput) HostRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionUrlRewrite) *string { return v.HostRewrite }).(pulumi.StringPtrOutput)
+}
+
+// Prior to forwarding the request to the selected backend service, the matching portion of the
+// request's path is replaced by pathPrefixRewrite.
+// The value must be between 1 and 1024 characters.
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput) PathPrefixRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionUrlRewrite) *string { return v.PathPrefixRewrite }).(pulumi.StringPtrOutput)
+}
+
+// Prior to forwarding the request to the selected origin, if the
+// request matched a pathTemplateMatch, the matching portion of the
+// request's path is replaced re-written using the pattern specified
+// by pathTemplateRewrite.
+// pathTemplateRewrite must be between 1 and 255 characters
+// (inclusive), must start with a '/', and must only use variables
+// captured by the route's pathTemplate matchers.
+// pathTemplateRewrite may only be used when all of a route's
+// MatchRules specify pathTemplate.
+// Only one of pathPrefixRewrite and pathTemplateRewrite may be
+// specified.
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput) PathTemplateRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionUrlRewrite) *string { return v.PathTemplateRewrite }).(pulumi.StringPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteActionUrlRewrite)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput) ToURLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput() URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput) ToURLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput) Elem() URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionUrlRewrite) URLMapPathMatcherRouteRuleRouteActionUrlRewrite {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherRouteRuleRouteActionUrlRewrite
+		return ret
+	}).(URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput)
+}
+
+// Prior to forwarding the request to the selected service, the request's host header is replaced
+// with contents of hostRewrite.
+// The value must be between 1 and 255 characters.
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput) HostRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionUrlRewrite) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostRewrite
+	}).(pulumi.StringPtrOutput)
+}
+
+// Prior to forwarding the request to the selected backend service, the matching portion of the
+// request's path is replaced by pathPrefixRewrite.
+// The value must be between 1 and 1024 characters.
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput) PathPrefixRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionUrlRewrite) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathPrefixRewrite
+	}).(pulumi.StringPtrOutput)
+}
+
+// Prior to forwarding the request to the selected origin, if the
+// request matched a pathTemplateMatch, the matching portion of the
+// request's path is replaced re-written using the pattern specified
+// by pathTemplateRewrite.
+// pathTemplateRewrite must be between 1 and 255 characters
+// (inclusive), must start with a '/', and must only use variables
+// captured by the route's pathTemplate matchers.
+// pathTemplateRewrite may only be used when all of a route's
+// MatchRules specify pathTemplate.
+// Only one of pathPrefixRewrite and pathTemplateRewrite may be
+// specified.
+func (o URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput) PathTemplateRewrite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionUrlRewrite) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathTemplateRewrite
+	}).(pulumi.StringPtrOutput)
+}
+
 type URLMapPathMatcherRouteRuleRouteActionWeightedBackendService struct {
 	// The full or partial URL to the default BackendService resource. Before forwarding the
 	// request to backendService, the loadbalancer applies any relevant headerActions
@@ -6017,7 +6576,8 @@ type GetInstanceBootDiskInitializeParam struct {
 	// The image from which this disk was initialised.
 	Image string `pulumi:"image"`
 	// A set of key/value label pairs assigned to the disk.
-	Labels map[string]interface{} `pulumi:"labels"`
+	Labels              map[string]interface{} `pulumi:"labels"`
+	ResourceManagerTags map[string]interface{} `pulumi:"resourceManagerTags"`
 	// The size of the image in gigabytes.
 	Size int `pulumi:"size"`
 	// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
@@ -6039,7 +6599,8 @@ type GetInstanceBootDiskInitializeParamArgs struct {
 	// The image from which this disk was initialised.
 	Image pulumi.StringInput `pulumi:"image"`
 	// A set of key/value label pairs assigned to the disk.
-	Labels pulumi.MapInput `pulumi:"labels"`
+	Labels              pulumi.MapInput `pulumi:"labels"`
+	ResourceManagerTags pulumi.MapInput `pulumi:"resourceManagerTags"`
 	// The size of the image in gigabytes.
 	Size pulumi.IntInput `pulumi:"size"`
 	// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
@@ -6105,6 +6666,10 @@ func (o GetInstanceBootDiskInitializeParamOutput) Image() pulumi.StringOutput {
 // A set of key/value label pairs assigned to the disk.
 func (o GetInstanceBootDiskInitializeParamOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+func (o GetInstanceBootDiskInitializeParamOutput) ResourceManagerTags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) map[string]interface{} { return v.ResourceManagerTags }).(pulumi.MapOutput)
 }
 
 // The size of the image in gigabytes.
@@ -8619,6 +9184,100 @@ func (o GetInstanceNetworkPerformanceConfigArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceNetworkPerformanceConfig {
 		return vs[0].([]GetInstanceNetworkPerformanceConfig)[vs[1].(int)]
 	}).(GetInstanceNetworkPerformanceConfigOutput)
+}
+
+type GetInstanceParam struct {
+	ResourceManagerTags map[string]interface{} `pulumi:"resourceManagerTags"`
+}
+
+// GetInstanceParamInput is an input type that accepts GetInstanceParamArgs and GetInstanceParamOutput values.
+// You can construct a concrete instance of `GetInstanceParamInput` via:
+//
+//	GetInstanceParamArgs{...}
+type GetInstanceParamInput interface {
+	pulumi.Input
+
+	ToGetInstanceParamOutput() GetInstanceParamOutput
+	ToGetInstanceParamOutputWithContext(context.Context) GetInstanceParamOutput
+}
+
+type GetInstanceParamArgs struct {
+	ResourceManagerTags pulumi.MapInput `pulumi:"resourceManagerTags"`
+}
+
+func (GetInstanceParamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceParam)(nil)).Elem()
+}
+
+func (i GetInstanceParamArgs) ToGetInstanceParamOutput() GetInstanceParamOutput {
+	return i.ToGetInstanceParamOutputWithContext(context.Background())
+}
+
+func (i GetInstanceParamArgs) ToGetInstanceParamOutputWithContext(ctx context.Context) GetInstanceParamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceParamOutput)
+}
+
+// GetInstanceParamArrayInput is an input type that accepts GetInstanceParamArray and GetInstanceParamArrayOutput values.
+// You can construct a concrete instance of `GetInstanceParamArrayInput` via:
+//
+//	GetInstanceParamArray{ GetInstanceParamArgs{...} }
+type GetInstanceParamArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceParamArrayOutput() GetInstanceParamArrayOutput
+	ToGetInstanceParamArrayOutputWithContext(context.Context) GetInstanceParamArrayOutput
+}
+
+type GetInstanceParamArray []GetInstanceParamInput
+
+func (GetInstanceParamArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceParam)(nil)).Elem()
+}
+
+func (i GetInstanceParamArray) ToGetInstanceParamArrayOutput() GetInstanceParamArrayOutput {
+	return i.ToGetInstanceParamArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceParamArray) ToGetInstanceParamArrayOutputWithContext(ctx context.Context) GetInstanceParamArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceParamArrayOutput)
+}
+
+type GetInstanceParamOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceParamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceParam)(nil)).Elem()
+}
+
+func (o GetInstanceParamOutput) ToGetInstanceParamOutput() GetInstanceParamOutput {
+	return o
+}
+
+func (o GetInstanceParamOutput) ToGetInstanceParamOutputWithContext(ctx context.Context) GetInstanceParamOutput {
+	return o
+}
+
+func (o GetInstanceParamOutput) ResourceManagerTags() pulumi.MapOutput {
+	return o.ApplyT(func(v GetInstanceParam) map[string]interface{} { return v.ResourceManagerTags }).(pulumi.MapOutput)
+}
+
+type GetInstanceParamArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceParamArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceParam)(nil)).Elem()
+}
+
+func (o GetInstanceParamArrayOutput) ToGetInstanceParamArrayOutput() GetInstanceParamArrayOutput {
+	return o
+}
+
+func (o GetInstanceParamArrayOutput) ToGetInstanceParamArrayOutputWithContext(ctx context.Context) GetInstanceParamArrayOutput {
+	return o
+}
+
+func (o GetInstanceParamArrayOutput) Index(i pulumi.IntInput) GetInstanceParamOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceParam {
+		return vs[0].([]GetInstanceParam)[vs[1].(int)]
+	}).(GetInstanceParamOutput)
 }
 
 type GetInstanceReservationAffinity struct {
@@ -17755,6 +18414,12 @@ func (o GetSubnetworkSecondaryIpRangeArrayOutput) Index(i pulumi.IntInput) GetSu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionTimeoutInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionTimeoutPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionTimeoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionUrlRewriteInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionUrlRewriteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionArgs{})
@@ -17901,6 +18566,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInterfaceIpv6AccessConfigArrayInput)(nil)).Elem(), GetInstanceNetworkInterfaceIpv6AccessConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkPerformanceConfigInput)(nil)).Elem(), GetInstanceNetworkPerformanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkPerformanceConfigArrayInput)(nil)).Elem(), GetInstanceNetworkPerformanceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceParamInput)(nil)).Elem(), GetInstanceParamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceParamArrayInput)(nil)).Elem(), GetInstanceParamArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceReservationAffinityInput)(nil)).Elem(), GetInstanceReservationAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceReservationAffinityArrayInput)(nil)).Elem(), GetInstanceReservationAffinityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceReservationAffinitySpecificReservationInput)(nil)).Elem(), GetInstanceReservationAffinitySpecificReservationArgs{})
@@ -18053,6 +18720,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKeyArrayInput)(nil)).Elem(), GetSnapshotSourceDiskEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionTimeoutOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionTimeoutPtrOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionUrlRewriteOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionUrlRewritePtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceArrayOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionOutput{})
@@ -18199,6 +18872,8 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceNetworkInterfaceIpv6AccessConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkPerformanceConfigOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkPerformanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceParamOutput{})
+	pulumi.RegisterOutputType(GetInstanceParamArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceReservationAffinityOutput{})
 	pulumi.RegisterOutputType(GetInstanceReservationAffinityArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceReservationAffinitySpecificReservationOutput{})

@@ -198,6 +198,8 @@ type Organization struct {
 
 	// Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	AnalyticsRegion pulumi.StringPtrOutput `pulumi:"analyticsRegion"`
+	// Output only. Project ID of the Apigee Tenant Project.
+	ApigeeProjectId pulumi.StringOutput `pulumi:"apigeeProjectId"`
 	// Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
 	// See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
 	// Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
@@ -275,6 +277,8 @@ func GetOrganization(ctx *pulumi.Context,
 type organizationState struct {
 	// Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	AnalyticsRegion *string `pulumi:"analyticsRegion"`
+	// Output only. Project ID of the Apigee Tenant Project.
+	ApigeeProjectId *string `pulumi:"apigeeProjectId"`
 	// Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
 	// See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
 	// Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
@@ -321,6 +325,8 @@ type organizationState struct {
 type OrganizationState struct {
 	// Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	AnalyticsRegion pulumi.StringPtrInput
+	// Output only. Project ID of the Apigee Tenant Project.
+	ApigeeProjectId pulumi.StringPtrInput
 	// Compute Engine network used for Service Networking to be peered with Apigee runtime instances.
 	// See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started).
 	// Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
@@ -535,6 +541,11 @@ func (o OrganizationOutput) ToOrganizationOutputWithContext(ctx context.Context)
 // Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 func (o OrganizationOutput) AnalyticsRegion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.AnalyticsRegion }).(pulumi.StringPtrOutput)
+}
+
+// Output only. Project ID of the Apigee Tenant Project.
+func (o OrganizationOutput) ApigeeProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.ApigeeProjectId }).(pulumi.StringOutput)
 }
 
 // Compute Engine network used for Service Networking to be peered with Apigee runtime instances.

@@ -21,8 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:vmwareengine/cluster:Cluster":
+		r = &Cluster{}
 	case "gcp:vmwareengine/network:Network":
 		r = &Network{}
+	case "gcp:vmwareengine/privateCloud:PrivateCloud":
+		r = &PrivateCloud{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -38,7 +42,17 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"vmwareengine/cluster",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"vmwareengine/network",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vmwareengine/privateCloud",
 		&module{version},
 	)
 }

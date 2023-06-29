@@ -11,6 +11,7 @@ import com.pulumi.gcp.compute.outputs.GetInstanceConfidentialInstanceConfig;
 import com.pulumi.gcp.compute.outputs.GetInstanceGuestAccelerator;
 import com.pulumi.gcp.compute.outputs.GetInstanceNetworkInterface;
 import com.pulumi.gcp.compute.outputs.GetInstanceNetworkPerformanceConfig;
+import com.pulumi.gcp.compute.outputs.GetInstanceParam;
 import com.pulumi.gcp.compute.outputs.GetInstanceReservationAffinity;
 import com.pulumi.gcp.compute.outputs.GetInstanceScheduling;
 import com.pulumi.gcp.compute.outputs.GetInstanceScratchDisk;
@@ -128,6 +129,7 @@ public final class GetInstanceResult {
      * 
      */
     private List<GetInstanceNetworkPerformanceConfig> networkPerformanceConfigs;
+    private List<GetInstanceParam> params;
     private @Nullable String project;
     private List<GetInstanceReservationAffinity> reservationAffinities;
     private List<String> resourcePolicies;
@@ -323,6 +325,9 @@ public final class GetInstanceResult {
     public List<GetInstanceNetworkPerformanceConfig> networkPerformanceConfigs() {
         return this.networkPerformanceConfigs;
     }
+    public List<GetInstanceParam> params() {
+        return this.params;
+    }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
@@ -420,6 +425,7 @@ public final class GetInstanceResult {
         private @Nullable String name;
         private List<GetInstanceNetworkInterface> networkInterfaces;
         private List<GetInstanceNetworkPerformanceConfig> networkPerformanceConfigs;
+        private List<GetInstanceParam> params;
         private @Nullable String project;
         private List<GetInstanceReservationAffinity> reservationAffinities;
         private List<String> resourcePolicies;
@@ -460,6 +466,7 @@ public final class GetInstanceResult {
     	      this.name = defaults.name;
     	      this.networkInterfaces = defaults.networkInterfaces;
     	      this.networkPerformanceConfigs = defaults.networkPerformanceConfigs;
+    	      this.params = defaults.params;
     	      this.project = defaults.project;
     	      this.reservationAffinities = defaults.reservationAffinities;
     	      this.resourcePolicies = defaults.resourcePolicies;
@@ -625,6 +632,14 @@ public final class GetInstanceResult {
             return networkPerformanceConfigs(List.of(networkPerformanceConfigs));
         }
         @CustomType.Setter
+        public Builder params(List<GetInstanceParam> params) {
+            this.params = Objects.requireNonNull(params);
+            return this;
+        }
+        public Builder params(GetInstanceParam... params) {
+            return params(List.of(params));
+        }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
             this.project = project;
             return this;
@@ -728,6 +743,7 @@ public final class GetInstanceResult {
             o.name = name;
             o.networkInterfaces = networkInterfaces;
             o.networkPerformanceConfigs = networkPerformanceConfigs;
+            o.params = params;
             o.project = project;
             o.reservationAffinities = reservationAffinities;
             o.resourcePolicies = resourcePolicies;

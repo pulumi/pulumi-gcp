@@ -12,6 +12,10 @@ namespace Pulumi.Gcp.GkeHub.Inputs
 
     public sealed class FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specified if fleet logging feature is enabled.
+        /// Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
+        /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
 

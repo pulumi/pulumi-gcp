@@ -102,11 +102,81 @@ public final class WorkloadIdentityPoolProviderOidcArgs extends com.pulumi.resou
         return this.issuerUri;
     }
 
+    /**
+     * OIDC JWKs in JSON String format. For details on definition of a
+     * JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+     * use the `jwks_uri` from the discovery document fetched from the
+     * .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
+     * keys are supported. The JWK must use following format and include only
+     * the following fields:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
+     */
+    @Import(name="jwksJson")
+    private @Nullable Output<String> jwksJson;
+
+    /**
+     * @return OIDC JWKs in JSON String format. For details on definition of a
+     * JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+     * use the `jwks_uri` from the discovery document fetched from the
+     * .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
+     * keys are supported. The JWK must use following format and include only
+     * the following fields:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public Optional<Output<String>> jwksJson() {
+        return Optional.ofNullable(this.jwksJson);
+    }
+
     private WorkloadIdentityPoolProviderOidcArgs() {}
 
     private WorkloadIdentityPoolProviderOidcArgs(WorkloadIdentityPoolProviderOidcArgs $) {
         this.allowedAudiences = $.allowedAudiences;
         this.issuerUri = $.issuerUri;
+        this.jwksJson = $.jwksJson;
     }
 
     public static Builder builder() {
@@ -261,6 +331,81 @@ public final class WorkloadIdentityPoolProviderOidcArgs extends com.pulumi.resou
          */
         public Builder issuerUri(String issuerUri) {
             return issuerUri(Output.of(issuerUri));
+        }
+
+        /**
+         * @param jwksJson OIDC JWKs in JSON String format. For details on definition of a
+         * JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+         * use the `jwks_uri` from the discovery document fetched from the
+         * .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
+         * keys are supported. The JWK must use following format and include only
+         * the following fields:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jwksJson(@Nullable Output<String> jwksJson) {
+            $.jwksJson = jwksJson;
+            return this;
+        }
+
+        /**
+         * @param jwksJson OIDC JWKs in JSON String format. For details on definition of a
+         * JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+         * use the `jwks_uri` from the discovery document fetched from the
+         * .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
+         * keys are supported. The JWK must use following format and include only
+         * the following fields:
+         * ```java
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import java.util.List;
+         * import java.util.ArrayList;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *     }
+         * }
+         * ```
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jwksJson(String jwksJson) {
+            return jwksJson(Output.of(jwksJson));
         }
 
         public WorkloadIdentityPoolProviderOidcArgs build() {

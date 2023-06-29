@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     [OutputType]
     public sealed class FeatureSpecFleetobservabilityLoggingConfigDefaultConfig
     {
+        /// <summary>
+        /// Specified if fleet logging feature is enabled.
+        /// Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
+        /// </summary>
         public readonly string? Mode;
 
         [OutputConstructor]

@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     [OutputType]
     public sealed class FeatureSpecFleetobservability
     {
+        /// <summary>
+        /// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+        /// Structure is documented below.
+        /// </summary>
         public readonly Outputs.FeatureSpecFleetobservabilityLoggingConfig? LoggingConfig;
 
         [OutputConstructor]

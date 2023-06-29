@@ -1,4 +1,4 @@
-From d36f7be7923d5e140039a12e003df6e0461d0a2d Mon Sep 17 00:00:00 2001
+From a8831e7e837663855b6617cc996cf2b19f0371fb Mon Sep 17 00:00:00 2001
 From: Aaron Friel <mayreply@aaronfriel.com>
 Date: Thu, 22 Jun 2023 09:45:36 -0700
 Subject: [PATCH 8/9] Exclude scripts dir from provider go module
@@ -19,5 +19,5 @@ index 000000000..ddd2cb8ff
 +
 +go 1.20
 -- 
-2.40.0
+2.41.0
 

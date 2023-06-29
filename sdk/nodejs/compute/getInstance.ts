@@ -149,6 +149,7 @@ export interface GetInstanceResult {
      * The network performance configuration setting for the instance, if set. Structure is documented below.
      */
     readonly networkPerformanceConfigs: outputs.compute.GetInstanceNetworkPerformanceConfig[];
+    readonly params: outputs.compute.GetInstanceParam[];
     readonly project?: string;
     readonly reservationAffinities: outputs.compute.GetInstanceReservationAffinity[];
     readonly resourcePolicies: string[];

@@ -189,6 +189,10 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
      */
     public readonly networkPerformanceConfig!: pulumi.Output<outputs.compute.InstanceFromTemplateNetworkPerformanceConfig>;
     /**
+     * Stores additional params passed with the request, but not persisted as part of resource payload.
+     */
+    public readonly params!: pulumi.Output<outputs.compute.InstanceFromTemplateParams>;
+    /**
      * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
      * self_link nor project are provided, the provider project is used.
      */
@@ -285,6 +289,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
             resourceInputs["networkPerformanceConfig"] = state ? state.networkPerformanceConfig : undefined;
+            resourceInputs["params"] = state ? state.params : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["reservationAffinity"] = state ? state.reservationAffinity : undefined;
             resourceInputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
@@ -322,6 +327,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
             resourceInputs["networkPerformanceConfig"] = args ? args.networkPerformanceConfig : undefined;
+            resourceInputs["params"] = args ? args.params : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
             resourceInputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
@@ -457,6 +463,10 @@ export interface InstanceFromTemplateState {
      * default network performance configuration.
      */
     networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceFromTemplateNetworkPerformanceConfig>;
+    /**
+     * Stores additional params passed with the request, but not persisted as part of resource payload.
+     */
+    params?: pulumi.Input<inputs.compute.InstanceFromTemplateParams>;
     /**
      * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
      * self_link nor project are provided, the provider project is used.
@@ -607,6 +617,10 @@ export interface InstanceFromTemplateArgs {
      * default network performance configuration.
      */
     networkPerformanceConfig?: pulumi.Input<inputs.compute.InstanceFromTemplateNetworkPerformanceConfig>;
+    /**
+     * Stores additional params passed with the request, but not persisted as part of resource payload.
+     */
+    params?: pulumi.Input<inputs.compute.InstanceFromTemplateParams>;
     /**
      * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
      * self_link nor project are provided, the provider project is used.

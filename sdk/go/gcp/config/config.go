@@ -236,6 +236,9 @@ func GetGameServicesCustomEndpoint(ctx *pulumi.Context) string {
 func GetGkeBackupCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:gkeBackupCustomEndpoint")
 }
+func GetGkeHub2CustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:gkeHub2CustomEndpoint")
+}
 func GetGkeHubCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:gkeHubCustomEndpoint")
 }

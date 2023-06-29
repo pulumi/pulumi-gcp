@@ -17,6 +17,7 @@ import com.pulumi.gcp.compute.outputs.InstanceFromTemplateConfidentialInstanceCo
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateGuestAccelerator;
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateNetworkInterface;
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateNetworkPerformanceConfig;
+import com.pulumi.gcp.compute.outputs.InstanceFromTemplateParams;
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateReservationAffinity;
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateScheduling;
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateScratchDisk;
@@ -462,6 +463,20 @@ public class InstanceFromTemplate extends com.pulumi.resources.CustomResource {
      */
     public Output<InstanceFromTemplateNetworkPerformanceConfig> networkPerformanceConfig() {
         return this.networkPerformanceConfig;
+    }
+    /**
+     * Stores additional params passed with the request, but not persisted as part of resource payload.
+     * 
+     */
+    @Export(name="params", type=InstanceFromTemplateParams.class, parameters={})
+    private Output<InstanceFromTemplateParams> params;
+
+    /**
+     * @return Stores additional params passed with the request, but not persisted as part of resource payload.
+     * 
+     */
+    public Output<InstanceFromTemplateParams> params() {
+        return this.params;
     }
     /**
      * The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither

@@ -591,7 +591,8 @@ class WorkloadIdentityPoolProviderAwsArgs:
 class WorkloadIdentityPoolProviderOidcArgs:
     def __init__(__self__, *,
                  issuer_uri: pulumi.Input[str],
-                 allowed_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 allowed_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 jwks_json: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] issuer_uri: The OIDC issuer URL.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_audiences: Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange
@@ -604,10 +605,21 @@ class WorkloadIdentityPoolProviderOidcArgs:
                ```python
                import pulumi
                ```
+        :param pulumi.Input[str] jwks_json: OIDC JWKs in JSON String format. For details on definition of a
+               JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+               use the `jwks_uri` from the discovery document fetched from the
+               .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
+               keys are supported. The JWK must use following format and include only
+               the following fields:
+               ```python
+               import pulumi
+               ```
         """
         pulumi.set(__self__, "issuer_uri", issuer_uri)
         if allowed_audiences is not None:
             pulumi.set(__self__, "allowed_audiences", allowed_audiences)
+        if jwks_json is not None:
+            pulumi.set(__self__, "jwks_json", jwks_json)
 
     @property
     @pulumi.getter(name="issuerUri")
@@ -641,5 +653,25 @@ class WorkloadIdentityPoolProviderOidcArgs:
     @allowed_audiences.setter
     def allowed_audiences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allowed_audiences", value)
+
+    @property
+    @pulumi.getter(name="jwksJson")
+    def jwks_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        OIDC JWKs in JSON String format. For details on definition of a
+        JWK, see https:tools.ietf.org/html/rfc7517. If not set, then we
+        use the `jwks_uri` from the discovery document fetched from the
+        .well-known path for the `issuer_uri`. Currently, RSA and EC asymmetric
+        keys are supported. The JWK must use following format and include only
+        the following fields:
+        ```python
+        import pulumi
+        ```
+        """
+        return pulumi.get(self, "jwks_json")
+
+    @jwks_json.setter
+    def jwks_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "jwks_json", value)
 
 

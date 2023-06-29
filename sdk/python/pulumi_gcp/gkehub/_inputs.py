@@ -10,6 +10,8 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'FeatureIamBindingConditionArgs',
+    'FeatureIamMemberConditionArgs',
     'FeatureMembershipConfigmanagementArgs',
     'FeatureMembershipConfigmanagementBinauthzArgs',
     'FeatureMembershipConfigmanagementConfigSyncArgs',
@@ -34,6 +36,84 @@ __all__ = [
     'MembershipIamBindingConditionArgs',
     'MembershipIamMemberConditionArgs',
 ]
+
+@pulumi.input_type
+class FeatureIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class FeatureIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
 
 @pulumi.input_type
 class FeatureMembershipConfigmanagementArgs:
@@ -692,6 +772,13 @@ class FeatureResourceStateArgs:
     def __init__(__self__, *,
                  has_resources: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] has_resources: (Output)
+               Whether this Feature has outstanding resources that need to be cleaned up before it can be disabled.
+        :param pulumi.Input[str] state: (Output)
+               Output only. The "running state" of the Feature in this Hub.
+               Structure is documented below.
+        """
         if has_resources is not None:
             pulumi.set(__self__, "has_resources", has_resources)
         if state is not None:
@@ -700,6 +787,10 @@ class FeatureResourceStateArgs:
     @property
     @pulumi.getter(name="hasResources")
     def has_resources(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Output)
+        Whether this Feature has outstanding resources that need to be cleaned up before it can be disabled.
+        """
         return pulumi.get(self, "has_resources")
 
     @has_resources.setter
@@ -709,6 +800,11 @@ class FeatureResourceStateArgs:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. The "running state" of the Feature in this Hub.
+        Structure is documented below.
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -723,7 +819,7 @@ class FeatureSpecArgs:
                  multiclusteringress: Optional[pulumi.Input['FeatureSpecMulticlusteringressArgs']] = None):
         """
         :param pulumi.Input['FeatureSpecMulticlusteringressArgs'] multiclusteringress: Multicluster Ingress-specific spec.
-               The `multiclusteringress` block supports:
+               Structure is documented below.
         """
         if fleetobservability is not None:
             pulumi.set(__self__, "fleetobservability", fleetobservability)
@@ -744,7 +840,7 @@ class FeatureSpecArgs:
     def multiclusteringress(self) -> Optional[pulumi.Input['FeatureSpecMulticlusteringressArgs']]:
         """
         Multicluster Ingress-specific spec.
-        The `multiclusteringress` block supports:
+        Structure is documented below.
         """
         return pulumi.get(self, "multiclusteringress")
 
@@ -757,12 +853,20 @@ class FeatureSpecArgs:
 class FeatureSpecFleetobservabilityArgs:
     def __init__(__self__, *,
                  logging_config: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigArgs']] = None):
+        """
+        :param pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigArgs'] logging_config: Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+               Structure is documented below.
+        """
         if logging_config is not None:
             pulumi.set(__self__, "logging_config", logging_config)
 
     @property
     @pulumi.getter(name="loggingConfig")
     def logging_config(self) -> Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigArgs']]:
+        """
+        Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+        Structure is documented below.
+        """
         return pulumi.get(self, "logging_config")
 
     @logging_config.setter
@@ -775,6 +879,12 @@ class FeatureSpecFleetobservabilityLoggingConfigArgs:
     def __init__(__self__, *,
                  default_config: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs']] = None,
                  fleet_scope_logs_config: Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs']] = None):
+        """
+        :param pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs'] default_config: Specified if applying the default routing config to logs not specified in other configs.
+               Structure is documented below.
+        :param pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs'] fleet_scope_logs_config: Specified if applying the routing config to all logs for all fleet scopes.
+               Structure is documented below.
+        """
         if default_config is not None:
             pulumi.set(__self__, "default_config", default_config)
         if fleet_scope_logs_config is not None:
@@ -783,6 +893,10 @@ class FeatureSpecFleetobservabilityLoggingConfigArgs:
     @property
     @pulumi.getter(name="defaultConfig")
     def default_config(self) -> Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs']]:
+        """
+        Specified if applying the default routing config to logs not specified in other configs.
+        Structure is documented below.
+        """
         return pulumi.get(self, "default_config")
 
     @default_config.setter
@@ -792,6 +906,10 @@ class FeatureSpecFleetobservabilityLoggingConfigArgs:
     @property
     @pulumi.getter(name="fleetScopeLogsConfig")
     def fleet_scope_logs_config(self) -> Optional[pulumi.Input['FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs']]:
+        """
+        Specified if applying the routing config to all logs for all fleet scopes.
+        Structure is documented below.
+        """
         return pulumi.get(self, "fleet_scope_logs_config")
 
     @fleet_scope_logs_config.setter
@@ -803,12 +921,20 @@ class FeatureSpecFleetobservabilityLoggingConfigArgs:
 class FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs:
     def __init__(__self__, *,
                  mode: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] mode: Specified if fleet logging feature is enabled.
+               Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
+        """
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
 
     @property
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specified if fleet logging feature is enabled.
+        Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
+        """
         return pulumi.get(self, "mode")
 
     @mode.setter
@@ -820,12 +946,20 @@ class FeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs:
 class FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs:
     def __init__(__self__, *,
                  mode: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] mode: Specified if fleet logging feature is enabled.
+               Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
+        """
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
 
     @property
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specified if fleet logging feature is enabled.
+        Possible values are: `MODE_UNSPECIFIED`, `COPY`, `MOVE`.
+        """
         return pulumi.get(self, "mode")
 
     @mode.setter
@@ -859,12 +993,22 @@ class FeatureSpecMulticlusteringressArgs:
 class FeatureStateArgs:
     def __init__(__self__, *,
                  states: Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateStateArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['FeatureStateStateArgs']]] states: (Output)
+               Output only. The "running state" of the Feature in this Hub.
+               Structure is documented below.
+        """
         if states is not None:
             pulumi.set(__self__, "states", states)
 
     @property
     @pulumi.getter
     def states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FeatureStateStateArgs']]]]:
+        """
+        (Output)
+        Output only. The "running state" of the Feature in this Hub.
+        Structure is documented below.
+        """
         return pulumi.get(self, "states")
 
     @states.setter
@@ -879,7 +1023,12 @@ class FeatureStateStateArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] update_time: Output only. When the Feature resource was last updated.
+        :param pulumi.Input[str] code: (Output)
+               The high-level, machine-readable status of this Feature.
+        :param pulumi.Input[str] description: (Output)
+               A human-readable description of the current status.
+        :param pulumi.Input[str] update_time: (Output)
+               The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         """
         if code is not None:
             pulumi.set(__self__, "code", code)
@@ -891,6 +1040,10 @@ class FeatureStateStateArgs:
     @property
     @pulumi.getter
     def code(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The high-level, machine-readable status of this Feature.
+        """
         return pulumi.get(self, "code")
 
     @code.setter
@@ -900,6 +1053,10 @@ class FeatureStateStateArgs:
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        A human-readable description of the current status.
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -910,7 +1067,8 @@ class FeatureStateStateArgs:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. When the Feature resource was last updated.
+        (Output)
+        The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         """
         return pulumi.get(self, "update_time")
 

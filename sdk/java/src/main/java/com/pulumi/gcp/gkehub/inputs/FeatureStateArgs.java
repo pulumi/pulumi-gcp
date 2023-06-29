@@ -16,9 +16,21 @@ public final class FeatureStateArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FeatureStateArgs Empty = new FeatureStateArgs();
 
+    /**
+     * (Output)
+     * Output only. The &#34;running state&#34; of the Feature in this Hub.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="states")
     private @Nullable Output<List<FeatureStateStateArgs>> states;
 
+    /**
+     * @return (Output)
+     * Output only. The &#34;running state&#34; of the Feature in this Hub.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<List<FeatureStateStateArgs>>> states() {
         return Optional.ofNullable(this.states);
     }
@@ -47,15 +59,39 @@ public final class FeatureStateArgs extends com.pulumi.resources.ResourceArgs {
             $ = new FeatureStateArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param states (Output)
+         * Output only. The &#34;running state&#34; of the Feature in this Hub.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder states(@Nullable Output<List<FeatureStateStateArgs>> states) {
             $.states = states;
             return this;
         }
 
+        /**
+         * @param states (Output)
+         * Output only. The &#34;running state&#34; of the Feature in this Hub.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder states(List<FeatureStateStateArgs> states) {
             return states(Output.of(states));
         }
 
+        /**
+         * @param states (Output)
+         * Output only. The &#34;running state&#34; of the Feature in this Hub.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder states(FeatureStateStateArgs... states) {
             return states(List.of(states));
         }

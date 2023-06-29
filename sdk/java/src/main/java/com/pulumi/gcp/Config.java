@@ -242,6 +242,9 @@ public final class Config {
     public Optional<String> gkeBackupCustomEndpoint() {
         return Codegen.stringProp("gkeBackupCustomEndpoint").config(config).get();
     }
+    public Optional<String> gkeHub2CustomEndpoint() {
+        return Codegen.stringProp("gkeHub2CustomEndpoint").config(config).get();
+    }
     public Optional<String> gkeHubCustomEndpoint() {
         return Codegen.stringProp("gkeHubCustomEndpoint").config(config).get();
     }

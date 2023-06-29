@@ -3020,8 +3020,26 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// gke hub
-			"google_gke_hub_membership":         {Tok: gcpResource(gcpGkeHub, "Membership")},
-			"google_gke_hub_feature":            {Tok: gcpResource(gcpGkeHub, "Feature")},
+			"google_gke_hub_membership": {Tok: gcpResource(gcpGkeHub, "Membership")},
+			"google_gke_hub_feature":    {Tok: gcpResource(gcpGkeHub, "Feature")},
+			"google_gke_hub_feature_iam_binding": {
+				Tok: gcpResource(gcpGkeHub, "FeatureIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "gke_hub_feature_iam.html.markdown",
+				},
+			},
+			"google_gke_hub_feature_iam_member": {
+				Tok: gcpResource(gcpGkeHub, "FeatureIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "gke_hub_feature_iam.html.markdown",
+				},
+			},
+			"google_gke_hub_feature_iam_policy": {
+				Tok: gcpResource(gcpGkeHub, "FeatureIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "gke_hub_feature_iam.html.markdown",
+				},
+			},
 			"google_gke_hub_feature_membership": {Tok: gcpResource(gcpGkeHub, "FeatureMembership")},
 			"google_gke_hub_membership_iam_binding": {
 				Tok: gcpResource(gcpGkeHub, "MembershipIamBinding"),

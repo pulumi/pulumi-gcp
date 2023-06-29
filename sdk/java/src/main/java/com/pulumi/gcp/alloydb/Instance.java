@@ -133,7 +133,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.annotations);
     }
     /**
-     * Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
+     * &#39;Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
+     * Note that primary and read instances can have different availability types.
+     * Only READ_POOL instance supports ZONAL type. Users can&#39;t specify the zone for READ_POOL instance.
+     * Zone is automatically chosen from the list of zones in the region specified.
+     * Read pool of size 1 can only have zonal availability. Read pools with node count of 2 or more
+     * can have regional availability (nodes are present in 2 or more zones in a region).&#39;
      * Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
      * 
      */
@@ -141,7 +146,12 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> availabilityType;
 
     /**
-     * @return Availability type of an Instance. Defaults to REGIONAL for both primary and read instances. Note that primary and read instances can have different availability types.
+     * @return &#39;Availability type of an Instance. Defaults to REGIONAL for both primary and read instances.
+     * Note that primary and read instances can have different availability types.
+     * Only READ_POOL instance supports ZONAL type. Users can&#39;t specify the zone for READ_POOL instance.
+     * Zone is automatically chosen from the list of zones in the region specified.
+     * Read pool of size 1 can only have zonal availability. Read pools with node count of 2 or more
+     * can have regional availability (nodes are present in 2 or more zones in a region).&#39;
      * Possible values are: `AVAILABILITY_TYPE_UNSPECIFIED`, `ZONAL`, `REGIONAL`.
      * 
      */

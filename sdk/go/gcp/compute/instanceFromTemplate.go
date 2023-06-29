@@ -138,6 +138,8 @@ type InstanceFromTemplate struct {
 	// Configures network performance settings for the instance. If not specified, the instance will be created with its
 	// default network performance configuration.
 	NetworkPerformanceConfig InstanceFromTemplateNetworkPerformanceConfigOutput `pulumi:"networkPerformanceConfig"`
+	// Stores additional params passed with the request, but not persisted as part of resource payload.
+	Params InstanceFromTemplateParamsOutput `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -264,6 +266,8 @@ type instanceFromTemplateState struct {
 	// Configures network performance settings for the instance. If not specified, the instance will be created with its
 	// default network performance configuration.
 	NetworkPerformanceConfig *InstanceFromTemplateNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
+	// Stores additional params passed with the request, but not persisted as part of resource payload.
+	Params *InstanceFromTemplateParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -359,6 +363,8 @@ type InstanceFromTemplateState struct {
 	// Configures network performance settings for the instance. If not specified, the instance will be created with its
 	// default network performance configuration.
 	NetworkPerformanceConfig InstanceFromTemplateNetworkPerformanceConfigPtrInput
+	// Stores additional params passed with the request, but not persisted as part of resource payload.
+	Params InstanceFromTemplateParamsPtrInput
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -446,6 +452,8 @@ type instanceFromTemplateArgs struct {
 	// Configures network performance settings for the instance. If not specified, the instance will be created with its
 	// default network performance configuration.
 	NetworkPerformanceConfig *InstanceFromTemplateNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
+	// Stores additional params passed with the request, but not persisted as part of resource payload.
+	Params *InstanceFromTemplateParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -526,6 +534,8 @@ type InstanceFromTemplateArgs struct {
 	// Configures network performance settings for the instance. If not specified, the instance will be created with its
 	// default network performance configuration.
 	NetworkPerformanceConfig InstanceFromTemplateNetworkPerformanceConfigPtrInput
+	// Stores additional params passed with the request, but not persisted as part of resource payload.
+	Params InstanceFromTemplateParamsPtrInput
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -786,6 +796,11 @@ func (o InstanceFromTemplateOutput) NetworkPerformanceConfig() InstanceFromTempl
 	return o.ApplyT(func(v *InstanceFromTemplate) InstanceFromTemplateNetworkPerformanceConfigOutput {
 		return v.NetworkPerformanceConfig
 	}).(InstanceFromTemplateNetworkPerformanceConfigOutput)
+}
+
+// Stores additional params passed with the request, but not persisted as part of resource payload.
+func (o InstanceFromTemplateOutput) Params() InstanceFromTemplateParamsOutput {
+	return o.ApplyT(func(v *InstanceFromTemplate) InstanceFromTemplateParamsOutput { return v.Params }).(InstanceFromTemplateParamsOutput)
 }
 
 // The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither

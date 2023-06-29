@@ -551,6 +551,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.gkeBackupCustomEndpoint);
     }
 
+    @Import(name="gkeHub2CustomEndpoint")
+    private @Nullable Output<String> gkeHub2CustomEndpoint;
+
+    public Optional<Output<String>> gkeHub2CustomEndpoint() {
+        return Optional.ofNullable(this.gkeHub2CustomEndpoint);
+    }
+
     @Import(name="gkeHubCustomEndpoint")
     private @Nullable Output<String> gkeHubCustomEndpoint;
 
@@ -1071,6 +1078,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.firestoreCustomEndpoint = $.firestoreCustomEndpoint;
         this.gameServicesCustomEndpoint = $.gameServicesCustomEndpoint;
         this.gkeBackupCustomEndpoint = $.gkeBackupCustomEndpoint;
+        this.gkeHub2CustomEndpoint = $.gkeHub2CustomEndpoint;
         this.gkeHubCustomEndpoint = $.gkeHubCustomEndpoint;
         this.gkehubFeatureCustomEndpoint = $.gkehubFeatureCustomEndpoint;
         this.gkeonpremCustomEndpoint = $.gkeonpremCustomEndpoint;
@@ -1836,6 +1844,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder gkeBackupCustomEndpoint(String gkeBackupCustomEndpoint) {
             return gkeBackupCustomEndpoint(Output.of(gkeBackupCustomEndpoint));
+        }
+
+        public Builder gkeHub2CustomEndpoint(@Nullable Output<String> gkeHub2CustomEndpoint) {
+            $.gkeHub2CustomEndpoint = gkeHub2CustomEndpoint;
+            return this;
+        }
+
+        public Builder gkeHub2CustomEndpoint(String gkeHub2CustomEndpoint) {
+            return gkeHub2CustomEndpoint(Output.of(gkeHub2CustomEndpoint));
         }
 
         public Builder gkeHubCustomEndpoint(@Nullable Output<String> gkeHubCustomEndpoint) {

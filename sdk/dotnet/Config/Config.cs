@@ -564,6 +564,13 @@ namespace Pulumi.Gcp
             set => _gkeBackupCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _gkeHub2CustomEndpoint = new __Value<string?>(() => __config.Get("gkeHub2CustomEndpoint"));
+        public static string? GkeHub2CustomEndpoint
+        {
+            get => _gkeHub2CustomEndpoint.Get();
+            set => _gkeHub2CustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _gkeHubCustomEndpoint = new __Value<string?>(() => __config.Get("gkeHubCustomEndpoint"));
         public static string? GkeHubCustomEndpoint
         {

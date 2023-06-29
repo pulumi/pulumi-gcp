@@ -7,8 +7,16 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Feature represents the settings and status of any Hub Feature.
+ *
+ * To get more information about Feature, see:
+ *
+ * * [API documentation](https://cloud.google.com/anthos/fleet-management/docs/reference/rest/v1/projects.locations.features)
+ * * How-to Guides
+ *     * [Registering a Cluster](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster#register_cluster)
+ *
  * ## Example Usage
- * ### Multi Cluster Ingress
+ * ### Gkehub Feature Multi Cluster Ingress
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -17,8 +25,6 @@ import * as utilities from "../utilities";
  * const cluster = new gcp.container.Cluster("cluster", {
  *     location: "us-central1-a",
  *     initialNodeCount: 1,
- * }, {
- *     provider: google_beta,
  * });
  * const membership = new gcp.gkehub.Membership("membership", {
  *     membershipId: "my-membership",
@@ -28,8 +34,6 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     description: "Membership",
- * }, {
- *     provider: google_beta,
  * });
  * const feature = new gcp.gkehub.Feature("feature", {
  *     location: "global",
@@ -38,11 +42,30 @@ import * as utilities from "../utilities";
  *             configMembership: membership.id,
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
- * ### Multi Cluster Service Discovery
+ * ### Gkehub Feature Multi Cluster Service Discovery
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const feature = new gcp.gkehub.Feature("feature", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     location: "global",
+ * });
+ * ```
+ * ### Gkehub Feature Anthos Service Mesh
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const feature = new gcp.gkehub.Feature("feature", {location: "global"});
+ * ```
+ * ### Enable Fleet Observability For Default Logs With Copy
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -50,20 +73,61 @@ import * as utilities from "../utilities";
  *
  * const feature = new gcp.gkehub.Feature("feature", {
  *     location: "global",
- *     labels: {
- *         foo: "bar",
+ *     spec: {
+ *         fleetobservability: {
+ *             loggingConfig: {
+ *                 defaultConfig: {
+ *                     mode: "COPY",
+ *                 },
+ *             },
+ *         },
  *     },
  * }, {
  *     provider: google_beta,
  * });
  * ```
- * ### Enable Anthos Service Mesh
+ * ### Enable Fleet Observability For Scope Logs With Move
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const feature = new gcp.gkehub.Feature("feature", {location: "global"}, {
+ * const feature = new gcp.gkehub.Feature("feature", {
+ *     location: "global",
+ *     spec: {
+ *         fleetobservability: {
+ *             loggingConfig: {
+ *                 fleetScopeLogsConfig: {
+ *                     mode: "MOVE",
+ *                 },
+ *             },
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Enable Fleet Observability For Both Default And Scope Logs
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const feature = new gcp.gkehub.Feature("feature", {
+ *     location: "global",
+ *     spec: {
+ *         fleetobservability: {
+ *             loggingConfig: {
+ *                 defaultConfig: {
+ *                     mode: "COPY",
+ *                 },
+ *                 fleetScopeLogsConfig: {
+ *                     mode: "MOVE",
+ *                 },
+ *             },
+ *         },
+ *     },
+ * }, {
  *     provider: google_beta,
  * });
  * ```
@@ -127,6 +191,7 @@ export class Feature extends pulumi.CustomResource {
     /**
      * The location for the resource
      *
+     *
      * - - -
      */
     public readonly location!: pulumi.Output<string>;
@@ -135,23 +200,29 @@ export class Feature extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
      * State of the Feature resource itself.
+     * Structure is documented below.
      */
     public /*out*/ readonly resourceStates!: pulumi.Output<outputs.gkehub.FeatureResourceState[]>;
     /**
      * Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+     * Structure is documented below.
      */
     public readonly spec!: pulumi.Output<outputs.gkehub.FeatureSpec | undefined>;
     /**
-     * Output only. The Hub-wide Feature state
+     * (Output)
+     * Output only. The "running state" of the Feature in this Hub.
+     * Structure is documented below.
      */
     public /*out*/ readonly states!: pulumi.Output<outputs.gkehub.FeatureState[]>;
     /**
-     * Output only. When the Feature resource was last updated.
+     * (Output)
+     * The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -218,6 +289,7 @@ export interface FeatureState {
     /**
      * The location for the resource
      *
+     *
      * - - -
      */
     location?: pulumi.Input<string>;
@@ -226,23 +298,29 @@ export interface FeatureState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
      * State of the Feature resource itself.
+     * Structure is documented below.
      */
     resourceStates?: pulumi.Input<pulumi.Input<inputs.gkehub.FeatureResourceState>[]>;
     /**
      * Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+     * Structure is documented below.
      */
     spec?: pulumi.Input<inputs.gkehub.FeatureSpec>;
     /**
-     * Output only. The Hub-wide Feature state
+     * (Output)
+     * Output only. The "running state" of the Feature in this Hub.
+     * Structure is documented below.
      */
     states?: pulumi.Input<pulumi.Input<inputs.gkehub.FeatureState>[]>;
     /**
-     * Output only. When the Feature resource was last updated.
+     * (Output)
+     * The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
      */
     updateTime?: pulumi.Input<string>;
 }
@@ -258,6 +336,7 @@ export interface FeatureArgs {
     /**
      * The location for the resource
      *
+     *
      * - - -
      */
     location: pulumi.Input<string>;
@@ -266,11 +345,13 @@ export interface FeatureArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
      * Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
+     * Structure is documented below.
      */
     spec?: pulumi.Input<inputs.gkehub.FeatureSpec>;
 }

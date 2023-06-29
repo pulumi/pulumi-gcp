@@ -35,6 +35,7 @@ public final class EnvironmentConfig {
     private @Nullable Integer nodeCount;
     private @Nullable EnvironmentConfigPrivateEnvironmentConfig privateEnvironmentConfig;
     private @Nullable EnvironmentConfigRecoveryConfig recoveryConfig;
+    private @Nullable String resilienceMode;
     private @Nullable EnvironmentConfigSoftwareConfig softwareConfig;
     private @Nullable EnvironmentConfigWebServerConfig webServerConfig;
     private @Nullable EnvironmentConfigWebServerNetworkAccessControl webServerNetworkAccessControl;
@@ -77,6 +78,9 @@ public final class EnvironmentConfig {
     public Optional<EnvironmentConfigRecoveryConfig> recoveryConfig() {
         return Optional.ofNullable(this.recoveryConfig);
     }
+    public Optional<String> resilienceMode() {
+        return Optional.ofNullable(this.resilienceMode);
+    }
     public Optional<EnvironmentConfigSoftwareConfig> softwareConfig() {
         return Optional.ofNullable(this.softwareConfig);
     }
@@ -111,6 +115,7 @@ public final class EnvironmentConfig {
         private @Nullable Integer nodeCount;
         private @Nullable EnvironmentConfigPrivateEnvironmentConfig privateEnvironmentConfig;
         private @Nullable EnvironmentConfigRecoveryConfig recoveryConfig;
+        private @Nullable String resilienceMode;
         private @Nullable EnvironmentConfigSoftwareConfig softwareConfig;
         private @Nullable EnvironmentConfigWebServerConfig webServerConfig;
         private @Nullable EnvironmentConfigWebServerNetworkAccessControl webServerNetworkAccessControl;
@@ -130,6 +135,7 @@ public final class EnvironmentConfig {
     	      this.nodeCount = defaults.nodeCount;
     	      this.privateEnvironmentConfig = defaults.privateEnvironmentConfig;
     	      this.recoveryConfig = defaults.recoveryConfig;
+    	      this.resilienceMode = defaults.resilienceMode;
     	      this.softwareConfig = defaults.softwareConfig;
     	      this.webServerConfig = defaults.webServerConfig;
     	      this.webServerNetworkAccessControl = defaults.webServerNetworkAccessControl;
@@ -197,6 +203,11 @@ public final class EnvironmentConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder resilienceMode(@Nullable String resilienceMode) {
+            this.resilienceMode = resilienceMode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder softwareConfig(@Nullable EnvironmentConfigSoftwareConfig softwareConfig) {
             this.softwareConfig = softwareConfig;
             return this;
@@ -230,6 +241,7 @@ public final class EnvironmentConfig {
             o.nodeCount = nodeCount;
             o.privateEnvironmentConfig = privateEnvironmentConfig;
             o.recoveryConfig = recoveryConfig;
+            o.resilienceMode = resilienceMode;
             o.softwareConfig = softwareConfig;
             o.webServerConfig = webServerConfig;
             o.webServerNetworkAccessControl = webServerNetworkAccessControl;

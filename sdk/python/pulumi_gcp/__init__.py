@@ -4043,6 +4043,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "gkehub/featureIamBinding",
+  "fqn": "pulumi_gcp.gkehub",
+  "classes": {
+   "gcp:gkehub/featureIamBinding:FeatureIamBinding": "FeatureIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gkehub/featureIamMember",
+  "fqn": "pulumi_gcp.gkehub",
+  "classes": {
+   "gcp:gkehub/featureIamMember:FeatureIamMember": "FeatureIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gkehub/featureIamPolicy",
+  "fqn": "pulumi_gcp.gkehub",
+  "classes": {
+   "gcp:gkehub/featureIamPolicy:FeatureIamPolicy": "FeatureIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "gkehub/featureMembership",
   "fqn": "pulumi_gcp.gkehub",
   "classes": {
@@ -6299,10 +6323,26 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "vmwareengine/cluster",
+  "fqn": "pulumi_gcp.vmwareengine",
+  "classes": {
+   "gcp:vmwareengine/cluster:Cluster": "Cluster"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "vmwareengine/network",
   "fqn": "pulumi_gcp.vmwareengine",
   "classes": {
    "gcp:vmwareengine/network:Network": "Network"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vmwareengine/privateCloud",
+  "fqn": "pulumi_gcp.vmwareengine",
+  "classes": {
+   "gcp:vmwareengine/privateCloud:PrivateCloud": "PrivateCloud"
   }
  },
  {

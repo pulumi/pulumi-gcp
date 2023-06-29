@@ -11,9 +11,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureState {
+    /**
+     * @return (Output)
+     * Output only. The &#34;running state&#34; of the Feature in this Hub.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable List<FeatureStateState> states;
 
     private FeatureState() {}
+    /**
+     * @return (Output)
+     * Output only. The &#34;running state&#34; of the Feature in this Hub.
+     * Structure is documented below.
+     * 
+     */
     public List<FeatureStateState> states() {
         return this.states == null ? List.of() : this.states;
     }

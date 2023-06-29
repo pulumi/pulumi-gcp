@@ -111,6 +111,8 @@ type InstanceFromMachineImage struct {
 	// Configures network performance settings for the instance. If not specified, the instance will be created with its
 	// default network performance configuration.
 	NetworkPerformanceConfig InstanceFromMachineImageNetworkPerformanceConfigOutput `pulumi:"networkPerformanceConfig"`
+	// Stores additional params passed with the request, but not persisted as part of resource payload.
+	Params InstanceFromMachineImageParamsOutput `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -238,6 +240,8 @@ type instanceFromMachineImageState struct {
 	// Configures network performance settings for the instance. If not specified, the instance will be created with its
 	// default network performance configuration.
 	NetworkPerformanceConfig *InstanceFromMachineImageNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
+	// Stores additional params passed with the request, but not persisted as part of resource payload.
+	Params *InstanceFromMachineImageParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -334,6 +338,8 @@ type InstanceFromMachineImageState struct {
 	// Configures network performance settings for the instance. If not specified, the instance will be created with its
 	// default network performance configuration.
 	NetworkPerformanceConfig InstanceFromMachineImageNetworkPerformanceConfigPtrInput
+	// Stores additional params passed with the request, but not persisted as part of resource payload.
+	Params InstanceFromMachineImageParamsPtrInput
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -418,6 +424,8 @@ type instanceFromMachineImageArgs struct {
 	// Configures network performance settings for the instance. If not specified, the instance will be created with its
 	// default network performance configuration.
 	NetworkPerformanceConfig *InstanceFromMachineImageNetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
+	// Stores additional params passed with the request, but not persisted as part of resource payload.
+	Params *InstanceFromMachineImageParams `pulumi:"params"`
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -493,6 +501,8 @@ type InstanceFromMachineImageArgs struct {
 	// Configures network performance settings for the instance. If not specified, the instance will be created with its
 	// default network performance configuration.
 	NetworkPerformanceConfig InstanceFromMachineImageNetworkPerformanceConfigPtrInput
+	// Stores additional params passed with the request, but not persisted as part of resource payload.
+	Params InstanceFromMachineImageParamsPtrInput
 	// The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither
 	// self_link nor project are provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -754,6 +764,11 @@ func (o InstanceFromMachineImageOutput) NetworkPerformanceConfig() InstanceFromM
 	return o.ApplyT(func(v *InstanceFromMachineImage) InstanceFromMachineImageNetworkPerformanceConfigOutput {
 		return v.NetworkPerformanceConfig
 	}).(InstanceFromMachineImageNetworkPerformanceConfigOutput)
+}
+
+// Stores additional params passed with the request, but not persisted as part of resource payload.
+func (o InstanceFromMachineImageOutput) Params() InstanceFromMachineImageParamsOutput {
+	return o.ApplyT(func(v *InstanceFromMachineImage) InstanceFromMachineImageParamsOutput { return v.Params }).(InstanceFromMachineImageParamsOutput)
 }
 
 // The ID of the project in which the resource belongs. If self_link is provided, this value is ignored. If neither

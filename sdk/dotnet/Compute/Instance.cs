@@ -306,6 +306,13 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.InstanceNetworkPerformanceConfig?> NetworkPerformanceConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Additional instance parameters.
+        /// .
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.InstanceParams?> Params { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -623,6 +630,13 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.InstanceNetworkPerformanceConfigArgs>? NetworkPerformanceConfig { get; set; }
 
         /// <summary>
+        /// Additional instance parameters.
+        /// .
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.InstanceParamsArgs>? Params { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -930,6 +944,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("networkPerformanceConfig")]
         public Input<Inputs.InstanceNetworkPerformanceConfigGetArgs>? NetworkPerformanceConfig { get; set; }
+
+        /// <summary>
+        /// Additional instance parameters.
+        /// .
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.InstanceParamsGetArgs>? Params { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs. If it
