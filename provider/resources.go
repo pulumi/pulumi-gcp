@@ -16,6 +16,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
 	google "github.com/hashicorp/terraform-provider-google-beta/google-beta"
+	googlefw "github.com/hashicorp/terraform-provider-google-beta/google-beta/fwprovider"
 	tpg_transport "github.com/hashicorp/terraform-provider-google-beta/google-beta/transport"
 	"github.com/pulumi/pulumi-gcp/provider/v6/pkg/version"
 	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
@@ -363,7 +364,7 @@ func Provider() tfbridge.ProviderInfo {
 	p := pf.MuxShimWithDisjointgPF(
 		context.Background(),
 		shimv2.NewProvider(google.Provider()),
-		google.New(version.Version)) // this probably should be TF version but it does not seem to matter
+		googlefw.New(version.Version)) // this probably should be TF version but it does not seem to matter
 	prov := tfbridge.ProviderInfo{
 		P:                p,
 		Name:             "google-beta",
@@ -2939,6 +2940,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			// Certificate Manager
+			"google_public_ca_external_account_key":            {Tok: gcpResource(gcpCertificateManager, "ExternalAccountKey")},
 			"google_certificate_manager_certificate":           {Tok: gcpResource(gcpCertificateManager, "Certificate")},
 			"google_certificate_manager_dns_authorization":     {Tok: gcpResource(gcpCertificateManager, "DnsAuthorization")},
 			"google_certificate_manager_certificate_map":       {Tok: gcpResource(gcpCertificateManager, "CertificateMap")},

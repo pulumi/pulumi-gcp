@@ -1,0 +1,33 @@
+From 244502193659d3c2e76a39b9628178bdf848db23 Mon Sep 17 00:00:00 2001
+From: Daniel Bradley <daniel@pulumi.com>
+Date: Tue, 7 Mar 2023 11:09:59 +0000
+Subject: [PATCH 2/9] Change user agent
+
+Remove implementation of generateUserAgentString as it's not needed in our provider. We set the user agent on the config and always use that value as-is for all requests.
+
+Add options to set or disable partner name.
+---
+ google-beta/utils.go | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/google-beta/utils.go b/google-beta/utils.go
+index d0f4777ca..dc0f460e4 100644
+--- a/google-beta/utils.go
++++ b/google-beta/utils.go
+@@ -284,10 +284,10 @@ func changeFieldSchemaToForceNew(sch *schema.Schema) {
+ 	tpgresource.ChangeFieldSchemaToForceNew(sch)
+ }
+ 
+-// Deprecated: For backward compatibility generateUserAgentString is still working,
+-// but all new code should use GenerateUserAgentString in the tpgresource package instead.
+ func generateUserAgentString(d tpgresource.TerraformResourceData, currentUserAgent string) (string, error) {
+-	return tpgresource.GenerateUserAgentString(d, currentUserAgent)
++	// we don't want to append the name of the module here as it doesn't make any sense to
++	// do this with the pulumi provider
++	return currentUserAgent, nil
+ }
+ 
+ // Deprecated: For backward compatibility snakeToPascalCase is still working,
+-- 
+2.39.1
+
