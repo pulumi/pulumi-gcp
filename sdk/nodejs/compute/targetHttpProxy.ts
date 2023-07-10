@@ -81,6 +81,13 @@ export class TargetHttpProxy extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in
+     * seconds). If an HTTP keepalive is not specified, a default value (610 seconds) will be used. For Global external HTTP(S)
+     * load balancer, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For Global external
+     * HTTP(S) load balancer (classic), this option is not available publicly.
+     */
+    public readonly httpKeepAliveTimeoutSec!: pulumi.Output<number | undefined>;
+    /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
      * RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -132,6 +139,7 @@ export class TargetHttpProxy extends pulumi.CustomResource {
             const state = argsOrState as TargetHttpProxyState | undefined;
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["httpKeepAliveTimeoutSec"] = state ? state.httpKeepAliveTimeoutSec : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["proxyBind"] = state ? state.proxyBind : undefined;
@@ -144,6 +152,7 @@ export class TargetHttpProxy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'urlMap'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["httpKeepAliveTimeoutSec"] = args ? args.httpKeepAliveTimeoutSec : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["proxyBind"] = args ? args.proxyBind : undefined;
@@ -169,6 +178,13 @@ export interface TargetHttpProxyState {
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in
+     * seconds). If an HTTP keepalive is not specified, a default value (610 seconds) will be used. For Global external HTTP(S)
+     * load balancer, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For Global external
+     * HTTP(S) load balancer (classic), this option is not available publicly.
+     */
+    httpKeepAliveTimeoutSec?: pulumi.Input<number>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -215,6 +231,13 @@ export interface TargetHttpProxyArgs {
      * An optional description of this resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in
+     * seconds). If an HTTP keepalive is not specified, a default value (610 seconds) will be used. For Global external HTTP(S)
+     * load balancer, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For Global external
+     * HTTP(S) load balancer (classic), this option is not available publicly.
+     */
+    httpKeepAliveTimeoutSec?: pulumi.Input<number>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with

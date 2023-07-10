@@ -24,7 +24,7 @@ export class Provider extends pulumi.ProviderResource {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === Provider.__pulumiType;
+        return obj['__pulumiType'] === "pulumi:providers:" + Provider.__pulumiType;
     }
 
     public readonly accessApprovalCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -95,6 +95,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly filestoreCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaseCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaseDatabaseCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly firebaseExtensionsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaseHostingCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaseStorageCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaserulesCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -105,7 +106,6 @@ export class Provider extends pulumi.ProviderResource {
     public readonly gkeHubCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gkehubFeatureCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gkeonpremCustomEndpoint!: pulumi.Output<string | undefined>;
-    public readonly googlePartnerName!: pulumi.Output<string | undefined>;
     public readonly healthcareCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly iam2CustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly iamBetaCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -130,6 +130,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly osLoginCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly privatecaCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly project!: pulumi.Output<string | undefined>;
+    public readonly publicCaCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly pubsubCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly pubsubLiteCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly recaptchaEnterpriseCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -236,7 +237,6 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["deploymentManagerCustomEndpoint"] = args ? args.deploymentManagerCustomEndpoint : undefined;
             resourceInputs["dialogflowCustomEndpoint"] = args ? args.dialogflowCustomEndpoint : undefined;
             resourceInputs["dialogflowCxCustomEndpoint"] = args ? args.dialogflowCxCustomEndpoint : undefined;
-            resourceInputs["disableGooglePartnerName"] = pulumi.output(args ? args.disableGooglePartnerName : undefined).apply(JSON.stringify);
             resourceInputs["dnsCustomEndpoint"] = args ? args.dnsCustomEndpoint : undefined;
             resourceInputs["documentAiCustomEndpoint"] = args ? args.documentAiCustomEndpoint : undefined;
             resourceInputs["essentialContactsCustomEndpoint"] = args ? args.essentialContactsCustomEndpoint : undefined;
@@ -244,6 +244,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["filestoreCustomEndpoint"] = args ? args.filestoreCustomEndpoint : undefined;
             resourceInputs["firebaseCustomEndpoint"] = args ? args.firebaseCustomEndpoint : undefined;
             resourceInputs["firebaseDatabaseCustomEndpoint"] = args ? args.firebaseDatabaseCustomEndpoint : undefined;
+            resourceInputs["firebaseExtensionsCustomEndpoint"] = args ? args.firebaseExtensionsCustomEndpoint : undefined;
             resourceInputs["firebaseHostingCustomEndpoint"] = args ? args.firebaseHostingCustomEndpoint : undefined;
             resourceInputs["firebaseStorageCustomEndpoint"] = args ? args.firebaseStorageCustomEndpoint : undefined;
             resourceInputs["firebaserulesCustomEndpoint"] = args ? args.firebaserulesCustomEndpoint : undefined;
@@ -254,7 +255,6 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["gkeHubCustomEndpoint"] = args ? args.gkeHubCustomEndpoint : undefined;
             resourceInputs["gkehubFeatureCustomEndpoint"] = args ? args.gkehubFeatureCustomEndpoint : undefined;
             resourceInputs["gkeonpremCustomEndpoint"] = args ? args.gkeonpremCustomEndpoint : undefined;
-            resourceInputs["googlePartnerName"] = args ? args.googlePartnerName : undefined;
             resourceInputs["healthcareCustomEndpoint"] = args ? args.healthcareCustomEndpoint : undefined;
             resourceInputs["iam2CustomEndpoint"] = args ? args.iam2CustomEndpoint : undefined;
             resourceInputs["iamBetaCustomEndpoint"] = args ? args.iamBetaCustomEndpoint : undefined;
@@ -280,6 +280,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["osLoginCustomEndpoint"] = args ? args.osLoginCustomEndpoint : undefined;
             resourceInputs["privatecaCustomEndpoint"] = args ? args.privatecaCustomEndpoint : undefined;
             resourceInputs["project"] = (args ? args.project : undefined) ?? utilities.getEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
+            resourceInputs["publicCaCustomEndpoint"] = args ? args.publicCaCustomEndpoint : undefined;
             resourceInputs["pubsubCustomEndpoint"] = args ? args.pubsubCustomEndpoint : undefined;
             resourceInputs["pubsubLiteCustomEndpoint"] = args ? args.pubsubLiteCustomEndpoint : undefined;
             resourceInputs["recaptchaEnterpriseCustomEndpoint"] = args ? args.recaptchaEnterpriseCustomEndpoint : undefined;
@@ -386,7 +387,6 @@ export interface ProviderArgs {
     deploymentManagerCustomEndpoint?: pulumi.Input<string>;
     dialogflowCustomEndpoint?: pulumi.Input<string>;
     dialogflowCxCustomEndpoint?: pulumi.Input<string>;
-    disableGooglePartnerName?: pulumi.Input<boolean>;
     dnsCustomEndpoint?: pulumi.Input<string>;
     documentAiCustomEndpoint?: pulumi.Input<string>;
     essentialContactsCustomEndpoint?: pulumi.Input<string>;
@@ -394,6 +394,7 @@ export interface ProviderArgs {
     filestoreCustomEndpoint?: pulumi.Input<string>;
     firebaseCustomEndpoint?: pulumi.Input<string>;
     firebaseDatabaseCustomEndpoint?: pulumi.Input<string>;
+    firebaseExtensionsCustomEndpoint?: pulumi.Input<string>;
     firebaseHostingCustomEndpoint?: pulumi.Input<string>;
     firebaseStorageCustomEndpoint?: pulumi.Input<string>;
     firebaserulesCustomEndpoint?: pulumi.Input<string>;
@@ -404,7 +405,6 @@ export interface ProviderArgs {
     gkeHubCustomEndpoint?: pulumi.Input<string>;
     gkehubFeatureCustomEndpoint?: pulumi.Input<string>;
     gkeonpremCustomEndpoint?: pulumi.Input<string>;
-    googlePartnerName?: pulumi.Input<string>;
     healthcareCustomEndpoint?: pulumi.Input<string>;
     iam2CustomEndpoint?: pulumi.Input<string>;
     iamBetaCustomEndpoint?: pulumi.Input<string>;
@@ -430,6 +430,7 @@ export interface ProviderArgs {
     osLoginCustomEndpoint?: pulumi.Input<string>;
     privatecaCustomEndpoint?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    publicCaCustomEndpoint?: pulumi.Input<string>;
     pubsubCustomEndpoint?: pulumi.Input<string>;
     pubsubLiteCustomEndpoint?: pulumi.Input<string>;
     recaptchaEnterpriseCustomEndpoint?: pulumi.Input<string>;

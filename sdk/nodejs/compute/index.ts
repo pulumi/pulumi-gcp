@@ -524,6 +524,11 @@ export type Network = import("./network").Network;
 export const Network: typeof import("./network").Network = null as any;
 utilities.lazyLoad(exports, ["Network"], () => require("./network"));
 
+export { NetworkEdgeSecurityServiceArgs, NetworkEdgeSecurityServiceState } from "./networkEdgeSecurityService";
+export type NetworkEdgeSecurityService = import("./networkEdgeSecurityService").NetworkEdgeSecurityService;
+export const NetworkEdgeSecurityService: typeof import("./networkEdgeSecurityService").NetworkEdgeSecurityService = null as any;
+utilities.lazyLoad(exports, ["NetworkEdgeSecurityService"], () => require("./networkEdgeSecurityService"));
+
 export { NetworkEndpointArgs, NetworkEndpointState } from "./networkEndpoint";
 export type NetworkEndpoint = import("./networkEndpoint").NetworkEndpoint;
 export const NetworkEndpoint: typeof import("./networkEndpoint").NetworkEndpoint = null as any;
@@ -718,6 +723,11 @@ export { RegionPerInstanceConfigArgs, RegionPerInstanceConfigState } from "./reg
 export type RegionPerInstanceConfig = import("./regionPerInstanceConfig").RegionPerInstanceConfig;
 export const RegionPerInstanceConfig: typeof import("./regionPerInstanceConfig").RegionPerInstanceConfig = null as any;
 utilities.lazyLoad(exports, ["RegionPerInstanceConfig"], () => require("./regionPerInstanceConfig"));
+
+export { RegionSecurityPolicyArgs, RegionSecurityPolicyState } from "./regionSecurityPolicy";
+export type RegionSecurityPolicy = import("./regionSecurityPolicy").RegionSecurityPolicy;
+export const RegionSecurityPolicy: typeof import("./regionSecurityPolicy").RegionSecurityPolicy = null as any;
+utilities.lazyLoad(exports, ["RegionSecurityPolicy"], () => require("./regionSecurityPolicy"));
 
 export { RegionSslCertificateArgs, RegionSslCertificateState } from "./regionSslCertificate";
 export type RegionSslCertificate = import("./regionSslCertificate").RegionSslCertificate;
@@ -1031,6 +1041,8 @@ const _module = {
                 return new MangedSslCertificate(name, <any>undefined, { urn })
             case "gcp:compute/network:Network":
                 return new Network(name, <any>undefined, { urn })
+            case "gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService":
+                return new NetworkEdgeSecurityService(name, <any>undefined, { urn })
             case "gcp:compute/networkEndpoint:NetworkEndpoint":
                 return new NetworkEndpoint(name, <any>undefined, { urn })
             case "gcp:compute/networkEndpointGroup:NetworkEndpointGroup":
@@ -1109,6 +1121,8 @@ const _module = {
                 return new RegionNetworkFirewallPolicyRule(name, <any>undefined, { urn })
             case "gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig":
                 return new RegionPerInstanceConfig(name, <any>undefined, { urn })
+            case "gcp:compute/regionSecurityPolicy:RegionSecurityPolicy":
+                return new RegionSecurityPolicy(name, <any>undefined, { urn })
             case "gcp:compute/regionSslCertificate:RegionSslCertificate":
                 return new RegionSslCertificate(name, <any>undefined, { urn })
             case "gcp:compute/regionSslPolicy:RegionSslPolicy":
@@ -1246,6 +1260,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/machineImageIamPolicy", _m
 pulumi.runtime.registerResourceModule("gcp", "compute/managedSslCertificate", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/mangedSslCertificate", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/network", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/networkEdgeSecurityService", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkEndpoint", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkEndpointGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/networkEndpointList", _module)
@@ -1285,6 +1300,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolic
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicyAssociation", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicyRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionPerInstanceConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionSecurityPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionSslCertificate", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionSslPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionTargetHttpProxy", _module)

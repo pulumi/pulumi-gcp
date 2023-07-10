@@ -73,6 +73,16 @@ import * as utilities from "../utilities";
  * }, {
  *     provider: google_beta,
  * });
+ * const nsSa = new gcp.projects.ServiceIdentity("nsSa", {service: "networksecurity.googleapis.com"}, {
+ *     provider: google_beta,
+ * });
+ * const tlsInspectionPermission = new gcp.certificateauthority.CaPoolIamMember("tlsInspectionPermission", {
+ *     caPool: defaultCaPool.id,
+ *     role: "roles/privateca.certificateManager",
+ *     member: pulumi.interpolate`serviceAccount:${nsSa.email}`,
+ * }, {
+ *     provider: google_beta,
+ * });
  * const defaultTlsInspectionPolicy = new gcp.networksecurity.TlsInspectionPolicy("defaultTlsInspectionPolicy", {
  *     location: "us-central1",
  *     caPool: defaultCaPool.id,
@@ -82,6 +92,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [
  *         defaultCaPool,
  *         defaultAuthority,
+ *         tlsInspectionPermission,
  *     ],
  * });
  * ```

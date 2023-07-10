@@ -94,6 +94,47 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Private Service Connect Google Apis No Automate Dns
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network = new gcp.compute.Network("network", {
+ *     project: "my-project-name",
+ *     autoCreateSubnetworks: false,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const vpcSubnetwork = new gcp.compute.Subnetwork("vpcSubnetwork", {
+ *     project: network.project,
+ *     ipCidrRange: "10.2.0.0/16",
+ *     region: "us-central1",
+ *     network: network.id,
+ *     privateIpGoogleAccess: true,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultGlobalAddress = new gcp.compute.GlobalAddress("defaultGlobalAddress", {
+ *     project: network.project,
+ *     addressType: "INTERNAL",
+ *     purpose: "PRIVATE_SERVICE_CONNECT",
+ *     network: network.id,
+ *     address: "100.100.100.106",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultGlobalForwardingRule = new gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule", {
+ *     project: network.project,
+ *     target: "all-apis",
+ *     network: network.id,
+ *     ipAddress: defaultGlobalAddress.id,
+ *     loadBalancingScheme: "",
+ *     noAutomateDnsZone: false,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -266,6 +307,10 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string>;
     /**
+     * This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+     */
+    public readonly noAutomateDnsZone!: pulumi.Output<boolean | undefined>;
+    /**
      * This field can only be used:
      * * If `IPProtocol` is one of TCP, UDP, or SCTP.
      * * By backend service-based network load balancers, target pool-based
@@ -348,6 +393,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             resourceInputs["metadataFilters"] = state ? state.metadataFilters : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["noAutomateDnsZone"] = state ? state.noAutomateDnsZone : undefined;
             resourceInputs["portRange"] = state ? state.portRange : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pscConnectionId"] = state ? state.pscConnectionId : undefined;
@@ -370,6 +416,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             resourceInputs["metadataFilters"] = args ? args.metadataFilters : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["noAutomateDnsZone"] = args ? args.noAutomateDnsZone : undefined;
             resourceInputs["portRange"] = args ? args.portRange : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["sourceIpRanges"] = args ? args.sourceIpRanges : undefined;
@@ -515,6 +562,10 @@ export interface GlobalForwardingRuleState {
      * APIs, a network must be provided.
      */
     network?: pulumi.Input<string>;
+    /**
+     * This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+     */
+    noAutomateDnsZone?: pulumi.Input<boolean>;
     /**
      * This field can only be used:
      * * If `IPProtocol` is one of TCP, UDP, or SCTP.
@@ -695,6 +746,10 @@ export interface GlobalForwardingRuleArgs {
      * APIs, a network must be provided.
      */
     network?: pulumi.Input<string>;
+    /**
+     * This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+     */
+    noAutomateDnsZone?: pulumi.Input<boolean>;
     /**
      * This field can only be used:
      * * If `IPProtocol` is one of TCP, UDP, or SCTP.

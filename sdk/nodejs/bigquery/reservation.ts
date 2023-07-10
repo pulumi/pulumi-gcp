@@ -90,7 +90,7 @@ export class Reservation extends pulumi.CustomResource {
     /**
      * The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
      */
-    public readonly edition!: pulumi.Output<string | undefined>;
+    public readonly edition!: pulumi.Output<string>;
     /**
      * If false, any query using this reservation will use idle slots from other reservations within
      * the same admin project. If true, a query using this reservation will execute with the slot

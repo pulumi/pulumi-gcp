@@ -123,7 +123,7 @@ import * as utilities from "../utilities";
  *             targetUtilization: 0.5,
  *         },
  *     },
- *     noopOnDestroy: true,
+ *     deleteServiceOnDestroy: true,
  * });
  * // App Engine Example
  * const appengineNegRegionNetworkEndpointGroup = new gcp.compute.RegionNetworkEndpointGroup("appengineNegRegionNetworkEndpointGroup", {

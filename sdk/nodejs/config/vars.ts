@@ -505,14 +505,6 @@ Object.defineProperty(exports, "dialogflowCxCustomEndpoint", {
     enumerable: true,
 });
 
-export declare const disableGooglePartnerName: boolean | undefined;
-Object.defineProperty(exports, "disableGooglePartnerName", {
-    get() {
-        return __config.getObject<boolean>("disableGooglePartnerName");
-    },
-    enumerable: true,
-});
-
 export declare const dnsCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "dnsCustomEndpoint", {
     get() {
@@ -565,6 +557,14 @@ export declare const firebaseDatabaseCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "firebaseDatabaseCustomEndpoint", {
     get() {
         return __config.get("firebaseDatabaseCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const firebaseExtensionsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "firebaseExtensionsCustomEndpoint", {
+    get() {
+        return __config.get("firebaseExtensionsCustomEndpoint");
     },
     enumerable: true,
 });
@@ -645,14 +645,6 @@ export declare const gkeonpremCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "gkeonpremCustomEndpoint", {
     get() {
         return __config.get("gkeonpremCustomEndpoint");
-    },
-    enumerable: true,
-});
-
-export declare const googlePartnerName: string | undefined;
-Object.defineProperty(exports, "googlePartnerName", {
-    get() {
-        return __config.get("googlePartnerName");
     },
     enumerable: true,
 });
@@ -853,6 +845,14 @@ export declare const project: string | undefined;
 Object.defineProperty(exports, "project", {
     get() {
         return __config.get("project") ?? utilities.getEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
+    },
+    enumerable: true,
+});
+
+export declare const publicCaCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "publicCaCustomEndpoint", {
+    get() {
+        return __config.get("publicCaCustomEndpoint");
     },
     enumerable: true,
 });

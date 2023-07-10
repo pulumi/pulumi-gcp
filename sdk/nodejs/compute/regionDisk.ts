@@ -74,8 +74,6 @@ import * as utilities from "../utilities";
  *         "us-central1-a",
  *         "us-central1-f",
  *     ],
- * }, {
- *     provider: google_beta,
  * });
  * const secondary = new gcp.compute.RegionDisk("secondary", {
  *     type: "pd-ssd",
@@ -88,8 +86,6 @@ import * as utilities from "../utilities";
  *         "us-east1-b",
  *         "us-east1-c",
  *     ],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Region Disk Features
@@ -171,6 +167,7 @@ export class RegionDisk extends pulumi.CustomResource {
 
     /**
      * A nested object resource
+     * Structure is documented below.
      */
     public readonly asyncPrimaryDisk!: pulumi.Output<outputs.compute.RegionDiskAsyncPrimaryDisk | undefined>;
     /**
@@ -407,6 +404,7 @@ export class RegionDisk extends pulumi.CustomResource {
 export interface RegionDiskState {
     /**
      * A nested object resource
+     * Structure is documented below.
      */
     asyncPrimaryDisk?: pulumi.Input<inputs.compute.RegionDiskAsyncPrimaryDisk>;
     /**
@@ -570,6 +568,7 @@ export interface RegionDiskState {
 export interface RegionDiskArgs {
     /**
      * A nested object resource
+     * Structure is documented below.
      */
     asyncPrimaryDisk?: pulumi.Input<inputs.compute.RegionDiskAsyncPrimaryDisk>;
     /**

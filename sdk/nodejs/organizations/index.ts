@@ -48,6 +48,11 @@ export const getIAMPolicy: typeof import("./getIAMPolicy").getIAMPolicy = null a
 export const getIAMPolicyOutput: typeof import("./getIAMPolicy").getIAMPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getIAMPolicy","getIAMPolicyOutput"], () => require("./getIAMPolicy"));
 
+export { GetIamPolicyArgs, GetIamPolicyResult, GetIamPolicyOutputArgs } from "./getIamPolicy";
+export const getIamPolicy: typeof import("./getIamPolicy").getIamPolicy = null as any;
+export const getIamPolicyOutput: typeof import("./getIamPolicy").getIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getIamPolicy","getIamPolicyOutput"], () => require("./getIamPolicy"));
+
 export { GetOrganizationArgs, GetOrganizationResult, GetOrganizationOutputArgs } from "./getOrganization";
 export const getOrganization: typeof import("./getOrganization").getOrganization = null as any;
 export const getOrganizationOutput: typeof import("./getOrganization").getOrganizationOutput = null as any;

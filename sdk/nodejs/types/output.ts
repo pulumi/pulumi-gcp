@@ -9528,7 +9528,7 @@ export namespace cloudfunctionsv2 {
          * Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
          * supplied the value is interpreted as bytes.
          */
-        availableMemory?: string;
+        availableMemory: string;
         /**
          * Environment variables that shall be available during function execution.
          */
@@ -9548,7 +9548,7 @@ export namespace cloudfunctionsv2 {
          * The limit on the maximum number of function instances that may coexist at a
          * given time.
          */
-        maxInstanceCount?: number;
+        maxInstanceCount: number;
         /**
          * Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
          */
@@ -9581,7 +9581,7 @@ export namespace cloudfunctionsv2 {
          * can be terminated if the function is not completed at the end of the
          * timeout period. Defaults to 60 seconds.
          */
-        timeoutSeconds?: number;
+        timeoutSeconds: number;
         /**
          * (Output)
          * URI of the Service deployed.
@@ -11155,7 +11155,18 @@ export namespace cloudrunv2 {
 
     export interface JobTemplate {
         /**
-         * KRM-style labels for the resource.
+         * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+         * Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+         * All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
+         * This field follows Kubernetes annotations' namespacing, limits, and rules.
+         */
+        annotations?: {[key: string]: string};
+        /**
+         * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
+         * or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+         * https://cloud.google.com/run/docs/configuring/labels.
+         * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+         * All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
          */
         labels?: {[key: string]: string};
         /**
@@ -11653,7 +11664,10 @@ export namespace cloudrunv2 {
 
     export interface ServiceTemplate {
         /**
-         * KRM-style annotations for the resource.
+         * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+         * Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+         * All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+         * This field follows Kubernetes annotations' namespacing, limits, and rules.
          */
         annotations?: {[key: string]: string};
         /**
@@ -11671,7 +11685,10 @@ export namespace cloudrunv2 {
          */
         executionEnvironment?: string;
         /**
-         * KRM-style labels for the resource.
+         * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
+         * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+         * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+         * All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
          */
         labels?: {[key: string]: string};
         /**
@@ -20360,6 +20377,17 @@ export namespace compute {
         address?: string;
     }
 
+    export interface RegionSecurityPolicyDdosProtectionConfig {
+        /**
+         * Google Cloud Armor offers the following options to help protect systems against DDoS attacks:
+         * - STANDARD: basic always-on protection for network load balancers, protocol forwarding, or VMs with public IP addresses.
+         * - ADVANCED: additional protections for Managed Protection Plus subscribers who use network load balancers, protocol forwarding, or VMs with public IP addresses.
+         * - ADVANCED_PREVIEW: flag to enable the security policy in preview mode.
+         * Possible values are: `ADVANCED`, `ADVANCED_PREVIEW`, `STANDARD`.
+         */
+        ddosProtection: string;
+    }
+
     export interface RegionUrlMapDefaultRouteAction {
         /**
          * The specification for allowing client side cross-origin requests. Please see
@@ -26677,13 +26705,9 @@ export namespace container {
         /**
          * Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
          *
-         * soleTenantConfig {
-         * nodeAffinity {
-         * key = "compute.googleapis.com/node-group-name"
-         * operator = "IN"
-         * values = ["node-group-name"]
-         * }
-         * }
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         soleTenantConfig?: outputs.container.ClusterNodeConfigSoleTenantConfig;
         /**
@@ -27249,13 +27273,9 @@ export namespace container {
         /**
          * Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
          *
-         * soleTenantConfig {
-         * nodeAffinity {
-         * key = "compute.googleapis.com/node-group-name"
-         * operator = "IN"
-         * values = ["node-group-name"]
-         * }
-         * }
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         soleTenantConfig?: outputs.container.ClusterNodePoolNodeConfigSoleTenantConfig;
         /**
@@ -27705,6 +27725,17 @@ export namespace container {
 
     export interface ClusterResourceUsageExportConfigBigqueryDestination {
         datasetId: string;
+    }
+
+    export interface ClusterSecurityPostureConfig {
+        /**
+         * Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED` and `BASIC`.
+         */
+        mode: string;
+        /**
+         * Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED` and `VULNERABILITY_BASIC`.
+         */
+        vulnerabilityMode: string;
     }
 
     export interface ClusterServiceExternalIpsConfig {
@@ -28385,6 +28416,11 @@ export namespace container {
 
     export interface GetClusterResourceUsageExportConfigBigqueryDestination {
         datasetId: string;
+    }
+
+    export interface GetClusterSecurityPostureConfig {
+        mode: string;
+        vulnerabilityMode: string;
     }
 
     export interface GetClusterServiceExternalIpsConfig {
@@ -40400,6 +40436,112 @@ export namespace filestore {
 }
 
 export namespace firebase {
+    export interface ExtensionsInstanceConfig {
+        /**
+         * List of extension events selected by consumer that extension is allowed to
+         * emit, identified by their types.
+         */
+        allowedEventTypes?: string[];
+        /**
+         * (Output)
+         * The time at which the Extension Instance Config was created.
+         */
+        createTime: string;
+        /**
+         * Fully qualified Eventarc resource name that consumers should use for event triggers.
+         */
+        eventarcChannel: string;
+        /**
+         * The ref of the Extension from the Registry (e.g. publisher-id/awesome-extension)
+         */
+        extensionRef: string;
+        /**
+         * The version of the Extension from the Registry (e.g. 1.0.3). If left blank, latest is assumed.
+         */
+        extensionVersion: string;
+        /**
+         * (Output)
+         * The unique identifier for this configuration.
+         */
+        name: string;
+        /**
+         * Environment variables that may be configured for the Extension
+         */
+        params: {[key: string]: string};
+        /**
+         * (Output)
+         * Postinstall instructions to be shown for this Extension, with
+         * template strings representing function and parameter values substituted
+         * with actual values. These strings include: ${param:FOO},
+         * ${function:myFunc.url},
+         * ${function:myFunc.name}, and ${function:myFunc.location}
+         *
+         * - - -
+         */
+        populatedPostinstallContent: string;
+        /**
+         * Params whose values are only available at deployment time.
+         * Unlike other params, these will not be set as environment variables on
+         * functions.
+         */
+        systemParams: {[key: string]: string};
+    }
+
+    export interface ExtensionsInstanceErrorStatus {
+        /**
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code?: number;
+        /**
+         * A list of messages that carry the error details.
+         */
+        details?: {[key: string]: any}[];
+        /**
+         * A developer-facing error message, which should be in English.
+         */
+        message?: string;
+    }
+
+    export interface ExtensionsInstanceRuntimeData {
+        /**
+         * The fatal error state for the extension instance
+         * Structure is documented below.
+         */
+        fatalError?: outputs.firebase.ExtensionsInstanceRuntimeDataFatalError;
+        /**
+         * The processing state for the extension instance
+         * Structure is documented below.
+         */
+        processingState?: outputs.firebase.ExtensionsInstanceRuntimeDataProcessingState;
+        /**
+         * The time of the last state update.
+         */
+        stateUpdateTime?: string;
+    }
+
+    export interface ExtensionsInstanceRuntimeDataFatalError {
+        /**
+         * The error message. This is set by the extension developer to give
+         * more detail on why the extension is unusable and must be re-installed
+         * or reconfigured.
+         */
+        errorMessage?: string;
+    }
+
+    export interface ExtensionsInstanceRuntimeDataProcessingState {
+        /**
+         * Details about the processing. e.g. This could include the type of
+         * processing in progress or it could list errors or failures.
+         * This information will be shown in the console on the detail page
+         * for the extension instance.
+         */
+        detailMessage?: string;
+        /**
+         * The processing state of the extension instance.
+         */
+        state?: string;
+    }
+
     export interface HostingVersionConfig {
         /**
          * An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
@@ -49107,157 +49249,231 @@ export namespace osconfig {
 
     export interface OsPolicyAssignmentInstanceFilter {
         /**
-         * Target all VMs in the project. If true, no other criteria is permitted.
+         * Target all VMs in the project. If true, no other criteria
+         * is permitted.
          */
         all?: boolean;
         /**
-         * List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
+         * List of label sets used for VM exclusion. If
+         * the list has more than one label set, the VM is excluded if any of the label
+         * sets are applicable for the VM. Structure is
+         * documented below.
          */
         exclusionLabels?: outputs.osconfig.OsPolicyAssignmentInstanceFilterExclusionLabel[];
         /**
-         * List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
+         * List of label sets used for VM inclusion. If
+         * the list has more than one `LabelSet`, the VM is included if any of the
+         * label sets are applicable for the VM. Structure is
+         * documented below.
          */
         inclusionLabels?: outputs.osconfig.OsPolicyAssignmentInstanceFilterInclusionLabel[];
         /**
-         * List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
+         * List of inventories to select VMs. A VM is
+         * selected if its inventory data matches at least one of the following
+         * inventories. Structure is documented below.
          */
         inventories?: outputs.osconfig.OsPolicyAssignmentInstanceFilterInventory[];
     }
 
     export interface OsPolicyAssignmentInstanceFilterExclusionLabel {
         /**
-         * Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+         * Labels are identified by key/value pairs in this map.
+         * A VM should contain all the key/value pairs specified in this map to be
+         * selected.
          */
         labels?: {[key: string]: string};
     }
 
     export interface OsPolicyAssignmentInstanceFilterInclusionLabel {
         /**
-         * Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+         * Labels are identified by key/value pairs in this map.
+         * A VM should contain all the key/value pairs specified in this map to be
+         * selected.
          */
         labels?: {[key: string]: string};
     }
 
     export interface OsPolicyAssignmentInstanceFilterInventory {
         /**
-         * Required. The OS short name
+         * The OS short name
          */
         osShortName: string;
         /**
-         * The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+         * The OS version Prefix matches are supported if
+         * asterisk(*) is provided as the last character. For example, to match all
+         * versions with a major version of `7`, specify the following value for this
+         * field `7.*` An empty string matches all OS versions.
          */
         osVersion?: string;
     }
 
     export interface OsPolicyAssignmentOsPolicy {
         /**
-         * This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
+         * This flag determines the OS
+         * policy compliance status when none of the resource groups within the policy
+         * are applicable for a VM. Set this value to `true` if the policy needs to be
+         * reported as compliant even if the policy has nothing to validate or enforce.
          */
         allowNoResourceGroupMatch?: boolean;
         /**
-         * Policy description. Length of the description is limited to 1024 characters.
+         * Policy description. Length of the description is
+         * limited to 1024 characters.
          */
         description?: string;
         /**
-         * Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
+         * The id of the OS policy with the following restrictions:
+         *
+         * *   Must contain only lowercase letters, numbers, and hyphens.
+         * *   Must start with a letter.
+         * *   Must be between 1-63 characters.
+         * *   Must end with a number or a letter.
+         * *   Must be unique within the assignment.
          */
         id: string;
         /**
-         * Required. Policy mode Possible values: MODE_UNSPECIFIED, VALIDATION, ENFORCEMENT
+         * Policy mode Possible values are: `MODE_UNSPECIFIED`,
+         * `VALIDATION`, `ENFORCEMENT`.
          */
         mode: string;
         /**
-         * Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allowNoResourceGroupMatch`
+         * List of resource groups for the policy. For a
+         * particular VM, resource groups are evaluated in the order specified and the
+         * first resource group that is applicable is selected and the rest are
+         * ignored. If none of the resource groups are applicable for a VM, the VM is
+         * considered to be non-compliant w.r.t this policy. This behavior can be
+         * toggled by the flag `allowNoResourceGroupMatch` Structure is
+         * documented below.
          */
         resourceGroups: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroup[];
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroup {
         /**
-         * List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
+         * List of inventory filters for the resource
+         * group. The resources in this resource group are applied to the target VM if
+         * it satisfies at least one of the following inventory filters. For example,
+         * to apply this resource group to VMs running either `RHEL` or `CentOS`
+         * operating systems, specify 2 items for the list with following values:
+         * inventory_filters[0].os_short_name='rhel' and
+         * inventory_filters[1].os_short_name='centos' If the list is empty, this
+         * resource group will be applied to the target VM unconditionally. Structure
+         * is documented below.
          */
         inventoryFilters?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter[];
         /**
-         * Required. List of resources configured for this resource group. The resources are executed in the exact order specified here.
+         * List of resources configured for this resource
+         * group. The resources are executed in the exact order specified here.
+         * Structure is documented below.
          */
         resources: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResource[];
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter {
         /**
-         * Required. The OS short name
+         * The OS short name
          */
         osShortName: string;
         /**
-         * The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+         * The OS version Prefix matches are supported if
+         * asterisk(*) is provided as the last character. For example, to match all
+         * versions with a major version of `7`, specify the following value for this
+         * field `7.*` An empty string matches all OS versions.
          */
         osVersion?: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResource {
         /**
-         * Exec resource
+         * Exec resource Structure is
+         * documented below.
          */
         exec?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExec;
         /**
-         * File resource
+         * File resource Structure is
+         * documented below.
          */
         file?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFile;
         /**
-         * Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
+         * The id of the resource with the following restrictions:
+         *
+         * *   Must contain only lowercase letters, numbers, and hyphens.
+         * *   Must start with a letter.
+         * *   Must be between 1-63 characters.
+         * *   Must end with a number or a letter.
+         * *   Must be unique within the OS policy.
          */
         id: string;
         /**
-         * Package resource
+         * Package resource Structure is
+         * documented below.
          */
         pkg?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkg;
         /**
-         * Package repository resource
+         * Package repository resource Structure is
+         * documented below.
          */
         repository?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepository;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceExec {
         /**
-         * What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
+         * What to run to bring this resource into the desired
+         * state. An exit code of 100 indicates "success", any other exit code
+         * indicates a failure running enforce. Structure is
+         * documented below.
          */
         enforce?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce;
         /**
-         * Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+         * What to run to validate this resource is in the
+         * desired state. An exit code of 100 indicates "in desired state", and exit
+         * code of 101 indicates "not in desired state". Any other exit code indicates
+         * a failure running validate. Structure is
+         * documented below.
          */
         validate: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce {
         /**
-         * Optional arguments to pass to the source during execution.
+         * Optional arguments to pass to the source during
+         * execution.
          */
         args?: string[];
         /**
-         * A remote or local file.
+         * A remote or local file. Structure is
+         * documented below.
          */
         file?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile;
         /**
-         * Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+         * The script interpreter to use. Possible values
+         * are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
          */
         interpreter: string;
         /**
-         * Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+         * Only recorded for enforce Exec. Path to an
+         * output file (that is created by this Exec) whose content will be recorded in
+         * OSPolicyResourceCompliance after a successful run. Absence or failure to
+         * read this file will result in this ExecResource being non-compliant. Output
+         * file size is limited to 100K bytes.
          */
         outputFilePath?: string;
         /**
-         * An inline script. The size of the script is limited to 1024 characters.
+         * An inline script. The size of the script is limited to
+         * 1024 characters.
          */
         script?: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile {
         /**
-         * Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+         * Defaults to false. When false, files are
+         * subject to validations based on the file type: Remote: A checksum must be
+         * specified. Cloud Storage: An object generation number must be specified.
          */
         allowInsecure?: boolean;
         /**
-         * A Cloud Storage object.
+         * A Cloud Storage object. Structure is
+         * documented below.
          */
         gcs?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs;
         /**
@@ -49265,14 +49481,15 @@ export namespace osconfig {
          */
         localPath?: string;
         /**
-         * A generic remote file.
+         * A generic remote file. Structure is
+         * documented below.
          */
         remote?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs {
         /**
-         * Required. Bucket of the Cloud Storage object.
+         * Bucket of the Cloud Storage object.
          */
         bucket: string;
         /**
@@ -49280,7 +49497,7 @@ export namespace osconfig {
          */
         generation?: number;
         /**
-         * Required. Name of the Cloud Storage object.
+         * Name of the Cloud Storage object.
          */
         object: string;
     }
@@ -49291,41 +49508,53 @@ export namespace osconfig {
          */
         sha256Checksum?: string;
         /**
-         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         * URI from which to fetch the object. It should contain
+         * both the protocol and path following the format `{protocol}://{location}`.
          */
         uri: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate {
         /**
-         * Optional arguments to pass to the source during execution.
+         * Optional arguments to pass to the source during
+         * execution.
          */
         args?: string[];
         /**
-         * A remote or local file.
+         * A remote or local file. Structure is
+         * documented below.
          */
         file?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile;
         /**
-         * Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+         * The script interpreter to use. Possible values
+         * are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
          */
         interpreter: string;
         /**
-         * Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+         * Only recorded for enforce Exec. Path to an
+         * output file (that is created by this Exec) whose content will be recorded in
+         * OSPolicyResourceCompliance after a successful run. Absence or failure to
+         * read this file will result in this ExecResource being non-compliant. Output
+         * file size is limited to 100K bytes.
          */
         outputFilePath?: string;
         /**
-         * An inline script. The size of the script is limited to 1024 characters.
+         * An inline script. The size of the script is limited to
+         * 1024 characters.
          */
         script?: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile {
         /**
-         * Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+         * Defaults to false. When false, files are
+         * subject to validations based on the file type: Remote: A checksum must be
+         * specified. Cloud Storage: An object generation number must be specified.
          */
         allowInsecure?: boolean;
         /**
-         * A Cloud Storage object.
+         * A Cloud Storage object. Structure is
+         * documented below.
          */
         gcs?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs;
         /**
@@ -49333,14 +49562,15 @@ export namespace osconfig {
          */
         localPath?: string;
         /**
-         * A generic remote file.
+         * A generic remote file. Structure is
+         * documented below.
          */
         remote?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs {
         /**
-         * Required. Bucket of the Cloud Storage object.
+         * Bucket of the Cloud Storage object.
          */
         bucket: string;
         /**
@@ -49348,7 +49578,7 @@ export namespace osconfig {
          */
         generation?: number;
         /**
-         * Required. Name of the Cloud Storage object.
+         * Name of the Cloud Storage object.
          */
         object: string;
     }
@@ -49359,41 +49589,56 @@ export namespace osconfig {
          */
         sha256Checksum?: string;
         /**
-         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         * URI from which to fetch the object. It should contain
+         * both the protocol and path following the format `{protocol}://{location}`.
          */
         uri: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
         /**
-         * A a file with this content. The size of the content is limited to 1024 characters.
+         * A a file with this content. The size of the content
+         * is limited to 1024 characters.
          */
         content?: string;
         /**
-         * A remote or local source.
+         * A remote or local source. Structure is
+         * documented below.
          */
         file?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile;
         /**
-         * Required. The absolute path of the file within the VM.
+         * The absolute path of the file within the VM.
          */
         path: string;
         /**
-         * Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+         * Consists of three octal digits which represent, in
+         * order, the permissions of the owner, group, and other users for the file
+         * (similarly to the numeric mode used in the linux chmod utility). Each digit
+         * represents a three bit number with the 4 bit corresponding to the read
+         * permissions, the 2 bit corresponds to the write bit, and the one bit
+         * corresponds to the execute permission. Default behavior is 755. Below are
+         * some examples of permissions and their associated values: read, write, and
+         * execute: 7 read and execute: 5 read and write: 6 read only: 4
          */
         permissions: string;
         /**
-         * Required. Desired state of the file. Possible values: OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED, COMPLIANT, NON_COMPLIANT, UNKNOWN, NO_OS_POLICIES_APPLICABLE
+         * Desired state of the file. Possible values are:
+         * `OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED`, `COMPLIANT`, `NON_COMPLIANT`,
+         * `UNKNOWN`, `NO_OS_POLICIES_APPLICABLE`.
          */
         state: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile {
         /**
-         * Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+         * Defaults to false. When false, files are
+         * subject to validations based on the file type: Remote: A checksum must be
+         * specified. Cloud Storage: An object generation number must be specified.
          */
         allowInsecure?: boolean;
         /**
-         * A Cloud Storage object.
+         * A Cloud Storage object. Structure is
+         * documented below.
          */
         gcs?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs;
         /**
@@ -49401,14 +49646,15 @@ export namespace osconfig {
          */
         localPath?: string;
         /**
-         * A generic remote file.
+         * A generic remote file. Structure is
+         * documented below.
          */
         remote?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs {
         /**
-         * Required. Bucket of the Cloud Storage object.
+         * Bucket of the Cloud Storage object.
          */
         bucket: string;
         /**
@@ -49416,7 +49662,7 @@ export namespace osconfig {
          */
         generation?: number;
         /**
-         * Required. Name of the Cloud Storage object.
+         * Name of the Cloud Storage object.
          */
         object: string;
     }
@@ -49427,71 +49673,87 @@ export namespace osconfig {
          */
         sha256Checksum?: string;
         /**
-         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         * URI from which to fetch the object. It should contain
+         * both the protocol and path following the format `{protocol}://{location}`.
          */
         uri: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkg {
         /**
-         * A package managed by Apt.
+         * A package managed by Apt. Structure is
+         * documented below.
          */
         apt?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt;
         /**
-         * A deb package file.
+         * A deb package file. Structure is
+         * documented below.
          */
         deb?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb;
         /**
-         * Required. The desired state the agent should maintain for this package. Possible values: DESIRED_STATE_UNSPECIFIED, INSTALLED, REMOVED
+         * The desired state the agent should maintain for
+         * this package. Possible values are: `DESIRED_STATE_UNSPECIFIED`, `INSTALLED`,
+         * `REMOVED`.
          */
         desiredState: string;
         /**
-         * A package managed by GooGet.
+         * A package managed by GooGet. Structure is
+         * documented below.
          */
         googet?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget;
         /**
-         * An MSI package.
+         * An MSI package. Structure is
+         * documented below.
          */
         msi?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi;
         /**
-         * An rpm package file.
+         * An rpm package file. Structure is
+         * documented below.
          */
         rpm?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm;
         /**
-         * A package managed by YUM.
+         * A package managed by YUM. Structure is
+         * documented below.
          */
         yum?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum;
         /**
-         * A package managed by Zypper.
+         * A package managed by Zypper. Structure is
+         * documented below.
          */
         zypper?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt {
         /**
-         * Required. Package name.
+         * Package name.
          */
         name: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb {
         /**
-         * Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update && apt-get -y install package.deb`
+         * Whether dependencies should also be installed. -
+         * install when false: `dpkg -i package` - install when true: `apt-get update
+         * && apt-get -y install package.deb`
          */
         pullDeps?: boolean;
         /**
-         * Required. A deb package.
+         * A deb package. Structure is
+         * documented below.
          */
         source: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource {
         /**
-         * Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+         * Defaults to false. When false, files are
+         * subject to validations based on the file type: Remote: A checksum must be
+         * specified. Cloud Storage: An object generation number must be specified.
          */
         allowInsecure?: boolean;
         /**
-         * A Cloud Storage object.
+         * A Cloud Storage object. Structure is
+         * documented below.
          */
         gcs?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs;
         /**
@@ -49499,14 +49761,15 @@ export namespace osconfig {
          */
         localPath?: string;
         /**
-         * A generic remote file.
+         * A generic remote file. Structure is
+         * documented below.
          */
         remote?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs {
         /**
-         * Required. Bucket of the Cloud Storage object.
+         * Bucket of the Cloud Storage object.
          */
         bucket: string;
         /**
@@ -49514,7 +49777,7 @@ export namespace osconfig {
          */
         generation?: number;
         /**
-         * Required. Name of the Cloud Storage object.
+         * Name of the Cloud Storage object.
          */
         object: string;
     }
@@ -49525,36 +49788,43 @@ export namespace osconfig {
          */
         sha256Checksum?: string;
         /**
-         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         * URI from which to fetch the object. It should contain
+         * both the protocol and path following the format `{protocol}://{location}`.
          */
         uri: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget {
         /**
-         * Required. Package name.
+         * Package name.
          */
         name: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
         /**
-         * Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
+         * Additional properties to use during installation.
+         * This should be in the format of Property=Setting. Appended to the defaults
+         * of `ACTION=INSTALL REBOOT=ReallySuppress`.
          */
         properties?: string[];
         /**
-         * Required. The MSI package.
+         * The MSI package. Structure is
+         * documented below.
          */
         source: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource {
         /**
-         * Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+         * Defaults to false. When false, files are
+         * subject to validations based on the file type: Remote: A checksum must be
+         * specified. Cloud Storage: An object generation number must be specified.
          */
         allowInsecure?: boolean;
         /**
-         * A Cloud Storage object.
+         * A Cloud Storage object. Structure is
+         * documented below.
          */
         gcs?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs;
         /**
@@ -49562,14 +49832,15 @@ export namespace osconfig {
          */
         localPath?: string;
         /**
-         * A generic remote file.
+         * A generic remote file. Structure is
+         * documented below.
          */
         remote?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs {
         /**
-         * Required. Bucket of the Cloud Storage object.
+         * Bucket of the Cloud Storage object.
          */
         bucket: string;
         /**
@@ -49577,7 +49848,7 @@ export namespace osconfig {
          */
         generation?: number;
         /**
-         * Required. Name of the Cloud Storage object.
+         * Name of the Cloud Storage object.
          */
         object: string;
     }
@@ -49588,29 +49859,36 @@ export namespace osconfig {
          */
         sha256Checksum?: string;
         /**
-         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         * URI from which to fetch the object. It should contain
+         * both the protocol and path following the format `{protocol}://{location}`.
          */
         uri: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm {
         /**
-         * Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+         * Whether dependencies should also be installed. -
+         * install when false: `rpm --upgrade --replacepkgs package.rpm` - install when
+         * true: `yum -y install package.rpm` or `zypper -y install package.rpm`
          */
         pullDeps?: boolean;
         /**
-         * Required. An rpm package.
+         * An rpm package. Structure is
+         * documented below.
          */
         source: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource {
         /**
-         * Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+         * Defaults to false. When false, files are
+         * subject to validations based on the file type: Remote: A checksum must be
+         * specified. Cloud Storage: An object generation number must be specified.
          */
         allowInsecure?: boolean;
         /**
-         * A Cloud Storage object.
+         * A Cloud Storage object. Structure is
+         * documented below.
          */
         gcs?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs;
         /**
@@ -49618,14 +49896,15 @@ export namespace osconfig {
          */
         localPath?: string;
         /**
-         * A generic remote file.
+         * A generic remote file. Structure is
+         * documented below.
          */
         remote?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs {
         /**
-         * Required. Bucket of the Cloud Storage object.
+         * Bucket of the Cloud Storage object.
          */
         bucket: string;
         /**
@@ -49633,7 +49912,7 @@ export namespace osconfig {
          */
         generation?: number;
         /**
-         * Required. Name of the Cloud Storage object.
+         * Name of the Cloud Storage object.
          */
         object: string;
     }
@@ -49644,81 +49923,89 @@ export namespace osconfig {
          */
         sha256Checksum?: string;
         /**
-         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         * URI from which to fetch the object. It should contain
+         * both the protocol and path following the format `{protocol}://{location}`.
          */
         uri: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum {
         /**
-         * Required. Package name.
+         * Package name.
          */
         name: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper {
         /**
-         * Required. Package name.
+         * Package name.
          */
         name: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceRepository {
         /**
-         * An Apt Repository.
+         * An Apt Repository. Structure is
+         * documented below.
          */
         apt?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt;
         /**
-         * A Goo Repository.
+         * A Goo Repository. Structure is
+         * documented below.
          */
         goo?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo;
         /**
-         * A Yum Repository.
+         * A Yum Repository. Structure is
+         * documented below.
          */
         yum?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum;
         /**
-         * A Zypper Repository.
+         * A Zypper Repository. Structure is
+         * documented below.
          */
         zypper?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt {
         /**
-         * Required. Type of archive files in this repository. Possible values: ARCHIVE_TYPE_UNSPECIFIED, DEB, DEB_SRC
+         * Type of archive files in this repository.
+         * Possible values are: `ARCHIVE_TYPE_UNSPECIFIED`, `DEB`, `DEB_SRC`.
          */
         archiveType: string;
         /**
-         * Required. List of components for this repository. Must contain at least one item.
+         * List of components for this repository. Must
+         * contain at least one item.
          */
         components: string[];
         /**
-         * Required. Distribution of this repository.
+         * Distribution of this repository.
          */
         distribution: string;
         /**
-         * URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+         * URI of the key file for this repository. The agent
+         * maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
          */
         gpgKey?: string;
         /**
-         * Required. URI for this repository.
+         * URI for this repository.
          */
         uri: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo {
         /**
-         * Required. The name of the repository.
+         * The name of the repository.
          */
         name: string;
         /**
-         * Required. The url of the repository.
+         * The url of the repository.
          */
         url: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum {
         /**
-         * Required. The location of the repository directory.
+         * The location of the repository directory.
          */
         baseUrl: string;
         /**
@@ -49730,14 +50017,17 @@ export namespace osconfig {
          */
         gpgKeys?: string[];
         /**
-         * Required. A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
+         * A one word, unique name for this repository. This is the
+         * `repo id` in the yum config file and also the `displayName` if
+         * `displayName` is omitted. This id is also used as the unique identifier
+         * when checking for resource conflicts.
          */
         id: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper {
         /**
-         * Required. The location of the repository directory.
+         * The location of the repository directory.
          */
         baseUrl: string;
         /**
@@ -49749,18 +50039,27 @@ export namespace osconfig {
          */
         gpgKeys?: string[];
         /**
-         * Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+         * A one word, unique name for this repository. This is the
+         * `repo id` in the zypper config file and also the `displayName` if
+         * `displayName` is omitted. This id is also used as the unique identifier
+         * when checking for GuestPolicy conflicts.
          */
         id: string;
     }
 
     export interface OsPolicyAssignmentRollout {
         /**
-         * Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
+         * The maximum number (or percentage) of VMs
+         * per zone to disrupt at any given moment. Structure is
+         * documented below.
          */
         disruptionBudget: outputs.osconfig.OsPolicyAssignmentRolloutDisruptionBudget;
         /**
-         * Required. This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruptionBudget` at least until this duration of time has passed after configuration changes are applied.
+         * This determines the minimum duration of
+         * time to wait after the configuration changes are applied through the current
+         * rollout. A VM continues to count towards the `disruptionBudget` at least
+         * until this duration of time has passed after configuration changes are
+         * applied.
          */
         minWaitDuration: string;
     }
@@ -49771,9 +50070,10 @@ export namespace osconfig {
          */
         fixed?: number;
         /**
-         * Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+         * Specifies the relative value defined as a percentage,
+         * which will be multiplied by a reference value.
          *
-         * - - -
+         * --------------------------------------------------------------------------------
          */
         percent?: number;
     }
@@ -51167,7 +51467,7 @@ export namespace secretmanager {
          */
         automatic?: boolean;
         /**
-         * The Secret will automatically be replicated without any restrictions.
+         * The Secret will be replicated to the regions specified by the user.
          * Structure is documented below.
          */
         userManaged?: outputs.secretmanager.SecretReplicationUserManaged;

@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  *     shortName: "valuename",
  * });
  * const binding = new gcp.tags.LocationTagBinding("binding", {
- *     location: "us-central1",
+ *     location: "us-central1-a",
  *     parent: pulumi.interpolate`//compute.googleapis.com/projects/${project.number}/zones/us-central1-a/instances/${google_compute_instance.instance.instance_id}`,
  *     tagValue: pulumi.interpolate`tagValues/${value.name}`,
  * });

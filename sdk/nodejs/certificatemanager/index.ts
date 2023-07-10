@@ -30,6 +30,11 @@ export type DnsAuthorization = import("./dnsAuthorization").DnsAuthorization;
 export const DnsAuthorization: typeof import("./dnsAuthorization").DnsAuthorization = null as any;
 utilities.lazyLoad(exports, ["DnsAuthorization"], () => require("./dnsAuthorization"));
 
+export { ExternalAccountKeyArgs, ExternalAccountKeyState } from "./externalAccountKey";
+export type ExternalAccountKey = import("./externalAccountKey").ExternalAccountKey;
+export const ExternalAccountKey: typeof import("./externalAccountKey").ExternalAccountKey = null as any;
+utilities.lazyLoad(exports, ["ExternalAccountKey"], () => require("./externalAccountKey"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -45,6 +50,8 @@ const _module = {
                 return new CertificateMapEntry(name, <any>undefined, { urn })
             case "gcp:certificatemanager/dnsAuthorization:DnsAuthorization":
                 return new DnsAuthorization(name, <any>undefined, { urn })
+            case "gcp:certificatemanager/externalAccountKey:ExternalAccountKey":
+                return new ExternalAccountKey(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -55,3 +62,4 @@ pulumi.runtime.registerResourceModule("gcp", "certificatemanager/certificateIssu
 pulumi.runtime.registerResourceModule("gcp", "certificatemanager/certificateMap", _module)
 pulumi.runtime.registerResourceModule("gcp", "certificatemanager/certificateMapEntry", _module)
 pulumi.runtime.registerResourceModule("gcp", "certificatemanager/dnsAuthorization", _module)
+pulumi.runtime.registerResourceModule("gcp", "certificatemanager/externalAccountKey", _module)

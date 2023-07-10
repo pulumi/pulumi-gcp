@@ -272,6 +272,10 @@ export class ForwardingRule extends pulumi.CustomResource {
      */
     public readonly networkTier!: pulumi.Output<string>;
     /**
+     * This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+     */
+    public readonly noAutomateDnsZone!: pulumi.Output<boolean | undefined>;
+    /**
      * This field can only be used:
      * * If `IPProtocol` is one of TCP, UDP, or SCTP.
      * * By backend service-based network load balancers, target pool-based
@@ -414,6 +418,7 @@ export class ForwardingRule extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["networkTier"] = state ? state.networkTier : undefined;
+            resourceInputs["noAutomateDnsZone"] = state ? state.noAutomateDnsZone : undefined;
             resourceInputs["portRange"] = state ? state.portRange : undefined;
             resourceInputs["ports"] = state ? state.ports : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -442,6 +447,7 @@ export class ForwardingRule extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["networkTier"] = args ? args.networkTier : undefined;
+            resourceInputs["noAutomateDnsZone"] = args ? args.noAutomateDnsZone : undefined;
             resourceInputs["portRange"] = args ? args.portRange : undefined;
             resourceInputs["ports"] = args ? args.ports : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -630,6 +636,10 @@ export interface ForwardingRuleState {
      * Possible values are: `PREMIUM`, `STANDARD`.
      */
     networkTier?: pulumi.Input<string>;
+    /**
+     * This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+     */
+    noAutomateDnsZone?: pulumi.Input<boolean>;
     /**
      * This field can only be used:
      * * If `IPProtocol` is one of TCP, UDP, or SCTP.
@@ -898,6 +908,10 @@ export interface ForwardingRuleArgs {
      * Possible values are: `PREMIUM`, `STANDARD`.
      */
     networkTier?: pulumi.Input<string>;
+    /**
+     * This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+     */
+    noAutomateDnsZone?: pulumi.Input<boolean>;
     /**
      * This field can only be used:
      * * If `IPProtocol` is one of TCP, UDP, or SCTP.

@@ -153,6 +153,10 @@ export class ProjectBucketConfig extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
+     * Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+     */
+    public readonly locked!: pulumi.Output<boolean | undefined>;
+    /**
      * The resource name of the CMEK settings.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -184,6 +188,7 @@ export class ProjectBucketConfig extends pulumi.CustomResource {
             resourceInputs["enableAnalytics"] = state ? state.enableAnalytics : undefined;
             resourceInputs["lifecycleState"] = state ? state.lifecycleState : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
+            resourceInputs["locked"] = state ? state.locked : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["retentionDays"] = state ? state.retentionDays : undefined;
@@ -203,6 +208,7 @@ export class ProjectBucketConfig extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enableAnalytics"] = args ? args.enableAnalytics : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["locked"] = args ? args.locked : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["retentionDays"] = args ? args.retentionDays : undefined;
             resourceInputs["lifecycleState"] = undefined /*out*/;
@@ -242,6 +248,10 @@ export interface ProjectBucketConfigState {
      */
     location?: pulumi.Input<string>;
     /**
+     * Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+     */
+    locked?: pulumi.Input<boolean>;
+    /**
      * The resource name of the CMEK settings.
      */
     name?: pulumi.Input<string>;
@@ -279,6 +289,10 @@ export interface ProjectBucketConfigArgs {
      * The location of the bucket.
      */
     location: pulumi.Input<string>;
+    /**
+     * Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+     */
+    locked?: pulumi.Input<boolean>;
     /**
      * The parent resource that contains the logging bucket.
      */

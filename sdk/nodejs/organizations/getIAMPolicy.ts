@@ -2,160 +2,82 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Generates an IAM policy document that may be referenced by and applied to
- * other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
+ * Retrieves the current IAM policy data for a organization.
  *
- * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
+ * ## example
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const admin = gcp.organizations.getIAMPolicy({
- *     auditConfigs: [{
- *         auditLogConfigs: [
- *             {
- *                 exemptedMembers: ["user:you@domain.com"],
- *                 logType: "DATA_READ",
- *             },
- *             {
- *                 logType: "DATA_WRITE",
- *             },
- *             {
- *                 logType: "ADMIN_READ",
- *             },
- *         ],
- *         service: "cloudkms.googleapis.com",
- *     }],
- *     bindings: [
- *         {
- *             members: ["serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com"],
- *             role: "roles/compute.instanceAdmin",
- *         },
- *         {
- *             members: ["user:alice@gmail.com"],
- *             role: "roles/storage.objectViewer",
- *         },
- *     ],
+ * const policy = gcp.organizations.getIamPolicy({
+ *     orgId: "123456789",
  * });
  * ```
- *
- * This data source is used to define IAM policies to apply to other resources.
- * Currently, defining a policy through a datasource and referencing that policy
- * from another resource is the only way to apply an IAM policy to a resource.
  */
-export function getIAMPolicy(args?: GetIAMPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetIAMPolicyResult> {
-    args = args || {};
+export function getIamPolicy(args: GetIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetIamPolicyResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("gcp:organizations/getIAMPolicy:getIAMPolicy", {
-        "auditConfigs": args.auditConfigs,
-        "bindings": args.bindings,
+    return pulumi.runtime.invoke("gcp:organizations/getIamPolicy:getIamPolicy", {
+        "orgId": args.orgId,
     }, opts);
 }
 
 /**
- * A collection of arguments for invoking getIAMPolicy.
+ * A collection of arguments for invoking getIamPolicy.
  */
-export interface GetIAMPolicyArgs {
+export interface GetIamPolicyArgs {
     /**
-     * A nested configuration block that defines logging additional configuration for your project. This field is only supported on `gcp.projects.IAMPolicy`, `gcp.folder.IAMPolicy` and `gcp.organizations.IAMPolicy`.
+     * The organization id of the target organization.
      */
-    auditConfigs?: inputs.organizations.GetIAMPolicyAuditConfig[];
-    /**
-     * A nested configuration block (described below)
-     * defining a binding to be included in the policy document. Multiple
-     * `binding` arguments are supported.
-     *
-     * Each document configuration must have one or more `binding` blocks, which
-     * each accept the following arguments:
-     */
-    bindings?: inputs.organizations.GetIAMPolicyBinding[];
+    orgId: string;
 }
 
 /**
- * A collection of values returned by getIAMPolicy.
+ * A collection of values returned by getIamPolicy.
  */
-export interface GetIAMPolicyResult {
-    readonly auditConfigs?: outputs.organizations.GetIAMPolicyAuditConfig[];
-    readonly bindings?: outputs.organizations.GetIAMPolicyBinding[];
+export interface GetIamPolicyResult {
+    /**
+     * (Computed) The etag of the IAM policy.
+     */
+    readonly etag: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly orgId: string;
     /**
-     * The above bindings serialized in a format suitable for
-     * referencing from a resource that supports IAM.
+     * (Computed) The policy data
      */
     readonly policyData: string;
 }
 /**
- * Generates an IAM policy document that may be referenced by and applied to
- * other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
+ * Retrieves the current IAM policy data for a organization.
  *
- * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
+ * ## example
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const admin = gcp.organizations.getIAMPolicy({
- *     auditConfigs: [{
- *         auditLogConfigs: [
- *             {
- *                 exemptedMembers: ["user:you@domain.com"],
- *                 logType: "DATA_READ",
- *             },
- *             {
- *                 logType: "DATA_WRITE",
- *             },
- *             {
- *                 logType: "ADMIN_READ",
- *             },
- *         ],
- *         service: "cloudkms.googleapis.com",
- *     }],
- *     bindings: [
- *         {
- *             members: ["serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com"],
- *             role: "roles/compute.instanceAdmin",
- *         },
- *         {
- *             members: ["user:alice@gmail.com"],
- *             role: "roles/storage.objectViewer",
- *         },
- *     ],
+ * const policy = gcp.organizations.getIamPolicy({
+ *     orgId: "123456789",
  * });
  * ```
- *
- * This data source is used to define IAM policies to apply to other resources.
- * Currently, defining a policy through a datasource and referencing that policy
- * from another resource is the only way to apply an IAM policy to a resource.
  */
-export function getIAMPolicyOutput(args?: GetIAMPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIAMPolicyResult> {
-    return pulumi.output(args).apply((a: any) => getIAMPolicy(a, opts))
+export function getIamPolicyOutput(args: GetIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIamPolicyResult> {
+    return pulumi.output(args).apply((a: any) => getIamPolicy(a, opts))
 }
 
 /**
- * A collection of arguments for invoking getIAMPolicy.
+ * A collection of arguments for invoking getIamPolicy.
  */
-export interface GetIAMPolicyOutputArgs {
+export interface GetIamPolicyOutputArgs {
     /**
-     * A nested configuration block that defines logging additional configuration for your project. This field is only supported on `gcp.projects.IAMPolicy`, `gcp.folder.IAMPolicy` and `gcp.organizations.IAMPolicy`.
+     * The organization id of the target organization.
      */
-    auditConfigs?: pulumi.Input<pulumi.Input<inputs.organizations.GetIAMPolicyAuditConfigArgs>[]>;
-    /**
-     * A nested configuration block (described below)
-     * defining a binding to be included in the policy document. Multiple
-     * `binding` arguments are supported.
-     *
-     * Each document configuration must have one or more `binding` blocks, which
-     * each accept the following arguments:
-     */
-    bindings?: pulumi.Input<pulumi.Input<inputs.organizations.GetIAMPolicyBindingArgs>[]>;
+    orgId: pulumi.Input<string>;
 }
