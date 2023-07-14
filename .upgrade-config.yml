@@ -4,5 +4,5 @@
 upstream-provider-name: terraform-provider-google-beta
 pulumi-infer-version: true
 remove-plugins: true
-pr-reviewers: pulumi/Ecosystem
+pr-reviewers: pulumi/Providers
 
