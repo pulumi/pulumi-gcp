@@ -15,7 +15,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
-	google "github.com/hashicorp/terraform-provider-google-beta/google-beta"
+	gcpPFProvider "github.com/hashicorp/terraform-provider-google-beta/google-beta/fwprovider"
+	gcpProvider "github.com/hashicorp/terraform-provider-google-beta/google-beta/provider"
 	tpg_transport "github.com/hashicorp/terraform-provider-google-beta/google-beta/transport"
 	"github.com/pulumi/pulumi-gcp/provider/v6/pkg/version"
 	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
@@ -194,6 +195,7 @@ var moduleMapping = map[string]string{
 	"game_services":                   gcpGameServices,
 	"gke_backup":                      gcpGkeBackup,
 	"gke_hub":                         gcpGkeHub,
+	"gkeonprem":                       gcpGkeOnPrem,
 	"healthcare":                      gcpHealthcare,
 	"iam":                             gcpIAM,
 	"iap":                             gcpIAP,
@@ -215,6 +217,7 @@ var moduleMapping = map[string]string{
 	"os_config":                       gcpOsConfig,
 	"os_login":                        gcpOsLogin,
 	"project":                         gcpProject,
+	"public":                          gcpCompute,
 	"pubsub":                          gcpPubSub,
 	"recaptcha":                       gcpRecaptcha,
 	"redis":                           gcpRedis,
@@ -362,8 +365,8 @@ var metadata []byte
 func Provider() tfbridge.ProviderInfo {
 	p := pf.MuxShimWithDisjointgPF(
 		context.Background(),
-		shimv2.NewProvider(google.Provider()),
-		google.New(version.Version)) // this probably should be TF version but it does not seem to matter
+		shimv2.NewProvider(gcpProvider.Provider()),
+		gcpPFProvider.New(version.Version)) // this probably should be TF version but it does not seem to matter
 	prov := tfbridge.ProviderInfo{
 		P:                p,
 		Name:             "google-beta",
