@@ -109,9 +109,9 @@ def get_datascan_iam_policy(data_scan_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataplex.get_datascan_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        data_scan_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.dataplex.get_datascan_iam_policy(project=google_dataplex_datascan["basic_profile"]["project"],
+        location=google_dataplex_datascan["basic_profile"]["location"],
+        data_scan_id=google_dataplex_datascan["basic_profile"]["data_scan_id"])
     ```
 
 
@@ -128,12 +128,12 @@ def get_datascan_iam_policy(data_scan_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:dataplex/getDatascanIamPolicy:getDatascanIamPolicy', __args__, opts=opts, typ=GetDatascanIamPolicyResult).value
 
     return AwaitableGetDatascanIamPolicyResult(
-        data_scan_id=__ret__.data_scan_id,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        location=__ret__.location,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        data_scan_id=pulumi.get(__ret__, 'data_scan_id'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_datascan_iam_policy)
@@ -150,9 +150,9 @@ def get_datascan_iam_policy_output(data_scan_id: Optional[pulumi.Input[str]] = N
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataplex.get_datascan_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        data_scan_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.dataplex.get_datascan_iam_policy(project=google_dataplex_datascan["basic_profile"]["project"],
+        location=google_dataplex_datascan["basic_profile"]["location"],
+        data_scan_id=google_dataplex_datascan["basic_profile"]["data_scan_id"])
     ```
 
 

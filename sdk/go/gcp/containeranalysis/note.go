@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -162,6 +163,7 @@ func NewNote(ctx *pulumi.Context,
 	if args.AttestationAuthority == nil {
 		return nil, errors.New("invalid value for required argument 'AttestationAuthority'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Note
 	err := ctx.RegisterResource("gcp:containeranalysis/note:Note", name, args, &resource, opts...)
 	if err != nil {

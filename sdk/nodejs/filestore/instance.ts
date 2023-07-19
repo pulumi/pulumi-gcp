@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * const instance = new gcp.filestore.Instance("instance", {
  *     fileShares: {
- *         capacityGb: 2660,
+ *         capacityGb: 1024,
  *         name: "share1",
  *     },
  *     location: "us-central1-b",
@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *         modes: ["MODE_IPV4"],
  *         network: "default",
  *     }],
- *     tier: "PREMIUM",
+ *     tier: "BASIC_HDD",
  * });
  * ```
  * ### Filestore Instance Full
@@ -45,7 +45,7 @@ import * as utilities from "../utilities";
  *
  * const instance = new gcp.filestore.Instance("instance", {
  *     fileShares: {
- *         capacityGb: 2660,
+ *         capacityGb: 2560,
  *         name: "share1",
  *         nfsExportOptions: [
  *             {
@@ -83,7 +83,7 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     tier: "ENTERPRISE",
  *     fileShares: {
- *         capacityGb: 2560,
+ *         capacityGb: 1024,
  *         name: "share1",
  *     },
  *     networks: [{

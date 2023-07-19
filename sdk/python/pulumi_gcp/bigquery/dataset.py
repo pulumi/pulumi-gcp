@@ -29,7 +29,8 @@ class DatasetArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  max_time_travel_hours: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 storage_billing_model: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Dataset resource.
         :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
@@ -102,6 +103,10 @@ class DatasetArgs:
         :param pulumi.Input[str] max_time_travel_hours: Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] storage_billing_model: Specifies the storage billing model for the dataset.
+               Set this flag value to LOGICAL to use logical bytes for storage billing,
+               or to PHYSICAL to use physical bytes instead.
+               LOGICAL is the default if this flag isn't specified.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         if accesses is not None:
@@ -130,6 +135,8 @@ class DatasetArgs:
             pulumi.set(__self__, "max_time_travel_hours", max_time_travel_hours)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if storage_billing_model is not None:
+            pulumi.set(__self__, "storage_billing_model", storage_billing_model)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -355,6 +362,21 @@ class DatasetArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="storageBillingModel")
+    def storage_billing_model(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the storage billing model for the dataset.
+        Set this flag value to LOGICAL to use logical bytes for storage billing,
+        or to PHYSICAL to use physical bytes instead.
+        LOGICAL is the default if this flag isn't specified.
+        """
+        return pulumi.get(self, "storage_billing_model")
+
+    @storage_billing_model.setter
+    def storage_billing_model(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_billing_model", value)
+
 
 @pulumi.input_type
 class _DatasetState:
@@ -376,7 +398,8 @@ class _DatasetState:
                  location: Optional[pulumi.Input[str]] = None,
                  max_time_travel_hours: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 self_link: Optional[pulumi.Input[str]] = None):
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 storage_billing_model: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Dataset resources.
         :param pulumi.Input[Sequence[pulumi.Input['DatasetAccessArgs']]] accesses: An array of objects that define dataset access for one or more entities.
@@ -455,6 +478,10 @@ class _DatasetState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] storage_billing_model: Specifies the storage billing model for the dataset.
+               Set this flag value to LOGICAL to use logical bytes for storage billing,
+               or to PHYSICAL to use physical bytes instead.
+               LOGICAL is the default if this flag isn't specified.
         """
         if accesses is not None:
             pulumi.set(__self__, "accesses", accesses)
@@ -492,6 +519,8 @@ class _DatasetState:
             pulumi.set(__self__, "project", project)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if storage_billing_model is not None:
+            pulumi.set(__self__, "storage_billing_model", storage_billing_model)
 
     @property
     @pulumi.getter
@@ -767,6 +796,21 @@ class _DatasetState:
     def self_link(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "self_link", value)
 
+    @property
+    @pulumi.getter(name="storageBillingModel")
+    def storage_billing_model(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the storage billing model for the dataset.
+        Set this flag value to LOGICAL to use logical bytes for storage billing,
+        or to PHYSICAL to use physical bytes instead.
+        LOGICAL is the default if this flag isn't specified.
+        """
+        return pulumi.get(self, "storage_billing_model")
+
+    @storage_billing_model.setter
+    def storage_billing_model(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_billing_model", value)
+
 
 class Dataset(pulumi.CustomResource):
     @overload
@@ -787,6 +831,7 @@ class Dataset(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  max_time_travel_hours: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 storage_billing_model: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         ## Example Usage
@@ -1027,6 +1072,10 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[str] max_time_travel_hours: Defines the time travel window in hours. The value can be from 48 to 168 hours (2 to 7 days).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] storage_billing_model: Specifies the storage billing model for the dataset.
+               Set this flag value to LOGICAL to use logical bytes for storage billing,
+               or to PHYSICAL to use physical bytes instead.
+               LOGICAL is the default if this flag isn't specified.
         """
         ...
     @overload
@@ -1230,6 +1279,7 @@ class Dataset(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  max_time_travel_hours: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 storage_billing_model: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1255,6 +1305,7 @@ class Dataset(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["max_time_travel_hours"] = max_time_travel_hours
             __props__.__dict__["project"] = project
+            __props__.__dict__["storage_billing_model"] = storage_billing_model
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["last_modified_time"] = None
@@ -1286,7 +1337,8 @@ class Dataset(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             max_time_travel_hours: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
-            self_link: Optional[pulumi.Input[str]] = None) -> 'Dataset':
+            self_link: Optional[pulumi.Input[str]] = None,
+            storage_billing_model: Optional[pulumi.Input[str]] = None) -> 'Dataset':
         """
         Get an existing Dataset resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1370,6 +1422,10 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[str] storage_billing_model: Specifies the storage billing model for the dataset.
+               Set this flag value to LOGICAL to use logical bytes for storage billing,
+               or to PHYSICAL to use physical bytes instead.
+               LOGICAL is the default if this flag isn't specified.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1393,6 +1449,7 @@ class Dataset(pulumi.CustomResource):
         __props__.__dict__["max_time_travel_hours"] = max_time_travel_hours
         __props__.__dict__["project"] = project
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["storage_billing_model"] = storage_billing_model
         return Dataset(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1596,4 +1653,15 @@ class Dataset(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="storageBillingModel")
+    def storage_billing_model(self) -> pulumi.Output[str]:
+        """
+        Specifies the storage billing model for the dataset.
+        Set this flag value to LOGICAL to use logical bytes for storage billing,
+        or to PHYSICAL to use physical bytes instead.
+        LOGICAL is the default if this flag isn't specified.
+        """
+        return pulumi.get(self, "storage_billing_model")
 

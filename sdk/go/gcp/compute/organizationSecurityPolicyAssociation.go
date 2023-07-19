@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -128,6 +129,7 @@ func NewOrganizationSecurityPolicyAssociation(ctx *pulumi.Context,
 	if args.PolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'PolicyId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource OrganizationSecurityPolicyAssociation
 	err := ctx.RegisterResource("gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation", name, args, &resource, opts...)
 	if err != nil {

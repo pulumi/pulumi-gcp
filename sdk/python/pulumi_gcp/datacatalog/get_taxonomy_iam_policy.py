@@ -109,7 +109,7 @@ def get_taxonomy_iam_policy(project: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.datacatalog.get_taxonomy_iam_policy(taxonomy=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.datacatalog.get_taxonomy_iam_policy(taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"])
     ```
 
 
@@ -125,12 +125,12 @@ def get_taxonomy_iam_policy(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy', __args__, opts=opts, typ=GetTaxonomyIamPolicyResult).value
 
     return AwaitableGetTaxonomyIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project,
-        region=__ret__.region,
-        taxonomy=__ret__.taxonomy)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'),
+        taxonomy=pulumi.get(__ret__, 'taxonomy'))
 
 
 @_utilities.lift_output_func(get_taxonomy_iam_policy)
@@ -147,7 +147,7 @@ def get_taxonomy_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.datacatalog.get_taxonomy_iam_policy(taxonomy=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.datacatalog.get_taxonomy_iam_policy(taxonomy=google_data_catalog_taxonomy["basic_taxonomy"]["name"])
     ```
 
 

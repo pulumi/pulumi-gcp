@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -133,6 +134,7 @@ func NewGroup(ctx *pulumi.Context,
 	if args.Filter == nil {
 		return nil, errors.New("invalid value for required argument 'Filter'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Group
 	err := ctx.RegisterResource("gcp:monitoring/group:Group", name, args, &resource, opts...)
 	if err != nil {

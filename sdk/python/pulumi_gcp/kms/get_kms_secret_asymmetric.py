@@ -142,11 +142,11 @@ def get_kms_secret_asymmetric(ciphertext: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric', __args__, opts=opts, typ=GetKMSSecretAsymmetricResult).value
 
     return AwaitableGetKMSSecretAsymmetricResult(
-        ciphertext=__ret__.ciphertext,
-        crc32=__ret__.crc32,
-        crypto_key_version=__ret__.crypto_key_version,
-        id=__ret__.id,
-        plaintext=__ret__.plaintext)
+        ciphertext=pulumi.get(__ret__, 'ciphertext'),
+        crc32=pulumi.get(__ret__, 'crc32'),
+        crypto_key_version=pulumi.get(__ret__, 'crypto_key_version'),
+        id=pulumi.get(__ret__, 'id'),
+        plaintext=pulumi.get(__ret__, 'plaintext'))
 
 
 @_utilities.lift_output_func(get_kms_secret_asymmetric)

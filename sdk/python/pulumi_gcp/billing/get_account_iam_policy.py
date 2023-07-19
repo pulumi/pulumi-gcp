@@ -100,10 +100,10 @@ def get_account_iam_policy(billing_account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:billing/getAccountIamPolicy:getAccountIamPolicy', __args__, opts=opts, typ=GetAccountIamPolicyResult).value
 
     return AwaitableGetAccountIamPolicyResult(
-        billing_account_id=__ret__.billing_account_id,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data)
+        billing_account_id=pulumi.get(__ret__, 'billing_account_id'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'))
 
 
 @_utilities.lift_output_func(get_account_iam_policy)

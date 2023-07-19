@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -316,6 +317,7 @@ func NewGuestPolicies(ctx *pulumi.Context,
 	if args.GuestPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'GuestPolicyId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GuestPolicies
 	err := ctx.RegisterResource("gcp:osconfig/guestPolicies:GuestPolicies", name, args, &resource, opts...)
 	if err != nil {

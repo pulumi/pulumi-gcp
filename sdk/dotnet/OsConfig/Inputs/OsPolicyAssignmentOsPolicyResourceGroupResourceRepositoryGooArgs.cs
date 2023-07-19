@@ -13,13 +13,13 @@ namespace Pulumi.Gcp.OsConfig.Inputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The name of the repository.
+        /// The name of the repository.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Required. The url of the repository.
+        /// The url of the repository.
         /// </summary>
         [Input("url", required: true)]
         public Input<string> Url { get; set; } = null!;

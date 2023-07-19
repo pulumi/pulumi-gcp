@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,7 +39,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
 //				FileShares: &filestore.InstanceFileSharesArgs{
-//					CapacityGb: pulumi.Int(2660),
+//					CapacityGb: pulumi.Int(1024),
 //					Name:       pulumi.String("share1"),
 //				},
 //				Location: pulumi.String("us-central1-b"),
@@ -50,7 +51,7 @@ import (
 //						Network: pulumi.String("default"),
 //					},
 //				},
-//				Tier: pulumi.String("PREMIUM"),
+//				Tier: pulumi.String("BASIC_HDD"),
 //			})
 //			if err != nil {
 //				return err
@@ -76,7 +77,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
 //				FileShares: &filestore.InstanceFileSharesArgs{
-//					CapacityGb: pulumi.Int(2660),
+//					CapacityGb: pulumi.Int(2560),
 //					Name:       pulumi.String("share1"),
 //					NfsExportOptions: filestore.InstanceFileSharesNfsExportOptionArray{
 //						&filestore.InstanceFileSharesNfsExportOptionArgs{
@@ -148,7 +149,7 @@ import (
 //				Location: pulumi.String("us-central1"),
 //				Tier:     pulumi.String("ENTERPRISE"),
 //				FileShares: &filestore.InstanceFileSharesArgs{
-//					CapacityGb: pulumi.Int(2560),
+//					CapacityGb: pulumi.Int(1024),
 //					Name:       pulumi.String("share1"),
 //				},
 //				Networks: filestore.InstanceNetworkArray{
@@ -246,6 +247,7 @@ func NewInstance(ctx *pulumi.Context,
 	if args.Tier == nil {
 		return nil, errors.New("invalid value for required argument 'Tier'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Instance
 	err := ctx.RegisterResource("gcp:filestore/instance:Instance", name, args, &resource, opts...)
 	if err != nil {

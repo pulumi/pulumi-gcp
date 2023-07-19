@@ -7,8 +7,899 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
+
+type ExtensionsInstanceConfig struct {
+	// List of extension events selected by consumer that extension is allowed to
+	// emit, identified by their types.
+	AllowedEventTypes []string `pulumi:"allowedEventTypes"`
+	// (Output)
+	// The time at which the Extension Instance Config was created.
+	CreateTime *string `pulumi:"createTime"`
+	// Fully qualified Eventarc resource name that consumers should use for event triggers.
+	EventarcChannel *string `pulumi:"eventarcChannel"`
+	// The ref of the Extension from the Registry (e.g. publisher-id/awesome-extension)
+	ExtensionRef string `pulumi:"extensionRef"`
+	// The version of the Extension from the Registry (e.g. 1.0.3). If left blank, latest is assumed.
+	ExtensionVersion *string `pulumi:"extensionVersion"`
+	// (Output)
+	// The unique identifier for this configuration.
+	Name *string `pulumi:"name"`
+	// Environment variables that may be configured for the Extension
+	Params map[string]string `pulumi:"params"`
+	// (Output)
+	// Postinstall instructions to be shown for this Extension, with
+	// template strings representing function and parameter values substituted
+	// with actual values. These strings include: ${param:FOO},
+	// ${function:myFunc.url},
+	// ${function:myFunc.name}, and ${function:myFunc.location}
+	//
+	// ***
+	PopulatedPostinstallContent *string `pulumi:"populatedPostinstallContent"`
+	// Params whose values are only available at deployment time.
+	// Unlike other params, these will not be set as environment variables on
+	// functions.
+	SystemParams map[string]string `pulumi:"systemParams"`
+}
+
+// ExtensionsInstanceConfigInput is an input type that accepts ExtensionsInstanceConfigArgs and ExtensionsInstanceConfigOutput values.
+// You can construct a concrete instance of `ExtensionsInstanceConfigInput` via:
+//
+//	ExtensionsInstanceConfigArgs{...}
+type ExtensionsInstanceConfigInput interface {
+	pulumi.Input
+
+	ToExtensionsInstanceConfigOutput() ExtensionsInstanceConfigOutput
+	ToExtensionsInstanceConfigOutputWithContext(context.Context) ExtensionsInstanceConfigOutput
+}
+
+type ExtensionsInstanceConfigArgs struct {
+	// List of extension events selected by consumer that extension is allowed to
+	// emit, identified by their types.
+	AllowedEventTypes pulumi.StringArrayInput `pulumi:"allowedEventTypes"`
+	// (Output)
+	// The time at which the Extension Instance Config was created.
+	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
+	// Fully qualified Eventarc resource name that consumers should use for event triggers.
+	EventarcChannel pulumi.StringPtrInput `pulumi:"eventarcChannel"`
+	// The ref of the Extension from the Registry (e.g. publisher-id/awesome-extension)
+	ExtensionRef pulumi.StringInput `pulumi:"extensionRef"`
+	// The version of the Extension from the Registry (e.g. 1.0.3). If left blank, latest is assumed.
+	ExtensionVersion pulumi.StringPtrInput `pulumi:"extensionVersion"`
+	// (Output)
+	// The unique identifier for this configuration.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Environment variables that may be configured for the Extension
+	Params pulumi.StringMapInput `pulumi:"params"`
+	// (Output)
+	// Postinstall instructions to be shown for this Extension, with
+	// template strings representing function and parameter values substituted
+	// with actual values. These strings include: ${param:FOO},
+	// ${function:myFunc.url},
+	// ${function:myFunc.name}, and ${function:myFunc.location}
+	//
+	// ***
+	PopulatedPostinstallContent pulumi.StringPtrInput `pulumi:"populatedPostinstallContent"`
+	// Params whose values are only available at deployment time.
+	// Unlike other params, these will not be set as environment variables on
+	// functions.
+	SystemParams pulumi.StringMapInput `pulumi:"systemParams"`
+}
+
+func (ExtensionsInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtensionsInstanceConfig)(nil)).Elem()
+}
+
+func (i ExtensionsInstanceConfigArgs) ToExtensionsInstanceConfigOutput() ExtensionsInstanceConfigOutput {
+	return i.ToExtensionsInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i ExtensionsInstanceConfigArgs) ToExtensionsInstanceConfigOutputWithContext(ctx context.Context) ExtensionsInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceConfigOutput)
+}
+
+func (i ExtensionsInstanceConfigArgs) ToExtensionsInstanceConfigPtrOutput() ExtensionsInstanceConfigPtrOutput {
+	return i.ToExtensionsInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ExtensionsInstanceConfigArgs) ToExtensionsInstanceConfigPtrOutputWithContext(ctx context.Context) ExtensionsInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceConfigOutput).ToExtensionsInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// ExtensionsInstanceConfigPtrInput is an input type that accepts ExtensionsInstanceConfigArgs, ExtensionsInstanceConfigPtr and ExtensionsInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `ExtensionsInstanceConfigPtrInput` via:
+//
+//	        ExtensionsInstanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExtensionsInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToExtensionsInstanceConfigPtrOutput() ExtensionsInstanceConfigPtrOutput
+	ToExtensionsInstanceConfigPtrOutputWithContext(context.Context) ExtensionsInstanceConfigPtrOutput
+}
+
+type extensionsInstanceConfigPtrType ExtensionsInstanceConfigArgs
+
+func ExtensionsInstanceConfigPtr(v *ExtensionsInstanceConfigArgs) ExtensionsInstanceConfigPtrInput {
+	return (*extensionsInstanceConfigPtrType)(v)
+}
+
+func (*extensionsInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtensionsInstanceConfig)(nil)).Elem()
+}
+
+func (i *extensionsInstanceConfigPtrType) ToExtensionsInstanceConfigPtrOutput() ExtensionsInstanceConfigPtrOutput {
+	return i.ToExtensionsInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *extensionsInstanceConfigPtrType) ToExtensionsInstanceConfigPtrOutputWithContext(ctx context.Context) ExtensionsInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceConfigPtrOutput)
+}
+
+type ExtensionsInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (ExtensionsInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtensionsInstanceConfig)(nil)).Elem()
+}
+
+func (o ExtensionsInstanceConfigOutput) ToExtensionsInstanceConfigOutput() ExtensionsInstanceConfigOutput {
+	return o
+}
+
+func (o ExtensionsInstanceConfigOutput) ToExtensionsInstanceConfigOutputWithContext(ctx context.Context) ExtensionsInstanceConfigOutput {
+	return o
+}
+
+func (o ExtensionsInstanceConfigOutput) ToExtensionsInstanceConfigPtrOutput() ExtensionsInstanceConfigPtrOutput {
+	return o.ToExtensionsInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ExtensionsInstanceConfigOutput) ToExtensionsInstanceConfigPtrOutputWithContext(ctx context.Context) ExtensionsInstanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExtensionsInstanceConfig) *ExtensionsInstanceConfig {
+		return &v
+	}).(ExtensionsInstanceConfigPtrOutput)
+}
+
+// List of extension events selected by consumer that extension is allowed to
+// emit, identified by their types.
+func (o ExtensionsInstanceConfigOutput) AllowedEventTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ExtensionsInstanceConfig) []string { return v.AllowedEventTypes }).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// The time at which the Extension Instance Config was created.
+func (o ExtensionsInstanceConfigOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExtensionsInstanceConfig) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified Eventarc resource name that consumers should use for event triggers.
+func (o ExtensionsInstanceConfigOutput) EventarcChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExtensionsInstanceConfig) *string { return v.EventarcChannel }).(pulumi.StringPtrOutput)
+}
+
+// The ref of the Extension from the Registry (e.g. publisher-id/awesome-extension)
+func (o ExtensionsInstanceConfigOutput) ExtensionRef() pulumi.StringOutput {
+	return o.ApplyT(func(v ExtensionsInstanceConfig) string { return v.ExtensionRef }).(pulumi.StringOutput)
+}
+
+// The version of the Extension from the Registry (e.g. 1.0.3). If left blank, latest is assumed.
+func (o ExtensionsInstanceConfigOutput) ExtensionVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExtensionsInstanceConfig) *string { return v.ExtensionVersion }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The unique identifier for this configuration.
+func (o ExtensionsInstanceConfigOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExtensionsInstanceConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Environment variables that may be configured for the Extension
+func (o ExtensionsInstanceConfigOutput) Params() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ExtensionsInstanceConfig) map[string]string { return v.Params }).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// Postinstall instructions to be shown for this Extension, with
+// template strings representing function and parameter values substituted
+// with actual values. These strings include: ${param:FOO},
+// ${function:myFunc.url},
+// ${function:myFunc.name}, and ${function:myFunc.location}
+//
+// ***
+func (o ExtensionsInstanceConfigOutput) PopulatedPostinstallContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExtensionsInstanceConfig) *string { return v.PopulatedPostinstallContent }).(pulumi.StringPtrOutput)
+}
+
+// Params whose values are only available at deployment time.
+// Unlike other params, these will not be set as environment variables on
+// functions.
+func (o ExtensionsInstanceConfigOutput) SystemParams() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ExtensionsInstanceConfig) map[string]string { return v.SystemParams }).(pulumi.StringMapOutput)
+}
+
+type ExtensionsInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ExtensionsInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtensionsInstanceConfig)(nil)).Elem()
+}
+
+func (o ExtensionsInstanceConfigPtrOutput) ToExtensionsInstanceConfigPtrOutput() ExtensionsInstanceConfigPtrOutput {
+	return o
+}
+
+func (o ExtensionsInstanceConfigPtrOutput) ToExtensionsInstanceConfigPtrOutputWithContext(ctx context.Context) ExtensionsInstanceConfigPtrOutput {
+	return o
+}
+
+func (o ExtensionsInstanceConfigPtrOutput) Elem() ExtensionsInstanceConfigOutput {
+	return o.ApplyT(func(v *ExtensionsInstanceConfig) ExtensionsInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ExtensionsInstanceConfig
+		return ret
+	}).(ExtensionsInstanceConfigOutput)
+}
+
+// List of extension events selected by consumer that extension is allowed to
+// emit, identified by their types.
+func (o ExtensionsInstanceConfigPtrOutput) AllowedEventTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ExtensionsInstanceConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedEventTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// (Output)
+// The time at which the Extension Instance Config was created.
+func (o ExtensionsInstanceConfigPtrOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtensionsInstanceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CreateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified Eventarc resource name that consumers should use for event triggers.
+func (o ExtensionsInstanceConfigPtrOutput) EventarcChannel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtensionsInstanceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EventarcChannel
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ref of the Extension from the Registry (e.g. publisher-id/awesome-extension)
+func (o ExtensionsInstanceConfigPtrOutput) ExtensionRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtensionsInstanceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ExtensionRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// The version of the Extension from the Registry (e.g. 1.0.3). If left blank, latest is assumed.
+func (o ExtensionsInstanceConfigPtrOutput) ExtensionVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtensionsInstanceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExtensionVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The unique identifier for this configuration.
+func (o ExtensionsInstanceConfigPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtensionsInstanceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Environment variables that may be configured for the Extension
+func (o ExtensionsInstanceConfigPtrOutput) Params() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ExtensionsInstanceConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Params
+	}).(pulumi.StringMapOutput)
+}
+
+// (Output)
+// Postinstall instructions to be shown for this Extension, with
+// template strings representing function and parameter values substituted
+// with actual values. These strings include: ${param:FOO},
+// ${function:myFunc.url},
+// ${function:myFunc.name}, and ${function:myFunc.location}
+//
+// ***
+func (o ExtensionsInstanceConfigPtrOutput) PopulatedPostinstallContent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtensionsInstanceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PopulatedPostinstallContent
+	}).(pulumi.StringPtrOutput)
+}
+
+// Params whose values are only available at deployment time.
+// Unlike other params, these will not be set as environment variables on
+// functions.
+func (o ExtensionsInstanceConfigPtrOutput) SystemParams() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ExtensionsInstanceConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.SystemParams
+	}).(pulumi.StringMapOutput)
+}
+
+type ExtensionsInstanceErrorStatus struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// A list of messages that carry the error details.
+	Details []map[string]interface{} `pulumi:"details"`
+	// A developer-facing error message, which should be in English.
+	Message *string `pulumi:"message"`
+}
+
+// ExtensionsInstanceErrorStatusInput is an input type that accepts ExtensionsInstanceErrorStatusArgs and ExtensionsInstanceErrorStatusOutput values.
+// You can construct a concrete instance of `ExtensionsInstanceErrorStatusInput` via:
+//
+//	ExtensionsInstanceErrorStatusArgs{...}
+type ExtensionsInstanceErrorStatusInput interface {
+	pulumi.Input
+
+	ToExtensionsInstanceErrorStatusOutput() ExtensionsInstanceErrorStatusOutput
+	ToExtensionsInstanceErrorStatusOutputWithContext(context.Context) ExtensionsInstanceErrorStatusOutput
+}
+
+type ExtensionsInstanceErrorStatusArgs struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// A list of messages that carry the error details.
+	Details pulumi.MapArrayInput `pulumi:"details"`
+	// A developer-facing error message, which should be in English.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (ExtensionsInstanceErrorStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtensionsInstanceErrorStatus)(nil)).Elem()
+}
+
+func (i ExtensionsInstanceErrorStatusArgs) ToExtensionsInstanceErrorStatusOutput() ExtensionsInstanceErrorStatusOutput {
+	return i.ToExtensionsInstanceErrorStatusOutputWithContext(context.Background())
+}
+
+func (i ExtensionsInstanceErrorStatusArgs) ToExtensionsInstanceErrorStatusOutputWithContext(ctx context.Context) ExtensionsInstanceErrorStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceErrorStatusOutput)
+}
+
+// ExtensionsInstanceErrorStatusArrayInput is an input type that accepts ExtensionsInstanceErrorStatusArray and ExtensionsInstanceErrorStatusArrayOutput values.
+// You can construct a concrete instance of `ExtensionsInstanceErrorStatusArrayInput` via:
+//
+//	ExtensionsInstanceErrorStatusArray{ ExtensionsInstanceErrorStatusArgs{...} }
+type ExtensionsInstanceErrorStatusArrayInput interface {
+	pulumi.Input
+
+	ToExtensionsInstanceErrorStatusArrayOutput() ExtensionsInstanceErrorStatusArrayOutput
+	ToExtensionsInstanceErrorStatusArrayOutputWithContext(context.Context) ExtensionsInstanceErrorStatusArrayOutput
+}
+
+type ExtensionsInstanceErrorStatusArray []ExtensionsInstanceErrorStatusInput
+
+func (ExtensionsInstanceErrorStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExtensionsInstanceErrorStatus)(nil)).Elem()
+}
+
+func (i ExtensionsInstanceErrorStatusArray) ToExtensionsInstanceErrorStatusArrayOutput() ExtensionsInstanceErrorStatusArrayOutput {
+	return i.ToExtensionsInstanceErrorStatusArrayOutputWithContext(context.Background())
+}
+
+func (i ExtensionsInstanceErrorStatusArray) ToExtensionsInstanceErrorStatusArrayOutputWithContext(ctx context.Context) ExtensionsInstanceErrorStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceErrorStatusArrayOutput)
+}
+
+type ExtensionsInstanceErrorStatusOutput struct{ *pulumi.OutputState }
+
+func (ExtensionsInstanceErrorStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtensionsInstanceErrorStatus)(nil)).Elem()
+}
+
+func (o ExtensionsInstanceErrorStatusOutput) ToExtensionsInstanceErrorStatusOutput() ExtensionsInstanceErrorStatusOutput {
+	return o
+}
+
+func (o ExtensionsInstanceErrorStatusOutput) ToExtensionsInstanceErrorStatusOutputWithContext(ctx context.Context) ExtensionsInstanceErrorStatusOutput {
+	return o
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o ExtensionsInstanceErrorStatusOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ExtensionsInstanceErrorStatus) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// A list of messages that carry the error details.
+func (o ExtensionsInstanceErrorStatusOutput) Details() pulumi.MapArrayOutput {
+	return o.ApplyT(func(v ExtensionsInstanceErrorStatus) []map[string]interface{} { return v.Details }).(pulumi.MapArrayOutput)
+}
+
+// A developer-facing error message, which should be in English.
+func (o ExtensionsInstanceErrorStatusOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExtensionsInstanceErrorStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type ExtensionsInstanceErrorStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (ExtensionsInstanceErrorStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExtensionsInstanceErrorStatus)(nil)).Elem()
+}
+
+func (o ExtensionsInstanceErrorStatusArrayOutput) ToExtensionsInstanceErrorStatusArrayOutput() ExtensionsInstanceErrorStatusArrayOutput {
+	return o
+}
+
+func (o ExtensionsInstanceErrorStatusArrayOutput) ToExtensionsInstanceErrorStatusArrayOutputWithContext(ctx context.Context) ExtensionsInstanceErrorStatusArrayOutput {
+	return o
+}
+
+func (o ExtensionsInstanceErrorStatusArrayOutput) Index(i pulumi.IntInput) ExtensionsInstanceErrorStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExtensionsInstanceErrorStatus {
+		return vs[0].([]ExtensionsInstanceErrorStatus)[vs[1].(int)]
+	}).(ExtensionsInstanceErrorStatusOutput)
+}
+
+type ExtensionsInstanceRuntimeData struct {
+	// The fatal error state for the extension instance
+	// Structure is documented below.
+	FatalError *ExtensionsInstanceRuntimeDataFatalError `pulumi:"fatalError"`
+	// The processing state for the extension instance
+	// Structure is documented below.
+	ProcessingState *ExtensionsInstanceRuntimeDataProcessingState `pulumi:"processingState"`
+	// The time of the last state update.
+	StateUpdateTime *string `pulumi:"stateUpdateTime"`
+}
+
+// ExtensionsInstanceRuntimeDataInput is an input type that accepts ExtensionsInstanceRuntimeDataArgs and ExtensionsInstanceRuntimeDataOutput values.
+// You can construct a concrete instance of `ExtensionsInstanceRuntimeDataInput` via:
+//
+//	ExtensionsInstanceRuntimeDataArgs{...}
+type ExtensionsInstanceRuntimeDataInput interface {
+	pulumi.Input
+
+	ToExtensionsInstanceRuntimeDataOutput() ExtensionsInstanceRuntimeDataOutput
+	ToExtensionsInstanceRuntimeDataOutputWithContext(context.Context) ExtensionsInstanceRuntimeDataOutput
+}
+
+type ExtensionsInstanceRuntimeDataArgs struct {
+	// The fatal error state for the extension instance
+	// Structure is documented below.
+	FatalError ExtensionsInstanceRuntimeDataFatalErrorPtrInput `pulumi:"fatalError"`
+	// The processing state for the extension instance
+	// Structure is documented below.
+	ProcessingState ExtensionsInstanceRuntimeDataProcessingStatePtrInput `pulumi:"processingState"`
+	// The time of the last state update.
+	StateUpdateTime pulumi.StringPtrInput `pulumi:"stateUpdateTime"`
+}
+
+func (ExtensionsInstanceRuntimeDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtensionsInstanceRuntimeData)(nil)).Elem()
+}
+
+func (i ExtensionsInstanceRuntimeDataArgs) ToExtensionsInstanceRuntimeDataOutput() ExtensionsInstanceRuntimeDataOutput {
+	return i.ToExtensionsInstanceRuntimeDataOutputWithContext(context.Background())
+}
+
+func (i ExtensionsInstanceRuntimeDataArgs) ToExtensionsInstanceRuntimeDataOutputWithContext(ctx context.Context) ExtensionsInstanceRuntimeDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceRuntimeDataOutput)
+}
+
+// ExtensionsInstanceRuntimeDataArrayInput is an input type that accepts ExtensionsInstanceRuntimeDataArray and ExtensionsInstanceRuntimeDataArrayOutput values.
+// You can construct a concrete instance of `ExtensionsInstanceRuntimeDataArrayInput` via:
+//
+//	ExtensionsInstanceRuntimeDataArray{ ExtensionsInstanceRuntimeDataArgs{...} }
+type ExtensionsInstanceRuntimeDataArrayInput interface {
+	pulumi.Input
+
+	ToExtensionsInstanceRuntimeDataArrayOutput() ExtensionsInstanceRuntimeDataArrayOutput
+	ToExtensionsInstanceRuntimeDataArrayOutputWithContext(context.Context) ExtensionsInstanceRuntimeDataArrayOutput
+}
+
+type ExtensionsInstanceRuntimeDataArray []ExtensionsInstanceRuntimeDataInput
+
+func (ExtensionsInstanceRuntimeDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExtensionsInstanceRuntimeData)(nil)).Elem()
+}
+
+func (i ExtensionsInstanceRuntimeDataArray) ToExtensionsInstanceRuntimeDataArrayOutput() ExtensionsInstanceRuntimeDataArrayOutput {
+	return i.ToExtensionsInstanceRuntimeDataArrayOutputWithContext(context.Background())
+}
+
+func (i ExtensionsInstanceRuntimeDataArray) ToExtensionsInstanceRuntimeDataArrayOutputWithContext(ctx context.Context) ExtensionsInstanceRuntimeDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceRuntimeDataArrayOutput)
+}
+
+type ExtensionsInstanceRuntimeDataOutput struct{ *pulumi.OutputState }
+
+func (ExtensionsInstanceRuntimeDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtensionsInstanceRuntimeData)(nil)).Elem()
+}
+
+func (o ExtensionsInstanceRuntimeDataOutput) ToExtensionsInstanceRuntimeDataOutput() ExtensionsInstanceRuntimeDataOutput {
+	return o
+}
+
+func (o ExtensionsInstanceRuntimeDataOutput) ToExtensionsInstanceRuntimeDataOutputWithContext(ctx context.Context) ExtensionsInstanceRuntimeDataOutput {
+	return o
+}
+
+// The fatal error state for the extension instance
+// Structure is documented below.
+func (o ExtensionsInstanceRuntimeDataOutput) FatalError() ExtensionsInstanceRuntimeDataFatalErrorPtrOutput {
+	return o.ApplyT(func(v ExtensionsInstanceRuntimeData) *ExtensionsInstanceRuntimeDataFatalError { return v.FatalError }).(ExtensionsInstanceRuntimeDataFatalErrorPtrOutput)
+}
+
+// The processing state for the extension instance
+// Structure is documented below.
+func (o ExtensionsInstanceRuntimeDataOutput) ProcessingState() ExtensionsInstanceRuntimeDataProcessingStatePtrOutput {
+	return o.ApplyT(func(v ExtensionsInstanceRuntimeData) *ExtensionsInstanceRuntimeDataProcessingState {
+		return v.ProcessingState
+	}).(ExtensionsInstanceRuntimeDataProcessingStatePtrOutput)
+}
+
+// The time of the last state update.
+func (o ExtensionsInstanceRuntimeDataOutput) StateUpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExtensionsInstanceRuntimeData) *string { return v.StateUpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type ExtensionsInstanceRuntimeDataArrayOutput struct{ *pulumi.OutputState }
+
+func (ExtensionsInstanceRuntimeDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExtensionsInstanceRuntimeData)(nil)).Elem()
+}
+
+func (o ExtensionsInstanceRuntimeDataArrayOutput) ToExtensionsInstanceRuntimeDataArrayOutput() ExtensionsInstanceRuntimeDataArrayOutput {
+	return o
+}
+
+func (o ExtensionsInstanceRuntimeDataArrayOutput) ToExtensionsInstanceRuntimeDataArrayOutputWithContext(ctx context.Context) ExtensionsInstanceRuntimeDataArrayOutput {
+	return o
+}
+
+func (o ExtensionsInstanceRuntimeDataArrayOutput) Index(i pulumi.IntInput) ExtensionsInstanceRuntimeDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExtensionsInstanceRuntimeData {
+		return vs[0].([]ExtensionsInstanceRuntimeData)[vs[1].(int)]
+	}).(ExtensionsInstanceRuntimeDataOutput)
+}
+
+type ExtensionsInstanceRuntimeDataFatalError struct {
+	// The error message. This is set by the extension developer to give
+	// more detail on why the extension is unusable and must be re-installed
+	// or reconfigured.
+	ErrorMessage *string `pulumi:"errorMessage"`
+}
+
+// ExtensionsInstanceRuntimeDataFatalErrorInput is an input type that accepts ExtensionsInstanceRuntimeDataFatalErrorArgs and ExtensionsInstanceRuntimeDataFatalErrorOutput values.
+// You can construct a concrete instance of `ExtensionsInstanceRuntimeDataFatalErrorInput` via:
+//
+//	ExtensionsInstanceRuntimeDataFatalErrorArgs{...}
+type ExtensionsInstanceRuntimeDataFatalErrorInput interface {
+	pulumi.Input
+
+	ToExtensionsInstanceRuntimeDataFatalErrorOutput() ExtensionsInstanceRuntimeDataFatalErrorOutput
+	ToExtensionsInstanceRuntimeDataFatalErrorOutputWithContext(context.Context) ExtensionsInstanceRuntimeDataFatalErrorOutput
+}
+
+type ExtensionsInstanceRuntimeDataFatalErrorArgs struct {
+	// The error message. This is set by the extension developer to give
+	// more detail on why the extension is unusable and must be re-installed
+	// or reconfigured.
+	ErrorMessage pulumi.StringPtrInput `pulumi:"errorMessage"`
+}
+
+func (ExtensionsInstanceRuntimeDataFatalErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtensionsInstanceRuntimeDataFatalError)(nil)).Elem()
+}
+
+func (i ExtensionsInstanceRuntimeDataFatalErrorArgs) ToExtensionsInstanceRuntimeDataFatalErrorOutput() ExtensionsInstanceRuntimeDataFatalErrorOutput {
+	return i.ToExtensionsInstanceRuntimeDataFatalErrorOutputWithContext(context.Background())
+}
+
+func (i ExtensionsInstanceRuntimeDataFatalErrorArgs) ToExtensionsInstanceRuntimeDataFatalErrorOutputWithContext(ctx context.Context) ExtensionsInstanceRuntimeDataFatalErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceRuntimeDataFatalErrorOutput)
+}
+
+func (i ExtensionsInstanceRuntimeDataFatalErrorArgs) ToExtensionsInstanceRuntimeDataFatalErrorPtrOutput() ExtensionsInstanceRuntimeDataFatalErrorPtrOutput {
+	return i.ToExtensionsInstanceRuntimeDataFatalErrorPtrOutputWithContext(context.Background())
+}
+
+func (i ExtensionsInstanceRuntimeDataFatalErrorArgs) ToExtensionsInstanceRuntimeDataFatalErrorPtrOutputWithContext(ctx context.Context) ExtensionsInstanceRuntimeDataFatalErrorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceRuntimeDataFatalErrorOutput).ToExtensionsInstanceRuntimeDataFatalErrorPtrOutputWithContext(ctx)
+}
+
+// ExtensionsInstanceRuntimeDataFatalErrorPtrInput is an input type that accepts ExtensionsInstanceRuntimeDataFatalErrorArgs, ExtensionsInstanceRuntimeDataFatalErrorPtr and ExtensionsInstanceRuntimeDataFatalErrorPtrOutput values.
+// You can construct a concrete instance of `ExtensionsInstanceRuntimeDataFatalErrorPtrInput` via:
+//
+//	        ExtensionsInstanceRuntimeDataFatalErrorArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExtensionsInstanceRuntimeDataFatalErrorPtrInput interface {
+	pulumi.Input
+
+	ToExtensionsInstanceRuntimeDataFatalErrorPtrOutput() ExtensionsInstanceRuntimeDataFatalErrorPtrOutput
+	ToExtensionsInstanceRuntimeDataFatalErrorPtrOutputWithContext(context.Context) ExtensionsInstanceRuntimeDataFatalErrorPtrOutput
+}
+
+type extensionsInstanceRuntimeDataFatalErrorPtrType ExtensionsInstanceRuntimeDataFatalErrorArgs
+
+func ExtensionsInstanceRuntimeDataFatalErrorPtr(v *ExtensionsInstanceRuntimeDataFatalErrorArgs) ExtensionsInstanceRuntimeDataFatalErrorPtrInput {
+	return (*extensionsInstanceRuntimeDataFatalErrorPtrType)(v)
+}
+
+func (*extensionsInstanceRuntimeDataFatalErrorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtensionsInstanceRuntimeDataFatalError)(nil)).Elem()
+}
+
+func (i *extensionsInstanceRuntimeDataFatalErrorPtrType) ToExtensionsInstanceRuntimeDataFatalErrorPtrOutput() ExtensionsInstanceRuntimeDataFatalErrorPtrOutput {
+	return i.ToExtensionsInstanceRuntimeDataFatalErrorPtrOutputWithContext(context.Background())
+}
+
+func (i *extensionsInstanceRuntimeDataFatalErrorPtrType) ToExtensionsInstanceRuntimeDataFatalErrorPtrOutputWithContext(ctx context.Context) ExtensionsInstanceRuntimeDataFatalErrorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceRuntimeDataFatalErrorPtrOutput)
+}
+
+type ExtensionsInstanceRuntimeDataFatalErrorOutput struct{ *pulumi.OutputState }
+
+func (ExtensionsInstanceRuntimeDataFatalErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtensionsInstanceRuntimeDataFatalError)(nil)).Elem()
+}
+
+func (o ExtensionsInstanceRuntimeDataFatalErrorOutput) ToExtensionsInstanceRuntimeDataFatalErrorOutput() ExtensionsInstanceRuntimeDataFatalErrorOutput {
+	return o
+}
+
+func (o ExtensionsInstanceRuntimeDataFatalErrorOutput) ToExtensionsInstanceRuntimeDataFatalErrorOutputWithContext(ctx context.Context) ExtensionsInstanceRuntimeDataFatalErrorOutput {
+	return o
+}
+
+func (o ExtensionsInstanceRuntimeDataFatalErrorOutput) ToExtensionsInstanceRuntimeDataFatalErrorPtrOutput() ExtensionsInstanceRuntimeDataFatalErrorPtrOutput {
+	return o.ToExtensionsInstanceRuntimeDataFatalErrorPtrOutputWithContext(context.Background())
+}
+
+func (o ExtensionsInstanceRuntimeDataFatalErrorOutput) ToExtensionsInstanceRuntimeDataFatalErrorPtrOutputWithContext(ctx context.Context) ExtensionsInstanceRuntimeDataFatalErrorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExtensionsInstanceRuntimeDataFatalError) *ExtensionsInstanceRuntimeDataFatalError {
+		return &v
+	}).(ExtensionsInstanceRuntimeDataFatalErrorPtrOutput)
+}
+
+// The error message. This is set by the extension developer to give
+// more detail on why the extension is unusable and must be re-installed
+// or reconfigured.
+func (o ExtensionsInstanceRuntimeDataFatalErrorOutput) ErrorMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExtensionsInstanceRuntimeDataFatalError) *string { return v.ErrorMessage }).(pulumi.StringPtrOutput)
+}
+
+type ExtensionsInstanceRuntimeDataFatalErrorPtrOutput struct{ *pulumi.OutputState }
+
+func (ExtensionsInstanceRuntimeDataFatalErrorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtensionsInstanceRuntimeDataFatalError)(nil)).Elem()
+}
+
+func (o ExtensionsInstanceRuntimeDataFatalErrorPtrOutput) ToExtensionsInstanceRuntimeDataFatalErrorPtrOutput() ExtensionsInstanceRuntimeDataFatalErrorPtrOutput {
+	return o
+}
+
+func (o ExtensionsInstanceRuntimeDataFatalErrorPtrOutput) ToExtensionsInstanceRuntimeDataFatalErrorPtrOutputWithContext(ctx context.Context) ExtensionsInstanceRuntimeDataFatalErrorPtrOutput {
+	return o
+}
+
+func (o ExtensionsInstanceRuntimeDataFatalErrorPtrOutput) Elem() ExtensionsInstanceRuntimeDataFatalErrorOutput {
+	return o.ApplyT(func(v *ExtensionsInstanceRuntimeDataFatalError) ExtensionsInstanceRuntimeDataFatalError {
+		if v != nil {
+			return *v
+		}
+		var ret ExtensionsInstanceRuntimeDataFatalError
+		return ret
+	}).(ExtensionsInstanceRuntimeDataFatalErrorOutput)
+}
+
+// The error message. This is set by the extension developer to give
+// more detail on why the extension is unusable and must be re-installed
+// or reconfigured.
+func (o ExtensionsInstanceRuntimeDataFatalErrorPtrOutput) ErrorMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtensionsInstanceRuntimeDataFatalError) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ErrorMessage
+	}).(pulumi.StringPtrOutput)
+}
+
+type ExtensionsInstanceRuntimeDataProcessingState struct {
+	// Details about the processing. e.g. This could include the type of
+	// processing in progress or it could list errors or failures.
+	// This information will be shown in the console on the detail page
+	// for the extension instance.
+	DetailMessage *string `pulumi:"detailMessage"`
+	// The processing state of the extension instance.
+	State *string `pulumi:"state"`
+}
+
+// ExtensionsInstanceRuntimeDataProcessingStateInput is an input type that accepts ExtensionsInstanceRuntimeDataProcessingStateArgs and ExtensionsInstanceRuntimeDataProcessingStateOutput values.
+// You can construct a concrete instance of `ExtensionsInstanceRuntimeDataProcessingStateInput` via:
+//
+//	ExtensionsInstanceRuntimeDataProcessingStateArgs{...}
+type ExtensionsInstanceRuntimeDataProcessingStateInput interface {
+	pulumi.Input
+
+	ToExtensionsInstanceRuntimeDataProcessingStateOutput() ExtensionsInstanceRuntimeDataProcessingStateOutput
+	ToExtensionsInstanceRuntimeDataProcessingStateOutputWithContext(context.Context) ExtensionsInstanceRuntimeDataProcessingStateOutput
+}
+
+type ExtensionsInstanceRuntimeDataProcessingStateArgs struct {
+	// Details about the processing. e.g. This could include the type of
+	// processing in progress or it could list errors or failures.
+	// This information will be shown in the console on the detail page
+	// for the extension instance.
+	DetailMessage pulumi.StringPtrInput `pulumi:"detailMessage"`
+	// The processing state of the extension instance.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (ExtensionsInstanceRuntimeDataProcessingStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtensionsInstanceRuntimeDataProcessingState)(nil)).Elem()
+}
+
+func (i ExtensionsInstanceRuntimeDataProcessingStateArgs) ToExtensionsInstanceRuntimeDataProcessingStateOutput() ExtensionsInstanceRuntimeDataProcessingStateOutput {
+	return i.ToExtensionsInstanceRuntimeDataProcessingStateOutputWithContext(context.Background())
+}
+
+func (i ExtensionsInstanceRuntimeDataProcessingStateArgs) ToExtensionsInstanceRuntimeDataProcessingStateOutputWithContext(ctx context.Context) ExtensionsInstanceRuntimeDataProcessingStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceRuntimeDataProcessingStateOutput)
+}
+
+func (i ExtensionsInstanceRuntimeDataProcessingStateArgs) ToExtensionsInstanceRuntimeDataProcessingStatePtrOutput() ExtensionsInstanceRuntimeDataProcessingStatePtrOutput {
+	return i.ToExtensionsInstanceRuntimeDataProcessingStatePtrOutputWithContext(context.Background())
+}
+
+func (i ExtensionsInstanceRuntimeDataProcessingStateArgs) ToExtensionsInstanceRuntimeDataProcessingStatePtrOutputWithContext(ctx context.Context) ExtensionsInstanceRuntimeDataProcessingStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceRuntimeDataProcessingStateOutput).ToExtensionsInstanceRuntimeDataProcessingStatePtrOutputWithContext(ctx)
+}
+
+// ExtensionsInstanceRuntimeDataProcessingStatePtrInput is an input type that accepts ExtensionsInstanceRuntimeDataProcessingStateArgs, ExtensionsInstanceRuntimeDataProcessingStatePtr and ExtensionsInstanceRuntimeDataProcessingStatePtrOutput values.
+// You can construct a concrete instance of `ExtensionsInstanceRuntimeDataProcessingStatePtrInput` via:
+//
+//	        ExtensionsInstanceRuntimeDataProcessingStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExtensionsInstanceRuntimeDataProcessingStatePtrInput interface {
+	pulumi.Input
+
+	ToExtensionsInstanceRuntimeDataProcessingStatePtrOutput() ExtensionsInstanceRuntimeDataProcessingStatePtrOutput
+	ToExtensionsInstanceRuntimeDataProcessingStatePtrOutputWithContext(context.Context) ExtensionsInstanceRuntimeDataProcessingStatePtrOutput
+}
+
+type extensionsInstanceRuntimeDataProcessingStatePtrType ExtensionsInstanceRuntimeDataProcessingStateArgs
+
+func ExtensionsInstanceRuntimeDataProcessingStatePtr(v *ExtensionsInstanceRuntimeDataProcessingStateArgs) ExtensionsInstanceRuntimeDataProcessingStatePtrInput {
+	return (*extensionsInstanceRuntimeDataProcessingStatePtrType)(v)
+}
+
+func (*extensionsInstanceRuntimeDataProcessingStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtensionsInstanceRuntimeDataProcessingState)(nil)).Elem()
+}
+
+func (i *extensionsInstanceRuntimeDataProcessingStatePtrType) ToExtensionsInstanceRuntimeDataProcessingStatePtrOutput() ExtensionsInstanceRuntimeDataProcessingStatePtrOutput {
+	return i.ToExtensionsInstanceRuntimeDataProcessingStatePtrOutputWithContext(context.Background())
+}
+
+func (i *extensionsInstanceRuntimeDataProcessingStatePtrType) ToExtensionsInstanceRuntimeDataProcessingStatePtrOutputWithContext(ctx context.Context) ExtensionsInstanceRuntimeDataProcessingStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExtensionsInstanceRuntimeDataProcessingStatePtrOutput)
+}
+
+type ExtensionsInstanceRuntimeDataProcessingStateOutput struct{ *pulumi.OutputState }
+
+func (ExtensionsInstanceRuntimeDataProcessingStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExtensionsInstanceRuntimeDataProcessingState)(nil)).Elem()
+}
+
+func (o ExtensionsInstanceRuntimeDataProcessingStateOutput) ToExtensionsInstanceRuntimeDataProcessingStateOutput() ExtensionsInstanceRuntimeDataProcessingStateOutput {
+	return o
+}
+
+func (o ExtensionsInstanceRuntimeDataProcessingStateOutput) ToExtensionsInstanceRuntimeDataProcessingStateOutputWithContext(ctx context.Context) ExtensionsInstanceRuntimeDataProcessingStateOutput {
+	return o
+}
+
+func (o ExtensionsInstanceRuntimeDataProcessingStateOutput) ToExtensionsInstanceRuntimeDataProcessingStatePtrOutput() ExtensionsInstanceRuntimeDataProcessingStatePtrOutput {
+	return o.ToExtensionsInstanceRuntimeDataProcessingStatePtrOutputWithContext(context.Background())
+}
+
+func (o ExtensionsInstanceRuntimeDataProcessingStateOutput) ToExtensionsInstanceRuntimeDataProcessingStatePtrOutputWithContext(ctx context.Context) ExtensionsInstanceRuntimeDataProcessingStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExtensionsInstanceRuntimeDataProcessingState) *ExtensionsInstanceRuntimeDataProcessingState {
+		return &v
+	}).(ExtensionsInstanceRuntimeDataProcessingStatePtrOutput)
+}
+
+// Details about the processing. e.g. This could include the type of
+// processing in progress or it could list errors or failures.
+// This information will be shown in the console on the detail page
+// for the extension instance.
+func (o ExtensionsInstanceRuntimeDataProcessingStateOutput) DetailMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExtensionsInstanceRuntimeDataProcessingState) *string { return v.DetailMessage }).(pulumi.StringPtrOutput)
+}
+
+// The processing state of the extension instance.
+func (o ExtensionsInstanceRuntimeDataProcessingStateOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExtensionsInstanceRuntimeDataProcessingState) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type ExtensionsInstanceRuntimeDataProcessingStatePtrOutput struct{ *pulumi.OutputState }
+
+func (ExtensionsInstanceRuntimeDataProcessingStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExtensionsInstanceRuntimeDataProcessingState)(nil)).Elem()
+}
+
+func (o ExtensionsInstanceRuntimeDataProcessingStatePtrOutput) ToExtensionsInstanceRuntimeDataProcessingStatePtrOutput() ExtensionsInstanceRuntimeDataProcessingStatePtrOutput {
+	return o
+}
+
+func (o ExtensionsInstanceRuntimeDataProcessingStatePtrOutput) ToExtensionsInstanceRuntimeDataProcessingStatePtrOutputWithContext(ctx context.Context) ExtensionsInstanceRuntimeDataProcessingStatePtrOutput {
+	return o
+}
+
+func (o ExtensionsInstanceRuntimeDataProcessingStatePtrOutput) Elem() ExtensionsInstanceRuntimeDataProcessingStateOutput {
+	return o.ApplyT(func(v *ExtensionsInstanceRuntimeDataProcessingState) ExtensionsInstanceRuntimeDataProcessingState {
+		if v != nil {
+			return *v
+		}
+		var ret ExtensionsInstanceRuntimeDataProcessingState
+		return ret
+	}).(ExtensionsInstanceRuntimeDataProcessingStateOutput)
+}
+
+// Details about the processing. e.g. This could include the type of
+// processing in progress or it could list errors or failures.
+// This information will be shown in the console on the detail page
+// for the extension instance.
+func (o ExtensionsInstanceRuntimeDataProcessingStatePtrOutput) DetailMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtensionsInstanceRuntimeDataProcessingState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DetailMessage
+	}).(pulumi.StringPtrOutput)
+}
+
+// The processing state of the extension instance.
+func (o ExtensionsInstanceRuntimeDataProcessingStatePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExtensionsInstanceRuntimeDataProcessingState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
 
 type HostingVersionConfig struct {
 	// An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
@@ -638,6 +1529,16 @@ func (o HostingVersionConfigRewriteRunPtrOutput) ServiceId() pulumi.StringPtrOut
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionsInstanceConfigInput)(nil)).Elem(), ExtensionsInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionsInstanceConfigPtrInput)(nil)).Elem(), ExtensionsInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionsInstanceErrorStatusInput)(nil)).Elem(), ExtensionsInstanceErrorStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionsInstanceErrorStatusArrayInput)(nil)).Elem(), ExtensionsInstanceErrorStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionsInstanceRuntimeDataInput)(nil)).Elem(), ExtensionsInstanceRuntimeDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionsInstanceRuntimeDataArrayInput)(nil)).Elem(), ExtensionsInstanceRuntimeDataArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionsInstanceRuntimeDataFatalErrorInput)(nil)).Elem(), ExtensionsInstanceRuntimeDataFatalErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionsInstanceRuntimeDataFatalErrorPtrInput)(nil)).Elem(), ExtensionsInstanceRuntimeDataFatalErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionsInstanceRuntimeDataProcessingStateInput)(nil)).Elem(), ExtensionsInstanceRuntimeDataProcessingStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExtensionsInstanceRuntimeDataProcessingStatePtrInput)(nil)).Elem(), ExtensionsInstanceRuntimeDataProcessingStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigInput)(nil)).Elem(), HostingVersionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigPtrInput)(nil)).Elem(), HostingVersionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigRedirectInput)(nil)).Elem(), HostingVersionConfigRedirectArgs{})
@@ -646,6 +1547,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigRewriteArrayInput)(nil)).Elem(), HostingVersionConfigRewriteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigRewriteRunInput)(nil)).Elem(), HostingVersionConfigRewriteRunArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigRewriteRunPtrInput)(nil)).Elem(), HostingVersionConfigRewriteRunArgs{})
+	pulumi.RegisterOutputType(ExtensionsInstanceConfigOutput{})
+	pulumi.RegisterOutputType(ExtensionsInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(ExtensionsInstanceErrorStatusOutput{})
+	pulumi.RegisterOutputType(ExtensionsInstanceErrorStatusArrayOutput{})
+	pulumi.RegisterOutputType(ExtensionsInstanceRuntimeDataOutput{})
+	pulumi.RegisterOutputType(ExtensionsInstanceRuntimeDataArrayOutput{})
+	pulumi.RegisterOutputType(ExtensionsInstanceRuntimeDataFatalErrorOutput{})
+	pulumi.RegisterOutputType(ExtensionsInstanceRuntimeDataFatalErrorPtrOutput{})
+	pulumi.RegisterOutputType(ExtensionsInstanceRuntimeDataProcessingStateOutput{})
+	pulumi.RegisterOutputType(ExtensionsInstanceRuntimeDataProcessingStatePtrOutput{})
 	pulumi.RegisterOutputType(HostingVersionConfigOutput{})
 	pulumi.RegisterOutputType(HostingVersionConfigPtrOutput{})
 	pulumi.RegisterOutputType(HostingVersionConfigRedirectOutput{})

@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Compute FirewallPolicyRule resource
 //
 // ## Example Usage
-// ### Basic_fir_sec_rule_addr_groups
+// ### Basic_fir_sec_rule
 // ```go
 // package main
 //
@@ -38,14 +39,14 @@ import (
 //				},
 //				Type:     pulumi.String("IPV4"),
 //				Capacity: pulumi.Int(100),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			folder, err := organizations.NewFolder(ctx, "folder", &organizations.FolderArgs{
 //				DisplayName: pulumi.String("policy"),
 //				Parent:      pulumi.String("organizations/123456789"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -53,7 +54,7 @@ import (
 //				Parent:      folder.ID(),
 //				ShortName:   pulumi.String("policy"),
 //				Description: pulumi.String("Resource created for Terraform acceptance testing"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -98,7 +99,7 @@ import (
 //				TargetServiceAccounts: pulumi.StringArray{
 //					pulumi.String("my@service-account.com"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -174,6 +175,7 @@ func NewFirewallPolicyRule(ctx *pulumi.Context,
 	if args.Priority == nil {
 		return nil, errors.New("invalid value for required argument 'Priority'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FirewallPolicyRule
 	err := ctx.RegisterResource("gcp:compute/firewallPolicyRule:FirewallPolicyRule", name, args, &resource, opts...)
 	if err != nil {

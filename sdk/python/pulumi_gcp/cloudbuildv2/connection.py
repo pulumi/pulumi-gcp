@@ -21,6 +21,7 @@ class ConnectionArgs:
                  disabled: Optional[pulumi.Input[bool]] = None,
                  github_config: Optional[pulumi.Input['ConnectionGithubConfigArgs']] = None,
                  github_enterprise_config: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigArgs']] = None,
+                 gitlab_config: Optional[pulumi.Input['ConnectionGitlabConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
@@ -30,11 +31,8 @@ class ConnectionArgs:
         :param pulumi.Input[bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         :param pulumi.Input['ConnectionGithubConfigArgs'] github_config: Configuration for connections to github.com.
         :param pulumi.Input['ConnectionGithubEnterpriseConfigArgs'] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
+        :param pulumi.Input['ConnectionGitlabConfigArgs'] gitlab_config: Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
         :param pulumi.Input[str] name: Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         """
         pulumi.set(__self__, "location", location)
@@ -46,6 +44,8 @@ class ConnectionArgs:
             pulumi.set(__self__, "github_config", github_config)
         if github_enterprise_config is not None:
             pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
+        if gitlab_config is not None:
+            pulumi.set(__self__, "gitlab_config", gitlab_config)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -112,14 +112,22 @@ class ConnectionArgs:
         pulumi.set(self, "github_enterprise_config", value)
 
     @property
+    @pulumi.getter(name="gitlabConfig")
+    def gitlab_config(self) -> Optional[pulumi.Input['ConnectionGitlabConfigArgs']]:
+        """
+        Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+        """
+        return pulumi.get(self, "gitlab_config")
+
+    @gitlab_config.setter
+    def gitlab_config(self, value: Optional[pulumi.Input['ConnectionGitlabConfigArgs']]):
+        pulumi.set(self, "gitlab_config", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -149,6 +157,7 @@ class _ConnectionState:
                  etag: Optional[pulumi.Input[str]] = None,
                  github_config: Optional[pulumi.Input['ConnectionGithubConfigArgs']] = None,
                  github_enterprise_config: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigArgs']] = None,
+                 gitlab_config: Optional[pulumi.Input['ConnectionGitlabConfigArgs']] = None,
                  installation_states: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -163,13 +172,10 @@ class _ConnectionState:
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input['ConnectionGithubConfigArgs'] github_config: Configuration for connections to github.com.
         :param pulumi.Input['ConnectionGithubEnterpriseConfigArgs'] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
+        :param pulumi.Input['ConnectionGitlabConfigArgs'] gitlab_config: Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]] installation_states: Output only. Installation state of the Connection.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. Set to true when the connection is being set up or updated in the background.
         :param pulumi.Input[str] update_time: Output only. Server assigned timestamp for when the connection was updated.
@@ -186,6 +192,8 @@ class _ConnectionState:
             pulumi.set(__self__, "github_config", github_config)
         if github_enterprise_config is not None:
             pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
+        if gitlab_config is not None:
+            pulumi.set(__self__, "gitlab_config", gitlab_config)
         if installation_states is not None:
             pulumi.set(__self__, "installation_states", installation_states)
         if location is not None:
@@ -272,6 +280,18 @@ class _ConnectionState:
         pulumi.set(self, "github_enterprise_config", value)
 
     @property
+    @pulumi.getter(name="gitlabConfig")
+    def gitlab_config(self) -> Optional[pulumi.Input['ConnectionGitlabConfigArgs']]:
+        """
+        Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+        """
+        return pulumi.get(self, "gitlab_config")
+
+    @gitlab_config.setter
+    def gitlab_config(self, value: Optional[pulumi.Input['ConnectionGitlabConfigArgs']]):
+        pulumi.set(self, "gitlab_config", value)
+
+    @property
     @pulumi.getter(name="installationStates")
     def installation_states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]]]:
         """
@@ -300,10 +320,6 @@ class _ConnectionState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -357,12 +373,13 @@ class Connection(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[bool]] = None,
                  github_config: Optional[pulumi.Input[pulumi.InputType['ConnectionGithubConfigArgs']]] = None,
                  github_enterprise_config: Optional[pulumi.Input[pulumi.InputType['ConnectionGithubEnterpriseConfigArgs']]] = None,
+                 gitlab_config: Optional[pulumi.Input[pulumi.InputType['ConnectionGitlabConfigArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Beta only: The Cloudbuildv2 Connection resource
+        The Cloudbuildv2 Connection resource
 
         ## Example Usage
         ### Ghe
@@ -374,34 +391,28 @@ class Connection(pulumi.CustomResource):
             secret_id="ghe-pk-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 automatic=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         private_key_secret_version = gcp.secretmanager.SecretVersion("private-key-secret-version",
             secret=private_key_secret.id,
-            secret_data=(lambda path: open(path).read())("private-key.pem"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            secret_data=(lambda path: open(path).read())("private-key.pem"))
         webhook_secret_secret = gcp.secretmanager.Secret("webhook-secret-secret",
             secret_id="github-token-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 automatic=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         webhook_secret_secret_version = gcp.secretmanager.SecretVersion("webhook-secret-secret-version",
             secret=webhook_secret_secret.id,
-            secret_data="<webhook-secret-data>",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            secret_data="<webhook-secret-data>")
         p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
             role="roles/secretmanager.secretAccessor",
             members=["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
         )])
         policy_pk = gcp.secretmanager.SecretIamPolicy("policy-pk",
             secret_id=private_key_secret.secret_id,
-            policy_data=p4sa_secret_accessor.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            policy_data=p4sa_secret_accessor.policy_data)
         policy_whs = gcp.secretmanager.SecretIamPolicy("policy-whs",
             secret_id=webhook_secret_secret.secret_id,
-            policy_data=p4sa_secret_accessor.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            policy_data=p4sa_secret_accessor.policy_data)
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
             location="us-central1",
             github_enterprise_config=gcp.cloudbuildv2.ConnectionGithubEnterpriseConfigArgs(
@@ -412,8 +423,7 @@ class Connection(pulumi.CustomResource):
                 app_slug="gcb-app",
                 app_installation_id=300,
             ),
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[
+            opts=pulumi.ResourceOptions(depends_on=[
                     policy_pk,
                     policy_whs,
                 ]))
@@ -428,20 +438,17 @@ class Connection(pulumi.CustomResource):
             secret_id="github-token-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 automatic=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         github_token_secret_version = gcp.secretmanager.SecretVersion("github-token-secret-version",
             secret=github_token_secret.id,
-            secret_data=(lambda path: open(path).read())("my-github-token.txt"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            secret_data=(lambda path: open(path).read())("my-github-token.txt"))
         p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
             role="roles/secretmanager.secretAccessor",
             members=["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
         )])
         policy = gcp.secretmanager.SecretIamPolicy("policy",
             secret_id=github_token_secret.secret_id,
-            policy_data=p4sa_secret_accessor.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            policy_data=p4sa_secret_accessor.policy_data)
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
             location="us-west1",
             github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
@@ -449,8 +456,7 @@ class Connection(pulumi.CustomResource):
                 authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
                     oauth_token_secret_version=github_token_secret_version.id,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
@@ -475,12 +481,9 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[bool] disabled: If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
         :param pulumi.Input[pulumi.InputType['ConnectionGithubConfigArgs']] github_config: Configuration for connections to github.com.
         :param pulumi.Input[pulumi.InputType['ConnectionGithubEnterpriseConfigArgs']] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
+        :param pulumi.Input[pulumi.InputType['ConnectionGitlabConfigArgs']] gitlab_config: Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         """
         ...
@@ -490,7 +493,7 @@ class Connection(pulumi.CustomResource):
                  args: ConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Beta only: The Cloudbuildv2 Connection resource
+        The Cloudbuildv2 Connection resource
 
         ## Example Usage
         ### Ghe
@@ -502,34 +505,28 @@ class Connection(pulumi.CustomResource):
             secret_id="ghe-pk-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 automatic=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         private_key_secret_version = gcp.secretmanager.SecretVersion("private-key-secret-version",
             secret=private_key_secret.id,
-            secret_data=(lambda path: open(path).read())("private-key.pem"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            secret_data=(lambda path: open(path).read())("private-key.pem"))
         webhook_secret_secret = gcp.secretmanager.Secret("webhook-secret-secret",
             secret_id="github-token-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 automatic=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         webhook_secret_secret_version = gcp.secretmanager.SecretVersion("webhook-secret-secret-version",
             secret=webhook_secret_secret.id,
-            secret_data="<webhook-secret-data>",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            secret_data="<webhook-secret-data>")
         p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
             role="roles/secretmanager.secretAccessor",
             members=["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
         )])
         policy_pk = gcp.secretmanager.SecretIamPolicy("policy-pk",
             secret_id=private_key_secret.secret_id,
-            policy_data=p4sa_secret_accessor.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            policy_data=p4sa_secret_accessor.policy_data)
         policy_whs = gcp.secretmanager.SecretIamPolicy("policy-whs",
             secret_id=webhook_secret_secret.secret_id,
-            policy_data=p4sa_secret_accessor.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            policy_data=p4sa_secret_accessor.policy_data)
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
             location="us-central1",
             github_enterprise_config=gcp.cloudbuildv2.ConnectionGithubEnterpriseConfigArgs(
@@ -540,8 +537,7 @@ class Connection(pulumi.CustomResource):
                 app_slug="gcb-app",
                 app_installation_id=300,
             ),
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[
+            opts=pulumi.ResourceOptions(depends_on=[
                     policy_pk,
                     policy_whs,
                 ]))
@@ -556,20 +552,17 @@ class Connection(pulumi.CustomResource):
             secret_id="github-token-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 automatic=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         github_token_secret_version = gcp.secretmanager.SecretVersion("github-token-secret-version",
             secret=github_token_secret.id,
-            secret_data=(lambda path: open(path).read())("my-github-token.txt"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            secret_data=(lambda path: open(path).read())("my-github-token.txt"))
         p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
             role="roles/secretmanager.secretAccessor",
             members=["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
         )])
         policy = gcp.secretmanager.SecretIamPolicy("policy",
             secret_id=github_token_secret.secret_id,
-            policy_data=p4sa_secret_accessor.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            policy_data=p4sa_secret_accessor.policy_data)
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
             location="us-west1",
             github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
@@ -577,8 +570,7 @@ class Connection(pulumi.CustomResource):
                 authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
                     oauth_token_secret_version=github_token_secret_version.id,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
@@ -616,6 +608,7 @@ class Connection(pulumi.CustomResource):
                  disabled: Optional[pulumi.Input[bool]] = None,
                  github_config: Optional[pulumi.Input[pulumi.InputType['ConnectionGithubConfigArgs']]] = None,
                  github_enterprise_config: Optional[pulumi.Input[pulumi.InputType['ConnectionGithubEnterpriseConfigArgs']]] = None,
+                 gitlab_config: Optional[pulumi.Input[pulumi.InputType['ConnectionGitlabConfigArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -632,6 +625,7 @@ class Connection(pulumi.CustomResource):
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["github_config"] = github_config
             __props__.__dict__["github_enterprise_config"] = github_enterprise_config
+            __props__.__dict__["gitlab_config"] = gitlab_config
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -658,6 +652,7 @@ class Connection(pulumi.CustomResource):
             etag: Optional[pulumi.Input[str]] = None,
             github_config: Optional[pulumi.Input[pulumi.InputType['ConnectionGithubConfigArgs']]] = None,
             github_enterprise_config: Optional[pulumi.Input[pulumi.InputType['ConnectionGithubEnterpriseConfigArgs']]] = None,
+            gitlab_config: Optional[pulumi.Input[pulumi.InputType['ConnectionGitlabConfigArgs']]] = None,
             installation_states: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionInstallationStateArgs']]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -677,13 +672,10 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[pulumi.InputType['ConnectionGithubConfigArgs']] github_config: Configuration for connections to github.com.
         :param pulumi.Input[pulumi.InputType['ConnectionGithubEnterpriseConfigArgs']] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
+        :param pulumi.Input[pulumi.InputType['ConnectionGitlabConfigArgs']] gitlab_config: Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConnectionInstallationStateArgs']]]] installation_states: Output only. Installation state of the Connection.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
-               
-               
-               
-               - - -
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[bool] reconciling: Output only. Set to true when the connection is being set up or updated in the background.
         :param pulumi.Input[str] update_time: Output only. Server assigned timestamp for when the connection was updated.
@@ -698,6 +690,7 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["etag"] = etag
         __props__.__dict__["github_config"] = github_config
         __props__.__dict__["github_enterprise_config"] = github_enterprise_config
+        __props__.__dict__["gitlab_config"] = gitlab_config
         __props__.__dict__["installation_states"] = installation_states
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
@@ -755,6 +748,14 @@ class Connection(pulumi.CustomResource):
         return pulumi.get(self, "github_enterprise_config")
 
     @property
+    @pulumi.getter(name="gitlabConfig")
+    def gitlab_config(self) -> pulumi.Output[Optional['outputs.ConnectionGitlabConfig']]:
+        """
+        Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+        """
+        return pulumi.get(self, "gitlab_config")
+
+    @property
     @pulumi.getter(name="installationStates")
     def installation_states(self) -> pulumi.Output[Sequence['outputs.ConnectionInstallationState']]:
         """
@@ -775,10 +776,6 @@ class Connection(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

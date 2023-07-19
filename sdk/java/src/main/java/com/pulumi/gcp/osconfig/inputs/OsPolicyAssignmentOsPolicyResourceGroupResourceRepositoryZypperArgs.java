@@ -17,14 +17,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypp
     public static final OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs Empty = new OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs();
 
     /**
-     * Required. The location of the repository directory.
+     * The location of the repository directory.
      * 
      */
     @Import(name="baseUrl", required=true)
     private Output<String> baseUrl;
 
     /**
-     * @return Required. The location of the repository directory.
+     * @return The location of the repository directory.
      * 
      */
     public Output<String> baseUrl() {
@@ -62,14 +62,20 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypp
     }
 
     /**
-     * Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+     * A one word, unique name for this repository. This is the
+     * `repo id` in the zypper config file and also the `display_name` if
+     * `display_name` is omitted. This id is also used as the unique identifier
+     * when checking for GuestPolicy conflicts.
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+     * @return A one word, unique name for this repository. This is the
+     * `repo id` in the zypper config file and also the `display_name` if
+     * `display_name` is omitted. This id is also used as the unique identifier
+     * when checking for GuestPolicy conflicts.
      * 
      */
     public Output<String> id() {
@@ -104,7 +110,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypp
         }
 
         /**
-         * @param baseUrl Required. The location of the repository directory.
+         * @param baseUrl The location of the repository directory.
          * 
          * @return builder
          * 
@@ -115,7 +121,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypp
         }
 
         /**
-         * @param baseUrl Required. The location of the repository directory.
+         * @param baseUrl The location of the repository directory.
          * 
          * @return builder
          * 
@@ -177,7 +183,10 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypp
         }
 
         /**
-         * @param id Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+         * @param id A one word, unique name for this repository. This is the
+         * `repo id` in the zypper config file and also the `display_name` if
+         * `display_name` is omitted. This id is also used as the unique identifier
+         * when checking for GuestPolicy conflicts.
          * 
          * @return builder
          * 
@@ -188,7 +197,10 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypp
         }
 
         /**
-         * @param id Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+         * @param id A one word, unique name for this repository. This is the
+         * `repo id` in the zypper config file and also the `display_name` if
+         * `display_name` is omitted. This id is also used as the unique identifier
+         * when checking for GuestPolicy conflicts.
          * 
          * @return builder
          * 

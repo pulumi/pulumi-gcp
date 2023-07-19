@@ -222,6 +222,9 @@ namespace Pulumi.Gcp
         [Output("firebaseDatabaseCustomEndpoint")]
         public Output<string?> FirebaseDatabaseCustomEndpoint { get; private set; } = null!;
 
+        [Output("firebaseExtensionsCustomEndpoint")]
+        public Output<string?> FirebaseExtensionsCustomEndpoint { get; private set; } = null!;
+
         [Output("firebaseHostingCustomEndpoint")]
         public Output<string?> FirebaseHostingCustomEndpoint { get; private set; } = null!;
 
@@ -326,6 +329,9 @@ namespace Pulumi.Gcp
 
         [Output("project")]
         public Output<string?> Project { get; private set; } = null!;
+
+        [Output("publicCaCustomEndpoint")]
+        public Output<string?> PublicCaCustomEndpoint { get; private set; } = null!;
 
         [Output("pubsubCustomEndpoint")]
         public Output<string?> PubsubCustomEndpoint { get; private set; } = null!;
@@ -661,6 +667,9 @@ namespace Pulumi.Gcp
         [Input("firebaseDatabaseCustomEndpoint")]
         public Input<string>? FirebaseDatabaseCustomEndpoint { get; set; }
 
+        [Input("firebaseExtensionsCustomEndpoint")]
+        public Input<string>? FirebaseExtensionsCustomEndpoint { get; set; }
+
         [Input("firebaseHostingCustomEndpoint")]
         public Input<string>? FirebaseHostingCustomEndpoint { get; set; }
 
@@ -773,6 +782,9 @@ namespace Pulumi.Gcp
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("publicCaCustomEndpoint")]
+        public Input<string>? PublicCaCustomEndpoint { get; set; }
 
         [Input("pubsubCustomEndpoint")]
         public Input<string>? PubsubCustomEndpoint { get; set; }

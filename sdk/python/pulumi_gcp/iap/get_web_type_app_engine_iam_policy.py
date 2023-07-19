@@ -99,8 +99,8 @@ def get_web_type_app_engine_iam_policy(app_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.iap.get_web_type_app_engine_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        app_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.iap.get_web_type_app_engine_iam_policy(project=google_app_engine_application["app"]["project"],
+        app_id=google_app_engine_application["app"]["app_id"])
     ```
 
 
@@ -115,11 +115,11 @@ def get_web_type_app_engine_iam_policy(app_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:iap/getWebTypeAppEngineIamPolicy:getWebTypeAppEngineIamPolicy', __args__, opts=opts, typ=GetWebTypeAppEngineIamPolicyResult).value
 
     return AwaitableGetWebTypeAppEngineIamPolicyResult(
-        app_id=__ret__.app_id,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        app_id=pulumi.get(__ret__, 'app_id'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_web_type_app_engine_iam_policy)
@@ -135,8 +135,8 @@ def get_web_type_app_engine_iam_policy_output(app_id: Optional[pulumi.Input[str]
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.iap.get_web_type_app_engine_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        app_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.iap.get_web_type_app_engine_iam_policy(project=google_app_engine_application["app"]["project"],
+        app_id=google_app_engine_application["app"]["app_id"])
     ```
 
 

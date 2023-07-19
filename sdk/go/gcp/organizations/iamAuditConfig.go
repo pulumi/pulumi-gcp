@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -86,6 +87,7 @@ func NewIamAuditConfig(ctx *pulumi.Context,
 	if args.Service == nil {
 		return nil, errors.New("invalid value for required argument 'Service'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IamAuditConfig
 	err := ctx.RegisterResource("gcp:organizations/iamAuditConfig:IamAuditConfig", name, args, &resource, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -207,6 +208,7 @@ func NewRuntimeIamMember(ctx *pulumi.Context,
 	if args.RuntimeName == nil {
 		return nil, errors.New("invalid value for required argument 'RuntimeName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RuntimeIamMember
 	err := ctx.RegisterResource("gcp:notebooks/runtimeIamMember:RuntimeIamMember", name, args, &resource, opts...)
 	if err != nil {

@@ -188,6 +188,9 @@ class InstanceArgs:
         (Optional, Deprecated)
         The name of the Filestore zone of the instance.
         """
+        warnings.warn("""Deprecated in favor of location.""", DeprecationWarning)
+        pulumi.log.warn("""zone is deprecated: Deprecated in favor of location.""")
+
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -407,6 +410,9 @@ class _InstanceState:
         (Optional, Deprecated)
         The name of the Filestore zone of the instance.
         """
+        warnings.warn("""Deprecated in favor of location.""", DeprecationWarning)
+        pulumi.log.warn("""zone is deprecated: Deprecated in favor of location.""")
+
         return pulumi.get(self, "zone")
 
     @zone.setter
@@ -450,7 +456,7 @@ class Instance(pulumi.CustomResource):
 
         instance = gcp.filestore.Instance("instance",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=2660,
+                capacity_gb=1024,
                 name="share1",
             ),
             location="us-central1-b",
@@ -458,7 +464,7 @@ class Instance(pulumi.CustomResource):
                 modes=["MODE_IPV4"],
                 network="default",
             )],
-            tier="PREMIUM")
+            tier="BASIC_HDD")
         ```
         ### Filestore Instance Full
 
@@ -468,7 +474,7 @@ class Instance(pulumi.CustomResource):
 
         instance = gcp.filestore.Instance("instance",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=2660,
+                capacity_gb=2560,
                 name="share1",
                 nfs_export_options=[
                     gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
@@ -505,7 +511,7 @@ class Instance(pulumi.CustomResource):
             location="us-central1",
             tier="ENTERPRISE",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=2560,
+                capacity_gb=1024,
                 name="share1",
             ),
             networks=[gcp.filestore.InstanceNetworkArgs(
@@ -577,7 +583,7 @@ class Instance(pulumi.CustomResource):
 
         instance = gcp.filestore.Instance("instance",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=2660,
+                capacity_gb=1024,
                 name="share1",
             ),
             location="us-central1-b",
@@ -585,7 +591,7 @@ class Instance(pulumi.CustomResource):
                 modes=["MODE_IPV4"],
                 network="default",
             )],
-            tier="PREMIUM")
+            tier="BASIC_HDD")
         ```
         ### Filestore Instance Full
 
@@ -595,7 +601,7 @@ class Instance(pulumi.CustomResource):
 
         instance = gcp.filestore.Instance("instance",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=2660,
+                capacity_gb=2560,
                 name="share1",
                 nfs_export_options=[
                     gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
@@ -632,7 +638,7 @@ class Instance(pulumi.CustomResource):
             location="us-central1",
             tier="ENTERPRISE",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=2560,
+                capacity_gb=1024,
                 name="share1",
             ),
             networks=[gcp.filestore.InstanceNetworkArgs(
@@ -883,5 +889,8 @@ class Instance(pulumi.CustomResource):
         (Optional, Deprecated)
         The name of the Filestore zone of the instance.
         """
+        warnings.warn("""Deprecated in favor of location.""", DeprecationWarning)
+        pulumi.log.warn("""zone is deprecated: Deprecated in favor of location.""")
+
         return pulumi.get(self, "zone")
 

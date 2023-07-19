@@ -146,14 +146,14 @@ def get_database_instances(database_version: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:sql/getDatabaseInstances:getDatabaseInstances', __args__, opts=opts, typ=GetDatabaseInstancesResult).value
 
     return AwaitableGetDatabaseInstancesResult(
-        database_version=__ret__.database_version,
-        id=__ret__.id,
-        instances=__ret__.instances,
-        project=__ret__.project,
-        region=__ret__.region,
-        state=__ret__.state,
-        tier=__ret__.tier,
-        zone=__ret__.zone)
+        database_version=pulumi.get(__ret__, 'database_version'),
+        id=pulumi.get(__ret__, 'id'),
+        instances=pulumi.get(__ret__, 'instances'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'),
+        state=pulumi.get(__ret__, 'state'),
+        tier=pulumi.get(__ret__, 'tier'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_database_instances)

@@ -75,6 +75,7 @@ public final class GetDiskResult {
     private Integer physicalBlockSizeBytes;
     private @Nullable String project;
     private Integer provisionedIops;
+    private Integer provisionedThroughput;
     private List<String> resourcePolicies;
     /**
      * @return The URI of the created resource.
@@ -232,6 +233,9 @@ public final class GetDiskResult {
     public Integer provisionedIops() {
         return this.provisionedIops;
     }
+    public Integer provisionedThroughput() {
+        return this.provisionedThroughput;
+    }
     public List<String> resourcePolicies() {
         return this.resourcePolicies;
     }
@@ -350,6 +354,7 @@ public final class GetDiskResult {
         private Integer physicalBlockSizeBytes;
         private @Nullable String project;
         private Integer provisionedIops;
+        private Integer provisionedThroughput;
         private List<String> resourcePolicies;
         private String selfLink;
         private Integer size;
@@ -384,6 +389,7 @@ public final class GetDiskResult {
     	      this.physicalBlockSizeBytes = defaults.physicalBlockSizeBytes;
     	      this.project = defaults.project;
     	      this.provisionedIops = defaults.provisionedIops;
+    	      this.provisionedThroughput = defaults.provisionedThroughput;
     	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.selfLink = defaults.selfLink;
     	      this.size = defaults.size;
@@ -502,6 +508,11 @@ public final class GetDiskResult {
             return this;
         }
         @CustomType.Setter
+        public Builder provisionedThroughput(Integer provisionedThroughput) {
+            this.provisionedThroughput = Objects.requireNonNull(provisionedThroughput);
+            return this;
+        }
+        @CustomType.Setter
         public Builder resourcePolicies(List<String> resourcePolicies) {
             this.resourcePolicies = Objects.requireNonNull(resourcePolicies);
             return this;
@@ -598,6 +609,7 @@ public final class GetDiskResult {
             o.physicalBlockSizeBytes = physicalBlockSizeBytes;
             o.project = project;
             o.provisionedIops = provisionedIops;
+            o.provisionedThroughput = provisionedThroughput;
             o.resourcePolicies = resourcePolicies;
             o.selfLink = selfLink;
             o.size = size;

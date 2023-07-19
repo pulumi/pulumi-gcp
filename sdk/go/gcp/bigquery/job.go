@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -317,7 +318,26 @@ import (
 //				DeletionProtection: pulumi.Bool(false),
 //				DatasetId:          source_oneDataset.DatasetId,
 //				TableId:            pulumi.String("job_extract_table"),
-//				Schema:             pulumi.String("[\n  {\n    \"name\": \"name\",\n    \"type\": \"STRING\",\n    \"mode\": \"NULLABLE\"\n  },\n  {\n    \"name\": \"post_abbr\",\n    \"type\": \"STRING\",\n    \"mode\": \"NULLABLE\"\n  },\n  {\n    \"name\": \"date\",\n    \"type\": \"DATE\",\n    \"mode\": \"NULLABLE\"\n  }\n]\n"),
+//				Schema: pulumi.String(`[
+//	  {
+//	    "name": "name",
+//	    "type": "STRING",
+//	    "mode": "NULLABLE"
+//	  },
+//	  {
+//	    "name": "post_abbr",
+//	    "type": "STRING",
+//	    "mode": "NULLABLE"
+//	  },
+//	  {
+//	    "name": "date",
+//	    "type": "DATE",
+//	    "mode": "NULLABLE"
+//	  }
+//
+// ]
+// `),
+//
 //			})
 //			if err != nil {
 //				return err
@@ -436,6 +456,7 @@ func NewJob(ctx *pulumi.Context,
 	if args.JobId == nil {
 		return nil, errors.New("invalid value for required argument 'JobId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Job
 	err := ctx.RegisterResource("gcp:bigquery/job:Job", name, args, &resource, opts...)
 	if err != nil {

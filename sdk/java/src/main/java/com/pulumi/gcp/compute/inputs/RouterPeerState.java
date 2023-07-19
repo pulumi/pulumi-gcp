@@ -267,7 +267,7 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * IP address of the BGP interface outside Google Cloud Platform.
-     * Only IPv4 is supported.
+     * Only IPv4 is supported. Required if `ip_address` is set.
      * 
      */
     @Import(name="peerIpAddress")
@@ -275,7 +275,7 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return IP address of the BGP interface outside Google Cloud Platform.
-     * Only IPv4 is supported.
+     * Only IPv4 is supported. Required if `ip_address` is set.
      * 
      */
     public Optional<Output<String>> peerIpAddress() {
@@ -770,7 +770,7 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param peerIpAddress IP address of the BGP interface outside Google Cloud Platform.
-         * Only IPv4 is supported.
+         * Only IPv4 is supported. Required if `ip_address` is set.
          * 
          * @return builder
          * 
@@ -782,7 +782,7 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param peerIpAddress IP address of the BGP interface outside Google Cloud Platform.
-         * Only IPv4 is supported.
+         * Only IPv4 is supported. Required if `ip_address` is set.
          * 
          * @return builder
          * 

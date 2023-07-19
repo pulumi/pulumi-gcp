@@ -107,11 +107,11 @@ def get_ca_certs(instance: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:sql/getCaCerts:getCaCerts', __args__, opts=opts, typ=GetCaCertsResult).value
 
     return AwaitableGetCaCertsResult(
-        active_version=__ret__.active_version,
-        certs=__ret__.certs,
-        id=__ret__.id,
-        instance=__ret__.instance,
-        project=__ret__.project)
+        active_version=pulumi.get(__ret__, 'active_version'),
+        certs=pulumi.get(__ret__, 'certs'),
+        id=pulumi.get(__ret__, 'id'),
+        instance=pulumi.get(__ret__, 'instance'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_ca_certs)

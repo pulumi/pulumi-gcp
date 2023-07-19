@@ -207,6 +207,22 @@ public class ExternalVpnGateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.interfaces);
     }
     /**
+     * The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
+     * 
+     */
+    @Export(name="labelFingerprint", type=String.class, parameters={})
+    private Output<String> labelFingerprint;
+
+    /**
+     * @return The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
+     * 
+     */
+    public Output<String> labelFingerprint() {
+        return this.labelFingerprint;
+    }
+    /**
      * Labels for the external VPN gateway resource.
      * 
      */

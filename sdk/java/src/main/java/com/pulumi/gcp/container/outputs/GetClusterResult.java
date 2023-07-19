@@ -34,6 +34,7 @@ import com.pulumi.gcp.container.outputs.GetClusterPrivateClusterConfig;
 import com.pulumi.gcp.container.outputs.GetClusterProtectConfig;
 import com.pulumi.gcp.container.outputs.GetClusterReleaseChannel;
 import com.pulumi.gcp.container.outputs.GetClusterResourceUsageExportConfig;
+import com.pulumi.gcp.container.outputs.GetClusterSecurityPostureConfig;
 import com.pulumi.gcp.container.outputs.GetClusterServiceExternalIpsConfig;
 import com.pulumi.gcp.container.outputs.GetClusterTpuConfig;
 import com.pulumi.gcp.container.outputs.GetClusterVerticalPodAutoscaling;
@@ -114,6 +115,7 @@ public final class GetClusterResult {
     private Boolean removeDefaultNodePool;
     private Map<String,String> resourceLabels;
     private List<GetClusterResourceUsageExportConfig> resourceUsageExportConfigs;
+    private List<GetClusterSecurityPostureConfig> securityPostureConfigs;
     private String selfLink;
     private List<GetClusterServiceExternalIpsConfig> serviceExternalIpsConfigs;
     private String servicesIpv4Cidr;
@@ -311,6 +313,9 @@ public final class GetClusterResult {
     public List<GetClusterResourceUsageExportConfig> resourceUsageExportConfigs() {
         return this.resourceUsageExportConfigs;
     }
+    public List<GetClusterSecurityPostureConfig> securityPostureConfigs() {
+        return this.securityPostureConfigs;
+    }
     public String selfLink() {
         return this.selfLink;
     }
@@ -406,6 +411,7 @@ public final class GetClusterResult {
         private Boolean removeDefaultNodePool;
         private Map<String,String> resourceLabels;
         private List<GetClusterResourceUsageExportConfig> resourceUsageExportConfigs;
+        private List<GetClusterSecurityPostureConfig> securityPostureConfigs;
         private String selfLink;
         private List<GetClusterServiceExternalIpsConfig> serviceExternalIpsConfigs;
         private String servicesIpv4Cidr;
@@ -478,6 +484,7 @@ public final class GetClusterResult {
     	      this.removeDefaultNodePool = defaults.removeDefaultNodePool;
     	      this.resourceLabels = defaults.resourceLabels;
     	      this.resourceUsageExportConfigs = defaults.resourceUsageExportConfigs;
+    	      this.securityPostureConfigs = defaults.securityPostureConfigs;
     	      this.selfLink = defaults.selfLink;
     	      this.serviceExternalIpsConfigs = defaults.serviceExternalIpsConfigs;
     	      this.servicesIpv4Cidr = defaults.servicesIpv4Cidr;
@@ -887,6 +894,14 @@ public final class GetClusterResult {
             return resourceUsageExportConfigs(List.of(resourceUsageExportConfigs));
         }
         @CustomType.Setter
+        public Builder securityPostureConfigs(List<GetClusterSecurityPostureConfig> securityPostureConfigs) {
+            this.securityPostureConfigs = Objects.requireNonNull(securityPostureConfigs);
+            return this;
+        }
+        public Builder securityPostureConfigs(GetClusterSecurityPostureConfig... securityPostureConfigs) {
+            return securityPostureConfigs(List.of(securityPostureConfigs));
+        }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
@@ -1001,6 +1016,7 @@ public final class GetClusterResult {
             o.removeDefaultNodePool = removeDefaultNodePool;
             o.resourceLabels = resourceLabels;
             o.resourceUsageExportConfigs = resourceUsageExportConfigs;
+            o.securityPostureConfigs = securityPostureConfigs;
             o.selfLink = selfLink;
             o.serviceExternalIpsConfigs = serviceExternalIpsConfigs;
             o.servicesIpv4Cidr = servicesIpv4Cidr;

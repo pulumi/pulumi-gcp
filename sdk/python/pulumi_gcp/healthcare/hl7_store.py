@@ -120,6 +120,9 @@ class Hl7StoreArgs:
         A nested object resource
         Structure is documented below.
         """
+        warnings.warn("""This field has been replaced by notificationConfigs""", DeprecationWarning)
+        pulumi.log.warn("""notification_config is deprecated: This field has been replaced by notificationConfigs""")
+
         return pulumi.get(self, "notification_config")
 
     @notification_config.setter
@@ -267,6 +270,9 @@ class _Hl7StoreState:
         A nested object resource
         Structure is documented below.
         """
+        warnings.warn("""This field has been replaced by notificationConfigs""", DeprecationWarning)
+        pulumi.log.warn("""notification_config is deprecated: This field has been replaced by notificationConfigs""")
+
         return pulumi.get(self, "notification_config")
 
     @notification_config.setter
@@ -814,6 +820,9 @@ class Hl7Store(pulumi.CustomResource):
         A nested object resource
         Structure is documented below.
         """
+        warnings.warn("""This field has been replaced by notificationConfigs""", DeprecationWarning)
+        pulumi.log.warn("""notification_config is deprecated: This field has been replaced by notificationConfigs""")
+
         return pulumi.get(self, "notification_config")
 
     @property

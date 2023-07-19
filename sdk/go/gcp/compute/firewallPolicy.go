@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -100,6 +101,7 @@ func NewFirewallPolicy(ctx *pulumi.Context,
 	if args.ShortName == nil {
 		return nil, errors.New("invalid value for required argument 'ShortName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FirewallPolicy
 	err := ctx.RegisterResource("gcp:compute/firewallPolicy:FirewallPolicy", name, args, &resource, opts...)
 	if err != nil {

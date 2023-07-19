@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -223,6 +224,7 @@ func NewKeystoresAliasesSelfSignedCert(ctx *pulumi.Context,
 	if args.Subject == nil {
 		return nil, errors.New("invalid value for required argument 'Subject'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource KeystoresAliasesSelfSignedCert
 	err := ctx.RegisterResource("gcp:apigee/keystoresAliasesSelfSignedCert:KeystoresAliasesSelfSignedCert", name, args, &resource, opts...)
 	if err != nil {

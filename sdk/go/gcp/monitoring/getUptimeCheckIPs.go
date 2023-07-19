@@ -4,6 +4,7 @@
 package monitoring
 
 import (
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,6 +36,7 @@ import (
 //
 // ```
 func GetUptimeCheckIPs(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetUptimeCheckIPsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUptimeCheckIPsResult
 	err := ctx.Invoke("gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs", nil, &rv, opts...)
 	if err != nil {

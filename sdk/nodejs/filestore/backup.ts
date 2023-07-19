@@ -23,9 +23,9 @@ import * as utilities from "../utilities";
  *
  * const instance = new gcp.filestore.Instance("instance", {
  *     location: "us-central1-b",
- *     tier: "BASIC_SSD",
+ *     tier: "BASIC_HDD",
  *     fileShares: {
- *         capacityGb: 2560,
+ *         capacityGb: 1024,
  *         name: "share1",
  *     },
  *     networks: [{
@@ -36,9 +36,9 @@ import * as utilities from "../utilities";
  * });
  * const backup = new gcp.filestore.Backup("backup", {
  *     location: "us-central1",
+ *     description: "This is a filestore backup for the test instance",
  *     sourceInstance: instance.id,
  *     sourceFileShare: "share1",
- *     description: "This is a filestore backup for the test instance",
  *     labels: {
  *         files: "label1",
  *         "other-label": "label2",

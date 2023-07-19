@@ -15,14 +15,18 @@ public final class OsPolicyAssignmentRolloutArgs extends com.pulumi.resources.Re
     public static final OsPolicyAssignmentRolloutArgs Empty = new OsPolicyAssignmentRolloutArgs();
 
     /**
-     * Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
+     * The maximum number (or percentage) of VMs
+     * per zone to disrupt at any given moment. Structure is
+     * documented below.
      * 
      */
     @Import(name="disruptionBudget", required=true)
     private Output<OsPolicyAssignmentRolloutDisruptionBudgetArgs> disruptionBudget;
 
     /**
-     * @return Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
+     * @return The maximum number (or percentage) of VMs
+     * per zone to disrupt at any given moment. Structure is
+     * documented below.
      * 
      */
     public Output<OsPolicyAssignmentRolloutDisruptionBudgetArgs> disruptionBudget() {
@@ -30,14 +34,22 @@ public final class OsPolicyAssignmentRolloutArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Required. This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruption_budget` at least until this duration of time has passed after configuration changes are applied.
+     * This determines the minimum duration of
+     * time to wait after the configuration changes are applied through the current
+     * rollout. A VM continues to count towards the `disruption_budget` at least
+     * until this duration of time has passed after configuration changes are
+     * applied.
      * 
      */
     @Import(name="minWaitDuration", required=true)
     private Output<String> minWaitDuration;
 
     /**
-     * @return Required. This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruption_budget` at least until this duration of time has passed after configuration changes are applied.
+     * @return This determines the minimum duration of
+     * time to wait after the configuration changes are applied through the current
+     * rollout. A VM continues to count towards the `disruption_budget` at least
+     * until this duration of time has passed after configuration changes are
+     * applied.
      * 
      */
     public Output<String> minWaitDuration() {
@@ -70,7 +82,9 @@ public final class OsPolicyAssignmentRolloutArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param disruptionBudget Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
+         * @param disruptionBudget The maximum number (or percentage) of VMs
+         * per zone to disrupt at any given moment. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -81,7 +95,9 @@ public final class OsPolicyAssignmentRolloutArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param disruptionBudget Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
+         * @param disruptionBudget The maximum number (or percentage) of VMs
+         * per zone to disrupt at any given moment. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -91,7 +107,11 @@ public final class OsPolicyAssignmentRolloutArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param minWaitDuration Required. This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruption_budget` at least until this duration of time has passed after configuration changes are applied.
+         * @param minWaitDuration This determines the minimum duration of
+         * time to wait after the configuration changes are applied through the current
+         * rollout. A VM continues to count towards the `disruption_budget` at least
+         * until this duration of time has passed after configuration changes are
+         * applied.
          * 
          * @return builder
          * 
@@ -102,7 +122,11 @@ public final class OsPolicyAssignmentRolloutArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param minWaitDuration Required. This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruption_budget` at least until this duration of time has passed after configuration changes are applied.
+         * @param minWaitDuration This determines the minimum duration of
+         * time to wait after the configuration changes are applied through the current
+         * rollout. A VM continues to count towards the `disruption_budget` at least
+         * until this duration of time has passed after configuration changes are
+         * applied.
          * 
          * @return builder
          * 

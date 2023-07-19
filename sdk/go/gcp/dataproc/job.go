@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -151,6 +152,7 @@ func NewJob(ctx *pulumi.Context,
 	if args.Placement == nil {
 		return nil, errors.New("invalid value for required argument 'Placement'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Job
 	err := ctx.RegisterResource("gcp:dataproc/job:Job", name, args, &resource, opts...)
 	if err != nil {

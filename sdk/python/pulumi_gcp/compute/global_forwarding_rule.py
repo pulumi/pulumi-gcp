@@ -27,6 +27,7 @@ class GlobalForwardingRuleArgs:
                  metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -133,6 +134,7 @@ class GlobalForwardingRuleArgs:
                be used.
                For Private Service Connect forwarding rules that forward traffic to Google
                APIs, a network must be provided.
+        :param pulumi.Input[bool] no_automate_dns_zone: This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
         :param pulumi.Input[str] port_range: This field can only be used:
                * If `IPProtocol` is one of TCP, UDP, or SCTP.
                * By backend service-based network load balancers, target pool-based
@@ -174,6 +176,8 @@ class GlobalForwardingRuleArgs:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if no_automate_dns_zone is not None:
+            pulumi.set(__self__, "no_automate_dns_zone", no_automate_dns_zone)
         if port_range is not None:
             pulumi.set(__self__, "port_range", port_range)
         if project is not None:
@@ -404,6 +408,18 @@ class GlobalForwardingRuleArgs:
         pulumi.set(self, "network", value)
 
     @property
+    @pulumi.getter(name="noAutomateDnsZone")
+    def no_automate_dns_zone(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+        """
+        return pulumi.get(self, "no_automate_dns_zone")
+
+    @no_automate_dns_zone.setter
+    def no_automate_dns_zone(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_automate_dns_zone", value)
+
+    @property
     @pulumi.getter(name="portRange")
     def port_range(self) -> Optional[pulumi.Input[str]]:
         """
@@ -471,6 +487,7 @@ class _GlobalForwardingRuleState:
                  metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  psc_connection_id: Optional[pulumi.Input[str]] = None,
@@ -570,6 +587,7 @@ class _GlobalForwardingRuleState:
                be used.
                For Private Service Connect forwarding rules that forward traffic to Google
                APIs, a network must be provided.
+        :param pulumi.Input[bool] no_automate_dns_zone: This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
         :param pulumi.Input[str] port_range: This field can only be used:
                * If `IPProtocol` is one of TCP, UDP, or SCTP.
                * By backend service-based network load balancers, target pool-based
@@ -631,6 +649,8 @@ class _GlobalForwardingRuleState:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if no_automate_dns_zone is not None:
+            pulumi.set(__self__, "no_automate_dns_zone", no_automate_dns_zone)
         if port_range is not None:
             pulumi.set(__self__, "port_range", port_range)
         if project is not None:
@@ -869,6 +889,18 @@ class _GlobalForwardingRuleState:
         pulumi.set(self, "network", value)
 
     @property
+    @pulumi.getter(name="noAutomateDnsZone")
+    def no_automate_dns_zone(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+        """
+        return pulumi.get(self, "no_automate_dns_zone")
+
+    @no_automate_dns_zone.setter
+    def no_automate_dns_zone(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_automate_dns_zone", value)
+
+    @property
     @pulumi.getter(name="portRange")
     def port_range(self) -> Optional[pulumi.Input[str]]:
         """
@@ -997,6 +1029,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1076,6 +1109,39 @@ class GlobalForwardingRule(pulumi.CustomResource):
             network=network.id,
             ip_address=default_global_address.id,
             load_balancing_scheme="",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Private Service Connect Google Apis No Automate Dns
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network",
+            project="my-project-name",
+            auto_create_subnetworks=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        vpc_subnetwork = gcp.compute.Subnetwork("vpcSubnetwork",
+            project=network.project,
+            ip_cidr_range="10.2.0.0/16",
+            region="us-central1",
+            network=network.id,
+            private_ip_google_access=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_global_address = gcp.compute.GlobalAddress("defaultGlobalAddress",
+            project=network.project,
+            address_type="INTERNAL",
+            purpose="PRIVATE_SERVICE_CONNECT",
+            network=network.id,
+            address="100.100.100.106",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
+            project=network.project,
+            target="all-apis",
+            network=network.id,
+            ip_address=default_global_address.id,
+            load_balancing_scheme="",
+            no_automate_dns_zone=False,
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
@@ -1184,6 +1250,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                be used.
                For Private Service Connect forwarding rules that forward traffic to Google
                APIs, a network must be provided.
+        :param pulumi.Input[bool] no_automate_dns_zone: This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
         :param pulumi.Input[str] port_range: This field can only be used:
                * If `IPProtocol` is one of TCP, UDP, or SCTP.
                * By backend service-based network load balancers, target pool-based
@@ -1300,6 +1367,39 @@ class GlobalForwardingRule(pulumi.CustomResource):
             load_balancing_scheme="",
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Private Service Connect Google Apis No Automate Dns
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network",
+            project="my-project-name",
+            auto_create_subnetworks=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        vpc_subnetwork = gcp.compute.Subnetwork("vpcSubnetwork",
+            project=network.project,
+            ip_cidr_range="10.2.0.0/16",
+            region="us-central1",
+            network=network.id,
+            private_ip_google_access=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_global_address = gcp.compute.GlobalAddress("defaultGlobalAddress",
+            project=network.project,
+            address_type="INTERNAL",
+            purpose="PRIVATE_SERVICE_CONNECT",
+            network=network.id,
+            address="100.100.100.106",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
+            project=network.project,
+            target="all-apis",
+            network=network.id,
+            ip_address=default_global_address.id,
+            load_balancing_scheme="",
+            no_automate_dns_zone=False,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -1342,6 +1442,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1365,6 +1466,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             __props__.__dict__["metadata_filters"] = metadata_filters
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
+            __props__.__dict__["no_automate_dns_zone"] = no_automate_dns_zone
             __props__.__dict__["port_range"] = port_range
             __props__.__dict__["project"] = project
             __props__.__dict__["source_ip_ranges"] = source_ip_ranges
@@ -1398,6 +1500,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
+            no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
             port_range: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             psc_connection_id: Optional[pulumi.Input[str]] = None,
@@ -1502,6 +1605,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                be used.
                For Private Service Connect forwarding rules that forward traffic to Google
                APIs, a network must be provided.
+        :param pulumi.Input[bool] no_automate_dns_zone: This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
         :param pulumi.Input[str] port_range: This field can only be used:
                * If `IPProtocol` is one of TCP, UDP, or SCTP.
                * By backend service-based network load balancers, target pool-based
@@ -1555,6 +1659,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         __props__.__dict__["metadata_filters"] = metadata_filters
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
+        __props__.__dict__["no_automate_dns_zone"] = no_automate_dns_zone
         __props__.__dict__["port_range"] = port_range
         __props__.__dict__["project"] = project
         __props__.__dict__["psc_connection_id"] = psc_connection_id
@@ -1737,6 +1842,14 @@ class GlobalForwardingRule(pulumi.CustomResource):
         APIs, a network must be provided.
         """
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="noAutomateDnsZone")
+    def no_automate_dns_zone(self) -> pulumi.Output[Optional[bool]]:
+        """
+        This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+        """
+        return pulumi.get(self, "no_automate_dns_zone")
 
     @property
     @pulumi.getter(name="portRange")

@@ -56,6 +56,49 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Creating And Regularly Rotating A Key
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.serviceAccount.Account;
+ * import com.pulumi.gcp.serviceAccount.AccountArgs;
+ * import com.pulumi.time.time_rotating;
+ * import com.pulumi.time.Time_rotatingArgs;
+ * import com.pulumi.gcp.serviceAccount.Key;
+ * import com.pulumi.gcp.serviceAccount.KeyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var myaccount = new Account(&#34;myaccount&#34;, AccountArgs.builder()        
+ *             .accountId(&#34;myaccount&#34;)
+ *             .displayName(&#34;My Service Account&#34;)
+ *             .build());
+ * 
+ *         var mykeyRotation = new Time_rotating(&#34;mykeyRotation&#34;, Time_rotatingArgs.builder()        
+ *             .rotationDays(30)
+ *             .build());
+ * 
+ *         var mykey = new Key(&#34;mykey&#34;, KeyArgs.builder()        
+ *             .serviceAccountId(myaccount.name())
+ *             .keepers(Map.of(&#34;rotation_time&#34;, mykeyRotation.rotationRfc3339()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

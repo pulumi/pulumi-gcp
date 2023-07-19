@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -82,7 +83,7 @@ import (
 //				Type:                   pulumi.String("pd-ssd"),
 //				Zone:                   pulumi.String("us-central1-a"),
 //				PhysicalBlockSizeBytes: pulumi.Int(4096),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -93,7 +94,7 @@ import (
 //					Disk: primary.ID(),
 //				},
 //				PhysicalBlockSizeBytes: pulumi.Int(4096),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -178,6 +179,7 @@ type Disk struct {
 	pulumi.CustomResourceState
 
 	// A nested object resource
+	// Structure is documented below.
 	AsyncPrimaryDisk DiskAsyncPrimaryDiskPtrOutput `pulumi:"asyncPrimaryDisk"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -246,8 +248,13 @@ type Disk struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Indicates how many IOPS must be provisioned for the disk.
-	// Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+	// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+	// allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
 	ProvisionedIops pulumi.IntOutput `pulumi:"provisionedIops"`
+	// Indicates how much Throughput must be provisioned for the disk.
+	// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+	// allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
+	ProvisionedThroughput pulumi.IntOutput `pulumi:"provisionedThroughput"`
 	// Resource policies applied to this disk for automatic snapshot creations.
 	// ~>**NOTE** This value does not support updating the
 	// resource policy, as resource policies can not be updated more than
@@ -326,6 +333,7 @@ func NewDisk(ctx *pulumi.Context,
 		args = &DiskArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Disk
 	err := ctx.RegisterResource("gcp:compute/disk:Disk", name, args, &resource, opts...)
 	if err != nil {
@@ -349,6 +357,7 @@ func GetDisk(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Disk resources.
 type diskState struct {
 	// A nested object resource
+	// Structure is documented below.
 	AsyncPrimaryDisk *DiskAsyncPrimaryDisk `pulumi:"asyncPrimaryDisk"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -417,8 +426,13 @@ type diskState struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Indicates how many IOPS must be provisioned for the disk.
-	// Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+	// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+	// allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
 	ProvisionedIops *int `pulumi:"provisionedIops"`
+	// Indicates how much Throughput must be provisioned for the disk.
+	// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+	// allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
+	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
 	// Resource policies applied to this disk for automatic snapshot creations.
 	// ~>**NOTE** This value does not support updating the
 	// resource policy, as resource policies can not be updated more than
@@ -492,6 +506,7 @@ type diskState struct {
 
 type DiskState struct {
 	// A nested object resource
+	// Structure is documented below.
 	AsyncPrimaryDisk DiskAsyncPrimaryDiskPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -560,8 +575,13 @@ type DiskState struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Indicates how many IOPS must be provisioned for the disk.
-	// Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+	// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+	// allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
 	ProvisionedIops pulumi.IntPtrInput
+	// Indicates how much Throughput must be provisioned for the disk.
+	// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+	// allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
+	ProvisionedThroughput pulumi.IntPtrInput
 	// Resource policies applied to this disk for automatic snapshot creations.
 	// ~>**NOTE** This value does not support updating the
 	// resource policy, as resource policies can not be updated more than
@@ -639,6 +659,7 @@ func (DiskState) ElementType() reflect.Type {
 
 type diskArgs struct {
 	// A nested object resource
+	// Structure is documented below.
 	AsyncPrimaryDisk *DiskAsyncPrimaryDisk `pulumi:"asyncPrimaryDisk"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
@@ -698,8 +719,13 @@ type diskArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Indicates how many IOPS must be provisioned for the disk.
-	// Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+	// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+	// allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
 	ProvisionedIops *int `pulumi:"provisionedIops"`
+	// Indicates how much Throughput must be provisioned for the disk.
+	// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+	// allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
+	ProvisionedThroughput *int `pulumi:"provisionedThroughput"`
 	// Resource policies applied to this disk for automatic snapshot creations.
 	// ~>**NOTE** This value does not support updating the
 	// resource policy, as resource policies can not be updated more than
@@ -752,6 +778,7 @@ type diskArgs struct {
 // The set of arguments for constructing a Disk resource.
 type DiskArgs struct {
 	// A nested object resource
+	// Structure is documented below.
 	AsyncPrimaryDisk DiskAsyncPrimaryDiskPtrInput
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
@@ -811,8 +838,13 @@ type DiskArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Indicates how many IOPS must be provisioned for the disk.
-	// Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+	// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+	// allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
 	ProvisionedIops pulumi.IntPtrInput
+	// Indicates how much Throughput must be provisioned for the disk.
+	// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+	// allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
+	ProvisionedThroughput pulumi.IntPtrInput
 	// Resource policies applied to this disk for automatic snapshot creations.
 	// ~>**NOTE** This value does not support updating the
 	// resource policy, as resource policies can not be updated more than
@@ -950,6 +982,7 @@ func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 }
 
 // A nested object resource
+// Structure is documented below.
 func (o DiskOutput) AsyncPrimaryDisk() DiskAsyncPrimaryDiskPtrOutput {
 	return o.ApplyT(func(v *Disk) DiskAsyncPrimaryDiskPtrOutput { return v.AsyncPrimaryDisk }).(DiskAsyncPrimaryDiskPtrOutput)
 }
@@ -1066,9 +1099,17 @@ func (o DiskOutput) Project() pulumi.StringOutput {
 }
 
 // Indicates how many IOPS must be provisioned for the disk.
-// Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+// allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
 func (o DiskOutput) ProvisionedIops() pulumi.IntOutput {
 	return o.ApplyT(func(v *Disk) pulumi.IntOutput { return v.ProvisionedIops }).(pulumi.IntOutput)
+}
+
+// Indicates how much Throughput must be provisioned for the disk.
+// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+// allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
+func (o DiskOutput) ProvisionedThroughput() pulumi.IntOutput {
+	return o.ApplyT(func(v *Disk) pulumi.IntOutput { return v.ProvisionedThroughput }).(pulumi.IntOutput)
 }
 
 // Resource policies applied to this disk for automatic snapshot creations.

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs
     {
         /// <summary>
-        /// Required. Bucket of the Cloud Storage object.
+        /// Bucket of the Cloud Storage object.
         /// </summary>
         public readonly string Bucket;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// </summary>
         public readonly int? Generation;
         /// <summary>
-        /// Required. Name of the Cloud Storage object.
+        /// Name of the Cloud Storage object.
         /// </summary>
         public readonly string Object;
 

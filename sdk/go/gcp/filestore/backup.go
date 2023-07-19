@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,9 +38,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
 //				Location: pulumi.String("us-central1-b"),
-//				Tier:     pulumi.String("BASIC_SSD"),
+//				Tier:     pulumi.String("BASIC_HDD"),
 //				FileShares: &filestore.InstanceFileSharesArgs{
-//					CapacityGb: pulumi.Int(2560),
+//					CapacityGb: pulumi.Int(1024),
 //					Name:       pulumi.String("share1"),
 //				},
 //				Networks: filestore.InstanceNetworkArray{
@@ -57,9 +58,9 @@ import (
 //			}
 //			_, err = filestore.NewBackup(ctx, "backup", &filestore.BackupArgs{
 //				Location:        pulumi.String("us-central1"),
+//				Description:     pulumi.String("This is a filestore backup for the test instance"),
 //				SourceInstance:  instance.ID(),
 //				SourceFileShare: pulumi.String("share1"),
-//				Description:     pulumi.String("This is a filestore backup for the test instance"),
 //				Labels: pulumi.StringMap{
 //					"files":       pulumi.String("label1"),
 //					"other-label": pulumi.String("label2"),
@@ -153,6 +154,7 @@ func NewBackup(ctx *pulumi.Context,
 	if args.SourceInstance == nil {
 		return nil, errors.New("invalid value for required argument 'SourceInstance'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Backup
 	err := ctx.RegisterResource("gcp:filestore/backup:Backup", name, args, &resource, opts...)
 	if err != nil {

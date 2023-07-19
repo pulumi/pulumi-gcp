@@ -109,9 +109,9 @@ def get_instance_iam_policy(instance_name: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.notebooks.get_instance_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        instance_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.notebooks.get_instance_iam_policy(project=google_notebooks_instance["instance"]["project"],
+        location=google_notebooks_instance["instance"]["location"],
+        instance_name=google_notebooks_instance["instance"]["name"])
     ```
 
 
@@ -128,12 +128,12 @@ def get_instance_iam_policy(instance_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:notebooks/getInstanceIamPolicy:getInstanceIamPolicy', __args__, opts=opts, typ=GetInstanceIamPolicyResult).value
 
     return AwaitableGetInstanceIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        instance_name=__ret__.instance_name,
-        location=__ret__.location,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        instance_name=pulumi.get(__ret__, 'instance_name'),
+        location=pulumi.get(__ret__, 'location'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_instance_iam_policy)
@@ -150,9 +150,9 @@ def get_instance_iam_policy_output(instance_name: Optional[pulumi.Input[str]] = 
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.notebooks.get_instance_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        instance_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.notebooks.get_instance_iam_policy(project=google_notebooks_instance["instance"]["project"],
+        location=google_notebooks_instance["instance"]["location"],
+        instance_name=google_notebooks_instance["instance"]["name"])
     ```
 
 

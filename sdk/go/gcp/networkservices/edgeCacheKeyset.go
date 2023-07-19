@@ -7,10 +7,17 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // EdgeCacheKeyset represents a collection of public keys used for validating signed requests.
+//
+// To get more information about EdgeCacheKeyset, see:
+//
+// * [API documentation](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheKeysets)
+// * How-to Guides
+//   - [Create keysets](https://cloud.google.com/media-cdn/docs/create-keyset)
 //
 // > **Warning:** All arguments including the following potentially sensitive
 // values will be stored in the raw state as plain text: `public_key.public_key.value`.
@@ -166,6 +173,7 @@ func NewEdgeCacheKeyset(ctx *pulumi.Context,
 		args = &EdgeCacheKeysetArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EdgeCacheKeyset
 	err := ctx.RegisterResource("gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset", name, args, &resource, opts...)
 	if err != nil {

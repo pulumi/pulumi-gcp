@@ -21,14 +21,14 @@ public final class RegionNetworkFirewallPolicyRuleState extends com.pulumi.resou
     public static final RegionNetworkFirewallPolicyRuleState Empty = new RegionNetworkFirewallPolicyRuleState();
 
     /**
-     * The Action to perform when the client connection triggers the rule. Can currently be either &#34;allow&#34; or &#34;deny()&#34; where valid values for status are 403, 404, and 502.
+     * The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34; and &#34;goto_next&#34;.
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return The Action to perform when the client connection triggers the rule. Can currently be either &#34;allow&#34; or &#34;deny()&#34; where valid values for status are 403, 404, and 502.
+     * @return The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34; and &#34;goto_next&#34;.
      * 
      */
     public Optional<Output<String>> action() {
@@ -284,7 +284,7 @@ public final class RegionNetworkFirewallPolicyRuleState extends com.pulumi.resou
         }
 
         /**
-         * @param action The Action to perform when the client connection triggers the rule. Can currently be either &#34;allow&#34; or &#34;deny()&#34; where valid values for status are 403, 404, and 502.
+         * @param action The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34; and &#34;goto_next&#34;.
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class RegionNetworkFirewallPolicyRuleState extends com.pulumi.resou
         }
 
         /**
-         * @param action The Action to perform when the client connection triggers the rule. Can currently be either &#34;allow&#34; or &#34;deny()&#34; where valid values for status are 403, 404, and 502.
+         * @param action The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34; and &#34;goto_next&#34;.
          * 
          * @return builder
          * 

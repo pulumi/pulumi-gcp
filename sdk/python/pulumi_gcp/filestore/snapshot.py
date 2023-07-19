@@ -335,7 +335,7 @@ class Snapshot(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.filestore.Instance("instance",
-            location="us-central1",
+            location="us-east1",
             tier="ENTERPRISE",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
                 capacity_gb=1024,
@@ -347,7 +347,7 @@ class Snapshot(pulumi.CustomResource):
             )])
         snapshot = gcp.filestore.Snapshot("snapshot",
             instance=instance.name,
-            location="us-central1")
+            location="us-east1")
         ```
         ### Filestore Snapshot Full
 
@@ -356,7 +356,7 @@ class Snapshot(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.filestore.Instance("instance",
-            location="us-central1",
+            location="us-west1",
             tier="ENTERPRISE",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
                 capacity_gb=1024,
@@ -368,7 +368,7 @@ class Snapshot(pulumi.CustomResource):
             )])
         snapshot = gcp.filestore.Snapshot("snapshot",
             instance=instance.name,
-            location="us-central1",
+            location="us-west1",
             description="Snapshot of test-instance-for-snapshot",
             labels={
                 "my_label": "value",
@@ -434,7 +434,7 @@ class Snapshot(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.filestore.Instance("instance",
-            location="us-central1",
+            location="us-east1",
             tier="ENTERPRISE",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
                 capacity_gb=1024,
@@ -446,7 +446,7 @@ class Snapshot(pulumi.CustomResource):
             )])
         snapshot = gcp.filestore.Snapshot("snapshot",
             instance=instance.name,
-            location="us-central1")
+            location="us-east1")
         ```
         ### Filestore Snapshot Full
 
@@ -455,7 +455,7 @@ class Snapshot(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.filestore.Instance("instance",
-            location="us-central1",
+            location="us-west1",
             tier="ENTERPRISE",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
                 capacity_gb=1024,
@@ -467,7 +467,7 @@ class Snapshot(pulumi.CustomResource):
             )])
         snapshot = gcp.filestore.Snapshot("snapshot",
             instance=instance.name,
-            location="us-central1",
+            location="us-west1",
             description="Snapshot of test-instance-for-snapshot",
             labels={
                 "my_label": "value",

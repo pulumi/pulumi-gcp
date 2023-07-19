@@ -8,17 +8,21 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Monitored Project allows you to set a project as monitored by a _metrics scope_, which is a term for a project used to group the metrics of multiple projects, potentially across multiple organizations.  This enables you to view these groups in the Monitoring page of the cloud console.
+// A [project being monitored](https://cloud.google.com/monitoring/settings/multiple-projects#create-multi) by a Metrics Scope.
 //
-// For more information, see:
-// * [Understanding metrics scopes](https://cloud.google.com/monitoring/settings#concept-scope)
-// * [API notes](https://cloud.google.com/monitoring/settings/manage-api)
+// To get more information about MonitoredProject, see:
+//
+// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/locations.global.metricsScopes.projects)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/monitoring/settings/manage-api)
+//
 // ## Example Usage
-// ### Basic_monitored_project
-// A basic example of a monitoring monitored project
+// ### Monitoring Monitored Project Basic
+//
 // ```go
 // package main
 //
@@ -33,13 +37,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := monitoring.NewMonitoredProject(ctx, "primary", &monitoring.MonitoredProjectArgs{
-//				MetricsScope: pulumi.String("existing-metrics-scope-project"),
+//				MetricsScope: pulumi.String("my-project-name"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("my-monitored-project"),
+//				ProjectId: pulumi.String("m-id"),
 //				OrgId:     pulumi.String("123456789"),
 //			})
 //			if err != nil {
@@ -57,13 +61,13 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default locations/global/metricsScopes/{{metrics_scope}}/projects/{{name}}
+//	$ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default v1/locations/global/metricsScopes/{{name}}
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default {{metrics_scope}}/{{name}}
+//	$ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default {{name}}
 //
 // ```
 type MonitoredProject struct {
@@ -72,10 +76,10 @@ type MonitoredProject struct {
 	// Output only. The time when this `MonitoredProject` was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-	MetricsScope pulumi.StringOutput `pulumi:"metricsScope"`
-	// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
 	//
 	// ***
+	MetricsScope pulumi.StringOutput `pulumi:"metricsScope"`
+	// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -89,6 +93,7 @@ func NewMonitoredProject(ctx *pulumi.Context,
 	if args.MetricsScope == nil {
 		return nil, errors.New("invalid value for required argument 'MetricsScope'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MonitoredProject
 	err := ctx.RegisterResource("gcp:monitoring/monitoredProject:MonitoredProject", name, args, &resource, opts...)
 	if err != nil {
@@ -114,10 +119,10 @@ type monitoredProjectState struct {
 	// Output only. The time when this `MonitoredProject` was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-	MetricsScope *string `pulumi:"metricsScope"`
-	// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
 	//
 	// ***
+	MetricsScope *string `pulumi:"metricsScope"`
+	// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
 	Name *string `pulumi:"name"`
 }
 
@@ -125,10 +130,10 @@ type MonitoredProjectState struct {
 	// Output only. The time when this `MonitoredProject` was created.
 	CreateTime pulumi.StringPtrInput
 	// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-	MetricsScope pulumi.StringPtrInput
-	// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
 	//
 	// ***
+	MetricsScope pulumi.StringPtrInput
+	// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
 	Name pulumi.StringPtrInput
 }
 
@@ -138,20 +143,20 @@ func (MonitoredProjectState) ElementType() reflect.Type {
 
 type monitoredProjectArgs struct {
 	// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-	MetricsScope string `pulumi:"metricsScope"`
-	// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
 	//
 	// ***
+	MetricsScope string `pulumi:"metricsScope"`
+	// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
 	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a MonitoredProject resource.
 type MonitoredProjectArgs struct {
 	// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-	MetricsScope pulumi.StringInput
-	// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
 	//
 	// ***
+	MetricsScope pulumi.StringInput
+	// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
 	Name pulumi.StringPtrInput
 }
 
@@ -248,13 +253,13 @@ func (o MonitoredProjectOutput) CreateTime() pulumi.StringOutput {
 }
 
 // Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
+//
+// ***
 func (o MonitoredProjectOutput) MetricsScope() pulumi.StringOutput {
 	return o.ApplyT(func(v *MonitoredProject) pulumi.StringOutput { return v.MetricsScope }).(pulumi.StringOutput)
 }
 
 // Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
-//
-// ***
 func (o MonitoredProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MonitoredProject) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

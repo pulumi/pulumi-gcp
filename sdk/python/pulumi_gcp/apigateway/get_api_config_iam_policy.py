@@ -116,12 +116,12 @@ def get_api_config_iam_policy(api: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:apigateway/getApiConfigIamPolicy:getApiConfigIamPolicy', __args__, opts=opts, typ=GetApiConfigIamPolicyResult).value
 
     return AwaitableGetApiConfigIamPolicyResult(
-        api=__ret__.api,
-        api_config=__ret__.api_config,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        api=pulumi.get(__ret__, 'api'),
+        api_config=pulumi.get(__ret__, 'api_config'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_api_config_iam_policy)

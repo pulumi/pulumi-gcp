@@ -99,8 +99,8 @@ def get_image_iam_policy(image: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.compute.get_image_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        image=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.compute.get_image_iam_policy(project=google_compute_image["example"]["project"],
+        image=google_compute_image["example"]["name"])
     ```
 
 
@@ -115,11 +115,11 @@ def get_image_iam_policy(image: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getImageIamPolicy:getImageIamPolicy', __args__, opts=opts, typ=GetImageIamPolicyResult).value
 
     return AwaitableGetImageIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        image=__ret__.image,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        image=pulumi.get(__ret__, 'image'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_image_iam_policy)
@@ -135,8 +135,8 @@ def get_image_iam_policy_output(image: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.compute.get_image_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        image=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.compute.get_image_iam_policy(project=google_compute_image["example"]["project"],
+        image=google_compute_image["example"]["name"])
     ```
 
 

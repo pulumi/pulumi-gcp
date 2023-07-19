@@ -5,6 +5,7 @@ package com.pulumi.gcp.iam.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcClientSecretArgs;
 import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcWebSsoConfigArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -29,6 +30,23 @@ public final class WorkforcePoolProviderOidcArgs extends com.pulumi.resources.Re
      */
     public Output<String> clientId() {
         return this.clientId;
+    }
+
+    /**
+     * The optional client secret. Required to enable Authorization Code flow for web sign-in.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="clientSecret")
+    private @Nullable Output<WorkforcePoolProviderOidcClientSecretArgs> clientSecret;
+
+    /**
+     * @return The optional client secret. Required to enable Authorization Code flow for web sign-in.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<WorkforcePoolProviderOidcClientSecretArgs>> clientSecret() {
+        return Optional.ofNullable(this.clientSecret);
     }
 
     /**
@@ -67,6 +85,7 @@ public final class WorkforcePoolProviderOidcArgs extends com.pulumi.resources.Re
 
     private WorkforcePoolProviderOidcArgs(WorkforcePoolProviderOidcArgs $) {
         this.clientId = $.clientId;
+        this.clientSecret = $.clientSecret;
         this.issuerUri = $.issuerUri;
         this.webSsoConfig = $.webSsoConfig;
     }
@@ -108,6 +127,29 @@ public final class WorkforcePoolProviderOidcArgs extends com.pulumi.resources.Re
          */
         public Builder clientId(String clientId) {
             return clientId(Output.of(clientId));
+        }
+
+        /**
+         * @param clientSecret The optional client secret. Required to enable Authorization Code flow for web sign-in.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSecret(@Nullable Output<WorkforcePoolProviderOidcClientSecretArgs> clientSecret) {
+            $.clientSecret = clientSecret;
+            return this;
+        }
+
+        /**
+         * @param clientSecret The optional client secret. Required to enable Authorization Code flow for web sign-in.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientSecret(WorkforcePoolProviderOidcClientSecretArgs clientSecret) {
+            return clientSecret(Output.of(clientSecret));
         }
 
         /**

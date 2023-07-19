@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -58,6 +59,7 @@ func NewEnvKeystore(ctx *pulumi.Context,
 	if args.EnvId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EnvKeystore
 	err := ctx.RegisterResource("gcp:apigee/envKeystore:EnvKeystore", name, args, &resource, opts...)
 	if err != nil {

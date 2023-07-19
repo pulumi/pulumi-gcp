@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 // see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 // and the [API](https://cloud.google.com/compute/docs/reference/latest/backendServices).
 func LookupBackendService(ctx *pulumi.Context, args *LookupBackendServiceArgs, opts ...pulumi.InvokeOption) (*LookupBackendServiceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBackendServiceResult
 	err := ctx.Invoke("gcp:compute/getBackendService:getBackendService", args, &rv, opts...)
 	if err != nil {

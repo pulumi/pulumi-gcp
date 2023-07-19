@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -249,6 +250,7 @@ func NewHostingVersion(ctx *pulumi.Context,
 	if args.SiteId == nil {
 		return nil, errors.New("invalid value for required argument 'SiteId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HostingVersion
 	err := ctx.RegisterResource("gcp:firebase/hostingVersion:HostingVersion", name, args, &resource, opts...)
 	if err != nil {

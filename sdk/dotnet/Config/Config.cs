@@ -522,6 +522,13 @@ namespace Pulumi.Gcp
             set => _firebaseDatabaseCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _firebaseExtensionsCustomEndpoint = new __Value<string?>(() => __config.Get("firebaseExtensionsCustomEndpoint"));
+        public static string? FirebaseExtensionsCustomEndpoint
+        {
+            get => _firebaseExtensionsCustomEndpoint.Get();
+            set => _firebaseExtensionsCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _firebaseHostingCustomEndpoint = new __Value<string?>(() => __config.Get("firebaseHostingCustomEndpoint"));
         public static string? FirebaseHostingCustomEndpoint
         {
@@ -772,6 +779,13 @@ namespace Pulumi.Gcp
         {
             get => _project.Get();
             set => _project.Set(value);
+        }
+
+        private static readonly __Value<string?> _publicCaCustomEndpoint = new __Value<string?>(() => __config.Get("publicCaCustomEndpoint"));
+        public static string? PublicCaCustomEndpoint
+        {
+            get => _publicCaCustomEndpoint.Get();
+            set => _publicCaCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _pubsubCustomEndpoint = new __Value<string?>(() => __config.Get("pubsubCustomEndpoint"));

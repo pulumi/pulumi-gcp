@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -18,6 +19,7 @@ import (
 // * How-to Guides
 //   - [Official Documentation](https://firebase.google.com/)
 func GetWebAppConfig(ctx *pulumi.Context, args *GetWebAppConfigArgs, opts ...pulumi.InvokeOption) (*GetWebAppConfigResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetWebAppConfigResult
 	err := ctx.Invoke("gcp:firebase/getWebAppConfig:getWebAppConfig", args, &rv, opts...)
 	if err != nil {

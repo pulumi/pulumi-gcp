@@ -183,14 +183,14 @@ def get_app_engine_service(module_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:monitoring/getAppEngineService:getAppEngineService', __args__, opts=opts, typ=GetAppEngineServiceResult).value
 
     return AwaitableGetAppEngineServiceResult(
-        display_name=__ret__.display_name,
-        id=__ret__.id,
-        module_id=__ret__.module_id,
-        name=__ret__.name,
-        project=__ret__.project,
-        service_id=__ret__.service_id,
-        telemetries=__ret__.telemetries,
-        user_labels=__ret__.user_labels)
+        display_name=pulumi.get(__ret__, 'display_name'),
+        id=pulumi.get(__ret__, 'id'),
+        module_id=pulumi.get(__ret__, 'module_id'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        service_id=pulumi.get(__ret__, 'service_id'),
+        telemetries=pulumi.get(__ret__, 'telemetries'),
+        user_labels=pulumi.get(__ret__, 'user_labels'))
 
 
 @_utilities.lift_output_func(get_app_engine_service)

@@ -662,6 +662,15 @@ class Gateway(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Gateway represents the configuration for a proxy, typically a load balancer.
+        It captures the ip:port over which the services are exposed by the proxy,
+        along with any policy configurations. Routes have reference to to Gateways
+        to dictate how requests should be routed by this Gateway.
+
+        To get more information about Gateway, see:
+
+        * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1/projects.locations.gateways)
+
         ## Example Usage
         ### Network Services Gateway Basic
 
@@ -670,10 +679,9 @@ class Gateway(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.Gateway("default",
-            scope="default-scope-basic",
-            type="OPEN_MESH",
             ports=[443],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            scope="default-scope-basic",
+            type="OPEN_MESH")
         ```
         ### Network Services Gateway Advanced
 
@@ -682,14 +690,13 @@ class Gateway(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.Gateway("default",
+            description="my description",
             labels={
                 "foo": "bar",
             },
-            description="my description",
-            type="OPEN_MESH",
             ports=[443],
             scope="default-scope-advance",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            type="OPEN_MESH")
         ```
         ### Network Services Gateway Secure Web Proxy
 
@@ -702,36 +709,30 @@ class Gateway(pulumi.CustomResource):
             self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
                 pem_certificate=(lambda path: open(path).read())("test-fixtures/certificatemanager/cert.pem"),
                 pem_private_key=(lambda path: open(path).read())("test-fixtures/certificatemanager/private-key.pem"),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         default_network = gcp.compute.Network("defaultNetwork",
             routing_mode="REGIONAL",
-            auto_create_subnetworks=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            auto_create_subnetworks=False)
         default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
             purpose="PRIVATE",
             ip_cidr_range="10.128.0.0/20",
             region="us-central1",
             network=default_network.id,
-            role="ACTIVE",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            role="ACTIVE")
         proxyonlysubnet = gcp.compute.Subnetwork("proxyonlysubnet",
             purpose="REGIONAL_MANAGED_PROXY",
             ip_cidr_range="192.168.0.0/23",
             region="us-central1",
             network=default_network.id,
-            role="ACTIVE",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+            role="ACTIVE")
+        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", location="us-central1")
         default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
             location="us-central1",
             gateway_security_policy=default_gateway_security_policy.name,
             enabled=True,
             priority=1,
             session_matcher="host() == 'example.com'",
-            basic_profile="ALLOW",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            basic_profile="ALLOW")
         default_gateway = gcp.networkservices.Gateway("defaultGateway",
             location="us-central1",
             addresses=["10.128.0.99"],
@@ -743,8 +744,7 @@ class Gateway(pulumi.CustomResource):
             network=default_network.id,
             subnetwork=default_subnetwork.id,
             delete_swg_autogen_router_on_destroy=True,
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[proxyonlysubnet]))
+            opts=pulumi.ResourceOptions(depends_on=[proxyonlysubnet]))
         ```
         ### Network Services Gateway Multiple Swp Same Network
 
@@ -757,36 +757,30 @@ class Gateway(pulumi.CustomResource):
             self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
                 pem_certificate=(lambda path: open(path).read())("test-fixtures/certificatemanager/cert.pem"),
                 pem_private_key=(lambda path: open(path).read())("test-fixtures/certificatemanager/private-key.pem"),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         default_network = gcp.compute.Network("defaultNetwork",
             routing_mode="REGIONAL",
-            auto_create_subnetworks=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            auto_create_subnetworks=False)
         default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
             purpose="PRIVATE",
             ip_cidr_range="10.128.0.0/20",
             region="us-south1",
             network=default_network.id,
-            role="ACTIVE",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            role="ACTIVE")
         proxyonlysubnet = gcp.compute.Subnetwork("proxyonlysubnet",
             purpose="REGIONAL_MANAGED_PROXY",
             ip_cidr_range="192.168.0.0/23",
             region="us-south1",
             network=default_network.id,
-            role="ACTIVE",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", location="us-south1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+            role="ACTIVE")
+        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", location="us-south1")
         default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
             location="us-south1",
             gateway_security_policy=default_gateway_security_policy.name,
             enabled=True,
             priority=1,
             session_matcher="host() == 'example.com'",
-            basic_profile="ALLOW",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            basic_profile="ALLOW")
         default_gateway = gcp.networkservices.Gateway("defaultGateway",
             location="us-south1",
             addresses=["10.128.0.99"],
@@ -798,8 +792,7 @@ class Gateway(pulumi.CustomResource):
             network=default_network.id,
             subnetwork=default_subnetwork.id,
             delete_swg_autogen_router_on_destroy=True,
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[proxyonlysubnet]))
+            opts=pulumi.ResourceOptions(depends_on=[proxyonlysubnet]))
         gateway2 = gcp.networkservices.Gateway("gateway2",
             location="us-south1",
             addresses=["10.128.0.98"],
@@ -811,8 +804,7 @@ class Gateway(pulumi.CustomResource):
             network=default_network.id,
             subnetwork=default_subnetwork.id,
             delete_swg_autogen_router_on_destroy=True,
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[proxyonlysubnet]))
+            opts=pulumi.ResourceOptions(depends_on=[proxyonlysubnet]))
         ```
 
         ## Import
@@ -878,6 +870,15 @@ class Gateway(pulumi.CustomResource):
                  args: GatewayArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Gateway represents the configuration for a proxy, typically a load balancer.
+        It captures the ip:port over which the services are exposed by the proxy,
+        along with any policy configurations. Routes have reference to to Gateways
+        to dictate how requests should be routed by this Gateway.
+
+        To get more information about Gateway, see:
+
+        * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1/projects.locations.gateways)
+
         ## Example Usage
         ### Network Services Gateway Basic
 
@@ -886,10 +887,9 @@ class Gateway(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.Gateway("default",
-            scope="default-scope-basic",
-            type="OPEN_MESH",
             ports=[443],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            scope="default-scope-basic",
+            type="OPEN_MESH")
         ```
         ### Network Services Gateway Advanced
 
@@ -898,14 +898,13 @@ class Gateway(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networkservices.Gateway("default",
+            description="my description",
             labels={
                 "foo": "bar",
             },
-            description="my description",
-            type="OPEN_MESH",
             ports=[443],
             scope="default-scope-advance",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            type="OPEN_MESH")
         ```
         ### Network Services Gateway Secure Web Proxy
 
@@ -918,36 +917,30 @@ class Gateway(pulumi.CustomResource):
             self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
                 pem_certificate=(lambda path: open(path).read())("test-fixtures/certificatemanager/cert.pem"),
                 pem_private_key=(lambda path: open(path).read())("test-fixtures/certificatemanager/private-key.pem"),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         default_network = gcp.compute.Network("defaultNetwork",
             routing_mode="REGIONAL",
-            auto_create_subnetworks=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            auto_create_subnetworks=False)
         default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
             purpose="PRIVATE",
             ip_cidr_range="10.128.0.0/20",
             region="us-central1",
             network=default_network.id,
-            role="ACTIVE",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            role="ACTIVE")
         proxyonlysubnet = gcp.compute.Subnetwork("proxyonlysubnet",
             purpose="REGIONAL_MANAGED_PROXY",
             ip_cidr_range="192.168.0.0/23",
             region="us-central1",
             network=default_network.id,
-            role="ACTIVE",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+            role="ACTIVE")
+        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", location="us-central1")
         default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
             location="us-central1",
             gateway_security_policy=default_gateway_security_policy.name,
             enabled=True,
             priority=1,
             session_matcher="host() == 'example.com'",
-            basic_profile="ALLOW",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            basic_profile="ALLOW")
         default_gateway = gcp.networkservices.Gateway("defaultGateway",
             location="us-central1",
             addresses=["10.128.0.99"],
@@ -959,8 +952,7 @@ class Gateway(pulumi.CustomResource):
             network=default_network.id,
             subnetwork=default_subnetwork.id,
             delete_swg_autogen_router_on_destroy=True,
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[proxyonlysubnet]))
+            opts=pulumi.ResourceOptions(depends_on=[proxyonlysubnet]))
         ```
         ### Network Services Gateway Multiple Swp Same Network
 
@@ -973,36 +965,30 @@ class Gateway(pulumi.CustomResource):
             self_managed=gcp.certificatemanager.CertificateSelfManagedArgs(
                 pem_certificate=(lambda path: open(path).read())("test-fixtures/certificatemanager/cert.pem"),
                 pem_private_key=(lambda path: open(path).read())("test-fixtures/certificatemanager/private-key.pem"),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         default_network = gcp.compute.Network("defaultNetwork",
             routing_mode="REGIONAL",
-            auto_create_subnetworks=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            auto_create_subnetworks=False)
         default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
             purpose="PRIVATE",
             ip_cidr_range="10.128.0.0/20",
             region="us-south1",
             network=default_network.id,
-            role="ACTIVE",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            role="ACTIVE")
         proxyonlysubnet = gcp.compute.Subnetwork("proxyonlysubnet",
             purpose="REGIONAL_MANAGED_PROXY",
             ip_cidr_range="192.168.0.0/23",
             region="us-south1",
             network=default_network.id,
-            role="ACTIVE",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", location="us-south1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+            role="ACTIVE")
+        default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", location="us-south1")
         default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
             location="us-south1",
             gateway_security_policy=default_gateway_security_policy.name,
             enabled=True,
             priority=1,
             session_matcher="host() == 'example.com'",
-            basic_profile="ALLOW",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            basic_profile="ALLOW")
         default_gateway = gcp.networkservices.Gateway("defaultGateway",
             location="us-south1",
             addresses=["10.128.0.99"],
@@ -1014,8 +1000,7 @@ class Gateway(pulumi.CustomResource):
             network=default_network.id,
             subnetwork=default_subnetwork.id,
             delete_swg_autogen_router_on_destroy=True,
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[proxyonlysubnet]))
+            opts=pulumi.ResourceOptions(depends_on=[proxyonlysubnet]))
         gateway2 = gcp.networkservices.Gateway("gateway2",
             location="us-south1",
             addresses=["10.128.0.98"],
@@ -1027,8 +1012,7 @@ class Gateway(pulumi.CustomResource):
             network=default_network.id,
             subnetwork=default_subnetwork.id,
             delete_swg_autogen_router_on_destroy=True,
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[proxyonlysubnet]))
+            opts=pulumi.ResourceOptions(depends_on=[proxyonlysubnet]))
         ```
 
         ## Import

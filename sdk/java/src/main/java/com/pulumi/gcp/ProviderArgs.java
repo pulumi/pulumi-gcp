@@ -509,6 +509,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.firebaseDatabaseCustomEndpoint);
     }
 
+    @Import(name="firebaseExtensionsCustomEndpoint")
+    private @Nullable Output<String> firebaseExtensionsCustomEndpoint;
+
+    public Optional<Output<String>> firebaseExtensionsCustomEndpoint() {
+        return Optional.ofNullable(this.firebaseExtensionsCustomEndpoint);
+    }
+
     @Import(name="firebaseHostingCustomEndpoint")
     private @Nullable Output<String> firebaseHostingCustomEndpoint;
 
@@ -759,6 +766,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
+    }
+
+    @Import(name="publicCaCustomEndpoint")
+    private @Nullable Output<String> publicCaCustomEndpoint;
+
+    public Optional<Output<String>> publicCaCustomEndpoint() {
+        return Optional.ofNullable(this.publicCaCustomEndpoint);
     }
 
     @Import(name="pubsubCustomEndpoint")
@@ -1072,6 +1086,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.filestoreCustomEndpoint = $.filestoreCustomEndpoint;
         this.firebaseCustomEndpoint = $.firebaseCustomEndpoint;
         this.firebaseDatabaseCustomEndpoint = $.firebaseDatabaseCustomEndpoint;
+        this.firebaseExtensionsCustomEndpoint = $.firebaseExtensionsCustomEndpoint;
         this.firebaseHostingCustomEndpoint = $.firebaseHostingCustomEndpoint;
         this.firebaseStorageCustomEndpoint = $.firebaseStorageCustomEndpoint;
         this.firebaserulesCustomEndpoint = $.firebaserulesCustomEndpoint;
@@ -1108,6 +1123,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.osLoginCustomEndpoint = $.osLoginCustomEndpoint;
         this.privatecaCustomEndpoint = $.privatecaCustomEndpoint;
         this.project = $.project;
+        this.publicCaCustomEndpoint = $.publicCaCustomEndpoint;
         this.pubsubCustomEndpoint = $.pubsubCustomEndpoint;
         this.pubsubLiteCustomEndpoint = $.pubsubLiteCustomEndpoint;
         this.recaptchaEnterpriseCustomEndpoint = $.recaptchaEnterpriseCustomEndpoint;
@@ -1792,6 +1808,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return firebaseDatabaseCustomEndpoint(Output.of(firebaseDatabaseCustomEndpoint));
         }
 
+        public Builder firebaseExtensionsCustomEndpoint(@Nullable Output<String> firebaseExtensionsCustomEndpoint) {
+            $.firebaseExtensionsCustomEndpoint = firebaseExtensionsCustomEndpoint;
+            return this;
+        }
+
+        public Builder firebaseExtensionsCustomEndpoint(String firebaseExtensionsCustomEndpoint) {
+            return firebaseExtensionsCustomEndpoint(Output.of(firebaseExtensionsCustomEndpoint));
+        }
+
         public Builder firebaseHostingCustomEndpoint(@Nullable Output<String> firebaseHostingCustomEndpoint) {
             $.firebaseHostingCustomEndpoint = firebaseHostingCustomEndpoint;
             return this;
@@ -2118,6 +2143,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        public Builder publicCaCustomEndpoint(@Nullable Output<String> publicCaCustomEndpoint) {
+            $.publicCaCustomEndpoint = publicCaCustomEndpoint;
+            return this;
+        }
+
+        public Builder publicCaCustomEndpoint(String publicCaCustomEndpoint) {
+            return publicCaCustomEndpoint(Output.of(publicCaCustomEndpoint));
         }
 
         public Builder pubsubCustomEndpoint(@Nullable Output<String> pubsubCustomEndpoint) {

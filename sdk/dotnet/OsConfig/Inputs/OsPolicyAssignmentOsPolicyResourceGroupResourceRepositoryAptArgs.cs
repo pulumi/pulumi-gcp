@@ -13,7 +13,8 @@ namespace Pulumi.Gcp.OsConfig.Inputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Type of archive files in this repository. Possible values: ARCHIVE_TYPE_UNSPECIFIED, DEB, DEB_SRC
+        /// Type of archive files in this repository.
+        /// Possible values are: `ARCHIVE_TYPE_UNSPECIFIED`, `DEB`, `DEB_SRC`.
         /// </summary>
         [Input("archiveType", required: true)]
         public Input<string> ArchiveType { get; set; } = null!;
@@ -22,7 +23,8 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         private InputList<string>? _components;
 
         /// <summary>
-        /// Required. List of components for this repository. Must contain at least one item.
+        /// List of components for this repository. Must
+        /// contain at least one item.
         /// </summary>
         public InputList<string> Components
         {
@@ -31,19 +33,20 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         }
 
         /// <summary>
-        /// Required. Distribution of this repository.
+        /// Distribution of this repository.
         /// </summary>
         [Input("distribution", required: true)]
         public Input<string> Distribution { get; set; } = null!;
 
         /// <summary>
-        /// URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+        /// URI of the key file for this repository. The agent
+        /// maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
         /// </summary>
         [Input("gpgKey")]
         public Input<string>? GpgKey { get; set; }
 
         /// <summary>
-        /// Required. URI for this repository.
+        /// URI for this repository.
         /// </summary>
         [Input("uri", required: true)]
         public Input<string> Uri { get; set; } = null!;

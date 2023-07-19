@@ -8,10 +8,11 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Beta only: The Cloudbuildv2 Connection resource
+// The Cloudbuildv2 Connection resource
 //
 // ## Example Usage
 // ### Ghe
@@ -44,14 +45,14 @@ import (
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Automatic: pulumi.Bool(true),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretVersion(ctx, "private-key-secret-version", &secretmanager.SecretVersionArgs{
 //				Secret:     private_key_secret.ID(),
 //				SecretData: readFileOrPanic("private-key.pem"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -60,14 +61,14 @@ import (
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Automatic: pulumi.Bool(true),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretVersion(ctx, "webhook-secret-secret-version", &secretmanager.SecretVersionArgs{
 //				Secret:     webhook_secret_secret.ID(),
 //				SecretData: pulumi.String("<webhook-secret-data>"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -87,14 +88,14 @@ import (
 //			_, err = secretmanager.NewSecretIamPolicy(ctx, "policy-pk", &secretmanager.SecretIamPolicyArgs{
 //				SecretId:   private_key_secret.SecretId,
 //				PolicyData: *pulumi.String(p4sa_secretAccessor.PolicyData),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretIamPolicy(ctx, "policy-whs", &secretmanager.SecretIamPolicyArgs{
 //				SecretId:   webhook_secret_secret.SecretId,
 //				PolicyData: *pulumi.String(p4sa_secretAccessor.PolicyData),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -108,7 +109,7 @@ import (
 //					AppSlug:                    pulumi.String("gcb-app"),
 //					AppInstallationId:          pulumi.Int(300),
 //				},
-//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+//			}, pulumi.DependsOn([]pulumi.Resource{
 //				policy_pk,
 //				policy_whs,
 //			}))
@@ -151,14 +152,14 @@ import (
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Automatic: pulumi.Bool(true),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretVersion(ctx, "github-token-secret-version", &secretmanager.SecretVersionArgs{
 //				Secret:     github_token_secret.ID(),
 //				SecretData: readFileOrPanic("my-github-token.txt"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -178,7 +179,7 @@ import (
 //			_, err = secretmanager.NewSecretIamPolicy(ctx, "policy", &secretmanager.SecretIamPolicyArgs{
 //				SecretId:   github_token_secret.SecretId,
 //				PolicyData: *pulumi.String(p4sa_secretAccessor.PolicyData),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -190,7 +191,7 @@ import (
 //						OauthTokenSecretVersion: github_token_secret_version.ID(),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -236,13 +237,13 @@ type Connection struct {
 	GithubConfig ConnectionGithubConfigPtrOutput `pulumi:"githubConfig"`
 	// Configuration for connections to an instance of GitHub Enterprise.
 	GithubEnterpriseConfig ConnectionGithubEnterpriseConfigPtrOutput `pulumi:"githubEnterpriseConfig"`
+	// Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+	GitlabConfig ConnectionGitlabConfigPtrOutput `pulumi:"gitlabConfig"`
 	// Output only. Installation state of the Connection.
 	InstallationStates ConnectionInstallationStateArrayOutput `pulumi:"installationStates"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
-	//
-	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -262,6 +263,7 @@ func NewConnection(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Connection
 	err := ctx.RegisterResource("gcp:cloudbuildv2/connection:Connection", name, args, &resource, opts...)
 	if err != nil {
@@ -296,13 +298,13 @@ type connectionState struct {
 	GithubConfig *ConnectionGithubConfig `pulumi:"githubConfig"`
 	// Configuration for connections to an instance of GitHub Enterprise.
 	GithubEnterpriseConfig *ConnectionGithubEnterpriseConfig `pulumi:"githubEnterpriseConfig"`
+	// Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+	GitlabConfig *ConnectionGitlabConfig `pulumi:"gitlabConfig"`
 	// Output only. Installation state of the Connection.
 	InstallationStates []ConnectionInstallationState `pulumi:"installationStates"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
 	// Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -325,13 +327,13 @@ type ConnectionState struct {
 	GithubConfig ConnectionGithubConfigPtrInput
 	// Configuration for connections to an instance of GitHub Enterprise.
 	GithubEnterpriseConfig ConnectionGithubEnterpriseConfigPtrInput
+	// Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+	GitlabConfig ConnectionGitlabConfigPtrInput
 	// Output only. Installation state of the Connection.
 	InstallationStates ConnectionInstallationStateArrayInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
 	// Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -354,11 +356,11 @@ type connectionArgs struct {
 	GithubConfig *ConnectionGithubConfig `pulumi:"githubConfig"`
 	// Configuration for connections to an instance of GitHub Enterprise.
 	GithubEnterpriseConfig *ConnectionGithubEnterpriseConfig `pulumi:"githubEnterpriseConfig"`
+	// Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+	GitlabConfig *ConnectionGitlabConfig `pulumi:"gitlabConfig"`
 	// The location for the resource
 	Location string `pulumi:"location"`
 	// Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
-	//
-	// ***
 	Name *string `pulumi:"name"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
@@ -374,11 +376,11 @@ type ConnectionArgs struct {
 	GithubConfig ConnectionGithubConfigPtrInput
 	// Configuration for connections to an instance of GitHub Enterprise.
 	GithubEnterpriseConfig ConnectionGithubEnterpriseConfigPtrInput
+	// Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+	GitlabConfig ConnectionGitlabConfigPtrInput
 	// The location for the resource
 	Location pulumi.StringInput
 	// Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
-	//
-	// ***
 	Name pulumi.StringPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
@@ -501,6 +503,11 @@ func (o ConnectionOutput) GithubEnterpriseConfig() ConnectionGithubEnterpriseCon
 	return o.ApplyT(func(v *Connection) ConnectionGithubEnterpriseConfigPtrOutput { return v.GithubEnterpriseConfig }).(ConnectionGithubEnterpriseConfigPtrOutput)
 }
 
+// Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+func (o ConnectionOutput) GitlabConfig() ConnectionGitlabConfigPtrOutput {
+	return o.ApplyT(func(v *Connection) ConnectionGitlabConfigPtrOutput { return v.GitlabConfig }).(ConnectionGitlabConfigPtrOutput)
+}
+
 // Output only. Installation state of the Connection.
 func (o ConnectionOutput) InstallationStates() ConnectionInstallationStateArrayOutput {
 	return o.ApplyT(func(v *Connection) ConnectionInstallationStateArrayOutput { return v.InstallationStates }).(ConnectionInstallationStateArrayOutput)
@@ -512,8 +519,6 @@ func (o ConnectionOutput) Location() pulumi.StringOutput {
 }
 
 // Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
-//
-// ***
 func (o ConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

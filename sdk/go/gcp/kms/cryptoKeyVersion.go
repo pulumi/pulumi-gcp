@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -105,6 +106,7 @@ func NewCryptoKeyVersion(ctx *pulumi.Context,
 	if args.CryptoKey == nil {
 		return nil, errors.New("invalid value for required argument 'CryptoKey'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CryptoKeyVersion
 	err := ctx.RegisterResource("gcp:kms/cryptoKeyVersion:CryptoKeyVersion", name, args, &resource, opts...)
 	if err != nil {

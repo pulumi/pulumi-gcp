@@ -198,19 +198,19 @@ def get_global_address(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getGlobalAddress:getGlobalAddress', __args__, opts=opts, typ=GetGlobalAddressResult).value
 
     return AwaitableGetGlobalAddressResult(
-        address=__ret__.address,
-        address_type=__ret__.address_type,
-        id=__ret__.id,
-        name=__ret__.name,
-        network=__ret__.network,
-        network_tier=__ret__.network_tier,
-        prefix_length=__ret__.prefix_length,
-        project=__ret__.project,
-        purpose=__ret__.purpose,
-        self_link=__ret__.self_link,
-        status=__ret__.status,
-        subnetwork=__ret__.subnetwork,
-        users=__ret__.users)
+        address=pulumi.get(__ret__, 'address'),
+        address_type=pulumi.get(__ret__, 'address_type'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        network_tier=pulumi.get(__ret__, 'network_tier'),
+        prefix_length=pulumi.get(__ret__, 'prefix_length'),
+        project=pulumi.get(__ret__, 'project'),
+        purpose=pulumi.get(__ret__, 'purpose'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        status=pulumi.get(__ret__, 'status'),
+        subnetwork=pulumi.get(__ret__, 'subnetwork'),
+        users=pulumi.get(__ret__, 'users'))
 
 
 @_utilities.lift_output_func(get_global_address)

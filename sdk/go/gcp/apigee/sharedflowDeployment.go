@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,6 +71,7 @@ func NewSharedflowDeployment(ctx *pulumi.Context,
 	if args.SharedflowId == nil {
 		return nil, errors.New("invalid value for required argument 'SharedflowId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SharedflowDeployment
 	err := ctx.RegisterResource("gcp:apigee/sharedflowDeployment:SharedflowDeployment", name, args, &resource, opts...)
 	if err != nil {

@@ -8,9 +8,18 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// AddressGroup is a resource that specifies how a collection of IP/DNS used in Firewall Policy.
+//
+// To get more information about AddressGroup, see:
+//
+// * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-security/rest/v1beta1/organizations.locations.addressGroups)
+// * How-to Guides
+//   - [Use AddressGroups](https://cloud.google.com/vpc/docs/use-address-groups-firewall-policies)
+//
 // ## Example Usage
 // ### Network Security Address Groups Basic
 //
@@ -27,14 +36,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networksecurity.NewAddressGroup(ctx, "default", &networksecurity.AddressGroupArgs{
-//				Parent:   pulumi.String("projects/my-project-name"),
-//				Location: pulumi.String("us-central1"),
-//				Type:     pulumi.String("IPV4"),
 //				Capacity: pulumi.Int(100),
 //				Items: pulumi.StringArray{
 //					pulumi.String("208.80.154.224/32"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//				Location: pulumi.String("us-central1"),
+//				Parent:   pulumi.String("projects/my-project-name"),
+//				Type:     pulumi.String("IPV4"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -58,14 +67,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networksecurity.NewAddressGroup(ctx, "default", &networksecurity.AddressGroupArgs{
-//				Parent:   pulumi.String("organizations/123456789"),
-//				Location: pulumi.String("us-central1"),
-//				Type:     pulumi.String("IPV4"),
 //				Capacity: pulumi.Int(100),
 //				Items: pulumi.StringArray{
 //					pulumi.String("208.80.154.224/32"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//				Location: pulumi.String("us-central1"),
+//				Parent:   pulumi.String("organizations/123456789"),
+//				Type:     pulumi.String("IPV4"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -89,15 +98,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networksecurity.NewAddressGroup(ctx, "default", &networksecurity.AddressGroupArgs{
-//				Parent:      pulumi.String("projects/my-project-name"),
-//				Location:    pulumi.String("us-central1"),
-//				Description: pulumi.String("my description"),
-//				Type:        pulumi.String("IPV4"),
 //				Capacity:    pulumi.Int(100),
+//				Description: pulumi.String("my description"),
 //				Items: pulumi.StringArray{
 //					pulumi.String("208.80.154.224/32"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//				Location: pulumi.String("us-central1"),
+//				Parent:   pulumi.String("projects/my-project-name"),
+//				Type:     pulumi.String("IPV4"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -166,6 +175,7 @@ func NewAddressGroup(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AddressGroup
 	err := ctx.RegisterResource("gcp:networksecurity/addressGroup:AddressGroup", name, args, &resource, opts...)
 	if err != nil {

@@ -403,6 +403,12 @@ class DeliveryPipeline(pulumi.CustomResource):
             serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
                 stages=[
                     gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
+                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
+                            values={
+                                "deployParameterKey": "deployParameterValue",
+                            },
+                            match_target_labels={},
+                        )],
                         profiles=[
                             "example-profile-one",
                             "example-profile-two",
@@ -438,6 +444,12 @@ class DeliveryPipeline(pulumi.CustomResource):
             serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
                 stages=[
                     gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
+                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
+                            values={
+                                "deployParameterKey": "deployParameterValue",
+                            },
+                            match_target_labels={},
+                        )],
                         profiles=[
                             "example-profile-one",
                             "example-profile-two",
@@ -473,6 +485,12 @@ class DeliveryPipeline(pulumi.CustomResource):
             serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
                 stages=[
                     gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
+                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
+                            values={
+                                "deployParameterKey": "deployParameterValue",
+                            },
+                            match_target_labels={},
+                        )],
                         profiles=[
                             "example-profile-one",
                             "example-profile-two",
@@ -508,6 +526,12 @@ class DeliveryPipeline(pulumi.CustomResource):
             serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
                 stages=[
                     gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
+                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
+                            match_target_labels={},
+                            values={
+                                "deployParameterKey": "deployParameterValue",
+                            },
+                        )],
                         profiles=[
                             "example-profile-one",
                             "example-profile-two",
@@ -542,6 +566,12 @@ class DeliveryPipeline(pulumi.CustomResource):
             serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
                 stages=[
                     gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
+                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
+                            values={
+                                "deployParameterKey": "deployParameterValue",
+                            },
+                            match_target_labels={},
+                        )],
                         profiles=[
                             "example-profile-one",
                             "example-profile-two",
@@ -615,6 +645,12 @@ class DeliveryPipeline(pulumi.CustomResource):
             serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
                 stages=[
                     gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
+                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
+                            values={
+                                "deployParameterKey": "deployParameterValue",
+                            },
+                            match_target_labels={},
+                        )],
                         profiles=[
                             "example-profile-one",
                             "example-profile-two",
@@ -650,6 +686,12 @@ class DeliveryPipeline(pulumi.CustomResource):
             serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
                 stages=[
                     gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
+                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
+                            values={
+                                "deployParameterKey": "deployParameterValue",
+                            },
+                            match_target_labels={},
+                        )],
                         profiles=[
                             "example-profile-one",
                             "example-profile-two",
@@ -685,6 +727,12 @@ class DeliveryPipeline(pulumi.CustomResource):
             serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
                 stages=[
                     gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
+                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
+                            values={
+                                "deployParameterKey": "deployParameterValue",
+                            },
+                            match_target_labels={},
+                        )],
                         profiles=[
                             "example-profile-one",
                             "example-profile-two",
@@ -720,6 +768,12 @@ class DeliveryPipeline(pulumi.CustomResource):
             serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
                 stages=[
                     gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
+                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
+                            match_target_labels={},
+                            values={
+                                "deployParameterKey": "deployParameterValue",
+                            },
+                        )],
                         profiles=[
                             "example-profile-one",
                             "example-profile-two",
@@ -754,6 +808,12 @@ class DeliveryPipeline(pulumi.CustomResource):
             serial_pipeline=gcp.clouddeploy.DeliveryPipelineSerialPipelineArgs(
                 stages=[
                     gcp.clouddeploy.DeliveryPipelineSerialPipelineStageArgs(
+                        deploy_parameters=[gcp.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameterArgs(
+                            values={
+                                "deployParameterKey": "deployParameterValue",
+                            },
+                            match_target_labels={},
+                        )],
                         profiles=[
                             "example-profile-one",
                             "example-profile-two",

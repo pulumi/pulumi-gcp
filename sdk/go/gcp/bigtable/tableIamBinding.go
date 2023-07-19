@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -201,6 +202,7 @@ func NewTableIamBinding(ctx *pulumi.Context,
 	if args.Table == nil {
 		return nil, errors.New("invalid value for required argument 'Table'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TableIamBinding
 	err := ctx.RegisterResource("gcp:bigtable/tableIamBinding:TableIamBinding", name, args, &resource, opts...)
 	if err != nil {

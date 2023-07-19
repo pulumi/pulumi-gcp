@@ -144,7 +144,7 @@ def get_kms_crypto_key_version(crypto_key: Optional[str] = None,
         location="us-central1")
     my_crypto_key = gcp.kms.get_kms_crypto_key(name="my-crypto-key",
         key_ring=my_key_ring.id)
-    my_crypto_key_version = gcp.kms.get_kms_crypto_key_version(crypto_key=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    my_crypto_key_version = gcp.kms.get_kms_crypto_key_version(crypto_key=data["google_kms_crypto_key"]["my_key"]["id"])
     ```
 
 
@@ -159,14 +159,14 @@ def get_kms_crypto_key_version(crypto_key: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion', __args__, opts=opts, typ=GetKMSCryptoKeyVersionResult).value
 
     return AwaitableGetKMSCryptoKeyVersionResult(
-        algorithm=__ret__.algorithm,
-        crypto_key=__ret__.crypto_key,
-        id=__ret__.id,
-        name=__ret__.name,
-        protection_level=__ret__.protection_level,
-        public_keys=__ret__.public_keys,
-        state=__ret__.state,
-        version=__ret__.version)
+        algorithm=pulumi.get(__ret__, 'algorithm'),
+        crypto_key=pulumi.get(__ret__, 'crypto_key'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        protection_level=pulumi.get(__ret__, 'protection_level'),
+        public_keys=pulumi.get(__ret__, 'public_keys'),
+        state=pulumi.get(__ret__, 'state'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_kms_crypto_key_version)
@@ -191,7 +191,7 @@ def get_kms_crypto_key_version_output(crypto_key: Optional[pulumi.Input[str]] = 
         location="us-central1")
     my_crypto_key = gcp.kms.get_kms_crypto_key(name="my-crypto-key",
         key_ring=my_key_ring.id)
-    my_crypto_key_version = gcp.kms.get_kms_crypto_key_version(crypto_key=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    my_crypto_key_version = gcp.kms.get_kms_crypto_key_version(crypto_key=data["google_kms_crypto_key"]["my_key"]["id"])
     ```
 
 

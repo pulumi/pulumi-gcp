@@ -257,6 +257,14 @@ class UrlList(pulumi.CustomResource):
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
+        UrlList proto helps users to set reusable, independently manageable lists of hosts, host patterns, URLs, URL patterns.
+
+        To get more information about UrlLists, see:
+
+        * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.urlLists)
+        * How-to Guides
+            * Use UrlLists
+
         ## Example Usage
         ### Network Security Url Lists Basic
 
@@ -266,8 +274,7 @@ class UrlList(pulumi.CustomResource):
 
         default = gcp.networksecurity.UrlList("default",
             location="us-central1",
-            values=["www.example.com"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            values=["www.example.com"])
         ```
         ### Network Security Url Lists Advanced
 
@@ -276,14 +283,13 @@ class UrlList(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.UrlList("default",
-            location="us-central1",
             description="my description",
+            location="us-central1",
             values=[
                 "www.example.com",
                 "about.example.com",
                 "github.com/example-org/*",
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ])
         ```
 
         ## Import
@@ -322,6 +328,14 @@ class UrlList(pulumi.CustomResource):
                  args: UrlListArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        UrlList proto helps users to set reusable, independently manageable lists of hosts, host patterns, URLs, URL patterns.
+
+        To get more information about UrlLists, see:
+
+        * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.urlLists)
+        * How-to Guides
+            * Use UrlLists
+
         ## Example Usage
         ### Network Security Url Lists Basic
 
@@ -331,8 +345,7 @@ class UrlList(pulumi.CustomResource):
 
         default = gcp.networksecurity.UrlList("default",
             location="us-central1",
-            values=["www.example.com"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            values=["www.example.com"])
         ```
         ### Network Security Url Lists Advanced
 
@@ -341,14 +354,13 @@ class UrlList(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.UrlList("default",
-            location="us-central1",
             description="my description",
+            location="us-central1",
             values=[
                 "www.example.com",
                 "about.example.com",
                 "github.com/example-org/*",
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ])
         ```
 
         ## Import

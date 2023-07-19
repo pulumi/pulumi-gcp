@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupRegionDiskIamPolicy(ctx *pulumi.Context, args *LookupRegionDiskIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupRegionDiskIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegionDiskIamPolicyResult
 	err := ctx.Invoke("gcp:compute/getRegionDiskIamPolicy:getRegionDiskIamPolicy", args, &rv, opts...)
 	if err != nil {

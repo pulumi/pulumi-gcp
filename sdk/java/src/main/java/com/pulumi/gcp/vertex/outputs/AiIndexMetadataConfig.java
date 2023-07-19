@@ -48,6 +48,15 @@ public final class AiIndexMetadataConfig {
      * 
      */
     private @Nullable String featureNormType;
+    /**
+     * @return Index data is split into equal parts to be processed. These are called &#34;shards&#34;.
+     * The shard size must be specified when creating an index. The value must be one of the followings:
+     * * SHARD_SIZE_SMALL: Small (2GB)
+     * * SHARD_SIZE_MEDIUM: Medium (20GB)
+     * * SHARD_SIZE_LARGE: Large (50GB)
+     * 
+     */
+    private @Nullable String shardSize;
 
     private AiIndexMetadataConfig() {}
     /**
@@ -95,6 +104,17 @@ public final class AiIndexMetadataConfig {
     public Optional<String> featureNormType() {
         return Optional.ofNullable(this.featureNormType);
     }
+    /**
+     * @return Index data is split into equal parts to be processed. These are called &#34;shards&#34;.
+     * The shard size must be specified when creating an index. The value must be one of the followings:
+     * * SHARD_SIZE_SMALL: Small (2GB)
+     * * SHARD_SIZE_MEDIUM: Medium (20GB)
+     * * SHARD_SIZE_LARGE: Large (50GB)
+     * 
+     */
+    public Optional<String> shardSize() {
+        return Optional.ofNullable(this.shardSize);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -110,6 +130,7 @@ public final class AiIndexMetadataConfig {
         private Integer dimensions;
         private @Nullable String distanceMeasureType;
         private @Nullable String featureNormType;
+        private @Nullable String shardSize;
         public Builder() {}
         public Builder(AiIndexMetadataConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -118,6 +139,7 @@ public final class AiIndexMetadataConfig {
     	      this.dimensions = defaults.dimensions;
     	      this.distanceMeasureType = defaults.distanceMeasureType;
     	      this.featureNormType = defaults.featureNormType;
+    	      this.shardSize = defaults.shardSize;
         }
 
         @CustomType.Setter
@@ -145,6 +167,11 @@ public final class AiIndexMetadataConfig {
             this.featureNormType = featureNormType;
             return this;
         }
+        @CustomType.Setter
+        public Builder shardSize(@Nullable String shardSize) {
+            this.shardSize = shardSize;
+            return this;
+        }
         public AiIndexMetadataConfig build() {
             final var o = new AiIndexMetadataConfig();
             o.algorithmConfig = algorithmConfig;
@@ -152,6 +179,7 @@ public final class AiIndexMetadataConfig {
             o.dimensions = dimensions;
             o.distanceMeasureType = distanceMeasureType;
             o.featureNormType = featureNormType;
+            o.shardSize = shardSize;
             return o;
         }
     }

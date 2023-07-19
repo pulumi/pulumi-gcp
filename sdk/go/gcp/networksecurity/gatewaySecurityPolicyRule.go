@@ -8,9 +8,17 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The GatewaySecurityPolicyRule resource is in a nested collection within a GatewaySecurityPolicy and represents
+// a traffic matching condition and associated action to perform.
+//
+// To get more information about GatewaySecurityPolicyRule, see:
+//
+// * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies.rules)
+//
 // ## Example Usage
 // ### Network Security Gateway Security Policy Rules Basic
 //
@@ -29,7 +37,7 @@ import (
 //			defaultGatewaySecurityPolicy, err := networksecurity.NewGatewaySecurityPolicy(ctx, "defaultGatewaySecurityPolicy", &networksecurity.GatewaySecurityPolicyArgs{
 //				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("gateway security policy created to be used as reference by the rule."),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -41,7 +49,7 @@ import (
 //				Priority:              pulumi.Int(0),
 //				SessionMatcher:        pulumi.String("host() == 'example.com'"),
 //				BasicProfile:          pulumi.String("ALLOW"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -67,7 +75,7 @@ import (
 //			defaultGatewaySecurityPolicy, err := networksecurity.NewGatewaySecurityPolicy(ctx, "defaultGatewaySecurityPolicy", &networksecurity.GatewaySecurityPolicyArgs{
 //				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("gateway security policy created to be used as reference by the rule."),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -81,7 +89,7 @@ import (
 //				ApplicationMatcher:    pulumi.String("request.method == 'POST'"),
 //				TlsInspectionEnabled:  pulumi.Bool(false),
 //				BasicProfile:          pulumi.String("ALLOW"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -180,6 +188,7 @@ func NewGatewaySecurityPolicyRule(ctx *pulumi.Context,
 	if args.SessionMatcher == nil {
 		return nil, errors.New("invalid value for required argument 'SessionMatcher'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GatewaySecurityPolicyRule
 	err := ctx.RegisterResource("gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule", name, args, &resource, opts...)
 	if err != nil {

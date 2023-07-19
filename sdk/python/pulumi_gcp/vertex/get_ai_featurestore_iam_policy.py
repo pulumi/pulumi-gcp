@@ -118,12 +118,12 @@ def get_ai_featurestore_iam_policy(featurestore: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy', __args__, opts=opts, typ=GetAiFeaturestoreIamPolicyResult).value
 
     return AwaitableGetAiFeaturestoreIamPolicyResult(
-        etag=__ret__.etag,
-        featurestore=__ret__.featurestore,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project,
-        region=__ret__.region)
+        etag=pulumi.get(__ret__, 'etag'),
+        featurestore=pulumi.get(__ret__, 'featurestore'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'))
 
 
 @_utilities.lift_output_func(get_ai_featurestore_iam_policy)

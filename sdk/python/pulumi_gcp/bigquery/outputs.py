@@ -3663,9 +3663,7 @@ class TableExternalDataConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "sourceFormat":
-            suggest = "source_format"
-        elif key == "sourceUris":
+        if key == "sourceUris":
             suggest = "source_uris"
         elif key == "avroOptions":
             suggest = "avro_options"
@@ -3681,8 +3679,14 @@ class TableExternalDataConfiguration(dict):
             suggest = "ignore_unknown_values"
         elif key == "maxBadRecords":
             suggest = "max_bad_records"
+        elif key == "metadataCacheMode":
+            suggest = "metadata_cache_mode"
+        elif key == "objectMetadata":
+            suggest = "object_metadata"
         elif key == "referenceFileSchemaUri":
             suggest = "reference_file_schema_uri"
+        elif key == "sourceFormat":
+            suggest = "source_format"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TableExternalDataConfiguration. Access the value via the '{suggest}' property getter instead.")
@@ -3697,7 +3701,6 @@ class TableExternalDataConfiguration(dict):
 
     def __init__(__self__, *,
                  autodetect: bool,
-                 source_format: str,
                  source_uris: Sequence[str],
                  avro_options: Optional['outputs.TableExternalDataConfigurationAvroOptions'] = None,
                  compression: Optional[str] = None,
@@ -3707,15 +3710,14 @@ class TableExternalDataConfiguration(dict):
                  hive_partitioning_options: Optional['outputs.TableExternalDataConfigurationHivePartitioningOptions'] = None,
                  ignore_unknown_values: Optional[bool] = None,
                  max_bad_records: Optional[int] = None,
+                 metadata_cache_mode: Optional[str] = None,
+                 object_metadata: Optional[str] = None,
                  reference_file_schema_uri: Optional[str] = None,
-                 schema: Optional[str] = None):
+                 schema: Optional[str] = None,
+                 source_format: Optional[str] = None):
         """
         :param bool autodetect: Let BigQuery try to autodetect the schema
                and format of the table.
-        :param str source_format: The data format. Please see sourceFormat under
-               [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
-               in Bigquery's public API documentation for supported formats. To use "GOOGLE_SHEETS"
-               the `scopes` must include "https://www.googleapis.com/auth/drive.readonly".
         :param Sequence[str] source_uris: A list of the fully-qualified URIs that point to
                your data in Google Cloud.
         :param 'TableExternalDataConfigurationAvroOptionsArgs' avro_options: Additional options if `source_format` is set to  
@@ -3743,6 +3745,8 @@ class TableExternalDataConfiguration(dict):
                The default value is false.
         :param int max_bad_records: The maximum number of bad records that
                BigQuery can ignore when reading data.
+        :param str metadata_cache_mode: Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
+        :param str object_metadata: Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
         :param str reference_file_schema_uri: When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
         :param str schema: A JSON schema for the external table. Schema is required
                for CSV and JSON formats if autodetect is not on. Schema is disallowed
@@ -3755,9 +3759,12 @@ class TableExternalDataConfiguration(dict):
                This schema is effectively only applied when creating a table from an external
                datasource, after creation the computed schema will be stored in
                `google_bigquery_table.schema`
+        :param str source_format: The data format. Please see sourceFormat under
+               [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
+               in Bigquery's public API documentation for supported formats. To use "GOOGLE_SHEETS"
+               the `scopes` must include "https://www.googleapis.com/auth/drive.readonly".
         """
         pulumi.set(__self__, "autodetect", autodetect)
-        pulumi.set(__self__, "source_format", source_format)
         pulumi.set(__self__, "source_uris", source_uris)
         if avro_options is not None:
             pulumi.set(__self__, "avro_options", avro_options)
@@ -3775,10 +3782,16 @@ class TableExternalDataConfiguration(dict):
             pulumi.set(__self__, "ignore_unknown_values", ignore_unknown_values)
         if max_bad_records is not None:
             pulumi.set(__self__, "max_bad_records", max_bad_records)
+        if metadata_cache_mode is not None:
+            pulumi.set(__self__, "metadata_cache_mode", metadata_cache_mode)
+        if object_metadata is not None:
+            pulumi.set(__self__, "object_metadata", object_metadata)
         if reference_file_schema_uri is not None:
             pulumi.set(__self__, "reference_file_schema_uri", reference_file_schema_uri)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
+        if source_format is not None:
+            pulumi.set(__self__, "source_format", source_format)
 
     @property
     @pulumi.getter
@@ -3788,17 +3801,6 @@ class TableExternalDataConfiguration(dict):
         and format of the table.
         """
         return pulumi.get(self, "autodetect")
-
-    @property
-    @pulumi.getter(name="sourceFormat")
-    def source_format(self) -> str:
-        """
-        The data format. Please see sourceFormat under
-        [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
-        in Bigquery's public API documentation for supported formats. To use "GOOGLE_SHEETS"
-        the `scopes` must include "https://www.googleapis.com/auth/drive.readonly".
-        """
-        return pulumi.get(self, "source_format")
 
     @property
     @pulumi.getter(name="sourceUris")
@@ -3891,6 +3893,22 @@ class TableExternalDataConfiguration(dict):
         return pulumi.get(self, "max_bad_records")
 
     @property
+    @pulumi.getter(name="metadataCacheMode")
+    def metadata_cache_mode(self) -> Optional[str]:
+        """
+        Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
+        """
+        return pulumi.get(self, "metadata_cache_mode")
+
+    @property
+    @pulumi.getter(name="objectMetadata")
+    def object_metadata(self) -> Optional[str]:
+        """
+        Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
+        """
+        return pulumi.get(self, "object_metadata")
+
+    @property
     @pulumi.getter(name="referenceFileSchemaUri")
     def reference_file_schema_uri(self) -> Optional[str]:
         """
@@ -3915,6 +3933,17 @@ class TableExternalDataConfiguration(dict):
         `google_bigquery_table.schema`
         """
         return pulumi.get(self, "schema")
+
+    @property
+    @pulumi.getter(name="sourceFormat")
+    def source_format(self) -> Optional[str]:
+        """
+        The data format. Please see sourceFormat under
+        [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
+        in Bigquery's public API documentation for supported formats. To use "GOOGLE_SHEETS"
+        the `scopes` must include "https://www.googleapis.com/auth/drive.readonly".
+        """
+        return pulumi.get(self, "source_format")
 
 
 @pulumi.output_type

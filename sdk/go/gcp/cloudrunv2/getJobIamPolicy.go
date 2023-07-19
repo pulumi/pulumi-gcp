@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupJobIamPolicy(ctx *pulumi.Context, args *LookupJobIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupJobIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupJobIamPolicyResult
 	err := ctx.Invoke("gcp:cloudrunv2/getJobIamPolicy:getJobIamPolicy", args, &rv, opts...)
 	if err != nil {

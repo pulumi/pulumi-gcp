@@ -14,15 +14,159 @@ import com.pulumi.gcp.cloudbuildv2.outputs.GetConnectionIamPolicyResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class Cloudbuildv2Functions {
+    /**
+     * Retrieves the current IAM policy data for connection
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudbuildv2.Cloudbuildv2Functions;
+     * import com.pulumi.gcp.cloudbuildv2.inputs.GetConnectionIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = Cloudbuildv2Functions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
+     *             .project(google_cloudbuildv2_connection.my-connection().project())
+     *             .location(google_cloudbuildv2_connection.my-connection().location())
+     *             .name(google_cloudbuildv2_connection.my-connection().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetConnectionIamPolicyResult> getConnectionIamPolicy(GetConnectionIamPolicyArgs args) {
         return getConnectionIamPolicy(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves the current IAM policy data for connection
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudbuildv2.Cloudbuildv2Functions;
+     * import com.pulumi.gcp.cloudbuildv2.inputs.GetConnectionIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = Cloudbuildv2Functions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
+     *             .project(google_cloudbuildv2_connection.my-connection().project())
+     *             .location(google_cloudbuildv2_connection.my-connection().location())
+     *             .name(google_cloudbuildv2_connection.my-connection().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetConnectionIamPolicyResult> getConnectionIamPolicyPlain(GetConnectionIamPolicyPlainArgs args) {
         return getConnectionIamPolicyPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves the current IAM policy data for connection
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudbuildv2.Cloudbuildv2Functions;
+     * import com.pulumi.gcp.cloudbuildv2.inputs.GetConnectionIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = Cloudbuildv2Functions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
+     *             .project(google_cloudbuildv2_connection.my-connection().project())
+     *             .location(google_cloudbuildv2_connection.my-connection().location())
+     *             .name(google_cloudbuildv2_connection.my-connection().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetConnectionIamPolicyResult> getConnectionIamPolicy(GetConnectionIamPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:cloudbuildv2/getConnectionIamPolicy:getConnectionIamPolicy", TypeShape.of(GetConnectionIamPolicyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Retrieves the current IAM policy data for connection
+     * 
+     * ## example
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudbuildv2.Cloudbuildv2Functions;
+     * import com.pulumi.gcp.cloudbuildv2.inputs.GetConnectionIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = Cloudbuildv2Functions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
+     *             .project(google_cloudbuildv2_connection.my-connection().project())
+     *             .location(google_cloudbuildv2_connection.my-connection().location())
+     *             .name(google_cloudbuildv2_connection.my-connection().name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetConnectionIamPolicyResult> getConnectionIamPolicyPlain(GetConnectionIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:cloudbuildv2/getConnectionIamPolicy:getConnectionIamPolicy", TypeShape.of(GetConnectionIamPolicyResult.class), args, Utilities.withVersion(options));
     }

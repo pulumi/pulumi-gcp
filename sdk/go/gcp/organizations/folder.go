@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -107,6 +108,7 @@ func NewFolder(ctx *pulumi.Context,
 	if args.Parent == nil {
 		return nil, errors.New("invalid value for required argument 'Parent'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Folder
 	err := ctx.RegisterResource("gcp:organizations/folder:Folder", name, args, &resource, opts...)
 	if err != nil {

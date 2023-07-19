@@ -109,9 +109,9 @@ def get_backup_plan_iam_policy(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.gkebackup.get_backup_plan_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.gkebackup.get_backup_plan_iam_policy(project=google_gke_backup_backup_plan["basic"]["project"],
+        location=google_gke_backup_backup_plan["basic"]["location"],
+        name=google_gke_backup_backup_plan["basic"]["name"])
     ```
 
 
@@ -129,12 +129,12 @@ def get_backup_plan_iam_policy(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:gkebackup/getBackupPlanIamPolicy:getBackupPlanIamPolicy', __args__, opts=opts, typ=GetBackupPlanIamPolicyResult).value
 
     return AwaitableGetBackupPlanIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        location=__ret__.location,
-        name=__ret__.name,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        name=pulumi.get(__ret__, 'name'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_backup_plan_iam_policy)
@@ -151,9 +151,9 @@ def get_backup_plan_iam_policy_output(location: Optional[pulumi.Input[Optional[s
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.gkebackup.get_backup_plan_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.gkebackup.get_backup_plan_iam_policy(project=google_gke_backup_backup_plan["basic"]["project"],
+        location=google_gke_backup_backup_plan["basic"]["location"],
+        name=google_gke_backup_backup_plan["basic"]["name"])
     ```
 
 

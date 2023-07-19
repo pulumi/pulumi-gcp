@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func GetAndroidAppConfig(ctx *pulumi.Context, args *GetAndroidAppConfigArgs, opts ...pulumi.InvokeOption) (*GetAndroidAppConfigResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAndroidAppConfigResult
 	err := ctx.Invoke("gcp:firebase/getAndroidAppConfig:getAndroidAppConfig", args, &rv, opts...)
 	if err != nil {

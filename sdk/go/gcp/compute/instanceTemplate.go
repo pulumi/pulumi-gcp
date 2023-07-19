@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,10 +67,41 @@ import (
 //					AutomaticRestart: pulumi.Bool(true),
 //				},
 //				Metadata: pulumi.AnyMap{
-//					"gce-software-declaration": pulumi.Any("{\n  \"softwareRecipes\": [{\n    \"name\": \"install-gce-service-proxy-agent\",\n    \"desired_state\": \"INSTALLED\",\n    \"installSteps\": [{\n      \"scriptRun\": {\n        \"script\": \"#! /bin/bash\\nZONE=$(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )\\nexport SERVICE_PROXY_AGENT_DIRECTORY=$(mktemp -d)\\nsudo gsutil cp   gs://gce-service-proxy-\"$ZONE\"/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   \"$SERVICE_PROXY_AGENT_DIRECTORY\"   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     \"$SERVICE_PROXY_AGENT_DIRECTORY\"\\nsudo tar -xzf \"$SERVICE_PROXY_AGENT_DIRECTORY\"/service-proxy-agent-0.2.tgz -C \"$SERVICE_PROXY_AGENT_DIRECTORY\"\\n\"$SERVICE_PROXY_AGENT_DIRECTORY\"/service-proxy-agent/service-proxy-agent-bootstrap.sh\"\n      }\n    }]\n  }]\n}\n"),
-//					"gce-service-proxy":        pulumi.Any("{\n  \"api-version\": \"0.2\",\n  \"proxy-spec\": {\n    \"proxy-port\": 15001,\n    \"network\": \"my-network\",\n    \"tracing\": \"ON\",\n    \"access-log\": \"/var/log/envoy/access.log\"\n  }\n  \"service\": {\n    \"serving-ports\": [80, 81]\n  },\n \"labels\": {\n   \"app_name\": \"bookserver_app\",\n   \"app_version\": \"STABLE\"\n  }\n}\n"),
-//					"enable-guest-attributes":  pulumi.Any("true"),
-//					"enable-osconfig":          pulumi.Any("true"),
+//					"gce-software-declaration": pulumi.Any(`{
+//	  "softwareRecipes": [{
+//	    "name": "install-gce-service-proxy-agent",
+//	    "desired_state": "INSTALLED",
+//	    "installSteps": [{
+//	      "scriptRun": {
+//	        "script": "#! /bin/bash\nZONE=$(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )\nexport SERVICE_PROXY_AGENT_DIRECTORY=$(mktemp -d)\nsudo gsutil cp   gs://gce-service-proxy-"$ZONE"/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   "$SERVICE_PROXY_AGENT_DIRECTORY"   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     "$SERVICE_PROXY_AGENT_DIRECTORY"\nsudo tar -xzf "$SERVICE_PROXY_AGENT_DIRECTORY"/service-proxy-agent-0.2.tgz -C "$SERVICE_PROXY_AGENT_DIRECTORY"\n"$SERVICE_PROXY_AGENT_DIRECTORY"/service-proxy-agent/service-proxy-agent-bootstrap.sh"
+//	      }
+//	    }]
+//	  }]
+//	}
+//
+// `),
+//
+//					"gce-service-proxy": pulumi.Any(`{
+//	  "api-version": "0.2",
+//	  "proxy-spec": {
+//	    "proxy-port": 15001,
+//	    "network": "my-network",
+//	    "tracing": "ON",
+//	    "access-log": "/var/log/envoy/access.log"
+//	  }
+//	  "service": {
+//	    "serving-ports": [80, 81]
+//	  },
+//	 "labels": {
+//	   "app_name": "bookserver_app",
+//	   "app_version": "STABLE"
+//	  }
+//	}
+//
+// `),
+//
+//					"enable-guest-attributes": pulumi.Any("true"),
+//					"enable-osconfig":         pulumi.Any("true"),
 //				},
 //				ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
 //					Email: *pulumi.String(_default.Email),
@@ -312,6 +344,7 @@ func NewInstanceTemplate(ctx *pulumi.Context,
 	if args.MachineType == nil {
 		return nil, errors.New("invalid value for required argument 'MachineType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InstanceTemplate
 	err := ctx.RegisterResource("gcp:compute/instanceTemplate:InstanceTemplate", name, args, &resource, opts...)
 	if err != nil {

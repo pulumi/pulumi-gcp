@@ -19,6 +19,7 @@ class TargetArgs:
                  location: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  anthos_cluster: Optional[pulumi.Input['TargetAnthosClusterArgs']] = None,
+                 deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  execution_configs: Optional[pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]]] = None,
                  gke: Optional[pulumi.Input['TargetGkeArgs']] = None,
@@ -33,6 +34,7 @@ class TargetArgs:
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         :param pulumi.Input['TargetAnthosClusterArgs'] anthos_cluster: Information specifying an Anthos Cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[str] description: Optional. Description of the `Target`. Max length is 255 characters.
         :param pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
         :param pulumi.Input['TargetGkeArgs'] gke: Information specifying a GKE Cluster.
@@ -52,6 +54,8 @@ class TargetArgs:
             pulumi.set(__self__, "annotations", annotations)
         if anthos_cluster is not None:
             pulumi.set(__self__, "anthos_cluster", anthos_cluster)
+        if deploy_parameters is not None:
+            pulumi.set(__self__, "deploy_parameters", deploy_parameters)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if execution_configs is not None:
@@ -106,6 +110,18 @@ class TargetArgs:
     @anthos_cluster.setter
     def anthos_cluster(self, value: Optional[pulumi.Input['TargetAnthosClusterArgs']]):
         pulumi.set(self, "anthos_cluster", value)
+
+    @property
+    @pulumi.getter(name="deployParameters")
+    def deploy_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. The deploy parameters to use for this target.
+        """
+        return pulumi.get(self, "deploy_parameters")
+
+    @deploy_parameters.setter
+    def deploy_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "deploy_parameters", value)
 
     @property
     @pulumi.getter
@@ -226,6 +242,7 @@ class _TargetState:
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  anthos_cluster: Optional[pulumi.Input['TargetAnthosClusterArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  execution_configs: Optional[pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]]] = None,
@@ -245,6 +262,7 @@ class _TargetState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         :param pulumi.Input['TargetAnthosClusterArgs'] anthos_cluster: Information specifying an Anthos Cluster.
         :param pulumi.Input[str] create_time: Output only. Time at which the `Target` was created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[str] description: Optional. Description of the `Target`. Max length is 255 characters.
         :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Sequence[pulumi.Input['TargetExecutionConfigArgs']]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
@@ -270,6 +288,8 @@ class _TargetState:
             pulumi.set(__self__, "anthos_cluster", anthos_cluster)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deploy_parameters is not None:
+            pulumi.set(__self__, "deploy_parameters", deploy_parameters)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if etag is not None:
@@ -334,6 +354,18 @@ class _TargetState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="deployParameters")
+    def deploy_parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. The deploy parameters to use for this target.
+        """
+        return pulumi.get(self, "deploy_parameters")
+
+    @deploy_parameters.setter
+    def deploy_parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "deploy_parameters", value)
 
     @property
     @pulumi.getter
@@ -515,6 +547,7 @@ class Target(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  anthos_cluster: Optional[pulumi.Input[pulumi.InputType['TargetAnthosClusterArgs']]] = None,
+                 deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  execution_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetExecutionConfigArgs']]]]] = None,
                  gke: Optional[pulumi.Input[pulumi.InputType['TargetGkeArgs']]] = None,
@@ -542,6 +575,7 @@ class Target(pulumi.CustomResource):
                 "my_first_annotation": "example-annotation-1",
                 "my_second_annotation": "example-annotation-2",
             },
+            deploy_parameters={},
             description="multi-target description",
             execution_configs=[gcp.clouddeploy.TargetExecutionConfigArgs(
                 usages=[
@@ -576,6 +610,7 @@ class Target(pulumi.CustomResource):
                 "my_first_annotation": "example-annotation-1",
                 "my_second_annotation": "example-annotation-2",
             },
+            deploy_parameters={},
             description="basic description",
             execution_configs=[gcp.clouddeploy.TargetExecutionConfigArgs(
                 usages=[
@@ -605,6 +640,9 @@ class Target(pulumi.CustomResource):
             annotations={
                 "my_first_annotation": "example-annotation-1",
                 "my_second_annotation": "example-annotation-2",
+            },
+            deploy_parameters={
+                "deployParameterKey": "deployParameterValue",
             },
             description="basic description",
             gke=gcp.clouddeploy.TargetGkeArgs(
@@ -639,6 +677,7 @@ class Target(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         :param pulumi.Input[pulumi.InputType['TargetAnthosClusterArgs']] anthos_cluster: Information specifying an Anthos Cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[str] description: Optional. Description of the `Target`. Max length is 255 characters.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetExecutionConfigArgs']]]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
         :param pulumi.Input[pulumi.InputType['TargetGkeArgs']] gke: Information specifying a GKE Cluster.
@@ -676,6 +715,7 @@ class Target(pulumi.CustomResource):
                 "my_first_annotation": "example-annotation-1",
                 "my_second_annotation": "example-annotation-2",
             },
+            deploy_parameters={},
             description="multi-target description",
             execution_configs=[gcp.clouddeploy.TargetExecutionConfigArgs(
                 usages=[
@@ -710,6 +750,7 @@ class Target(pulumi.CustomResource):
                 "my_first_annotation": "example-annotation-1",
                 "my_second_annotation": "example-annotation-2",
             },
+            deploy_parameters={},
             description="basic description",
             execution_configs=[gcp.clouddeploy.TargetExecutionConfigArgs(
                 usages=[
@@ -739,6 +780,9 @@ class Target(pulumi.CustomResource):
             annotations={
                 "my_first_annotation": "example-annotation-1",
                 "my_second_annotation": "example-annotation-2",
+            },
+            deploy_parameters={
+                "deployParameterKey": "deployParameterValue",
             },
             description="basic description",
             gke=gcp.clouddeploy.TargetGkeArgs(
@@ -786,6 +830,7 @@ class Target(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  anthos_cluster: Optional[pulumi.Input[pulumi.InputType['TargetAnthosClusterArgs']]] = None,
+                 deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  execution_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetExecutionConfigArgs']]]]] = None,
                  gke: Optional[pulumi.Input[pulumi.InputType['TargetGkeArgs']]] = None,
@@ -807,6 +852,7 @@ class Target(pulumi.CustomResource):
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["anthos_cluster"] = anthos_cluster
+            __props__.__dict__["deploy_parameters"] = deploy_parameters
             __props__.__dict__["description"] = description
             __props__.__dict__["execution_configs"] = execution_configs
             __props__.__dict__["gke"] = gke
@@ -837,6 +883,7 @@ class Target(pulumi.CustomResource):
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             anthos_cluster: Optional[pulumi.Input[pulumi.InputType['TargetAnthosClusterArgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             execution_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetExecutionConfigArgs']]]]] = None,
@@ -861,6 +908,7 @@ class Target(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         :param pulumi.Input[pulumi.InputType['TargetAnthosClusterArgs']] anthos_cluster: Information specifying an Anthos Cluster.
         :param pulumi.Input[str] create_time: Output only. Time at which the `Target` was created.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[str] description: Optional. Description of the `Target`. Max length is 255 characters.
         :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TargetExecutionConfigArgs']]]] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
@@ -887,6 +935,7 @@ class Target(pulumi.CustomResource):
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["anthos_cluster"] = anthos_cluster
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deploy_parameters"] = deploy_parameters
         __props__.__dict__["description"] = description
         __props__.__dict__["etag"] = etag
         __props__.__dict__["execution_configs"] = execution_configs
@@ -926,6 +975,14 @@ class Target(pulumi.CustomResource):
         Output only. Time at which the `Target` was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deployParameters")
+    def deploy_parameters(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Optional. The deploy parameters to use for this target.
+        """
+        return pulumi.get(self, "deploy_parameters")
 
     @property
     @pulumi.getter

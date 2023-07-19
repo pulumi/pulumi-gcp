@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGithubConfigArgs;
 import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGithubEnterpriseConfigArgs;
+import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGitlabConfigArgs;
 import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionInstallationStateArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -112,6 +113,21 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+     * 
+     */
+    @Import(name="gitlabConfig")
+    private @Nullable Output<ConnectionGitlabConfigArgs> gitlabConfig;
+
+    /**
+     * @return Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+     * 
+     */
+    public Optional<Output<ConnectionGitlabConfigArgs>> gitlabConfig() {
+        return Optional.ofNullable(this.gitlabConfig);
+    }
+
+    /**
      * Output only. Installation state of the Connection.
      * 
      */
@@ -144,16 +160,12 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     /**
      * Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -214,6 +226,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         this.etag = $.etag;
         this.githubConfig = $.githubConfig;
         this.githubEnterpriseConfig = $.githubEnterpriseConfig;
+        this.gitlabConfig = $.gitlabConfig;
         this.installationStates = $.installationStates;
         this.location = $.location;
         this.name = $.name;
@@ -367,6 +380,27 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param gitlabConfig Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitlabConfig(@Nullable Output<ConnectionGitlabConfigArgs> gitlabConfig) {
+            $.gitlabConfig = gitlabConfig;
+            return this;
+        }
+
+        /**
+         * @param gitlabConfig Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitlabConfig(ConnectionGitlabConfigArgs gitlabConfig) {
+            return gitlabConfig(Output.of(gitlabConfig));
+        }
+
+        /**
          * @param installationStates Output only. Installation state of the Connection.
          * 
          * @return builder
@@ -421,8 +455,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -433,8 +465,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
-         * 
-         * ***
          * 
          * @return builder
          * 

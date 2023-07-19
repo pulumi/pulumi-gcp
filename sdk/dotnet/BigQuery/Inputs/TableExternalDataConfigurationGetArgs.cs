@@ -85,6 +85,18 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<int>? MaxBadRecords { get; set; }
 
         /// <summary>
+        /// Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
+        /// </summary>
+        [Input("metadataCacheMode")]
+        public Input<string>? MetadataCacheMode { get; set; }
+
+        /// <summary>
+        /// Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
+        /// </summary>
+        [Input("objectMetadata")]
+        public Input<string>? ObjectMetadata { get; set; }
+
+        /// <summary>
         /// When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
         /// </summary>
         [Input("referenceFileSchemaUri")]
@@ -112,8 +124,8 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         /// in Bigquery's public API documentation for supported formats. To use "GOOGLE_SHEETS"
         /// the `scopes` must include "https://www.googleapis.com/auth/drive.readonly".
         /// </summary>
-        [Input("sourceFormat", required: true)]
-        public Input<string> SourceFormat { get; set; } = null!;
+        [Input("sourceFormat")]
+        public Input<string>? SourceFormat { get; set; }
 
         [Input("sourceUris", required: true)]
         private InputList<string>? _sourceUris;

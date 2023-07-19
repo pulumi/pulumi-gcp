@@ -79,6 +79,17 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies how long to keep a connection open, after completing a response,
+        /// while there is no matching traffic (in seconds). If an HTTP keepalive is
+        /// not specified, a default value (610 seconds) will be used. For Global
+        /// external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
+        /// the maximum allowed value is 1200 seconds. For Global external HTTP(S)
+        /// load balancer (classic), this option is not available publicly.
+        /// </summary>
+        [Output("httpKeepAliveTimeoutSec")]
+        public Output<int?> HttpKeepAliveTimeoutSec { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is
         /// created. The name must be 1-63 characters long, and comply with
         /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -179,6 +190,17 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Specifies how long to keep a connection open, after completing a response,
+        /// while there is no matching traffic (in seconds). If an HTTP keepalive is
+        /// not specified, a default value (610 seconds) will be used. For Global
+        /// external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
+        /// the maximum allowed value is 1200 seconds. For Global external HTTP(S)
+        /// load balancer (classic), this option is not available publicly.
+        /// </summary>
+        [Input("httpKeepAliveTimeoutSec")]
+        public Input<int>? HttpKeepAliveTimeoutSec { get; set; }
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is
         /// created. The name must be 1-63 characters long, and comply with
         /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -233,6 +255,17 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Specifies how long to keep a connection open, after completing a response,
+        /// while there is no matching traffic (in seconds). If an HTTP keepalive is
+        /// not specified, a default value (610 seconds) will be used. For Global
+        /// external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
+        /// the maximum allowed value is 1200 seconds. For Global external HTTP(S)
+        /// load balancer (classic), this option is not available publicly.
+        /// </summary>
+        [Input("httpKeepAliveTimeoutSec")]
+        public Input<int>? HttpKeepAliveTimeoutSec { get; set; }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is

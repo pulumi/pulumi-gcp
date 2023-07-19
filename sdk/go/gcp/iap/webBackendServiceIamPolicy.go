@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -313,6 +314,7 @@ func NewWebBackendServiceIamPolicy(ctx *pulumi.Context,
 	if args.WebBackendService == nil {
 		return nil, errors.New("invalid value for required argument 'WebBackendService'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WebBackendServiceIamPolicy
 	err := ctx.RegisterResource("gcp:iap/webBackendServiceIamPolicy:WebBackendServiceIamPolicy", name, args, &resource, opts...)
 	if err != nil {

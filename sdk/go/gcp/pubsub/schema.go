@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -35,8 +36,24 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := pubsub.NewSchema(ctx, "example", &pubsub.SchemaArgs{
-//				Definition: pulumi.String("{\n  \"type\" : \"record\",\n  \"name\" : \"Avro\",\n  \"fields\" : [\n    {\n      \"name\" : \"StringField\",\n      \"type\" : \"string\"\n    },\n    {\n      \"name\" : \"IntField\",\n      \"type\" : \"int\"\n    }\n  ]\n}\n\n"),
-//				Type:       pulumi.String("AVRO"),
+//				Definition: pulumi.String(`{
+//	  "type" : "record",
+//	  "name" : "Avro",
+//	  "fields" : [
+//	    {
+//	      "name" : "StringField",
+//	      "type" : "string"
+//	    },
+//	    {
+//	      "name" : "IntField",
+//	      "type" : "int"
+//	    }
+//	  ]
+//	}
+//
+// `),
+//
+//				Type: pulumi.String("AVRO"),
 //			})
 //			if err != nil {
 //				return err
@@ -61,8 +78,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			exampleSchema, err := pubsub.NewSchema(ctx, "exampleSchema", &pubsub.SchemaArgs{
-//				Type:       pulumi.String("PROTOCOL_BUFFER"),
-//				Definition: pulumi.String("syntax = \"proto3\";\nmessage Results {\nstring message_request = 1;\nstring message_response = 2;\nstring timestamp_request = 3;\nstring timestamp_response = 4;\n}"),
+//				Type: pulumi.String("PROTOCOL_BUFFER"),
+//				Definition: pulumi.String(`syntax = "proto3";
+//
+// message Results {
+// string message_request = 1;
+// string message_response = 2;
+// string timestamp_request = 3;
+// string timestamp_response = 4;
+// }`),
+//
 //			})
 //			if err != nil {
 //				return err
@@ -132,6 +157,7 @@ func NewSchema(ctx *pulumi.Context,
 		args = &SchemaArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Schema
 	err := ctx.RegisterResource("gcp:pubsub/schema:Schema", name, args, &resource, opts...)
 	if err != nil {

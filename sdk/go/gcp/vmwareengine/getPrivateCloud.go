@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +38,7 @@ import (
 //
 // ```
 func LookupPrivateCloud(ctx *pulumi.Context, args *LookupPrivateCloudArgs, opts ...pulumi.InvokeOption) (*LookupPrivateCloudResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrivateCloudResult
 	err := ctx.Invoke("gcp:vmwareengine/getPrivateCloud:getPrivateCloud", args, &rv, opts...)
 	if err != nil {

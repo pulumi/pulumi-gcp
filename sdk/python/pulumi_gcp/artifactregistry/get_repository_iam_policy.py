@@ -109,9 +109,9 @@ def get_repository_iam_policy(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.artifactregistry.get_repository_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        repository=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.artifactregistry.get_repository_iam_policy(project=google_artifact_registry_repository["my-repo"]["project"],
+        location=google_artifact_registry_repository["my-repo"]["location"],
+        repository=google_artifact_registry_repository["my-repo"]["name"])
     ```
 
 
@@ -129,12 +129,12 @@ def get_repository_iam_policy(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:artifactregistry/getRepositoryIamPolicy:getRepositoryIamPolicy', __args__, opts=opts, typ=GetRepositoryIamPolicyResult).value
 
     return AwaitableGetRepositoryIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        location=__ret__.location,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project,
-        repository=__ret__.repository)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'),
+        repository=pulumi.get(__ret__, 'repository'))
 
 
 @_utilities.lift_output_func(get_repository_iam_policy)
@@ -151,9 +151,9 @@ def get_repository_iam_policy_output(location: Optional[pulumi.Input[Optional[st
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.artifactregistry.get_repository_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        repository=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.artifactregistry.get_repository_iam_policy(project=google_artifact_registry_repository["my-repo"]["project"],
+        location=google_artifact_registry_repository["my-repo"]["location"],
+        repository=google_artifact_registry_repository["my-repo"]["name"])
     ```
 
 

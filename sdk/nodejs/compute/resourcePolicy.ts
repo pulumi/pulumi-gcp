@@ -146,12 +146,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const cgroup = new gcp.compute.ResourcePolicy("cgroup", {
- *     region: "europe-west1",
  *     diskConsistencyGroupPolicy: {
  *         enabled: true,
  *     },
- * }, {
- *     provider: google_beta,
+ *     region: "europe-west1",
  * });
  * ```
  *
@@ -209,6 +207,7 @@ export class ResourcePolicy extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * Replication consistency group for asynchronous disk replication.
+     * Structure is documented below.
      */
     public readonly diskConsistencyGroupPolicy!: pulumi.Output<outputs.compute.ResourcePolicyDiskConsistencyGroupPolicy | undefined>;
     /**
@@ -302,6 +301,7 @@ export interface ResourcePolicyState {
     description?: pulumi.Input<string>;
     /**
      * Replication consistency group for asynchronous disk replication.
+     * Structure is documented below.
      */
     diskConsistencyGroupPolicy?: pulumi.Input<inputs.compute.ResourcePolicyDiskConsistencyGroupPolicy>;
     /**
@@ -357,6 +357,7 @@ export interface ResourcePolicyArgs {
     description?: pulumi.Input<string>;
     /**
      * Replication consistency group for asynchronous disk replication.
+     * Structure is documented below.
      */
     diskConsistencyGroupPolicy?: pulumi.Input<inputs.compute.ResourcePolicyDiskConsistencyGroupPolicy>;
     /**

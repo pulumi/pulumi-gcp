@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -159,6 +160,7 @@ func NewRelease(ctx *pulumi.Context,
 	if args.RulesetName == nil {
 		return nil, errors.New("invalid value for required argument 'RulesetName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Release
 	err := ctx.RegisterResource("gcp:firebaserules/release:Release", name, args, &resource, opts...)
 	if err != nil {

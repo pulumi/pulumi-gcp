@@ -325,7 +325,7 @@ class TransferJob(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.storage.get_transfer_project_service_account(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+        default = gcp.storage.get_transfer_project_service_account(project=var["project"])
         s3_backup_bucket_bucket = gcp.storage.Bucket("s3-backup-bucketBucket",
             storage_class="NEARLINE",
             project=var["project"],
@@ -352,10 +352,10 @@ class TransferJob(pulumi.CustomResource):
                     delete_objects_unique_in_sink=False,
                 ),
                 aws_s3_data_source=gcp.storage.TransferJobTransferSpecAwsS3DataSourceArgs(
-                    bucket_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    bucket_name=var["aws_s3_bucket"],
                     aws_access_key=gcp.storage.TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs(
-                        access_key_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-                        secret_access_key=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        access_key_id=var["aws_access_key"],
+                        secret_access_key=var["aws_secret_key"],
                     ),
                 ),
                 gcs_data_sink=gcp.storage.TransferJobTransferSpecGcsDataSinkArgs(
@@ -440,7 +440,7 @@ class TransferJob(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.storage.get_transfer_project_service_account(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+        default = gcp.storage.get_transfer_project_service_account(project=var["project"])
         s3_backup_bucket_bucket = gcp.storage.Bucket("s3-backup-bucketBucket",
             storage_class="NEARLINE",
             project=var["project"],
@@ -467,10 +467,10 @@ class TransferJob(pulumi.CustomResource):
                     delete_objects_unique_in_sink=False,
                 ),
                 aws_s3_data_source=gcp.storage.TransferJobTransferSpecAwsS3DataSourceArgs(
-                    bucket_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    bucket_name=var["aws_s3_bucket"],
                     aws_access_key=gcp.storage.TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs(
-                        access_key_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-                        secret_access_key=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        access_key_id=var["aws_access_key"],
+                        secret_access_key=var["aws_secret_key"],
                     ),
                 ),
                 gcs_data_sink=gcp.storage.TransferJobTransferSpecGcsDataSinkArgs(

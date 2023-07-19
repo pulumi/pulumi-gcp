@@ -227,14 +227,10 @@ import * as utilities from "../utilities";
  *             oauthTokenSecretVersion: "projects/my-project/secrets/github-pat-secret/versions/latest",
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const my_repository = new gcp.cloudbuildv2.Repository("my-repository", {
  *     parentConnection: my_connection.id,
  *     remoteUri: "https://github.com/myuser/my-repo.git",
- * }, {
- *     provider: google_beta,
  * });
  * const repo_trigger = new gcp.cloudbuild.Trigger("repo-trigger", {
  *     location: "us-central1",
@@ -245,8 +241,6 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     filename: "cloudbuild.yaml",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Cloudbuild Trigger Bitbucket Server Push
@@ -323,18 +317,12 @@ import * as utilities from "../utilities";
  *             oauthTokenSecretVersion: "projects/my-project/secrets/github-pat-secret/versions/latest",
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const my_repository = new gcp.cloudbuildv2.Repository("my-repository", {
  *     parentConnection: my_connection.id,
  *     remoteUri: "https://github.com/myuser/my-repo.git",
- * }, {
- *     provider: google_beta,
  * });
- * const mytopic = new gcp.pubsub.Topic("mytopic", {}, {
- *     provider: google_beta,
- * });
+ * const mytopic = new gcp.pubsub.Topic("mytopic", {});
  * const pubsub_with_repo_trigger = new gcp.cloudbuild.Trigger("pubsub-with-repo-trigger", {
  *     location: "us-central1",
  *     pubsubConfig: {
@@ -351,8 +339,6 @@ import * as utilities from "../utilities";
  *         revision: "refs/heads/main",
  *         repoType: "GITHUB",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *
@@ -506,6 +492,7 @@ export class Trigger extends pulumi.CustomResource {
     public readonly pubsubConfig!: pulumi.Output<outputs.cloudbuild.TriggerPubsubConfig | undefined>;
     /**
      * The configuration of a trigger that creates a build whenever an event from Repo API is received.
+     * Structure is documented below.
      */
     public readonly repositoryEventConfig!: pulumi.Output<outputs.cloudbuild.TriggerRepositoryEventConfig | undefined>;
     /**
@@ -731,6 +718,7 @@ export interface TriggerState {
     pubsubConfig?: pulumi.Input<inputs.cloudbuild.TriggerPubsubConfig>;
     /**
      * The configuration of a trigger that creates a build whenever an event from Repo API is received.
+     * Structure is documented below.
      */
     repositoryEventConfig?: pulumi.Input<inputs.cloudbuild.TriggerRepositoryEventConfig>;
     /**
@@ -882,6 +870,7 @@ export interface TriggerArgs {
     pubsubConfig?: pulumi.Input<inputs.cloudbuild.TriggerPubsubConfig>;
     /**
      * The configuration of a trigger that creates a build whenever an event from Repo API is received.
+     * Structure is documented below.
      */
     repositoryEventConfig?: pulumi.Input<inputs.cloudbuild.TriggerRepositoryEventConfig>;
     /**

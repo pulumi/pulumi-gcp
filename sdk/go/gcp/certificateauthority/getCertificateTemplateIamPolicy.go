@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func LookupCertificateTemplateIamPolicy(ctx *pulumi.Context, args *LookupCertificateTemplateIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupCertificateTemplateIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCertificateTemplateIamPolicyResult
 	err := ctx.Invoke("gcp:certificateauthority/getCertificateTemplateIamPolicy:getCertificateTemplateIamPolicy", args, &rv, opts...)
 	if err != nil {

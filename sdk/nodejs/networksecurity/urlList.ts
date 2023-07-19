@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * UrlList proto helps users to set reusable, independently manageable lists of hosts, host patterns, URLs, URL patterns.
+ *
+ * To get more information about UrlLists, see:
+ *
+ * * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.urlLists)
+ * * How-to Guides
+ *     * Use UrlLists
+ *
  * ## Example Usage
  * ### Network Security Url Lists Basic
  *
@@ -15,8 +23,6 @@ import * as utilities from "../utilities";
  * const _default = new gcp.networksecurity.UrlList("default", {
  *     location: "us-central1",
  *     values: ["www.example.com"],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Network Security Url Lists Advanced
@@ -26,15 +32,13 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networksecurity.UrlList("default", {
- *     location: "us-central1",
  *     description: "my description",
+ *     location: "us-central1",
  *     values: [
  *         "www.example.com",
  *         "about.example.com",
  *         "github.com/example-org/*",
  *     ],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

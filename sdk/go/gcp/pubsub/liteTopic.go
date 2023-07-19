@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -129,6 +130,7 @@ func NewLiteTopic(ctx *pulumi.Context,
 		args = &LiteTopicArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LiteTopic
 	err := ctx.RegisterResource("gcp:pubsub/liteTopic:LiteTopic", name, args, &resource, opts...)
 	if err != nil {

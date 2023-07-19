@@ -252,19 +252,19 @@ public final class RouterPeerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * IP address of the BGP interface outside Google Cloud Platform.
-     * Only IPv4 is supported.
+     * Only IPv4 is supported. Required if `ip_address` is set.
      * 
      */
-    @Import(name="peerIpAddress", required=true)
-    private Output<String> peerIpAddress;
+    @Import(name="peerIpAddress")
+    private @Nullable Output<String> peerIpAddress;
 
     /**
      * @return IP address of the BGP interface outside Google Cloud Platform.
-     * Only IPv4 is supported.
+     * Only IPv4 is supported. Required if `ip_address` is set.
      * 
      */
-    public Output<String> peerIpAddress() {
-        return this.peerIpAddress;
+    public Optional<Output<String>> peerIpAddress() {
+        return Optional.ofNullable(this.peerIpAddress);
     }
 
     /**
@@ -733,19 +733,19 @@ public final class RouterPeerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param peerIpAddress IP address of the BGP interface outside Google Cloud Platform.
-         * Only IPv4 is supported.
+         * Only IPv4 is supported. Required if `ip_address` is set.
          * 
          * @return builder
          * 
          */
-        public Builder peerIpAddress(Output<String> peerIpAddress) {
+        public Builder peerIpAddress(@Nullable Output<String> peerIpAddress) {
             $.peerIpAddress = peerIpAddress;
             return this;
         }
 
         /**
          * @param peerIpAddress IP address of the BGP interface outside Google Cloud Platform.
-         * Only IPv4 is supported.
+         * Only IPv4 is supported. Required if `ip_address` is set.
          * 
          * @return builder
          * 
@@ -882,7 +882,6 @@ public final class RouterPeerArgs extends com.pulumi.resources.ResourceArgs {
         public RouterPeerArgs build() {
             $.interface_ = Objects.requireNonNull($.interface_, "expected parameter 'interface' to be non-null");
             $.peerAsn = Objects.requireNonNull($.peerAsn, "expected parameter 'peerAsn' to be non-null");
-            $.peerIpAddress = Objects.requireNonNull($.peerIpAddress, "expected parameter 'peerIpAddress' to be non-null");
             $.router = Objects.requireNonNull($.router, "expected parameter 'router' to be non-null");
             return $;
         }

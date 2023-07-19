@@ -154,6 +154,11 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
      */
     public readonly interfaces!: pulumi.Output<outputs.compute.ExternalVpnGatewayInterface[] | undefined>;
     /**
+     * The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
+     */
+    public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
+    /**
      * Labels for the external VPN gateway resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -200,6 +205,7 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
             const state = argsOrState as ExternalVpnGatewayState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["interfaces"] = state ? state.interfaces : undefined;
+            resourceInputs["labelFingerprint"] = state ? state.labelFingerprint : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -213,6 +219,7 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["redundancyType"] = args ? args.redundancyType : undefined;
+            resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -233,6 +240,11 @@ export interface ExternalVpnGatewayState {
      * Structure is documented below.
      */
     interfaces?: pulumi.Input<pulumi.Input<inputs.compute.ExternalVpnGatewayInterface>[]>;
+    /**
+     * The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
+     */
+    labelFingerprint?: pulumi.Input<string>;
     /**
      * Labels for the external VPN gateway resource.
      */

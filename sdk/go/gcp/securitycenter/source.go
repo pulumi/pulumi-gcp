@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -100,6 +101,7 @@ func NewSource(ctx *pulumi.Context,
 	if args.Organization == nil {
 		return nil, errors.New("invalid value for required argument 'Organization'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Source
 	err := ctx.RegisterResource("gcp:securitycenter/source:Source", name, args, &resource, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -317,6 +318,7 @@ func NewFlexibleAppVersion(ctx *pulumi.Context,
 	if args.Service == nil {
 		return nil, errors.New("invalid value for required argument 'Service'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FlexibleAppVersion
 	err := ctx.RegisterResource("gcp:appengine/flexibleAppVersion:FlexibleAppVersion", name, args, &resource, opts...)
 	if err != nil {

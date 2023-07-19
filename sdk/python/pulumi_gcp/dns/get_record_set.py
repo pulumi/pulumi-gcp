@@ -140,13 +140,13 @@ def get_record_set(managed_zone: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:dns/getRecordSet:getRecordSet', __args__, opts=opts, typ=GetRecordSetResult).value
 
     return AwaitableGetRecordSetResult(
-        id=__ret__.id,
-        managed_zone=__ret__.managed_zone,
-        name=__ret__.name,
-        project=__ret__.project,
-        rrdatas=__ret__.rrdatas,
-        ttl=__ret__.ttl,
-        type=__ret__.type)
+        id=pulumi.get(__ret__, 'id'),
+        managed_zone=pulumi.get(__ret__, 'managed_zone'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        rrdatas=pulumi.get(__ret__, 'rrdatas'),
+        ttl=pulumi.get(__ret__, 'ttl'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_record_set)

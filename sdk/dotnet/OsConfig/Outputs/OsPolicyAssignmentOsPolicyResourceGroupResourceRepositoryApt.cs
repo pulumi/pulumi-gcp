@@ -14,23 +14,26 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt
     {
         /// <summary>
-        /// Required. Type of archive files in this repository. Possible values: ARCHIVE_TYPE_UNSPECIFIED, DEB, DEB_SRC
+        /// Type of archive files in this repository.
+        /// Possible values are: `ARCHIVE_TYPE_UNSPECIFIED`, `DEB`, `DEB_SRC`.
         /// </summary>
         public readonly string ArchiveType;
         /// <summary>
-        /// Required. List of components for this repository. Must contain at least one item.
+        /// List of components for this repository. Must
+        /// contain at least one item.
         /// </summary>
         public readonly ImmutableArray<string> Components;
         /// <summary>
-        /// Required. Distribution of this repository.
+        /// Distribution of this repository.
         /// </summary>
         public readonly string Distribution;
         /// <summary>
-        /// URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+        /// URI of the key file for this repository. The agent
+        /// maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
         /// </summary>
         public readonly string? GpgKey;
         /// <summary>
-        /// Required. URI for this repository.
+        /// URI for this repository.
         /// </summary>
         public readonly string Uri;
 

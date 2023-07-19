@@ -29,6 +29,7 @@ class DiskArgs:
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provisioned_iops: Optional[pulumi.Input[int]] = None,
+                 provisioned_throughput: Optional[pulumi.Input[int]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot: Optional[pulumi.Input[str]] = None,
@@ -40,6 +41,7 @@ class DiskArgs:
         """
         The set of arguments for constructing a Disk resource.
         :param pulumi.Input['DiskAsyncPrimaryDiskArgs'] async_primary_disk: A nested object resource
+               Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input['DiskDiskEncryptionKeyArgs'] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
@@ -86,7 +88,11 @@ class DiskArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] provisioned_iops: Indicates how many IOPS must be provisioned for the disk.
-               Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+               Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+               allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
+        :param pulumi.Input[int] provisioned_throughput: Indicates how much Throughput must be provisioned for the disk.
+               Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+               allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
                ~>**NOTE** This value does not support updating the
                resource policy, as resource policies can not be updated more than
@@ -156,6 +162,8 @@ class DiskArgs:
             pulumi.set(__self__, "project", project)
         if provisioned_iops is not None:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
         if resource_policies is not None:
             pulumi.set(__self__, "resource_policies", resource_policies)
         if size is not None:
@@ -178,6 +186,7 @@ class DiskArgs:
     def async_primary_disk(self) -> Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']]:
         """
         A nested object resource
+        Structure is documented below.
         """
         return pulumi.get(self, "async_primary_disk")
 
@@ -259,6 +268,9 @@ class DiskArgs:
         """
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         """
+        warnings.warn("""This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""", DeprecationWarning)
+        pulumi.log.warn("""interface is deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""")
+
         return pulumi.get(self, "interface")
 
     @interface.setter
@@ -356,13 +368,28 @@ class DiskArgs:
     def provisioned_iops(self) -> Optional[pulumi.Input[int]]:
         """
         Indicates how many IOPS must be provisioned for the disk.
-        Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+        Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+        allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
         """
         return pulumi.get(self, "provisioned_iops")
 
     @provisioned_iops.setter
     def provisioned_iops(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "provisioned_iops", value)
+
+    @property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> Optional[pulumi.Input[int]]:
+        """
+        Indicates how much Throughput must be provisioned for the disk.
+        Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+        allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
+        """
+        return pulumi.get(self, "provisioned_throughput")
+
+    @provisioned_throughput.setter
+    def provisioned_throughput(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "provisioned_throughput", value)
 
     @property
     @pulumi.getter(name="resourcePolicies")
@@ -512,6 +539,7 @@ class _DiskState:
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provisioned_iops: Optional[pulumi.Input[int]] = None,
+                 provisioned_throughput: Optional[pulumi.Input[int]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None,
@@ -528,6 +556,7 @@ class _DiskState:
         """
         Input properties used for looking up and filtering Disk resources.
         :param pulumi.Input['DiskAsyncPrimaryDiskArgs'] async_primary_disk: A nested object resource
+               Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
@@ -579,7 +608,11 @@ class _DiskState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] provisioned_iops: Indicates how many IOPS must be provisioned for the disk.
-               Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+               Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+               allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
+        :param pulumi.Input[int] provisioned_throughput: Indicates how much Throughput must be provisioned for the disk.
+               Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+               allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
                ~>**NOTE** This value does not support updating the
                resource policy, as resource policies can not be updated more than
@@ -674,6 +707,8 @@ class _DiskState:
             pulumi.set(__self__, "project", project)
         if provisioned_iops is not None:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
         if resource_policies is not None:
             pulumi.set(__self__, "resource_policies", resource_policies)
         if self_link is not None:
@@ -706,6 +741,7 @@ class _DiskState:
     def async_primary_disk(self) -> Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']]:
         """
         A nested object resource
+        Structure is documented below.
         """
         return pulumi.get(self, "async_primary_disk")
 
@@ -799,6 +835,9 @@ class _DiskState:
         """
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         """
+        warnings.warn("""This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""", DeprecationWarning)
+        pulumi.log.warn("""interface is deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""")
+
         return pulumi.get(self, "interface")
 
     @interface.setter
@@ -933,13 +972,28 @@ class _DiskState:
     def provisioned_iops(self) -> Optional[pulumi.Input[int]]:
         """
         Indicates how many IOPS must be provisioned for the disk.
-        Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+        Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+        allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
         """
         return pulumi.get(self, "provisioned_iops")
 
     @provisioned_iops.setter
     def provisioned_iops(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "provisioned_iops", value)
+
+    @property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> Optional[pulumi.Input[int]]:
+        """
+        Indicates how much Throughput must be provisioned for the disk.
+        Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+        allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
+        """
+        return pulumi.get(self, "provisioned_throughput")
+
+    @provisioned_throughput.setter
+    def provisioned_throughput(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "provisioned_throughput", value)
 
     @property
     @pulumi.getter(name="resourcePolicies")
@@ -1159,6 +1213,7 @@ class Disk(pulumi.CustomResource):
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provisioned_iops: Optional[pulumi.Input[int]] = None,
+                 provisioned_throughput: Optional[pulumi.Input[int]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot: Optional[pulumi.Input[str]] = None,
@@ -1216,16 +1271,14 @@ class Disk(pulumi.CustomResource):
         primary = gcp.compute.Disk("primary",
             type="pd-ssd",
             zone="us-central1-a",
-            physical_block_size_bytes=4096,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            physical_block_size_bytes=4096)
         secondary = gcp.compute.Disk("secondary",
             type="pd-ssd",
             zone="us-east1-c",
             async_primary_disk=gcp.compute.DiskAsyncPrimaryDiskArgs(
                 disk=primary.id,
             ),
-            physical_block_size_bytes=4096,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            physical_block_size_bytes=4096)
         ```
         ### Disk Features
 
@@ -1277,6 +1330,7 @@ class Disk(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArgs']] async_primary_disk: A nested object resource
+               Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArgs']] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
@@ -1323,7 +1377,11 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] provisioned_iops: Indicates how many IOPS must be provisioned for the disk.
-               Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+               Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+               allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
+        :param pulumi.Input[int] provisioned_throughput: Indicates how much Throughput must be provisioned for the disk.
+               Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+               allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
                ~>**NOTE** This value does not support updating the
                resource policy, as resource policies can not be updated more than
@@ -1418,16 +1476,14 @@ class Disk(pulumi.CustomResource):
         primary = gcp.compute.Disk("primary",
             type="pd-ssd",
             zone="us-central1-a",
-            physical_block_size_bytes=4096,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            physical_block_size_bytes=4096)
         secondary = gcp.compute.Disk("secondary",
             type="pd-ssd",
             zone="us-east1-c",
             async_primary_disk=gcp.compute.DiskAsyncPrimaryDiskArgs(
                 disk=primary.id,
             ),
-            physical_block_size_bytes=4096,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            physical_block_size_bytes=4096)
         ```
         ### Disk Features
 
@@ -1504,6 +1560,7 @@ class Disk(pulumi.CustomResource):
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provisioned_iops: Optional[pulumi.Input[int]] = None,
+                 provisioned_throughput: Optional[pulumi.Input[int]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  snapshot: Optional[pulumi.Input[str]] = None,
@@ -1537,6 +1594,7 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["physical_block_size_bytes"] = physical_block_size_bytes
             __props__.__dict__["project"] = project
             __props__.__dict__["provisioned_iops"] = provisioned_iops
+            __props__.__dict__["provisioned_throughput"] = provisioned_throughput
             __props__.__dict__["resource_policies"] = resource_policies
             __props__.__dict__["size"] = size
             __props__.__dict__["snapshot"] = snapshot
@@ -1581,6 +1639,7 @@ class Disk(pulumi.CustomResource):
             physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             provisioned_iops: Optional[pulumi.Input[int]] = None,
+            provisioned_throughput: Optional[pulumi.Input[int]] = None,
             resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             size: Optional[pulumi.Input[int]] = None,
@@ -1602,6 +1661,7 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArgs']] async_primary_disk: A nested object resource
+               Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
@@ -1653,7 +1713,11 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[int] provisioned_iops: Indicates how many IOPS must be provisioned for the disk.
-               Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+               Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+               allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
+        :param pulumi.Input[int] provisioned_throughput: Indicates how much Throughput must be provisioned for the disk.
+               Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+               allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
                ~>**NOTE** This value does not support updating the
                resource policy, as resource policies can not be updated more than
@@ -1732,6 +1796,7 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["physical_block_size_bytes"] = physical_block_size_bytes
         __props__.__dict__["project"] = project
         __props__.__dict__["provisioned_iops"] = provisioned_iops
+        __props__.__dict__["provisioned_throughput"] = provisioned_throughput
         __props__.__dict__["resource_policies"] = resource_policies
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["size"] = size
@@ -1752,6 +1817,7 @@ class Disk(pulumi.CustomResource):
     def async_primary_disk(self) -> pulumi.Output[Optional['outputs.DiskAsyncPrimaryDisk']]:
         """
         A nested object resource
+        Structure is documented below.
         """
         return pulumi.get(self, "async_primary_disk")
 
@@ -1821,6 +1887,9 @@ class Disk(pulumi.CustomResource):
         """
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         """
+        warnings.warn("""This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""", DeprecationWarning)
+        pulumi.log.warn("""interface is deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""")
+
         return pulumi.get(self, "interface")
 
     @property
@@ -1915,9 +1984,20 @@ class Disk(pulumi.CustomResource):
     def provisioned_iops(self) -> pulumi.Output[int]:
         """
         Indicates how many IOPS must be provisioned for the disk.
-        Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+        Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+        allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
         """
         return pulumi.get(self, "provisioned_iops")
+
+    @property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> pulumi.Output[int]:
+        """
+        Indicates how much Throughput must be provisioned for the disk.
+        Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+        allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
+        """
+        return pulumi.get(self, "provisioned_throughput")
 
     @property
     @pulumi.getter(name="resourcePolicies")

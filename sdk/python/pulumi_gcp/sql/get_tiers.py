@@ -94,9 +94,9 @@ def get_tiers(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:sql/getTiers:getTiers', __args__, opts=opts, typ=GetTiersResult).value
 
     return AwaitableGetTiersResult(
-        id=__ret__.id,
-        project=__ret__.project,
-        tiers=__ret__.tiers)
+        id=pulumi.get(__ret__, 'id'),
+        project=pulumi.get(__ret__, 'project'),
+        tiers=pulumi.get(__ret__, 'tiers'))
 
 
 @_utilities.lift_output_func(get_tiers)

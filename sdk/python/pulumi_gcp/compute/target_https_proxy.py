@@ -17,6 +17,7 @@ class TargetHttpsProxyArgs:
                  url_map: pulumi.Input[str],
                  certificate_map: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 http_keep_alive_timeout_sec: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
@@ -34,6 +35,12 @@ class TargetHttpsProxyArgs:
                associated with the given target proxy. This field can only be set for global target proxies.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[int] http_keep_alive_timeout_sec: Specifies how long to keep a connection open, after completing a response,
+               while there is no matching traffic (in seconds). If an HTTP keepalive is
+               not specified, a default value (610 seconds) will be used. For Global
+               external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
+               the maximum allowed value is 1200 seconds. For Global external HTTP(S)
+               load balancer (classic), this option is not available publicly.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -63,6 +70,8 @@ class TargetHttpsProxyArgs:
             pulumi.set(__self__, "certificate_map", certificate_map)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if http_keep_alive_timeout_sec is not None:
+            pulumi.set(__self__, "http_keep_alive_timeout_sec", http_keep_alive_timeout_sec)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -117,6 +126,23 @@ class TargetHttpsProxyArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="httpKeepAliveTimeoutSec")
+    def http_keep_alive_timeout_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies how long to keep a connection open, after completing a response,
+        while there is no matching traffic (in seconds). If an HTTP keepalive is
+        not specified, a default value (610 seconds) will be used. For Global
+        external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
+        the maximum allowed value is 1200 seconds. For Global external HTTP(S)
+        load balancer (classic), this option is not available publicly.
+        """
+        return pulumi.get(self, "http_keep_alive_timeout_sec")
+
+    @http_keep_alive_timeout_sec.setter
+    def http_keep_alive_timeout_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "http_keep_alive_timeout_sec", value)
 
     @property
     @pulumi.getter
@@ -214,6 +240,7 @@ class _TargetHttpsProxyState:
                  certificate_map: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 http_keep_alive_timeout_sec: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
@@ -230,6 +257,12 @@ class _TargetHttpsProxyState:
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[int] http_keep_alive_timeout_sec: Specifies how long to keep a connection open, after completing a response,
+               while there is no matching traffic (in seconds). If an HTTP keepalive is
+               not specified, a default value (610 seconds) will be used. For Global
+               external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
+               the maximum allowed value is 1200 seconds. For Global external HTTP(S)
+               load balancer (classic), this option is not available publicly.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -267,6 +300,8 @@ class _TargetHttpsProxyState:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if http_keep_alive_timeout_sec is not None:
+            pulumi.set(__self__, "http_keep_alive_timeout_sec", http_keep_alive_timeout_sec)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -323,6 +358,23 @@ class _TargetHttpsProxyState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="httpKeepAliveTimeoutSec")
+    def http_keep_alive_timeout_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies how long to keep a connection open, after completing a response,
+        while there is no matching traffic (in seconds). If an HTTP keepalive is
+        not specified, a default value (610 seconds) will be used. For Global
+        external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
+        the maximum allowed value is 1200 seconds. For Global external HTTP(S)
+        load balancer (classic), this option is not available publicly.
+        """
+        return pulumi.get(self, "http_keep_alive_timeout_sec")
+
+    @http_keep_alive_timeout_sec.setter
+    def http_keep_alive_timeout_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "http_keep_alive_timeout_sec", value)
 
     @property
     @pulumi.getter
@@ -461,6 +513,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_map: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 http_keep_alive_timeout_sec: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
@@ -503,6 +556,12 @@ class TargetHttpsProxy(pulumi.CustomResource):
                associated with the given target proxy. This field can only be set for global target proxies.
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[int] http_keep_alive_timeout_sec: Specifies how long to keep a connection open, after completing a response,
+               while there is no matching traffic (in seconds). If an HTTP keepalive is
+               not specified, a default value (610 seconds) will be used. For Global
+               external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
+               the maximum allowed value is 1200 seconds. For Global external HTTP(S)
+               load balancer (classic), this option is not available publicly.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -583,6 +642,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_map: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 http_keep_alive_timeout_sec: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
@@ -601,6 +661,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
 
             __props__.__dict__["certificate_map"] = certificate_map
             __props__.__dict__["description"] = description
+            __props__.__dict__["http_keep_alive_timeout_sec"] = http_keep_alive_timeout_sec
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["proxy_bind"] = proxy_bind
@@ -626,6 +687,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             certificate_map: Optional[pulumi.Input[str]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            http_keep_alive_timeout_sec: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             proxy_bind: Optional[pulumi.Input[bool]] = None,
@@ -647,6 +709,12 @@ class TargetHttpsProxy(pulumi.CustomResource):
                Accepted format is `//certificatemanager.googleapis.com/projects/{project}/locations/{location}/certificateMaps/{resourceName}`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[int] http_keep_alive_timeout_sec: Specifies how long to keep a connection open, after completing a response,
+               while there is no matching traffic (in seconds). If an HTTP keepalive is
+               not specified, a default value (610 seconds) will be used. For Global
+               external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
+               the maximum allowed value is 1200 seconds. For Global external HTTP(S)
+               load balancer (classic), this option is not available publicly.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -685,6 +753,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
         __props__.__dict__["certificate_map"] = certificate_map
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
+        __props__.__dict__["http_keep_alive_timeout_sec"] = http_keep_alive_timeout_sec
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["proxy_bind"] = proxy_bind
@@ -721,6 +790,19 @@ class TargetHttpsProxy(pulumi.CustomResource):
         An optional description of this resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="httpKeepAliveTimeoutSec")
+    def http_keep_alive_timeout_sec(self) -> pulumi.Output[Optional[int]]:
+        """
+        Specifies how long to keep a connection open, after completing a response,
+        while there is no matching traffic (in seconds). If an HTTP keepalive is
+        not specified, a default value (610 seconds) will be used. For Global
+        external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
+        the maximum allowed value is 1200 seconds. For Global external HTTP(S)
+        load balancer (classic), this option is not available publicly.
+        """
+        return pulumi.get(self, "http_keep_alive_timeout_sec")
 
     @property
     @pulumi.getter

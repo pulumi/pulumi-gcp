@@ -211,22 +211,22 @@ def get_subscription(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:pubsub/getSubscription:getSubscription', __args__, opts=opts, typ=GetSubscriptionResult).value
 
     return AwaitableGetSubscriptionResult(
-        ack_deadline_seconds=__ret__.ack_deadline_seconds,
-        bigquery_configs=__ret__.bigquery_configs,
-        dead_letter_policies=__ret__.dead_letter_policies,
-        enable_exactly_once_delivery=__ret__.enable_exactly_once_delivery,
-        enable_message_ordering=__ret__.enable_message_ordering,
-        expiration_policies=__ret__.expiration_policies,
-        filter=__ret__.filter,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        message_retention_duration=__ret__.message_retention_duration,
-        name=__ret__.name,
-        project=__ret__.project,
-        push_configs=__ret__.push_configs,
-        retain_acked_messages=__ret__.retain_acked_messages,
-        retry_policies=__ret__.retry_policies,
-        topic=__ret__.topic)
+        ack_deadline_seconds=pulumi.get(__ret__, 'ack_deadline_seconds'),
+        bigquery_configs=pulumi.get(__ret__, 'bigquery_configs'),
+        dead_letter_policies=pulumi.get(__ret__, 'dead_letter_policies'),
+        enable_exactly_once_delivery=pulumi.get(__ret__, 'enable_exactly_once_delivery'),
+        enable_message_ordering=pulumi.get(__ret__, 'enable_message_ordering'),
+        expiration_policies=pulumi.get(__ret__, 'expiration_policies'),
+        filter=pulumi.get(__ret__, 'filter'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        message_retention_duration=pulumi.get(__ret__, 'message_retention_duration'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        push_configs=pulumi.get(__ret__, 'push_configs'),
+        retain_acked_messages=pulumi.get(__ret__, 'retain_acked_messages'),
+        retry_policies=pulumi.get(__ret__, 'retry_policies'),
+        topic=pulumi.get(__ret__, 'topic'))
 
 
 @_utilities.lift_output_func(get_subscription)

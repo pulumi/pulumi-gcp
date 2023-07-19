@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func GetAttachedVersions(ctx *pulumi.Context, args *GetAttachedVersionsArgs, opts ...pulumi.InvokeOption) (*GetAttachedVersionsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAttachedVersionsResult
 	err := ctx.Invoke("gcp:container/getAttachedVersions:getAttachedVersions", args, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -84,6 +85,7 @@ func NewProjectExclusion(ctx *pulumi.Context,
 	if args.Filter == nil {
 		return nil, errors.New("invalid value for required argument 'Filter'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProjectExclusion
 	err := ctx.RegisterResource("gcp:logging/projectExclusion:ProjectExclusion", name, args, &resource, opts...)
 	if err != nil {

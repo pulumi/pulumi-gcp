@@ -13,25 +13,29 @@ namespace Pulumi.Gcp.OsConfig.Inputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An Apt Repository.
+        /// An Apt Repository. Structure is
+        /// documented below.
         /// </summary>
         [Input("apt")]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs>? Apt { get; set; }
 
         /// <summary>
-        /// A Goo Repository.
+        /// A Goo Repository. Structure is
+        /// documented below.
         /// </summary>
         [Input("goo")]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs>? Goo { get; set; }
 
         /// <summary>
-        /// A Yum Repository.
+        /// A Yum Repository. Structure is
+        /// documented below.
         /// </summary>
         [Input("yum")]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs>? Yum { get; set; }
 
         /// <summary>
-        /// A Zypper Repository.
+        /// A Zypper Repository. Structure is
+        /// documented below.
         /// </summary>
         [Input("zypper")]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs>? Zypper { get; set; }

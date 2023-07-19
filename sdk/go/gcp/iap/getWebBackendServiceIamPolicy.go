@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupWebBackendServiceIamPolicy(ctx *pulumi.Context, args *LookupWebBackendServiceIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupWebBackendServiceIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWebBackendServiceIamPolicyResult
 	err := ctx.Invoke("gcp:iap/getWebBackendServiceIamPolicy:getWebBackendServiceIamPolicy", args, &rv, opts...)
 	if err != nil {

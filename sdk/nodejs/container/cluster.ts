@@ -448,8 +448,6 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * )
      * Enable/Disable Protect API features for the cluster. Structure is documented below.
-     *
-     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
     public readonly protectConfig!: pulumi.Output<outputs.container.ClusterProtectConfig>;
     /**
@@ -481,6 +479,12 @@ export class Cluster extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly resourceUsageExportConfig!: pulumi.Output<outputs.container.ClusterResourceUsageExportConfig | undefined>;
+    /**
+     * Enable/Disable Security Posture API features for the cluster. Structure is documented below.
+     *
+     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+     */
+    public readonly securityPostureConfig!: pulumi.Output<outputs.container.ClusterSecurityPostureConfig>;
     /**
      * The server-defined URL for the resource.
      */
@@ -596,6 +600,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["removeDefaultNodePool"] = state ? state.removeDefaultNodePool : undefined;
             resourceInputs["resourceLabels"] = state ? state.resourceLabels : undefined;
             resourceInputs["resourceUsageExportConfig"] = state ? state.resourceUsageExportConfig : undefined;
+            resourceInputs["securityPostureConfig"] = state ? state.securityPostureConfig : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["serviceExternalIpsConfig"] = state ? state.serviceExternalIpsConfig : undefined;
             resourceInputs["servicesIpv4Cidr"] = state ? state.servicesIpv4Cidr : undefined;
@@ -662,6 +667,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["removeDefaultNodePool"] = args ? args.removeDefaultNodePool : undefined;
             resourceInputs["resourceLabels"] = args ? args.resourceLabels : undefined;
             resourceInputs["resourceUsageExportConfig"] = args ? args.resourceUsageExportConfig : undefined;
+            resourceInputs["securityPostureConfig"] = args ? args.securityPostureConfig : undefined;
             resourceInputs["serviceExternalIpsConfig"] = args ? args.serviceExternalIpsConfig : undefined;
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
             resourceInputs["tpuConfig"] = args ? args.tpuConfig : undefined;
@@ -1023,8 +1029,6 @@ export interface ClusterState {
     /**
      * )
      * Enable/Disable Protect API features for the cluster. Structure is documented below.
-     *
-     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
     protectConfig?: pulumi.Input<inputs.container.ClusterProtectConfig>;
     /**
@@ -1056,6 +1060,12 @@ export interface ClusterState {
      * Structure is documented below.
      */
     resourceUsageExportConfig?: pulumi.Input<inputs.container.ClusterResourceUsageExportConfig>;
+    /**
+     * Enable/Disable Security Posture API features for the cluster. Structure is documented below.
+     *
+     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+     */
+    securityPostureConfig?: pulumi.Input<inputs.container.ClusterSecurityPostureConfig>;
     /**
      * The server-defined URL for the resource.
      */
@@ -1427,8 +1437,6 @@ export interface ClusterArgs {
     /**
      * )
      * Enable/Disable Protect API features for the cluster. Structure is documented below.
-     *
-     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
     protectConfig?: pulumi.Input<inputs.container.ClusterProtectConfig>;
     /**
@@ -1460,6 +1468,12 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     resourceUsageExportConfig?: pulumi.Input<inputs.container.ClusterResourceUsageExportConfig>;
+    /**
+     * Enable/Disable Security Posture API features for the cluster. Structure is documented below.
+     *
+     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+     */
+    securityPostureConfig?: pulumi.Input<inputs.container.ClusterSecurityPostureConfig>;
     /**
      * Structure is documented below.
      */

@@ -14,11 +14,11 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo
     {
         /// <summary>
-        /// Required. The name of the repository.
+        /// The name of the repository.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. The url of the repository.
+        /// The url of the repository.
         /// </summary>
         public readonly string Url;
 

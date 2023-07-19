@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -118,6 +119,7 @@ import (
 //
 // ```
 func GetInstanceSerialPort(ctx *pulumi.Context, args *GetInstanceSerialPortArgs, opts ...pulumi.InvokeOption) (*GetInstanceSerialPortResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstanceSerialPortResult
 	err := ctx.Invoke("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", args, &rv, opts...)
 	if err != nil {

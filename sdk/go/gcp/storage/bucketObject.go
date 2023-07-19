@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -156,6 +157,7 @@ func NewBucketObject(ctx *pulumi.Context,
 		"customerEncryption",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource BucketObject
 	err := ctx.RegisterResource("gcp:storage/bucketObject:BucketObject", name, args, &resource, opts...)
 	if err != nil {

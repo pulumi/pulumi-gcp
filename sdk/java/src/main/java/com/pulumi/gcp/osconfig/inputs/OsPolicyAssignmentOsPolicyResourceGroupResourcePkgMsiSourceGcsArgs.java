@@ -17,14 +17,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGc
     public static final OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs Empty = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs();
 
     /**
-     * Required. Bucket of the Cloud Storage object.
+     * Bucket of the Cloud Storage object.
      * 
      */
     @Import(name="bucket", required=true)
     private Output<String> bucket;
 
     /**
-     * @return Required. Bucket of the Cloud Storage object.
+     * @return Bucket of the Cloud Storage object.
      * 
      */
     public Output<String> bucket() {
@@ -47,14 +47,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGc
     }
 
     /**
-     * Required. Name of the Cloud Storage object.
+     * Name of the Cloud Storage object.
      * 
      */
     @Import(name="object", required=true)
     private Output<String> object;
 
     /**
-     * @return Required. Name of the Cloud Storage object.
+     * @return Name of the Cloud Storage object.
      * 
      */
     public Output<String> object() {
@@ -88,7 +88,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGc
         }
 
         /**
-         * @param bucket Required. Bucket of the Cloud Storage object.
+         * @param bucket Bucket of the Cloud Storage object.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGc
         }
 
         /**
-         * @param bucket Required. Bucket of the Cloud Storage object.
+         * @param bucket Bucket of the Cloud Storage object.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGc
         }
 
         /**
-         * @param object Required. Name of the Cloud Storage object.
+         * @param object Name of the Cloud Storage object.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGc
         }
 
         /**
-         * @param object Required. Name of the Cloud Storage object.
+         * @param object Name of the Cloud Storage object.
          * 
          * @return builder
          * 

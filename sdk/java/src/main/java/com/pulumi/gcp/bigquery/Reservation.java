@@ -119,14 +119,14 @@ public class Reservation extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="edition", type=String.class, parameters={})
-    private Output</* @Nullable */ String> edition;
+    private Output<String> edition;
 
     /**
      * @return The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
      * 
      */
-    public Output<Optional<String>> edition() {
-        return Codegen.optional(this.edition);
+    public Output<String> edition() {
+        return this.edition;
     }
     /**
      * If false, any query using this reservation will use idle slots from other reservations within

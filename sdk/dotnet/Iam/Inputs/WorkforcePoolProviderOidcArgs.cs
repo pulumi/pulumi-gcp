@@ -19,6 +19,13 @@ namespace Pulumi.Gcp.Iam.Inputs
         public Input<string> ClientId { get; set; } = null!;
 
         /// <summary>
+        /// The optional client secret. Required to enable Authorization Code flow for web sign-in.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("clientSecret")]
+        public Input<Inputs.WorkforcePoolProviderOidcClientSecretArgs>? ClientSecret { get; set; }
+
+        /// <summary>
         /// The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
         /// </summary>
         [Input("issuerUri", required: true)]

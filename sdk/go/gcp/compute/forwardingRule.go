@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -267,6 +268,8 @@ type ForwardingRule struct {
 	// networkTier of the Address.
 	// Possible values are: `PREMIUM`, `STANDARD`.
 	NetworkTier pulumi.StringOutput `pulumi:"networkTier"`
+	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+	NoAutomateDnsZone pulumi.BoolPtrOutput `pulumi:"noAutomateDnsZone"`
 	// This field can only be used:
 	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
 	// * By backend service-based network load balancers, target pool-based
@@ -363,6 +366,7 @@ func NewForwardingRule(ctx *pulumi.Context,
 		args = &ForwardingRuleArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ForwardingRule
 	err := ctx.RegisterResource("gcp:compute/forwardingRule:ForwardingRule", name, args, &resource, opts...)
 	if err != nil {
@@ -514,6 +518,8 @@ type forwardingRuleState struct {
 	// networkTier of the Address.
 	// Possible values are: `PREMIUM`, `STANDARD`.
 	NetworkTier *string `pulumi:"networkTier"`
+	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+	NoAutomateDnsZone *bool `pulumi:"noAutomateDnsZone"`
 	// This field can only be used:
 	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
 	// * By backend service-based network load balancers, target pool-based
@@ -733,6 +739,8 @@ type ForwardingRuleState struct {
 	// networkTier of the Address.
 	// Possible values are: `PREMIUM`, `STANDARD`.
 	NetworkTier pulumi.StringPtrInput
+	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+	NoAutomateDnsZone pulumi.BoolPtrInput
 	// This field can only be used:
 	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
 	// * By backend service-based network load balancers, target pool-based
@@ -949,6 +957,8 @@ type forwardingRuleArgs struct {
 	// networkTier of the Address.
 	// Possible values are: `PREMIUM`, `STANDARD`.
 	NetworkTier *string `pulumi:"networkTier"`
+	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+	NoAutomateDnsZone *bool `pulumi:"noAutomateDnsZone"`
 	// This field can only be used:
 	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
 	// * By backend service-based network load balancers, target pool-based
@@ -1153,6 +1163,8 @@ type ForwardingRuleArgs struct {
 	// networkTier of the Address.
 	// Possible values are: `PREMIUM`, `STANDARD`.
 	NetworkTier pulumi.StringPtrInput
+	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+	NoAutomateDnsZone pulumi.BoolPtrInput
 	// This field can only be used:
 	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
 	// * By backend service-based network load balancers, target pool-based
@@ -1495,6 +1507,11 @@ func (o ForwardingRuleOutput) Network() pulumi.StringOutput {
 // Possible values are: `PREMIUM`, `STANDARD`.
 func (o ForwardingRuleOutput) NetworkTier() pulumi.StringOutput {
 	return o.ApplyT(func(v *ForwardingRule) pulumi.StringOutput { return v.NetworkTier }).(pulumi.StringOutput)
+}
+
+// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+func (o ForwardingRuleOutput) NoAutomateDnsZone() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ForwardingRule) pulumi.BoolPtrOutput { return v.NoAutomateDnsZone }).(pulumi.BoolPtrOutput)
 }
 
 // This field can only be used:

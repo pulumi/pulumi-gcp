@@ -68,8 +68,7 @@ export class SharedVPCServiceProject extends pulumi.CustomResource {
     }
 
     /**
-     * The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
-     * Possible values are: "ABANDON".
+     * The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".
      */
     public readonly deletionPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -119,8 +118,7 @@ export class SharedVPCServiceProject extends pulumi.CustomResource {
  */
 export interface SharedVPCServiceProjectState {
     /**
-     * The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
-     * Possible values are: "ABANDON".
+     * The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".
      */
     deletionPolicy?: pulumi.Input<string>;
     /**
@@ -138,8 +136,7 @@ export interface SharedVPCServiceProjectState {
  */
 export interface SharedVPCServiceProjectArgs {
     /**
-     * The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
-     * Possible values are: "ABANDON".
+     * The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".
      */
     deletionPolicy?: pulumi.Input<string>;
     /**

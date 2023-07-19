@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -189,6 +190,7 @@ func NewCertificateIssuanceConfig(ctx *pulumi.Context,
 	if args.RotationWindowPercentage == nil {
 		return nil, errors.New("invalid value for required argument 'RotationWindowPercentage'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CertificateIssuanceConfig
 	err := ctx.RegisterResource("gcp:certificatemanager/certificateIssuanceConfig:CertificateIssuanceConfig", name, args, &resource, opts...)
 	if err != nil {

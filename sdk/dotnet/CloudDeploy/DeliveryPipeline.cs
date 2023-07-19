@@ -44,6 +44,17 @@ namespace Pulumi.Gcp.CloudDeploy
     ///             {
     ///                 new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineStageArgs
     ///                 {
+    ///                     DeployParameters = new[]
+    ///                     {
+    ///                         new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineStageDeployParameterArgs
+    ///                         {
+    ///                             Values = 
+    ///                             {
+    ///                                 { "deployParameterKey", "deployParameterValue" },
+    ///                             },
+    ///                             MatchTargetLabels = null,
+    ///                         },
+    ///                     },
     ///                     Profiles = new[]
     ///                     {
     ///                         "example-profile-one",
@@ -96,6 +107,17 @@ namespace Pulumi.Gcp.CloudDeploy
     ///             {
     ///                 new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineStageArgs
     ///                 {
+    ///                     DeployParameters = new[]
+    ///                     {
+    ///                         new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineStageDeployParameterArgs
+    ///                         {
+    ///                             Values = 
+    ///                             {
+    ///                                 { "deployParameterKey", "deployParameterValue" },
+    ///                             },
+    ///                             MatchTargetLabels = null,
+    ///                         },
+    ///                     },
     ///                     Profiles = new[]
     ///                     {
     ///                         "example-profile-one",
@@ -148,6 +170,17 @@ namespace Pulumi.Gcp.CloudDeploy
     ///             {
     ///                 new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineStageArgs
     ///                 {
+    ///                     DeployParameters = new[]
+    ///                     {
+    ///                         new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineStageDeployParameterArgs
+    ///                         {
+    ///                             Values = 
+    ///                             {
+    ///                                 { "deployParameterKey", "deployParameterValue" },
+    ///                             },
+    ///                             MatchTargetLabels = null,
+    ///                         },
+    ///                     },
     ///                     Profiles = new[]
     ///                     {
     ///                         "example-profile-one",
@@ -200,6 +233,17 @@ namespace Pulumi.Gcp.CloudDeploy
     ///             {
     ///                 new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineStageArgs
     ///                 {
+    ///                     DeployParameters = new[]
+    ///                     {
+    ///                         new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineStageDeployParameterArgs
+    ///                         {
+    ///                             MatchTargetLabels = null,
+    ///                             Values = 
+    ///                             {
+    ///                                 { "deployParameterKey", "deployParameterValue" },
+    ///                             },
+    ///                         },
+    ///                     },
     ///                     Profiles = new[]
     ///                     {
     ///                         "example-profile-one",
@@ -249,6 +293,17 @@ namespace Pulumi.Gcp.CloudDeploy
     ///             {
     ///                 new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineStageArgs
     ///                 {
+    ///                     DeployParameters = new[]
+    ///                     {
+    ///                         new Gcp.CloudDeploy.Inputs.DeliveryPipelineSerialPipelineStageDeployParameterArgs
+    ///                         {
+    ///                             Values = 
+    ///                             {
+    ///                                 { "deployParameterKey", "deployParameterValue" },
+    ///                             },
+    ///                             MatchTargetLabels = null,
+    ///                         },
+    ///                     },
     ///                     Profiles = new[]
     ///                     {
     ///                         "example-profile-one",

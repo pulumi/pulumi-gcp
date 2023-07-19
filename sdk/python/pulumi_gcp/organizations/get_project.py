@@ -154,16 +154,16 @@ def get_project(project_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getProject:getProject', __args__, opts=opts, typ=GetProjectResult).value
 
     return AwaitableGetProjectResult(
-        auto_create_network=__ret__.auto_create_network,
-        billing_account=__ret__.billing_account,
-        folder_id=__ret__.folder_id,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        number=__ret__.number,
-        org_id=__ret__.org_id,
-        project_id=__ret__.project_id,
-        skip_delete=__ret__.skip_delete)
+        auto_create_network=pulumi.get(__ret__, 'auto_create_network'),
+        billing_account=pulumi.get(__ret__, 'billing_account'),
+        folder_id=pulumi.get(__ret__, 'folder_id'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        number=pulumi.get(__ret__, 'number'),
+        org_id=pulumi.get(__ret__, 'org_id'),
+        project_id=pulumi.get(__ret__, 'project_id'),
+        skip_delete=pulumi.get(__ret__, 'skip_delete'))
 
 
 @_utilities.lift_output_func(get_project)

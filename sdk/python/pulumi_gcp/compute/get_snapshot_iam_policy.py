@@ -99,8 +99,8 @@ def get_snapshot_iam_policy(name: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.compute.get_snapshot_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.compute.get_snapshot_iam_policy(project=google_compute_snapshot["snapshot"]["project"],
+        name=google_compute_snapshot["snapshot"]["name"])
     ```
 
 
@@ -115,11 +115,11 @@ def get_snapshot_iam_policy(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getSnapshotIamPolicy:getSnapshotIamPolicy', __args__, opts=opts, typ=GetSnapshotIamPolicyResult).value
 
     return AwaitableGetSnapshotIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        name=__ret__.name,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_snapshot_iam_policy)
@@ -135,8 +135,8 @@ def get_snapshot_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.compute.get_snapshot_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.compute.get_snapshot_iam_policy(project=google_compute_snapshot["snapshot"]["project"],
+        name=google_compute_snapshot["snapshot"]["name"])
     ```
 
 

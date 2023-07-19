@@ -109,9 +109,9 @@ def get_lake_iam_policy(lake: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataplex.get_lake_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        lake=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.dataplex.get_lake_iam_policy(project=google_dataplex_lake["example"]["project"],
+        location=google_dataplex_lake["example"]["location"],
+        lake=google_dataplex_lake["example"]["name"])
     ```
 
 
@@ -127,12 +127,12 @@ def get_lake_iam_policy(lake: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:dataplex/getLakeIamPolicy:getLakeIamPolicy', __args__, opts=opts, typ=GetLakeIamPolicyResult).value
 
     return AwaitableGetLakeIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        lake=__ret__.lake,
-        location=__ret__.location,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        lake=pulumi.get(__ret__, 'lake'),
+        location=pulumi.get(__ret__, 'location'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_lake_iam_policy)
@@ -149,9 +149,9 @@ def get_lake_iam_policy_output(lake: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataplex.get_lake_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        lake=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.dataplex.get_lake_iam_policy(project=google_dataplex_lake["example"]["project"],
+        location=google_dataplex_lake["example"]["location"],
+        lake=google_dataplex_lake["example"]["name"])
     ```
 
 

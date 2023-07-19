@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -52,6 +53,7 @@ import (
 //
 // ```
 func LookupRecordSet(ctx *pulumi.Context, args *LookupRecordSetArgs, opts ...pulumi.InvokeOption) (*LookupRecordSetResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRecordSetResult
 	err := ctx.Invoke("gcp:dns/getRecordSet:getRecordSet", args, &rv, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,6 +24,7 @@ import (
 // logging output, plan output, or state output.  Please take care to secure your secret
 // data outside of resource definitions.
 func GetKMSSecretCiphertext(ctx *pulumi.Context, args *GetKMSSecretCiphertextArgs, opts ...pulumi.InvokeOption) (*GetKMSSecretCiphertextResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKMSSecretCiphertextResult
 	err := ctx.Invoke("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", args, &rv, opts...)
 	if err != nil {

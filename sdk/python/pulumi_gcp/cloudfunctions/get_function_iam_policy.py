@@ -109,9 +109,9 @@ def get_function_iam_policy(cloud_function: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.cloudfunctions.get_function_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        region=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        cloud_function=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.cloudfunctions.get_function_iam_policy(project=google_cloudfunctions_function["function"]["project"],
+        region=google_cloudfunctions_function["function"]["region"],
+        cloud_function=google_cloudfunctions_function["function"]["name"])
     ```
 
 
@@ -130,12 +130,12 @@ def get_function_iam_policy(cloud_function: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:cloudfunctions/getFunctionIamPolicy:getFunctionIamPolicy', __args__, opts=opts, typ=GetFunctionIamPolicyResult).value
 
     return AwaitableGetFunctionIamPolicyResult(
-        cloud_function=__ret__.cloud_function,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project,
-        region=__ret__.region)
+        cloud_function=pulumi.get(__ret__, 'cloud_function'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'))
 
 
 @_utilities.lift_output_func(get_function_iam_policy)
@@ -152,9 +152,9 @@ def get_function_iam_policy_output(cloud_function: Optional[pulumi.Input[str]] =
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.cloudfunctions.get_function_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        region=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        cloud_function=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.cloudfunctions.get_function_iam_policy(project=google_cloudfunctions_function["function"]["project"],
+        region=google_cloudfunctions_function["function"]["region"],
+        cloud_function=google_cloudfunctions_function["function"]["name"])
     ```
 
 

@@ -40,6 +40,7 @@ class RegionDiskArgs:
                
                - - -
         :param pulumi.Input['RegionDiskAsyncPrimaryDiskArgs'] async_primary_disk: A nested object resource
+               Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input['RegionDiskDiskEncryptionKeyArgs'] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
@@ -156,6 +157,7 @@ class RegionDiskArgs:
     def async_primary_disk(self) -> Optional[pulumi.Input['RegionDiskAsyncPrimaryDiskArgs']]:
         """
         A nested object resource
+        Structure is documented below.
         """
         return pulumi.get(self, "async_primary_disk")
 
@@ -217,6 +219,9 @@ class RegionDiskArgs:
         """
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         """
+        warnings.warn("""This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""", DeprecationWarning)
+        pulumi.log.warn("""interface is deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""")
+
         return pulumi.get(self, "interface")
 
     @interface.setter
@@ -418,6 +423,7 @@ class _RegionDiskState:
         """
         Input properties used for looking up and filtering RegionDisk resources.
         :param pulumi.Input['RegionDiskAsyncPrimaryDiskArgs'] async_primary_disk: A nested object resource
+               Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
@@ -557,6 +563,7 @@ class _RegionDiskState:
     def async_primary_disk(self) -> Optional[pulumi.Input['RegionDiskAsyncPrimaryDiskArgs']]:
         """
         A nested object resource
+        Structure is documented below.
         """
         return pulumi.get(self, "async_primary_disk")
 
@@ -630,6 +637,9 @@ class _RegionDiskState:
         """
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         """
+        warnings.warn("""This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""", DeprecationWarning)
+        pulumi.log.warn("""interface is deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""")
+
         return pulumi.get(self, "interface")
 
     @interface.setter
@@ -995,8 +1005,7 @@ class RegionDisk(pulumi.CustomResource):
             replica_zones=[
                 "us-central1-a",
                 "us-central1-f",
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ])
         secondary = gcp.compute.RegionDisk("secondary",
             type="pd-ssd",
             region="us-east1",
@@ -1007,8 +1016,7 @@ class RegionDisk(pulumi.CustomResource):
             replica_zones=[
                 "us-east1-b",
                 "us-east1-c",
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ])
         ```
         ### Region Disk Features
 
@@ -1061,6 +1069,7 @@ class RegionDisk(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['RegionDiskAsyncPrimaryDiskArgs']] async_primary_disk: A nested object resource
+               Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[pulumi.InputType['RegionDiskDiskEncryptionKeyArgs']] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
@@ -1194,8 +1203,7 @@ class RegionDisk(pulumi.CustomResource):
             replica_zones=[
                 "us-central1-a",
                 "us-central1-f",
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ])
         secondary = gcp.compute.RegionDisk("secondary",
             type="pd-ssd",
             region="us-east1",
@@ -1206,8 +1214,7 @@ class RegionDisk(pulumi.CustomResource):
             replica_zones=[
                 "us-east1-b",
                 "us-east1-c",
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ])
         ```
         ### Region Disk Features
 
@@ -1371,6 +1378,7 @@ class RegionDisk(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['RegionDiskAsyncPrimaryDiskArgs']] async_primary_disk: A nested object resource
+               Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
@@ -1487,6 +1495,7 @@ class RegionDisk(pulumi.CustomResource):
     def async_primary_disk(self) -> pulumi.Output[Optional['outputs.RegionDiskAsyncPrimaryDisk']]:
         """
         A nested object resource
+        Structure is documented below.
         """
         return pulumi.get(self, "async_primary_disk")
 
@@ -1540,6 +1549,9 @@ class RegionDisk(pulumi.CustomResource):
         """
         Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         """
+        warnings.warn("""This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""", DeprecationWarning)
+        pulumi.log.warn("""interface is deprecated: This field is no longer in use, disk interfaces will be automatically determined on attachment. To resolve this issue, remove this field from your config.""")
+
         return pulumi.get(self, "interface")
 
     @property

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatabaseResult
 	err := ctx.Invoke("gcp:sql/getDatabase:getDatabase", args, &rv, opts...)
 	if err != nil {

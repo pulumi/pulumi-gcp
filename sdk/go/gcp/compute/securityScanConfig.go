@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -137,6 +138,7 @@ func NewSecurityScanConfig(ctx *pulumi.Context,
 	if args.StartingUrls == nil {
 		return nil, errors.New("invalid value for required argument 'StartingUrls'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SecurityScanConfig
 	err := ctx.RegisterResource("gcp:compute/securityScanConfig:SecurityScanConfig", name, args, &resource, opts...)
 	if err != nil {

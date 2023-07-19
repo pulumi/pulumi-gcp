@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupMembershipIamPolicy(ctx *pulumi.Context, args *LookupMembershipIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupMembershipIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMembershipIamPolicyResult
 	err := ctx.Invoke("gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy", args, &rv, opts...)
 	if err != nil {

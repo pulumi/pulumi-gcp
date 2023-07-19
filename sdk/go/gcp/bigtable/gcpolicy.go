@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -66,7 +67,16 @@ import (
 //				Table:          table.Name,
 //				ColumnFamily:   pulumi.String("name"),
 //				DeletionPolicy: pulumi.String("ABANDON"),
-//				GcRules:        pulumi.String("  {\n    \"rules\": [\n      {\n        \"max_age\": \"168h\"\n      }\n    ]\n  }\n"),
+//				GcRules: pulumi.String(`  {
+//	    "rules": [
+//	      {
+//	        "max_age": "168h"
+//	      }
+//	    ]
+//	  }
+//
+// `),
+//
 //			})
 //			if err != nil {
 //				return err
@@ -96,7 +106,20 @@ import (
 //				Table:          pulumi.Any(google_bigtable_table.Table.Name),
 //				ColumnFamily:   pulumi.String("name"),
 //				DeletionPolicy: pulumi.String("ABANDON"),
-//				GcRules:        pulumi.String("  {\n    \"mode\": \"union\",\n    \"rules\": [\n      {\n        \"max_age\": \"168h\"\n      },\n      {\n        \"max_version\": 10\n      }\n    ]\n  }\n"),
+//				GcRules: pulumi.String(`  {
+//	    "mode": "union",
+//	    "rules": [
+//	      {
+//	        "max_age": "168h"
+//	      },
+//	      {
+//	        "max_version": 10
+//	      }
+//	    ]
+//	  }
+//
+// `),
+//
 //			})
 //			if err != nil {
 //				return err
@@ -149,7 +172,28 @@ import (
 //				Table:          table.Name,
 //				ColumnFamily:   pulumi.String("cf1"),
 //				DeletionPolicy: pulumi.String("ABANDON"),
-//				GcRules:        pulumi.String("  {\n    \"mode\": \"union\",\n    \"rules\": [\n      {\n        \"max_age\": \"10h\"\n      },\n      {\n        \"mode\": \"intersection\",\n        \"rules\": [\n          {\n            \"max_age\": \"2h\"\n          },\n          {\n            \"max_version\": 2\n          }\n        ]\n      }\n    ]\n  }\n"),
+//				GcRules: pulumi.String(`  {
+//	    "mode": "union",
+//	    "rules": [
+//	      {
+//	        "max_age": "10h"
+//	      },
+//	      {
+//	        "mode": "intersection",
+//	        "rules": [
+//	          {
+//	            "max_age": "2h"
+//	          },
+//	          {
+//	            "max_version": 2
+//	          }
+//	        ]
+//	      }
+//	    ]
+//	  }
+//
+// `),
+//
 //			})
 //			if err != nil {
 //				return err
@@ -224,6 +268,7 @@ func NewGCPolicy(ctx *pulumi.Context,
 	if args.Table == nil {
 		return nil, errors.New("invalid value for required argument 'Table'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GCPolicy
 	err := ctx.RegisterResource("gcp:bigtable/gCPolicy:GCPolicy", name, args, &resource, opts...)
 	if err != nil {

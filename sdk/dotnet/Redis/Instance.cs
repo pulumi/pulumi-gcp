@@ -376,7 +376,7 @@ namespace Pulumi.Gcp.Redis
         /// Structure is documented below.
         /// </summary>
         [Output("maintenanceSchedule")]
-        public Output<Outputs.InstanceMaintenanceSchedule?> MaintenanceSchedule { get; private set; } = null!;
+        public Output<Outputs.InstanceMaintenanceSchedule> MaintenanceSchedule { get; private set; } = null!;
 
         /// <summary>
         /// Redis memory size in GiB.
@@ -656,13 +656,6 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("maintenancePolicy")]
         public Input<Inputs.InstanceMaintenancePolicyArgs>? MaintenancePolicy { get; set; }
-
-        /// <summary>
-        /// Upcoming maintenance schedule.
-        /// Structure is documented below.
-        /// </summary>
-        [Input("maintenanceSchedule")]
-        public Input<Inputs.InstanceMaintenanceScheduleArgs>? MaintenanceSchedule { get; set; }
 
         /// <summary>
         /// Redis memory size in GiB.

@@ -7,8 +7,256 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
+
+type URLMapPathMatcherRouteRuleRouteActionRetryPolicy struct {
+	// Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+	NumRetries int `pulumi:"numRetries"`
+	// Specifies a non-zero timeout per retry attempt.
+	// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+	// will use the largest timeout among all backend services associated with the route.
+	// Structure is documented below.
+	PerTryTimeout *URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout `pulumi:"perTryTimeout"`
+	// Specfies one or more conditions when this retry rule applies. Valid values are:
+	// * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+	//   or if the backend service does not respond at all, example: disconnects, reset, read timeout,
+	// * connection failure, and refused streams.
+	// * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+	// * connect-failure: Loadbalancer will retry on failures connecting to backend services,
+	//   for example due to connection timeouts.
+	// * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+	//   Currently the only retriable error supported is 409.
+	// * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+	//   This reset type indicates that it is safe to retry.
+	// * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+	// * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+	// * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+	// * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+	RetryConditions []string `pulumi:"retryConditions"`
+}
+
+// URLMapPathMatcherRouteRuleRouteActionRetryPolicyInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs and URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionRetryPolicyInput` via:
+//
+//	URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs{...}
+type URLMapPathMatcherRouteRuleRouteActionRetryPolicyInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput() URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput
+	ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput
+}
+
+type URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs struct {
+	// Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+	NumRetries pulumi.IntInput `pulumi:"numRetries"`
+	// Specifies a non-zero timeout per retry attempt.
+	// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+	// will use the largest timeout among all backend services associated with the route.
+	// Structure is documented below.
+	PerTryTimeout URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrInput `pulumi:"perTryTimeout"`
+	// Specfies one or more conditions when this retry rule applies. Valid values are:
+	// * 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+	//   or if the backend service does not respond at all, example: disconnects, reset, read timeout,
+	// * connection failure, and refused streams.
+	// * gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+	// * connect-failure: Loadbalancer will retry on failures connecting to backend services,
+	//   for example due to connection timeouts.
+	// * retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+	//   Currently the only retriable error supported is 409.
+	// * refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+	//   This reset type indicates that it is safe to retry.
+	// * cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+	// * deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+	// * resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+	// * unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+	RetryConditions pulumi.StringArrayInput `pulumi:"retryConditions"`
+}
+
+func (URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionRetryPolicy)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs) ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput() URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs) ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput)
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs) ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs) ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput).ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs, URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtr and URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrInput` via:
+//
+//	        URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput
+	ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput
+}
+
+type urlmapPathMatcherRouteRuleRouteActionRetryPolicyPtrType URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs
+
+func URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtr(v *URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs) URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrInput {
+	return (*urlmapPathMatcherRouteRuleRouteActionRetryPolicyPtrType)(v)
+}
+
+func (*urlmapPathMatcherRouteRuleRouteActionRetryPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteActionRetryPolicy)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionRetryPolicyPtrType) ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionRetryPolicyPtrType) ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionRetryPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput) ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput() URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput) ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput) ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput {
+	return o.ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput) ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherRouteRuleRouteActionRetryPolicy) *URLMapPathMatcherRouteRuleRouteActionRetryPolicy {
+		return &v
+	}).(URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput)
+}
+
+// Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput) NumRetries() pulumi.IntOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionRetryPolicy) int { return v.NumRetries }).(pulumi.IntOutput)
+}
+
+// Specifies a non-zero timeout per retry attempt.
+// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+// will use the largest timeout among all backend services associated with the route.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput) PerTryTimeout() URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionRetryPolicy) *URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout {
+		return v.PerTryTimeout
+	}).(URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput)
+}
+
+// Specfies one or more conditions when this retry rule applies. Valid values are:
+//   - 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+//     or if the backend service does not respond at all, example: disconnects, reset, read timeout,
+//   - connection failure, and refused streams.
+//   - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+//   - connect-failure: Loadbalancer will retry on failures connecting to backend services,
+//     for example due to connection timeouts.
+//   - retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+//     Currently the only retriable error supported is 409.
+//   - refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+//     This reset type indicates that it is safe to retry.
+//   - cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+//   - deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+//   - resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+//   - unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput) RetryConditions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionRetryPolicy) []string { return v.RetryConditions }).(pulumi.StringArrayOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteActionRetryPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput) ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput) ToURLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput) Elem() URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionRetryPolicy) URLMapPathMatcherRouteRuleRouteActionRetryPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherRouteRuleRouteActionRetryPolicy
+		return ret
+	}).(URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput)
+}
+
+// Specifies the allowed number retries. This number must be > 0. If not specified, defaults to 1.
+func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput) NumRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionRetryPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.NumRetries
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies a non-zero timeout per retry attempt.
+// If not specified, will use the timeout set in HttpRouteAction. If timeout in HttpRouteAction is not set,
+// will use the largest timeout among all backend services associated with the route.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput) PerTryTimeout() URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionRetryPolicy) *URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout {
+		if v == nil {
+			return nil
+		}
+		return v.PerTryTimeout
+	}).(URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput)
+}
+
+// Specfies one or more conditions when this retry rule applies. Valid values are:
+//   - 5xx: Loadbalancer will attempt a retry if the backend service responds with any 5xx response code,
+//     or if the backend service does not respond at all, example: disconnects, reset, read timeout,
+//   - connection failure, and refused streams.
+//   - gateway-error: Similar to 5xx, but only applies to response codes 502, 503 or 504.
+//   - connect-failure: Loadbalancer will retry on failures connecting to backend services,
+//     for example due to connection timeouts.
+//   - retriable-4xx: Loadbalancer will retry for retriable 4xx response codes.
+//     Currently the only retriable error supported is 409.
+//   - refused-stream:Loadbalancer will retry if the backend service resets the stream with a REFUSED_STREAM error code.
+//     This reset type indicates that it is safe to retry.
+//   - cancelled: Loadbalancer will retry if the gRPC status code in the response header is set to cancelled
+//   - deadline-exceeded: Loadbalancer will retry if the gRPC status code in the response header is set to deadline-exceeded
+//   - resource-exhausted: Loadbalancer will retry if the gRPC status code in the response header is set to resource-exhausted
+//   - unavailable: Loadbalancer will retry if the gRPC status code in the response header is set to unavailable
+func (o URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput) RetryConditions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionRetryPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RetryConditions
+	}).(pulumi.StringArrayOutput)
+}
 
 type URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout struct {
 	// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
@@ -18414,6 +18662,8 @@ func (o GetSubnetworkSecondaryIpRangeArrayOutput) Index(i pulumi.IntInput) GetSu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionRetryPolicyInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionRetryPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionTimeoutInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionTimeoutArgs{})
@@ -18720,6 +18970,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKeyArrayInput)(nil)).Elem(), GetSnapshotSourceDiskEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionRetryPolicyOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionRetryPolicyPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionTimeoutOutput{})

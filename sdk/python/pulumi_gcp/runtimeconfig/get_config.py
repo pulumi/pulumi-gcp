@@ -98,10 +98,10 @@ def get_config(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:runtimeconfig/getConfig:getConfig', __args__, opts=opts, typ=GetConfigResult).value
 
     return AwaitableGetConfigResult(
-        description=__ret__.description,
-        id=__ret__.id,
-        name=__ret__.name,
-        project=__ret__.project)
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_config)

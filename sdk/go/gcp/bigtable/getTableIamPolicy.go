@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupTableIamPolicy(ctx *pulumi.Context, args *LookupTableIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupTableIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTableIamPolicyResult
 	err := ctx.Invoke("gcp:bigtable/getTableIamPolicy:getTableIamPolicy", args, &rv, opts...)
 	if err != nil {

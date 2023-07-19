@@ -69,6 +69,21 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. The deploy parameters to use for this target.
+     * 
+     */
+    @Import(name="deployParameters")
+    private @Nullable Output<Map<String,String>> deployParameters;
+
+    /**
+     * @return Optional. The deploy parameters to use for this target.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> deployParameters() {
+        return Optional.ofNullable(this.deployParameters);
+    }
+
+    /**
      * Optional. Description of the `Target`. Max length is 255 characters.
      * 
      */
@@ -288,6 +303,7 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
         this.annotations = $.annotations;
         this.anthosCluster = $.anthosCluster;
         this.createTime = $.createTime;
+        this.deployParameters = $.deployParameters;
         this.description = $.description;
         this.etag = $.etag;
         this.executionConfigs = $.executionConfigs;
@@ -383,6 +399,27 @@ public final class TargetState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param deployParameters Optional. The deploy parameters to use for this target.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployParameters(@Nullable Output<Map<String,String>> deployParameters) {
+            $.deployParameters = deployParameters;
+            return this;
+        }
+
+        /**
+         * @param deployParameters Optional. The deploy parameters to use for this target.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployParameters(Map<String,String> deployParameters) {
+            return deployParameters(Output.of(deployParameters));
         }
 
         /**

@@ -161,17 +161,17 @@ def get_secret(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:secretmanager/getSecret:getSecret', __args__, opts=opts, typ=GetSecretResult).value
 
     return AwaitableGetSecretResult(
-        create_time=__ret__.create_time,
-        expire_time=__ret__.expire_time,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        project=__ret__.project,
-        replications=__ret__.replications,
-        rotations=__ret__.rotations,
-        secret_id=__ret__.secret_id,
-        topics=__ret__.topics,
-        ttl=__ret__.ttl)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        expire_time=pulumi.get(__ret__, 'expire_time'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        replications=pulumi.get(__ret__, 'replications'),
+        rotations=pulumi.get(__ret__, 'rotations'),
+        secret_id=pulumi.get(__ret__, 'secret_id'),
+        topics=pulumi.get(__ret__, 'topics'),
+        ttl=pulumi.get(__ret__, 'ttl'))
 
 
 @_utilities.lift_output_func(get_secret)

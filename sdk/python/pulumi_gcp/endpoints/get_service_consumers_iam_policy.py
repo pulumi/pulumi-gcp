@@ -100,11 +100,11 @@ def get_service_consumers_iam_policy(consumer_project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:endpoints/getServiceConsumersIamPolicy:getServiceConsumersIamPolicy', __args__, opts=opts, typ=GetServiceConsumersIamPolicyResult).value
 
     return AwaitableGetServiceConsumersIamPolicyResult(
-        consumer_project=__ret__.consumer_project,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        service_name=__ret__.service_name)
+        consumer_project=pulumi.get(__ret__, 'consumer_project'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        service_name=pulumi.get(__ret__, 'service_name'))
 
 
 @_utilities.lift_output_func(get_service_consumers_iam_policy)

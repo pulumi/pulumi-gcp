@@ -93,9 +93,9 @@ def get_project(filter: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:projects/getProject:getProject', __args__, opts=opts, typ=GetProjectResult).value
 
     return AwaitableGetProjectResult(
-        filter=__ret__.filter,
-        id=__ret__.id,
-        projects=__ret__.projects)
+        filter=pulumi.get(__ret__, 'filter'),
+        id=pulumi.get(__ret__, 'id'),
+        projects=pulumi.get(__ret__, 'projects'))
 
 
 @_utilities.lift_output_func(get_project)

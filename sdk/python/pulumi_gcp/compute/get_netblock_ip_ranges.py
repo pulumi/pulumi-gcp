@@ -150,11 +150,11 @@ def get_netblock_ip_ranges(range_type: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getNetblockIPRanges:getNetblockIPRanges', __args__, opts=opts, typ=GetNetblockIPRangesResult).value
 
     return AwaitableGetNetblockIPRangesResult(
-        cidr_blocks=__ret__.cidr_blocks,
-        cidr_blocks_ipv4s=__ret__.cidr_blocks_ipv4s,
-        cidr_blocks_ipv6s=__ret__.cidr_blocks_ipv6s,
-        id=__ret__.id,
-        range_type=__ret__.range_type)
+        cidr_blocks=pulumi.get(__ret__, 'cidr_blocks'),
+        cidr_blocks_ipv4s=pulumi.get(__ret__, 'cidr_blocks_ipv4s'),
+        cidr_blocks_ipv6s=pulumi.get(__ret__, 'cidr_blocks_ipv6s'),
+        id=pulumi.get(__ret__, 'id'),
+        range_type=pulumi.get(__ret__, 'range_type'))
 
 
 @_utilities.lift_output_func(get_netblock_ip_ranges)

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -97,6 +98,7 @@ func NewOccurence(ctx *pulumi.Context,
 	if args.ResourceUri == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceUri'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Occurence
 	err := ctx.RegisterResource("gcp:containeranalysis/occurence:Occurence", name, args, &resource, opts...)
 	if err != nil {

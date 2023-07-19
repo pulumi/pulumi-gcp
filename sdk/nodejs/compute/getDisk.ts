@@ -109,6 +109,7 @@ export interface GetDiskResult {
     readonly physicalBlockSizeBytes: number;
     readonly project?: string;
     readonly provisionedIops: number;
+    readonly provisionedThroughput: number;
     readonly resourcePolicies: string[];
     /**
      * The URI of the created resource.

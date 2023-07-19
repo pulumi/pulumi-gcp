@@ -17,14 +17,18 @@ public final class OsPolicyAssignmentInstanceFilterExclusionLabelArgs extends co
     public static final OsPolicyAssignmentInstanceFilterExclusionLabelArgs Empty = new OsPolicyAssignmentInstanceFilterExclusionLabelArgs();
 
     /**
-     * Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+     * Labels are identified by key/value pairs in this map.
+     * A VM should contain all the key/value pairs specified in this map to be
+     * selected.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+     * @return Labels are identified by key/value pairs in this map.
+     * A VM should contain all the key/value pairs specified in this map to be
+     * selected.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -56,7 +60,9 @@ public final class OsPolicyAssignmentInstanceFilterExclusionLabelArgs extends co
         }
 
         /**
-         * @param labels Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+         * @param labels Labels are identified by key/value pairs in this map.
+         * A VM should contain all the key/value pairs specified in this map to be
+         * selected.
          * 
          * @return builder
          * 
@@ -67,7 +73,9 @@ public final class OsPolicyAssignmentInstanceFilterExclusionLabelArgs extends co
         }
 
         /**
-         * @param labels Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+         * @param labels Labels are identified by key/value pairs in this map.
+         * A VM should contain all the key/value pairs specified in this map to be
+         * selected.
          * 
          * @return builder
          * 

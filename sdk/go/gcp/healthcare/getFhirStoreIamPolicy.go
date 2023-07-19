@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func LookupFhirStoreIamPolicy(ctx *pulumi.Context, args *LookupFhirStoreIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupFhirStoreIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupFhirStoreIamPolicyResult
 	err := ctx.Invoke("gcp:healthcare/getFhirStoreIamPolicy:getFhirStoreIamPolicy", args, &rv, opts...)
 	if err != nil {

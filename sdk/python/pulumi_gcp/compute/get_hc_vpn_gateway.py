@@ -151,15 +151,15 @@ def get_hc_vpn_gateway(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getHcVpnGateway:getHcVpnGateway', __args__, opts=opts, typ=GetHcVpnGatewayResult).value
 
     return AwaitableGetHcVpnGatewayResult(
-        description=__ret__.description,
-        id=__ret__.id,
-        name=__ret__.name,
-        network=__ret__.network,
-        project=__ret__.project,
-        region=__ret__.region,
-        self_link=__ret__.self_link,
-        stack_type=__ret__.stack_type,
-        vpn_interfaces=__ret__.vpn_interfaces)
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        stack_type=pulumi.get(__ret__, 'stack_type'),
+        vpn_interfaces=pulumi.get(__ret__, 'vpn_interfaces'))
 
 
 @_utilities.lift_output_func(get_hc_vpn_gateway)

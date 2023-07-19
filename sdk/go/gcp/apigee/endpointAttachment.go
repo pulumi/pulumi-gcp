@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -146,6 +147,7 @@ func NewEndpointAttachment(ctx *pulumi.Context,
 	if args.ServiceAttachment == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceAttachment'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EndpointAttachment
 	err := ctx.RegisterResource("gcp:apigee/endpointAttachment:EndpointAttachment", name, args, &resource, opts...)
 	if err != nil {

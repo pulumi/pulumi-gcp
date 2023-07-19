@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -87,6 +88,7 @@ func NewOrganizationExclusion(ctx *pulumi.Context,
 	if args.OrgId == nil {
 		return nil, errors.New("invalid value for required argument 'OrgId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource OrganizationExclusion
 	err := ctx.RegisterResource("gcp:logging/organizationExclusion:OrganizationExclusion", name, args, &resource, opts...)
 	if err != nil {

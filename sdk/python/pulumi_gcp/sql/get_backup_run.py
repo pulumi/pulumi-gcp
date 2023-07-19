@@ -131,7 +131,7 @@ def get_backup_run(backup_id: Optional[int] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    backup = gcp.sql.get_backup_run(instance=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    backup = gcp.sql.get_backup_run(instance=google_sql_database_instance["main"]["name"],
         most_recent=True)
     ```
 
@@ -153,14 +153,14 @@ def get_backup_run(backup_id: Optional[int] = None,
     __ret__ = pulumi.runtime.invoke('gcp:sql/getBackupRun:getBackupRun', __args__, opts=opts, typ=GetBackupRunResult).value
 
     return AwaitableGetBackupRunResult(
-        backup_id=__ret__.backup_id,
-        id=__ret__.id,
-        instance=__ret__.instance,
-        location=__ret__.location,
-        most_recent=__ret__.most_recent,
-        project=__ret__.project,
-        start_time=__ret__.start_time,
-        status=__ret__.status)
+        backup_id=pulumi.get(__ret__, 'backup_id'),
+        id=pulumi.get(__ret__, 'id'),
+        instance=pulumi.get(__ret__, 'instance'),
+        location=pulumi.get(__ret__, 'location'),
+        most_recent=pulumi.get(__ret__, 'most_recent'),
+        project=pulumi.get(__ret__, 'project'),
+        start_time=pulumi.get(__ret__, 'start_time'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_backup_run)
@@ -178,7 +178,7 @@ def get_backup_run_output(backup_id: Optional[pulumi.Input[Optional[int]]] = Non
     import pulumi
     import pulumi_gcp as gcp
 
-    backup = gcp.sql.get_backup_run(instance=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    backup = gcp.sql.get_backup_run(instance=google_sql_database_instance["main"]["name"],
         most_recent=True)
     ```
 

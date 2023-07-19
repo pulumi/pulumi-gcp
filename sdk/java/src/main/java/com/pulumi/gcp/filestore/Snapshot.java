@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .location(&#34;us-central1&#34;)
+ *             .location(&#34;us-east1&#34;)
  *             .tier(&#34;ENTERPRISE&#34;)
  *             .fileShares(InstanceFileSharesArgs.builder()
  *                 .capacityGb(1024)
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  * 
  *         var snapshot = new Snapshot(&#34;snapshot&#34;, SnapshotArgs.builder()        
  *             .instance(instance.name())
- *             .location(&#34;us-central1&#34;)
+ *             .location(&#34;us-east1&#34;)
  *             .build());
  * 
  *     }
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
- *             .location(&#34;us-central1&#34;)
+ *             .location(&#34;us-west1&#34;)
  *             .tier(&#34;ENTERPRISE&#34;)
  *             .fileShares(InstanceFileSharesArgs.builder()
  *                 .capacityGb(1024)
@@ -114,7 +114,7 @@ import javax.annotation.Nullable;
  * 
  *         var snapshot = new Snapshot(&#34;snapshot&#34;, SnapshotArgs.builder()        
  *             .instance(instance.name())
- *             .location(&#34;us-central1&#34;)
+ *             .location(&#34;us-west1&#34;)
  *             .description(&#34;Snapshot of test-instance-for-snapshot&#34;)
  *             .labels(Map.of(&#34;my_label&#34;, &#34;value&#34;))
  *             .build());

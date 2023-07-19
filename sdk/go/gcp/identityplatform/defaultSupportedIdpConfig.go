@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -114,6 +115,7 @@ func NewDefaultSupportedIdpConfig(ctx *pulumi.Context,
 	if args.IdpId == nil {
 		return nil, errors.New("invalid value for required argument 'IdpId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DefaultSupportedIdpConfig
 	err := ctx.RegisterResource("gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig", name, args, &resource, opts...)
 	if err != nil {

@@ -8,13 +8,14 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // The Compute NetworkFirewallPolicyRule resource
 //
 // ## Example Usage
-// ### Global_net_sec_rule
+// ### Global
 // ```go
 // package main
 //
@@ -40,18 +41,18 @@ import (
 //				},
 //				Type:     pulumi.String("IPV4"),
 //				Capacity: pulumi.Int(100),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			basicNetworkFirewallPolicy, err := compute.NewNetworkFirewallPolicy(ctx, "basicNetworkFirewallPolicy", &compute.NetworkFirewallPolicyArgs{
 //				Description: pulumi.String("Sample global network firewall policy"),
 //				Project:     pulumi.String("my-project-name"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			basicNetwork, err := compute.NewNetwork(ctx, "basicNetwork", nil, pulumi.Provider(google_beta))
+//			basicNetwork, err := compute.NewNetwork(ctx, "basicNetwork", nil)
 //			if err != nil {
 //				return err
 //			}
@@ -65,7 +66,7 @@ import (
 //						return fmt.Sprintf("my-project-name/%v", name), nil
 //					}).(pulumi.StringOutput),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -75,7 +76,7 @@ import (
 //					return fmt.Sprintf("tagKeys/%v", name), nil
 //				}).(pulumi.StringOutput),
 //				ShortName: pulumi.String("tagvalue"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -120,7 +121,7 @@ import (
 //						basicGlobalNetworksecurityAddressGroup.ID(),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -154,7 +155,7 @@ import (
 type NetworkFirewallPolicyRule struct {
 	pulumi.CustomResourceState
 
-	// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
 	Action pulumi.StringOutput `pulumi:"action"`
 	// An optional description for this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -206,6 +207,7 @@ func NewNetworkFirewallPolicyRule(ctx *pulumi.Context,
 	if args.Priority == nil {
 		return nil, errors.New("invalid value for required argument 'Priority'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NetworkFirewallPolicyRule
 	err := ctx.RegisterResource("gcp:compute/networkFirewallPolicyRule:NetworkFirewallPolicyRule", name, args, &resource, opts...)
 	if err != nil {
@@ -228,7 +230,7 @@ func GetNetworkFirewallPolicyRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NetworkFirewallPolicyRule resources.
 type networkFirewallPolicyRuleState struct {
-	// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
 	Action *string `pulumi:"action"`
 	// An optional description for this resource.
 	Description *string `pulumi:"description"`
@@ -259,7 +261,7 @@ type networkFirewallPolicyRuleState struct {
 }
 
 type NetworkFirewallPolicyRuleState struct {
-	// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
 	Action pulumi.StringPtrInput
 	// An optional description for this resource.
 	Description pulumi.StringPtrInput
@@ -294,7 +296,7 @@ func (NetworkFirewallPolicyRuleState) ElementType() reflect.Type {
 }
 
 type networkFirewallPolicyRuleArgs struct {
-	// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
 	Action string `pulumi:"action"`
 	// An optional description for this resource.
 	Description *string `pulumi:"description"`
@@ -322,7 +324,7 @@ type networkFirewallPolicyRuleArgs struct {
 
 // The set of arguments for constructing a NetworkFirewallPolicyRule resource.
 type NetworkFirewallPolicyRuleArgs struct {
-	// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
 	Action pulumi.StringInput
 	// An optional description for this resource.
 	Description pulumi.StringPtrInput
@@ -435,7 +437,7 @@ func (o NetworkFirewallPolicyRuleOutput) ToNetworkFirewallPolicyRuleOutputWithCo
 	return o
 }
 
-// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "gotoNext".
 func (o NetworkFirewallPolicyRuleOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkFirewallPolicyRule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }

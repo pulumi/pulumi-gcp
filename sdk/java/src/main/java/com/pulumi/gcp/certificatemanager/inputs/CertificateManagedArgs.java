@@ -44,14 +44,14 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Authorizations that will be used for performing domain authorization
+     * Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
      * 
      */
     @Import(name="dnsAuthorizations")
     private @Nullable Output<List<String>> dnsAuthorizations;
 
     /**
-     * @return Authorizations that will be used for performing domain authorization
+     * @return Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
      * 
      */
     public Optional<Output<List<String>>> dnsAuthorizations() {
@@ -73,6 +73,25 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<List<String>>> domains() {
         return Optional.ofNullable(this.domains);
+    }
+
+    /**
+     * The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*{@literal /}locations/*{@literal /}certificateIssuanceConfigs/*.
+     * If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+     * Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+     * 
+     */
+    @Import(name="issuanceConfig")
+    private @Nullable Output<String> issuanceConfig;
+
+    /**
+     * @return The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*{@literal /}locations/*{@literal /}certificateIssuanceConfigs/*.
+     * If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+     * Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+     * 
+     */
+    public Optional<Output<String>> issuanceConfig() {
+        return Optional.ofNullable(this.issuanceConfig);
     }
 
     /**
@@ -117,6 +136,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
         this.authorizationAttemptInfos = $.authorizationAttemptInfos;
         this.dnsAuthorizations = $.dnsAuthorizations;
         this.domains = $.domains;
+        this.issuanceConfig = $.issuanceConfig;
         this.provisioningIssues = $.provisioningIssues;
         this.state = $.state;
     }
@@ -186,7 +206,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param dnsAuthorizations Authorizations that will be used for performing domain authorization
+         * @param dnsAuthorizations Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
          * 
          * @return builder
          * 
@@ -197,7 +217,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param dnsAuthorizations Authorizations that will be used for performing domain authorization
+         * @param dnsAuthorizations Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
          * 
          * @return builder
          * 
@@ -207,7 +227,7 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param dnsAuthorizations Authorizations that will be used for performing domain authorization
+         * @param dnsAuthorizations Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
          * 
          * @return builder
          * 
@@ -248,6 +268,31 @@ public final class CertificateManagedArgs extends com.pulumi.resources.ResourceA
          */
         public Builder domains(String... domains) {
             return domains(List.of(domains));
+        }
+
+        /**
+         * @param issuanceConfig The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*{@literal /}locations/*{@literal /}certificateIssuanceConfigs/*.
+         * If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+         * Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder issuanceConfig(@Nullable Output<String> issuanceConfig) {
+            $.issuanceConfig = issuanceConfig;
+            return this;
+        }
+
+        /**
+         * @param issuanceConfig The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*{@literal /}locations/*{@literal /}certificateIssuanceConfigs/*.
+         * If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+         * Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder issuanceConfig(String issuanceConfig) {
+            return issuanceConfig(Output.of(issuanceConfig));
         }
 
         /**

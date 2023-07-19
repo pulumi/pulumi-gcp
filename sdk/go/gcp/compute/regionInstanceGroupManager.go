@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -245,6 +246,7 @@ func NewRegionInstanceGroupManager(ctx *pulumi.Context,
 	if args.Versions == nil {
 		return nil, errors.New("invalid value for required argument 'Versions'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RegionInstanceGroupManager
 	err := ctx.RegisterResource("gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager", name, args, &resource, opts...)
 	if err != nil {

@@ -361,6 +361,24 @@ class Key(pulumi.CustomResource):
             service_account_id=myaccount.name,
             public_key_type="TYPE_X509_PEM_FILE")
         ```
+        ### Creating And Regularly Rotating A Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        myaccount = gcp.service_account.Account("myaccount",
+            account_id="myaccount",
+            display_name="My Service Account")
+        # note this requires the terraform to be run regularly
+        mykey_rotation = time.index.Time_rotating("mykeyRotation", rotation_days=30)
+        mykey = gcp.service_account.Key("mykey",
+            service_account_id=myaccount.name,
+            keepers={
+                "rotation_time": mykey_rotation["rotationRfc3339"],
+            })
+        ```
 
         ## Import
 
@@ -403,6 +421,24 @@ class Key(pulumi.CustomResource):
         mykey = gcp.service_account.Key("mykey",
             service_account_id=myaccount.name,
             public_key_type="TYPE_X509_PEM_FILE")
+        ```
+        ### Creating And Regularly Rotating A Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        myaccount = gcp.service_account.Account("myaccount",
+            account_id="myaccount",
+            display_name="My Service Account")
+        # note this requires the terraform to be run regularly
+        mykey_rotation = time.index.Time_rotating("mykeyRotation", rotation_days=30)
+        mykey = gcp.service_account.Key("mykey",
+            service_account_id=myaccount.name,
+            keepers={
+                "rotation_time": mykey_rotation["rotationRfc3339"],
+            })
         ```
 
         ## Import

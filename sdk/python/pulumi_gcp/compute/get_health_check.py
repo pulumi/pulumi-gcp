@@ -227,24 +227,24 @@ def get_health_check(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getHealthCheck:getHealthCheck', __args__, opts=opts, typ=GetHealthCheckResult).value
 
     return AwaitableGetHealthCheckResult(
-        check_interval_sec=__ret__.check_interval_sec,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        grpc_health_checks=__ret__.grpc_health_checks,
-        healthy_threshold=__ret__.healthy_threshold,
-        http2_health_checks=__ret__.http2_health_checks,
-        http_health_checks=__ret__.http_health_checks,
-        https_health_checks=__ret__.https_health_checks,
-        id=__ret__.id,
-        log_configs=__ret__.log_configs,
-        name=__ret__.name,
-        project=__ret__.project,
-        self_link=__ret__.self_link,
-        ssl_health_checks=__ret__.ssl_health_checks,
-        tcp_health_checks=__ret__.tcp_health_checks,
-        timeout_sec=__ret__.timeout_sec,
-        type=__ret__.type,
-        unhealthy_threshold=__ret__.unhealthy_threshold)
+        check_interval_sec=pulumi.get(__ret__, 'check_interval_sec'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        grpc_health_checks=pulumi.get(__ret__, 'grpc_health_checks'),
+        healthy_threshold=pulumi.get(__ret__, 'healthy_threshold'),
+        http2_health_checks=pulumi.get(__ret__, 'http2_health_checks'),
+        http_health_checks=pulumi.get(__ret__, 'http_health_checks'),
+        https_health_checks=pulumi.get(__ret__, 'https_health_checks'),
+        id=pulumi.get(__ret__, 'id'),
+        log_configs=pulumi.get(__ret__, 'log_configs'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        ssl_health_checks=pulumi.get(__ret__, 'ssl_health_checks'),
+        tcp_health_checks=pulumi.get(__ret__, 'tcp_health_checks'),
+        timeout_sec=pulumi.get(__ret__, 'timeout_sec'),
+        type=pulumi.get(__ret__, 'type'),
+        unhealthy_threshold=pulumi.get(__ret__, 'unhealthy_threshold'))
 
 
 @_utilities.lift_output_func(get_health_check)

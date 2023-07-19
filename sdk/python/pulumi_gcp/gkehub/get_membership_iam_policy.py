@@ -99,8 +99,8 @@ def get_membership_iam_policy(membership_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.gkehub.get_membership_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        membership_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.gkehub.get_membership_iam_policy(project=google_gke_hub_membership["membership"]["project"],
+        membership_id=google_gke_hub_membership["membership"]["membership_id"])
     ```
 
 
@@ -114,11 +114,11 @@ def get_membership_iam_policy(membership_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy', __args__, opts=opts, typ=GetMembershipIamPolicyResult).value
 
     return AwaitableGetMembershipIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        membership_id=__ret__.membership_id,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        membership_id=pulumi.get(__ret__, 'membership_id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_membership_iam_policy)
@@ -134,8 +134,8 @@ def get_membership_iam_policy_output(membership_id: Optional[pulumi.Input[str]] 
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.gkehub.get_membership_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        membership_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.gkehub.get_membership_iam_policy(project=google_gke_hub_membership["membership"]["project"],
+        membership_id=google_gke_hub_membership["membership"]["membership_id"])
     ```
 
 

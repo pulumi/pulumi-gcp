@@ -12,6 +12,12 @@ namespace Pulumi.Gcp.Container.Inputs
 
     public sealed class AwsClusterNetworkingArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Disable the per node pool subnet security group rules on the control plane security group. When set to true, you must also provide one or more security groups that ensure node pools are able to send requests to the control plane on TCP/443 and TCP/8132. Failure to do so may result in unavailable node pools.
+        /// </summary>
+        [Input("perNodePoolSgRulesDisabled")]
+        public Input<bool>? PerNodePoolSgRulesDisabled { get; set; }
+
         [Input("podAddressCidrBlocks", required: true)]
         private InputList<string>? _podAddressCidrBlocks;
 

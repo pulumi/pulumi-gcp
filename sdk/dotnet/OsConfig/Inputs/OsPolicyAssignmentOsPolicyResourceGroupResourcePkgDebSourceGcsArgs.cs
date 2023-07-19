@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Bucket of the Cloud Storage object.
+        /// Bucket of the Cloud Storage object.
         /// </summary>
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public Input<int>? Generation { get; set; }
 
         /// <summary>
-        /// Required. Name of the Cloud Storage object.
+        /// Name of the Cloud Storage object.
         /// </summary>
         [Input("object", required: true)]
         public Input<string> Object { get; set; } = null!;

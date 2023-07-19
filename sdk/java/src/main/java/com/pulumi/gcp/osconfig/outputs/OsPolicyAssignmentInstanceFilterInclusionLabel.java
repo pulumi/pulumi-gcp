@@ -12,14 +12,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OsPolicyAssignmentInstanceFilterInclusionLabel {
     /**
-     * @return Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+     * @return Labels are identified by key/value pairs in this map.
+     * A VM should contain all the key/value pairs specified in this map to be
+     * selected.
      * 
      */
     private @Nullable Map<String,String> labels;
 
     private OsPolicyAssignmentInstanceFilterInclusionLabel() {}
     /**
-     * @return Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+     * @return Labels are identified by key/value pairs in this map.
+     * A VM should contain all the key/value pairs specified in this map to be
+     * selected.
      * 
      */
     public Map<String,String> labels() {

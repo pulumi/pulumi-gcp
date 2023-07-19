@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -34,7 +35,8 @@ import (
 //					"my_first_annotation":  pulumi.String("example-annotation-1"),
 //					"my_second_annotation": pulumi.String("example-annotation-2"),
 //				},
-//				Description: pulumi.String("multi-target description"),
+//				DeployParameters: nil,
+//				Description:      pulumi.String("multi-target description"),
 //				ExecutionConfigs: clouddeploy.TargetExecutionConfigArray{
 //					&clouddeploy.TargetExecutionConfigArgs{
 //						Usages: pulumi.StringArray{
@@ -85,7 +87,8 @@ import (
 //					"my_first_annotation":  pulumi.String("example-annotation-1"),
 //					"my_second_annotation": pulumi.String("example-annotation-2"),
 //				},
-//				Description: pulumi.String("basic description"),
+//				DeployParameters: nil,
+//				Description:      pulumi.String("basic description"),
 //				ExecutionConfigs: clouddeploy.TargetExecutionConfigArray{
 //					&clouddeploy.TargetExecutionConfigArgs{
 //						Usages: pulumi.StringArray{
@@ -131,6 +134,9 @@ import (
 //				Annotations: pulumi.StringMap{
 //					"my_first_annotation":  pulumi.String("example-annotation-1"),
 //					"my_second_annotation": pulumi.String("example-annotation-2"),
+//				},
+//				DeployParameters: pulumi.StringMap{
+//					"deployParameterKey": pulumi.String("deployParameterValue"),
 //				},
 //				Description: pulumi.String("basic description"),
 //				Gke: &clouddeploy.TargetGkeArgs{
@@ -183,6 +189,8 @@ type Target struct {
 	AnthosCluster TargetAnthosClusterPtrOutput `pulumi:"anthosCluster"`
 	// Output only. Time at which the `Target` was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Optional. The deploy parameters to use for this target.
+	DeployParameters pulumi.StringMapOutput `pulumi:"deployParameters"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -225,6 +233,7 @@ func NewTarget(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Target
 	err := ctx.RegisterResource("gcp:clouddeploy/target:Target", name, args, &resource, opts...)
 	if err != nil {
@@ -253,6 +262,8 @@ type targetState struct {
 	AnthosCluster *TargetAnthosCluster `pulumi:"anthosCluster"`
 	// Output only. Time at which the `Target` was created.
 	CreateTime *string `pulumi:"createTime"`
+	// Optional. The deploy parameters to use for this target.
+	DeployParameters map[string]string `pulumi:"deployParameters"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
 	Description *string `pulumi:"description"`
 	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -292,6 +303,8 @@ type TargetState struct {
 	AnthosCluster TargetAnthosClusterPtrInput
 	// Output only. Time at which the `Target` was created.
 	CreateTime pulumi.StringPtrInput
+	// Optional. The deploy parameters to use for this target.
+	DeployParameters pulumi.StringMapInput
 	// Optional. Description of the `Target`. Max length is 255 characters.
 	Description pulumi.StringPtrInput
 	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -333,6 +346,8 @@ type targetArgs struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// Information specifying an Anthos Cluster.
 	AnthosCluster *TargetAnthosCluster `pulumi:"anthosCluster"`
+	// Optional. The deploy parameters to use for this target.
+	DeployParameters map[string]string `pulumi:"deployParameters"`
 	// Optional. Description of the `Target`. Max length is 255 characters.
 	Description *string `pulumi:"description"`
 	// Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
@@ -363,6 +378,8 @@ type TargetArgs struct {
 	Annotations pulumi.StringMapInput
 	// Information specifying an Anthos Cluster.
 	AnthosCluster TargetAnthosClusterPtrInput
+	// Optional. The deploy parameters to use for this target.
+	DeployParameters pulumi.StringMapInput
 	// Optional. Description of the `Target`. Max length is 255 characters.
 	Description pulumi.StringPtrInput
 	// Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
@@ -487,6 +504,11 @@ func (o TargetOutput) AnthosCluster() TargetAnthosClusterPtrOutput {
 // Output only. Time at which the `Target` was created.
 func (o TargetOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. The deploy parameters to use for this target.
+func (o TargetOutput) DeployParameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Target) pulumi.StringMapOutput { return v.DeployParameters }).(pulumi.StringMapOutput)
 }
 
 // Optional. Description of the `Target`. Max length is 255 characters.

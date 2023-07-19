@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -214,6 +215,7 @@ func NewNode(ctx *pulumi.Context,
 	if args.TensorflowVersion == nil {
 		return nil, errors.New("invalid value for required argument 'TensorflowVersion'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Node
 	err := ctx.RegisterResource("gcp:tpu/node:Node", name, args, &resource, opts...)
 	if err != nil {

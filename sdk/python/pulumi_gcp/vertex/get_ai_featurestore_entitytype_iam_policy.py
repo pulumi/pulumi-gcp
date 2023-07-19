@@ -103,11 +103,11 @@ def get_ai_featurestore_entitytype_iam_policy(entitytype: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy', __args__, opts=opts, typ=GetAiFeaturestoreEntitytypeIamPolicyResult).value
 
     return AwaitableGetAiFeaturestoreEntitytypeIamPolicyResult(
-        entitytype=__ret__.entitytype,
-        etag=__ret__.etag,
-        featurestore=__ret__.featurestore,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data)
+        entitytype=pulumi.get(__ret__, 'entitytype'),
+        etag=pulumi.get(__ret__, 'etag'),
+        featurestore=pulumi.get(__ret__, 'featurestore'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'))
 
 
 @_utilities.lift_output_func(get_ai_featurestore_entitytype_iam_policy)

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -145,6 +146,7 @@ func NewNotification(ctx *pulumi.Context,
 	if args.Topic == nil {
 		return nil, errors.New("invalid value for required argument 'Topic'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Notification
 	err := ctx.RegisterResource("gcp:storage/notification:Notification", name, args, &resource, opts...)
 	if err != nil {

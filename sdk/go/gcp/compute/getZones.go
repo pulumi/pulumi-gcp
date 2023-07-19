@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides access to available Google Compute zones in a region for a given project.
 // See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
 func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetZonesResult
 	err := ctx.Invoke("gcp:compute/getZones:getZones", args, &rv, opts...)
 	if err != nil {

@@ -156,15 +156,15 @@ def get_apple_app(app_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:firebase/getAppleApp:getAppleApp', __args__, opts=opts, typ=GetAppleAppResult).value
 
     return AwaitableGetAppleAppResult(
-        app_id=__ret__.app_id,
-        app_store_id=__ret__.app_store_id,
-        bundle_id=__ret__.bundle_id,
-        deletion_policy=__ret__.deletion_policy,
-        display_name=__ret__.display_name,
-        id=__ret__.id,
-        name=__ret__.name,
-        project=__ret__.project,
-        team_id=__ret__.team_id)
+        app_id=pulumi.get(__ret__, 'app_id'),
+        app_store_id=pulumi.get(__ret__, 'app_store_id'),
+        bundle_id=pulumi.get(__ret__, 'bundle_id'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        team_id=pulumi.get(__ret__, 'team_id'))
 
 
 @_utilities.lift_output_func(get_apple_app)

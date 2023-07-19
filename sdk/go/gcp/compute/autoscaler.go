@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -295,6 +296,7 @@ func NewAutoscaler(ctx *pulumi.Context,
 		},
 	})
 	opts = append(opts, aliases)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Autoscaler
 	err := ctx.RegisterResource("gcp:compute/autoscaler:Autoscaler", name, args, &resource, opts...)
 	if err != nil {

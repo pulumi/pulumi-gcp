@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func LookupCaPoolIamPolicy(ctx *pulumi.Context, args *LookupCaPoolIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupCaPoolIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupCaPoolIamPolicyResult
 	err := ctx.Invoke("gcp:certificateauthority/getCaPoolIamPolicy:getCaPoolIamPolicy", args, &rv, opts...)
 	if err != nil {

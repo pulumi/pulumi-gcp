@@ -43,6 +43,14 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// * NONE: No normalization type is specified.
         /// </summary>
         public readonly string? FeatureNormType;
+        /// <summary>
+        /// Index data is split into equal parts to be processed. These are called "shards".
+        /// The shard size must be specified when creating an index. The value must be one of the followings:
+        /// * SHARD_SIZE_SMALL: Small (2GB)
+        /// * SHARD_SIZE_MEDIUM: Medium (20GB)
+        /// * SHARD_SIZE_LARGE: Large (50GB)
+        /// </summary>
+        public readonly string? ShardSize;
 
         [OutputConstructor]
         private AiIndexMetadataConfig(
@@ -54,13 +62,16 @@ namespace Pulumi.Gcp.Vertex.Outputs
 
             string? distanceMeasureType,
 
-            string? featureNormType)
+            string? featureNormType,
+
+            string? shardSize)
         {
             AlgorithmConfig = algorithmConfig;
             ApproximateNeighborsCount = approximateNeighborsCount;
             Dimensions = dimensions;
             DistanceMeasureType = distanceMeasureType;
             FeatureNormType = featureNormType;
+            ShardSize = shardSize;
         }
     }
 }

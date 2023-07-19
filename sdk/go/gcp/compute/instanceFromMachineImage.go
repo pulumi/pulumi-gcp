@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -160,6 +161,7 @@ func NewInstanceFromMachineImage(ctx *pulumi.Context,
 	if args.SourceMachineImage == nil {
 		return nil, errors.New("invalid value for required argument 'SourceMachineImage'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InstanceFromMachineImage
 	err := ctx.RegisterResource("gcp:compute/instanceFromMachineImage:InstanceFromMachineImage", name, args, &resource, opts...)
 	if err != nil {

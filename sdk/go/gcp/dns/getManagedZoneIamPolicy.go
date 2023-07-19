@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func GetManagedZoneIamPolicy(ctx *pulumi.Context, args *GetManagedZoneIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetManagedZoneIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetManagedZoneIamPolicyResult
 	err := ctx.Invoke("gcp:dns/getManagedZoneIamPolicy:getManagedZoneIamPolicy", args, &rv, opts...)
 	if err != nil {

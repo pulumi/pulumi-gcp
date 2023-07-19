@@ -99,8 +99,8 @@ def get_repository_iam_policy(project: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.sourcerepo.get_repository_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        repository=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.sourcerepo.get_repository_iam_policy(project=google_sourcerepo_repository["my-repo"]["project"],
+        repository=google_sourcerepo_repository["my-repo"]["name"])
     ```
 
 
@@ -115,11 +115,11 @@ def get_repository_iam_policy(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:sourcerepo/getRepositoryIamPolicy:getRepositoryIamPolicy', __args__, opts=opts, typ=GetRepositoryIamPolicyResult).value
 
     return AwaitableGetRepositoryIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project,
-        repository=__ret__.repository)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'),
+        repository=pulumi.get(__ret__, 'repository'))
 
 
 @_utilities.lift_output_func(get_repository_iam_policy)
@@ -135,8 +135,8 @@ def get_repository_iam_policy_output(project: Optional[pulumi.Input[Optional[str
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.sourcerepo.get_repository_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        repository=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.sourcerepo.get_repository_iam_policy(project=google_sourcerepo_repository["my-repo"]["project"],
+        repository=google_sourcerepo_repository["my-repo"]["name"])
     ```
 
 

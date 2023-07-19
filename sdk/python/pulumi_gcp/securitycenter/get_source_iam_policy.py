@@ -99,7 +99,7 @@ def get_source_iam_policy(organization: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.securitycenter.get_source_iam_policy(source=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.securitycenter.get_source_iam_policy(source=google_scc_source["custom_source"]["name"])
     ```
 
 
@@ -112,11 +112,11 @@ def get_source_iam_policy(organization: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy', __args__, opts=opts, typ=GetSourceIamPolicyResult).value
 
     return AwaitableGetSourceIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        organization=__ret__.organization,
-        policy_data=__ret__.policy_data,
-        source=__ret__.source)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        organization=pulumi.get(__ret__, 'organization'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        source=pulumi.get(__ret__, 'source'))
 
 
 @_utilities.lift_output_func(get_source_iam_policy)
@@ -132,7 +132,7 @@ def get_source_iam_policy_output(organization: Optional[pulumi.Input[str]] = Non
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.securitycenter.get_source_iam_policy(source=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.securitycenter.get_source_iam_policy(source=google_scc_source["custom_source"]["name"])
     ```
 
 

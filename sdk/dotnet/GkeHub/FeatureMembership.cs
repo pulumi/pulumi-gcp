@@ -133,7 +133,7 @@ namespace Pulumi.Gcp.GkeHub
     ///         Membership = membership.MembershipId,
     ///         Configmanagement = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementArgs
     ///         {
-    ///             Version = "1.12.0",
+    ///             Version = "1.15.1",
     ///             ConfigSync = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncArgs
     ///             {
     ///                 Oci = new Gcp.GkeHub.Inputs.FeatureMembershipConfigmanagementConfigSyncOciArgs

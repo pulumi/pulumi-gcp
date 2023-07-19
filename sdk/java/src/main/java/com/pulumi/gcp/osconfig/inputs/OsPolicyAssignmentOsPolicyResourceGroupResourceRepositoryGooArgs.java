@@ -14,14 +14,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooA
     public static final OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs Empty = new OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs();
 
     /**
-     * Required. The name of the repository.
+     * The name of the repository.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Required. The name of the repository.
+     * @return The name of the repository.
      * 
      */
     public Output<String> name() {
@@ -29,14 +29,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooA
     }
 
     /**
-     * Required. The url of the repository.
+     * The url of the repository.
      * 
      */
     @Import(name="url", required=true)
     private Output<String> url;
 
     /**
-     * @return Required. The url of the repository.
+     * @return The url of the repository.
      * 
      */
     public Output<String> url() {
@@ -69,7 +69,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooA
         }
 
         /**
-         * @param name Required. The name of the repository.
+         * @param name The name of the repository.
          * 
          * @return builder
          * 
@@ -80,7 +80,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooA
         }
 
         /**
-         * @param name Required. The name of the repository.
+         * @param name The name of the repository.
          * 
          * @return builder
          * 
@@ -90,7 +90,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooA
         }
 
         /**
-         * @param url Required. The url of the repository.
+         * @param url The url of the repository.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooA
         }
 
         /**
-         * @param url Required. The url of the repository.
+         * @param url The url of the repository.
          * 
          * @return builder
          * 

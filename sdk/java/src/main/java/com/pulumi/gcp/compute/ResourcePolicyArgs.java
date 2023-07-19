@@ -36,6 +36,7 @@ public final class ResourcePolicyArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Replication consistency group for asynchronous disk replication.
+     * Structure is documented below.
      * 
      */
     @Import(name="diskConsistencyGroupPolicy")
@@ -43,6 +44,7 @@ public final class ResourcePolicyArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Replication consistency group for asynchronous disk replication.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<ResourcePolicyDiskConsistencyGroupPolicyArgs>> diskConsistencyGroupPolicy() {
@@ -217,6 +219,7 @@ public final class ResourcePolicyArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param diskConsistencyGroupPolicy Replication consistency group for asynchronous disk replication.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -228,6 +231,7 @@ public final class ResourcePolicyArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param diskConsistencyGroupPolicy Replication consistency group for asynchronous disk replication.
+         * Structure is documented below.
          * 
          * @return builder
          * 

@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AppleApp{}
 	case "gcp:firebase/databaseInstance:DatabaseInstance":
 		r = &DatabaseInstance{}
+	case "gcp:firebase/extensionsInstance:ExtensionsInstance":
+		r = &ExtensionsInstance{}
 	case "gcp:firebase/hostingChannel:HostingChannel":
 		r = &HostingChannel{}
 	case "gcp:firebase/hostingRelease:HostingRelease":
@@ -52,7 +54,7 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 }
 
 func init() {
-	version, err := gcp.PkgVersion()
+	version, err := internal.PkgVersion()
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
@@ -69,6 +71,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"firebase/databaseInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"firebase/extensionsInstance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -18,14 +18,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateAr
     public static final OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs Empty = new OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs();
 
     /**
-     * Optional arguments to pass to the source during execution.
+     * Optional arguments to pass to the source during
+     * execution.
      * 
      */
     @Import(name="args")
     private @Nullable Output<List<String>> args;
 
     /**
-     * @return Optional arguments to pass to the source during execution.
+     * @return Optional arguments to pass to the source during
+     * execution.
      * 
      */
     public Optional<Output<List<String>>> args() {
@@ -33,14 +35,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateAr
     }
 
     /**
-     * A remote or local file.
+     * A remote or local file. Structure is
+     * documented below.
      * 
      */
     @Import(name="file")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs> file;
 
     /**
-     * @return A remote or local file.
+     * @return A remote or local file. Structure is
+     * documented below.
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs>> file() {
@@ -48,14 +52,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateAr
     }
 
     /**
-     * Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+     * The script interpreter to use. Possible values
+     * are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
      * 
      */
     @Import(name="interpreter", required=true)
     private Output<String> interpreter;
 
     /**
-     * @return Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+     * @return The script interpreter to use. Possible values
+     * are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
      * 
      */
     public Output<String> interpreter() {
@@ -63,14 +69,22 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateAr
     }
 
     /**
-     * Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+     * Only recorded for enforce Exec. Path to an
+     * output file (that is created by this Exec) whose content will be recorded in
+     * OSPolicyResourceCompliance after a successful run. Absence or failure to
+     * read this file will result in this ExecResource being non-compliant. Output
+     * file size is limited to 100K bytes.
      * 
      */
     @Import(name="outputFilePath")
     private @Nullable Output<String> outputFilePath;
 
     /**
-     * @return Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+     * @return Only recorded for enforce Exec. Path to an
+     * output file (that is created by this Exec) whose content will be recorded in
+     * OSPolicyResourceCompliance after a successful run. Absence or failure to
+     * read this file will result in this ExecResource being non-compliant. Output
+     * file size is limited to 100K bytes.
      * 
      */
     public Optional<Output<String>> outputFilePath() {
@@ -78,14 +92,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateAr
     }
 
     /**
-     * An inline script. The size of the script is limited to 1024 characters.
+     * An inline script. The size of the script is limited to
+     * 1024 characters.
      * 
      */
     @Import(name="script")
     private @Nullable Output<String> script;
 
     /**
-     * @return An inline script. The size of the script is limited to 1024 characters.
+     * @return An inline script. The size of the script is limited to
+     * 1024 characters.
      * 
      */
     public Optional<Output<String>> script() {
@@ -121,7 +137,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateAr
         }
 
         /**
-         * @param args Optional arguments to pass to the source during execution.
+         * @param args Optional arguments to pass to the source during
+         * execution.
          * 
          * @return builder
          * 
@@ -132,7 +149,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateAr
         }
 
         /**
-         * @param args Optional arguments to pass to the source during execution.
+         * @param args Optional arguments to pass to the source during
+         * execution.
          * 
          * @return builder
          * 
@@ -142,7 +160,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateAr
         }
 
         /**
-         * @param args Optional arguments to pass to the source during execution.
+         * @param args Optional arguments to pass to the source during
+         * execution.
          * 
          * @return builder
          * 
@@ -152,7 +171,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateAr
         }
 
         /**
-         * @param file A remote or local file.
+         * @param file A remote or local file. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -163,7 +183,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateAr
         }
 
         /**
-         * @param file A remote or local file.
+         * @param file A remote or local file. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -173,7 +194,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateAr
         }
 
         /**
-         * @param interpreter Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+         * @param interpreter The script interpreter to use. Possible values
+         * are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
          * 
          * @return builder
          * 
@@ -184,7 +206,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateAr
         }
 
         /**
-         * @param interpreter Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+         * @param interpreter The script interpreter to use. Possible values
+         * are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
          * 
          * @return builder
          * 
@@ -194,7 +217,11 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateAr
         }
 
         /**
-         * @param outputFilePath Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+         * @param outputFilePath Only recorded for enforce Exec. Path to an
+         * output file (that is created by this Exec) whose content will be recorded in
+         * OSPolicyResourceCompliance after a successful run. Absence or failure to
+         * read this file will result in this ExecResource being non-compliant. Output
+         * file size is limited to 100K bytes.
          * 
          * @return builder
          * 
@@ -205,7 +232,11 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateAr
         }
 
         /**
-         * @param outputFilePath Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+         * @param outputFilePath Only recorded for enforce Exec. Path to an
+         * output file (that is created by this Exec) whose content will be recorded in
+         * OSPolicyResourceCompliance after a successful run. Absence or failure to
+         * read this file will result in this ExecResource being non-compliant. Output
+         * file size is limited to 100K bytes.
          * 
          * @return builder
          * 
@@ -215,7 +246,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateAr
         }
 
         /**
-         * @param script An inline script. The size of the script is limited to 1024 characters.
+         * @param script An inline script. The size of the script is limited to
+         * 1024 characters.
          * 
          * @return builder
          * 
@@ -226,7 +258,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateAr
         }
 
         /**
-         * @param script An inline script. The size of the script is limited to 1024 characters.
+         * @param script An inline script. The size of the script is limited to
+         * 1024 characters.
          * 
          * @return builder
          * 

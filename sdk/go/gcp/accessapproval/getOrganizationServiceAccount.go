@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,6 +56,7 @@ import (
 //
 // ```
 func GetOrganizationServiceAccount(ctx *pulumi.Context, args *GetOrganizationServiceAccountArgs, opts ...pulumi.InvokeOption) (*GetOrganizationServiceAccountResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOrganizationServiceAccountResult
 	err := ctx.Invoke("gcp:accessapproval/getOrganizationServiceAccount:getOrganizationServiceAccount", args, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -122,6 +123,7 @@ func NewEntityType(ctx *pulumi.Context,
 	if args.Kind == nil {
 		return nil, errors.New("invalid value for required argument 'Kind'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EntityType
 	err := ctx.RegisterResource("gcp:diagflow/entityType:EntityType", name, args, &resource, opts...)
 	if err != nil {

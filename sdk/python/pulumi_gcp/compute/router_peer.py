@@ -18,7 +18,6 @@ class RouterPeerArgs:
     def __init__(__self__, *,
                  interface: pulumi.Input[str],
                  peer_asn: pulumi.Input[int],
-                 peer_ip_address: pulumi.Input[str],
                  router: pulumi.Input[str],
                  advertise_mode: Optional[pulumi.Input[str]] = None,
                  advertised_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -30,6 +29,7 @@ class RouterPeerArgs:
                  ip_address: Optional[pulumi.Input[str]] = None,
                  ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 peer_ip_address: Optional[pulumi.Input[str]] = None,
                  peer_ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -39,8 +39,6 @@ class RouterPeerArgs:
         :param pulumi.Input[str] interface: Name of the interface the BGP peer is associated with.
         :param pulumi.Input[int] peer_asn: Peer BGP Autonomous System Number (ASN).
                Each BGP interface may use a different value.
-        :param pulumi.Input[str] peer_ip_address: IP address of the BGP interface outside Google Cloud Platform.
-               Only IPv4 is supported.
         :param pulumi.Input[str] router: The name of the Cloud Router in which this BgpPeer will be configured.
                
                
@@ -79,6 +77,8 @@ class RouterPeerArgs:
                means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input[str] peer_ip_address: IP address of the BGP interface outside Google Cloud Platform.
+               Only IPv4 is supported. Required if `ip_address` is set.
         :param pulumi.Input[str] peer_ipv6_nexthop_address: IPv6 address of the BGP interface outside Google Cloud Platform.
                The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
                If you do not specify the next hop addresses, Google Cloud automatically
@@ -94,7 +94,6 @@ class RouterPeerArgs:
         """
         pulumi.set(__self__, "interface", interface)
         pulumi.set(__self__, "peer_asn", peer_asn)
-        pulumi.set(__self__, "peer_ip_address", peer_ip_address)
         pulumi.set(__self__, "router", router)
         if advertise_mode is not None:
             pulumi.set(__self__, "advertise_mode", advertise_mode)
@@ -116,6 +115,8 @@ class RouterPeerArgs:
             pulumi.set(__self__, "ipv6_nexthop_address", ipv6_nexthop_address)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if peer_ip_address is not None:
+            pulumi.set(__self__, "peer_ip_address", peer_ip_address)
         if peer_ipv6_nexthop_address is not None:
             pulumi.set(__self__, "peer_ipv6_nexthop_address", peer_ipv6_nexthop_address)
         if project is not None:
@@ -149,19 +150,6 @@ class RouterPeerArgs:
     @peer_asn.setter
     def peer_asn(self, value: pulumi.Input[int]):
         pulumi.set(self, "peer_asn", value)
-
-    @property
-    @pulumi.getter(name="peerIpAddress")
-    def peer_ip_address(self) -> pulumi.Input[str]:
-        """
-        IP address of the BGP interface outside Google Cloud Platform.
-        Only IPv4 is supported.
-        """
-        return pulumi.get(self, "peer_ip_address")
-
-    @peer_ip_address.setter
-    def peer_ip_address(self, value: pulumi.Input[str]):
-        pulumi.set(self, "peer_ip_address", value)
 
     @property
     @pulumi.getter
@@ -323,6 +311,19 @@ class RouterPeerArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="peerIpAddress")
+    def peer_ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        IP address of the BGP interface outside Google Cloud Platform.
+        Only IPv4 is supported. Required if `ip_address` is set.
+        """
+        return pulumi.get(self, "peer_ip_address")
+
+    @peer_ip_address.setter
+    def peer_ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "peer_ip_address", value)
+
+    @property
     @pulumi.getter(name="peerIpv6NexthopAddress")
     def peer_ipv6_nexthop_address(self) -> Optional[pulumi.Input[str]]:
         """
@@ -442,7 +443,7 @@ class _RouterPeerState:
         :param pulumi.Input[int] peer_asn: Peer BGP Autonomous System Number (ASN).
                Each BGP interface may use a different value.
         :param pulumi.Input[str] peer_ip_address: IP address of the BGP interface outside Google Cloud Platform.
-               Only IPv4 is supported.
+               Only IPv4 is supported. Required if `ip_address` is set.
         :param pulumi.Input[str] peer_ipv6_nexthop_address: IPv6 address of the BGP interface outside Google Cloud Platform.
                The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
                If you do not specify the next hop addresses, Google Cloud automatically
@@ -685,7 +686,7 @@ class _RouterPeerState:
     def peer_ip_address(self) -> Optional[pulumi.Input[str]]:
         """
         IP address of the BGP interface outside Google Cloud Platform.
-        Only IPv4 is supported.
+        Only IPv4 is supported. Required if `ip_address` is set.
         """
         return pulumi.get(self, "peer_ip_address")
 
@@ -812,7 +813,6 @@ class RouterPeer(pulumi.CustomResource):
             advertised_route_priority=100,
             interface="interface-1",
             peer_asn=65513,
-            peer_ip_address="169.254.1.2",
             region="us-central1",
             router="my-router")
         ```
@@ -984,7 +984,7 @@ class RouterPeer(pulumi.CustomResource):
         :param pulumi.Input[int] peer_asn: Peer BGP Autonomous System Number (ASN).
                Each BGP interface may use a different value.
         :param pulumi.Input[str] peer_ip_address: IP address of the BGP interface outside Google Cloud Platform.
-               Only IPv4 is supported.
+               Only IPv4 is supported. Required if `ip_address` is set.
         :param pulumi.Input[str] peer_ipv6_nexthop_address: IPv6 address of the BGP interface outside Google Cloud Platform.
                The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
                If you do not specify the next hop addresses, Google Cloud automatically
@@ -1031,7 +1031,6 @@ class RouterPeer(pulumi.CustomResource):
             advertised_route_priority=100,
             interface="interface-1",
             peer_asn=65513,
-            peer_ip_address="169.254.1.2",
             region="us-central1",
             router="my-router")
         ```
@@ -1221,8 +1220,6 @@ class RouterPeer(pulumi.CustomResource):
             if peer_asn is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_asn'")
             __props__.__dict__["peer_asn"] = peer_asn
-            if peer_ip_address is None and not opts.urn:
-                raise TypeError("Missing required property 'peer_ip_address'")
             __props__.__dict__["peer_ip_address"] = peer_ip_address
             __props__.__dict__["peer_ipv6_nexthop_address"] = peer_ipv6_nexthop_address
             __props__.__dict__["project"] = project
@@ -1307,7 +1304,7 @@ class RouterPeer(pulumi.CustomResource):
         :param pulumi.Input[int] peer_asn: Peer BGP Autonomous System Number (ASN).
                Each BGP interface may use a different value.
         :param pulumi.Input[str] peer_ip_address: IP address of the BGP interface outside Google Cloud Platform.
-               Only IPv4 is supported.
+               Only IPv4 is supported. Required if `ip_address` is set.
         :param pulumi.Input[str] peer_ipv6_nexthop_address: IPv6 address of the BGP interface outside Google Cloud Platform.
                The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
                If you do not specify the next hop addresses, Google Cloud automatically
@@ -1484,7 +1481,7 @@ class RouterPeer(pulumi.CustomResource):
     def peer_ip_address(self) -> pulumi.Output[str]:
         """
         IP address of the BGP interface outside Google Cloud Platform.
-        Only IPv4 is supported.
+        Only IPv4 is supported. Required if `ip_address` is set.
         """
         return pulumi.get(self, "peer_ip_address")
 

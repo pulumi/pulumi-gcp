@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -115,6 +116,7 @@ func NewBrand(ctx *pulumi.Context,
 	if args.SupportEmail == nil {
 		return nil, errors.New("invalid value for required argument 'SupportEmail'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Brand
 	err := ctx.RegisterResource("gcp:iap/brand:Brand", name, args, &resource, opts...)
 	if err != nil {

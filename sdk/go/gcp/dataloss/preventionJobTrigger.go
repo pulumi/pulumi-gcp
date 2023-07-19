@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -283,7 +284,23 @@ import (
 //				Labels: pulumi.StringMap{
 //					"env": pulumi.String("default"),
 //				},
-//				Schema: pulumi.String("    [\n    {\n      \"name\": \"quantity\",\n      \"type\": \"NUMERIC\",\n      \"mode\": \"NULLABLE\",\n      \"description\": \"The quantity\"\n    },\n    {\n      \"name\": \"name\",\n      \"type\": \"STRING\",\n      \"mode\": \"NULLABLE\",\n      \"description\": \"Name of the object\"\n    }\n    ]\n"),
+//				Schema: pulumi.String(`    [
+//	    {
+//	      "name": "quantity",
+//	      "type": "NUMERIC",
+//	      "mode": "NULLABLE",
+//	      "description": "The quantity"
+//	    },
+//	    {
+//	      "name": "name",
+//	      "type": "STRING",
+//	      "mode": "NULLABLE",
+//	      "description": "Name of the object"
+//	    }
+//	    ]
+//
+// `),
+//
 //			})
 //			if err != nil {
 //				return err
@@ -621,6 +638,7 @@ func NewPreventionJobTrigger(ctx *pulumi.Context,
 	if args.Triggers == nil {
 		return nil, errors.New("invalid value for required argument 'Triggers'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PreventionJobTrigger
 	err := ctx.RegisterResource("gcp:dataloss/preventionJobTrigger:PreventionJobTrigger", name, args, &resource, opts...)
 	if err != nil {

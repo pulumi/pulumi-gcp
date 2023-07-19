@@ -8,9 +8,19 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Gateway represents the configuration for a proxy, typically a load balancer.
+// It captures the ip:port over which the services are exposed by the proxy,
+// along with any policy configurations. Routes have reference to to Gateways
+// to dictate how requests should be routed by this Gateway.
+//
+// To get more information about Gateway, see:
+//
+// * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1/projects.locations.gateways)
+//
 // ## Example Usage
 // ### Network Services Gateway Basic
 //
@@ -27,12 +37,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networkservices.NewGateway(ctx, "default", &networkservices.GatewayArgs{
-//				Scope: pulumi.String("default-scope-basic"),
-//				Type:  pulumi.String("OPEN_MESH"),
 //				Ports: pulumi.IntArray{
 //					pulumi.Int(443),
 //				},
-//			}, pulumi.Provider(google_beta))
+//				Scope: pulumi.String("default-scope-basic"),
+//				Type:  pulumi.String("OPEN_MESH"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -56,16 +66,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networkservices.NewGateway(ctx, "default", &networkservices.GatewayArgs{
+//				Description: pulumi.String("my description"),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
-//				Description: pulumi.String("my description"),
-//				Type:        pulumi.String("OPEN_MESH"),
 //				Ports: pulumi.IntArray{
 //					pulumi.Int(443),
 //				},
 //				Scope: pulumi.String("default-scope-advance"),
-//			}, pulumi.Provider(google_beta))
+//				Type:  pulumi.String("OPEN_MESH"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -107,14 +117,14 @@ import (
 //					PemCertificate: readFileOrPanic("test-fixtures/certificatemanager/cert.pem"),
 //					PemPrivateKey:  readFileOrPanic("test-fixtures/certificatemanager/private-key.pem"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
 //				RoutingMode:           pulumi.String("REGIONAL"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -124,7 +134,7 @@ import (
 //				Region:      pulumi.String("us-central1"),
 //				Network:     defaultNetwork.ID(),
 //				Role:        pulumi.String("ACTIVE"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -134,13 +144,13 @@ import (
 //				Region:      pulumi.String("us-central1"),
 //				Network:     defaultNetwork.ID(),
 //				Role:        pulumi.String("ACTIVE"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultGatewaySecurityPolicy, err := networksecurity.NewGatewaySecurityPolicy(ctx, "defaultGatewaySecurityPolicy", &networksecurity.GatewaySecurityPolicyArgs{
 //				Location: pulumi.String("us-central1"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -151,7 +161,7 @@ import (
 //				Priority:              pulumi.Int(1),
 //				SessionMatcher:        pulumi.String("host() == 'example.com'"),
 //				BasicProfile:          pulumi.String("ALLOW"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -172,7 +182,7 @@ import (
 //				Network:                         defaultNetwork.ID(),
 //				Subnetwork:                      defaultSubnetwork.ID(),
 //				DeleteSwgAutogenRouterOnDestroy: pulumi.Bool(true),
-//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+//			}, pulumi.DependsOn([]pulumi.Resource{
 //				proxyonlysubnet,
 //			}))
 //			if err != nil {
@@ -216,14 +226,14 @@ import (
 //					PemCertificate: readFileOrPanic("test-fixtures/certificatemanager/cert.pem"),
 //					PemPrivateKey:  readFileOrPanic("test-fixtures/certificatemanager/private-key.pem"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
 //				RoutingMode:           pulumi.String("REGIONAL"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -233,7 +243,7 @@ import (
 //				Region:      pulumi.String("us-south1"),
 //				Network:     defaultNetwork.ID(),
 //				Role:        pulumi.String("ACTIVE"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -243,13 +253,13 @@ import (
 //				Region:      pulumi.String("us-south1"),
 //				Network:     defaultNetwork.ID(),
 //				Role:        pulumi.String("ACTIVE"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultGatewaySecurityPolicy, err := networksecurity.NewGatewaySecurityPolicy(ctx, "defaultGatewaySecurityPolicy", &networksecurity.GatewaySecurityPolicyArgs{
 //				Location: pulumi.String("us-south1"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -260,7 +270,7 @@ import (
 //				Priority:              pulumi.Int(1),
 //				SessionMatcher:        pulumi.String("host() == 'example.com'"),
 //				BasicProfile:          pulumi.String("ALLOW"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -281,7 +291,7 @@ import (
 //				Network:                         defaultNetwork.ID(),
 //				Subnetwork:                      defaultSubnetwork.ID(),
 //				DeleteSwgAutogenRouterOnDestroy: pulumi.Bool(true),
-//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+//			}, pulumi.DependsOn([]pulumi.Resource{
 //				proxyonlysubnet,
 //			}))
 //			if err != nil {
@@ -304,7 +314,7 @@ import (
 //				Network:                         defaultNetwork.ID(),
 //				Subnetwork:                      defaultSubnetwork.ID(),
 //				DeleteSwgAutogenRouterOnDestroy: pulumi.Bool(true),
-//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+//			}, pulumi.DependsOn([]pulumi.Resource{
 //				proxyonlysubnet,
 //			}))
 //			if err != nil {
@@ -415,6 +425,7 @@ func NewGateway(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Gateway
 	err := ctx.RegisterResource("gcp:networkservices/gateway:Gateway", name, args, &resource, opts...)
 	if err != nil {

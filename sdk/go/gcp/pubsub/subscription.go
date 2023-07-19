@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -227,7 +228,17 @@ import (
 //				DeletionProtection: pulumi.Bool(false),
 //				TableId:            pulumi.String("example_table"),
 //				DatasetId:          testDataset.DatasetId,
-//				Schema:             pulumi.String("[\n  {\n    \"name\": \"data\",\n    \"type\": \"STRING\",\n    \"mode\": \"NULLABLE\",\n    \"description\": \"The data\"\n  }\n]\n"),
+//				Schema: pulumi.String(`[
+//	  {
+//	    "name": "data",
+//	    "type": "STRING",
+//	    "mode": "NULLABLE",
+//	    "description": "The data"
+//	  }
+//
+// ]
+// `),
+//
 //			})
 //			if err != nil {
 //				return err
@@ -381,6 +392,7 @@ func NewSubscription(ctx *pulumi.Context,
 	if args.Topic == nil {
 		return nil, errors.New("invalid value for required argument 'Topic'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Subscription
 	err := ctx.RegisterResource("gcp:pubsub/subscription:Subscription", name, args, &resource, opts...)
 	if err != nil {

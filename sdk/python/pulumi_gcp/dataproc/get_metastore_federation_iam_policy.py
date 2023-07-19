@@ -116,12 +116,12 @@ def get_metastore_federation_iam_policy(federation_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:dataproc/getMetastoreFederationIamPolicy:getMetastoreFederationIamPolicy', __args__, opts=opts, typ=GetMetastoreFederationIamPolicyResult).value
 
     return AwaitableGetMetastoreFederationIamPolicyResult(
-        etag=__ret__.etag,
-        federation_id=__ret__.federation_id,
-        id=__ret__.id,
-        location=__ret__.location,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        etag=pulumi.get(__ret__, 'etag'),
+        federation_id=pulumi.get(__ret__, 'federation_id'),
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_metastore_federation_iam_policy)

@@ -137,13 +137,13 @@ def get_default_service_account(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:appengine/getDefaultServiceAccount:getDefaultServiceAccount', __args__, opts=opts, typ=GetDefaultServiceAccountResult).value
 
     return AwaitableGetDefaultServiceAccountResult(
-        display_name=__ret__.display_name,
-        email=__ret__.email,
-        id=__ret__.id,
-        member=__ret__.member,
-        name=__ret__.name,
-        project=__ret__.project,
-        unique_id=__ret__.unique_id)
+        display_name=pulumi.get(__ret__, 'display_name'),
+        email=pulumi.get(__ret__, 'email'),
+        id=pulumi.get(__ret__, 'id'),
+        member=pulumi.get(__ret__, 'member'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        unique_id=pulumi.get(__ret__, 'unique_id'))
 
 
 @_utilities.lift_output_func(get_default_service_account)

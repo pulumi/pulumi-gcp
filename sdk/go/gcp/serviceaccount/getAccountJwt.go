@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -53,6 +54,7 @@ import (
 //
 // ```
 func GetAccountJwt(ctx *pulumi.Context, args *GetAccountJwtArgs, opts ...pulumi.InvokeOption) (*GetAccountJwtResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountJwtResult
 	err := ctx.Invoke("gcp:serviceAccount/getAccountJwt:getAccountJwt", args, &rv, opts...)
 	if err != nil {

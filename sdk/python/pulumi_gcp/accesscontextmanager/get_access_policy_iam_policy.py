@@ -89,7 +89,7 @@ def get_access_policy_iam_policy(name: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.accesscontextmanager.get_access_policy_iam_policy(name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.accesscontextmanager.get_access_policy_iam_policy(name=google_access_context_manager_access_policy["access-policy"]["name"])
     ```
 
 
@@ -101,10 +101,10 @@ def get_access_policy_iam_policy(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:accesscontextmanager/getAccessPolicyIamPolicy:getAccessPolicyIamPolicy', __args__, opts=opts, typ=GetAccessPolicyIamPolicyResult).value
 
     return AwaitableGetAccessPolicyIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        name=__ret__.name,
-        policy_data=__ret__.policy_data)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        policy_data=pulumi.get(__ret__, 'policy_data'))
 
 
 @_utilities.lift_output_func(get_access_policy_iam_policy)
@@ -119,7 +119,7 @@ def get_access_policy_iam_policy_output(name: Optional[pulumi.Input[str]] = None
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.accesscontextmanager.get_access_policy_iam_policy(name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.accesscontextmanager.get_access_policy_iam_policy(name=google_access_context_manager_access_policy["access-policy"]["name"])
     ```
 
 

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -365,8 +366,6 @@ type Cluster struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// )
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	ProtectConfig ClusterProtectConfigOutput `pulumi:"protectConfig"`
 	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
 	// feature, which provide more control over automatic upgrades of your GKE clusters.
@@ -389,6 +388,10 @@ type Cluster struct {
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
 	// Structure is documented below.
 	ResourceUsageExportConfig ClusterResourceUsageExportConfigPtrOutput `pulumi:"resourceUsageExportConfig"`
+	// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	SecurityPostureConfig ClusterSecurityPostureConfigOutput `pulumi:"securityPostureConfig"`
 	// The server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Structure is documented below.
@@ -423,6 +426,7 @@ func NewCluster(ctx *pulumi.Context,
 		args = &ClusterArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Cluster
 	err := ctx.RegisterResource("gcp:container/cluster:Cluster", name, args, &resource, opts...)
 	if err != nil {
@@ -675,8 +679,6 @@ type clusterState struct {
 	Project *string `pulumi:"project"`
 	// )
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	ProtectConfig *ClusterProtectConfig `pulumi:"protectConfig"`
 	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
 	// feature, which provide more control over automatic upgrades of your GKE clusters.
@@ -699,6 +701,10 @@ type clusterState struct {
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
 	// Structure is documented below.
 	ResourceUsageExportConfig *ClusterResourceUsageExportConfig `pulumi:"resourceUsageExportConfig"`
+	// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	SecurityPostureConfig *ClusterSecurityPostureConfig `pulumi:"securityPostureConfig"`
 	// The server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// Structure is documented below.
@@ -957,8 +963,6 @@ type ClusterState struct {
 	Project pulumi.StringPtrInput
 	// )
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	ProtectConfig ClusterProtectConfigPtrInput
 	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
 	// feature, which provide more control over automatic upgrades of your GKE clusters.
@@ -981,6 +985,10 @@ type ClusterState struct {
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
 	// Structure is documented below.
 	ResourceUsageExportConfig ClusterResourceUsageExportConfigPtrInput
+	// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	SecurityPostureConfig ClusterSecurityPostureConfigPtrInput
 	// The server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// Structure is documented below.
@@ -1234,8 +1242,6 @@ type clusterArgs struct {
 	Project *string `pulumi:"project"`
 	// )
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	ProtectConfig *ClusterProtectConfig `pulumi:"protectConfig"`
 	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
 	// feature, which provide more control over automatic upgrades of your GKE clusters.
@@ -1258,6 +1264,10 @@ type clusterArgs struct {
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
 	// Structure is documented below.
 	ResourceUsageExportConfig *ClusterResourceUsageExportConfig `pulumi:"resourceUsageExportConfig"`
+	// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	SecurityPostureConfig *ClusterSecurityPostureConfig `pulumi:"securityPostureConfig"`
 	// Structure is documented below.
 	ServiceExternalIpsConfig *ClusterServiceExternalIpsConfig `pulumi:"serviceExternalIpsConfig"`
 	// The name or selfLink of the Google Compute Engine
@@ -1497,8 +1507,6 @@ type ClusterArgs struct {
 	Project pulumi.StringPtrInput
 	// )
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	ProtectConfig ClusterProtectConfigPtrInput
 	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
 	// feature, which provide more control over automatic upgrades of your GKE clusters.
@@ -1521,6 +1529,10 @@ type ClusterArgs struct {
 	// [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
 	// Structure is documented below.
 	ResourceUsageExportConfig ClusterResourceUsageExportConfigPtrInput
+	// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	SecurityPostureConfig ClusterSecurityPostureConfigPtrInput
 	// Structure is documented below.
 	ServiceExternalIpsConfig ClusterServiceExternalIpsConfigPtrInput
 	// The name or selfLink of the Google Compute Engine
@@ -2019,8 +2031,6 @@ func (o ClusterOutput) Project() pulumi.StringOutput {
 
 // )
 // Enable/Disable Protect API features for the cluster. Structure is documented below.
-//
-// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 func (o ClusterOutput) ProtectConfig() ClusterProtectConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterProtectConfigOutput { return v.ProtectConfig }).(ClusterProtectConfigOutput)
 }
@@ -2056,6 +2066,13 @@ func (o ClusterOutput) ResourceLabels() pulumi.StringMapOutput {
 // Structure is documented below.
 func (o ClusterOutput) ResourceUsageExportConfig() ClusterResourceUsageExportConfigPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterResourceUsageExportConfigPtrOutput { return v.ResourceUsageExportConfig }).(ClusterResourceUsageExportConfigPtrOutput)
+}
+
+// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
+//
+// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+func (o ClusterOutput) SecurityPostureConfig() ClusterSecurityPostureConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterSecurityPostureConfigOutput { return v.SecurityPostureConfig }).(ClusterSecurityPostureConfigOutput)
 }
 
 // The server-defined URL for the resource.

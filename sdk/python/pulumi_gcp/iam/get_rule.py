@@ -111,11 +111,11 @@ def get_rule(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:iam/getRule:getRule', __args__, opts=opts, typ=GetRuleResult).value
 
     return AwaitableGetRuleResult(
-        id=__ret__.id,
-        included_permissions=__ret__.included_permissions,
-        name=__ret__.name,
-        stage=__ret__.stage,
-        title=__ret__.title)
+        id=pulumi.get(__ret__, 'id'),
+        included_permissions=pulumi.get(__ret__, 'included_permissions'),
+        name=pulumi.get(__ret__, 'name'),
+        stage=pulumi.get(__ret__, 'stage'),
+        title=pulumi.get(__ret__, 'title'))
 
 
 @_utilities.lift_output_func(get_rule)

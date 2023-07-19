@@ -16,7 +16,9 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         private InputList<string>? _properties;
 
         /// <summary>
-        /// Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
+        /// Additional properties to use during installation.
+        /// This should be in the format of Property=Setting. Appended to the defaults
+        /// of `ACTION=INSTALL REBOOT=ReallySuppress`.
         /// </summary>
         public InputList<string> Properties
         {
@@ -25,7 +27,8 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         }
 
         /// <summary>
-        /// Required. The MSI package.
+        /// The MSI package. Structure is
+        /// documented below.
         /// </summary>
         [Input("source", required: true)]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs> Source { get; set; } = null!;

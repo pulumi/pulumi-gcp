@@ -296,7 +296,7 @@ import * as utilities from "../utilities";
  * }, {
  *     provider: google_beta,
  * });
- * const defaultKeyRing = new gcp.kms.KeyRing("defaultKeyRing", {location: "global"}, {
+ * const defaultKeyRing = new gcp.kms.KeyRing("defaultKeyRing", {location: "us-central1"}, {
  *     provider: google_beta,
  * });
  * const defaultCryptoKey = new gcp.kms.CryptoKey("defaultCryptoKey", {keyRing: defaultKeyRing.id}, {

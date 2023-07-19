@@ -140,13 +140,13 @@ def get_network(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getNetwork:getNetwork', __args__, opts=opts, typ=GetNetworkResult).value
 
     return AwaitableGetNetworkResult(
-        description=__ret__.description,
-        gateway_ipv4=__ret__.gateway_ipv4,
-        id=__ret__.id,
-        name=__ret__.name,
-        project=__ret__.project,
-        self_link=__ret__.self_link,
-        subnetworks_self_links=__ret__.subnetworks_self_links)
+        description=pulumi.get(__ret__, 'description'),
+        gateway_ipv4=pulumi.get(__ret__, 'gateway_ipv4'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        subnetworks_self_links=pulumi.get(__ret__, 'subnetworks_self_links'))
 
 
 @_utilities.lift_output_func(get_network)

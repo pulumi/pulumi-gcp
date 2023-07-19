@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -182,6 +183,7 @@ func NewDataTransferConfig(ctx *pulumi.Context,
 	if args.Params == nil {
 		return nil, errors.New("invalid value for required argument 'Params'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DataTransferConfig
 	err := ctx.RegisterResource("gcp:bigquery/dataTransferConfig:DataTransferConfig", name, args, &resource, opts...)
 	if err != nil {

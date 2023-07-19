@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func GetAiFeaturestoreIamPolicy(ctx *pulumi.Context, args *GetAiFeaturestoreIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetAiFeaturestoreIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAiFeaturestoreIamPolicyResult
 	err := ctx.Invoke("gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy", args, &rv, opts...)
 	if err != nil {

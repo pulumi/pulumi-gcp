@@ -437,6 +437,15 @@ namespace Pulumi.Gcp.BigQuery
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
+        /// <summary>
+        /// Specifies the storage billing model for the dataset.
+        /// Set this flag value to LOGICAL to use logical bytes for storage billing,
+        /// or to PHYSICAL to use physical bytes instead.
+        /// LOGICAL is the default if this flag isn't specified.
+        /// </summary>
+        [Output("storageBillingModel")]
+        public Output<string> StorageBillingModel { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Dataset resource with the given unique name, arguments, and options.
@@ -635,6 +644,15 @@ namespace Pulumi.Gcp.BigQuery
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Specifies the storage billing model for the dataset.
+        /// Set this flag value to LOGICAL to use logical bytes for storage billing,
+        /// or to PHYSICAL to use physical bytes instead.
+        /// LOGICAL is the default if this flag isn't specified.
+        /// </summary>
+        [Input("storageBillingModel")]
+        public Input<string>? StorageBillingModel { get; set; }
+
         public DatasetArgs()
         {
         }
@@ -820,6 +838,15 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        /// <summary>
+        /// Specifies the storage billing model for the dataset.
+        /// Set this flag value to LOGICAL to use logical bytes for storage billing,
+        /// or to PHYSICAL to use physical bytes instead.
+        /// LOGICAL is the default if this flag isn't specified.
+        /// </summary>
+        [Input("storageBillingModel")]
+        public Input<string>? StorageBillingModel { get; set; }
 
         public DatasetState()
         {

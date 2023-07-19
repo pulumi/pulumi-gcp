@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -245,11 +246,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewResourcePolicy(ctx, "cgroup", &compute.ResourcePolicyArgs{
-//				Region: pulumi.String("europe-west1"),
 //				DiskConsistencyGroupPolicy: &compute.ResourcePolicyDiskConsistencyGroupPolicyArgs{
 //					Enabled: pulumi.Bool(true),
 //				},
-//			}, pulumi.Provider(google_beta))
+//				Region: pulumi.String("europe-west1"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -292,6 +293,7 @@ type ResourcePolicy struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Replication consistency group for asynchronous disk replication.
+	// Structure is documented below.
 	DiskConsistencyGroupPolicy ResourcePolicyDiskConsistencyGroupPolicyPtrOutput `pulumi:"diskConsistencyGroupPolicy"`
 	// Resource policy for instances used for placement configuration.
 	// Structure is documented below.
@@ -328,6 +330,7 @@ func NewResourcePolicy(ctx *pulumi.Context,
 		args = &ResourcePolicyArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ResourcePolicy
 	err := ctx.RegisterResource("gcp:compute/resourcePolicy:ResourcePolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -353,6 +356,7 @@ type resourcePolicyState struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// Replication consistency group for asynchronous disk replication.
+	// Structure is documented below.
 	DiskConsistencyGroupPolicy *ResourcePolicyDiskConsistencyGroupPolicy `pulumi:"diskConsistencyGroupPolicy"`
 	// Resource policy for instances used for placement configuration.
 	// Structure is documented below.
@@ -386,6 +390,7 @@ type ResourcePolicyState struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// Replication consistency group for asynchronous disk replication.
+	// Structure is documented below.
 	DiskConsistencyGroupPolicy ResourcePolicyDiskConsistencyGroupPolicyPtrInput
 	// Resource policy for instances used for placement configuration.
 	// Structure is documented below.
@@ -423,6 +428,7 @@ type resourcePolicyArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// Replication consistency group for asynchronous disk replication.
+	// Structure is documented below.
 	DiskConsistencyGroupPolicy *ResourcePolicyDiskConsistencyGroupPolicy `pulumi:"diskConsistencyGroupPolicy"`
 	// Resource policy for instances used for placement configuration.
 	// Structure is documented below.
@@ -455,6 +461,7 @@ type ResourcePolicyArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// Replication consistency group for asynchronous disk replication.
+	// Structure is documented below.
 	DiskConsistencyGroupPolicy ResourcePolicyDiskConsistencyGroupPolicyPtrInput
 	// Resource policy for instances used for placement configuration.
 	// Structure is documented below.
@@ -575,6 +582,7 @@ func (o ResourcePolicyOutput) Description() pulumi.StringPtrOutput {
 }
 
 // Replication consistency group for asynchronous disk replication.
+// Structure is documented below.
 func (o ResourcePolicyOutput) DiskConsistencyGroupPolicy() ResourcePolicyDiskConsistencyGroupPolicyPtrOutput {
 	return o.ApplyT(func(v *ResourcePolicy) ResourcePolicyDiskConsistencyGroupPolicyPtrOutput {
 		return v.DiskConsistencyGroupPolicy

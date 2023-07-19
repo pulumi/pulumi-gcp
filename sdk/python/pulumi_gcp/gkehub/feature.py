@@ -378,8 +378,7 @@ class Feature(pulumi.CustomResource):
                         ),
                     ),
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Enable Fleet Observability For Scope Logs With Move
 
@@ -397,8 +396,7 @@ class Feature(pulumi.CustomResource):
                         ),
                     ),
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Enable Fleet Observability For Both Default And Scope Logs
 
@@ -419,8 +417,7 @@ class Feature(pulumi.CustomResource):
                         ),
                     ),
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
@@ -529,8 +526,7 @@ class Feature(pulumi.CustomResource):
                         ),
                     ),
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Enable Fleet Observability For Scope Logs With Move
 
@@ -548,8 +544,7 @@ class Feature(pulumi.CustomResource):
                         ),
                     ),
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Enable Fleet Observability For Both Default And Scope Logs
 
@@ -570,8 +565,7 @@ class Feature(pulumi.CustomResource):
                         ),
                     ),
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import

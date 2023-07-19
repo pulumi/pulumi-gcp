@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type ConnectionGithubConfig struct {
 	// GitHub App installation id.
@@ -733,6 +736,720 @@ func (o ConnectionGithubEnterpriseConfigServiceDirectoryConfigPtrOutput) Service
 	}).(pulumi.StringPtrOutput)
 }
 
+type ConnectionGitlabConfig struct {
+	// Required. A GitLab personal access token with the `api` scope access.
+	AuthorizerCredential ConnectionGitlabConfigAuthorizerCredential `pulumi:"authorizerCredential"`
+	// The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
+	HostUri *string `pulumi:"hostUri"`
+	// Required. A GitLab personal access token with the minimum `readApi` scope access.
+	ReadAuthorizerCredential ConnectionGitlabConfigReadAuthorizerCredential `pulumi:"readAuthorizerCredential"`
+	// Output only. Version of the GitLab Enterprise server running on the `hostUri`.
+	ServerVersion *string `pulumi:"serverVersion"`
+	// Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
+	ServiceDirectoryConfig *ConnectionGitlabConfigServiceDirectoryConfig `pulumi:"serviceDirectoryConfig"`
+	// SSL certificate to use for requests to GitLab Enterprise.
+	SslCa *string `pulumi:"sslCa"`
+	// Required. Immutable. SecretManager resource containing the webhook secret of a GitLab Enterprise project, formatted as `projects/*/secrets/*/versions/*`.
+	WebhookSecretSecretVersion string `pulumi:"webhookSecretSecretVersion"`
+}
+
+// ConnectionGitlabConfigInput is an input type that accepts ConnectionGitlabConfigArgs and ConnectionGitlabConfigOutput values.
+// You can construct a concrete instance of `ConnectionGitlabConfigInput` via:
+//
+//	ConnectionGitlabConfigArgs{...}
+type ConnectionGitlabConfigInput interface {
+	pulumi.Input
+
+	ToConnectionGitlabConfigOutput() ConnectionGitlabConfigOutput
+	ToConnectionGitlabConfigOutputWithContext(context.Context) ConnectionGitlabConfigOutput
+}
+
+type ConnectionGitlabConfigArgs struct {
+	// Required. A GitLab personal access token with the `api` scope access.
+	AuthorizerCredential ConnectionGitlabConfigAuthorizerCredentialInput `pulumi:"authorizerCredential"`
+	// The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
+	HostUri pulumi.StringPtrInput `pulumi:"hostUri"`
+	// Required. A GitLab personal access token with the minimum `readApi` scope access.
+	ReadAuthorizerCredential ConnectionGitlabConfigReadAuthorizerCredentialInput `pulumi:"readAuthorizerCredential"`
+	// Output only. Version of the GitLab Enterprise server running on the `hostUri`.
+	ServerVersion pulumi.StringPtrInput `pulumi:"serverVersion"`
+	// Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
+	ServiceDirectoryConfig ConnectionGitlabConfigServiceDirectoryConfigPtrInput `pulumi:"serviceDirectoryConfig"`
+	// SSL certificate to use for requests to GitLab Enterprise.
+	SslCa pulumi.StringPtrInput `pulumi:"sslCa"`
+	// Required. Immutable. SecretManager resource containing the webhook secret of a GitLab Enterprise project, formatted as `projects/*/secrets/*/versions/*`.
+	WebhookSecretSecretVersion pulumi.StringInput `pulumi:"webhookSecretSecretVersion"`
+}
+
+func (ConnectionGitlabConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionGitlabConfig)(nil)).Elem()
+}
+
+func (i ConnectionGitlabConfigArgs) ToConnectionGitlabConfigOutput() ConnectionGitlabConfigOutput {
+	return i.ToConnectionGitlabConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionGitlabConfigArgs) ToConnectionGitlabConfigOutputWithContext(ctx context.Context) ConnectionGitlabConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGitlabConfigOutput)
+}
+
+func (i ConnectionGitlabConfigArgs) ToConnectionGitlabConfigPtrOutput() ConnectionGitlabConfigPtrOutput {
+	return i.ToConnectionGitlabConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionGitlabConfigArgs) ToConnectionGitlabConfigPtrOutputWithContext(ctx context.Context) ConnectionGitlabConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGitlabConfigOutput).ToConnectionGitlabConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionGitlabConfigPtrInput is an input type that accepts ConnectionGitlabConfigArgs, ConnectionGitlabConfigPtr and ConnectionGitlabConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionGitlabConfigPtrInput` via:
+//
+//	        ConnectionGitlabConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionGitlabConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionGitlabConfigPtrOutput() ConnectionGitlabConfigPtrOutput
+	ToConnectionGitlabConfigPtrOutputWithContext(context.Context) ConnectionGitlabConfigPtrOutput
+}
+
+type connectionGitlabConfigPtrType ConnectionGitlabConfigArgs
+
+func ConnectionGitlabConfigPtr(v *ConnectionGitlabConfigArgs) ConnectionGitlabConfigPtrInput {
+	return (*connectionGitlabConfigPtrType)(v)
+}
+
+func (*connectionGitlabConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionGitlabConfig)(nil)).Elem()
+}
+
+func (i *connectionGitlabConfigPtrType) ToConnectionGitlabConfigPtrOutput() ConnectionGitlabConfigPtrOutput {
+	return i.ToConnectionGitlabConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionGitlabConfigPtrType) ToConnectionGitlabConfigPtrOutputWithContext(ctx context.Context) ConnectionGitlabConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGitlabConfigPtrOutput)
+}
+
+type ConnectionGitlabConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionGitlabConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionGitlabConfig)(nil)).Elem()
+}
+
+func (o ConnectionGitlabConfigOutput) ToConnectionGitlabConfigOutput() ConnectionGitlabConfigOutput {
+	return o
+}
+
+func (o ConnectionGitlabConfigOutput) ToConnectionGitlabConfigOutputWithContext(ctx context.Context) ConnectionGitlabConfigOutput {
+	return o
+}
+
+func (o ConnectionGitlabConfigOutput) ToConnectionGitlabConfigPtrOutput() ConnectionGitlabConfigPtrOutput {
+	return o.ToConnectionGitlabConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionGitlabConfigOutput) ToConnectionGitlabConfigPtrOutputWithContext(ctx context.Context) ConnectionGitlabConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionGitlabConfig) *ConnectionGitlabConfig {
+		return &v
+	}).(ConnectionGitlabConfigPtrOutput)
+}
+
+// Required. A GitLab personal access token with the `api` scope access.
+func (o ConnectionGitlabConfigOutput) AuthorizerCredential() ConnectionGitlabConfigAuthorizerCredentialOutput {
+	return o.ApplyT(func(v ConnectionGitlabConfig) ConnectionGitlabConfigAuthorizerCredential {
+		return v.AuthorizerCredential
+	}).(ConnectionGitlabConfigAuthorizerCredentialOutput)
+}
+
+// The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
+func (o ConnectionGitlabConfigOutput) HostUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionGitlabConfig) *string { return v.HostUri }).(pulumi.StringPtrOutput)
+}
+
+// Required. A GitLab personal access token with the minimum `readApi` scope access.
+func (o ConnectionGitlabConfigOutput) ReadAuthorizerCredential() ConnectionGitlabConfigReadAuthorizerCredentialOutput {
+	return o.ApplyT(func(v ConnectionGitlabConfig) ConnectionGitlabConfigReadAuthorizerCredential {
+		return v.ReadAuthorizerCredential
+	}).(ConnectionGitlabConfigReadAuthorizerCredentialOutput)
+}
+
+// Output only. Version of the GitLab Enterprise server running on the `hostUri`.
+func (o ConnectionGitlabConfigOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionGitlabConfig) *string { return v.ServerVersion }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
+func (o ConnectionGitlabConfigOutput) ServiceDirectoryConfig() ConnectionGitlabConfigServiceDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v ConnectionGitlabConfig) *ConnectionGitlabConfigServiceDirectoryConfig {
+		return v.ServiceDirectoryConfig
+	}).(ConnectionGitlabConfigServiceDirectoryConfigPtrOutput)
+}
+
+// SSL certificate to use for requests to GitLab Enterprise.
+func (o ConnectionGitlabConfigOutput) SslCa() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionGitlabConfig) *string { return v.SslCa }).(pulumi.StringPtrOutput)
+}
+
+// Required. Immutable. SecretManager resource containing the webhook secret of a GitLab Enterprise project, formatted as `projects/*/secrets/*/versions/*`.
+func (o ConnectionGitlabConfigOutput) WebhookSecretSecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionGitlabConfig) string { return v.WebhookSecretSecretVersion }).(pulumi.StringOutput)
+}
+
+type ConnectionGitlabConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionGitlabConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionGitlabConfig)(nil)).Elem()
+}
+
+func (o ConnectionGitlabConfigPtrOutput) ToConnectionGitlabConfigPtrOutput() ConnectionGitlabConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionGitlabConfigPtrOutput) ToConnectionGitlabConfigPtrOutputWithContext(ctx context.Context) ConnectionGitlabConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionGitlabConfigPtrOutput) Elem() ConnectionGitlabConfigOutput {
+	return o.ApplyT(func(v *ConnectionGitlabConfig) ConnectionGitlabConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionGitlabConfig
+		return ret
+	}).(ConnectionGitlabConfigOutput)
+}
+
+// Required. A GitLab personal access token with the `api` scope access.
+func (o ConnectionGitlabConfigPtrOutput) AuthorizerCredential() ConnectionGitlabConfigAuthorizerCredentialPtrOutput {
+	return o.ApplyT(func(v *ConnectionGitlabConfig) *ConnectionGitlabConfigAuthorizerCredential {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthorizerCredential
+	}).(ConnectionGitlabConfigAuthorizerCredentialPtrOutput)
+}
+
+// The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
+func (o ConnectionGitlabConfigPtrOutput) HostUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionGitlabConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HostUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. A GitLab personal access token with the minimum `readApi` scope access.
+func (o ConnectionGitlabConfigPtrOutput) ReadAuthorizerCredential() ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput {
+	return o.ApplyT(func(v *ConnectionGitlabConfig) *ConnectionGitlabConfigReadAuthorizerCredential {
+		if v == nil {
+			return nil
+		}
+		return &v.ReadAuthorizerCredential
+	}).(ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput)
+}
+
+// Output only. Version of the GitLab Enterprise server running on the `hostUri`.
+func (o ConnectionGitlabConfigPtrOutput) ServerVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionGitlabConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
+func (o ConnectionGitlabConfigPtrOutput) ServiceDirectoryConfig() ConnectionGitlabConfigServiceDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v *ConnectionGitlabConfig) *ConnectionGitlabConfigServiceDirectoryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceDirectoryConfig
+	}).(ConnectionGitlabConfigServiceDirectoryConfigPtrOutput)
+}
+
+// SSL certificate to use for requests to GitLab Enterprise.
+func (o ConnectionGitlabConfigPtrOutput) SslCa() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionGitlabConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SslCa
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Immutable. SecretManager resource containing the webhook secret of a GitLab Enterprise project, formatted as `projects/*/secrets/*/versions/*`.
+func (o ConnectionGitlabConfigPtrOutput) WebhookSecretSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionGitlabConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WebhookSecretSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionGitlabConfigAuthorizerCredential struct {
+	// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+	UserTokenSecretVersion string `pulumi:"userTokenSecretVersion"`
+	// Output only. The username associated to this token.
+	Username *string `pulumi:"username"`
+}
+
+// ConnectionGitlabConfigAuthorizerCredentialInput is an input type that accepts ConnectionGitlabConfigAuthorizerCredentialArgs and ConnectionGitlabConfigAuthorizerCredentialOutput values.
+// You can construct a concrete instance of `ConnectionGitlabConfigAuthorizerCredentialInput` via:
+//
+//	ConnectionGitlabConfigAuthorizerCredentialArgs{...}
+type ConnectionGitlabConfigAuthorizerCredentialInput interface {
+	pulumi.Input
+
+	ToConnectionGitlabConfigAuthorizerCredentialOutput() ConnectionGitlabConfigAuthorizerCredentialOutput
+	ToConnectionGitlabConfigAuthorizerCredentialOutputWithContext(context.Context) ConnectionGitlabConfigAuthorizerCredentialOutput
+}
+
+type ConnectionGitlabConfigAuthorizerCredentialArgs struct {
+	// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+	UserTokenSecretVersion pulumi.StringInput `pulumi:"userTokenSecretVersion"`
+	// Output only. The username associated to this token.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ConnectionGitlabConfigAuthorizerCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionGitlabConfigAuthorizerCredential)(nil)).Elem()
+}
+
+func (i ConnectionGitlabConfigAuthorizerCredentialArgs) ToConnectionGitlabConfigAuthorizerCredentialOutput() ConnectionGitlabConfigAuthorizerCredentialOutput {
+	return i.ToConnectionGitlabConfigAuthorizerCredentialOutputWithContext(context.Background())
+}
+
+func (i ConnectionGitlabConfigAuthorizerCredentialArgs) ToConnectionGitlabConfigAuthorizerCredentialOutputWithContext(ctx context.Context) ConnectionGitlabConfigAuthorizerCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGitlabConfigAuthorizerCredentialOutput)
+}
+
+func (i ConnectionGitlabConfigAuthorizerCredentialArgs) ToConnectionGitlabConfigAuthorizerCredentialPtrOutput() ConnectionGitlabConfigAuthorizerCredentialPtrOutput {
+	return i.ToConnectionGitlabConfigAuthorizerCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionGitlabConfigAuthorizerCredentialArgs) ToConnectionGitlabConfigAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionGitlabConfigAuthorizerCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGitlabConfigAuthorizerCredentialOutput).ToConnectionGitlabConfigAuthorizerCredentialPtrOutputWithContext(ctx)
+}
+
+// ConnectionGitlabConfigAuthorizerCredentialPtrInput is an input type that accepts ConnectionGitlabConfigAuthorizerCredentialArgs, ConnectionGitlabConfigAuthorizerCredentialPtr and ConnectionGitlabConfigAuthorizerCredentialPtrOutput values.
+// You can construct a concrete instance of `ConnectionGitlabConfigAuthorizerCredentialPtrInput` via:
+//
+//	        ConnectionGitlabConfigAuthorizerCredentialArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionGitlabConfigAuthorizerCredentialPtrInput interface {
+	pulumi.Input
+
+	ToConnectionGitlabConfigAuthorizerCredentialPtrOutput() ConnectionGitlabConfigAuthorizerCredentialPtrOutput
+	ToConnectionGitlabConfigAuthorizerCredentialPtrOutputWithContext(context.Context) ConnectionGitlabConfigAuthorizerCredentialPtrOutput
+}
+
+type connectionGitlabConfigAuthorizerCredentialPtrType ConnectionGitlabConfigAuthorizerCredentialArgs
+
+func ConnectionGitlabConfigAuthorizerCredentialPtr(v *ConnectionGitlabConfigAuthorizerCredentialArgs) ConnectionGitlabConfigAuthorizerCredentialPtrInput {
+	return (*connectionGitlabConfigAuthorizerCredentialPtrType)(v)
+}
+
+func (*connectionGitlabConfigAuthorizerCredentialPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionGitlabConfigAuthorizerCredential)(nil)).Elem()
+}
+
+func (i *connectionGitlabConfigAuthorizerCredentialPtrType) ToConnectionGitlabConfigAuthorizerCredentialPtrOutput() ConnectionGitlabConfigAuthorizerCredentialPtrOutput {
+	return i.ToConnectionGitlabConfigAuthorizerCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionGitlabConfigAuthorizerCredentialPtrType) ToConnectionGitlabConfigAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionGitlabConfigAuthorizerCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGitlabConfigAuthorizerCredentialPtrOutput)
+}
+
+type ConnectionGitlabConfigAuthorizerCredentialOutput struct{ *pulumi.OutputState }
+
+func (ConnectionGitlabConfigAuthorizerCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionGitlabConfigAuthorizerCredential)(nil)).Elem()
+}
+
+func (o ConnectionGitlabConfigAuthorizerCredentialOutput) ToConnectionGitlabConfigAuthorizerCredentialOutput() ConnectionGitlabConfigAuthorizerCredentialOutput {
+	return o
+}
+
+func (o ConnectionGitlabConfigAuthorizerCredentialOutput) ToConnectionGitlabConfigAuthorizerCredentialOutputWithContext(ctx context.Context) ConnectionGitlabConfigAuthorizerCredentialOutput {
+	return o
+}
+
+func (o ConnectionGitlabConfigAuthorizerCredentialOutput) ToConnectionGitlabConfigAuthorizerCredentialPtrOutput() ConnectionGitlabConfigAuthorizerCredentialPtrOutput {
+	return o.ToConnectionGitlabConfigAuthorizerCredentialPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionGitlabConfigAuthorizerCredentialOutput) ToConnectionGitlabConfigAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionGitlabConfigAuthorizerCredentialPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionGitlabConfigAuthorizerCredential) *ConnectionGitlabConfigAuthorizerCredential {
+		return &v
+	}).(ConnectionGitlabConfigAuthorizerCredentialPtrOutput)
+}
+
+// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+func (o ConnectionGitlabConfigAuthorizerCredentialOutput) UserTokenSecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionGitlabConfigAuthorizerCredential) string { return v.UserTokenSecretVersion }).(pulumi.StringOutput)
+}
+
+// Output only. The username associated to this token.
+func (o ConnectionGitlabConfigAuthorizerCredentialOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionGitlabConfigAuthorizerCredential) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionGitlabConfigAuthorizerCredentialPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionGitlabConfigAuthorizerCredentialPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionGitlabConfigAuthorizerCredential)(nil)).Elem()
+}
+
+func (o ConnectionGitlabConfigAuthorizerCredentialPtrOutput) ToConnectionGitlabConfigAuthorizerCredentialPtrOutput() ConnectionGitlabConfigAuthorizerCredentialPtrOutput {
+	return o
+}
+
+func (o ConnectionGitlabConfigAuthorizerCredentialPtrOutput) ToConnectionGitlabConfigAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionGitlabConfigAuthorizerCredentialPtrOutput {
+	return o
+}
+
+func (o ConnectionGitlabConfigAuthorizerCredentialPtrOutput) Elem() ConnectionGitlabConfigAuthorizerCredentialOutput {
+	return o.ApplyT(func(v *ConnectionGitlabConfigAuthorizerCredential) ConnectionGitlabConfigAuthorizerCredential {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionGitlabConfigAuthorizerCredential
+		return ret
+	}).(ConnectionGitlabConfigAuthorizerCredentialOutput)
+}
+
+// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+func (o ConnectionGitlabConfigAuthorizerCredentialPtrOutput) UserTokenSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionGitlabConfigAuthorizerCredential) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UserTokenSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Output only. The username associated to this token.
+func (o ConnectionGitlabConfigAuthorizerCredentialPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionGitlabConfigAuthorizerCredential) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionGitlabConfigReadAuthorizerCredential struct {
+	// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+	UserTokenSecretVersion string `pulumi:"userTokenSecretVersion"`
+	// Output only. The username associated to this token.
+	//
+	// ***
+	Username *string `pulumi:"username"`
+}
+
+// ConnectionGitlabConfigReadAuthorizerCredentialInput is an input type that accepts ConnectionGitlabConfigReadAuthorizerCredentialArgs and ConnectionGitlabConfigReadAuthorizerCredentialOutput values.
+// You can construct a concrete instance of `ConnectionGitlabConfigReadAuthorizerCredentialInput` via:
+//
+//	ConnectionGitlabConfigReadAuthorizerCredentialArgs{...}
+type ConnectionGitlabConfigReadAuthorizerCredentialInput interface {
+	pulumi.Input
+
+	ToConnectionGitlabConfigReadAuthorizerCredentialOutput() ConnectionGitlabConfigReadAuthorizerCredentialOutput
+	ToConnectionGitlabConfigReadAuthorizerCredentialOutputWithContext(context.Context) ConnectionGitlabConfigReadAuthorizerCredentialOutput
+}
+
+type ConnectionGitlabConfigReadAuthorizerCredentialArgs struct {
+	// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+	UserTokenSecretVersion pulumi.StringInput `pulumi:"userTokenSecretVersion"`
+	// Output only. The username associated to this token.
+	//
+	// ***
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (ConnectionGitlabConfigReadAuthorizerCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionGitlabConfigReadAuthorizerCredential)(nil)).Elem()
+}
+
+func (i ConnectionGitlabConfigReadAuthorizerCredentialArgs) ToConnectionGitlabConfigReadAuthorizerCredentialOutput() ConnectionGitlabConfigReadAuthorizerCredentialOutput {
+	return i.ToConnectionGitlabConfigReadAuthorizerCredentialOutputWithContext(context.Background())
+}
+
+func (i ConnectionGitlabConfigReadAuthorizerCredentialArgs) ToConnectionGitlabConfigReadAuthorizerCredentialOutputWithContext(ctx context.Context) ConnectionGitlabConfigReadAuthorizerCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGitlabConfigReadAuthorizerCredentialOutput)
+}
+
+func (i ConnectionGitlabConfigReadAuthorizerCredentialArgs) ToConnectionGitlabConfigReadAuthorizerCredentialPtrOutput() ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput {
+	return i.ToConnectionGitlabConfigReadAuthorizerCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionGitlabConfigReadAuthorizerCredentialArgs) ToConnectionGitlabConfigReadAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGitlabConfigReadAuthorizerCredentialOutput).ToConnectionGitlabConfigReadAuthorizerCredentialPtrOutputWithContext(ctx)
+}
+
+// ConnectionGitlabConfigReadAuthorizerCredentialPtrInput is an input type that accepts ConnectionGitlabConfigReadAuthorizerCredentialArgs, ConnectionGitlabConfigReadAuthorizerCredentialPtr and ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput values.
+// You can construct a concrete instance of `ConnectionGitlabConfigReadAuthorizerCredentialPtrInput` via:
+//
+//	        ConnectionGitlabConfigReadAuthorizerCredentialArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionGitlabConfigReadAuthorizerCredentialPtrInput interface {
+	pulumi.Input
+
+	ToConnectionGitlabConfigReadAuthorizerCredentialPtrOutput() ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput
+	ToConnectionGitlabConfigReadAuthorizerCredentialPtrOutputWithContext(context.Context) ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput
+}
+
+type connectionGitlabConfigReadAuthorizerCredentialPtrType ConnectionGitlabConfigReadAuthorizerCredentialArgs
+
+func ConnectionGitlabConfigReadAuthorizerCredentialPtr(v *ConnectionGitlabConfigReadAuthorizerCredentialArgs) ConnectionGitlabConfigReadAuthorizerCredentialPtrInput {
+	return (*connectionGitlabConfigReadAuthorizerCredentialPtrType)(v)
+}
+
+func (*connectionGitlabConfigReadAuthorizerCredentialPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionGitlabConfigReadAuthorizerCredential)(nil)).Elem()
+}
+
+func (i *connectionGitlabConfigReadAuthorizerCredentialPtrType) ToConnectionGitlabConfigReadAuthorizerCredentialPtrOutput() ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput {
+	return i.ToConnectionGitlabConfigReadAuthorizerCredentialPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionGitlabConfigReadAuthorizerCredentialPtrType) ToConnectionGitlabConfigReadAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput)
+}
+
+type ConnectionGitlabConfigReadAuthorizerCredentialOutput struct{ *pulumi.OutputState }
+
+func (ConnectionGitlabConfigReadAuthorizerCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionGitlabConfigReadAuthorizerCredential)(nil)).Elem()
+}
+
+func (o ConnectionGitlabConfigReadAuthorizerCredentialOutput) ToConnectionGitlabConfigReadAuthorizerCredentialOutput() ConnectionGitlabConfigReadAuthorizerCredentialOutput {
+	return o
+}
+
+func (o ConnectionGitlabConfigReadAuthorizerCredentialOutput) ToConnectionGitlabConfigReadAuthorizerCredentialOutputWithContext(ctx context.Context) ConnectionGitlabConfigReadAuthorizerCredentialOutput {
+	return o
+}
+
+func (o ConnectionGitlabConfigReadAuthorizerCredentialOutput) ToConnectionGitlabConfigReadAuthorizerCredentialPtrOutput() ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput {
+	return o.ToConnectionGitlabConfigReadAuthorizerCredentialPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionGitlabConfigReadAuthorizerCredentialOutput) ToConnectionGitlabConfigReadAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionGitlabConfigReadAuthorizerCredential) *ConnectionGitlabConfigReadAuthorizerCredential {
+		return &v
+	}).(ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput)
+}
+
+// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+func (o ConnectionGitlabConfigReadAuthorizerCredentialOutput) UserTokenSecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionGitlabConfigReadAuthorizerCredential) string { return v.UserTokenSecretVersion }).(pulumi.StringOutput)
+}
+
+// Output only. The username associated to this token.
+//
+// ***
+func (o ConnectionGitlabConfigReadAuthorizerCredentialOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConnectionGitlabConfigReadAuthorizerCredential) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionGitlabConfigReadAuthorizerCredential)(nil)).Elem()
+}
+
+func (o ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput) ToConnectionGitlabConfigReadAuthorizerCredentialPtrOutput() ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput {
+	return o
+}
+
+func (o ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput) ToConnectionGitlabConfigReadAuthorizerCredentialPtrOutputWithContext(ctx context.Context) ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput {
+	return o
+}
+
+func (o ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput) Elem() ConnectionGitlabConfigReadAuthorizerCredentialOutput {
+	return o.ApplyT(func(v *ConnectionGitlabConfigReadAuthorizerCredential) ConnectionGitlabConfigReadAuthorizerCredential {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionGitlabConfigReadAuthorizerCredential
+		return ret
+	}).(ConnectionGitlabConfigReadAuthorizerCredentialOutput)
+}
+
+// Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+func (o ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput) UserTokenSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionGitlabConfigReadAuthorizerCredential) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UserTokenSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Output only. The username associated to this token.
+//
+// ***
+func (o ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionGitlabConfigReadAuthorizerCredential) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionGitlabConfigServiceDirectoryConfig struct {
+	// Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+	Service string `pulumi:"service"`
+}
+
+// ConnectionGitlabConfigServiceDirectoryConfigInput is an input type that accepts ConnectionGitlabConfigServiceDirectoryConfigArgs and ConnectionGitlabConfigServiceDirectoryConfigOutput values.
+// You can construct a concrete instance of `ConnectionGitlabConfigServiceDirectoryConfigInput` via:
+//
+//	ConnectionGitlabConfigServiceDirectoryConfigArgs{...}
+type ConnectionGitlabConfigServiceDirectoryConfigInput interface {
+	pulumi.Input
+
+	ToConnectionGitlabConfigServiceDirectoryConfigOutput() ConnectionGitlabConfigServiceDirectoryConfigOutput
+	ToConnectionGitlabConfigServiceDirectoryConfigOutputWithContext(context.Context) ConnectionGitlabConfigServiceDirectoryConfigOutput
+}
+
+type ConnectionGitlabConfigServiceDirectoryConfigArgs struct {
+	// Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (ConnectionGitlabConfigServiceDirectoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionGitlabConfigServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i ConnectionGitlabConfigServiceDirectoryConfigArgs) ToConnectionGitlabConfigServiceDirectoryConfigOutput() ConnectionGitlabConfigServiceDirectoryConfigOutput {
+	return i.ToConnectionGitlabConfigServiceDirectoryConfigOutputWithContext(context.Background())
+}
+
+func (i ConnectionGitlabConfigServiceDirectoryConfigArgs) ToConnectionGitlabConfigServiceDirectoryConfigOutputWithContext(ctx context.Context) ConnectionGitlabConfigServiceDirectoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGitlabConfigServiceDirectoryConfigOutput)
+}
+
+func (i ConnectionGitlabConfigServiceDirectoryConfigArgs) ToConnectionGitlabConfigServiceDirectoryConfigPtrOutput() ConnectionGitlabConfigServiceDirectoryConfigPtrOutput {
+	return i.ToConnectionGitlabConfigServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ConnectionGitlabConfigServiceDirectoryConfigArgs) ToConnectionGitlabConfigServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ConnectionGitlabConfigServiceDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGitlabConfigServiceDirectoryConfigOutput).ToConnectionGitlabConfigServiceDirectoryConfigPtrOutputWithContext(ctx)
+}
+
+// ConnectionGitlabConfigServiceDirectoryConfigPtrInput is an input type that accepts ConnectionGitlabConfigServiceDirectoryConfigArgs, ConnectionGitlabConfigServiceDirectoryConfigPtr and ConnectionGitlabConfigServiceDirectoryConfigPtrOutput values.
+// You can construct a concrete instance of `ConnectionGitlabConfigServiceDirectoryConfigPtrInput` via:
+//
+//	        ConnectionGitlabConfigServiceDirectoryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConnectionGitlabConfigServiceDirectoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToConnectionGitlabConfigServiceDirectoryConfigPtrOutput() ConnectionGitlabConfigServiceDirectoryConfigPtrOutput
+	ToConnectionGitlabConfigServiceDirectoryConfigPtrOutputWithContext(context.Context) ConnectionGitlabConfigServiceDirectoryConfigPtrOutput
+}
+
+type connectionGitlabConfigServiceDirectoryConfigPtrType ConnectionGitlabConfigServiceDirectoryConfigArgs
+
+func ConnectionGitlabConfigServiceDirectoryConfigPtr(v *ConnectionGitlabConfigServiceDirectoryConfigArgs) ConnectionGitlabConfigServiceDirectoryConfigPtrInput {
+	return (*connectionGitlabConfigServiceDirectoryConfigPtrType)(v)
+}
+
+func (*connectionGitlabConfigServiceDirectoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionGitlabConfigServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i *connectionGitlabConfigServiceDirectoryConfigPtrType) ToConnectionGitlabConfigServiceDirectoryConfigPtrOutput() ConnectionGitlabConfigServiceDirectoryConfigPtrOutput {
+	return i.ToConnectionGitlabConfigServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *connectionGitlabConfigServiceDirectoryConfigPtrType) ToConnectionGitlabConfigServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ConnectionGitlabConfigServiceDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionGitlabConfigServiceDirectoryConfigPtrOutput)
+}
+
+type ConnectionGitlabConfigServiceDirectoryConfigOutput struct{ *pulumi.OutputState }
+
+func (ConnectionGitlabConfigServiceDirectoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionGitlabConfigServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o ConnectionGitlabConfigServiceDirectoryConfigOutput) ToConnectionGitlabConfigServiceDirectoryConfigOutput() ConnectionGitlabConfigServiceDirectoryConfigOutput {
+	return o
+}
+
+func (o ConnectionGitlabConfigServiceDirectoryConfigOutput) ToConnectionGitlabConfigServiceDirectoryConfigOutputWithContext(ctx context.Context) ConnectionGitlabConfigServiceDirectoryConfigOutput {
+	return o
+}
+
+func (o ConnectionGitlabConfigServiceDirectoryConfigOutput) ToConnectionGitlabConfigServiceDirectoryConfigPtrOutput() ConnectionGitlabConfigServiceDirectoryConfigPtrOutput {
+	return o.ToConnectionGitlabConfigServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionGitlabConfigServiceDirectoryConfigOutput) ToConnectionGitlabConfigServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ConnectionGitlabConfigServiceDirectoryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionGitlabConfigServiceDirectoryConfig) *ConnectionGitlabConfigServiceDirectoryConfig {
+		return &v
+	}).(ConnectionGitlabConfigServiceDirectoryConfigPtrOutput)
+}
+
+// Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+func (o ConnectionGitlabConfigServiceDirectoryConfigOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v ConnectionGitlabConfigServiceDirectoryConfig) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type ConnectionGitlabConfigServiceDirectoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionGitlabConfigServiceDirectoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectionGitlabConfigServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o ConnectionGitlabConfigServiceDirectoryConfigPtrOutput) ToConnectionGitlabConfigServiceDirectoryConfigPtrOutput() ConnectionGitlabConfigServiceDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionGitlabConfigServiceDirectoryConfigPtrOutput) ToConnectionGitlabConfigServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) ConnectionGitlabConfigServiceDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o ConnectionGitlabConfigServiceDirectoryConfigPtrOutput) Elem() ConnectionGitlabConfigServiceDirectoryConfigOutput {
+	return o.ApplyT(func(v *ConnectionGitlabConfigServiceDirectoryConfig) ConnectionGitlabConfigServiceDirectoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ConnectionGitlabConfigServiceDirectoryConfig
+		return ret
+	}).(ConnectionGitlabConfigServiceDirectoryConfigOutput)
+}
+
+// Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+func (o ConnectionGitlabConfigServiceDirectoryConfigPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConnectionGitlabConfigServiceDirectoryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
 type ConnectionIAMBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -1174,6 +1891,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionGithubEnterpriseConfigPtrInput)(nil)).Elem(), ConnectionGithubEnterpriseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionGithubEnterpriseConfigServiceDirectoryConfigInput)(nil)).Elem(), ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionGithubEnterpriseConfigServiceDirectoryConfigPtrInput)(nil)).Elem(), ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionGitlabConfigInput)(nil)).Elem(), ConnectionGitlabConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionGitlabConfigPtrInput)(nil)).Elem(), ConnectionGitlabConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionGitlabConfigAuthorizerCredentialInput)(nil)).Elem(), ConnectionGitlabConfigAuthorizerCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionGitlabConfigAuthorizerCredentialPtrInput)(nil)).Elem(), ConnectionGitlabConfigAuthorizerCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionGitlabConfigReadAuthorizerCredentialInput)(nil)).Elem(), ConnectionGitlabConfigReadAuthorizerCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionGitlabConfigReadAuthorizerCredentialPtrInput)(nil)).Elem(), ConnectionGitlabConfigReadAuthorizerCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionGitlabConfigServiceDirectoryConfigInput)(nil)).Elem(), ConnectionGitlabConfigServiceDirectoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionGitlabConfigServiceDirectoryConfigPtrInput)(nil)).Elem(), ConnectionGitlabConfigServiceDirectoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIAMBindingConditionInput)(nil)).Elem(), ConnectionIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIAMBindingConditionPtrInput)(nil)).Elem(), ConnectionIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionIAMMemberConditionInput)(nil)).Elem(), ConnectionIAMMemberConditionArgs{})
@@ -1188,6 +1913,14 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionGithubEnterpriseConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionGithubEnterpriseConfigServiceDirectoryConfigOutput{})
 	pulumi.RegisterOutputType(ConnectionGithubEnterpriseConfigServiceDirectoryConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionGitlabConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionGitlabConfigPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionGitlabConfigAuthorizerCredentialOutput{})
+	pulumi.RegisterOutputType(ConnectionGitlabConfigAuthorizerCredentialPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionGitlabConfigReadAuthorizerCredentialOutput{})
+	pulumi.RegisterOutputType(ConnectionGitlabConfigReadAuthorizerCredentialPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionGitlabConfigServiceDirectoryConfigOutput{})
+	pulumi.RegisterOutputType(ConnectionGitlabConfigServiceDirectoryConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionIAMBindingConditionOutput{})
 	pulumi.RegisterOutputType(ConnectionIAMBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionIAMMemberConditionOutput{})

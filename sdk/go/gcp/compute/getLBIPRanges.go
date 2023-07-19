@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -53,6 +54,7 @@ import (
 //
 // ```
 func GetLBIPRanges(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetLBIPRangesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLBIPRangesResult
 	err := ctx.Invoke("gcp:compute/getLBIPRanges:getLBIPRanges", nil, &rv, opts...)
 	if err != nil {

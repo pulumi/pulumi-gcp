@@ -151,14 +151,14 @@ def get_organization(domain: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getOrganization:getOrganization', __args__, opts=opts, typ=GetOrganizationResult).value
 
     return AwaitableGetOrganizationResult(
-        create_time=__ret__.create_time,
-        directory_customer_id=__ret__.directory_customer_id,
-        domain=__ret__.domain,
-        id=__ret__.id,
-        lifecycle_state=__ret__.lifecycle_state,
-        name=__ret__.name,
-        org_id=__ret__.org_id,
-        organization=__ret__.organization)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        directory_customer_id=pulumi.get(__ret__, 'directory_customer_id'),
+        domain=pulumi.get(__ret__, 'domain'),
+        id=pulumi.get(__ret__, 'id'),
+        lifecycle_state=pulumi.get(__ret__, 'lifecycle_state'),
+        name=pulumi.get(__ret__, 'name'),
+        org_id=pulumi.get(__ret__, 'org_id'),
+        organization=pulumi.get(__ret__, 'organization'))
 
 
 @_utilities.lift_output_func(get_organization)

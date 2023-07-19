@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func LookupWorkstationConfigIamPolicy(ctx *pulumi.Context, args *LookupWorkstationConfigIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupWorkstationConfigIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkstationConfigIamPolicyResult
 	err := ctx.Invoke("gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy", args, &rv, opts...)
 	if err != nil {

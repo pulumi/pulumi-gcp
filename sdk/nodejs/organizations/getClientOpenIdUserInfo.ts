@@ -26,9 +26,8 @@ import * as utilities from "../utilities";
  *
  * export = async () => {
  *     const me = await gcp.organizations.getClientOpenIdUserInfo({});
- *     const my_email = me.email;
  *     return {
- *         "my-email": my_email,
+ *         "my-email": me.email,
  *     };
  * }
  * ```

@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,6 +49,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BackendServiceIamPolicy{}
 	case "gcp:compute/backendServiceSignedUrlKey:BackendServiceSignedUrlKey":
 		r = &BackendServiceSignedUrlKey{}
+	case "gcp:compute/caExternalAccountKey:CaExternalAccountKey":
+		r = &CaExternalAccountKey{}
 	case "gcp:compute/disk:Disk":
 		r = &Disk{}
 	case "gcp:compute/diskAsyncReplication:DiskAsyncReplication":
@@ -133,6 +135,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MangedSslCertificate{}
 	case "gcp:compute/network:Network":
 		r = &Network{}
+	case "gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService":
+		r = &NetworkEdgeSecurityService{}
 	case "gcp:compute/networkEndpoint:NetworkEndpoint":
 		r = &NetworkEndpoint{}
 	case "gcp:compute/networkEndpointGroup:NetworkEndpointGroup":
@@ -211,6 +215,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionNetworkFirewallPolicyRule{}
 	case "gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig":
 		r = &RegionPerInstanceConfig{}
+	case "gcp:compute/regionSecurityPolicy:RegionSecurityPolicy":
+		r = &RegionSecurityPolicy{}
 	case "gcp:compute/regionSslCertificate:RegionSslCertificate":
 		r = &RegionSslCertificate{}
 	case "gcp:compute/regionSslPolicy:RegionSslPolicy":
@@ -296,7 +302,7 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 }
 
 func init() {
-	version, err := gcp.PkgVersion()
+	version, err := internal.PkgVersion()
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
@@ -368,6 +374,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/backendServiceSignedUrlKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/caExternalAccountKey",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -582,6 +593,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"compute/networkEdgeSecurityService",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"compute/networkEndpoint",
 		&module{version},
 	)
@@ -773,6 +789,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/regionPerInstanceConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionSecurityPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

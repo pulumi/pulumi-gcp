@@ -72,6 +72,7 @@ class ClusterArgs:
                  remove_default_node_pool: Optional[pulumi.Input[bool]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input['ClusterResourceUsageExportConfigArgs']] = None,
+                 security_posture_config: Optional[pulumi.Input['ClusterSecurityPostureConfigArgs']] = None,
                  service_external_ips_config: Optional[pulumi.Input['ClusterServiceExternalIpsConfigArgs']] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_config: Optional[pulumi.Input['ClusterTpuConfigArgs']] = None,
@@ -247,8 +248,6 @@ class ClusterArgs:
                is not provided, the provider project is used.
         :param pulumi.Input['ClusterProtectConfigArgs'] protect_config: )
                Enable/Disable Protect API features for the cluster. Structure is documented below.
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterReleaseChannelArgs'] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
@@ -266,6 +265,9 @@ class ClusterArgs:
         :param pulumi.Input['ClusterResourceUsageExportConfigArgs'] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
+        :param pulumi.Input['ClusterSecurityPostureConfigArgs'] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterServiceExternalIpsConfigArgs'] service_external_ips_config: Structure is documented below.
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
@@ -391,6 +393,8 @@ class ClusterArgs:
             pulumi.set(__self__, "resource_labels", resource_labels)
         if resource_usage_export_config is not None:
             pulumi.set(__self__, "resource_usage_export_config", resource_usage_export_config)
+        if security_posture_config is not None:
+            pulumi.set(__self__, "security_posture_config", security_posture_config)
         if service_external_ips_config is not None:
             pulumi.set(__self__, "service_external_ips_config", service_external_ips_config)
         if subnetwork is not None:
@@ -611,6 +615,9 @@ class ClusterArgs:
         If enabled, all container images will be validated by Google Binary Authorization.
         Deprecated in favor of `binary_authorization`.
         """
+        warnings.warn("""Deprecated in favor of binary_authorization.""", DeprecationWarning)
+        pulumi.log.warn("""enable_binary_authorization is deprecated: Deprecated in favor of binary_authorization.""")
+
         return pulumi.get(self, "enable_binary_authorization")
 
     @enable_binary_authorization.setter
@@ -1135,8 +1142,6 @@ class ClusterArgs:
         """
         )
         Enable/Disable Protect API features for the cluster. Structure is documented below.
-
-        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         """
         return pulumi.get(self, "protect_config")
 
@@ -1204,6 +1209,20 @@ class ClusterArgs:
     @resource_usage_export_config.setter
     def resource_usage_export_config(self, value: Optional[pulumi.Input['ClusterResourceUsageExportConfigArgs']]):
         pulumi.set(self, "resource_usage_export_config", value)
+
+    @property
+    @pulumi.getter(name="securityPostureConfig")
+    def security_posture_config(self) -> Optional[pulumi.Input['ClusterSecurityPostureConfigArgs']]:
+        """
+        Enable/Disable Security Posture API features for the cluster. Structure is documented below.
+
+        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
+        """
+        return pulumi.get(self, "security_posture_config")
+
+    @security_posture_config.setter
+    def security_posture_config(self, value: Optional[pulumi.Input['ClusterSecurityPostureConfigArgs']]):
+        pulumi.set(self, "security_posture_config", value)
 
     @property
     @pulumi.getter(name="serviceExternalIpsConfig")
@@ -1333,6 +1352,7 @@ class _ClusterState:
                  remove_default_node_pool: Optional[pulumi.Input[bool]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input['ClusterResourceUsageExportConfigArgs']] = None,
+                 security_posture_config: Optional[pulumi.Input['ClusterSecurityPostureConfigArgs']] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  service_external_ips_config: Optional[pulumi.Input['ClusterServiceExternalIpsConfigArgs']] = None,
                  services_ipv4_cidr: Optional[pulumi.Input[str]] = None,
@@ -1516,8 +1536,6 @@ class _ClusterState:
                is not provided, the provider project is used.
         :param pulumi.Input['ClusterProtectConfigArgs'] protect_config: )
                Enable/Disable Protect API features for the cluster. Structure is documented below.
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterReleaseChannelArgs'] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
@@ -1535,6 +1553,9 @@ class _ClusterState:
         :param pulumi.Input['ClusterResourceUsageExportConfigArgs'] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
+        :param pulumi.Input['ClusterSecurityPostureConfigArgs'] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[str] self_link: The server-defined URL for the resource.
         :param pulumi.Input['ClusterServiceExternalIpsConfigArgs'] service_external_ips_config: Structure is documented below.
         :param pulumi.Input[str] services_ipv4_cidr: The IP address range of the Kubernetes services in this
@@ -1676,6 +1697,8 @@ class _ClusterState:
             pulumi.set(__self__, "resource_labels", resource_labels)
         if resource_usage_export_config is not None:
             pulumi.set(__self__, "resource_usage_export_config", resource_usage_export_config)
+        if security_posture_config is not None:
+            pulumi.set(__self__, "security_posture_config", security_posture_config)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if service_external_ips_config is not None:
@@ -1902,6 +1925,9 @@ class _ClusterState:
         If enabled, all container images will be validated by Google Binary Authorization.
         Deprecated in favor of `binary_authorization`.
         """
+        warnings.warn("""Deprecated in favor of binary_authorization.""", DeprecationWarning)
+        pulumi.log.warn("""enable_binary_authorization is deprecated: Deprecated in favor of binary_authorization.""")
+
         return pulumi.get(self, "enable_binary_authorization")
 
     @enable_binary_authorization.setter
@@ -2473,8 +2499,6 @@ class _ClusterState:
         """
         )
         Enable/Disable Protect API features for the cluster. Structure is documented below.
-
-        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         """
         return pulumi.get(self, "protect_config")
 
@@ -2542,6 +2566,20 @@ class _ClusterState:
     @resource_usage_export_config.setter
     def resource_usage_export_config(self, value: Optional[pulumi.Input['ClusterResourceUsageExportConfigArgs']]):
         pulumi.set(self, "resource_usage_export_config", value)
+
+    @property
+    @pulumi.getter(name="securityPostureConfig")
+    def security_posture_config(self) -> Optional[pulumi.Input['ClusterSecurityPostureConfigArgs']]:
+        """
+        Enable/Disable Security Posture API features for the cluster. Structure is documented below.
+
+        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
+        """
+        return pulumi.get(self, "security_posture_config")
+
+    @security_posture_config.setter
+    def security_posture_config(self, value: Optional[pulumi.Input['ClusterSecurityPostureConfigArgs']]):
+        pulumi.set(self, "security_posture_config", value)
 
     @property
     @pulumi.getter(name="selfLink")
@@ -2710,6 +2748,7 @@ class Cluster(pulumi.CustomResource):
                  remove_default_node_pool: Optional[pulumi.Input[bool]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']]] = None,
+                 security_posture_config: Optional[pulumi.Input[pulumi.InputType['ClusterSecurityPostureConfigArgs']]] = None,
                  service_external_ips_config: Optional[pulumi.Input[pulumi.InputType['ClusterServiceExternalIpsConfigArgs']]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_config: Optional[pulumi.Input[pulumi.InputType['ClusterTpuConfigArgs']]] = None,
@@ -2956,8 +2995,6 @@ class Cluster(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ClusterProtectConfigArgs']] protect_config: )
                Enable/Disable Protect API features for the cluster. Structure is documented below.
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[pulumi.InputType['ClusterReleaseChannelArgs']] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
@@ -2975,6 +3012,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterSecurityPostureConfigArgs']] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[pulumi.InputType['ClusterServiceExternalIpsConfigArgs']] service_external_ips_config: Structure is documented below.
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
@@ -3132,6 +3172,7 @@ class Cluster(pulumi.CustomResource):
                  remove_default_node_pool: Optional[pulumi.Input[bool]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']]] = None,
+                 security_posture_config: Optional[pulumi.Input[pulumi.InputType['ClusterSecurityPostureConfigArgs']]] = None,
                  service_external_ips_config: Optional[pulumi.Input[pulumi.InputType['ClusterServiceExternalIpsConfigArgs']]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_config: Optional[pulumi.Input[pulumi.InputType['ClusterTpuConfigArgs']]] = None,
@@ -3205,6 +3246,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["remove_default_node_pool"] = remove_default_node_pool
             __props__.__dict__["resource_labels"] = resource_labels
             __props__.__dict__["resource_usage_export_config"] = resource_usage_export_config
+            __props__.__dict__["security_posture_config"] = security_posture_config
             __props__.__dict__["service_external_ips_config"] = service_external_ips_config
             __props__.__dict__["subnetwork"] = subnetwork
             __props__.__dict__["tpu_config"] = tpu_config
@@ -3287,6 +3329,7 @@ class Cluster(pulumi.CustomResource):
             remove_default_node_pool: Optional[pulumi.Input[bool]] = None,
             resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']]] = None,
+            security_posture_config: Optional[pulumi.Input[pulumi.InputType['ClusterSecurityPostureConfigArgs']]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             service_external_ips_config: Optional[pulumi.Input[pulumi.InputType['ClusterServiceExternalIpsConfigArgs']]] = None,
             services_ipv4_cidr: Optional[pulumi.Input[str]] = None,
@@ -3475,8 +3518,6 @@ class Cluster(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ClusterProtectConfigArgs']] protect_config: )
                Enable/Disable Protect API features for the cluster. Structure is documented below.
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[pulumi.InputType['ClusterReleaseChannelArgs']] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
                feature, which provide more control over automatic upgrades of your GKE clusters.
                When updating this field, GKE imposes specific version requirements. See
@@ -3494,6 +3535,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterResourceUsageExportConfigArgs']] resource_usage_export_config: Configuration for the
                [ResourceUsageExportConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-usage-metering) feature.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterSecurityPostureConfigArgs']] security_posture_config: Enable/Disable Security Posture API features for the cluster. Structure is documented below.
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[str] self_link: The server-defined URL for the resource.
         :param pulumi.Input[pulumi.InputType['ClusterServiceExternalIpsConfigArgs']] service_external_ips_config: Structure is documented below.
         :param pulumi.Input[str] services_ipv4_cidr: The IP address range of the Kubernetes services in this
@@ -3576,6 +3620,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["remove_default_node_pool"] = remove_default_node_pool
         __props__.__dict__["resource_labels"] = resource_labels
         __props__.__dict__["resource_usage_export_config"] = resource_usage_export_config
+        __props__.__dict__["security_posture_config"] = security_posture_config
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["service_external_ips_config"] = service_external_ips_config
         __props__.__dict__["services_ipv4_cidr"] = services_ipv4_cidr
@@ -3735,6 +3780,9 @@ class Cluster(pulumi.CustomResource):
         If enabled, all container images will be validated by Google Binary Authorization.
         Deprecated in favor of `binary_authorization`.
         """
+        warnings.warn("""Deprecated in favor of binary_authorization.""", DeprecationWarning)
+        pulumi.log.warn("""enable_binary_authorization is deprecated: Deprecated in favor of binary_authorization.""")
+
         return pulumi.get(self, "enable_binary_authorization")
 
     @property
@@ -4146,8 +4194,6 @@ class Cluster(pulumi.CustomResource):
         """
         )
         Enable/Disable Protect API features for the cluster. Structure is documented below.
-
-        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         """
         return pulumi.get(self, "protect_config")
 
@@ -4195,6 +4241,16 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "resource_usage_export_config")
+
+    @property
+    @pulumi.getter(name="securityPostureConfig")
+    def security_posture_config(self) -> pulumi.Output['outputs.ClusterSecurityPostureConfig']:
+        """
+        Enable/Disable Security Posture API features for the cluster. Structure is documented below.
+
+        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
+        """
+        return pulumi.get(self, "security_posture_config")
 
     @property
     @pulumi.getter(name="selfLink")

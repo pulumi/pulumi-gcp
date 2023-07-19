@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -200,6 +201,7 @@ func NewEntryGroupIamMember(ctx *pulumi.Context,
 	if args.Role == nil {
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EntryGroupIamMember
 	err := ctx.RegisterResource("gcp:datacatalog/entryGroupIamMember:EntryGroupIamMember", name, args, &resource, opts...)
 	if err != nil {

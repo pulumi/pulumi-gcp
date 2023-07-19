@@ -14,11 +14,14 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile
     {
         /// <summary>
-        /// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+        /// Defaults to false. When false, files are
+        /// subject to validations based on the file type: Remote: A checksum must be
+        /// specified. Cloud Storage: An object generation number must be specified.
         /// </summary>
         public readonly bool? AllowInsecure;
         /// <summary>
-        /// A Cloud Storage object.
+        /// A Cloud Storage object. Structure is
+        /// documented below.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs? Gcs;
         /// <summary>
@@ -26,7 +29,8 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// </summary>
         public readonly string? LocalPath;
         /// <summary>
-        /// A generic remote file.
+        /// A generic remote file. Structure is
+        /// documented below.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote? Remote;
 

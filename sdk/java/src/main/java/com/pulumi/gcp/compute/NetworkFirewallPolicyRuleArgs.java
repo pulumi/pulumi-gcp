@@ -21,14 +21,14 @@ public final class NetworkFirewallPolicyRuleArgs extends com.pulumi.resources.Re
     public static final NetworkFirewallPolicyRuleArgs Empty = new NetworkFirewallPolicyRuleArgs();
 
     /**
-     * The Action to perform when the client connection triggers the rule. Can currently be either &#34;allow&#34; or &#34;deny()&#34; where valid values for status are 403, 404, and 502.
+     * The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34; and &#34;goto_next&#34;.
      * 
      */
     @Import(name="action", required=true)
     private Output<String> action;
 
     /**
-     * @return The Action to perform when the client connection triggers the rule. Can currently be either &#34;allow&#34; or &#34;deny()&#34; where valid values for status are 403, 404, and 502.
+     * @return The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34; and &#34;goto_next&#34;.
      * 
      */
     public Output<String> action() {
@@ -236,7 +236,7 @@ public final class NetworkFirewallPolicyRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param action The Action to perform when the client connection triggers the rule. Can currently be either &#34;allow&#34; or &#34;deny()&#34; where valid values for status are 403, 404, and 502.
+         * @param action The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34; and &#34;goto_next&#34;.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class NetworkFirewallPolicyRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param action The Action to perform when the client connection triggers the rule. Can currently be either &#34;allow&#34; or &#34;deny()&#34; where valid values for status are 403, 404, and 502.
+         * @param action The Action to perform when the client connection triggers the rule. Valid actions are &#34;allow&#34;, &#34;deny&#34; and &#34;goto_next&#34;.
          * 
          * @return builder
          * 

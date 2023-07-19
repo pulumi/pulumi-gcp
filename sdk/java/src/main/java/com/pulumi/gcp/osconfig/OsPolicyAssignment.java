@@ -20,11 +20,26 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Represents an OSPolicyAssignment resource.
+ * ## OS policy assignment is an API resource that is used to apply a set of OS policies to a dynamically targeted group of Compute Engine VM instances.
+ * 
+ * # google\_os\_config\_os\_policy\_assignment
+ * 
+ * OS policy assignment is an API resource that is used to apply a set of OS
+ * policies to a dynamically targeted group of Compute Engine VM instances. An OS
+ * policy is used to define the desired state configuration for a Compute Engine VM
+ * instance through a set of configuration resources that provide capabilities such
+ * as installing or removing software packages, or executing a script. For more
+ * information about the OS policy resource definitions and examples, see
+ * [OS policy and OS policy assignment](https://cloud.google.com/compute/docs/os-configuration-management/working-with-os-policies).
+ * 
+ * To get more information about OSPolicyAssignment, see:
+ * 
+ * *   [API documentation](https://cloud.google.com/compute/docs/osconfig/rest/v1/projects.locations.osPolicyAssignments)
+ * *   How-to Guides
+ *     *   [Official Documentation](https://cloud.google.com/compute/docs/os-configuration-management/create-os-policy-assignment)
  * 
  * ## Example Usage
- * ### Fixed_os_policy_assignment
- * An example of an osconfig os policy assignment with fixed rollout disruption budget
+ * ### Os Config Os Policy Assignment Basic
  * ```java
  * package generated_program;
  * 
@@ -65,7 +80,7 @@ import javax.annotation.Nullable;
  *                     .osVersion(&#34;8.*&#34;)
  *                     .build())
  *                 .build())
- *             .location(&#34;us-west1-a&#34;)
+ *             .location(&#34;us-central1-a&#34;)
  *             .osPolicies(OsPolicyAssignmentOsPolicyArgs.builder()
  *                 .allowNoResourceGroupMatch(false)
  *                 .description(&#34;A test os policy&#34;)
@@ -76,23 +91,51 @@ import javax.annotation.Nullable;
  *                         .osShortName(&#34;centos&#34;)
  *                         .osVersion(&#34;8.*&#34;)
  *                         .build())
- *                     .resources(OsPolicyAssignmentOsPolicyResourceGroupResourceArgs.builder()
- *                         .id(&#34;apt&#34;)
- *                         .pkg(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs.builder()
- *                             .apt(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs.builder()
- *                                 .name(&#34;bazel&#34;)
+ *                     .resources(                    
+ *                         OsPolicyAssignmentOsPolicyResourceGroupResourceArgs.builder()
+ *                             .id(&#34;apt-to-yum&#34;)
+ *                             .repository(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs.builder()
+ *                                 .apt(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs.builder()
+ *                                     .archiveType(&#34;DEB&#34;)
+ *                                     .components(&#34;doc&#34;)
+ *                                     .distribution(&#34;debian&#34;)
+ *                                     .gpgKey(&#34;.gnupg/pubring.kbx&#34;)
+ *                                     .uri(&#34;https://atl.mirrors.clouvider.net/debian&#34;)
+ *                                     .build())
  *                                 .build())
- *                             .desiredState(&#34;INSTALLED&#34;)
+ *                             .build(),
+ *                         OsPolicyAssignmentOsPolicyResourceGroupResourceArgs.builder()
+ *                             .exec(OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs.builder()
+ *                                 .enforce(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs.builder()
+ *                                     .args(&#34;arg1&#34;)
+ *                                     .file(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs.builder()
+ *                                         .allowInsecure(true)
+ *                                         .remote(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs.builder()
+ *                                             .sha256Checksum(&#34;c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063&#34;)
+ *                                             .uri(&#34;https://www.example.com/script.sh&#34;)
+ *                                             .build())
+ *                                         .build())
+ *                                     .interpreter(&#34;SHELL&#34;)
+ *                                     .outputFilePath(&#34;$HOME/out&#34;)
+ *                                     .build())
+ *                                 .validate(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs.builder()
+ *                                     .args(&#34;arg1&#34;)
+ *                                     .file(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs.builder()
+ *                                         .localPath(&#34;$HOME/script.sh&#34;)
+ *                                         .build())
+ *                                     .interpreter(&#34;SHELL&#34;)
+ *                                     .outputFilePath(&#34;$HOME/out&#34;)
+ *                                     .build())
+ *                                 .build())
+ *                             .id(&#34;exec1&#34;)
  *                             .build())
- *                         .build())
  *                     .build())
  *                 .build())
- *             .project(&#34;my-project-name&#34;)
  *             .rollout(OsPolicyAssignmentRolloutArgs.builder()
  *                 .disruptionBudget(OsPolicyAssignmentRolloutDisruptionBudgetArgs.builder()
- *                     .fixed(1)
+ *                     .percent(100)
  *                     .build())
- *                 .minWaitDuration(&#34;3.5s&#34;)
+ *                 .minWaitDuration(&#34;3s&#34;)
  *                 .build())
  *             .build());
  * 
@@ -120,76 +163,88 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:osconfig/osPolicyAssignment:OsPolicyAssignment")
 public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
     /**
-     * Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
+     * Output only. Indicates that this revision has been successfully
+     * rolled out in this zone and new VMs will be assigned OS policies from this
+     * revision. For a given OS policy assignment, there is only one revision with
+     * a value of `true` for this field.
      * 
      */
     @Export(name="baseline", type=Boolean.class, parameters={})
     private Output<Boolean> baseline;
 
     /**
-     * @return Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
+     * @return Output only. Indicates that this revision has been successfully
+     * rolled out in this zone and new VMs will be assigned OS policies from this
+     * revision. For a given OS policy assignment, there is only one revision with
+     * a value of `true` for this field.
      * 
      */
     public Output<Boolean> baseline() {
         return this.baseline;
     }
     /**
-     * Output only. Indicates that this revision deletes the OS policy assignment.
+     * Output only. Indicates that this revision deletes the OS policy
+     * assignment.
      * 
      */
     @Export(name="deleted", type=Boolean.class, parameters={})
     private Output<Boolean> deleted;
 
     /**
-     * @return Output only. Indicates that this revision deletes the OS policy assignment.
+     * @return Output only. Indicates that this revision deletes the OS policy
+     * assignment.
      * 
      */
     public Output<Boolean> deleted() {
         return this.deleted;
     }
     /**
-     * Policy description. Length of the description is limited to 1024 characters.
+     * Policy description. Length of the description is
+     * limited to 1024 characters.
      * 
-     * (Optional)
-     * OS policy assignment description. Length of the description is limited to 1024 characters.
+     * description is limited to 1024 characters.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Policy description. Length of the description is limited to 1024 characters.
+     * @return Policy description. Length of the description is
+     * limited to 1024 characters.
      * 
-     * (Optional)
-     * OS policy assignment description. Length of the description is limited to 1024 characters.
+     * description is limited to 1024 characters.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The etag for this OS policy assignment. If this is provided on update, it must match the server&#39;s etag.
+     * The etag for this OS policy assignment. If this is provided on
+     * update, it must match the server&#39;s etag.
      * 
      */
     @Export(name="etag", type=String.class, parameters={})
     private Output<String> etag;
 
     /**
-     * @return The etag for this OS policy assignment. If this is provided on update, it must match the server&#39;s etag.
+     * @return The etag for this OS policy assignment. If this is provided on
+     * update, it must match the server&#39;s etag.
      * 
      */
     public Output<String> etag() {
         return this.etag;
     }
     /**
-     * Required. Filter to select VMs.
+     * Filter to select VMs. Structure is
+     * documented below.
      * 
      */
     @Export(name="instanceFilter", type=OsPolicyAssignmentInstanceFilter.class, parameters={})
     private Output<OsPolicyAssignmentInstanceFilter> instanceFilter;
 
     /**
-     * @return Required. Filter to select VMs.
+     * @return Filter to select VMs. Structure is
+     * documented below.
      * 
      */
     public Output<OsPolicyAssignmentInstanceFilter> instanceFilter() {
@@ -224,126 +279,148 @@ public class OsPolicyAssignment extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Required. List of OS policies to be applied to the VMs.
+     * List of OS policies to be applied to the VMs.
+     * Structure is documented below.
      * 
      */
     @Export(name="osPolicies", type=List.class, parameters={OsPolicyAssignmentOsPolicy.class})
     private Output<List<OsPolicyAssignmentOsPolicy>> osPolicies;
 
     /**
-     * @return Required. List of OS policies to be applied to the VMs.
+     * @return List of OS policies to be applied to the VMs.
+     * Structure is documented below.
      * 
      */
     public Output<List<OsPolicyAssignmentOsPolicy>> osPolicies() {
         return this.osPolicies;
     }
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Export(name="project", type=String.class, parameters={})
     private Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+     * Output only. Indicates that reconciliation is in progress
+     * for the revision. This value is `true` when the `rollout_state` is one of:
      * 
      */
     @Export(name="reconciling", type=Boolean.class, parameters={})
     private Output<Boolean> reconciling;
 
     /**
-     * @return Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+     * @return Output only. Indicates that reconciliation is in progress
+     * for the revision. This value is `true` when the `rollout_state` is one of:
      * 
      */
     public Output<Boolean> reconciling() {
         return this.reconciling;
     }
     /**
-     * Output only. The timestamp that the revision was created.
+     * Output only. The timestamp that the revision was
+     * created.
      * 
      */
     @Export(name="revisionCreateTime", type=String.class, parameters={})
     private Output<String> revisionCreateTime;
 
     /**
-     * @return Output only. The timestamp that the revision was created.
+     * @return Output only. The timestamp that the revision was
+     * created.
      * 
      */
     public Output<String> revisionCreateTime() {
         return this.revisionCreateTime;
     }
     /**
-     * Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
+     * Output only. The assignment revision ID A new revision is
+     * committed whenever a rollout is triggered for a OS policy assignment
      * 
      */
     @Export(name="revisionId", type=String.class, parameters={})
     private Output<String> revisionId;
 
     /**
-     * @return Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
+     * @return Output only. The assignment revision ID A new revision is
+     * committed whenever a rollout is triggered for a OS policy assignment
      * 
      */
     public Output<String> revisionId() {
         return this.revisionId;
     }
     /**
-     * Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
+     * Rollout to deploy the OS policy assignment. A rollout
+     * is triggered in the following situations: 1) OSPolicyAssignment is created.
+     * 2) OSPolicyAssignment is updated and the update contains changes to one of
+     * the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+     * is deleted. Structure is documented below.
      * 
      */
     @Export(name="rollout", type=OsPolicyAssignmentRollout.class, parameters={})
     private Output<OsPolicyAssignmentRollout> rollout;
 
     /**
-     * @return Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
+     * @return Rollout to deploy the OS policy assignment. A rollout
+     * is triggered in the following situations: 1) OSPolicyAssignment is created.
+     * 2) OSPolicyAssignment is updated and the update contains changes to one of
+     * the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+     * is deleted. Structure is documented below.
      * 
      */
     public Output<OsPolicyAssignmentRollout> rollout() {
         return this.rollout;
     }
     /**
-     * Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
+     * Output only. OS policy assignment rollout state
      * 
      */
     @Export(name="rolloutState", type=String.class, parameters={})
     private Output<String> rolloutState;
 
     /**
-     * @return Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
+     * @return Output only. OS policy assignment rollout state
      * 
      */
     public Output<String> rolloutState() {
         return this.rolloutState;
     }
     /**
-     * Set to true to skip awaiting rollout during resource creation and update.
+     * Set to true to skip awaiting rollout
+     * during resource creation and update.
      * 
      */
     @Export(name="skipAwaitRollout", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> skipAwaitRollout;
 
     /**
-     * @return Set to true to skip awaiting rollout during resource creation and update.
+     * @return Set to true to skip awaiting rollout
+     * during resource creation and update.
      * 
      */
     public Output<Optional<Boolean>> skipAwaitRollout() {
         return Codegen.optional(this.skipAwaitRollout);
     }
     /**
-     * Output only. Server generated unique id for the OS policy assignment resource.
+     * Output only. Server generated unique id for the OS policy assignment
+     * resource.
      * 
      */
     @Export(name="uid", type=String.class, parameters={})
     private Output<String> uid;
 
     /**
-     * @return Output only. Server generated unique id for the OS policy assignment resource.
+     * @return Output only. Server generated unique id for the OS policy assignment
+     * resource.
      * 
      */
     public Output<String> uid() {

@@ -15,6 +15,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The GatewaySecurityPolicy resource contains a collection of GatewaySecurityPolicyRules and associated metadata.
+ * 
+ * To get more information about GatewaySecurityPolicy, see:
+ * 
+ * * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies)
+ * 
  * ## Example Usage
  * ### Network Security Gateway Security Policy Basic
  * ```java
@@ -25,7 +31,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicy;
  * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -40,11 +45,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new GatewaySecurityPolicy(&#34;default&#34;, GatewaySecurityPolicyArgs.builder()        
- *             .location(&#34;us-central1&#34;)
  *             .description(&#34;my description&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .location(&#34;us-central1&#34;)
+ *             .build());
  * 
  *     }
  * }
@@ -76,6 +79,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
+ * import com.pulumi.gcp.projects.ServiceIdentity;
+ * import com.pulumi.gcp.projects.ServiceIdentityArgs;
+ * import com.pulumi.gcp.certificateauthority.CaPoolIamMember;
+ * import com.pulumi.gcp.certificateauthority.CaPoolIamMemberArgs;
  * import com.pulumi.gcp.networksecurity.TlsInspectionPolicy;
  * import com.pulumi.gcp.networksecurity.TlsInspectionPolicyArgs;
  * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicy;
@@ -157,6 +164,20 @@ import javax.annotation.Nullable;
  *                 .provider(google_beta)
  *                 .build());
  * 
+ *         var nsSa = new ServiceIdentity(&#34;nsSa&#34;, ServiceIdentityArgs.builder()        
+ *             .service(&#34;networksecurity.googleapis.com&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var tlsInspectionPermission = new CaPoolIamMember(&#34;tlsInspectionPermission&#34;, CaPoolIamMemberArgs.builder()        
+ *             .caPool(defaultCaPool.id())
+ *             .role(&#34;roles/privateca.certificateManager&#34;)
+ *             .member(nsSa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
  *         var defaultTlsInspectionPolicy = new TlsInspectionPolicy(&#34;defaultTlsInspectionPolicy&#34;, TlsInspectionPolicyArgs.builder()        
  *             .location(&#34;us-central1&#34;)
  *             .caPool(defaultCaPool.id())
@@ -164,7 +185,8 @@ import javax.annotation.Nullable;
  *                 .provider(google_beta)
  *                 .dependsOn(                
  *                     defaultCaPool,
- *                     defaultAuthority)
+ *                     defaultAuthority,
+ *                     tlsInspectionPermission)
  *                 .build());
  * 
  *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy(&#34;defaultGatewaySecurityPolicy&#34;, GatewaySecurityPolicyArgs.builder()        

@@ -609,7 +609,7 @@ class Reservation(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def edition(self) -> pulumi.Output[Optional[str]]:
+    def edition(self) -> pulumi.Output[str]:
         """
         The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
         """

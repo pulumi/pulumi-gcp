@@ -20,14 +20,16 @@ public final class OsPolicyAssignmentInstanceFilterArgs extends com.pulumi.resou
     public static final OsPolicyAssignmentInstanceFilterArgs Empty = new OsPolicyAssignmentInstanceFilterArgs();
 
     /**
-     * Target all VMs in the project. If true, no other criteria is permitted.
+     * Target all VMs in the project. If true, no other criteria
+     * is permitted.
      * 
      */
     @Import(name="all")
     private @Nullable Output<Boolean> all;
 
     /**
-     * @return Target all VMs in the project. If true, no other criteria is permitted.
+     * @return Target all VMs in the project. If true, no other criteria
+     * is permitted.
      * 
      */
     public Optional<Output<Boolean>> all() {
@@ -35,14 +37,20 @@ public final class OsPolicyAssignmentInstanceFilterArgs extends com.pulumi.resou
     }
 
     /**
-     * List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
+     * List of label sets used for VM exclusion. If
+     * the list has more than one label set, the VM is excluded if any of the label
+     * sets are applicable for the VM. Structure is
+     * documented below.
      * 
      */
     @Import(name="exclusionLabels")
     private @Nullable Output<List<OsPolicyAssignmentInstanceFilterExclusionLabelArgs>> exclusionLabels;
 
     /**
-     * @return List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
+     * @return List of label sets used for VM exclusion. If
+     * the list has more than one label set, the VM is excluded if any of the label
+     * sets are applicable for the VM. Structure is
+     * documented below.
      * 
      */
     public Optional<Output<List<OsPolicyAssignmentInstanceFilterExclusionLabelArgs>>> exclusionLabels() {
@@ -50,14 +58,20 @@ public final class OsPolicyAssignmentInstanceFilterArgs extends com.pulumi.resou
     }
 
     /**
-     * List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
+     * List of label sets used for VM inclusion. If
+     * the list has more than one `LabelSet`, the VM is included if any of the
+     * label sets are applicable for the VM. Structure is
+     * documented below.
      * 
      */
     @Import(name="inclusionLabels")
     private @Nullable Output<List<OsPolicyAssignmentInstanceFilterInclusionLabelArgs>> inclusionLabels;
 
     /**
-     * @return List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
+     * @return List of label sets used for VM inclusion. If
+     * the list has more than one `LabelSet`, the VM is included if any of the
+     * label sets are applicable for the VM. Structure is
+     * documented below.
      * 
      */
     public Optional<Output<List<OsPolicyAssignmentInstanceFilterInclusionLabelArgs>>> inclusionLabels() {
@@ -65,14 +79,18 @@ public final class OsPolicyAssignmentInstanceFilterArgs extends com.pulumi.resou
     }
 
     /**
-     * List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
+     * List of inventories to select VMs. A VM is
+     * selected if its inventory data matches at least one of the following
+     * inventories. Structure is documented below.
      * 
      */
     @Import(name="inventories")
     private @Nullable Output<List<OsPolicyAssignmentInstanceFilterInventoryArgs>> inventories;
 
     /**
-     * @return List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
+     * @return List of inventories to select VMs. A VM is
+     * selected if its inventory data matches at least one of the following
+     * inventories. Structure is documented below.
      * 
      */
     public Optional<Output<List<OsPolicyAssignmentInstanceFilterInventoryArgs>>> inventories() {
@@ -107,7 +125,8 @@ public final class OsPolicyAssignmentInstanceFilterArgs extends com.pulumi.resou
         }
 
         /**
-         * @param all Target all VMs in the project. If true, no other criteria is permitted.
+         * @param all Target all VMs in the project. If true, no other criteria
+         * is permitted.
          * 
          * @return builder
          * 
@@ -118,7 +137,8 @@ public final class OsPolicyAssignmentInstanceFilterArgs extends com.pulumi.resou
         }
 
         /**
-         * @param all Target all VMs in the project. If true, no other criteria is permitted.
+         * @param all Target all VMs in the project. If true, no other criteria
+         * is permitted.
          * 
          * @return builder
          * 
@@ -128,7 +148,10 @@ public final class OsPolicyAssignmentInstanceFilterArgs extends com.pulumi.resou
         }
 
         /**
-         * @param exclusionLabels List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
+         * @param exclusionLabels List of label sets used for VM exclusion. If
+         * the list has more than one label set, the VM is excluded if any of the label
+         * sets are applicable for the VM. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -139,7 +162,10 @@ public final class OsPolicyAssignmentInstanceFilterArgs extends com.pulumi.resou
         }
 
         /**
-         * @param exclusionLabels List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
+         * @param exclusionLabels List of label sets used for VM exclusion. If
+         * the list has more than one label set, the VM is excluded if any of the label
+         * sets are applicable for the VM. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -149,7 +175,10 @@ public final class OsPolicyAssignmentInstanceFilterArgs extends com.pulumi.resou
         }
 
         /**
-         * @param exclusionLabels List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
+         * @param exclusionLabels List of label sets used for VM exclusion. If
+         * the list has more than one label set, the VM is excluded if any of the label
+         * sets are applicable for the VM. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -159,7 +188,10 @@ public final class OsPolicyAssignmentInstanceFilterArgs extends com.pulumi.resou
         }
 
         /**
-         * @param inclusionLabels List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
+         * @param inclusionLabels List of label sets used for VM inclusion. If
+         * the list has more than one `LabelSet`, the VM is included if any of the
+         * label sets are applicable for the VM. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -170,7 +202,10 @@ public final class OsPolicyAssignmentInstanceFilterArgs extends com.pulumi.resou
         }
 
         /**
-         * @param inclusionLabels List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
+         * @param inclusionLabels List of label sets used for VM inclusion. If
+         * the list has more than one `LabelSet`, the VM is included if any of the
+         * label sets are applicable for the VM. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -180,7 +215,10 @@ public final class OsPolicyAssignmentInstanceFilterArgs extends com.pulumi.resou
         }
 
         /**
-         * @param inclusionLabels List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
+         * @param inclusionLabels List of label sets used for VM inclusion. If
+         * the list has more than one `LabelSet`, the VM is included if any of the
+         * label sets are applicable for the VM. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -190,7 +228,9 @@ public final class OsPolicyAssignmentInstanceFilterArgs extends com.pulumi.resou
         }
 
         /**
-         * @param inventories List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
+         * @param inventories List of inventories to select VMs. A VM is
+         * selected if its inventory data matches at least one of the following
+         * inventories. Structure is documented below.
          * 
          * @return builder
          * 
@@ -201,7 +241,9 @@ public final class OsPolicyAssignmentInstanceFilterArgs extends com.pulumi.resou
         }
 
         /**
-         * @param inventories List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
+         * @param inventories List of inventories to select VMs. A VM is
+         * selected if its inventory data matches at least one of the following
+         * inventories. Structure is documented below.
          * 
          * @return builder
          * 
@@ -211,7 +253,9 @@ public final class OsPolicyAssignmentInstanceFilterArgs extends com.pulumi.resou
         }
 
         /**
-         * @param inventories List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
+         * @param inventories List of inventories to select VMs. A VM is
+         * selected if its inventory data matches at least one of the following
+         * inventories. Structure is documented below.
          * 
          * @return builder
          * 

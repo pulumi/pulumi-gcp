@@ -191,6 +191,12 @@ namespace Pulumi.Gcp.Logging
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+        /// </summary>
+        [Output("locked")]
+        public Output<bool?> Locked { get; private set; } = null!;
+
+        /// <summary>
         /// The resource name of the CMEK settings.
         /// </summary>
         [Output("name")]
@@ -285,6 +291,12 @@ namespace Pulumi.Gcp.Logging
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+        /// </summary>
+        [Input("locked")]
+        public Input<bool>? Locked { get; set; }
+
+        /// <summary>
         /// The parent resource that contains the logging bucket.
         /// </summary>
         [Input("project", required: true)]
@@ -339,6 +351,12 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+        /// </summary>
+        [Input("locked")]
+        public Input<bool>? Locked { get; set; }
 
         /// <summary>
         /// The resource name of the CMEK settings.

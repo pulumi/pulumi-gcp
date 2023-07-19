@@ -134,12 +134,12 @@ def get_game_server_deployment_rollout(deployment_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:gameservices/getGameServerDeploymentRollout:getGameServerDeploymentRollout', __args__, opts=opts, typ=GetGameServerDeploymentRolloutResult).value
 
     return AwaitableGetGameServerDeploymentRolloutResult(
-        default_game_server_config=__ret__.default_game_server_config,
-        deployment_id=__ret__.deployment_id,
-        game_server_config_overrides=__ret__.game_server_config_overrides,
-        id=__ret__.id,
-        name=__ret__.name,
-        project=__ret__.project)
+        default_game_server_config=pulumi.get(__ret__, 'default_game_server_config'),
+        deployment_id=pulumi.get(__ret__, 'deployment_id'),
+        game_server_config_overrides=pulumi.get(__ret__, 'game_server_config_overrides'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_game_server_deployment_rollout)

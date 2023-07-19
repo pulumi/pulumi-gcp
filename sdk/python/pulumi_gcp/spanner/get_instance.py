@@ -158,16 +158,16 @@ def get_instance(config: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:spanner/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
-        config=__ret__.config,
-        display_name=__ret__.display_name,
-        force_destroy=__ret__.force_destroy,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        num_nodes=__ret__.num_nodes,
-        processing_units=__ret__.processing_units,
-        project=__ret__.project,
-        state=__ret__.state)
+        config=pulumi.get(__ret__, 'config'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        force_destroy=pulumi.get(__ret__, 'force_destroy'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        num_nodes=pulumi.get(__ret__, 'num_nodes'),
+        processing_units=pulumi.get(__ret__, 'processing_units'),
+        project=pulumi.get(__ret__, 'project'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_instance)

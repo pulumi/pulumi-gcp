@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -85,6 +86,7 @@ func NewSharedVPCHostProject(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SharedVPCHostProject
 	err := ctx.RegisterResource("gcp:compute/sharedVPCHostProject:SharedVPCHostProject", name, args, &resource, opts...)
 	if err != nil {

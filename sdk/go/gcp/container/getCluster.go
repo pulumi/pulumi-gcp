@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func LookupCluster(ctx *pulumi.Context, args *LookupClusterArgs, opts ...pulumi.InvokeOption) (*LookupClusterResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupClusterResult
 	err := ctx.Invoke("gcp:container/getCluster:getCluster", args, &rv, opts...)
 	if err != nil {
@@ -128,6 +130,7 @@ type LookupClusterResult struct {
 	RemoveDefaultNodePool           bool                                       `pulumi:"removeDefaultNodePool"`
 	ResourceLabels                  map[string]string                          `pulumi:"resourceLabels"`
 	ResourceUsageExportConfigs      []GetClusterResourceUsageExportConfig      `pulumi:"resourceUsageExportConfigs"`
+	SecurityPostureConfigs          []GetClusterSecurityPostureConfig          `pulumi:"securityPostureConfigs"`
 	SelfLink                        string                                     `pulumi:"selfLink"`
 	ServiceExternalIpsConfigs       []GetClusterServiceExternalIpsConfig       `pulumi:"serviceExternalIpsConfigs"`
 	ServicesIpv4Cidr                string                                     `pulumi:"servicesIpv4Cidr"`
@@ -428,6 +431,10 @@ func (o LookupClusterResultOutput) ResourceLabels() pulumi.StringMapOutput {
 
 func (o LookupClusterResultOutput) ResourceUsageExportConfigs() GetClusterResourceUsageExportConfigArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterResourceUsageExportConfig { return v.ResourceUsageExportConfigs }).(GetClusterResourceUsageExportConfigArrayOutput)
+}
+
+func (o LookupClusterResultOutput) SecurityPostureConfigs() GetClusterSecurityPostureConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterSecurityPostureConfig { return v.SecurityPostureConfigs }).(GetClusterSecurityPostureConfigArrayOutput)
 }
 
 func (o LookupClusterResultOutput) SelfLink() pulumi.StringOutput {

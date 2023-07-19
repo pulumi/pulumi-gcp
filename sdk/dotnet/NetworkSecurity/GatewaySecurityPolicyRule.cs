@@ -10,6 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkSecurity
 {
     /// <summary>
+    /// The GatewaySecurityPolicyRule resource is in a nested collection within a GatewaySecurityPolicy and represents
+    /// a traffic matching condition and associated action to perform.
+    /// 
+    /// To get more information about GatewaySecurityPolicyRule, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies.rules)
+    /// 
     /// ## Example Usage
     /// ### Network Security Gateway Security Policy Rules Basic
     /// 
@@ -25,9 +32,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///     {
     ///         Location = "us-central1",
     ///         Description = "gateway security policy created to be used as reference by the rule.",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var defaultGatewaySecurityPolicyRule = new Gcp.NetworkSecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", new()
@@ -39,9 +43,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///         Priority = 0,
     ///         SessionMatcher = "host() == 'example.com'",
     ///         BasicProfile = "ALLOW",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -60,9 +61,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///     {
     ///         Location = "us-central1",
     ///         Description = "gateway security policy created to be used as reference by the rule.",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var defaultGatewaySecurityPolicyRule = new Gcp.NetworkSecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", new()
@@ -76,9 +74,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///         ApplicationMatcher = "request.method == 'POST'",
     ///         TlsInspectionEnabled = false,
     ///         BasicProfile = "ALLOW",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

@@ -642,6 +642,10 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         > **Note:** Ask your Google Cloud account team to request access to workforce identity federation for your
         billing/quota project. The account team notifies you when the project is granted access.
 
+        > **Warning:** All arguments including the following potentially sensitive
+        values will be stored in the raw state as plain text: `oidc.client_secret.value.plain_text`.
+        Read more about sensitive data in state.
+
         ## Example Usage
         ### Iam Workforce Pool Provider Saml Basic
 
@@ -709,9 +713,14 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             oidc=gcp.iam.WorkforcePoolProviderOidcArgs(
                 issuer_uri="https://accounts.thirdparty.com",
                 client_id="client-id",
+                client_secret=gcp.iam.WorkforcePoolProviderOidcClientSecretArgs(
+                    value=gcp.iam.WorkforcePoolProviderOidcClientSecretValueArgs(
+                        plain_text="client-secret",
+                    ),
+                ),
                 web_sso_config=gcp.iam.WorkforcePoolProviderOidcWebSsoConfigArgs(
-                    response_type="ID_TOKEN",
-                    assertion_claims_behavior="ONLY_ID_TOKEN_CLAIMS",
+                    response_type="CODE",
+                    assertion_claims_behavior="MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
                 ),
             ))
         ```
@@ -735,9 +744,14 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             oidc=gcp.iam.WorkforcePoolProviderOidcArgs(
                 issuer_uri="https://accounts.thirdparty.com",
                 client_id="client-id",
+                client_secret=gcp.iam.WorkforcePoolProviderOidcClientSecretArgs(
+                    value=gcp.iam.WorkforcePoolProviderOidcClientSecretValueArgs(
+                        plain_text="client-secret",
+                    ),
+                ),
                 web_sso_config=gcp.iam.WorkforcePoolProviderOidcWebSsoConfigArgs(
-                    response_type="ID_TOKEN",
-                    assertion_claims_behavior="ONLY_ID_TOKEN_CLAIMS",
+                    response_type="CODE",
+                    assertion_claims_behavior="MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
                 ),
             ),
             display_name="Display name",
@@ -845,6 +859,10 @@ class WorkforcePoolProvider(pulumi.CustomResource):
         > **Note:** Ask your Google Cloud account team to request access to workforce identity federation for your
         billing/quota project. The account team notifies you when the project is granted access.
 
+        > **Warning:** All arguments including the following potentially sensitive
+        values will be stored in the raw state as plain text: `oidc.client_secret.value.plain_text`.
+        Read more about sensitive data in state.
+
         ## Example Usage
         ### Iam Workforce Pool Provider Saml Basic
 
@@ -912,9 +930,14 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             oidc=gcp.iam.WorkforcePoolProviderOidcArgs(
                 issuer_uri="https://accounts.thirdparty.com",
                 client_id="client-id",
+                client_secret=gcp.iam.WorkforcePoolProviderOidcClientSecretArgs(
+                    value=gcp.iam.WorkforcePoolProviderOidcClientSecretValueArgs(
+                        plain_text="client-secret",
+                    ),
+                ),
                 web_sso_config=gcp.iam.WorkforcePoolProviderOidcWebSsoConfigArgs(
-                    response_type="ID_TOKEN",
-                    assertion_claims_behavior="ONLY_ID_TOKEN_CLAIMS",
+                    response_type="CODE",
+                    assertion_claims_behavior="MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
                 ),
             ))
         ```
@@ -938,9 +961,14 @@ class WorkforcePoolProvider(pulumi.CustomResource):
             oidc=gcp.iam.WorkforcePoolProviderOidcArgs(
                 issuer_uri="https://accounts.thirdparty.com",
                 client_id="client-id",
+                client_secret=gcp.iam.WorkforcePoolProviderOidcClientSecretArgs(
+                    value=gcp.iam.WorkforcePoolProviderOidcClientSecretValueArgs(
+                        plain_text="client-secret",
+                    ),
+                ),
                 web_sso_config=gcp.iam.WorkforcePoolProviderOidcWebSsoConfigArgs(
-                    response_type="ID_TOKEN",
-                    assertion_claims_behavior="ONLY_ID_TOKEN_CLAIMS",
+                    response_type="CODE",
+                    assertion_claims_behavior="MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
                 ),
             ),
             display_name="Display name",

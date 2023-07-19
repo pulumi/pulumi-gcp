@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -167,6 +168,7 @@ func NewCertificateMapEntry(ctx *pulumi.Context,
 	if args.Map == nil {
 		return nil, errors.New("invalid value for required argument 'Map'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CertificateMapEntry
 	err := ctx.RegisterResource("gcp:certificatemanager/certificateMapEntry:CertificateMapEntry", name, args, &resource, opts...)
 	if err != nil {

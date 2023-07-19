@@ -29,6 +29,11 @@ public final class TriggerSourceToBuild {
      * 
      */
     private String repoType;
+    /**
+     * @return The qualified resource name of the Repo API repository.
+     * Either uri or repository can be specified and is required.
+     * 
+     */
     private @Nullable String repository;
     /**
      * @return The URI of the repo.
@@ -61,6 +66,11 @@ public final class TriggerSourceToBuild {
     public String repoType() {
         return this.repoType;
     }
+    /**
+     * @return The qualified resource name of the Repo API repository.
+     * Either uri or repository can be specified and is required.
+     * 
+     */
     public Optional<String> repository() {
         return Optional.ofNullable(this.repository);
     }

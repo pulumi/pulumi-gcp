@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupWorkloadIdentityPoolProvider(ctx *pulumi.Context, args *LookupWorkloadIdentityPoolProviderArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadIdentityPoolProviderResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupWorkloadIdentityPoolProviderResult
 	err := ctx.Invoke("gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider", args, &rv, opts...)
 	if err != nil {

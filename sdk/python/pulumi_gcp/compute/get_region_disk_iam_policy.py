@@ -109,9 +109,9 @@ def get_region_disk_iam_policy(name: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.compute.get_region_disk_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        region=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.compute.get_region_disk_iam_policy(project=google_compute_region_disk["regiondisk"]["project"],
+        region=google_compute_region_disk["regiondisk"]["region"],
+        name=google_compute_region_disk["regiondisk"]["name"])
     ```
 
 
@@ -130,12 +130,12 @@ def get_region_disk_iam_policy(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getRegionDiskIamPolicy:getRegionDiskIamPolicy', __args__, opts=opts, typ=GetRegionDiskIamPolicyResult).value
 
     return AwaitableGetRegionDiskIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        name=__ret__.name,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project,
-        region=__ret__.region)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'))
 
 
 @_utilities.lift_output_func(get_region_disk_iam_policy)
@@ -152,9 +152,9 @@ def get_region_disk_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.compute.get_region_disk_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        region=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.compute.get_region_disk_iam_policy(project=google_compute_region_disk["regiondisk"]["project"],
+        region=google_compute_region_disk["regiondisk"]["region"],
+        name=google_compute_region_disk["regiondisk"]["name"])
     ```
 
 

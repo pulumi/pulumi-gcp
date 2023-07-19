@@ -89,7 +89,7 @@ def get_policy_tag_iam_policy(policy_tag: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.datacatalog.get_policy_tag_iam_policy(policy_tag=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.datacatalog.get_policy_tag_iam_policy(policy_tag=google_data_catalog_policy_tag["basic_policy_tag"]["name"])
     ```
 
 
@@ -101,10 +101,10 @@ def get_policy_tag_iam_policy(policy_tag: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:datacatalog/getPolicyTagIamPolicy:getPolicyTagIamPolicy', __args__, opts=opts, typ=GetPolicyTagIamPolicyResult).value
 
     return AwaitableGetPolicyTagIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        policy_tag=__ret__.policy_tag)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        policy_tag=pulumi.get(__ret__, 'policy_tag'))
 
 
 @_utilities.lift_output_func(get_policy_tag_iam_policy)
@@ -119,7 +119,7 @@ def get_policy_tag_iam_policy_output(policy_tag: Optional[pulumi.Input[str]] = N
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.datacatalog.get_policy_tag_iam_policy(policy_tag=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.datacatalog.get_policy_tag_iam_policy(policy_tag=google_data_catalog_policy_tag["basic_policy_tag"]["name"])
     ```
 
 

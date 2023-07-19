@@ -44,6 +44,7 @@ import * as utilities from "../utilities";
  *         config: {
  *             dimensions: 2,
  *             approximateNeighborsCount: 150,
+ *             shardSize: "SHARD_SIZE_SMALL",
  *             distanceMeasureType: "DOT_PRODUCT_DISTANCE",
  *             algorithmConfig: {
  *                 treeAhConfig: {
@@ -85,6 +86,7 @@ import * as utilities from "../utilities";
  *         contentsDeltaUri: pulumi.interpolate`gs://${bucket.name}/contents`,
  *         config: {
  *             dimensions: 2,
+ *             shardSize: "SHARD_SIZE_LARGE",
  *             distanceMeasureType: "COSINE_DISTANCE",
  *             featureNormType: "UNIT_L2_NORM",
  *             algorithmConfig: {

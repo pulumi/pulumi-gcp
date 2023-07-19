@@ -133,12 +133,12 @@ def get_account_jwt(delegates: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getAccountJwt:getAccountJwt', __args__, opts=opts, typ=GetAccountJwtResult).value
 
     return AwaitableGetAccountJwtResult(
-        delegates=__ret__.delegates,
-        expires_in=__ret__.expires_in,
-        id=__ret__.id,
-        jwt=__ret__.jwt,
-        payload=__ret__.payload,
-        target_service_account=__ret__.target_service_account)
+        delegates=pulumi.get(__ret__, 'delegates'),
+        expires_in=pulumi.get(__ret__, 'expires_in'),
+        id=pulumi.get(__ret__, 'id'),
+        jwt=pulumi.get(__ret__, 'jwt'),
+        payload=pulumi.get(__ret__, 'payload'),
+        target_service_account=pulumi.get(__ret__, 'target_service_account'))
 
 
 @_utilities.lift_output_func(get_account_jwt)

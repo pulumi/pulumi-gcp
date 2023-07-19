@@ -776,6 +776,9 @@ class _InstanceState:
         """
         Deprecated. Use 'tenant_project_id' instead to extract the tenant project ID.
         """
+        warnings.warn("""Use `tenant_project_id` instead to extract the tenant project ID.""", DeprecationWarning)
+        pulumi.log.warn("""service_account is deprecated: Use `tenant_project_id` instead to extract the tenant project ID.""")
+
         return pulumi.get(self, "service_account")
 
     @service_account.setter
@@ -1620,6 +1623,9 @@ class Instance(pulumi.CustomResource):
         """
         Deprecated. Use 'tenant_project_id' instead to extract the tenant project ID.
         """
+        warnings.warn("""Use `tenant_project_id` instead to extract the tenant project ID.""", DeprecationWarning)
+        pulumi.log.warn("""service_account is deprecated: Use `tenant_project_id` instead to extract the tenant project ID.""")
+
         return pulumi.get(self, "service_account")
 
     @property

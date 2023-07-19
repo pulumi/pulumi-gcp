@@ -139,14 +139,14 @@ def get_topic(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:pubsub/getTopic:getTopic', __args__, opts=opts, typ=GetTopicResult).value
 
     return AwaitableGetTopicResult(
-        id=__ret__.id,
-        kms_key_name=__ret__.kms_key_name,
-        labels=__ret__.labels,
-        message_retention_duration=__ret__.message_retention_duration,
-        message_storage_policies=__ret__.message_storage_policies,
-        name=__ret__.name,
-        project=__ret__.project,
-        schema_settings=__ret__.schema_settings)
+        id=pulumi.get(__ret__, 'id'),
+        kms_key_name=pulumi.get(__ret__, 'kms_key_name'),
+        labels=pulumi.get(__ret__, 'labels'),
+        message_retention_duration=pulumi.get(__ret__, 'message_retention_duration'),
+        message_storage_policies=pulumi.get(__ret__, 'message_storage_policies'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        schema_settings=pulumi.get(__ret__, 'schema_settings'))
 
 
 @_utilities.lift_output_func(get_topic)

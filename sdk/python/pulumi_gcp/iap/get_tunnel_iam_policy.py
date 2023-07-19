@@ -89,7 +89,7 @@ def get_tunnel_iam_policy(project: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.iap.get_tunnel_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.iap.get_tunnel_iam_policy(project=google_project_service["project_service"]["project"])
     ```
 
 
@@ -102,10 +102,10 @@ def get_tunnel_iam_policy(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:iap/getTunnelIamPolicy:getTunnelIamPolicy', __args__, opts=opts, typ=GetTunnelIamPolicyResult).value
 
     return AwaitableGetTunnelIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_tunnel_iam_policy)
@@ -120,7 +120,7 @@ def get_tunnel_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] 
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.iap.get_tunnel_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.iap.get_tunnel_iam_policy(project=google_project_service["project_service"]["project"])
     ```
 
 

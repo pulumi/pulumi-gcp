@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -97,6 +98,7 @@ func NewFolderFeed(ctx *pulumi.Context,
 	if args.Folder == nil {
 		return nil, errors.New("invalid value for required argument 'Folder'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FolderFeed
 	err := ctx.RegisterResource("gcp:cloudasset/folderFeed:FolderFeed", name, args, &resource, opts...)
 	if err != nil {

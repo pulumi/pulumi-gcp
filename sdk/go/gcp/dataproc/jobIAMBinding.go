@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -185,6 +186,7 @@ func NewJobIAMBinding(ctx *pulumi.Context,
 	if args.Role == nil {
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource JobIAMBinding
 	err := ctx.RegisterResource("gcp:dataproc/jobIAMBinding:JobIAMBinding", name, args, &resource, opts...)
 	if err != nil {

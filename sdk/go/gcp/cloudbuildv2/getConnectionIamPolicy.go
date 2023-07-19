@@ -7,10 +7,41 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Retrieves the current IAM policy data for connection
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/cloudbuildv2"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudbuildv2.GetConnectionIamPolicy(ctx, &cloudbuildv2.GetConnectionIamPolicyArgs{
+//				Project:  pulumi.StringRef(google_cloudbuildv2_connection.MyConnection.Project),
+//				Location: pulumi.StringRef(google_cloudbuildv2_connection.MyConnection.Location),
+//				Name:     google_cloudbuildv2_connection.MyConnection.Name,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetConnectionIamPolicy(ctx *pulumi.Context, args *GetConnectionIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetConnectionIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetConnectionIamPolicyResult
 	err := ctx.Invoke("gcp:cloudbuildv2/getConnectionIamPolicy:getConnectionIamPolicy", args, &rv, opts...)
 	if err != nil {

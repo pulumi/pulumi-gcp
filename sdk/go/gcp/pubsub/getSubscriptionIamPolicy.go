@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func GetSubscriptionIamPolicy(ctx *pulumi.Context, args *GetSubscriptionIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetSubscriptionIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSubscriptionIamPolicyResult
 	err := ctx.Invoke("gcp:pubsub/getSubscriptionIamPolicy:getSubscriptionIamPolicy", args, &rv, opts...)
 	if err != nil {

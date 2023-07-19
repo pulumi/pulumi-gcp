@@ -146,6 +146,7 @@ class _ExternalVpnGatewayState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalVpnGatewayInterfaceArgs']]]] = None,
+                 label_fingerprint: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -156,6 +157,8 @@ class _ExternalVpnGatewayState:
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input['ExternalVpnGatewayInterfaceArgs']]] interfaces: A list of interfaces on this external VPN gateway.
                Structure is documented below.
+        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
+               internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the external VPN gateway resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -177,6 +180,8 @@ class _ExternalVpnGatewayState:
             pulumi.set(__self__, "description", description)
         if interfaces is not None:
             pulumi.set(__self__, "interfaces", interfaces)
+        if label_fingerprint is not None:
+            pulumi.set(__self__, "label_fingerprint", label_fingerprint)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -212,6 +217,19 @@ class _ExternalVpnGatewayState:
     @interfaces.setter
     def interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ExternalVpnGatewayInterfaceArgs']]]]):
         pulumi.set(self, "interfaces", value)
+
+    @property
+    @pulumi.getter(name="labelFingerprint")
+    def label_fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fingerprint used for optimistic locking of this resource.  Used
+        internally during updates.
+        """
+        return pulumi.get(self, "label_fingerprint")
+
+    @label_fingerprint.setter
+    def label_fingerprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "label_fingerprint", value)
 
     @property
     @pulumi.getter
@@ -556,6 +574,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["redundancy_type"] = redundancy_type
+            __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["self_link"] = None
         super(ExternalVpnGateway, __self__).__init__(
             'gcp:compute/externalVpnGateway:ExternalVpnGateway',
@@ -569,6 +588,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalVpnGatewayInterfaceArgs']]]]] = None,
+            label_fingerprint: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -584,6 +604,8 @@ class ExternalVpnGateway(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ExternalVpnGatewayInterfaceArgs']]]] interfaces: A list of interfaces on this external VPN gateway.
                Structure is documented below.
+        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
+               internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the external VPN gateway resource.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
@@ -607,6 +629,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
 
         __props__.__dict__["description"] = description
         __props__.__dict__["interfaces"] = interfaces
+        __props__.__dict__["label_fingerprint"] = label_fingerprint
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
@@ -630,6 +653,15 @@ class ExternalVpnGateway(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "interfaces")
+
+    @property
+    @pulumi.getter(name="labelFingerprint")
+    def label_fingerprint(self) -> pulumi.Output[str]:
+        """
+        The fingerprint used for optimistic locking of this resource.  Used
+        internally during updates.
+        """
+        return pulumi.get(self, "label_fingerprint")
 
     @property
     @pulumi.getter

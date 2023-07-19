@@ -13,49 +13,58 @@ namespace Pulumi.Gcp.OsConfig.Inputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A package managed by Apt.
+        /// A package managed by Apt. Structure is
+        /// documented below.
         /// </summary>
         [Input("apt")]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs>? Apt { get; set; }
 
         /// <summary>
-        /// A deb package file.
+        /// A deb package file. Structure is
+        /// documented below.
         /// </summary>
         [Input("deb")]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs>? Deb { get; set; }
 
         /// <summary>
-        /// Required. The desired state the agent should maintain for this package. Possible values: DESIRED_STATE_UNSPECIFIED, INSTALLED, REMOVED
+        /// The desired state the agent should maintain for
+        /// this package. Possible values are: `DESIRED_STATE_UNSPECIFIED`, `INSTALLED`,
+        /// `REMOVED`.
         /// </summary>
         [Input("desiredState", required: true)]
         public Input<string> DesiredState { get; set; } = null!;
 
         /// <summary>
-        /// A package managed by GooGet.
+        /// A package managed by GooGet. Structure is
+        /// documented below.
         /// </summary>
         [Input("googet")]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs>? Googet { get; set; }
 
         /// <summary>
-        /// An MSI package.
+        /// An MSI package. Structure is
+        /// documented below.
         /// </summary>
         [Input("msi")]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs>? Msi { get; set; }
 
         /// <summary>
-        /// An rpm package file.
+        /// An rpm package file. Structure is
+        /// documented below.
         /// </summary>
         [Input("rpm")]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs>? Rpm { get; set; }
 
         /// <summary>
-        /// A package managed by YUM.
+        /// A package managed by YUM. Structure is
+        /// documented below.
         /// </summary>
         [Input("yum")]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs>? Yum { get; set; }
 
         /// <summary>
-        /// A package managed by Zypper.
+        /// A package managed by Zypper. Structure is
+        /// documented below.
         /// </summary>
         [Input("zypper")]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs>? Zypper { get; set; }

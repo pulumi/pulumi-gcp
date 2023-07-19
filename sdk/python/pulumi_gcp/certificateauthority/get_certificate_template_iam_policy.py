@@ -109,7 +109,7 @@ def get_certificate_template_iam_policy(certificate_template: Optional[str] = No
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.certificateauthority.get_certificate_template_iam_policy(certificate_template=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.certificateauthority.get_certificate_template_iam_policy(certificate_template=google_privateca_certificate_template["default"]["id"])
     ```
 
 
@@ -125,12 +125,12 @@ def get_certificate_template_iam_policy(certificate_template: Optional[str] = No
     __ret__ = pulumi.runtime.invoke('gcp:certificateauthority/getCertificateTemplateIamPolicy:getCertificateTemplateIamPolicy', __args__, opts=opts, typ=GetCertificateTemplateIamPolicyResult).value
 
     return AwaitableGetCertificateTemplateIamPolicyResult(
-        certificate_template=__ret__.certificate_template,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        location=__ret__.location,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        certificate_template=pulumi.get(__ret__, 'certificate_template'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_certificate_template_iam_policy)
@@ -147,7 +147,7 @@ def get_certificate_template_iam_policy_output(certificate_template: Optional[pu
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.certificateauthority.get_certificate_template_iam_policy(certificate_template=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.certificateauthority.get_certificate_template_iam_policy(certificate_template=google_privateca_certificate_template["default"]["id"])
     ```
 
 

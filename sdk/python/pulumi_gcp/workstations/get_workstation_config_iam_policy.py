@@ -127,13 +127,13 @@ def get_workstation_config_iam_policy(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy', __args__, opts=opts, typ=GetWorkstationConfigIamPolicyResult).value
 
     return AwaitableGetWorkstationConfigIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        location=__ret__.location,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project,
-        workstation_cluster_id=__ret__.workstation_cluster_id,
-        workstation_config_id=__ret__.workstation_config_id)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'),
+        workstation_cluster_id=pulumi.get(__ret__, 'workstation_cluster_id'),
+        workstation_config_id=pulumi.get(__ret__, 'workstation_config_id'))
 
 
 @_utilities.lift_output_func(get_workstation_config_iam_policy)

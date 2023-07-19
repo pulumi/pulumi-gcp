@@ -37,7 +37,6 @@ namespace Pulumi.Gcp.Compute
     ///         AdvertisedRoutePriority = 100,
     ///         Interface = "interface-1",
     ///         PeerAsn = 65513,
-    ///         PeerIpAddress = "169.254.1.2",
     ///         Region = "us-central1",
     ///         Router = "my-router",
     ///     });
@@ -349,7 +348,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// IP address of the BGP interface outside Google Cloud Platform.
-        /// Only IPv4 is supported.
+        /// Only IPv4 is supported. Required if `ip_address` is set.
         /// </summary>
         [Output("peerIpAddress")]
         public Output<string> PeerIpAddress { get; private set; } = null!;
@@ -552,10 +551,10 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// IP address of the BGP interface outside Google Cloud Platform.
-        /// Only IPv4 is supported.
+        /// Only IPv4 is supported. Required if `ip_address` is set.
         /// </summary>
-        [Input("peerIpAddress", required: true)]
-        public Input<string> PeerIpAddress { get; set; } = null!;
+        [Input("peerIpAddress")]
+        public Input<string>? PeerIpAddress { get; set; }
 
         /// <summary>
         /// IPv6 address of the BGP interface outside Google Cloud Platform.
@@ -723,7 +722,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// IP address of the BGP interface outside Google Cloud Platform.
-        /// Only IPv4 is supported.
+        /// Only IPv4 is supported. Required if `ip_address` is set.
         /// </summary>
         [Input("peerIpAddress")]
         public Input<string>? PeerIpAddress { get; set; }

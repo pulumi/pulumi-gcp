@@ -90,7 +90,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.Disk;
  * import com.pulumi.gcp.compute.DiskArgs;
  * import com.pulumi.gcp.compute.inputs.DiskAsyncPrimaryDiskArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -108,9 +107,7 @@ import javax.annotation.Nullable;
  *             .type(&#34;pd-ssd&#34;)
  *             .zone(&#34;us-central1-a&#34;)
  *             .physicalBlockSizeBytes(4096)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var secondary = new Disk(&#34;secondary&#34;, DiskArgs.builder()        
  *             .type(&#34;pd-ssd&#34;)
@@ -119,9 +116,7 @@ import javax.annotation.Nullable;
  *                 .disk(primary.id())
  *                 .build())
  *             .physicalBlockSizeBytes(4096)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -196,6 +191,7 @@ import javax.annotation.Nullable;
 public class Disk extends com.pulumi.resources.CustomResource {
     /**
      * A nested object resource
+     * Structure is documented below.
      * 
      */
     @Export(name="asyncPrimaryDisk", type=DiskAsyncPrimaryDisk.class, parameters={})
@@ -203,6 +199,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A nested object resource
+     * Structure is documented below.
      * 
      */
     public Output<Optional<DiskAsyncPrimaryDisk>> asyncPrimaryDisk() {
@@ -492,7 +489,8 @@ public class Disk extends com.pulumi.resources.CustomResource {
     }
     /**
      * Indicates how many IOPS must be provisioned for the disk.
-     * Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+     * Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+     * allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you&#39;ll need to manually delete and recreate it
      * 
      */
     @Export(name="provisionedIops", type=Integer.class, parameters={})
@@ -500,11 +498,30 @@ public class Disk extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Indicates how many IOPS must be provisioned for the disk.
-     * Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+     * Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+     * allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you&#39;ll need to manually delete and recreate it
      * 
      */
     public Output<Integer> provisionedIops() {
         return this.provisionedIops;
+    }
+    /**
+     * Indicates how much Throughput must be provisioned for the disk.
+     * Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+     * allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you&#39;ll need to manually delete and recreate it
+     * 
+     */
+    @Export(name="provisionedThroughput", type=Integer.class, parameters={})
+    private Output<Integer> provisionedThroughput;
+
+    /**
+     * @return Indicates how much Throughput must be provisioned for the disk.
+     * Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+     * allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you&#39;ll need to manually delete and recreate it
+     * 
+     */
+    public Output<Integer> provisionedThroughput() {
+        return this.provisionedThroughput;
     }
     /**
      * Resource policies applied to this disk for automatic snapshot creations.

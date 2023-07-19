@@ -108,9 +108,9 @@ def get_database_iam_policy(database: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.spanner.get_database_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        database=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        instance=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    foo = gcp.spanner.get_database_iam_policy(project=google_spanner_database["database"]["project"],
+        database=google_spanner_database["database"]["name"],
+        instance=google_spanner_database["database"]["instance"])
     ```
 
 
@@ -127,12 +127,12 @@ def get_database_iam_policy(database: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:spanner/getDatabaseIamPolicy:getDatabaseIamPolicy', __args__, opts=opts, typ=GetDatabaseIamPolicyResult).value
 
     return AwaitableGetDatabaseIamPolicyResult(
-        database=__ret__.database,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        instance=__ret__.instance,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        database=pulumi.get(__ret__, 'database'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        instance=pulumi.get(__ret__, 'instance'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_database_iam_policy)
@@ -149,9 +149,9 @@ def get_database_iam_policy_output(database: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.spanner.get_database_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        database=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        instance=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    foo = gcp.spanner.get_database_iam_policy(project=google_spanner_database["database"]["project"],
+        database=google_spanner_database["database"]["name"],
+        instance=google_spanner_database["database"]["instance"])
     ```
 
 

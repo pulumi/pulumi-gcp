@@ -56,8 +56,6 @@ import * as utilities from "../utilities";
  *     type: "pd-ssd",
  *     zone: "us-central1-a",
  *     physicalBlockSizeBytes: 4096,
- * }, {
- *     provider: google_beta,
  * });
  * const secondary = new gcp.compute.Disk("secondary", {
  *     type: "pd-ssd",
@@ -66,8 +64,6 @@ import * as utilities from "../utilities";
  *         disk: primary.id,
  *     },
  *     physicalBlockSizeBytes: 4096,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Disk Features
@@ -148,6 +144,7 @@ export class Disk extends pulumi.CustomResource {
 
     /**
      * A nested object resource
+     * Structure is documented below.
      */
     public readonly asyncPrimaryDisk!: pulumi.Output<outputs.compute.DiskAsyncPrimaryDisk | undefined>;
     /**
@@ -249,9 +246,16 @@ export class Disk extends pulumi.CustomResource {
     public readonly project!: pulumi.Output<string>;
     /**
      * Indicates how many IOPS must be provisioned for the disk.
-     * Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+     * Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+     * allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
      */
     public readonly provisionedIops!: pulumi.Output<number>;
+    /**
+     * Indicates how much Throughput must be provisioned for the disk.
+     * Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+     * allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
+     */
+    public readonly provisionedThroughput!: pulumi.Output<number>;
     /**
      * Resource policies applied to this disk for automatic snapshot creations.
      * ~>**NOTE** This value does not support updating the
@@ -378,6 +382,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["physicalBlockSizeBytes"] = state ? state.physicalBlockSizeBytes : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["provisionedIops"] = state ? state.provisionedIops : undefined;
+            resourceInputs["provisionedThroughput"] = state ? state.provisionedThroughput : undefined;
             resourceInputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["size"] = state ? state.size : undefined;
@@ -406,6 +411,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["physicalBlockSizeBytes"] = args ? args.physicalBlockSizeBytes : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["provisionedIops"] = args ? args.provisionedIops : undefined;
+            resourceInputs["provisionedThroughput"] = args ? args.provisionedThroughput : undefined;
             resourceInputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
             resourceInputs["size"] = args ? args.size : undefined;
             resourceInputs["snapshot"] = args ? args.snapshot : undefined;
@@ -435,6 +441,7 @@ export class Disk extends pulumi.CustomResource {
 export interface DiskState {
     /**
      * A nested object resource
+     * Structure is documented below.
      */
     asyncPrimaryDisk?: pulumi.Input<inputs.compute.DiskAsyncPrimaryDisk>;
     /**
@@ -536,9 +543,16 @@ export interface DiskState {
     project?: pulumi.Input<string>;
     /**
      * Indicates how many IOPS must be provisioned for the disk.
-     * Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+     * Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+     * allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
      */
     provisionedIops?: pulumi.Input<number>;
+    /**
+     * Indicates how much Throughput must be provisioned for the disk.
+     * Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+     * allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
+     */
+    provisionedThroughput?: pulumi.Input<number>;
     /**
      * Resource policies applied to this disk for automatic snapshot creations.
      * ~>**NOTE** This value does not support updating the
@@ -642,6 +656,7 @@ export interface DiskState {
 export interface DiskArgs {
     /**
      * A nested object resource
+     * Structure is documented below.
      */
     asyncPrimaryDisk?: pulumi.Input<inputs.compute.DiskAsyncPrimaryDisk>;
     /**
@@ -726,9 +741,16 @@ export interface DiskArgs {
     project?: pulumi.Input<string>;
     /**
      * Indicates how many IOPS must be provisioned for the disk.
-     * Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+     * Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+     * allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
      */
     provisionedIops?: pulumi.Input<number>;
+    /**
+     * Indicates how much Throughput must be provisioned for the disk.
+     * Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+     * allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
+     */
+    provisionedThroughput?: pulumi.Input<number>;
     /**
      * Resource policies applied to this disk for automatic snapshot creations.
      * ~>**NOTE** This value does not support updating the

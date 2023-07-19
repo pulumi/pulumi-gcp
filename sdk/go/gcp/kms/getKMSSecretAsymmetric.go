@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -46,6 +47,7 @@ import (
 // mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
 // A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
 func GetKMSSecretAsymmetric(ctx *pulumi.Context, args *GetKMSSecretAsymmetricArgs, opts ...pulumi.InvokeOption) (*GetKMSSecretAsymmetricResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKMSSecretAsymmetricResult
 	err := ctx.Invoke("gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric", args, &rv, opts...)
 	if err != nil {

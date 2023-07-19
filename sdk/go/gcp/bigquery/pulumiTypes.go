@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type AppProfileSingleClusterRouting struct {
 	// If true, CheckAndMutateRow and ReadModifyWriteRow requests are allowed by this app profile.
@@ -9449,6 +9452,10 @@ type TableExternalDataConfiguration struct {
 	// The maximum number of bad records that
 	// BigQuery can ignore when reading data.
 	MaxBadRecords *int `pulumi:"maxBadRecords"`
+	// Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
+	MetadataCacheMode *string `pulumi:"metadataCacheMode"`
+	// Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `objectMetadata` is set, `sourceFormat` should be omitted.
+	ObjectMetadata *string `pulumi:"objectMetadata"`
 	// When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
 	ReferenceFileSchemaUri *string `pulumi:"referenceFileSchemaUri"`
 	// A JSON schema for the external table. Schema is required
@@ -9467,7 +9474,7 @@ type TableExternalDataConfiguration struct {
 	// [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
 	// in Bigquery's public API documentation for supported formats. To use "GOOGLE_SHEETS"
 	// the `scopes` must include "https://www.googleapis.com/auth/drive.readonly".
-	SourceFormat string `pulumi:"sourceFormat"`
+	SourceFormat *string `pulumi:"sourceFormat"`
 	// A list of the fully-qualified URIs that point to
 	// your data in Google Cloud.
 	SourceUris []string `pulumi:"sourceUris"`
@@ -9521,6 +9528,10 @@ type TableExternalDataConfigurationArgs struct {
 	// The maximum number of bad records that
 	// BigQuery can ignore when reading data.
 	MaxBadRecords pulumi.IntPtrInput `pulumi:"maxBadRecords"`
+	// Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
+	MetadataCacheMode pulumi.StringPtrInput `pulumi:"metadataCacheMode"`
+	// Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `objectMetadata` is set, `sourceFormat` should be omitted.
+	ObjectMetadata pulumi.StringPtrInput `pulumi:"objectMetadata"`
 	// When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
 	ReferenceFileSchemaUri pulumi.StringPtrInput `pulumi:"referenceFileSchemaUri"`
 	// A JSON schema for the external table. Schema is required
@@ -9539,7 +9550,7 @@ type TableExternalDataConfigurationArgs struct {
 	// [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
 	// in Bigquery's public API documentation for supported formats. To use "GOOGLE_SHEETS"
 	// the `scopes` must include "https://www.googleapis.com/auth/drive.readonly".
-	SourceFormat pulumi.StringInput `pulumi:"sourceFormat"`
+	SourceFormat pulumi.StringPtrInput `pulumi:"sourceFormat"`
 	// A list of the fully-qualified URIs that point to
 	// your data in Google Cloud.
 	SourceUris pulumi.StringArrayInput `pulumi:"sourceUris"`
@@ -9691,6 +9702,16 @@ func (o TableExternalDataConfigurationOutput) MaxBadRecords() pulumi.IntPtrOutpu
 	return o.ApplyT(func(v TableExternalDataConfiguration) *int { return v.MaxBadRecords }).(pulumi.IntPtrOutput)
 }
 
+// Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
+func (o TableExternalDataConfigurationOutput) MetadataCacheMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfiguration) *string { return v.MetadataCacheMode }).(pulumi.StringPtrOutput)
+}
+
+// Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `objectMetadata` is set, `sourceFormat` should be omitted.
+func (o TableExternalDataConfigurationOutput) ObjectMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfiguration) *string { return v.ObjectMetadata }).(pulumi.StringPtrOutput)
+}
+
 // When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
 func (o TableExternalDataConfigurationOutput) ReferenceFileSchemaUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TableExternalDataConfiguration) *string { return v.ReferenceFileSchemaUri }).(pulumi.StringPtrOutput)
@@ -9715,8 +9736,8 @@ func (o TableExternalDataConfigurationOutput) Schema() pulumi.StringPtrOutput {
 // [ExternalDataConfiguration](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#externaldataconfiguration)
 // in Bigquery's public API documentation for supported formats. To use "GOOGLE_SHEETS"
 // the `scopes` must include "https://www.googleapis.com/auth/drive.readonly".
-func (o TableExternalDataConfigurationOutput) SourceFormat() pulumi.StringOutput {
-	return o.ApplyT(func(v TableExternalDataConfiguration) string { return v.SourceFormat }).(pulumi.StringOutput)
+func (o TableExternalDataConfigurationOutput) SourceFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfiguration) *string { return v.SourceFormat }).(pulumi.StringPtrOutput)
 }
 
 // A list of the fully-qualified URIs that point to
@@ -9857,6 +9878,26 @@ func (o TableExternalDataConfigurationPtrOutput) MaxBadRecords() pulumi.IntPtrOu
 	}).(pulumi.IntPtrOutput)
 }
 
+// Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
+func (o TableExternalDataConfigurationPtrOutput) MetadataCacheMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableExternalDataConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetadataCacheMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `objectMetadata` is set, `sourceFormat` should be omitted.
+func (o TableExternalDataConfigurationPtrOutput) ObjectMetadata() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableExternalDataConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectMetadata
+	}).(pulumi.StringPtrOutput)
+}
+
 // When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
 func (o TableExternalDataConfigurationPtrOutput) ReferenceFileSchemaUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableExternalDataConfiguration) *string {
@@ -9896,7 +9937,7 @@ func (o TableExternalDataConfigurationPtrOutput) SourceFormat() pulumi.StringPtr
 		if v == nil {
 			return nil
 		}
-		return &v.SourceFormat
+		return v.SourceFormat
 	}).(pulumi.StringPtrOutput)
 }
 

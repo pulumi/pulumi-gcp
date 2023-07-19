@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -443,6 +444,7 @@ func NewEdgeCacheService(ctx *pulumi.Context,
 	if args.Routing == nil {
 		return nil, errors.New("invalid value for required argument 'Routing'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EdgeCacheService
 	err := ctx.RegisterResource("gcp:networkservices/edgeCacheService:EdgeCacheService", name, args, &resource, opts...)
 	if err != nil {

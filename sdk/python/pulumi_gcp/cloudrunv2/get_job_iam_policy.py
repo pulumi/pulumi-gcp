@@ -109,9 +109,9 @@ def get_job_iam_policy(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.cloudrunv2.get_job_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.cloudrunv2.get_job_iam_policy(project=google_cloud_run_v2_job["default"]["project"],
+        location=google_cloud_run_v2_job["default"]["location"],
+        name=google_cloud_run_v2_job["default"]["name"])
     ```
 
 
@@ -128,12 +128,12 @@ def get_job_iam_policy(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:cloudrunv2/getJobIamPolicy:getJobIamPolicy', __args__, opts=opts, typ=GetJobIamPolicyResult).value
 
     return AwaitableGetJobIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        location=__ret__.location,
-        name=__ret__.name,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        name=pulumi.get(__ret__, 'name'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_job_iam_policy)
@@ -150,9 +150,9 @@ def get_job_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]] = 
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.cloudrunv2.get_job_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.cloudrunv2.get_job_iam_policy(project=google_cloud_run_v2_job["default"]["project"],
+        location=google_cloud_run_v2_job["default"]["location"],
+        name=google_cloud_run_v2_job["default"]["name"])
     ```
 
 

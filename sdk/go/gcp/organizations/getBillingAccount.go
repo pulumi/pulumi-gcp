@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,6 +46,7 @@ import (
 //
 // ```
 func GetBillingAccount(ctx *pulumi.Context, args *GetBillingAccountArgs, opts ...pulumi.InvokeOption) (*GetBillingAccountResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBillingAccountResult
 	err := ctx.Invoke("gcp:organizations/getBillingAccount:getBillingAccount", args, &rv, opts...)
 	if err != nil {

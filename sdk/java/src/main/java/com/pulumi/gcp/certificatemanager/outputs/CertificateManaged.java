@@ -25,7 +25,7 @@ public final class CertificateManaged {
      */
     private @Nullable List<CertificateManagedAuthorizationAttemptInfo> authorizationAttemptInfos;
     /**
-     * @return Authorizations that will be used for performing domain authorization
+     * @return Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
      * 
      */
     private @Nullable List<String> dnsAuthorizations;
@@ -35,6 +35,13 @@ public final class CertificateManaged {
      * 
      */
     private @Nullable List<String> domains;
+    /**
+     * @return The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*{@literal /}locations/*{@literal /}certificateIssuanceConfigs/*.
+     * If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+     * Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+     * 
+     */
+    private @Nullable String issuanceConfig;
     /**
      * @return (Output)
      * Information about issues with provisioning this Managed Certificate.
@@ -63,7 +70,7 @@ public final class CertificateManaged {
         return this.authorizationAttemptInfos == null ? List.of() : this.authorizationAttemptInfos;
     }
     /**
-     * @return Authorizations that will be used for performing domain authorization
+     * @return Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
      * 
      */
     public List<String> dnsAuthorizations() {
@@ -76,6 +83,15 @@ public final class CertificateManaged {
      */
     public List<String> domains() {
         return this.domains == null ? List.of() : this.domains;
+    }
+    /**
+     * @return The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*{@literal /}locations/*{@literal /}certificateIssuanceConfigs/*.
+     * If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+     * Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+     * 
+     */
+    public Optional<String> issuanceConfig() {
+        return Optional.ofNullable(this.issuanceConfig);
     }
     /**
      * @return (Output)
@@ -107,6 +123,7 @@ public final class CertificateManaged {
         private @Nullable List<CertificateManagedAuthorizationAttemptInfo> authorizationAttemptInfos;
         private @Nullable List<String> dnsAuthorizations;
         private @Nullable List<String> domains;
+        private @Nullable String issuanceConfig;
         private @Nullable List<CertificateManagedProvisioningIssue> provisioningIssues;
         private @Nullable String state;
         public Builder() {}
@@ -115,6 +132,7 @@ public final class CertificateManaged {
     	      this.authorizationAttemptInfos = defaults.authorizationAttemptInfos;
     	      this.dnsAuthorizations = defaults.dnsAuthorizations;
     	      this.domains = defaults.domains;
+    	      this.issuanceConfig = defaults.issuanceConfig;
     	      this.provisioningIssues = defaults.provisioningIssues;
     	      this.state = defaults.state;
         }
@@ -144,6 +162,11 @@ public final class CertificateManaged {
             return domains(List.of(domains));
         }
         @CustomType.Setter
+        public Builder issuanceConfig(@Nullable String issuanceConfig) {
+            this.issuanceConfig = issuanceConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder provisioningIssues(@Nullable List<CertificateManagedProvisioningIssue> provisioningIssues) {
             this.provisioningIssues = provisioningIssues;
             return this;
@@ -161,6 +184,7 @@ public final class CertificateManaged {
             o.authorizationAttemptInfos = authorizationAttemptInfos;
             o.dnsAuthorizations = dnsAuthorizations;
             o.domains = domains;
+            o.issuanceConfig = issuanceConfig;
             o.provisioningIssues = provisioningIssues;
             o.state = state;
             return o;

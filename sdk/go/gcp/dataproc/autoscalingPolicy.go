@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -121,6 +122,7 @@ func NewAutoscalingPolicy(ctx *pulumi.Context,
 	if args.PolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'PolicyId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AutoscalingPolicy
 	err := ctx.RegisterResource("gcp:dataproc/autoscalingPolicy:AutoscalingPolicy", name, args, &resource, opts...)
 	if err != nil {

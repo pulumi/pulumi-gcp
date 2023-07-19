@@ -16,16 +16,14 @@ public final class SharedVPCServiceProjectState extends com.pulumi.resources.Res
     public static final SharedVPCServiceProjectState Empty = new SharedVPCServiceProjectState();
 
     /**
-     * The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
-     * Possible values are: &#34;ABANDON&#34;.
+     * The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: &#34;ABANDON&#34;.
      * 
      */
     @Import(name="deletionPolicy")
     private @Nullable Output<String> deletionPolicy;
 
     /**
-     * @return The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
-     * Possible values are: &#34;ABANDON&#34;.
+     * @return The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: &#34;ABANDON&#34;.
      * 
      */
     public Optional<Output<String>> deletionPolicy() {
@@ -89,8 +87,7 @@ public final class SharedVPCServiceProjectState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param deletionPolicy The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
-         * Possible values are: &#34;ABANDON&#34;.
+         * @param deletionPolicy The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: &#34;ABANDON&#34;.
          * 
          * @return builder
          * 
@@ -101,8 +98,7 @@ public final class SharedVPCServiceProjectState extends com.pulumi.resources.Res
         }
 
         /**
-         * @param deletionPolicy The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
-         * Possible values are: &#34;ABANDON&#34;.
+         * @param deletionPolicy The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: &#34;ABANDON&#34;.
          * 
          * @return builder
          * 

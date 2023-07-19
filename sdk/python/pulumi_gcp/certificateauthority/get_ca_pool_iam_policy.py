@@ -109,7 +109,7 @@ def get_ca_pool_iam_policy(ca_pool: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.certificateauthority.get_ca_pool_iam_policy(ca_pool=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.certificateauthority.get_ca_pool_iam_policy(ca_pool=google_privateca_ca_pool["default"]["id"])
     ```
 
 
@@ -128,12 +128,12 @@ def get_ca_pool_iam_policy(ca_pool: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:certificateauthority/getCaPoolIamPolicy:getCaPoolIamPolicy', __args__, opts=opts, typ=GetCaPoolIamPolicyResult).value
 
     return AwaitableGetCaPoolIamPolicyResult(
-        ca_pool=__ret__.ca_pool,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        location=__ret__.location,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        ca_pool=pulumi.get(__ret__, 'ca_pool'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_ca_pool_iam_policy)
@@ -150,7 +150,7 @@ def get_ca_pool_iam_policy_output(ca_pool: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.certificateauthority.get_ca_pool_iam_policy(ca_pool=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.certificateauthority.get_ca_pool_iam_policy(ca_pool=google_privateca_ca_pool["default"]["id"])
     ```
 
 

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupGameServerDeploymentRollout(ctx *pulumi.Context, args *LookupGameServerDeploymentRolloutArgs, opts ...pulumi.InvokeOption) (*LookupGameServerDeploymentRolloutResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupGameServerDeploymentRolloutResult
 	err := ctx.Invoke("gcp:gameservices/getGameServerDeploymentRollout:getGameServerDeploymentRollout", args, &rv, opts...)
 	if err != nil {

@@ -51,6 +51,9 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("connectorEnforcement")]
         public Input<string>? ConnectorEnforcement { get; set; }
 
+        [Input("dataCacheConfig")]
+        public Input<Inputs.DatabaseInstanceSettingsDataCacheConfigGetArgs>? DataCacheConfig { get; set; }
+
         [Input("databaseFlags")]
         private InputList<Inputs.DatabaseInstanceSettingsDatabaseFlagGetArgs>? _databaseFlags;
         public InputList<Inputs.DatabaseInstanceSettingsDatabaseFlagGetArgs> DatabaseFlags
@@ -88,6 +91,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
+
+        /// <summary>
+        /// The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+        /// </summary>
+        [Input("edition")]
+        public Input<string>? Edition { get; set; }
 
         [Input("insightsConfig")]
         public Input<Inputs.DatabaseInstanceSettingsInsightsConfigGetArgs>? InsightsConfig { get; set; }

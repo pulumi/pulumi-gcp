@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -143,6 +144,7 @@ func NewSyncAuthorization(ctx *pulumi.Context,
 	if args.Identities == nil {
 		return nil, errors.New("invalid value for required argument 'Identities'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SyncAuthorization
 	err := ctx.RegisterResource("gcp:apigee/syncAuthorization:SyncAuthorization", name, args, &resource, opts...)
 	if err != nil {

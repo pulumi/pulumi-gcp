@@ -13,13 +13,16 @@ namespace Pulumi.Gcp.OsConfig.Inputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The OS short name
+        /// The OS short name
         /// </summary>
         [Input("osShortName", required: true)]
         public Input<string> OsShortName { get; set; } = null!;
 
         /// <summary>
-        /// The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+        /// The OS version Prefix matches are supported if
+        /// asterisk(*) is provided as the last character. For example, to match all
+        /// versions with a major version of `7`, specify the following value for this
+        /// field `7.*` An empty string matches all OS versions.
         /// </summary>
         [Input("osVersion")]
         public Input<string>? OsVersion { get; set; }

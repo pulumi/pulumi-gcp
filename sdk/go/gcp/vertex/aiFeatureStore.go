@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -196,6 +197,7 @@ func NewAiFeatureStore(ctx *pulumi.Context,
 		args = &AiFeatureStoreArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AiFeatureStore
 	err := ctx.RegisterResource("gcp:vertex/aiFeatureStore:AiFeatureStore", name, args, &resource, opts...)
 	if err != nil {

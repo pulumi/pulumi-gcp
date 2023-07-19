@@ -224,6 +224,9 @@ public final class Config {
     public Optional<String> firebaseDatabaseCustomEndpoint() {
         return Codegen.stringProp("firebaseDatabaseCustomEndpoint").config(config).get();
     }
+    public Optional<String> firebaseExtensionsCustomEndpoint() {
+        return Codegen.stringProp("firebaseExtensionsCustomEndpoint").config(config).get();
+    }
     public Optional<String> firebaseHostingCustomEndpoint() {
         return Codegen.stringProp("firebaseHostingCustomEndpoint").config(config).get();
     }
@@ -331,6 +334,9 @@ public final class Config {
     }
     public Optional<String> project() {
         return Codegen.stringProp("project").config(config).env("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT").get();
+    }
+    public Optional<String> publicCaCustomEndpoint() {
+        return Codegen.stringProp("publicCaCustomEndpoint").config(config).get();
     }
     public Optional<String> pubsubCustomEndpoint() {
         return Codegen.stringProp("pubsubCustomEndpoint").config(config).get();

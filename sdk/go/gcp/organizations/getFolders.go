@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -49,6 +50,7 @@ import (
 //
 // ```
 func GetFolders(ctx *pulumi.Context, args *GetFoldersArgs, opts ...pulumi.InvokeOption) (*GetFoldersResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFoldersResult
 	err := ctx.Invoke("gcp:organizations/getFolders:getFolders", args, &rv, opts...)
 	if err != nil {

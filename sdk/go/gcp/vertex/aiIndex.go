@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,6 +64,7 @@ import (
 //					Config: &vertex.AiIndexMetadataConfigArgs{
 //						Dimensions:                pulumi.Int(2),
 //						ApproximateNeighborsCount: pulumi.Int(150),
+//						ShardSize:                 pulumi.String("SHARD_SIZE_SMALL"),
 //						DistanceMeasureType:       pulumi.String("DOT_PRODUCT_DISTANCE"),
 //						AlgorithmConfig: &vertex.AiIndexMetadataConfigAlgorithmConfigArgs{
 //							TreeAhConfig: &vertex.AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs{
@@ -126,6 +128,7 @@ import (
 //					}).(pulumi.StringOutput),
 //					Config: &vertex.AiIndexMetadataConfigArgs{
 //						Dimensions:          pulumi.Int(2),
+//						ShardSize:           pulumi.String("SHARD_SIZE_LARGE"),
 //						DistanceMeasureType: pulumi.String("COSINE_DISTANCE"),
 //						FeatureNormType:     pulumi.String("UNIT_L2_NORM"),
 //						AlgorithmConfig: &vertex.AiIndexMetadataConfigAlgorithmConfigArgs{
@@ -222,6 +225,7 @@ func NewAiIndex(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AiIndex
 	err := ctx.RegisterResource("gcp:vertex/aiIndex:AiIndex", name, args, &resource, opts...)
 	if err != nil {

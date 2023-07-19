@@ -168,11 +168,11 @@ def get_project_service_account(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:storage/getProjectServiceAccount:getProjectServiceAccount', __args__, opts=opts, typ=GetProjectServiceAccountResult).value
 
     return AwaitableGetProjectServiceAccountResult(
-        email_address=__ret__.email_address,
-        id=__ret__.id,
-        member=__ret__.member,
-        project=__ret__.project,
-        user_project=__ret__.user_project)
+        email_address=pulumi.get(__ret__, 'email_address'),
+        id=pulumi.get(__ret__, 'id'),
+        member=pulumi.get(__ret__, 'member'),
+        project=pulumi.get(__ret__, 'project'),
+        user_project=pulumi.get(__ret__, 'user_project'))
 
 
 @_utilities.lift_output_func(get_project_service_account)

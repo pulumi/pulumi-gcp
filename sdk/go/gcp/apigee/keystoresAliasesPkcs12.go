@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -85,6 +86,7 @@ func NewKeystoresAliasesPkcs12(ctx *pulumi.Context,
 	if args.OrgId == nil {
 		return nil, errors.New("invalid value for required argument 'OrgId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource KeystoresAliasesPkcs12
 	err := ctx.RegisterResource("gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12", name, args, &resource, opts...)
 	if err != nil {

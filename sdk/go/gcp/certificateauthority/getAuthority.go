@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func LookupAuthority(ctx *pulumi.Context, args *LookupAuthorityArgs, opts ...pulumi.InvokeOption) (*LookupAuthorityResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAuthorityResult
 	err := ctx.Invoke("gcp:certificateauthority/getAuthority:getAuthority", args, &rv, opts...)
 	if err != nil {

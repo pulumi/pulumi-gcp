@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func GetOrganization(ctx *pulumi.Context, args *GetOrganizationArgs, opts ...pulumi.InvokeOption) (*GetOrganizationResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOrganizationResult
 	err := ctx.Invoke("gcp:organizations/getOrganization:getOrganization", args, &rv, opts...)
 	if err != nil {

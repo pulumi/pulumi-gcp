@@ -91,10 +91,10 @@ def get_service_iam_policy(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:servicedirectory/getServiceIamPolicy:getServiceIamPolicy', __args__, opts=opts, typ=GetServiceIamPolicyResult).value
 
     return AwaitableGetServiceIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        name=__ret__.name,
-        policy_data=__ret__.policy_data)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        policy_data=pulumi.get(__ret__, 'policy_data'))
 
 
 @_utilities.lift_output_func(get_service_iam_policy)

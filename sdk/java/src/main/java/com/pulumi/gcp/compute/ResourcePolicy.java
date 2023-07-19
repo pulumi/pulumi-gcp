@@ -290,7 +290,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.ResourcePolicy;
  * import com.pulumi.gcp.compute.ResourcePolicyArgs;
  * import com.pulumi.gcp.compute.inputs.ResourcePolicyDiskConsistencyGroupPolicyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -305,13 +304,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cgroup = new ResourcePolicy(&#34;cgroup&#34;, ResourcePolicyArgs.builder()        
- *             .region(&#34;europe-west1&#34;)
  *             .diskConsistencyGroupPolicy(ResourcePolicyDiskConsistencyGroupPolicyArgs.builder()
  *                 .enabled(true)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .region(&#34;europe-west1&#34;)
+ *             .build());
  * 
  *     }
  * }
@@ -356,6 +353,7 @@ public class ResourcePolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * Replication consistency group for asynchronous disk replication.
+     * Structure is documented below.
      * 
      */
     @Export(name="diskConsistencyGroupPolicy", type=ResourcePolicyDiskConsistencyGroupPolicy.class, parameters={})
@@ -363,6 +361,7 @@ public class ResourcePolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Replication consistency group for asynchronous disk replication.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<ResourcePolicyDiskConsistencyGroupPolicy>> diskConsistencyGroupPolicy() {

@@ -103,6 +103,24 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///         Provider = google_beta,
     ///     });
     /// 
+    ///     var nsSa = new Gcp.Projects.ServiceIdentity("nsSa", new()
+    ///     {
+    ///         Service = "networksecurity.googleapis.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var tlsInspectionPermission = new Gcp.CertificateAuthority.CaPoolIamMember("tlsInspectionPermission", new()
+    ///     {
+    ///         CaPool = defaultCaPool.Id,
+    ///         Role = "roles/privateca.certificateManager",
+    ///         Member = nsSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
     ///     var defaultTlsInspectionPolicy = new Gcp.NetworkSecurity.TlsInspectionPolicy("defaultTlsInspectionPolicy", new()
     ///     {
     ///         Location = "us-central1",
@@ -115,6 +133,7 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///         {
     ///             defaultCaPool,
     ///             defaultAuthority,
+    ///             tlsInspectionPermission,
     ///         },
     ///     });
     /// 

@@ -109,6 +109,21 @@ public final class ProjectBucketConfigState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+     * 
+     */
+    @Import(name="locked")
+    private @Nullable Output<Boolean> locked;
+
+    /**
+     * @return Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+     * 
+     */
+    public Optional<Output<Boolean>> locked() {
+        return Optional.ofNullable(this.locked);
+    }
+
+    /**
      * The resource name of the CMEK settings.
      * 
      */
@@ -162,6 +177,7 @@ public final class ProjectBucketConfigState extends com.pulumi.resources.Resourc
         this.enableAnalytics = $.enableAnalytics;
         this.lifecycleState = $.lifecycleState;
         this.location = $.location;
+        this.locked = $.locked;
         this.name = $.name;
         this.project = $.project;
         this.retentionDays = $.retentionDays;
@@ -309,6 +325,27 @@ public final class ProjectBucketConfigState extends com.pulumi.resources.Resourc
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param locked Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locked(@Nullable Output<Boolean> locked) {
+            $.locked = locked;
+            return this;
+        }
+
+        /**
+         * @param locked Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder locked(Boolean locked) {
+            return locked(Output.of(locked));
         }
 
         /**

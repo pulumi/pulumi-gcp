@@ -40,6 +40,7 @@ import com.pulumi.gcp.container.outputs.ClusterPrivateClusterConfig;
 import com.pulumi.gcp.container.outputs.ClusterProtectConfig;
 import com.pulumi.gcp.container.outputs.ClusterReleaseChannel;
 import com.pulumi.gcp.container.outputs.ClusterResourceUsageExportConfig;
+import com.pulumi.gcp.container.outputs.ClusterSecurityPostureConfig;
 import com.pulumi.gcp.container.outputs.ClusterServiceExternalIpsConfig;
 import com.pulumi.gcp.container.outputs.ClusterTpuConfig;
 import com.pulumi.gcp.container.outputs.ClusterVerticalPodAutoscaling;
@@ -1230,8 +1231,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * )
      * Enable/Disable Protect API features for the cluster. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
-     * 
      */
     @Export(name="protectConfig", type=ClusterProtectConfig.class, parameters={})
     private Output<ClusterProtectConfig> protectConfig;
@@ -1239,8 +1238,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * @return )
      * Enable/Disable Protect API features for the cluster. Structure is documented below.
-     * 
-     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
      * 
      */
     public Output<ClusterProtectConfig> protectConfig() {
@@ -1327,6 +1324,24 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ClusterResourceUsageExportConfig>> resourceUsageExportConfig() {
         return Codegen.optional(this.resourceUsageExportConfig);
+    }
+    /**
+     * Enable/Disable Security Posture API features for the cluster. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+     * 
+     */
+    @Export(name="securityPostureConfig", type=ClusterSecurityPostureConfig.class, parameters={})
+    private Output<ClusterSecurityPostureConfig> securityPostureConfig;
+
+    /**
+     * @return Enable/Disable Security Posture API features for the cluster. Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+     * 
+     */
+    public Output<ClusterSecurityPostureConfig> securityPostureConfig() {
+        return this.securityPostureConfig;
     }
     /**
      * The server-defined URL for the resource.

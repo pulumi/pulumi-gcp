@@ -28,6 +28,10 @@ namespace Pulumi.Gcp.CloudBuild.Outputs
         /// Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
         /// </summary>
         public readonly string RepoType;
+        /// <summary>
+        /// The qualified resource name of the Repo API repository.
+        /// Either uri or repository can be specified and is required.
+        /// </summary>
         public readonly string? Repository;
         /// <summary>
         /// The URI of the repo.

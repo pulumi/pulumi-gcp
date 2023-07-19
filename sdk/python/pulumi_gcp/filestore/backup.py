@@ -432,9 +432,9 @@ class Backup(pulumi.CustomResource):
 
         instance = gcp.filestore.Instance("instance",
             location="us-central1-b",
-            tier="BASIC_SSD",
+            tier="BASIC_HDD",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=2560,
+                capacity_gb=1024,
                 name="share1",
             ),
             networks=[gcp.filestore.InstanceNetworkArgs(
@@ -444,9 +444,9 @@ class Backup(pulumi.CustomResource):
             )])
         backup = gcp.filestore.Backup("backup",
             location="us-central1",
+            description="This is a filestore backup for the test instance",
             source_instance=instance.id,
             source_file_share="share1",
-            description="This is a filestore backup for the test instance",
             labels={
                 "files": "label1",
                 "other-label": "label2",
@@ -514,9 +514,9 @@ class Backup(pulumi.CustomResource):
 
         instance = gcp.filestore.Instance("instance",
             location="us-central1-b",
-            tier="BASIC_SSD",
+            tier="BASIC_HDD",
             file_shares=gcp.filestore.InstanceFileSharesArgs(
-                capacity_gb=2560,
+                capacity_gb=1024,
                 name="share1",
             ),
             networks=[gcp.filestore.InstanceNetworkArgs(
@@ -526,9 +526,9 @@ class Backup(pulumi.CustomResource):
             )])
         backup = gcp.filestore.Backup("backup",
             location="us-central1",
+            description="This is a filestore backup for the test instance",
             source_instance=instance.id,
             source_file_share="share1",
-            description="This is a filestore backup for the test instance",
             labels={
                 "files": "label1",
                 "other-label": "label2",

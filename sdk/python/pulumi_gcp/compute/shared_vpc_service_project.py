@@ -21,8 +21,7 @@ class SharedVPCServiceProjectArgs:
         The set of arguments for constructing a SharedVPCServiceProject resource.
         :param pulumi.Input[str] host_project: The ID of a host project to associate.
         :param pulumi.Input[str] service_project: The ID of the project that will serve as a Shared VPC service project.
-        :param pulumi.Input[str] deletion_policy: The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
-               Possible values are: "ABANDON".
+        :param pulumi.Input[str] deletion_policy: The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".
         """
         pulumi.set(__self__, "host_project", host_project)
         pulumi.set(__self__, "service_project", service_project)
@@ -57,8 +56,7 @@ class SharedVPCServiceProjectArgs:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
-        Possible values are: "ABANDON".
+        The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -75,8 +73,7 @@ class _SharedVPCServiceProjectState:
                  service_project: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SharedVPCServiceProject resources.
-        :param pulumi.Input[str] deletion_policy: The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
-               Possible values are: "ABANDON".
+        :param pulumi.Input[str] deletion_policy: The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".
         :param pulumi.Input[str] host_project: The ID of a host project to associate.
         :param pulumi.Input[str] service_project: The ID of the project that will serve as a Shared VPC service project.
         """
@@ -91,8 +88,7 @@ class _SharedVPCServiceProjectState:
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
-        Possible values are: "ABANDON".
+        The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".
         """
         return pulumi.get(self, "deletion_policy")
 
@@ -170,8 +166,7 @@ class SharedVPCServiceProject(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] deletion_policy: The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
-               Possible values are: "ABANDON".
+        :param pulumi.Input[str] deletion_policy: The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".
         :param pulumi.Input[str] host_project: The ID of a host project to associate.
         :param pulumi.Input[str] service_project: The ID of the project that will serve as a Shared VPC service project.
         """
@@ -269,8 +264,7 @@ class SharedVPCServiceProject(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] deletion_policy: The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
-               Possible values are: "ABANDON".
+        :param pulumi.Input[str] deletion_policy: The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".
         :param pulumi.Input[str] host_project: The ID of a host project to associate.
         :param pulumi.Input[str] service_project: The ID of the project that will serve as a Shared VPC service project.
         """
@@ -287,8 +281,7 @@ class SharedVPCServiceProject(pulumi.CustomResource):
     @pulumi.getter(name="deletionPolicy")
     def deletion_policy(self) -> pulumi.Output[Optional[str]]:
         """
-        The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
-        Possible values are: "ABANDON".
+        The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: "ABANDON".
         """
         return pulumi.get(self, "deletion_policy")
 

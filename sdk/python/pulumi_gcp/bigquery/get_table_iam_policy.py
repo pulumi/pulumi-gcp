@@ -109,9 +109,9 @@ def get_table_iam_policy(dataset_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigquery.get_table_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        dataset_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        table_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.bigquery.get_table_iam_policy(project=google_bigquery_table["test"]["project"],
+        dataset_id=google_bigquery_table["test"]["dataset_id"],
+        table_id=google_bigquery_table["test"]["table_id"])
     ```
 
 
@@ -126,12 +126,12 @@ def get_table_iam_policy(dataset_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:bigquery/getTableIamPolicy:getTableIamPolicy', __args__, opts=opts, typ=GetTableIamPolicyResult).value
 
     return AwaitableGetTableIamPolicyResult(
-        dataset_id=__ret__.dataset_id,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project,
-        table_id=__ret__.table_id)
+        dataset_id=pulumi.get(__ret__, 'dataset_id'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'),
+        table_id=pulumi.get(__ret__, 'table_id'))
 
 
 @_utilities.lift_output_func(get_table_iam_policy)
@@ -148,9 +148,9 @@ def get_table_iam_policy_output(dataset_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigquery.get_table_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        dataset_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        table_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.bigquery.get_table_iam_policy(project=google_bigquery_table["test"]["project"],
+        dataset_id=google_bigquery_table["test"]["dataset_id"],
+        table_id=google_bigquery_table["test"]["table_id"])
     ```
 
 

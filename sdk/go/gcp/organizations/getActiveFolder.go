@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func GetActiveFolder(ctx *pulumi.Context, args *GetActiveFolderArgs, opts ...pulumi.InvokeOption) (*GetActiveFolderResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetActiveFolderResult
 	err := ctx.Invoke("gcp:organizations/getActiveFolder:getActiveFolder", args, &rv, opts...)
 	if err != nil {

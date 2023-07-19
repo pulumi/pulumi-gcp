@@ -169,16 +169,16 @@ def get_android_app(app_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:firebase/getAndroidApp:getAndroidApp', __args__, opts=opts, typ=GetAndroidAppResult).value
 
     return AwaitableGetAndroidAppResult(
-        app_id=__ret__.app_id,
-        deletion_policy=__ret__.deletion_policy,
-        display_name=__ret__.display_name,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        name=__ret__.name,
-        package_name=__ret__.package_name,
-        project=__ret__.project,
-        sha1_hashes=__ret__.sha1_hashes,
-        sha256_hashes=__ret__.sha256_hashes)
+        app_id=pulumi.get(__ret__, 'app_id'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        package_name=pulumi.get(__ret__, 'package_name'),
+        project=pulumi.get(__ret__, 'project'),
+        sha1_hashes=pulumi.get(__ret__, 'sha1_hashes'),
+        sha256_hashes=pulumi.get(__ret__, 'sha256_hashes'))
 
 
 @_utilities.lift_output_func(get_android_app)

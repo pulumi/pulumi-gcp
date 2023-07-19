@@ -155,14 +155,14 @@ def get_tag_key(parent: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:tags/getTagKey:getTagKey', __args__, opts=opts, typ=GetTagKeyResult).value
 
     return AwaitableGetTagKeyResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        id=__ret__.id,
-        name=__ret__.name,
-        namespaced_name=__ret__.namespaced_name,
-        parent=__ret__.parent,
-        short_name=__ret__.short_name,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        namespaced_name=pulumi.get(__ret__, 'namespaced_name'),
+        parent=pulumi.get(__ret__, 'parent'),
+        short_name=pulumi.get(__ret__, 'short_name'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_tag_key)

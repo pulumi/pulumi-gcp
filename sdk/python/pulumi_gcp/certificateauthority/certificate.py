@@ -479,6 +479,9 @@ class _CertificateState:
         (Deprecated)
         Required. Expected to be in leaf-to-root order according to RFC 5246.
         """
+        warnings.warn("""Deprecated in favor of `pem_certificate_chain`.""", DeprecationWarning)
+        pulumi.log.warn("""pem_certificates is deprecated: Deprecated in favor of `pem_certificate_chain`.""")
+
         return pulumi.get(self, "pem_certificates")
 
     @pem_certificates.setter
@@ -1636,6 +1639,9 @@ class Certificate(pulumi.CustomResource):
         (Deprecated)
         Required. Expected to be in leaf-to-root order according to RFC 5246.
         """
+        warnings.warn("""Deprecated in favor of `pem_certificate_chain`.""", DeprecationWarning)
+        pulumi.log.warn("""pem_certificates is deprecated: Deprecated in favor of `pem_certificate_chain`.""")
+
         return pulumi.get(self, "pem_certificates")
 
     @property

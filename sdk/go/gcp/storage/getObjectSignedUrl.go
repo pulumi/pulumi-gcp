@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -89,6 +90,7 @@ import (
 //
 // ```
 func GetObjectSignedUrl(ctx *pulumi.Context, args *GetObjectSignedUrlArgs, opts ...pulumi.InvokeOption) (*GetObjectSignedUrlResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetObjectSignedUrlResult
 	err := ctx.Invoke("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", args, &rv, opts...)
 	if err != nil {

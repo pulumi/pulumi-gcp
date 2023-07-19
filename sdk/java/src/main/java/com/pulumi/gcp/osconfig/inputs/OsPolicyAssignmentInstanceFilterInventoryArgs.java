@@ -16,14 +16,14 @@ public final class OsPolicyAssignmentInstanceFilterInventoryArgs extends com.pul
     public static final OsPolicyAssignmentInstanceFilterInventoryArgs Empty = new OsPolicyAssignmentInstanceFilterInventoryArgs();
 
     /**
-     * Required. The OS short name
+     * The OS short name
      * 
      */
     @Import(name="osShortName", required=true)
     private Output<String> osShortName;
 
     /**
-     * @return Required. The OS short name
+     * @return The OS short name
      * 
      */
     public Output<String> osShortName() {
@@ -31,14 +31,20 @@ public final class OsPolicyAssignmentInstanceFilterInventoryArgs extends com.pul
     }
 
     /**
-     * The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+     * The OS version Prefix matches are supported if
+     * asterisk(*) is provided as the last character. For example, to match all
+     * versions with a major version of `7`, specify the following value for this
+     * field `7.*` An empty string matches all OS versions.
      * 
      */
     @Import(name="osVersion")
     private @Nullable Output<String> osVersion;
 
     /**
-     * @return The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+     * @return The OS version Prefix matches are supported if
+     * asterisk(*) is provided as the last character. For example, to match all
+     * versions with a major version of `7`, specify the following value for this
+     * field `7.*` An empty string matches all OS versions.
      * 
      */
     public Optional<Output<String>> osVersion() {
@@ -71,7 +77,7 @@ public final class OsPolicyAssignmentInstanceFilterInventoryArgs extends com.pul
         }
 
         /**
-         * @param osShortName Required. The OS short name
+         * @param osShortName The OS short name
          * 
          * @return builder
          * 
@@ -82,7 +88,7 @@ public final class OsPolicyAssignmentInstanceFilterInventoryArgs extends com.pul
         }
 
         /**
-         * @param osShortName Required. The OS short name
+         * @param osShortName The OS short name
          * 
          * @return builder
          * 
@@ -92,7 +98,10 @@ public final class OsPolicyAssignmentInstanceFilterInventoryArgs extends com.pul
         }
 
         /**
-         * @param osVersion The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+         * @param osVersion The OS version Prefix matches are supported if
+         * asterisk(*) is provided as the last character. For example, to match all
+         * versions with a major version of `7`, specify the following value for this
+         * field `7.*` An empty string matches all OS versions.
          * 
          * @return builder
          * 
@@ -103,7 +112,10 @@ public final class OsPolicyAssignmentInstanceFilterInventoryArgs extends com.pul
         }
 
         /**
-         * @param osVersion The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+         * @param osVersion The OS version Prefix matches are supported if
+         * asterisk(*) is provided as the last character. For example, to match all
+         * versions with a major version of `7`, specify the following value for this
+         * field `7.*` An empty string matches all OS versions.
          * 
          * @return builder
          * 

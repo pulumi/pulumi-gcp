@@ -15,12 +15,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource {
     /**
-     * @return Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+     * @return Defaults to false. When false, files are
+     * subject to validations based on the file type: Remote: A checksum must be
+     * specified. Cloud Storage: An object generation number must be specified.
      * 
      */
     private @Nullable Boolean allowInsecure;
     /**
-     * @return A Cloud Storage object.
+     * @return A Cloud Storage object. Structure is
+     * documented below.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs gcs;
@@ -30,21 +33,25 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource {
      */
     private @Nullable String localPath;
     /**
-     * @return A generic remote file.
+     * @return A generic remote file. Structure is
+     * documented below.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote remote;
 
     private OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource() {}
     /**
-     * @return Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+     * @return Defaults to false. When false, files are
+     * subject to validations based on the file type: Remote: A checksum must be
+     * specified. Cloud Storage: An object generation number must be specified.
      * 
      */
     public Optional<Boolean> allowInsecure() {
         return Optional.ofNullable(this.allowInsecure);
     }
     /**
-     * @return A Cloud Storage object.
+     * @return A Cloud Storage object. Structure is
+     * documented below.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs> gcs() {
@@ -58,7 +65,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource {
         return Optional.ofNullable(this.localPath);
     }
     /**
-     * @return A generic remote file.
+     * @return A generic remote file. Structure is
+     * documented below.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote> remote() {

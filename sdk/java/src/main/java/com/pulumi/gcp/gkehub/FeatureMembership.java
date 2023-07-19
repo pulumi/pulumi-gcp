@@ -160,7 +160,7 @@ import javax.annotation.Nullable;
  *             .feature(feature.name())
  *             .membership(membership.membershipId())
  *             .configmanagement(FeatureMembershipConfigmanagementArgs.builder()
- *                 .version(&#34;1.12.0&#34;)
+ *                 .version(&#34;1.15.1&#34;)
  *                 .configSync(FeatureMembershipConfigmanagementConfigSyncArgs.builder()
  *                     .oci(FeatureMembershipConfigmanagementConfigSyncOciArgs.builder()
  *                         .syncRepo(&#34;us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest&#34;)

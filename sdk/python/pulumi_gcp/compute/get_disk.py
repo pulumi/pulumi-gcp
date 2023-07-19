@@ -22,7 +22,7 @@ class GetDiskResult:
     """
     A collection of values returned by getDisk.
     """
-    def __init__(__self__, async_primary_disks=None, creation_timestamp=None, description=None, disk_encryption_keys=None, guest_os_features=None, id=None, image=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, multi_writer=None, name=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, resource_policies=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_image_encryption_keys=None, source_image_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None, zone=None):
+    def __init__(__self__, async_primary_disks=None, creation_timestamp=None, description=None, disk_encryption_keys=None, guest_os_features=None, id=None, image=None, interface=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, licenses=None, multi_writer=None, name=None, physical_block_size_bytes=None, project=None, provisioned_iops=None, provisioned_throughput=None, resource_policies=None, self_link=None, size=None, snapshot=None, source_disk=None, source_disk_id=None, source_image_encryption_keys=None, source_image_id=None, source_snapshot_encryption_keys=None, source_snapshot_id=None, type=None, users=None, zone=None):
         if async_primary_disks and not isinstance(async_primary_disks, list):
             raise TypeError("Expected argument 'async_primary_disks' to be a list")
         pulumi.set(__self__, "async_primary_disks", async_primary_disks)
@@ -77,6 +77,9 @@ class GetDiskResult:
         if provisioned_iops and not isinstance(provisioned_iops, int):
             raise TypeError("Expected argument 'provisioned_iops' to be a int")
         pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput and not isinstance(provisioned_throughput, int):
+            raise TypeError("Expected argument 'provisioned_throughput' to be a int")
+        pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
         if resource_policies and not isinstance(resource_policies, list):
             raise TypeError("Expected argument 'resource_policies' to be a list")
         pulumi.set(__self__, "resource_policies", resource_policies)
@@ -236,6 +239,11 @@ class GetDiskResult:
         return pulumi.get(self, "provisioned_iops")
 
     @property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> int:
+        return pulumi.get(self, "provisioned_throughput")
+
+    @property
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Sequence[str]:
         return pulumi.get(self, "resource_policies")
@@ -366,6 +374,7 @@ class AwaitableGetDiskResult(GetDiskResult):
             physical_block_size_bytes=self.physical_block_size_bytes,
             project=self.project,
             provisioned_iops=self.provisioned_iops,
+            provisioned_throughput=self.provisioned_throughput,
             resource_policies=self.resource_policies,
             self_link=self.self_link,
             size=self.size,
@@ -421,37 +430,38 @@ def get_disk(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getDisk:getDisk', __args__, opts=opts, typ=GetDiskResult).value
 
     return AwaitableGetDiskResult(
-        async_primary_disks=__ret__.async_primary_disks,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        disk_encryption_keys=__ret__.disk_encryption_keys,
-        guest_os_features=__ret__.guest_os_features,
-        id=__ret__.id,
-        image=__ret__.image,
-        interface=__ret__.interface,
-        label_fingerprint=__ret__.label_fingerprint,
-        labels=__ret__.labels,
-        last_attach_timestamp=__ret__.last_attach_timestamp,
-        last_detach_timestamp=__ret__.last_detach_timestamp,
-        licenses=__ret__.licenses,
-        multi_writer=__ret__.multi_writer,
-        name=__ret__.name,
-        physical_block_size_bytes=__ret__.physical_block_size_bytes,
-        project=__ret__.project,
-        provisioned_iops=__ret__.provisioned_iops,
-        resource_policies=__ret__.resource_policies,
-        self_link=__ret__.self_link,
-        size=__ret__.size,
-        snapshot=__ret__.snapshot,
-        source_disk=__ret__.source_disk,
-        source_disk_id=__ret__.source_disk_id,
-        source_image_encryption_keys=__ret__.source_image_encryption_keys,
-        source_image_id=__ret__.source_image_id,
-        source_snapshot_encryption_keys=__ret__.source_snapshot_encryption_keys,
-        source_snapshot_id=__ret__.source_snapshot_id,
-        type=__ret__.type,
-        users=__ret__.users,
-        zone=__ret__.zone)
+        async_primary_disks=pulumi.get(__ret__, 'async_primary_disks'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        disk_encryption_keys=pulumi.get(__ret__, 'disk_encryption_keys'),
+        guest_os_features=pulumi.get(__ret__, 'guest_os_features'),
+        id=pulumi.get(__ret__, 'id'),
+        image=pulumi.get(__ret__, 'image'),
+        interface=pulumi.get(__ret__, 'interface'),
+        label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
+        labels=pulumi.get(__ret__, 'labels'),
+        last_attach_timestamp=pulumi.get(__ret__, 'last_attach_timestamp'),
+        last_detach_timestamp=pulumi.get(__ret__, 'last_detach_timestamp'),
+        licenses=pulumi.get(__ret__, 'licenses'),
+        multi_writer=pulumi.get(__ret__, 'multi_writer'),
+        name=pulumi.get(__ret__, 'name'),
+        physical_block_size_bytes=pulumi.get(__ret__, 'physical_block_size_bytes'),
+        project=pulumi.get(__ret__, 'project'),
+        provisioned_iops=pulumi.get(__ret__, 'provisioned_iops'),
+        provisioned_throughput=pulumi.get(__ret__, 'provisioned_throughput'),
+        resource_policies=pulumi.get(__ret__, 'resource_policies'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        size=pulumi.get(__ret__, 'size'),
+        snapshot=pulumi.get(__ret__, 'snapshot'),
+        source_disk=pulumi.get(__ret__, 'source_disk'),
+        source_disk_id=pulumi.get(__ret__, 'source_disk_id'),
+        source_image_encryption_keys=pulumi.get(__ret__, 'source_image_encryption_keys'),
+        source_image_id=pulumi.get(__ret__, 'source_image_id'),
+        source_snapshot_encryption_keys=pulumi.get(__ret__, 'source_snapshot_encryption_keys'),
+        source_snapshot_id=pulumi.get(__ret__, 'source_snapshot_id'),
+        type=pulumi.get(__ret__, 'type'),
+        users=pulumi.get(__ret__, 'users'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_disk)

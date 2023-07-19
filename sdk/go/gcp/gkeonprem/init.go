@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster":
+		r = &BareMetalAdminCluster{}
 	case "gcp:gkeonprem/bareMetalCluster:BareMetalCluster":
 		r = &BareMetalCluster{}
 	case "gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool":
@@ -38,10 +40,15 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 }
 
 func init() {
-	version, err := gcp.PkgVersion()
+	version, err := internal.PkgVersion()
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gkeonprem/bareMetalAdminCluster",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"gkeonprem/bareMetalCluster",

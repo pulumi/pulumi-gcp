@@ -88,7 +88,7 @@ def get_iam_policy(folder: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    test = gcp.folder.get_iam_policy(folder=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    test = gcp.folder.get_iam_policy(folder=google_folder["permissiontest"]["name"])
     ```
 
 
@@ -100,10 +100,10 @@ def get_iam_policy(folder: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:folder/getIamPolicy:getIamPolicy', __args__, opts=opts, typ=GetIamPolicyResult).value
 
     return AwaitableGetIamPolicyResult(
-        etag=__ret__.etag,
-        folder=__ret__.folder,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data)
+        etag=pulumi.get(__ret__, 'etag'),
+        folder=pulumi.get(__ret__, 'folder'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'))
 
 
 @_utilities.lift_output_func(get_iam_policy)
@@ -118,7 +118,7 @@ def get_iam_policy_output(folder: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    test = gcp.folder.get_iam_policy(folder=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    test = gcp.folder.get_iam_policy(folder=google_folder["permissiontest"]["name"])
     ```
 
 

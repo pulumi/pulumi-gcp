@@ -14,11 +14,14 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi
     {
         /// <summary>
-        /// Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
+        /// Additional properties to use during installation.
+        /// This should be in the format of Property=Setting. Appended to the defaults
+        /// of `ACTION=INSTALL REBOOT=ReallySuppress`.
         /// </summary>
         public readonly ImmutableArray<string> Properties;
         /// <summary>
-        /// Required. The MSI package.
+        /// The MSI package. Structure is
+        /// documented below.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource Source;
 

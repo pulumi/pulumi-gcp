@@ -284,10 +284,8 @@ class InstanceMaintenanceScheduleArgs:
                can not go beyond, including reschedule.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
                resolution and up to nine fractional digits.
-        :param pulumi.Input[str] start_time: (Output)
-               Output only. The start time of any upcoming scheduled maintenance for this instance.
-               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-               resolution and up to nine fractional digits.
+        :param pulumi.Input[str] start_time: Required. Start time of the window in UTC time.
+               Structure is documented below.
         """
         if end_time is not None:
             pulumi.set(__self__, "end_time", end_time)
@@ -331,10 +329,8 @@ class InstanceMaintenanceScheduleArgs:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[str]]:
         """
-        (Output)
-        Output only. The start time of any upcoming scheduled maintenance for this instance.
-        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-        resolution and up to nine fractional digits.
+        Required. Start time of the window in UTC time.
+        Structure is documented below.
         """
         return pulumi.get(self, "start_time")
 

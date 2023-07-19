@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -150,6 +151,7 @@ func NewInstanceGroupNamedPort(ctx *pulumi.Context,
 	if args.Port == nil {
 		return nil, errors.New("invalid value for required argument 'Port'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InstanceGroupNamedPort
 	err := ctx.RegisterResource("gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort", name, args, &resource, opts...)
 	if err != nil {

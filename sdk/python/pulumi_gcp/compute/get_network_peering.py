@@ -172,17 +172,17 @@ def get_network_peering(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getNetworkPeering:getNetworkPeering', __args__, opts=opts, typ=GetNetworkPeeringResult).value
 
     return AwaitableGetNetworkPeeringResult(
-        export_custom_routes=__ret__.export_custom_routes,
-        export_subnet_routes_with_public_ip=__ret__.export_subnet_routes_with_public_ip,
-        id=__ret__.id,
-        import_custom_routes=__ret__.import_custom_routes,
-        import_subnet_routes_with_public_ip=__ret__.import_subnet_routes_with_public_ip,
-        name=__ret__.name,
-        network=__ret__.network,
-        peer_network=__ret__.peer_network,
-        stack_type=__ret__.stack_type,
-        state=__ret__.state,
-        state_details=__ret__.state_details)
+        export_custom_routes=pulumi.get(__ret__, 'export_custom_routes'),
+        export_subnet_routes_with_public_ip=pulumi.get(__ret__, 'export_subnet_routes_with_public_ip'),
+        id=pulumi.get(__ret__, 'id'),
+        import_custom_routes=pulumi.get(__ret__, 'import_custom_routes'),
+        import_subnet_routes_with_public_ip=pulumi.get(__ret__, 'import_subnet_routes_with_public_ip'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        peer_network=pulumi.get(__ret__, 'peer_network'),
+        stack_type=pulumi.get(__ret__, 'stack_type'),
+        state=pulumi.get(__ret__, 'state'),
+        state_details=pulumi.get(__ret__, 'state_details'))
 
 
 @_utilities.lift_output_func(get_network_peering)

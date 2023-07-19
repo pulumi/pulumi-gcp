@@ -10,14 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper {
     /**
-     * @return Required. Package name.
+     * @return Package name.
      * 
      */
     private String name;
 
     private OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper() {}
     /**
-     * @return Required. Package name.
+     * @return Package name.
      * 
      */
     public String name() {

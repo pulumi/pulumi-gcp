@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -308,6 +309,7 @@ func NewVPNTunnel(ctx *pulumi.Context,
 		"sharedSecret",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VPNTunnel
 	err := ctx.RegisterResource("gcp:compute/vPNTunnel:VPNTunnel", name, args, &resource, opts...)
 	if err != nil {

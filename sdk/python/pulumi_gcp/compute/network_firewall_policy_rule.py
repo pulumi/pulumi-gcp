@@ -30,7 +30,7 @@ class NetworkFirewallPolicyRuleArgs:
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a NetworkFirewallPolicyRule resource.
-        :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         :param pulumi.Input[str] direction: The direction in which this rule applies. Possible values: INGRESS, EGRESS
         :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
         :param pulumi.Input['NetworkFirewallPolicyRuleMatchArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
@@ -67,7 +67,7 @@ class NetworkFirewallPolicyRuleArgs:
     @pulumi.getter
     def action(self) -> pulumi.Input[str]:
         """
-        The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         """
         return pulumi.get(self, "action")
 
@@ -227,7 +227,7 @@ class _NetworkFirewallPolicyRuleState:
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering NetworkFirewallPolicyRule resources.
-        :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         :param pulumi.Input[str] description: An optional description for this resource.
         :param pulumi.Input[str] direction: The direction in which this rule applies. Possible values: INGRESS, EGRESS
         :param pulumi.Input[bool] disabled: Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
@@ -275,7 +275,7 @@ class _NetworkFirewallPolicyRuleState:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
         """
-        The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         """
         return pulumi.get(self, "action")
 
@@ -462,7 +462,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
         The Compute NetworkFirewallPolicyRule resource
 
         ## Example Usage
-        ### Global_net_sec_rule
+        ### Global
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -473,13 +473,11 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
             location="global",
             items=["208.80.154.224/32"],
             type="IPV4",
-            capacity=100,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            capacity=100)
         basic_network_firewall_policy = gcp.compute.NetworkFirewallPolicy("basicNetworkFirewallPolicy",
             description="Sample global network firewall policy",
-            project="my-project-name",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        basic_network = gcp.compute.Network("basicNetwork", opts=pulumi.ResourceOptions(provider=google_beta))
+            project="my-project-name")
+        basic_network = gcp.compute.Network("basicNetwork")
         basic_key = gcp.tags.TagKey("basicKey",
             description="For keyname resources.",
             parent="organizations/123456789",
@@ -487,13 +485,11 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
             short_name="tagkey",
             purpose_data={
                 "network": basic_network.name.apply(lambda name: f"my-project-name/{name}"),
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         basic_value = gcp.tags.TagValue("basicValue",
             description="For valuename resources.",
             parent=basic_key.name.apply(lambda name: f"tagKeys/{name}"),
-            short_name="tagvalue",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            short_name="tagvalue")
         primary = gcp.compute.NetworkFirewallPolicyRule("primary",
             action="allow",
             description="This is a simple rule description",
@@ -516,8 +512,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
                     ip_protocol="all",
                 )],
                 src_address_groups=[basic_global_networksecurity_address_group.id],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
@@ -538,7 +533,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         :param pulumi.Input[str] description: An optional description for this resource.
         :param pulumi.Input[str] direction: The direction in which this rule applies. Possible values: INGRESS, EGRESS
         :param pulumi.Input[bool] disabled: Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
@@ -561,7 +556,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
         The Compute NetworkFirewallPolicyRule resource
 
         ## Example Usage
-        ### Global_net_sec_rule
+        ### Global
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -572,13 +567,11 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
             location="global",
             items=["208.80.154.224/32"],
             type="IPV4",
-            capacity=100,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            capacity=100)
         basic_network_firewall_policy = gcp.compute.NetworkFirewallPolicy("basicNetworkFirewallPolicy",
             description="Sample global network firewall policy",
-            project="my-project-name",
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        basic_network = gcp.compute.Network("basicNetwork", opts=pulumi.ResourceOptions(provider=google_beta))
+            project="my-project-name")
+        basic_network = gcp.compute.Network("basicNetwork")
         basic_key = gcp.tags.TagKey("basicKey",
             description="For keyname resources.",
             parent="organizations/123456789",
@@ -586,13 +579,11 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
             short_name="tagkey",
             purpose_data={
                 "network": basic_network.name.apply(lambda name: f"my-project-name/{name}"),
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         basic_value = gcp.tags.TagValue("basicValue",
             description="For valuename resources.",
             parent=basic_key.name.apply(lambda name: f"tagKeys/{name}"),
-            short_name="tagvalue",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            short_name="tagvalue")
         primary = gcp.compute.NetworkFirewallPolicyRule("primary",
             action="allow",
             description="This is a simple rule description",
@@ -615,8 +606,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
                     ip_protocol="all",
                 )],
                 src_address_groups=[basic_global_networksecurity_address_group.id],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
@@ -726,7 +716,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         :param pulumi.Input[str] description: An optional description for this resource.
         :param pulumi.Input[str] direction: The direction in which this rule applies. Possible values: INGRESS, EGRESS
         :param pulumi.Input[bool] disabled: Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
@@ -765,7 +755,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
     @pulumi.getter
     def action(self) -> pulumi.Output[str]:
         """
-        The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         """
         return pulumi.get(self, "action")
 

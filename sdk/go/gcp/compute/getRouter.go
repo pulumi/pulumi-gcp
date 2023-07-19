@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupRouter(ctx *pulumi.Context, args *LookupRouterArgs, opts ...pulumi.InvokeOption) (*LookupRouterResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRouterResult
 	err := ctx.Invoke("gcp:compute/getRouter:getRouter", args, &rv, opts...)
 	if err != nil {

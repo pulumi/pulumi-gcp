@@ -171,15 +171,15 @@ def get_sink(id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:logging/getSink:getSink', __args__, opts=opts, typ=GetSinkResult).value
 
     return AwaitableGetSinkResult(
-        bigquery_options=__ret__.bigquery_options,
-        description=__ret__.description,
-        destination=__ret__.destination,
-        disabled=__ret__.disabled,
-        exclusions=__ret__.exclusions,
-        filter=__ret__.filter,
-        id=__ret__.id,
-        name=__ret__.name,
-        writer_identity=__ret__.writer_identity)
+        bigquery_options=pulumi.get(__ret__, 'bigquery_options'),
+        description=pulumi.get(__ret__, 'description'),
+        destination=pulumi.get(__ret__, 'destination'),
+        disabled=pulumi.get(__ret__, 'disabled'),
+        exclusions=pulumi.get(__ret__, 'exclusions'),
+        filter=pulumi.get(__ret__, 'filter'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        writer_identity=pulumi.get(__ret__, 'writer_identity'))
 
 
 @_utilities.lift_output_func(get_sink)

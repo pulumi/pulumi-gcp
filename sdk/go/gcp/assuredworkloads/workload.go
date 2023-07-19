@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -132,6 +133,7 @@ func NewWorkload(ctx *pulumi.Context,
 	if args.Organization == nil {
 		return nil, errors.New("invalid value for required argument 'Organization'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Workload
 	err := ctx.RegisterResource("gcp:assuredworkloads/workload:Workload", name, args, &resource, opts...)
 	if err != nil {

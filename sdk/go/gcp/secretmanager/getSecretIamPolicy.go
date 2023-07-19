@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupSecretIamPolicy(ctx *pulumi.Context, args *LookupSecretIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupSecretIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSecretIamPolicyResult
 	err := ctx.Invoke("gcp:secretmanager/getSecretIamPolicy:getSecretIamPolicy", args, &rv, opts...)
 	if err != nil {

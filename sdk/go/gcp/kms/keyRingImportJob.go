@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -90,6 +91,7 @@ func NewKeyRingImportJob(ctx *pulumi.Context,
 	if args.ProtectionLevel == nil {
 		return nil, errors.New("invalid value for required argument 'ProtectionLevel'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource KeyRingImportJob
 	err := ctx.RegisterResource("gcp:kms/keyRingImportJob:KeyRingImportJob", name, args, &resource, opts...)
 	if err != nil {

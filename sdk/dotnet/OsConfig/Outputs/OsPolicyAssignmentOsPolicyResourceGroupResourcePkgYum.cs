@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum
     {
         /// <summary>
-        /// Required. Package name.
+        /// Package name.
         /// </summary>
         public readonly string Name;
 

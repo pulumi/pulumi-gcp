@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -105,6 +106,7 @@ func NewDocumentAiProcessor(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DocumentAiProcessor
 	err := ctx.RegisterResource("gcp:essentialcontacts/documentAiProcessor:DocumentAiProcessor", name, args, &resource, opts...)
 	if err != nil {

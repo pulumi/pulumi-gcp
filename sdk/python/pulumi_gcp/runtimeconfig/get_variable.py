@@ -129,13 +129,13 @@ def get_variable(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:runtimeconfig/getVariable:getVariable', __args__, opts=opts, typ=GetVariableResult).value
 
     return AwaitableGetVariableResult(
-        id=__ret__.id,
-        name=__ret__.name,
-        parent=__ret__.parent,
-        project=__ret__.project,
-        text=__ret__.text,
-        update_time=__ret__.update_time,
-        value=__ret__.value)
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        parent=pulumi.get(__ret__, 'parent'),
+        project=pulumi.get(__ret__, 'project'),
+        text=pulumi.get(__ret__, 'text'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        value=pulumi.get(__ret__, 'value'))
 
 
 @_utilities.lift_output_func(get_variable)

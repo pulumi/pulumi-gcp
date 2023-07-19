@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -99,6 +100,7 @@ func NewCustomService(ctx *pulumi.Context,
 		args = &CustomServiceArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource CustomService
 	err := ctx.RegisterResource("gcp:monitoring/customService:CustomService", name, args, &resource, opts...)
 	if err != nil {

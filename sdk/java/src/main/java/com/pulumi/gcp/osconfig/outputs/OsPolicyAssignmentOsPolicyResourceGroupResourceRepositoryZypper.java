@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper {
     /**
-     * @return Required. The location of the repository directory.
+     * @return The location of the repository directory.
      * 
      */
     private String baseUrl;
@@ -28,14 +28,17 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypp
      */
     private @Nullable List<String> gpgKeys;
     /**
-     * @return Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+     * @return A one word, unique name for this repository. This is the
+     * `repo id` in the zypper config file and also the `display_name` if
+     * `display_name` is omitted. This id is also used as the unique identifier
+     * when checking for GuestPolicy conflicts.
      * 
      */
     private String id;
 
     private OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper() {}
     /**
-     * @return Required. The location of the repository directory.
+     * @return The location of the repository directory.
      * 
      */
     public String baseUrl() {
@@ -56,7 +59,10 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypp
         return this.gpgKeys == null ? List.of() : this.gpgKeys;
     }
     /**
-     * @return Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+     * @return A one word, unique name for this repository. This is the
+     * `repo id` in the zypper config file and also the `display_name` if
+     * `display_name` is omitted. This id is also used as the unique identifier
+     * when checking for GuestPolicy conflicts.
      * 
      */
     public String id() {

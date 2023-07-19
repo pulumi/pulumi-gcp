@@ -190,17 +190,17 @@ def get_network_endpoint_group(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup', __args__, opts=opts, typ=GetNetworkEndpointGroupResult).value
 
     return AwaitableGetNetworkEndpointGroupResult(
-        default_port=__ret__.default_port,
-        description=__ret__.description,
-        id=__ret__.id,
-        name=__ret__.name,
-        network=__ret__.network,
-        network_endpoint_type=__ret__.network_endpoint_type,
-        project=__ret__.project,
-        self_link=__ret__.self_link,
-        size=__ret__.size,
-        subnetwork=__ret__.subnetwork,
-        zone=__ret__.zone)
+        default_port=pulumi.get(__ret__, 'default_port'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        network_endpoint_type=pulumi.get(__ret__, 'network_endpoint_type'),
+        project=pulumi.get(__ret__, 'project'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        size=pulumi.get(__ret__, 'size'),
+        subnetwork=pulumi.get(__ret__, 'subnetwork'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_network_endpoint_group)

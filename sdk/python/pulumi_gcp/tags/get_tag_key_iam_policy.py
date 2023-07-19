@@ -89,7 +89,7 @@ def get_tag_key_iam_policy(tag_key: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.tags.get_tag_key_iam_policy(tag_key=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.tags.get_tag_key_iam_policy(tag_key=google_tags_tag_key["key"]["name"])
     ```
 
 
@@ -101,10 +101,10 @@ def get_tag_key_iam_policy(tag_key: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:tags/getTagKeyIamPolicy:getTagKeyIamPolicy', __args__, opts=opts, typ=GetTagKeyIamPolicyResult).value
 
     return AwaitableGetTagKeyIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        tag_key=__ret__.tag_key)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        tag_key=pulumi.get(__ret__, 'tag_key'))
 
 
 @_utilities.lift_output_func(get_tag_key_iam_policy)
@@ -119,7 +119,7 @@ def get_tag_key_iam_policy_output(tag_key: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.tags.get_tag_key_iam_policy(tag_key=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.tags.get_tag_key_iam_policy(tag_key=google_tags_tag_key["key"]["name"])
     ```
 
 

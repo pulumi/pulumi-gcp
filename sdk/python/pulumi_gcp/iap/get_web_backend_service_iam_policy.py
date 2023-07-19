@@ -99,8 +99,8 @@ def get_web_backend_service_iam_policy(project: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.iap.get_web_backend_service_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        web_backend_service=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.iap.get_web_backend_service_iam_policy(project=google_compute_backend_service["default"]["project"],
+        web_backend_service=google_compute_backend_service["default"]["name"])
     ```
 
 
@@ -115,11 +115,11 @@ def get_web_backend_service_iam_policy(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:iap/getWebBackendServiceIamPolicy:getWebBackendServiceIamPolicy', __args__, opts=opts, typ=GetWebBackendServiceIamPolicyResult).value
 
     return AwaitableGetWebBackendServiceIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project,
-        web_backend_service=__ret__.web_backend_service)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'),
+        web_backend_service=pulumi.get(__ret__, 'web_backend_service'))
 
 
 @_utilities.lift_output_func(get_web_backend_service_iam_policy)
@@ -135,8 +135,8 @@ def get_web_backend_service_iam_policy_output(project: Optional[pulumi.Input[Opt
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.iap.get_web_backend_service_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        web_backend_service=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.iap.get_web_backend_service_iam_policy(project=google_compute_backend_service["default"]["project"],
+        web_backend_service=google_compute_backend_service["default"]["name"])
     ```
 
 

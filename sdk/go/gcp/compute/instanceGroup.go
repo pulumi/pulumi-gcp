@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -146,6 +147,7 @@ func NewInstanceGroup(ctx *pulumi.Context,
 		args = &InstanceGroupArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InstanceGroup
 	err := ctx.RegisterResource("gcp:compute/instanceGroup:InstanceGroup", name, args, &resource, opts...)
 	if err != nil {

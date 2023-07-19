@@ -199,16 +199,16 @@ def get_object_signed_url(bucket: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:storage/getObjectSignedUrl:getObjectSignedUrl', __args__, opts=opts, typ=GetObjectSignedUrlResult).value
 
     return AwaitableGetObjectSignedUrlResult(
-        bucket=__ret__.bucket,
-        content_md5=__ret__.content_md5,
-        content_type=__ret__.content_type,
-        credentials=__ret__.credentials,
-        duration=__ret__.duration,
-        extension_headers=__ret__.extension_headers,
-        http_method=__ret__.http_method,
-        id=__ret__.id,
-        path=__ret__.path,
-        signed_url=__ret__.signed_url)
+        bucket=pulumi.get(__ret__, 'bucket'),
+        content_md5=pulumi.get(__ret__, 'content_md5'),
+        content_type=pulumi.get(__ret__, 'content_type'),
+        credentials=pulumi.get(__ret__, 'credentials'),
+        duration=pulumi.get(__ret__, 'duration'),
+        extension_headers=pulumi.get(__ret__, 'extension_headers'),
+        http_method=pulumi.get(__ret__, 'http_method'),
+        id=pulumi.get(__ret__, 'id'),
+        path=pulumi.get(__ret__, 'path'),
+        signed_url=pulumi.get(__ret__, 'signed_url'))
 
 
 @_utilities.lift_output_func(get_object_signed_url)

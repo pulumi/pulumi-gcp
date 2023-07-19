@@ -31,7 +31,8 @@ public final class OsPolicyAssignmentRolloutDisruptionBudgetArgs extends com.pul
     }
 
     /**
-     * Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+     * Specifies the relative value defined as a percentage,
+     * which will be multiplied by a reference value.
      * 
      * ***
      * 
@@ -40,7 +41,8 @@ public final class OsPolicyAssignmentRolloutDisruptionBudgetArgs extends com.pul
     private @Nullable Output<Integer> percent;
 
     /**
-     * @return Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+     * @return Specifies the relative value defined as a percentage,
+     * which will be multiplied by a reference value.
      * 
      * ***
      * 
@@ -96,7 +98,8 @@ public final class OsPolicyAssignmentRolloutDisruptionBudgetArgs extends com.pul
         }
 
         /**
-         * @param percent Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+         * @param percent Specifies the relative value defined as a percentage,
+         * which will be multiplied by a reference value.
          * 
          * ***
          * 
@@ -109,7 +112,8 @@ public final class OsPolicyAssignmentRolloutDisruptionBudgetArgs extends com.pul
         }
 
         /**
-         * @param percent Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+         * @param percent Specifies the relative value defined as a percentage,
+         * which will be multiplied by a reference value.
          * 
          * ***
          * 

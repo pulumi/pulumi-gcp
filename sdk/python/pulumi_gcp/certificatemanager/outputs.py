@@ -112,6 +112,8 @@ class CertificateManaged(dict):
             suggest = "authorization_attempt_infos"
         elif key == "dnsAuthorizations":
             suggest = "dns_authorizations"
+        elif key == "issuanceConfig":
+            suggest = "issuance_config"
         elif key == "provisioningIssues":
             suggest = "provisioning_issues"
 
@@ -130,6 +132,7 @@ class CertificateManaged(dict):
                  authorization_attempt_infos: Optional[Sequence['outputs.CertificateManagedAuthorizationAttemptInfo']] = None,
                  dns_authorizations: Optional[Sequence[str]] = None,
                  domains: Optional[Sequence[str]] = None,
+                 issuance_config: Optional[str] = None,
                  provisioning_issues: Optional[Sequence['outputs.CertificateManagedProvisioningIssue']] = None,
                  state: Optional[str] = None):
         """
@@ -140,9 +143,12 @@ class CertificateManaged(dict):
                
                
                <a name="nested_provisioning_issue"></a>The `provisioning_issue` block contains:
-        :param Sequence[str] dns_authorizations: Authorizations that will be used for performing domain authorization
+        :param Sequence[str] dns_authorizations: Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
         :param Sequence[str] domains: The domains for which a managed SSL certificate will be generated.
                Wildcard domains are only supported with DNS challenge resolution
+        :param str issuance_config: The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
+               If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+               Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
         :param Sequence['CertificateManagedProvisioningIssueArgs'] provisioning_issues: (Output)
                Information about issues with provisioning this Managed Certificate.
                Structure is documented below.
@@ -155,6 +161,8 @@ class CertificateManaged(dict):
             pulumi.set(__self__, "dns_authorizations", dns_authorizations)
         if domains is not None:
             pulumi.set(__self__, "domains", domains)
+        if issuance_config is not None:
+            pulumi.set(__self__, "issuance_config", issuance_config)
         if provisioning_issues is not None:
             pulumi.set(__self__, "provisioning_issues", provisioning_issues)
         if state is not None:
@@ -178,7 +186,7 @@ class CertificateManaged(dict):
     @pulumi.getter(name="dnsAuthorizations")
     def dns_authorizations(self) -> Optional[Sequence[str]]:
         """
-        Authorizations that will be used for performing domain authorization
+        Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
         """
         return pulumi.get(self, "dns_authorizations")
 
@@ -190,6 +198,16 @@ class CertificateManaged(dict):
         Wildcard domains are only supported with DNS challenge resolution
         """
         return pulumi.get(self, "domains")
+
+    @property
+    @pulumi.getter(name="issuanceConfig")
+    def issuance_config(self) -> Optional[str]:
+        """
+        The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
+        If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+        Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+        """
+        return pulumi.get(self, "issuance_config")
 
     @property
     @pulumi.getter(name="provisioningIssues")
@@ -552,6 +570,9 @@ class CertificateSelfManaged(dict):
         Leaf certificate comes first, followed by intermediate ones if any.
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
+        warnings.warn("""Deprecated in favor of `pem_certificate`""", DeprecationWarning)
+        pulumi.log.warn("""certificate_pem is deprecated: Deprecated in favor of `pem_certificate`""")
+
         return pulumi.get(self, "certificate_pem")
 
     @property
@@ -581,6 +602,9 @@ class CertificateSelfManaged(dict):
         **Deprecated** The private key of the leaf certificate in PEM-encoded form.
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
+        warnings.warn("""Deprecated in favor of `pem_private_key`""", DeprecationWarning)
+        pulumi.log.warn("""private_key_pem is deprecated: Deprecated in favor of `pem_private_key`""")
+
         return pulumi.get(self, "private_key_pem")
 
 

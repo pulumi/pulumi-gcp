@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -25,6 +26,120 @@ import (
 //   - [Official Documentation](https://cloud.google.com/firestore/docs/)
 //
 // ## Example Usage
+// ### Firestore Database
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firestore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi-time/sdk/v1/go/time"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("my-project"),
+//				OrgId:     pulumi.String("123456789"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			wait60Seconds, err := index.NewTime_sleep(ctx, "wait60Seconds", &index.Time_sleepArgs{
+//				CreateDuration: "60s",
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			firestore, err := projects.NewService(ctx, "firestore", &projects.ServiceArgs{
+//				Project: project.ProjectId,
+//				Service: pulumi.String("firestore.googleapis.com"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait60Seconds,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firestore.NewDatabase(ctx, "database", &firestore.DatabaseArgs{
+//				Project:                  project.ProjectId,
+//				LocationId:               pulumi.String("nam5"),
+//				Type:                     pulumi.String("FIRESTORE_NATIVE"),
+//				ConcurrencyMode:          pulumi.String("OPTIMISTIC"),
+//				AppEngineIntegrationMode: pulumi.String("DISABLED"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				firestore,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Firestore Database Datastore Mode
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firestore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi-time/sdk/v1/go/time"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("my-project"),
+//				OrgId:     pulumi.String("123456789"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			wait60Seconds, err := index.NewTime_sleep(ctx, "wait60Seconds", &index.Time_sleepArgs{
+//				CreateDuration: "60s",
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				project,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			firestore, err := projects.NewService(ctx, "firestore", &projects.ServiceArgs{
+//				Project: project.ProjectId,
+//				Service: pulumi.String("firestore.googleapis.com"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				wait60Seconds,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firestore.NewDatabase(ctx, "datastoreModeDatabase", &firestore.DatabaseArgs{
+//				Project:    project.ProjectId,
+//				LocationId: pulumi.String("nam5"),
+//				Type:       pulumi.String("DATASTORE_MODE"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				firestore,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -102,6 +217,7 @@ func NewDatabase(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Database
 	err := ctx.RegisterResource("gcp:firestore/database:Database", name, args, &resource, opts...)
 	if err != nil {

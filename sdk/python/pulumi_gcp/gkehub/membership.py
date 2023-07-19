@@ -90,6 +90,9 @@ class MembershipArgs:
         """
         The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
         """
+        warnings.warn("""This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""", DeprecationWarning)
+        pulumi.log.warn("""description is deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""")
+
         return pulumi.get(self, "description")
 
     @description.setter
@@ -202,6 +205,9 @@ class _MembershipState:
         """
         The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
         """
+        warnings.warn("""This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""", DeprecationWarning)
+        pulumi.log.warn("""description is deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""")
+
         return pulumi.get(self, "description")
 
     @description.setter
@@ -555,6 +561,9 @@ class Membership(pulumi.CustomResource):
         """
         The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
         """
+        warnings.warn("""This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""", DeprecationWarning)
+        pulumi.log.warn("""description is deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""")
+
         return pulumi.get(self, "description")
 
     @property

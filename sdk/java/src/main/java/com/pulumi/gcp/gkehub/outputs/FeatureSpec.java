@@ -12,6 +12,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureSpec {
+    /**
+     * @return Fleet Observability feature spec.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable FeatureSpecFleetobservability fleetobservability;
     /**
      * @return Multicluster Ingress-specific spec.
@@ -21,6 +26,11 @@ public final class FeatureSpec {
     private @Nullable FeatureSpecMulticlusteringress multiclusteringress;
 
     private FeatureSpec() {}
+    /**
+     * @return Fleet Observability feature spec.
+     * Structure is documented below.
+     * 
+     */
     public Optional<FeatureSpecFleetobservability> fleetobservability() {
         return Optional.ofNullable(this.fleetobservability);
     }

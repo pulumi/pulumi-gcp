@@ -95,9 +95,9 @@ def get_locations(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:cloudrun/getLocations:getLocations', __args__, opts=opts, typ=GetLocationsResult).value
 
     return AwaitableGetLocationsResult(
-        id=__ret__.id,
-        locations=__ret__.locations,
-        project=__ret__.project)
+        id=pulumi.get(__ret__, 'id'),
+        locations=pulumi.get(__ret__, 'locations'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_locations)

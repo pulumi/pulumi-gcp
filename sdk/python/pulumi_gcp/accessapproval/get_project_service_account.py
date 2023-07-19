@@ -111,10 +111,10 @@ def get_project_service_account(project_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:accessapproval/getProjectServiceAccount:getProjectServiceAccount', __args__, opts=opts, typ=GetProjectServiceAccountResult).value
 
     return AwaitableGetProjectServiceAccountResult(
-        account_email=__ret__.account_email,
-        id=__ret__.id,
-        name=__ret__.name,
-        project_id=__ret__.project_id)
+        account_email=pulumi.get(__ret__, 'account_email'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        project_id=pulumi.get(__ret__, 'project_id'))
 
 
 @_utilities.lift_output_func(get_project_service_account)

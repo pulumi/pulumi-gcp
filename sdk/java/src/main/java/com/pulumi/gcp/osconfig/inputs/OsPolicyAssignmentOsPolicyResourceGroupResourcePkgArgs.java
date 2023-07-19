@@ -23,14 +23,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
     public static final OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs Empty = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs();
 
     /**
-     * A package managed by Apt.
+     * A package managed by Apt. Structure is
+     * documented below.
      * 
      */
     @Import(name="apt")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs> apt;
 
     /**
-     * @return A package managed by Apt.
+     * @return A package managed by Apt. Structure is
+     * documented below.
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs>> apt() {
@@ -38,14 +40,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
     }
 
     /**
-     * A deb package file.
+     * A deb package file. Structure is
+     * documented below.
      * 
      */
     @Import(name="deb")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs> deb;
 
     /**
-     * @return A deb package file.
+     * @return A deb package file. Structure is
+     * documented below.
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs>> deb() {
@@ -53,14 +57,18 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
     }
 
     /**
-     * Required. The desired state the agent should maintain for this package. Possible values: DESIRED_STATE_UNSPECIFIED, INSTALLED, REMOVED
+     * The desired state the agent should maintain for
+     * this package. Possible values are: `DESIRED_STATE_UNSPECIFIED`, `INSTALLED`,
+     * `REMOVED`.
      * 
      */
     @Import(name="desiredState", required=true)
     private Output<String> desiredState;
 
     /**
-     * @return Required. The desired state the agent should maintain for this package. Possible values: DESIRED_STATE_UNSPECIFIED, INSTALLED, REMOVED
+     * @return The desired state the agent should maintain for
+     * this package. Possible values are: `DESIRED_STATE_UNSPECIFIED`, `INSTALLED`,
+     * `REMOVED`.
      * 
      */
     public Output<String> desiredState() {
@@ -68,14 +76,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
     }
 
     /**
-     * A package managed by GooGet.
+     * A package managed by GooGet. Structure is
+     * documented below.
      * 
      */
     @Import(name="googet")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs> googet;
 
     /**
-     * @return A package managed by GooGet.
+     * @return A package managed by GooGet. Structure is
+     * documented below.
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs>> googet() {
@@ -83,14 +93,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
     }
 
     /**
-     * An MSI package.
+     * An MSI package. Structure is
+     * documented below.
      * 
      */
     @Import(name="msi")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs> msi;
 
     /**
-     * @return An MSI package.
+     * @return An MSI package. Structure is
+     * documented below.
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs>> msi() {
@@ -98,14 +110,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
     }
 
     /**
-     * An rpm package file.
+     * An rpm package file. Structure is
+     * documented below.
      * 
      */
     @Import(name="rpm")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs> rpm;
 
     /**
-     * @return An rpm package file.
+     * @return An rpm package file. Structure is
+     * documented below.
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs>> rpm() {
@@ -113,14 +127,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
     }
 
     /**
-     * A package managed by YUM.
+     * A package managed by YUM. Structure is
+     * documented below.
      * 
      */
     @Import(name="yum")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs> yum;
 
     /**
-     * @return A package managed by YUM.
+     * @return A package managed by YUM. Structure is
+     * documented below.
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs>> yum() {
@@ -128,14 +144,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
     }
 
     /**
-     * A package managed by Zypper.
+     * A package managed by Zypper. Structure is
+     * documented below.
      * 
      */
     @Import(name="zypper")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs> zypper;
 
     /**
-     * @return A package managed by Zypper.
+     * @return A package managed by Zypper. Structure is
+     * documented below.
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs>> zypper() {
@@ -174,7 +192,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
         }
 
         /**
-         * @param apt A package managed by Apt.
+         * @param apt A package managed by Apt. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -185,7 +204,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
         }
 
         /**
-         * @param apt A package managed by Apt.
+         * @param apt A package managed by Apt. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -195,7 +215,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
         }
 
         /**
-         * @param deb A deb package file.
+         * @param deb A deb package file. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -206,7 +227,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
         }
 
         /**
-         * @param deb A deb package file.
+         * @param deb A deb package file. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -216,7 +238,9 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
         }
 
         /**
-         * @param desiredState Required. The desired state the agent should maintain for this package. Possible values: DESIRED_STATE_UNSPECIFIED, INSTALLED, REMOVED
+         * @param desiredState The desired state the agent should maintain for
+         * this package. Possible values are: `DESIRED_STATE_UNSPECIFIED`, `INSTALLED`,
+         * `REMOVED`.
          * 
          * @return builder
          * 
@@ -227,7 +251,9 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
         }
 
         /**
-         * @param desiredState Required. The desired state the agent should maintain for this package. Possible values: DESIRED_STATE_UNSPECIFIED, INSTALLED, REMOVED
+         * @param desiredState The desired state the agent should maintain for
+         * this package. Possible values are: `DESIRED_STATE_UNSPECIFIED`, `INSTALLED`,
+         * `REMOVED`.
          * 
          * @return builder
          * 
@@ -237,7 +263,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
         }
 
         /**
-         * @param googet A package managed by GooGet.
+         * @param googet A package managed by GooGet. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -248,7 +275,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
         }
 
         /**
-         * @param googet A package managed by GooGet.
+         * @param googet A package managed by GooGet. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -258,7 +286,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
         }
 
         /**
-         * @param msi An MSI package.
+         * @param msi An MSI package. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -269,7 +298,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
         }
 
         /**
-         * @param msi An MSI package.
+         * @param msi An MSI package. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -279,7 +309,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
         }
 
         /**
-         * @param rpm An rpm package file.
+         * @param rpm An rpm package file. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -290,7 +321,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
         }
 
         /**
-         * @param rpm An rpm package file.
+         * @param rpm An rpm package file. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -300,7 +332,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
         }
 
         /**
-         * @param yum A package managed by YUM.
+         * @param yum A package managed by YUM. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -311,7 +344,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
         }
 
         /**
-         * @param yum A package managed by YUM.
+         * @param yum A package managed by YUM. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -321,7 +355,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
         }
 
         /**
-         * @param zypper A package managed by Zypper.
+         * @param zypper A package managed by Zypper. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -332,7 +367,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs extend
         }
 
         /**
-         * @param zypper A package managed by Zypper.
+         * @param zypper A package managed by Zypper. Structure is
+         * documented below.
          * 
          * @return builder
          * 

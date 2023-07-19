@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -70,6 +71,7 @@ func NewProjectSink(ctx *pulumi.Context,
 	if args.Destination == nil {
 		return nil, errors.New("invalid value for required argument 'Destination'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProjectSink
 	err := ctx.RegisterResource("gcp:logging/projectSink:ProjectSink", name, args, &resource, opts...)
 	if err != nil {

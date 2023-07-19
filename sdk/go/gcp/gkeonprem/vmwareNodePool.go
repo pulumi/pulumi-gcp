@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -286,6 +287,7 @@ func NewVMwareNodePool(ctx *pulumi.Context,
 	if args.VmwareCluster == nil {
 		return nil, errors.New("invalid value for required argument 'VmwareCluster'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VMwareNodePool
 	err := ctx.RegisterResource("gcp:gkeonprem/vMwareNodePool:VMwareNodePool", name, args, &resource, opts...)
 	if err != nil {

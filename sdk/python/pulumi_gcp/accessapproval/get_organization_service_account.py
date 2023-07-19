@@ -111,10 +111,10 @@ def get_organization_service_account(organization_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:accessapproval/getOrganizationServiceAccount:getOrganizationServiceAccount', __args__, opts=opts, typ=GetOrganizationServiceAccountResult).value
 
     return AwaitableGetOrganizationServiceAccountResult(
-        account_email=__ret__.account_email,
-        id=__ret__.id,
-        name=__ret__.name,
-        organization_id=__ret__.organization_id)
+        account_email=pulumi.get(__ret__, 'account_email'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        organization_id=pulumi.get(__ret__, 'organization_id'))
 
 
 @_utilities.lift_output_func(get_organization_service_account)

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -108,6 +109,7 @@ func NewReservationAssignment(ctx *pulumi.Context,
 	if args.Reservation == nil {
 		return nil, errors.New("invalid value for required argument 'Reservation'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ReservationAssignment
 	err := ctx.RegisterResource("gcp:bigquery/reservationAssignment:ReservationAssignment", name, args, &resource, opts...)
 	if err != nil {

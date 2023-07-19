@@ -22,7 +22,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, addons_configs=None, authenticator_groups_configs=None, binary_authorizations=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, cost_management_configs=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, description=None, dns_configs=None, enable_autopilot=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, gateway_api_configs=None, id=None, identity_service_configs=None, initial_node_count=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, mesh_certificates=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pool_auto_configs=None, node_pool_defaults=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, protect_configs=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, self_link=None, service_external_ips_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_configs=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None):
+    def __init__(__self__, addons_configs=None, authenticator_groups_configs=None, binary_authorizations=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, cost_management_configs=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, description=None, dns_configs=None, enable_autopilot=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, gateway_api_configs=None, id=None, identity_service_configs=None, initial_node_count=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_configs=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, mesh_certificates=None, min_master_version=None, monitoring_configs=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pool_auto_configs=None, node_pool_defaults=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, protect_configs=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, security_posture_configs=None, self_link=None, service_external_ips_configs=None, services_ipv4_cidr=None, subnetwork=None, tpu_configs=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None):
         if addons_configs and not isinstance(addons_configs, list):
             raise TypeError("Expected argument 'addons_configs' to be a list")
         pulumi.set(__self__, "addons_configs", addons_configs)
@@ -206,6 +206,9 @@ class GetClusterResult:
         if resource_usage_export_configs and not isinstance(resource_usage_export_configs, list):
             raise TypeError("Expected argument 'resource_usage_export_configs' to be a list")
         pulumi.set(__self__, "resource_usage_export_configs", resource_usage_export_configs)
+        if security_posture_configs and not isinstance(security_posture_configs, list):
+            raise TypeError("Expected argument 'security_posture_configs' to be a list")
+        pulumi.set(__self__, "security_posture_configs", security_posture_configs)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -540,6 +543,11 @@ class GetClusterResult:
         return pulumi.get(self, "resource_usage_export_configs")
 
     @property
+    @pulumi.getter(name="securityPostureConfigs")
+    def security_posture_configs(self) -> Sequence['outputs.GetClusterSecurityPostureConfigResult']:
+        return pulumi.get(self, "security_posture_configs")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         return pulumi.get(self, "self_link")
@@ -647,6 +655,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             remove_default_node_pool=self.remove_default_node_pool,
             resource_labels=self.resource_labels,
             resource_usage_export_configs=self.resource_usage_export_configs,
+            security_posture_configs=self.security_posture_configs,
             self_link=self.self_link,
             service_external_ips_configs=self.service_external_ips_configs,
             services_ipv4_cidr=self.services_ipv4_cidr,
@@ -694,75 +703,76 @@ def get_cluster(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:container/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult).value
 
     return AwaitableGetClusterResult(
-        addons_configs=__ret__.addons_configs,
-        authenticator_groups_configs=__ret__.authenticator_groups_configs,
-        binary_authorizations=__ret__.binary_authorizations,
-        cluster_autoscalings=__ret__.cluster_autoscalings,
-        cluster_ipv4_cidr=__ret__.cluster_ipv4_cidr,
-        cluster_telemetries=__ret__.cluster_telemetries,
-        confidential_nodes=__ret__.confidential_nodes,
-        cost_management_configs=__ret__.cost_management_configs,
-        database_encryptions=__ret__.database_encryptions,
-        datapath_provider=__ret__.datapath_provider,
-        default_max_pods_per_node=__ret__.default_max_pods_per_node,
-        default_snat_statuses=__ret__.default_snat_statuses,
-        description=__ret__.description,
-        dns_configs=__ret__.dns_configs,
-        enable_autopilot=__ret__.enable_autopilot,
-        enable_binary_authorization=__ret__.enable_binary_authorization,
-        enable_intranode_visibility=__ret__.enable_intranode_visibility,
-        enable_kubernetes_alpha=__ret__.enable_kubernetes_alpha,
-        enable_l4_ilb_subsetting=__ret__.enable_l4_ilb_subsetting,
-        enable_legacy_abac=__ret__.enable_legacy_abac,
-        enable_shielded_nodes=__ret__.enable_shielded_nodes,
-        enable_tpu=__ret__.enable_tpu,
-        endpoint=__ret__.endpoint,
-        gateway_api_configs=__ret__.gateway_api_configs,
-        id=__ret__.id,
-        identity_service_configs=__ret__.identity_service_configs,
-        initial_node_count=__ret__.initial_node_count,
-        ip_allocation_policies=__ret__.ip_allocation_policies,
-        label_fingerprint=__ret__.label_fingerprint,
-        location=__ret__.location,
-        logging_configs=__ret__.logging_configs,
-        logging_service=__ret__.logging_service,
-        maintenance_policies=__ret__.maintenance_policies,
-        master_authorized_networks_configs=__ret__.master_authorized_networks_configs,
-        master_auths=__ret__.master_auths,
-        master_version=__ret__.master_version,
-        mesh_certificates=__ret__.mesh_certificates,
-        min_master_version=__ret__.min_master_version,
-        monitoring_configs=__ret__.monitoring_configs,
-        monitoring_service=__ret__.monitoring_service,
-        name=__ret__.name,
-        network=__ret__.network,
-        network_policies=__ret__.network_policies,
-        networking_mode=__ret__.networking_mode,
-        node_configs=__ret__.node_configs,
-        node_locations=__ret__.node_locations,
-        node_pool_auto_configs=__ret__.node_pool_auto_configs,
-        node_pool_defaults=__ret__.node_pool_defaults,
-        node_pools=__ret__.node_pools,
-        node_version=__ret__.node_version,
-        notification_configs=__ret__.notification_configs,
-        operation=__ret__.operation,
-        pod_security_policy_configs=__ret__.pod_security_policy_configs,
-        private_cluster_configs=__ret__.private_cluster_configs,
-        private_ipv6_google_access=__ret__.private_ipv6_google_access,
-        project=__ret__.project,
-        protect_configs=__ret__.protect_configs,
-        release_channels=__ret__.release_channels,
-        remove_default_node_pool=__ret__.remove_default_node_pool,
-        resource_labels=__ret__.resource_labels,
-        resource_usage_export_configs=__ret__.resource_usage_export_configs,
-        self_link=__ret__.self_link,
-        service_external_ips_configs=__ret__.service_external_ips_configs,
-        services_ipv4_cidr=__ret__.services_ipv4_cidr,
-        subnetwork=__ret__.subnetwork,
-        tpu_configs=__ret__.tpu_configs,
-        tpu_ipv4_cidr_block=__ret__.tpu_ipv4_cidr_block,
-        vertical_pod_autoscalings=__ret__.vertical_pod_autoscalings,
-        workload_identity_configs=__ret__.workload_identity_configs)
+        addons_configs=pulumi.get(__ret__, 'addons_configs'),
+        authenticator_groups_configs=pulumi.get(__ret__, 'authenticator_groups_configs'),
+        binary_authorizations=pulumi.get(__ret__, 'binary_authorizations'),
+        cluster_autoscalings=pulumi.get(__ret__, 'cluster_autoscalings'),
+        cluster_ipv4_cidr=pulumi.get(__ret__, 'cluster_ipv4_cidr'),
+        cluster_telemetries=pulumi.get(__ret__, 'cluster_telemetries'),
+        confidential_nodes=pulumi.get(__ret__, 'confidential_nodes'),
+        cost_management_configs=pulumi.get(__ret__, 'cost_management_configs'),
+        database_encryptions=pulumi.get(__ret__, 'database_encryptions'),
+        datapath_provider=pulumi.get(__ret__, 'datapath_provider'),
+        default_max_pods_per_node=pulumi.get(__ret__, 'default_max_pods_per_node'),
+        default_snat_statuses=pulumi.get(__ret__, 'default_snat_statuses'),
+        description=pulumi.get(__ret__, 'description'),
+        dns_configs=pulumi.get(__ret__, 'dns_configs'),
+        enable_autopilot=pulumi.get(__ret__, 'enable_autopilot'),
+        enable_binary_authorization=pulumi.get(__ret__, 'enable_binary_authorization'),
+        enable_intranode_visibility=pulumi.get(__ret__, 'enable_intranode_visibility'),
+        enable_kubernetes_alpha=pulumi.get(__ret__, 'enable_kubernetes_alpha'),
+        enable_l4_ilb_subsetting=pulumi.get(__ret__, 'enable_l4_ilb_subsetting'),
+        enable_legacy_abac=pulumi.get(__ret__, 'enable_legacy_abac'),
+        enable_shielded_nodes=pulumi.get(__ret__, 'enable_shielded_nodes'),
+        enable_tpu=pulumi.get(__ret__, 'enable_tpu'),
+        endpoint=pulumi.get(__ret__, 'endpoint'),
+        gateway_api_configs=pulumi.get(__ret__, 'gateway_api_configs'),
+        id=pulumi.get(__ret__, 'id'),
+        identity_service_configs=pulumi.get(__ret__, 'identity_service_configs'),
+        initial_node_count=pulumi.get(__ret__, 'initial_node_count'),
+        ip_allocation_policies=pulumi.get(__ret__, 'ip_allocation_policies'),
+        label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
+        location=pulumi.get(__ret__, 'location'),
+        logging_configs=pulumi.get(__ret__, 'logging_configs'),
+        logging_service=pulumi.get(__ret__, 'logging_service'),
+        maintenance_policies=pulumi.get(__ret__, 'maintenance_policies'),
+        master_authorized_networks_configs=pulumi.get(__ret__, 'master_authorized_networks_configs'),
+        master_auths=pulumi.get(__ret__, 'master_auths'),
+        master_version=pulumi.get(__ret__, 'master_version'),
+        mesh_certificates=pulumi.get(__ret__, 'mesh_certificates'),
+        min_master_version=pulumi.get(__ret__, 'min_master_version'),
+        monitoring_configs=pulumi.get(__ret__, 'monitoring_configs'),
+        monitoring_service=pulumi.get(__ret__, 'monitoring_service'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        network_policies=pulumi.get(__ret__, 'network_policies'),
+        networking_mode=pulumi.get(__ret__, 'networking_mode'),
+        node_configs=pulumi.get(__ret__, 'node_configs'),
+        node_locations=pulumi.get(__ret__, 'node_locations'),
+        node_pool_auto_configs=pulumi.get(__ret__, 'node_pool_auto_configs'),
+        node_pool_defaults=pulumi.get(__ret__, 'node_pool_defaults'),
+        node_pools=pulumi.get(__ret__, 'node_pools'),
+        node_version=pulumi.get(__ret__, 'node_version'),
+        notification_configs=pulumi.get(__ret__, 'notification_configs'),
+        operation=pulumi.get(__ret__, 'operation'),
+        pod_security_policy_configs=pulumi.get(__ret__, 'pod_security_policy_configs'),
+        private_cluster_configs=pulumi.get(__ret__, 'private_cluster_configs'),
+        private_ipv6_google_access=pulumi.get(__ret__, 'private_ipv6_google_access'),
+        project=pulumi.get(__ret__, 'project'),
+        protect_configs=pulumi.get(__ret__, 'protect_configs'),
+        release_channels=pulumi.get(__ret__, 'release_channels'),
+        remove_default_node_pool=pulumi.get(__ret__, 'remove_default_node_pool'),
+        resource_labels=pulumi.get(__ret__, 'resource_labels'),
+        resource_usage_export_configs=pulumi.get(__ret__, 'resource_usage_export_configs'),
+        security_posture_configs=pulumi.get(__ret__, 'security_posture_configs'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        service_external_ips_configs=pulumi.get(__ret__, 'service_external_ips_configs'),
+        services_ipv4_cidr=pulumi.get(__ret__, 'services_ipv4_cidr'),
+        subnetwork=pulumi.get(__ret__, 'subnetwork'),
+        tpu_configs=pulumi.get(__ret__, 'tpu_configs'),
+        tpu_ipv4_cidr_block=pulumi.get(__ret__, 'tpu_ipv4_cidr_block'),
+        vertical_pod_autoscalings=pulumi.get(__ret__, 'vertical_pod_autoscalings'),
+        workload_identity_configs=pulumi.get(__ret__, 'workload_identity_configs'))
 
 
 @_utilities.lift_output_func(get_cluster)

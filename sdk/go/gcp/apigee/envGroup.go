@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -128,6 +129,7 @@ func NewEnvGroup(ctx *pulumi.Context,
 	if args.OrgId == nil {
 		return nil, errors.New("invalid value for required argument 'OrgId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EnvGroup
 	err := ctx.RegisterResource("gcp:apigee/envGroup:EnvGroup", name, args, &resource, opts...)
 	if err != nil {

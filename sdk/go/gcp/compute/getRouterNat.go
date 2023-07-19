@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func LookupRouterNat(ctx *pulumi.Context, args *LookupRouterNatArgs, opts ...pulumi.InvokeOption) (*LookupRouterNatResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRouterNatResult
 	err := ctx.Invoke("gcp:compute/getRouterNat:getRouterNat", args, &rv, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,6 +22,10 @@ import (
 //
 // > **Note:** Ask your Google Cloud account team to request access to workforce identity federation for your
 // billing/quota project. The account team notifies you when the project is granted access.
+//
+// > **Warning:** All arguments including the following potentially sensitive
+// values will be stored in the raw state as plain text: `oidc.client_secret.value.plain_text`.
+// Read more about sensitive data in state.
 //
 // ## Example Usage
 // ### Iam Workforce Pool Provider Saml Basic
@@ -141,9 +146,14 @@ import (
 //				Oidc: &iam.WorkforcePoolProviderOidcArgs{
 //					IssuerUri: pulumi.String("https://accounts.thirdparty.com"),
 //					ClientId:  pulumi.String("client-id"),
+//					ClientSecret: &iam.WorkforcePoolProviderOidcClientSecretArgs{
+//						Value: &iam.WorkforcePoolProviderOidcClientSecretValueArgs{
+//							PlainText: pulumi.String("client-secret"),
+//						},
+//					},
 //					WebSsoConfig: &iam.WorkforcePoolProviderOidcWebSsoConfigArgs{
-//						ResponseType:            pulumi.String("ID_TOKEN"),
-//						AssertionClaimsBehavior: pulumi.String("ONLY_ID_TOKEN_CLAIMS"),
+//						ResponseType:            pulumi.String("CODE"),
+//						AssertionClaimsBehavior: pulumi.String("MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS"),
 //					},
 //				},
 //			})
@@ -187,9 +197,14 @@ import (
 //				Oidc: &iam.WorkforcePoolProviderOidcArgs{
 //					IssuerUri: pulumi.String("https://accounts.thirdparty.com"),
 //					ClientId:  pulumi.String("client-id"),
+//					ClientSecret: &iam.WorkforcePoolProviderOidcClientSecretArgs{
+//						Value: &iam.WorkforcePoolProviderOidcClientSecretValueArgs{
+//							PlainText: pulumi.String("client-secret"),
+//						},
+//					},
 //					WebSsoConfig: &iam.WorkforcePoolProviderOidcWebSsoConfigArgs{
-//						ResponseType:            pulumi.String("ID_TOKEN"),
-//						AssertionClaimsBehavior: pulumi.String("ONLY_ID_TOKEN_CLAIMS"),
+//						ResponseType:            pulumi.String("CODE"),
+//						AssertionClaimsBehavior: pulumi.String("MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS"),
 //					},
 //				},
 //				DisplayName:        pulumi.String("Display name"),
@@ -337,6 +352,7 @@ func NewWorkforcePoolProvider(ctx *pulumi.Context,
 	if args.WorkforcePoolId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkforcePoolId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkforcePoolProvider
 	err := ctx.RegisterResource("gcp:iam/workforcePoolProvider:WorkforcePoolProvider", name, args, &resource, opts...)
 	if err != nil {

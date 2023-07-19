@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -85,6 +86,7 @@ type Provider struct {
 	FilestoreCustomEndpoint                pulumi.StringPtrOutput `pulumi:"filestoreCustomEndpoint"`
 	FirebaseCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"firebaseCustomEndpoint"`
 	FirebaseDatabaseCustomEndpoint         pulumi.StringPtrOutput `pulumi:"firebaseDatabaseCustomEndpoint"`
+	FirebaseExtensionsCustomEndpoint       pulumi.StringPtrOutput `pulumi:"firebaseExtensionsCustomEndpoint"`
 	FirebaseHostingCustomEndpoint          pulumi.StringPtrOutput `pulumi:"firebaseHostingCustomEndpoint"`
 	FirebaseStorageCustomEndpoint          pulumi.StringPtrOutput `pulumi:"firebaseStorageCustomEndpoint"`
 	FirebaserulesCustomEndpoint            pulumi.StringPtrOutput `pulumi:"firebaserulesCustomEndpoint"`
@@ -120,6 +122,7 @@ type Provider struct {
 	OsLoginCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"osLoginCustomEndpoint"`
 	PrivatecaCustomEndpoint                pulumi.StringPtrOutput `pulumi:"privatecaCustomEndpoint"`
 	Project                                pulumi.StringPtrOutput `pulumi:"project"`
+	PublicCaCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"publicCaCustomEndpoint"`
 	PubsubCustomEndpoint                   pulumi.StringPtrOutput `pulumi:"pubsubCustomEndpoint"`
 	PubsubLiteCustomEndpoint               pulumi.StringPtrOutput `pulumi:"pubsubLiteCustomEndpoint"`
 	RecaptchaEnterpriseCustomEndpoint      pulumi.StringPtrOutput `pulumi:"recaptchaEnterpriseCustomEndpoint"`
@@ -162,20 +165,21 @@ func NewProvider(ctx *pulumi.Context,
 	}
 
 	if args.Project == nil {
-		if d := getEnvOrDefault(nil, nil, "GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT"); d != nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT"); d != nil {
 			args.Project = pulumi.StringPtr(d.(string))
 		}
 	}
 	if args.Region == nil {
-		if d := getEnvOrDefault(nil, nil, "GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION"); d != nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION"); d != nil {
 			args.Region = pulumi.StringPtr(d.(string))
 		}
 	}
 	if args.Zone == nil {
-		if d := getEnvOrDefault(nil, nil, "GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE"); d != nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE"); d != nil {
 			args.Zone = pulumi.StringPtr(d.(string))
 		}
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:gcp", name, args, &resource, opts...)
 	if err != nil {
@@ -255,6 +259,7 @@ type providerArgs struct {
 	FilestoreCustomEndpoint                *string           `pulumi:"filestoreCustomEndpoint"`
 	FirebaseCustomEndpoint                 *string           `pulumi:"firebaseCustomEndpoint"`
 	FirebaseDatabaseCustomEndpoint         *string           `pulumi:"firebaseDatabaseCustomEndpoint"`
+	FirebaseExtensionsCustomEndpoint       *string           `pulumi:"firebaseExtensionsCustomEndpoint"`
 	FirebaseHostingCustomEndpoint          *string           `pulumi:"firebaseHostingCustomEndpoint"`
 	FirebaseStorageCustomEndpoint          *string           `pulumi:"firebaseStorageCustomEndpoint"`
 	FirebaserulesCustomEndpoint            *string           `pulumi:"firebaserulesCustomEndpoint"`
@@ -291,6 +296,7 @@ type providerArgs struct {
 	OsLoginCustomEndpoint                  *string           `pulumi:"osLoginCustomEndpoint"`
 	PrivatecaCustomEndpoint                *string           `pulumi:"privatecaCustomEndpoint"`
 	Project                                *string           `pulumi:"project"`
+	PublicCaCustomEndpoint                 *string           `pulumi:"publicCaCustomEndpoint"`
 	PubsubCustomEndpoint                   *string           `pulumi:"pubsubCustomEndpoint"`
 	PubsubLiteCustomEndpoint               *string           `pulumi:"pubsubLiteCustomEndpoint"`
 	RecaptchaEnterpriseCustomEndpoint      *string           `pulumi:"recaptchaEnterpriseCustomEndpoint"`
@@ -399,6 +405,7 @@ type ProviderArgs struct {
 	FilestoreCustomEndpoint                pulumi.StringPtrInput
 	FirebaseCustomEndpoint                 pulumi.StringPtrInput
 	FirebaseDatabaseCustomEndpoint         pulumi.StringPtrInput
+	FirebaseExtensionsCustomEndpoint       pulumi.StringPtrInput
 	FirebaseHostingCustomEndpoint          pulumi.StringPtrInput
 	FirebaseStorageCustomEndpoint          pulumi.StringPtrInput
 	FirebaserulesCustomEndpoint            pulumi.StringPtrInput
@@ -435,6 +442,7 @@ type ProviderArgs struct {
 	OsLoginCustomEndpoint                  pulumi.StringPtrInput
 	PrivatecaCustomEndpoint                pulumi.StringPtrInput
 	Project                                pulumi.StringPtrInput
+	PublicCaCustomEndpoint                 pulumi.StringPtrInput
 	PubsubCustomEndpoint                   pulumi.StringPtrInput
 	PubsubLiteCustomEndpoint               pulumi.StringPtrInput
 	RecaptchaEnterpriseCustomEndpoint      pulumi.StringPtrInput
@@ -780,6 +788,10 @@ func (o ProviderOutput) FirebaseDatabaseCustomEndpoint() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.FirebaseDatabaseCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) FirebaseExtensionsCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.FirebaseExtensionsCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) FirebaseHostingCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.FirebaseHostingCustomEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -918,6 +930,10 @@ func (o ProviderOutput) PrivatecaCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) PublicCaCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.PublicCaCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) PubsubCustomEndpoint() pulumi.StringPtrOutput {

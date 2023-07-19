@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupQueueIamPolicy(ctx *pulumi.Context, args *LookupQueueIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupQueueIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupQueueIamPolicyResult
 	err := ctx.Invoke("gcp:cloudtasks/getQueueIamPolicy:getQueueIamPolicy", args, &rv, opts...)
 	if err != nil {

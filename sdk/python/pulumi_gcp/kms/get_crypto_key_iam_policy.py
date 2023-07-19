@@ -88,7 +88,7 @@ def get_crypto_key_iam_policy(crypto_key_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.kms.get_crypto_key_iam_policy(crypto_key_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    foo = gcp.kms.get_crypto_key_iam_policy(crypto_key_id=google_kms_crypto_key["crypto_key"]["id"])
     ```
 
 
@@ -100,10 +100,10 @@ def get_crypto_key_iam_policy(crypto_key_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy', __args__, opts=opts, typ=GetCryptoKeyIamPolicyResult).value
 
     return AwaitableGetCryptoKeyIamPolicyResult(
-        crypto_key_id=__ret__.crypto_key_id,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data)
+        crypto_key_id=pulumi.get(__ret__, 'crypto_key_id'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'))
 
 
 @_utilities.lift_output_func(get_crypto_key_iam_policy)
@@ -118,7 +118,7 @@ def get_crypto_key_iam_policy_output(crypto_key_id: Optional[pulumi.Input[str]] 
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.kms.get_crypto_key_iam_policy(crypto_key_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    foo = gcp.kms.get_crypto_key_iam_policy(crypto_key_id=google_kms_crypto_key["crypto_key"]["id"])
     ```
 
 

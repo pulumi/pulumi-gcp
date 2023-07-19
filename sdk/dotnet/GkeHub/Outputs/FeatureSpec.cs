@@ -13,6 +13,10 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     [OutputType]
     public sealed class FeatureSpec
     {
+        /// <summary>
+        /// Fleet Observability feature spec.
+        /// Structure is documented below.
+        /// </summary>
         public readonly Outputs.FeatureSpecFleetobservability? Fleetobservability;
         /// <summary>
         /// Multicluster Ingress-specific spec.

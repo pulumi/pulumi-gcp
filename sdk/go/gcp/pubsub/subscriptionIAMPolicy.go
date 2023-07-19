@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -184,6 +185,7 @@ func NewSubscriptionIAMPolicy(ctx *pulumi.Context,
 	if args.Subscription == nil {
 		return nil, errors.New("invalid value for required argument 'Subscription'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SubscriptionIAMPolicy
 	err := ctx.RegisterResource("gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy", name, args, &resource, opts...)
 	if err != nil {

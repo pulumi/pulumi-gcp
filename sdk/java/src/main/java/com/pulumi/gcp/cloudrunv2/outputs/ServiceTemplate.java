@@ -20,7 +20,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceTemplate {
     /**
-     * @return KRM-style annotations for the resource.
+     * @return Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+     * Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+     * All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+     * This field follows Kubernetes annotations&#39; namespacing, limits, and rules.
      * 
      */
     private @Nullable Map<String,String> annotations;
@@ -42,7 +45,10 @@ public final class ServiceTemplate {
      */
     private @Nullable String executionEnvironment;
     /**
-     * @return KRM-style labels for the resource.
+     * @return Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
+     * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+     * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+     * All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
      * 
      */
     private @Nullable Map<String,String> labels;
@@ -93,7 +99,10 @@ public final class ServiceTemplate {
 
     private ServiceTemplate() {}
     /**
-     * @return KRM-style annotations for the resource.
+     * @return Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+     * Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+     * All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+     * This field follows Kubernetes annotations&#39; namespacing, limits, and rules.
      * 
      */
     public Map<String,String> annotations() {
@@ -123,7 +132,10 @@ public final class ServiceTemplate {
         return Optional.ofNullable(this.executionEnvironment);
     }
     /**
-     * @return KRM-style labels for the resource.
+     * @return Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
+     * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+     * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+     * All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
      * 
      */
     public Map<String,String> labels() {

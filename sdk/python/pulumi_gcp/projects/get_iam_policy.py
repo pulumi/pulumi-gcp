@@ -101,10 +101,10 @@ def get_iam_policy(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:projects/getIamPolicy:getIamPolicy', __args__, opts=opts, typ=GetIamPolicyResult).value
 
     return AwaitableGetIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_iam_policy)

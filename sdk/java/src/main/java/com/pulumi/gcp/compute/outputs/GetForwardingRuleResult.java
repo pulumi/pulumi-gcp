@@ -36,6 +36,7 @@ public final class GetForwardingRuleResult {
     private String name;
     private String network;
     private String networkTier;
+    private Boolean noAutomateDnsZone;
     private String portRange;
     private List<String> ports;
     private @Nullable String project;
@@ -106,6 +107,9 @@ public final class GetForwardingRuleResult {
     public String networkTier() {
         return this.networkTier;
     }
+    public Boolean noAutomateDnsZone() {
+        return this.noAutomateDnsZone;
+    }
     public String portRange() {
         return this.portRange;
     }
@@ -172,6 +176,7 @@ public final class GetForwardingRuleResult {
         private String name;
         private String network;
         private String networkTier;
+        private Boolean noAutomateDnsZone;
         private String portRange;
         private List<String> ports;
         private @Nullable String project;
@@ -205,6 +210,7 @@ public final class GetForwardingRuleResult {
     	      this.name = defaults.name;
     	      this.network = defaults.network;
     	      this.networkTier = defaults.networkTier;
+    	      this.noAutomateDnsZone = defaults.noAutomateDnsZone;
     	      this.portRange = defaults.portRange;
     	      this.ports = defaults.ports;
     	      this.project = defaults.project;
@@ -306,6 +312,11 @@ public final class GetForwardingRuleResult {
             return this;
         }
         @CustomType.Setter
+        public Builder noAutomateDnsZone(Boolean noAutomateDnsZone) {
+            this.noAutomateDnsZone = Objects.requireNonNull(noAutomateDnsZone);
+            return this;
+        }
+        @CustomType.Setter
         public Builder portRange(String portRange) {
             this.portRange = Objects.requireNonNull(portRange);
             return this;
@@ -398,6 +409,7 @@ public final class GetForwardingRuleResult {
             o.name = name;
             o.network = network;
             o.networkTier = networkTier;
+            o.noAutomateDnsZone = noAutomateDnsZone;
             o.portRange = portRange;
             o.ports = ports;
             o.project = project;

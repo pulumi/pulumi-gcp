@@ -205,17 +205,17 @@ def get_cluster_istio_service(cluster_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:monitoring/getClusterIstioService:getClusterIstioService', __args__, opts=opts, typ=GetClusterIstioServiceResult).value
 
     return AwaitableGetClusterIstioServiceResult(
-        cluster_name=__ret__.cluster_name,
-        display_name=__ret__.display_name,
-        id=__ret__.id,
-        location=__ret__.location,
-        name=__ret__.name,
-        project=__ret__.project,
-        service_id=__ret__.service_id,
-        service_name=__ret__.service_name,
-        service_namespace=__ret__.service_namespace,
-        telemetries=__ret__.telemetries,
-        user_labels=__ret__.user_labels)
+        cluster_name=pulumi.get(__ret__, 'cluster_name'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        service_id=pulumi.get(__ret__, 'service_id'),
+        service_name=pulumi.get(__ret__, 'service_name'),
+        service_namespace=pulumi.get(__ret__, 'service_namespace'),
+        telemetries=pulumi.get(__ret__, 'telemetries'),
+        user_labels=pulumi.get(__ret__, 'user_labels'))
 
 
 @_utilities.lift_output_func(get_cluster_istio_service)

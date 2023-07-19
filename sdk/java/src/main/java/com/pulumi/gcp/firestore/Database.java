@@ -28,6 +28,124 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/firestore/docs/)
  * 
  * ## Example Usage
+ * ### Firestore Database
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.time.time_sleep;
+ * import com.pulumi.time.Time_sleepArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;my-project&#34;)
+ *             .orgId(&#34;123456789&#34;)
+ *             .build());
+ * 
+ *         var wait60Seconds = new Time_sleep(&#34;wait60Seconds&#34;, Time_sleepArgs.builder()        
+ *             .createDuration(&#34;60s&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
+ * 
+ *         var firestore = new Service(&#34;firestore&#34;, ServiceArgs.builder()        
+ *             .project(project.projectId())
+ *             .service(&#34;firestore.googleapis.com&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait60Seconds)
+ *                 .build());
+ * 
+ *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
+ *             .project(project.projectId())
+ *             .locationId(&#34;nam5&#34;)
+ *             .type(&#34;FIRESTORE_NATIVE&#34;)
+ *             .concurrencyMode(&#34;OPTIMISTIC&#34;)
+ *             .appEngineIntegrationMode(&#34;DISABLED&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(firestore)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Firestore Database Datastore Mode
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Project;
+ * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.time.time_sleep;
+ * import com.pulumi.time.Time_sleepArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
+ *             .projectId(&#34;my-project&#34;)
+ *             .orgId(&#34;123456789&#34;)
+ *             .build());
+ * 
+ *         var wait60Seconds = new Time_sleep(&#34;wait60Seconds&#34;, Time_sleepArgs.builder()        
+ *             .createDuration(&#34;60s&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(project)
+ *                 .build());
+ * 
+ *         var firestore = new Service(&#34;firestore&#34;, ServiceArgs.builder()        
+ *             .project(project.projectId())
+ *             .service(&#34;firestore.googleapis.com&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(wait60Seconds)
+ *                 .build());
+ * 
+ *         var datastoreModeDatabase = new Database(&#34;datastoreModeDatabase&#34;, DatabaseArgs.builder()        
+ *             .project(project.projectId())
+ *             .locationId(&#34;nam5&#34;)
+ *             .type(&#34;DATASTORE_MODE&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(firestore)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

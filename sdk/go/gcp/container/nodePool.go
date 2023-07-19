@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -173,6 +174,7 @@ func NewNodePool(ctx *pulumi.Context,
 	if args.Cluster == nil {
 		return nil, errors.New("invalid value for required argument 'Cluster'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NodePool
 	err := ctx.RegisterResource("gcp:container/nodePool:NodePool", name, args, &resource, opts...)
 	if err != nil {

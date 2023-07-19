@@ -18,14 +18,18 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs ext
     public static final OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs Empty = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs();
 
     /**
-     * Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
+     * Additional properties to use during installation.
+     * This should be in the format of Property=Setting. Appended to the defaults
+     * of `ACTION=INSTALL REBOOT=ReallySuppress`.
      * 
      */
     @Import(name="properties")
     private @Nullable Output<List<String>> properties;
 
     /**
-     * @return Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
+     * @return Additional properties to use during installation.
+     * This should be in the format of Property=Setting. Appended to the defaults
+     * of `ACTION=INSTALL REBOOT=ReallySuppress`.
      * 
      */
     public Optional<Output<List<String>>> properties() {
@@ -33,14 +37,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs ext
     }
 
     /**
-     * Required. The MSI package.
+     * The MSI package. Structure is
+     * documented below.
      * 
      */
     @Import(name="source", required=true)
     private Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs> source;
 
     /**
-     * @return Required. The MSI package.
+     * @return The MSI package. Structure is
+     * documented below.
      * 
      */
     public Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs> source() {
@@ -73,7 +79,9 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs ext
         }
 
         /**
-         * @param properties Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
+         * @param properties Additional properties to use during installation.
+         * This should be in the format of Property=Setting. Appended to the defaults
+         * of `ACTION=INSTALL REBOOT=ReallySuppress`.
          * 
          * @return builder
          * 
@@ -84,7 +92,9 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs ext
         }
 
         /**
-         * @param properties Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
+         * @param properties Additional properties to use during installation.
+         * This should be in the format of Property=Setting. Appended to the defaults
+         * of `ACTION=INSTALL REBOOT=ReallySuppress`.
          * 
          * @return builder
          * 
@@ -94,7 +104,9 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs ext
         }
 
         /**
-         * @param properties Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
+         * @param properties Additional properties to use during installation.
+         * This should be in the format of Property=Setting. Appended to the defaults
+         * of `ACTION=INSTALL REBOOT=ReallySuppress`.
          * 
          * @return builder
          * 
@@ -104,7 +116,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs ext
         }
 
         /**
-         * @param source Required. The MSI package.
+         * @param source The MSI package. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -115,7 +128,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs ext
         }
 
         /**
-         * @param source Required. The MSI package.
+         * @param source The MSI package. Structure is
+         * documented below.
          * 
          * @return builder
          * 

@@ -7046,6 +7046,44 @@ public final class ComputeFunctions {
     /**
      * Provides access to available Google Compute regions for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionsArgs;
+     * import com.pulumi.gcp.compute.Subnetwork;
+     * import com.pulumi.gcp.compute.SubnetworkArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ComputeFunctions.getRegions();
+     * 
+     *         for (var i = 0; i &lt; available.applyValue(getRegionsResult -&gt; getRegionsResult.names()).length(); i++) {
+     *             new Subnetwork(&#34;cluster-&#34; + i, SubnetworkArgs.builder()            
+     *                 .ipCidrRange(String.format(&#34;10.36.%s.0/24&#34;, range.value()))
+     *                 .network(&#34;my-network&#34;)
+     *                 .region(available.applyValue(getRegionsResult -&gt; getRegionsResult.names())[range.value()])
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRegionsResult> getRegions() {
@@ -7054,6 +7092,44 @@ public final class ComputeFunctions {
     /**
      * Provides access to available Google Compute regions for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionsArgs;
+     * import com.pulumi.gcp.compute.Subnetwork;
+     * import com.pulumi.gcp.compute.SubnetworkArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ComputeFunctions.getRegions();
+     * 
+     *         for (var i = 0; i &lt; available.applyValue(getRegionsResult -&gt; getRegionsResult.names()).length(); i++) {
+     *             new Subnetwork(&#34;cluster-&#34; + i, SubnetworkArgs.builder()            
+     *                 .ipCidrRange(String.format(&#34;10.36.%s.0/24&#34;, range.value()))
+     *                 .network(&#34;my-network&#34;)
+     *                 .region(available.applyValue(getRegionsResult -&gt; getRegionsResult.names())[range.value()])
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain() {
@@ -7062,6 +7138,44 @@ public final class ComputeFunctions {
     /**
      * Provides access to available Google Compute regions for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionsArgs;
+     * import com.pulumi.gcp.compute.Subnetwork;
+     * import com.pulumi.gcp.compute.SubnetworkArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ComputeFunctions.getRegions();
+     * 
+     *         for (var i = 0; i &lt; available.applyValue(getRegionsResult -&gt; getRegionsResult.names()).length(); i++) {
+     *             new Subnetwork(&#34;cluster-&#34; + i, SubnetworkArgs.builder()            
+     *                 .ipCidrRange(String.format(&#34;10.36.%s.0/24&#34;, range.value()))
+     *                 .network(&#34;my-network&#34;)
+     *                 .region(available.applyValue(getRegionsResult -&gt; getRegionsResult.names())[range.value()])
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRegionsResult> getRegions(GetRegionsArgs args) {
@@ -7070,6 +7184,44 @@ public final class ComputeFunctions {
     /**
      * Provides access to available Google Compute regions for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionsArgs;
+     * import com.pulumi.gcp.compute.Subnetwork;
+     * import com.pulumi.gcp.compute.SubnetworkArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ComputeFunctions.getRegions();
+     * 
+     *         for (var i = 0; i &lt; available.applyValue(getRegionsResult -&gt; getRegionsResult.names()).length(); i++) {
+     *             new Subnetwork(&#34;cluster-&#34; + i, SubnetworkArgs.builder()            
+     *                 .ipCidrRange(String.format(&#34;10.36.%s.0/24&#34;, range.value()))
+     *                 .network(&#34;my-network&#34;)
+     *                 .region(available.applyValue(getRegionsResult -&gt; getRegionsResult.names())[range.value()])
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args) {
@@ -7078,6 +7230,44 @@ public final class ComputeFunctions {
     /**
      * Provides access to available Google Compute regions for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionsArgs;
+     * import com.pulumi.gcp.compute.Subnetwork;
+     * import com.pulumi.gcp.compute.SubnetworkArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ComputeFunctions.getRegions();
+     * 
+     *         for (var i = 0; i &lt; available.applyValue(getRegionsResult -&gt; getRegionsResult.names()).length(); i++) {
+     *             new Subnetwork(&#34;cluster-&#34; + i, SubnetworkArgs.builder()            
+     *                 .ipCidrRange(String.format(&#34;10.36.%s.0/24&#34;, range.value()))
+     *                 .network(&#34;my-network&#34;)
+     *                 .region(available.applyValue(getRegionsResult -&gt; getRegionsResult.names())[range.value()])
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetRegionsResult> getRegions(GetRegionsArgs args, InvokeOptions options) {
@@ -7086,6 +7276,44 @@ public final class ComputeFunctions {
     /**
      * Provides access to available Google Compute regions for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionsArgs;
+     * import com.pulumi.gcp.compute.Subnetwork;
+     * import com.pulumi.gcp.compute.SubnetworkArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ComputeFunctions.getRegions();
+     * 
+     *         for (var i = 0; i &lt; available.applyValue(getRegionsResult -&gt; getRegionsResult.names()).length(); i++) {
+     *             new Subnetwork(&#34;cluster-&#34; + i, SubnetworkArgs.builder()            
+     *                 .ipCidrRange(String.format(&#34;10.36.%s.0/24&#34;, range.value()))
+     *                 .network(&#34;my-network&#34;)
+     *                 .region(available.applyValue(getRegionsResult -&gt; getRegionsResult.names())[range.value()])
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args, InvokeOptions options) {
@@ -8839,6 +9067,46 @@ public final class ComputeFunctions {
      * Provides access to available Google Compute zones in a region for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
      * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetZonesArgs;
+     * import com.pulumi.gcp.compute.InstanceGroupManager;
+     * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ComputeFunctions.getZones();
+     * 
+     *         for (var i = 0; i &lt; available.applyValue(getZonesResult -&gt; getZonesResult.names()).length(); i++) {
+     *             new InstanceGroupManager(&#34;foo-&#34; + i, InstanceGroupManagerArgs.builder()            
+     *                 .instanceTemplate(google_compute_instance_template.foobar().self_link())
+     *                 .baseInstanceName(String.format(&#34;foobar-%s&#34;, range.value()))
+     *                 .zone(available.applyValue(getZonesResult -&gt; getZonesResult.names())[range.value()])
+     *                 .targetSize(1)
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZonesResult> getZones() {
         return getZones(GetZonesArgs.Empty, InvokeOptions.Empty);
@@ -8846,6 +9114,46 @@ public final class ComputeFunctions {
     /**
      * Provides access to available Google Compute zones in a region for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetZonesArgs;
+     * import com.pulumi.gcp.compute.InstanceGroupManager;
+     * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ComputeFunctions.getZones();
+     * 
+     *         for (var i = 0; i &lt; available.applyValue(getZonesResult -&gt; getZonesResult.names()).length(); i++) {
+     *             new InstanceGroupManager(&#34;foo-&#34; + i, InstanceGroupManagerArgs.builder()            
+     *                 .instanceTemplate(google_compute_instance_template.foobar().self_link())
+     *                 .baseInstanceName(String.format(&#34;foobar-%s&#34;, range.value()))
+     *                 .zone(available.applyValue(getZonesResult -&gt; getZonesResult.names())[range.value()])
+     *                 .targetSize(1)
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -8855,6 +9163,46 @@ public final class ComputeFunctions {
      * Provides access to available Google Compute zones in a region for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
      * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetZonesArgs;
+     * import com.pulumi.gcp.compute.InstanceGroupManager;
+     * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ComputeFunctions.getZones();
+     * 
+     *         for (var i = 0; i &lt; available.applyValue(getZonesResult -&gt; getZonesResult.names()).length(); i++) {
+     *             new InstanceGroupManager(&#34;foo-&#34; + i, InstanceGroupManagerArgs.builder()            
+     *                 .instanceTemplate(google_compute_instance_template.foobar().self_link())
+     *                 .baseInstanceName(String.format(&#34;foobar-%s&#34;, range.value()))
+     *                 .zone(available.applyValue(getZonesResult -&gt; getZonesResult.names())[range.value()])
+     *                 .targetSize(1)
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
         return getZones(args, InvokeOptions.Empty);
@@ -8862,6 +9210,46 @@ public final class ComputeFunctions {
     /**
      * Provides access to available Google Compute zones in a region for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetZonesArgs;
+     * import com.pulumi.gcp.compute.InstanceGroupManager;
+     * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ComputeFunctions.getZones();
+     * 
+     *         for (var i = 0; i &lt; available.applyValue(getZonesResult -&gt; getZonesResult.names()).length(); i++) {
+     *             new InstanceGroupManager(&#34;foo-&#34; + i, InstanceGroupManagerArgs.builder()            
+     *                 .instanceTemplate(google_compute_instance_template.foobar().self_link())
+     *                 .baseInstanceName(String.format(&#34;foobar-%s&#34;, range.value()))
+     *                 .zone(available.applyValue(getZonesResult -&gt; getZonesResult.names())[range.value()])
+     *                 .targetSize(1)
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -8871,6 +9259,46 @@ public final class ComputeFunctions {
      * Provides access to available Google Compute zones in a region for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
      * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetZonesArgs;
+     * import com.pulumi.gcp.compute.InstanceGroupManager;
+     * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ComputeFunctions.getZones();
+     * 
+     *         for (var i = 0; i &lt; available.applyValue(getZonesResult -&gt; getZonesResult.names()).length(); i++) {
+     *             new InstanceGroupManager(&#34;foo-&#34; + i, InstanceGroupManagerArgs.builder()            
+     *                 .instanceTemplate(google_compute_instance_template.foobar().self_link())
+     *                 .baseInstanceName(String.format(&#34;foobar-%s&#34;, range.value()))
+     *                 .zone(available.applyValue(getZonesResult -&gt; getZonesResult.names())[range.value()])
+     *                 .targetSize(1)
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * ```
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:compute/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
@@ -8878,6 +9306,46 @@ public final class ComputeFunctions {
     /**
      * Provides access to available Google Compute zones in a region for a given project.
      * See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetZonesArgs;
+     * import com.pulumi.gcp.compute.InstanceGroupManager;
+     * import com.pulumi.gcp.compute.InstanceGroupManagerArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = ComputeFunctions.getZones();
+     * 
+     *         for (var i = 0; i &lt; available.applyValue(getZonesResult -&gt; getZonesResult.names()).length(); i++) {
+     *             new InstanceGroupManager(&#34;foo-&#34; + i, InstanceGroupManagerArgs.builder()            
+     *                 .instanceTemplate(google_compute_instance_template.foobar().self_link())
+     *                 .baseInstanceName(String.format(&#34;foobar-%s&#34;, range.value()))
+     *                 .zone(available.applyValue(getZonesResult -&gt; getZonesResult.names())[range.value()])
+     *                 .targetSize(1)
+     *                 .build());
+     * 
+     *         
+     * }
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -189,6 +190,7 @@ func NewField(ctx *pulumi.Context,
 	if args.Field == nil {
 		return nil, errors.New("invalid value for required argument 'Field'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Field
 	err := ctx.RegisterResource("gcp:firestore/field:Field", name, args, &resource, opts...)
 	if err != nil {

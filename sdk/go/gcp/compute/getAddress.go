@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -62,6 +63,7 @@ import (
 //
 // ```
 func LookupAddress(ctx *pulumi.Context, args *LookupAddressArgs, opts ...pulumi.InvokeOption) (*LookupAddressResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAddressResult
 	err := ctx.Invoke("gcp:compute/getAddress:getAddress", args, &rv, opts...)
 	if err != nil {

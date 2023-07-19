@@ -44,6 +44,9 @@ class GCPolicyMaxAge(dict):
         """
         Number of days before applying GC policy.
         """
+        warnings.warn("""Deprecated in favor of duration""", DeprecationWarning)
+        pulumi.log.warn("""days is deprecated: Deprecated in favor of duration""")
+
         return pulumi.get(self, "days")
 
     @property

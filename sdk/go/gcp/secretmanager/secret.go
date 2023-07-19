@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -133,6 +134,7 @@ func NewSecret(ctx *pulumi.Context,
 	if args.SecretId == nil {
 		return nil, errors.New("invalid value for required argument 'SecretId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Secret
 	err := ctx.RegisterResource("gcp:secretmanager/secret:Secret", name, args, &resource, opts...)
 	if err != nil {

@@ -1349,6 +1349,119 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Forwarding Rule Vpc Psc No Automate Dns
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.Address;
+ * import com.pulumi.gcp.compute.AddressArgs;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckTcpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.RegionBackendService;
+ * import com.pulumi.gcp.compute.RegionBackendServiceArgs;
+ * import com.pulumi.gcp.compute.ForwardingRule;
+ * import com.pulumi.gcp.compute.ForwardingRuleArgs;
+ * import com.pulumi.gcp.compute.ServiceAttachment;
+ * import com.pulumi.gcp.compute.ServiceAttachmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var consumerNet = new Network(&#34;consumerNet&#34;, NetworkArgs.builder()        
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var consumerSubnet = new Subnetwork(&#34;consumerSubnet&#34;, SubnetworkArgs.builder()        
+ *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .network(consumerNet.id())
+ *             .build());
+ * 
+ *         var consumerAddress = new Address(&#34;consumerAddress&#34;, AddressArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .subnetwork(consumerSubnet.id())
+ *             .addressType(&#34;INTERNAL&#34;)
+ *             .build());
+ * 
+ *         var producerNet = new Network(&#34;producerNet&#34;, NetworkArgs.builder()        
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var pscProducerSubnet = new Subnetwork(&#34;pscProducerSubnet&#34;, SubnetworkArgs.builder()        
+ *             .ipCidrRange(&#34;10.1.0.0/16&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .purpose(&#34;PRIVATE_SERVICE_CONNECT&#34;)
+ *             .network(producerNet.id())
+ *             .build());
+ * 
+ *         var producerSubnet = new Subnetwork(&#34;producerSubnet&#34;, SubnetworkArgs.builder()        
+ *             .ipCidrRange(&#34;10.0.0.0/16&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .network(producerNet.id())
+ *             .build());
+ * 
+ *         var producerServiceHealthCheck = new HealthCheck(&#34;producerServiceHealthCheck&#34;, HealthCheckArgs.builder()        
+ *             .checkIntervalSec(1)
+ *             .timeoutSec(1)
+ *             .tcpHealthCheck(HealthCheckTcpHealthCheckArgs.builder()
+ *                 .port(&#34;80&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var producerServiceBackend = new RegionBackendService(&#34;producerServiceBackend&#34;, RegionBackendServiceArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .healthChecks(producerServiceHealthCheck.id())
+ *             .build());
+ * 
+ *         var producerTargetService = new ForwardingRule(&#34;producerTargetService&#34;, ForwardingRuleArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .loadBalancingScheme(&#34;INTERNAL&#34;)
+ *             .backendService(producerServiceBackend.id())
+ *             .allPorts(true)
+ *             .network(producerNet.name())
+ *             .subnetwork(producerSubnet.name())
+ *             .build());
+ * 
+ *         var producerServiceAttachment = new ServiceAttachment(&#34;producerServiceAttachment&#34;, ServiceAttachmentArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .description(&#34;A service attachment configured with Terraform&#34;)
+ *             .enableProxyProtocol(true)
+ *             .connectionPreference(&#34;ACCEPT_AUTOMATIC&#34;)
+ *             .natSubnets(pscProducerSubnet.name())
+ *             .targetService(producerTargetService.id())
+ *             .build());
+ * 
+ *         var default_ = new ForwardingRule(&#34;default&#34;, ForwardingRuleArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .loadBalancingScheme(&#34;&#34;)
+ *             .target(producerServiceAttachment.id())
+ *             .network(consumerNet.name())
+ *             .ipAddress(consumerAddress.id())
+ *             .allowPscGlobalAccess(true)
+ *             .noAutomateDnsZone(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Forwarding Rule Regional Steering
  * ```java
  * package generated_program;
@@ -1848,6 +1961,20 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      */
     public Output<String> networkTier() {
         return this.networkTier;
+    }
+    /**
+     * This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+     * 
+     */
+    @Export(name="noAutomateDnsZone", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> noAutomateDnsZone;
+
+    /**
+     * @return This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+     * 
+     */
+    public Output<Optional<Boolean>> noAutomateDnsZone() {
+        return Codegen.optional(this.noAutomateDnsZone);
     }
     /**
      * This field can only be used:

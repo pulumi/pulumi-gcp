@@ -143,13 +143,13 @@ def get_billing_account(billing_account: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getBillingAccount:getBillingAccount', __args__, opts=opts, typ=GetBillingAccountResult).value
 
     return AwaitableGetBillingAccountResult(
-        billing_account=__ret__.billing_account,
-        display_name=__ret__.display_name,
-        id=__ret__.id,
-        lookup_projects=__ret__.lookup_projects,
-        name=__ret__.name,
-        open=__ret__.open,
-        project_ids=__ret__.project_ids)
+        billing_account=pulumi.get(__ret__, 'billing_account'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        id=pulumi.get(__ret__, 'id'),
+        lookup_projects=pulumi.get(__ret__, 'lookup_projects'),
+        name=pulumi.get(__ret__, 'name'),
+        open=pulumi.get(__ret__, 'open'),
+        project_ids=pulumi.get(__ret__, 'project_ids'))
 
 
 @_utilities.lift_output_func(get_billing_account)

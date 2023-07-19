@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func LookupNamespaceIamPolicy(ctx *pulumi.Context, args *LookupNamespaceIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNamespaceIamPolicyResult
 	err := ctx.Invoke("gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy", args, &rv, opts...)
 	if err != nil {

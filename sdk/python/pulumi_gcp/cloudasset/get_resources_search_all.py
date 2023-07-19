@@ -132,11 +132,11 @@ def get_resources_search_all(asset_types: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('gcp:cloudasset/getResourcesSearchAll:getResourcesSearchAll', __args__, opts=opts, typ=GetResourcesSearchAllResult).value
 
     return AwaitableGetResourcesSearchAllResult(
-        asset_types=__ret__.asset_types,
-        id=__ret__.id,
-        query=__ret__.query,
-        results=__ret__.results,
-        scope=__ret__.scope)
+        asset_types=pulumi.get(__ret__, 'asset_types'),
+        id=pulumi.get(__ret__, 'id'),
+        query=pulumi.get(__ret__, 'query'),
+        results=pulumi.get(__ret__, 'results'),
+        scope=pulumi.get(__ret__, 'scope'))
 
 
 @_utilities.lift_output_func(get_resources_search_all)

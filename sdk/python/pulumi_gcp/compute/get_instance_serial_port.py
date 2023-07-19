@@ -174,12 +174,12 @@ def get_instance_serial_port(instance: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getInstanceSerialPort:getInstanceSerialPort', __args__, opts=opts, typ=GetInstanceSerialPortResult).value
 
     return AwaitableGetInstanceSerialPortResult(
-        contents=__ret__.contents,
-        id=__ret__.id,
-        instance=__ret__.instance,
-        port=__ret__.port,
-        project=__ret__.project,
-        zone=__ret__.zone)
+        contents=pulumi.get(__ret__, 'contents'),
+        id=pulumi.get(__ret__, 'id'),
+        instance=pulumi.get(__ret__, 'instance'),
+        port=pulumi.get(__ret__, 'port'),
+        project=pulumi.get(__ret__, 'project'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_instance_serial_port)

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -53,6 +54,7 @@ import (
 //
 // ```
 func GetIstioCanonicalService(ctx *pulumi.Context, args *GetIstioCanonicalServiceArgs, opts ...pulumi.InvokeOption) (*GetIstioCanonicalServiceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIstioCanonicalServiceResult
 	err := ctx.Invoke("gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService", args, &rv, opts...)
 	if err != nil {

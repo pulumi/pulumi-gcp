@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupSubnetwork(ctx *pulumi.Context, args *LookupSubnetworkArgs, opts ...pulumi.InvokeOption) (*LookupSubnetworkResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSubnetworkResult
 	err := ctx.Invoke("gcp:compute/getSubnetwork:getSubnetwork", args, &rv, opts...)
 	if err != nil {

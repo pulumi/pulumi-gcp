@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type JobBinaryAuthorization struct {
 	// If present, indicates to use Breakglass using this justification. If useDefault is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
@@ -807,7 +810,16 @@ func (o JobLatestCreatedExecutionArrayOutput) Index(i pulumi.IntInput) JobLatest
 }
 
 type JobTemplate struct {
-	// KRM-style labels for the resource.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+	// All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
+	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	Annotations map[string]string `pulumi:"annotations"`
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
+	// or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+	// https://cloud.google.com/run/docs/configuring/labels.
+	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+	// All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
 	Labels map[string]string `pulumi:"labels"`
 	// Specifies the maximum desired number of tasks the execution should run at given time. Must be <= taskCount. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
 	Parallelism *int `pulumi:"parallelism"`
@@ -830,7 +842,16 @@ type JobTemplateInput interface {
 }
 
 type JobTemplateArgs struct {
-	// KRM-style labels for the resource.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+	// All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
+	// This field follows Kubernetes annotations' namespacing, limits, and rules.
+	Annotations pulumi.StringMapInput `pulumi:"annotations"`
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
+	// or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+	// https://cloud.google.com/run/docs/configuring/labels.
+	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+	// All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Specifies the maximum desired number of tasks the execution should run at given time. Must be <= taskCount. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
 	Parallelism pulumi.IntPtrInput `pulumi:"parallelism"`
@@ -918,7 +939,19 @@ func (o JobTemplateOutput) ToJobTemplatePtrOutputWithContext(ctx context.Context
 	}).(JobTemplatePtrOutput)
 }
 
-// KRM-style labels for the resource.
+// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+// All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
+// This field follows Kubernetes annotations' namespacing, limits, and rules.
+func (o JobTemplateOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobTemplate) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
+// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
+// or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+// https://cloud.google.com/run/docs/configuring/labels.
+// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+// All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
 func (o JobTemplateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobTemplate) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -963,7 +996,24 @@ func (o JobTemplatePtrOutput) Elem() JobTemplateOutput {
 	}).(JobTemplateOutput)
 }
 
-// KRM-style labels for the resource.
+// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+// All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
+// This field follows Kubernetes annotations' namespacing, limits, and rules.
+func (o JobTemplatePtrOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobTemplate) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Annotations
+	}).(pulumi.StringMapOutput)
+}
+
+// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
+// or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+// https://cloud.google.com/run/docs/configuring/labels.
+// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+// All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
 func (o JobTemplatePtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *JobTemplate) map[string]string {
 		if v == nil {
@@ -5343,7 +5393,10 @@ func (o ServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type ServiceTemplate struct {
-	// KRM-style annotations for the resource.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+	// All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+	// This field follows Kubernetes annotations' namespacing, limits, and rules.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Holds the containers that define the unit of execution for this Service.
 	// Structure is documented below.
@@ -5353,7 +5406,10 @@ type ServiceTemplate struct {
 	// The sandbox environment to host this Revision.
 	// Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
 	ExecutionEnvironment *string `pulumi:"executionEnvironment"`
-	// KRM-style labels for the resource.
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
+	// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+	// All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 	Labels map[string]string `pulumi:"labels"`
 	// Sets the maximum number of requests that each serving instance can receive.
 	MaxInstanceRequestConcurrency *int `pulumi:"maxInstanceRequestConcurrency"`
@@ -5389,7 +5445,10 @@ type ServiceTemplateInput interface {
 }
 
 type ServiceTemplateArgs struct {
-	// KRM-style annotations for the resource.
+	// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+	// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+	// All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+	// This field follows Kubernetes annotations' namespacing, limits, and rules.
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// Holds the containers that define the unit of execution for this Service.
 	// Structure is documented below.
@@ -5399,7 +5458,10 @@ type ServiceTemplateArgs struct {
 	// The sandbox environment to host this Revision.
 	// Possible values are: `EXECUTION_ENVIRONMENT_GEN1`, `EXECUTION_ENVIRONMENT_GEN2`.
 	ExecutionEnvironment pulumi.StringPtrInput `pulumi:"executionEnvironment"`
-	// KRM-style labels for the resource.
+	// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
+	// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+	// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+	// All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Sets the maximum number of requests that each serving instance can receive.
 	MaxInstanceRequestConcurrency pulumi.IntPtrInput `pulumi:"maxInstanceRequestConcurrency"`
@@ -5500,7 +5562,10 @@ func (o ServiceTemplateOutput) ToServiceTemplatePtrOutputWithContext(ctx context
 	}).(ServiceTemplatePtrOutput)
 }
 
-// KRM-style annotations for the resource.
+// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+// All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+// This field follows Kubernetes annotations' namespacing, limits, and rules.
 func (o ServiceTemplateOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceTemplate) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -5522,7 +5587,10 @@ func (o ServiceTemplateOutput) ExecutionEnvironment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplate) *string { return v.ExecutionEnvironment }).(pulumi.StringPtrOutput)
 }
 
-// KRM-style labels for the resource.
+// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
+// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+// All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 func (o ServiceTemplateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceTemplate) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -5595,7 +5663,10 @@ func (o ServiceTemplatePtrOutput) Elem() ServiceTemplateOutput {
 	}).(ServiceTemplateOutput)
 }
 
-// KRM-style annotations for the resource.
+// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+// All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+// This field follows Kubernetes annotations' namespacing, limits, and rules.
 func (o ServiceTemplatePtrOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceTemplate) map[string]string {
 		if v == nil {
@@ -5637,7 +5708,10 @@ func (o ServiceTemplatePtrOutput) ExecutionEnvironment() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// KRM-style labels for the resource.
+// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
+// For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+// All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 func (o ServiceTemplatePtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceTemplate) map[string]string {
 		if v == nil {

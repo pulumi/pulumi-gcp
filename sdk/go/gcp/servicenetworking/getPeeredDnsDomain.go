@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func LookupPeeredDnsDomain(ctx *pulumi.Context, args *LookupPeeredDnsDomainArgs, opts ...pulumi.InvokeOption) (*LookupPeeredDnsDomainResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPeeredDnsDomainResult
 	err := ctx.Invoke("gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain", args, &rv, opts...)
 	if err != nil {

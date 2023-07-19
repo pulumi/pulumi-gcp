@@ -24,7 +24,7 @@ export class Provider extends pulumi.ProviderResource {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === Provider.__pulumiType;
+        return obj['__pulumiType'] === "pulumi:providers:" + Provider.__pulumiType;
     }
 
     public readonly accessApprovalCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -95,6 +95,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly filestoreCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaseCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaseDatabaseCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly firebaseExtensionsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaseHostingCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaseStorageCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaserulesCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -130,6 +131,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly osLoginCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly privatecaCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly project!: pulumi.Output<string | undefined>;
+    public readonly publicCaCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly pubsubCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly pubsubLiteCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly recaptchaEnterpriseCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -244,6 +246,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["filestoreCustomEndpoint"] = args ? args.filestoreCustomEndpoint : undefined;
             resourceInputs["firebaseCustomEndpoint"] = args ? args.firebaseCustomEndpoint : undefined;
             resourceInputs["firebaseDatabaseCustomEndpoint"] = args ? args.firebaseDatabaseCustomEndpoint : undefined;
+            resourceInputs["firebaseExtensionsCustomEndpoint"] = args ? args.firebaseExtensionsCustomEndpoint : undefined;
             resourceInputs["firebaseHostingCustomEndpoint"] = args ? args.firebaseHostingCustomEndpoint : undefined;
             resourceInputs["firebaseStorageCustomEndpoint"] = args ? args.firebaseStorageCustomEndpoint : undefined;
             resourceInputs["firebaserulesCustomEndpoint"] = args ? args.firebaserulesCustomEndpoint : undefined;
@@ -280,6 +283,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["osLoginCustomEndpoint"] = args ? args.osLoginCustomEndpoint : undefined;
             resourceInputs["privatecaCustomEndpoint"] = args ? args.privatecaCustomEndpoint : undefined;
             resourceInputs["project"] = (args ? args.project : undefined) ?? utilities.getEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
+            resourceInputs["publicCaCustomEndpoint"] = args ? args.publicCaCustomEndpoint : undefined;
             resourceInputs["pubsubCustomEndpoint"] = args ? args.pubsubCustomEndpoint : undefined;
             resourceInputs["pubsubLiteCustomEndpoint"] = args ? args.pubsubLiteCustomEndpoint : undefined;
             resourceInputs["recaptchaEnterpriseCustomEndpoint"] = args ? args.recaptchaEnterpriseCustomEndpoint : undefined;
@@ -394,6 +398,7 @@ export interface ProviderArgs {
     filestoreCustomEndpoint?: pulumi.Input<string>;
     firebaseCustomEndpoint?: pulumi.Input<string>;
     firebaseDatabaseCustomEndpoint?: pulumi.Input<string>;
+    firebaseExtensionsCustomEndpoint?: pulumi.Input<string>;
     firebaseHostingCustomEndpoint?: pulumi.Input<string>;
     firebaseStorageCustomEndpoint?: pulumi.Input<string>;
     firebaserulesCustomEndpoint?: pulumi.Input<string>;
@@ -430,6 +435,7 @@ export interface ProviderArgs {
     osLoginCustomEndpoint?: pulumi.Input<string>;
     privatecaCustomEndpoint?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    publicCaCustomEndpoint?: pulumi.Input<string>;
     pubsubCustomEndpoint?: pulumi.Input<string>;
     pubsubLiteCustomEndpoint?: pulumi.Input<string>;
     recaptchaEnterpriseCustomEndpoint?: pulumi.Input<string>;

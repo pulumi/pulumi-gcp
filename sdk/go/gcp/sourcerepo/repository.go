@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -130,6 +131,7 @@ func NewRepository(ctx *pulumi.Context,
 		args = &RepositoryArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Repository
 	err := ctx.RegisterResource("gcp:sourcerepo/repository:Repository", name, args, &resource, opts...)
 	if err != nil {

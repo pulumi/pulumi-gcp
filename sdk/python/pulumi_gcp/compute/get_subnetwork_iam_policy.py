@@ -109,9 +109,9 @@ def get_subnetwork_iam_policy(project: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.compute.get_subnetwork_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        region=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        subnetwork=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.compute.get_subnetwork_iam_policy(project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
+        region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
+        subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"])
     ```
 
 
@@ -131,12 +131,12 @@ def get_subnetwork_iam_policy(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getSubnetworkIamPolicy:getSubnetworkIamPolicy', __args__, opts=opts, typ=GetSubnetworkIamPolicyResult).value
 
     return AwaitableGetSubnetworkIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project,
-        region=__ret__.region,
-        subnetwork=__ret__.subnetwork)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'),
+        subnetwork=pulumi.get(__ret__, 'subnetwork'))
 
 
 @_utilities.lift_output_func(get_subnetwork_iam_policy)
@@ -153,9 +153,9 @@ def get_subnetwork_iam_policy_output(project: Optional[pulumi.Input[Optional[str
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.compute.get_subnetwork_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        region=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        subnetwork=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.compute.get_subnetwork_iam_policy(project=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["project"],
+        region=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["region"],
+        subnetwork=google_compute_subnetwork["network-with-private-secondary-ip-ranges"]["name"])
     ```
 
 

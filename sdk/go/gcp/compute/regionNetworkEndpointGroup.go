@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -202,7 +203,7 @@ import (
 //						TargetUtilization: pulumi.Float64(0.5),
 //					},
 //				},
-//				NoopOnDestroy: pulumi.Bool(true),
+//				DeleteServiceOnDestroy: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -342,6 +343,7 @@ func NewRegionNetworkEndpointGroup(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RegionNetworkEndpointGroup
 	err := ctx.RegisterResource("gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup", name, args, &resource, opts...)
 	if err != nil {

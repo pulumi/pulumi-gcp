@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,6 +45,7 @@ import (
 //
 // ```
 func LookupBucketObject(ctx *pulumi.Context, args *LookupBucketObjectArgs, opts ...pulumi.InvokeOption) (*LookupBucketObjectResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupBucketObjectResult
 	err := ctx.Invoke("gcp:storage/getBucketObject:getBucketObject", args, &rv, opts...)
 	if err != nil {

@@ -118,12 +118,12 @@ def get_gateway_iam_policy(gateway: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:apigateway/getGatewayIamPolicy:getGatewayIamPolicy', __args__, opts=opts, typ=GetGatewayIamPolicyResult).value
 
     return AwaitableGetGatewayIamPolicyResult(
-        etag=__ret__.etag,
-        gateway=__ret__.gateway,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project,
-        region=__ret__.region)
+        etag=pulumi.get(__ret__, 'etag'),
+        gateway=pulumi.get(__ret__, 'gateway'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'))
 
 
 @_utilities.lift_output_func(get_gateway_iam_policy)

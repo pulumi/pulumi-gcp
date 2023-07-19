@@ -20,6 +20,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingBackupConfigurationResult> BackupConfigurations;
         public readonly string Collation;
         public readonly string ConnectorEnforcement;
+        public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingDataCacheConfigResult> DataCacheConfigs;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingDatabaseFlagResult> DatabaseFlags;
         public readonly bool DeletionProtectionEnabled;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingDenyMaintenancePeriodResult> DenyMaintenancePeriods;
@@ -27,6 +28,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         public readonly int DiskAutoresizeLimit;
         public readonly int DiskSize;
         public readonly string DiskType;
+        public readonly string Edition;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingInsightsConfigResult> InsightsConfigs;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingIpConfigurationResult> IpConfigurations;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingLocationPreferenceResult> LocationPreferences;
@@ -55,6 +57,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string connectorEnforcement,
 
+            ImmutableArray<Outputs.GetDatabaseInstanceSettingDataCacheConfigResult> dataCacheConfigs,
+
             ImmutableArray<Outputs.GetDatabaseInstanceSettingDatabaseFlagResult> databaseFlags,
 
             bool deletionProtectionEnabled,
@@ -68,6 +72,8 @@ namespace Pulumi.Gcp.Sql.Outputs
             int diskSize,
 
             string diskType,
+
+            string edition,
 
             ImmutableArray<Outputs.GetDatabaseInstanceSettingInsightsConfigResult> insightsConfigs,
 
@@ -98,6 +104,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             BackupConfigurations = backupConfigurations;
             Collation = collation;
             ConnectorEnforcement = connectorEnforcement;
+            DataCacheConfigs = dataCacheConfigs;
             DatabaseFlags = databaseFlags;
             DeletionProtectionEnabled = deletionProtectionEnabled;
             DenyMaintenancePeriods = denyMaintenancePeriods;
@@ -105,6 +112,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             DiskAutoresizeLimit = diskAutoresizeLimit;
             DiskSize = diskSize;
             DiskType = diskType;
+            Edition = edition;
             InsightsConfigs = insightsConfigs;
             IpConfigurations = ipConfigurations;
             LocationPreferences = locationPreferences;

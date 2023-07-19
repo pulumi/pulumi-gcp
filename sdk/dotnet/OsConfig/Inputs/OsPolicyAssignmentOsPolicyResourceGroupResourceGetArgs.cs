@@ -13,31 +13,41 @@ namespace Pulumi.Gcp.OsConfig.Inputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Exec resource
+        /// Exec resource Structure is
+        /// documented below.
         /// </summary>
         [Input("exec")]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecGetArgs>? Exec { get; set; }
 
         /// <summary>
-        /// File resource
+        /// File resource Structure is
+        /// documented below.
         /// </summary>
         [Input("file")]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceFileGetArgs>? File { get; set; }
 
         /// <summary>
-        /// Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
+        /// The id of the resource with the following restrictions:
+        /// 
+        /// *   Must contain only lowercase letters, numbers, and hyphens.
+        /// *   Must start with a letter.
+        /// *   Must be between 1-63 characters.
+        /// *   Must end with a number or a letter.
+        /// *   Must be unique within the OS policy.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
         /// <summary>
-        /// Package resource
+        /// Package resource Structure is
+        /// documented below.
         /// </summary>
         [Input("pkg")]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGetArgs>? Pkg { get; set; }
 
         /// <summary>
-        /// Package repository resource
+        /// Package repository resource Structure is
+        /// documented below.
         /// </summary>
         [Input("repository")]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGetArgs>? Repository { get; set; }

@@ -109,9 +109,9 @@ def get_autoscaling_policy_iam_policy(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataproc.get_autoscaling_policy_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        policy_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.dataproc.get_autoscaling_policy_iam_policy(project=google_dataproc_autoscaling_policy["basic"]["project"],
+        location=google_dataproc_autoscaling_policy["basic"]["location"],
+        policy_id=google_dataproc_autoscaling_policy["basic"]["policy_id"])
     ```
 
 
@@ -133,12 +133,12 @@ def get_autoscaling_policy_iam_policy(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:dataproc/getAutoscalingPolicyIamPolicy:getAutoscalingPolicyIamPolicy', __args__, opts=opts, typ=GetAutoscalingPolicyIamPolicyResult).value
 
     return AwaitableGetAutoscalingPolicyIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        location=__ret__.location,
-        policy_data=__ret__.policy_data,
-        policy_id=__ret__.policy_id,
-        project=__ret__.project)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        policy_id=pulumi.get(__ret__, 'policy_id'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_autoscaling_policy_iam_policy)
@@ -155,9 +155,9 @@ def get_autoscaling_policy_iam_policy_output(location: Optional[pulumi.Input[Opt
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataproc.get_autoscaling_policy_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        policy_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.dataproc.get_autoscaling_policy_iam_policy(project=google_dataproc_autoscaling_policy["basic"]["project"],
+        location=google_dataproc_autoscaling_policy["basic"]["location"],
+        policy_id=google_dataproc_autoscaling_policy["basic"]["policy_id"])
     ```
 
 

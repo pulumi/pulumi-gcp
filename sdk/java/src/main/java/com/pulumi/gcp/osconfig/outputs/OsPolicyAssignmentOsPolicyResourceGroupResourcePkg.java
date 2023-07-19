@@ -19,98 +19,116 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkg {
     /**
-     * @return A package managed by Apt.
+     * @return A package managed by Apt. Structure is
+     * documented below.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt apt;
     /**
-     * @return A deb package file.
+     * @return A deb package file. Structure is
+     * documented below.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb deb;
     /**
-     * @return Required. The desired state the agent should maintain for this package. Possible values: DESIRED_STATE_UNSPECIFIED, INSTALLED, REMOVED
+     * @return The desired state the agent should maintain for
+     * this package. Possible values are: `DESIRED_STATE_UNSPECIFIED`, `INSTALLED`,
+     * `REMOVED`.
      * 
      */
     private String desiredState;
     /**
-     * @return A package managed by GooGet.
+     * @return A package managed by GooGet. Structure is
+     * documented below.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget googet;
     /**
-     * @return An MSI package.
+     * @return An MSI package. Structure is
+     * documented below.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi msi;
     /**
-     * @return An rpm package file.
+     * @return An rpm package file. Structure is
+     * documented below.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm rpm;
     /**
-     * @return A package managed by YUM.
+     * @return A package managed by YUM. Structure is
+     * documented below.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum yum;
     /**
-     * @return A package managed by Zypper.
+     * @return A package managed by Zypper. Structure is
+     * documented below.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper zypper;
 
     private OsPolicyAssignmentOsPolicyResourceGroupResourcePkg() {}
     /**
-     * @return A package managed by Apt.
+     * @return A package managed by Apt. Structure is
+     * documented below.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt> apt() {
         return Optional.ofNullable(this.apt);
     }
     /**
-     * @return A deb package file.
+     * @return A deb package file. Structure is
+     * documented below.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb> deb() {
         return Optional.ofNullable(this.deb);
     }
     /**
-     * @return Required. The desired state the agent should maintain for this package. Possible values: DESIRED_STATE_UNSPECIFIED, INSTALLED, REMOVED
+     * @return The desired state the agent should maintain for
+     * this package. Possible values are: `DESIRED_STATE_UNSPECIFIED`, `INSTALLED`,
+     * `REMOVED`.
      * 
      */
     public String desiredState() {
         return this.desiredState;
     }
     /**
-     * @return A package managed by GooGet.
+     * @return A package managed by GooGet. Structure is
+     * documented below.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget> googet() {
         return Optional.ofNullable(this.googet);
     }
     /**
-     * @return An MSI package.
+     * @return An MSI package. Structure is
+     * documented below.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi> msi() {
         return Optional.ofNullable(this.msi);
     }
     /**
-     * @return An rpm package file.
+     * @return An rpm package file. Structure is
+     * documented below.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm> rpm() {
         return Optional.ofNullable(this.rpm);
     }
     /**
-     * @return A package managed by YUM.
+     * @return A package managed by YUM. Structure is
+     * documented below.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum> yum() {
         return Optional.ofNullable(this.yum);
     }
     /**
-     * @return A package managed by Zypper.
+     * @return A package managed by Zypper. Structure is
+     * documented below.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper> zypper() {

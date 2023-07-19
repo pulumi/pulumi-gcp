@@ -396,7 +396,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
         The Compute FirewallPolicyRule resource
 
         ## Example Usage
-        ### Basic_fir_sec_rule_addr_groups
+        ### Basic_fir_sec_rule
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -407,17 +407,14 @@ class FirewallPolicyRule(pulumi.CustomResource):
             location="global",
             items=["208.80.154.224/32"],
             type="IPV4",
-            capacity=100,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            capacity=100)
         folder = gcp.organizations.Folder("folder",
             display_name="policy",
-            parent="organizations/123456789",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            parent="organizations/123456789")
         default = gcp.compute.FirewallPolicy("default",
             parent=folder.id,
             short_name="policy",
-            description="Resource created for Terraform acceptance testing",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            description="Resource created for Terraform acceptance testing")
         primary = gcp.compute.FirewallPolicyRule("primary",
             firewall_policy=default.name,
             description="Resource created for Terraform acceptance testing",
@@ -444,8 +441,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
                 src_address_groups=[],
                 dest_address_groups=[basic_global_networksecurity_address_group.id],
             ),
-            target_service_accounts=["my@service-account.com"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            target_service_accounts=["my@service-account.com"])
         ```
 
         ## Import
@@ -483,7 +479,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
         The Compute FirewallPolicyRule resource
 
         ## Example Usage
-        ### Basic_fir_sec_rule_addr_groups
+        ### Basic_fir_sec_rule
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -494,17 +490,14 @@ class FirewallPolicyRule(pulumi.CustomResource):
             location="global",
             items=["208.80.154.224/32"],
             type="IPV4",
-            capacity=100,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            capacity=100)
         folder = gcp.organizations.Folder("folder",
             display_name="policy",
-            parent="organizations/123456789",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            parent="organizations/123456789")
         default = gcp.compute.FirewallPolicy("default",
             parent=folder.id,
             short_name="policy",
-            description="Resource created for Terraform acceptance testing",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            description="Resource created for Terraform acceptance testing")
         primary = gcp.compute.FirewallPolicyRule("primary",
             firewall_policy=default.name,
             description="Resource created for Terraform acceptance testing",
@@ -531,8 +524,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
                 src_address_groups=[],
                 dest_address_groups=[basic_global_networksecurity_address_group.id],
             ),
-            target_service_accounts=["my@service-account.com"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            target_service_accounts=["my@service-account.com"])
         ```
 
         ## Import

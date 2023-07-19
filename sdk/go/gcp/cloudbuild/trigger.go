@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -394,14 +395,14 @@ import (
 //						OauthTokenSecretVersion: pulumi.String("projects/my-project/secrets/github-pat-secret/versions/latest"),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cloudbuildv2.NewRepository(ctx, "my-repository", &cloudbuildv2.RepositoryArgs{
 //				ParentConnection: my_connection.ID(),
 //				RemoteUri:        pulumi.String("https://github.com/myuser/my-repo.git"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -414,7 +415,7 @@ import (
 //					},
 //				},
 //				Filename: pulumi.String("cloudbuild.yaml"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -552,18 +553,18 @@ import (
 //						OauthTokenSecretVersion: pulumi.String("projects/my-project/secrets/github-pat-secret/versions/latest"),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = cloudbuildv2.NewRepository(ctx, "my-repository", &cloudbuildv2.RepositoryArgs{
 //				ParentConnection: my_connection.ID(),
 //				RemoteUri:        pulumi.String("https://github.com/myuser/my-repo.git"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			mytopic, err := pubsub.NewTopic(ctx, "mytopic", nil, pulumi.Provider(google_beta))
+//			mytopic, err := pubsub.NewTopic(ctx, "mytopic", nil)
 //			if err != nil {
 //				return err
 //			}
@@ -583,7 +584,7 @@ import (
 //					Revision:   pulumi.String("refs/heads/main"),
 //					RepoType:   pulumi.String("GITHUB"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -690,6 +691,7 @@ type Trigger struct {
 	// Structure is documented below.
 	PubsubConfig TriggerPubsubConfigPtrOutput `pulumi:"pubsubConfig"`
 	// The configuration of a trigger that creates a build whenever an event from Repo API is received.
+	// Structure is documented below.
 	RepositoryEventConfig TriggerRepositoryEventConfigPtrOutput `pulumi:"repositoryEventConfig"`
 	// The service account used for all user-controlled operations including
 	// triggers.patch, triggers.run, builds.create, and builds.cancel.
@@ -731,6 +733,7 @@ func NewTrigger(ctx *pulumi.Context,
 		args = &TriggerArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Trigger
 	err := ctx.RegisterResource("gcp:cloudbuild/trigger:Trigger", name, args, &resource, opts...)
 	if err != nil {
@@ -820,6 +823,7 @@ type triggerState struct {
 	// Structure is documented below.
 	PubsubConfig *TriggerPubsubConfig `pulumi:"pubsubConfig"`
 	// The configuration of a trigger that creates a build whenever an event from Repo API is received.
+	// Structure is documented below.
 	RepositoryEventConfig *TriggerRepositoryEventConfig `pulumi:"repositoryEventConfig"`
 	// The service account used for all user-controlled operations including
 	// triggers.patch, triggers.run, builds.create, and builds.cancel.
@@ -922,6 +926,7 @@ type TriggerState struct {
 	// Structure is documented below.
 	PubsubConfig TriggerPubsubConfigPtrInput
 	// The configuration of a trigger that creates a build whenever an event from Repo API is received.
+	// Structure is documented below.
 	RepositoryEventConfig TriggerRepositoryEventConfigPtrInput
 	// The service account used for all user-controlled operations including
 	// triggers.patch, triggers.run, builds.create, and builds.cancel.
@@ -1026,6 +1031,7 @@ type triggerArgs struct {
 	// Structure is documented below.
 	PubsubConfig *TriggerPubsubConfig `pulumi:"pubsubConfig"`
 	// The configuration of a trigger that creates a build whenever an event from Repo API is received.
+	// Structure is documented below.
 	RepositoryEventConfig *TriggerRepositoryEventConfig `pulumi:"repositoryEventConfig"`
 	// The service account used for all user-controlled operations including
 	// triggers.patch, triggers.run, builds.create, and builds.cancel.
@@ -1125,6 +1131,7 @@ type TriggerArgs struct {
 	// Structure is documented below.
 	PubsubConfig TriggerPubsubConfigPtrInput
 	// The configuration of a trigger that creates a build whenever an event from Repo API is received.
+	// Structure is documented below.
 	RepositoryEventConfig TriggerRepositoryEventConfigPtrInput
 	// The service account used for all user-controlled operations including
 	// triggers.patch, triggers.run, builds.create, and builds.cancel.
@@ -1362,6 +1369,7 @@ func (o TriggerOutput) PubsubConfig() TriggerPubsubConfigPtrOutput {
 }
 
 // The configuration of a trigger that creates a build whenever an event from Repo API is received.
+// Structure is documented below.
 func (o TriggerOutput) RepositoryEventConfig() TriggerRepositoryEventConfigPtrOutput {
 	return o.ApplyT(func(v *Trigger) TriggerRepositoryEventConfigPtrOutput { return v.RepositoryEventConfig }).(TriggerRepositoryEventConfigPtrOutput)
 }

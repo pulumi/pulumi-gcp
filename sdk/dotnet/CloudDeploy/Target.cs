@@ -31,6 +31,7 @@ namespace Pulumi.Gcp.CloudDeploy
     ///             { "my_first_annotation", "example-annotation-1" },
     ///             { "my_second_annotation", "example-annotation-2" },
     ///         },
+    ///         DeployParameters = null,
     ///         Description = "multi-target description",
     ///         ExecutionConfigs = new[]
     ///         {
@@ -84,6 +85,7 @@ namespace Pulumi.Gcp.CloudDeploy
     ///             { "my_first_annotation", "example-annotation-1" },
     ///             { "my_second_annotation", "example-annotation-2" },
     ///         },
+    ///         DeployParameters = null,
     ///         Description = "basic description",
     ///         ExecutionConfigs = new[]
     ///         {
@@ -131,6 +133,10 @@ namespace Pulumi.Gcp.CloudDeploy
     ///         {
     ///             { "my_first_annotation", "example-annotation-1" },
     ///             { "my_second_annotation", "example-annotation-2" },
+    ///         },
+    ///         DeployParameters = 
+    ///         {
+    ///             { "deployParameterKey", "deployParameterValue" },
     ///         },
     ///         Description = "basic description",
     ///         Gke = new Gcp.CloudDeploy.Inputs.TargetGkeArgs
@@ -186,6 +192,12 @@ namespace Pulumi.Gcp.CloudDeploy
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The deploy parameters to use for this target.
+        /// </summary>
+        [Output("deployParameters")]
+        public Output<ImmutableDictionary<string, string>?> DeployParameters { get; private set; } = null!;
 
         /// <summary>
         /// Optional. Description of the `Target`. Max length is 255 characters.
@@ -339,6 +351,18 @@ namespace Pulumi.Gcp.CloudDeploy
         [Input("anthosCluster")]
         public Input<Inputs.TargetAnthosClusterArgs>? AnthosCluster { get; set; }
 
+        [Input("deployParameters")]
+        private InputMap<string>? _deployParameters;
+
+        /// <summary>
+        /// Optional. The deploy parameters to use for this target.
+        /// </summary>
+        public InputMap<string> DeployParameters
+        {
+            get => _deployParameters ?? (_deployParameters = new InputMap<string>());
+            set => _deployParameters = value;
+        }
+
         /// <summary>
         /// Optional. Description of the `Target`. Max length is 255 characters.
         /// </summary>
@@ -446,6 +470,18 @@ namespace Pulumi.Gcp.CloudDeploy
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        [Input("deployParameters")]
+        private InputMap<string>? _deployParameters;
+
+        /// <summary>
+        /// Optional. The deploy parameters to use for this target.
+        /// </summary>
+        public InputMap<string> DeployParameters
+        {
+            get => _deployParameters ?? (_deployParameters = new InputMap<string>());
+            set => _deployParameters = value;
+        }
 
         /// <summary>
         /// Optional. Description of the `Target`. Max length is 255 characters.

@@ -217,14 +217,11 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var cgroup = new Gcp.Compute.ResourcePolicy("cgroup", new()
     ///     {
-    ///         Region = "europe-west1",
     ///         DiskConsistencyGroupPolicy = new Gcp.Compute.Inputs.ResourcePolicyDiskConsistencyGroupPolicyArgs
     ///         {
     ///             Enabled = true,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Region = "europe-west1",
     ///     });
     /// 
     /// });
@@ -261,6 +258,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Replication consistency group for asynchronous disk replication.
+        /// Structure is documented below.
         /// </summary>
         [Output("diskConsistencyGroupPolicy")]
         public Output<Outputs.ResourcePolicyDiskConsistencyGroupPolicy?> DiskConsistencyGroupPolicy { get; private set; } = null!;
@@ -374,6 +372,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Replication consistency group for asynchronous disk replication.
+        /// Structure is documented below.
         /// </summary>
         [Input("diskConsistencyGroupPolicy")]
         public Input<Inputs.ResourcePolicyDiskConsistencyGroupPolicyArgs>? DiskConsistencyGroupPolicy { get; set; }
@@ -443,6 +442,7 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Replication consistency group for asynchronous disk replication.
+        /// Structure is documented below.
         /// </summary>
         [Input("diskConsistencyGroupPolicy")]
         public Input<Inputs.ResourcePolicyDiskConsistencyGroupPolicyGetArgs>? DiskConsistencyGroupPolicy { get; set; }

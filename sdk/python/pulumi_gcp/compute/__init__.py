@@ -19,6 +19,7 @@ from .backend_service_iam_binding import *
 from .backend_service_iam_member import *
 from .backend_service_iam_policy import *
 from .backend_service_signed_url_key import *
+from .ca_external_account_key import *
 from .disk import *
 from .disk_async_replication import *
 from .disk_iam_binding import *
@@ -109,6 +110,7 @@ from .machine_image_iam_policy import *
 from .managed_ssl_certificate import *
 from .manged_ssl_certificate import *
 from .network import *
+from .network_edge_security_service import *
 from .network_endpoint import *
 from .network_endpoint_group import *
 from .network_endpoint_list import *
@@ -148,6 +150,7 @@ from .region_network_firewall_policy import *
 from .region_network_firewall_policy_association import *
 from .region_network_firewall_policy_rule import *
 from .region_per_instance_config import *
+from .region_security_policy import *
 from .region_ssl_certificate import *
 from .region_ssl_policy import *
 from .region_target_http_proxy import *

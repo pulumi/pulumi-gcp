@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type SecretIamBindingCondition struct {
 	Description *string `pulumi:"description"`
@@ -339,7 +342,7 @@ func (o SecretIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 type SecretReplication struct {
 	// The Secret will automatically be replicated without any restrictions.
 	Automatic *bool `pulumi:"automatic"`
-	// The Secret will automatically be replicated without any restrictions.
+	// The Secret will be replicated to the regions specified by the user.
 	// Structure is documented below.
 	UserManaged *SecretReplicationUserManaged `pulumi:"userManaged"`
 }
@@ -358,7 +361,7 @@ type SecretReplicationInput interface {
 type SecretReplicationArgs struct {
 	// The Secret will automatically be replicated without any restrictions.
 	Automatic pulumi.BoolPtrInput `pulumi:"automatic"`
-	// The Secret will automatically be replicated without any restrictions.
+	// The Secret will be replicated to the regions specified by the user.
 	// Structure is documented below.
 	UserManaged SecretReplicationUserManagedPtrInput `pulumi:"userManaged"`
 }
@@ -445,7 +448,7 @@ func (o SecretReplicationOutput) Automatic() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SecretReplication) *bool { return v.Automatic }).(pulumi.BoolPtrOutput)
 }
 
-// The Secret will automatically be replicated without any restrictions.
+// The Secret will be replicated to the regions specified by the user.
 // Structure is documented below.
 func (o SecretReplicationOutput) UserManaged() SecretReplicationUserManagedPtrOutput {
 	return o.ApplyT(func(v SecretReplication) *SecretReplicationUserManaged { return v.UserManaged }).(SecretReplicationUserManagedPtrOutput)
@@ -485,7 +488,7 @@ func (o SecretReplicationPtrOutput) Automatic() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The Secret will automatically be replicated without any restrictions.
+// The Secret will be replicated to the regions specified by the user.
 // Structure is documented below.
 func (o SecretReplicationPtrOutput) UserManaged() SecretReplicationUserManagedPtrOutput {
 	return o.ApplyT(func(v *SecretReplication) *SecretReplicationUserManaged {

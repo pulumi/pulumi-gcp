@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -194,6 +195,7 @@ func NewTaxonomyIamPolicy(ctx *pulumi.Context,
 	if args.Taxonomy == nil {
 		return nil, errors.New("invalid value for required argument 'Taxonomy'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TaxonomyIamPolicy
 	err := ctx.RegisterResource("gcp:datacatalog/taxonomyIamPolicy:TaxonomyIamPolicy", name, args, &resource, opts...)
 	if err != nil {

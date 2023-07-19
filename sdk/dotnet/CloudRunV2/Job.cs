@@ -385,6 +385,21 @@ namespace Pulumi.Gcp.CloudRunV2
     public partial class Job : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+        /// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+        /// All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
+        /// This field follows Kubernetes annotations' namespacing, limits, and rules.
+        /// 
+        /// (Optional)
+        /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+        /// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
+        /// All system annotations in v1 now have a corresponding field in v2 Job.
+        /// This field follows Kubernetes annotations' namespacing, limits, and rules.
+        /// </summary>
+        [Output("annotations")]
+        public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
+
+        /// <summary>
         /// Settings for the Binary Authorization feature.
         /// Structure is documented below.
         /// </summary>
@@ -429,10 +444,17 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<string> Generation { get; private set; } = null!;
 
         /// <summary>
-        /// KRM-style labels for the resource.
+        /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
+        /// or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+        /// https://cloud.google.com/run/docs/configuring/labels.
+        /// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+        /// All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
         /// 
         /// (Optional)
-        /// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
+        /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
+        /// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+        /// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+        /// All system labels in v1 now have a corresponding field in v2 Job.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -553,6 +575,27 @@ namespace Pulumi.Gcp.CloudRunV2
 
     public sealed class JobArgs : global::Pulumi.ResourceArgs
     {
+        [Input("annotations")]
+        private InputMap<string>? _annotations;
+
+        /// <summary>
+        /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+        /// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+        /// All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
+        /// This field follows Kubernetes annotations' namespacing, limits, and rules.
+        /// 
+        /// (Optional)
+        /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+        /// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
+        /// All system annotations in v1 now have a corresponding field in v2 Job.
+        /// This field follows Kubernetes annotations' namespacing, limits, and rules.
+        /// </summary>
+        public InputMap<string> Annotations
+        {
+            get => _annotations ?? (_annotations = new InputMap<string>());
+            set => _annotations = value;
+        }
+
         /// <summary>
         /// Settings for the Binary Authorization feature.
         /// Structure is documented below.
@@ -576,10 +619,17 @@ namespace Pulumi.Gcp.CloudRunV2
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// KRM-style labels for the resource.
+        /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
+        /// or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+        /// https://cloud.google.com/run/docs/configuring/labels.
+        /// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+        /// All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
         /// 
         /// (Optional)
-        /// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
+        /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
+        /// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+        /// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+        /// All system labels in v1 now have a corresponding field in v2 Job.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -630,6 +680,27 @@ namespace Pulumi.Gcp.CloudRunV2
 
     public sealed class JobState : global::Pulumi.ResourceArgs
     {
+        [Input("annotations")]
+        private InputMap<string>? _annotations;
+
+        /// <summary>
+        /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+        /// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+        /// All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
+        /// This field follows Kubernetes annotations' namespacing, limits, and rules.
+        /// 
+        /// (Optional)
+        /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+        /// Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected on new resources.
+        /// All system annotations in v1 now have a corresponding field in v2 Job.
+        /// This field follows Kubernetes annotations' namespacing, limits, and rules.
+        /// </summary>
+        public InputMap<string> Annotations
+        {
+            get => _annotations ?? (_annotations = new InputMap<string>());
+            set => _annotations = value;
+        }
+
         /// <summary>
         /// Settings for the Binary Authorization feature.
         /// Structure is documented below.
@@ -684,10 +755,17 @@ namespace Pulumi.Gcp.CloudRunV2
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// KRM-style labels for the resource.
+        /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
+        /// or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+        /// https://cloud.google.com/run/docs/configuring/labels.
+        /// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+        /// All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
         /// 
         /// (Optional)
-        /// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run will populate some labels with 'run.googleapis.com' or 'serving.knative.dev' namespaces. Those labels are read-only, and user changes will not be preserved.
+        /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component,
+        /// environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+        /// Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+        /// All system labels in v1 now have a corresponding field in v2 Job.
         /// </summary>
         public InputMap<string> Labels
         {

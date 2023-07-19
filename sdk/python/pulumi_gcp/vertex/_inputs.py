@@ -939,6 +939,9 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs:
     @property
     @pulumi.getter(name="monitoringInterval")
     def monitoring_interval(self) -> Optional[pulumi.Input[str]]:
+        warnings.warn("""This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""", DeprecationWarning)
+        pulumi.log.warn("""monitoring_interval is deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""")
+
         return pulumi.get(self, "monitoring_interval")
 
     @monitoring_interval.setter
@@ -1289,7 +1292,8 @@ class AiIndexMetadataConfigArgs:
                  algorithm_config: Optional[pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArgs']] = None,
                  approximate_neighbors_count: Optional[pulumi.Input[int]] = None,
                  distance_measure_type: Optional[pulumi.Input[str]] = None,
-                 feature_norm_type: Optional[pulumi.Input[str]] = None):
+                 feature_norm_type: Optional[pulumi.Input[str]] = None,
+                 shard_size: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] dimensions: The number of dimensions of the input vectors.
         :param pulumi.Input['AiIndexMetadataConfigAlgorithmConfigArgs'] algorithm_config: The configuration with regard to the algorithms used for efficient search.
@@ -1306,6 +1310,11 @@ class AiIndexMetadataConfigArgs:
         :param pulumi.Input[str] feature_norm_type: Type of normalization to be carried out on each vector. The value must be one of the followings:
                * UNIT_L2_NORM: Unit L2 normalization type
                * NONE: No normalization type is specified.
+        :param pulumi.Input[str] shard_size: Index data is split into equal parts to be processed. These are called "shards".
+               The shard size must be specified when creating an index. The value must be one of the followings:
+               * SHARD_SIZE_SMALL: Small (2GB)
+               * SHARD_SIZE_MEDIUM: Medium (20GB)
+               * SHARD_SIZE_LARGE: Large (50GB)
         """
         pulumi.set(__self__, "dimensions", dimensions)
         if algorithm_config is not None:
@@ -1316,6 +1325,8 @@ class AiIndexMetadataConfigArgs:
             pulumi.set(__self__, "distance_measure_type", distance_measure_type)
         if feature_norm_type is not None:
             pulumi.set(__self__, "feature_norm_type", feature_norm_type)
+        if shard_size is not None:
+            pulumi.set(__self__, "shard_size", shard_size)
 
     @property
     @pulumi.getter
@@ -1386,6 +1397,22 @@ class AiIndexMetadataConfigArgs:
     @feature_norm_type.setter
     def feature_norm_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "feature_norm_type", value)
+
+    @property
+    @pulumi.getter(name="shardSize")
+    def shard_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        Index data is split into equal parts to be processed. These are called "shards".
+        The shard size must be specified when creating an index. The value must be one of the followings:
+        * SHARD_SIZE_SMALL: Small (2GB)
+        * SHARD_SIZE_MEDIUM: Medium (20GB)
+        * SHARD_SIZE_LARGE: Large (50GB)
+        """
+        return pulumi.get(self, "shard_size")
+
+    @shard_size.setter
+    def shard_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "shard_size", value)
 
 
 @pulumi.input_type

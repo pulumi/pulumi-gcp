@@ -10,6 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkServices
 {
     /// <summary>
+    /// Gateway represents the configuration for a proxy, typically a load balancer.
+    /// It captures the ip:port over which the services are exposed by the proxy,
+    /// along with any policy configurations. Routes have reference to to Gateways
+    /// to dictate how requests should be routed by this Gateway.
+    /// 
+    /// To get more information about Gateway, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1/projects.locations.gateways)
+    /// 
     /// ## Example Usage
     /// ### Network Services Gateway Basic
     /// 
@@ -23,15 +32,12 @@ namespace Pulumi.Gcp.NetworkServices
     /// {
     ///     var @default = new Gcp.NetworkServices.Gateway("default", new()
     ///     {
-    ///         Scope = "default-scope-basic",
-    ///         Type = "OPEN_MESH",
     ///         Ports = new[]
     ///         {
     ///             443,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Scope = "default-scope-basic",
+    ///         Type = "OPEN_MESH",
     ///     });
     /// 
     /// });
@@ -48,20 +54,17 @@ namespace Pulumi.Gcp.NetworkServices
     /// {
     ///     var @default = new Gcp.NetworkServices.Gateway("default", new()
     ///     {
+    ///         Description = "my description",
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
     ///         },
-    ///         Description = "my description",
-    ///         Type = "OPEN_MESH",
     ///         Ports = new[]
     ///         {
     ///             443,
     ///         },
     ///         Scope = "default-scope-advance",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Type = "OPEN_MESH",
     ///     });
     /// 
     /// });
@@ -85,18 +88,12 @@ namespace Pulumi.Gcp.NetworkServices
     ///             PemCertificate = File.ReadAllText("test-fixtures/certificatemanager/cert.pem"),
     ///             PemPrivateKey = File.ReadAllText("test-fixtures/certificatemanager/private-key.pem"),
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
     ///     {
     ///         RoutingMode = "REGIONAL",
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
@@ -106,9 +103,6 @@ namespace Pulumi.Gcp.NetworkServices
     ///         Region = "us-central1",
     ///         Network = defaultNetwork.Id,
     ///         Role = "ACTIVE",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var proxyonlysubnet = new Gcp.Compute.Subnetwork("proxyonlysubnet", new()
@@ -118,17 +112,11 @@ namespace Pulumi.Gcp.NetworkServices
     ///         Region = "us-central1",
     ///         Network = defaultNetwork.Id,
     ///         Role = "ACTIVE",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var defaultGatewaySecurityPolicy = new Gcp.NetworkSecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", new()
     ///     {
     ///         Location = "us-central1",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var defaultGatewaySecurityPolicyRule = new Gcp.NetworkSecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", new()
@@ -139,9 +127,6 @@ namespace Pulumi.Gcp.NetworkServices
     ///         Priority = 1,
     ///         SessionMatcher = "host() == 'example.com'",
     ///         BasicProfile = "ALLOW",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var defaultGateway = new Gcp.NetworkServices.Gateway("defaultGateway", new()
@@ -167,7 +152,6 @@ namespace Pulumi.Gcp.NetworkServices
     ///         DeleteSwgAutogenRouterOnDestroy = true,
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = google_beta,
     ///         DependsOn = new[]
     ///         {
     ///             proxyonlysubnet,
@@ -195,18 +179,12 @@ namespace Pulumi.Gcp.NetworkServices
     ///             PemCertificate = File.ReadAllText("test-fixtures/certificatemanager/cert.pem"),
     ///             PemPrivateKey = File.ReadAllText("test-fixtures/certificatemanager/private-key.pem"),
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new()
     ///     {
     ///         RoutingMode = "REGIONAL",
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new()
@@ -216,9 +194,6 @@ namespace Pulumi.Gcp.NetworkServices
     ///         Region = "us-south1",
     ///         Network = defaultNetwork.Id,
     ///         Role = "ACTIVE",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var proxyonlysubnet = new Gcp.Compute.Subnetwork("proxyonlysubnet", new()
@@ -228,17 +203,11 @@ namespace Pulumi.Gcp.NetworkServices
     ///         Region = "us-south1",
     ///         Network = defaultNetwork.Id,
     ///         Role = "ACTIVE",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var defaultGatewaySecurityPolicy = new Gcp.NetworkSecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", new()
     ///     {
     ///         Location = "us-south1",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var defaultGatewaySecurityPolicyRule = new Gcp.NetworkSecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", new()
@@ -249,9 +218,6 @@ namespace Pulumi.Gcp.NetworkServices
     ///         Priority = 1,
     ///         SessionMatcher = "host() == 'example.com'",
     ///         BasicProfile = "ALLOW",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var defaultGateway = new Gcp.NetworkServices.Gateway("defaultGateway", new()
@@ -277,7 +243,6 @@ namespace Pulumi.Gcp.NetworkServices
     ///         DeleteSwgAutogenRouterOnDestroy = true,
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = google_beta,
     ///         DependsOn = new[]
     ///         {
     ///             proxyonlysubnet,
@@ -307,7 +272,6 @@ namespace Pulumi.Gcp.NetworkServices
     ///         DeleteSwgAutogenRouterOnDestroy = true,
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = google_beta,
     ///         DependsOn = new[]
     ///         {
     ///             proxyonlysubnet,

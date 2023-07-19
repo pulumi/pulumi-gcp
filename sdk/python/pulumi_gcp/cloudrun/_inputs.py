@@ -1307,6 +1307,9 @@ class ServiceTemplateSpecArgs:
         It is expected
         that the system will manipulate this based on routability and load.
         """
+        warnings.warn("""Not supported by Cloud Run fully managed""", DeprecationWarning)
+        pulumi.log.warn("""serving_state is deprecated: Not supported by Cloud Run fully managed""")
+
         return pulumi.get(self, "serving_state")
 
     @serving_state.setter
@@ -1471,6 +1474,9 @@ class ServiceTemplateSpecContainerArgs:
         precedence.
         Structure is documented below.
         """
+        warnings.warn("""Not supported by Cloud Run fully managed""", DeprecationWarning)
+        pulumi.log.warn("""env_froms is deprecated: Not supported by Cloud Run fully managed""")
+
         return pulumi.get(self, "env_froms")
 
     @env_froms.setter
@@ -1580,6 +1586,9 @@ class ServiceTemplateSpecContainerArgs:
         If not specified, the container runtime's default will be used, which
         might be configured in the container image.
         """
+        warnings.warn("""Not supported by Cloud Run fully managed""", DeprecationWarning)
+        pulumi.log.warn("""working_dir is deprecated: Not supported by Cloud Run fully managed""")
+
         return pulumi.get(self, "working_dir")
 
     @working_dir.setter

@@ -51,6 +51,23 @@ public final class ExternalVpnGatewayState extends com.pulumi.resources.Resource
     }
 
     /**
+     * The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
+     * 
+     */
+    @Import(name="labelFingerprint")
+    private @Nullable Output<String> labelFingerprint;
+
+    /**
+     * @return The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
+     * 
+     */
+    public Optional<Output<String>> labelFingerprint() {
+        return Optional.ofNullable(this.labelFingerprint);
+    }
+
+    /**
      * Labels for the external VPN gateway resource.
      * 
      */
@@ -150,6 +167,7 @@ public final class ExternalVpnGatewayState extends com.pulumi.resources.Resource
     private ExternalVpnGatewayState(ExternalVpnGatewayState $) {
         this.description = $.description;
         this.interfaces = $.interfaces;
+        this.labelFingerprint = $.labelFingerprint;
         this.labels = $.labels;
         this.name = $.name;
         this.project = $.project;
@@ -228,6 +246,29 @@ public final class ExternalVpnGatewayState extends com.pulumi.resources.Resource
          */
         public Builder interfaces(ExternalVpnGatewayInterfaceArgs... interfaces) {
             return interfaces(List.of(interfaces));
+        }
+
+        /**
+         * @param labelFingerprint The fingerprint used for optimistic locking of this resource.  Used
+         * internally during updates.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labelFingerprint(@Nullable Output<String> labelFingerprint) {
+            $.labelFingerprint = labelFingerprint;
+            return this;
+        }
+
+        /**
+         * @param labelFingerprint The fingerprint used for optimistic locking of this resource.  Used
+         * internally during updates.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labelFingerprint(String labelFingerprint) {
+            return labelFingerprint(Output.of(labelFingerprint));
         }
 
         /**

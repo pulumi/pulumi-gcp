@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -202,6 +203,7 @@ func NewAddonsConfig(ctx *pulumi.Context,
 	if args.Org == nil {
 		return nil, errors.New("invalid value for required argument 'Org'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AddonsConfig
 	err := ctx.RegisterResource("gcp:apigee/addonsConfig:AddonsConfig", name, args, &resource, opts...)
 	if err != nil {

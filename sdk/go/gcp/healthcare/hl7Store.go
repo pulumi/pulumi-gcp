@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -90,7 +91,87 @@ import (
 //				ParserConfig: &healthcare.Hl7StoreParserConfigArgs{
 //					AllowNullHeader:   pulumi.Bool(false),
 //					SegmentTerminator: pulumi.String("Jw=="),
-//					Schema:            pulumi.String("{\n  \"schemas\": [{\n    \"messageSchemaConfigs\": {\n      \"ADT_A01\": {\n        \"name\": \"ADT_A01\",\n        \"minOccurs\": 1,\n        \"maxOccurs\": 1,\n        \"members\": [{\n            \"segment\": {\n              \"type\": \"MSH\",\n              \"minOccurs\": 1,\n              \"maxOccurs\": 1\n            }\n          },\n          {\n            \"segment\": {\n              \"type\": \"EVN\",\n              \"minOccurs\": 1,\n              \"maxOccurs\": 1\n            }\n          },\n          {\n            \"segment\": {\n              \"type\": \"PID\",\n              \"minOccurs\": 1,\n              \"maxOccurs\": 1\n            }\n          },\n          {\n            \"segment\": {\n              \"type\": \"ZPD\",\n              \"minOccurs\": 1,\n              \"maxOccurs\": 1\n            }\n          },\n          {\n            \"segment\": {\n              \"type\": \"OBX\"\n            }\n          },\n          {\n            \"group\": {\n              \"name\": \"PROCEDURE\",\n              \"members\": [{\n                  \"segment\": {\n                    \"type\": \"PR1\",\n                    \"minOccurs\": 1,\n                    \"maxOccurs\": 1\n                  }\n                },\n                {\n                  \"segment\": {\n                    \"type\": \"ROL\"\n                  }\n                }\n              ]\n            }\n          },\n          {\n            \"segment\": {\n              \"type\": \"PDA\",\n              \"maxOccurs\": 1\n            }\n          }\n        ]\n      }\n    }\n  }],\n  \"types\": [{\n    \"type\": [{\n        \"name\": \"ZPD\",\n        \"primitive\": \"VARIES\"\n      }\n\n    ]\n  }],\n  \"ignoreMinOccurs\": true\n}\n"),
+//					Schema: pulumi.String(`{
+//	  "schemas": [{
+//	    "messageSchemaConfigs": {
+//	      "ADT_A01": {
+//	        "name": "ADT_A01",
+//	        "minOccurs": 1,
+//	        "maxOccurs": 1,
+//	        "members": [{
+//	            "segment": {
+//	              "type": "MSH",
+//	              "minOccurs": 1,
+//	              "maxOccurs": 1
+//	            }
+//	          },
+//	          {
+//	            "segment": {
+//	              "type": "EVN",
+//	              "minOccurs": 1,
+//	              "maxOccurs": 1
+//	            }
+//	          },
+//	          {
+//	            "segment": {
+//	              "type": "PID",
+//	              "minOccurs": 1,
+//	              "maxOccurs": 1
+//	            }
+//	          },
+//	          {
+//	            "segment": {
+//	              "type": "ZPD",
+//	              "minOccurs": 1,
+//	              "maxOccurs": 1
+//	            }
+//	          },
+//	          {
+//	            "segment": {
+//	              "type": "OBX"
+//	            }
+//	          },
+//	          {
+//	            "group": {
+//	              "name": "PROCEDURE",
+//	              "members": [{
+//	                  "segment": {
+//	                    "type": "PR1",
+//	                    "minOccurs": 1,
+//	                    "maxOccurs": 1
+//	                  }
+//	                },
+//	                {
+//	                  "segment": {
+//	                    "type": "ROL"
+//	                  }
+//	                }
+//	              ]
+//	            }
+//	          },
+//	          {
+//	            "segment": {
+//	              "type": "PDA",
+//	              "maxOccurs": 1
+//	            }
+//	          }
+//	        ]
+//	      }
+//	    }
+//	  }],
+//	  "types": [{
+//	    "type": [{
+//	        "name": "ZPD",
+//	        "primitive": "VARIES"
+//	      }
+//
+//	    ]
+//	  }],
+//	  "ignoreMinOccurs": true
+//	}
+//
+// `),
+//
 //				},
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
@@ -201,6 +282,7 @@ func NewHl7Store(ctx *pulumi.Context,
 	if args.Dataset == nil {
 		return nil, errors.New("invalid value for required argument 'Dataset'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Hl7Store
 	err := ctx.RegisterResource("gcp:healthcare/hl7Store:Hl7Store", name, args, &resource, opts...)
 	if err != nil {

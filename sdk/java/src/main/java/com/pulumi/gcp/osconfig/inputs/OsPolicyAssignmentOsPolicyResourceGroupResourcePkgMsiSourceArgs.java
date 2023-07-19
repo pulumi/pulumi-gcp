@@ -19,14 +19,18 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceAr
     public static final OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs Empty = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs();
 
     /**
-     * Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+     * Defaults to false. When false, files are
+     * subject to validations based on the file type: Remote: A checksum must be
+     * specified. Cloud Storage: An object generation number must be specified.
      * 
      */
     @Import(name="allowInsecure")
     private @Nullable Output<Boolean> allowInsecure;
 
     /**
-     * @return Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+     * @return Defaults to false. When false, files are
+     * subject to validations based on the file type: Remote: A checksum must be
+     * specified. Cloud Storage: An object generation number must be specified.
      * 
      */
     public Optional<Output<Boolean>> allowInsecure() {
@@ -34,14 +38,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceAr
     }
 
     /**
-     * A Cloud Storage object.
+     * A Cloud Storage object. Structure is
+     * documented below.
      * 
      */
     @Import(name="gcs")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs> gcs;
 
     /**
-     * @return A Cloud Storage object.
+     * @return A Cloud Storage object. Structure is
+     * documented below.
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs>> gcs() {
@@ -64,14 +70,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceAr
     }
 
     /**
-     * A generic remote file.
+     * A generic remote file. Structure is
+     * documented below.
      * 
      */
     @Import(name="remote")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs> remote;
 
     /**
-     * @return A generic remote file.
+     * @return A generic remote file. Structure is
+     * documented below.
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs>> remote() {
@@ -106,7 +114,9 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceAr
         }
 
         /**
-         * @param allowInsecure Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+         * @param allowInsecure Defaults to false. When false, files are
+         * subject to validations based on the file type: Remote: A checksum must be
+         * specified. Cloud Storage: An object generation number must be specified.
          * 
          * @return builder
          * 
@@ -117,7 +127,9 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceAr
         }
 
         /**
-         * @param allowInsecure Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+         * @param allowInsecure Defaults to false. When false, files are
+         * subject to validations based on the file type: Remote: A checksum must be
+         * specified. Cloud Storage: An object generation number must be specified.
          * 
          * @return builder
          * 
@@ -127,7 +139,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceAr
         }
 
         /**
-         * @param gcs A Cloud Storage object.
+         * @param gcs A Cloud Storage object. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -138,7 +151,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceAr
         }
 
         /**
-         * @param gcs A Cloud Storage object.
+         * @param gcs A Cloud Storage object. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -169,7 +183,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceAr
         }
 
         /**
-         * @param remote A generic remote file.
+         * @param remote A generic remote file. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -180,7 +195,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceAr
         }
 
         /**
-         * @param remote A generic remote file.
+         * @param remote A generic remote file. Structure is
+         * documented below.
          * 
          * @return builder
          * 

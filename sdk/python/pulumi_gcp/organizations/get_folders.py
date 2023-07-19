@@ -93,9 +93,9 @@ def get_folders(parent_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getFolders:getFolders', __args__, opts=opts, typ=GetFoldersResult).value
 
     return AwaitableGetFoldersResult(
-        folders=__ret__.folders,
-        id=__ret__.id,
-        parent_id=__ret__.parent_id)
+        folders=pulumi.get(__ret__, 'folders'),
+        id=pulumi.get(__ret__, 'id'),
+        parent_id=pulumi.get(__ret__, 'parent_id'))
 
 
 @_utilities.lift_output_func(get_folders)

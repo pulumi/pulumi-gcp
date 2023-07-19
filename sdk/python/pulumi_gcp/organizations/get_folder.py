@@ -171,16 +171,16 @@ def get_folder(folder: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getFolder:getFolder', __args__, opts=opts, typ=GetFolderResult).value
 
     return AwaitableGetFolderResult(
-        create_time=__ret__.create_time,
-        display_name=__ret__.display_name,
-        folder=__ret__.folder,
-        folder_id=__ret__.folder_id,
-        id=__ret__.id,
-        lifecycle_state=__ret__.lifecycle_state,
-        lookup_organization=__ret__.lookup_organization,
-        name=__ret__.name,
-        organization=__ret__.organization,
-        parent=__ret__.parent)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        folder=pulumi.get(__ret__, 'folder'),
+        folder_id=pulumi.get(__ret__, 'folder_id'),
+        id=pulumi.get(__ret__, 'id'),
+        lifecycle_state=pulumi.get(__ret__, 'lifecycle_state'),
+        lookup_organization=pulumi.get(__ret__, 'lookup_organization'),
+        name=pulumi.get(__ret__, 'name'),
+        organization=pulumi.get(__ret__, 'organization'),
+        parent=pulumi.get(__ret__, 'parent'))
 
 
 @_utilities.lift_output_func(get_folder)

@@ -66,9 +66,19 @@ public final class TriggerSourceToBuildArgs extends com.pulumi.resources.Resourc
         return this.repoType;
     }
 
+    /**
+     * The qualified resource name of the Repo API repository.
+     * Either uri or repository can be specified and is required.
+     * 
+     */
     @Import(name="repository")
     private @Nullable Output<String> repository;
 
+    /**
+     * @return The qualified resource name of the Repo API repository.
+     * Either uri or repository can be specified and is required.
+     * 
+     */
     public Optional<Output<String>> repository() {
         return Optional.ofNullable(this.repository);
     }
@@ -185,11 +195,25 @@ public final class TriggerSourceToBuildArgs extends com.pulumi.resources.Resourc
             return repoType(Output.of(repoType));
         }
 
+        /**
+         * @param repository The qualified resource name of the Repo API repository.
+         * Either uri or repository can be specified and is required.
+         * 
+         * @return builder
+         * 
+         */
         public Builder repository(@Nullable Output<String> repository) {
             $.repository = repository;
             return this;
         }
 
+        /**
+         * @param repository The qualified resource name of the Repo API repository.
+         * Either uri or repository can be specified and is required.
+         * 
+         * @return builder
+         * 
+         */
         public Builder repository(String repository) {
             return repository(Output.of(repository));
         }

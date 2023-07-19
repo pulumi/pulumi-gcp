@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -316,6 +317,7 @@ func NewAddress(ctx *pulumi.Context,
 		args = &AddressArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Address
 	err := ctx.RegisterResource("gcp:compute/address:Address", name, args, &resource, opts...)
 	if err != nil {

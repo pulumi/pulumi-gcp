@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func LookupTagTemplateIamPolicy(ctx *pulumi.Context, args *LookupTagTemplateIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupTagTemplateIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTagTemplateIamPolicyResult
 	err := ctx.Invoke("gcp:datacatalog/getTagTemplateIamPolicy:getTagTemplateIamPolicy", args, &rv, opts...)
 	if err != nil {

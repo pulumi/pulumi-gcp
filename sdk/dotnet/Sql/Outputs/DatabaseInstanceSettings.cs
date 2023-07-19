@@ -38,6 +38,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// Specifies if connections must use Cloud SQL connectors.
         /// </summary>
         public readonly string? ConnectorEnforcement;
+        public readonly Outputs.DatabaseInstanceSettingsDataCacheConfig? DataCacheConfig;
         public readonly ImmutableArray<Outputs.DatabaseInstanceSettingsDatabaseFlag> DatabaseFlags;
         public readonly bool? DeletionProtectionEnabled;
         public readonly Outputs.DatabaseInstanceSettingsDenyMaintenancePeriod? DenyMaintenancePeriod;
@@ -57,6 +58,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
         /// </summary>
         public readonly string? DiskType;
+        /// <summary>
+        /// The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+        /// </summary>
+        public readonly string? Edition;
         public readonly Outputs.DatabaseInstanceSettingsInsightsConfig? InsightsConfig;
         public readonly Outputs.DatabaseInstanceSettingsIpConfiguration? IpConfiguration;
         public readonly Outputs.DatabaseInstanceSettingsLocationPreference? LocationPreference;
@@ -99,6 +104,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string? connectorEnforcement,
 
+            Outputs.DatabaseInstanceSettingsDataCacheConfig? dataCacheConfig,
+
             ImmutableArray<Outputs.DatabaseInstanceSettingsDatabaseFlag> databaseFlags,
 
             bool? deletionProtectionEnabled,
@@ -112,6 +119,8 @@ namespace Pulumi.Gcp.Sql.Outputs
             int? diskSize,
 
             string? diskType,
+
+            string? edition,
 
             Outputs.DatabaseInstanceSettingsInsightsConfig? insightsConfig,
 
@@ -142,6 +151,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             BackupConfiguration = backupConfiguration;
             Collation = collation;
             ConnectorEnforcement = connectorEnforcement;
+            DataCacheConfig = dataCacheConfig;
             DatabaseFlags = databaseFlags;
             DeletionProtectionEnabled = deletionProtectionEnabled;
             DenyMaintenancePeriod = denyMaintenancePeriod;
@@ -149,6 +159,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             DiskAutoresizeLimit = diskAutoresizeLimit;
             DiskSize = diskSize;
             DiskType = diskType;
+            Edition = edition;
             InsightsConfig = insightsConfig;
             IpConfiguration = ipConfiguration;
             LocationPreference = locationPreference;

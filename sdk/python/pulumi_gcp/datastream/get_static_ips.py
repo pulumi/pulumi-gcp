@@ -103,10 +103,10 @@ def get_static_ips(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:datastream/getStaticIps:getStaticIps', __args__, opts=opts, typ=GetStaticIpsResult).value
 
     return AwaitableGetStaticIpsResult(
-        id=__ret__.id,
-        location=__ret__.location,
-        project=__ret__.project,
-        static_ips=__ret__.static_ips)
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        project=pulumi.get(__ret__, 'project'),
+        static_ips=pulumi.get(__ret__, 'static_ips'))
 
 
 @_utilities.lift_output_func(get_static_ips)

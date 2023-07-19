@@ -908,7 +908,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             base_instance_name="app",
             zone="us-central1-a",
             versions=[gcp.compute.InstanceGroupManagerVersionArgs(
-                instance_template=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                instance_template=google_compute_instance_template["appserver"]["self_link_unique"],
             )],
             all_instances_config=gcp.compute.InstanceGroupManagerAllInstancesConfigArgs(
                 metadata={
@@ -941,11 +941,11 @@ class InstanceGroupManager(pulumi.CustomResource):
             versions=[
                 gcp.compute.InstanceGroupManagerVersionArgs(
                     name="appserver",
-                    instance_template=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    instance_template=google_compute_instance_template["appserver"]["self_link_unique"],
                 ),
                 gcp.compute.InstanceGroupManagerVersionArgs(
                     name="appserver-canary",
-                    instance_template=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    instance_template=google_compute_instance_template["appserver-canary"]["self_link_unique"],
                     target_size=gcp.compute.InstanceGroupManagerVersionTargetSizeArgs(
                         fixed=1,
                     ),
@@ -1066,7 +1066,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             base_instance_name="app",
             zone="us-central1-a",
             versions=[gcp.compute.InstanceGroupManagerVersionArgs(
-                instance_template=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                instance_template=google_compute_instance_template["appserver"]["self_link_unique"],
             )],
             all_instances_config=gcp.compute.InstanceGroupManagerAllInstancesConfigArgs(
                 metadata={
@@ -1099,11 +1099,11 @@ class InstanceGroupManager(pulumi.CustomResource):
             versions=[
                 gcp.compute.InstanceGroupManagerVersionArgs(
                     name="appserver",
-                    instance_template=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    instance_template=google_compute_instance_template["appserver"]["self_link_unique"],
                 ),
                 gcp.compute.InstanceGroupManagerVersionArgs(
                     name="appserver-canary",
-                    instance_template=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    instance_template=google_compute_instance_template["appserver-canary"]["self_link_unique"],
                     target_size=gcp.compute.InstanceGroupManagerVersionTargetSizeArgs(
                         fixed=1,
                     ),

@@ -121,7 +121,7 @@ def get_database(instance: Optional[str] = None,
     import pulumi_gcp as gcp
 
     qa = gcp.sql.get_database(name="test-sql-database",
-        instance=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+        instance=google_sql_database_instance["main"]["name"])
     ```
 
 
@@ -137,14 +137,14 @@ def get_database(instance: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:sql/getDatabase:getDatabase', __args__, opts=opts, typ=GetDatabaseResult).value
 
     return AwaitableGetDatabaseResult(
-        charset=__ret__.charset,
-        collation=__ret__.collation,
-        deletion_policy=__ret__.deletion_policy,
-        id=__ret__.id,
-        instance=__ret__.instance,
-        name=__ret__.name,
-        project=__ret__.project,
-        self_link=__ret__.self_link)
+        charset=pulumi.get(__ret__, 'charset'),
+        collation=pulumi.get(__ret__, 'collation'),
+        deletion_policy=pulumi.get(__ret__, 'deletion_policy'),
+        id=pulumi.get(__ret__, 'id'),
+        instance=pulumi.get(__ret__, 'instance'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        self_link=pulumi.get(__ret__, 'self_link'))
 
 
 @_utilities.lift_output_func(get_database)
@@ -162,7 +162,7 @@ def get_database_output(instance: Optional[pulumi.Input[str]] = None,
     import pulumi_gcp as gcp
 
     qa = gcp.sql.get_database(name="test-sql-database",
-        instance=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+        instance=google_sql_database_instance["main"]["name"])
     ```
 
 

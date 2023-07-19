@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -186,6 +187,9 @@ type ExternalVpnGateway struct {
 	// A list of interfaces on this external VPN gateway.
 	// Structure is documented below.
 	Interfaces ExternalVpnGatewayInterfaceArrayOutput `pulumi:"interfaces"`
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
+	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels for the external VPN gateway resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is
@@ -215,6 +219,7 @@ func NewExternalVpnGateway(ctx *pulumi.Context,
 		args = &ExternalVpnGatewayArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ExternalVpnGateway
 	err := ctx.RegisterResource("gcp:compute/externalVpnGateway:ExternalVpnGateway", name, args, &resource, opts...)
 	if err != nil {
@@ -242,6 +247,9 @@ type externalVpnGatewayState struct {
 	// A list of interfaces on this external VPN gateway.
 	// Structure is documented below.
 	Interfaces []ExternalVpnGatewayInterface `pulumi:"interfaces"`
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
+	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels for the external VPN gateway resource.
 	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource. Provided by the client when the resource is
@@ -270,6 +278,9 @@ type ExternalVpnGatewayState struct {
 	// A list of interfaces on this external VPN gateway.
 	// Structure is documented below.
 	Interfaces ExternalVpnGatewayInterfaceArrayInput
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
+	LabelFingerprint pulumi.StringPtrInput
 	// Labels for the external VPN gateway resource.
 	Labels pulumi.StringMapInput
 	// Name of the resource. Provided by the client when the resource is
@@ -445,6 +456,12 @@ func (o ExternalVpnGatewayOutput) Description() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o ExternalVpnGatewayOutput) Interfaces() ExternalVpnGatewayInterfaceArrayOutput {
 	return o.ApplyT(func(v *ExternalVpnGateway) ExternalVpnGatewayInterfaceArrayOutput { return v.Interfaces }).(ExternalVpnGatewayInterfaceArrayOutput)
+}
+
+// The fingerprint used for optimistic locking of this resource.  Used
+// internally during updates.
+func (o ExternalVpnGatewayOutput) LabelFingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *ExternalVpnGateway) pulumi.StringOutput { return v.LabelFingerprint }).(pulumi.StringOutput)
 }
 
 // Labels for the external VPN gateway resource.

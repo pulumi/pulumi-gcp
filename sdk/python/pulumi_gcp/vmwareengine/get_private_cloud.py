@@ -175,18 +175,18 @@ def get_private_cloud(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:vmwareengine/getPrivateCloud:getPrivateCloud', __args__, opts=opts, typ=GetPrivateCloudResult).value
 
     return AwaitableGetPrivateCloudResult(
-        description=__ret__.description,
-        hcxes=__ret__.hcxes,
-        id=__ret__.id,
-        location=__ret__.location,
-        management_clusters=__ret__.management_clusters,
-        name=__ret__.name,
-        network_configs=__ret__.network_configs,
-        nsxes=__ret__.nsxes,
-        project=__ret__.project,
-        state=__ret__.state,
-        uid=__ret__.uid,
-        vcenters=__ret__.vcenters)
+        description=pulumi.get(__ret__, 'description'),
+        hcxes=pulumi.get(__ret__, 'hcxes'),
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        management_clusters=pulumi.get(__ret__, 'management_clusters'),
+        name=pulumi.get(__ret__, 'name'),
+        network_configs=pulumi.get(__ret__, 'network_configs'),
+        nsxes=pulumi.get(__ret__, 'nsxes'),
+        project=pulumi.get(__ret__, 'project'),
+        state=pulumi.get(__ret__, 'state'),
+        uid=pulumi.get(__ret__, 'uid'),
+        vcenters=pulumi.get(__ret__, 'vcenters'))
 
 
 @_utilities.lift_output_func(get_private_cloud)

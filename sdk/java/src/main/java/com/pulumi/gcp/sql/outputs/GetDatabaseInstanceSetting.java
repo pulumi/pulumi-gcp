@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingActiveDirectoryConfig;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingAdvancedMachineFeature;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingBackupConfiguration;
+import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingDataCacheConfig;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingDatabaseFlag;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingDenyMaintenancePeriod;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingInsightsConfig;
@@ -31,6 +32,7 @@ public final class GetDatabaseInstanceSetting {
     private List<GetDatabaseInstanceSettingBackupConfiguration> backupConfigurations;
     private String collation;
     private String connectorEnforcement;
+    private List<GetDatabaseInstanceSettingDataCacheConfig> dataCacheConfigs;
     private List<GetDatabaseInstanceSettingDatabaseFlag> databaseFlags;
     private Boolean deletionProtectionEnabled;
     private List<GetDatabaseInstanceSettingDenyMaintenancePeriod> denyMaintenancePeriods;
@@ -38,6 +40,7 @@ public final class GetDatabaseInstanceSetting {
     private Integer diskAutoresizeLimit;
     private Integer diskSize;
     private String diskType;
+    private String edition;
     private List<GetDatabaseInstanceSettingInsightsConfig> insightsConfigs;
     private List<GetDatabaseInstanceSettingIpConfiguration> ipConfigurations;
     private List<GetDatabaseInstanceSettingLocationPreference> locationPreferences;
@@ -72,6 +75,9 @@ public final class GetDatabaseInstanceSetting {
     public String connectorEnforcement() {
         return this.connectorEnforcement;
     }
+    public List<GetDatabaseInstanceSettingDataCacheConfig> dataCacheConfigs() {
+        return this.dataCacheConfigs;
+    }
     public List<GetDatabaseInstanceSettingDatabaseFlag> databaseFlags() {
         return this.databaseFlags;
     }
@@ -92,6 +98,9 @@ public final class GetDatabaseInstanceSetting {
     }
     public String diskType() {
         return this.diskType;
+    }
+    public String edition() {
+        return this.edition;
     }
     public List<GetDatabaseInstanceSettingInsightsConfig> insightsConfigs() {
         return this.insightsConfigs;
@@ -143,6 +152,7 @@ public final class GetDatabaseInstanceSetting {
         private List<GetDatabaseInstanceSettingBackupConfiguration> backupConfigurations;
         private String collation;
         private String connectorEnforcement;
+        private List<GetDatabaseInstanceSettingDataCacheConfig> dataCacheConfigs;
         private List<GetDatabaseInstanceSettingDatabaseFlag> databaseFlags;
         private Boolean deletionProtectionEnabled;
         private List<GetDatabaseInstanceSettingDenyMaintenancePeriod> denyMaintenancePeriods;
@@ -150,6 +160,7 @@ public final class GetDatabaseInstanceSetting {
         private Integer diskAutoresizeLimit;
         private Integer diskSize;
         private String diskType;
+        private String edition;
         private List<GetDatabaseInstanceSettingInsightsConfig> insightsConfigs;
         private List<GetDatabaseInstanceSettingIpConfiguration> ipConfigurations;
         private List<GetDatabaseInstanceSettingLocationPreference> locationPreferences;
@@ -171,6 +182,7 @@ public final class GetDatabaseInstanceSetting {
     	      this.backupConfigurations = defaults.backupConfigurations;
     	      this.collation = defaults.collation;
     	      this.connectorEnforcement = defaults.connectorEnforcement;
+    	      this.dataCacheConfigs = defaults.dataCacheConfigs;
     	      this.databaseFlags = defaults.databaseFlags;
     	      this.deletionProtectionEnabled = defaults.deletionProtectionEnabled;
     	      this.denyMaintenancePeriods = defaults.denyMaintenancePeriods;
@@ -178,6 +190,7 @@ public final class GetDatabaseInstanceSetting {
     	      this.diskAutoresizeLimit = defaults.diskAutoresizeLimit;
     	      this.diskSize = defaults.diskSize;
     	      this.diskType = defaults.diskType;
+    	      this.edition = defaults.edition;
     	      this.insightsConfigs = defaults.insightsConfigs;
     	      this.ipConfigurations = defaults.ipConfigurations;
     	      this.locationPreferences = defaults.locationPreferences;
@@ -236,6 +249,14 @@ public final class GetDatabaseInstanceSetting {
             return this;
         }
         @CustomType.Setter
+        public Builder dataCacheConfigs(List<GetDatabaseInstanceSettingDataCacheConfig> dataCacheConfigs) {
+            this.dataCacheConfigs = Objects.requireNonNull(dataCacheConfigs);
+            return this;
+        }
+        public Builder dataCacheConfigs(GetDatabaseInstanceSettingDataCacheConfig... dataCacheConfigs) {
+            return dataCacheConfigs(List.of(dataCacheConfigs));
+        }
+        @CustomType.Setter
         public Builder databaseFlags(List<GetDatabaseInstanceSettingDatabaseFlag> databaseFlags) {
             this.databaseFlags = Objects.requireNonNull(databaseFlags);
             return this;
@@ -274,6 +295,11 @@ public final class GetDatabaseInstanceSetting {
         @CustomType.Setter
         public Builder diskType(String diskType) {
             this.diskType = Objects.requireNonNull(diskType);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder edition(String edition) {
+            this.edition = Objects.requireNonNull(edition);
             return this;
         }
         @CustomType.Setter
@@ -358,6 +384,7 @@ public final class GetDatabaseInstanceSetting {
             o.backupConfigurations = backupConfigurations;
             o.collation = collation;
             o.connectorEnforcement = connectorEnforcement;
+            o.dataCacheConfigs = dataCacheConfigs;
             o.databaseFlags = databaseFlags;
             o.deletionProtectionEnabled = deletionProtectionEnabled;
             o.denyMaintenancePeriods = denyMaintenancePeriods;
@@ -365,6 +392,7 @@ public final class GetDatabaseInstanceSetting {
             o.diskAutoresizeLimit = diskAutoresizeLimit;
             o.diskSize = diskSize;
             o.diskType = diskType;
+            o.edition = edition;
             o.insightsConfigs = insightsConfigs;
             o.ipConfigurations = ipConfigurations;
             o.locationPreferences = locationPreferences;

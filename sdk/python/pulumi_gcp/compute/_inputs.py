@@ -305,6 +305,7 @@ __all__ = [
     'RegionPerInstanceConfigPreservedStateExternalIpIpAddressArgs',
     'RegionPerInstanceConfigPreservedStateInternalIpArgs',
     'RegionPerInstanceConfigPreservedStateInternalIpIpAddressArgs',
+    'RegionSecurityPolicyDdosProtectionConfigArgs',
     'RegionUrlMapDefaultRouteActionArgs',
     'RegionUrlMapDefaultRouteActionCorsPolicyArgs',
     'RegionUrlMapDefaultRouteActionFaultInjectionPolicyArgs',
@@ -20928,6 +20929,36 @@ class RegionPerInstanceConfigPreservedStateInternalIpIpAddressArgs:
     @address.setter
     def address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "address", value)
+
+
+@pulumi.input_type
+class RegionSecurityPolicyDdosProtectionConfigArgs:
+    def __init__(__self__, *,
+                 ddos_protection: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] ddos_protection: Google Cloud Armor offers the following options to help protect systems against DDoS attacks:
+               - STANDARD: basic always-on protection for network load balancers, protocol forwarding, or VMs with public IP addresses.
+               - ADVANCED: additional protections for Managed Protection Plus subscribers who use network load balancers, protocol forwarding, or VMs with public IP addresses.
+               - ADVANCED_PREVIEW: flag to enable the security policy in preview mode.
+               Possible values are: `ADVANCED`, `ADVANCED_PREVIEW`, `STANDARD`.
+        """
+        pulumi.set(__self__, "ddos_protection", ddos_protection)
+
+    @property
+    @pulumi.getter(name="ddosProtection")
+    def ddos_protection(self) -> pulumi.Input[str]:
+        """
+        Google Cloud Armor offers the following options to help protect systems against DDoS attacks:
+        - STANDARD: basic always-on protection for network load balancers, protocol forwarding, or VMs with public IP addresses.
+        - ADVANCED: additional protections for Managed Protection Plus subscribers who use network load balancers, protocol forwarding, or VMs with public IP addresses.
+        - ADVANCED_PREVIEW: flag to enable the security policy in preview mode.
+        Possible values are: `ADVANCED`, `ADVANCED_PREVIEW`, `STANDARD`.
+        """
+        return pulumi.get(self, "ddos_protection")
+
+    @ddos_protection.setter
+    def ddos_protection(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ddos_protection", value)
 
 
 @pulumi.input_type

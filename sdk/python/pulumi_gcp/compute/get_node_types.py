@@ -107,10 +107,10 @@ def get_node_types(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getNodeTypes:getNodeTypes', __args__, opts=opts, typ=GetNodeTypesResult).value
 
     return AwaitableGetNodeTypesResult(
-        id=__ret__.id,
-        names=__ret__.names,
-        project=__ret__.project,
-        zone=__ret__.zone)
+        id=pulumi.get(__ret__, 'id'),
+        names=pulumi.get(__ret__, 'names'),
+        project=pulumi.get(__ret__, 'project'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_node_types)

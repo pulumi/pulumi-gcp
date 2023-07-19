@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -103,6 +104,7 @@ func NewAccount(ctx *pulumi.Context,
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Account
 	err := ctx.RegisterResource("gcp:serviceAccount/account:Account", name, args, &resource, opts...)
 	if err != nil {

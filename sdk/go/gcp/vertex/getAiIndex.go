@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A representation of a collection of database items organized in a way that allows for approximate nearest neighbor (a.k.a ANN) algorithms search.
 func LookupAiIndex(ctx *pulumi.Context, args *LookupAiIndexArgs, opts ...pulumi.InvokeOption) (*LookupAiIndexResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAiIndexResult
 	err := ctx.Invoke("gcp:vertex/getAiIndex:getAiIndex", args, &rv, opts...)
 	if err != nil {

@@ -188,19 +188,19 @@ def get_function(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:cloudfunctionsv2/getFunction:getFunction', __args__, opts=opts, typ=GetFunctionResult).value
 
     return AwaitableGetFunctionResult(
-        build_configs=__ret__.build_configs,
-        description=__ret__.description,
-        environment=__ret__.environment,
-        event_triggers=__ret__.event_triggers,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        location=__ret__.location,
-        name=__ret__.name,
-        project=__ret__.project,
-        service_configs=__ret__.service_configs,
-        state=__ret__.state,
-        update_time=__ret__.update_time,
-        url=__ret__.url)
+        build_configs=pulumi.get(__ret__, 'build_configs'),
+        description=pulumi.get(__ret__, 'description'),
+        environment=pulumi.get(__ret__, 'environment'),
+        event_triggers=pulumi.get(__ret__, 'event_triggers'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        location=pulumi.get(__ret__, 'location'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        service_configs=pulumi.get(__ret__, 'service_configs'),
+        state=pulumi.get(__ret__, 'state'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        url=pulumi.get(__ret__, 'url'))
 
 
 @_utilities.lift_output_func(get_function)

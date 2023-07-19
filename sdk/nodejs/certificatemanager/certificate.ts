@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  * Read more about sensitive data in state.
  *
  * ## Example Usage
- * ### Certificate Manager Google Managed Certificate
+ * ### Certificate Manager Google Managed Certificate Dns
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -40,6 +40,75 @@ import * as utilities from "../utilities";
  *             instance.id,
  *             instance2.id,
  *         ],
+ *     },
+ * });
+ * ```
+ * ### Certificate Manager Google Managed Certificate Issuance Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const pool = new gcp.certificateauthority.CaPool("pool", {
+ *     location: "us-central1",
+ *     tier: "ENTERPRISE",
+ * });
+ * const caAuthority = new gcp.certificateauthority.Authority("caAuthority", {
+ *     location: "us-central1",
+ *     pool: pool.name,
+ *     certificateAuthorityId: "my-ca",
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 organization: "HashiCorp",
+ *                 commonName: "my-certificate-authority",
+ *             },
+ *             subjectAltName: {
+ *                 dnsNames: ["hashicorp.com"],
+ *             },
+ *         },
+ *         x509Config: {
+ *             caOptions: {
+ *                 isCa: true,
+ *             },
+ *             keyUsage: {
+ *                 baseKeyUsage: {
+ *                     certSign: true,
+ *                     crlSign: true,
+ *                 },
+ *                 extendedKeyUsage: {
+ *                     serverAuth: true,
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     keySpec: {
+ *         algorithm: "RSA_PKCS1_4096_SHA256",
+ *     },
+ *     deletionProtection: false,
+ *     skipGracePeriod: true,
+ *     ignoreActiveCertificatesOnDeletion: true,
+ * });
+ * // creating certificate_issuance_config to use it in the managed certificate
+ * const issuanceconfig = new gcp.certificatemanager.CertificateIssuanceConfig("issuanceconfig", {
+ *     description: "sample description for the certificate issuanceConfigs",
+ *     certificateAuthorityConfig: {
+ *         certificateAuthorityServiceConfig: {
+ *             caPool: pool.id,
+ *         },
+ *     },
+ *     lifetime: "1814400s",
+ *     rotationWindowPercentage: 34,
+ *     keyAlgorithm: "ECDSA_P256",
+ * }, {
+ *     dependsOn: [caAuthority],
+ * });
+ * const _default = new gcp.certificatemanager.Certificate("default", {
+ *     description: "The default cert",
+ *     scope: "EDGE_CACHE",
+ *     managed: {
+ *         domains: ["terraform.subdomain1.com"],
+ *         issuanceConfig: issuanceconfig.id,
  *     },
  * });
  * ```

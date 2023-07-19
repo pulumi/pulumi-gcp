@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -146,6 +147,7 @@ func NewSSLPolicy(ctx *pulumi.Context,
 		args = &SSLPolicyArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SSLPolicy
 	err := ctx.RegisterResource("gcp:compute/sSLPolicy:SSLPolicy", name, args, &resource, opts...)
 	if err != nil {

@@ -826,6 +826,22 @@ class DatabaseInstance(pulumi.CustomResource):
             opts=pulumi.ResourceOptions(provider=google_beta,
                 depends_on=[private_vpc_connection]))
         ```
+        ### ENTERPRISE_PLUS Instance with data_cache_config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        main = gcp.sql.DatabaseInstance("main",
+            database_version="MYSQL_8_0_31",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                data_cache_config=gcp.sql.DatabaseInstanceSettingsDataCacheConfigArgs(
+                    data_cache_enabled=True,
+                ),
+                edition="ENTERPRISE_PLUS",
+                tier="db-perf-optimized-N-2",
+            ))
+        ```
 
         ## Import
 
@@ -961,6 +977,22 @@ class DatabaseInstance(pulumi.CustomResource):
             ),
             opts=pulumi.ResourceOptions(provider=google_beta,
                 depends_on=[private_vpc_connection]))
+        ```
+        ### ENTERPRISE_PLUS Instance with data_cache_config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        main = gcp.sql.DatabaseInstance("main",
+            database_version="MYSQL_8_0_31",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                data_cache_config=gcp.sql.DatabaseInstanceSettingsDataCacheConfigArgs(
+                    data_cache_enabled=True,
+                ),
+                edition="ENTERPRISE_PLUS",
+                tier="db-perf-optimized-N-2",
+            ))
         ```
 
         ## Import

@@ -126,9 +126,6 @@ namespace Pulumi.Gcp.GkeHub
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -159,9 +156,6 @@ namespace Pulumi.Gcp.GkeHub
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -196,9 +190,6 @@ namespace Pulumi.Gcp.GkeHub
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

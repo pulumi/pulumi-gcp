@@ -103,10 +103,10 @@ def get_attached_versions(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:container/getAttachedVersions:getAttachedVersions', __args__, opts=opts, typ=GetAttachedVersionsResult).value
 
     return AwaitableGetAttachedVersionsResult(
-        id=__ret__.id,
-        location=__ret__.location,
-        project=__ret__.project,
-        valid_versions=__ret__.valid_versions)
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        project=pulumi.get(__ret__, 'project'),
+        valid_versions=pulumi.get(__ret__, 'valid_versions'))
 
 
 @_utilities.lift_output_func(get_attached_versions)

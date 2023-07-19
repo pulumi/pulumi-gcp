@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -142,6 +143,7 @@ func NewApiConfig(ctx *pulumi.Context,
 	if args.Api == nil {
 		return nil, errors.New("invalid value for required argument 'Api'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApiConfig
 	err := ctx.RegisterResource("gcp:apigateway/apiConfig:ApiConfig", name, args, &resource, opts...)
 	if err != nil {

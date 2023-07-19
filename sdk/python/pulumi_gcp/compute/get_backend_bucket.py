@@ -173,18 +173,18 @@ def get_backend_bucket(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getBackendBucket:getBackendBucket', __args__, opts=opts, typ=GetBackendBucketResult).value
 
     return AwaitableGetBackendBucketResult(
-        bucket_name=__ret__.bucket_name,
-        cdn_policies=__ret__.cdn_policies,
-        compression_mode=__ret__.compression_mode,
-        creation_timestamp=__ret__.creation_timestamp,
-        custom_response_headers=__ret__.custom_response_headers,
-        description=__ret__.description,
-        edge_security_policy=__ret__.edge_security_policy,
-        enable_cdn=__ret__.enable_cdn,
-        id=__ret__.id,
-        name=__ret__.name,
-        project=__ret__.project,
-        self_link=__ret__.self_link)
+        bucket_name=pulumi.get(__ret__, 'bucket_name'),
+        cdn_policies=pulumi.get(__ret__, 'cdn_policies'),
+        compression_mode=pulumi.get(__ret__, 'compression_mode'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        custom_response_headers=pulumi.get(__ret__, 'custom_response_headers'),
+        description=pulumi.get(__ret__, 'description'),
+        edge_security_policy=pulumi.get(__ret__, 'edge_security_policy'),
+        enable_cdn=pulumi.get(__ret__, 'enable_cdn'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        self_link=pulumi.get(__ret__, 'self_link'))
 
 
 @_utilities.lift_output_func(get_backend_bucket)

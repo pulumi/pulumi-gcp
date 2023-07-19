@@ -153,14 +153,14 @@ def get_managed_zone(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:dns/getManagedZone:getManagedZone', __args__, opts=opts, typ=GetManagedZoneResult).value
 
     return AwaitableGetManagedZoneResult(
-        description=__ret__.description,
-        dns_name=__ret__.dns_name,
-        id=__ret__.id,
-        managed_zone_id=__ret__.managed_zone_id,
-        name=__ret__.name,
-        name_servers=__ret__.name_servers,
-        project=__ret__.project,
-        visibility=__ret__.visibility)
+        description=pulumi.get(__ret__, 'description'),
+        dns_name=pulumi.get(__ret__, 'dns_name'),
+        id=pulumi.get(__ret__, 'id'),
+        managed_zone_id=pulumi.get(__ret__, 'managed_zone_id'),
+        name=pulumi.get(__ret__, 'name'),
+        name_servers=pulumi.get(__ret__, 'name_servers'),
+        project=pulumi.get(__ret__, 'project'),
+        visibility=pulumi.get(__ret__, 'visibility'))
 
 
 @_utilities.lift_output_func(get_managed_zone)

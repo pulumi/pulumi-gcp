@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,7 +39,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			defaultProject, err := organizations.NewProject(ctx, "defaultProject", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("tf-test"),
+//				ProjectId: pulumi.String("my-project"),
 //				OrgId:     pulumi.String("123456789"),
 //				Labels: pulumi.StringMap{
 //					"firebase": pulumi.String("enabled"),
@@ -93,6 +94,7 @@ func NewProject(ctx *pulumi.Context,
 		args = &ProjectArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Project
 	err := ctx.RegisterResource("gcp:firebase/project:Project", name, args, &resource, opts...)
 	if err != nil {

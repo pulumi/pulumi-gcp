@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsActiveDirectoryConfigArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsAdvancedMachineFeaturesArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
+import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsDataCacheConfigArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsDatabaseFlagArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsDenyMaintenancePeriodArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsInsightsConfigArgs;
@@ -123,6 +124,13 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.connectorEnforcement);
     }
 
+    @Import(name="dataCacheConfig")
+    private @Nullable Output<DatabaseInstanceSettingsDataCacheConfigArgs> dataCacheConfig;
+
+    public Optional<Output<DatabaseInstanceSettingsDataCacheConfigArgs>> dataCacheConfig() {
+        return Optional.ofNullable(this.dataCacheConfig);
+    }
+
     @Import(name="databaseFlags")
     private @Nullable Output<List<DatabaseInstanceSettingsDatabaseFlagArgs>> databaseFlags;
 
@@ -202,6 +210,21 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
      */
     public Optional<Output<String>> diskType() {
         return Optional.ofNullable(this.diskType);
+    }
+
+    /**
+     * The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+     * 
+     */
+    @Import(name="edition")
+    private @Nullable Output<String> edition;
+
+    /**
+     * @return The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+     * 
+     */
+    public Optional<Output<String>> edition() {
+        return Optional.ofNullable(this.edition);
     }
 
     @Import(name="insightsConfig")
@@ -327,6 +350,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         this.backupConfiguration = $.backupConfiguration;
         this.collation = $.collation;
         this.connectorEnforcement = $.connectorEnforcement;
+        this.dataCacheConfig = $.dataCacheConfig;
         this.databaseFlags = $.databaseFlags;
         this.deletionProtectionEnabled = $.deletionProtectionEnabled;
         this.denyMaintenancePeriod = $.denyMaintenancePeriod;
@@ -334,6 +358,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         this.diskAutoresizeLimit = $.diskAutoresizeLimit;
         this.diskSize = $.diskSize;
         this.diskType = $.diskType;
+        this.edition = $.edition;
         this.insightsConfig = $.insightsConfig;
         this.ipConfiguration = $.ipConfiguration;
         this.locationPreference = $.locationPreference;
@@ -488,6 +513,15 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
             return connectorEnforcement(Output.of(connectorEnforcement));
         }
 
+        public Builder dataCacheConfig(@Nullable Output<DatabaseInstanceSettingsDataCacheConfigArgs> dataCacheConfig) {
+            $.dataCacheConfig = dataCacheConfig;
+            return this;
+        }
+
+        public Builder dataCacheConfig(DatabaseInstanceSettingsDataCacheConfigArgs dataCacheConfig) {
+            return dataCacheConfig(Output.of(dataCacheConfig));
+        }
+
         public Builder databaseFlags(@Nullable Output<List<DatabaseInstanceSettingsDatabaseFlagArgs>> databaseFlags) {
             $.databaseFlags = databaseFlags;
             return this;
@@ -601,6 +635,27 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
          */
         public Builder diskType(String diskType) {
             return diskType(Output.of(diskType));
+        }
+
+        /**
+         * @param edition The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder edition(@Nullable Output<String> edition) {
+            $.edition = edition;
+            return this;
+        }
+
+        /**
+         * @param edition The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder edition(String edition) {
+            return edition(Output.of(edition));
         }
 
         public Builder insightsConfig(@Nullable Output<DatabaseInstanceSettingsInsightsConfigArgs> insightsConfig) {

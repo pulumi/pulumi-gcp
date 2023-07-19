@@ -168,17 +168,17 @@ def get_app_gateway(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:beyondcorp/getAppGateway:getAppGateway', __args__, opts=opts, typ=GetAppGatewayResult).value
 
     return AwaitableGetAppGatewayResult(
-        allocated_connections=__ret__.allocated_connections,
-        display_name=__ret__.display_name,
-        host_type=__ret__.host_type,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        project=__ret__.project,
-        region=__ret__.region,
-        state=__ret__.state,
-        type=__ret__.type,
-        uri=__ret__.uri)
+        allocated_connections=pulumi.get(__ret__, 'allocated_connections'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        host_type=pulumi.get(__ret__, 'host_type'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'),
+        state=pulumi.get(__ret__, 'state'),
+        type=pulumi.get(__ret__, 'type'),
+        uri=pulumi.get(__ret__, 'uri'))
 
 
 @_utilities.lift_output_func(get_app_gateway)

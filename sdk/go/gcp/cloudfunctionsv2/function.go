@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -375,6 +376,7 @@ func NewFunction(ctx *pulumi.Context,
 		args = &FunctionArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Function
 	err := ctx.RegisterResource("gcp:cloudfunctionsv2/function:Function", name, args, &resource, opts...)
 	if err != nil {

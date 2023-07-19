@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -260,6 +261,7 @@ func NewRoutine(ctx *pulumi.Context,
 	if args.RoutineId == nil {
 		return nil, errors.New("invalid value for required argument 'RoutineId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Routine
 	err := ctx.RegisterResource("gcp:bigquery/routine:Routine", name, args, &resource, opts...)
 	if err != nil {

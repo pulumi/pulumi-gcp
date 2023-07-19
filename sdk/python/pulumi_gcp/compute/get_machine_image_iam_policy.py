@@ -104,11 +104,11 @@ def get_machine_image_iam_policy(machine_image: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getMachineImageIamPolicy:getMachineImageIamPolicy', __args__, opts=opts, typ=GetMachineImageIamPolicyResult).value
 
     return AwaitableGetMachineImageIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        machine_image=__ret__.machine_image,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        machine_image=pulumi.get(__ret__, 'machine_image'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_machine_image_iam_policy)

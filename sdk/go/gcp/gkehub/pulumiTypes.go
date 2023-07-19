@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type FeatureIamBindingCondition struct {
 	Description *string `pulumi:"description"`
@@ -2237,6 +2240,8 @@ func (o FeatureResourceStateArrayOutput) Index(i pulumi.IntInput) FeatureResourc
 }
 
 type FeatureSpec struct {
+	// Fleet Observability feature spec.
+	// Structure is documented below.
 	Fleetobservability *FeatureSpecFleetobservability `pulumi:"fleetobservability"`
 	// Multicluster Ingress-specific spec.
 	// Structure is documented below.
@@ -2255,6 +2260,8 @@ type FeatureSpecInput interface {
 }
 
 type FeatureSpecArgs struct {
+	// Fleet Observability feature spec.
+	// Structure is documented below.
 	Fleetobservability FeatureSpecFleetobservabilityPtrInput `pulumi:"fleetobservability"`
 	// Multicluster Ingress-specific spec.
 	// Structure is documented below.
@@ -2338,6 +2345,8 @@ func (o FeatureSpecOutput) ToFeatureSpecPtrOutputWithContext(ctx context.Context
 	}).(FeatureSpecPtrOutput)
 }
 
+// Fleet Observability feature spec.
+// Structure is documented below.
 func (o FeatureSpecOutput) Fleetobservability() FeatureSpecFleetobservabilityPtrOutput {
 	return o.ApplyT(func(v FeatureSpec) *FeatureSpecFleetobservability { return v.Fleetobservability }).(FeatureSpecFleetobservabilityPtrOutput)
 }
@@ -2372,6 +2381,8 @@ func (o FeatureSpecPtrOutput) Elem() FeatureSpecOutput {
 	}).(FeatureSpecOutput)
 }
 
+// Fleet Observability feature spec.
+// Structure is documented below.
 func (o FeatureSpecPtrOutput) Fleetobservability() FeatureSpecFleetobservabilityPtrOutput {
 	return o.ApplyT(func(v *FeatureSpec) *FeatureSpecFleetobservability {
 		if v == nil {

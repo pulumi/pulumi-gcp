@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type DatabaseInstanceClone struct {
 	// The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -1002,6 +1005,7 @@ type DatabaseInstanceSettings struct {
 	Collation *string `pulumi:"collation"`
 	// Specifies if connections must use Cloud SQL connectors.
 	ConnectorEnforcement      *string                                        `pulumi:"connectorEnforcement"`
+	DataCacheConfig           *DatabaseInstanceSettingsDataCacheConfig       `pulumi:"dataCacheConfig"`
 	DatabaseFlags             []DatabaseInstanceSettingsDatabaseFlag         `pulumi:"databaseFlags"`
 	DeletionProtectionEnabled *bool                                          `pulumi:"deletionProtectionEnabled"`
 	DenyMaintenancePeriod     *DatabaseInstanceSettingsDenyMaintenancePeriod `pulumi:"denyMaintenancePeriod"`
@@ -1012,7 +1016,9 @@ type DatabaseInstanceSettings struct {
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
 	DiskSize *int `pulumi:"diskSize"`
 	// The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
-	DiskType                 *string                                           `pulumi:"diskType"`
+	DiskType *string `pulumi:"diskType"`
+	// The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+	Edition                  *string                                           `pulumi:"edition"`
 	InsightsConfig           *DatabaseInstanceSettingsInsightsConfig           `pulumi:"insightsConfig"`
 	IpConfiguration          *DatabaseInstanceSettingsIpConfiguration          `pulumi:"ipConfiguration"`
 	LocationPreference       *DatabaseInstanceSettingsLocationPreference       `pulumi:"locationPreference"`
@@ -1061,6 +1067,7 @@ type DatabaseInstanceSettingsArgs struct {
 	Collation pulumi.StringPtrInput `pulumi:"collation"`
 	// Specifies if connections must use Cloud SQL connectors.
 	ConnectorEnforcement      pulumi.StringPtrInput                                 `pulumi:"connectorEnforcement"`
+	DataCacheConfig           DatabaseInstanceSettingsDataCacheConfigPtrInput       `pulumi:"dataCacheConfig"`
 	DatabaseFlags             DatabaseInstanceSettingsDatabaseFlagArrayInput        `pulumi:"databaseFlags"`
 	DeletionProtectionEnabled pulumi.BoolPtrInput                                   `pulumi:"deletionProtectionEnabled"`
 	DenyMaintenancePeriod     DatabaseInstanceSettingsDenyMaintenancePeriodPtrInput `pulumi:"denyMaintenancePeriod"`
@@ -1071,7 +1078,9 @@ type DatabaseInstanceSettingsArgs struct {
 	// The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
 	DiskSize pulumi.IntPtrInput `pulumi:"diskSize"`
 	// The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
-	DiskType                 pulumi.StringPtrInput                                    `pulumi:"diskType"`
+	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+	Edition                  pulumi.StringPtrInput                                    `pulumi:"edition"`
 	InsightsConfig           DatabaseInstanceSettingsInsightsConfigPtrInput           `pulumi:"insightsConfig"`
 	IpConfiguration          DatabaseInstanceSettingsIpConfigurationPtrInput          `pulumi:"ipConfiguration"`
 	LocationPreference       DatabaseInstanceSettingsLocationPreferencePtrInput       `pulumi:"locationPreference"`
@@ -1212,6 +1221,10 @@ func (o DatabaseInstanceSettingsOutput) ConnectorEnforcement() pulumi.StringPtrO
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.ConnectorEnforcement }).(pulumi.StringPtrOutput)
 }
 
+func (o DatabaseInstanceSettingsOutput) DataCacheConfig() DatabaseInstanceSettingsDataCacheConfigPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsDataCacheConfig { return v.DataCacheConfig }).(DatabaseInstanceSettingsDataCacheConfigPtrOutput)
+}
+
 func (o DatabaseInstanceSettingsOutput) DatabaseFlags() DatabaseInstanceSettingsDatabaseFlagArrayOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) []DatabaseInstanceSettingsDatabaseFlag { return v.DatabaseFlags }).(DatabaseInstanceSettingsDatabaseFlagArrayOutput)
 }
@@ -1244,6 +1257,11 @@ func (o DatabaseInstanceSettingsOutput) DiskSize() pulumi.IntPtrOutput {
 // The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
 func (o DatabaseInstanceSettingsOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+// The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+func (o DatabaseInstanceSettingsOutput) Edition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.Edition }).(pulumi.StringPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsOutput) InsightsConfig() DatabaseInstanceSettingsInsightsConfigPtrOutput {
@@ -1401,6 +1419,15 @@ func (o DatabaseInstanceSettingsPtrOutput) ConnectorEnforcement() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o DatabaseInstanceSettingsPtrOutput) DataCacheConfig() DatabaseInstanceSettingsDataCacheConfigPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *DatabaseInstanceSettingsDataCacheConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DataCacheConfig
+	}).(DatabaseInstanceSettingsDataCacheConfigPtrOutput)
+}
+
 func (o DatabaseInstanceSettingsPtrOutput) DatabaseFlags() DatabaseInstanceSettingsDatabaseFlagArrayOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettings) []DatabaseInstanceSettingsDatabaseFlag {
 		if v == nil {
@@ -1465,6 +1492,16 @@ func (o DatabaseInstanceSettingsPtrOutput) DiskType() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+func (o DatabaseInstanceSettingsPtrOutput) Edition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Edition
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2274,6 +2311,147 @@ func (o DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOut
 		}
 		return v.RetentionUnit
 	}).(pulumi.StringPtrOutput)
+}
+
+type DatabaseInstanceSettingsDataCacheConfig struct {
+	// Whether data cache is enabled for the instance. Defaults to `false`
+	// Can only be used with MYSQL.
+	DataCacheEnabled *bool `pulumi:"dataCacheEnabled"`
+}
+
+// DatabaseInstanceSettingsDataCacheConfigInput is an input type that accepts DatabaseInstanceSettingsDataCacheConfigArgs and DatabaseInstanceSettingsDataCacheConfigOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsDataCacheConfigInput` via:
+//
+//	DatabaseInstanceSettingsDataCacheConfigArgs{...}
+type DatabaseInstanceSettingsDataCacheConfigInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsDataCacheConfigOutput() DatabaseInstanceSettingsDataCacheConfigOutput
+	ToDatabaseInstanceSettingsDataCacheConfigOutputWithContext(context.Context) DatabaseInstanceSettingsDataCacheConfigOutput
+}
+
+type DatabaseInstanceSettingsDataCacheConfigArgs struct {
+	// Whether data cache is enabled for the instance. Defaults to `false`
+	// Can only be used with MYSQL.
+	DataCacheEnabled pulumi.BoolPtrInput `pulumi:"dataCacheEnabled"`
+}
+
+func (DatabaseInstanceSettingsDataCacheConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsDataCacheConfig)(nil)).Elem()
+}
+
+func (i DatabaseInstanceSettingsDataCacheConfigArgs) ToDatabaseInstanceSettingsDataCacheConfigOutput() DatabaseInstanceSettingsDataCacheConfigOutput {
+	return i.ToDatabaseInstanceSettingsDataCacheConfigOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsDataCacheConfigArgs) ToDatabaseInstanceSettingsDataCacheConfigOutputWithContext(ctx context.Context) DatabaseInstanceSettingsDataCacheConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsDataCacheConfigOutput)
+}
+
+func (i DatabaseInstanceSettingsDataCacheConfigArgs) ToDatabaseInstanceSettingsDataCacheConfigPtrOutput() DatabaseInstanceSettingsDataCacheConfigPtrOutput {
+	return i.ToDatabaseInstanceSettingsDataCacheConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsDataCacheConfigArgs) ToDatabaseInstanceSettingsDataCacheConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsDataCacheConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsDataCacheConfigOutput).ToDatabaseInstanceSettingsDataCacheConfigPtrOutputWithContext(ctx)
+}
+
+// DatabaseInstanceSettingsDataCacheConfigPtrInput is an input type that accepts DatabaseInstanceSettingsDataCacheConfigArgs, DatabaseInstanceSettingsDataCacheConfigPtr and DatabaseInstanceSettingsDataCacheConfigPtrOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsDataCacheConfigPtrInput` via:
+//
+//	        DatabaseInstanceSettingsDataCacheConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabaseInstanceSettingsDataCacheConfigPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsDataCacheConfigPtrOutput() DatabaseInstanceSettingsDataCacheConfigPtrOutput
+	ToDatabaseInstanceSettingsDataCacheConfigPtrOutputWithContext(context.Context) DatabaseInstanceSettingsDataCacheConfigPtrOutput
+}
+
+type databaseInstanceSettingsDataCacheConfigPtrType DatabaseInstanceSettingsDataCacheConfigArgs
+
+func DatabaseInstanceSettingsDataCacheConfigPtr(v *DatabaseInstanceSettingsDataCacheConfigArgs) DatabaseInstanceSettingsDataCacheConfigPtrInput {
+	return (*databaseInstanceSettingsDataCacheConfigPtrType)(v)
+}
+
+func (*databaseInstanceSettingsDataCacheConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceSettingsDataCacheConfig)(nil)).Elem()
+}
+
+func (i *databaseInstanceSettingsDataCacheConfigPtrType) ToDatabaseInstanceSettingsDataCacheConfigPtrOutput() DatabaseInstanceSettingsDataCacheConfigPtrOutput {
+	return i.ToDatabaseInstanceSettingsDataCacheConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseInstanceSettingsDataCacheConfigPtrType) ToDatabaseInstanceSettingsDataCacheConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsDataCacheConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsDataCacheConfigPtrOutput)
+}
+
+type DatabaseInstanceSettingsDataCacheConfigOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsDataCacheConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsDataCacheConfig)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsDataCacheConfigOutput) ToDatabaseInstanceSettingsDataCacheConfigOutput() DatabaseInstanceSettingsDataCacheConfigOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsDataCacheConfigOutput) ToDatabaseInstanceSettingsDataCacheConfigOutputWithContext(ctx context.Context) DatabaseInstanceSettingsDataCacheConfigOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsDataCacheConfigOutput) ToDatabaseInstanceSettingsDataCacheConfigPtrOutput() DatabaseInstanceSettingsDataCacheConfigPtrOutput {
+	return o.ToDatabaseInstanceSettingsDataCacheConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseInstanceSettingsDataCacheConfigOutput) ToDatabaseInstanceSettingsDataCacheConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsDataCacheConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceSettingsDataCacheConfig) *DatabaseInstanceSettingsDataCacheConfig {
+		return &v
+	}).(DatabaseInstanceSettingsDataCacheConfigPtrOutput)
+}
+
+// Whether data cache is enabled for the instance. Defaults to `false`
+// Can only be used with MYSQL.
+func (o DatabaseInstanceSettingsDataCacheConfigOutput) DataCacheEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsDataCacheConfig) *bool { return v.DataCacheEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type DatabaseInstanceSettingsDataCacheConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsDataCacheConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceSettingsDataCacheConfig)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsDataCacheConfigPtrOutput) ToDatabaseInstanceSettingsDataCacheConfigPtrOutput() DatabaseInstanceSettingsDataCacheConfigPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsDataCacheConfigPtrOutput) ToDatabaseInstanceSettingsDataCacheConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsDataCacheConfigPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsDataCacheConfigPtrOutput) Elem() DatabaseInstanceSettingsDataCacheConfigOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsDataCacheConfig) DatabaseInstanceSettingsDataCacheConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseInstanceSettingsDataCacheConfig
+		return ret
+	}).(DatabaseInstanceSettingsDataCacheConfigOutput)
+}
+
+// Whether data cache is enabled for the instance. Defaults to `false`
+// Can only be used with MYSQL.
+func (o DatabaseInstanceSettingsDataCacheConfigPtrOutput) DataCacheEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsDataCacheConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DataCacheEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type DatabaseInstanceSettingsDatabaseFlag struct {
@@ -5118,6 +5296,7 @@ type GetDatabaseInstanceSetting struct {
 	BackupConfigurations       []GetDatabaseInstanceSettingBackupConfiguration      `pulumi:"backupConfigurations"`
 	Collation                  string                                               `pulumi:"collation"`
 	ConnectorEnforcement       string                                               `pulumi:"connectorEnforcement"`
+	DataCacheConfigs           []GetDatabaseInstanceSettingDataCacheConfig          `pulumi:"dataCacheConfigs"`
 	DatabaseFlags              []GetDatabaseInstanceSettingDatabaseFlag             `pulumi:"databaseFlags"`
 	DeletionProtectionEnabled  bool                                                 `pulumi:"deletionProtectionEnabled"`
 	DenyMaintenancePeriods     []GetDatabaseInstanceSettingDenyMaintenancePeriod    `pulumi:"denyMaintenancePeriods"`
@@ -5125,6 +5304,7 @@ type GetDatabaseInstanceSetting struct {
 	DiskAutoresizeLimit        int                                                  `pulumi:"diskAutoresizeLimit"`
 	DiskSize                   int                                                  `pulumi:"diskSize"`
 	DiskType                   string                                               `pulumi:"diskType"`
+	Edition                    string                                               `pulumi:"edition"`
 	InsightsConfigs            []GetDatabaseInstanceSettingInsightsConfig           `pulumi:"insightsConfigs"`
 	IpConfigurations           []GetDatabaseInstanceSettingIpConfiguration          `pulumi:"ipConfigurations"`
 	LocationPreferences        []GetDatabaseInstanceSettingLocationPreference       `pulumi:"locationPreferences"`
@@ -5157,6 +5337,7 @@ type GetDatabaseInstanceSettingArgs struct {
 	BackupConfigurations       GetDatabaseInstanceSettingBackupConfigurationArrayInput      `pulumi:"backupConfigurations"`
 	Collation                  pulumi.StringInput                                           `pulumi:"collation"`
 	ConnectorEnforcement       pulumi.StringInput                                           `pulumi:"connectorEnforcement"`
+	DataCacheConfigs           GetDatabaseInstanceSettingDataCacheConfigArrayInput          `pulumi:"dataCacheConfigs"`
 	DatabaseFlags              GetDatabaseInstanceSettingDatabaseFlagArrayInput             `pulumi:"databaseFlags"`
 	DeletionProtectionEnabled  pulumi.BoolInput                                             `pulumi:"deletionProtectionEnabled"`
 	DenyMaintenancePeriods     GetDatabaseInstanceSettingDenyMaintenancePeriodArrayInput    `pulumi:"denyMaintenancePeriods"`
@@ -5164,6 +5345,7 @@ type GetDatabaseInstanceSettingArgs struct {
 	DiskAutoresizeLimit        pulumi.IntInput                                              `pulumi:"diskAutoresizeLimit"`
 	DiskSize                   pulumi.IntInput                                              `pulumi:"diskSize"`
 	DiskType                   pulumi.StringInput                                           `pulumi:"diskType"`
+	Edition                    pulumi.StringInput                                           `pulumi:"edition"`
 	InsightsConfigs            GetDatabaseInstanceSettingInsightsConfigArrayInput           `pulumi:"insightsConfigs"`
 	IpConfigurations           GetDatabaseInstanceSettingIpConfigurationArrayInput          `pulumi:"ipConfigurations"`
 	LocationPreferences        GetDatabaseInstanceSettingLocationPreferenceArrayInput       `pulumi:"locationPreferences"`
@@ -5262,6 +5444,12 @@ func (o GetDatabaseInstanceSettingOutput) ConnectorEnforcement() pulumi.StringOu
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.ConnectorEnforcement }).(pulumi.StringOutput)
 }
 
+func (o GetDatabaseInstanceSettingOutput) DataCacheConfigs() GetDatabaseInstanceSettingDataCacheConfigArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) []GetDatabaseInstanceSettingDataCacheConfig {
+		return v.DataCacheConfigs
+	}).(GetDatabaseInstanceSettingDataCacheConfigArrayOutput)
+}
+
 func (o GetDatabaseInstanceSettingOutput) DatabaseFlags() GetDatabaseInstanceSettingDatabaseFlagArrayOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) []GetDatabaseInstanceSettingDatabaseFlag { return v.DatabaseFlags }).(GetDatabaseInstanceSettingDatabaseFlagArrayOutput)
 }
@@ -5290,6 +5478,10 @@ func (o GetDatabaseInstanceSettingOutput) DiskSize() pulumi.IntOutput {
 
 func (o GetDatabaseInstanceSettingOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstanceSettingOutput) Edition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.Edition }).(pulumi.StringOutput)
 }
 
 func (o GetDatabaseInstanceSettingOutput) InsightsConfigs() GetDatabaseInstanceSettingInsightsConfigArrayOutput {
@@ -5790,6 +5982,100 @@ func (o GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArray
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting {
 		return vs[0].([]GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting)[vs[1].(int)]
 	}).(GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput)
+}
+
+type GetDatabaseInstanceSettingDataCacheConfig struct {
+	DataCacheEnabled bool `pulumi:"dataCacheEnabled"`
+}
+
+// GetDatabaseInstanceSettingDataCacheConfigInput is an input type that accepts GetDatabaseInstanceSettingDataCacheConfigArgs and GetDatabaseInstanceSettingDataCacheConfigOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingDataCacheConfigInput` via:
+//
+//	GetDatabaseInstanceSettingDataCacheConfigArgs{...}
+type GetDatabaseInstanceSettingDataCacheConfigInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingDataCacheConfigOutput() GetDatabaseInstanceSettingDataCacheConfigOutput
+	ToGetDatabaseInstanceSettingDataCacheConfigOutputWithContext(context.Context) GetDatabaseInstanceSettingDataCacheConfigOutput
+}
+
+type GetDatabaseInstanceSettingDataCacheConfigArgs struct {
+	DataCacheEnabled pulumi.BoolInput `pulumi:"dataCacheEnabled"`
+}
+
+func (GetDatabaseInstanceSettingDataCacheConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingDataCacheConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingDataCacheConfigArgs) ToGetDatabaseInstanceSettingDataCacheConfigOutput() GetDatabaseInstanceSettingDataCacheConfigOutput {
+	return i.ToGetDatabaseInstanceSettingDataCacheConfigOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingDataCacheConfigArgs) ToGetDatabaseInstanceSettingDataCacheConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingDataCacheConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingDataCacheConfigOutput)
+}
+
+// GetDatabaseInstanceSettingDataCacheConfigArrayInput is an input type that accepts GetDatabaseInstanceSettingDataCacheConfigArray and GetDatabaseInstanceSettingDataCacheConfigArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingDataCacheConfigArrayInput` via:
+//
+//	GetDatabaseInstanceSettingDataCacheConfigArray{ GetDatabaseInstanceSettingDataCacheConfigArgs{...} }
+type GetDatabaseInstanceSettingDataCacheConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingDataCacheConfigArrayOutput() GetDatabaseInstanceSettingDataCacheConfigArrayOutput
+	ToGetDatabaseInstanceSettingDataCacheConfigArrayOutputWithContext(context.Context) GetDatabaseInstanceSettingDataCacheConfigArrayOutput
+}
+
+type GetDatabaseInstanceSettingDataCacheConfigArray []GetDatabaseInstanceSettingDataCacheConfigInput
+
+func (GetDatabaseInstanceSettingDataCacheConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingDataCacheConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingDataCacheConfigArray) ToGetDatabaseInstanceSettingDataCacheConfigArrayOutput() GetDatabaseInstanceSettingDataCacheConfigArrayOutput {
+	return i.ToGetDatabaseInstanceSettingDataCacheConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingDataCacheConfigArray) ToGetDatabaseInstanceSettingDataCacheConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingDataCacheConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingDataCacheConfigArrayOutput)
+}
+
+type GetDatabaseInstanceSettingDataCacheConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingDataCacheConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingDataCacheConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingDataCacheConfigOutput) ToGetDatabaseInstanceSettingDataCacheConfigOutput() GetDatabaseInstanceSettingDataCacheConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingDataCacheConfigOutput) ToGetDatabaseInstanceSettingDataCacheConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingDataCacheConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingDataCacheConfigOutput) DataCacheEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingDataCacheConfig) bool { return v.DataCacheEnabled }).(pulumi.BoolOutput)
+}
+
+type GetDatabaseInstanceSettingDataCacheConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingDataCacheConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingDataCacheConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingDataCacheConfigArrayOutput) ToGetDatabaseInstanceSettingDataCacheConfigArrayOutput() GetDatabaseInstanceSettingDataCacheConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingDataCacheConfigArrayOutput) ToGetDatabaseInstanceSettingDataCacheConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingDataCacheConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingDataCacheConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingDataCacheConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingDataCacheConfig {
+		return vs[0].([]GetDatabaseInstanceSettingDataCacheConfig)[vs[1].(int)]
+	}).(GetDatabaseInstanceSettingDataCacheConfigOutput)
 }
 
 type GetDatabaseInstanceSettingDatabaseFlag struct {
@@ -7646,6 +7932,7 @@ type GetDatabaseInstancesInstanceSetting struct {
 	BackupConfigurations       []GetDatabaseInstancesInstanceSettingBackupConfiguration      `pulumi:"backupConfigurations"`
 	Collation                  string                                                        `pulumi:"collation"`
 	ConnectorEnforcement       string                                                        `pulumi:"connectorEnforcement"`
+	DataCacheConfigs           []GetDatabaseInstancesInstanceSettingDataCacheConfig          `pulumi:"dataCacheConfigs"`
 	DatabaseFlags              []GetDatabaseInstancesInstanceSettingDatabaseFlag             `pulumi:"databaseFlags"`
 	DeletionProtectionEnabled  bool                                                          `pulumi:"deletionProtectionEnabled"`
 	DenyMaintenancePeriods     []GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod    `pulumi:"denyMaintenancePeriods"`
@@ -7653,6 +7940,7 @@ type GetDatabaseInstancesInstanceSetting struct {
 	DiskAutoresizeLimit        int                                                           `pulumi:"diskAutoresizeLimit"`
 	DiskSize                   int                                                           `pulumi:"diskSize"`
 	DiskType                   string                                                        `pulumi:"diskType"`
+	Edition                    string                                                        `pulumi:"edition"`
 	InsightsConfigs            []GetDatabaseInstancesInstanceSettingInsightsConfig           `pulumi:"insightsConfigs"`
 	IpConfigurations           []GetDatabaseInstancesInstanceSettingIpConfiguration          `pulumi:"ipConfigurations"`
 	LocationPreferences        []GetDatabaseInstancesInstanceSettingLocationPreference       `pulumi:"locationPreferences"`
@@ -7686,6 +7974,7 @@ type GetDatabaseInstancesInstanceSettingArgs struct {
 	BackupConfigurations       GetDatabaseInstancesInstanceSettingBackupConfigurationArrayInput      `pulumi:"backupConfigurations"`
 	Collation                  pulumi.StringInput                                                    `pulumi:"collation"`
 	ConnectorEnforcement       pulumi.StringInput                                                    `pulumi:"connectorEnforcement"`
+	DataCacheConfigs           GetDatabaseInstancesInstanceSettingDataCacheConfigArrayInput          `pulumi:"dataCacheConfigs"`
 	DatabaseFlags              GetDatabaseInstancesInstanceSettingDatabaseFlagArrayInput             `pulumi:"databaseFlags"`
 	DeletionProtectionEnabled  pulumi.BoolInput                                                      `pulumi:"deletionProtectionEnabled"`
 	DenyMaintenancePeriods     GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArrayInput    `pulumi:"denyMaintenancePeriods"`
@@ -7693,6 +7982,7 @@ type GetDatabaseInstancesInstanceSettingArgs struct {
 	DiskAutoresizeLimit        pulumi.IntInput                                                       `pulumi:"diskAutoresizeLimit"`
 	DiskSize                   pulumi.IntInput                                                       `pulumi:"diskSize"`
 	DiskType                   pulumi.StringInput                                                    `pulumi:"diskType"`
+	Edition                    pulumi.StringInput                                                    `pulumi:"edition"`
 	InsightsConfigs            GetDatabaseInstancesInstanceSettingInsightsConfigArrayInput           `pulumi:"insightsConfigs"`
 	IpConfigurations           GetDatabaseInstancesInstanceSettingIpConfigurationArrayInput          `pulumi:"ipConfigurations"`
 	LocationPreferences        GetDatabaseInstancesInstanceSettingLocationPreferenceArrayInput       `pulumi:"locationPreferences"`
@@ -7792,6 +8082,12 @@ func (o GetDatabaseInstancesInstanceSettingOutput) ConnectorEnforcement() pulumi
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.ConnectorEnforcement }).(pulumi.StringOutput)
 }
 
+func (o GetDatabaseInstancesInstanceSettingOutput) DataCacheConfigs() GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) []GetDatabaseInstancesInstanceSettingDataCacheConfig {
+		return v.DataCacheConfigs
+	}).(GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput)
+}
+
 func (o GetDatabaseInstancesInstanceSettingOutput) DatabaseFlags() GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) []GetDatabaseInstancesInstanceSettingDatabaseFlag {
 		return v.DatabaseFlags
@@ -7822,6 +8118,10 @@ func (o GetDatabaseInstancesInstanceSettingOutput) DiskSize() pulumi.IntOutput {
 
 func (o GetDatabaseInstancesInstanceSettingOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstancesInstanceSettingOutput) Edition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSetting) string { return v.Edition }).(pulumi.StringOutput)
 }
 
 func (o GetDatabaseInstancesInstanceSettingOutput) InsightsConfigs() GetDatabaseInstancesInstanceSettingInsightsConfigArrayOutput {
@@ -8327,6 +8627,100 @@ func (o GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSet
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting {
 		return vs[0].([]GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting)[vs[1].(int)]
 	}).(GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingDataCacheConfig struct {
+	DataCacheEnabled bool `pulumi:"dataCacheEnabled"`
+}
+
+// GetDatabaseInstancesInstanceSettingDataCacheConfigInput is an input type that accepts GetDatabaseInstancesInstanceSettingDataCacheConfigArgs and GetDatabaseInstancesInstanceSettingDataCacheConfigOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingDataCacheConfigInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingDataCacheConfigArgs{...}
+type GetDatabaseInstancesInstanceSettingDataCacheConfigInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingDataCacheConfigOutput() GetDatabaseInstancesInstanceSettingDataCacheConfigOutput
+	ToGetDatabaseInstancesInstanceSettingDataCacheConfigOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingDataCacheConfigOutput
+}
+
+type GetDatabaseInstancesInstanceSettingDataCacheConfigArgs struct {
+	DataCacheEnabled pulumi.BoolInput `pulumi:"dataCacheEnabled"`
+}
+
+func (GetDatabaseInstancesInstanceSettingDataCacheConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingDataCacheConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingDataCacheConfigArgs) ToGetDatabaseInstancesInstanceSettingDataCacheConfigOutput() GetDatabaseInstancesInstanceSettingDataCacheConfigOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingDataCacheConfigOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingDataCacheConfigArgs) ToGetDatabaseInstancesInstanceSettingDataCacheConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingDataCacheConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingDataCacheConfigOutput)
+}
+
+// GetDatabaseInstancesInstanceSettingDataCacheConfigArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingDataCacheConfigArray and GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingDataCacheConfigArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingDataCacheConfigArray{ GetDatabaseInstancesInstanceSettingDataCacheConfigArgs{...} }
+type GetDatabaseInstancesInstanceSettingDataCacheConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput() GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput
+	ToGetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput
+}
+
+type GetDatabaseInstancesInstanceSettingDataCacheConfigArray []GetDatabaseInstancesInstanceSettingDataCacheConfigInput
+
+func (GetDatabaseInstancesInstanceSettingDataCacheConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingDataCacheConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingDataCacheConfigArray) ToGetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput() GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingDataCacheConfigArray) ToGetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingDataCacheConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingDataCacheConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingDataCacheConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingDataCacheConfigOutput) ToGetDatabaseInstancesInstanceSettingDataCacheConfigOutput() GetDatabaseInstancesInstanceSettingDataCacheConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingDataCacheConfigOutput) ToGetDatabaseInstancesInstanceSettingDataCacheConfigOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingDataCacheConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingDataCacheConfigOutput) DataCacheEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingDataCacheConfig) bool { return v.DataCacheEnabled }).(pulumi.BoolOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingDataCacheConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput() GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput) ToGetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingDataCacheConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingDataCacheConfig {
+		return vs[0].([]GetDatabaseInstancesInstanceSettingDataCacheConfig)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceSettingDataCacheConfigOutput)
 }
 
 type GetDatabaseInstancesInstanceSettingDatabaseFlag struct {
@@ -9627,6 +10021,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsBackupConfigurationPtrInput)(nil)).Elem(), DatabaseInstanceSettingsBackupConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsInput)(nil)).Elem(), DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrInput)(nil)).Elem(), DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsDataCacheConfigInput)(nil)).Elem(), DatabaseInstanceSettingsDataCacheConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsDataCacheConfigPtrInput)(nil)).Elem(), DatabaseInstanceSettingsDataCacheConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsDatabaseFlagInput)(nil)).Elem(), DatabaseInstanceSettingsDatabaseFlagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsDatabaseFlagArrayInput)(nil)).Elem(), DatabaseInstanceSettingsDatabaseFlagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsDenyMaintenancePeriodInput)(nil)).Elem(), DatabaseInstanceSettingsDenyMaintenancePeriodArgs{})
@@ -9673,6 +10069,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingBackupConfigurationArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingBackupConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingInput)(nil)).Elem(), GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingDataCacheConfigInput)(nil)).Elem(), GetDatabaseInstanceSettingDataCacheConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingDataCacheConfigArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingDataCacheConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingDatabaseFlagInput)(nil)).Elem(), GetDatabaseInstanceSettingDatabaseFlagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingDatabaseFlagArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingDatabaseFlagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingDenyMaintenancePeriodInput)(nil)).Elem(), GetDatabaseInstanceSettingDenyMaintenancePeriodArgs{})
@@ -9713,6 +10111,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingBackupConfigurationArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingBackupConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingDataCacheConfigInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingDataCacheConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingDataCacheConfigArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingDataCacheConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingDatabaseFlagInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingDatabaseFlagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingDatabaseFlagArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingDatabaseFlagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodArgs{})
@@ -9755,6 +10155,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsBackupConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsDataCacheConfigOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsDataCacheConfigPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsDatabaseFlagOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsDatabaseFlagArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsDenyMaintenancePeriodOutput{})
@@ -9801,6 +10203,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingBackupConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingDataCacheConfigOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingDataCacheConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingDatabaseFlagOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingDatabaseFlagArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingDenyMaintenancePeriodOutput{})
@@ -9841,6 +10245,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingBackupConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingDataCacheConfigOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingDataCacheConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingDatabaseFlagOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingDatabaseFlagArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodOutput{})

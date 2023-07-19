@@ -29,6 +29,11 @@ public final class TriggerGitFileSource {
      * 
      */
     private String repoType;
+    /**
+     * @return The fully qualified resource name of the Repo API repository. The fully qualified resource name of the Repo API repository.
+     * If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+     * 
+     */
     private @Nullable String repository;
     /**
      * @return The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
@@ -69,6 +74,11 @@ public final class TriggerGitFileSource {
     public String repoType() {
         return this.repoType;
     }
+    /**
+     * @return The fully qualified resource name of the Repo API repository. The fully qualified resource name of the Repo API repository.
+     * If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+     * 
+     */
     public Optional<String> repository() {
         return Optional.ofNullable(this.repository);
     }

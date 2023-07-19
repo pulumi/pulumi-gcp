@@ -15,12 +15,15 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile {
     /**
-     * @return Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+     * @return Defaults to false. When false, files are
+     * subject to validations based on the file type: Remote: A checksum must be
+     * specified. Cloud Storage: An object generation number must be specified.
      * 
      */
     private @Nullable Boolean allowInsecure;
     /**
-     * @return A Cloud Storage object.
+     * @return A Cloud Storage object. Structure is
+     * documented below.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs gcs;
@@ -30,21 +33,25 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile {
      */
     private @Nullable String localPath;
     /**
-     * @return A generic remote file.
+     * @return A generic remote file. Structure is
+     * documented below.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote remote;
 
     private OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile() {}
     /**
-     * @return Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+     * @return Defaults to false. When false, files are
+     * subject to validations based on the file type: Remote: A checksum must be
+     * specified. Cloud Storage: An object generation number must be specified.
      * 
      */
     public Optional<Boolean> allowInsecure() {
         return Optional.ofNullable(this.allowInsecure);
     }
     /**
-     * @return A Cloud Storage object.
+     * @return A Cloud Storage object. Structure is
+     * documented below.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs> gcs() {
@@ -58,7 +65,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile {
         return Optional.ofNullable(this.localPath);
     }
     /**
-     * @return A generic remote file.
+     * @return A generic remote file. Structure is
+     * documented below.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote> remote() {

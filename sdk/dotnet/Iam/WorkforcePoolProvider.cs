@@ -21,6 +21,10 @@ namespace Pulumi.Gcp.Iam
     /// &gt; **Note:** Ask your Google Cloud account team to request access to workforce identity federation for your
     /// billing/quota project. The account team notifies you when the project is granted access.
     /// 
+    /// &gt; **Warning:** All arguments including the following potentially sensitive
+    /// values will be stored in the raw state as plain text: `oidc.client_secret.value.plain_text`.
+    /// Read more about sensitive data in state.
+    /// 
     /// ## Example Usage
     /// ### Iam Workforce Pool Provider Saml Basic
     /// 
@@ -124,10 +128,17 @@ namespace Pulumi.Gcp.Iam
     ///         {
     ///             IssuerUri = "https://accounts.thirdparty.com",
     ///             ClientId = "client-id",
+    ///             ClientSecret = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcClientSecretArgs
+    ///             {
+    ///                 Value = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcClientSecretValueArgs
+    ///                 {
+    ///                     PlainText = "client-secret",
+    ///                 },
+    ///             },
     ///             WebSsoConfig = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcWebSsoConfigArgs
     ///             {
-    ///                 ResponseType = "ID_TOKEN",
-    ///                 AssertionClaimsBehavior = "ONLY_ID_TOKEN_CLAIMS",
+    ///                 ResponseType = "CODE",
+    ///                 AssertionClaimsBehavior = "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
     ///             },
     ///         },
     ///     });
@@ -164,10 +175,17 @@ namespace Pulumi.Gcp.Iam
     ///         {
     ///             IssuerUri = "https://accounts.thirdparty.com",
     ///             ClientId = "client-id",
+    ///             ClientSecret = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcClientSecretArgs
+    ///             {
+    ///                 Value = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcClientSecretValueArgs
+    ///                 {
+    ///                     PlainText = "client-secret",
+    ///                 },
+    ///             },
     ///             WebSsoConfig = new Gcp.Iam.Inputs.WorkforcePoolProviderOidcWebSsoConfigArgs
     ///             {
-    ///                 ResponseType = "ID_TOKEN",
-    ///                 AssertionClaimsBehavior = "ONLY_ID_TOKEN_CLAIMS",
+    ///                 ResponseType = "CODE",
+    ///                 AssertionClaimsBehavior = "MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS",
     ///             },
     ///         },
     ///         DisplayName = "Display name",

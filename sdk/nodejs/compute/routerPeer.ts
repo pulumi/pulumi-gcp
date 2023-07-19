@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  *     advertisedRoutePriority: 100,
  *     "interface": "interface-1",
  *     peerAsn: 65513,
- *     peerIpAddress: "169.254.1.2",
  *     region: "us-central1",
  *     router: "my-router",
  * });
@@ -281,7 +280,7 @@ export class RouterPeer extends pulumi.CustomResource {
     public readonly peerAsn!: pulumi.Output<number>;
     /**
      * IP address of the BGP interface outside Google Cloud Platform.
-     * Only IPv4 is supported.
+     * Only IPv4 is supported. Required if `ipAddress` is set.
      */
     public readonly peerIpAddress!: pulumi.Output<string>;
     /**
@@ -355,9 +354,6 @@ export class RouterPeer extends pulumi.CustomResource {
             }
             if ((!args || args.peerAsn === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'peerAsn'");
-            }
-            if ((!args || args.peerIpAddress === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'peerIpAddress'");
             }
             if ((!args || args.router === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'router'");
@@ -470,7 +466,7 @@ export interface RouterPeerState {
     peerAsn?: pulumi.Input<number>;
     /**
      * IP address of the BGP interface outside Google Cloud Platform.
-     * Only IPv4 is supported.
+     * Only IPv4 is supported. Required if `ipAddress` is set.
      */
     peerIpAddress?: pulumi.Input<string>;
     /**
@@ -585,9 +581,9 @@ export interface RouterPeerArgs {
     peerAsn: pulumi.Input<number>;
     /**
      * IP address of the BGP interface outside Google Cloud Platform.
-     * Only IPv4 is supported.
+     * Only IPv4 is supported. Required if `ipAddress` is set.
      */
-    peerIpAddress: pulumi.Input<string>;
+    peerIpAddress?: pulumi.Input<string>;
     /**
      * IPv6 address of the BGP interface outside Google Cloud Platform.
      * The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.

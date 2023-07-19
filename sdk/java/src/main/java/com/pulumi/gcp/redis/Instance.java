@@ -584,15 +584,15 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="maintenanceSchedule", type=InstanceMaintenanceSchedule.class, parameters={})
-    private Output</* @Nullable */ InstanceMaintenanceSchedule> maintenanceSchedule;
+    private Output<InstanceMaintenanceSchedule> maintenanceSchedule;
 
     /**
      * @return Upcoming maintenance schedule.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<InstanceMaintenanceSchedule>> maintenanceSchedule() {
-        return Codegen.optional(this.maintenanceSchedule);
+    public Output<InstanceMaintenanceSchedule> maintenanceSchedule() {
+        return this.maintenanceSchedule;
     }
     /**
      * Redis memory size in GiB.

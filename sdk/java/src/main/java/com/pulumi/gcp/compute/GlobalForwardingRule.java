@@ -1109,6 +1109,76 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Private Service Connect Google Apis No Automate Dns
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.compute.GlobalForwardingRule;
+ * import com.pulumi.gcp.compute.GlobalForwardingRuleArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var network = new Network(&#34;network&#34;, NetworkArgs.builder()        
+ *             .project(&#34;my-project-name&#34;)
+ *             .autoCreateSubnetworks(false)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var vpcSubnetwork = new Subnetwork(&#34;vpcSubnetwork&#34;, SubnetworkArgs.builder()        
+ *             .project(network.project())
+ *             .ipCidrRange(&#34;10.2.0.0/16&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .network(network.id())
+ *             .privateIpGoogleAccess(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultGlobalAddress = new GlobalAddress(&#34;defaultGlobalAddress&#34;, GlobalAddressArgs.builder()        
+ *             .project(network.project())
+ *             .addressType(&#34;INTERNAL&#34;)
+ *             .purpose(&#34;PRIVATE_SERVICE_CONNECT&#34;)
+ *             .network(network.id())
+ *             .address(&#34;100.100.100.106&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var defaultGlobalForwardingRule = new GlobalForwardingRule(&#34;defaultGlobalForwardingRule&#34;, GlobalForwardingRuleArgs.builder()        
+ *             .project(network.project())
+ *             .target(&#34;all-apis&#34;)
+ *             .network(network.id())
+ *             .ipAddress(defaultGlobalAddress.id())
+ *             .loadBalancingScheme(&#34;&#34;)
+ *             .noAutomateDnsZone(false)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -1452,6 +1522,20 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      */
     public Output<String> network() {
         return this.network;
+    }
+    /**
+     * This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+     * 
+     */
+    @Export(name="noAutomateDnsZone", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> noAutomateDnsZone;
+
+    /**
+     * @return This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+     * 
+     */
+    public Output<Optional<Boolean>> noAutomateDnsZone() {
+        return Codegen.optional(this.noAutomateDnsZone);
     }
     /**
      * This field can only be used:

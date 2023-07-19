@@ -17,14 +17,20 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs exten
     public static final OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs Empty = new OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs();
 
     /**
-     * What to run to bring this resource into the desired state. An exit code of 100 indicates &#34;success&#34;, any other exit code indicates a failure running enforce.
+     * What to run to bring this resource into the desired
+     * state. An exit code of 100 indicates &#34;success&#34;, any other exit code
+     * indicates a failure running enforce. Structure is
+     * documented below.
      * 
      */
     @Import(name="enforce")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs> enforce;
 
     /**
-     * @return What to run to bring this resource into the desired state. An exit code of 100 indicates &#34;success&#34;, any other exit code indicates a failure running enforce.
+     * @return What to run to bring this resource into the desired
+     * state. An exit code of 100 indicates &#34;success&#34;, any other exit code
+     * indicates a failure running enforce. Structure is
+     * documented below.
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs>> enforce() {
@@ -32,14 +38,22 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs exten
     }
 
     /**
-     * Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates &#34;in desired state&#34;, and exit code of 101 indicates &#34;not in desired state&#34;. Any other exit code indicates a failure running validate.
+     * What to run to validate this resource is in the
+     * desired state. An exit code of 100 indicates &#34;in desired state&#34;, and exit
+     * code of 101 indicates &#34;not in desired state&#34;. Any other exit code indicates
+     * a failure running validate. Structure is
+     * documented below.
      * 
      */
     @Import(name="validate", required=true)
     private Output<OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs> validate;
 
     /**
-     * @return Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates &#34;in desired state&#34;, and exit code of 101 indicates &#34;not in desired state&#34;. Any other exit code indicates a failure running validate.
+     * @return What to run to validate this resource is in the
+     * desired state. An exit code of 100 indicates &#34;in desired state&#34;, and exit
+     * code of 101 indicates &#34;not in desired state&#34;. Any other exit code indicates
+     * a failure running validate. Structure is
+     * documented below.
      * 
      */
     public Output<OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs> validate() {
@@ -72,7 +86,10 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs exten
         }
 
         /**
-         * @param enforce What to run to bring this resource into the desired state. An exit code of 100 indicates &#34;success&#34;, any other exit code indicates a failure running enforce.
+         * @param enforce What to run to bring this resource into the desired
+         * state. An exit code of 100 indicates &#34;success&#34;, any other exit code
+         * indicates a failure running enforce. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -83,7 +100,10 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs exten
         }
 
         /**
-         * @param enforce What to run to bring this resource into the desired state. An exit code of 100 indicates &#34;success&#34;, any other exit code indicates a failure running enforce.
+         * @param enforce What to run to bring this resource into the desired
+         * state. An exit code of 100 indicates &#34;success&#34;, any other exit code
+         * indicates a failure running enforce. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -93,7 +113,11 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs exten
         }
 
         /**
-         * @param validate Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates &#34;in desired state&#34;, and exit code of 101 indicates &#34;not in desired state&#34;. Any other exit code indicates a failure running validate.
+         * @param validate What to run to validate this resource is in the
+         * desired state. An exit code of 100 indicates &#34;in desired state&#34;, and exit
+         * code of 101 indicates &#34;not in desired state&#34;. Any other exit code indicates
+         * a failure running validate. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -104,7 +128,11 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs exten
         }
 
         /**
-         * @param validate Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates &#34;in desired state&#34;, and exit code of 101 indicates &#34;not in desired state&#34;. Any other exit code indicates a failure running validate.
+         * @param validate What to run to validate this resource is in the
+         * desired state. An exit code of 100 indicates &#34;in desired state&#34;, and exit
+         * code of 101 indicates &#34;not in desired state&#34;. Any other exit code indicates
+         * a failure running validate. Structure is
+         * documented below.
          * 
          * @return builder
          * 

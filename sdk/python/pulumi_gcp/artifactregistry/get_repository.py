@@ -215,22 +215,22 @@ def get_repository(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:artifactregistry/getRepository:getRepository', __args__, opts=opts, typ=GetRepositoryResult).value
 
     return AwaitableGetRepositoryResult(
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        docker_configs=__ret__.docker_configs,
-        format=__ret__.format,
-        id=__ret__.id,
-        kms_key_name=__ret__.kms_key_name,
-        labels=__ret__.labels,
-        location=__ret__.location,
-        maven_configs=__ret__.maven_configs,
-        mode=__ret__.mode,
-        name=__ret__.name,
-        project=__ret__.project,
-        remote_repository_configs=__ret__.remote_repository_configs,
-        repository_id=__ret__.repository_id,
-        update_time=__ret__.update_time,
-        virtual_repository_configs=__ret__.virtual_repository_configs)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        docker_configs=pulumi.get(__ret__, 'docker_configs'),
+        format=pulumi.get(__ret__, 'format'),
+        id=pulumi.get(__ret__, 'id'),
+        kms_key_name=pulumi.get(__ret__, 'kms_key_name'),
+        labels=pulumi.get(__ret__, 'labels'),
+        location=pulumi.get(__ret__, 'location'),
+        maven_configs=pulumi.get(__ret__, 'maven_configs'),
+        mode=pulumi.get(__ret__, 'mode'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        remote_repository_configs=pulumi.get(__ret__, 'remote_repository_configs'),
+        repository_id=pulumi.get(__ret__, 'repository_id'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        virtual_repository_configs=pulumi.get(__ret__, 'virtual_repository_configs'))
 
 
 @_utilities.lift_output_func(get_repository)

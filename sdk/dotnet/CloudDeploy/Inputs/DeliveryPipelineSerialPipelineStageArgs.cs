@@ -12,6 +12,18 @@ namespace Pulumi.Gcp.CloudDeploy.Inputs
 
     public sealed class DeliveryPipelineSerialPipelineStageArgs : global::Pulumi.ResourceArgs
     {
+        [Input("deployParameters")]
+        private InputList<Inputs.DeliveryPipelineSerialPipelineStageDeployParameterArgs>? _deployParameters;
+
+        /// <summary>
+        /// Optional. The deploy parameters to use for the target in this stage.
+        /// </summary>
+        public InputList<Inputs.DeliveryPipelineSerialPipelineStageDeployParameterArgs> DeployParameters
+        {
+            get => _deployParameters ?? (_deployParameters = new InputList<Inputs.DeliveryPipelineSerialPipelineStageDeployParameterArgs>());
+            set => _deployParameters = value;
+        }
+
         [Input("profiles")]
         private InputList<string>? _profiles;
 

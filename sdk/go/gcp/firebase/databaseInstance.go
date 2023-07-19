@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -199,6 +200,7 @@ func NewDatabaseInstance(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DatabaseInstance
 	err := ctx.RegisterResource("gcp:firebase/databaseInstance:DatabaseInstance", name, args, &resource, opts...)
 	if err != nil {

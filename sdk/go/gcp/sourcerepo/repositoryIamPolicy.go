@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -195,6 +196,7 @@ func NewRepositoryIamPolicy(ctx *pulumi.Context,
 	if args.Repository == nil {
 		return nil, errors.New("invalid value for required argument 'Repository'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RepositoryIamPolicy
 	err := ctx.RegisterResource("gcp:sourcerepo/repositoryIamPolicy:RepositoryIamPolicy", name, args, &resource, opts...)
 	if err != nil {

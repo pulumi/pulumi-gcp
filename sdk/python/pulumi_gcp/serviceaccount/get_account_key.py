@@ -127,12 +127,12 @@ def get_account_key(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getAccountKey:getAccountKey', __args__, opts=opts, typ=GetAccountKeyResult).value
 
     return AwaitableGetAccountKeyResult(
-        id=__ret__.id,
-        key_algorithm=__ret__.key_algorithm,
-        name=__ret__.name,
-        project=__ret__.project,
-        public_key=__ret__.public_key,
-        public_key_type=__ret__.public_key_type)
+        id=pulumi.get(__ret__, 'id'),
+        key_algorithm=pulumi.get(__ret__, 'key_algorithm'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        public_key=pulumi.get(__ret__, 'public_key'),
+        public_key_type=pulumi.get(__ret__, 'public_key_type'))
 
 
 @_utilities.lift_output_func(get_account_key)

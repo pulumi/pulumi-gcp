@@ -110,10 +110,10 @@ def get_image_versions(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:composer/getImageVersions:getImageVersions', __args__, opts=opts, typ=GetImageVersionsResult).value
 
     return AwaitableGetImageVersionsResult(
-        id=__ret__.id,
-        image_versions=__ret__.image_versions,
-        project=__ret__.project,
-        region=__ret__.region)
+        id=pulumi.get(__ret__, 'id'),
+        image_versions=pulumi.get(__ret__, 'image_versions'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'))
 
 
 @_utilities.lift_output_func(get_image_versions)

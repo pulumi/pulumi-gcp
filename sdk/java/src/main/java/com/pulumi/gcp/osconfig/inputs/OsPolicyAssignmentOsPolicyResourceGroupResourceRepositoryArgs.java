@@ -19,14 +19,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs
     public static final OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs Empty = new OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs();
 
     /**
-     * An Apt Repository.
+     * An Apt Repository. Structure is
+     * documented below.
      * 
      */
     @Import(name="apt")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs> apt;
 
     /**
-     * @return An Apt Repository.
+     * @return An Apt Repository. Structure is
+     * documented below.
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs>> apt() {
@@ -34,14 +36,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs
     }
 
     /**
-     * A Goo Repository.
+     * A Goo Repository. Structure is
+     * documented below.
      * 
      */
     @Import(name="goo")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs> goo;
 
     /**
-     * @return A Goo Repository.
+     * @return A Goo Repository. Structure is
+     * documented below.
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs>> goo() {
@@ -49,14 +53,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs
     }
 
     /**
-     * A Yum Repository.
+     * A Yum Repository. Structure is
+     * documented below.
      * 
      */
     @Import(name="yum")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs> yum;
 
     /**
-     * @return A Yum Repository.
+     * @return A Yum Repository. Structure is
+     * documented below.
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs>> yum() {
@@ -64,14 +70,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs
     }
 
     /**
-     * A Zypper Repository.
+     * A Zypper Repository. Structure is
+     * documented below.
      * 
      */
     @Import(name="zypper")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs> zypper;
 
     /**
-     * @return A Zypper Repository.
+     * @return A Zypper Repository. Structure is
+     * documented below.
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs>> zypper() {
@@ -106,7 +114,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs
         }
 
         /**
-         * @param apt An Apt Repository.
+         * @param apt An Apt Repository. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -117,7 +126,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs
         }
 
         /**
-         * @param apt An Apt Repository.
+         * @param apt An Apt Repository. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -127,7 +137,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs
         }
 
         /**
-         * @param goo A Goo Repository.
+         * @param goo A Goo Repository. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -138,7 +149,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs
         }
 
         /**
-         * @param goo A Goo Repository.
+         * @param goo A Goo Repository. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -148,7 +160,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs
         }
 
         /**
-         * @param yum A Yum Repository.
+         * @param yum A Yum Repository. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -159,7 +172,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs
         }
 
         /**
-         * @param yum A Yum Repository.
+         * @param yum A Yum Repository. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -169,7 +183,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs
         }
 
         /**
-         * @param zypper A Zypper Repository.
+         * @param zypper A Zypper Repository. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -180,7 +195,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs
         }
 
         /**
-         * @param zypper A Zypper Repository.
+         * @param zypper A Zypper Repository. Structure is
+         * documented below.
          * 
          * @return builder
          * 

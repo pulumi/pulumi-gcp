@@ -188,19 +188,19 @@ def get_workload_identity_pool_provider(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider', __args__, opts=opts, typ=GetWorkloadIdentityPoolProviderResult).value
 
     return AwaitableGetWorkloadIdentityPoolProviderResult(
-        attribute_condition=__ret__.attribute_condition,
-        attribute_mapping=__ret__.attribute_mapping,
-        aws=__ret__.aws,
-        description=__ret__.description,
-        disabled=__ret__.disabled,
-        display_name=__ret__.display_name,
-        id=__ret__.id,
-        name=__ret__.name,
-        oidcs=__ret__.oidcs,
-        project=__ret__.project,
-        state=__ret__.state,
-        workload_identity_pool_id=__ret__.workload_identity_pool_id,
-        workload_identity_pool_provider_id=__ret__.workload_identity_pool_provider_id)
+        attribute_condition=pulumi.get(__ret__, 'attribute_condition'),
+        attribute_mapping=pulumi.get(__ret__, 'attribute_mapping'),
+        aws=pulumi.get(__ret__, 'aws'),
+        description=pulumi.get(__ret__, 'description'),
+        disabled=pulumi.get(__ret__, 'disabled'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        oidcs=pulumi.get(__ret__, 'oidcs'),
+        project=pulumi.get(__ret__, 'project'),
+        state=pulumi.get(__ret__, 'state'),
+        workload_identity_pool_id=pulumi.get(__ret__, 'workload_identity_pool_id'),
+        workload_identity_pool_provider_id=pulumi.get(__ret__, 'workload_identity_pool_provider_id'))
 
 
 @_utilities.lift_output_func(get_workload_identity_pool_provider)

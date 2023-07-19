@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -133,6 +134,7 @@ func NewDataPolicy(ctx *pulumi.Context,
 	if args.PolicyTag == nil {
 		return nil, errors.New("invalid value for required argument 'PolicyTag'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DataPolicy
 	err := ctx.RegisterResource("gcp:bigquerydatapolicy/dataPolicy:DataPolicy", name, args, &resource, opts...)
 	if err != nil {

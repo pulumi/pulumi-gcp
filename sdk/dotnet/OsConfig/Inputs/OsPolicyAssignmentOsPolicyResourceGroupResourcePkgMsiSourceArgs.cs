@@ -13,13 +13,16 @@ namespace Pulumi.Gcp.OsConfig.Inputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+        /// Defaults to false. When false, files are
+        /// subject to validations based on the file type: Remote: A checksum must be
+        /// specified. Cloud Storage: An object generation number must be specified.
         /// </summary>
         [Input("allowInsecure")]
         public Input<bool>? AllowInsecure { get; set; }
 
         /// <summary>
-        /// A Cloud Storage object.
+        /// A Cloud Storage object. Structure is
+        /// documented below.
         /// </summary>
         [Input("gcs")]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs>? Gcs { get; set; }
@@ -31,7 +34,8 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         public Input<string>? LocalPath { get; set; }
 
         /// <summary>
-        /// A generic remote file.
+        /// A generic remote file. Structure is
+        /// documented below.
         /// </summary>
         [Input("remote")]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs>? Remote { get; set; }

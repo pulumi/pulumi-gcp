@@ -288,7 +288,7 @@ def get_trigger(location: Optional[str] = None,
     import pulumi_gcp as gcp
 
     name = gcp.cloudbuild.get_trigger(project="your-project-id",
-        trigger_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+        trigger_id=google_cloudbuild_trigger["filename-trigger"]["trigger_id"],
         location="location of trigger build")
     ```
 
@@ -307,32 +307,32 @@ def get_trigger(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:cloudbuild/getTrigger:getTrigger', __args__, opts=opts, typ=GetTriggerResult).value
 
     return AwaitableGetTriggerResult(
-        approval_configs=__ret__.approval_configs,
-        bitbucket_server_trigger_configs=__ret__.bitbucket_server_trigger_configs,
-        builds=__ret__.builds,
-        create_time=__ret__.create_time,
-        description=__ret__.description,
-        disabled=__ret__.disabled,
-        filename=__ret__.filename,
-        filter=__ret__.filter,
-        git_file_sources=__ret__.git_file_sources,
-        githubs=__ret__.githubs,
-        id=__ret__.id,
-        ignored_files=__ret__.ignored_files,
-        include_build_logs=__ret__.include_build_logs,
-        included_files=__ret__.included_files,
-        location=__ret__.location,
-        name=__ret__.name,
-        project=__ret__.project,
-        pubsub_configs=__ret__.pubsub_configs,
-        repository_event_configs=__ret__.repository_event_configs,
-        service_account=__ret__.service_account,
-        source_to_builds=__ret__.source_to_builds,
-        substitutions=__ret__.substitutions,
-        tags=__ret__.tags,
-        trigger_id=__ret__.trigger_id,
-        trigger_templates=__ret__.trigger_templates,
-        webhook_configs=__ret__.webhook_configs)
+        approval_configs=pulumi.get(__ret__, 'approval_configs'),
+        bitbucket_server_trigger_configs=pulumi.get(__ret__, 'bitbucket_server_trigger_configs'),
+        builds=pulumi.get(__ret__, 'builds'),
+        create_time=pulumi.get(__ret__, 'create_time'),
+        description=pulumi.get(__ret__, 'description'),
+        disabled=pulumi.get(__ret__, 'disabled'),
+        filename=pulumi.get(__ret__, 'filename'),
+        filter=pulumi.get(__ret__, 'filter'),
+        git_file_sources=pulumi.get(__ret__, 'git_file_sources'),
+        githubs=pulumi.get(__ret__, 'githubs'),
+        id=pulumi.get(__ret__, 'id'),
+        ignored_files=pulumi.get(__ret__, 'ignored_files'),
+        include_build_logs=pulumi.get(__ret__, 'include_build_logs'),
+        included_files=pulumi.get(__ret__, 'included_files'),
+        location=pulumi.get(__ret__, 'location'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        pubsub_configs=pulumi.get(__ret__, 'pubsub_configs'),
+        repository_event_configs=pulumi.get(__ret__, 'repository_event_configs'),
+        service_account=pulumi.get(__ret__, 'service_account'),
+        source_to_builds=pulumi.get(__ret__, 'source_to_builds'),
+        substitutions=pulumi.get(__ret__, 'substitutions'),
+        tags=pulumi.get(__ret__, 'tags'),
+        trigger_id=pulumi.get(__ret__, 'trigger_id'),
+        trigger_templates=pulumi.get(__ret__, 'trigger_templates'),
+        webhook_configs=pulumi.get(__ret__, 'webhook_configs'))
 
 
 @_utilities.lift_output_func(get_trigger)
@@ -354,7 +354,7 @@ def get_trigger_output(location: Optional[pulumi.Input[str]] = None,
     import pulumi_gcp as gcp
 
     name = gcp.cloudbuild.get_trigger(project="your-project-id",
-        trigger_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+        trigger_id=google_cloudbuild_trigger["filename-trigger"]["trigger_id"],
         location="location of trigger build")
     ```
 

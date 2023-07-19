@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupEnvironmentIamPolicy(ctx *pulumi.Context, args *LookupEnvironmentIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupEnvironmentIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEnvironmentIamPolicyResult
 	err := ctx.Invoke("gcp:apigee/getEnvironmentIamPolicy:getEnvironmentIamPolicy", args, &rv, opts...)
 	if err != nil {

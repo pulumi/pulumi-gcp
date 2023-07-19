@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -140,6 +141,7 @@ func NewAuthorizedOrgsDesc(ctx *pulumi.Context,
 	if args.Parent == nil {
 		return nil, errors.New("invalid value for required argument 'Parent'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AuthorizedOrgsDesc
 	err := ctx.RegisterResource("gcp:accesscontextmanager/authorizedOrgsDesc:AuthorizedOrgsDesc", name, args, &resource, opts...)
 	if err != nil {

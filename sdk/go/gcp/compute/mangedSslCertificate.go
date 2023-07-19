@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -107,6 +108,7 @@ func NewMangedSslCertificate(ctx *pulumi.Context,
 		args = &MangedSslCertificateArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MangedSslCertificate
 	err := ctx.RegisterResource("gcp:compute/mangedSslCertificate:MangedSslCertificate", name, args, &resource, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -128,6 +129,7 @@ func NewClient(ctx *pulumi.Context,
 		"secret",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Client
 	err := ctx.RegisterResource("gcp:iap/client:Client", name, args, &resource, opts...)
 	if err != nil {

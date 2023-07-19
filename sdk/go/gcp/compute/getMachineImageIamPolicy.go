@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func LookupMachineImageIamPolicy(ctx *pulumi.Context, args *LookupMachineImageIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupMachineImageIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMachineImageIamPolicyResult
 	err := ctx.Invoke("gcp:compute/getMachineImageIamPolicy:getMachineImageIamPolicy", args, &rv, opts...)
 	if err != nil {

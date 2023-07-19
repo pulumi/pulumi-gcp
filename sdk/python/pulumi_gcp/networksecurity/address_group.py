@@ -359,6 +359,14 @@ class AddressGroup(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        AddressGroup is a resource that specifies how a collection of IP/DNS used in Firewall Policy.
+
+        To get more information about AddressGroup, see:
+
+        * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-security/rest/v1beta1/organizations.locations.addressGroups)
+        * How-to Guides
+            * [Use AddressGroups](https://cloud.google.com/vpc/docs/use-address-groups-firewall-policies)
+
         ## Example Usage
         ### Network Security Address Groups Basic
 
@@ -367,12 +375,11 @@ class AddressGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.AddressGroup("default",
-            parent="projects/my-project-name",
-            location="us-central1",
-            type="IPV4",
             capacity=100,
             items=["208.80.154.224/32"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            location="us-central1",
+            parent="projects/my-project-name",
+            type="IPV4")
         ```
         ### Network Security Address Groups Organization Basic
 
@@ -381,12 +388,11 @@ class AddressGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.AddressGroup("default",
-            parent="organizations/123456789",
-            location="us-central1",
-            type="IPV4",
             capacity=100,
             items=["208.80.154.224/32"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            location="us-central1",
+            parent="organizations/123456789",
+            type="IPV4")
         ```
         ### Network Security Address Groups Advanced
 
@@ -395,13 +401,12 @@ class AddressGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.AddressGroup("default",
-            parent="projects/my-project-name",
-            location="us-central1",
-            description="my description",
-            type="IPV4",
             capacity=100,
+            description="my description",
             items=["208.80.154.224/32"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            location="us-central1",
+            parent="projects/my-project-name",
+            type="IPV4")
         ```
 
         ## Import
@@ -436,6 +441,14 @@ class AddressGroup(pulumi.CustomResource):
                  args: AddressGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        AddressGroup is a resource that specifies how a collection of IP/DNS used in Firewall Policy.
+
+        To get more information about AddressGroup, see:
+
+        * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-security/rest/v1beta1/organizations.locations.addressGroups)
+        * How-to Guides
+            * [Use AddressGroups](https://cloud.google.com/vpc/docs/use-address-groups-firewall-policies)
+
         ## Example Usage
         ### Network Security Address Groups Basic
 
@@ -444,12 +457,11 @@ class AddressGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.AddressGroup("default",
-            parent="projects/my-project-name",
-            location="us-central1",
-            type="IPV4",
             capacity=100,
             items=["208.80.154.224/32"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            location="us-central1",
+            parent="projects/my-project-name",
+            type="IPV4")
         ```
         ### Network Security Address Groups Organization Basic
 
@@ -458,12 +470,11 @@ class AddressGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.AddressGroup("default",
-            parent="organizations/123456789",
-            location="us-central1",
-            type="IPV4",
             capacity=100,
             items=["208.80.154.224/32"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            location="us-central1",
+            parent="organizations/123456789",
+            type="IPV4")
         ```
         ### Network Security Address Groups Advanced
 
@@ -472,13 +483,12 @@ class AddressGroup(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.AddressGroup("default",
-            parent="projects/my-project-name",
-            location="us-central1",
-            description="my description",
-            type="IPV4",
             capacity=100,
+            description="my description",
             items=["208.80.154.224/32"],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            location="us-central1",
+            parent="projects/my-project-name",
+            type="IPV4")
         ```
 
         ## Import

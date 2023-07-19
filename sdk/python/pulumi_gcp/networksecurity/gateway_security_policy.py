@@ -279,6 +279,12 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
                  tls_inspection_policy: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        The GatewaySecurityPolicy resource contains a collection of GatewaySecurityPolicyRules and associated metadata.
+
+        To get more information about GatewaySecurityPolicy, see:
+
+        * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies)
+
         ## Example Usage
         ### Network Security Gateway Security Policy Basic
 
@@ -287,9 +293,8 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.GatewaySecurityPolicy("default",
-            location="us-central1",
             description="my description",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            location="us-central1")
         ```
         ### Network Security Gateway Security Policy Tls Inspection Basic
 
@@ -354,6 +359,13 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
                 algorithm="RSA_PKCS1_4096_SHA256",
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
+        ns_sa = gcp.projects.ServiceIdentity("nsSa", service="networksecurity.googleapis.com",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        tls_inspection_permission = gcp.certificateauthority.CaPoolIamMember("tlsInspectionPermission",
+            ca_pool=default_ca_pool.id,
+            role="roles/privateca.certificateManager",
+            member=ns_sa.email.apply(lambda email: f"serviceAccount:{email}"),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         default_tls_inspection_policy = gcp.networksecurity.TlsInspectionPolicy("defaultTlsInspectionPolicy",
             location="us-central1",
             ca_pool=default_ca_pool.id,
@@ -361,6 +373,7 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
                 depends_on=[
                     default_ca_pool,
                     default_authority,
+                    tls_inspection_permission,
                 ]))
         default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy",
             location="us-central1",
@@ -407,6 +420,12 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
                  args: Optional[GatewaySecurityPolicyArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The GatewaySecurityPolicy resource contains a collection of GatewaySecurityPolicyRules and associated metadata.
+
+        To get more information about GatewaySecurityPolicy, see:
+
+        * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies)
+
         ## Example Usage
         ### Network Security Gateway Security Policy Basic
 
@@ -415,9 +434,8 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.networksecurity.GatewaySecurityPolicy("default",
-            location="us-central1",
             description="my description",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            location="us-central1")
         ```
         ### Network Security Gateway Security Policy Tls Inspection Basic
 
@@ -482,6 +500,13 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
                 algorithm="RSA_PKCS1_4096_SHA256",
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
+        ns_sa = gcp.projects.ServiceIdentity("nsSa", service="networksecurity.googleapis.com",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        tls_inspection_permission = gcp.certificateauthority.CaPoolIamMember("tlsInspectionPermission",
+            ca_pool=default_ca_pool.id,
+            role="roles/privateca.certificateManager",
+            member=ns_sa.email.apply(lambda email: f"serviceAccount:{email}"),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         default_tls_inspection_policy = gcp.networksecurity.TlsInspectionPolicy("defaultTlsInspectionPolicy",
             location="us-central1",
             ca_pool=default_ca_pool.id,
@@ -489,6 +514,7 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
                 depends_on=[
                     default_ca_pool,
                     default_authority,
+                    tls_inspection_permission,
                 ]))
         default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy",
             location="us-central1",

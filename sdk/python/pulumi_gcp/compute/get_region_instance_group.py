@@ -147,13 +147,13 @@ def get_region_instance_group(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup', __args__, opts=opts, typ=GetRegionInstanceGroupResult).value
 
     return AwaitableGetRegionInstanceGroupResult(
-        id=__ret__.id,
-        instances=__ret__.instances,
-        name=__ret__.name,
-        project=__ret__.project,
-        region=__ret__.region,
-        self_link=__ret__.self_link,
-        size=__ret__.size)
+        id=pulumi.get(__ret__, 'id'),
+        instances=pulumi.get(__ret__, 'instances'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        size=pulumi.get(__ret__, 'size'))
 
 
 @_utilities.lift_output_func(get_region_instance_group)

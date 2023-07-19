@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -535,6 +536,7 @@ func NewBareMetalCluster(ctx *pulumi.Context,
 	if args.Storage == nil {
 		return nil, errors.New("invalid value for required argument 'Storage'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource BareMetalCluster
 	err := ctx.RegisterResource("gcp:gkeonprem/bareMetalCluster:BareMetalCluster", name, args, &resource, opts...)
 	if err != nil {

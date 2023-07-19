@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -92,6 +93,7 @@ func NewWorkstationConfigIamBinding(ctx *pulumi.Context,
 	if args.WorkstationConfigId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkstationConfigId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkstationConfigIamBinding
 	err := ctx.RegisterResource("gcp:workstations/workstationConfigIamBinding:WorkstationConfigIamBinding", name, args, &resource, opts...)
 	if err != nil {

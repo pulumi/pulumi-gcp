@@ -124,6 +124,7 @@ export interface GetClusterResult {
     readonly removeDefaultNodePool: boolean;
     readonly resourceLabels: {[key: string]: string};
     readonly resourceUsageExportConfigs: outputs.container.GetClusterResourceUsageExportConfig[];
+    readonly securityPostureConfigs: outputs.container.GetClusterSecurityPostureConfig[];
     readonly selfLink: string;
     readonly serviceExternalIpsConfigs: outputs.container.GetClusterServiceExternalIpsConfig[];
     readonly servicesIpv4Cidr: string;

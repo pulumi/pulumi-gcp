@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetRegistryImage(ctx *pulumi.Context, args *GetRegistryImageArgs, opts ...pulumi.InvokeOption) (*GetRegistryImageResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegistryImageResult
 	err := ctx.Invoke("gcp:container/getRegistryImage:getRegistryImage", args, &rv, opts...)
 	if err != nil {

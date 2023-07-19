@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
     public sealed class DeliveryPipelineSerialPipelineStage
     {
         /// <summary>
+        /// Optional. The deploy parameters to use for the target in this stage.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.DeliveryPipelineSerialPipelineStageDeployParameter> DeployParameters;
+        /// <summary>
         /// Skaffold profiles to use when rendering the manifest for this stage's `Target`.
         /// </summary>
         public readonly ImmutableArray<string> Profiles;
@@ -28,12 +32,15 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
 
         [OutputConstructor]
         private DeliveryPipelineSerialPipelineStage(
+            ImmutableArray<Outputs.DeliveryPipelineSerialPipelineStageDeployParameter> deployParameters,
+
             ImmutableArray<string> profiles,
 
             Outputs.DeliveryPipelineSerialPipelineStageStrategy? strategy,
 
             string? targetId)
         {
+            DeployParameters = deployParameters;
             Profiles = profiles;
             Strategy = strategy;
             TargetId = targetId;

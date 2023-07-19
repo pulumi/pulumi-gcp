@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -119,6 +120,7 @@ func NewTenantOauthIdpConfig(ctx *pulumi.Context,
 	if args.Tenant == nil {
 		return nil, errors.New("invalid value for required argument 'Tenant'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TenantOauthIdpConfig
 	err := ctx.RegisterResource("gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig", name, args, &resource, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,7 +42,6 @@ import (
 //				AdvertisedRoutePriority: pulumi.Int(100),
 //				Interface:               pulumi.String("interface-1"),
 //				PeerAsn:                 pulumi.Int(65513),
-//				PeerIpAddress:           pulumi.String("169.254.1.2"),
 //				Region:                  pulumi.String("us-central1"),
 //				Router:                  pulumi.String("my-router"),
 //			})
@@ -337,7 +337,7 @@ type RouterPeer struct {
 	// Each BGP interface may use a different value.
 	PeerAsn pulumi.IntOutput `pulumi:"peerAsn"`
 	// IP address of the BGP interface outside Google Cloud Platform.
-	// Only IPv4 is supported.
+	// Only IPv4 is supported. Required if `ipAddress` is set.
 	PeerIpAddress pulumi.StringOutput `pulumi:"peerIpAddress"`
 	// IPv6 address of the BGP interface outside Google Cloud Platform.
 	// The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
@@ -374,12 +374,10 @@ func NewRouterPeer(ctx *pulumi.Context,
 	if args.PeerAsn == nil {
 		return nil, errors.New("invalid value for required argument 'PeerAsn'")
 	}
-	if args.PeerIpAddress == nil {
-		return nil, errors.New("invalid value for required argument 'PeerIpAddress'")
-	}
 	if args.Router == nil {
 		return nil, errors.New("invalid value for required argument 'Router'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RouterPeer
 	err := ctx.RegisterResource("gcp:compute/routerPeer:RouterPeer", name, args, &resource, opts...)
 	if err != nil {
@@ -454,7 +452,7 @@ type routerPeerState struct {
 	// Each BGP interface may use a different value.
 	PeerAsn *int `pulumi:"peerAsn"`
 	// IP address of the BGP interface outside Google Cloud Platform.
-	// Only IPv4 is supported.
+	// Only IPv4 is supported. Required if `ipAddress` is set.
 	PeerIpAddress *string `pulumi:"peerIpAddress"`
 	// IPv6 address of the BGP interface outside Google Cloud Platform.
 	// The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
@@ -531,7 +529,7 @@ type RouterPeerState struct {
 	// Each BGP interface may use a different value.
 	PeerAsn pulumi.IntPtrInput
 	// IP address of the BGP interface outside Google Cloud Platform.
-	// Only IPv4 is supported.
+	// Only IPv4 is supported. Required if `ipAddress` is set.
 	PeerIpAddress pulumi.StringPtrInput
 	// IPv6 address of the BGP interface outside Google Cloud Platform.
 	// The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
@@ -610,8 +608,8 @@ type routerPeerArgs struct {
 	// Each BGP interface may use a different value.
 	PeerAsn int `pulumi:"peerAsn"`
 	// IP address of the BGP interface outside Google Cloud Platform.
-	// Only IPv4 is supported.
-	PeerIpAddress string `pulumi:"peerIpAddress"`
+	// Only IPv4 is supported. Required if `ipAddress` is set.
+	PeerIpAddress *string `pulumi:"peerIpAddress"`
 	// IPv6 address of the BGP interface outside Google Cloud Platform.
 	// The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
 	// If you do not specify the next hop addresses, Google Cloud automatically
@@ -686,8 +684,8 @@ type RouterPeerArgs struct {
 	// Each BGP interface may use a different value.
 	PeerAsn pulumi.IntInput
 	// IP address of the BGP interface outside Google Cloud Platform.
-	// Only IPv4 is supported.
-	PeerIpAddress pulumi.StringInput
+	// Only IPv4 is supported. Required if `ipAddress` is set.
+	PeerIpAddress pulumi.StringPtrInput
 	// IPv6 address of the BGP interface outside Google Cloud Platform.
 	// The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
 	// If you do not specify the next hop addresses, Google Cloud automatically
@@ -888,7 +886,7 @@ func (o RouterPeerOutput) PeerAsn() pulumi.IntOutput {
 }
 
 // IP address of the BGP interface outside Google Cloud Platform.
-// Only IPv4 is supported.
+// Only IPv4 is supported. Required if `ipAddress` is set.
 func (o RouterPeerOutput) PeerIpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterPeer) pulumi.StringOutput { return v.PeerIpAddress }).(pulumi.StringOutput)
 }

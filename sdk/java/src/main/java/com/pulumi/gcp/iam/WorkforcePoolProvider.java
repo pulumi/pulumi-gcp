@@ -30,6 +30,10 @@ import javax.annotation.Nullable;
  * &gt; **Note:** Ask your Google Cloud account team to request access to workforce identity federation for your
  * billing/quota project. The account team notifies you when the project is granted access.
  * 
+ * &gt; **Warning:** All arguments including the following potentially sensitive
+ * values will be stored in the raw state as plain text: `oidc.client_secret.value.plain_text`.
+ * Read more about sensitive data in state.
+ * 
  * ## Example Usage
  * ### Iam Workforce Pool Provider Saml Basic
  * ```java
@@ -135,6 +139,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.iam.WorkforcePoolProvider;
  * import com.pulumi.gcp.iam.WorkforcePoolProviderArgs;
  * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcClientSecretArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcClientSecretValueArgs;
  * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcWebSsoConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -163,9 +169,14 @@ import javax.annotation.Nullable;
  *             .oidc(WorkforcePoolProviderOidcArgs.builder()
  *                 .issuerUri(&#34;https://accounts.thirdparty.com&#34;)
  *                 .clientId(&#34;client-id&#34;)
+ *                 .clientSecret(WorkforcePoolProviderOidcClientSecretArgs.builder()
+ *                     .value(WorkforcePoolProviderOidcClientSecretValueArgs.builder()
+ *                         .plainText(&#34;client-secret&#34;)
+ *                         .build())
+ *                     .build())
  *                 .webSsoConfig(WorkforcePoolProviderOidcWebSsoConfigArgs.builder()
- *                     .responseType(&#34;ID_TOKEN&#34;)
- *                     .assertionClaimsBehavior(&#34;ONLY_ID_TOKEN_CLAIMS&#34;)
+ *                     .responseType(&#34;CODE&#34;)
+ *                     .assertionClaimsBehavior(&#34;MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS&#34;)
  *                     .build())
  *                 .build())
  *             .build());
@@ -185,6 +196,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.iam.WorkforcePoolProvider;
  * import com.pulumi.gcp.iam.WorkforcePoolProviderArgs;
  * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcClientSecretArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcClientSecretValueArgs;
  * import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcWebSsoConfigArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -213,9 +226,14 @@ import javax.annotation.Nullable;
  *             .oidc(WorkforcePoolProviderOidcArgs.builder()
  *                 .issuerUri(&#34;https://accounts.thirdparty.com&#34;)
  *                 .clientId(&#34;client-id&#34;)
+ *                 .clientSecret(WorkforcePoolProviderOidcClientSecretArgs.builder()
+ *                     .value(WorkforcePoolProviderOidcClientSecretValueArgs.builder()
+ *                         .plainText(&#34;client-secret&#34;)
+ *                         .build())
+ *                     .build())
  *                 .webSsoConfig(WorkforcePoolProviderOidcWebSsoConfigArgs.builder()
- *                     .responseType(&#34;ID_TOKEN&#34;)
- *                     .assertionClaimsBehavior(&#34;ONLY_ID_TOKEN_CLAIMS&#34;)
+ *                     .responseType(&#34;CODE&#34;)
+ *                     .assertionClaimsBehavior(&#34;MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS&#34;)
  *                     .build())
  *                 .build())
  *             .displayName(&#34;Display name&#34;)

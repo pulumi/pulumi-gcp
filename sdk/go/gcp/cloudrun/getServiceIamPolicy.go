@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func GetServiceIamPolicy(ctx *pulumi.Context, args *GetServiceIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetServiceIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServiceIamPolicyResult
 	err := ctx.Invoke("gcp:cloudrun/getServiceIamPolicy:getServiceIamPolicy", args, &rv, opts...)
 	if err != nil {

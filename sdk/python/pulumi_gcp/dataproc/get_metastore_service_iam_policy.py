@@ -109,9 +109,9 @@ def get_metastore_service_iam_policy(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataproc.get_metastore_service_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        service_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.dataproc.get_metastore_service_iam_policy(project=google_dataproc_metastore_service["default"]["project"],
+        location=google_dataproc_metastore_service["default"]["location"],
+        service_id=google_dataproc_metastore_service["default"]["service_id"])
     ```
 
 
@@ -129,12 +129,12 @@ def get_metastore_service_iam_policy(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy', __args__, opts=opts, typ=GetMetastoreServiceIamPolicyResult).value
 
     return AwaitableGetMetastoreServiceIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        location=__ret__.location,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project,
-        service_id=__ret__.service_id)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'),
+        service_id=pulumi.get(__ret__, 'service_id'))
 
 
 @_utilities.lift_output_func(get_metastore_service_iam_policy)
@@ -151,9 +151,9 @@ def get_metastore_service_iam_policy_output(location: Optional[pulumi.Input[Opti
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataproc.get_metastore_service_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        service_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.dataproc.get_metastore_service_iam_policy(project=google_dataproc_metastore_service["default"]["project"],
+        location=google_dataproc_metastore_service["default"]["location"],
+        service_id=google_dataproc_metastore_service["default"]["service_id"])
     ```
 
 

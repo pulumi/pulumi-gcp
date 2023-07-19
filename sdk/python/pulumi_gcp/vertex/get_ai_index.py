@@ -193,21 +193,21 @@ def get_ai_index(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:vertex/getAiIndex:getAiIndex', __args__, opts=opts, typ=GetAiIndexResult).value
 
     return AwaitableGetAiIndexResult(
-        create_time=__ret__.create_time,
-        deployed_indexes=__ret__.deployed_indexes,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        index_stats=__ret__.index_stats,
-        index_update_method=__ret__.index_update_method,
-        labels=__ret__.labels,
-        metadata_schema_uri=__ret__.metadata_schema_uri,
-        metadatas=__ret__.metadatas,
-        name=__ret__.name,
-        project=__ret__.project,
-        region=__ret__.region,
-        update_time=__ret__.update_time)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        deployed_indexes=pulumi.get(__ret__, 'deployed_indexes'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        index_stats=pulumi.get(__ret__, 'index_stats'),
+        index_update_method=pulumi.get(__ret__, 'index_update_method'),
+        labels=pulumi.get(__ret__, 'labels'),
+        metadata_schema_uri=pulumi.get(__ret__, 'metadata_schema_uri'),
+        metadatas=pulumi.get(__ret__, 'metadatas'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'),
+        update_time=pulumi.get(__ret__, 'update_time'))
 
 
 @_utilities.lift_output_func(get_ai_index)

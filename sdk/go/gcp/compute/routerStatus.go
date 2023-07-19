@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -45,6 +46,7 @@ import (
 //
 // Deprecated: gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus
 func RouterStatus(ctx *pulumi.Context, args *RouterStatusArgs, opts ...pulumi.InvokeOption) (*RouterStatusResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv RouterStatusResult
 	err := ctx.Invoke("gcp:compute/routerStatus:RouterStatus", args, &rv, opts...)
 	if err != nil {

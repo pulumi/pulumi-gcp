@@ -16,62 +16,82 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OsPolicyAssignmentOsPolicyResourceGroupResource {
     /**
-     * @return Exec resource
+     * @return Exec resource Structure is
+     * documented below.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExec exec;
     /**
-     * @return File resource
+     * @return File resource Structure is
+     * documented below.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFile file;
     /**
-     * @return Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
+     * @return The id of the resource with the following restrictions:
+     * 
+     * *   Must contain only lowercase letters, numbers, and hyphens.
+     * *   Must start with a letter.
+     * *   Must be between 1-63 characters.
+     * *   Must end with a number or a letter.
+     * *   Must be unique within the OS policy.
      * 
      */
     private String id;
     /**
-     * @return Package resource
+     * @return Package resource Structure is
+     * documented below.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkg pkg;
     /**
-     * @return Package repository resource
+     * @return Package repository resource Structure is
+     * documented below.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepository repository;
 
     private OsPolicyAssignmentOsPolicyResourceGroupResource() {}
     /**
-     * @return Exec resource
+     * @return Exec resource Structure is
+     * documented below.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourceExec> exec() {
         return Optional.ofNullable(this.exec);
     }
     /**
-     * @return File resource
+     * @return File resource Structure is
+     * documented below.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourceFile> file() {
         return Optional.ofNullable(this.file);
     }
     /**
-     * @return Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
+     * @return The id of the resource with the following restrictions:
+     * 
+     * *   Must contain only lowercase letters, numbers, and hyphens.
+     * *   Must start with a letter.
+     * *   Must be between 1-63 characters.
+     * *   Must end with a number or a letter.
+     * *   Must be unique within the OS policy.
      * 
      */
     public String id() {
         return this.id;
     }
     /**
-     * @return Package resource
+     * @return Package resource Structure is
+     * documented below.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourcePkg> pkg() {
         return Optional.ofNullable(this.pkg);
     }
     /**
-     * @return Package repository resource
+     * @return Package repository resource Structure is
+     * documented below.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourceRepository> repository() {

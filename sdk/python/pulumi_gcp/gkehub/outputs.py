@@ -741,6 +741,9 @@ class FeatureMembershipMesh(dict):
     @property
     @pulumi.getter(name="controlPlane")
     def control_plane(self) -> Optional[str]:
+        warnings.warn("""Deprecated in favor of the `management` field""", DeprecationWarning)
+        pulumi.log.warn("""control_plane is deprecated: Deprecated in favor of the `management` field""")
+
         return pulumi.get(self, "control_plane")
 
     @property
@@ -812,6 +815,8 @@ class FeatureSpec(dict):
                  fleetobservability: Optional['outputs.FeatureSpecFleetobservability'] = None,
                  multiclusteringress: Optional['outputs.FeatureSpecMulticlusteringress'] = None):
         """
+        :param 'FeatureSpecFleetobservabilityArgs' fleetobservability: Fleet Observability feature spec.
+               Structure is documented below.
         :param 'FeatureSpecMulticlusteringressArgs' multiclusteringress: Multicluster Ingress-specific spec.
                Structure is documented below.
         """
@@ -823,6 +828,10 @@ class FeatureSpec(dict):
     @property
     @pulumi.getter
     def fleetobservability(self) -> Optional['outputs.FeatureSpecFleetobservability']:
+        """
+        Fleet Observability feature spec.
+        Structure is documented below.
+        """
         return pulumi.get(self, "fleetobservability")
 
     @property

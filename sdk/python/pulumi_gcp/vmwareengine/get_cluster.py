@@ -124,13 +124,13 @@ def get_cluster(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:vmwareengine/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult).value
 
     return AwaitableGetClusterResult(
-        id=__ret__.id,
-        management=__ret__.management,
-        name=__ret__.name,
-        node_type_configs=__ret__.node_type_configs,
-        parent=__ret__.parent,
-        state=__ret__.state,
-        uid=__ret__.uid)
+        id=pulumi.get(__ret__, 'id'),
+        management=pulumi.get(__ret__, 'management'),
+        name=pulumi.get(__ret__, 'name'),
+        node_type_configs=pulumi.get(__ret__, 'node_type_configs'),
+        parent=pulumi.get(__ret__, 'parent'),
+        state=pulumi.get(__ret__, 'state'),
+        uid=pulumi.get(__ret__, 'uid'))
 
 
 @_utilities.lift_output_func(get_cluster)

@@ -324,6 +324,21 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+     * 
+     */
+    @Import(name="noAutomateDnsZone")
+    private @Nullable Output<Boolean> noAutomateDnsZone;
+
+    /**
+     * @return This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+     * 
+     */
+    public Optional<Output<Boolean>> noAutomateDnsZone() {
+        return Optional.ofNullable(this.noAutomateDnsZone);
+    }
+
+    /**
      * This field can only be used:
      * * If `IPProtocol` is one of TCP, UDP, or SCTP.
      * * By backend service-based network load balancers, target pool-based
@@ -452,6 +467,7 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
         this.metadataFilters = $.metadataFilters;
         this.name = $.name;
         this.network = $.network;
+        this.noAutomateDnsZone = $.noAutomateDnsZone;
         this.portRange = $.portRange;
         this.project = $.project;
         this.sourceIpRanges = $.sourceIpRanges;
@@ -862,6 +878,27 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
          */
         public Builder network(String network) {
             return network(Output.of(network));
+        }
+
+        /**
+         * @param noAutomateDnsZone This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder noAutomateDnsZone(@Nullable Output<Boolean> noAutomateDnsZone) {
+            $.noAutomateDnsZone = noAutomateDnsZone;
+            return this;
+        }
+
+        /**
+         * @param noAutomateDnsZone This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder noAutomateDnsZone(Boolean noAutomateDnsZone) {
+            return noAutomateDnsZone(Output.of(noAutomateDnsZone));
         }
 
         /**

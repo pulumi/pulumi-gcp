@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func GetSecretVersionAccess(ctx *pulumi.Context, args *GetSecretVersionAccessArgs, opts ...pulumi.InvokeOption) (*GetSecretVersionAccessResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSecretVersionAccessResult
 	err := ctx.Invoke("gcp:secretmanager/getSecretVersionAccess:getSecretVersionAccess", args, &rv, opts...)
 	if err != nil {

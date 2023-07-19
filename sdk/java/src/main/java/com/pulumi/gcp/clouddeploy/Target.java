@@ -58,6 +58,7 @@ import javax.annotation.Nullable;
  *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
  *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
  *             ))
+ *             .deployParameters()
  *             .description(&#34;multi-target description&#34;)
  *             .executionConfigs(TargetExecutionConfigArgs.builder()
  *                 .usages(                
@@ -115,6 +116,7 @@ import javax.annotation.Nullable;
  *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
  *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
  *             ))
+ *             .deployParameters()
  *             .description(&#34;basic description&#34;)
  *             .executionConfigs(TargetExecutionConfigArgs.builder()
  *                 .usages(                
@@ -167,6 +169,7 @@ import javax.annotation.Nullable;
  *                 Map.entry(&#34;my_first_annotation&#34;, &#34;example-annotation-1&#34;),
  *                 Map.entry(&#34;my_second_annotation&#34;, &#34;example-annotation-2&#34;)
  *             ))
+ *             .deployParameters(Map.of(&#34;deployParameterKey&#34;, &#34;deployParameterValue&#34;))
  *             .description(&#34;basic description&#34;)
  *             .gke(TargetGkeArgs.builder()
  *                 .cluster(&#34;projects/my-project-name/locations/us-west1/clusters/example-cluster-name&#34;)
@@ -244,6 +247,20 @@ public class Target extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Optional. The deploy parameters to use for this target.
+     * 
+     */
+    @Export(name="deployParameters", type=Map.class, parameters={String.class, String.class})
+    private Output</* @Nullable */ Map<String,String>> deployParameters;
+
+    /**
+     * @return Optional. The deploy parameters to use for this target.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> deployParameters() {
+        return Codegen.optional(this.deployParameters);
     }
     /**
      * Optional. Description of the `Target`. Max length is 255 characters.

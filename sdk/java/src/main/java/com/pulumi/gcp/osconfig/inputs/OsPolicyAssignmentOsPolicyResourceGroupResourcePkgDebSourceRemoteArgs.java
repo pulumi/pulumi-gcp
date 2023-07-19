@@ -31,14 +31,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRe
     }
 
     /**
-     * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+     * URI from which to fetch the object. It should contain
+     * both the protocol and path following the format `{protocol}://{location}`.
      * 
      */
     @Import(name="uri", required=true)
     private Output<String> uri;
 
     /**
-     * @return Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+     * @return URI from which to fetch the object. It should contain
+     * both the protocol and path following the format `{protocol}://{location}`.
      * 
      */
     public Output<String> uri() {
@@ -92,7 +94,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRe
         }
 
         /**
-         * @param uri Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         * @param uri URI from which to fetch the object. It should contain
+         * both the protocol and path following the format `{protocol}://{location}`.
          * 
          * @return builder
          * 
@@ -103,7 +106,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRe
         }
 
         /**
-         * @param uri Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         * @param uri URI from which to fetch the object. It should contain
+         * both the protocol and path following the format `{protocol}://{location}`.
          * 
          * @return builder
          * 
