@@ -19,7 +19,7 @@ index 7d5c9f0fa..cfe3dd382 100644
  
  // This function stays in the google package temporarily to not break the terraform-google-conversion.
 -// TODO: remove it in a later PR
-+// TODO: remove :it in a later PR
++// TODO: remove it in a later PR
  func Provider() *schema.Provider {
  	return provider.Provider()
  }
