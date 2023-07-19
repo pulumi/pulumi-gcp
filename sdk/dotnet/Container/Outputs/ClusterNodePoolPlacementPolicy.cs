@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Container.Outputs
     [OutputType]
     public sealed class ClusterNodePoolPlacementPolicy
     {
+        public readonly string? TpuTopology;
         /// <summary>
         /// Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
         /// `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
@@ -20,8 +21,12 @@ namespace Pulumi.Gcp.Container.Outputs
         public readonly string Type;
 
         [OutputConstructor]
-        private ClusterNodePoolPlacementPolicy(string type)
+        private ClusterNodePoolPlacementPolicy(
+            string? tpuTopology,
+
+            string type)
         {
+            TpuTopology = tpuTopology;
             Type = type;
         }
     }

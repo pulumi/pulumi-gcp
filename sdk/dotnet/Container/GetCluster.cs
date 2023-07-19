@@ -211,6 +211,7 @@ namespace Pulumi.Gcp.Container
         public readonly bool RemoveDefaultNodePool;
         public readonly ImmutableDictionary<string, string> ResourceLabels;
         public readonly ImmutableArray<Outputs.GetClusterResourceUsageExportConfigResult> ResourceUsageExportConfigs;
+        public readonly ImmutableArray<Outputs.GetClusterSecurityPostureConfigResult> SecurityPostureConfigs;
         public readonly string SelfLink;
         public readonly ImmutableArray<Outputs.GetClusterServiceExternalIpsConfigResult> ServiceExternalIpsConfigs;
         public readonly string ServicesIpv4Cidr;
@@ -344,6 +345,8 @@ namespace Pulumi.Gcp.Container
 
             ImmutableArray<Outputs.GetClusterResourceUsageExportConfigResult> resourceUsageExportConfigs,
 
+            ImmutableArray<Outputs.GetClusterSecurityPostureConfigResult> securityPostureConfigs,
+
             string selfLink,
 
             ImmutableArray<Outputs.GetClusterServiceExternalIpsConfigResult> serviceExternalIpsConfigs,
@@ -421,6 +424,7 @@ namespace Pulumi.Gcp.Container
             RemoveDefaultNodePool = removeDefaultNodePool;
             ResourceLabels = resourceLabels;
             ResourceUsageExportConfigs = resourceUsageExportConfigs;
+            SecurityPostureConfigs = securityPostureConfigs;
             SelfLink = selfLink;
             ServiceExternalIpsConfigs = serviceExternalIpsConfigs;
             ServicesIpv4Cidr = servicesIpv4Cidr;

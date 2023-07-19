@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -200,6 +201,7 @@ func NewSlo(ctx *pulumi.Context,
 	if args.Service == nil {
 		return nil, errors.New("invalid value for required argument 'Service'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Slo
 	err := ctx.RegisterResource("gcp:monitoring/slo:Slo", name, args, &resource, opts...)
 	if err != nil {

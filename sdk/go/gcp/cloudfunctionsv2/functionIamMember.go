@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -207,6 +208,7 @@ func NewFunctionIamMember(ctx *pulumi.Context,
 	if args.Role == nil {
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FunctionIamMember
 	err := ctx.RegisterResource("gcp:cloudfunctionsv2/functionIamMember:FunctionIamMember", name, args, &resource, opts...)
 	if err != nil {

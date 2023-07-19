@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -114,6 +115,38 @@ import (
 //			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
 //				privateVpcConnection,
 //			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### ENTERPRISE_PLUS Instance with dataCacheConfig
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sql.NewDatabaseInstance(ctx, "main", &sql.DatabaseInstanceArgs{
+//				DatabaseVersion: pulumi.String("MYSQL_8_0_31"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					DataCacheConfig: &sql.DatabaseInstanceSettingsDataCacheConfigArgs{
+//						DataCacheEnabled: pulumi.Bool(true),
+//					},
+//					Edition: pulumi.String("ENTERPRISE_PLUS"),
+//					Tier:    pulumi.String("db-perf-optimized-N-2"),
+//				},
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -246,6 +279,7 @@ func NewDatabaseInstance(ctx *pulumi.Context,
 		"rootPassword",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DatabaseInstance
 	err := ctx.RegisterResource("gcp:sql/databaseInstance:DatabaseInstance", name, args, &resource, opts...)
 	if err != nil {

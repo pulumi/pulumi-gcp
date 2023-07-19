@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -132,8 +133,24 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			exampleSchema, err := pubsub.NewSchema(ctx, "exampleSchema", &pubsub.SchemaArgs{
-//				Type:       pulumi.String("AVRO"),
-//				Definition: pulumi.String("{\n  \"type\" : \"record\",\n  \"name\" : \"Avro\",\n  \"fields\" : [\n    {\n      \"name\" : \"StringField\",\n      \"type\" : \"string\"\n    },\n    {\n      \"name\" : \"IntField\",\n      \"type\" : \"int\"\n    }\n  ]\n}\n"),
+//				Type: pulumi.String("AVRO"),
+//				Definition: pulumi.String(`{
+//	  "type" : "record",
+//	  "name" : "Avro",
+//	  "fields" : [
+//	    {
+//	      "name" : "StringField",
+//	      "type" : "string"
+//	    },
+//	    {
+//	      "name" : "IntField",
+//	      "type" : "int"
+//	    }
+//	  ]
+//	}
+//
+// `),
+//
 //			})
 //			if err != nil {
 //				return err
@@ -219,6 +236,7 @@ func NewTopic(ctx *pulumi.Context,
 		args = &TopicArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Topic
 	err := ctx.RegisterResource("gcp:pubsub/topic:Topic", name, args, &resource, opts...)
 	if err != nil {

@@ -9,6 +9,12 @@ import * as utilities from "../utilities";
 /**
  * EdgeCacheKeyset represents a collection of public keys used for validating signed requests.
  *
+ * To get more information about EdgeCacheKeyset, see:
+ *
+ * * [API documentation](https://cloud.google.com/media-cdn/docs/reference/rest/v1/projects.locations.edgeCacheKeysets)
+ * * How-to Guides
+ *     * [Create keysets](https://cloud.google.com/media-cdn/docs/create-keyset)
+ *
  * > **Warning:** All arguments including the following potentially sensitive
  * values will be stored in the raw state as plain text: `public_key.public_key.value`.
  * Read more about sensitive data in state.

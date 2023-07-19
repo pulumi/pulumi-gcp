@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -150,6 +151,7 @@ func NewLinkedDataset(ctx *pulumi.Context,
 	if args.LinkId == nil {
 		return nil, errors.New("invalid value for required argument 'LinkId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LinkedDataset
 	err := ctx.RegisterResource("gcp:logging/linkedDataset:LinkedDataset", name, args, &resource, opts...)
 	if err != nil {

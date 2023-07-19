@@ -507,7 +507,7 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         var defaultKeyRing = new KeyRing(&#34;defaultKeyRing&#34;, KeyRingArgs.builder()        
- *             .location(&#34;global&#34;)
+ *             .location(&#34;us-central1&#34;)
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());

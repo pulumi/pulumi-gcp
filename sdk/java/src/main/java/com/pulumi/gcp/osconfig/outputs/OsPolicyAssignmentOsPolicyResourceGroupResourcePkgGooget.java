@@ -10,14 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget {
     /**
-     * @return Required. Package name.
+     * @return Package name.
      * 
      */
     private String name;
 
     private OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget() {}
     /**
-     * @return Required. Package name.
+     * @return Package name.
      * 
      */
     public String name() {

@@ -113,6 +113,9 @@ class AccessApprovalSettingsArgs:
         (Optional, Deprecated)
         Deprecated in favor of `project_id`
         """
+        warnings.warn("""Deprecated in favor of `project_id`""", DeprecationWarning)
+        pulumi.log.warn("""project is deprecated: Deprecated in favor of `project_id`""")
+
         return pulumi.get(self, "project")
 
     @project.setter
@@ -280,6 +283,9 @@ class _AccessApprovalSettingsState:
         (Optional, Deprecated)
         Deprecated in favor of `project_id`
         """
+        warnings.warn("""Deprecated in favor of `project_id`""", DeprecationWarning)
+        pulumi.log.warn("""project is deprecated: Deprecated in favor of `project_id`""")
+
         return pulumi.get(self, "project")
 
     @project.setter
@@ -649,6 +655,9 @@ class AccessApprovalSettings(pulumi.CustomResource):
         (Optional, Deprecated)
         Deprecated in favor of `project_id`
         """
+        warnings.warn("""Deprecated in favor of `project_id`""", DeprecationWarning)
+        pulumi.log.warn("""project is deprecated: Deprecated in favor of `project_id`""")
+
         return pulumi.get(self, "project")
 
     @property

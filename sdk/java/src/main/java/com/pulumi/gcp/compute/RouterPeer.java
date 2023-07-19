@@ -58,7 +58,6 @@ import javax.annotation.Nullable;
  *             .advertisedRoutePriority(100)
  *             .interface_(&#34;interface-1&#34;)
  *             .peerAsn(65513)
- *             .peerIpAddress(&#34;169.254.1.2&#34;)
  *             .region(&#34;us-central1&#34;)
  *             .router(&#34;my-router&#34;)
  *             .build());
@@ -534,7 +533,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
     }
     /**
      * IP address of the BGP interface outside Google Cloud Platform.
-     * Only IPv4 is supported.
+     * Only IPv4 is supported. Required if `ip_address` is set.
      * 
      */
     @Export(name="peerIpAddress", type=String.class, parameters={})
@@ -542,7 +541,7 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
 
     /**
      * @return IP address of the BGP interface outside Google Cloud Platform.
-     * Only IPv4 is supported.
+     * Only IPv4 is supported. Required if `ip_address` is set.
      * 
      */
     public Output<String> peerIpAddress() {

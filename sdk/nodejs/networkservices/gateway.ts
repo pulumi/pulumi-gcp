@@ -5,6 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Gateway represents the configuration for a proxy, typically a load balancer.
+ * It captures the ip:port over which the services are exposed by the proxy,
+ * along with any policy configurations. Routes have reference to to Gateways
+ * to dictate how requests should be routed by this Gateway.
+ *
+ * To get more information about Gateway, see:
+ *
+ * * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1/projects.locations.gateways)
+ *
  * ## Example Usage
  * ### Network Services Gateway Basic
  *
@@ -13,11 +22,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networkservices.Gateway("default", {
+ *     ports: [443],
  *     scope: "default-scope-basic",
  *     type: "OPEN_MESH",
- *     ports: [443],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Network Services Gateway Advanced
@@ -27,15 +34,13 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networkservices.Gateway("default", {
+ *     description: "my description",
  *     labels: {
  *         foo: "bar",
  *     },
- *     description: "my description",
- *     type: "OPEN_MESH",
  *     ports: [443],
  *     scope: "default-scope-advance",
- * }, {
- *     provider: google_beta,
+ *     type: "OPEN_MESH",
  * });
  * ```
  * ### Network Services Gateway Secure Web Proxy
@@ -51,14 +56,10 @@ import * as utilities from "../utilities";
  *         pemCertificate: fs.readFileSync("test-fixtures/certificatemanager/cert.pem"),
  *         pemPrivateKey: fs.readFileSync("test-fixtures/certificatemanager/private-key.pem"),
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {
  *     routingMode: "REGIONAL",
  *     autoCreateSubnetworks: false,
- * }, {
- *     provider: google_beta,
  * });
  * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
  *     purpose: "PRIVATE",
@@ -66,8 +67,6 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  *     network: defaultNetwork.id,
  *     role: "ACTIVE",
- * }, {
- *     provider: google_beta,
  * });
  * const proxyonlysubnet = new gcp.compute.Subnetwork("proxyonlysubnet", {
  *     purpose: "REGIONAL_MANAGED_PROXY",
@@ -75,12 +74,8 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  *     network: defaultNetwork.id,
  *     role: "ACTIVE",
- * }, {
- *     provider: google_beta,
  * });
- * const defaultGatewaySecurityPolicy = new gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", {location: "us-central1"}, {
- *     provider: google_beta,
- * });
+ * const defaultGatewaySecurityPolicy = new gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", {location: "us-central1"});
  * const defaultGatewaySecurityPolicyRule = new gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", {
  *     location: "us-central1",
  *     gatewaySecurityPolicy: defaultGatewaySecurityPolicy.name,
@@ -88,8 +83,6 @@ import * as utilities from "../utilities";
  *     priority: 1,
  *     sessionMatcher: "host() == 'example.com'",
  *     basicProfile: "ALLOW",
- * }, {
- *     provider: google_beta,
  * });
  * const defaultGateway = new gcp.networkservices.Gateway("defaultGateway", {
  *     location: "us-central1",
@@ -103,7 +96,6 @@ import * as utilities from "../utilities";
  *     subnetwork: defaultSubnetwork.id,
  *     deleteSwgAutogenRouterOnDestroy: true,
  * }, {
- *     provider: google_beta,
  *     dependsOn: [proxyonlysubnet],
  * });
  * ```
@@ -120,14 +112,10 @@ import * as utilities from "../utilities";
  *         pemCertificate: fs.readFileSync("test-fixtures/certificatemanager/cert.pem"),
  *         pemPrivateKey: fs.readFileSync("test-fixtures/certificatemanager/private-key.pem"),
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {
  *     routingMode: "REGIONAL",
  *     autoCreateSubnetworks: false,
- * }, {
- *     provider: google_beta,
  * });
  * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
  *     purpose: "PRIVATE",
@@ -135,8 +123,6 @@ import * as utilities from "../utilities";
  *     region: "us-south1",
  *     network: defaultNetwork.id,
  *     role: "ACTIVE",
- * }, {
- *     provider: google_beta,
  * });
  * const proxyonlysubnet = new gcp.compute.Subnetwork("proxyonlysubnet", {
  *     purpose: "REGIONAL_MANAGED_PROXY",
@@ -144,12 +130,8 @@ import * as utilities from "../utilities";
  *     region: "us-south1",
  *     network: defaultNetwork.id,
  *     role: "ACTIVE",
- * }, {
- *     provider: google_beta,
  * });
- * const defaultGatewaySecurityPolicy = new gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", {location: "us-south1"}, {
- *     provider: google_beta,
- * });
+ * const defaultGatewaySecurityPolicy = new gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", {location: "us-south1"});
  * const defaultGatewaySecurityPolicyRule = new gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", {
  *     location: "us-south1",
  *     gatewaySecurityPolicy: defaultGatewaySecurityPolicy.name,
@@ -157,8 +139,6 @@ import * as utilities from "../utilities";
  *     priority: 1,
  *     sessionMatcher: "host() == 'example.com'",
  *     basicProfile: "ALLOW",
- * }, {
- *     provider: google_beta,
  * });
  * const defaultGateway = new gcp.networkservices.Gateway("defaultGateway", {
  *     location: "us-south1",
@@ -172,7 +152,6 @@ import * as utilities from "../utilities";
  *     subnetwork: defaultSubnetwork.id,
  *     deleteSwgAutogenRouterOnDestroy: true,
  * }, {
- *     provider: google_beta,
  *     dependsOn: [proxyonlysubnet],
  * });
  * const gateway2 = new gcp.networkservices.Gateway("gateway2", {
@@ -187,7 +166,6 @@ import * as utilities from "../utilities";
  *     subnetwork: defaultSubnetwork.id,
  *     deleteSwgAutogenRouterOnDestroy: true,
  * }, {
- *     provider: google_beta,
  *     dependsOn: [proxyonlysubnet],
  * });
  * ```

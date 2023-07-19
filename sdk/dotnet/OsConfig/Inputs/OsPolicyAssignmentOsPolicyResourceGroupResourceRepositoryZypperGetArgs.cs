@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The location of the repository directory.
+        /// The location of the repository directory.
         /// </summary>
         [Input("baseUrl", required: true)]
         public Input<string> BaseUrl { get; set; } = null!;
@@ -37,7 +37,10 @@ namespace Pulumi.Gcp.OsConfig.Inputs
         }
 
         /// <summary>
-        /// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+        /// A one word, unique name for this repository. This is the
+        /// `repo id` in the zypper config file and also the `display_name` if
+        /// `display_name` is omitted. This id is also used as the unique identifier
+        /// when checking for GuestPolicy conflicts.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;

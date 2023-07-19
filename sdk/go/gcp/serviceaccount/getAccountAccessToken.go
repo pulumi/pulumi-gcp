@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,7 +15,94 @@ import (
 //
 // For more information see
 // [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
+//
+// ## Example Usage
+//
+// To allow `service_A` to impersonate `service_B`, grant the [Service Account Token Creator](https://cloud.google.com/iam/docs/service-accounts#the_service_account_token_creator_role) on B to A.
+//
+// In the IAM policy below, `service_A` is given the Token Creator role impersonate `service_B`
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := serviceAccount.NewIAMBinding(ctx, "token-creator-iam", &serviceAccount.IAMBindingArgs{
+//				Members: pulumi.StringArray{
+//					pulumi.String("serviceAccount:service_A@projectA.iam.gserviceaccount.com"),
+//				},
+//				Role:             pulumi.String("roles/iam.serviceAccountTokenCreator"),
+//				ServiceAccountId: pulumi.String("projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Once the IAM permissions are set, you can apply the new token to a provider bootstrapped with it.  Any resources that references the aliased provider will run as the new identity.
+//
+// In the example below, `organizations.Project` will run as `service_B`.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-google/sdk/v1/go/google"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := organizations.GetClientConfig(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultAccountAccessToken, err := serviceAccount.GetAccountAccessToken(ctx, &serviceaccount.GetAccountAccessTokenArgs{
+//				TargetServiceAccount: "service_B@projectB.iam.gserviceaccount.com",
+//				Scopes: []string{
+//					"userinfo-email",
+//					"cloud-platform",
+//				},
+//				Lifetime: pulumi.StringRef("300s"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = google.NewProvider(ctx, "impersonated", &google.ProviderArgs{
+//				AccessToken: defaultAccountAccessToken.AccessToken,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			me, err := organizations.GetClientOpenIdUserInfo(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("target-email", me.Email)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// > *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
 func GetAccountAccessToken(ctx *pulumi.Context, args *GetAccountAccessTokenArgs, opts ...pulumi.InvokeOption) (*GetAccountAccessTokenResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountAccessTokenResult
 	err := ctx.Invoke("gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken", args, &rv, opts...)
 	if err != nil {

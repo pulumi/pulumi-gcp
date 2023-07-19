@@ -17,14 +17,14 @@ public final class DeliveryPipelineSerialPipelineStageStrategyArgs extends com.p
     public static final DeliveryPipelineSerialPipelineStageStrategyArgs Empty = new DeliveryPipelineSerialPipelineStageStrategyArgs();
 
     /**
-     * (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+     * Canary deployment strategy provides progressive percentage based deployments to a Target.
      * 
      */
     @Import(name="canary")
     private @Nullable Output<DeliveryPipelineSerialPipelineStageStrategyCanaryArgs> canary;
 
     /**
-     * @return (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+     * @return Canary deployment strategy provides progressive percentage based deployments to a Target.
      * 
      */
     public Optional<Output<DeliveryPipelineSerialPipelineStageStrategyCanaryArgs>> canary() {
@@ -72,7 +72,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyArgs extends com.p
         }
 
         /**
-         * @param canary (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+         * @param canary Canary deployment strategy provides progressive percentage based deployments to a Target.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyArgs extends com.p
         }
 
         /**
-         * @param canary (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+         * @param canary Canary deployment strategy provides progressive percentage based deployments to a Target.
          * 
          * @return builder
          * 

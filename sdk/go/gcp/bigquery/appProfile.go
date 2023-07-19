@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -240,6 +241,7 @@ func NewAppProfile(ctx *pulumi.Context,
 	if args.AppProfileId == nil {
 		return nil, errors.New("invalid value for required argument 'AppProfileId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AppProfile
 	err := ctx.RegisterResource("gcp:bigquery/appProfile:AppProfile", name, args, &resource, opts...)
 	if err != nil {

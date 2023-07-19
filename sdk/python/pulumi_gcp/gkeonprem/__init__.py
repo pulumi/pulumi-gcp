@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .bare_metal_admin_cluster import *
 from .bare_metal_cluster import *
 from .bare_metal_node_pool import *
 from .v_mware_cluster import *

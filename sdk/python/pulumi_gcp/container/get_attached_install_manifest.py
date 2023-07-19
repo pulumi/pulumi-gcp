@@ -129,12 +129,12 @@ def get_attached_install_manifest(cluster_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:container/getAttachedInstallManifest:getAttachedInstallManifest', __args__, opts=opts, typ=GetAttachedInstallManifestResult).value
 
     return AwaitableGetAttachedInstallManifestResult(
-        cluster_id=__ret__.cluster_id,
-        id=__ret__.id,
-        location=__ret__.location,
-        manifest=__ret__.manifest,
-        platform_version=__ret__.platform_version,
-        project=__ret__.project)
+        cluster_id=pulumi.get(__ret__, 'cluster_id'),
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        manifest=pulumi.get(__ret__, 'manifest'),
+        platform_version=pulumi.get(__ret__, 'platform_version'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_attached_install_manifest)

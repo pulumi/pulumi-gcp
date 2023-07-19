@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
 func GetRegionInstanceGroup(ctx *pulumi.Context, args *GetRegionInstanceGroupArgs, opts ...pulumi.InvokeOption) (*GetRegionInstanceGroupResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegionInstanceGroupResult
 	err := ctx.Invoke("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", args, &rv, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupDatascanIamPolicy(ctx *pulumi.Context, args *LookupDatascanIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDatascanIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDatascanIamPolicyResult
 	err := ctx.Invoke("gcp:dataplex/getDatascanIamPolicy:getDatascanIamPolicy", args, &rv, opts...)
 	if err != nil {

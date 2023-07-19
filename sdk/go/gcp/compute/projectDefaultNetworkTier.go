@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -76,6 +77,7 @@ func NewProjectDefaultNetworkTier(ctx *pulumi.Context,
 	if args.NetworkTier == nil {
 		return nil, errors.New("invalid value for required argument 'NetworkTier'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProjectDefaultNetworkTier
 	err := ctx.RegisterResource("gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier", name, args, &resource, opts...)
 	if err != nil {

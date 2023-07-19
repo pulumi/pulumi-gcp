@@ -558,8 +558,6 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// )
         /// Enable/Disable Protect API features for the cluster. Structure is documented below.
-        /// 
-        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
         /// </summary>
         [Output("protectConfig")]
         public Output<Outputs.ClusterProtectConfig> ProtectConfig { get; private set; } = null!;
@@ -600,6 +598,14 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Output("resourceUsageExportConfig")]
         public Output<Outputs.ClusterResourceUsageExportConfig?> ResourceUsageExportConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
+        /// 
+        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
+        /// </summary>
+        [Output("securityPostureConfig")]
+        public Output<Outputs.ClusterSecurityPostureConfig> SecurityPostureConfig { get; private set; } = null!;
 
         /// <summary>
         /// The server-defined URL for the resource.
@@ -1140,8 +1146,6 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// )
         /// Enable/Disable Protect API features for the cluster. Structure is documented below.
-        /// 
-        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
         /// </summary>
         [Input("protectConfig")]
         public Input<Inputs.ClusterProtectConfigArgs>? ProtectConfig { get; set; }
@@ -1188,6 +1192,14 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("resourceUsageExportConfig")]
         public Input<Inputs.ClusterResourceUsageExportConfigArgs>? ResourceUsageExportConfig { get; set; }
+
+        /// <summary>
+        /// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
+        /// 
+        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
+        /// </summary>
+        [Input("securityPostureConfig")]
+        public Input<Inputs.ClusterSecurityPostureConfigArgs>? SecurityPostureConfig { get; set; }
 
         /// <summary>
         /// Structure is documented below.
@@ -1690,8 +1702,6 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// )
         /// Enable/Disable Protect API features for the cluster. Structure is documented below.
-        /// 
-        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
         /// </summary>
         [Input("protectConfig")]
         public Input<Inputs.ClusterProtectConfigGetArgs>? ProtectConfig { get; set; }
@@ -1738,6 +1748,14 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("resourceUsageExportConfig")]
         public Input<Inputs.ClusterResourceUsageExportConfigGetArgs>? ResourceUsageExportConfig { get; set; }
+
+        /// <summary>
+        /// Enable/Disable Security Posture API features for the cluster. Structure is documented below.
+        /// 
+        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
+        /// </summary>
+        [Input("securityPostureConfig")]
+        public Input<Inputs.ClusterSecurityPostureConfigGetArgs>? SecurityPostureConfig { get; set; }
 
         /// <summary>
         /// The server-defined URL for the resource.

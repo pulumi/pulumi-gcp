@@ -17,14 +17,18 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs ext
     public static final OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs Empty = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs();
 
     /**
-     * Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update &amp;&amp; apt-get -y install package.deb`
+     * Whether dependencies should also be installed. -
+     * install when false: `dpkg -i package` - install when true: `apt-get update
+     * &amp;&amp; apt-get -y install package.deb`
      * 
      */
     @Import(name="pullDeps")
     private @Nullable Output<Boolean> pullDeps;
 
     /**
-     * @return Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update &amp;&amp; apt-get -y install package.deb`
+     * @return Whether dependencies should also be installed. -
+     * install when false: `dpkg -i package` - install when true: `apt-get update
+     * &amp;&amp; apt-get -y install package.deb`
      * 
      */
     public Optional<Output<Boolean>> pullDeps() {
@@ -32,14 +36,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs ext
     }
 
     /**
-     * Required. A deb package.
+     * A deb package. Structure is
+     * documented below.
      * 
      */
     @Import(name="source", required=true)
     private Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs> source;
 
     /**
-     * @return Required. A deb package.
+     * @return A deb package. Structure is
+     * documented below.
      * 
      */
     public Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs> source() {
@@ -72,7 +78,9 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs ext
         }
 
         /**
-         * @param pullDeps Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update &amp;&amp; apt-get -y install package.deb`
+         * @param pullDeps Whether dependencies should also be installed. -
+         * install when false: `dpkg -i package` - install when true: `apt-get update
+         * &amp;&amp; apt-get -y install package.deb`
          * 
          * @return builder
          * 
@@ -83,7 +91,9 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs ext
         }
 
         /**
-         * @param pullDeps Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update &amp;&amp; apt-get -y install package.deb`
+         * @param pullDeps Whether dependencies should also be installed. -
+         * install when false: `dpkg -i package` - install when true: `apt-get update
+         * &amp;&amp; apt-get -y install package.deb`
          * 
          * @return builder
          * 
@@ -93,7 +103,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs ext
         }
 
         /**
-         * @param source Required. A deb package.
+         * @param source A deb package. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -104,7 +115,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs ext
         }
 
         /**
-         * @param source Required. A deb package.
+         * @param source A deb package. Structure is
+         * documented below.
          * 
          * @return builder
          * 

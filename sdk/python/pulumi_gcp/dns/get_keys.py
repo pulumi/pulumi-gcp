@@ -122,11 +122,11 @@ def get_keys(managed_zone: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:dns/getKeys:getKeys', __args__, opts=opts, typ=GetKeysResult).value
 
     return AwaitableGetKeysResult(
-        id=__ret__.id,
-        key_signing_keys=__ret__.key_signing_keys,
-        managed_zone=__ret__.managed_zone,
-        project=__ret__.project,
-        zone_signing_keys=__ret__.zone_signing_keys)
+        id=pulumi.get(__ret__, 'id'),
+        key_signing_keys=pulumi.get(__ret__, 'key_signing_keys'),
+        managed_zone=pulumi.get(__ret__, 'managed_zone'),
+        project=pulumi.get(__ret__, 'project'),
+        zone_signing_keys=pulumi.get(__ret__, 'zone_signing_keys'))
 
 
 @_utilities.lift_output_func(get_keys)

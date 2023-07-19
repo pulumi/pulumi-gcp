@@ -95,6 +95,6 @@ def get_lbip_ranges(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGet
     __ret__ = pulumi.runtime.invoke('gcp:compute/getLBIPRanges:getLBIPRanges', __args__, opts=opts, typ=GetLBIPRangesResult).value
 
     return AwaitableGetLBIPRangesResult(
-        http_ssl_tcp_internals=__ret__.http_ssl_tcp_internals,
-        id=__ret__.id,
-        networks=__ret__.networks)
+        http_ssl_tcp_internals=pulumi.get(__ret__, 'http_ssl_tcp_internals'),
+        id=pulumi.get(__ret__, 'id'),
+        networks=pulumi.get(__ret__, 'networks'))

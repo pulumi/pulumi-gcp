@@ -12,6 +12,7 @@ import com.pulumi.gcp.cloudbuildv2.ConnectionArgs;
 import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionState;
 import com.pulumi.gcp.cloudbuildv2.outputs.ConnectionGithubConfig;
 import com.pulumi.gcp.cloudbuildv2.outputs.ConnectionGithubEnterpriseConfig;
+import com.pulumi.gcp.cloudbuildv2.outputs.ConnectionGitlabConfig;
 import com.pulumi.gcp.cloudbuildv2.outputs.ConnectionInstallationState;
 import java.lang.Boolean;
 import java.lang.String;
@@ -21,7 +22,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Beta only: The Cloudbuildv2 Connection resource
+ * The Cloudbuildv2 Connection resource
  * 
  * ## Example Usage
  * ### Ghe
@@ -62,32 +63,24 @@ import javax.annotation.Nullable;
  *             .replication(SecretReplicationArgs.builder()
  *                 .automatic(true)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var private_key_secret_version = new SecretVersion(&#34;private-key-secret-version&#34;, SecretVersionArgs.builder()        
  *             .secret(private_key_secret.id())
  *             .secretData(Files.readString(Paths.get(&#34;private-key.pem&#34;)))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var webhook_secret_secret = new Secret(&#34;webhook-secret-secret&#34;, SecretArgs.builder()        
  *             .secretId(&#34;github-token-secret&#34;)
  *             .replication(SecretReplicationArgs.builder()
  *                 .automatic(true)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var webhook_secret_secret_version = new SecretVersion(&#34;webhook-secret-secret-version&#34;, SecretVersionArgs.builder()        
  *             .secret(webhook_secret_secret.id())
  *             .secretData(&#34;&lt;webhook-secret-data&gt;&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         final var p4sa-secretAccessor = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
@@ -99,16 +92,12 @@ import javax.annotation.Nullable;
  *         var policy_pk = new SecretIamPolicy(&#34;policy-pk&#34;, SecretIamPolicyArgs.builder()        
  *             .secretId(private_key_secret.secretId())
  *             .policyData(p4sa_secretAccessor.policyData())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var policy_whs = new SecretIamPolicy(&#34;policy-whs&#34;, SecretIamPolicyArgs.builder()        
  *             .secretId(webhook_secret_secret.secretId())
  *             .policyData(p4sa_secretAccessor.policyData())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var my_connection = new Connection(&#34;my-connection&#34;, ConnectionArgs.builder()        
  *             .location(&#34;us-central1&#34;)
@@ -121,7 +110,6 @@ import javax.annotation.Nullable;
  *                 .appInstallationId(300)
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
  *                 .dependsOn(                
  *                     policy_pk,
  *                     policy_whs)
@@ -151,7 +139,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudbuildv2.ConnectionArgs;
  * import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGithubConfigArgs;
  * import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGithubConfigAuthorizerCredentialArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -170,16 +157,12 @@ import javax.annotation.Nullable;
  *             .replication(SecretReplicationArgs.builder()
  *                 .automatic(true)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var github_token_secret_version = new SecretVersion(&#34;github-token-secret-version&#34;, SecretVersionArgs.builder()        
  *             .secret(github_token_secret.id())
  *             .secretData(Files.readString(Paths.get(&#34;my-github-token.txt&#34;)))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         final var p4sa-secretAccessor = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
@@ -191,9 +174,7 @@ import javax.annotation.Nullable;
  *         var policy = new SecretIamPolicy(&#34;policy&#34;, SecretIamPolicyArgs.builder()        
  *             .secretId(github_token_secret.secretId())
  *             .policyData(p4sa_secretAccessor.policyData())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var my_connection = new Connection(&#34;my-connection&#34;, ConnectionArgs.builder()        
  *             .location(&#34;us-west1&#34;)
@@ -203,9 +184,7 @@ import javax.annotation.Nullable;
  *                     .oauthTokenSecretVersion(github_token_secret_version.id())
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -315,6 +294,20 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.githubEnterpriseConfig);
     }
     /**
+     * Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+     * 
+     */
+    @Export(name="gitlabConfig", type=ConnectionGitlabConfig.class, parameters={})
+    private Output</* @Nullable */ ConnectionGitlabConfig> gitlabConfig;
+
+    /**
+     * @return Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+     * 
+     */
+    public Output<Optional<ConnectionGitlabConfig>> gitlabConfig() {
+        return Codegen.optional(this.gitlabConfig);
+    }
+    /**
      * Output only. Installation state of the Connection.
      * 
      */
@@ -345,16 +338,12 @@ public class Connection extends com.pulumi.resources.CustomResource {
     /**
      * Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
      * 
-     * ***
-     * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
      * @return Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

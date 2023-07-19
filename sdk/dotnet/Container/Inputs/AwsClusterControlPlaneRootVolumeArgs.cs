@@ -31,6 +31,12 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<int>? SizeGib { get; set; }
 
         /// <summary>
+        /// Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+        /// </summary>
+        [Input("throughput")]
+        public Input<int>? Throughput { get; set; }
+
+        /// <summary>
         /// Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
         /// </summary>
         [Input("volumeType")]

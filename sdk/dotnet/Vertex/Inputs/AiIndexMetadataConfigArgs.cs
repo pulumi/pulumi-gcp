@@ -52,6 +52,16 @@ namespace Pulumi.Gcp.Vertex.Inputs
         [Input("featureNormType")]
         public Input<string>? FeatureNormType { get; set; }
 
+        /// <summary>
+        /// Index data is split into equal parts to be processed. These are called "shards".
+        /// The shard size must be specified when creating an index. The value must be one of the followings:
+        /// * SHARD_SIZE_SMALL: Small (2GB)
+        /// * SHARD_SIZE_MEDIUM: Medium (20GB)
+        /// * SHARD_SIZE_LARGE: Large (50GB)
+        /// </summary>
+        [Input("shardSize")]
+        public Input<string>? ShardSize { get; set; }
+
         public AiIndexMetadataConfigArgs()
         {
         }

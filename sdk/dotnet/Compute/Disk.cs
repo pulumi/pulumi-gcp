@@ -72,9 +72,6 @@ namespace Pulumi.Gcp.Compute
     ///         Type = "pd-ssd",
     ///         Zone = "us-central1-a",
     ///         PhysicalBlockSizeBytes = 4096,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var secondary = new Gcp.Compute.Disk("secondary", new()
@@ -86,9 +83,6 @@ namespace Pulumi.Gcp.Compute
     ///             Disk = primary.Id,
     ///         },
     ///         PhysicalBlockSizeBytes = 4096,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -161,6 +155,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Output("asyncPrimaryDisk")]
         public Output<Outputs.DiskAsyncPrimaryDisk?> AsyncPrimaryDisk { get; private set; } = null!;
@@ -292,10 +287,19 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Indicates how many IOPS must be provisioned for the disk.
-        /// Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+        /// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+        /// allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
         /// </summary>
         [Output("provisionedIops")]
         public Output<int> ProvisionedIops { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates how much Throughput must be provisioned for the disk.
+        /// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+        /// allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
+        /// </summary>
+        [Output("provisionedThroughput")]
+        public Output<int> ProvisionedThroughput { get; private set; } = null!;
 
         /// <summary>
         /// Resource policies applied to this disk for automatic snapshot creations.
@@ -466,6 +470,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Input("asyncPrimaryDisk")]
         public Input<Inputs.DiskAsyncPrimaryDiskArgs>? AsyncPrimaryDisk { get; set; }
@@ -590,10 +595,19 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Indicates how many IOPS must be provisioned for the disk.
-        /// Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+        /// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+        /// allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
         /// </summary>
         [Input("provisionedIops")]
         public Input<int>? ProvisionedIops { get; set; }
+
+        /// <summary>
+        /// Indicates how much Throughput must be provisioned for the disk.
+        /// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+        /// allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
+        /// </summary>
+        [Input("provisionedThroughput")]
+        public Input<int>? ProvisionedThroughput { get; set; }
 
         [Input("resourcePolicies")]
         private InputList<string>? _resourcePolicies;
@@ -690,6 +704,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Input("asyncPrimaryDisk")]
         public Input<Inputs.DiskAsyncPrimaryDiskGetArgs>? AsyncPrimaryDisk { get; set; }
@@ -839,10 +854,19 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Indicates how many IOPS must be provisioned for the disk.
-        /// Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+        /// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+        /// allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
         /// </summary>
         [Input("provisionedIops")]
         public Input<int>? ProvisionedIops { get; set; }
+
+        /// <summary>
+        /// Indicates how much Throughput must be provisioned for the disk.
+        /// Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+        /// allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you'll need to manually delete and recreate it
+        /// </summary>
+        [Input("provisionedThroughput")]
+        public Input<int>? ProvisionedThroughput { get; set; }
 
         [Input("resourcePolicies")]
         private InputList<string>? _resourcePolicies;

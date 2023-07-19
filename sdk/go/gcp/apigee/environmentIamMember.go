@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -203,6 +204,7 @@ func NewEnvironmentIamMember(ctx *pulumi.Context,
 	if args.Role == nil {
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EnvironmentIamMember
 	err := ctx.RegisterResource("gcp:apigee/environmentIamMember:EnvironmentIamMember", name, args, &resource, opts...)
 	if err != nil {

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -161,6 +162,7 @@ func NewGlobalAddress(ctx *pulumi.Context,
 		args = &GlobalAddressArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GlobalAddress
 	err := ctx.RegisterResource("gcp:compute/globalAddress:GlobalAddress", name, args, &resource, opts...)
 	if err != nil {

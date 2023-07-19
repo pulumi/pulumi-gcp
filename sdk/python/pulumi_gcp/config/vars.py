@@ -297,6 +297,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('firebaseDatabaseCustomEndpoint')
 
     @property
+    def firebase_extensions_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('firebaseExtensionsCustomEndpoint')
+
+    @property
     def firebase_hosting_custom_endpoint(self) -> Optional[str]:
         return __config__.get('firebaseHostingCustomEndpoint')
 
@@ -439,6 +443,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def project(self) -> Optional[str]:
         return __config__.get('project') or _utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
+
+    @property
+    def public_ca_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('publicCaCustomEndpoint')
 
     @property
     def pubsub_custom_endpoint(self) -> Optional[str]:

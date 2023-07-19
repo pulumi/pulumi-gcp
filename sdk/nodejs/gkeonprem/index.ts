@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { BareMetalAdminClusterArgs, BareMetalAdminClusterState } from "./bareMetalAdminCluster";
+export type BareMetalAdminCluster = import("./bareMetalAdminCluster").BareMetalAdminCluster;
+export const BareMetalAdminCluster: typeof import("./bareMetalAdminCluster").BareMetalAdminCluster = null as any;
+utilities.lazyLoad(exports, ["BareMetalAdminCluster"], () => require("./bareMetalAdminCluster"));
+
 export { BareMetalClusterArgs, BareMetalClusterState } from "./bareMetalCluster";
 export type BareMetalCluster = import("./bareMetalCluster").BareMetalCluster;
 export const BareMetalCluster: typeof import("./bareMetalCluster").BareMetalCluster = null as any;
@@ -30,6 +35,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster":
+                return new BareMetalAdminCluster(name, <any>undefined, { urn })
             case "gcp:gkeonprem/bareMetalCluster:BareMetalCluster":
                 return new BareMetalCluster(name, <any>undefined, { urn })
             case "gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool":
@@ -43,6 +50,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "gkeonprem/bareMetalAdminCluster", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkeonprem/bareMetalCluster", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkeonprem/bareMetalNodePool", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkeonprem/vMwareCluster", _module)

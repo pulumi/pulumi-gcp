@@ -88,7 +88,7 @@ def get_hl7_v2_store_iam_policy(hl7_v2_store_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.healthcare.get_hl7_v2_store_iam_policy(hl7_v2_store_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    foo = gcp.healthcare.get_hl7_v2_store_iam_policy(hl7_v2_store_id=google_healthcare_hl7_v2_store["hl7_v2_store"]["id"])
     ```
 
 
@@ -103,10 +103,10 @@ def get_hl7_v2_store_iam_policy(hl7_v2_store_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:healthcare/getHl7V2StoreIamPolicy:getHl7V2StoreIamPolicy', __args__, opts=opts, typ=GetHl7V2StoreIamPolicyResult).value
 
     return AwaitableGetHl7V2StoreIamPolicyResult(
-        etag=__ret__.etag,
-        hl7_v2_store_id=__ret__.hl7_v2_store_id,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data)
+        etag=pulumi.get(__ret__, 'etag'),
+        hl7_v2_store_id=pulumi.get(__ret__, 'hl7_v2_store_id'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'))
 
 
 @_utilities.lift_output_func(get_hl7_v2_store_iam_policy)
@@ -121,7 +121,7 @@ def get_hl7_v2_store_iam_policy_output(hl7_v2_store_id: Optional[pulumi.Input[st
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.healthcare.get_hl7_v2_store_iam_policy(hl7_v2_store_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    foo = gcp.healthcare.get_hl7_v2_store_iam_policy(hl7_v2_store_id=google_healthcare_hl7_v2_store["hl7_v2_store"]["id"])
     ```
 
 

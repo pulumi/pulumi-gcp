@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupAutoscalingPolicyIamPolicy(ctx *pulumi.Context, args *LookupAutoscalingPolicyIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAutoscalingPolicyIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAutoscalingPolicyIamPolicyResult
 	err := ctx.Invoke("gcp:dataproc/getAutoscalingPolicyIamPolicy:getAutoscalingPolicyIamPolicy", args, &rv, opts...)
 	if err != nil {

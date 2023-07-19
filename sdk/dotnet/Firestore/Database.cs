@@ -24,6 +24,118 @@ namespace Pulumi.Gcp.Firestore
     ///     * [Official Documentation](https://cloud.google.com/firestore/docs/)
     /// 
     /// ## Example Usage
+    /// ### Firestore Database
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumi.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = new Gcp.Organizations.Project("project", new()
+    ///     {
+    ///         ProjectId = "my-project",
+    ///         OrgId = "123456789",
+    ///     });
+    /// 
+    ///     var wait60Seconds = new Time.Index.Time_sleep("wait60Seconds", new()
+    ///     {
+    ///         CreateDuration = "60s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             project,
+    ///         },
+    ///     });
+    /// 
+    ///     var firestore = new Gcp.Projects.Service("firestore", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "firestore.googleapis.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             wait60Seconds,
+    ///         },
+    ///     });
+    /// 
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         ConcurrencyMode = "OPTIMISTIC",
+    ///         AppEngineIntegrationMode = "DISABLED",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             firestore,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Firestore Database Datastore Mode
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumi.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = new Gcp.Organizations.Project("project", new()
+    ///     {
+    ///         ProjectId = "my-project",
+    ///         OrgId = "123456789",
+    ///     });
+    /// 
+    ///     var wait60Seconds = new Time.Index.Time_sleep("wait60Seconds", new()
+    ///     {
+    ///         CreateDuration = "60s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             project,
+    ///         },
+    ///     });
+    /// 
+    ///     var firestore = new Gcp.Projects.Service("firestore", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "firestore.googleapis.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             wait60Seconds,
+    ///         },
+    ///     });
+    /// 
+    ///     var datastoreModeDatabase = new Gcp.Firestore.Database("datastoreModeDatabase", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         LocationId = "nam5",
+    ///         Type = "DATASTORE_MODE",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             firestore,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

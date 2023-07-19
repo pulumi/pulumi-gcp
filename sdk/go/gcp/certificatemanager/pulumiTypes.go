@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type CertificateIssuanceConfigCertificateAuthorityConfig struct {
 	// Defines a CertificateAuthorityServiceConfig.
@@ -316,11 +319,15 @@ type CertificateManaged struct {
 	//
 	// <a name="nestedProvisioningIssue"></a>The `provisioningIssue` block contains:
 	AuthorizationAttemptInfos []CertificateManagedAuthorizationAttemptInfo `pulumi:"authorizationAttemptInfos"`
-	// Authorizations that will be used for performing domain authorization
+	// Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
 	DnsAuthorizations []string `pulumi:"dnsAuthorizations"`
 	// The domains for which a managed SSL certificate will be generated.
 	// Wildcard domains are only supported with DNS challenge resolution
 	Domains []string `pulumi:"domains"`
+	// The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
+	// If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+	// Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+	IssuanceConfig *string `pulumi:"issuanceConfig"`
 	// (Output)
 	// Information about issues with provisioning this Managed Certificate.
 	// Structure is documented below.
@@ -349,11 +356,15 @@ type CertificateManagedArgs struct {
 	//
 	// <a name="nestedProvisioningIssue"></a>The `provisioningIssue` block contains:
 	AuthorizationAttemptInfos CertificateManagedAuthorizationAttemptInfoArrayInput `pulumi:"authorizationAttemptInfos"`
-	// Authorizations that will be used for performing domain authorization
+	// Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
 	DnsAuthorizations pulumi.StringArrayInput `pulumi:"dnsAuthorizations"`
 	// The domains for which a managed SSL certificate will be generated.
 	// Wildcard domains are only supported with DNS challenge resolution
 	Domains pulumi.StringArrayInput `pulumi:"domains"`
+	// The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
+	// If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+	// Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+	IssuanceConfig pulumi.StringPtrInput `pulumi:"issuanceConfig"`
 	// (Output)
 	// Information about issues with provisioning this Managed Certificate.
 	// Structure is documented below.
@@ -452,7 +463,7 @@ func (o CertificateManagedOutput) AuthorizationAttemptInfos() CertificateManaged
 	}).(CertificateManagedAuthorizationAttemptInfoArrayOutput)
 }
 
-// Authorizations that will be used for performing domain authorization
+// Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
 func (o CertificateManagedOutput) DnsAuthorizations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CertificateManaged) []string { return v.DnsAuthorizations }).(pulumi.StringArrayOutput)
 }
@@ -461,6 +472,13 @@ func (o CertificateManagedOutput) DnsAuthorizations() pulumi.StringArrayOutput {
 // Wildcard domains are only supported with DNS challenge resolution
 func (o CertificateManagedOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CertificateManaged) []string { return v.Domains }).(pulumi.StringArrayOutput)
+}
+
+// The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
+// If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+// Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+func (o CertificateManagedOutput) IssuanceConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateManaged) *string { return v.IssuanceConfig }).(pulumi.StringPtrOutput)
 }
 
 // (Output)
@@ -515,7 +533,7 @@ func (o CertificateManagedPtrOutput) AuthorizationAttemptInfos() CertificateMana
 	}).(CertificateManagedAuthorizationAttemptInfoArrayOutput)
 }
 
-// Authorizations that will be used for performing domain authorization
+// Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
 func (o CertificateManagedPtrOutput) DnsAuthorizations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CertificateManaged) []string {
 		if v == nil {
@@ -534,6 +552,18 @@ func (o CertificateManagedPtrOutput) Domains() pulumi.StringArrayOutput {
 		}
 		return v.Domains
 	}).(pulumi.StringArrayOutput)
+}
+
+// The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
+// If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+// Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+func (o CertificateManagedPtrOutput) IssuanceConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateManaged) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IssuanceConfig
+	}).(pulumi.StringPtrOutput)
 }
 
 // (Output)

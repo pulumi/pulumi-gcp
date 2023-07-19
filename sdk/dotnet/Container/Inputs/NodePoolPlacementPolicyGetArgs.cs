@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class NodePoolPlacementPolicyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
+        /// </summary>
+        [Input("tpuTopology")]
+        public Input<string>? TpuTopology { get; set; }
+
+        /// <summary>
         /// The type of the policy. Supports a single value: COMPACT.
         /// Specifying COMPACT placement policy type places node pool's nodes in a closer
         /// physical proximity in order to reduce network latency between nodes.

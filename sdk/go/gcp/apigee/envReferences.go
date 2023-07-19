@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,6 +69,7 @@ func NewEnvReferences(ctx *pulumi.Context,
 	if args.ResourceType == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EnvReferences
 	err := ctx.RegisterResource("gcp:apigee/envReferences:EnvReferences", name, args, &resource, opts...)
 	if err != nil {

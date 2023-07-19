@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -259,6 +260,7 @@ func NewAwsNodePool(ctx *pulumi.Context,
 	if args.Version == nil {
 		return nil, errors.New("invalid value for required argument 'Version'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AwsNodePool
 	err := ctx.RegisterResource("gcp:container/awsNodePool:AwsNodePool", name, args, &resource, opts...)
 	if err != nil {

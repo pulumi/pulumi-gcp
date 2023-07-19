@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupDataExchangeIamPolicy(ctx *pulumi.Context, args *LookupDataExchangeIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDataExchangeIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDataExchangeIamPolicyResult
 	err := ctx.Invoke("gcp:bigqueryanalyticshub/getDataExchangeIamPolicy:getDataExchangeIamPolicy", args, &rv, opts...)
 	if err != nil {

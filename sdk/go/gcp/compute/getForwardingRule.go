@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func LookupForwardingRule(ctx *pulumi.Context, args *LookupForwardingRuleArgs, opts ...pulumi.InvokeOption) (*LookupForwardingRuleResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupForwardingRuleResult
 	err := ctx.Invoke("gcp:compute/getForwardingRule:getForwardingRule", args, &rv, opts...)
 	if err != nil {
@@ -80,6 +82,7 @@ type LookupForwardingRuleResult struct {
 	Name                          string                                          `pulumi:"name"`
 	Network                       string                                          `pulumi:"network"`
 	NetworkTier                   string                                          `pulumi:"networkTier"`
+	NoAutomateDnsZone             bool                                            `pulumi:"noAutomateDnsZone"`
 	PortRange                     string                                          `pulumi:"portRange"`
 	Ports                         []string                                        `pulumi:"ports"`
 	Project                       *string                                         `pulumi:"project"`
@@ -208,6 +211,10 @@ func (o LookupForwardingRuleResultOutput) Network() pulumi.StringOutput {
 
 func (o LookupForwardingRuleResultOutput) NetworkTier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupForwardingRuleResult) string { return v.NetworkTier }).(pulumi.StringOutput)
+}
+
+func (o LookupForwardingRuleResultOutput) NoAutomateDnsZone() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupForwardingRuleResult) bool { return v.NoAutomateDnsZone }).(pulumi.BoolOutput)
 }
 
 func (o LookupForwardingRuleResultOutput) PortRange() pulumi.StringOutput {

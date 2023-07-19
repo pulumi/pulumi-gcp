@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -196,6 +197,7 @@ func NewPolicyTagIamBinding(ctx *pulumi.Context,
 	if args.Role == nil {
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PolicyTagIamBinding
 	err := ctx.RegisterResource("gcp:datacatalog/policyTagIamBinding:PolicyTagIamBinding", name, args, &resource, opts...)
 	if err != nil {

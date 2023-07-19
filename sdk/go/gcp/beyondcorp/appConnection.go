@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -208,6 +209,7 @@ func NewAppConnection(ctx *pulumi.Context,
 	if args.ApplicationEndpoint == nil {
 		return nil, errors.New("invalid value for required argument 'ApplicationEndpoint'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AppConnection
 	err := ctx.RegisterResource("gcp:beyondcorp/appConnection:AppConnection", name, args, &resource, opts...)
 	if err != nil {

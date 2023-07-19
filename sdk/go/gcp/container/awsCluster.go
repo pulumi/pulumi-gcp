@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -209,6 +210,7 @@ func NewAwsCluster(ctx *pulumi.Context,
 	if args.Networking == nil {
 		return nil, errors.New("invalid value for required argument 'Networking'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AwsCluster
 	err := ctx.RegisterResource("gcp:container/awsCluster:AwsCluster", name, args, &resource, opts...)
 	if err != nil {

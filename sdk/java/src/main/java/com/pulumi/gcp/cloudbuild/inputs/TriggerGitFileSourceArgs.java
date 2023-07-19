@@ -66,9 +66,19 @@ public final class TriggerGitFileSourceArgs extends com.pulumi.resources.Resourc
         return this.repoType;
     }
 
+    /**
+     * The fully qualified resource name of the Repo API repository. The fully qualified resource name of the Repo API repository.
+     * If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+     * 
+     */
     @Import(name="repository")
     private @Nullable Output<String> repository;
 
+    /**
+     * @return The fully qualified resource name of the Repo API repository. The fully qualified resource name of the Repo API repository.
+     * If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+     * 
+     */
     public Optional<Output<String>> repository() {
         return Optional.ofNullable(this.repository);
     }
@@ -207,11 +217,25 @@ public final class TriggerGitFileSourceArgs extends com.pulumi.resources.Resourc
             return repoType(Output.of(repoType));
         }
 
+        /**
+         * @param repository The fully qualified resource name of the Repo API repository. The fully qualified resource name of the Repo API repository.
+         * If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+         * 
+         * @return builder
+         * 
+         */
         public Builder repository(@Nullable Output<String> repository) {
             $.repository = repository;
             return this;
         }
 
+        /**
+         * @param repository The fully qualified resource name of the Repo API repository. The fully qualified resource name of the Repo API repository.
+         * If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+         * 
+         * @return builder
+         * 
+         */
         public Builder repository(String repository) {
             return repository(Output.of(repository));
         }

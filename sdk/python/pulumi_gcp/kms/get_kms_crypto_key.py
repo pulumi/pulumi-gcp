@@ -170,16 +170,16 @@ def get_kms_crypto_key(key_ring: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSCryptoKey:getKMSCryptoKey', __args__, opts=opts, typ=GetKMSCryptoKeyResult).value
 
     return AwaitableGetKMSCryptoKeyResult(
-        destroy_scheduled_duration=__ret__.destroy_scheduled_duration,
-        id=__ret__.id,
-        import_only=__ret__.import_only,
-        key_ring=__ret__.key_ring,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        purpose=__ret__.purpose,
-        rotation_period=__ret__.rotation_period,
-        skip_initial_version_creation=__ret__.skip_initial_version_creation,
-        version_templates=__ret__.version_templates)
+        destroy_scheduled_duration=pulumi.get(__ret__, 'destroy_scheduled_duration'),
+        id=pulumi.get(__ret__, 'id'),
+        import_only=pulumi.get(__ret__, 'import_only'),
+        key_ring=pulumi.get(__ret__, 'key_ring'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        purpose=pulumi.get(__ret__, 'purpose'),
+        rotation_period=pulumi.get(__ret__, 'rotation_period'),
+        skip_initial_version_creation=pulumi.get(__ret__, 'skip_initial_version_creation'),
+        version_templates=pulumi.get(__ret__, 'version_templates'))
 
 
 @_utilities.lift_output_func(get_kms_crypto_key)

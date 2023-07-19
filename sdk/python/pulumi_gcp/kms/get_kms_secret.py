@@ -114,11 +114,11 @@ def get_kms_secret(additional_authenticated_data: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSSecret:getKMSSecret', __args__, opts=opts, typ=GetKMSSecretResult).value
 
     return AwaitableGetKMSSecretResult(
-        additional_authenticated_data=__ret__.additional_authenticated_data,
-        ciphertext=__ret__.ciphertext,
-        crypto_key=__ret__.crypto_key,
-        id=__ret__.id,
-        plaintext=__ret__.plaintext)
+        additional_authenticated_data=pulumi.get(__ret__, 'additional_authenticated_data'),
+        ciphertext=pulumi.get(__ret__, 'ciphertext'),
+        crypto_key=pulumi.get(__ret__, 'crypto_key'),
+        id=pulumi.get(__ret__, 'id'),
+        plaintext=pulumi.get(__ret__, 'plaintext'))
 
 
 @_utilities.lift_output_func(get_kms_secret)

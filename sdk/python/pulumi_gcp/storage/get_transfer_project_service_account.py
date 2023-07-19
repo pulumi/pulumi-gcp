@@ -113,11 +113,11 @@ def get_transfer_project_service_account(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:storage/getTransferProjectServiceAccount:getTransferProjectServiceAccount', __args__, opts=opts, typ=GetTransferProjectServiceAccountResult).value
 
     return AwaitableGetTransferProjectServiceAccountResult(
-        email=__ret__.email,
-        id=__ret__.id,
-        member=__ret__.member,
-        project=__ret__.project,
-        subject_id=__ret__.subject_id)
+        email=pulumi.get(__ret__, 'email'),
+        id=pulumi.get(__ret__, 'id'),
+        member=pulumi.get(__ret__, 'member'),
+        project=pulumi.get(__ret__, 'project'),
+        subject_id=pulumi.get(__ret__, 'subject_id'))
 
 
 @_utilities.lift_output_func(get_transfer_project_service_account)

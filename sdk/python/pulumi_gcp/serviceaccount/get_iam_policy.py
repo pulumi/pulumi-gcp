@@ -88,7 +88,7 @@ def get_iam_policy(service_account_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.serviceAccount.get_iam_policy(service_account_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    foo = gcp.serviceAccount.get_iam_policy(service_account_id=google_service_account["test_account"]["name"])
     ```
 
 
@@ -100,10 +100,10 @@ def get_iam_policy(service_account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getIamPolicy:getIamPolicy', __args__, opts=opts, typ=GetIamPolicyResult).value
 
     return AwaitableGetIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        service_account_id=__ret__.service_account_id)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        service_account_id=pulumi.get(__ret__, 'service_account_id'))
 
 
 @_utilities.lift_output_func(get_iam_policy)
@@ -118,7 +118,7 @@ def get_iam_policy_output(service_account_id: Optional[pulumi.Input[str]] = None
     import pulumi
     import pulumi_gcp as gcp
 
-    foo = gcp.serviceAccount.get_iam_policy(service_account_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    foo = gcp.serviceAccount.get_iam_policy(service_account_id=google_service_account["test_account"]["name"])
     ```
 
 

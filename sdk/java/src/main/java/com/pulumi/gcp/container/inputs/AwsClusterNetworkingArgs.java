@@ -5,14 +5,32 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class AwsClusterNetworkingArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AwsClusterNetworkingArgs Empty = new AwsClusterNetworkingArgs();
+
+    /**
+     * Disable the per node pool subnet security group rules on the control plane security group. When set to true, you must also provide one or more security groups that ensure node pools are able to send requests to the control plane on TCP/443 and TCP/8132. Failure to do so may result in unavailable node pools.
+     * 
+     */
+    @Import(name="perNodePoolSgRulesDisabled")
+    private @Nullable Output<Boolean> perNodePoolSgRulesDisabled;
+
+    /**
+     * @return Disable the per node pool subnet security group rules on the control plane security group. When set to true, you must also provide one or more security groups that ensure node pools are able to send requests to the control plane on TCP/443 and TCP/8132. Failure to do so may result in unavailable node pools.
+     * 
+     */
+    public Optional<Output<Boolean>> perNodePoolSgRulesDisabled() {
+        return Optional.ofNullable(this.perNodePoolSgRulesDisabled);
+    }
 
     /**
      * All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
@@ -66,6 +84,7 @@ public final class AwsClusterNetworkingArgs extends com.pulumi.resources.Resourc
     private AwsClusterNetworkingArgs() {}
 
     private AwsClusterNetworkingArgs(AwsClusterNetworkingArgs $) {
+        this.perNodePoolSgRulesDisabled = $.perNodePoolSgRulesDisabled;
         this.podAddressCidrBlocks = $.podAddressCidrBlocks;
         this.serviceAddressCidrBlocks = $.serviceAddressCidrBlocks;
         this.vpcId = $.vpcId;
@@ -87,6 +106,27 @@ public final class AwsClusterNetworkingArgs extends com.pulumi.resources.Resourc
 
         public Builder(AwsClusterNetworkingArgs defaults) {
             $ = new AwsClusterNetworkingArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param perNodePoolSgRulesDisabled Disable the per node pool subnet security group rules on the control plane security group. When set to true, you must also provide one or more security groups that ensure node pools are able to send requests to the control plane on TCP/443 and TCP/8132. Failure to do so may result in unavailable node pools.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder perNodePoolSgRulesDisabled(@Nullable Output<Boolean> perNodePoolSgRulesDisabled) {
+            $.perNodePoolSgRulesDisabled = perNodePoolSgRulesDisabled;
+            return this;
+        }
+
+        /**
+         * @param perNodePoolSgRulesDisabled Disable the per node pool subnet security group rules on the control plane security group. When set to true, you must also provide one or more security groups that ensure node pools are able to send requests to the control plane on TCP/443 and TCP/8132. Failure to do so may result in unavailable node pools.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder perNodePoolSgRulesDisabled(Boolean perNodePoolSgRulesDisabled) {
+            return perNodePoolSgRulesDisabled(Output.of(perNodePoolSgRulesDisabled));
         }
 
         /**

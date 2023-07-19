@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -275,6 +276,7 @@ func NewInterconnectAttachment(ctx *pulumi.Context,
 	if args.Router == nil {
 		return nil, errors.New("invalid value for required argument 'Router'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InterconnectAttachment
 	err := ctx.RegisterResource("gcp:compute/interconnectAttachment:InterconnectAttachment", name, args, &resource, opts...)
 	if err != nil {

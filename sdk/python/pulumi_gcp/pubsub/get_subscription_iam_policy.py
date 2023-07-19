@@ -98,7 +98,7 @@ def get_subscription_iam_policy(project: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.pubsub.get_subscription_iam_policy(subscription=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.pubsub.get_subscription_iam_policy(subscription=google_pubsub_subscription["subscription"]["id"])
     ```
 
 
@@ -113,11 +113,11 @@ def get_subscription_iam_policy(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:pubsub/getSubscriptionIamPolicy:getSubscriptionIamPolicy', __args__, opts=opts, typ=GetSubscriptionIamPolicyResult).value
 
     return AwaitableGetSubscriptionIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project,
-        subscription=__ret__.subscription)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'),
+        subscription=pulumi.get(__ret__, 'subscription'))
 
 
 @_utilities.lift_output_func(get_subscription_iam_policy)
@@ -133,7 +133,7 @@ def get_subscription_iam_policy_output(project: Optional[pulumi.Input[Optional[s
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.pubsub.get_subscription_iam_policy(subscription=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.pubsub.get_subscription_iam_policy(subscription=google_pubsub_subscription["subscription"]["id"])
     ```
 
 

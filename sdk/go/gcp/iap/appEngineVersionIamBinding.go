@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -343,6 +344,7 @@ func NewAppEngineVersionIamBinding(ctx *pulumi.Context,
 	if args.VersionId == nil {
 		return nil, errors.New("invalid value for required argument 'VersionId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AppEngineVersionIamBinding
 	err := ctx.RegisterResource("gcp:iap/appEngineVersionIamBinding:AppEngineVersionIamBinding", name, args, &resource, opts...)
 	if err != nil {

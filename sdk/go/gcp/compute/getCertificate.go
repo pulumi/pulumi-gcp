@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func GetCertificate(ctx *pulumi.Context, args *GetCertificateArgs, opts ...pulumi.InvokeOption) (*GetCertificateResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCertificateResult
 	err := ctx.Invoke("gcp:compute/getCertificate:getCertificate", args, &rv, opts...)
 	if err != nil {

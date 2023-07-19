@@ -103,10 +103,10 @@ def get_key_ring_iam_policy(key_ring_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy', __args__, opts=opts, typ=GetKeyRingIamPolicyResult).value
 
     return AwaitableGetKeyRingIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        key_ring_id=__ret__.key_ring_id,
-        policy_data=__ret__.policy_data)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        key_ring_id=pulumi.get(__ret__, 'key_ring_id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'))
 
 
 @_utilities.lift_output_func(get_key_ring_iam_policy)

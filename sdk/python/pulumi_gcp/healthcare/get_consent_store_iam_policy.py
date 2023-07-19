@@ -99,8 +99,8 @@ def get_consent_store_iam_policy(consent_store_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.healthcare.get_consent_store_iam_policy(dataset=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        consent_store_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.healthcare.get_consent_store_iam_policy(dataset=google_healthcare_consent_store["my-consent"]["dataset"],
+        consent_store_id=google_healthcare_consent_store["my-consent"]["name"])
     ```
 
 
@@ -116,11 +116,11 @@ def get_consent_store_iam_policy(consent_store_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:healthcare/getConsentStoreIamPolicy:getConsentStoreIamPolicy', __args__, opts=opts, typ=GetConsentStoreIamPolicyResult).value
 
     return AwaitableGetConsentStoreIamPolicyResult(
-        consent_store_id=__ret__.consent_store_id,
-        dataset=__ret__.dataset,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data)
+        consent_store_id=pulumi.get(__ret__, 'consent_store_id'),
+        dataset=pulumi.get(__ret__, 'dataset'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'))
 
 
 @_utilities.lift_output_func(get_consent_store_iam_policy)
@@ -136,8 +136,8 @@ def get_consent_store_iam_policy_output(consent_store_id: Optional[pulumi.Input[
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.healthcare.get_consent_store_iam_policy(dataset=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        consent_store_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.healthcare.get_consent_store_iam_policy(dataset=google_healthcare_consent_store["my-consent"]["dataset"],
+        consent_store_id=google_healthcare_consent_store["my-consent"]["name"])
     ```
 
 

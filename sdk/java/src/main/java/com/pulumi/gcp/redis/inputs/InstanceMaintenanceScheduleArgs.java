@@ -60,20 +60,16 @@ public final class InstanceMaintenanceScheduleArgs extends com.pulumi.resources.
     }
 
     /**
-     * (Output)
-     * Output only. The start time of any upcoming scheduled maintenance for this instance.
-     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-     * resolution and up to nine fractional digits.
+     * Required. Start time of the window in UTC time.
+     * Structure is documented below.
      * 
      */
     @Import(name="startTime")
     private @Nullable Output<String> startTime;
 
     /**
-     * @return (Output)
-     * Output only. The start time of any upcoming scheduled maintenance for this instance.
-     * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-     * resolution and up to nine fractional digits.
+     * @return Required. Start time of the window in UTC time.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<String>> startTime() {
@@ -163,10 +159,8 @@ public final class InstanceMaintenanceScheduleArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param startTime (Output)
-         * Output only. The start time of any upcoming scheduled maintenance for this instance.
-         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-         * resolution and up to nine fractional digits.
+         * @param startTime Required. Start time of the window in UTC time.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -177,10 +171,8 @@ public final class InstanceMaintenanceScheduleArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param startTime (Output)
-         * Output only. The start time of any upcoming scheduled maintenance for this instance.
-         * A timestamp in RFC3339 UTC &#34;Zulu&#34; format, with nanosecond
-         * resolution and up to nine fractional digits.
+         * @param startTime Required. Start time of the window in UTC time.
+         * Structure is documented below.
          * 
          * @return builder
          * 

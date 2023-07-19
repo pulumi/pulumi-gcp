@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -127,6 +128,7 @@ func NewRegionTargetHttpProxy(ctx *pulumi.Context,
 	if args.UrlMap == nil {
 		return nil, errors.New("invalid value for required argument 'UrlMap'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RegionTargetHttpProxy
 	err := ctx.RegisterResource("gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy", name, args, &resource, opts...)
 	if err != nil {

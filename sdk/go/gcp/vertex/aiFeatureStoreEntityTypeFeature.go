@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -180,6 +181,7 @@ func NewAiFeatureStoreEntityTypeFeature(ctx *pulumi.Context,
 	if args.ValueType == nil {
 		return nil, errors.New("invalid value for required argument 'ValueType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AiFeatureStoreEntityTypeFeature
 	err := ctx.RegisterResource("gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature", name, args, &resource, opts...)
 	if err != nil {

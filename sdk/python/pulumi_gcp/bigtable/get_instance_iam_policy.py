@@ -98,7 +98,7 @@ def get_instance_iam_policy(instance: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigtable.get_instance_iam_policy(instance=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.bigtable.get_instance_iam_policy(instance=google_bigtable_instance["instance"]["name"])
     ```
 
 
@@ -111,11 +111,11 @@ def get_instance_iam_policy(instance: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:bigtable/getInstanceIamPolicy:getInstanceIamPolicy', __args__, opts=opts, typ=GetInstanceIamPolicyResult).value
 
     return AwaitableGetInstanceIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        instance=__ret__.instance,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        instance=pulumi.get(__ret__, 'instance'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_instance_iam_policy)
@@ -131,7 +131,7 @@ def get_instance_iam_policy_output(instance: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigtable.get_instance_iam_policy(instance=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.bigtable.get_instance_iam_policy(instance=google_bigtable_instance["instance"]["name"])
     ```
 
 

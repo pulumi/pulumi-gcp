@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -148,6 +149,7 @@ func NewAppGateway(ctx *pulumi.Context,
 		args = &AppGatewayArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AppGateway
 	err := ctx.RegisterResource("gcp:beyondcorp/appGateway:AppGateway", name, args, &resource, opts...)
 	if err != nil {

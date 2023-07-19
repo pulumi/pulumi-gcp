@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -203,6 +204,8 @@ type ProjectBucketConfig struct {
 	LifecycleState pulumi.StringOutput `pulumi:"lifecycleState"`
 	// The location of the bucket.
 	Location pulumi.StringOutput `pulumi:"location"`
+	// Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+	Locked pulumi.BoolPtrOutput `pulumi:"locked"`
 	// The resource name of the CMEK settings.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent resource that contains the logging bucket.
@@ -227,6 +230,7 @@ func NewProjectBucketConfig(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ProjectBucketConfig
 	err := ctx.RegisterResource("gcp:logging/projectBucketConfig:ProjectBucketConfig", name, args, &resource, opts...)
 	if err != nil {
@@ -261,6 +265,8 @@ type projectBucketConfigState struct {
 	LifecycleState *string `pulumi:"lifecycleState"`
 	// The location of the bucket.
 	Location *string `pulumi:"location"`
+	// Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+	Locked *bool `pulumi:"locked"`
 	// The resource name of the CMEK settings.
 	Name *string `pulumi:"name"`
 	// The parent resource that contains the logging bucket.
@@ -282,6 +288,8 @@ type ProjectBucketConfigState struct {
 	LifecycleState pulumi.StringPtrInput
 	// The location of the bucket.
 	Location pulumi.StringPtrInput
+	// Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+	Locked pulumi.BoolPtrInput
 	// The resource name of the CMEK settings.
 	Name pulumi.StringPtrInput
 	// The parent resource that contains the logging bucket.
@@ -305,6 +313,8 @@ type projectBucketConfigArgs struct {
 	EnableAnalytics *bool `pulumi:"enableAnalytics"`
 	// The location of the bucket.
 	Location string `pulumi:"location"`
+	// Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+	Locked *bool `pulumi:"locked"`
 	// The parent resource that contains the logging bucket.
 	Project string `pulumi:"project"`
 	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
@@ -323,6 +333,8 @@ type ProjectBucketConfigArgs struct {
 	EnableAnalytics pulumi.BoolPtrInput
 	// The location of the bucket.
 	Location pulumi.StringInput
+	// Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+	Locked pulumi.BoolPtrInput
 	// The parent resource that contains the logging bucket.
 	Project pulumi.StringInput
 	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
@@ -444,6 +456,11 @@ func (o ProjectBucketConfigOutput) LifecycleState() pulumi.StringOutput {
 // The location of the bucket.
 func (o ProjectBucketConfigOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ProjectBucketConfig) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+func (o ProjectBucketConfigOutput) Locked() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ProjectBucketConfig) pulumi.BoolPtrOutput { return v.Locked }).(pulumi.BoolPtrOutput)
 }
 
 // The resource name of the CMEK settings.

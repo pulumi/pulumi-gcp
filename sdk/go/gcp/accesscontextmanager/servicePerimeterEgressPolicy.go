@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -58,6 +59,7 @@ func NewServicePerimeterEgressPolicy(ctx *pulumi.Context,
 	if args.Perimeter == nil {
 		return nil, errors.New("invalid value for required argument 'Perimeter'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServicePerimeterEgressPolicy
 	err := ctx.RegisterResource("gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy", name, args, &resource, opts...)
 	if err != nil {

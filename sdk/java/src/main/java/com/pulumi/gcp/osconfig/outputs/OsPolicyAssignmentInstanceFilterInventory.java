@@ -12,26 +12,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OsPolicyAssignmentInstanceFilterInventory {
     /**
-     * @return Required. The OS short name
+     * @return The OS short name
      * 
      */
     private String osShortName;
     /**
-     * @return The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+     * @return The OS version Prefix matches are supported if
+     * asterisk(*) is provided as the last character. For example, to match all
+     * versions with a major version of `7`, specify the following value for this
+     * field `7.*` An empty string matches all OS versions.
      * 
      */
     private @Nullable String osVersion;
 
     private OsPolicyAssignmentInstanceFilterInventory() {}
     /**
-     * @return Required. The OS short name
+     * @return The OS short name
      * 
      */
     public String osShortName() {
         return this.osShortName;
     }
     /**
-     * @return The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+     * @return The OS version Prefix matches are supported if
+     * asterisk(*) is provided as the last character. For example, to match all
+     * versions with a major version of `7`, specify the following value for this
+     * field `7.*` An empty string matches all OS versions.
      * 
      */
     public Optional<String> osVersion() {

@@ -17,14 +17,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptA
     public static final OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs Empty = new OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs();
 
     /**
-     * Required. Type of archive files in this repository. Possible values: ARCHIVE_TYPE_UNSPECIFIED, DEB, DEB_SRC
+     * Type of archive files in this repository.
+     * Possible values are: `ARCHIVE_TYPE_UNSPECIFIED`, `DEB`, `DEB_SRC`.
      * 
      */
     @Import(name="archiveType", required=true)
     private Output<String> archiveType;
 
     /**
-     * @return Required. Type of archive files in this repository. Possible values: ARCHIVE_TYPE_UNSPECIFIED, DEB, DEB_SRC
+     * @return Type of archive files in this repository.
+     * Possible values are: `ARCHIVE_TYPE_UNSPECIFIED`, `DEB`, `DEB_SRC`.
      * 
      */
     public Output<String> archiveType() {
@@ -32,14 +34,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptA
     }
 
     /**
-     * Required. List of components for this repository. Must contain at least one item.
+     * List of components for this repository. Must
+     * contain at least one item.
      * 
      */
     @Import(name="components", required=true)
     private Output<List<String>> components;
 
     /**
-     * @return Required. List of components for this repository. Must contain at least one item.
+     * @return List of components for this repository. Must
+     * contain at least one item.
      * 
      */
     public Output<List<String>> components() {
@@ -47,14 +51,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptA
     }
 
     /**
-     * Required. Distribution of this repository.
+     * Distribution of this repository.
      * 
      */
     @Import(name="distribution", required=true)
     private Output<String> distribution;
 
     /**
-     * @return Required. Distribution of this repository.
+     * @return Distribution of this repository.
      * 
      */
     public Output<String> distribution() {
@@ -62,14 +66,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptA
     }
 
     /**
-     * URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+     * URI of the key file for this repository. The agent
+     * maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
      * 
      */
     @Import(name="gpgKey")
     private @Nullable Output<String> gpgKey;
 
     /**
-     * @return URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+     * @return URI of the key file for this repository. The agent
+     * maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
      * 
      */
     public Optional<Output<String>> gpgKey() {
@@ -77,14 +83,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptA
     }
 
     /**
-     * Required. URI for this repository.
+     * URI for this repository.
      * 
      */
     @Import(name="uri", required=true)
     private Output<String> uri;
 
     /**
-     * @return Required. URI for this repository.
+     * @return URI for this repository.
      * 
      */
     public Output<String> uri() {
@@ -120,7 +126,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptA
         }
 
         /**
-         * @param archiveType Required. Type of archive files in this repository. Possible values: ARCHIVE_TYPE_UNSPECIFIED, DEB, DEB_SRC
+         * @param archiveType Type of archive files in this repository.
+         * Possible values are: `ARCHIVE_TYPE_UNSPECIFIED`, `DEB`, `DEB_SRC`.
          * 
          * @return builder
          * 
@@ -131,7 +138,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptA
         }
 
         /**
-         * @param archiveType Required. Type of archive files in this repository. Possible values: ARCHIVE_TYPE_UNSPECIFIED, DEB, DEB_SRC
+         * @param archiveType Type of archive files in this repository.
+         * Possible values are: `ARCHIVE_TYPE_UNSPECIFIED`, `DEB`, `DEB_SRC`.
          * 
          * @return builder
          * 
@@ -141,7 +149,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptA
         }
 
         /**
-         * @param components Required. List of components for this repository. Must contain at least one item.
+         * @param components List of components for this repository. Must
+         * contain at least one item.
          * 
          * @return builder
          * 
@@ -152,7 +161,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptA
         }
 
         /**
-         * @param components Required. List of components for this repository. Must contain at least one item.
+         * @param components List of components for this repository. Must
+         * contain at least one item.
          * 
          * @return builder
          * 
@@ -162,7 +172,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptA
         }
 
         /**
-         * @param components Required. List of components for this repository. Must contain at least one item.
+         * @param components List of components for this repository. Must
+         * contain at least one item.
          * 
          * @return builder
          * 
@@ -172,7 +183,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptA
         }
 
         /**
-         * @param distribution Required. Distribution of this repository.
+         * @param distribution Distribution of this repository.
          * 
          * @return builder
          * 
@@ -183,7 +194,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptA
         }
 
         /**
-         * @param distribution Required. Distribution of this repository.
+         * @param distribution Distribution of this repository.
          * 
          * @return builder
          * 
@@ -193,7 +204,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptA
         }
 
         /**
-         * @param gpgKey URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+         * @param gpgKey URI of the key file for this repository. The agent
+         * maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
          * 
          * @return builder
          * 
@@ -204,7 +216,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptA
         }
 
         /**
-         * @param gpgKey URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+         * @param gpgKey URI of the key file for this repository. The agent
+         * maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
          * 
          * @return builder
          * 
@@ -214,7 +227,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptA
         }
 
         /**
-         * @param uri Required. URI for this repository.
+         * @param uri URI for this repository.
          * 
          * @return builder
          * 
@@ -225,7 +238,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptA
         }
 
         /**
-         * @param uri Required. URI for this repository.
+         * @param uri URI for this repository.
          * 
          * @return builder
          * 

@@ -89,7 +89,7 @@ def get_service_iam_policy(service_name: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.endpoints.get_service_iam_policy(service_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.endpoints.get_service_iam_policy(service_name=google_endpoints_service["endpoints_service"]["service_name"])
     ```
     """
     __args__ = dict()
@@ -98,10 +98,10 @@ def get_service_iam_policy(service_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:endpoints/getServiceIamPolicy:getServiceIamPolicy', __args__, opts=opts, typ=GetServiceIamPolicyResult).value
 
     return AwaitableGetServiceIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        service_name=__ret__.service_name)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        service_name=pulumi.get(__ret__, 'service_name'))
 
 
 @_utilities.lift_output_func(get_service_iam_policy)
@@ -116,7 +116,7 @@ def get_service_iam_policy_output(service_name: Optional[pulumi.Input[str]] = No
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.endpoints.get_service_iam_policy(service_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.endpoints.get_service_iam_policy(service_name=google_endpoints_service["endpoints_service"]["service_name"])
     ```
     """
     ...

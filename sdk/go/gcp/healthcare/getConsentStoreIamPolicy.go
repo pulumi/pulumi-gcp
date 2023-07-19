@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupConsentStoreIamPolicy(ctx *pulumi.Context, args *LookupConsentStoreIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupConsentStoreIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupConsentStoreIamPolicyResult
 	err := ctx.Invoke("gcp:healthcare/getConsentStoreIamPolicy:getConsentStoreIamPolicy", args, &rv, opts...)
 	if err != nil {

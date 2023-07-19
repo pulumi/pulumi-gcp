@@ -362,6 +362,52 @@ class Database(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/firestore/docs/)
 
         ## Example Usage
+        ### Firestore Database
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        project = gcp.organizations.Project("project",
+            project_id="my-project",
+            org_id="123456789")
+        wait60_seconds = time.index.Time_sleep("wait60Seconds", create_duration=60s,
+        opts=pulumi.ResourceOptions(depends_on=[project]))
+        firestore = gcp.projects.Service("firestore",
+            project=project.project_id,
+            service="firestore.googleapis.com",
+            opts=pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+        database = gcp.firestore.Database("database",
+            project=project.project_id,
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            concurrency_mode="OPTIMISTIC",
+            app_engine_integration_mode="DISABLED",
+            opts=pulumi.ResourceOptions(depends_on=[firestore]))
+        ```
+        ### Firestore Database Datastore Mode
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        project = gcp.organizations.Project("project",
+            project_id="my-project",
+            org_id="123456789")
+        wait60_seconds = time.index.Time_sleep("wait60Seconds", create_duration=60s,
+        opts=pulumi.ResourceOptions(depends_on=[project]))
+        firestore = gcp.projects.Service("firestore",
+            project=project.project_id,
+            service="firestore.googleapis.com",
+            opts=pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+        datastore_mode_database = gcp.firestore.Database("datastoreModeDatabase",
+            project=project.project_id,
+            location_id="nam5",
+            type="DATASTORE_MODE",
+            opts=pulumi.ResourceOptions(depends_on=[firestore]))
+        ```
 
         ## Import
 
@@ -424,6 +470,52 @@ class Database(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/firestore/docs/)
 
         ## Example Usage
+        ### Firestore Database
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        project = gcp.organizations.Project("project",
+            project_id="my-project",
+            org_id="123456789")
+        wait60_seconds = time.index.Time_sleep("wait60Seconds", create_duration=60s,
+        opts=pulumi.ResourceOptions(depends_on=[project]))
+        firestore = gcp.projects.Service("firestore",
+            project=project.project_id,
+            service="firestore.googleapis.com",
+            opts=pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+        database = gcp.firestore.Database("database",
+            project=project.project_id,
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            concurrency_mode="OPTIMISTIC",
+            app_engine_integration_mode="DISABLED",
+            opts=pulumi.ResourceOptions(depends_on=[firestore]))
+        ```
+        ### Firestore Database Datastore Mode
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_time as time
+
+        project = gcp.organizations.Project("project",
+            project_id="my-project",
+            org_id="123456789")
+        wait60_seconds = time.index.Time_sleep("wait60Seconds", create_duration=60s,
+        opts=pulumi.ResourceOptions(depends_on=[project]))
+        firestore = gcp.projects.Service("firestore",
+            project=project.project_id,
+            service="firestore.googleapis.com",
+            opts=pulumi.ResourceOptions(depends_on=[wait60_seconds]))
+        datastore_mode_database = gcp.firestore.Database("datastoreModeDatabase",
+            project=project.project_id,
+            location_id="nam5",
+            type="DATASTORE_MODE",
+            opts=pulumi.ResourceOptions(depends_on=[firestore]))
+        ```
 
         ## Import
 

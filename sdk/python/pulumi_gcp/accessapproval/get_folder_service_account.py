@@ -111,10 +111,10 @@ def get_folder_service_account(folder_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:accessapproval/getFolderServiceAccount:getFolderServiceAccount', __args__, opts=opts, typ=GetFolderServiceAccountResult).value
 
     return AwaitableGetFolderServiceAccountResult(
-        account_email=__ret__.account_email,
-        folder_id=__ret__.folder_id,
-        id=__ret__.id,
-        name=__ret__.name)
+        account_email=pulumi.get(__ret__, 'account_email'),
+        folder_id=pulumi.get(__ret__, 'folder_id'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'))
 
 
 @_utilities.lift_output_func(get_folder_service_account)

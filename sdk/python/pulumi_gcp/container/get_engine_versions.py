@@ -206,17 +206,17 @@ def get_engine_versions(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:container/getEngineVersions:getEngineVersions', __args__, opts=opts, typ=GetEngineVersionsResult).value
 
     return AwaitableGetEngineVersionsResult(
-        default_cluster_version=__ret__.default_cluster_version,
-        id=__ret__.id,
-        latest_master_version=__ret__.latest_master_version,
-        latest_node_version=__ret__.latest_node_version,
-        location=__ret__.location,
-        project=__ret__.project,
-        release_channel_default_version=__ret__.release_channel_default_version,
-        release_channel_latest_version=__ret__.release_channel_latest_version,
-        valid_master_versions=__ret__.valid_master_versions,
-        valid_node_versions=__ret__.valid_node_versions,
-        version_prefix=__ret__.version_prefix)
+        default_cluster_version=pulumi.get(__ret__, 'default_cluster_version'),
+        id=pulumi.get(__ret__, 'id'),
+        latest_master_version=pulumi.get(__ret__, 'latest_master_version'),
+        latest_node_version=pulumi.get(__ret__, 'latest_node_version'),
+        location=pulumi.get(__ret__, 'location'),
+        project=pulumi.get(__ret__, 'project'),
+        release_channel_default_version=pulumi.get(__ret__, 'release_channel_default_version'),
+        release_channel_latest_version=pulumi.get(__ret__, 'release_channel_latest_version'),
+        valid_master_versions=pulumi.get(__ret__, 'valid_master_versions'),
+        valid_node_versions=pulumi.get(__ret__, 'valid_node_versions'),
+        version_prefix=pulumi.get(__ret__, 'version_prefix'))
 
 
 @_utilities.lift_output_func(get_engine_versions)

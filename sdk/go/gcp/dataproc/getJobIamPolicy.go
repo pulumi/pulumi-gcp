@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func GetJobIamPolicy(ctx *pulumi.Context, args *GetJobIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetJobIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetJobIamPolicyResult
 	err := ctx.Invoke("gcp:dataproc/getJobIamPolicy:getJobIamPolicy", args, &rv, opts...)
 	if err != nil {

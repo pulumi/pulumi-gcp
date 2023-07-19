@@ -203,6 +203,7 @@ namespace Pulumi.Gcp.Compute
         public readonly int PhysicalBlockSizeBytes;
         public readonly string? Project;
         public readonly int ProvisionedIops;
+        public readonly int ProvisionedThroughput;
         public readonly ImmutableArray<string> ResourcePolicies;
         /// <summary>
         /// The URI of the created resource.
@@ -296,6 +297,8 @@ namespace Pulumi.Gcp.Compute
 
             int provisionedIops,
 
+            int provisionedThroughput,
+
             ImmutableArray<string> resourcePolicies,
 
             string selfLink,
@@ -340,6 +343,7 @@ namespace Pulumi.Gcp.Compute
             PhysicalBlockSizeBytes = physicalBlockSizeBytes;
             Project = project;
             ProvisionedIops = provisionedIops;
+            ProvisionedThroughput = provisionedThroughput;
             ResourcePolicies = resourcePolicies;
             SelfLink = selfLink;
             Size = size;

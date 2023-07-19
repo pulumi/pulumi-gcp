@@ -16,6 +16,7 @@ __all__ = [
     'DeliveryPipelineConditionTargetsTypeConditionArgs',
     'DeliveryPipelineSerialPipelineArgs',
     'DeliveryPipelineSerialPipelineStageArgs',
+    'DeliveryPipelineSerialPipelineStageDeployParameterArgs',
     'DeliveryPipelineSerialPipelineStageStrategyArgs',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryArgs',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentArgs',
@@ -212,20 +213,36 @@ class DeliveryPipelineSerialPipelineArgs:
 @pulumi.input_type
 class DeliveryPipelineSerialPipelineStageArgs:
     def __init__(__self__, *,
+                 deploy_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageDeployParameterArgs']]]] = None,
                  profiles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  strategy: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyArgs']] = None,
                  target_id: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageDeployParameterArgs']]] deploy_parameters: Optional. The deploy parameters to use for the target in this stage.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] profiles: Skaffold profiles to use when rendering the manifest for this stage's `Target`.
         :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyArgs'] strategy: Optional. The strategy to use for a `Rollout` to this stage.
         :param pulumi.Input[str] target_id: The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`.
         """
+        if deploy_parameters is not None:
+            pulumi.set(__self__, "deploy_parameters", deploy_parameters)
         if profiles is not None:
             pulumi.set(__self__, "profiles", profiles)
         if strategy is not None:
             pulumi.set(__self__, "strategy", strategy)
         if target_id is not None:
             pulumi.set(__self__, "target_id", target_id)
+
+    @property
+    @pulumi.getter(name="deployParameters")
+    def deploy_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageDeployParameterArgs']]]]:
+        """
+        Optional. The deploy parameters to use for the target in this stage.
+        """
+        return pulumi.get(self, "deploy_parameters")
+
+    @deploy_parameters.setter
+    def deploy_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DeliveryPipelineSerialPipelineStageDeployParameterArgs']]]]):
+        pulumi.set(self, "deploy_parameters", value)
 
     @property
     @pulumi.getter
@@ -265,12 +282,50 @@ class DeliveryPipelineSerialPipelineStageArgs:
 
 
 @pulumi.input_type
+class DeliveryPipelineSerialPipelineStageDeployParameterArgs:
+    def __init__(__self__, *,
+                 values: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+                 match_target_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] values: Required. Values are deploy parameters in key-value pairs.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] match_target_labels: Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
+        """
+        pulumi.set(__self__, "values", values)
+        if match_target_labels is not None:
+            pulumi.set(__self__, "match_target_labels", match_target_labels)
+
+    @property
+    @pulumi.getter
+    def values(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+        """
+        Required. Values are deploy parameters in key-value pairs.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        pulumi.set(self, "values", value)
+
+    @property
+    @pulumi.getter(name="matchTargetLabels")
+    def match_target_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
+        """
+        return pulumi.get(self, "match_target_labels")
+
+    @match_target_labels.setter
+    def match_target_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "match_target_labels", value)
+
+
+@pulumi.input_type
 class DeliveryPipelineSerialPipelineStageStrategyArgs:
     def __init__(__self__, *,
                  canary: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryArgs']] = None,
                  standard: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardArgs']] = None):
         """
-        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryArgs'] canary: (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryArgs'] canary: Canary deployment strategy provides progressive percentage based deployments to a Target.
         :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyStandardArgs'] standard: Standard deployment strategy executes a single deploy and allows verifying the deployment.
         """
         if canary is not None:
@@ -282,7 +337,7 @@ class DeliveryPipelineSerialPipelineStageStrategyArgs:
     @pulumi.getter
     def canary(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryArgs']]:
         """
-        (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+        Canary deployment strategy provides progressive percentage based deployments to a Target.
         """
         return pulumi.get(self, "canary")
 
@@ -648,13 +703,17 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGa
 class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs:
     def __init__(__self__, *,
                  deployment: pulumi.Input[str],
-                 service: pulumi.Input[str]):
+                 service: pulumi.Input[str],
+                 disable_pod_overprovisioning: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] deployment: Required. Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
         :param pulumi.Input[str] service: Required. Name of the Kubernetes Service.
+        :param pulumi.Input[bool] disable_pod_overprovisioning: Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
         """
         pulumi.set(__self__, "deployment", deployment)
         pulumi.set(__self__, "service", service)
+        if disable_pod_overprovisioning is not None:
+            pulumi.set(__self__, "disable_pod_overprovisioning", disable_pod_overprovisioning)
 
     @property
     @pulumi.getter
@@ -679,6 +738,18 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesSe
     @service.setter
     def service(self, value: pulumi.Input[str]):
         pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter(name="disablePodOverprovisioning")
+    def disable_pod_overprovisioning(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
+        """
+        return pulumi.get(self, "disable_pod_overprovisioning")
+
+    @disable_pod_overprovisioning.setter
+    def disable_pod_overprovisioning(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_pod_overprovisioning", value)
 
 
 @pulumi.input_type

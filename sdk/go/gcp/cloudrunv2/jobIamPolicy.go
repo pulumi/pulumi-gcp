@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -195,6 +196,7 @@ func NewJobIamPolicy(ctx *pulumi.Context,
 	if args.PolicyData == nil {
 		return nil, errors.New("invalid value for required argument 'PolicyData'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource JobIamPolicy
 	err := ctx.RegisterResource("gcp:cloudrunv2/jobIamPolicy:JobIamPolicy", name, args, &resource, opts...)
 	if err != nil {

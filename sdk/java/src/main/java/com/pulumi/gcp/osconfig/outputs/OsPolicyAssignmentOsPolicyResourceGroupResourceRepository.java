@@ -15,50 +15,58 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepository {
     /**
-     * @return An Apt Repository.
+     * @return An Apt Repository. Structure is
+     * documented below.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt apt;
     /**
-     * @return A Goo Repository.
+     * @return A Goo Repository. Structure is
+     * documented below.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo goo;
     /**
-     * @return A Yum Repository.
+     * @return A Yum Repository. Structure is
+     * documented below.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum yum;
     /**
-     * @return A Zypper Repository.
+     * @return A Zypper Repository. Structure is
+     * documented below.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper zypper;
 
     private OsPolicyAssignmentOsPolicyResourceGroupResourceRepository() {}
     /**
-     * @return An Apt Repository.
+     * @return An Apt Repository. Structure is
+     * documented below.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt> apt() {
         return Optional.ofNullable(this.apt);
     }
     /**
-     * @return A Goo Repository.
+     * @return A Goo Repository. Structure is
+     * documented below.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo> goo() {
         return Optional.ofNullable(this.goo);
     }
     /**
-     * @return A Yum Repository.
+     * @return A Yum Repository. Structure is
+     * documented below.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum> yum() {
         return Optional.ofNullable(this.yum);
     }
     /**
-     * @return A Zypper Repository.
+     * @return A Zypper Repository. Structure is
+     * documented below.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper> zypper() {

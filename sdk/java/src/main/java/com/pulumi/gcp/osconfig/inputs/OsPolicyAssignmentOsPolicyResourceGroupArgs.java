@@ -18,14 +18,30 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupArgs extends com.pulum
     public static final OsPolicyAssignmentOsPolicyResourceGroupArgs Empty = new OsPolicyAssignmentOsPolicyResourceGroupArgs();
 
     /**
-     * List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name=&#39;rhel&#39; and inventory_filters[1].os_short_name=&#39;centos&#39; If the list is empty, this resource group will be applied to the target VM unconditionally.
+     * List of inventory filters for the resource
+     * group. The resources in this resource group are applied to the target VM if
+     * it satisfies at least one of the following inventory filters. For example,
+     * to apply this resource group to VMs running either `RHEL` or `CentOS`
+     * operating systems, specify 2 items for the list with following values:
+     * inventory_filters[0].os_short_name=&#39;rhel&#39; and
+     * inventory_filters[1].os_short_name=&#39;centos&#39; If the list is empty, this
+     * resource group will be applied to the target VM unconditionally. Structure
+     * is documented below.
      * 
      */
     @Import(name="inventoryFilters")
     private @Nullable Output<List<OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs>> inventoryFilters;
 
     /**
-     * @return List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name=&#39;rhel&#39; and inventory_filters[1].os_short_name=&#39;centos&#39; If the list is empty, this resource group will be applied to the target VM unconditionally.
+     * @return List of inventory filters for the resource
+     * group. The resources in this resource group are applied to the target VM if
+     * it satisfies at least one of the following inventory filters. For example,
+     * to apply this resource group to VMs running either `RHEL` or `CentOS`
+     * operating systems, specify 2 items for the list with following values:
+     * inventory_filters[0].os_short_name=&#39;rhel&#39; and
+     * inventory_filters[1].os_short_name=&#39;centos&#39; If the list is empty, this
+     * resource group will be applied to the target VM unconditionally. Structure
+     * is documented below.
      * 
      */
     public Optional<Output<List<OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs>>> inventoryFilters() {
@@ -33,14 +49,18 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupArgs extends com.pulum
     }
 
     /**
-     * Required. List of resources configured for this resource group. The resources are executed in the exact order specified here.
+     * List of resources configured for this resource
+     * group. The resources are executed in the exact order specified here.
+     * Structure is documented below.
      * 
      */
     @Import(name="resources", required=true)
     private Output<List<OsPolicyAssignmentOsPolicyResourceGroupResourceArgs>> resources;
 
     /**
-     * @return Required. List of resources configured for this resource group. The resources are executed in the exact order specified here.
+     * @return List of resources configured for this resource
+     * group. The resources are executed in the exact order specified here.
+     * Structure is documented below.
      * 
      */
     public Output<List<OsPolicyAssignmentOsPolicyResourceGroupResourceArgs>> resources() {
@@ -73,7 +93,15 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupArgs extends com.pulum
         }
 
         /**
-         * @param inventoryFilters List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name=&#39;rhel&#39; and inventory_filters[1].os_short_name=&#39;centos&#39; If the list is empty, this resource group will be applied to the target VM unconditionally.
+         * @param inventoryFilters List of inventory filters for the resource
+         * group. The resources in this resource group are applied to the target VM if
+         * it satisfies at least one of the following inventory filters. For example,
+         * to apply this resource group to VMs running either `RHEL` or `CentOS`
+         * operating systems, specify 2 items for the list with following values:
+         * inventory_filters[0].os_short_name=&#39;rhel&#39; and
+         * inventory_filters[1].os_short_name=&#39;centos&#39; If the list is empty, this
+         * resource group will be applied to the target VM unconditionally. Structure
+         * is documented below.
          * 
          * @return builder
          * 
@@ -84,7 +112,15 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupArgs extends com.pulum
         }
 
         /**
-         * @param inventoryFilters List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name=&#39;rhel&#39; and inventory_filters[1].os_short_name=&#39;centos&#39; If the list is empty, this resource group will be applied to the target VM unconditionally.
+         * @param inventoryFilters List of inventory filters for the resource
+         * group. The resources in this resource group are applied to the target VM if
+         * it satisfies at least one of the following inventory filters. For example,
+         * to apply this resource group to VMs running either `RHEL` or `CentOS`
+         * operating systems, specify 2 items for the list with following values:
+         * inventory_filters[0].os_short_name=&#39;rhel&#39; and
+         * inventory_filters[1].os_short_name=&#39;centos&#39; If the list is empty, this
+         * resource group will be applied to the target VM unconditionally. Structure
+         * is documented below.
          * 
          * @return builder
          * 
@@ -94,7 +130,15 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupArgs extends com.pulum
         }
 
         /**
-         * @param inventoryFilters List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name=&#39;rhel&#39; and inventory_filters[1].os_short_name=&#39;centos&#39; If the list is empty, this resource group will be applied to the target VM unconditionally.
+         * @param inventoryFilters List of inventory filters for the resource
+         * group. The resources in this resource group are applied to the target VM if
+         * it satisfies at least one of the following inventory filters. For example,
+         * to apply this resource group to VMs running either `RHEL` or `CentOS`
+         * operating systems, specify 2 items for the list with following values:
+         * inventory_filters[0].os_short_name=&#39;rhel&#39; and
+         * inventory_filters[1].os_short_name=&#39;centos&#39; If the list is empty, this
+         * resource group will be applied to the target VM unconditionally. Structure
+         * is documented below.
          * 
          * @return builder
          * 
@@ -104,7 +148,9 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupArgs extends com.pulum
         }
 
         /**
-         * @param resources Required. List of resources configured for this resource group. The resources are executed in the exact order specified here.
+         * @param resources List of resources configured for this resource
+         * group. The resources are executed in the exact order specified here.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -115,7 +161,9 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupArgs extends com.pulum
         }
 
         /**
-         * @param resources Required. List of resources configured for this resource group. The resources are executed in the exact order specified here.
+         * @param resources List of resources configured for this resource
+         * group. The resources are executed in the exact order specified here.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -125,7 +173,9 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupArgs extends com.pulum
         }
 
         /**
-         * @param resources Required. List of resources configured for this resource group. The resources are executed in the exact order specified here.
+         * @param resources List of resources configured for this resource
+         * group. The resources are executed in the exact order specified here.
+         * Structure is documented below.
          * 
          * @return builder
          * 

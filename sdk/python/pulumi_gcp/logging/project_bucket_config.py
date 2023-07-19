@@ -22,6 +22,7 @@ class ProjectBucketConfigArgs:
                  cmek_settings: Optional[pulumi.Input['ProjectBucketConfigCmekSettingsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_analytics: Optional[pulumi.Input[bool]] = None,
+                 locked: Optional[pulumi.Input[bool]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a ProjectBucketConfig resource.
@@ -31,6 +32,7 @@ class ProjectBucketConfigArgs:
         :param pulumi.Input['ProjectBucketConfigCmekSettingsArgs'] cmek_settings: The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed. Structure is documented below.
         :param pulumi.Input[str] description: Describes this bucket.
         :param pulumi.Input[bool] enable_analytics: Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
+        :param pulumi.Input[bool] locked: Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
         """
         pulumi.set(__self__, "bucket_id", bucket_id)
@@ -42,6 +44,8 @@ class ProjectBucketConfigArgs:
             pulumi.set(__self__, "description", description)
         if enable_analytics is not None:
             pulumi.set(__self__, "enable_analytics", enable_analytics)
+        if locked is not None:
+            pulumi.set(__self__, "locked", locked)
         if retention_days is not None:
             pulumi.set(__self__, "retention_days", retention_days)
 
@@ -118,6 +122,18 @@ class ProjectBucketConfigArgs:
         pulumi.set(self, "enable_analytics", value)
 
     @property
+    @pulumi.getter
+    def locked(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+        """
+        return pulumi.get(self, "locked")
+
+    @locked.setter
+    def locked(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "locked", value)
+
+    @property
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> Optional[pulumi.Input[int]]:
         """
@@ -139,6 +155,7 @@ class _ProjectBucketConfigState:
                  enable_analytics: Optional[pulumi.Input[bool]] = None,
                  lifecycle_state: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 locked: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None):
@@ -150,6 +167,7 @@ class _ProjectBucketConfigState:
         :param pulumi.Input[bool] enable_analytics: Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
         :param pulumi.Input[str] lifecycle_state: The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
         :param pulumi.Input[str] location: The location of the bucket.
+        :param pulumi.Input[bool] locked: Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
         :param pulumi.Input[str] name: The resource name of the CMEK settings.
         :param pulumi.Input[str] project: The parent resource that contains the logging bucket.
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
@@ -166,6 +184,8 @@ class _ProjectBucketConfigState:
             pulumi.set(__self__, "lifecycle_state", lifecycle_state)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if locked is not None:
+            pulumi.set(__self__, "locked", locked)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -247,6 +267,18 @@ class _ProjectBucketConfigState:
 
     @property
     @pulumi.getter
+    def locked(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+        """
+        return pulumi.get(self, "locked")
+
+    @locked.setter
+    def locked(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "locked", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of the CMEK settings.
@@ -292,6 +324,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  enable_analytics: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 locked: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -386,6 +419,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
         :param pulumi.Input[str] description: Describes this bucket.
         :param pulumi.Input[bool] enable_analytics: Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
         :param pulumi.Input[str] location: The location of the bucket.
+        :param pulumi.Input[bool] locked: Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
         :param pulumi.Input[str] project: The parent resource that contains the logging bucket.
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
         """
@@ -499,6 +533,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  enable_analytics: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 locked: Optional[pulumi.Input[bool]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -519,6 +554,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["locked"] = locked
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
@@ -541,6 +577,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
             enable_analytics: Optional[pulumi.Input[bool]] = None,
             lifecycle_state: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
+            locked: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             retention_days: Optional[pulumi.Input[int]] = None) -> 'ProjectBucketConfig':
@@ -557,6 +594,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_analytics: Whether or not Log Analytics is enabled. Logs for buckets with Log Analytics enabled can be queried in the **Log Analytics** page using SQL queries. Cannot be disabled once enabled.
         :param pulumi.Input[str] lifecycle_state: The bucket's lifecycle such as active or deleted. See [LifecycleState](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.buckets#LogBucket.LifecycleState).
         :param pulumi.Input[str] location: The location of the bucket.
+        :param pulumi.Input[bool] locked: Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
         :param pulumi.Input[str] name: The resource name of the CMEK settings.
         :param pulumi.Input[str] project: The parent resource that contains the logging bucket.
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
@@ -571,6 +609,7 @@ class ProjectBucketConfig(pulumi.CustomResource):
         __props__.__dict__["enable_analytics"] = enable_analytics
         __props__.__dict__["lifecycle_state"] = lifecycle_state
         __props__.__dict__["location"] = location
+        __props__.__dict__["locked"] = locked
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["retention_days"] = retention_days
@@ -623,6 +662,14 @@ class ProjectBucketConfig(pulumi.CustomResource):
         The location of the bucket.
         """
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def locked(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+        """
+        return pulumi.get(self, "locked")
 
     @property
     @pulumi.getter

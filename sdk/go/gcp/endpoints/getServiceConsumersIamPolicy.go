@@ -7,11 +7,13 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the current IAM policy data for serviceconsumers
 func GetServiceConsumersIamPolicy(ctx *pulumi.Context, args *GetServiceConsumersIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetServiceConsumersIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServiceConsumersIamPolicyResult
 	err := ctx.Invoke("gcp:endpoints/getServiceConsumersIamPolicy:getServiceConsumersIamPolicy", args, &rv, opts...)
 	if err != nil {

@@ -16,6 +16,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * UrlList proto helps users to set reusable, independently manageable lists of hosts, host patterns, URLs, URL patterns.
+ * 
+ * To get more information about UrlLists, see:
+ * 
+ * * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.urlLists)
+ * * How-to Guides
+ *     * Use UrlLists
+ * 
  * ## Example Usage
  * ### Network Security Url Lists Basic
  * ```java
@@ -26,7 +34,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.networksecurity.UrlList;
  * import com.pulumi.gcp.networksecurity.UrlListArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -43,9 +50,7 @@ import javax.annotation.Nullable;
  *         var default_ = new UrlList(&#34;default&#34;, UrlListArgs.builder()        
  *             .location(&#34;us-central1&#34;)
  *             .values(&#34;www.example.com&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -59,7 +64,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.networksecurity.UrlList;
  * import com.pulumi.gcp.networksecurity.UrlListArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -74,15 +78,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new UrlList(&#34;default&#34;, UrlListArgs.builder()        
- *             .location(&#34;us-central1&#34;)
  *             .description(&#34;my description&#34;)
+ *             .location(&#34;us-central1&#34;)
  *             .values(            
  *                 &#34;www.example.com&#34;,
  *                 &#34;about.example.com&#34;,
  *                 &#34;github.com/example-org/*&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

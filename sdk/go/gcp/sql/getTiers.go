@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,7 +15,36 @@ import (
 // [official documentation](https://cloud.google.com/sql/)
 // and
 // [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/sql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			tiers, err := sql.GetTiers(ctx, &sql.GetTiersArgs{
+//				Project: pulumi.StringRef("sample-project"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			allAvailableTiers := "TODO: For expression"
+//			ctx.Export("avaialbleTiers", allAvailableTiers)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetTiers(ctx *pulumi.Context, args *GetTiersArgs, opts ...pulumi.InvokeOption) (*GetTiersResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTiersResult
 	err := ctx.Invoke("gcp:sql/getTiers:getTiers", args, &rv, opts...)
 	if err != nil {

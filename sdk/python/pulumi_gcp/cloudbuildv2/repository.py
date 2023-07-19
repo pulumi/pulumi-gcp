@@ -294,7 +294,7 @@ class Repository(pulumi.CustomResource):
                  remote_uri: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Beta only: The Cloudbuildv2 Repository resource
+        The Cloudbuildv2 Repository resource
 
         ## Example Usage
         ### Ghe
@@ -306,34 +306,28 @@ class Repository(pulumi.CustomResource):
             secret_id="ghe-pk-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 automatic=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         private_key_secret_version = gcp.secretmanager.SecretVersion("private-key-secret-version",
             secret=private_key_secret.id,
-            secret_data=(lambda path: open(path).read())("private-key.pem"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            secret_data=(lambda path: open(path).read())("private-key.pem"))
         webhook_secret_secret = gcp.secretmanager.Secret("webhook-secret-secret",
             secret_id="github-token-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 automatic=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         webhook_secret_secret_version = gcp.secretmanager.SecretVersion("webhook-secret-secret-version",
             secret=webhook_secret_secret.id,
-            secret_data="<webhook-secret-data>",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            secret_data="<webhook-secret-data>")
         p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
             role="roles/secretmanager.secretAccessor",
             members=["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
         )])
         policy_pk = gcp.secretmanager.SecretIamPolicy("policy-pk",
             secret_id=private_key_secret.secret_id,
-            policy_data=p4sa_secret_accessor.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            policy_data=p4sa_secret_accessor.policy_data)
         policy_whs = gcp.secretmanager.SecretIamPolicy("policy-whs",
             secret_id=webhook_secret_secret.secret_id,
-            policy_data=p4sa_secret_accessor.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            policy_data=p4sa_secret_accessor.policy_data)
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
             location="us-central1",
             github_enterprise_config=gcp.cloudbuildv2.ConnectionGithubEnterpriseConfigArgs(
@@ -344,16 +338,14 @@ class Repository(pulumi.CustomResource):
                 app_slug="gcb-app",
                 app_installation_id=300,
             ),
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[
+            opts=pulumi.ResourceOptions(depends_on=[
                     policy_pk,
                     policy_whs,
                 ]))
         my_repository = gcp.cloudbuildv2.Repository("my-repository",
             location="us-central1",
             parent_connection=my_connection.id,
-            remote_uri="https://ghe.com/hashicorp/terraform-provider-google.git",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            remote_uri="https://ghe.com/hashicorp/terraform-provider-google.git")
         ```
         ### Repository In GitHub Connection
         Creates a Repository resource inside a Connection to github.com
@@ -365,20 +357,17 @@ class Repository(pulumi.CustomResource):
             secret_id="github-token-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 automatic=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         github_token_secret_version = gcp.secretmanager.SecretVersion("github-token-secret-version",
             secret=github_token_secret.id,
-            secret_data=(lambda path: open(path).read())("my-github-token.txt"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            secret_data=(lambda path: open(path).read())("my-github-token.txt"))
         p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
             role="roles/secretmanager.secretAccessor",
             members=["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
         )])
         policy = gcp.secretmanager.SecretIamPolicy("policy",
             secret_id=github_token_secret.secret_id,
-            policy_data=p4sa_secret_accessor.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            policy_data=p4sa_secret_accessor.policy_data)
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
             location="us-west1",
             github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
@@ -386,13 +375,11 @@ class Repository(pulumi.CustomResource):
                 authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
                     oauth_token_secret_version=github_token_secret_version.id,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         my_repository = gcp.cloudbuildv2.Repository("my-repository",
             location="us-west1",
             parent_connection=my_connection.name,
-            remote_uri="https://github.com/myuser/myrepo.git",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            remote_uri="https://github.com/myuser/myrepo.git")
         ```
 
         ## Import
@@ -431,7 +418,7 @@ class Repository(pulumi.CustomResource):
                  args: RepositoryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Beta only: The Cloudbuildv2 Repository resource
+        The Cloudbuildv2 Repository resource
 
         ## Example Usage
         ### Ghe
@@ -443,34 +430,28 @@ class Repository(pulumi.CustomResource):
             secret_id="ghe-pk-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 automatic=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         private_key_secret_version = gcp.secretmanager.SecretVersion("private-key-secret-version",
             secret=private_key_secret.id,
-            secret_data=(lambda path: open(path).read())("private-key.pem"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            secret_data=(lambda path: open(path).read())("private-key.pem"))
         webhook_secret_secret = gcp.secretmanager.Secret("webhook-secret-secret",
             secret_id="github-token-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 automatic=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         webhook_secret_secret_version = gcp.secretmanager.SecretVersion("webhook-secret-secret-version",
             secret=webhook_secret_secret.id,
-            secret_data="<webhook-secret-data>",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            secret_data="<webhook-secret-data>")
         p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
             role="roles/secretmanager.secretAccessor",
             members=["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
         )])
         policy_pk = gcp.secretmanager.SecretIamPolicy("policy-pk",
             secret_id=private_key_secret.secret_id,
-            policy_data=p4sa_secret_accessor.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            policy_data=p4sa_secret_accessor.policy_data)
         policy_whs = gcp.secretmanager.SecretIamPolicy("policy-whs",
             secret_id=webhook_secret_secret.secret_id,
-            policy_data=p4sa_secret_accessor.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            policy_data=p4sa_secret_accessor.policy_data)
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
             location="us-central1",
             github_enterprise_config=gcp.cloudbuildv2.ConnectionGithubEnterpriseConfigArgs(
@@ -481,16 +462,14 @@ class Repository(pulumi.CustomResource):
                 app_slug="gcb-app",
                 app_installation_id=300,
             ),
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[
+            opts=pulumi.ResourceOptions(depends_on=[
                     policy_pk,
                     policy_whs,
                 ]))
         my_repository = gcp.cloudbuildv2.Repository("my-repository",
             location="us-central1",
             parent_connection=my_connection.id,
-            remote_uri="https://ghe.com/hashicorp/terraform-provider-google.git",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            remote_uri="https://ghe.com/hashicorp/terraform-provider-google.git")
         ```
         ### Repository In GitHub Connection
         Creates a Repository resource inside a Connection to github.com
@@ -502,20 +481,17 @@ class Repository(pulumi.CustomResource):
             secret_id="github-token-secret",
             replication=gcp.secretmanager.SecretReplicationArgs(
                 automatic=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         github_token_secret_version = gcp.secretmanager.SecretVersion("github-token-secret-version",
             secret=github_token_secret.id,
-            secret_data=(lambda path: open(path).read())("my-github-token.txt"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            secret_data=(lambda path: open(path).read())("my-github-token.txt"))
         p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
             role="roles/secretmanager.secretAccessor",
             members=["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"],
         )])
         policy = gcp.secretmanager.SecretIamPolicy("policy",
             secret_id=github_token_secret.secret_id,
-            policy_data=p4sa_secret_accessor.policy_data,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            policy_data=p4sa_secret_accessor.policy_data)
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
             location="us-west1",
             github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
@@ -523,13 +499,11 @@ class Repository(pulumi.CustomResource):
                 authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
                     oauth_token_secret_version=github_token_secret_version.id,
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         my_repository = gcp.cloudbuildv2.Repository("my-repository",
             location="us-west1",
             parent_connection=my_connection.name,
-            remote_uri="https://github.com/myuser/myrepo.git",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            remote_uri="https://github.com/myuser/myrepo.git")
         ```
 
         ## Import

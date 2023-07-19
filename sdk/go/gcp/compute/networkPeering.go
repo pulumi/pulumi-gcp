@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -116,6 +117,7 @@ func NewNetworkPeering(ctx *pulumi.Context,
 	if args.PeerNetwork == nil {
 		return nil, errors.New("invalid value for required argument 'PeerNetwork'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NetworkPeering
 	err := ctx.RegisterResource("gcp:compute/networkPeering:NetworkPeering", name, args, &resource, opts...)
 	if err != nil {

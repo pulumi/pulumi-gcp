@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -107,7 +108,7 @@ import (
 //					pulumi.String("us-central1-a"),
 //					pulumi.String("us-central1-f"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -122,7 +123,7 @@ import (
 //					pulumi.String("us-east1-b"),
 //					pulumi.String("us-east1-c"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -208,6 +209,7 @@ type RegionDisk struct {
 	pulumi.CustomResourceState
 
 	// A nested object resource
+	// Structure is documented below.
 	AsyncPrimaryDisk RegionDiskAsyncPrimaryDiskPtrOutput `pulumi:"asyncPrimaryDisk"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -325,6 +327,7 @@ func NewRegionDisk(ctx *pulumi.Context,
 	if args.ReplicaZones == nil {
 		return nil, errors.New("invalid value for required argument 'ReplicaZones'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RegionDisk
 	err := ctx.RegisterResource("gcp:compute/regionDisk:RegionDisk", name, args, &resource, opts...)
 	if err != nil {
@@ -348,6 +351,7 @@ func GetRegionDisk(ctx *pulumi.Context,
 // Input properties used for looking up and filtering RegionDisk resources.
 type regionDiskState struct {
 	// A nested object resource
+	// Structure is documented below.
 	AsyncPrimaryDisk *RegionDiskAsyncPrimaryDisk `pulumi:"asyncPrimaryDisk"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -457,6 +461,7 @@ type regionDiskState struct {
 
 type RegionDiskState struct {
 	// A nested object resource
+	// Structure is documented below.
 	AsyncPrimaryDisk RegionDiskAsyncPrimaryDiskPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -570,6 +575,7 @@ func (RegionDiskState) ElementType() reflect.Type {
 
 type regionDiskArgs struct {
 	// A nested object resource
+	// Structure is documented below.
 	AsyncPrimaryDisk *RegionDiskAsyncPrimaryDisk `pulumi:"asyncPrimaryDisk"`
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
@@ -655,6 +661,7 @@ type regionDiskArgs struct {
 // The set of arguments for constructing a RegionDisk resource.
 type RegionDiskArgs struct {
 	// A nested object resource
+	// Structure is documented below.
 	AsyncPrimaryDisk RegionDiskAsyncPrimaryDiskPtrInput
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
@@ -825,6 +832,7 @@ func (o RegionDiskOutput) ToRegionDiskOutputWithContext(ctx context.Context) Reg
 }
 
 // A nested object resource
+// Structure is documented below.
 func (o RegionDiskOutput) AsyncPrimaryDisk() RegionDiskAsyncPrimaryDiskPtrOutput {
 	return o.ApplyT(func(v *RegionDisk) RegionDiskAsyncPrimaryDiskPtrOutput { return v.AsyncPrimaryDisk }).(RegionDiskAsyncPrimaryDiskPtrOutput)
 }

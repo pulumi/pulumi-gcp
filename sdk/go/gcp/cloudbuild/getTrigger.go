@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,6 +45,7 @@ import (
 //
 // ```
 func LookupTrigger(ctx *pulumi.Context, args *LookupTriggerArgs, opts ...pulumi.InvokeOption) (*LookupTriggerResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupTriggerResult
 	err := ctx.Invoke("gcp:cloudbuild/getTrigger:getTrigger", args, &rv, opts...)
 	if err != nil {

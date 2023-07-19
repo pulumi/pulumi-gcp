@@ -14,35 +14,44 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourcePkg
     {
         /// <summary>
-        /// A package managed by Apt.
+        /// A package managed by Apt. Structure is
+        /// documented below.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt? Apt;
         /// <summary>
-        /// A deb package file.
+        /// A deb package file. Structure is
+        /// documented below.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb? Deb;
         /// <summary>
-        /// Required. The desired state the agent should maintain for this package. Possible values: DESIRED_STATE_UNSPECIFIED, INSTALLED, REMOVED
+        /// The desired state the agent should maintain for
+        /// this package. Possible values are: `DESIRED_STATE_UNSPECIFIED`, `INSTALLED`,
+        /// `REMOVED`.
         /// </summary>
         public readonly string DesiredState;
         /// <summary>
-        /// A package managed by GooGet.
+        /// A package managed by GooGet. Structure is
+        /// documented below.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget? Googet;
         /// <summary>
-        /// An MSI package.
+        /// An MSI package. Structure is
+        /// documented below.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi? Msi;
         /// <summary>
-        /// An rpm package file.
+        /// An rpm package file. Structure is
+        /// documented below.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm? Rpm;
         /// <summary>
-        /// A package managed by YUM.
+        /// A package managed by YUM. Structure is
+        /// documented below.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum? Yum;
         /// <summary>
-        /// A package managed by Zypper.
+        /// A package managed by Zypper. Structure is
+        /// documented below.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper? Zypper;
 

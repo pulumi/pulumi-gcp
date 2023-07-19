@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -67,7 +68,7 @@ import (
 //				EnvVariables: pulumi.StringMap{
 //					"port": pulumi.String("8080"),
 //				},
-//				NoopOnDestroy: pulumi.Bool(true),
+//				DeleteServiceOnDestroy: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -125,6 +126,7 @@ func NewApplicationUrlDispatchRules(ctx *pulumi.Context,
 	if args.DispatchRules == nil {
 		return nil, errors.New("invalid value for required argument 'DispatchRules'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ApplicationUrlDispatchRules
 	err := ctx.RegisterResource("gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules", name, args, &resource, opts...)
 	if err != nil {

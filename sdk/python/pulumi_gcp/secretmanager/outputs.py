@@ -105,7 +105,7 @@ class SecretReplication(dict):
                  user_managed: Optional['outputs.SecretReplicationUserManaged'] = None):
         """
         :param bool automatic: The Secret will automatically be replicated without any restrictions.
-        :param 'SecretReplicationUserManagedArgs' user_managed: The Secret will automatically be replicated without any restrictions.
+        :param 'SecretReplicationUserManagedArgs' user_managed: The Secret will be replicated to the regions specified by the user.
                Structure is documented below.
         """
         if automatic is not None:
@@ -125,7 +125,7 @@ class SecretReplication(dict):
     @pulumi.getter(name="userManaged")
     def user_managed(self) -> Optional['outputs.SecretReplicationUserManaged']:
         """
-        The Secret will automatically be replicated without any restrictions.
+        The Secret will be replicated to the regions specified by the user.
         Structure is documented below.
         """
         return pulumi.get(self, "user_managed")

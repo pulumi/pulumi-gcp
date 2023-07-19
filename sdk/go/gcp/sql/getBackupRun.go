@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func GetBackupRun(ctx *pulumi.Context, args *GetBackupRunArgs, opts ...pulumi.InvokeOption) (*GetBackupRunResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBackupRunResult
 	err := ctx.Invoke("gcp:sql/getBackupRun:getBackupRun", args, &rv, opts...)
 	if err != nil {

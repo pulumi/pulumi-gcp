@@ -17,6 +17,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The GatewaySecurityPolicyRule resource is in a nested collection within a GatewaySecurityPolicy and represents
+ * a traffic matching condition and associated action to perform.
+ * 
+ * To get more information about GatewaySecurityPolicyRule, see:
+ * 
+ * * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies.rules)
+ * 
  * ## Example Usage
  * ### Network Security Gateway Security Policy Rules Basic
  * ```java
@@ -29,7 +36,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyArgs;
  * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyRule;
  * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyRuleArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -46,9 +52,7 @@ import javax.annotation.Nullable;
  *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy(&#34;defaultGatewaySecurityPolicy&#34;, GatewaySecurityPolicyArgs.builder()        
  *             .location(&#34;us-central1&#34;)
  *             .description(&#34;gateway security policy created to be used as reference by the rule.&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule(&#34;defaultGatewaySecurityPolicyRule&#34;, GatewaySecurityPolicyRuleArgs.builder()        
  *             .location(&#34;us-central1&#34;)
@@ -58,9 +62,7 @@ import javax.annotation.Nullable;
  *             .priority(0)
  *             .sessionMatcher(&#34;host() == &#39;example.com&#39;&#34;)
  *             .basicProfile(&#34;ALLOW&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -76,7 +78,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyArgs;
  * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyRule;
  * import com.pulumi.gcp.networksecurity.GatewaySecurityPolicyRuleArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -93,9 +94,7 @@ import javax.annotation.Nullable;
  *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy(&#34;defaultGatewaySecurityPolicy&#34;, GatewaySecurityPolicyArgs.builder()        
  *             .location(&#34;us-central1&#34;)
  *             .description(&#34;gateway security policy created to be used as reference by the rule.&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule(&#34;defaultGatewaySecurityPolicyRule&#34;, GatewaySecurityPolicyRuleArgs.builder()        
  *             .location(&#34;us-central1&#34;)
@@ -107,9 +106,7 @@ import javax.annotation.Nullable;
  *             .applicationMatcher(&#34;request.method == &#39;POST&#39;&#34;)
  *             .tlsInspectionEnabled(false)
  *             .basicProfile(&#34;ALLOW&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

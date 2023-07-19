@@ -101,10 +101,10 @@ def get_active_folder(display_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getActiveFolder:getActiveFolder', __args__, opts=opts, typ=GetActiveFolderResult).value
 
     return AwaitableGetActiveFolderResult(
-        display_name=__ret__.display_name,
-        id=__ret__.id,
-        name=__ret__.name,
-        parent=__ret__.parent)
+        display_name=pulumi.get(__ret__, 'display_name'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        parent=pulumi.get(__ret__, 'parent'))
 
 
 @_utilities.lift_output_func(get_active_folder)

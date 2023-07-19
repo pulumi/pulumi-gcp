@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func LookupHealthCheck(ctx *pulumi.Context, args *LookupHealthCheckArgs, opts ...pulumi.InvokeOption) (*LookupHealthCheckResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupHealthCheckResult
 	err := ctx.Invoke("gcp:compute/getHealthCheck:getHealthCheck", args, &rv, opts...)
 	if err != nil {

@@ -150,12 +150,12 @@ def get_project_cmek_settings(kms_key_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:logging/getProjectCmekSettings:getProjectCmekSettings', __args__, opts=opts, typ=GetProjectCmekSettingsResult).value
 
     return AwaitableGetProjectCmekSettingsResult(
-        id=__ret__.id,
-        kms_key_name=__ret__.kms_key_name,
-        kms_key_version_name=__ret__.kms_key_version_name,
-        name=__ret__.name,
-        project=__ret__.project,
-        service_account_id=__ret__.service_account_id)
+        id=pulumi.get(__ret__, 'id'),
+        kms_key_name=pulumi.get(__ret__, 'kms_key_name'),
+        kms_key_version_name=pulumi.get(__ret__, 'kms_key_version_name'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        service_account_id=pulumi.get(__ret__, 'service_account_id'))
 
 
 @_utilities.lift_output_func(get_project_cmek_settings)

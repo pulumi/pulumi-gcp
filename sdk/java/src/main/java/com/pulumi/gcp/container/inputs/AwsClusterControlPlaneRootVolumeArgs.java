@@ -62,6 +62,21 @@ public final class AwsClusterControlPlaneRootVolumeArgs extends com.pulumi.resou
     }
 
     /**
+     * Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+     * 
+     */
+    @Import(name="throughput")
+    private @Nullable Output<Integer> throughput;
+
+    /**
+     * @return Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+     * 
+     */
+    public Optional<Output<Integer>> throughput() {
+        return Optional.ofNullable(this.throughput);
+    }
+
+    /**
      * Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
      * 
      */
@@ -82,6 +97,7 @@ public final class AwsClusterControlPlaneRootVolumeArgs extends com.pulumi.resou
         this.iops = $.iops;
         this.kmsKeyArn = $.kmsKeyArn;
         this.sizeGib = $.sizeGib;
+        this.throughput = $.throughput;
         this.volumeType = $.volumeType;
     }
 
@@ -164,6 +180,27 @@ public final class AwsClusterControlPlaneRootVolumeArgs extends com.pulumi.resou
          */
         public Builder sizeGib(Integer sizeGib) {
             return sizeGib(Output.of(sizeGib));
+        }
+
+        /**
+         * @param throughput Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder throughput(@Nullable Output<Integer> throughput) {
+            $.throughput = throughput;
+            return this;
+        }
+
+        /**
+         * @param throughput Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder throughput(Integer throughput) {
+            return throughput(Output.of(throughput));
         }
 
         /**

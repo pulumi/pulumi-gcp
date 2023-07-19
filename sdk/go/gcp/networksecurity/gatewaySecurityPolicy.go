@@ -7,9 +7,16 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The GatewaySecurityPolicy resource contains a collection of GatewaySecurityPolicyRules and associated metadata.
+//
+// To get more information about GatewaySecurityPolicy, see:
+//
+// * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies)
+//
 // ## Example Usage
 // ### Network Security Gateway Security Policy Basic
 //
@@ -26,9 +33,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networksecurity.NewGatewaySecurityPolicy(ctx, "default", &networksecurity.GatewaySecurityPolicyArgs{
-//				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("my description"),
-//			}, pulumi.Provider(google_beta))
+//				Location:    pulumi.String("us-central1"),
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -44,8 +51,11 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificateauthority"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -115,12 +125,29 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			nsSa, err := projects.NewServiceIdentity(ctx, "nsSa", &projects.ServiceIdentityArgs{
+//				Service: pulumi.String("networksecurity.googleapis.com"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			tlsInspectionPermission, err := certificateauthority.NewCaPoolIamMember(ctx, "tlsInspectionPermission", &certificateauthority.CaPoolIamMemberArgs{
+//				CaPool: defaultCaPool.ID(),
+//				Role:   pulumi.String("roles/privateca.certificateManager"),
+//				Member: nsSa.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
 //			defaultTlsInspectionPolicy, err := networksecurity.NewTlsInspectionPolicy(ctx, "defaultTlsInspectionPolicy", &networksecurity.TlsInspectionPolicyArgs{
 //				Location: pulumi.String("us-central1"),
 //				CaPool:   defaultCaPool.ID(),
 //			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
 //				defaultCaPool,
 //				defaultAuthority,
+//				tlsInspectionPermission,
 //			}))
 //			if err != nil {
 //				return err
@@ -199,6 +226,7 @@ func NewGatewaySecurityPolicy(ctx *pulumi.Context,
 		args = &GatewaySecurityPolicyArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GatewaySecurityPolicy
 	err := ctx.RegisterResource("gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy", name, args, &resource, opts...)
 	if err != nil {

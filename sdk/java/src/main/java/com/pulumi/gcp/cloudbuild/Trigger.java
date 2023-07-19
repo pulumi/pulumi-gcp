@@ -531,7 +531,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudbuild.TriggerArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerRepositoryEventConfigArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerRepositoryEventConfigPushArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -553,16 +552,12 @@ import javax.annotation.Nullable;
  *                     .oauthTokenSecretVersion(&#34;projects/my-project/secrets/github-pat-secret/versions/latest&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var my_repository = new Repository(&#34;my-repository&#34;, RepositoryArgs.builder()        
  *             .parentConnection(my_connection.id())
  *             .remoteUri(&#34;https://github.com/myuser/my-repo.git&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var repo_trigger = new Trigger(&#34;repo-trigger&#34;, TriggerArgs.builder()        
  *             .location(&#34;us-central1&#34;)
@@ -573,9 +568,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .filename(&#34;cloudbuild.yaml&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -913,13 +906,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.cloudbuildv2.Repository;
  * import com.pulumi.gcp.cloudbuildv2.RepositoryArgs;
  * import com.pulumi.gcp.pubsub.Topic;
- * import com.pulumi.gcp.pubsub.TopicArgs;
  * import com.pulumi.gcp.cloudbuild.Trigger;
  * import com.pulumi.gcp.cloudbuild.TriggerArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerPubsubConfigArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerSourceToBuildArgs;
  * import com.pulumi.gcp.cloudbuild.inputs.TriggerGitFileSourceArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -941,20 +932,14 @@ import javax.annotation.Nullable;
  *                     .oauthTokenSecretVersion(&#34;projects/my-project/secrets/github-pat-secret/versions/latest&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var my_repository = new Repository(&#34;my-repository&#34;, RepositoryArgs.builder()        
  *             .parentConnection(my_connection.id())
  *             .remoteUri(&#34;https://github.com/myuser/my-repo.git&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var mytopic = new Topic(&#34;mytopic&#34;, TopicArgs.Empty, CustomResourceOptions.builder()
- *             .provider(google_beta)
  *             .build());
+ * 
+ *         var mytopic = new Topic(&#34;mytopic&#34;);
  * 
  *         var pubsub_with_repo_trigger = new Trigger(&#34;pubsub-with-repo-trigger&#34;, TriggerArgs.builder()        
  *             .location(&#34;us-central1&#34;)
@@ -972,9 +957,7 @@ import javax.annotation.Nullable;
  *                 .revision(&#34;refs/heads/main&#34;)
  *                 .repoType(&#34;GITHUB&#34;)
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -1307,6 +1290,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
     }
     /**
      * The configuration of a trigger that creates a build whenever an event from Repo API is received.
+     * Structure is documented below.
      * 
      */
     @Export(name="repositoryEventConfig", type=TriggerRepositoryEventConfig.class, parameters={})
@@ -1314,6 +1298,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The configuration of a trigger that creates a build whenever an event from Repo API is received.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<TriggerRepositoryEventConfig>> repositoryEventConfig() {

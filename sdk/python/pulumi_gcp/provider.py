@@ -85,6 +85,7 @@ class ProviderArgs:
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_database_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 firebase_extensions_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_hosting_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebaserules_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -121,6 +122,7 @@ class ProviderArgs:
                  os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  privateca_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 public_ca_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  pubsub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  pubsub_lite_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  recaptcha_enterprise_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -298,6 +300,8 @@ class ProviderArgs:
             pulumi.set(__self__, "firebase_custom_endpoint", firebase_custom_endpoint)
         if firebase_database_custom_endpoint is not None:
             pulumi.set(__self__, "firebase_database_custom_endpoint", firebase_database_custom_endpoint)
+        if firebase_extensions_custom_endpoint is not None:
+            pulumi.set(__self__, "firebase_extensions_custom_endpoint", firebase_extensions_custom_endpoint)
         if firebase_hosting_custom_endpoint is not None:
             pulumi.set(__self__, "firebase_hosting_custom_endpoint", firebase_hosting_custom_endpoint)
         if firebase_storage_custom_endpoint is not None:
@@ -372,6 +376,8 @@ class ProviderArgs:
             project = _utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if public_ca_custom_endpoint is not None:
+            pulumi.set(__self__, "public_ca_custom_endpoint", public_ca_custom_endpoint)
         if pubsub_custom_endpoint is not None:
             pulumi.set(__self__, "pubsub_custom_endpoint", pubsub_custom_endpoint)
         if pubsub_lite_custom_endpoint is not None:
@@ -1076,6 +1082,15 @@ class ProviderArgs:
         pulumi.set(self, "firebase_database_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="firebaseExtensionsCustomEndpoint")
+    def firebase_extensions_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "firebase_extensions_custom_endpoint")
+
+    @firebase_extensions_custom_endpoint.setter
+    def firebase_extensions_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "firebase_extensions_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="firebaseHostingCustomEndpoint")
     def firebase_hosting_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "firebase_hosting_custom_endpoint")
@@ -1398,6 +1413,15 @@ class ProviderArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="publicCaCustomEndpoint")
+    def public_ca_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "public_ca_custom_endpoint")
+
+    @public_ca_custom_endpoint.setter
+    def public_ca_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_ca_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="pubsubCustomEndpoint")
@@ -1781,6 +1805,7 @@ class Provider(pulumi.ProviderResource):
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_database_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 firebase_extensions_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_hosting_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebaserules_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1817,6 +1842,7 @@ class Provider(pulumi.ProviderResource):
                  os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  privateca_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 public_ca_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  pubsub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  pubsub_lite_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  recaptcha_enterprise_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1958,6 +1984,7 @@ class Provider(pulumi.ProviderResource):
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_database_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 firebase_extensions_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_hosting_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebaserules_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -1994,6 +2021,7 @@ class Provider(pulumi.ProviderResource):
                  os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  privateca_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 public_ca_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  pubsub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  pubsub_lite_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  recaptcha_enterprise_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2107,6 +2135,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["filestore_custom_endpoint"] = filestore_custom_endpoint
             __props__.__dict__["firebase_custom_endpoint"] = firebase_custom_endpoint
             __props__.__dict__["firebase_database_custom_endpoint"] = firebase_database_custom_endpoint
+            __props__.__dict__["firebase_extensions_custom_endpoint"] = firebase_extensions_custom_endpoint
             __props__.__dict__["firebase_hosting_custom_endpoint"] = firebase_hosting_custom_endpoint
             __props__.__dict__["firebase_storage_custom_endpoint"] = firebase_storage_custom_endpoint
             __props__.__dict__["firebaserules_custom_endpoint"] = firebaserules_custom_endpoint
@@ -2145,6 +2174,7 @@ class Provider(pulumi.ProviderResource):
             if project is None:
                 project = _utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
             __props__.__dict__["project"] = project
+            __props__.__dict__["public_ca_custom_endpoint"] = public_ca_custom_endpoint
             __props__.__dict__["pubsub_custom_endpoint"] = pubsub_custom_endpoint
             __props__.__dict__["pubsub_lite_custom_endpoint"] = pubsub_lite_custom_endpoint
             __props__.__dict__["recaptcha_enterprise_custom_endpoint"] = recaptcha_enterprise_custom_endpoint
@@ -2530,6 +2560,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "firebase_database_custom_endpoint")
 
     @property
+    @pulumi.getter(name="firebaseExtensionsCustomEndpoint")
+    def firebase_extensions_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "firebase_extensions_custom_endpoint")
+
+    @property
     @pulumi.getter(name="firebaseHostingCustomEndpoint")
     def firebase_hosting_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "firebase_hosting_custom_endpoint")
@@ -2703,6 +2738,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="publicCaCustomEndpoint")
+    def public_ca_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "public_ca_custom_endpoint")
 
     @property
     @pulumi.getter(name="pubsubCustomEndpoint")

@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type DeliveryPipelineCondition struct {
 	PipelineReadyConditions  []DeliveryPipelineConditionPipelineReadyCondition  `pulumi:"pipelineReadyConditions"`
@@ -572,6 +575,8 @@ func (o DeliveryPipelineSerialPipelinePtrOutput) Stages() DeliveryPipelineSerial
 }
 
 type DeliveryPipelineSerialPipelineStage struct {
+	// Optional. The deploy parameters to use for the target in this stage.
+	DeployParameters []DeliveryPipelineSerialPipelineStageDeployParameter `pulumi:"deployParameters"`
 	// Skaffold profiles to use when rendering the manifest for this stage's `Target`.
 	Profiles []string `pulumi:"profiles"`
 	// Optional. The strategy to use for a `Rollout` to this stage.
@@ -592,6 +597,8 @@ type DeliveryPipelineSerialPipelineStageInput interface {
 }
 
 type DeliveryPipelineSerialPipelineStageArgs struct {
+	// Optional. The deploy parameters to use for the target in this stage.
+	DeployParameters DeliveryPipelineSerialPipelineStageDeployParameterArrayInput `pulumi:"deployParameters"`
 	// Skaffold profiles to use when rendering the manifest for this stage's `Target`.
 	Profiles pulumi.StringArrayInput `pulumi:"profiles"`
 	// Optional. The strategy to use for a `Rollout` to this stage.
@@ -651,6 +658,13 @@ func (o DeliveryPipelineSerialPipelineStageOutput) ToDeliveryPipelineSerialPipel
 	return o
 }
 
+// Optional. The deploy parameters to use for the target in this stage.
+func (o DeliveryPipelineSerialPipelineStageOutput) DeployParameters() DeliveryPipelineSerialPipelineStageDeployParameterArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStage) []DeliveryPipelineSerialPipelineStageDeployParameter {
+		return v.DeployParameters
+	}).(DeliveryPipelineSerialPipelineStageDeployParameterArrayOutput)
+}
+
 // Skaffold profiles to use when rendering the manifest for this stage's `Target`.
 func (o DeliveryPipelineSerialPipelineStageOutput) Profiles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStage) []string { return v.Profiles }).(pulumi.StringArrayOutput)
@@ -688,8 +702,116 @@ func (o DeliveryPipelineSerialPipelineStageArrayOutput) Index(i pulumi.IntInput)
 	}).(DeliveryPipelineSerialPipelineStageOutput)
 }
 
+type DeliveryPipelineSerialPipelineStageDeployParameter struct {
+	// Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
+	MatchTargetLabels map[string]string `pulumi:"matchTargetLabels"`
+	// Required. Values are deploy parameters in key-value pairs.
+	Values map[string]string `pulumi:"values"`
+}
+
+// DeliveryPipelineSerialPipelineStageDeployParameterInput is an input type that accepts DeliveryPipelineSerialPipelineStageDeployParameterArgs and DeliveryPipelineSerialPipelineStageDeployParameterOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageDeployParameterInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageDeployParameterArgs{...}
+type DeliveryPipelineSerialPipelineStageDeployParameterInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageDeployParameterOutput() DeliveryPipelineSerialPipelineStageDeployParameterOutput
+	ToDeliveryPipelineSerialPipelineStageDeployParameterOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageDeployParameterOutput
+}
+
+type DeliveryPipelineSerialPipelineStageDeployParameterArgs struct {
+	// Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
+	MatchTargetLabels pulumi.StringMapInput `pulumi:"matchTargetLabels"`
+	// Required. Values are deploy parameters in key-value pairs.
+	Values pulumi.StringMapInput `pulumi:"values"`
+}
+
+func (DeliveryPipelineSerialPipelineStageDeployParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageDeployParameter)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageDeployParameterArgs) ToDeliveryPipelineSerialPipelineStageDeployParameterOutput() DeliveryPipelineSerialPipelineStageDeployParameterOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageDeployParameterOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageDeployParameterArgs) ToDeliveryPipelineSerialPipelineStageDeployParameterOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageDeployParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageDeployParameterOutput)
+}
+
+// DeliveryPipelineSerialPipelineStageDeployParameterArrayInput is an input type that accepts DeliveryPipelineSerialPipelineStageDeployParameterArray and DeliveryPipelineSerialPipelineStageDeployParameterArrayOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageDeployParameterArrayInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageDeployParameterArray{ DeliveryPipelineSerialPipelineStageDeployParameterArgs{...} }
+type DeliveryPipelineSerialPipelineStageDeployParameterArrayInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageDeployParameterArrayOutput() DeliveryPipelineSerialPipelineStageDeployParameterArrayOutput
+	ToDeliveryPipelineSerialPipelineStageDeployParameterArrayOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageDeployParameterArrayOutput
+}
+
+type DeliveryPipelineSerialPipelineStageDeployParameterArray []DeliveryPipelineSerialPipelineStageDeployParameterInput
+
+func (DeliveryPipelineSerialPipelineStageDeployParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageDeployParameter)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageDeployParameterArray) ToDeliveryPipelineSerialPipelineStageDeployParameterArrayOutput() DeliveryPipelineSerialPipelineStageDeployParameterArrayOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageDeployParameterArrayOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageDeployParameterArray) ToDeliveryPipelineSerialPipelineStageDeployParameterArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageDeployParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageDeployParameterArrayOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageDeployParameterOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageDeployParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageDeployParameter)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageDeployParameterOutput) ToDeliveryPipelineSerialPipelineStageDeployParameterOutput() DeliveryPipelineSerialPipelineStageDeployParameterOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageDeployParameterOutput) ToDeliveryPipelineSerialPipelineStageDeployParameterOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageDeployParameterOutput {
+	return o
+}
+
+// Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
+func (o DeliveryPipelineSerialPipelineStageDeployParameterOutput) MatchTargetLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageDeployParameter) map[string]string {
+		return v.MatchTargetLabels
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. Values are deploy parameters in key-value pairs.
+func (o DeliveryPipelineSerialPipelineStageDeployParameterOutput) Values() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageDeployParameter) map[string]string { return v.Values }).(pulumi.StringMapOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageDeployParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageDeployParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeliveryPipelineSerialPipelineStageDeployParameter)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageDeployParameterArrayOutput) ToDeliveryPipelineSerialPipelineStageDeployParameterArrayOutput() DeliveryPipelineSerialPipelineStageDeployParameterArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageDeployParameterArrayOutput) ToDeliveryPipelineSerialPipelineStageDeployParameterArrayOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageDeployParameterArrayOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageDeployParameterArrayOutput) Index(i pulumi.IntInput) DeliveryPipelineSerialPipelineStageDeployParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeliveryPipelineSerialPipelineStageDeployParameter {
+		return vs[0].([]DeliveryPipelineSerialPipelineStageDeployParameter)[vs[1].(int)]
+	}).(DeliveryPipelineSerialPipelineStageDeployParameterOutput)
+}
+
 type DeliveryPipelineSerialPipelineStageStrategy struct {
-	// (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+	// Canary deployment strategy provides progressive percentage based deployments to a Target.
 	Canary *DeliveryPipelineSerialPipelineStageStrategyCanary `pulumi:"canary"`
 	// Standard deployment strategy executes a single deploy and allows verifying the deployment.
 	Standard *DeliveryPipelineSerialPipelineStageStrategyStandard `pulumi:"standard"`
@@ -707,7 +829,7 @@ type DeliveryPipelineSerialPipelineStageStrategyInput interface {
 }
 
 type DeliveryPipelineSerialPipelineStageStrategyArgs struct {
-	// (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+	// Canary deployment strategy provides progressive percentage based deployments to a Target.
 	Canary DeliveryPipelineSerialPipelineStageStrategyCanaryPtrInput `pulumi:"canary"`
 	// Standard deployment strategy executes a single deploy and allows verifying the deployment.
 	Standard DeliveryPipelineSerialPipelineStageStrategyStandardPtrInput `pulumi:"standard"`
@@ -790,7 +912,7 @@ func (o DeliveryPipelineSerialPipelineStageStrategyOutput) ToDeliveryPipelineSer
 	}).(DeliveryPipelineSerialPipelineStageStrategyPtrOutput)
 }
 
-// (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+// Canary deployment strategy provides progressive percentage based deployments to a Target.
 func (o DeliveryPipelineSerialPipelineStageStrategyOutput) Canary() DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategy) *DeliveryPipelineSerialPipelineStageStrategyCanary {
 		return v.Canary
@@ -828,7 +950,7 @@ func (o DeliveryPipelineSerialPipelineStageStrategyPtrOutput) Elem() DeliveryPip
 	}).(DeliveryPipelineSerialPipelineStageStrategyOutput)
 }
 
-// (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+// Canary deployment strategy provides progressive percentage based deployments to a Target.
 func (o DeliveryPipelineSerialPipelineStageStrategyPtrOutput) Canary() DeliveryPipelineSerialPipelineStageStrategyCanaryPtrOutput {
 	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategy) *DeliveryPipelineSerialPipelineStageStrategyCanary {
 		if v == nil {
@@ -2105,6 +2227,8 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking struct {
 	// Required. Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
 	Deployment string `pulumi:"deployment"`
+	// Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
+	DisablePodOverprovisioning *bool `pulumi:"disablePodOverprovisioning"`
 	// Required. Name of the Kubernetes Service.
 	Service string `pulumi:"service"`
 }
@@ -2123,6 +2247,8 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesSer
 type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs struct {
 	// Required. Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
 	Deployment pulumi.StringInput `pulumi:"deployment"`
+	// Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
+	DisablePodOverprovisioning pulumi.BoolPtrInput `pulumi:"disablePodOverprovisioning"`
 	// Required. Name of the Kubernetes Service.
 	Service pulumi.StringInput `pulumi:"service"`
 }
@@ -2211,6 +2337,13 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 	}).(pulumi.StringOutput)
 }
 
+// Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput) DisablePodOverprovisioning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking) *bool {
+		return v.DisablePodOverprovisioning
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Required. Name of the Kubernetes Service.
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking) string {
@@ -2250,6 +2383,16 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 		}
 		return &v.Deployment
 	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput) DisablePodOverprovisioning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisablePodOverprovisioning
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Required. Name of the Kubernetes Service.
@@ -3112,6 +3255,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelinePtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageArrayInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageDeployParameterInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageDeployParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageDeployParameterArrayInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageDeployParameterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryArgs{})
@@ -3156,6 +3301,8 @@ func init() {
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelinePtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageArrayOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageDeployParameterOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageDeployParameterArrayOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryOutput{})

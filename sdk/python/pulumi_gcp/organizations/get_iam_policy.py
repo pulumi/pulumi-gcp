@@ -137,10 +137,10 @@ def get_iam_policy(audit_configs: Optional[Sequence[pulumi.InputType['GetIAMPoli
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getIAMPolicy:getIAMPolicy', __args__, opts=opts, typ=GetIAMPolicyResult).value
 
     return AwaitableGetIAMPolicyResult(
-        audit_configs=__ret__.audit_configs,
-        bindings=__ret__.bindings,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data)
+        audit_configs=pulumi.get(__ret__, 'audit_configs'),
+        bindings=pulumi.get(__ret__, 'bindings'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'))
 
 
 @_utilities.lift_output_func(get_iam_policy)

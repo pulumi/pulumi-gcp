@@ -16,9 +16,19 @@ public final class FeatureSpecArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FeatureSpecArgs Empty = new FeatureSpecArgs();
 
+    /**
+     * Fleet Observability feature spec.
+     * Structure is documented below.
+     * 
+     */
     @Import(name="fleetobservability")
     private @Nullable Output<FeatureSpecFleetobservabilityArgs> fleetobservability;
 
+    /**
+     * @return Fleet Observability feature spec.
+     * Structure is documented below.
+     * 
+     */
     public Optional<Output<FeatureSpecFleetobservabilityArgs>> fleetobservability() {
         return Optional.ofNullable(this.fleetobservability);
     }
@@ -65,11 +75,25 @@ public final class FeatureSpecArgs extends com.pulumi.resources.ResourceArgs {
             $ = new FeatureSpecArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param fleetobservability Fleet Observability feature spec.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fleetobservability(@Nullable Output<FeatureSpecFleetobservabilityArgs> fleetobservability) {
             $.fleetobservability = fleetobservability;
             return this;
         }
 
+        /**
+         * @param fleetobservability Fleet Observability feature spec.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
         public Builder fleetobservability(FeatureSpecFleetobservabilityArgs fleetobservability) {
             return fleetobservability(Output.of(fleetobservability));
         }

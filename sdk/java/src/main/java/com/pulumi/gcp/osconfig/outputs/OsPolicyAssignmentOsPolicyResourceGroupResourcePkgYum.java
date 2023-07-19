@@ -10,14 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum {
     /**
-     * @return Required. Package name.
+     * @return Package name.
      * 
      */
     private String name;
 
     private OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum() {}
     /**
-     * @return Required. Package name.
+     * @return Package name.
      * 
      */
     public String name() {

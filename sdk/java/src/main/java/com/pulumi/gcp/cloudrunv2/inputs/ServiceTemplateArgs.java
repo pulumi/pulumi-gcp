@@ -24,14 +24,20 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
     public static final ServiceTemplateArgs Empty = new ServiceTemplateArgs();
 
     /**
-     * KRM-style annotations for the resource.
+     * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+     * Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+     * All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+     * This field follows Kubernetes annotations&#39; namespacing, limits, and rules.
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<Map<String,String>> annotations;
 
     /**
-     * @return KRM-style annotations for the resource.
+     * @return Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+     * Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+     * All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+     * This field follows Kubernetes annotations&#39; namespacing, limits, and rules.
      * 
      */
     public Optional<Output<Map<String,String>>> annotations() {
@@ -88,14 +94,20 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * KRM-style labels for the resource.
+     * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
+     * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+     * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+     * All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return KRM-style labels for the resource.
+     * @return Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
+     * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+     * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+     * All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -267,7 +279,10 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param annotations KRM-style annotations for the resource.
+         * @param annotations Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+         * Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+         * All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+         * This field follows Kubernetes annotations&#39; namespacing, limits, and rules.
          * 
          * @return builder
          * 
@@ -278,7 +293,10 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param annotations KRM-style annotations for the resource.
+         * @param annotations Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+         * Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+         * All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+         * This field follows Kubernetes annotations&#39; namespacing, limits, and rules.
          * 
          * @return builder
          * 
@@ -366,7 +384,10 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param labels KRM-style labels for the resource.
+         * @param labels Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
+         * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+         * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+         * All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
          * 
          * @return builder
          * 
@@ -377,7 +398,10 @@ public final class ServiceTemplateArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param labels KRM-style labels for the resource.
+         * @param labels Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google&#39;s billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
+         * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+         * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+         * All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
          * 
          * @return builder
          * 

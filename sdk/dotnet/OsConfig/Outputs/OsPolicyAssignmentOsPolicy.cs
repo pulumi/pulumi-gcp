@@ -14,23 +14,40 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class OsPolicyAssignmentOsPolicy
     {
         /// <summary>
-        /// This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
+        /// This flag determines the OS
+        /// policy compliance status when none of the resource groups within the policy
+        /// are applicable for a VM. Set this value to `true` if the policy needs to be
+        /// reported as compliant even if the policy has nothing to validate or enforce.
         /// </summary>
         public readonly bool? AllowNoResourceGroupMatch;
         /// <summary>
-        /// Policy description. Length of the description is limited to 1024 characters.
+        /// Policy description. Length of the description is
+        /// limited to 1024 characters.
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
+        /// The id of the OS policy with the following restrictions:
+        /// 
+        /// *   Must contain only lowercase letters, numbers, and hyphens.
+        /// *   Must start with a letter.
+        /// *   Must be between 1-63 characters.
+        /// *   Must end with a number or a letter.
+        /// *   Must be unique within the assignment.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Required. Policy mode Possible values: MODE_UNSPECIFIED, VALIDATION, ENFORCEMENT
+        /// Policy mode Possible values are: `MODE_UNSPECIFIED`,
+        /// `VALIDATION`, `ENFORCEMENT`.
         /// </summary>
         public readonly string Mode;
         /// <summary>
-        /// Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
+        /// List of resource groups for the policy. For a
+        /// particular VM, resource groups are evaluated in the order specified and the
+        /// first resource group that is applicable is selected and the rest are
+        /// ignored. If none of the resource groups are applicable for a VM, the VM is
+        /// considered to be non-compliant w.r.t this policy. This behavior can be
+        /// toggled by the flag `allow_no_resource_group_match` Structure is
+        /// documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.OsPolicyAssignmentOsPolicyResourceGroup> ResourceGroups;
 

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,7 +56,23 @@ import (
 //				Labels: pulumi.StringMap{
 //					"env": pulumi.String("default"),
 //				},
-//				Schema: pulumi.String("[\n  {\n    \"name\": \"permalink\",\n    \"type\": \"STRING\",\n    \"mode\": \"NULLABLE\",\n    \"description\": \"The Permalink\"\n  },\n  {\n    \"name\": \"state\",\n    \"type\": \"STRING\",\n    \"mode\": \"NULLABLE\",\n    \"description\": \"State where the head office is located\"\n  }\n]\n"),
+//				Schema: pulumi.String(`[
+//	  {
+//	    "name": "permalink",
+//	    "type": "STRING",
+//	    "mode": "NULLABLE",
+//	    "description": "The Permalink"
+//	  },
+//	  {
+//	    "name": "state",
+//	    "type": "STRING",
+//	    "mode": "NULLABLE",
+//	    "description": "State where the head office is located"
+//	  }
+//
+// ]
+// `),
+//
 //			})
 //			if err != nil {
 //				return err
@@ -201,6 +218,7 @@ func NewTable(ctx *pulumi.Context,
 	if args.TableId == nil {
 		return nil, errors.New("invalid value for required argument 'TableId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Table
 	err := ctx.RegisterResource("gcp:bigquery/table:Table", name, args, &resource, opts...)
 	if err != nil {

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -130,7 +131,7 @@ import (
 //				Feature:    feature.Name,
 //				Membership: membership.MembershipId,
 //				Configmanagement: &gkehub.FeatureMembershipConfigmanagementArgs{
-//					Version: pulumi.String("1.12.0"),
+//					Version: pulumi.String("1.15.1"),
 //					ConfigSync: &gkehub.FeatureMembershipConfigmanagementConfigSyncArgs{
 //						Oci: &gkehub.FeatureMembershipConfigmanagementConfigSyncOciArgs{
 //							SyncRepo:               pulumi.String("us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest"),
@@ -292,6 +293,7 @@ func NewFeatureMembership(ctx *pulumi.Context,
 	if args.Membership == nil {
 		return nil, errors.New("invalid value for required argument 'Membership'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FeatureMembership
 	err := ctx.RegisterResource("gcp:gkehub/featureMembership:FeatureMembership", name, args, &resource, opts...)
 	if err != nil {

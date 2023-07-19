@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -111,6 +112,7 @@ func NewRegionUrlMap(ctx *pulumi.Context,
 		args = &RegionUrlMapArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RegionUrlMap
 	err := ctx.RegisterResource("gcp:compute/regionUrlMap:RegionUrlMap", name, args, &resource, opts...)
 	if err != nil {

@@ -139,13 +139,13 @@ def get_registry_image(digest: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:container/getRegistryImage:getRegistryImage', __args__, opts=opts, typ=GetRegistryImageResult).value
 
     return AwaitableGetRegistryImageResult(
-        digest=__ret__.digest,
-        id=__ret__.id,
-        image_url=__ret__.image_url,
-        name=__ret__.name,
-        project=__ret__.project,
-        region=__ret__.region,
-        tag=__ret__.tag)
+        digest=pulumi.get(__ret__, 'digest'),
+        id=pulumi.get(__ret__, 'id'),
+        image_url=pulumi.get(__ret__, 'image_url'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'),
+        tag=pulumi.get(__ret__, 'tag'))
 
 
 @_utilities.lift_output_func(get_registry_image)

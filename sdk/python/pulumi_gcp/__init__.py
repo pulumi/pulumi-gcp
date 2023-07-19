@@ -1875,6 +1875,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/caExternalAccountKey",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/caExternalAccountKey:CaExternalAccountKey": "CaExternalAccountKey"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/disk",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -2211,6 +2219,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "compute/networkEdgeSecurityService",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService": "NetworkEdgeSecurityService"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "compute/networkEndpoint",
   "fqn": "pulumi_gcp.compute",
   "classes": {
@@ -2519,6 +2535,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig": "RegionPerInstanceConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/regionSecurityPolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/regionSecurityPolicy:RegionSecurityPolicy": "RegionSecurityPolicy"
   }
  },
  {
@@ -3803,6 +3827,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "firebase/extensionsInstance",
+  "fqn": "pulumi_gcp.firebase",
+  "classes": {
+   "gcp:firebase/extensionsInstance:ExtensionsInstance": "ExtensionsInstance"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "firebase/hostingChannel",
   "fqn": "pulumi_gcp.firebase",
   "classes": {
@@ -4103,6 +4135,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.gkehub",
   "classes": {
    "gcp:gkehub/membershipIamPolicy:MembershipIamPolicy": "MembershipIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gkeonprem/bareMetalAdminCluster",
+  "fqn": "pulumi_gcp.gkeonprem",
+  "classes": {
+   "gcp:gkeonprem/bareMetalAdminCluster:BareMetalAdminCluster": "BareMetalAdminCluster"
   }
  },
  {

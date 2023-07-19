@@ -160,16 +160,16 @@ def get_resource_policy(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getResourcePolicy:getResourcePolicy', __args__, opts=opts, typ=GetResourcePolicyResult).value
 
     return AwaitableGetResourcePolicyResult(
-        description=__ret__.description,
-        disk_consistency_group_policies=__ret__.disk_consistency_group_policies,
-        group_placement_policies=__ret__.group_placement_policies,
-        id=__ret__.id,
-        instance_schedule_policies=__ret__.instance_schedule_policies,
-        name=__ret__.name,
-        project=__ret__.project,
-        region=__ret__.region,
-        self_link=__ret__.self_link,
-        snapshot_schedule_policies=__ret__.snapshot_schedule_policies)
+        description=pulumi.get(__ret__, 'description'),
+        disk_consistency_group_policies=pulumi.get(__ret__, 'disk_consistency_group_policies'),
+        group_placement_policies=pulumi.get(__ret__, 'group_placement_policies'),
+        id=pulumi.get(__ret__, 'id'),
+        instance_schedule_policies=pulumi.get(__ret__, 'instance_schedule_policies'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        snapshot_schedule_policies=pulumi.get(__ret__, 'snapshot_schedule_policies'))
 
 
 @_utilities.lift_output_func(get_resource_policy)

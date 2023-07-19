@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuildV2
 {
     /// <summary>
-    /// Beta only: The Cloudbuildv2 Repository resource
+    /// The Cloudbuildv2 Repository resource
     /// 
     /// ## Example Usage
     /// ### Ghe
@@ -30,18 +30,12 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///         {
     ///             Automatic = true,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var private_key_secret_version = new Gcp.SecretManager.SecretVersion("private-key-secret-version", new()
     ///     {
     ///         Secret = private_key_secret.Id,
     ///         SecretData = File.ReadAllText("private-key.pem"),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var webhook_secret_secret = new Gcp.SecretManager.Secret("webhook-secret-secret", new()
@@ -51,18 +45,12 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///         {
     ///             Automatic = true,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var webhook_secret_secret_version = new Gcp.SecretManager.SecretVersion("webhook-secret-secret-version", new()
     ///     {
     ///         Secret = webhook_secret_secret.Id,
     ///         SecretData = "&lt;webhook-secret-data&gt;",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var p4sa_secretAccessor = Gcp.Organizations.GetIAMPolicy.Invoke(new()
@@ -84,18 +72,12 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///     {
     ///         SecretId = private_key_secret.SecretId,
     ///         PolicyData = p4sa_secretAccessor.Apply(p4sa_secretAccessor =&gt; p4sa_secretAccessor.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData)),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var policy_whs = new Gcp.SecretManager.SecretIamPolicy("policy-whs", new()
     ///     {
     ///         SecretId = webhook_secret_secret.SecretId,
     ///         PolicyData = p4sa_secretAccessor.Apply(p4sa_secretAccessor =&gt; p4sa_secretAccessor.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData)),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var my_connection = new Gcp.CloudBuildV2.Connection("my-connection", new()
@@ -112,7 +94,6 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = google_beta,
     ///         DependsOn = new[]
     ///         {
     ///             policy_pk,
@@ -125,9 +106,6 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///         Location = "us-central1",
     ///         ParentConnection = my_connection.Id,
     ///         RemoteUri = "https://ghe.com/hashicorp/terraform-provider-google.git",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -150,18 +128,12 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///         {
     ///             Automatic = true,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var github_token_secret_version = new Gcp.SecretManager.SecretVersion("github-token-secret-version", new()
     ///     {
     ///         Secret = github_token_secret.Id,
     ///         SecretData = File.ReadAllText("my-github-token.txt"),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var p4sa_secretAccessor = Gcp.Organizations.GetIAMPolicy.Invoke(new()
@@ -183,9 +155,6 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///     {
     ///         SecretId = github_token_secret.SecretId,
     ///         PolicyData = p4sa_secretAccessor.Apply(p4sa_secretAccessor =&gt; p4sa_secretAccessor.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData)),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var my_connection = new Gcp.CloudBuildV2.Connection("my-connection", new()
@@ -199,9 +168,6 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///                 OauthTokenSecretVersion = github_token_secret_version.Id,
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var my_repository = new Gcp.CloudBuildV2.Repository("my-repository", new()
@@ -209,9 +175,6 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///         Location = "us-west1",
     ///         ParentConnection = my_connection.Name,
     ///         RemoteUri = "https://github.com/myuser/myrepo.git",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

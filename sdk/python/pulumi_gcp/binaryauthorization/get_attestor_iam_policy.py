@@ -99,8 +99,8 @@ def get_attestor_iam_policy(attestor: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.binaryauthorization.get_attestor_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        attestor=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.binaryauthorization.get_attestor_iam_policy(project=google_binary_authorization_attestor["attestor"]["project"],
+        attestor=google_binary_authorization_attestor["attestor"]["name"])
     ```
 
 
@@ -115,11 +115,11 @@ def get_attestor_iam_policy(attestor: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:binaryauthorization/getAttestorIamPolicy:getAttestorIamPolicy', __args__, opts=opts, typ=GetAttestorIamPolicyResult).value
 
     return AwaitableGetAttestorIamPolicyResult(
-        attestor=__ret__.attestor,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        attestor=pulumi.get(__ret__, 'attestor'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_attestor_iam_policy)
@@ -135,8 +135,8 @@ def get_attestor_iam_policy_output(attestor: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.binaryauthorization.get_attestor_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        attestor=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.binaryauthorization.get_attestor_iam_policy(project=google_binary_authorization_attestor["attestor"]["project"],
+        attestor=google_binary_authorization_attestor["attestor"]["name"])
     ```
 
 

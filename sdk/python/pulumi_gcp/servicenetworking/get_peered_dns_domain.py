@@ -115,13 +115,13 @@ def get_peered_dns_domain(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain', __args__, opts=opts, typ=GetPeeredDnsDomainResult).value
 
     return AwaitableGetPeeredDnsDomainResult(
-        dns_suffix=__ret__.dns_suffix,
-        id=__ret__.id,
-        name=__ret__.name,
-        network=__ret__.network,
-        parent=__ret__.parent,
-        project=__ret__.project,
-        service=__ret__.service)
+        dns_suffix=pulumi.get(__ret__, 'dns_suffix'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        parent=pulumi.get(__ret__, 'parent'),
+        project=pulumi.get(__ret__, 'project'),
+        service=pulumi.get(__ret__, 'service'))
 
 
 @_utilities.lift_output_func(get_peered_dns_domain)

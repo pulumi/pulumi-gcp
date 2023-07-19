@@ -145,6 +145,64 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Private Service Connect Google Apis No Automate Dns
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         AutoCreateSubnetworks = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var vpcSubnetwork = new Gcp.Compute.Subnetwork("vpcSubnetwork", new()
+    ///     {
+    ///         Project = network.Project,
+    ///         IpCidrRange = "10.2.0.0/16",
+    ///         Region = "us-central1",
+    ///         Network = network.Id,
+    ///         PrivateIpGoogleAccess = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultGlobalAddress = new Gcp.Compute.GlobalAddress("defaultGlobalAddress", new()
+    ///     {
+    ///         Project = network.Project,
+    ///         AddressType = "INTERNAL",
+    ///         Purpose = "PRIVATE_SERVICE_CONNECT",
+    ///         Network = network.Id,
+    ///         Address = "100.100.100.106",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var defaultGlobalForwardingRule = new Gcp.Compute.GlobalForwardingRule("defaultGlobalForwardingRule", new()
+    ///     {
+    ///         Project = network.Project,
+    ///         Target = "all-apis",
+    ///         Network = network.Id,
+    ///         IpAddress = defaultGlobalAddress.Id,
+    ///         LoadBalancingScheme = "",
+    ///         NoAutomateDnsZone = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -314,6 +372,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
+
+        /// <summary>
+        /// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+        /// </summary>
+        [Output("noAutomateDnsZone")]
+        public Output<bool?> NoAutomateDnsZone { get; private set; } = null!;
 
         /// <summary>
         /// This field can only be used:
@@ -582,6 +646,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Network { get; set; }
 
         /// <summary>
+        /// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+        /// </summary>
+        [Input("noAutomateDnsZone")]
+        public Input<bool>? NoAutomateDnsZone { get; set; }
+
+        /// <summary>
         /// This field can only be used:
         /// * If `IPProtocol` is one of TCP, UDP, or SCTP.
         /// * By backend service-based network load balancers, target pool-based
@@ -809,6 +879,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+        /// </summary>
+        [Input("noAutomateDnsZone")]
+        public Input<bool>? NoAutomateDnsZone { get; set; }
 
         /// <summary>
         /// This field can only be used:

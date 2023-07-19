@@ -147,15 +147,15 @@ def get_network(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:vmwareengine/getNetwork:getNetwork', __args__, opts=opts, typ=GetNetworkResult).value
 
     return AwaitableGetNetworkResult(
-        description=__ret__.description,
-        id=__ret__.id,
-        location=__ret__.location,
-        name=__ret__.name,
-        project=__ret__.project,
-        state=__ret__.state,
-        type=__ret__.type,
-        uid=__ret__.uid,
-        vpc_networks=__ret__.vpc_networks)
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        state=pulumi.get(__ret__, 'state'),
+        type=pulumi.get(__ret__, 'type'),
+        uid=pulumi.get(__ret__, 'uid'),
+        vpc_networks=pulumi.get(__ret__, 'vpc_networks'))
 
 
 @_utilities.lift_output_func(get_network)

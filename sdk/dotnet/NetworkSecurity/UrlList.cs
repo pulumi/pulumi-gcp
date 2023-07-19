@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkSecurity
 {
     /// <summary>
+    /// UrlList proto helps users to set reusable, independently manageable lists of hosts, host patterns, URLs, URL patterns.
+    /// 
+    /// To get more information about UrlLists, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.urlLists)
+    /// * How-to Guides
+    ///     * Use UrlLists
+    /// 
     /// ## Example Usage
     /// ### Network Security Url Lists Basic
     /// 
@@ -28,9 +36,6 @@ namespace Pulumi.Gcp.NetworkSecurity
     ///         {
     ///             "www.example.com",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -47,17 +52,14 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// {
     ///     var @default = new Gcp.NetworkSecurity.UrlList("default", new()
     ///     {
-    ///         Location = "us-central1",
     ///         Description = "my description",
+    ///         Location = "us-central1",
     ///         Values = new[]
     ///         {
     ///             "www.example.com",
     ///             "about.example.com",
     ///             "github.com/example-org/*",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

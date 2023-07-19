@@ -14,11 +14,14 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb
     {
         /// <summary>
-        /// Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update &amp;&amp; apt-get -y install package.deb`
+        /// Whether dependencies should also be installed. -
+        /// install when false: `dpkg -i package` - install when true: `apt-get update
+        /// &amp;&amp; apt-get -y install package.deb`
         /// </summary>
         public readonly bool? PullDeps;
         /// <summary>
-        /// Required. A deb package.
+        /// A deb package. Structure is
+        /// documented below.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource Source;
 

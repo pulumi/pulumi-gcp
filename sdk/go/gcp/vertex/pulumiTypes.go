@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type AiDatasetEncryptionSpec struct {
 	// Required. The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
@@ -3585,6 +3588,12 @@ type AiIndexMetadataConfig struct {
 	// * UNIT_L2_NORM: Unit L2 normalization type
 	// * NONE: No normalization type is specified.
 	FeatureNormType *string `pulumi:"featureNormType"`
+	// Index data is split into equal parts to be processed. These are called "shards".
+	// The shard size must be specified when creating an index. The value must be one of the followings:
+	// * SHARD_SIZE_SMALL: Small (2GB)
+	// * SHARD_SIZE_MEDIUM: Medium (20GB)
+	// * SHARD_SIZE_LARGE: Large (50GB)
+	ShardSize *string `pulumi:"shardSize"`
 }
 
 // AiIndexMetadataConfigInput is an input type that accepts AiIndexMetadataConfigArgs and AiIndexMetadataConfigOutput values.
@@ -3619,6 +3628,12 @@ type AiIndexMetadataConfigArgs struct {
 	// * UNIT_L2_NORM: Unit L2 normalization type
 	// * NONE: No normalization type is specified.
 	FeatureNormType pulumi.StringPtrInput `pulumi:"featureNormType"`
+	// Index data is split into equal parts to be processed. These are called "shards".
+	// The shard size must be specified when creating an index. The value must be one of the followings:
+	// * SHARD_SIZE_SMALL: Small (2GB)
+	// * SHARD_SIZE_MEDIUM: Medium (20GB)
+	// * SHARD_SIZE_LARGE: Large (50GB)
+	ShardSize pulumi.StringPtrInput `pulumi:"shardSize"`
 }
 
 func (AiIndexMetadataConfigArgs) ElementType() reflect.Type {
@@ -3733,6 +3748,15 @@ func (o AiIndexMetadataConfigOutput) FeatureNormType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AiIndexMetadataConfig) *string { return v.FeatureNormType }).(pulumi.StringPtrOutput)
 }
 
+// Index data is split into equal parts to be processed. These are called "shards".
+// The shard size must be specified when creating an index. The value must be one of the followings:
+// * SHARD_SIZE_SMALL: Small (2GB)
+// * SHARD_SIZE_MEDIUM: Medium (20GB)
+// * SHARD_SIZE_LARGE: Large (50GB)
+func (o AiIndexMetadataConfigOutput) ShardSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiIndexMetadataConfig) *string { return v.ShardSize }).(pulumi.StringPtrOutput)
+}
+
 type AiIndexMetadataConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (AiIndexMetadataConfigPtrOutput) ElementType() reflect.Type {
@@ -3814,6 +3838,20 @@ func (o AiIndexMetadataConfigPtrOutput) FeatureNormType() pulumi.StringPtrOutput
 			return nil
 		}
 		return v.FeatureNormType
+	}).(pulumi.StringPtrOutput)
+}
+
+// Index data is split into equal parts to be processed. These are called "shards".
+// The shard size must be specified when creating an index. The value must be one of the followings:
+// * SHARD_SIZE_SMALL: Small (2GB)
+// * SHARD_SIZE_MEDIUM: Medium (20GB)
+// * SHARD_SIZE_LARGE: Large (50GB)
+func (o AiIndexMetadataConfigPtrOutput) ShardSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiIndexMetadataConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ShardSize
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4961,6 +4999,7 @@ type GetAiIndexMetadataConfig struct {
 	Dimensions                int                                       `pulumi:"dimensions"`
 	DistanceMeasureType       string                                    `pulumi:"distanceMeasureType"`
 	FeatureNormType           string                                    `pulumi:"featureNormType"`
+	ShardSize                 string                                    `pulumi:"shardSize"`
 }
 
 // GetAiIndexMetadataConfigInput is an input type that accepts GetAiIndexMetadataConfigArgs and GetAiIndexMetadataConfigOutput values.
@@ -4980,6 +5019,7 @@ type GetAiIndexMetadataConfigArgs struct {
 	Dimensions                pulumi.IntInput                                   `pulumi:"dimensions"`
 	DistanceMeasureType       pulumi.StringInput                                `pulumi:"distanceMeasureType"`
 	FeatureNormType           pulumi.StringInput                                `pulumi:"featureNormType"`
+	ShardSize                 pulumi.StringInput                                `pulumi:"shardSize"`
 }
 
 func (GetAiIndexMetadataConfigArgs) ElementType() reflect.Type {
@@ -5051,6 +5091,10 @@ func (o GetAiIndexMetadataConfigOutput) DistanceMeasureType() pulumi.StringOutpu
 
 func (o GetAiIndexMetadataConfigOutput) FeatureNormType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAiIndexMetadataConfig) string { return v.FeatureNormType }).(pulumi.StringOutput)
+}
+
+func (o GetAiIndexMetadataConfigOutput) ShardSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAiIndexMetadataConfig) string { return v.ShardSize }).(pulumi.StringOutput)
 }
 
 type GetAiIndexMetadataConfigArrayOutput struct{ *pulumi.OutputState }

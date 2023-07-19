@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,6 +16,7 @@ import (
 // and
 // [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
 func GetCaCerts(ctx *pulumi.Context, args *GetCaCertsArgs, opts ...pulumi.InvokeOption) (*GetCaCertsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCaCertsResult
 	err := ctx.Invoke("gcp:sql/getCaCerts:getCaCerts", args, &rv, opts...)
 	if err != nil {

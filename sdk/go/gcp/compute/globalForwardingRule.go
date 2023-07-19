@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -148,6 +149,63 @@ import (
 //	}
 //
 // ```
+// ### Private Service Connect Google Apis No Automate Dns
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Project:               pulumi.String("my-project-name"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewSubnetwork(ctx, "vpcSubnetwork", &compute.SubnetworkArgs{
+//				Project:               network.Project,
+//				IpCidrRange:           pulumi.String("10.2.0.0/16"),
+//				Region:                pulumi.String("us-central1"),
+//				Network:               network.ID(),
+//				PrivateIpGoogleAccess: pulumi.Bool(true),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			defaultGlobalAddress, err := compute.NewGlobalAddress(ctx, "defaultGlobalAddress", &compute.GlobalAddressArgs{
+//				Project:     network.Project,
+//				AddressType: pulumi.String("INTERNAL"),
+//				Purpose:     pulumi.String("PRIVATE_SERVICE_CONNECT"),
+//				Network:     network.ID(),
+//				Address:     pulumi.String("100.100.100.106"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewGlobalForwardingRule(ctx, "defaultGlobalForwardingRule", &compute.GlobalForwardingRuleArgs{
+//				Project:             network.Project,
+//				Target:              pulumi.String("all-apis"),
+//				Network:             network.ID(),
+//				IpAddress:           defaultGlobalAddress.ID(),
+//				LoadBalancingScheme: pulumi.String(""),
+//				NoAutomateDnsZone:   pulumi.Bool(false),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -275,6 +333,8 @@ type GlobalForwardingRule struct {
 	// For Private Service Connect forwarding rules that forward traffic to Google
 	// APIs, a network must be provided.
 	Network pulumi.StringOutput `pulumi:"network"`
+	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+	NoAutomateDnsZone pulumi.BoolPtrOutput `pulumi:"noAutomateDnsZone"`
 	// This field can only be used:
 	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
 	// * By backend service-based network load balancers, target pool-based
@@ -329,6 +389,7 @@ func NewGlobalForwardingRule(ctx *pulumi.Context,
 	if args.Target == nil {
 		return nil, errors.New("invalid value for required argument 'Target'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GlobalForwardingRule
 	err := ctx.RegisterResource("gcp:compute/globalForwardingRule:GlobalForwardingRule", name, args, &resource, opts...)
 	if err != nil {
@@ -453,6 +514,8 @@ type globalForwardingRuleState struct {
 	// For Private Service Connect forwarding rules that forward traffic to Google
 	// APIs, a network must be provided.
 	Network *string `pulumi:"network"`
+	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+	NoAutomateDnsZone *bool `pulumi:"noAutomateDnsZone"`
 	// This field can only be used:
 	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
 	// * By backend service-based network load balancers, target pool-based
@@ -600,6 +663,8 @@ type GlobalForwardingRuleState struct {
 	// For Private Service Connect forwarding rules that forward traffic to Google
 	// APIs, a network must be provided.
 	Network pulumi.StringPtrInput
+	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+	NoAutomateDnsZone pulumi.BoolPtrInput
 	// This field can only be used:
 	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
 	// * By backend service-based network load balancers, target pool-based
@@ -746,6 +811,8 @@ type globalForwardingRuleArgs struct {
 	// For Private Service Connect forwarding rules that forward traffic to Google
 	// APIs, a network must be provided.
 	Network *string `pulumi:"network"`
+	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+	NoAutomateDnsZone *bool `pulumi:"noAutomateDnsZone"`
 	// This field can only be used:
 	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
 	// * By backend service-based network load balancers, target pool-based
@@ -883,6 +950,8 @@ type GlobalForwardingRuleArgs struct {
 	// For Private Service Connect forwarding rules that forward traffic to Google
 	// APIs, a network must be provided.
 	Network pulumi.StringPtrInput
+	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+	NoAutomateDnsZone pulumi.BoolPtrInput
 	// This field can only be used:
 	// * If `IPProtocol` is one of TCP, UDP, or SCTP.
 	// * By backend service-based network load balancers, target pool-based
@@ -1144,6 +1213,11 @@ func (o GlobalForwardingRuleOutput) Name() pulumi.StringOutput {
 // APIs, a network must be provided.
 func (o GlobalForwardingRuleOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
+}
+
+// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+func (o GlobalForwardingRuleOutput) NoAutomateDnsZone() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.BoolPtrOutput { return v.NoAutomateDnsZone }).(pulumi.BoolPtrOutput)
 }
 
 // This field can only be used:

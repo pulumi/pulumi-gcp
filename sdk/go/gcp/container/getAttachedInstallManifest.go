@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ import (
 //
 // ```
 func GetAttachedInstallManifest(ctx *pulumi.Context, args *GetAttachedInstallManifestArgs, opts ...pulumi.InvokeOption) (*GetAttachedInstallManifestResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAttachedInstallManifestResult
 	err := ctx.Invoke("gcp:container/getAttachedInstallManifest:getAttachedInstallManifest", args, &rv, opts...)
 	if err != nil {

@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type AttachedClusterAuthorization struct {
 	// Users that can perform operations as a cluster admin. A managed
@@ -2464,6 +2467,8 @@ type AwsClusterControlPlaneMainVolume struct {
 	KmsKeyArn *string `pulumi:"kmsKeyArn"`
 	// Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
 	SizeGib *int `pulumi:"sizeGib"`
+	// Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+	Throughput *int `pulumi:"throughput"`
 	// Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
 	VolumeType *string `pulumi:"volumeType"`
 }
@@ -2486,6 +2491,8 @@ type AwsClusterControlPlaneMainVolumeArgs struct {
 	KmsKeyArn pulumi.StringPtrInput `pulumi:"kmsKeyArn"`
 	// Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
 	SizeGib pulumi.IntPtrInput `pulumi:"sizeGib"`
+	// Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+	Throughput pulumi.IntPtrInput `pulumi:"throughput"`
 	// Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
 	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
 }
@@ -2582,6 +2589,11 @@ func (o AwsClusterControlPlaneMainVolumeOutput) SizeGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AwsClusterControlPlaneMainVolume) *int { return v.SizeGib }).(pulumi.IntPtrOutput)
 }
 
+// Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+func (o AwsClusterControlPlaneMainVolumeOutput) Throughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsClusterControlPlaneMainVolume) *int { return v.Throughput }).(pulumi.IntPtrOutput)
+}
+
 // Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
 func (o AwsClusterControlPlaneMainVolumeOutput) VolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsClusterControlPlaneMainVolume) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
@@ -2638,6 +2650,16 @@ func (o AwsClusterControlPlaneMainVolumePtrOutput) SizeGib() pulumi.IntPtrOutput
 			return nil
 		}
 		return v.SizeGib
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+func (o AwsClusterControlPlaneMainVolumePtrOutput) Throughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneMainVolume) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Throughput
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -2814,6 +2836,8 @@ type AwsClusterControlPlaneRootVolume struct {
 	KmsKeyArn *string `pulumi:"kmsKeyArn"`
 	// Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
 	SizeGib *int `pulumi:"sizeGib"`
+	// Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+	Throughput *int `pulumi:"throughput"`
 	// Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
 	VolumeType *string `pulumi:"volumeType"`
 }
@@ -2836,6 +2860,8 @@ type AwsClusterControlPlaneRootVolumeArgs struct {
 	KmsKeyArn pulumi.StringPtrInput `pulumi:"kmsKeyArn"`
 	// Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
 	SizeGib pulumi.IntPtrInput `pulumi:"sizeGib"`
+	// Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+	Throughput pulumi.IntPtrInput `pulumi:"throughput"`
 	// Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
 	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
 }
@@ -2932,6 +2958,11 @@ func (o AwsClusterControlPlaneRootVolumeOutput) SizeGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AwsClusterControlPlaneRootVolume) *int { return v.SizeGib }).(pulumi.IntPtrOutput)
 }
 
+// Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+func (o AwsClusterControlPlaneRootVolumeOutput) Throughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsClusterControlPlaneRootVolume) *int { return v.Throughput }).(pulumi.IntPtrOutput)
+}
+
 // Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
 func (o AwsClusterControlPlaneRootVolumeOutput) VolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsClusterControlPlaneRootVolume) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
@@ -2988,6 +3019,16 @@ func (o AwsClusterControlPlaneRootVolumePtrOutput) SizeGib() pulumi.IntPtrOutput
 			return nil
 		}
 		return v.SizeGib
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+func (o AwsClusterControlPlaneRootVolumePtrOutput) Throughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsClusterControlPlaneRootVolume) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Throughput
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -3569,6 +3610,8 @@ func (o AwsClusterLoggingConfigComponentConfigPtrOutput) EnableComponents() pulu
 }
 
 type AwsClusterNetworking struct {
+	// Disable the per node pool subnet security group rules on the control plane security group. When set to true, you must also provide one or more security groups that ensure node pools are able to send requests to the control plane on TCP/443 and TCP/8132. Failure to do so may result in unavailable node pools.
+	PerNodePoolSgRulesDisabled *bool `pulumi:"perNodePoolSgRulesDisabled"`
 	// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
 	PodAddressCidrBlocks []string `pulumi:"podAddressCidrBlocks"`
 	// All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
@@ -3591,6 +3634,8 @@ type AwsClusterNetworkingInput interface {
 }
 
 type AwsClusterNetworkingArgs struct {
+	// Disable the per node pool subnet security group rules on the control plane security group. When set to true, you must also provide one or more security groups that ensure node pools are able to send requests to the control plane on TCP/443 and TCP/8132. Failure to do so may result in unavailable node pools.
+	PerNodePoolSgRulesDisabled pulumi.BoolPtrInput `pulumi:"perNodePoolSgRulesDisabled"`
 	// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
 	PodAddressCidrBlocks pulumi.StringArrayInput `pulumi:"podAddressCidrBlocks"`
 	// All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
@@ -3678,6 +3723,11 @@ func (o AwsClusterNetworkingOutput) ToAwsClusterNetworkingPtrOutputWithContext(c
 	}).(AwsClusterNetworkingPtrOutput)
 }
 
+// Disable the per node pool subnet security group rules on the control plane security group. When set to true, you must also provide one or more security groups that ensure node pools are able to send requests to the control plane on TCP/443 and TCP/8132. Failure to do so may result in unavailable node pools.
+func (o AwsClusterNetworkingOutput) PerNodePoolSgRulesDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AwsClusterNetworking) *bool { return v.PerNodePoolSgRulesDisabled }).(pulumi.BoolPtrOutput)
+}
+
 // All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
 func (o AwsClusterNetworkingOutput) PodAddressCidrBlocks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsClusterNetworking) []string { return v.PodAddressCidrBlocks }).(pulumi.StringArrayOutput)
@@ -3717,6 +3767,16 @@ func (o AwsClusterNetworkingPtrOutput) Elem() AwsClusterNetworkingOutput {
 		var ret AwsClusterNetworking
 		return ret
 	}).(AwsClusterNetworkingOutput)
+}
+
+// Disable the per node pool subnet security group rules on the control plane security group. When set to true, you must also provide one or more security groups that ensure node pools are able to send requests to the control plane on TCP/443 and TCP/8132. Failure to do so may result in unavailable node pools.
+func (o AwsClusterNetworkingPtrOutput) PerNodePoolSgRulesDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AwsClusterNetworking) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PerNodePoolSgRulesDisabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
@@ -4992,6 +5052,8 @@ type AwsNodePoolConfigRootVolume struct {
 	KmsKeyArn *string `pulumi:"kmsKeyArn"`
 	// Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
 	SizeGib *int `pulumi:"sizeGib"`
+	// Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+	Throughput *int `pulumi:"throughput"`
 	// Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
 	VolumeType *string `pulumi:"volumeType"`
 }
@@ -5014,6 +5076,8 @@ type AwsNodePoolConfigRootVolumeArgs struct {
 	KmsKeyArn pulumi.StringPtrInput `pulumi:"kmsKeyArn"`
 	// Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
 	SizeGib pulumi.IntPtrInput `pulumi:"sizeGib"`
+	// Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+	Throughput pulumi.IntPtrInput `pulumi:"throughput"`
 	// Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
 	VolumeType pulumi.StringPtrInput `pulumi:"volumeType"`
 }
@@ -5110,6 +5174,11 @@ func (o AwsNodePoolConfigRootVolumeOutput) SizeGib() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AwsNodePoolConfigRootVolume) *int { return v.SizeGib }).(pulumi.IntPtrOutput)
 }
 
+// Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+func (o AwsNodePoolConfigRootVolumeOutput) Throughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AwsNodePoolConfigRootVolume) *int { return v.Throughput }).(pulumi.IntPtrOutput)
+}
+
 // Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
 func (o AwsNodePoolConfigRootVolumeOutput) VolumeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsNodePoolConfigRootVolume) *string { return v.VolumeType }).(pulumi.StringPtrOutput)
@@ -5166,6 +5235,16 @@ func (o AwsNodePoolConfigRootVolumePtrOutput) SizeGib() pulumi.IntPtrOutput {
 			return nil
 		}
 		return v.SizeGib
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+func (o AwsNodePoolConfigRootVolumePtrOutput) Throughput() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AwsNodePoolConfigRootVolume) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Throughput
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -17554,13 +17633,19 @@ type ClusterNodeConfig struct {
 	ShieldedInstanceConfig *ClusterNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
 	//
-	// soleTenantConfig {
-	// nodeAffinity {
-	// key = "compute.googleapis.com/node-group-name"
-	// operator = "IN"
-	// values = ["node-group-name"]
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
 	// }
-	// }
+	// ```
 	SoleTenantConfig *ClusterNodeConfigSoleTenantConfig `pulumi:"soleTenantConfig"`
 	// A boolean that represents whether the underlying node VMs are spot.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
@@ -17771,13 +17856,19 @@ type ClusterNodeConfigArgs struct {
 	ShieldedInstanceConfig ClusterNodeConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
 	// Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
 	//
-	// soleTenantConfig {
-	// nodeAffinity {
-	// key = "compute.googleapis.com/node-group-name"
-	// operator = "IN"
-	// values = ["node-group-name"]
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
 	// }
-	// }
+	// ```
 	SoleTenantConfig ClusterNodeConfigSoleTenantConfigPtrInput `pulumi:"soleTenantConfig"`
 	// A boolean that represents whether the underlying node VMs are spot.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
@@ -18154,13 +18245,22 @@ func (o ClusterNodeConfigOutput) ShieldedInstanceConfig() ClusterNodeConfigShiel
 
 // Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
 //
-// soleTenantConfig {
-// nodeAffinity {
-// key = "compute.googleapis.com/node-group-name"
-// operator = "IN"
-// values = ["node-group-name"]
-// }
-// }
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodeConfigOutput) SoleTenantConfig() ClusterNodeConfigSoleTenantConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigSoleTenantConfig { return v.SoleTenantConfig }).(ClusterNodeConfigSoleTenantConfigPtrOutput)
 }
@@ -18630,13 +18730,22 @@ func (o ClusterNodeConfigPtrOutput) ShieldedInstanceConfig() ClusterNodeConfigSh
 
 // Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
 //
-// soleTenantConfig {
-// nodeAffinity {
-// key = "compute.googleapis.com/node-group-name"
-// operator = "IN"
-// values = ["node-group-name"]
-// }
-// }
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodeConfigPtrOutput) SoleTenantConfig() ClusterNodeConfigSoleTenantConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigSoleTenantConfig {
 		if v == nil {
@@ -23174,13 +23283,19 @@ type ClusterNodePoolNodeConfig struct {
 	ShieldedInstanceConfig *ClusterNodePoolNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
 	//
-	// soleTenantConfig {
-	// nodeAffinity {
-	// key = "compute.googleapis.com/node-group-name"
-	// operator = "IN"
-	// values = ["node-group-name"]
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
 	// }
-	// }
+	// ```
 	SoleTenantConfig *ClusterNodePoolNodeConfigSoleTenantConfig `pulumi:"soleTenantConfig"`
 	// A boolean that represents whether the underlying node VMs are spot.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
@@ -23391,13 +23506,19 @@ type ClusterNodePoolNodeConfigArgs struct {
 	ShieldedInstanceConfig ClusterNodePoolNodeConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
 	// Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
 	//
-	// soleTenantConfig {
-	// nodeAffinity {
-	// key = "compute.googleapis.com/node-group-name"
-	// operator = "IN"
-	// values = ["node-group-name"]
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
 	// }
-	// }
+	// ```
 	SoleTenantConfig ClusterNodePoolNodeConfigSoleTenantConfigPtrInput `pulumi:"soleTenantConfig"`
 	// A boolean that represents whether the underlying node VMs are spot.
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
@@ -23786,13 +23907,22 @@ func (o ClusterNodePoolNodeConfigOutput) ShieldedInstanceConfig() ClusterNodePoo
 
 // Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
 //
-// soleTenantConfig {
-// nodeAffinity {
-// key = "compute.googleapis.com/node-group-name"
-// operator = "IN"
-// values = ["node-group-name"]
-// }
-// }
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodePoolNodeConfigOutput) SoleTenantConfig() ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSoleTenantConfig {
 		return v.SoleTenantConfig
@@ -24266,13 +24396,22 @@ func (o ClusterNodePoolNodeConfigPtrOutput) ShieldedInstanceConfig() ClusterNode
 
 // Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
 //
-// soleTenantConfig {
-// nodeAffinity {
-// key = "compute.googleapis.com/node-group-name"
-// operator = "IN"
-// values = ["node-group-name"]
-// }
-// }
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
 func (o ClusterNodePoolNodeConfigPtrOutput) SoleTenantConfig() ClusterNodePoolNodeConfigSoleTenantConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigSoleTenantConfig {
 		if v == nil {
@@ -26871,6 +27010,7 @@ func (o ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput) Mode() pulumi.
 }
 
 type ClusterNodePoolPlacementPolicy struct {
+	TpuTopology *string `pulumi:"tpuTopology"`
 	// Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
 	// `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
 	Type string `pulumi:"type"`
@@ -26888,6 +27028,7 @@ type ClusterNodePoolPlacementPolicyInput interface {
 }
 
 type ClusterNodePoolPlacementPolicyArgs struct {
+	TpuTopology pulumi.StringPtrInput `pulumi:"tpuTopology"`
 	// Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
 	// `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -26970,6 +27111,10 @@ func (o ClusterNodePoolPlacementPolicyOutput) ToClusterNodePoolPlacementPolicyPt
 	}).(ClusterNodePoolPlacementPolicyPtrOutput)
 }
 
+func (o ClusterNodePoolPlacementPolicyOutput) TpuTopology() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolPlacementPolicy) *string { return v.TpuTopology }).(pulumi.StringPtrOutput)
+}
+
 // Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
 // `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
 func (o ClusterNodePoolPlacementPolicyOutput) Type() pulumi.StringOutput {
@@ -26998,6 +27143,15 @@ func (o ClusterNodePoolPlacementPolicyPtrOutput) Elem() ClusterNodePoolPlacement
 		var ret ClusterNodePoolPlacementPolicy
 		return ret
 	}).(ClusterNodePoolPlacementPolicyOutput)
+}
+
+func (o ClusterNodePoolPlacementPolicyPtrOutput) TpuTopology() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolPlacementPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TpuTopology
+	}).(pulumi.StringPtrOutput)
 }
 
 // Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
@@ -29530,6 +29684,162 @@ func (o ClusterResourceUsageExportConfigBigqueryDestinationPtrOutput) DatasetId(
 			return nil
 		}
 		return &v.DatasetId
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterSecurityPostureConfig struct {
+	// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED` and `BASIC`.
+	Mode *string `pulumi:"mode"`
+	// Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED` and `VULNERABILITY_BASIC`.
+	VulnerabilityMode *string `pulumi:"vulnerabilityMode"`
+}
+
+// ClusterSecurityPostureConfigInput is an input type that accepts ClusterSecurityPostureConfigArgs and ClusterSecurityPostureConfigOutput values.
+// You can construct a concrete instance of `ClusterSecurityPostureConfigInput` via:
+//
+//	ClusterSecurityPostureConfigArgs{...}
+type ClusterSecurityPostureConfigInput interface {
+	pulumi.Input
+
+	ToClusterSecurityPostureConfigOutput() ClusterSecurityPostureConfigOutput
+	ToClusterSecurityPostureConfigOutputWithContext(context.Context) ClusterSecurityPostureConfigOutput
+}
+
+type ClusterSecurityPostureConfigArgs struct {
+	// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED` and `BASIC`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED` and `VULNERABILITY_BASIC`.
+	VulnerabilityMode pulumi.StringPtrInput `pulumi:"vulnerabilityMode"`
+}
+
+func (ClusterSecurityPostureConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSecurityPostureConfig)(nil)).Elem()
+}
+
+func (i ClusterSecurityPostureConfigArgs) ToClusterSecurityPostureConfigOutput() ClusterSecurityPostureConfigOutput {
+	return i.ToClusterSecurityPostureConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterSecurityPostureConfigArgs) ToClusterSecurityPostureConfigOutputWithContext(ctx context.Context) ClusterSecurityPostureConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSecurityPostureConfigOutput)
+}
+
+func (i ClusterSecurityPostureConfigArgs) ToClusterSecurityPostureConfigPtrOutput() ClusterSecurityPostureConfigPtrOutput {
+	return i.ToClusterSecurityPostureConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterSecurityPostureConfigArgs) ToClusterSecurityPostureConfigPtrOutputWithContext(ctx context.Context) ClusterSecurityPostureConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSecurityPostureConfigOutput).ToClusterSecurityPostureConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterSecurityPostureConfigPtrInput is an input type that accepts ClusterSecurityPostureConfigArgs, ClusterSecurityPostureConfigPtr and ClusterSecurityPostureConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterSecurityPostureConfigPtrInput` via:
+//
+//	        ClusterSecurityPostureConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterSecurityPostureConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterSecurityPostureConfigPtrOutput() ClusterSecurityPostureConfigPtrOutput
+	ToClusterSecurityPostureConfigPtrOutputWithContext(context.Context) ClusterSecurityPostureConfigPtrOutput
+}
+
+type clusterSecurityPostureConfigPtrType ClusterSecurityPostureConfigArgs
+
+func ClusterSecurityPostureConfigPtr(v *ClusterSecurityPostureConfigArgs) ClusterSecurityPostureConfigPtrInput {
+	return (*clusterSecurityPostureConfigPtrType)(v)
+}
+
+func (*clusterSecurityPostureConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterSecurityPostureConfig)(nil)).Elem()
+}
+
+func (i *clusterSecurityPostureConfigPtrType) ToClusterSecurityPostureConfigPtrOutput() ClusterSecurityPostureConfigPtrOutput {
+	return i.ToClusterSecurityPostureConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterSecurityPostureConfigPtrType) ToClusterSecurityPostureConfigPtrOutputWithContext(ctx context.Context) ClusterSecurityPostureConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterSecurityPostureConfigPtrOutput)
+}
+
+type ClusterSecurityPostureConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterSecurityPostureConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterSecurityPostureConfig)(nil)).Elem()
+}
+
+func (o ClusterSecurityPostureConfigOutput) ToClusterSecurityPostureConfigOutput() ClusterSecurityPostureConfigOutput {
+	return o
+}
+
+func (o ClusterSecurityPostureConfigOutput) ToClusterSecurityPostureConfigOutputWithContext(ctx context.Context) ClusterSecurityPostureConfigOutput {
+	return o
+}
+
+func (o ClusterSecurityPostureConfigOutput) ToClusterSecurityPostureConfigPtrOutput() ClusterSecurityPostureConfigPtrOutput {
+	return o.ToClusterSecurityPostureConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterSecurityPostureConfigOutput) ToClusterSecurityPostureConfigPtrOutputWithContext(ctx context.Context) ClusterSecurityPostureConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterSecurityPostureConfig) *ClusterSecurityPostureConfig {
+		return &v
+	}).(ClusterSecurityPostureConfigPtrOutput)
+}
+
+// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED` and `BASIC`.
+func (o ClusterSecurityPostureConfigOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterSecurityPostureConfig) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED` and `VULNERABILITY_BASIC`.
+func (o ClusterSecurityPostureConfigOutput) VulnerabilityMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterSecurityPostureConfig) *string { return v.VulnerabilityMode }).(pulumi.StringPtrOutput)
+}
+
+type ClusterSecurityPostureConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterSecurityPostureConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterSecurityPostureConfig)(nil)).Elem()
+}
+
+func (o ClusterSecurityPostureConfigPtrOutput) ToClusterSecurityPostureConfigPtrOutput() ClusterSecurityPostureConfigPtrOutput {
+	return o
+}
+
+func (o ClusterSecurityPostureConfigPtrOutput) ToClusterSecurityPostureConfigPtrOutputWithContext(ctx context.Context) ClusterSecurityPostureConfigPtrOutput {
+	return o
+}
+
+func (o ClusterSecurityPostureConfigPtrOutput) Elem() ClusterSecurityPostureConfigOutput {
+	return o.ApplyT(func(v *ClusterSecurityPostureConfig) ClusterSecurityPostureConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterSecurityPostureConfig
+		return ret
+	}).(ClusterSecurityPostureConfigOutput)
+}
+
+// Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED` and `BASIC`.
+func (o ClusterSecurityPostureConfigPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterSecurityPostureConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED` and `VULNERABILITY_BASIC`.
+func (o ClusterSecurityPostureConfigPtrOutput) VulnerabilityMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterSecurityPostureConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VulnerabilityMode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -33859,6 +34169,8 @@ func (o NodePoolNodeConfigWorkloadMetadataConfigPtrOutput) Mode() pulumi.StringP
 }
 
 type NodePoolPlacementPolicy struct {
+	// The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
+	TpuTopology *string `pulumi:"tpuTopology"`
 	// The type of the policy. Supports a single value: COMPACT.
 	// Specifying COMPACT placement policy type places node pool's nodes in a closer
 	// physical proximity in order to reduce network latency between nodes.
@@ -33877,6 +34189,8 @@ type NodePoolPlacementPolicyInput interface {
 }
 
 type NodePoolPlacementPolicyArgs struct {
+	// The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
+	TpuTopology pulumi.StringPtrInput `pulumi:"tpuTopology"`
 	// The type of the policy. Supports a single value: COMPACT.
 	// Specifying COMPACT placement policy type places node pool's nodes in a closer
 	// physical proximity in order to reduce network latency between nodes.
@@ -33960,6 +34274,11 @@ func (o NodePoolPlacementPolicyOutput) ToNodePoolPlacementPolicyPtrOutputWithCon
 	}).(NodePoolPlacementPolicyPtrOutput)
 }
 
+// The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
+func (o NodePoolPlacementPolicyOutput) TpuTopology() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolPlacementPolicy) *string { return v.TpuTopology }).(pulumi.StringPtrOutput)
+}
+
 // The type of the policy. Supports a single value: COMPACT.
 // Specifying COMPACT placement policy type places node pool's nodes in a closer
 // physical proximity in order to reduce network latency between nodes.
@@ -33989,6 +34308,16 @@ func (o NodePoolPlacementPolicyPtrOutput) Elem() NodePoolPlacementPolicyOutput {
 		var ret NodePoolPlacementPolicy
 		return ret
 	}).(NodePoolPlacementPolicyOutput)
+}
+
+// The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
+func (o NodePoolPlacementPolicyPtrOutput) TpuTopology() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolPlacementPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TpuTopology
+	}).(pulumi.StringPtrOutput)
 }
 
 // The type of the policy. Supports a single value: COMPACT.
@@ -44572,7 +44901,8 @@ func (o GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayOutput) Index(i p
 }
 
 type GetClusterNodePoolPlacementPolicy struct {
-	Type string `pulumi:"type"`
+	TpuTopology string `pulumi:"tpuTopology"`
+	Type        string `pulumi:"type"`
 }
 
 // GetClusterNodePoolPlacementPolicyInput is an input type that accepts GetClusterNodePoolPlacementPolicyArgs and GetClusterNodePoolPlacementPolicyOutput values.
@@ -44587,7 +44917,8 @@ type GetClusterNodePoolPlacementPolicyInput interface {
 }
 
 type GetClusterNodePoolPlacementPolicyArgs struct {
-	Type pulumi.StringInput `pulumi:"type"`
+	TpuTopology pulumi.StringInput `pulumi:"tpuTopology"`
+	Type        pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetClusterNodePoolPlacementPolicyArgs) ElementType() reflect.Type {
@@ -44639,6 +44970,10 @@ func (o GetClusterNodePoolPlacementPolicyOutput) ToGetClusterNodePoolPlacementPo
 
 func (o GetClusterNodePoolPlacementPolicyOutput) ToGetClusterNodePoolPlacementPolicyOutputWithContext(ctx context.Context) GetClusterNodePoolPlacementPolicyOutput {
 	return o
+}
+
+func (o GetClusterNodePoolPlacementPolicyOutput) TpuTopology() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolPlacementPolicy) string { return v.TpuTopology }).(pulumi.StringOutput)
 }
 
 func (o GetClusterNodePoolPlacementPolicyOutput) Type() pulumi.StringOutput {
@@ -46105,6 +46440,106 @@ func (o GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput) Index
 	}).(GetClusterResourceUsageExportConfigBigqueryDestinationOutput)
 }
 
+type GetClusterSecurityPostureConfig struct {
+	Mode              string `pulumi:"mode"`
+	VulnerabilityMode string `pulumi:"vulnerabilityMode"`
+}
+
+// GetClusterSecurityPostureConfigInput is an input type that accepts GetClusterSecurityPostureConfigArgs and GetClusterSecurityPostureConfigOutput values.
+// You can construct a concrete instance of `GetClusterSecurityPostureConfigInput` via:
+//
+//	GetClusterSecurityPostureConfigArgs{...}
+type GetClusterSecurityPostureConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterSecurityPostureConfigOutput() GetClusterSecurityPostureConfigOutput
+	ToGetClusterSecurityPostureConfigOutputWithContext(context.Context) GetClusterSecurityPostureConfigOutput
+}
+
+type GetClusterSecurityPostureConfigArgs struct {
+	Mode              pulumi.StringInput `pulumi:"mode"`
+	VulnerabilityMode pulumi.StringInput `pulumi:"vulnerabilityMode"`
+}
+
+func (GetClusterSecurityPostureConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterSecurityPostureConfig)(nil)).Elem()
+}
+
+func (i GetClusterSecurityPostureConfigArgs) ToGetClusterSecurityPostureConfigOutput() GetClusterSecurityPostureConfigOutput {
+	return i.ToGetClusterSecurityPostureConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterSecurityPostureConfigArgs) ToGetClusterSecurityPostureConfigOutputWithContext(ctx context.Context) GetClusterSecurityPostureConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterSecurityPostureConfigOutput)
+}
+
+// GetClusterSecurityPostureConfigArrayInput is an input type that accepts GetClusterSecurityPostureConfigArray and GetClusterSecurityPostureConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterSecurityPostureConfigArrayInput` via:
+//
+//	GetClusterSecurityPostureConfigArray{ GetClusterSecurityPostureConfigArgs{...} }
+type GetClusterSecurityPostureConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterSecurityPostureConfigArrayOutput() GetClusterSecurityPostureConfigArrayOutput
+	ToGetClusterSecurityPostureConfigArrayOutputWithContext(context.Context) GetClusterSecurityPostureConfigArrayOutput
+}
+
+type GetClusterSecurityPostureConfigArray []GetClusterSecurityPostureConfigInput
+
+func (GetClusterSecurityPostureConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterSecurityPostureConfig)(nil)).Elem()
+}
+
+func (i GetClusterSecurityPostureConfigArray) ToGetClusterSecurityPostureConfigArrayOutput() GetClusterSecurityPostureConfigArrayOutput {
+	return i.ToGetClusterSecurityPostureConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterSecurityPostureConfigArray) ToGetClusterSecurityPostureConfigArrayOutputWithContext(ctx context.Context) GetClusterSecurityPostureConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterSecurityPostureConfigArrayOutput)
+}
+
+type GetClusterSecurityPostureConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterSecurityPostureConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterSecurityPostureConfig)(nil)).Elem()
+}
+
+func (o GetClusterSecurityPostureConfigOutput) ToGetClusterSecurityPostureConfigOutput() GetClusterSecurityPostureConfigOutput {
+	return o
+}
+
+func (o GetClusterSecurityPostureConfigOutput) ToGetClusterSecurityPostureConfigOutputWithContext(ctx context.Context) GetClusterSecurityPostureConfigOutput {
+	return o
+}
+
+func (o GetClusterSecurityPostureConfigOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterSecurityPostureConfig) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+func (o GetClusterSecurityPostureConfigOutput) VulnerabilityMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterSecurityPostureConfig) string { return v.VulnerabilityMode }).(pulumi.StringOutput)
+}
+
+type GetClusterSecurityPostureConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterSecurityPostureConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterSecurityPostureConfig)(nil)).Elem()
+}
+
+func (o GetClusterSecurityPostureConfigArrayOutput) ToGetClusterSecurityPostureConfigArrayOutput() GetClusterSecurityPostureConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterSecurityPostureConfigArrayOutput) ToGetClusterSecurityPostureConfigArrayOutputWithContext(ctx context.Context) GetClusterSecurityPostureConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterSecurityPostureConfigArrayOutput) Index(i pulumi.IntInput) GetClusterSecurityPostureConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterSecurityPostureConfig {
+		return vs[0].([]GetClusterSecurityPostureConfig)[vs[1].(int)]
+	}).(GetClusterSecurityPostureConfigOutput)
+}
+
 type GetClusterServiceExternalIpsConfig struct {
 	Enabled bool `pulumi:"enabled"`
 }
@@ -46826,6 +47261,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterResourceUsageExportConfigPtrInput)(nil)).Elem(), ClusterResourceUsageExportConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterResourceUsageExportConfigBigqueryDestinationInput)(nil)).Elem(), ClusterResourceUsageExportConfigBigqueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterResourceUsageExportConfigBigqueryDestinationPtrInput)(nil)).Elem(), ClusterResourceUsageExportConfigBigqueryDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSecurityPostureConfigInput)(nil)).Elem(), ClusterSecurityPostureConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterSecurityPostureConfigPtrInput)(nil)).Elem(), ClusterSecurityPostureConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterServiceExternalIpsConfigInput)(nil)).Elem(), ClusterServiceExternalIpsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterServiceExternalIpsConfigPtrInput)(nil)).Elem(), ClusterServiceExternalIpsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTpuConfigInput)(nil)).Elem(), ClusterTpuConfigArgs{})
@@ -47104,6 +47541,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterResourceUsageExportConfigArrayInput)(nil)).Elem(), GetClusterResourceUsageExportConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterResourceUsageExportConfigBigqueryDestinationInput)(nil)).Elem(), GetClusterResourceUsageExportConfigBigqueryDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterResourceUsageExportConfigBigqueryDestinationArrayInput)(nil)).Elem(), GetClusterResourceUsageExportConfigBigqueryDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecurityPostureConfigInput)(nil)).Elem(), GetClusterSecurityPostureConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterSecurityPostureConfigArrayInput)(nil)).Elem(), GetClusterSecurityPostureConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterServiceExternalIpsConfigInput)(nil)).Elem(), GetClusterServiceExternalIpsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterServiceExternalIpsConfigArrayInput)(nil)).Elem(), GetClusterServiceExternalIpsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterTpuConfigInput)(nil)).Elem(), GetClusterTpuConfigArgs{})
@@ -47444,6 +47883,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterResourceUsageExportConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterResourceUsageExportConfigBigqueryDestinationOutput{})
 	pulumi.RegisterOutputType(ClusterResourceUsageExportConfigBigqueryDestinationPtrOutput{})
+	pulumi.RegisterOutputType(ClusterSecurityPostureConfigOutput{})
+	pulumi.RegisterOutputType(ClusterSecurityPostureConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterServiceExternalIpsConfigOutput{})
 	pulumi.RegisterOutputType(ClusterServiceExternalIpsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterTpuConfigOutput{})
@@ -47722,6 +48163,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterResourceUsageExportConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterResourceUsageExportConfigBigqueryDestinationOutput{})
 	pulumi.RegisterOutputType(GetClusterResourceUsageExportConfigBigqueryDestinationArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterSecurityPostureConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterSecurityPostureConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterServiceExternalIpsConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterServiceExternalIpsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterTpuConfigOutput{})

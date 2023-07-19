@@ -13,26 +13,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
     /**
-     * @return Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
+     * @return Additional properties to use during installation.
+     * This should be in the format of Property=Setting. Appended to the defaults
+     * of `ACTION=INSTALL REBOOT=ReallySuppress`.
      * 
      */
     private @Nullable List<String> properties;
     /**
-     * @return Required. The MSI package.
+     * @return The MSI package. Structure is
+     * documented below.
      * 
      */
     private OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource source;
 
     private OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi() {}
     /**
-     * @return Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
+     * @return Additional properties to use during installation.
+     * This should be in the format of Property=Setting. Appended to the defaults
+     * of `ACTION=INSTALL REBOOT=ReallySuppress`.
      * 
      */
     public List<String> properties() {
         return this.properties == null ? List.of() : this.properties;
     }
     /**
-     * @return Required. The MSI package.
+     * @return The MSI package. Structure is
+     * documented below.
      * 
      */
     public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource source() {

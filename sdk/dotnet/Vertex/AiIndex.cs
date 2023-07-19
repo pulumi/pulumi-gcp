@@ -59,6 +59,7 @@ namespace Pulumi.Gcp.Vertex
     ///             {
     ///                 Dimensions = 2,
     ///                 ApproximateNeighborsCount = 150,
+    ///                 ShardSize = "SHARD_SIZE_SMALL",
     ///                 DistanceMeasureType = "DOT_PRODUCT_DISTANCE",
     ///                 AlgorithmConfig = new Gcp.Vertex.Inputs.AiIndexMetadataConfigAlgorithmConfigArgs
     ///                 {
@@ -116,6 +117,7 @@ namespace Pulumi.Gcp.Vertex
     ///             Config = new Gcp.Vertex.Inputs.AiIndexMetadataConfigArgs
     ///             {
     ///                 Dimensions = 2,
+    ///                 ShardSize = "SHARD_SIZE_LARGE",
     ///                 DistanceMeasureType = "COSINE_DISTANCE",
     ///                 FeatureNormType = "UNIT_L2_NORM",
     ///                 AlgorithmConfig = new Gcp.Vertex.Inputs.AiIndexMetadataConfigAlgorithmConfigArgs

@@ -14,14 +14,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs ext
     public static final OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs Empty = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs();
 
     /**
-     * Required. Package name.
+     * Package name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return Required. Package name.
+     * @return Package name.
      * 
      */
     public Output<String> name() {
@@ -53,7 +53,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs ext
         }
 
         /**
-         * @param name Required. Package name.
+         * @param name Package name.
          * 
          * @return builder
          * 
@@ -64,7 +64,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs ext
         }
 
         /**
-         * @param name Required. Package name.
+         * @param name Package name.
          * 
          * @return builder
          * 

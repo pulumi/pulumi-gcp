@@ -191,7 +191,7 @@ namespace Pulumi.Gcp.Compute
     ///                 TargetUtilization = 0.5,
     ///             },
     ///         },
-    ///         NoopOnDestroy = true,
+    ///         DeleteServiceOnDestroy = true,
     ///     });
     /// 
     ///     // App Engine Example

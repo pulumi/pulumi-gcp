@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute
     /// The Compute FirewallPolicyRule resource
     /// 
     /// ## Example Usage
-    /// ### Basic_fir_sec_rule_addr_groups
+    /// ### Basic_fir_sec_rule
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,18 +33,12 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///         Type = "IPV4",
     ///         Capacity = 100,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var folder = new Gcp.Organizations.Folder("folder", new()
     ///     {
     ///         DisplayName = "policy",
     ///         Parent = "organizations/123456789",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var @default = new Gcp.Compute.FirewallPolicy("default", new()
@@ -52,9 +46,6 @@ namespace Pulumi.Gcp.Compute
     ///         Parent = folder.Id,
     ///         ShortName = "policy",
     ///         Description = "Resource created for Terraform acceptance testing",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var primary = new Gcp.Compute.FirewallPolicyRule("primary", new()
@@ -110,9 +101,6 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             "my@service-account.com",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

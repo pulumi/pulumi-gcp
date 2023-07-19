@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -161,6 +162,7 @@ func NewTrigger(ctx *pulumi.Context,
 	if args.MatchingCriterias == nil {
 		return nil, errors.New("invalid value for required argument 'MatchingCriterias'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Trigger
 	err := ctx.RegisterResource("gcp:eventarc/trigger:Trigger", name, args, &resource, opts...)
 	if err != nil {

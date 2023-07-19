@@ -294,6 +294,20 @@ public class ProjectBucketConfig extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
+     * Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+     * 
+     */
+    @Export(name="locked", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> locked;
+
+    /**
+     * @return Whether the bucket is locked. The retention period on a locked bucket cannot be changed. Locked buckets may only be deleted if they are empty.
+     * 
+     */
+    public Output<Optional<Boolean>> locked() {
+        return Codegen.optional(this.locked);
+    }
+    /**
      * The resource name of the CMEK settings.
      * 
      */

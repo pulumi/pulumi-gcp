@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupSSLPolicy(ctx *pulumi.Context, args *LookupSSLPolicyArgs, opts ...pulumi.InvokeOption) (*LookupSSLPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSSLPolicyResult
 	err := ctx.Invoke("gcp:compute/getSSLPolicy:getSSLPolicy", args, &rv, opts...)
 	if err != nil {

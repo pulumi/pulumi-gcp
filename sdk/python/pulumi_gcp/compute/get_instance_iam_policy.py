@@ -109,9 +109,9 @@ def get_instance_iam_policy(instance_name: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.compute.get_instance_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        zone=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        instance_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.compute.get_instance_iam_policy(project=google_compute_instance["default"]["project"],
+        zone=google_compute_instance["default"]["zone"],
+        instance_name=google_compute_instance["default"]["name"])
     ```
 
 
@@ -130,12 +130,12 @@ def get_instance_iam_policy(instance_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getInstanceIamPolicy:getInstanceIamPolicy', __args__, opts=opts, typ=GetInstanceIamPolicyResult).value
 
     return AwaitableGetInstanceIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        instance_name=__ret__.instance_name,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project,
-        zone=__ret__.zone)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        instance_name=pulumi.get(__ret__, 'instance_name'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_instance_iam_policy)
@@ -152,9 +152,9 @@ def get_instance_iam_policy_output(instance_name: Optional[pulumi.Input[str]] = 
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.compute.get_instance_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        zone=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        instance_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.compute.get_instance_iam_policy(project=google_compute_instance["default"]["project"],
+        zone=google_compute_instance["default"]["zone"],
+        instance_name=google_compute_instance["default"]["name"])
     ```
 
 

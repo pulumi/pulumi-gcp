@@ -120,12 +120,12 @@ def get_region_backend_service_iam_policy(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy', __args__, opts=opts, typ=GetRegionBackendServiceIamPolicyResult).value
 
     return AwaitableGetRegionBackendServiceIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        name=__ret__.name,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project,
-        region=__ret__.region)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'))
 
 
 @_utilities.lift_output_func(get_region_backend_service_iam_policy)

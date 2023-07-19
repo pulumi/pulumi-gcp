@@ -108,7 +108,7 @@ def get_cluster_iam_policy(cluster: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataproc.get_cluster_iam_policy(cluster=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    policy = gcp.dataproc.get_cluster_iam_policy(cluster=google_dataproc_cluster["cluster"]["name"],
         region="us-central1")
     ```
 
@@ -123,12 +123,12 @@ def get_cluster_iam_policy(cluster: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:dataproc/getClusterIamPolicy:getClusterIamPolicy', __args__, opts=opts, typ=GetClusterIamPolicyResult).value
 
     return AwaitableGetClusterIamPolicyResult(
-        cluster=__ret__.cluster,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project,
-        region=__ret__.region)
+        cluster=pulumi.get(__ret__, 'cluster'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'))
 
 
 @_utilities.lift_output_func(get_cluster_iam_policy)
@@ -145,7 +145,7 @@ def get_cluster_iam_policy_output(cluster: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataproc.get_cluster_iam_policy(cluster=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    policy = gcp.dataproc.get_cluster_iam_policy(cluster=google_dataproc_cluster["cluster"]["name"],
         region="us-central1")
     ```
 

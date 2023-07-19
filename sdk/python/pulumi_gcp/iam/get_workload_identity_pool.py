@@ -137,14 +137,14 @@ def get_workload_identity_pool(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool', __args__, opts=opts, typ=GetWorkloadIdentityPoolResult).value
 
     return AwaitableGetWorkloadIdentityPoolResult(
-        description=__ret__.description,
-        disabled=__ret__.disabled,
-        display_name=__ret__.display_name,
-        id=__ret__.id,
-        name=__ret__.name,
-        project=__ret__.project,
-        state=__ret__.state,
-        workload_identity_pool_id=__ret__.workload_identity_pool_id)
+        description=pulumi.get(__ret__, 'description'),
+        disabled=pulumi.get(__ret__, 'disabled'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        state=pulumi.get(__ret__, 'state'),
+        workload_identity_pool_id=pulumi.get(__ret__, 'workload_identity_pool_id'))
 
 
 @_utilities.lift_output_func(get_workload_identity_pool)

@@ -21,6 +21,26 @@ import * as utilities from "../utilities";
  *     publicKeyType: "TYPE_X509_PEM_FILE",
  * });
  * ```
+ * ### Creating And Regularly Rotating A Key
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumi/time";
+ *
+ * const myaccount = new gcp.serviceaccount.Account("myaccount", {
+ *     accountId: "myaccount",
+ *     displayName: "My Service Account",
+ * });
+ * // note this requires the terraform to be run regularly
+ * const mykeyRotation = new time.index.Time_rotating("mykeyRotation", {rotationDays: 30});
+ * const mykey = new gcp.serviceaccount.Key("mykey", {
+ *     serviceAccountId: myaccount.name,
+ *     keepers: {
+ *         rotation_time: mykeyRotation.rotationRfc3339,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

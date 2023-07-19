@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
     public sealed class DeliveryPipelineSerialPipelineStageStrategy
     {
         /// <summary>
-        /// (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+        /// Canary deployment strategy provides progressive percentage based deployments to a Target.
         /// </summary>
         public readonly Outputs.DeliveryPipelineSerialPipelineStageStrategyCanary? Canary;
         /// <summary>

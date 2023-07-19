@@ -529,9 +529,10 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
+     * The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, or `PRIVATE_SERVICE_CONNECT`.
      * A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
      * A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+     * A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
      * If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
      * The enableFlowLogs field isn&#39;t supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER`.
      * 
@@ -540,9 +541,10 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
     private Output<String> purpose;
 
     /**
-     * @return The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER` or `REGIONAL_MANAGED_PROXY`.
+     * @return The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `INTERNAL_HTTPS_LOAD_BALANCER`, `REGIONAL_MANAGED_PROXY`, or `PRIVATE_SERVICE_CONNECT`.
      * A subnetwork with purpose set to `INTERNAL_HTTPS_LOAD_BALANCER` is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing.
      * A subnetwork in a given region with purpose set to `REGIONAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the regional Envoy-based load balancers.
+     * A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
      * If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
      * The enableFlowLogs field isn&#39;t supported with the purpose field set to `INTERNAL_HTTPS_LOAD_BALANCER`.
      * 

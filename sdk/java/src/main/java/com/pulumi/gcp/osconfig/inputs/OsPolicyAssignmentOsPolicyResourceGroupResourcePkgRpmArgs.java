@@ -17,14 +17,18 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs ext
     public static final OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs Empty = new OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs();
 
     /**
-     * Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+     * Whether dependencies should also be installed. -
+     * install when false: `rpm --upgrade --replacepkgs package.rpm` - install when
+     * true: `yum -y install package.rpm` or `zypper -y install package.rpm`
      * 
      */
     @Import(name="pullDeps")
     private @Nullable Output<Boolean> pullDeps;
 
     /**
-     * @return Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+     * @return Whether dependencies should also be installed. -
+     * install when false: `rpm --upgrade --replacepkgs package.rpm` - install when
+     * true: `yum -y install package.rpm` or `zypper -y install package.rpm`
      * 
      */
     public Optional<Output<Boolean>> pullDeps() {
@@ -32,14 +36,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs ext
     }
 
     /**
-     * Required. An rpm package.
+     * An rpm package. Structure is
+     * documented below.
      * 
      */
     @Import(name="source", required=true)
     private Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs> source;
 
     /**
-     * @return Required. An rpm package.
+     * @return An rpm package. Structure is
+     * documented below.
      * 
      */
     public Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs> source() {
@@ -72,7 +78,9 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs ext
         }
 
         /**
-         * @param pullDeps Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+         * @param pullDeps Whether dependencies should also be installed. -
+         * install when false: `rpm --upgrade --replacepkgs package.rpm` - install when
+         * true: `yum -y install package.rpm` or `zypper -y install package.rpm`
          * 
          * @return builder
          * 
@@ -83,7 +91,9 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs ext
         }
 
         /**
-         * @param pullDeps Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+         * @param pullDeps Whether dependencies should also be installed. -
+         * install when false: `rpm --upgrade --replacepkgs package.rpm` - install when
+         * true: `yum -y install package.rpm` or `zypper -y install package.rpm`
          * 
          * @return builder
          * 
@@ -93,7 +103,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs ext
         }
 
         /**
-         * @param source Required. An rpm package.
+         * @param source An rpm package. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -104,7 +115,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs ext
         }
 
         /**
-         * @param source Required. An rpm package.
+         * @param source An rpm package. Structure is
+         * documented below.
          * 
          * @return builder
          * 

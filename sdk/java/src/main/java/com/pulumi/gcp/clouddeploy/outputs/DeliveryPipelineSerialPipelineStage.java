@@ -4,6 +4,7 @@
 package com.pulumi.gcp.clouddeploy.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageDeployParameter;
 import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategy;
 import java.lang.String;
 import java.util.List;
@@ -13,6 +14,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DeliveryPipelineSerialPipelineStage {
+    /**
+     * @return Optional. The deploy parameters to use for the target in this stage.
+     * 
+     */
+    private @Nullable List<DeliveryPipelineSerialPipelineStageDeployParameter> deployParameters;
     /**
      * @return Skaffold profiles to use when rendering the manifest for this stage&#39;s `Target`.
      * 
@@ -30,6 +36,13 @@ public final class DeliveryPipelineSerialPipelineStage {
     private @Nullable String targetId;
 
     private DeliveryPipelineSerialPipelineStage() {}
+    /**
+     * @return Optional. The deploy parameters to use for the target in this stage.
+     * 
+     */
+    public List<DeliveryPipelineSerialPipelineStageDeployParameter> deployParameters() {
+        return this.deployParameters == null ? List.of() : this.deployParameters;
+    }
     /**
      * @return Skaffold profiles to use when rendering the manifest for this stage&#39;s `Target`.
      * 
@@ -61,17 +74,27 @@ public final class DeliveryPipelineSerialPipelineStage {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<DeliveryPipelineSerialPipelineStageDeployParameter> deployParameters;
         private @Nullable List<String> profiles;
         private @Nullable DeliveryPipelineSerialPipelineStageStrategy strategy;
         private @Nullable String targetId;
         public Builder() {}
         public Builder(DeliveryPipelineSerialPipelineStage defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.deployParameters = defaults.deployParameters;
     	      this.profiles = defaults.profiles;
     	      this.strategy = defaults.strategy;
     	      this.targetId = defaults.targetId;
         }
 
+        @CustomType.Setter
+        public Builder deployParameters(@Nullable List<DeliveryPipelineSerialPipelineStageDeployParameter> deployParameters) {
+            this.deployParameters = deployParameters;
+            return this;
+        }
+        public Builder deployParameters(DeliveryPipelineSerialPipelineStageDeployParameter... deployParameters) {
+            return deployParameters(List.of(deployParameters));
+        }
         @CustomType.Setter
         public Builder profiles(@Nullable List<String> profiles) {
             this.profiles = profiles;
@@ -92,6 +115,7 @@ public final class DeliveryPipelineSerialPipelineStage {
         }
         public DeliveryPipelineSerialPipelineStage build() {
             final var o = new DeliveryPipelineSerialPipelineStage();
+            o.deployParameters = deployParameters;
             o.profiles = profiles;
             o.strategy = strategy;
             o.targetId = targetId;

@@ -109,9 +109,9 @@ def get_iam_policy(data_policy_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigquerydatapolicy.get_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        data_policy_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.bigquerydatapolicy.get_iam_policy(project=google_bigquery_datapolicy_data_policy["data_policy"]["project"],
+        location=google_bigquery_datapolicy_data_policy["data_policy"]["location"],
+        data_policy_id=google_bigquery_datapolicy_data_policy["data_policy"]["data_policy_id"])
     ```
 
 
@@ -128,12 +128,12 @@ def get_iam_policy(data_policy_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:bigquerydatapolicy/getIamPolicy:getIamPolicy', __args__, opts=opts, typ=GetIamPolicyResult).value
 
     return AwaitableGetIamPolicyResult(
-        data_policy_id=__ret__.data_policy_id,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        location=__ret__.location,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        data_policy_id=pulumi.get(__ret__, 'data_policy_id'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_iam_policy)
@@ -150,9 +150,9 @@ def get_iam_policy_output(data_policy_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigquerydatapolicy.get_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        data_policy_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.bigquerydatapolicy.get_iam_policy(project=google_bigquery_datapolicy_data_policy["data_policy"]["project"],
+        location=google_bigquery_datapolicy_data_policy["data_policy"]["location"],
+        data_policy_id=google_bigquery_datapolicy_data_policy["data_policy"]["data_policy_id"])
     ```
 
 

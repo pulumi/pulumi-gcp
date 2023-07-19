@@ -332,14 +332,28 @@ public final class ClusterNodeConfig {
     private @Nullable ClusterNodeConfigShieldedInstanceConfig shieldedInstanceConfig;
     /**
      * @return Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+     * ```java
+     * package generated_program;
      * 
-     * sole_tenant_config {
-     * node_affinity {
-     * key = &#34;compute.googleapis.com/node-group-name&#34;
-     * operator = &#34;IN&#34;
-     * values = [&#34;node-group-name&#34;]
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
      * }
-     * }
+     * ```
      * 
      */
     private @Nullable ClusterNodeConfigSoleTenantConfig soleTenantConfig;
@@ -732,14 +746,28 @@ public final class ClusterNodeConfig {
     }
     /**
      * @return Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
+     * ```java
+     * package generated_program;
      * 
-     * sole_tenant_config {
-     * node_affinity {
-     * key = &#34;compute.googleapis.com/node-group-name&#34;
-     * operator = &#34;IN&#34;
-     * values = [&#34;node-group-name&#34;]
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *     }
      * }
-     * }
+     * ```
      * 
      */
     public Optional<ClusterNodeConfigSoleTenantConfig> soleTenantConfig() {

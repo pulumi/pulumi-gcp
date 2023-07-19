@@ -13,26 +13,32 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb {
     /**
-     * @return Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update &amp;&amp; apt-get -y install package.deb`
+     * @return Whether dependencies should also be installed. -
+     * install when false: `dpkg -i package` - install when true: `apt-get update
+     * &amp;&amp; apt-get -y install package.deb`
      * 
      */
     private @Nullable Boolean pullDeps;
     /**
-     * @return Required. A deb package.
+     * @return A deb package. Structure is
+     * documented below.
      * 
      */
     private OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource source;
 
     private OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb() {}
     /**
-     * @return Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update &amp;&amp; apt-get -y install package.deb`
+     * @return Whether dependencies should also be installed. -
+     * install when false: `dpkg -i package` - install when true: `apt-get update
+     * &amp;&amp; apt-get -y install package.deb`
      * 
      */
     public Optional<Boolean> pullDeps() {
         return Optional.ofNullable(this.pullDeps);
     }
     /**
-     * @return Required. A deb package.
+     * @return A deb package. Structure is
+     * documented below.
      * 
      */
     public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource source() {

@@ -99,8 +99,8 @@ def get_secret_iam_policy(project: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.secretmanager.get_secret_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        secret_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.secretmanager.get_secret_iam_policy(project=google_secret_manager_secret["secret-basic"]["project"],
+        secret_id=google_secret_manager_secret["secret-basic"]["secret_id"])
     ```
 
 
@@ -114,11 +114,11 @@ def get_secret_iam_policy(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:secretmanager/getSecretIamPolicy:getSecretIamPolicy', __args__, opts=opts, typ=GetSecretIamPolicyResult).value
 
     return AwaitableGetSecretIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project,
-        secret_id=__ret__.secret_id)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'),
+        secret_id=pulumi.get(__ret__, 'secret_id'))
 
 
 @_utilities.lift_output_func(get_secret_iam_policy)
@@ -134,8 +134,8 @@ def get_secret_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] 
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.secretmanager.get_secret_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        secret_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.secretmanager.get_secret_iam_policy(project=google_secret_manager_secret["secret-basic"]["project"],
+        secret_id=google_secret_manager_secret["secret-basic"]["secret_id"])
     ```
 
 

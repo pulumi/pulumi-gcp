@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupMetastoreServiceIamPolicy(ctx *pulumi.Context, args *LookupMetastoreServiceIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupMetastoreServiceIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMetastoreServiceIamPolicyResult
 	err := ctx.Invoke("gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy", args, &rv, opts...)
 	if err != nil {

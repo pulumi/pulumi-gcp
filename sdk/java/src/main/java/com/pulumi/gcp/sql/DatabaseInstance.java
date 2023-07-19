@@ -148,6 +148,44 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### ENTERPRISE_PLUS Instance with data_cache_config
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsDataCacheConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var main = new DatabaseInstance(&#34;main&#34;, DatabaseInstanceArgs.builder()        
+ *             .databaseVersion(&#34;MYSQL_8_0_31&#34;)
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .dataCacheConfig(DatabaseInstanceSettingsDataCacheConfigArgs.builder()
+ *                     .dataCacheEnabled(true)
+ *                     .build())
+ *                 .edition(&#34;ENTERPRISE_PLUS&#34;)
+ *                 .tier(&#34;db-perf-optimized-N-2&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

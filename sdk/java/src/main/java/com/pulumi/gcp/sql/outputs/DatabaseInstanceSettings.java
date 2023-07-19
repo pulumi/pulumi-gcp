@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsActiveDirectoryConfig;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsAdvancedMachineFeatures;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsBackupConfiguration;
+import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsDataCacheConfig;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsDatabaseFlag;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsDenyMaintenancePeriod;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsInsightsConfig;
@@ -55,6 +56,7 @@ public final class DatabaseInstanceSettings {
      * 
      */
     private @Nullable String connectorEnforcement;
+    private @Nullable DatabaseInstanceSettingsDataCacheConfig dataCacheConfig;
     private @Nullable List<DatabaseInstanceSettingsDatabaseFlag> databaseFlags;
     private @Nullable Boolean deletionProtectionEnabled;
     private @Nullable DatabaseInstanceSettingsDenyMaintenancePeriod denyMaintenancePeriod;
@@ -78,6 +80,11 @@ public final class DatabaseInstanceSettings {
      * 
      */
     private @Nullable String diskType;
+    /**
+     * @return The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+     * 
+     */
+    private @Nullable String edition;
     private @Nullable DatabaseInstanceSettingsInsightsConfig insightsConfig;
     private @Nullable DatabaseInstanceSettingsIpConfiguration ipConfiguration;
     private @Nullable DatabaseInstanceSettingsLocationPreference locationPreference;
@@ -152,6 +159,9 @@ public final class DatabaseInstanceSettings {
     public Optional<String> connectorEnforcement() {
         return Optional.ofNullable(this.connectorEnforcement);
     }
+    public Optional<DatabaseInstanceSettingsDataCacheConfig> dataCacheConfig() {
+        return Optional.ofNullable(this.dataCacheConfig);
+    }
     public List<DatabaseInstanceSettingsDatabaseFlag> databaseFlags() {
         return this.databaseFlags == null ? List.of() : this.databaseFlags;
     }
@@ -188,6 +198,13 @@ public final class DatabaseInstanceSettings {
      */
     public Optional<String> diskType() {
         return Optional.ofNullable(this.diskType);
+    }
+    /**
+     * @return The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+     * 
+     */
+    public Optional<String> edition() {
+        return Optional.ofNullable(this.edition);
     }
     public Optional<DatabaseInstanceSettingsInsightsConfig> insightsConfig() {
         return Optional.ofNullable(this.insightsConfig);
@@ -257,6 +274,7 @@ public final class DatabaseInstanceSettings {
         private @Nullable DatabaseInstanceSettingsBackupConfiguration backupConfiguration;
         private @Nullable String collation;
         private @Nullable String connectorEnforcement;
+        private @Nullable DatabaseInstanceSettingsDataCacheConfig dataCacheConfig;
         private @Nullable List<DatabaseInstanceSettingsDatabaseFlag> databaseFlags;
         private @Nullable Boolean deletionProtectionEnabled;
         private @Nullable DatabaseInstanceSettingsDenyMaintenancePeriod denyMaintenancePeriod;
@@ -264,6 +282,7 @@ public final class DatabaseInstanceSettings {
         private @Nullable Integer diskAutoresizeLimit;
         private @Nullable Integer diskSize;
         private @Nullable String diskType;
+        private @Nullable String edition;
         private @Nullable DatabaseInstanceSettingsInsightsConfig insightsConfig;
         private @Nullable DatabaseInstanceSettingsIpConfiguration ipConfiguration;
         private @Nullable DatabaseInstanceSettingsLocationPreference locationPreference;
@@ -285,6 +304,7 @@ public final class DatabaseInstanceSettings {
     	      this.backupConfiguration = defaults.backupConfiguration;
     	      this.collation = defaults.collation;
     	      this.connectorEnforcement = defaults.connectorEnforcement;
+    	      this.dataCacheConfig = defaults.dataCacheConfig;
     	      this.databaseFlags = defaults.databaseFlags;
     	      this.deletionProtectionEnabled = defaults.deletionProtectionEnabled;
     	      this.denyMaintenancePeriod = defaults.denyMaintenancePeriod;
@@ -292,6 +312,7 @@ public final class DatabaseInstanceSettings {
     	      this.diskAutoresizeLimit = defaults.diskAutoresizeLimit;
     	      this.diskSize = defaults.diskSize;
     	      this.diskType = defaults.diskType;
+    	      this.edition = defaults.edition;
     	      this.insightsConfig = defaults.insightsConfig;
     	      this.ipConfiguration = defaults.ipConfiguration;
     	      this.locationPreference = defaults.locationPreference;
@@ -341,6 +362,11 @@ public final class DatabaseInstanceSettings {
             return this;
         }
         @CustomType.Setter
+        public Builder dataCacheConfig(@Nullable DatabaseInstanceSettingsDataCacheConfig dataCacheConfig) {
+            this.dataCacheConfig = dataCacheConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder databaseFlags(@Nullable List<DatabaseInstanceSettingsDatabaseFlag> databaseFlags) {
             this.databaseFlags = databaseFlags;
             return this;
@@ -376,6 +402,11 @@ public final class DatabaseInstanceSettings {
         @CustomType.Setter
         public Builder diskType(@Nullable String diskType) {
             this.diskType = diskType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder edition(@Nullable String edition) {
+            this.edition = edition;
             return this;
         }
         @CustomType.Setter
@@ -442,6 +473,7 @@ public final class DatabaseInstanceSettings {
             o.backupConfiguration = backupConfiguration;
             o.collation = collation;
             o.connectorEnforcement = connectorEnforcement;
+            o.dataCacheConfig = dataCacheConfig;
             o.databaseFlags = databaseFlags;
             o.deletionProtectionEnabled = deletionProtectionEnabled;
             o.denyMaintenancePeriod = denyMaintenancePeriod;
@@ -449,6 +481,7 @@ public final class DatabaseInstanceSettings {
             o.diskAutoresizeLimit = diskAutoresizeLimit;
             o.diskSize = diskSize;
             o.diskType = diskType;
+            o.edition = edition;
             o.insightsConfig = insightsConfig;
             o.ipConfiguration = ipConfiguration;
             o.locationPreference = locationPreference;

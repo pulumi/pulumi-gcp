@@ -81,7 +81,7 @@ namespace Pulumi.Gcp.BigQuery
         /// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
         /// </summary>
         [Output("edition")]
-        public Output<string?> Edition { get; private set; } = null!;
+        public Output<string> Edition { get; private set; } = null!;
 
         /// <summary>
         /// If false, any query using this reservation will use idle slots from other reservations within

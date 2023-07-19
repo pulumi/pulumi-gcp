@@ -19,6 +19,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Gateway represents the configuration for a proxy, typically a load balancer.
+ * It captures the ip:port over which the services are exposed by the proxy,
+ * along with any policy configurations. Routes have reference to to Gateways
+ * to dictate how requests should be routed by this Gateway.
+ * 
+ * To get more information about Gateway, see:
+ * 
+ * * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-services/rest/v1/projects.locations.gateways)
+ * 
  * ## Example Usage
  * ### Network Services Gateway Basic
  * ```java
@@ -29,7 +38,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.networkservices.Gateway;
  * import com.pulumi.gcp.networkservices.GatewayArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -44,12 +52,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Gateway(&#34;default&#34;, GatewayArgs.builder()        
+ *             .ports(443)
  *             .scope(&#34;default-scope-basic&#34;)
  *             .type(&#34;OPEN_MESH&#34;)
- *             .ports(443)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -63,7 +69,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.networkservices.Gateway;
  * import com.pulumi.gcp.networkservices.GatewayArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -78,14 +83,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Gateway(&#34;default&#34;, GatewayArgs.builder()        
- *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .description(&#34;my description&#34;)
- *             .type(&#34;OPEN_MESH&#34;)
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .ports(443)
  *             .scope(&#34;default-scope-advance&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .type(&#34;OPEN_MESH&#34;)
+ *             .build());
  * 
  *     }
  * }
@@ -130,16 +133,12 @@ import javax.annotation.Nullable;
  *                 .pemCertificate(Files.readString(Paths.get(&#34;test-fixtures/certificatemanager/cert.pem&#34;)))
  *                 .pemPrivateKey(Files.readString(Paths.get(&#34;test-fixtures/certificatemanager/private-key.pem&#34;)))
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
  *             .routingMode(&#34;REGIONAL&#34;)
  *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
  *             .purpose(&#34;PRIVATE&#34;)
@@ -147,9 +146,7 @@ import javax.annotation.Nullable;
  *             .region(&#34;us-central1&#34;)
  *             .network(defaultNetwork.id())
  *             .role(&#34;ACTIVE&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var proxyonlysubnet = new Subnetwork(&#34;proxyonlysubnet&#34;, SubnetworkArgs.builder()        
  *             .purpose(&#34;REGIONAL_MANAGED_PROXY&#34;)
@@ -157,15 +154,11 @@ import javax.annotation.Nullable;
  *             .region(&#34;us-central1&#34;)
  *             .network(defaultNetwork.id())
  *             .role(&#34;ACTIVE&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy(&#34;defaultGatewaySecurityPolicy&#34;, GatewaySecurityPolicyArgs.builder()        
  *             .location(&#34;us-central1&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule(&#34;defaultGatewaySecurityPolicyRule&#34;, GatewaySecurityPolicyRuleArgs.builder()        
  *             .location(&#34;us-central1&#34;)
@@ -174,9 +167,7 @@ import javax.annotation.Nullable;
  *             .priority(1)
  *             .sessionMatcher(&#34;host() == &#39;example.com&#39;&#34;)
  *             .basicProfile(&#34;ALLOW&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
  *             .location(&#34;us-central1&#34;)
@@ -190,7 +181,6 @@ import javax.annotation.Nullable;
  *             .subnetwork(defaultSubnetwork.id())
  *             .deleteSwgAutogenRouterOnDestroy(true)
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
  *                 .dependsOn(proxyonlysubnet)
  *                 .build());
  * 
@@ -237,16 +227,12 @@ import javax.annotation.Nullable;
  *                 .pemCertificate(Files.readString(Paths.get(&#34;test-fixtures/certificatemanager/cert.pem&#34;)))
  *                 .pemPrivateKey(Files.readString(Paths.get(&#34;test-fixtures/certificatemanager/private-key.pem&#34;)))
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
  *             .routingMode(&#34;REGIONAL&#34;)
  *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultSubnetwork = new Subnetwork(&#34;defaultSubnetwork&#34;, SubnetworkArgs.builder()        
  *             .purpose(&#34;PRIVATE&#34;)
@@ -254,9 +240,7 @@ import javax.annotation.Nullable;
  *             .region(&#34;us-south1&#34;)
  *             .network(defaultNetwork.id())
  *             .role(&#34;ACTIVE&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var proxyonlysubnet = new Subnetwork(&#34;proxyonlysubnet&#34;, SubnetworkArgs.builder()        
  *             .purpose(&#34;REGIONAL_MANAGED_PROXY&#34;)
@@ -264,15 +248,11 @@ import javax.annotation.Nullable;
  *             .region(&#34;us-south1&#34;)
  *             .network(defaultNetwork.id())
  *             .role(&#34;ACTIVE&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultGatewaySecurityPolicy = new GatewaySecurityPolicy(&#34;defaultGatewaySecurityPolicy&#34;, GatewaySecurityPolicyArgs.builder()        
  *             .location(&#34;us-south1&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultGatewaySecurityPolicyRule = new GatewaySecurityPolicyRule(&#34;defaultGatewaySecurityPolicyRule&#34;, GatewaySecurityPolicyRuleArgs.builder()        
  *             .location(&#34;us-south1&#34;)
@@ -281,9 +261,7 @@ import javax.annotation.Nullable;
  *             .priority(1)
  *             .sessionMatcher(&#34;host() == &#39;example.com&#39;&#34;)
  *             .basicProfile(&#34;ALLOW&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var defaultGateway = new Gateway(&#34;defaultGateway&#34;, GatewayArgs.builder()        
  *             .location(&#34;us-south1&#34;)
@@ -297,7 +275,6 @@ import javax.annotation.Nullable;
  *             .subnetwork(defaultSubnetwork.id())
  *             .deleteSwgAutogenRouterOnDestroy(true)
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
  *                 .dependsOn(proxyonlysubnet)
  *                 .build());
  * 
@@ -313,7 +290,6 @@ import javax.annotation.Nullable;
  *             .subnetwork(defaultSubnetwork.id())
  *             .deleteSwgAutogenRouterOnDestroy(true)
  *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
  *                 .dependsOn(proxyonlysubnet)
  *                 .build());
  * 

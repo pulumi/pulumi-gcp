@@ -33,6 +33,10 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         [Input("repoType", required: true)]
         public Input<string> RepoType { get; set; } = null!;
 
+        /// <summary>
+        /// The qualified resource name of the Repo API repository.
+        /// Either uri or repository can be specified and is required.
+        /// </summary>
         [Input("repository")]
         public Input<string>? Repository { get; set; }
 

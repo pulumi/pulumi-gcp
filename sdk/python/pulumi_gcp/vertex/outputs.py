@@ -1014,6 +1014,9 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis(dict):
     @property
     @pulumi.getter(name="monitoringInterval")
     def monitoring_interval(self) -> Optional[str]:
+        warnings.warn("""This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""", DeprecationWarning)
+        pulumi.log.warn("""monitoring_interval is deprecated: This field is unavailable in the GA provider and will be removed from the beta provider in a future release.""")
+
         return pulumi.get(self, "monitoring_interval")
 
     @property
@@ -1383,6 +1386,8 @@ class AiIndexMetadataConfig(dict):
             suggest = "distance_measure_type"
         elif key == "featureNormType":
             suggest = "feature_norm_type"
+        elif key == "shardSize":
+            suggest = "shard_size"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AiIndexMetadataConfig. Access the value via the '{suggest}' property getter instead.")
@@ -1400,7 +1405,8 @@ class AiIndexMetadataConfig(dict):
                  algorithm_config: Optional['outputs.AiIndexMetadataConfigAlgorithmConfig'] = None,
                  approximate_neighbors_count: Optional[int] = None,
                  distance_measure_type: Optional[str] = None,
-                 feature_norm_type: Optional[str] = None):
+                 feature_norm_type: Optional[str] = None,
+                 shard_size: Optional[str] = None):
         """
         :param int dimensions: The number of dimensions of the input vectors.
         :param 'AiIndexMetadataConfigAlgorithmConfigArgs' algorithm_config: The configuration with regard to the algorithms used for efficient search.
@@ -1417,6 +1423,11 @@ class AiIndexMetadataConfig(dict):
         :param str feature_norm_type: Type of normalization to be carried out on each vector. The value must be one of the followings:
                * UNIT_L2_NORM: Unit L2 normalization type
                * NONE: No normalization type is specified.
+        :param str shard_size: Index data is split into equal parts to be processed. These are called "shards".
+               The shard size must be specified when creating an index. The value must be one of the followings:
+               * SHARD_SIZE_SMALL: Small (2GB)
+               * SHARD_SIZE_MEDIUM: Medium (20GB)
+               * SHARD_SIZE_LARGE: Large (50GB)
         """
         pulumi.set(__self__, "dimensions", dimensions)
         if algorithm_config is not None:
@@ -1427,6 +1438,8 @@ class AiIndexMetadataConfig(dict):
             pulumi.set(__self__, "distance_measure_type", distance_measure_type)
         if feature_norm_type is not None:
             pulumi.set(__self__, "feature_norm_type", feature_norm_type)
+        if shard_size is not None:
+            pulumi.set(__self__, "shard_size", shard_size)
 
     @property
     @pulumi.getter
@@ -1477,6 +1490,18 @@ class AiIndexMetadataConfig(dict):
         * NONE: No normalization type is specified.
         """
         return pulumi.get(self, "feature_norm_type")
+
+    @property
+    @pulumi.getter(name="shardSize")
+    def shard_size(self) -> Optional[str]:
+        """
+        Index data is split into equal parts to be processed. These are called "shards".
+        The shard size must be specified when creating an index. The value must be one of the followings:
+        * SHARD_SIZE_SMALL: Small (2GB)
+        * SHARD_SIZE_MEDIUM: Medium (20GB)
+        * SHARD_SIZE_LARGE: Large (50GB)
+        """
+        return pulumi.get(self, "shard_size")
 
 
 @pulumi.output_type
@@ -1777,12 +1802,14 @@ class GetAiIndexMetadataConfigResult(dict):
                  approximate_neighbors_count: int,
                  dimensions: int,
                  distance_measure_type: str,
-                 feature_norm_type: str):
+                 feature_norm_type: str,
+                 shard_size: str):
         pulumi.set(__self__, "algorithm_configs", algorithm_configs)
         pulumi.set(__self__, "approximate_neighbors_count", approximate_neighbors_count)
         pulumi.set(__self__, "dimensions", dimensions)
         pulumi.set(__self__, "distance_measure_type", distance_measure_type)
         pulumi.set(__self__, "feature_norm_type", feature_norm_type)
+        pulumi.set(__self__, "shard_size", shard_size)
 
     @property
     @pulumi.getter(name="algorithmConfigs")
@@ -1808,6 +1835,11 @@ class GetAiIndexMetadataConfigResult(dict):
     @pulumi.getter(name="featureNormType")
     def feature_norm_type(self) -> str:
         return pulumi.get(self, "feature_norm_type")
+
+    @property
+    @pulumi.getter(name="shardSize")
+    def shard_size(self) -> str:
+        return pulumi.get(self, "shard_size")
 
 
 @pulumi.output_type

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -394,6 +395,11 @@ type Dataset struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// Specifies the storage billing model for the dataset.
+	// Set this flag value to LOGICAL to use logical bytes for storage billing,
+	// or to PHYSICAL to use physical bytes instead.
+	// LOGICAL is the default if this flag isn't specified.
+	StorageBillingModel pulumi.StringOutput `pulumi:"storageBillingModel"`
 }
 
 // NewDataset registers a new resource with the given unique name, arguments, and options.
@@ -406,6 +412,7 @@ func NewDataset(ctx *pulumi.Context,
 	if args.DatasetId == nil {
 		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Dataset
 	err := ctx.RegisterResource("gcp:bigquery/dataset:Dataset", name, args, &resource, opts...)
 	if err != nil {
@@ -521,6 +528,11 @@ type datasetState struct {
 	Project *string `pulumi:"project"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// Specifies the storage billing model for the dataset.
+	// Set this flag value to LOGICAL to use logical bytes for storage billing,
+	// or to PHYSICAL to use physical bytes instead.
+	// LOGICAL is the default if this flag isn't specified.
+	StorageBillingModel *string `pulumi:"storageBillingModel"`
 }
 
 type DatasetState struct {
@@ -617,6 +629,11 @@ type DatasetState struct {
 	Project pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
+	// Specifies the storage billing model for the dataset.
+	// Set this flag value to LOGICAL to use logical bytes for storage billing,
+	// or to PHYSICAL to use physical bytes instead.
+	// LOGICAL is the default if this flag isn't specified.
+	StorageBillingModel pulumi.StringPtrInput
 }
 
 func (DatasetState) ElementType() reflect.Type {
@@ -707,6 +724,11 @@ type datasetArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Specifies the storage billing model for the dataset.
+	// Set this flag value to LOGICAL to use logical bytes for storage billing,
+	// or to PHYSICAL to use physical bytes instead.
+	// LOGICAL is the default if this flag isn't specified.
+	StorageBillingModel *string `pulumi:"storageBillingModel"`
 }
 
 // The set of arguments for constructing a Dataset resource.
@@ -794,6 +816,11 @@ type DatasetArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Specifies the storage billing model for the dataset.
+	// Set this flag value to LOGICAL to use logical bytes for storage billing,
+	// or to PHYSICAL to use physical bytes instead.
+	// LOGICAL is the default if this flag isn't specified.
+	StorageBillingModel pulumi.StringPtrInput
 }
 
 func (DatasetArgs) ElementType() reflect.Type {
@@ -1030,6 +1057,14 @@ func (o DatasetOutput) Project() pulumi.StringOutput {
 // The URI of the created resource.
 func (o DatasetOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Specifies the storage billing model for the dataset.
+// Set this flag value to LOGICAL to use logical bytes for storage billing,
+// or to PHYSICAL to use physical bytes instead.
+// LOGICAL is the default if this flag isn't specified.
+func (o DatasetOutput) StorageBillingModel() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.StorageBillingModel }).(pulumi.StringOutput)
 }
 
 type DatasetArrayOutput struct{ *pulumi.OutputState }

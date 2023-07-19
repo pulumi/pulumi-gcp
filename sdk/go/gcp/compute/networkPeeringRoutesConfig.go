@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -217,6 +218,7 @@ func NewNetworkPeeringRoutesConfig(ctx *pulumi.Context,
 	if args.Peering == nil {
 		return nil, errors.New("invalid value for required argument 'Peering'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NetworkPeeringRoutesConfig
 	err := ctx.RegisterResource("gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig", name, args, &resource, opts...)
 	if err != nil {

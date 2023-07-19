@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Vertex.Outputs
         public readonly int Dimensions;
         public readonly string DistanceMeasureType;
         public readonly string FeatureNormType;
+        public readonly string ShardSize;
 
         [OutputConstructor]
         private GetAiIndexMetadataConfigResult(
@@ -29,13 +30,16 @@ namespace Pulumi.Gcp.Vertex.Outputs
 
             string distanceMeasureType,
 
-            string featureNormType)
+            string featureNormType,
+
+            string shardSize)
         {
             AlgorithmConfigs = algorithmConfigs;
             ApproximateNeighborsCount = approximateNeighborsCount;
             Dimensions = dimensions;
             DistanceMeasureType = distanceMeasureType;
             FeatureNormType = featureNormType;
+            ShardSize = shardSize;
         }
     }
 }

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -262,6 +263,7 @@ func NewConnectivityTest(ctx *pulumi.Context,
 	if args.Source == nil {
 		return nil, errors.New("invalid value for required argument 'Source'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ConnectivityTest
 	err := ctx.RegisterResource("gcp:networkmanagement/connectivityTest:ConnectivityTest", name, args, &resource, opts...)
 	if err != nil {

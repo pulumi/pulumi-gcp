@@ -17,7 +17,8 @@ public final class OsPolicyAssignmentRolloutDisruptionBudget {
      */
     private @Nullable Integer fixed;
     /**
-     * @return Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+     * @return Specifies the relative value defined as a percentage,
+     * which will be multiplied by a reference value.
      * 
      * ***
      * 
@@ -33,7 +34,8 @@ public final class OsPolicyAssignmentRolloutDisruptionBudget {
         return Optional.ofNullable(this.fixed);
     }
     /**
-     * @return Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+     * @return Specifies the relative value defined as a percentage,
+     * which will be multiplied by a reference value.
      * 
      * ***
      * 

@@ -569,6 +569,14 @@ Object.defineProperty(exports, "firebaseDatabaseCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const firebaseExtensionsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "firebaseExtensionsCustomEndpoint", {
+    get() {
+        return __config.get("firebaseExtensionsCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const firebaseHostingCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "firebaseHostingCustomEndpoint", {
     get() {
@@ -853,6 +861,14 @@ export declare const project: string | undefined;
 Object.defineProperty(exports, "project", {
     get() {
         return __config.get("project") ?? utilities.getEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
+    },
+    enumerable: true,
+});
+
+export declare const publicCaCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "publicCaCustomEndpoint", {
+    get() {
+        return __config.get("publicCaCustomEndpoint");
     },
     enumerable: true,
 });

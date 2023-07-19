@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -102,6 +103,7 @@ func NewGameServerDeployment(ctx *pulumi.Context,
 	if args.DeploymentId == nil {
 		return nil, errors.New("invalid value for required argument 'DeploymentId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GameServerDeployment
 	err := ctx.RegisterResource("gcp:gameservices/gameServerDeployment:GameServerDeployment", name, args, &resource, opts...)
 	if err != nil {

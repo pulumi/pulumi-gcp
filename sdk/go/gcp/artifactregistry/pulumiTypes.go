@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type RepositoryDockerConfig struct {
 	// The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.

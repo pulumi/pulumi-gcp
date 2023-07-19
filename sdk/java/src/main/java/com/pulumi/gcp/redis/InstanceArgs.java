@@ -6,7 +6,6 @@ package com.pulumi.gcp.redis;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.redis.inputs.InstanceMaintenancePolicyArgs;
-import com.pulumi.gcp.redis.inputs.InstanceMaintenanceScheduleArgs;
 import com.pulumi.gcp.redis.inputs.InstancePersistenceConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -184,23 +183,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<InstanceMaintenancePolicyArgs>> maintenancePolicy() {
         return Optional.ofNullable(this.maintenancePolicy);
-    }
-
-    /**
-     * Upcoming maintenance schedule.
-     * Structure is documented below.
-     * 
-     */
-    @Import(name="maintenanceSchedule")
-    private @Nullable Output<InstanceMaintenanceScheduleArgs> maintenanceSchedule;
-
-    /**
-     * @return Upcoming maintenance schedule.
-     * Structure is documented below.
-     * 
-     */
-    public Optional<Output<InstanceMaintenanceScheduleArgs>> maintenanceSchedule() {
-        return Optional.ofNullable(this.maintenanceSchedule);
     }
 
     /**
@@ -472,7 +454,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.labels = $.labels;
         this.locationId = $.locationId;
         this.maintenancePolicy = $.maintenancePolicy;
-        this.maintenanceSchedule = $.maintenanceSchedule;
         this.memorySizeGb = $.memorySizeGb;
         this.name = $.name;
         this.persistenceConfig = $.persistenceConfig;
@@ -723,29 +704,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder maintenancePolicy(InstanceMaintenancePolicyArgs maintenancePolicy) {
             return maintenancePolicy(Output.of(maintenancePolicy));
-        }
-
-        /**
-         * @param maintenanceSchedule Upcoming maintenance schedule.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder maintenanceSchedule(@Nullable Output<InstanceMaintenanceScheduleArgs> maintenanceSchedule) {
-            $.maintenanceSchedule = maintenanceSchedule;
-            return this;
-        }
-
-        /**
-         * @param maintenanceSchedule Upcoming maintenance schedule.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder maintenanceSchedule(InstanceMaintenanceScheduleArgs maintenanceSchedule) {
-            return maintenanceSchedule(Output.of(maintenanceSchedule));
         }
 
         /**

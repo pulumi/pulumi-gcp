@@ -170,6 +170,9 @@ class WorkflowTemplateArgs:
         """
         Optional. Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
         """
+        warnings.warn("""version is not useful as a configurable field, and will be removed in the future.""", DeprecationWarning)
+        pulumi.log.warn("""version is deprecated: version is not useful as a configurable field, and will be removed in the future.""")
+
         return pulumi.get(self, "version")
 
     @version.setter
@@ -369,6 +372,9 @@ class _WorkflowTemplateState:
         """
         Optional. Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
         """
+        warnings.warn("""version is not useful as a configurable field, and will be removed in the future.""", DeprecationWarning)
+        pulumi.log.warn("""version is deprecated: version is not useful as a configurable field, and will be removed in the future.""")
+
         return pulumi.get(self, "version")
 
     @version.setter
@@ -783,5 +789,8 @@ class WorkflowTemplate(pulumi.CustomResource):
         """
         Optional. Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
         """
+        warnings.warn("""version is not useful as a configurable field, and will be removed in the future.""", DeprecationWarning)
+        pulumi.log.warn("""version is deprecated: version is not useful as a configurable field, and will be removed in the future.""")
+
         return pulumi.get(self, "version")
 

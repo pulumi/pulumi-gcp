@@ -7,8 +7,4391 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
+
+type BareMetalAdminClusterClusterOperations struct {
+	// Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
+	EnableApplicationLogs *bool `pulumi:"enableApplicationLogs"`
+}
+
+// BareMetalAdminClusterClusterOperationsInput is an input type that accepts BareMetalAdminClusterClusterOperationsArgs and BareMetalAdminClusterClusterOperationsOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterClusterOperationsInput` via:
+//
+//	BareMetalAdminClusterClusterOperationsArgs{...}
+type BareMetalAdminClusterClusterOperationsInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterClusterOperationsOutput() BareMetalAdminClusterClusterOperationsOutput
+	ToBareMetalAdminClusterClusterOperationsOutputWithContext(context.Context) BareMetalAdminClusterClusterOperationsOutput
+}
+
+type BareMetalAdminClusterClusterOperationsArgs struct {
+	// Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
+	EnableApplicationLogs pulumi.BoolPtrInput `pulumi:"enableApplicationLogs"`
+}
+
+func (BareMetalAdminClusterClusterOperationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterClusterOperations)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterClusterOperationsArgs) ToBareMetalAdminClusterClusterOperationsOutput() BareMetalAdminClusterClusterOperationsOutput {
+	return i.ToBareMetalAdminClusterClusterOperationsOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterClusterOperationsArgs) ToBareMetalAdminClusterClusterOperationsOutputWithContext(ctx context.Context) BareMetalAdminClusterClusterOperationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterClusterOperationsOutput)
+}
+
+func (i BareMetalAdminClusterClusterOperationsArgs) ToBareMetalAdminClusterClusterOperationsPtrOutput() BareMetalAdminClusterClusterOperationsPtrOutput {
+	return i.ToBareMetalAdminClusterClusterOperationsPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterClusterOperationsArgs) ToBareMetalAdminClusterClusterOperationsPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterClusterOperationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterClusterOperationsOutput).ToBareMetalAdminClusterClusterOperationsPtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterClusterOperationsPtrInput is an input type that accepts BareMetalAdminClusterClusterOperationsArgs, BareMetalAdminClusterClusterOperationsPtr and BareMetalAdminClusterClusterOperationsPtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterClusterOperationsPtrInput` via:
+//
+//	        BareMetalAdminClusterClusterOperationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterClusterOperationsPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterClusterOperationsPtrOutput() BareMetalAdminClusterClusterOperationsPtrOutput
+	ToBareMetalAdminClusterClusterOperationsPtrOutputWithContext(context.Context) BareMetalAdminClusterClusterOperationsPtrOutput
+}
+
+type bareMetalAdminClusterClusterOperationsPtrType BareMetalAdminClusterClusterOperationsArgs
+
+func BareMetalAdminClusterClusterOperationsPtr(v *BareMetalAdminClusterClusterOperationsArgs) BareMetalAdminClusterClusterOperationsPtrInput {
+	return (*bareMetalAdminClusterClusterOperationsPtrType)(v)
+}
+
+func (*bareMetalAdminClusterClusterOperationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterClusterOperations)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterClusterOperationsPtrType) ToBareMetalAdminClusterClusterOperationsPtrOutput() BareMetalAdminClusterClusterOperationsPtrOutput {
+	return i.ToBareMetalAdminClusterClusterOperationsPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterClusterOperationsPtrType) ToBareMetalAdminClusterClusterOperationsPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterClusterOperationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterClusterOperationsPtrOutput)
+}
+
+type BareMetalAdminClusterClusterOperationsOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterClusterOperationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterClusterOperations)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterClusterOperationsOutput) ToBareMetalAdminClusterClusterOperationsOutput() BareMetalAdminClusterClusterOperationsOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterClusterOperationsOutput) ToBareMetalAdminClusterClusterOperationsOutputWithContext(ctx context.Context) BareMetalAdminClusterClusterOperationsOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterClusterOperationsOutput) ToBareMetalAdminClusterClusterOperationsPtrOutput() BareMetalAdminClusterClusterOperationsPtrOutput {
+	return o.ToBareMetalAdminClusterClusterOperationsPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterClusterOperationsOutput) ToBareMetalAdminClusterClusterOperationsPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterClusterOperationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterClusterOperations) *BareMetalAdminClusterClusterOperations {
+		return &v
+	}).(BareMetalAdminClusterClusterOperationsPtrOutput)
+}
+
+// Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
+func (o BareMetalAdminClusterClusterOperationsOutput) EnableApplicationLogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterClusterOperations) *bool { return v.EnableApplicationLogs }).(pulumi.BoolPtrOutput)
+}
+
+type BareMetalAdminClusterClusterOperationsPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterClusterOperationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterClusterOperations)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterClusterOperationsPtrOutput) ToBareMetalAdminClusterClusterOperationsPtrOutput() BareMetalAdminClusterClusterOperationsPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterClusterOperationsPtrOutput) ToBareMetalAdminClusterClusterOperationsPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterClusterOperationsPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterClusterOperationsPtrOutput) Elem() BareMetalAdminClusterClusterOperationsOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterClusterOperations) BareMetalAdminClusterClusterOperations {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterClusterOperations
+		return ret
+	}).(BareMetalAdminClusterClusterOperationsOutput)
+}
+
+// Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
+func (o BareMetalAdminClusterClusterOperationsPtrOutput) EnableApplicationLogs() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterClusterOperations) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableApplicationLogs
+	}).(pulumi.BoolPtrOutput)
+}
+
+type BareMetalAdminClusterControlPlane struct {
+	// Customizes the default API server args. Only a subset of
+	// customized flags are supported. Please refer to the API server
+	// documentation below to know the exact format:
+	// https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+	// Structure is documented below.
+	ApiServerArgs []BareMetalAdminClusterControlPlaneApiServerArg `pulumi:"apiServerArgs"`
+	// Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
+	// Structure is documented below.
+	ControlPlaneNodePoolConfig BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig `pulumi:"controlPlaneNodePoolConfig"`
+}
+
+// BareMetalAdminClusterControlPlaneInput is an input type that accepts BareMetalAdminClusterControlPlaneArgs and BareMetalAdminClusterControlPlaneOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterControlPlaneInput` via:
+//
+//	BareMetalAdminClusterControlPlaneArgs{...}
+type BareMetalAdminClusterControlPlaneInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterControlPlaneOutput() BareMetalAdminClusterControlPlaneOutput
+	ToBareMetalAdminClusterControlPlaneOutputWithContext(context.Context) BareMetalAdminClusterControlPlaneOutput
+}
+
+type BareMetalAdminClusterControlPlaneArgs struct {
+	// Customizes the default API server args. Only a subset of
+	// customized flags are supported. Please refer to the API server
+	// documentation below to know the exact format:
+	// https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+	// Structure is documented below.
+	ApiServerArgs BareMetalAdminClusterControlPlaneApiServerArgArrayInput `pulumi:"apiServerArgs"`
+	// Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
+	// Structure is documented below.
+	ControlPlaneNodePoolConfig BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigInput `pulumi:"controlPlaneNodePoolConfig"`
+}
+
+func (BareMetalAdminClusterControlPlaneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterControlPlane)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterControlPlaneArgs) ToBareMetalAdminClusterControlPlaneOutput() BareMetalAdminClusterControlPlaneOutput {
+	return i.ToBareMetalAdminClusterControlPlaneOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterControlPlaneArgs) ToBareMetalAdminClusterControlPlaneOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneOutput)
+}
+
+func (i BareMetalAdminClusterControlPlaneArgs) ToBareMetalAdminClusterControlPlanePtrOutput() BareMetalAdminClusterControlPlanePtrOutput {
+	return i.ToBareMetalAdminClusterControlPlanePtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterControlPlaneArgs) ToBareMetalAdminClusterControlPlanePtrOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlanePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneOutput).ToBareMetalAdminClusterControlPlanePtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterControlPlanePtrInput is an input type that accepts BareMetalAdminClusterControlPlaneArgs, BareMetalAdminClusterControlPlanePtr and BareMetalAdminClusterControlPlanePtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterControlPlanePtrInput` via:
+//
+//	        BareMetalAdminClusterControlPlaneArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterControlPlanePtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterControlPlanePtrOutput() BareMetalAdminClusterControlPlanePtrOutput
+	ToBareMetalAdminClusterControlPlanePtrOutputWithContext(context.Context) BareMetalAdminClusterControlPlanePtrOutput
+}
+
+type bareMetalAdminClusterControlPlanePtrType BareMetalAdminClusterControlPlaneArgs
+
+func BareMetalAdminClusterControlPlanePtr(v *BareMetalAdminClusterControlPlaneArgs) BareMetalAdminClusterControlPlanePtrInput {
+	return (*bareMetalAdminClusterControlPlanePtrType)(v)
+}
+
+func (*bareMetalAdminClusterControlPlanePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterControlPlane)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterControlPlanePtrType) ToBareMetalAdminClusterControlPlanePtrOutput() BareMetalAdminClusterControlPlanePtrOutput {
+	return i.ToBareMetalAdminClusterControlPlanePtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterControlPlanePtrType) ToBareMetalAdminClusterControlPlanePtrOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlanePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlanePtrOutput)
+}
+
+type BareMetalAdminClusterControlPlaneOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterControlPlaneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterControlPlane)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterControlPlaneOutput) ToBareMetalAdminClusterControlPlaneOutput() BareMetalAdminClusterControlPlaneOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterControlPlaneOutput) ToBareMetalAdminClusterControlPlaneOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterControlPlaneOutput) ToBareMetalAdminClusterControlPlanePtrOutput() BareMetalAdminClusterControlPlanePtrOutput {
+	return o.ToBareMetalAdminClusterControlPlanePtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterControlPlaneOutput) ToBareMetalAdminClusterControlPlanePtrOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlanePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterControlPlane) *BareMetalAdminClusterControlPlane {
+		return &v
+	}).(BareMetalAdminClusterControlPlanePtrOutput)
+}
+
+// Customizes the default API server args. Only a subset of
+// customized flags are supported. Please refer to the API server
+// documentation below to know the exact format:
+// https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+// Structure is documented below.
+func (o BareMetalAdminClusterControlPlaneOutput) ApiServerArgs() BareMetalAdminClusterControlPlaneApiServerArgArrayOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterControlPlane) []BareMetalAdminClusterControlPlaneApiServerArg {
+		return v.ApiServerArgs
+	}).(BareMetalAdminClusterControlPlaneApiServerArgArrayOutput)
+}
+
+// Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
+// Structure is documented below.
+func (o BareMetalAdminClusterControlPlaneOutput) ControlPlaneNodePoolConfig() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterControlPlane) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig {
+		return v.ControlPlaneNodePoolConfig
+	}).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput)
+}
+
+type BareMetalAdminClusterControlPlanePtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterControlPlanePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterControlPlane)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterControlPlanePtrOutput) ToBareMetalAdminClusterControlPlanePtrOutput() BareMetalAdminClusterControlPlanePtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterControlPlanePtrOutput) ToBareMetalAdminClusterControlPlanePtrOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlanePtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterControlPlanePtrOutput) Elem() BareMetalAdminClusterControlPlaneOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterControlPlane) BareMetalAdminClusterControlPlane {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterControlPlane
+		return ret
+	}).(BareMetalAdminClusterControlPlaneOutput)
+}
+
+// Customizes the default API server args. Only a subset of
+// customized flags are supported. Please refer to the API server
+// documentation below to know the exact format:
+// https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+// Structure is documented below.
+func (o BareMetalAdminClusterControlPlanePtrOutput) ApiServerArgs() BareMetalAdminClusterControlPlaneApiServerArgArrayOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterControlPlane) []BareMetalAdminClusterControlPlaneApiServerArg {
+		if v == nil {
+			return nil
+		}
+		return v.ApiServerArgs
+	}).(BareMetalAdminClusterControlPlaneApiServerArgArrayOutput)
+}
+
+// Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
+// Structure is documented below.
+func (o BareMetalAdminClusterControlPlanePtrOutput) ControlPlaneNodePoolConfig() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterControlPlane) *BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.ControlPlaneNodePoolConfig
+	}).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput)
+}
+
+type BareMetalAdminClusterControlPlaneApiServerArg struct {
+	// The argument name as it appears on the API Server command line please make sure to remove the leading dashes.
+	Argument string `pulumi:"argument"`
+	// The value of the arg as it will be passed to the API Server command line.
+	Value string `pulumi:"value"`
+}
+
+// BareMetalAdminClusterControlPlaneApiServerArgInput is an input type that accepts BareMetalAdminClusterControlPlaneApiServerArgArgs and BareMetalAdminClusterControlPlaneApiServerArgOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterControlPlaneApiServerArgInput` via:
+//
+//	BareMetalAdminClusterControlPlaneApiServerArgArgs{...}
+type BareMetalAdminClusterControlPlaneApiServerArgInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterControlPlaneApiServerArgOutput() BareMetalAdminClusterControlPlaneApiServerArgOutput
+	ToBareMetalAdminClusterControlPlaneApiServerArgOutputWithContext(context.Context) BareMetalAdminClusterControlPlaneApiServerArgOutput
+}
+
+type BareMetalAdminClusterControlPlaneApiServerArgArgs struct {
+	// The argument name as it appears on the API Server command line please make sure to remove the leading dashes.
+	Argument pulumi.StringInput `pulumi:"argument"`
+	// The value of the arg as it will be passed to the API Server command line.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (BareMetalAdminClusterControlPlaneApiServerArgArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterControlPlaneApiServerArg)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterControlPlaneApiServerArgArgs) ToBareMetalAdminClusterControlPlaneApiServerArgOutput() BareMetalAdminClusterControlPlaneApiServerArgOutput {
+	return i.ToBareMetalAdminClusterControlPlaneApiServerArgOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterControlPlaneApiServerArgArgs) ToBareMetalAdminClusterControlPlaneApiServerArgOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneApiServerArgOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneApiServerArgOutput)
+}
+
+// BareMetalAdminClusterControlPlaneApiServerArgArrayInput is an input type that accepts BareMetalAdminClusterControlPlaneApiServerArgArray and BareMetalAdminClusterControlPlaneApiServerArgArrayOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterControlPlaneApiServerArgArrayInput` via:
+//
+//	BareMetalAdminClusterControlPlaneApiServerArgArray{ BareMetalAdminClusterControlPlaneApiServerArgArgs{...} }
+type BareMetalAdminClusterControlPlaneApiServerArgArrayInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterControlPlaneApiServerArgArrayOutput() BareMetalAdminClusterControlPlaneApiServerArgArrayOutput
+	ToBareMetalAdminClusterControlPlaneApiServerArgArrayOutputWithContext(context.Context) BareMetalAdminClusterControlPlaneApiServerArgArrayOutput
+}
+
+type BareMetalAdminClusterControlPlaneApiServerArgArray []BareMetalAdminClusterControlPlaneApiServerArgInput
+
+func (BareMetalAdminClusterControlPlaneApiServerArgArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterControlPlaneApiServerArg)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterControlPlaneApiServerArgArray) ToBareMetalAdminClusterControlPlaneApiServerArgArrayOutput() BareMetalAdminClusterControlPlaneApiServerArgArrayOutput {
+	return i.ToBareMetalAdminClusterControlPlaneApiServerArgArrayOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterControlPlaneApiServerArgArray) ToBareMetalAdminClusterControlPlaneApiServerArgArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneApiServerArgArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneApiServerArgArrayOutput)
+}
+
+type BareMetalAdminClusterControlPlaneApiServerArgOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterControlPlaneApiServerArgOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterControlPlaneApiServerArg)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterControlPlaneApiServerArgOutput) ToBareMetalAdminClusterControlPlaneApiServerArgOutput() BareMetalAdminClusterControlPlaneApiServerArgOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterControlPlaneApiServerArgOutput) ToBareMetalAdminClusterControlPlaneApiServerArgOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneApiServerArgOutput {
+	return o
+}
+
+// The argument name as it appears on the API Server command line please make sure to remove the leading dashes.
+func (o BareMetalAdminClusterControlPlaneApiServerArgOutput) Argument() pulumi.StringOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterControlPlaneApiServerArg) string { return v.Argument }).(pulumi.StringOutput)
+}
+
+// The value of the arg as it will be passed to the API Server command line.
+func (o BareMetalAdminClusterControlPlaneApiServerArgOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterControlPlaneApiServerArg) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type BareMetalAdminClusterControlPlaneApiServerArgArrayOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterControlPlaneApiServerArgArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterControlPlaneApiServerArg)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterControlPlaneApiServerArgArrayOutput) ToBareMetalAdminClusterControlPlaneApiServerArgArrayOutput() BareMetalAdminClusterControlPlaneApiServerArgArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterControlPlaneApiServerArgArrayOutput) ToBareMetalAdminClusterControlPlaneApiServerArgArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneApiServerArgArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterControlPlaneApiServerArgArrayOutput) Index(i pulumi.IntInput) BareMetalAdminClusterControlPlaneApiServerArgOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BareMetalAdminClusterControlPlaneApiServerArg {
+		return vs[0].([]BareMetalAdminClusterControlPlaneApiServerArg)[vs[1].(int)]
+	}).(BareMetalAdminClusterControlPlaneApiServerArgOutput)
+}
+
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig struct {
+	// The generic configuration for a node pool running the control plane.
+	// Structure is documented below.
+	NodePoolConfig BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig `pulumi:"nodePoolConfig"`
+}
+
+// BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigInput is an input type that accepts BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs and BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigInput` via:
+//
+//	BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs{...}
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput
+	ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutputWithContext(context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput
+}
+
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs struct {
+	// The generic configuration for a node pool running the control plane.
+	// Structure is documented below.
+	NodePoolConfig BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigInput `pulumi:"nodePoolConfig"`
+}
+
+func (BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput {
+	return i.ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput)
+}
+
+func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput {
+	return i.ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput).ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrInput is an input type that accepts BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs, BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtr and BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrInput` via:
+//
+//	        BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput
+	ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutputWithContext(context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput
+}
+
+type bareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrType BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs
+
+func BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtr(v *BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrInput {
+	return (*bareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrType)(v)
+}
+
+func (*bareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrType) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput {
+	return i.ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrType) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput)
+}
+
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput {
+	return o.ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig) *BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig {
+		return &v
+	}).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput)
+}
+
+// The generic configuration for a node pool running the control plane.
+// Structure is documented below.
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput) NodePoolConfig() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig {
+		return v.NodePoolConfig
+	}).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput)
+}
+
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput) Elem() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig
+		return ret
+	}).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput)
+}
+
+// The generic configuration for a node pool running the control plane.
+// Structure is documented below.
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput) NodePoolConfig() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig) *BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.NodePoolConfig
+	}).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput)
+}
+
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig struct {
+	// The map of Kubernetes labels (key/value pairs) to be applied to
+	// each node. These will added in addition to any default label(s)
+	// that Kubernetes may apply to the node. In case of conflict in
+	// label keys, the applied set may differ depending on the Kubernetes
+	// version -- it's best to assume the behavior is undefined and
+	// conflicts should be avoided. For more information, including usage
+	// and the valid values, see:
+	// http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	// An object containing a list of "key": value pairs.
+	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Labels map[string]string `pulumi:"labels"`
+	// The list of machine addresses in the Bare Metal Node Pool.
+	// Structure is documented below.
+	NodeConfigs []BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig `pulumi:"nodeConfigs"`
+	// Specifies the nodes operating system (default: LINUX).
+	OperatingSystem *string `pulumi:"operatingSystem"`
+	// The initial taints assigned to nodes of this node pool.
+	// Structure is documented below.
+	Taints []BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint `pulumi:"taints"`
+}
+
+// BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigInput is an input type that accepts BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs and BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigInput` via:
+//
+//	BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs{...}
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput
+	ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutputWithContext(context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput
+}
+
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs struct {
+	// The map of Kubernetes labels (key/value pairs) to be applied to
+	// each node. These will added in addition to any default label(s)
+	// that Kubernetes may apply to the node. In case of conflict in
+	// label keys, the applied set may differ depending on the Kubernetes
+	// version -- it's best to assume the behavior is undefined and
+	// conflicts should be avoided. For more information, including usage
+	// and the valid values, see:
+	// http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	// An object containing a list of "key": value pairs.
+	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The list of machine addresses in the Bare Metal Node Pool.
+	// Structure is documented below.
+	NodeConfigs BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayInput `pulumi:"nodeConfigs"`
+	// Specifies the nodes operating system (default: LINUX).
+	OperatingSystem pulumi.StringPtrInput `pulumi:"operatingSystem"`
+	// The initial taints assigned to nodes of this node pool.
+	// Structure is documented below.
+	Taints BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayInput `pulumi:"taints"`
+}
+
+func (BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput {
+	return i.ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput)
+}
+
+func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput {
+	return i.ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput).ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrInput is an input type that accepts BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs, BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtr and BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrInput` via:
+//
+//	        BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput
+	ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutputWithContext(context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput
+}
+
+type bareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrType BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs
+
+func BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtr(v *BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrInput {
+	return (*bareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrType)(v)
+}
+
+func (*bareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrType) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput {
+	return i.ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrType) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput)
+}
+
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput {
+	return o.ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig) *BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig {
+		return &v
+	}).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput)
+}
+
+// The map of Kubernetes labels (key/value pairs) to be applied to
+// each node. These will added in addition to any default label(s)
+// that Kubernetes may apply to the node. In case of conflict in
+// label keys, the applied set may differ depending on the Kubernetes
+// version -- it's best to assume the behavior is undefined and
+// conflicts should be avoided. For more information, including usage
+// and the valid values, see:
+// http://kubernetes.io/v1.1/docs/user-guide/labels.html
+// An object containing a list of "key": value pairs.
+// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig) map[string]string {
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// The list of machine addresses in the Bare Metal Node Pool.
+// Structure is documented below.
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput) NodeConfigs() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig) []BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig {
+		return v.NodeConfigs
+	}).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput)
+}
+
+// Specifies the nodes operating system (default: LINUX).
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput) OperatingSystem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig) *string {
+		return v.OperatingSystem
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial taints assigned to nodes of this node pool.
+// Structure is documented below.
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput) Taints() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig) []BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint {
+		return v.Taints
+	}).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput)
+}
+
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput) Elem() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig
+		return ret
+	}).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput)
+}
+
+// The map of Kubernetes labels (key/value pairs) to be applied to
+// each node. These will added in addition to any default label(s)
+// that Kubernetes may apply to the node. In case of conflict in
+// label keys, the applied set may differ depending on the Kubernetes
+// version -- it's best to assume the behavior is undefined and
+// conflicts should be avoided. For more information, including usage
+// and the valid values, see:
+// http://kubernetes.io/v1.1/docs/user-guide/labels.html
+// An object containing a list of "key": value pairs.
+// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// The list of machine addresses in the Bare Metal Node Pool.
+// Structure is documented below.
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput) NodeConfigs() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig) []BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.NodeConfigs
+	}).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput)
+}
+
+// Specifies the nodes operating system (default: LINUX).
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput) OperatingSystem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperatingSystem
+	}).(pulumi.StringPtrOutput)
+}
+
+// The initial taints assigned to nodes of this node pool.
+// Structure is documented below.
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput) Taints() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig) []BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint {
+		if v == nil {
+			return nil
+		}
+		return v.Taints
+	}).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput)
+}
+
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig struct {
+	// The map of Kubernetes labels (key/value pairs) to be applied to
+	// each node. These will added in addition to any default label(s)
+	// that Kubernetes may apply to the node. In case of conflict in
+	// label keys, the applied set may differ depending on the Kubernetes
+	// version -- it's best to assume the behavior is undefined and
+	// conflicts should be avoided. For more information, including usage
+	// and the valid values, see:
+	// http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	// An object containing a list of "key": value pairs.
+	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Labels map[string]string `pulumi:"labels"`
+	// The default IPv4 address for SSH access and Kubernetes node.
+	// Example: 192.168.0.1
+	NodeIp *string `pulumi:"nodeIp"`
+}
+
+// BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigInput is an input type that accepts BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs and BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigInput` via:
+//
+//	BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs{...}
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput
+	ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutputWithContext(context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput
+}
+
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs struct {
+	// The map of Kubernetes labels (key/value pairs) to be applied to
+	// each node. These will added in addition to any default label(s)
+	// that Kubernetes may apply to the node. In case of conflict in
+	// label keys, the applied set may differ depending on the Kubernetes
+	// version -- it's best to assume the behavior is undefined and
+	// conflicts should be avoided. For more information, including usage
+	// and the valid values, see:
+	// http://kubernetes.io/v1.1/docs/user-guide/labels.html
+	// An object containing a list of "key": value pairs.
+	// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The default IPv4 address for SSH access and Kubernetes node.
+	// Example: 192.168.0.1
+	NodeIp pulumi.StringPtrInput `pulumi:"nodeIp"`
+}
+
+func (BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput {
+	return i.ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput)
+}
+
+// BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayInput is an input type that accepts BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArray and BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayInput` via:
+//
+//	BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArray{ BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs{...} }
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput
+	ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutputWithContext(context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput
+}
+
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArray []BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigInput
+
+func (BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArray) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput {
+	return i.ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArray) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput)
+}
+
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput {
+	return o
+}
+
+// The map of Kubernetes labels (key/value pairs) to be applied to
+// each node. These will added in addition to any default label(s)
+// that Kubernetes may apply to the node. In case of conflict in
+// label keys, the applied set may differ depending on the Kubernetes
+// version -- it's best to assume the behavior is undefined and
+// conflicts should be avoided. For more information, including usage
+// and the valid values, see:
+// http://kubernetes.io/v1.1/docs/user-guide/labels.html
+// An object containing a list of "key": value pairs.
+// Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig) map[string]string {
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// The default IPv4 address for SSH access and Kubernetes node.
+// Example: 192.168.0.1
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput) NodeIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig) *string {
+		return v.NodeIp
+	}).(pulumi.StringPtrOutput)
+}
+
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput) Index(i pulumi.IntInput) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig {
+		return vs[0].([]BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig)[vs[1].(int)]
+	}).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput)
+}
+
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint struct {
+	// Specifies the nodes operating system (default: LINUX).
+	// Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+	Effect *string `pulumi:"effect"`
+	// Key associated with the effect.
+	Key *string `pulumi:"key"`
+	// Value associated with the effect.
+	Value *string `pulumi:"value"`
+}
+
+// BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintInput is an input type that accepts BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs and BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintInput` via:
+//
+//	BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs{...}
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput
+	ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutputWithContext(context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput
+}
+
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs struct {
+	// Specifies the nodes operating system (default: LINUX).
+	// Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+	Effect pulumi.StringPtrInput `pulumi:"effect"`
+	// Key associated with the effect.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Value associated with the effect.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput {
+	return i.ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput)
+}
+
+// BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayInput is an input type that accepts BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArray and BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayInput` via:
+//
+//	BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArray{ BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs{...} }
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput
+	ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutputWithContext(context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput
+}
+
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArray []BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintInput
+
+func (BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArray) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput {
+	return i.ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArray) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput)
+}
+
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput {
+	return o
+}
+
+// Specifies the nodes operating system (default: LINUX).
+// Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput) Effect() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint) *string {
+		return v.Effect
+	}).(pulumi.StringPtrOutput)
+}
+
+// Key associated with the effect.
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint) *string {
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value associated with the effect.
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint) *string {
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput() BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput) ToBareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput) Index(i pulumi.IntInput) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint {
+		return vs[0].([]BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint)[vs[1].(int)]
+	}).(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput)
+}
+
+type BareMetalAdminClusterFleet struct {
+	// (Output)
+	// The name of the managed Hub Membership resource associated to this cluster.
+	// Membership names are formatted as
+	// `projects/<project-number>/locations/<location>/memberships/<cluster-id>`.
+	Membership *string `pulumi:"membership"`
+}
+
+// BareMetalAdminClusterFleetInput is an input type that accepts BareMetalAdminClusterFleetArgs and BareMetalAdminClusterFleetOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterFleetInput` via:
+//
+//	BareMetalAdminClusterFleetArgs{...}
+type BareMetalAdminClusterFleetInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterFleetOutput() BareMetalAdminClusterFleetOutput
+	ToBareMetalAdminClusterFleetOutputWithContext(context.Context) BareMetalAdminClusterFleetOutput
+}
+
+type BareMetalAdminClusterFleetArgs struct {
+	// (Output)
+	// The name of the managed Hub Membership resource associated to this cluster.
+	// Membership names are formatted as
+	// `projects/<project-number>/locations/<location>/memberships/<cluster-id>`.
+	Membership pulumi.StringPtrInput `pulumi:"membership"`
+}
+
+func (BareMetalAdminClusterFleetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterFleet)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterFleetArgs) ToBareMetalAdminClusterFleetOutput() BareMetalAdminClusterFleetOutput {
+	return i.ToBareMetalAdminClusterFleetOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterFleetArgs) ToBareMetalAdminClusterFleetOutputWithContext(ctx context.Context) BareMetalAdminClusterFleetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterFleetOutput)
+}
+
+// BareMetalAdminClusterFleetArrayInput is an input type that accepts BareMetalAdminClusterFleetArray and BareMetalAdminClusterFleetArrayOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterFleetArrayInput` via:
+//
+//	BareMetalAdminClusterFleetArray{ BareMetalAdminClusterFleetArgs{...} }
+type BareMetalAdminClusterFleetArrayInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterFleetArrayOutput() BareMetalAdminClusterFleetArrayOutput
+	ToBareMetalAdminClusterFleetArrayOutputWithContext(context.Context) BareMetalAdminClusterFleetArrayOutput
+}
+
+type BareMetalAdminClusterFleetArray []BareMetalAdminClusterFleetInput
+
+func (BareMetalAdminClusterFleetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterFleet)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterFleetArray) ToBareMetalAdminClusterFleetArrayOutput() BareMetalAdminClusterFleetArrayOutput {
+	return i.ToBareMetalAdminClusterFleetArrayOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterFleetArray) ToBareMetalAdminClusterFleetArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterFleetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterFleetArrayOutput)
+}
+
+type BareMetalAdminClusterFleetOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterFleetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterFleet)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterFleetOutput) ToBareMetalAdminClusterFleetOutput() BareMetalAdminClusterFleetOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterFleetOutput) ToBareMetalAdminClusterFleetOutputWithContext(ctx context.Context) BareMetalAdminClusterFleetOutput {
+	return o
+}
+
+// (Output)
+// The name of the managed Hub Membership resource associated to this cluster.
+// Membership names are formatted as
+// `projects/<project-number>/locations/<location>/memberships/<cluster-id>`.
+func (o BareMetalAdminClusterFleetOutput) Membership() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterFleet) *string { return v.Membership }).(pulumi.StringPtrOutput)
+}
+
+type BareMetalAdminClusterFleetArrayOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterFleetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterFleet)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterFleetArrayOutput) ToBareMetalAdminClusterFleetArrayOutput() BareMetalAdminClusterFleetArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterFleetArrayOutput) ToBareMetalAdminClusterFleetArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterFleetArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterFleetArrayOutput) Index(i pulumi.IntInput) BareMetalAdminClusterFleetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BareMetalAdminClusterFleet {
+		return vs[0].([]BareMetalAdminClusterFleet)[vs[1].(int)]
+	}).(BareMetalAdminClusterFleetOutput)
+}
+
+type BareMetalAdminClusterLoadBalancer struct {
+	// A nested object resource
+	// Structure is documented below.
+	ManualLbConfig *BareMetalAdminClusterLoadBalancerManualLbConfig `pulumi:"manualLbConfig"`
+	// Specifies the load balancer ports.
+	// Structure is documented below.
+	PortConfig BareMetalAdminClusterLoadBalancerPortConfig `pulumi:"portConfig"`
+	// Specified the Bare Metal Load Balancer Config
+	// Structure is documented below.
+	VipConfig BareMetalAdminClusterLoadBalancerVipConfig `pulumi:"vipConfig"`
+}
+
+// BareMetalAdminClusterLoadBalancerInput is an input type that accepts BareMetalAdminClusterLoadBalancerArgs and BareMetalAdminClusterLoadBalancerOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterLoadBalancerInput` via:
+//
+//	BareMetalAdminClusterLoadBalancerArgs{...}
+type BareMetalAdminClusterLoadBalancerInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterLoadBalancerOutput() BareMetalAdminClusterLoadBalancerOutput
+	ToBareMetalAdminClusterLoadBalancerOutputWithContext(context.Context) BareMetalAdminClusterLoadBalancerOutput
+}
+
+type BareMetalAdminClusterLoadBalancerArgs struct {
+	// A nested object resource
+	// Structure is documented below.
+	ManualLbConfig BareMetalAdminClusterLoadBalancerManualLbConfigPtrInput `pulumi:"manualLbConfig"`
+	// Specifies the load balancer ports.
+	// Structure is documented below.
+	PortConfig BareMetalAdminClusterLoadBalancerPortConfigInput `pulumi:"portConfig"`
+	// Specified the Bare Metal Load Balancer Config
+	// Structure is documented below.
+	VipConfig BareMetalAdminClusterLoadBalancerVipConfigInput `pulumi:"vipConfig"`
+}
+
+func (BareMetalAdminClusterLoadBalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterLoadBalancer)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterLoadBalancerArgs) ToBareMetalAdminClusterLoadBalancerOutput() BareMetalAdminClusterLoadBalancerOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterLoadBalancerArgs) ToBareMetalAdminClusterLoadBalancerOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerOutput)
+}
+
+func (i BareMetalAdminClusterLoadBalancerArgs) ToBareMetalAdminClusterLoadBalancerPtrOutput() BareMetalAdminClusterLoadBalancerPtrOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterLoadBalancerArgs) ToBareMetalAdminClusterLoadBalancerPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerOutput).ToBareMetalAdminClusterLoadBalancerPtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterLoadBalancerPtrInput is an input type that accepts BareMetalAdminClusterLoadBalancerArgs, BareMetalAdminClusterLoadBalancerPtr and BareMetalAdminClusterLoadBalancerPtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterLoadBalancerPtrInput` via:
+//
+//	        BareMetalAdminClusterLoadBalancerArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterLoadBalancerPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterLoadBalancerPtrOutput() BareMetalAdminClusterLoadBalancerPtrOutput
+	ToBareMetalAdminClusterLoadBalancerPtrOutputWithContext(context.Context) BareMetalAdminClusterLoadBalancerPtrOutput
+}
+
+type bareMetalAdminClusterLoadBalancerPtrType BareMetalAdminClusterLoadBalancerArgs
+
+func BareMetalAdminClusterLoadBalancerPtr(v *BareMetalAdminClusterLoadBalancerArgs) BareMetalAdminClusterLoadBalancerPtrInput {
+	return (*bareMetalAdminClusterLoadBalancerPtrType)(v)
+}
+
+func (*bareMetalAdminClusterLoadBalancerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterLoadBalancer)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterLoadBalancerPtrType) ToBareMetalAdminClusterLoadBalancerPtrOutput() BareMetalAdminClusterLoadBalancerPtrOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterLoadBalancerPtrType) ToBareMetalAdminClusterLoadBalancerPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerPtrOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterLoadBalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterLoadBalancer)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterLoadBalancerOutput) ToBareMetalAdminClusterLoadBalancerOutput() BareMetalAdminClusterLoadBalancerOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerOutput) ToBareMetalAdminClusterLoadBalancerOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerOutput) ToBareMetalAdminClusterLoadBalancerPtrOutput() BareMetalAdminClusterLoadBalancerPtrOutput {
+	return o.ToBareMetalAdminClusterLoadBalancerPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterLoadBalancerOutput) ToBareMetalAdminClusterLoadBalancerPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterLoadBalancer) *BareMetalAdminClusterLoadBalancer {
+		return &v
+	}).(BareMetalAdminClusterLoadBalancerPtrOutput)
+}
+
+// A nested object resource
+// Structure is documented below.
+func (o BareMetalAdminClusterLoadBalancerOutput) ManualLbConfig() BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancer) *BareMetalAdminClusterLoadBalancerManualLbConfig {
+		return v.ManualLbConfig
+	}).(BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput)
+}
+
+// Specifies the load balancer ports.
+// Structure is documented below.
+func (o BareMetalAdminClusterLoadBalancerOutput) PortConfig() BareMetalAdminClusterLoadBalancerPortConfigOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancer) BareMetalAdminClusterLoadBalancerPortConfig {
+		return v.PortConfig
+	}).(BareMetalAdminClusterLoadBalancerPortConfigOutput)
+}
+
+// Specified the Bare Metal Load Balancer Config
+// Structure is documented below.
+func (o BareMetalAdminClusterLoadBalancerOutput) VipConfig() BareMetalAdminClusterLoadBalancerVipConfigOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancer) BareMetalAdminClusterLoadBalancerVipConfig {
+		return v.VipConfig
+	}).(BareMetalAdminClusterLoadBalancerVipConfigOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterLoadBalancerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterLoadBalancer)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterLoadBalancerPtrOutput) ToBareMetalAdminClusterLoadBalancerPtrOutput() BareMetalAdminClusterLoadBalancerPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerPtrOutput) ToBareMetalAdminClusterLoadBalancerPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerPtrOutput) Elem() BareMetalAdminClusterLoadBalancerOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancer) BareMetalAdminClusterLoadBalancer {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterLoadBalancer
+		return ret
+	}).(BareMetalAdminClusterLoadBalancerOutput)
+}
+
+// A nested object resource
+// Structure is documented below.
+func (o BareMetalAdminClusterLoadBalancerPtrOutput) ManualLbConfig() BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancer) *BareMetalAdminClusterLoadBalancerManualLbConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ManualLbConfig
+	}).(BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput)
+}
+
+// Specifies the load balancer ports.
+// Structure is documented below.
+func (o BareMetalAdminClusterLoadBalancerPtrOutput) PortConfig() BareMetalAdminClusterLoadBalancerPortConfigPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancer) *BareMetalAdminClusterLoadBalancerPortConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.PortConfig
+	}).(BareMetalAdminClusterLoadBalancerPortConfigPtrOutput)
+}
+
+// Specified the Bare Metal Load Balancer Config
+// Structure is documented below.
+func (o BareMetalAdminClusterLoadBalancerPtrOutput) VipConfig() BareMetalAdminClusterLoadBalancerVipConfigPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancer) *BareMetalAdminClusterLoadBalancerVipConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.VipConfig
+	}).(BareMetalAdminClusterLoadBalancerVipConfigPtrOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerManualLbConfig struct {
+	// Whether manual load balancing is enabled.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// BareMetalAdminClusterLoadBalancerManualLbConfigInput is an input type that accepts BareMetalAdminClusterLoadBalancerManualLbConfigArgs and BareMetalAdminClusterLoadBalancerManualLbConfigOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterLoadBalancerManualLbConfigInput` via:
+//
+//	BareMetalAdminClusterLoadBalancerManualLbConfigArgs{...}
+type BareMetalAdminClusterLoadBalancerManualLbConfigInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterLoadBalancerManualLbConfigOutput() BareMetalAdminClusterLoadBalancerManualLbConfigOutput
+	ToBareMetalAdminClusterLoadBalancerManualLbConfigOutputWithContext(context.Context) BareMetalAdminClusterLoadBalancerManualLbConfigOutput
+}
+
+type BareMetalAdminClusterLoadBalancerManualLbConfigArgs struct {
+	// Whether manual load balancing is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (BareMetalAdminClusterLoadBalancerManualLbConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterLoadBalancerManualLbConfig)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterLoadBalancerManualLbConfigArgs) ToBareMetalAdminClusterLoadBalancerManualLbConfigOutput() BareMetalAdminClusterLoadBalancerManualLbConfigOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerManualLbConfigOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterLoadBalancerManualLbConfigArgs) ToBareMetalAdminClusterLoadBalancerManualLbConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerManualLbConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerManualLbConfigOutput)
+}
+
+func (i BareMetalAdminClusterLoadBalancerManualLbConfigArgs) ToBareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput() BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerManualLbConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterLoadBalancerManualLbConfigArgs) ToBareMetalAdminClusterLoadBalancerManualLbConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerManualLbConfigOutput).ToBareMetalAdminClusterLoadBalancerManualLbConfigPtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterLoadBalancerManualLbConfigPtrInput is an input type that accepts BareMetalAdminClusterLoadBalancerManualLbConfigArgs, BareMetalAdminClusterLoadBalancerManualLbConfigPtr and BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterLoadBalancerManualLbConfigPtrInput` via:
+//
+//	        BareMetalAdminClusterLoadBalancerManualLbConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterLoadBalancerManualLbConfigPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput() BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput
+	ToBareMetalAdminClusterLoadBalancerManualLbConfigPtrOutputWithContext(context.Context) BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput
+}
+
+type bareMetalAdminClusterLoadBalancerManualLbConfigPtrType BareMetalAdminClusterLoadBalancerManualLbConfigArgs
+
+func BareMetalAdminClusterLoadBalancerManualLbConfigPtr(v *BareMetalAdminClusterLoadBalancerManualLbConfigArgs) BareMetalAdminClusterLoadBalancerManualLbConfigPtrInput {
+	return (*bareMetalAdminClusterLoadBalancerManualLbConfigPtrType)(v)
+}
+
+func (*bareMetalAdminClusterLoadBalancerManualLbConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterLoadBalancerManualLbConfig)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterLoadBalancerManualLbConfigPtrType) ToBareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput() BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerManualLbConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterLoadBalancerManualLbConfigPtrType) ToBareMetalAdminClusterLoadBalancerManualLbConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerManualLbConfigOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterLoadBalancerManualLbConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterLoadBalancerManualLbConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterLoadBalancerManualLbConfigOutput) ToBareMetalAdminClusterLoadBalancerManualLbConfigOutput() BareMetalAdminClusterLoadBalancerManualLbConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerManualLbConfigOutput) ToBareMetalAdminClusterLoadBalancerManualLbConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerManualLbConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerManualLbConfigOutput) ToBareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput() BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput {
+	return o.ToBareMetalAdminClusterLoadBalancerManualLbConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterLoadBalancerManualLbConfigOutput) ToBareMetalAdminClusterLoadBalancerManualLbConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterLoadBalancerManualLbConfig) *BareMetalAdminClusterLoadBalancerManualLbConfig {
+		return &v
+	}).(BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput)
+}
+
+// Whether manual load balancing is enabled.
+func (o BareMetalAdminClusterLoadBalancerManualLbConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerManualLbConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterLoadBalancerManualLbConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput) ToBareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput() BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput) ToBareMetalAdminClusterLoadBalancerManualLbConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput) Elem() BareMetalAdminClusterLoadBalancerManualLbConfigOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancerManualLbConfig) BareMetalAdminClusterLoadBalancerManualLbConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterLoadBalancerManualLbConfig
+		return ret
+	}).(BareMetalAdminClusterLoadBalancerManualLbConfigOutput)
+}
+
+// Whether manual load balancing is enabled.
+func (o BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancerManualLbConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerPortConfig struct {
+	// The port that control plane hosted load balancers will listen on.
+	ControlPlaneLoadBalancerPort int `pulumi:"controlPlaneLoadBalancerPort"`
+}
+
+// BareMetalAdminClusterLoadBalancerPortConfigInput is an input type that accepts BareMetalAdminClusterLoadBalancerPortConfigArgs and BareMetalAdminClusterLoadBalancerPortConfigOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterLoadBalancerPortConfigInput` via:
+//
+//	BareMetalAdminClusterLoadBalancerPortConfigArgs{...}
+type BareMetalAdminClusterLoadBalancerPortConfigInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterLoadBalancerPortConfigOutput() BareMetalAdminClusterLoadBalancerPortConfigOutput
+	ToBareMetalAdminClusterLoadBalancerPortConfigOutputWithContext(context.Context) BareMetalAdminClusterLoadBalancerPortConfigOutput
+}
+
+type BareMetalAdminClusterLoadBalancerPortConfigArgs struct {
+	// The port that control plane hosted load balancers will listen on.
+	ControlPlaneLoadBalancerPort pulumi.IntInput `pulumi:"controlPlaneLoadBalancerPort"`
+}
+
+func (BareMetalAdminClusterLoadBalancerPortConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterLoadBalancerPortConfig)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterLoadBalancerPortConfigArgs) ToBareMetalAdminClusterLoadBalancerPortConfigOutput() BareMetalAdminClusterLoadBalancerPortConfigOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerPortConfigOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterLoadBalancerPortConfigArgs) ToBareMetalAdminClusterLoadBalancerPortConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerPortConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerPortConfigOutput)
+}
+
+func (i BareMetalAdminClusterLoadBalancerPortConfigArgs) ToBareMetalAdminClusterLoadBalancerPortConfigPtrOutput() BareMetalAdminClusterLoadBalancerPortConfigPtrOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerPortConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterLoadBalancerPortConfigArgs) ToBareMetalAdminClusterLoadBalancerPortConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerPortConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerPortConfigOutput).ToBareMetalAdminClusterLoadBalancerPortConfigPtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterLoadBalancerPortConfigPtrInput is an input type that accepts BareMetalAdminClusterLoadBalancerPortConfigArgs, BareMetalAdminClusterLoadBalancerPortConfigPtr and BareMetalAdminClusterLoadBalancerPortConfigPtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterLoadBalancerPortConfigPtrInput` via:
+//
+//	        BareMetalAdminClusterLoadBalancerPortConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterLoadBalancerPortConfigPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterLoadBalancerPortConfigPtrOutput() BareMetalAdminClusterLoadBalancerPortConfigPtrOutput
+	ToBareMetalAdminClusterLoadBalancerPortConfigPtrOutputWithContext(context.Context) BareMetalAdminClusterLoadBalancerPortConfigPtrOutput
+}
+
+type bareMetalAdminClusterLoadBalancerPortConfigPtrType BareMetalAdminClusterLoadBalancerPortConfigArgs
+
+func BareMetalAdminClusterLoadBalancerPortConfigPtr(v *BareMetalAdminClusterLoadBalancerPortConfigArgs) BareMetalAdminClusterLoadBalancerPortConfigPtrInput {
+	return (*bareMetalAdminClusterLoadBalancerPortConfigPtrType)(v)
+}
+
+func (*bareMetalAdminClusterLoadBalancerPortConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterLoadBalancerPortConfig)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterLoadBalancerPortConfigPtrType) ToBareMetalAdminClusterLoadBalancerPortConfigPtrOutput() BareMetalAdminClusterLoadBalancerPortConfigPtrOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerPortConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterLoadBalancerPortConfigPtrType) ToBareMetalAdminClusterLoadBalancerPortConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerPortConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerPortConfigPtrOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerPortConfigOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterLoadBalancerPortConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterLoadBalancerPortConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterLoadBalancerPortConfigOutput) ToBareMetalAdminClusterLoadBalancerPortConfigOutput() BareMetalAdminClusterLoadBalancerPortConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerPortConfigOutput) ToBareMetalAdminClusterLoadBalancerPortConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerPortConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerPortConfigOutput) ToBareMetalAdminClusterLoadBalancerPortConfigPtrOutput() BareMetalAdminClusterLoadBalancerPortConfigPtrOutput {
+	return o.ToBareMetalAdminClusterLoadBalancerPortConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterLoadBalancerPortConfigOutput) ToBareMetalAdminClusterLoadBalancerPortConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerPortConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterLoadBalancerPortConfig) *BareMetalAdminClusterLoadBalancerPortConfig {
+		return &v
+	}).(BareMetalAdminClusterLoadBalancerPortConfigPtrOutput)
+}
+
+// The port that control plane hosted load balancers will listen on.
+func (o BareMetalAdminClusterLoadBalancerPortConfigOutput) ControlPlaneLoadBalancerPort() pulumi.IntOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerPortConfig) int { return v.ControlPlaneLoadBalancerPort }).(pulumi.IntOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerPortConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterLoadBalancerPortConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterLoadBalancerPortConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterLoadBalancerPortConfigPtrOutput) ToBareMetalAdminClusterLoadBalancerPortConfigPtrOutput() BareMetalAdminClusterLoadBalancerPortConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerPortConfigPtrOutput) ToBareMetalAdminClusterLoadBalancerPortConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerPortConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerPortConfigPtrOutput) Elem() BareMetalAdminClusterLoadBalancerPortConfigOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancerPortConfig) BareMetalAdminClusterLoadBalancerPortConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterLoadBalancerPortConfig
+		return ret
+	}).(BareMetalAdminClusterLoadBalancerPortConfigOutput)
+}
+
+// The port that control plane hosted load balancers will listen on.
+func (o BareMetalAdminClusterLoadBalancerPortConfigPtrOutput) ControlPlaneLoadBalancerPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancerPortConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ControlPlaneLoadBalancerPort
+	}).(pulumi.IntPtrOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerVipConfig struct {
+	// The VIP which you previously set aside for the Kubernetes API of this Bare Metal Admin Cluster.
+	ControlPlaneVip string `pulumi:"controlPlaneVip"`
+}
+
+// BareMetalAdminClusterLoadBalancerVipConfigInput is an input type that accepts BareMetalAdminClusterLoadBalancerVipConfigArgs and BareMetalAdminClusterLoadBalancerVipConfigOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterLoadBalancerVipConfigInput` via:
+//
+//	BareMetalAdminClusterLoadBalancerVipConfigArgs{...}
+type BareMetalAdminClusterLoadBalancerVipConfigInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterLoadBalancerVipConfigOutput() BareMetalAdminClusterLoadBalancerVipConfigOutput
+	ToBareMetalAdminClusterLoadBalancerVipConfigOutputWithContext(context.Context) BareMetalAdminClusterLoadBalancerVipConfigOutput
+}
+
+type BareMetalAdminClusterLoadBalancerVipConfigArgs struct {
+	// The VIP which you previously set aside for the Kubernetes API of this Bare Metal Admin Cluster.
+	ControlPlaneVip pulumi.StringInput `pulumi:"controlPlaneVip"`
+}
+
+func (BareMetalAdminClusterLoadBalancerVipConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterLoadBalancerVipConfig)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterLoadBalancerVipConfigArgs) ToBareMetalAdminClusterLoadBalancerVipConfigOutput() BareMetalAdminClusterLoadBalancerVipConfigOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerVipConfigOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterLoadBalancerVipConfigArgs) ToBareMetalAdminClusterLoadBalancerVipConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerVipConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerVipConfigOutput)
+}
+
+func (i BareMetalAdminClusterLoadBalancerVipConfigArgs) ToBareMetalAdminClusterLoadBalancerVipConfigPtrOutput() BareMetalAdminClusterLoadBalancerVipConfigPtrOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerVipConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterLoadBalancerVipConfigArgs) ToBareMetalAdminClusterLoadBalancerVipConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerVipConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerVipConfigOutput).ToBareMetalAdminClusterLoadBalancerVipConfigPtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterLoadBalancerVipConfigPtrInput is an input type that accepts BareMetalAdminClusterLoadBalancerVipConfigArgs, BareMetalAdminClusterLoadBalancerVipConfigPtr and BareMetalAdminClusterLoadBalancerVipConfigPtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterLoadBalancerVipConfigPtrInput` via:
+//
+//	        BareMetalAdminClusterLoadBalancerVipConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterLoadBalancerVipConfigPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterLoadBalancerVipConfigPtrOutput() BareMetalAdminClusterLoadBalancerVipConfigPtrOutput
+	ToBareMetalAdminClusterLoadBalancerVipConfigPtrOutputWithContext(context.Context) BareMetalAdminClusterLoadBalancerVipConfigPtrOutput
+}
+
+type bareMetalAdminClusterLoadBalancerVipConfigPtrType BareMetalAdminClusterLoadBalancerVipConfigArgs
+
+func BareMetalAdminClusterLoadBalancerVipConfigPtr(v *BareMetalAdminClusterLoadBalancerVipConfigArgs) BareMetalAdminClusterLoadBalancerVipConfigPtrInput {
+	return (*bareMetalAdminClusterLoadBalancerVipConfigPtrType)(v)
+}
+
+func (*bareMetalAdminClusterLoadBalancerVipConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterLoadBalancerVipConfig)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterLoadBalancerVipConfigPtrType) ToBareMetalAdminClusterLoadBalancerVipConfigPtrOutput() BareMetalAdminClusterLoadBalancerVipConfigPtrOutput {
+	return i.ToBareMetalAdminClusterLoadBalancerVipConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterLoadBalancerVipConfigPtrType) ToBareMetalAdminClusterLoadBalancerVipConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerVipConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterLoadBalancerVipConfigPtrOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerVipConfigOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterLoadBalancerVipConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterLoadBalancerVipConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterLoadBalancerVipConfigOutput) ToBareMetalAdminClusterLoadBalancerVipConfigOutput() BareMetalAdminClusterLoadBalancerVipConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerVipConfigOutput) ToBareMetalAdminClusterLoadBalancerVipConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerVipConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerVipConfigOutput) ToBareMetalAdminClusterLoadBalancerVipConfigPtrOutput() BareMetalAdminClusterLoadBalancerVipConfigPtrOutput {
+	return o.ToBareMetalAdminClusterLoadBalancerVipConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterLoadBalancerVipConfigOutput) ToBareMetalAdminClusterLoadBalancerVipConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerVipConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterLoadBalancerVipConfig) *BareMetalAdminClusterLoadBalancerVipConfig {
+		return &v
+	}).(BareMetalAdminClusterLoadBalancerVipConfigPtrOutput)
+}
+
+// The VIP which you previously set aside for the Kubernetes API of this Bare Metal Admin Cluster.
+func (o BareMetalAdminClusterLoadBalancerVipConfigOutput) ControlPlaneVip() pulumi.StringOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancerVipConfig) string { return v.ControlPlaneVip }).(pulumi.StringOutput)
+}
+
+type BareMetalAdminClusterLoadBalancerVipConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterLoadBalancerVipConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterLoadBalancerVipConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterLoadBalancerVipConfigPtrOutput) ToBareMetalAdminClusterLoadBalancerVipConfigPtrOutput() BareMetalAdminClusterLoadBalancerVipConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerVipConfigPtrOutput) ToBareMetalAdminClusterLoadBalancerVipConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterLoadBalancerVipConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterLoadBalancerVipConfigPtrOutput) Elem() BareMetalAdminClusterLoadBalancerVipConfigOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancerVipConfig) BareMetalAdminClusterLoadBalancerVipConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterLoadBalancerVipConfig
+		return ret
+	}).(BareMetalAdminClusterLoadBalancerVipConfigOutput)
+}
+
+// The VIP which you previously set aside for the Kubernetes API of this Bare Metal Admin Cluster.
+func (o BareMetalAdminClusterLoadBalancerVipConfigPtrOutput) ControlPlaneVip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancerVipConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ControlPlaneVip
+	}).(pulumi.StringPtrOutput)
+}
+
+type BareMetalAdminClusterMaintenanceConfig struct {
+	// All IPv4 address from these ranges will be placed into maintenance mode.
+	// Nodes in maintenance mode will be cordoned and drained. When both of these
+	// are true, the "baremetal.cluster.gke.io/maintenance" annotation will be set
+	// on the node resource.
+	MaintenanceAddressCidrBlocks []string `pulumi:"maintenanceAddressCidrBlocks"`
+}
+
+// BareMetalAdminClusterMaintenanceConfigInput is an input type that accepts BareMetalAdminClusterMaintenanceConfigArgs and BareMetalAdminClusterMaintenanceConfigOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterMaintenanceConfigInput` via:
+//
+//	BareMetalAdminClusterMaintenanceConfigArgs{...}
+type BareMetalAdminClusterMaintenanceConfigInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterMaintenanceConfigOutput() BareMetalAdminClusterMaintenanceConfigOutput
+	ToBareMetalAdminClusterMaintenanceConfigOutputWithContext(context.Context) BareMetalAdminClusterMaintenanceConfigOutput
+}
+
+type BareMetalAdminClusterMaintenanceConfigArgs struct {
+	// All IPv4 address from these ranges will be placed into maintenance mode.
+	// Nodes in maintenance mode will be cordoned and drained. When both of these
+	// are true, the "baremetal.cluster.gke.io/maintenance" annotation will be set
+	// on the node resource.
+	MaintenanceAddressCidrBlocks pulumi.StringArrayInput `pulumi:"maintenanceAddressCidrBlocks"`
+}
+
+func (BareMetalAdminClusterMaintenanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterMaintenanceConfig)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterMaintenanceConfigArgs) ToBareMetalAdminClusterMaintenanceConfigOutput() BareMetalAdminClusterMaintenanceConfigOutput {
+	return i.ToBareMetalAdminClusterMaintenanceConfigOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterMaintenanceConfigArgs) ToBareMetalAdminClusterMaintenanceConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterMaintenanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterMaintenanceConfigOutput)
+}
+
+func (i BareMetalAdminClusterMaintenanceConfigArgs) ToBareMetalAdminClusterMaintenanceConfigPtrOutput() BareMetalAdminClusterMaintenanceConfigPtrOutput {
+	return i.ToBareMetalAdminClusterMaintenanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterMaintenanceConfigArgs) ToBareMetalAdminClusterMaintenanceConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterMaintenanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterMaintenanceConfigOutput).ToBareMetalAdminClusterMaintenanceConfigPtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterMaintenanceConfigPtrInput is an input type that accepts BareMetalAdminClusterMaintenanceConfigArgs, BareMetalAdminClusterMaintenanceConfigPtr and BareMetalAdminClusterMaintenanceConfigPtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterMaintenanceConfigPtrInput` via:
+//
+//	        BareMetalAdminClusterMaintenanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterMaintenanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterMaintenanceConfigPtrOutput() BareMetalAdminClusterMaintenanceConfigPtrOutput
+	ToBareMetalAdminClusterMaintenanceConfigPtrOutputWithContext(context.Context) BareMetalAdminClusterMaintenanceConfigPtrOutput
+}
+
+type bareMetalAdminClusterMaintenanceConfigPtrType BareMetalAdminClusterMaintenanceConfigArgs
+
+func BareMetalAdminClusterMaintenanceConfigPtr(v *BareMetalAdminClusterMaintenanceConfigArgs) BareMetalAdminClusterMaintenanceConfigPtrInput {
+	return (*bareMetalAdminClusterMaintenanceConfigPtrType)(v)
+}
+
+func (*bareMetalAdminClusterMaintenanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterMaintenanceConfig)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterMaintenanceConfigPtrType) ToBareMetalAdminClusterMaintenanceConfigPtrOutput() BareMetalAdminClusterMaintenanceConfigPtrOutput {
+	return i.ToBareMetalAdminClusterMaintenanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterMaintenanceConfigPtrType) ToBareMetalAdminClusterMaintenanceConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterMaintenanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterMaintenanceConfigPtrOutput)
+}
+
+type BareMetalAdminClusterMaintenanceConfigOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterMaintenanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterMaintenanceConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterMaintenanceConfigOutput) ToBareMetalAdminClusterMaintenanceConfigOutput() BareMetalAdminClusterMaintenanceConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterMaintenanceConfigOutput) ToBareMetalAdminClusterMaintenanceConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterMaintenanceConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterMaintenanceConfigOutput) ToBareMetalAdminClusterMaintenanceConfigPtrOutput() BareMetalAdminClusterMaintenanceConfigPtrOutput {
+	return o.ToBareMetalAdminClusterMaintenanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterMaintenanceConfigOutput) ToBareMetalAdminClusterMaintenanceConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterMaintenanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterMaintenanceConfig) *BareMetalAdminClusterMaintenanceConfig {
+		return &v
+	}).(BareMetalAdminClusterMaintenanceConfigPtrOutput)
+}
+
+// All IPv4 address from these ranges will be placed into maintenance mode.
+// Nodes in maintenance mode will be cordoned and drained. When both of these
+// are true, the "baremetal.cluster.gke.io/maintenance" annotation will be set
+// on the node resource.
+func (o BareMetalAdminClusterMaintenanceConfigOutput) MaintenanceAddressCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterMaintenanceConfig) []string { return v.MaintenanceAddressCidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+type BareMetalAdminClusterMaintenanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterMaintenanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterMaintenanceConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterMaintenanceConfigPtrOutput) ToBareMetalAdminClusterMaintenanceConfigPtrOutput() BareMetalAdminClusterMaintenanceConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterMaintenanceConfigPtrOutput) ToBareMetalAdminClusterMaintenanceConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterMaintenanceConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterMaintenanceConfigPtrOutput) Elem() BareMetalAdminClusterMaintenanceConfigOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterMaintenanceConfig) BareMetalAdminClusterMaintenanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterMaintenanceConfig
+		return ret
+	}).(BareMetalAdminClusterMaintenanceConfigOutput)
+}
+
+// All IPv4 address from these ranges will be placed into maintenance mode.
+// Nodes in maintenance mode will be cordoned and drained. When both of these
+// are true, the "baremetal.cluster.gke.io/maintenance" annotation will be set
+// on the node resource.
+func (o BareMetalAdminClusterMaintenanceConfigPtrOutput) MaintenanceAddressCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterMaintenanceConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MaintenanceAddressCidrBlocks
+	}).(pulumi.StringArrayOutput)
+}
+
+type BareMetalAdminClusterNetworkConfig struct {
+	// A nested object resource
+	// Structure is documented below.
+	IslandModeCidr *BareMetalAdminClusterNetworkConfigIslandModeCidr `pulumi:"islandModeCidr"`
+}
+
+// BareMetalAdminClusterNetworkConfigInput is an input type that accepts BareMetalAdminClusterNetworkConfigArgs and BareMetalAdminClusterNetworkConfigOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterNetworkConfigInput` via:
+//
+//	BareMetalAdminClusterNetworkConfigArgs{...}
+type BareMetalAdminClusterNetworkConfigInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterNetworkConfigOutput() BareMetalAdminClusterNetworkConfigOutput
+	ToBareMetalAdminClusterNetworkConfigOutputWithContext(context.Context) BareMetalAdminClusterNetworkConfigOutput
+}
+
+type BareMetalAdminClusterNetworkConfigArgs struct {
+	// A nested object resource
+	// Structure is documented below.
+	IslandModeCidr BareMetalAdminClusterNetworkConfigIslandModeCidrPtrInput `pulumi:"islandModeCidr"`
+}
+
+func (BareMetalAdminClusterNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterNetworkConfig)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterNetworkConfigArgs) ToBareMetalAdminClusterNetworkConfigOutput() BareMetalAdminClusterNetworkConfigOutput {
+	return i.ToBareMetalAdminClusterNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterNetworkConfigArgs) ToBareMetalAdminClusterNetworkConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterNetworkConfigOutput)
+}
+
+func (i BareMetalAdminClusterNetworkConfigArgs) ToBareMetalAdminClusterNetworkConfigPtrOutput() BareMetalAdminClusterNetworkConfigPtrOutput {
+	return i.ToBareMetalAdminClusterNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterNetworkConfigArgs) ToBareMetalAdminClusterNetworkConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterNetworkConfigOutput).ToBareMetalAdminClusterNetworkConfigPtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterNetworkConfigPtrInput is an input type that accepts BareMetalAdminClusterNetworkConfigArgs, BareMetalAdminClusterNetworkConfigPtr and BareMetalAdminClusterNetworkConfigPtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterNetworkConfigPtrInput` via:
+//
+//	        BareMetalAdminClusterNetworkConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterNetworkConfigPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterNetworkConfigPtrOutput() BareMetalAdminClusterNetworkConfigPtrOutput
+	ToBareMetalAdminClusterNetworkConfigPtrOutputWithContext(context.Context) BareMetalAdminClusterNetworkConfigPtrOutput
+}
+
+type bareMetalAdminClusterNetworkConfigPtrType BareMetalAdminClusterNetworkConfigArgs
+
+func BareMetalAdminClusterNetworkConfigPtr(v *BareMetalAdminClusterNetworkConfigArgs) BareMetalAdminClusterNetworkConfigPtrInput {
+	return (*bareMetalAdminClusterNetworkConfigPtrType)(v)
+}
+
+func (*bareMetalAdminClusterNetworkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterNetworkConfig)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterNetworkConfigPtrType) ToBareMetalAdminClusterNetworkConfigPtrOutput() BareMetalAdminClusterNetworkConfigPtrOutput {
+	return i.ToBareMetalAdminClusterNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterNetworkConfigPtrType) ToBareMetalAdminClusterNetworkConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterNetworkConfigPtrOutput)
+}
+
+type BareMetalAdminClusterNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterNetworkConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterNetworkConfigOutput) ToBareMetalAdminClusterNetworkConfigOutput() BareMetalAdminClusterNetworkConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterNetworkConfigOutput) ToBareMetalAdminClusterNetworkConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterNetworkConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterNetworkConfigOutput) ToBareMetalAdminClusterNetworkConfigPtrOutput() BareMetalAdminClusterNetworkConfigPtrOutput {
+	return o.ToBareMetalAdminClusterNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterNetworkConfigOutput) ToBareMetalAdminClusterNetworkConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterNetworkConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterNetworkConfig) *BareMetalAdminClusterNetworkConfig {
+		return &v
+	}).(BareMetalAdminClusterNetworkConfigPtrOutput)
+}
+
+// A nested object resource
+// Structure is documented below.
+func (o BareMetalAdminClusterNetworkConfigOutput) IslandModeCidr() BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterNetworkConfig) *BareMetalAdminClusterNetworkConfigIslandModeCidr {
+		return v.IslandModeCidr
+	}).(BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput)
+}
+
+type BareMetalAdminClusterNetworkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterNetworkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterNetworkConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterNetworkConfigPtrOutput) ToBareMetalAdminClusterNetworkConfigPtrOutput() BareMetalAdminClusterNetworkConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterNetworkConfigPtrOutput) ToBareMetalAdminClusterNetworkConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterNetworkConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterNetworkConfigPtrOutput) Elem() BareMetalAdminClusterNetworkConfigOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterNetworkConfig) BareMetalAdminClusterNetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterNetworkConfig
+		return ret
+	}).(BareMetalAdminClusterNetworkConfigOutput)
+}
+
+// A nested object resource
+// Structure is documented below.
+func (o BareMetalAdminClusterNetworkConfigPtrOutput) IslandModeCidr() BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterNetworkConfig) *BareMetalAdminClusterNetworkConfigIslandModeCidr {
+		if v == nil {
+			return nil
+		}
+		return v.IslandModeCidr
+	}).(BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput)
+}
+
+type BareMetalAdminClusterNetworkConfigIslandModeCidr struct {
+	// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
+	PodAddressCidrBlocks []string `pulumi:"podAddressCidrBlocks"`
+	// All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
+	ServiceAddressCidrBlocks []string `pulumi:"serviceAddressCidrBlocks"`
+}
+
+// BareMetalAdminClusterNetworkConfigIslandModeCidrInput is an input type that accepts BareMetalAdminClusterNetworkConfigIslandModeCidrArgs and BareMetalAdminClusterNetworkConfigIslandModeCidrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterNetworkConfigIslandModeCidrInput` via:
+//
+//	BareMetalAdminClusterNetworkConfigIslandModeCidrArgs{...}
+type BareMetalAdminClusterNetworkConfigIslandModeCidrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterNetworkConfigIslandModeCidrOutput() BareMetalAdminClusterNetworkConfigIslandModeCidrOutput
+	ToBareMetalAdminClusterNetworkConfigIslandModeCidrOutputWithContext(context.Context) BareMetalAdminClusterNetworkConfigIslandModeCidrOutput
+}
+
+type BareMetalAdminClusterNetworkConfigIslandModeCidrArgs struct {
+	// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
+	PodAddressCidrBlocks pulumi.StringArrayInput `pulumi:"podAddressCidrBlocks"`
+	// All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
+	ServiceAddressCidrBlocks pulumi.StringArrayInput `pulumi:"serviceAddressCidrBlocks"`
+}
+
+func (BareMetalAdminClusterNetworkConfigIslandModeCidrArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterNetworkConfigIslandModeCidr)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterNetworkConfigIslandModeCidrArgs) ToBareMetalAdminClusterNetworkConfigIslandModeCidrOutput() BareMetalAdminClusterNetworkConfigIslandModeCidrOutput {
+	return i.ToBareMetalAdminClusterNetworkConfigIslandModeCidrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterNetworkConfigIslandModeCidrArgs) ToBareMetalAdminClusterNetworkConfigIslandModeCidrOutputWithContext(ctx context.Context) BareMetalAdminClusterNetworkConfigIslandModeCidrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterNetworkConfigIslandModeCidrOutput)
+}
+
+func (i BareMetalAdminClusterNetworkConfigIslandModeCidrArgs) ToBareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput() BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput {
+	return i.ToBareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterNetworkConfigIslandModeCidrArgs) ToBareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterNetworkConfigIslandModeCidrOutput).ToBareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterNetworkConfigIslandModeCidrPtrInput is an input type that accepts BareMetalAdminClusterNetworkConfigIslandModeCidrArgs, BareMetalAdminClusterNetworkConfigIslandModeCidrPtr and BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterNetworkConfigIslandModeCidrPtrInput` via:
+//
+//	        BareMetalAdminClusterNetworkConfigIslandModeCidrArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterNetworkConfigIslandModeCidrPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput() BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput
+	ToBareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutputWithContext(context.Context) BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput
+}
+
+type bareMetalAdminClusterNetworkConfigIslandModeCidrPtrType BareMetalAdminClusterNetworkConfigIslandModeCidrArgs
+
+func BareMetalAdminClusterNetworkConfigIslandModeCidrPtr(v *BareMetalAdminClusterNetworkConfigIslandModeCidrArgs) BareMetalAdminClusterNetworkConfigIslandModeCidrPtrInput {
+	return (*bareMetalAdminClusterNetworkConfigIslandModeCidrPtrType)(v)
+}
+
+func (*bareMetalAdminClusterNetworkConfigIslandModeCidrPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterNetworkConfigIslandModeCidr)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterNetworkConfigIslandModeCidrPtrType) ToBareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput() BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput {
+	return i.ToBareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterNetworkConfigIslandModeCidrPtrType) ToBareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput)
+}
+
+type BareMetalAdminClusterNetworkConfigIslandModeCidrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterNetworkConfigIslandModeCidrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterNetworkConfigIslandModeCidr)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterNetworkConfigIslandModeCidrOutput) ToBareMetalAdminClusterNetworkConfigIslandModeCidrOutput() BareMetalAdminClusterNetworkConfigIslandModeCidrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterNetworkConfigIslandModeCidrOutput) ToBareMetalAdminClusterNetworkConfigIslandModeCidrOutputWithContext(ctx context.Context) BareMetalAdminClusterNetworkConfigIslandModeCidrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterNetworkConfigIslandModeCidrOutput) ToBareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput() BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput {
+	return o.ToBareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterNetworkConfigIslandModeCidrOutput) ToBareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterNetworkConfigIslandModeCidr) *BareMetalAdminClusterNetworkConfigIslandModeCidr {
+		return &v
+	}).(BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput)
+}
+
+// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
+func (o BareMetalAdminClusterNetworkConfigIslandModeCidrOutput) PodAddressCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterNetworkConfigIslandModeCidr) []string { return v.PodAddressCidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+// All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
+func (o BareMetalAdminClusterNetworkConfigIslandModeCidrOutput) ServiceAddressCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterNetworkConfigIslandModeCidr) []string { return v.ServiceAddressCidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+type BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterNetworkConfigIslandModeCidr)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput) ToBareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput() BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput) ToBareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput) Elem() BareMetalAdminClusterNetworkConfigIslandModeCidrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterNetworkConfigIslandModeCidr) BareMetalAdminClusterNetworkConfigIslandModeCidr {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterNetworkConfigIslandModeCidr
+		return ret
+	}).(BareMetalAdminClusterNetworkConfigIslandModeCidrOutput)
+}
+
+// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
+func (o BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput) PodAddressCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterNetworkConfigIslandModeCidr) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PodAddressCidrBlocks
+	}).(pulumi.StringArrayOutput)
+}
+
+// All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
+func (o BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput) ServiceAddressCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterNetworkConfigIslandModeCidr) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAddressCidrBlocks
+	}).(pulumi.StringArrayOutput)
+}
+
+type BareMetalAdminClusterNodeAccessConfig struct {
+	// LoginUser is the user name used to access node machines.
+	// It defaults to "root" if not set.
+	LoginUser *string `pulumi:"loginUser"`
+}
+
+// BareMetalAdminClusterNodeAccessConfigInput is an input type that accepts BareMetalAdminClusterNodeAccessConfigArgs and BareMetalAdminClusterNodeAccessConfigOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterNodeAccessConfigInput` via:
+//
+//	BareMetalAdminClusterNodeAccessConfigArgs{...}
+type BareMetalAdminClusterNodeAccessConfigInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterNodeAccessConfigOutput() BareMetalAdminClusterNodeAccessConfigOutput
+	ToBareMetalAdminClusterNodeAccessConfigOutputWithContext(context.Context) BareMetalAdminClusterNodeAccessConfigOutput
+}
+
+type BareMetalAdminClusterNodeAccessConfigArgs struct {
+	// LoginUser is the user name used to access node machines.
+	// It defaults to "root" if not set.
+	LoginUser pulumi.StringPtrInput `pulumi:"loginUser"`
+}
+
+func (BareMetalAdminClusterNodeAccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterNodeAccessConfig)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterNodeAccessConfigArgs) ToBareMetalAdminClusterNodeAccessConfigOutput() BareMetalAdminClusterNodeAccessConfigOutput {
+	return i.ToBareMetalAdminClusterNodeAccessConfigOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterNodeAccessConfigArgs) ToBareMetalAdminClusterNodeAccessConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterNodeAccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterNodeAccessConfigOutput)
+}
+
+func (i BareMetalAdminClusterNodeAccessConfigArgs) ToBareMetalAdminClusterNodeAccessConfigPtrOutput() BareMetalAdminClusterNodeAccessConfigPtrOutput {
+	return i.ToBareMetalAdminClusterNodeAccessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterNodeAccessConfigArgs) ToBareMetalAdminClusterNodeAccessConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterNodeAccessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterNodeAccessConfigOutput).ToBareMetalAdminClusterNodeAccessConfigPtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterNodeAccessConfigPtrInput is an input type that accepts BareMetalAdminClusterNodeAccessConfigArgs, BareMetalAdminClusterNodeAccessConfigPtr and BareMetalAdminClusterNodeAccessConfigPtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterNodeAccessConfigPtrInput` via:
+//
+//	        BareMetalAdminClusterNodeAccessConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterNodeAccessConfigPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterNodeAccessConfigPtrOutput() BareMetalAdminClusterNodeAccessConfigPtrOutput
+	ToBareMetalAdminClusterNodeAccessConfigPtrOutputWithContext(context.Context) BareMetalAdminClusterNodeAccessConfigPtrOutput
+}
+
+type bareMetalAdminClusterNodeAccessConfigPtrType BareMetalAdminClusterNodeAccessConfigArgs
+
+func BareMetalAdminClusterNodeAccessConfigPtr(v *BareMetalAdminClusterNodeAccessConfigArgs) BareMetalAdminClusterNodeAccessConfigPtrInput {
+	return (*bareMetalAdminClusterNodeAccessConfigPtrType)(v)
+}
+
+func (*bareMetalAdminClusterNodeAccessConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterNodeAccessConfig)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterNodeAccessConfigPtrType) ToBareMetalAdminClusterNodeAccessConfigPtrOutput() BareMetalAdminClusterNodeAccessConfigPtrOutput {
+	return i.ToBareMetalAdminClusterNodeAccessConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterNodeAccessConfigPtrType) ToBareMetalAdminClusterNodeAccessConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterNodeAccessConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterNodeAccessConfigPtrOutput)
+}
+
+type BareMetalAdminClusterNodeAccessConfigOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterNodeAccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterNodeAccessConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterNodeAccessConfigOutput) ToBareMetalAdminClusterNodeAccessConfigOutput() BareMetalAdminClusterNodeAccessConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterNodeAccessConfigOutput) ToBareMetalAdminClusterNodeAccessConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterNodeAccessConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterNodeAccessConfigOutput) ToBareMetalAdminClusterNodeAccessConfigPtrOutput() BareMetalAdminClusterNodeAccessConfigPtrOutput {
+	return o.ToBareMetalAdminClusterNodeAccessConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterNodeAccessConfigOutput) ToBareMetalAdminClusterNodeAccessConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterNodeAccessConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterNodeAccessConfig) *BareMetalAdminClusterNodeAccessConfig {
+		return &v
+	}).(BareMetalAdminClusterNodeAccessConfigPtrOutput)
+}
+
+// LoginUser is the user name used to access node machines.
+// It defaults to "root" if not set.
+func (o BareMetalAdminClusterNodeAccessConfigOutput) LoginUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterNodeAccessConfig) *string { return v.LoginUser }).(pulumi.StringPtrOutput)
+}
+
+type BareMetalAdminClusterNodeAccessConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterNodeAccessConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterNodeAccessConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterNodeAccessConfigPtrOutput) ToBareMetalAdminClusterNodeAccessConfigPtrOutput() BareMetalAdminClusterNodeAccessConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterNodeAccessConfigPtrOutput) ToBareMetalAdminClusterNodeAccessConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterNodeAccessConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterNodeAccessConfigPtrOutput) Elem() BareMetalAdminClusterNodeAccessConfigOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterNodeAccessConfig) BareMetalAdminClusterNodeAccessConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterNodeAccessConfig
+		return ret
+	}).(BareMetalAdminClusterNodeAccessConfigOutput)
+}
+
+// LoginUser is the user name used to access node machines.
+// It defaults to "root" if not set.
+func (o BareMetalAdminClusterNodeAccessConfigPtrOutput) LoginUser() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterNodeAccessConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LoginUser
+	}).(pulumi.StringPtrOutput)
+}
+
+type BareMetalAdminClusterNodeConfig struct {
+	// The maximum number of pods a node can run. The size of the CIDR range
+	// assigned to the node will be derived from this parameter.
+	MaxPodsPerNode *int `pulumi:"maxPodsPerNode"`
+}
+
+// BareMetalAdminClusterNodeConfigInput is an input type that accepts BareMetalAdminClusterNodeConfigArgs and BareMetalAdminClusterNodeConfigOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterNodeConfigInput` via:
+//
+//	BareMetalAdminClusterNodeConfigArgs{...}
+type BareMetalAdminClusterNodeConfigInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterNodeConfigOutput() BareMetalAdminClusterNodeConfigOutput
+	ToBareMetalAdminClusterNodeConfigOutputWithContext(context.Context) BareMetalAdminClusterNodeConfigOutput
+}
+
+type BareMetalAdminClusterNodeConfigArgs struct {
+	// The maximum number of pods a node can run. The size of the CIDR range
+	// assigned to the node will be derived from this parameter.
+	MaxPodsPerNode pulumi.IntPtrInput `pulumi:"maxPodsPerNode"`
+}
+
+func (BareMetalAdminClusterNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterNodeConfig)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterNodeConfigArgs) ToBareMetalAdminClusterNodeConfigOutput() BareMetalAdminClusterNodeConfigOutput {
+	return i.ToBareMetalAdminClusterNodeConfigOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterNodeConfigArgs) ToBareMetalAdminClusterNodeConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterNodeConfigOutput)
+}
+
+func (i BareMetalAdminClusterNodeConfigArgs) ToBareMetalAdminClusterNodeConfigPtrOutput() BareMetalAdminClusterNodeConfigPtrOutput {
+	return i.ToBareMetalAdminClusterNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterNodeConfigArgs) ToBareMetalAdminClusterNodeConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterNodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterNodeConfigOutput).ToBareMetalAdminClusterNodeConfigPtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterNodeConfigPtrInput is an input type that accepts BareMetalAdminClusterNodeConfigArgs, BareMetalAdminClusterNodeConfigPtr and BareMetalAdminClusterNodeConfigPtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterNodeConfigPtrInput` via:
+//
+//	        BareMetalAdminClusterNodeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterNodeConfigPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterNodeConfigPtrOutput() BareMetalAdminClusterNodeConfigPtrOutput
+	ToBareMetalAdminClusterNodeConfigPtrOutputWithContext(context.Context) BareMetalAdminClusterNodeConfigPtrOutput
+}
+
+type bareMetalAdminClusterNodeConfigPtrType BareMetalAdminClusterNodeConfigArgs
+
+func BareMetalAdminClusterNodeConfigPtr(v *BareMetalAdminClusterNodeConfigArgs) BareMetalAdminClusterNodeConfigPtrInput {
+	return (*bareMetalAdminClusterNodeConfigPtrType)(v)
+}
+
+func (*bareMetalAdminClusterNodeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterNodeConfig)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterNodeConfigPtrType) ToBareMetalAdminClusterNodeConfigPtrOutput() BareMetalAdminClusterNodeConfigPtrOutput {
+	return i.ToBareMetalAdminClusterNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterNodeConfigPtrType) ToBareMetalAdminClusterNodeConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterNodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterNodeConfigPtrOutput)
+}
+
+type BareMetalAdminClusterNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterNodeConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterNodeConfigOutput) ToBareMetalAdminClusterNodeConfigOutput() BareMetalAdminClusterNodeConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterNodeConfigOutput) ToBareMetalAdminClusterNodeConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterNodeConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterNodeConfigOutput) ToBareMetalAdminClusterNodeConfigPtrOutput() BareMetalAdminClusterNodeConfigPtrOutput {
+	return o.ToBareMetalAdminClusterNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterNodeConfigOutput) ToBareMetalAdminClusterNodeConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterNodeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterNodeConfig) *BareMetalAdminClusterNodeConfig {
+		return &v
+	}).(BareMetalAdminClusterNodeConfigPtrOutput)
+}
+
+// The maximum number of pods a node can run. The size of the CIDR range
+// assigned to the node will be derived from this parameter.
+func (o BareMetalAdminClusterNodeConfigOutput) MaxPodsPerNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterNodeConfig) *int { return v.MaxPodsPerNode }).(pulumi.IntPtrOutput)
+}
+
+type BareMetalAdminClusterNodeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterNodeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterNodeConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterNodeConfigPtrOutput) ToBareMetalAdminClusterNodeConfigPtrOutput() BareMetalAdminClusterNodeConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterNodeConfigPtrOutput) ToBareMetalAdminClusterNodeConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterNodeConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterNodeConfigPtrOutput) Elem() BareMetalAdminClusterNodeConfigOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterNodeConfig) BareMetalAdminClusterNodeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterNodeConfig
+		return ret
+	}).(BareMetalAdminClusterNodeConfigOutput)
+}
+
+// The maximum number of pods a node can run. The size of the CIDR range
+// assigned to the node will be derived from this parameter.
+func (o BareMetalAdminClusterNodeConfigPtrOutput) MaxPodsPerNode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterNodeConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxPodsPerNode
+	}).(pulumi.IntPtrOutput)
+}
+
+type BareMetalAdminClusterProxy struct {
+	// A list of IPs, hostnames, and domains that should skip the proxy.
+	// Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+	NoProxies []string `pulumi:"noProxies"`
+	// Specifies the address of your proxy server.
+	// Examples: http://domain
+	// WARNING: Do not provide credentials in the format
+	// http://(username:password@)domain these will be rejected by the server.
+	Uri string `pulumi:"uri"`
+}
+
+// BareMetalAdminClusterProxyInput is an input type that accepts BareMetalAdminClusterProxyArgs and BareMetalAdminClusterProxyOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterProxyInput` via:
+//
+//	BareMetalAdminClusterProxyArgs{...}
+type BareMetalAdminClusterProxyInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterProxyOutput() BareMetalAdminClusterProxyOutput
+	ToBareMetalAdminClusterProxyOutputWithContext(context.Context) BareMetalAdminClusterProxyOutput
+}
+
+type BareMetalAdminClusterProxyArgs struct {
+	// A list of IPs, hostnames, and domains that should skip the proxy.
+	// Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+	NoProxies pulumi.StringArrayInput `pulumi:"noProxies"`
+	// Specifies the address of your proxy server.
+	// Examples: http://domain
+	// WARNING: Do not provide credentials in the format
+	// http://(username:password@)domain these will be rejected by the server.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (BareMetalAdminClusterProxyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterProxy)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterProxyArgs) ToBareMetalAdminClusterProxyOutput() BareMetalAdminClusterProxyOutput {
+	return i.ToBareMetalAdminClusterProxyOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterProxyArgs) ToBareMetalAdminClusterProxyOutputWithContext(ctx context.Context) BareMetalAdminClusterProxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterProxyOutput)
+}
+
+func (i BareMetalAdminClusterProxyArgs) ToBareMetalAdminClusterProxyPtrOutput() BareMetalAdminClusterProxyPtrOutput {
+	return i.ToBareMetalAdminClusterProxyPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterProxyArgs) ToBareMetalAdminClusterProxyPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterProxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterProxyOutput).ToBareMetalAdminClusterProxyPtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterProxyPtrInput is an input type that accepts BareMetalAdminClusterProxyArgs, BareMetalAdminClusterProxyPtr and BareMetalAdminClusterProxyPtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterProxyPtrInput` via:
+//
+//	        BareMetalAdminClusterProxyArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterProxyPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterProxyPtrOutput() BareMetalAdminClusterProxyPtrOutput
+	ToBareMetalAdminClusterProxyPtrOutputWithContext(context.Context) BareMetalAdminClusterProxyPtrOutput
+}
+
+type bareMetalAdminClusterProxyPtrType BareMetalAdminClusterProxyArgs
+
+func BareMetalAdminClusterProxyPtr(v *BareMetalAdminClusterProxyArgs) BareMetalAdminClusterProxyPtrInput {
+	return (*bareMetalAdminClusterProxyPtrType)(v)
+}
+
+func (*bareMetalAdminClusterProxyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterProxy)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterProxyPtrType) ToBareMetalAdminClusterProxyPtrOutput() BareMetalAdminClusterProxyPtrOutput {
+	return i.ToBareMetalAdminClusterProxyPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterProxyPtrType) ToBareMetalAdminClusterProxyPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterProxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterProxyPtrOutput)
+}
+
+type BareMetalAdminClusterProxyOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterProxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterProxy)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterProxyOutput) ToBareMetalAdminClusterProxyOutput() BareMetalAdminClusterProxyOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterProxyOutput) ToBareMetalAdminClusterProxyOutputWithContext(ctx context.Context) BareMetalAdminClusterProxyOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterProxyOutput) ToBareMetalAdminClusterProxyPtrOutput() BareMetalAdminClusterProxyPtrOutput {
+	return o.ToBareMetalAdminClusterProxyPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterProxyOutput) ToBareMetalAdminClusterProxyPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterProxyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterProxy) *BareMetalAdminClusterProxy {
+		return &v
+	}).(BareMetalAdminClusterProxyPtrOutput)
+}
+
+// A list of IPs, hostnames, and domains that should skip the proxy.
+// Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+func (o BareMetalAdminClusterProxyOutput) NoProxies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterProxy) []string { return v.NoProxies }).(pulumi.StringArrayOutput)
+}
+
+// Specifies the address of your proxy server.
+// Examples: http://domain
+// WARNING: Do not provide credentials in the format
+// http://(username:password@)domain these will be rejected by the server.
+func (o BareMetalAdminClusterProxyOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterProxy) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type BareMetalAdminClusterProxyPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterProxyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterProxy)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterProxyPtrOutput) ToBareMetalAdminClusterProxyPtrOutput() BareMetalAdminClusterProxyPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterProxyPtrOutput) ToBareMetalAdminClusterProxyPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterProxyPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterProxyPtrOutput) Elem() BareMetalAdminClusterProxyOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterProxy) BareMetalAdminClusterProxy {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterProxy
+		return ret
+	}).(BareMetalAdminClusterProxyOutput)
+}
+
+// A list of IPs, hostnames, and domains that should skip the proxy.
+// Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+func (o BareMetalAdminClusterProxyPtrOutput) NoProxies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterProxy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NoProxies
+	}).(pulumi.StringArrayOutput)
+}
+
+// Specifies the address of your proxy server.
+// Examples: http://domain
+// WARNING: Do not provide credentials in the format
+// http://(username:password@)domain these will be rejected by the server.
+func (o BareMetalAdminClusterProxyPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterProxy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type BareMetalAdminClusterSecurityConfig struct {
+	// Configures user access to the Bare Metal User cluster.
+	// Structure is documented below.
+	Authorization *BareMetalAdminClusterSecurityConfigAuthorization `pulumi:"authorization"`
+}
+
+// BareMetalAdminClusterSecurityConfigInput is an input type that accepts BareMetalAdminClusterSecurityConfigArgs and BareMetalAdminClusterSecurityConfigOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterSecurityConfigInput` via:
+//
+//	BareMetalAdminClusterSecurityConfigArgs{...}
+type BareMetalAdminClusterSecurityConfigInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterSecurityConfigOutput() BareMetalAdminClusterSecurityConfigOutput
+	ToBareMetalAdminClusterSecurityConfigOutputWithContext(context.Context) BareMetalAdminClusterSecurityConfigOutput
+}
+
+type BareMetalAdminClusterSecurityConfigArgs struct {
+	// Configures user access to the Bare Metal User cluster.
+	// Structure is documented below.
+	Authorization BareMetalAdminClusterSecurityConfigAuthorizationPtrInput `pulumi:"authorization"`
+}
+
+func (BareMetalAdminClusterSecurityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterSecurityConfig)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterSecurityConfigArgs) ToBareMetalAdminClusterSecurityConfigOutput() BareMetalAdminClusterSecurityConfigOutput {
+	return i.ToBareMetalAdminClusterSecurityConfigOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterSecurityConfigArgs) ToBareMetalAdminClusterSecurityConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterSecurityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterSecurityConfigOutput)
+}
+
+func (i BareMetalAdminClusterSecurityConfigArgs) ToBareMetalAdminClusterSecurityConfigPtrOutput() BareMetalAdminClusterSecurityConfigPtrOutput {
+	return i.ToBareMetalAdminClusterSecurityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterSecurityConfigArgs) ToBareMetalAdminClusterSecurityConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterSecurityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterSecurityConfigOutput).ToBareMetalAdminClusterSecurityConfigPtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterSecurityConfigPtrInput is an input type that accepts BareMetalAdminClusterSecurityConfigArgs, BareMetalAdminClusterSecurityConfigPtr and BareMetalAdminClusterSecurityConfigPtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterSecurityConfigPtrInput` via:
+//
+//	        BareMetalAdminClusterSecurityConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterSecurityConfigPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterSecurityConfigPtrOutput() BareMetalAdminClusterSecurityConfigPtrOutput
+	ToBareMetalAdminClusterSecurityConfigPtrOutputWithContext(context.Context) BareMetalAdminClusterSecurityConfigPtrOutput
+}
+
+type bareMetalAdminClusterSecurityConfigPtrType BareMetalAdminClusterSecurityConfigArgs
+
+func BareMetalAdminClusterSecurityConfigPtr(v *BareMetalAdminClusterSecurityConfigArgs) BareMetalAdminClusterSecurityConfigPtrInput {
+	return (*bareMetalAdminClusterSecurityConfigPtrType)(v)
+}
+
+func (*bareMetalAdminClusterSecurityConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterSecurityConfig)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterSecurityConfigPtrType) ToBareMetalAdminClusterSecurityConfigPtrOutput() BareMetalAdminClusterSecurityConfigPtrOutput {
+	return i.ToBareMetalAdminClusterSecurityConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterSecurityConfigPtrType) ToBareMetalAdminClusterSecurityConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterSecurityConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterSecurityConfigPtrOutput)
+}
+
+type BareMetalAdminClusterSecurityConfigOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterSecurityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterSecurityConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterSecurityConfigOutput) ToBareMetalAdminClusterSecurityConfigOutput() BareMetalAdminClusterSecurityConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterSecurityConfigOutput) ToBareMetalAdminClusterSecurityConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterSecurityConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterSecurityConfigOutput) ToBareMetalAdminClusterSecurityConfigPtrOutput() BareMetalAdminClusterSecurityConfigPtrOutput {
+	return o.ToBareMetalAdminClusterSecurityConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterSecurityConfigOutput) ToBareMetalAdminClusterSecurityConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterSecurityConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterSecurityConfig) *BareMetalAdminClusterSecurityConfig {
+		return &v
+	}).(BareMetalAdminClusterSecurityConfigPtrOutput)
+}
+
+// Configures user access to the Bare Metal User cluster.
+// Structure is documented below.
+func (o BareMetalAdminClusterSecurityConfigOutput) Authorization() BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterSecurityConfig) *BareMetalAdminClusterSecurityConfigAuthorization {
+		return v.Authorization
+	}).(BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput)
+}
+
+type BareMetalAdminClusterSecurityConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterSecurityConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterSecurityConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterSecurityConfigPtrOutput) ToBareMetalAdminClusterSecurityConfigPtrOutput() BareMetalAdminClusterSecurityConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterSecurityConfigPtrOutput) ToBareMetalAdminClusterSecurityConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterSecurityConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterSecurityConfigPtrOutput) Elem() BareMetalAdminClusterSecurityConfigOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterSecurityConfig) BareMetalAdminClusterSecurityConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterSecurityConfig
+		return ret
+	}).(BareMetalAdminClusterSecurityConfigOutput)
+}
+
+// Configures user access to the Bare Metal User cluster.
+// Structure is documented below.
+func (o BareMetalAdminClusterSecurityConfigPtrOutput) Authorization() BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterSecurityConfig) *BareMetalAdminClusterSecurityConfigAuthorization {
+		if v == nil {
+			return nil
+		}
+		return v.Authorization
+	}).(BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput)
+}
+
+type BareMetalAdminClusterSecurityConfigAuthorization struct {
+	// Users that will be granted the cluster-admin role on the cluster, providing full access to the cluster.
+	// Structure is documented below.
+	AdminUsers []BareMetalAdminClusterSecurityConfigAuthorizationAdminUser `pulumi:"adminUsers"`
+}
+
+// BareMetalAdminClusterSecurityConfigAuthorizationInput is an input type that accepts BareMetalAdminClusterSecurityConfigAuthorizationArgs and BareMetalAdminClusterSecurityConfigAuthorizationOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterSecurityConfigAuthorizationInput` via:
+//
+//	BareMetalAdminClusterSecurityConfigAuthorizationArgs{...}
+type BareMetalAdminClusterSecurityConfigAuthorizationInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterSecurityConfigAuthorizationOutput() BareMetalAdminClusterSecurityConfigAuthorizationOutput
+	ToBareMetalAdminClusterSecurityConfigAuthorizationOutputWithContext(context.Context) BareMetalAdminClusterSecurityConfigAuthorizationOutput
+}
+
+type BareMetalAdminClusterSecurityConfigAuthorizationArgs struct {
+	// Users that will be granted the cluster-admin role on the cluster, providing full access to the cluster.
+	// Structure is documented below.
+	AdminUsers BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayInput `pulumi:"adminUsers"`
+}
+
+func (BareMetalAdminClusterSecurityConfigAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterSecurityConfigAuthorization)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterSecurityConfigAuthorizationArgs) ToBareMetalAdminClusterSecurityConfigAuthorizationOutput() BareMetalAdminClusterSecurityConfigAuthorizationOutput {
+	return i.ToBareMetalAdminClusterSecurityConfigAuthorizationOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterSecurityConfigAuthorizationArgs) ToBareMetalAdminClusterSecurityConfigAuthorizationOutputWithContext(ctx context.Context) BareMetalAdminClusterSecurityConfigAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterSecurityConfigAuthorizationOutput)
+}
+
+func (i BareMetalAdminClusterSecurityConfigAuthorizationArgs) ToBareMetalAdminClusterSecurityConfigAuthorizationPtrOutput() BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput {
+	return i.ToBareMetalAdminClusterSecurityConfigAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterSecurityConfigAuthorizationArgs) ToBareMetalAdminClusterSecurityConfigAuthorizationPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterSecurityConfigAuthorizationOutput).ToBareMetalAdminClusterSecurityConfigAuthorizationPtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterSecurityConfigAuthorizationPtrInput is an input type that accepts BareMetalAdminClusterSecurityConfigAuthorizationArgs, BareMetalAdminClusterSecurityConfigAuthorizationPtr and BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterSecurityConfigAuthorizationPtrInput` via:
+//
+//	        BareMetalAdminClusterSecurityConfigAuthorizationArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterSecurityConfigAuthorizationPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterSecurityConfigAuthorizationPtrOutput() BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput
+	ToBareMetalAdminClusterSecurityConfigAuthorizationPtrOutputWithContext(context.Context) BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput
+}
+
+type bareMetalAdminClusterSecurityConfigAuthorizationPtrType BareMetalAdminClusterSecurityConfigAuthorizationArgs
+
+func BareMetalAdminClusterSecurityConfigAuthorizationPtr(v *BareMetalAdminClusterSecurityConfigAuthorizationArgs) BareMetalAdminClusterSecurityConfigAuthorizationPtrInput {
+	return (*bareMetalAdminClusterSecurityConfigAuthorizationPtrType)(v)
+}
+
+func (*bareMetalAdminClusterSecurityConfigAuthorizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterSecurityConfigAuthorization)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterSecurityConfigAuthorizationPtrType) ToBareMetalAdminClusterSecurityConfigAuthorizationPtrOutput() BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput {
+	return i.ToBareMetalAdminClusterSecurityConfigAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterSecurityConfigAuthorizationPtrType) ToBareMetalAdminClusterSecurityConfigAuthorizationPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput)
+}
+
+type BareMetalAdminClusterSecurityConfigAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterSecurityConfigAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterSecurityConfigAuthorization)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterSecurityConfigAuthorizationOutput) ToBareMetalAdminClusterSecurityConfigAuthorizationOutput() BareMetalAdminClusterSecurityConfigAuthorizationOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterSecurityConfigAuthorizationOutput) ToBareMetalAdminClusterSecurityConfigAuthorizationOutputWithContext(ctx context.Context) BareMetalAdminClusterSecurityConfigAuthorizationOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterSecurityConfigAuthorizationOutput) ToBareMetalAdminClusterSecurityConfigAuthorizationPtrOutput() BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput {
+	return o.ToBareMetalAdminClusterSecurityConfigAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterSecurityConfigAuthorizationOutput) ToBareMetalAdminClusterSecurityConfigAuthorizationPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterSecurityConfigAuthorization) *BareMetalAdminClusterSecurityConfigAuthorization {
+		return &v
+	}).(BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput)
+}
+
+// Users that will be granted the cluster-admin role on the cluster, providing full access to the cluster.
+// Structure is documented below.
+func (o BareMetalAdminClusterSecurityConfigAuthorizationOutput) AdminUsers() BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterSecurityConfigAuthorization) []BareMetalAdminClusterSecurityConfigAuthorizationAdminUser {
+		return v.AdminUsers
+	}).(BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput)
+}
+
+type BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterSecurityConfigAuthorization)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput) ToBareMetalAdminClusterSecurityConfigAuthorizationPtrOutput() BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput) ToBareMetalAdminClusterSecurityConfigAuthorizationPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput) Elem() BareMetalAdminClusterSecurityConfigAuthorizationOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterSecurityConfigAuthorization) BareMetalAdminClusterSecurityConfigAuthorization {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterSecurityConfigAuthorization
+		return ret
+	}).(BareMetalAdminClusterSecurityConfigAuthorizationOutput)
+}
+
+// Users that will be granted the cluster-admin role on the cluster, providing full access to the cluster.
+// Structure is documented below.
+func (o BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput) AdminUsers() BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterSecurityConfigAuthorization) []BareMetalAdminClusterSecurityConfigAuthorizationAdminUser {
+		if v == nil {
+			return nil
+		}
+		return v.AdminUsers
+	}).(BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput)
+}
+
+type BareMetalAdminClusterSecurityConfigAuthorizationAdminUser struct {
+	// The name of the user, e.g. `my-gcp-id@gmail.com`.
+	Username string `pulumi:"username"`
+}
+
+// BareMetalAdminClusterSecurityConfigAuthorizationAdminUserInput is an input type that accepts BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs and BareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterSecurityConfigAuthorizationAdminUserInput` via:
+//
+//	BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs{...}
+type BareMetalAdminClusterSecurityConfigAuthorizationAdminUserInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput() BareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput
+	ToBareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutputWithContext(context.Context) BareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput
+}
+
+type BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs struct {
+	// The name of the user, e.g. `my-gcp-id@gmail.com`.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterSecurityConfigAuthorizationAdminUser)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs) ToBareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput() BareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput {
+	return i.ToBareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs) ToBareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutputWithContext(ctx context.Context) BareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput)
+}
+
+// BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayInput is an input type that accepts BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArray and BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayInput` via:
+//
+//	BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArray{ BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs{...} }
+type BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput() BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput
+	ToBareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutputWithContext(context.Context) BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput
+}
+
+type BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArray []BareMetalAdminClusterSecurityConfigAuthorizationAdminUserInput
+
+func (BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterSecurityConfigAuthorizationAdminUser)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArray) ToBareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput() BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput {
+	return i.ToBareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArray) ToBareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput)
+}
+
+type BareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterSecurityConfigAuthorizationAdminUser)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput) ToBareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput() BareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput) ToBareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutputWithContext(ctx context.Context) BareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput {
+	return o
+}
+
+// The name of the user, e.g. `my-gcp-id@gmail.com`.
+func (o BareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterSecurityConfigAuthorizationAdminUser) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterSecurityConfigAuthorizationAdminUser)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput) ToBareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput() BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput) ToBareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput) Index(i pulumi.IntInput) BareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BareMetalAdminClusterSecurityConfigAuthorizationAdminUser {
+		return vs[0].([]BareMetalAdminClusterSecurityConfigAuthorizationAdminUser)[vs[1].(int)]
+	}).(BareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput)
+}
+
+type BareMetalAdminClusterStatus struct {
+	// (Output)
+	// ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+	// Structure is documented below.
+	Conditions []BareMetalAdminClusterStatusCondition `pulumi:"conditions"`
+	// (Output)
+	// Human-friendly representation of the error message from the admin cluster
+	// controller. The error message can be temporary as the admin cluster
+	// controller creates a cluster or node pool. If the error message persists
+	// for a longer period of time, it can be used to surface error message to
+	// indicate real problems requiring user intervention.
+	ErrorMessage *string `pulumi:"errorMessage"`
+}
+
+// BareMetalAdminClusterStatusInput is an input type that accepts BareMetalAdminClusterStatusArgs and BareMetalAdminClusterStatusOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterStatusInput` via:
+//
+//	BareMetalAdminClusterStatusArgs{...}
+type BareMetalAdminClusterStatusInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterStatusOutput() BareMetalAdminClusterStatusOutput
+	ToBareMetalAdminClusterStatusOutputWithContext(context.Context) BareMetalAdminClusterStatusOutput
+}
+
+type BareMetalAdminClusterStatusArgs struct {
+	// (Output)
+	// ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+	// Structure is documented below.
+	Conditions BareMetalAdminClusterStatusConditionArrayInput `pulumi:"conditions"`
+	// (Output)
+	// Human-friendly representation of the error message from the admin cluster
+	// controller. The error message can be temporary as the admin cluster
+	// controller creates a cluster or node pool. If the error message persists
+	// for a longer period of time, it can be used to surface error message to
+	// indicate real problems requiring user intervention.
+	ErrorMessage pulumi.StringPtrInput `pulumi:"errorMessage"`
+}
+
+func (BareMetalAdminClusterStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterStatus)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterStatusArgs) ToBareMetalAdminClusterStatusOutput() BareMetalAdminClusterStatusOutput {
+	return i.ToBareMetalAdminClusterStatusOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterStatusArgs) ToBareMetalAdminClusterStatusOutputWithContext(ctx context.Context) BareMetalAdminClusterStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStatusOutput)
+}
+
+// BareMetalAdminClusterStatusArrayInput is an input type that accepts BareMetalAdminClusterStatusArray and BareMetalAdminClusterStatusArrayOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterStatusArrayInput` via:
+//
+//	BareMetalAdminClusterStatusArray{ BareMetalAdminClusterStatusArgs{...} }
+type BareMetalAdminClusterStatusArrayInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterStatusArrayOutput() BareMetalAdminClusterStatusArrayOutput
+	ToBareMetalAdminClusterStatusArrayOutputWithContext(context.Context) BareMetalAdminClusterStatusArrayOutput
+}
+
+type BareMetalAdminClusterStatusArray []BareMetalAdminClusterStatusInput
+
+func (BareMetalAdminClusterStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterStatus)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterStatusArray) ToBareMetalAdminClusterStatusArrayOutput() BareMetalAdminClusterStatusArrayOutput {
+	return i.ToBareMetalAdminClusterStatusArrayOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterStatusArray) ToBareMetalAdminClusterStatusArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStatusArrayOutput)
+}
+
+type BareMetalAdminClusterStatusOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterStatus)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterStatusOutput) ToBareMetalAdminClusterStatusOutput() BareMetalAdminClusterStatusOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterStatusOutput) ToBareMetalAdminClusterStatusOutputWithContext(ctx context.Context) BareMetalAdminClusterStatusOutput {
+	return o
+}
+
+// (Output)
+// ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+// Structure is documented below.
+func (o BareMetalAdminClusterStatusOutput) Conditions() BareMetalAdminClusterStatusConditionArrayOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterStatus) []BareMetalAdminClusterStatusCondition { return v.Conditions }).(BareMetalAdminClusterStatusConditionArrayOutput)
+}
+
+// (Output)
+// Human-friendly representation of the error message from the admin cluster
+// controller. The error message can be temporary as the admin cluster
+// controller creates a cluster or node pool. If the error message persists
+// for a longer period of time, it can be used to surface error message to
+// indicate real problems requiring user intervention.
+func (o BareMetalAdminClusterStatusOutput) ErrorMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterStatus) *string { return v.ErrorMessage }).(pulumi.StringPtrOutput)
+}
+
+type BareMetalAdminClusterStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterStatus)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterStatusArrayOutput) ToBareMetalAdminClusterStatusArrayOutput() BareMetalAdminClusterStatusArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterStatusArrayOutput) ToBareMetalAdminClusterStatusArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterStatusArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterStatusArrayOutput) Index(i pulumi.IntInput) BareMetalAdminClusterStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BareMetalAdminClusterStatus {
+		return vs[0].([]BareMetalAdminClusterStatus)[vs[1].(int)]
+	}).(BareMetalAdminClusterStatusOutput)
+}
+
+type BareMetalAdminClusterStatusCondition struct {
+	// (Output)
+	// Last time the condition transit from one status to another.
+	LastTransitionTime *string `pulumi:"lastTransitionTime"`
+	// Human-readable message indicating details about last transition.
+	Message *string `pulumi:"message"`
+	// (Output)
+	// A human-readable message of the check failure.
+	Reason *string `pulumi:"reason"`
+	// (Output)
+	// The lifecycle state of the condition.
+	State *string `pulumi:"state"`
+	// Type of the condition.
+	// (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+	Type *string `pulumi:"type"`
+}
+
+// BareMetalAdminClusterStatusConditionInput is an input type that accepts BareMetalAdminClusterStatusConditionArgs and BareMetalAdminClusterStatusConditionOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterStatusConditionInput` via:
+//
+//	BareMetalAdminClusterStatusConditionArgs{...}
+type BareMetalAdminClusterStatusConditionInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterStatusConditionOutput() BareMetalAdminClusterStatusConditionOutput
+	ToBareMetalAdminClusterStatusConditionOutputWithContext(context.Context) BareMetalAdminClusterStatusConditionOutput
+}
+
+type BareMetalAdminClusterStatusConditionArgs struct {
+	// (Output)
+	// Last time the condition transit from one status to another.
+	LastTransitionTime pulumi.StringPtrInput `pulumi:"lastTransitionTime"`
+	// Human-readable message indicating details about last transition.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// (Output)
+	// A human-readable message of the check failure.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+	// (Output)
+	// The lifecycle state of the condition.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// Type of the condition.
+	// (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (BareMetalAdminClusterStatusConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterStatusCondition)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterStatusConditionArgs) ToBareMetalAdminClusterStatusConditionOutput() BareMetalAdminClusterStatusConditionOutput {
+	return i.ToBareMetalAdminClusterStatusConditionOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterStatusConditionArgs) ToBareMetalAdminClusterStatusConditionOutputWithContext(ctx context.Context) BareMetalAdminClusterStatusConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStatusConditionOutput)
+}
+
+// BareMetalAdminClusterStatusConditionArrayInput is an input type that accepts BareMetalAdminClusterStatusConditionArray and BareMetalAdminClusterStatusConditionArrayOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterStatusConditionArrayInput` via:
+//
+//	BareMetalAdminClusterStatusConditionArray{ BareMetalAdminClusterStatusConditionArgs{...} }
+type BareMetalAdminClusterStatusConditionArrayInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterStatusConditionArrayOutput() BareMetalAdminClusterStatusConditionArrayOutput
+	ToBareMetalAdminClusterStatusConditionArrayOutputWithContext(context.Context) BareMetalAdminClusterStatusConditionArrayOutput
+}
+
+type BareMetalAdminClusterStatusConditionArray []BareMetalAdminClusterStatusConditionInput
+
+func (BareMetalAdminClusterStatusConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterStatusCondition)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterStatusConditionArray) ToBareMetalAdminClusterStatusConditionArrayOutput() BareMetalAdminClusterStatusConditionArrayOutput {
+	return i.ToBareMetalAdminClusterStatusConditionArrayOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterStatusConditionArray) ToBareMetalAdminClusterStatusConditionArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterStatusConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStatusConditionArrayOutput)
+}
+
+type BareMetalAdminClusterStatusConditionOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterStatusConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterStatusCondition)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterStatusConditionOutput) ToBareMetalAdminClusterStatusConditionOutput() BareMetalAdminClusterStatusConditionOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterStatusConditionOutput) ToBareMetalAdminClusterStatusConditionOutputWithContext(ctx context.Context) BareMetalAdminClusterStatusConditionOutput {
+	return o
+}
+
+// (Output)
+// Last time the condition transit from one status to another.
+func (o BareMetalAdminClusterStatusConditionOutput) LastTransitionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterStatusCondition) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
+}
+
+// Human-readable message indicating details about last transition.
+func (o BareMetalAdminClusterStatusConditionOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterStatusCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A human-readable message of the check failure.
+func (o BareMetalAdminClusterStatusConditionOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterStatusCondition) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The lifecycle state of the condition.
+func (o BareMetalAdminClusterStatusConditionOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterStatusCondition) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// Type of the condition.
+// (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+func (o BareMetalAdminClusterStatusConditionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterStatusCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type BareMetalAdminClusterStatusConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterStatusConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterStatusCondition)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterStatusConditionArrayOutput) ToBareMetalAdminClusterStatusConditionArrayOutput() BareMetalAdminClusterStatusConditionArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterStatusConditionArrayOutput) ToBareMetalAdminClusterStatusConditionArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterStatusConditionArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterStatusConditionArrayOutput) Index(i pulumi.IntInput) BareMetalAdminClusterStatusConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BareMetalAdminClusterStatusCondition {
+		return vs[0].([]BareMetalAdminClusterStatusCondition)[vs[1].(int)]
+	}).(BareMetalAdminClusterStatusConditionOutput)
+}
+
+type BareMetalAdminClusterStorage struct {
+	// Specifies the config for local PersistentVolumes backed
+	// by mounted node disks. These disks need to be formatted and mounted by the
+	// user, which can be done before or after cluster creation.
+	// Structure is documented below.
+	LvpNodeMountsConfig BareMetalAdminClusterStorageLvpNodeMountsConfig `pulumi:"lvpNodeMountsConfig"`
+	// Specifies the config for local PersistentVolumes backed by
+	// subdirectories in a shared filesystem. These subdirectores are
+	// automatically created during cluster creation.
+	// Structure is documented below.
+	LvpShareConfig BareMetalAdminClusterStorageLvpShareConfig `pulumi:"lvpShareConfig"`
+}
+
+// BareMetalAdminClusterStorageInput is an input type that accepts BareMetalAdminClusterStorageArgs and BareMetalAdminClusterStorageOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterStorageInput` via:
+//
+//	BareMetalAdminClusterStorageArgs{...}
+type BareMetalAdminClusterStorageInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterStorageOutput() BareMetalAdminClusterStorageOutput
+	ToBareMetalAdminClusterStorageOutputWithContext(context.Context) BareMetalAdminClusterStorageOutput
+}
+
+type BareMetalAdminClusterStorageArgs struct {
+	// Specifies the config for local PersistentVolumes backed
+	// by mounted node disks. These disks need to be formatted and mounted by the
+	// user, which can be done before or after cluster creation.
+	// Structure is documented below.
+	LvpNodeMountsConfig BareMetalAdminClusterStorageLvpNodeMountsConfigInput `pulumi:"lvpNodeMountsConfig"`
+	// Specifies the config for local PersistentVolumes backed by
+	// subdirectories in a shared filesystem. These subdirectores are
+	// automatically created during cluster creation.
+	// Structure is documented below.
+	LvpShareConfig BareMetalAdminClusterStorageLvpShareConfigInput `pulumi:"lvpShareConfig"`
+}
+
+func (BareMetalAdminClusterStorageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterStorage)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterStorageArgs) ToBareMetalAdminClusterStorageOutput() BareMetalAdminClusterStorageOutput {
+	return i.ToBareMetalAdminClusterStorageOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterStorageArgs) ToBareMetalAdminClusterStorageOutputWithContext(ctx context.Context) BareMetalAdminClusterStorageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStorageOutput)
+}
+
+func (i BareMetalAdminClusterStorageArgs) ToBareMetalAdminClusterStoragePtrOutput() BareMetalAdminClusterStoragePtrOutput {
+	return i.ToBareMetalAdminClusterStoragePtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterStorageArgs) ToBareMetalAdminClusterStoragePtrOutputWithContext(ctx context.Context) BareMetalAdminClusterStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStorageOutput).ToBareMetalAdminClusterStoragePtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterStoragePtrInput is an input type that accepts BareMetalAdminClusterStorageArgs, BareMetalAdminClusterStoragePtr and BareMetalAdminClusterStoragePtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterStoragePtrInput` via:
+//
+//	        BareMetalAdminClusterStorageArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterStoragePtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterStoragePtrOutput() BareMetalAdminClusterStoragePtrOutput
+	ToBareMetalAdminClusterStoragePtrOutputWithContext(context.Context) BareMetalAdminClusterStoragePtrOutput
+}
+
+type bareMetalAdminClusterStoragePtrType BareMetalAdminClusterStorageArgs
+
+func BareMetalAdminClusterStoragePtr(v *BareMetalAdminClusterStorageArgs) BareMetalAdminClusterStoragePtrInput {
+	return (*bareMetalAdminClusterStoragePtrType)(v)
+}
+
+func (*bareMetalAdminClusterStoragePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterStorage)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterStoragePtrType) ToBareMetalAdminClusterStoragePtrOutput() BareMetalAdminClusterStoragePtrOutput {
+	return i.ToBareMetalAdminClusterStoragePtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterStoragePtrType) ToBareMetalAdminClusterStoragePtrOutputWithContext(ctx context.Context) BareMetalAdminClusterStoragePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStoragePtrOutput)
+}
+
+type BareMetalAdminClusterStorageOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterStorageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterStorage)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterStorageOutput) ToBareMetalAdminClusterStorageOutput() BareMetalAdminClusterStorageOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterStorageOutput) ToBareMetalAdminClusterStorageOutputWithContext(ctx context.Context) BareMetalAdminClusterStorageOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterStorageOutput) ToBareMetalAdminClusterStoragePtrOutput() BareMetalAdminClusterStoragePtrOutput {
+	return o.ToBareMetalAdminClusterStoragePtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterStorageOutput) ToBareMetalAdminClusterStoragePtrOutputWithContext(ctx context.Context) BareMetalAdminClusterStoragePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterStorage) *BareMetalAdminClusterStorage {
+		return &v
+	}).(BareMetalAdminClusterStoragePtrOutput)
+}
+
+// Specifies the config for local PersistentVolumes backed
+// by mounted node disks. These disks need to be formatted and mounted by the
+// user, which can be done before or after cluster creation.
+// Structure is documented below.
+func (o BareMetalAdminClusterStorageOutput) LvpNodeMountsConfig() BareMetalAdminClusterStorageLvpNodeMountsConfigOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterStorage) BareMetalAdminClusterStorageLvpNodeMountsConfig {
+		return v.LvpNodeMountsConfig
+	}).(BareMetalAdminClusterStorageLvpNodeMountsConfigOutput)
+}
+
+// Specifies the config for local PersistentVolumes backed by
+// subdirectories in a shared filesystem. These subdirectores are
+// automatically created during cluster creation.
+// Structure is documented below.
+func (o BareMetalAdminClusterStorageOutput) LvpShareConfig() BareMetalAdminClusterStorageLvpShareConfigOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterStorage) BareMetalAdminClusterStorageLvpShareConfig {
+		return v.LvpShareConfig
+	}).(BareMetalAdminClusterStorageLvpShareConfigOutput)
+}
+
+type BareMetalAdminClusterStoragePtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterStoragePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterStorage)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterStoragePtrOutput) ToBareMetalAdminClusterStoragePtrOutput() BareMetalAdminClusterStoragePtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterStoragePtrOutput) ToBareMetalAdminClusterStoragePtrOutputWithContext(ctx context.Context) BareMetalAdminClusterStoragePtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterStoragePtrOutput) Elem() BareMetalAdminClusterStorageOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterStorage) BareMetalAdminClusterStorage {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterStorage
+		return ret
+	}).(BareMetalAdminClusterStorageOutput)
+}
+
+// Specifies the config for local PersistentVolumes backed
+// by mounted node disks. These disks need to be formatted and mounted by the
+// user, which can be done before or after cluster creation.
+// Structure is documented below.
+func (o BareMetalAdminClusterStoragePtrOutput) LvpNodeMountsConfig() BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterStorage) *BareMetalAdminClusterStorageLvpNodeMountsConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.LvpNodeMountsConfig
+	}).(BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput)
+}
+
+// Specifies the config for local PersistentVolumes backed by
+// subdirectories in a shared filesystem. These subdirectores are
+// automatically created during cluster creation.
+// Structure is documented below.
+func (o BareMetalAdminClusterStoragePtrOutput) LvpShareConfig() BareMetalAdminClusterStorageLvpShareConfigPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterStorage) *BareMetalAdminClusterStorageLvpShareConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.LvpShareConfig
+	}).(BareMetalAdminClusterStorageLvpShareConfigPtrOutput)
+}
+
+type BareMetalAdminClusterStorageLvpNodeMountsConfig struct {
+	// The host machine path.
+	Path string `pulumi:"path"`
+	// The StorageClass name that PVs will be created with.
+	StorageClass string `pulumi:"storageClass"`
+}
+
+// BareMetalAdminClusterStorageLvpNodeMountsConfigInput is an input type that accepts BareMetalAdminClusterStorageLvpNodeMountsConfigArgs and BareMetalAdminClusterStorageLvpNodeMountsConfigOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterStorageLvpNodeMountsConfigInput` via:
+//
+//	BareMetalAdminClusterStorageLvpNodeMountsConfigArgs{...}
+type BareMetalAdminClusterStorageLvpNodeMountsConfigInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterStorageLvpNodeMountsConfigOutput() BareMetalAdminClusterStorageLvpNodeMountsConfigOutput
+	ToBareMetalAdminClusterStorageLvpNodeMountsConfigOutputWithContext(context.Context) BareMetalAdminClusterStorageLvpNodeMountsConfigOutput
+}
+
+type BareMetalAdminClusterStorageLvpNodeMountsConfigArgs struct {
+	// The host machine path.
+	Path pulumi.StringInput `pulumi:"path"`
+	// The StorageClass name that PVs will be created with.
+	StorageClass pulumi.StringInput `pulumi:"storageClass"`
+}
+
+func (BareMetalAdminClusterStorageLvpNodeMountsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterStorageLvpNodeMountsConfig)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterStorageLvpNodeMountsConfigArgs) ToBareMetalAdminClusterStorageLvpNodeMountsConfigOutput() BareMetalAdminClusterStorageLvpNodeMountsConfigOutput {
+	return i.ToBareMetalAdminClusterStorageLvpNodeMountsConfigOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterStorageLvpNodeMountsConfigArgs) ToBareMetalAdminClusterStorageLvpNodeMountsConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterStorageLvpNodeMountsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStorageLvpNodeMountsConfigOutput)
+}
+
+func (i BareMetalAdminClusterStorageLvpNodeMountsConfigArgs) ToBareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput() BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput {
+	return i.ToBareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterStorageLvpNodeMountsConfigArgs) ToBareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStorageLvpNodeMountsConfigOutput).ToBareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterStorageLvpNodeMountsConfigPtrInput is an input type that accepts BareMetalAdminClusterStorageLvpNodeMountsConfigArgs, BareMetalAdminClusterStorageLvpNodeMountsConfigPtr and BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterStorageLvpNodeMountsConfigPtrInput` via:
+//
+//	        BareMetalAdminClusterStorageLvpNodeMountsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterStorageLvpNodeMountsConfigPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput() BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput
+	ToBareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutputWithContext(context.Context) BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput
+}
+
+type bareMetalAdminClusterStorageLvpNodeMountsConfigPtrType BareMetalAdminClusterStorageLvpNodeMountsConfigArgs
+
+func BareMetalAdminClusterStorageLvpNodeMountsConfigPtr(v *BareMetalAdminClusterStorageLvpNodeMountsConfigArgs) BareMetalAdminClusterStorageLvpNodeMountsConfigPtrInput {
+	return (*bareMetalAdminClusterStorageLvpNodeMountsConfigPtrType)(v)
+}
+
+func (*bareMetalAdminClusterStorageLvpNodeMountsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterStorageLvpNodeMountsConfig)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterStorageLvpNodeMountsConfigPtrType) ToBareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput() BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput {
+	return i.ToBareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterStorageLvpNodeMountsConfigPtrType) ToBareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput)
+}
+
+type BareMetalAdminClusterStorageLvpNodeMountsConfigOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterStorageLvpNodeMountsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterStorageLvpNodeMountsConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterStorageLvpNodeMountsConfigOutput) ToBareMetalAdminClusterStorageLvpNodeMountsConfigOutput() BareMetalAdminClusterStorageLvpNodeMountsConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterStorageLvpNodeMountsConfigOutput) ToBareMetalAdminClusterStorageLvpNodeMountsConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterStorageLvpNodeMountsConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterStorageLvpNodeMountsConfigOutput) ToBareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput() BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput {
+	return o.ToBareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterStorageLvpNodeMountsConfigOutput) ToBareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterStorageLvpNodeMountsConfig) *BareMetalAdminClusterStorageLvpNodeMountsConfig {
+		return &v
+	}).(BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput)
+}
+
+// The host machine path.
+func (o BareMetalAdminClusterStorageLvpNodeMountsConfigOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterStorageLvpNodeMountsConfig) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The StorageClass name that PVs will be created with.
+func (o BareMetalAdminClusterStorageLvpNodeMountsConfigOutput) StorageClass() pulumi.StringOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterStorageLvpNodeMountsConfig) string { return v.StorageClass }).(pulumi.StringOutput)
+}
+
+type BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterStorageLvpNodeMountsConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput) ToBareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput() BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput) ToBareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput) Elem() BareMetalAdminClusterStorageLvpNodeMountsConfigOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterStorageLvpNodeMountsConfig) BareMetalAdminClusterStorageLvpNodeMountsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterStorageLvpNodeMountsConfig
+		return ret
+	}).(BareMetalAdminClusterStorageLvpNodeMountsConfigOutput)
+}
+
+// The host machine path.
+func (o BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterStorageLvpNodeMountsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// The StorageClass name that PVs will be created with.
+func (o BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput) StorageClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterStorageLvpNodeMountsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StorageClass
+	}).(pulumi.StringPtrOutput)
+}
+
+type BareMetalAdminClusterStorageLvpShareConfig struct {
+	// Defines the machine path and storage class for the LVP Share.
+	// Structure is documented below.
+	LvpConfig BareMetalAdminClusterStorageLvpShareConfigLvpConfig `pulumi:"lvpConfig"`
+	// The number of subdirectories to create under path.
+	SharedPathPvCount *int `pulumi:"sharedPathPvCount"`
+}
+
+// BareMetalAdminClusterStorageLvpShareConfigInput is an input type that accepts BareMetalAdminClusterStorageLvpShareConfigArgs and BareMetalAdminClusterStorageLvpShareConfigOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterStorageLvpShareConfigInput` via:
+//
+//	BareMetalAdminClusterStorageLvpShareConfigArgs{...}
+type BareMetalAdminClusterStorageLvpShareConfigInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterStorageLvpShareConfigOutput() BareMetalAdminClusterStorageLvpShareConfigOutput
+	ToBareMetalAdminClusterStorageLvpShareConfigOutputWithContext(context.Context) BareMetalAdminClusterStorageLvpShareConfigOutput
+}
+
+type BareMetalAdminClusterStorageLvpShareConfigArgs struct {
+	// Defines the machine path and storage class for the LVP Share.
+	// Structure is documented below.
+	LvpConfig BareMetalAdminClusterStorageLvpShareConfigLvpConfigInput `pulumi:"lvpConfig"`
+	// The number of subdirectories to create under path.
+	SharedPathPvCount pulumi.IntPtrInput `pulumi:"sharedPathPvCount"`
+}
+
+func (BareMetalAdminClusterStorageLvpShareConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterStorageLvpShareConfig)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterStorageLvpShareConfigArgs) ToBareMetalAdminClusterStorageLvpShareConfigOutput() BareMetalAdminClusterStorageLvpShareConfigOutput {
+	return i.ToBareMetalAdminClusterStorageLvpShareConfigOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterStorageLvpShareConfigArgs) ToBareMetalAdminClusterStorageLvpShareConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterStorageLvpShareConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStorageLvpShareConfigOutput)
+}
+
+func (i BareMetalAdminClusterStorageLvpShareConfigArgs) ToBareMetalAdminClusterStorageLvpShareConfigPtrOutput() BareMetalAdminClusterStorageLvpShareConfigPtrOutput {
+	return i.ToBareMetalAdminClusterStorageLvpShareConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterStorageLvpShareConfigArgs) ToBareMetalAdminClusterStorageLvpShareConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterStorageLvpShareConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStorageLvpShareConfigOutput).ToBareMetalAdminClusterStorageLvpShareConfigPtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterStorageLvpShareConfigPtrInput is an input type that accepts BareMetalAdminClusterStorageLvpShareConfigArgs, BareMetalAdminClusterStorageLvpShareConfigPtr and BareMetalAdminClusterStorageLvpShareConfigPtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterStorageLvpShareConfigPtrInput` via:
+//
+//	        BareMetalAdminClusterStorageLvpShareConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterStorageLvpShareConfigPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterStorageLvpShareConfigPtrOutput() BareMetalAdminClusterStorageLvpShareConfigPtrOutput
+	ToBareMetalAdminClusterStorageLvpShareConfigPtrOutputWithContext(context.Context) BareMetalAdminClusterStorageLvpShareConfigPtrOutput
+}
+
+type bareMetalAdminClusterStorageLvpShareConfigPtrType BareMetalAdminClusterStorageLvpShareConfigArgs
+
+func BareMetalAdminClusterStorageLvpShareConfigPtr(v *BareMetalAdminClusterStorageLvpShareConfigArgs) BareMetalAdminClusterStorageLvpShareConfigPtrInput {
+	return (*bareMetalAdminClusterStorageLvpShareConfigPtrType)(v)
+}
+
+func (*bareMetalAdminClusterStorageLvpShareConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterStorageLvpShareConfig)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterStorageLvpShareConfigPtrType) ToBareMetalAdminClusterStorageLvpShareConfigPtrOutput() BareMetalAdminClusterStorageLvpShareConfigPtrOutput {
+	return i.ToBareMetalAdminClusterStorageLvpShareConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterStorageLvpShareConfigPtrType) ToBareMetalAdminClusterStorageLvpShareConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterStorageLvpShareConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStorageLvpShareConfigPtrOutput)
+}
+
+type BareMetalAdminClusterStorageLvpShareConfigOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterStorageLvpShareConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterStorageLvpShareConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterStorageLvpShareConfigOutput) ToBareMetalAdminClusterStorageLvpShareConfigOutput() BareMetalAdminClusterStorageLvpShareConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterStorageLvpShareConfigOutput) ToBareMetalAdminClusterStorageLvpShareConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterStorageLvpShareConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterStorageLvpShareConfigOutput) ToBareMetalAdminClusterStorageLvpShareConfigPtrOutput() BareMetalAdminClusterStorageLvpShareConfigPtrOutput {
+	return o.ToBareMetalAdminClusterStorageLvpShareConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterStorageLvpShareConfigOutput) ToBareMetalAdminClusterStorageLvpShareConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterStorageLvpShareConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterStorageLvpShareConfig) *BareMetalAdminClusterStorageLvpShareConfig {
+		return &v
+	}).(BareMetalAdminClusterStorageLvpShareConfigPtrOutput)
+}
+
+// Defines the machine path and storage class for the LVP Share.
+// Structure is documented below.
+func (o BareMetalAdminClusterStorageLvpShareConfigOutput) LvpConfig() BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterStorageLvpShareConfig) BareMetalAdminClusterStorageLvpShareConfigLvpConfig {
+		return v.LvpConfig
+	}).(BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput)
+}
+
+// The number of subdirectories to create under path.
+func (o BareMetalAdminClusterStorageLvpShareConfigOutput) SharedPathPvCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterStorageLvpShareConfig) *int { return v.SharedPathPvCount }).(pulumi.IntPtrOutput)
+}
+
+type BareMetalAdminClusterStorageLvpShareConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterStorageLvpShareConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterStorageLvpShareConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterStorageLvpShareConfigPtrOutput) ToBareMetalAdminClusterStorageLvpShareConfigPtrOutput() BareMetalAdminClusterStorageLvpShareConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterStorageLvpShareConfigPtrOutput) ToBareMetalAdminClusterStorageLvpShareConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterStorageLvpShareConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterStorageLvpShareConfigPtrOutput) Elem() BareMetalAdminClusterStorageLvpShareConfigOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterStorageLvpShareConfig) BareMetalAdminClusterStorageLvpShareConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterStorageLvpShareConfig
+		return ret
+	}).(BareMetalAdminClusterStorageLvpShareConfigOutput)
+}
+
+// Defines the machine path and storage class for the LVP Share.
+// Structure is documented below.
+func (o BareMetalAdminClusterStorageLvpShareConfigPtrOutput) LvpConfig() BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterStorageLvpShareConfig) *BareMetalAdminClusterStorageLvpShareConfigLvpConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.LvpConfig
+	}).(BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput)
+}
+
+// The number of subdirectories to create under path.
+func (o BareMetalAdminClusterStorageLvpShareConfigPtrOutput) SharedPathPvCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterStorageLvpShareConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SharedPathPvCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type BareMetalAdminClusterStorageLvpShareConfigLvpConfig struct {
+	// The host machine path.
+	Path string `pulumi:"path"`
+	// The StorageClass name that PVs will be created with.
+	StorageClass string `pulumi:"storageClass"`
+}
+
+// BareMetalAdminClusterStorageLvpShareConfigLvpConfigInput is an input type that accepts BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs and BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterStorageLvpShareConfigLvpConfigInput` via:
+//
+//	BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs{...}
+type BareMetalAdminClusterStorageLvpShareConfigLvpConfigInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput() BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput
+	ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigOutputWithContext(context.Context) BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput
+}
+
+type BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs struct {
+	// The host machine path.
+	Path pulumi.StringInput `pulumi:"path"`
+	// The StorageClass name that PVs will be created with.
+	StorageClass pulumi.StringInput `pulumi:"storageClass"`
+}
+
+func (BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterStorageLvpShareConfigLvpConfig)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs) ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput() BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput {
+	return i.ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs) ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput)
+}
+
+func (i BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs) ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput() BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput {
+	return i.ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs) ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput).ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutputWithContext(ctx)
+}
+
+// BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrInput is an input type that accepts BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs, BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtr and BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrInput` via:
+//
+//	        BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput() BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput
+	ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutputWithContext(context.Context) BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput
+}
+
+type bareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrType BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs
+
+func BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtr(v *BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs) BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrInput {
+	return (*bareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrType)(v)
+}
+
+func (*bareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterStorageLvpShareConfigLvpConfig)(nil)).Elem()
+}
+
+func (i *bareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrType) ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput() BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput {
+	return i.ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrType) ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput)
+}
+
+type BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterStorageLvpShareConfigLvpConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput) ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput() BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput) ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigOutputWithContext(ctx context.Context) BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput) ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput() BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput {
+	return o.ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput) ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BareMetalAdminClusterStorageLvpShareConfigLvpConfig) *BareMetalAdminClusterStorageLvpShareConfigLvpConfig {
+		return &v
+	}).(BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput)
+}
+
+// The host machine path.
+func (o BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterStorageLvpShareConfigLvpConfig) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The StorageClass name that PVs will be created with.
+func (o BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput) StorageClass() pulumi.StringOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterStorageLvpShareConfigLvpConfig) string { return v.StorageClass }).(pulumi.StringOutput)
+}
+
+type BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BareMetalAdminClusterStorageLvpShareConfigLvpConfig)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput) ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput() BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput) ToBareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutputWithContext(ctx context.Context) BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput) Elem() BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterStorageLvpShareConfigLvpConfig) BareMetalAdminClusterStorageLvpShareConfigLvpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BareMetalAdminClusterStorageLvpShareConfigLvpConfig
+		return ret
+	}).(BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput)
+}
+
+// The host machine path.
+func (o BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterStorageLvpShareConfigLvpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// The StorageClass name that PVs will be created with.
+func (o BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput) StorageClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BareMetalAdminClusterStorageLvpShareConfigLvpConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StorageClass
+	}).(pulumi.StringPtrOutput)
+}
+
+type BareMetalAdminClusterValidationCheck struct {
+	// (Output)
+	// Options used for the validation check.
+	Options *string `pulumi:"options"`
+	// (Output)
+	// The scenario when the preflight checks were run..
+	Scenario *string `pulumi:"scenario"`
+	// (Output)
+	// Specifies the detailed validation check status
+	// Structure is documented below.
+	Statuses []BareMetalAdminClusterValidationCheckStatus `pulumi:"statuses"`
+}
+
+// BareMetalAdminClusterValidationCheckInput is an input type that accepts BareMetalAdminClusterValidationCheckArgs and BareMetalAdminClusterValidationCheckOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterValidationCheckInput` via:
+//
+//	BareMetalAdminClusterValidationCheckArgs{...}
+type BareMetalAdminClusterValidationCheckInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterValidationCheckOutput() BareMetalAdminClusterValidationCheckOutput
+	ToBareMetalAdminClusterValidationCheckOutputWithContext(context.Context) BareMetalAdminClusterValidationCheckOutput
+}
+
+type BareMetalAdminClusterValidationCheckArgs struct {
+	// (Output)
+	// Options used for the validation check.
+	Options pulumi.StringPtrInput `pulumi:"options"`
+	// (Output)
+	// The scenario when the preflight checks were run..
+	Scenario pulumi.StringPtrInput `pulumi:"scenario"`
+	// (Output)
+	// Specifies the detailed validation check status
+	// Structure is documented below.
+	Statuses BareMetalAdminClusterValidationCheckStatusArrayInput `pulumi:"statuses"`
+}
+
+func (BareMetalAdminClusterValidationCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterValidationCheck)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterValidationCheckArgs) ToBareMetalAdminClusterValidationCheckOutput() BareMetalAdminClusterValidationCheckOutput {
+	return i.ToBareMetalAdminClusterValidationCheckOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterValidationCheckArgs) ToBareMetalAdminClusterValidationCheckOutputWithContext(ctx context.Context) BareMetalAdminClusterValidationCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterValidationCheckOutput)
+}
+
+// BareMetalAdminClusterValidationCheckArrayInput is an input type that accepts BareMetalAdminClusterValidationCheckArray and BareMetalAdminClusterValidationCheckArrayOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterValidationCheckArrayInput` via:
+//
+//	BareMetalAdminClusterValidationCheckArray{ BareMetalAdminClusterValidationCheckArgs{...} }
+type BareMetalAdminClusterValidationCheckArrayInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterValidationCheckArrayOutput() BareMetalAdminClusterValidationCheckArrayOutput
+	ToBareMetalAdminClusterValidationCheckArrayOutputWithContext(context.Context) BareMetalAdminClusterValidationCheckArrayOutput
+}
+
+type BareMetalAdminClusterValidationCheckArray []BareMetalAdminClusterValidationCheckInput
+
+func (BareMetalAdminClusterValidationCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterValidationCheck)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterValidationCheckArray) ToBareMetalAdminClusterValidationCheckArrayOutput() BareMetalAdminClusterValidationCheckArrayOutput {
+	return i.ToBareMetalAdminClusterValidationCheckArrayOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterValidationCheckArray) ToBareMetalAdminClusterValidationCheckArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterValidationCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterValidationCheckArrayOutput)
+}
+
+type BareMetalAdminClusterValidationCheckOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterValidationCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterValidationCheck)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterValidationCheckOutput) ToBareMetalAdminClusterValidationCheckOutput() BareMetalAdminClusterValidationCheckOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterValidationCheckOutput) ToBareMetalAdminClusterValidationCheckOutputWithContext(ctx context.Context) BareMetalAdminClusterValidationCheckOutput {
+	return o
+}
+
+// (Output)
+// Options used for the validation check.
+func (o BareMetalAdminClusterValidationCheckOutput) Options() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterValidationCheck) *string { return v.Options }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The scenario when the preflight checks were run..
+func (o BareMetalAdminClusterValidationCheckOutput) Scenario() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterValidationCheck) *string { return v.Scenario }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Specifies the detailed validation check status
+// Structure is documented below.
+func (o BareMetalAdminClusterValidationCheckOutput) Statuses() BareMetalAdminClusterValidationCheckStatusArrayOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterValidationCheck) []BareMetalAdminClusterValidationCheckStatus {
+		return v.Statuses
+	}).(BareMetalAdminClusterValidationCheckStatusArrayOutput)
+}
+
+type BareMetalAdminClusterValidationCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterValidationCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterValidationCheck)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterValidationCheckArrayOutput) ToBareMetalAdminClusterValidationCheckArrayOutput() BareMetalAdminClusterValidationCheckArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterValidationCheckArrayOutput) ToBareMetalAdminClusterValidationCheckArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterValidationCheckArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterValidationCheckArrayOutput) Index(i pulumi.IntInput) BareMetalAdminClusterValidationCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BareMetalAdminClusterValidationCheck {
+		return vs[0].([]BareMetalAdminClusterValidationCheck)[vs[1].(int)]
+	}).(BareMetalAdminClusterValidationCheckOutput)
+}
+
+type BareMetalAdminClusterValidationCheckStatus struct {
+	// (Output)
+	// Individual checks which failed as part of the Preflight check execution.
+	// Structure is documented below.
+	Results []BareMetalAdminClusterValidationCheckStatusResult `pulumi:"results"`
+}
+
+// BareMetalAdminClusterValidationCheckStatusInput is an input type that accepts BareMetalAdminClusterValidationCheckStatusArgs and BareMetalAdminClusterValidationCheckStatusOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterValidationCheckStatusInput` via:
+//
+//	BareMetalAdminClusterValidationCheckStatusArgs{...}
+type BareMetalAdminClusterValidationCheckStatusInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterValidationCheckStatusOutput() BareMetalAdminClusterValidationCheckStatusOutput
+	ToBareMetalAdminClusterValidationCheckStatusOutputWithContext(context.Context) BareMetalAdminClusterValidationCheckStatusOutput
+}
+
+type BareMetalAdminClusterValidationCheckStatusArgs struct {
+	// (Output)
+	// Individual checks which failed as part of the Preflight check execution.
+	// Structure is documented below.
+	Results BareMetalAdminClusterValidationCheckStatusResultArrayInput `pulumi:"results"`
+}
+
+func (BareMetalAdminClusterValidationCheckStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterValidationCheckStatus)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterValidationCheckStatusArgs) ToBareMetalAdminClusterValidationCheckStatusOutput() BareMetalAdminClusterValidationCheckStatusOutput {
+	return i.ToBareMetalAdminClusterValidationCheckStatusOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterValidationCheckStatusArgs) ToBareMetalAdminClusterValidationCheckStatusOutputWithContext(ctx context.Context) BareMetalAdminClusterValidationCheckStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterValidationCheckStatusOutput)
+}
+
+// BareMetalAdminClusterValidationCheckStatusArrayInput is an input type that accepts BareMetalAdminClusterValidationCheckStatusArray and BareMetalAdminClusterValidationCheckStatusArrayOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterValidationCheckStatusArrayInput` via:
+//
+//	BareMetalAdminClusterValidationCheckStatusArray{ BareMetalAdminClusterValidationCheckStatusArgs{...} }
+type BareMetalAdminClusterValidationCheckStatusArrayInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterValidationCheckStatusArrayOutput() BareMetalAdminClusterValidationCheckStatusArrayOutput
+	ToBareMetalAdminClusterValidationCheckStatusArrayOutputWithContext(context.Context) BareMetalAdminClusterValidationCheckStatusArrayOutput
+}
+
+type BareMetalAdminClusterValidationCheckStatusArray []BareMetalAdminClusterValidationCheckStatusInput
+
+func (BareMetalAdminClusterValidationCheckStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterValidationCheckStatus)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterValidationCheckStatusArray) ToBareMetalAdminClusterValidationCheckStatusArrayOutput() BareMetalAdminClusterValidationCheckStatusArrayOutput {
+	return i.ToBareMetalAdminClusterValidationCheckStatusArrayOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterValidationCheckStatusArray) ToBareMetalAdminClusterValidationCheckStatusArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterValidationCheckStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterValidationCheckStatusArrayOutput)
+}
+
+type BareMetalAdminClusterValidationCheckStatusOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterValidationCheckStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterValidationCheckStatus)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterValidationCheckStatusOutput) ToBareMetalAdminClusterValidationCheckStatusOutput() BareMetalAdminClusterValidationCheckStatusOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterValidationCheckStatusOutput) ToBareMetalAdminClusterValidationCheckStatusOutputWithContext(ctx context.Context) BareMetalAdminClusterValidationCheckStatusOutput {
+	return o
+}
+
+// (Output)
+// Individual checks which failed as part of the Preflight check execution.
+// Structure is documented below.
+func (o BareMetalAdminClusterValidationCheckStatusOutput) Results() BareMetalAdminClusterValidationCheckStatusResultArrayOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterValidationCheckStatus) []BareMetalAdminClusterValidationCheckStatusResult {
+		return v.Results
+	}).(BareMetalAdminClusterValidationCheckStatusResultArrayOutput)
+}
+
+type BareMetalAdminClusterValidationCheckStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterValidationCheckStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterValidationCheckStatus)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterValidationCheckStatusArrayOutput) ToBareMetalAdminClusterValidationCheckStatusArrayOutput() BareMetalAdminClusterValidationCheckStatusArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterValidationCheckStatusArrayOutput) ToBareMetalAdminClusterValidationCheckStatusArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterValidationCheckStatusArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterValidationCheckStatusArrayOutput) Index(i pulumi.IntInput) BareMetalAdminClusterValidationCheckStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BareMetalAdminClusterValidationCheckStatus {
+		return vs[0].([]BareMetalAdminClusterValidationCheckStatus)[vs[1].(int)]
+	}).(BareMetalAdminClusterValidationCheckStatusOutput)
+}
+
+type BareMetalAdminClusterValidationCheckStatusResult struct {
+	// (Output)
+	// The category of the validation.
+	Category *string `pulumi:"category"`
+	// A human readable description of this Bare Metal Admin Cluster.
+	Description *string `pulumi:"description"`
+	// (Output)
+	// Detailed failure information, which might be unformatted.
+	Details *string `pulumi:"details"`
+	// (Output)
+	// Options used for the validation check.
+	Options *string `pulumi:"options"`
+	// (Output)
+	// A human-readable message of the check failure.
+	Reason *string `pulumi:"reason"`
+}
+
+// BareMetalAdminClusterValidationCheckStatusResultInput is an input type that accepts BareMetalAdminClusterValidationCheckStatusResultArgs and BareMetalAdminClusterValidationCheckStatusResultOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterValidationCheckStatusResultInput` via:
+//
+//	BareMetalAdminClusterValidationCheckStatusResultArgs{...}
+type BareMetalAdminClusterValidationCheckStatusResultInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterValidationCheckStatusResultOutput() BareMetalAdminClusterValidationCheckStatusResultOutput
+	ToBareMetalAdminClusterValidationCheckStatusResultOutputWithContext(context.Context) BareMetalAdminClusterValidationCheckStatusResultOutput
+}
+
+type BareMetalAdminClusterValidationCheckStatusResultArgs struct {
+	// (Output)
+	// The category of the validation.
+	Category pulumi.StringPtrInput `pulumi:"category"`
+	// A human readable description of this Bare Metal Admin Cluster.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// (Output)
+	// Detailed failure information, which might be unformatted.
+	Details pulumi.StringPtrInput `pulumi:"details"`
+	// (Output)
+	// Options used for the validation check.
+	Options pulumi.StringPtrInput `pulumi:"options"`
+	// (Output)
+	// A human-readable message of the check failure.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+}
+
+func (BareMetalAdminClusterValidationCheckStatusResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterValidationCheckStatusResult)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterValidationCheckStatusResultArgs) ToBareMetalAdminClusterValidationCheckStatusResultOutput() BareMetalAdminClusterValidationCheckStatusResultOutput {
+	return i.ToBareMetalAdminClusterValidationCheckStatusResultOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterValidationCheckStatusResultArgs) ToBareMetalAdminClusterValidationCheckStatusResultOutputWithContext(ctx context.Context) BareMetalAdminClusterValidationCheckStatusResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterValidationCheckStatusResultOutput)
+}
+
+// BareMetalAdminClusterValidationCheckStatusResultArrayInput is an input type that accepts BareMetalAdminClusterValidationCheckStatusResultArray and BareMetalAdminClusterValidationCheckStatusResultArrayOutput values.
+// You can construct a concrete instance of `BareMetalAdminClusterValidationCheckStatusResultArrayInput` via:
+//
+//	BareMetalAdminClusterValidationCheckStatusResultArray{ BareMetalAdminClusterValidationCheckStatusResultArgs{...} }
+type BareMetalAdminClusterValidationCheckStatusResultArrayInput interface {
+	pulumi.Input
+
+	ToBareMetalAdminClusterValidationCheckStatusResultArrayOutput() BareMetalAdminClusterValidationCheckStatusResultArrayOutput
+	ToBareMetalAdminClusterValidationCheckStatusResultArrayOutputWithContext(context.Context) BareMetalAdminClusterValidationCheckStatusResultArrayOutput
+}
+
+type BareMetalAdminClusterValidationCheckStatusResultArray []BareMetalAdminClusterValidationCheckStatusResultInput
+
+func (BareMetalAdminClusterValidationCheckStatusResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterValidationCheckStatusResult)(nil)).Elem()
+}
+
+func (i BareMetalAdminClusterValidationCheckStatusResultArray) ToBareMetalAdminClusterValidationCheckStatusResultArrayOutput() BareMetalAdminClusterValidationCheckStatusResultArrayOutput {
+	return i.ToBareMetalAdminClusterValidationCheckStatusResultArrayOutputWithContext(context.Background())
+}
+
+func (i BareMetalAdminClusterValidationCheckStatusResultArray) ToBareMetalAdminClusterValidationCheckStatusResultArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterValidationCheckStatusResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BareMetalAdminClusterValidationCheckStatusResultArrayOutput)
+}
+
+type BareMetalAdminClusterValidationCheckStatusResultOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterValidationCheckStatusResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BareMetalAdminClusterValidationCheckStatusResult)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterValidationCheckStatusResultOutput) ToBareMetalAdminClusterValidationCheckStatusResultOutput() BareMetalAdminClusterValidationCheckStatusResultOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterValidationCheckStatusResultOutput) ToBareMetalAdminClusterValidationCheckStatusResultOutputWithContext(ctx context.Context) BareMetalAdminClusterValidationCheckStatusResultOutput {
+	return o
+}
+
+// (Output)
+// The category of the validation.
+func (o BareMetalAdminClusterValidationCheckStatusResultOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterValidationCheckStatusResult) *string { return v.Category }).(pulumi.StringPtrOutput)
+}
+
+// A human readable description of this Bare Metal Admin Cluster.
+func (o BareMetalAdminClusterValidationCheckStatusResultOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterValidationCheckStatusResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Detailed failure information, which might be unformatted.
+func (o BareMetalAdminClusterValidationCheckStatusResultOutput) Details() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterValidationCheckStatusResult) *string { return v.Details }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Options used for the validation check.
+func (o BareMetalAdminClusterValidationCheckStatusResultOutput) Options() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterValidationCheckStatusResult) *string { return v.Options }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A human-readable message of the check failure.
+func (o BareMetalAdminClusterValidationCheckStatusResultOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BareMetalAdminClusterValidationCheckStatusResult) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+type BareMetalAdminClusterValidationCheckStatusResultArrayOutput struct{ *pulumi.OutputState }
+
+func (BareMetalAdminClusterValidationCheckStatusResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BareMetalAdminClusterValidationCheckStatusResult)(nil)).Elem()
+}
+
+func (o BareMetalAdminClusterValidationCheckStatusResultArrayOutput) ToBareMetalAdminClusterValidationCheckStatusResultArrayOutput() BareMetalAdminClusterValidationCheckStatusResultArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterValidationCheckStatusResultArrayOutput) ToBareMetalAdminClusterValidationCheckStatusResultArrayOutputWithContext(ctx context.Context) BareMetalAdminClusterValidationCheckStatusResultArrayOutput {
+	return o
+}
+
+func (o BareMetalAdminClusterValidationCheckStatusResultArrayOutput) Index(i pulumi.IntInput) BareMetalAdminClusterValidationCheckStatusResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BareMetalAdminClusterValidationCheckStatusResult {
+		return vs[0].([]BareMetalAdminClusterValidationCheckStatusResult)[vs[1].(int)]
+	}).(BareMetalAdminClusterValidationCheckStatusResultOutput)
+}
 
 type BareMetalClusterClusterOperations struct {
 	// Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
@@ -14005,6 +18388,66 @@ func (o VMwareNodePoolStatusConditionArrayOutput) Index(i pulumi.IntInput) VMwar
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterClusterOperationsInput)(nil)).Elem(), BareMetalAdminClusterClusterOperationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterClusterOperationsPtrInput)(nil)).Elem(), BareMetalAdminClusterClusterOperationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterControlPlaneInput)(nil)).Elem(), BareMetalAdminClusterControlPlaneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterControlPlanePtrInput)(nil)).Elem(), BareMetalAdminClusterControlPlaneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterControlPlaneApiServerArgInput)(nil)).Elem(), BareMetalAdminClusterControlPlaneApiServerArgArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterControlPlaneApiServerArgArrayInput)(nil)).Elem(), BareMetalAdminClusterControlPlaneApiServerArgArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigInput)(nil)).Elem(), BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrInput)(nil)).Elem(), BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigInput)(nil)).Elem(), BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrInput)(nil)).Elem(), BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigInput)(nil)).Elem(), BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayInput)(nil)).Elem(), BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintInput)(nil)).Elem(), BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayInput)(nil)).Elem(), BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterFleetInput)(nil)).Elem(), BareMetalAdminClusterFleetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterFleetArrayInput)(nil)).Elem(), BareMetalAdminClusterFleetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerPtrInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerManualLbConfigInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerManualLbConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerManualLbConfigPtrInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerManualLbConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerPortConfigInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerPortConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerPortConfigPtrInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerPortConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerVipConfigInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerVipConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterLoadBalancerVipConfigPtrInput)(nil)).Elem(), BareMetalAdminClusterLoadBalancerVipConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterMaintenanceConfigInput)(nil)).Elem(), BareMetalAdminClusterMaintenanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterMaintenanceConfigPtrInput)(nil)).Elem(), BareMetalAdminClusterMaintenanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterNetworkConfigInput)(nil)).Elem(), BareMetalAdminClusterNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterNetworkConfigPtrInput)(nil)).Elem(), BareMetalAdminClusterNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterNetworkConfigIslandModeCidrInput)(nil)).Elem(), BareMetalAdminClusterNetworkConfigIslandModeCidrArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterNetworkConfigIslandModeCidrPtrInput)(nil)).Elem(), BareMetalAdminClusterNetworkConfigIslandModeCidrArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterNodeAccessConfigInput)(nil)).Elem(), BareMetalAdminClusterNodeAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterNodeAccessConfigPtrInput)(nil)).Elem(), BareMetalAdminClusterNodeAccessConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterNodeConfigInput)(nil)).Elem(), BareMetalAdminClusterNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterNodeConfigPtrInput)(nil)).Elem(), BareMetalAdminClusterNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterProxyInput)(nil)).Elem(), BareMetalAdminClusterProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterProxyPtrInput)(nil)).Elem(), BareMetalAdminClusterProxyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterSecurityConfigInput)(nil)).Elem(), BareMetalAdminClusterSecurityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterSecurityConfigPtrInput)(nil)).Elem(), BareMetalAdminClusterSecurityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterSecurityConfigAuthorizationInput)(nil)).Elem(), BareMetalAdminClusterSecurityConfigAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterSecurityConfigAuthorizationPtrInput)(nil)).Elem(), BareMetalAdminClusterSecurityConfigAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterSecurityConfigAuthorizationAdminUserInput)(nil)).Elem(), BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayInput)(nil)).Elem(), BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterStatusInput)(nil)).Elem(), BareMetalAdminClusterStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterStatusArrayInput)(nil)).Elem(), BareMetalAdminClusterStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterStatusConditionInput)(nil)).Elem(), BareMetalAdminClusterStatusConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterStatusConditionArrayInput)(nil)).Elem(), BareMetalAdminClusterStatusConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterStorageInput)(nil)).Elem(), BareMetalAdminClusterStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterStoragePtrInput)(nil)).Elem(), BareMetalAdminClusterStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterStorageLvpNodeMountsConfigInput)(nil)).Elem(), BareMetalAdminClusterStorageLvpNodeMountsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterStorageLvpNodeMountsConfigPtrInput)(nil)).Elem(), BareMetalAdminClusterStorageLvpNodeMountsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterStorageLvpShareConfigInput)(nil)).Elem(), BareMetalAdminClusterStorageLvpShareConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterStorageLvpShareConfigPtrInput)(nil)).Elem(), BareMetalAdminClusterStorageLvpShareConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterStorageLvpShareConfigLvpConfigInput)(nil)).Elem(), BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrInput)(nil)).Elem(), BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterValidationCheckInput)(nil)).Elem(), BareMetalAdminClusterValidationCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterValidationCheckArrayInput)(nil)).Elem(), BareMetalAdminClusterValidationCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterValidationCheckStatusInput)(nil)).Elem(), BareMetalAdminClusterValidationCheckStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterValidationCheckStatusArrayInput)(nil)).Elem(), BareMetalAdminClusterValidationCheckStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterValidationCheckStatusResultInput)(nil)).Elem(), BareMetalAdminClusterValidationCheckStatusResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterValidationCheckStatusResultArrayInput)(nil)).Elem(), BareMetalAdminClusterValidationCheckStatusResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalClusterClusterOperationsInput)(nil)).Elem(), BareMetalClusterClusterOperationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalClusterClusterOperationsPtrInput)(nil)).Elem(), BareMetalClusterClusterOperationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalClusterControlPlaneInput)(nil)).Elem(), BareMetalClusterControlPlaneArgs{})
@@ -14185,6 +18628,66 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VMwareNodePoolStatusArrayInput)(nil)).Elem(), VMwareNodePoolStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VMwareNodePoolStatusConditionInput)(nil)).Elem(), VMwareNodePoolStatusConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VMwareNodePoolStatusConditionArrayInput)(nil)).Elem(), VMwareNodePoolStatusConditionArray{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterClusterOperationsOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterClusterOperationsPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterControlPlaneOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterControlPlanePtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterControlPlaneApiServerArgOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterControlPlaneApiServerArgArrayOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArrayOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArrayOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterFleetOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterFleetArrayOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerManualLbConfigOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerPortConfigOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerPortConfigPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerVipConfigOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterLoadBalancerVipConfigPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterMaintenanceConfigOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterMaintenanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterNetworkConfigOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterNetworkConfigPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterNetworkConfigIslandModeCidrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterNodeAccessConfigOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterNodeAccessConfigPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterNodeConfigOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterNodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterProxyOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterProxyPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterSecurityConfigOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterSecurityConfigPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterSecurityConfigAuthorizationOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterSecurityConfigAuthorizationPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterSecurityConfigAuthorizationAdminUserOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArrayOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterStatusOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterStatusArrayOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterStatusConditionOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterStatusConditionArrayOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterStorageOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterStoragePtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterStorageLvpNodeMountsConfigOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterStorageLvpNodeMountsConfigPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterStorageLvpShareConfigOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterStorageLvpShareConfigPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterStorageLvpShareConfigLvpConfigOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterStorageLvpShareConfigLvpConfigPtrOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterValidationCheckOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterValidationCheckArrayOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterValidationCheckStatusOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterValidationCheckStatusArrayOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterValidationCheckStatusResultOutput{})
+	pulumi.RegisterOutputType(BareMetalAdminClusterValidationCheckStatusResultArrayOutput{})
 	pulumi.RegisterOutputType(BareMetalClusterClusterOperationsOutput{})
 	pulumi.RegisterOutputType(BareMetalClusterClusterOperationsPtrOutput{})
 	pulumi.RegisterOutputType(BareMetalClusterControlPlaneOutput{})

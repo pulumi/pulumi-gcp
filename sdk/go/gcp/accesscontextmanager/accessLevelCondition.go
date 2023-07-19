@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -188,6 +189,7 @@ func NewAccessLevelCondition(ctx *pulumi.Context,
 	if args.AccessLevel == nil {
 		return nil, errors.New("invalid value for required argument 'AccessLevel'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessLevelCondition
 	err := ctx.RegisterResource("gcp:accesscontextmanager/accessLevelCondition:AccessLevelCondition", name, args, &resource, opts...)
 	if err != nil {

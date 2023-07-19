@@ -26,6 +26,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly int? SizeGib;
         /// <summary>
+        /// Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+        /// </summary>
+        public readonly int? Throughput;
+        /// <summary>
         /// Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
         /// </summary>
         public readonly string? VolumeType;
@@ -38,11 +42,14 @@ namespace Pulumi.Gcp.Container.Outputs
 
             int? sizeGib,
 
+            int? throughput,
+
             string? volumeType)
         {
             Iops = iops;
             KmsKeyArn = kmsKeyArn;
             SizeGib = sizeGib;
+            Throughput = throughput;
             VolumeType = volumeType;
         }
     }

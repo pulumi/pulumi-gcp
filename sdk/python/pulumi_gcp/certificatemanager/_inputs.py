@@ -82,6 +82,7 @@ class CertificateManagedArgs:
                  authorization_attempt_infos: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedAuthorizationAttemptInfoArgs']]]] = None,
                  dns_authorizations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 issuance_config: Optional[pulumi.Input[str]] = None,
                  provisioning_issues: Optional[pulumi.Input[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgs']]]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
@@ -92,9 +93,12 @@ class CertificateManagedArgs:
                
                
                <a name="nested_provisioning_issue"></a>The `provisioning_issue` block contains:
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_authorizations: Authorizations that will be used for performing domain authorization
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_authorizations: Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: The domains for which a managed SSL certificate will be generated.
                Wildcard domains are only supported with DNS challenge resolution
+        :param pulumi.Input[str] issuance_config: The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
+               If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+               Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
         :param pulumi.Input[Sequence[pulumi.Input['CertificateManagedProvisioningIssueArgs']]] provisioning_issues: (Output)
                Information about issues with provisioning this Managed Certificate.
                Structure is documented below.
@@ -107,6 +111,8 @@ class CertificateManagedArgs:
             pulumi.set(__self__, "dns_authorizations", dns_authorizations)
         if domains is not None:
             pulumi.set(__self__, "domains", domains)
+        if issuance_config is not None:
+            pulumi.set(__self__, "issuance_config", issuance_config)
         if provisioning_issues is not None:
             pulumi.set(__self__, "provisioning_issues", provisioning_issues)
         if state is not None:
@@ -134,7 +140,7 @@ class CertificateManagedArgs:
     @pulumi.getter(name="dnsAuthorizations")
     def dns_authorizations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Authorizations that will be used for performing domain authorization
+        Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
         """
         return pulumi.get(self, "dns_authorizations")
 
@@ -154,6 +160,20 @@ class CertificateManagedArgs:
     @domains.setter
     def domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "domains", value)
+
+    @property
+    @pulumi.getter(name="issuanceConfig")
+    def issuance_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
+        If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+        Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+        """
+        return pulumi.get(self, "issuance_config")
+
+    @issuance_config.setter
+    def issuance_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "issuance_config", value)
 
     @property
     @pulumi.getter(name="provisioningIssues")
@@ -496,6 +516,9 @@ class CertificateSelfManagedArgs:
         Leaf certificate comes first, followed by intermediate ones if any.
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
+        warnings.warn("""Deprecated in favor of `pem_certificate`""", DeprecationWarning)
+        pulumi.log.warn("""certificate_pem is deprecated: Deprecated in favor of `pem_certificate`""")
+
         return pulumi.get(self, "certificate_pem")
 
     @certificate_pem.setter
@@ -537,6 +560,9 @@ class CertificateSelfManagedArgs:
         **Deprecated** The private key of the leaf certificate in PEM-encoded form.
         **Note**: This property is sensitive and will not be displayed in the plan.
         """
+        warnings.warn("""Deprecated in favor of `pem_private_key`""", DeprecationWarning)
+        pulumi.log.warn("""private_key_pem is deprecated: Deprecated in favor of `pem_private_key`""")
+
         return pulumi.get(self, "private_key_pem")
 
     @private_key_pem.setter

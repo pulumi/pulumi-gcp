@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -42,6 +43,7 @@ import (
 //
 // ```
 func LookupAssetIamPolicy(ctx *pulumi.Context, args *LookupAssetIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAssetIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAssetIamPolicyResult
 	err := ctx.Invoke("gcp:dataplex/getAssetIamPolicy:getAssetIamPolicy", args, &rv, opts...)
 	if err != nil {

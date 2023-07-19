@@ -82,8 +82,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Enable Fleet Observability For Scope Logs With Move
@@ -103,8 +101,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Enable Fleet Observability For Both Default And Scope Logs
@@ -127,8 +123,6 @@ import * as utilities from "../utilities";
  *             },
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

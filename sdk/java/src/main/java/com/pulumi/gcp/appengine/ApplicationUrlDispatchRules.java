@@ -82,7 +82,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .envVariables(Map.of(&#34;port&#34;, &#34;8080&#34;))
- *             .noopOnDestroy(true)
+ *             .deleteServiceOnDestroy(true)
  *             .build());
  * 
  *         var webService = new ApplicationUrlDispatchRules(&#34;webService&#34;, ApplicationUrlDispatchRulesArgs.builder()        

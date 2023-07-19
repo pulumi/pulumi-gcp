@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type GuestPoliciesAssignment struct {
 	// Targets instances matching at least one of these label sets. This allows an assignment to target disparate groups,
@@ -5022,13 +5025,22 @@ func (o GuestPoliciesRecipeUpdateStepScriptRunPtrOutput) Script() pulumi.StringP
 }
 
 type OsPolicyAssignmentInstanceFilter struct {
-	// Target all VMs in the project. If true, no other criteria is permitted.
+	// Target all VMs in the project. If true, no other criteria
+	// is permitted.
 	All *bool `pulumi:"all"`
-	// List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
+	// List of label sets used for VM exclusion. If
+	// the list has more than one label set, the VM is excluded if any of the label
+	// sets are applicable for the VM. Structure is
+	// documented below.
 	ExclusionLabels []OsPolicyAssignmentInstanceFilterExclusionLabel `pulumi:"exclusionLabels"`
-	// List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
+	// List of label sets used for VM inclusion. If
+	// the list has more than one `LabelSet`, the VM is included if any of the
+	// label sets are applicable for the VM. Structure is
+	// documented below.
 	InclusionLabels []OsPolicyAssignmentInstanceFilterInclusionLabel `pulumi:"inclusionLabels"`
-	// List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
+	// List of inventories to select VMs. A VM is
+	// selected if its inventory data matches at least one of the following
+	// inventories. Structure is documented below.
 	Inventories []OsPolicyAssignmentInstanceFilterInventory `pulumi:"inventories"`
 }
 
@@ -5044,13 +5056,22 @@ type OsPolicyAssignmentInstanceFilterInput interface {
 }
 
 type OsPolicyAssignmentInstanceFilterArgs struct {
-	// Target all VMs in the project. If true, no other criteria is permitted.
+	// Target all VMs in the project. If true, no other criteria
+	// is permitted.
 	All pulumi.BoolPtrInput `pulumi:"all"`
-	// List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
+	// List of label sets used for VM exclusion. If
+	// the list has more than one label set, the VM is excluded if any of the label
+	// sets are applicable for the VM. Structure is
+	// documented below.
 	ExclusionLabels OsPolicyAssignmentInstanceFilterExclusionLabelArrayInput `pulumi:"exclusionLabels"`
-	// List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
+	// List of label sets used for VM inclusion. If
+	// the list has more than one `LabelSet`, the VM is included if any of the
+	// label sets are applicable for the VM. Structure is
+	// documented below.
 	InclusionLabels OsPolicyAssignmentInstanceFilterInclusionLabelArrayInput `pulumi:"inclusionLabels"`
-	// List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
+	// List of inventories to select VMs. A VM is
+	// selected if its inventory data matches at least one of the following
+	// inventories. Structure is documented below.
 	Inventories OsPolicyAssignmentInstanceFilterInventoryArrayInput `pulumi:"inventories"`
 }
 
@@ -5131,26 +5152,35 @@ func (o OsPolicyAssignmentInstanceFilterOutput) ToOsPolicyAssignmentInstanceFilt
 	}).(OsPolicyAssignmentInstanceFilterPtrOutput)
 }
 
-// Target all VMs in the project. If true, no other criteria is permitted.
+// Target all VMs in the project. If true, no other criteria
+// is permitted.
 func (o OsPolicyAssignmentInstanceFilterOutput) All() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentInstanceFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
 }
 
-// List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
+// List of label sets used for VM exclusion. If
+// the list has more than one label set, the VM is excluded if any of the label
+// sets are applicable for the VM. Structure is
+// documented below.
 func (o OsPolicyAssignmentInstanceFilterOutput) ExclusionLabels() OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentInstanceFilter) []OsPolicyAssignmentInstanceFilterExclusionLabel {
 		return v.ExclusionLabels
 	}).(OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput)
 }
 
-// List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
+// List of label sets used for VM inclusion. If
+// the list has more than one `LabelSet`, the VM is included if any of the
+// label sets are applicable for the VM. Structure is
+// documented below.
 func (o OsPolicyAssignmentInstanceFilterOutput) InclusionLabels() OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentInstanceFilter) []OsPolicyAssignmentInstanceFilterInclusionLabel {
 		return v.InclusionLabels
 	}).(OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput)
 }
 
-// List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
+// List of inventories to select VMs. A VM is
+// selected if its inventory data matches at least one of the following
+// inventories. Structure is documented below.
 func (o OsPolicyAssignmentInstanceFilterOutput) Inventories() OsPolicyAssignmentInstanceFilterInventoryArrayOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentInstanceFilter) []OsPolicyAssignmentInstanceFilterInventory {
 		return v.Inventories
@@ -5181,7 +5211,8 @@ func (o OsPolicyAssignmentInstanceFilterPtrOutput) Elem() OsPolicyAssignmentInst
 	}).(OsPolicyAssignmentInstanceFilterOutput)
 }
 
-// Target all VMs in the project. If true, no other criteria is permitted.
+// Target all VMs in the project. If true, no other criteria
+// is permitted.
 func (o OsPolicyAssignmentInstanceFilterPtrOutput) All() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentInstanceFilter) *bool {
 		if v == nil {
@@ -5191,7 +5222,10 @@ func (o OsPolicyAssignmentInstanceFilterPtrOutput) All() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
+// List of label sets used for VM exclusion. If
+// the list has more than one label set, the VM is excluded if any of the label
+// sets are applicable for the VM. Structure is
+// documented below.
 func (o OsPolicyAssignmentInstanceFilterPtrOutput) ExclusionLabels() OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentInstanceFilter) []OsPolicyAssignmentInstanceFilterExclusionLabel {
 		if v == nil {
@@ -5201,7 +5235,10 @@ func (o OsPolicyAssignmentInstanceFilterPtrOutput) ExclusionLabels() OsPolicyAss
 	}).(OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput)
 }
 
-// List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
+// List of label sets used for VM inclusion. If
+// the list has more than one `LabelSet`, the VM is included if any of the
+// label sets are applicable for the VM. Structure is
+// documented below.
 func (o OsPolicyAssignmentInstanceFilterPtrOutput) InclusionLabels() OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentInstanceFilter) []OsPolicyAssignmentInstanceFilterInclusionLabel {
 		if v == nil {
@@ -5211,7 +5248,9 @@ func (o OsPolicyAssignmentInstanceFilterPtrOutput) InclusionLabels() OsPolicyAss
 	}).(OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput)
 }
 
-// List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
+// List of inventories to select VMs. A VM is
+// selected if its inventory data matches at least one of the following
+// inventories. Structure is documented below.
 func (o OsPolicyAssignmentInstanceFilterPtrOutput) Inventories() OsPolicyAssignmentInstanceFilterInventoryArrayOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentInstanceFilter) []OsPolicyAssignmentInstanceFilterInventory {
 		if v == nil {
@@ -5222,7 +5261,9 @@ func (o OsPolicyAssignmentInstanceFilterPtrOutput) Inventories() OsPolicyAssignm
 }
 
 type OsPolicyAssignmentInstanceFilterExclusionLabel struct {
-	// Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+	// Labels are identified by key/value pairs in this map.
+	// A VM should contain all the key/value pairs specified in this map to be
+	// selected.
 	Labels map[string]string `pulumi:"labels"`
 }
 
@@ -5238,7 +5279,9 @@ type OsPolicyAssignmentInstanceFilterExclusionLabelInput interface {
 }
 
 type OsPolicyAssignmentInstanceFilterExclusionLabelArgs struct {
-	// Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+	// Labels are identified by key/value pairs in this map.
+	// A VM should contain all the key/value pairs specified in this map to be
+	// selected.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 }
 
@@ -5293,7 +5336,9 @@ func (o OsPolicyAssignmentInstanceFilterExclusionLabelOutput) ToOsPolicyAssignme
 	return o
 }
 
-// Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+// Labels are identified by key/value pairs in this map.
+// A VM should contain all the key/value pairs specified in this map to be
+// selected.
 func (o OsPolicyAssignmentInstanceFilterExclusionLabelOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentInstanceFilterExclusionLabel) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -5319,7 +5364,9 @@ func (o OsPolicyAssignmentInstanceFilterExclusionLabelArrayOutput) Index(i pulum
 }
 
 type OsPolicyAssignmentInstanceFilterInclusionLabel struct {
-	// Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+	// Labels are identified by key/value pairs in this map.
+	// A VM should contain all the key/value pairs specified in this map to be
+	// selected.
 	Labels map[string]string `pulumi:"labels"`
 }
 
@@ -5335,7 +5382,9 @@ type OsPolicyAssignmentInstanceFilterInclusionLabelInput interface {
 }
 
 type OsPolicyAssignmentInstanceFilterInclusionLabelArgs struct {
-	// Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+	// Labels are identified by key/value pairs in this map.
+	// A VM should contain all the key/value pairs specified in this map to be
+	// selected.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 }
 
@@ -5390,7 +5439,9 @@ func (o OsPolicyAssignmentInstanceFilterInclusionLabelOutput) ToOsPolicyAssignme
 	return o
 }
 
-// Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+// Labels are identified by key/value pairs in this map.
+// A VM should contain all the key/value pairs specified in this map to be
+// selected.
 func (o OsPolicyAssignmentInstanceFilterInclusionLabelOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentInstanceFilterInclusionLabel) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -5416,9 +5467,12 @@ func (o OsPolicyAssignmentInstanceFilterInclusionLabelArrayOutput) Index(i pulum
 }
 
 type OsPolicyAssignmentInstanceFilterInventory struct {
-	// Required. The OS short name
+	// The OS short name
 	OsShortName string `pulumi:"osShortName"`
-	// The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+	// The OS version Prefix matches are supported if
+	// asterisk(*) is provided as the last character. For example, to match all
+	// versions with a major version of `7`, specify the following value for this
+	// field `7.*` An empty string matches all OS versions.
 	OsVersion *string `pulumi:"osVersion"`
 }
 
@@ -5434,9 +5488,12 @@ type OsPolicyAssignmentInstanceFilterInventoryInput interface {
 }
 
 type OsPolicyAssignmentInstanceFilterInventoryArgs struct {
-	// Required. The OS short name
+	// The OS short name
 	OsShortName pulumi.StringInput `pulumi:"osShortName"`
-	// The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+	// The OS version Prefix matches are supported if
+	// asterisk(*) is provided as the last character. For example, to match all
+	// versions with a major version of `7`, specify the following value for this
+	// field `7.*` An empty string matches all OS versions.
 	OsVersion pulumi.StringPtrInput `pulumi:"osVersion"`
 }
 
@@ -5491,12 +5548,15 @@ func (o OsPolicyAssignmentInstanceFilterInventoryOutput) ToOsPolicyAssignmentIns
 	return o
 }
 
-// Required. The OS short name
+// The OS short name
 func (o OsPolicyAssignmentInstanceFilterInventoryOutput) OsShortName() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentInstanceFilterInventory) string { return v.OsShortName }).(pulumi.StringOutput)
 }
 
-// The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+// The OS version Prefix matches are supported if
+// asterisk(*) is provided as the last character. For example, to match all
+// versions with a major version of `7`, specify the following value for this
+// field `7.*` An empty string matches all OS versions.
 func (o OsPolicyAssignmentInstanceFilterInventoryOutput) OsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentInstanceFilterInventory) *string { return v.OsVersion }).(pulumi.StringPtrOutput)
 }
@@ -5522,15 +5582,32 @@ func (o OsPolicyAssignmentInstanceFilterInventoryArrayOutput) Index(i pulumi.Int
 }
 
 type OsPolicyAssignmentOsPolicy struct {
-	// This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
+	// This flag determines the OS
+	// policy compliance status when none of the resource groups within the policy
+	// are applicable for a VM. Set this value to `true` if the policy needs to be
+	// reported as compliant even if the policy has nothing to validate or enforce.
 	AllowNoResourceGroupMatch *bool `pulumi:"allowNoResourceGroupMatch"`
-	// Policy description. Length of the description is limited to 1024 characters.
+	// Policy description. Length of the description is
+	// limited to 1024 characters.
 	Description *string `pulumi:"description"`
-	// Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
+	// The id of the OS policy with the following restrictions:
+	//
+	// *   Must contain only lowercase letters, numbers, and hyphens.
+	// *   Must start with a letter.
+	// *   Must be between 1-63 characters.
+	// *   Must end with a number or a letter.
+	// *   Must be unique within the assignment.
 	Id string `pulumi:"id"`
-	// Required. Policy mode Possible values: MODE_UNSPECIFIED, VALIDATION, ENFORCEMENT
+	// Policy mode Possible values are: `MODE_UNSPECIFIED`,
+	// `VALIDATION`, `ENFORCEMENT`.
 	Mode string `pulumi:"mode"`
-	// Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allowNoResourceGroupMatch`
+	// List of resource groups for the policy. For a
+	// particular VM, resource groups are evaluated in the order specified and the
+	// first resource group that is applicable is selected and the rest are
+	// ignored. If none of the resource groups are applicable for a VM, the VM is
+	// considered to be non-compliant w.r.t this policy. This behavior can be
+	// toggled by the flag `allowNoResourceGroupMatch` Structure is
+	// documented below.
 	ResourceGroups []OsPolicyAssignmentOsPolicyResourceGroup `pulumi:"resourceGroups"`
 }
 
@@ -5546,15 +5623,32 @@ type OsPolicyAssignmentOsPolicyInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyArgs struct {
-	// This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
+	// This flag determines the OS
+	// policy compliance status when none of the resource groups within the policy
+	// are applicable for a VM. Set this value to `true` if the policy needs to be
+	// reported as compliant even if the policy has nothing to validate or enforce.
 	AllowNoResourceGroupMatch pulumi.BoolPtrInput `pulumi:"allowNoResourceGroupMatch"`
-	// Policy description. Length of the description is limited to 1024 characters.
+	// Policy description. Length of the description is
+	// limited to 1024 characters.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
+	// The id of the OS policy with the following restrictions:
+	//
+	// *   Must contain only lowercase letters, numbers, and hyphens.
+	// *   Must start with a letter.
+	// *   Must be between 1-63 characters.
+	// *   Must end with a number or a letter.
+	// *   Must be unique within the assignment.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Required. Policy mode Possible values: MODE_UNSPECIFIED, VALIDATION, ENFORCEMENT
+	// Policy mode Possible values are: `MODE_UNSPECIFIED`,
+	// `VALIDATION`, `ENFORCEMENT`.
 	Mode pulumi.StringInput `pulumi:"mode"`
-	// Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allowNoResourceGroupMatch`
+	// List of resource groups for the policy. For a
+	// particular VM, resource groups are evaluated in the order specified and the
+	// first resource group that is applicable is selected and the rest are
+	// ignored. If none of the resource groups are applicable for a VM, the VM is
+	// considered to be non-compliant w.r.t this policy. This behavior can be
+	// toggled by the flag `allowNoResourceGroupMatch` Structure is
+	// documented below.
 	ResourceGroups OsPolicyAssignmentOsPolicyResourceGroupArrayInput `pulumi:"resourceGroups"`
 }
 
@@ -5609,27 +5703,44 @@ func (o OsPolicyAssignmentOsPolicyOutput) ToOsPolicyAssignmentOsPolicyOutputWith
 	return o
 }
 
-// This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
+// This flag determines the OS
+// policy compliance status when none of the resource groups within the policy
+// are applicable for a VM. Set this value to `true` if the policy needs to be
+// reported as compliant even if the policy has nothing to validate or enforce.
 func (o OsPolicyAssignmentOsPolicyOutput) AllowNoResourceGroupMatch() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicy) *bool { return v.AllowNoResourceGroupMatch }).(pulumi.BoolPtrOutput)
 }
 
-// Policy description. Length of the description is limited to 1024 characters.
+// Policy description. Length of the description is
+// limited to 1024 characters.
 func (o OsPolicyAssignmentOsPolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicy) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
+// The id of the OS policy with the following restrictions:
+//
+// *   Must contain only lowercase letters, numbers, and hyphens.
+// *   Must start with a letter.
+// *   Must be between 1-63 characters.
+// *   Must end with a number or a letter.
+// *   Must be unique within the assignment.
 func (o OsPolicyAssignmentOsPolicyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicy) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Required. Policy mode Possible values: MODE_UNSPECIFIED, VALIDATION, ENFORCEMENT
+// Policy mode Possible values are: `MODE_UNSPECIFIED`,
+// `VALIDATION`, `ENFORCEMENT`.
 func (o OsPolicyAssignmentOsPolicyOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicy) string { return v.Mode }).(pulumi.StringOutput)
 }
 
-// Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allowNoResourceGroupMatch`
+// List of resource groups for the policy. For a
+// particular VM, resource groups are evaluated in the order specified and the
+// first resource group that is applicable is selected and the rest are
+// ignored. If none of the resource groups are applicable for a VM, the VM is
+// considered to be non-compliant w.r.t this policy. This behavior can be
+// toggled by the flag `allowNoResourceGroupMatch` Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyOutput) ResourceGroups() OsPolicyAssignmentOsPolicyResourceGroupArrayOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicy) []OsPolicyAssignmentOsPolicyResourceGroup { return v.ResourceGroups }).(OsPolicyAssignmentOsPolicyResourceGroupArrayOutput)
 }
@@ -5655,9 +5766,19 @@ func (o OsPolicyAssignmentOsPolicyArrayOutput) Index(i pulumi.IntInput) OsPolicy
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroup struct {
-	// List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
+	// List of inventory filters for the resource
+	// group. The resources in this resource group are applied to the target VM if
+	// it satisfies at least one of the following inventory filters. For example,
+	// to apply this resource group to VMs running either `RHEL` or `CentOS`
+	// operating systems, specify 2 items for the list with following values:
+	// inventory_filters[0].os_short_name='rhel' and
+	// inventory_filters[1].os_short_name='centos' If the list is empty, this
+	// resource group will be applied to the target VM unconditionally. Structure
+	// is documented below.
 	InventoryFilters []OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter `pulumi:"inventoryFilters"`
-	// Required. List of resources configured for this resource group. The resources are executed in the exact order specified here.
+	// List of resources configured for this resource
+	// group. The resources are executed in the exact order specified here.
+	// Structure is documented below.
 	Resources []OsPolicyAssignmentOsPolicyResourceGroupResource `pulumi:"resources"`
 }
 
@@ -5673,9 +5794,19 @@ type OsPolicyAssignmentOsPolicyResourceGroupInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupArgs struct {
-	// List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
+	// List of inventory filters for the resource
+	// group. The resources in this resource group are applied to the target VM if
+	// it satisfies at least one of the following inventory filters. For example,
+	// to apply this resource group to VMs running either `RHEL` or `CentOS`
+	// operating systems, specify 2 items for the list with following values:
+	// inventory_filters[0].os_short_name='rhel' and
+	// inventory_filters[1].os_short_name='centos' If the list is empty, this
+	// resource group will be applied to the target VM unconditionally. Structure
+	// is documented below.
 	InventoryFilters OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayInput `pulumi:"inventoryFilters"`
-	// Required. List of resources configured for this resource group. The resources are executed in the exact order specified here.
+	// List of resources configured for this resource
+	// group. The resources are executed in the exact order specified here.
+	// Structure is documented below.
 	Resources OsPolicyAssignmentOsPolicyResourceGroupResourceArrayInput `pulumi:"resources"`
 }
 
@@ -5730,14 +5861,24 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupOutput) ToOsPolicyAssignmentOsPol
 	return o
 }
 
-// List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
+// List of inventory filters for the resource
+// group. The resources in this resource group are applied to the target VM if
+// it satisfies at least one of the following inventory filters. For example,
+// to apply this resource group to VMs running either `RHEL` or `CentOS`
+// operating systems, specify 2 items for the list with following values:
+// inventory_filters[0].os_short_name='rhel' and
+// inventory_filters[1].os_short_name='centos' If the list is empty, this
+// resource group will be applied to the target VM unconditionally. Structure
+// is documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupOutput) InventoryFilters() OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroup) []OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter {
 		return v.InventoryFilters
 	}).(OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput)
 }
 
-// Required. List of resources configured for this resource group. The resources are executed in the exact order specified here.
+// List of resources configured for this resource
+// group. The resources are executed in the exact order specified here.
+// Structure is documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupOutput) Resources() OsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroup) []OsPolicyAssignmentOsPolicyResourceGroupResource {
 		return v.Resources
@@ -5765,9 +5906,12 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupArrayOutput) Index(i pulumi.IntIn
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter struct {
-	// Required. The OS short name
+	// The OS short name
 	OsShortName string `pulumi:"osShortName"`
-	// The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+	// The OS version Prefix matches are supported if
+	// asterisk(*) is provided as the last character. For example, to match all
+	// versions with a major version of `7`, specify the following value for this
+	// field `7.*` An empty string matches all OS versions.
 	OsVersion *string `pulumi:"osVersion"`
 }
 
@@ -5783,9 +5927,12 @@ type OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs struct {
-	// Required. The OS short name
+	// The OS short name
 	OsShortName pulumi.StringInput `pulumi:"osShortName"`
-	// The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+	// The OS version Prefix matches are supported if
+	// asterisk(*) is provided as the last character. For example, to match all
+	// versions with a major version of `7`, specify the following value for this
+	// field `7.*` An empty string matches all OS versions.
 	OsVersion pulumi.StringPtrInput `pulumi:"osVersion"`
 }
 
@@ -5840,12 +5987,15 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput) ToOsPolicy
 	return o
 }
 
-// Required. The OS short name
+// The OS short name
 func (o OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput) OsShortName() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter) string { return v.OsShortName }).(pulumi.StringOutput)
 }
 
-// The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+// The OS version Prefix matches are supported if
+// asterisk(*) is provided as the last character. For example, to match all
+// versions with a major version of `7`, specify the following value for this
+// field `7.*` An empty string matches all OS versions.
 func (o OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterOutput) OsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter) *string { return v.OsVersion }).(pulumi.StringPtrOutput)
 }
@@ -5871,15 +6021,25 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArrayOutput) Index
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResource struct {
-	// Exec resource
+	// Exec resource Structure is
+	// documented below.
 	Exec *OsPolicyAssignmentOsPolicyResourceGroupResourceExec `pulumi:"exec"`
-	// File resource
+	// File resource Structure is
+	// documented below.
 	File *OsPolicyAssignmentOsPolicyResourceGroupResourceFile `pulumi:"file"`
-	// Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
+	// The id of the resource with the following restrictions:
+	//
+	// *   Must contain only lowercase letters, numbers, and hyphens.
+	// *   Must start with a letter.
+	// *   Must be between 1-63 characters.
+	// *   Must end with a number or a letter.
+	// *   Must be unique within the OS policy.
 	Id string `pulumi:"id"`
-	// Package resource
+	// Package resource Structure is
+	// documented below.
 	Pkg *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg `pulumi:"pkg"`
-	// Package repository resource
+	// Package repository resource Structure is
+	// documented below.
 	Repository *OsPolicyAssignmentOsPolicyResourceGroupResourceRepository `pulumi:"repository"`
 }
 
@@ -5895,15 +6055,25 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceArgs struct {
-	// Exec resource
+	// Exec resource Structure is
+	// documented below.
 	Exec OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrInput `pulumi:"exec"`
-	// File resource
+	// File resource Structure is
+	// documented below.
 	File OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrInput `pulumi:"file"`
-	// Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
+	// The id of the resource with the following restrictions:
+	//
+	// *   Must contain only lowercase letters, numbers, and hyphens.
+	// *   Must start with a letter.
+	// *   Must be between 1-63 characters.
+	// *   Must end with a number or a letter.
+	// *   Must be unique within the OS policy.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Package resource
+	// Package resource Structure is
+	// documented below.
 	Pkg OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrInput `pulumi:"pkg"`
-	// Package repository resource
+	// Package repository resource Structure is
+	// documented below.
 	Repository OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrInput `pulumi:"repository"`
 }
 
@@ -5958,33 +6128,43 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) ToOsPolicyAssignm
 	return o
 }
 
-// Exec resource
+// Exec resource Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) Exec() OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResource) *OsPolicyAssignmentOsPolicyResourceGroupResourceExec {
 		return v.Exec
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput)
 }
 
-// File resource
+// File resource Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResource) *OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
 		return v.File
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput)
 }
 
-// Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
+// The id of the resource with the following restrictions:
+//
+// *   Must contain only lowercase letters, numbers, and hyphens.
+// *   Must start with a letter.
+// *   Must be between 1-63 characters.
+// *   Must end with a number or a letter.
+// *   Must be unique within the OS policy.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResource) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Package resource
+// Package resource Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) Pkg() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg {
 		return v.Pkg
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput)
 }
 
-// Package repository resource
+// Package repository resource Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceOutput) Repository() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResource) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepository {
 		return v.Repository
@@ -6012,9 +6192,16 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceArrayOutput) Index(i pulu
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExec struct {
-	// What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
+	// What to run to bring this resource into the desired
+	// state. An exit code of 100 indicates "success", any other exit code
+	// indicates a failure running enforce. Structure is
+	// documented below.
 	Enforce *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce `pulumi:"enforce"`
-	// Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+	// What to run to validate this resource is in the
+	// desired state. An exit code of 100 indicates "in desired state", and exit
+	// code of 101 indicates "not in desired state". Any other exit code indicates
+	// a failure running validate. Structure is
+	// documented below.
 	Validate OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate `pulumi:"validate"`
 }
 
@@ -6030,9 +6217,16 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceExecInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs struct {
-	// What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
+	// What to run to bring this resource into the desired
+	// state. An exit code of 100 indicates "success", any other exit code
+	// indicates a failure running enforce. Structure is
+	// documented below.
 	Enforce OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrInput `pulumi:"enforce"`
-	// Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+	// What to run to validate this resource is in the
+	// desired state. An exit code of 100 indicates "in desired state", and exit
+	// code of 101 indicates "not in desired state". Any other exit code indicates
+	// a failure running validate. Structure is
+	// documented below.
 	Validate OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateInput `pulumi:"validate"`
 }
 
@@ -6113,14 +6307,21 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput) ToOsPolicyAss
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput)
 }
 
-// What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
+// What to run to bring this resource into the desired
+// state. An exit code of 100 indicates "success", any other exit code
+// indicates a failure running enforce. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput) Enforce() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExec) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce {
 		return v.Enforce
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput)
 }
 
-// Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+// What to run to validate this resource is in the
+// desired state. An exit code of 100 indicates "in desired state", and exit
+// code of 101 indicates "not in desired state". Any other exit code indicates
+// a failure running validate. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput) Validate() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExec) OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate {
 		return v.Validate
@@ -6151,7 +6352,10 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput) Elem() OsP
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecOutput)
 }
 
-// What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
+// What to run to bring this resource into the desired
+// state. An exit code of 100 indicates "success", any other exit code
+// indicates a failure running enforce. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput) Enforce() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExec) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce {
 		if v == nil {
@@ -6161,7 +6365,11 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput) Enforce() 
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput)
 }
 
-// Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+// What to run to validate this resource is in the
+// desired state. An exit code of 100 indicates "in desired state", and exit
+// code of 101 indicates "not in desired state". Any other exit code indicates
+// a failure running validate. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput) Validate() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExec) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate {
 		if v == nil {
@@ -6172,15 +6380,23 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecPtrOutput) Validate()
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce struct {
-	// Optional arguments to pass to the source during execution.
+	// Optional arguments to pass to the source during
+	// execution.
 	Args []string `pulumi:"args"`
-	// A remote or local file.
+	// A remote or local file. Structure is
+	// documented below.
 	File *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile `pulumi:"file"`
-	// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+	// The script interpreter to use. Possible values
+	// are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
 	Interpreter string `pulumi:"interpreter"`
-	// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+	// Only recorded for enforce Exec. Path to an
+	// output file (that is created by this Exec) whose content will be recorded in
+	// OSPolicyResourceCompliance after a successful run. Absence or failure to
+	// read this file will result in this ExecResource being non-compliant. Output
+	// file size is limited to 100K bytes.
 	OutputFilePath *string `pulumi:"outputFilePath"`
-	// An inline script. The size of the script is limited to 1024 characters.
+	// An inline script. The size of the script is limited to
+	// 1024 characters.
 	Script *string `pulumi:"script"`
 }
 
@@ -6196,15 +6412,23 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs struct {
-	// Optional arguments to pass to the source during execution.
+	// Optional arguments to pass to the source during
+	// execution.
 	Args pulumi.StringArrayInput `pulumi:"args"`
-	// A remote or local file.
+	// A remote or local file. Structure is
+	// documented below.
 	File OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrInput `pulumi:"file"`
-	// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+	// The script interpreter to use. Possible values
+	// are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
 	Interpreter pulumi.StringInput `pulumi:"interpreter"`
-	// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+	// Only recorded for enforce Exec. Path to an
+	// output file (that is created by this Exec) whose content will be recorded in
+	// OSPolicyResourceCompliance after a successful run. Absence or failure to
+	// read this file will result in this ExecResource being non-compliant. Output
+	// file size is limited to 100K bytes.
 	OutputFilePath pulumi.StringPtrInput `pulumi:"outputFilePath"`
-	// An inline script. The size of the script is limited to 1024 characters.
+	// An inline script. The size of the script is limited to
+	// 1024 characters.
 	Script pulumi.StringPtrInput `pulumi:"script"`
 }
 
@@ -6285,29 +6509,37 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput) ToOsPo
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput)
 }
 
-// Optional arguments to pass to the source during execution.
+// Optional arguments to pass to the source during
+// execution.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
-// A remote or local file.
+// A remote or local file. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile {
 		return v.File
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput)
 }
 
-// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+// The script interpreter to use. Possible values
+// are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput) Interpreter() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) string { return v.Interpreter }).(pulumi.StringOutput)
 }
 
-// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+// Only recorded for enforce Exec. Path to an
+// output file (that is created by this Exec) whose content will be recorded in
+// OSPolicyResourceCompliance after a successful run. Absence or failure to
+// read this file will result in this ExecResource being non-compliant. Output
+// file size is limited to 100K bytes.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput) OutputFilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) *string { return v.OutputFilePath }).(pulumi.StringPtrOutput)
 }
 
-// An inline script. The size of the script is limited to 1024 characters.
+// An inline script. The size of the script is limited to
+// 1024 characters.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput) Script() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) *string { return v.Script }).(pulumi.StringPtrOutput)
 }
@@ -6336,7 +6568,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) Ele
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceOutput)
 }
 
-// Optional arguments to pass to the source during execution.
+// Optional arguments to pass to the source during
+// execution.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) []string {
 		if v == nil {
@@ -6346,7 +6579,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) Arg
 	}).(pulumi.StringArrayOutput)
 }
 
-// A remote or local file.
+// A remote or local file. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile {
 		if v == nil {
@@ -6356,7 +6590,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) Fil
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput)
 }
 
-// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+// The script interpreter to use. Possible values
+// are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) *string {
 		if v == nil {
@@ -6366,7 +6601,11 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) Int
 	}).(pulumi.StringPtrOutput)
 }
 
-// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+// Only recorded for enforce Exec. Path to an
+// output file (that is created by this Exec) whose content will be recorded in
+// OSPolicyResourceCompliance after a successful run. Absence or failure to
+// read this file will result in this ExecResource being non-compliant. Output
+// file size is limited to 100K bytes.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) OutputFilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) *string {
 		if v == nil {
@@ -6376,7 +6615,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) Out
 	}).(pulumi.StringPtrOutput)
 }
 
-// An inline script. The size of the script is limited to 1024 characters.
+// An inline script. The size of the script is limited to
+// 1024 characters.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) Script() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce) *string {
 		if v == nil {
@@ -6387,13 +6627,17 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforcePtrOutput) Scr
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile struct {
-	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+	// Defaults to false. When false, files are
+	// subject to validations based on the file type: Remote: A checksum must be
+	// specified. Cloud Storage: An object generation number must be specified.
 	AllowInsecure *bool `pulumi:"allowInsecure"`
-	// A Cloud Storage object.
+	// A Cloud Storage object. Structure is
+	// documented below.
 	Gcs *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs `pulumi:"gcs"`
 	// A local path within the VM to use.
 	LocalPath *string `pulumi:"localPath"`
-	// A generic remote file.
+	// A generic remote file. Structure is
+	// documented below.
 	Remote *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote `pulumi:"remote"`
 }
 
@@ -6409,13 +6653,17 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileInput interfa
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs struct {
-	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+	// Defaults to false. When false, files are
+	// subject to validations based on the file type: Remote: A checksum must be
+	// specified. Cloud Storage: An object generation number must be specified.
 	AllowInsecure pulumi.BoolPtrInput `pulumi:"allowInsecure"`
-	// A Cloud Storage object.
+	// A Cloud Storage object. Structure is
+	// documented below.
 	Gcs OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrInput `pulumi:"gcs"`
 	// A local path within the VM to use.
 	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
-	// A generic remote file.
+	// A generic remote file. Structure is
+	// documented below.
 	Remote OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrInput `pulumi:"remote"`
 }
 
@@ -6496,12 +6744,15 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput) To
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput)
 }
 
-// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+// Defaults to false. When false, files are
+// subject to validations based on the file type: Remote: A checksum must be
+// specified. Cloud Storage: An object generation number must be specified.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput) AllowInsecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile) *bool { return v.AllowInsecure }).(pulumi.BoolPtrOutput)
 }
 
-// A Cloud Storage object.
+// A Cloud Storage object. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput) Gcs() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs {
 		return v.Gcs
@@ -6513,7 +6764,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput) Lo
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile) *string { return v.LocalPath }).(pulumi.StringPtrOutput)
 }
 
-// A generic remote file.
+// A generic remote file. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput) Remote() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote {
 		return v.Remote
@@ -6544,7 +6796,9 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput)
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileOutput)
 }
 
-// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+// Defaults to false. When false, files are
+// subject to validations based on the file type: Remote: A checksum must be
+// specified. Cloud Storage: An object generation number must be specified.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput) AllowInsecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile) *bool {
 		if v == nil {
@@ -6554,7 +6808,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput)
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A Cloud Storage object.
+// A Cloud Storage object. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput) Gcs() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs {
 		if v == nil {
@@ -6574,7 +6829,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
-// A generic remote file.
+// A generic remote file. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput) Remote() OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote {
 		if v == nil {
@@ -6585,11 +6841,11 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFilePtrOutput)
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs struct {
-	// Required. Bucket of the Cloud Storage object.
+	// Bucket of the Cloud Storage object.
 	Bucket string `pulumi:"bucket"`
 	// Generation number of the Cloud Storage object.
 	Generation *int `pulumi:"generation"`
-	// Required. Name of the Cloud Storage object.
+	// Name of the Cloud Storage object.
 	Object string `pulumi:"object"`
 }
 
@@ -6605,11 +6861,11 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsInput inte
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsArgs struct {
-	// Required. Bucket of the Cloud Storage object.
+	// Bucket of the Cloud Storage object.
 	Bucket pulumi.StringInput `pulumi:"bucket"`
 	// Generation number of the Cloud Storage object.
 	Generation pulumi.IntPtrInput `pulumi:"generation"`
-	// Required. Name of the Cloud Storage object.
+	// Name of the Cloud Storage object.
 	Object pulumi.StringInput `pulumi:"object"`
 }
 
@@ -6690,7 +6946,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput)
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput)
 }
 
-// Required. Bucket of the Cloud Storage object.
+// Bucket of the Cloud Storage object.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs) string { return v.Bucket }).(pulumi.StringOutput)
 }
@@ -6700,7 +6956,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput)
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs) *int { return v.Generation }).(pulumi.IntPtrOutput)
 }
 
-// Required. Name of the Cloud Storage object.
+// Name of the Cloud Storage object.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput) Object() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs) string { return v.Object }).(pulumi.StringOutput)
 }
@@ -6729,7 +6985,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutp
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsOutput)
 }
 
-// Required. Bucket of the Cloud Storage object.
+// Bucket of the Cloud Storage object.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs) *string {
 		if v == nil {
@@ -6749,7 +7005,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
-// Required. Name of the Cloud Storage object.
+// Name of the Cloud Storage object.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutput) Object() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs) *string {
 		if v == nil {
@@ -6762,7 +7018,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcsPtrOutp
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum *string `pulumi:"sha256Checksum"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// URI from which to fetch the object. It should contain
+	// both the protocol and path following the format `{protocol}://{location}`.
 	Uri string `pulumi:"uri"`
 }
 
@@ -6780,7 +7037,8 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteInput i
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteArgs struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// URI from which to fetch the object. It should contain
+	// both the protocol and path following the format `{protocol}://{location}`.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -6868,7 +7126,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// URI from which to fetch the object. It should contain
+// both the protocol and path following the format `{protocol}://{location}`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemoteOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -6907,7 +7166,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// URI from which to fetch the object. It should contain
+// both the protocol and path following the format `{protocol}://{location}`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote) *string {
 		if v == nil {
@@ -6918,15 +7178,23 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemotePtrO
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate struct {
-	// Optional arguments to pass to the source during execution.
+	// Optional arguments to pass to the source during
+	// execution.
 	Args []string `pulumi:"args"`
-	// A remote or local file.
+	// A remote or local file. Structure is
+	// documented below.
 	File *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile `pulumi:"file"`
-	// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+	// The script interpreter to use. Possible values
+	// are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
 	Interpreter string `pulumi:"interpreter"`
-	// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+	// Only recorded for enforce Exec. Path to an
+	// output file (that is created by this Exec) whose content will be recorded in
+	// OSPolicyResourceCompliance after a successful run. Absence or failure to
+	// read this file will result in this ExecResource being non-compliant. Output
+	// file size is limited to 100K bytes.
 	OutputFilePath *string `pulumi:"outputFilePath"`
-	// An inline script. The size of the script is limited to 1024 characters.
+	// An inline script. The size of the script is limited to
+	// 1024 characters.
 	Script *string `pulumi:"script"`
 }
 
@@ -6942,15 +7210,23 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateInput interface 
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs struct {
-	// Optional arguments to pass to the source during execution.
+	// Optional arguments to pass to the source during
+	// execution.
 	Args pulumi.StringArrayInput `pulumi:"args"`
-	// A remote or local file.
+	// A remote or local file. Structure is
+	// documented below.
 	File OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrInput `pulumi:"file"`
-	// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+	// The script interpreter to use. Possible values
+	// are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
 	Interpreter pulumi.StringInput `pulumi:"interpreter"`
-	// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+	// Only recorded for enforce Exec. Path to an
+	// output file (that is created by this Exec) whose content will be recorded in
+	// OSPolicyResourceCompliance after a successful run. Absence or failure to
+	// read this file will result in this ExecResource being non-compliant. Output
+	// file size is limited to 100K bytes.
 	OutputFilePath pulumi.StringPtrInput `pulumi:"outputFilePath"`
-	// An inline script. The size of the script is limited to 1024 characters.
+	// An inline script. The size of the script is limited to
+	// 1024 characters.
 	Script pulumi.StringPtrInput `pulumi:"script"`
 }
 
@@ -7031,29 +7307,37 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput) ToOsP
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput)
 }
 
-// Optional arguments to pass to the source during execution.
+// Optional arguments to pass to the source during
+// execution.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
-// A remote or local file.
+// A remote or local file. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile {
 		return v.File
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput)
 }
 
-// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+// The script interpreter to use. Possible values
+// are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput) Interpreter() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) string { return v.Interpreter }).(pulumi.StringOutput)
 }
 
-// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+// Only recorded for enforce Exec. Path to an
+// output file (that is created by this Exec) whose content will be recorded in
+// OSPolicyResourceCompliance after a successful run. Absence or failure to
+// read this file will result in this ExecResource being non-compliant. Output
+// file size is limited to 100K bytes.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput) OutputFilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) *string { return v.OutputFilePath }).(pulumi.StringPtrOutput)
 }
 
-// An inline script. The size of the script is limited to 1024 characters.
+// An inline script. The size of the script is limited to
+// 1024 characters.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput) Script() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) *string { return v.Script }).(pulumi.StringPtrOutput)
 }
@@ -7082,7 +7366,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) El
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateOutput)
 }
 
-// Optional arguments to pass to the source during execution.
+// Optional arguments to pass to the source during
+// execution.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) []string {
 		if v == nil {
@@ -7092,7 +7377,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) Ar
 	}).(pulumi.StringArrayOutput)
 }
 
-// A remote or local file.
+// A remote or local file. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile {
 		if v == nil {
@@ -7102,7 +7388,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) Fi
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput)
 }
 
-// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+// The script interpreter to use. Possible values
+// are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) Interpreter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) *string {
 		if v == nil {
@@ -7112,7 +7399,11 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) In
 	}).(pulumi.StringPtrOutput)
 }
 
-// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+// Only recorded for enforce Exec. Path to an
+// output file (that is created by this Exec) whose content will be recorded in
+// OSPolicyResourceCompliance after a successful run. Absence or failure to
+// read this file will result in this ExecResource being non-compliant. Output
+// file size is limited to 100K bytes.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) OutputFilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) *string {
 		if v == nil {
@@ -7122,7 +7413,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) Ou
 	}).(pulumi.StringPtrOutput)
 }
 
-// An inline script. The size of the script is limited to 1024 characters.
+// An inline script. The size of the script is limited to
+// 1024 characters.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) Script() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate) *string {
 		if v == nil {
@@ -7133,13 +7425,17 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidatePtrOutput) Sc
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile struct {
-	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+	// Defaults to false. When false, files are
+	// subject to validations based on the file type: Remote: A checksum must be
+	// specified. Cloud Storage: An object generation number must be specified.
 	AllowInsecure *bool `pulumi:"allowInsecure"`
-	// A Cloud Storage object.
+	// A Cloud Storage object. Structure is
+	// documented below.
 	Gcs *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs `pulumi:"gcs"`
 	// A local path within the VM to use.
 	LocalPath *string `pulumi:"localPath"`
-	// A generic remote file.
+	// A generic remote file. Structure is
+	// documented below.
 	Remote *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote `pulumi:"remote"`
 }
 
@@ -7155,13 +7451,17 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileInput interf
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileArgs struct {
-	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+	// Defaults to false. When false, files are
+	// subject to validations based on the file type: Remote: A checksum must be
+	// specified. Cloud Storage: An object generation number must be specified.
 	AllowInsecure pulumi.BoolPtrInput `pulumi:"allowInsecure"`
-	// A Cloud Storage object.
+	// A Cloud Storage object. Structure is
+	// documented below.
 	Gcs OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrInput `pulumi:"gcs"`
 	// A local path within the VM to use.
 	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
-	// A generic remote file.
+	// A generic remote file. Structure is
+	// documented below.
 	Remote OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrInput `pulumi:"remote"`
 }
 
@@ -7242,12 +7542,15 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput) T
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput)
 }
 
-// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+// Defaults to false. When false, files are
+// subject to validations based on the file type: Remote: A checksum must be
+// specified. Cloud Storage: An object generation number must be specified.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput) AllowInsecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile) *bool { return v.AllowInsecure }).(pulumi.BoolPtrOutput)
 }
 
-// A Cloud Storage object.
+// A Cloud Storage object. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput) Gcs() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs {
 		return v.Gcs
@@ -7259,7 +7562,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput) L
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile) *string { return v.LocalPath }).(pulumi.StringPtrOutput)
 }
 
-// A generic remote file.
+// A generic remote file. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput) Remote() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote {
 		return v.Remote
@@ -7290,7 +7594,9 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileOutput)
 }
 
-// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+// Defaults to false. When false, files are
+// subject to validations based on the file type: Remote: A checksum must be
+// specified. Cloud Storage: An object generation number must be specified.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput) AllowInsecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile) *bool {
 		if v == nil {
@@ -7300,7 +7606,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A Cloud Storage object.
+// A Cloud Storage object. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput) Gcs() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs {
 		if v == nil {
@@ -7320,7 +7627,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// A generic remote file.
+// A generic remote file. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput) Remote() OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote {
 		if v == nil {
@@ -7331,11 +7639,11 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFilePtrOutput
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs struct {
-	// Required. Bucket of the Cloud Storage object.
+	// Bucket of the Cloud Storage object.
 	Bucket string `pulumi:"bucket"`
 	// Generation number of the Cloud Storage object.
 	Generation *int `pulumi:"generation"`
-	// Required. Name of the Cloud Storage object.
+	// Name of the Cloud Storage object.
 	Object string `pulumi:"object"`
 }
 
@@ -7351,11 +7659,11 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsInput int
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsArgs struct {
-	// Required. Bucket of the Cloud Storage object.
+	// Bucket of the Cloud Storage object.
 	Bucket pulumi.StringInput `pulumi:"bucket"`
 	// Generation number of the Cloud Storage object.
 	Generation pulumi.IntPtrInput `pulumi:"generation"`
-	// Required. Name of the Cloud Storage object.
+	// Name of the Cloud Storage object.
 	Object pulumi.StringInput `pulumi:"object"`
 }
 
@@ -7436,7 +7744,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput)
 }
 
-// Required. Bucket of the Cloud Storage object.
+// Bucket of the Cloud Storage object.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs) string { return v.Bucket }).(pulumi.StringOutput)
 }
@@ -7446,7 +7754,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs) *int { return v.Generation }).(pulumi.IntPtrOutput)
 }
 
-// Required. Name of the Cloud Storage object.
+// Name of the Cloud Storage object.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput) Object() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs) string { return v.Object }).(pulumi.StringOutput)
 }
@@ -7475,7 +7783,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOut
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsOutput)
 }
 
-// Required. Bucket of the Cloud Storage object.
+// Bucket of the Cloud Storage object.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs) *string {
 		if v == nil {
@@ -7495,7 +7803,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOut
 	}).(pulumi.IntPtrOutput)
 }
 
-// Required. Name of the Cloud Storage object.
+// Name of the Cloud Storage object.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOutput) Object() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs) *string {
 		if v == nil {
@@ -7508,7 +7816,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcsPtrOut
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum *string `pulumi:"sha256Checksum"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// URI from which to fetch the object. It should contain
+	// both the protocol and path following the format `{protocol}://{location}`.
 	Uri string `pulumi:"uri"`
 }
 
@@ -7526,7 +7835,8 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteInput 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteArgs struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// URI from which to fetch the object. It should contain
+	// both the protocol and path following the format `{protocol}://{location}`.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -7614,7 +7924,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// URI from which to fetch the object. It should contain
+// both the protocol and path following the format `{protocol}://{location}`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemoteOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -7653,7 +7964,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// URI from which to fetch the object. It should contain
+// both the protocol and path following the format `{protocol}://{location}`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote) *string {
 		if v == nil {
@@ -7664,15 +7976,26 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemotePtr
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceFile struct {
-	// A a file with this content. The size of the content is limited to 1024 characters.
+	// A a file with this content. The size of the content
+	// is limited to 1024 characters.
 	Content *string `pulumi:"content"`
-	// A remote or local source.
+	// A remote or local source. Structure is
+	// documented below.
 	File *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile `pulumi:"file"`
-	// Required. The absolute path of the file within the VM.
+	// The absolute path of the file within the VM.
 	Path string `pulumi:"path"`
-	// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+	// Consists of three octal digits which represent, in
+	// order, the permissions of the owner, group, and other users for the file
+	// (similarly to the numeric mode used in the linux chmod utility). Each digit
+	// represents a three bit number with the 4 bit corresponding to the read
+	// permissions, the 2 bit corresponds to the write bit, and the one bit
+	// corresponds to the execute permission. Default behavior is 755. Below are
+	// some examples of permissions and their associated values: read, write, and
+	// execute: 7 read and execute: 5 read and write: 6 read only: 4
 	Permissions *string `pulumi:"permissions"`
-	// Required. Desired state of the file. Possible values: OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED, COMPLIANT, NON_COMPLIANT, UNKNOWN, NO_OS_POLICIES_APPLICABLE
+	// Desired state of the file. Possible values are:
+	// `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`,
+	// `CONTENTS_MATCH`.
 	State string `pulumi:"state"`
 }
 
@@ -7688,15 +8011,26 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceFileInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs struct {
-	// A a file with this content. The size of the content is limited to 1024 characters.
+	// A a file with this content. The size of the content
+	// is limited to 1024 characters.
 	Content pulumi.StringPtrInput `pulumi:"content"`
-	// A remote or local source.
+	// A remote or local source. Structure is
+	// documented below.
 	File OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrInput `pulumi:"file"`
-	// Required. The absolute path of the file within the VM.
+	// The absolute path of the file within the VM.
 	Path pulumi.StringInput `pulumi:"path"`
-	// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+	// Consists of three octal digits which represent, in
+	// order, the permissions of the owner, group, and other users for the file
+	// (similarly to the numeric mode used in the linux chmod utility). Each digit
+	// represents a three bit number with the 4 bit corresponding to the read
+	// permissions, the 2 bit corresponds to the write bit, and the one bit
+	// corresponds to the execute permission. Default behavior is 755. Below are
+	// some examples of permissions and their associated values: read, write, and
+	// execute: 7 read and execute: 5 read and write: 6 read only: 4
 	Permissions pulumi.StringPtrInput `pulumi:"permissions"`
-	// Required. Desired state of the file. Possible values: OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED, COMPLIANT, NON_COMPLIANT, UNKNOWN, NO_OS_POLICIES_APPLICABLE
+	// Desired state of the file. Possible values are:
+	// `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`,
+	// `CONTENTS_MATCH`.
 	State pulumi.StringInput `pulumi:"state"`
 }
 
@@ -7777,29 +8111,40 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) ToOsPolicyAss
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput)
 }
 
-// A a file with this content. The size of the content is limited to 1024 characters.
+// A a file with this content. The size of the content
+// is limited to 1024 characters.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFile) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
-// A remote or local source.
+// A remote or local source. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile {
 		return v.File
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput)
 }
 
-// Required. The absolute path of the file within the VM.
+// The absolute path of the file within the VM.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFile) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+// Consists of three octal digits which represent, in
+// order, the permissions of the owner, group, and other users for the file
+// (similarly to the numeric mode used in the linux chmod utility). Each digit
+// represents a three bit number with the 4 bit corresponding to the read
+// permissions, the 2 bit corresponds to the write bit, and the one bit
+// corresponds to the execute permission. Default behavior is 755. Below are
+// some examples of permissions and their associated values: read, write, and
+// execute: 7 read and execute: 5 read and write: 6 read only: 4
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) Permissions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFile) *string { return v.Permissions }).(pulumi.StringPtrOutput)
 }
 
-// Required. Desired state of the file. Possible values: OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED, COMPLIANT, NON_COMPLIANT, UNKNOWN, NO_OS_POLICIES_APPLICABLE
+// Desired state of the file. Possible values are:
+// `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`,
+// `CONTENTS_MATCH`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFile) string { return v.State }).(pulumi.StringOutput)
 }
@@ -7828,7 +8173,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) Elem() OsP
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileOutput)
 }
 
-// A a file with this content. The size of the content is limited to 1024 characters.
+// A a file with this content. The size of the content
+// is limited to 1024 characters.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFile) *string {
 		if v == nil {
@@ -7838,7 +8184,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) Content() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// A remote or local source.
+// A remote or local source. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) File() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile {
 		if v == nil {
@@ -7848,7 +8195,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) File() OsP
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput)
 }
 
-// Required. The absolute path of the file within the VM.
+// The absolute path of the file within the VM.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFile) *string {
 		if v == nil {
@@ -7858,7 +8205,14 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) Path() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+// Consists of three octal digits which represent, in
+// order, the permissions of the owner, group, and other users for the file
+// (similarly to the numeric mode used in the linux chmod utility). Each digit
+// represents a three bit number with the 4 bit corresponding to the read
+// permissions, the 2 bit corresponds to the write bit, and the one bit
+// corresponds to the execute permission. Default behavior is 755. Below are
+// some examples of permissions and their associated values: read, write, and
+// execute: 7 read and execute: 5 read and write: 6 read only: 4
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) Permissions() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFile) *string {
 		if v == nil {
@@ -7868,7 +8222,9 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) Permission
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Desired state of the file. Possible values: OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED, COMPLIANT, NON_COMPLIANT, UNKNOWN, NO_OS_POLICIES_APPLICABLE
+// Desired state of the file. Possible values are:
+// `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`,
+// `CONTENTS_MATCH`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFile) *string {
 		if v == nil {
@@ -7879,13 +8235,17 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFilePtrOutput) State() pu
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile struct {
-	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+	// Defaults to false. When false, files are
+	// subject to validations based on the file type: Remote: A checksum must be
+	// specified. Cloud Storage: An object generation number must be specified.
 	AllowInsecure *bool `pulumi:"allowInsecure"`
-	// A Cloud Storage object.
+	// A Cloud Storage object. Structure is
+	// documented below.
 	Gcs *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs `pulumi:"gcs"`
 	// A local path within the VM to use.
 	LocalPath *string `pulumi:"localPath"`
-	// A generic remote file.
+	// A generic remote file. Structure is
+	// documented below.
 	Remote *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote `pulumi:"remote"`
 }
 
@@ -7901,13 +8261,17 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs struct {
-	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+	// Defaults to false. When false, files are
+	// subject to validations based on the file type: Remote: A checksum must be
+	// specified. Cloud Storage: An object generation number must be specified.
 	AllowInsecure pulumi.BoolPtrInput `pulumi:"allowInsecure"`
-	// A Cloud Storage object.
+	// A Cloud Storage object. Structure is
+	// documented below.
 	Gcs OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrInput `pulumi:"gcs"`
 	// A local path within the VM to use.
 	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
-	// A generic remote file.
+	// A generic remote file. Structure is
+	// documented below.
 	Remote OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrInput `pulumi:"remote"`
 }
 
@@ -7988,12 +8352,15 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput) ToOsPolic
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput)
 }
 
-// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+// Defaults to false. When false, files are
+// subject to validations based on the file type: Remote: A checksum must be
+// specified. Cloud Storage: An object generation number must be specified.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput) AllowInsecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile) *bool { return v.AllowInsecure }).(pulumi.BoolPtrOutput)
 }
 
-// A Cloud Storage object.
+// A Cloud Storage object. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput) Gcs() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs {
 		return v.Gcs
@@ -8005,7 +8372,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput) LocalPath
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile) *string { return v.LocalPath }).(pulumi.StringPtrOutput)
 }
 
-// A generic remote file.
+// A generic remote file. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput) Remote() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote {
 		return v.Remote
@@ -8036,7 +8404,9 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput) Elem()
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileOutput)
 }
 
-// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+// Defaults to false. When false, files are
+// subject to validations based on the file type: Remote: A checksum must be
+// specified. Cloud Storage: An object generation number must be specified.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput) AllowInsecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile) *bool {
 		if v == nil {
@@ -8046,7 +8416,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput) AllowI
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A Cloud Storage object.
+// A Cloud Storage object. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput) Gcs() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs {
 		if v == nil {
@@ -8066,7 +8437,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput) LocalP
 	}).(pulumi.StringPtrOutput)
 }
 
-// A generic remote file.
+// A generic remote file. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput) Remote() OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile) *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote {
 		if v == nil {
@@ -8077,11 +8449,11 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFilePtrOutput) Remote
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs struct {
-	// Required. Bucket of the Cloud Storage object.
+	// Bucket of the Cloud Storage object.
 	Bucket string `pulumi:"bucket"`
 	// Generation number of the Cloud Storage object.
 	Generation *int `pulumi:"generation"`
-	// Required. Name of the Cloud Storage object.
+	// Name of the Cloud Storage object.
 	Object string `pulumi:"object"`
 }
 
@@ -8097,11 +8469,11 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsArgs struct {
-	// Required. Bucket of the Cloud Storage object.
+	// Bucket of the Cloud Storage object.
 	Bucket pulumi.StringInput `pulumi:"bucket"`
 	// Generation number of the Cloud Storage object.
 	Generation pulumi.IntPtrInput `pulumi:"generation"`
-	// Required. Name of the Cloud Storage object.
+	// Name of the Cloud Storage object.
 	Object pulumi.StringInput `pulumi:"object"`
 }
 
@@ -8182,7 +8554,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput) ToOsPo
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput)
 }
 
-// Required. Bucket of the Cloud Storage object.
+// Bucket of the Cloud Storage object.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs) string { return v.Bucket }).(pulumi.StringOutput)
 }
@@ -8192,7 +8564,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput) Genera
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs) *int { return v.Generation }).(pulumi.IntPtrOutput)
 }
 
-// Required. Name of the Cloud Storage object.
+// Name of the Cloud Storage object.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput) Object() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs) string { return v.Object }).(pulumi.StringOutput)
 }
@@ -8221,7 +8593,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput) Ele
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsOutput)
 }
 
-// Required. Bucket of the Cloud Storage object.
+// Bucket of the Cloud Storage object.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs) *string {
 		if v == nil {
@@ -8241,7 +8613,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput) Gen
 	}).(pulumi.IntPtrOutput)
 }
 
-// Required. Name of the Cloud Storage object.
+// Name of the Cloud Storage object.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput) Object() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs) *string {
 		if v == nil {
@@ -8254,7 +8626,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcsPtrOutput) Obj
 type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum *string `pulumi:"sha256Checksum"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// URI from which to fetch the object. It should contain
+	// both the protocol and path following the format `{protocol}://{location}`.
 	Uri string `pulumi:"uri"`
 }
 
@@ -8272,7 +8645,8 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteInput interfac
 type OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteArgs struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// URI from which to fetch the object. It should contain
+	// both the protocol and path following the format `{protocol}://{location}`.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -8358,7 +8732,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput) Sha
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote) *string { return v.Sha256Checksum }).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// URI from which to fetch the object. It should contain
+// both the protocol and path following the format `{protocol}://{location}`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemoteOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -8397,7 +8772,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput) 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// URI from which to fetch the object. It should contain
+// both the protocol and path following the format `{protocol}://{location}`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote) *string {
 		if v == nil {
@@ -8408,21 +8784,30 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemotePtrOutput) 
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkg struct {
-	// A package managed by Apt.
+	// A package managed by Apt. Structure is
+	// documented below.
 	Apt *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt `pulumi:"apt"`
-	// A deb package file.
+	// A deb package file. Structure is
+	// documented below.
 	Deb *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb `pulumi:"deb"`
-	// Required. The desired state the agent should maintain for this package. Possible values: DESIRED_STATE_UNSPECIFIED, INSTALLED, REMOVED
+	// The desired state the agent should maintain for
+	// this package. Possible values are: `DESIRED_STATE_UNSPECIFIED`, `INSTALLED`,
+	// `REMOVED`.
 	DesiredState string `pulumi:"desiredState"`
-	// A package managed by GooGet.
+	// A package managed by GooGet. Structure is
+	// documented below.
 	Googet *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget `pulumi:"googet"`
-	// An MSI package.
+	// An MSI package. Structure is
+	// documented below.
 	Msi *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi `pulumi:"msi"`
-	// An rpm package file.
+	// An rpm package file. Structure is
+	// documented below.
 	Rpm *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm `pulumi:"rpm"`
-	// A package managed by YUM.
+	// A package managed by YUM. Structure is
+	// documented below.
 	Yum *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum `pulumi:"yum"`
-	// A package managed by Zypper.
+	// A package managed by Zypper. Structure is
+	// documented below.
 	Zypper *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper `pulumi:"zypper"`
 }
 
@@ -8438,21 +8823,30 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs struct {
-	// A package managed by Apt.
+	// A package managed by Apt. Structure is
+	// documented below.
 	Apt OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrInput `pulumi:"apt"`
-	// A deb package file.
+	// A deb package file. Structure is
+	// documented below.
 	Deb OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrInput `pulumi:"deb"`
-	// Required. The desired state the agent should maintain for this package. Possible values: DESIRED_STATE_UNSPECIFIED, INSTALLED, REMOVED
+	// The desired state the agent should maintain for
+	// this package. Possible values are: `DESIRED_STATE_UNSPECIFIED`, `INSTALLED`,
+	// `REMOVED`.
 	DesiredState pulumi.StringInput `pulumi:"desiredState"`
-	// A package managed by GooGet.
+	// A package managed by GooGet. Structure is
+	// documented below.
 	Googet OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrInput `pulumi:"googet"`
-	// An MSI package.
+	// An MSI package. Structure is
+	// documented below.
 	Msi OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrInput `pulumi:"msi"`
-	// An rpm package file.
+	// An rpm package file. Structure is
+	// documented below.
 	Rpm OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrInput `pulumi:"rpm"`
-	// A package managed by YUM.
+	// A package managed by YUM. Structure is
+	// documented below.
 	Yum OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrInput `pulumi:"yum"`
-	// A package managed by Zypper.
+	// A package managed by Zypper. Structure is
+	// documented below.
 	Zypper OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrInput `pulumi:"zypper"`
 }
 
@@ -8533,54 +8927,63 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) ToOsPolicyAssi
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput)
 }
 
-// A package managed by Apt.
+// A package managed by Apt. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) Apt() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt {
 		return v.Apt
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput)
 }
 
-// A deb package file.
+// A deb package file. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) Deb() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb {
 		return v.Deb
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput)
 }
 
-// Required. The desired state the agent should maintain for this package. Possible values: DESIRED_STATE_UNSPECIFIED, INSTALLED, REMOVED
+// The desired state the agent should maintain for
+// this package. Possible values are: `DESIRED_STATE_UNSPECIFIED`, `INSTALLED`,
+// `REMOVED`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) DesiredState() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) string { return v.DesiredState }).(pulumi.StringOutput)
 }
 
-// A package managed by GooGet.
+// A package managed by GooGet. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) Googet() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget {
 		return v.Googet
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput)
 }
 
-// An MSI package.
+// An MSI package. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) Msi() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
 		return v.Msi
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput)
 }
 
-// An rpm package file.
+// An rpm package file. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) Rpm() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm {
 		return v.Rpm
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput)
 }
 
-// A package managed by YUM.
+// A package managed by YUM. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) Yum() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum {
 		return v.Yum
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput)
 }
 
-// A package managed by Zypper.
+// A package managed by Zypper. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput) Zypper() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper {
 		return v.Zypper
@@ -8611,7 +9014,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Elem() OsPo
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgOutput)
 }
 
-// A package managed by Apt.
+// A package managed by Apt. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Apt() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt {
 		if v == nil {
@@ -8621,7 +9025,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Apt() OsPol
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput)
 }
 
-// A deb package file.
+// A deb package file. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Deb() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb {
 		if v == nil {
@@ -8631,7 +9036,9 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Deb() OsPol
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput)
 }
 
-// Required. The desired state the agent should maintain for this package. Possible values: DESIRED_STATE_UNSPECIFIED, INSTALLED, REMOVED
+// The desired state the agent should maintain for
+// this package. Possible values are: `DESIRED_STATE_UNSPECIFIED`, `INSTALLED`,
+// `REMOVED`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) DesiredState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *string {
 		if v == nil {
@@ -8641,7 +9048,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) DesiredStat
 	}).(pulumi.StringPtrOutput)
 }
 
-// A package managed by GooGet.
+// A package managed by GooGet. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Googet() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget {
 		if v == nil {
@@ -8651,7 +9059,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Googet() Os
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput)
 }
 
-// An MSI package.
+// An MSI package. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Msi() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
 		if v == nil {
@@ -8661,7 +9070,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Msi() OsPol
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput)
 }
 
-// An rpm package file.
+// An rpm package file. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Rpm() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm {
 		if v == nil {
@@ -8671,7 +9081,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Rpm() OsPol
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput)
 }
 
-// A package managed by YUM.
+// A package managed by YUM. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Yum() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum {
 		if v == nil {
@@ -8681,7 +9092,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Yum() OsPol
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput)
 }
 
-// A package managed by Zypper.
+// A package managed by Zypper. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Zypper() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkg) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper {
 		if v == nil {
@@ -8692,7 +9104,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgPtrOutput) Zypper() Os
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt struct {
-	// Required. Package name.
+	// Package name.
 	Name string `pulumi:"name"`
 }
 
@@ -8708,7 +9120,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptArgs struct {
-	// Required. Package name.
+	// Package name.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -8789,7 +9201,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput) ToOsPolicyA
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput)
 }
 
-// Required. Package name.
+// Package name.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -8818,7 +9230,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput) Elem() O
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptOutput)
 }
 
-// Required. Package name.
+// Package name.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt) *string {
 		if v == nil {
@@ -8829,9 +9241,12 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgAptPtrOutput) Name() p
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb struct {
-	// Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update && apt-get -y install package.deb`
+	// Whether dependencies should also be installed. -
+	// install when false: `dpkg -i package` - install when true: `apt-get update
+	// && apt-get -y install package.deb`
 	PullDeps *bool `pulumi:"pullDeps"`
-	// Required. A deb package.
+	// A deb package. Structure is
+	// documented below.
 	Source OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource `pulumi:"source"`
 }
 
@@ -8847,9 +9262,12 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs struct {
-	// Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update && apt-get -y install package.deb`
+	// Whether dependencies should also be installed. -
+	// install when false: `dpkg -i package` - install when true: `apt-get update
+	// && apt-get -y install package.deb`
 	PullDeps pulumi.BoolPtrInput `pulumi:"pullDeps"`
-	// Required. A deb package.
+	// A deb package. Structure is
+	// documented below.
 	Source OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceInput `pulumi:"source"`
 }
 
@@ -8930,12 +9348,15 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput) ToOsPolicyA
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput)
 }
 
-// Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update && apt-get -y install package.deb`
+// Whether dependencies should also be installed. -
+// install when false: `dpkg -i package` - install when true: `apt-get update
+// && apt-get -y install package.deb`
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput) PullDeps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb) *bool { return v.PullDeps }).(pulumi.BoolPtrOutput)
 }
 
-// Required. A deb package.
+// A deb package. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput) Source() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource {
 		return v.Source
@@ -8966,7 +9387,9 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput) Elem() O
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebOutput)
 }
 
-// Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update && apt-get -y install package.deb`
+// Whether dependencies should also be installed. -
+// install when false: `dpkg -i package` - install when true: `apt-get update
+// && apt-get -y install package.deb`
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput) PullDeps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb) *bool {
 		if v == nil {
@@ -8976,7 +9399,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput) PullDeps
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required. A deb package.
+// A deb package. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput) Source() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource {
 		if v == nil {
@@ -8987,13 +9411,17 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebPtrOutput) Source()
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource struct {
-	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+	// Defaults to false. When false, files are
+	// subject to validations based on the file type: Remote: A checksum must be
+	// specified. Cloud Storage: An object generation number must be specified.
 	AllowInsecure *bool `pulumi:"allowInsecure"`
-	// A Cloud Storage object.
+	// A Cloud Storage object. Structure is
+	// documented below.
 	Gcs *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs `pulumi:"gcs"`
 	// A local path within the VM to use.
 	LocalPath *string `pulumi:"localPath"`
-	// A generic remote file.
+	// A generic remote file. Structure is
+	// documented below.
 	Remote *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote `pulumi:"remote"`
 }
 
@@ -9009,13 +9437,17 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceInput interface 
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs struct {
-	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+	// Defaults to false. When false, files are
+	// subject to validations based on the file type: Remote: A checksum must be
+	// specified. Cloud Storage: An object generation number must be specified.
 	AllowInsecure pulumi.BoolPtrInput `pulumi:"allowInsecure"`
-	// A Cloud Storage object.
+	// A Cloud Storage object. Structure is
+	// documented below.
 	Gcs OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrInput `pulumi:"gcs"`
 	// A local path within the VM to use.
 	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
-	// A generic remote file.
+	// A generic remote file. Structure is
+	// documented below.
 	Remote OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrInput `pulumi:"remote"`
 }
 
@@ -9096,12 +9528,15 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput) ToOsP
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput)
 }
 
-// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+// Defaults to false. When false, files are
+// subject to validations based on the file type: Remote: A checksum must be
+// specified. Cloud Storage: An object generation number must be specified.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput) AllowInsecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource) *bool { return v.AllowInsecure }).(pulumi.BoolPtrOutput)
 }
 
-// A Cloud Storage object.
+// A Cloud Storage object. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput) Gcs() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs {
 		return v.Gcs
@@ -9113,7 +9548,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput) Local
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource) *string { return v.LocalPath }).(pulumi.StringPtrOutput)
 }
 
-// A generic remote file.
+// A generic remote file. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput) Remote() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote {
 		return v.Remote
@@ -9144,7 +9580,9 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) El
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceOutput)
 }
 
-// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+// Defaults to false. When false, files are
+// subject to validations based on the file type: Remote: A checksum must be
+// specified. Cloud Storage: An object generation number must be specified.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) AllowInsecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource) *bool {
 		if v == nil {
@@ -9154,7 +9592,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) Al
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A Cloud Storage object.
+// A Cloud Storage object. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) Gcs() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs {
 		if v == nil {
@@ -9174,7 +9613,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) Lo
 	}).(pulumi.StringPtrOutput)
 }
 
-// A generic remote file.
+// A generic remote file. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) Remote() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote {
 		if v == nil {
@@ -9185,11 +9625,11 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourcePtrOutput) Re
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs struct {
-	// Required. Bucket of the Cloud Storage object.
+	// Bucket of the Cloud Storage object.
 	Bucket string `pulumi:"bucket"`
 	// Generation number of the Cloud Storage object.
 	Generation *int `pulumi:"generation"`
-	// Required. Name of the Cloud Storage object.
+	// Name of the Cloud Storage object.
 	Object string `pulumi:"object"`
 }
 
@@ -9205,11 +9645,11 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsInput interfa
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsArgs struct {
-	// Required. Bucket of the Cloud Storage object.
+	// Bucket of the Cloud Storage object.
 	Bucket pulumi.StringInput `pulumi:"bucket"`
 	// Generation number of the Cloud Storage object.
 	Generation pulumi.IntPtrInput `pulumi:"generation"`
-	// Required. Name of the Cloud Storage object.
+	// Name of the Cloud Storage object.
 	Object pulumi.StringInput `pulumi:"object"`
 }
 
@@ -9290,7 +9730,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput) To
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput)
 }
 
-// Required. Bucket of the Cloud Storage object.
+// Bucket of the Cloud Storage object.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs) string { return v.Bucket }).(pulumi.StringOutput)
 }
@@ -9300,7 +9740,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput) Ge
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs) *int { return v.Generation }).(pulumi.IntPtrOutput)
 }
 
-// Required. Name of the Cloud Storage object.
+// Name of the Cloud Storage object.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput) Object() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs) string { return v.Object }).(pulumi.StringOutput)
 }
@@ -9329,7 +9769,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput)
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsOutput)
 }
 
-// Required. Bucket of the Cloud Storage object.
+// Bucket of the Cloud Storage object.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs) *string {
 		if v == nil {
@@ -9349,7 +9789,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput)
 	}).(pulumi.IntPtrOutput)
 }
 
-// Required. Name of the Cloud Storage object.
+// Name of the Cloud Storage object.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput) Object() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs) *string {
 		if v == nil {
@@ -9362,7 +9802,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcsPtrOutput)
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum *string `pulumi:"sha256Checksum"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// URI from which to fetch the object. It should contain
+	// both the protocol and path following the format `{protocol}://{location}`.
 	Uri string `pulumi:"uri"`
 }
 
@@ -9380,7 +9821,8 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteInput inte
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteArgs struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// URI from which to fetch the object. It should contain
+	// both the protocol and path following the format `{protocol}://{location}`.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -9468,7 +9910,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// URI from which to fetch the object. It should contain
+// both the protocol and path following the format `{protocol}://{location}`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemoteOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -9507,7 +9950,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// URI from which to fetch the object. It should contain
+// both the protocol and path following the format `{protocol}://{location}`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote) *string {
 		if v == nil {
@@ -9518,7 +9962,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemotePtrOutp
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget struct {
-	// Required. Package name.
+	// Package name.
 	Name string `pulumi:"name"`
 }
 
@@ -9534,7 +9978,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetArgs struct {
-	// Required. Package name.
+	// Package name.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -9615,7 +10059,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput) ToOsPoli
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput)
 }
 
-// Required. Package name.
+// Package name.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -9644,7 +10088,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput) Elem(
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetOutput)
 }
 
-// Required. Package name.
+// Package name.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget) *string {
 		if v == nil {
@@ -9655,9 +10099,12 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGoogetPtrOutput) Name(
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi struct {
-	// Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
+	// Additional properties to use during installation.
+	// This should be in the format of Property=Setting. Appended to the defaults
+	// of `ACTION=INSTALL REBOOT=ReallySuppress`.
 	Properties []string `pulumi:"properties"`
-	// Required. The MSI package.
+	// The MSI package. Structure is
+	// documented below.
 	Source OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource `pulumi:"source"`
 }
 
@@ -9673,9 +10120,12 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiArgs struct {
-	// Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
+	// Additional properties to use during installation.
+	// This should be in the format of Property=Setting. Appended to the defaults
+	// of `ACTION=INSTALL REBOOT=ReallySuppress`.
 	Properties pulumi.StringArrayInput `pulumi:"properties"`
-	// Required. The MSI package.
+	// The MSI package. Structure is
+	// documented below.
 	Source OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceInput `pulumi:"source"`
 }
 
@@ -9756,12 +10206,15 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput) ToOsPolicyA
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput)
 }
 
-// Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
+// Additional properties to use during installation.
+// This should be in the format of Property=Setting. Appended to the defaults
+// of `ACTION=INSTALL REBOOT=ReallySuppress`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput) Properties() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi) []string { return v.Properties }).(pulumi.StringArrayOutput)
 }
 
-// Required. The MSI package.
+// The MSI package. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput) Source() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource {
 		return v.Source
@@ -9792,7 +10245,9 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput) Elem() O
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiOutput)
 }
 
-// Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
+// Additional properties to use during installation.
+// This should be in the format of Property=Setting. Appended to the defaults
+// of `ACTION=INSTALL REBOOT=ReallySuppress`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput) Properties() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi) []string {
 		if v == nil {
@@ -9802,7 +10257,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput) Properti
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. The MSI package.
+// The MSI package. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput) Source() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource {
 		if v == nil {
@@ -9813,13 +10269,17 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiPtrOutput) Source()
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource struct {
-	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+	// Defaults to false. When false, files are
+	// subject to validations based on the file type: Remote: A checksum must be
+	// specified. Cloud Storage: An object generation number must be specified.
 	AllowInsecure *bool `pulumi:"allowInsecure"`
-	// A Cloud Storage object.
+	// A Cloud Storage object. Structure is
+	// documented below.
 	Gcs *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs `pulumi:"gcs"`
 	// A local path within the VM to use.
 	LocalPath *string `pulumi:"localPath"`
-	// A generic remote file.
+	// A generic remote file. Structure is
+	// documented below.
 	Remote *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote `pulumi:"remote"`
 }
 
@@ -9835,13 +10295,17 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceInput interface 
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceArgs struct {
-	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+	// Defaults to false. When false, files are
+	// subject to validations based on the file type: Remote: A checksum must be
+	// specified. Cloud Storage: An object generation number must be specified.
 	AllowInsecure pulumi.BoolPtrInput `pulumi:"allowInsecure"`
-	// A Cloud Storage object.
+	// A Cloud Storage object. Structure is
+	// documented below.
 	Gcs OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrInput `pulumi:"gcs"`
 	// A local path within the VM to use.
 	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
-	// A generic remote file.
+	// A generic remote file. Structure is
+	// documented below.
 	Remote OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrInput `pulumi:"remote"`
 }
 
@@ -9922,12 +10386,15 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput) ToOsP
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput)
 }
 
-// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+// Defaults to false. When false, files are
+// subject to validations based on the file type: Remote: A checksum must be
+// specified. Cloud Storage: An object generation number must be specified.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput) AllowInsecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource) *bool { return v.AllowInsecure }).(pulumi.BoolPtrOutput)
 }
 
-// A Cloud Storage object.
+// A Cloud Storage object. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput) Gcs() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs {
 		return v.Gcs
@@ -9939,7 +10406,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput) Local
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource) *string { return v.LocalPath }).(pulumi.StringPtrOutput)
 }
 
-// A generic remote file.
+// A generic remote file. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput) Remote() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote {
 		return v.Remote
@@ -9970,7 +10438,9 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) El
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceOutput)
 }
 
-// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+// Defaults to false. When false, files are
+// subject to validations based on the file type: Remote: A checksum must be
+// specified. Cloud Storage: An object generation number must be specified.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) AllowInsecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource) *bool {
 		if v == nil {
@@ -9980,7 +10450,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) Al
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A Cloud Storage object.
+// A Cloud Storage object. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) Gcs() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs {
 		if v == nil {
@@ -10000,7 +10471,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) Lo
 	}).(pulumi.StringPtrOutput)
 }
 
-// A generic remote file.
+// A generic remote file. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) Remote() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote {
 		if v == nil {
@@ -10011,11 +10483,11 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourcePtrOutput) Re
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs struct {
-	// Required. Bucket of the Cloud Storage object.
+	// Bucket of the Cloud Storage object.
 	Bucket string `pulumi:"bucket"`
 	// Generation number of the Cloud Storage object.
 	Generation *int `pulumi:"generation"`
-	// Required. Name of the Cloud Storage object.
+	// Name of the Cloud Storage object.
 	Object string `pulumi:"object"`
 }
 
@@ -10031,11 +10503,11 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsInput interfa
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsArgs struct {
-	// Required. Bucket of the Cloud Storage object.
+	// Bucket of the Cloud Storage object.
 	Bucket pulumi.StringInput `pulumi:"bucket"`
 	// Generation number of the Cloud Storage object.
 	Generation pulumi.IntPtrInput `pulumi:"generation"`
-	// Required. Name of the Cloud Storage object.
+	// Name of the Cloud Storage object.
 	Object pulumi.StringInput `pulumi:"object"`
 }
 
@@ -10116,7 +10588,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput) To
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput)
 }
 
-// Required. Bucket of the Cloud Storage object.
+// Bucket of the Cloud Storage object.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs) string { return v.Bucket }).(pulumi.StringOutput)
 }
@@ -10126,7 +10598,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput) Ge
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs) *int { return v.Generation }).(pulumi.IntPtrOutput)
 }
 
-// Required. Name of the Cloud Storage object.
+// Name of the Cloud Storage object.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput) Object() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs) string { return v.Object }).(pulumi.StringOutput)
 }
@@ -10155,7 +10627,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput)
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsOutput)
 }
 
-// Required. Bucket of the Cloud Storage object.
+// Bucket of the Cloud Storage object.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs) *string {
 		if v == nil {
@@ -10175,7 +10647,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput)
 	}).(pulumi.IntPtrOutput)
 }
 
-// Required. Name of the Cloud Storage object.
+// Name of the Cloud Storage object.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput) Object() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs) *string {
 		if v == nil {
@@ -10188,7 +10660,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcsPtrOutput)
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum *string `pulumi:"sha256Checksum"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// URI from which to fetch the object. It should contain
+	// both the protocol and path following the format `{protocol}://{location}`.
 	Uri string `pulumi:"uri"`
 }
 
@@ -10206,7 +10679,8 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteInput inte
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// URI from which to fetch the object. It should contain
+	// both the protocol and path following the format `{protocol}://{location}`.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -10294,7 +10768,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// URI from which to fetch the object. It should contain
+// both the protocol and path following the format `{protocol}://{location}`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -10333,7 +10808,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// URI from which to fetch the object. It should contain
+// both the protocol and path following the format `{protocol}://{location}`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote) *string {
 		if v == nil {
@@ -10344,9 +10820,12 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemotePtrOutp
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm struct {
-	// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+	// Whether dependencies should also be installed. -
+	// install when false: `rpm --upgrade --replacepkgs package.rpm` - install when
+	// true: `yum -y install package.rpm` or `zypper -y install package.rpm`
 	PullDeps *bool `pulumi:"pullDeps"`
-	// Required. An rpm package.
+	// An rpm package. Structure is
+	// documented below.
 	Source OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource `pulumi:"source"`
 }
 
@@ -10362,9 +10841,12 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs struct {
-	// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+	// Whether dependencies should also be installed. -
+	// install when false: `rpm --upgrade --replacepkgs package.rpm` - install when
+	// true: `yum -y install package.rpm` or `zypper -y install package.rpm`
 	PullDeps pulumi.BoolPtrInput `pulumi:"pullDeps"`
-	// Required. An rpm package.
+	// An rpm package. Structure is
+	// documented below.
 	Source OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceInput `pulumi:"source"`
 }
 
@@ -10445,12 +10927,15 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput) ToOsPolicyA
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput)
 }
 
-// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+// Whether dependencies should also be installed. -
+// install when false: `rpm --upgrade --replacepkgs package.rpm` - install when
+// true: `yum -y install package.rpm` or `zypper -y install package.rpm`
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput) PullDeps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm) *bool { return v.PullDeps }).(pulumi.BoolPtrOutput)
 }
 
-// Required. An rpm package.
+// An rpm package. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput) Source() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm) OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource {
 		return v.Source
@@ -10481,7 +10966,9 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput) Elem() O
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmOutput)
 }
 
-// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+// Whether dependencies should also be installed. -
+// install when false: `rpm --upgrade --replacepkgs package.rpm` - install when
+// true: `yum -y install package.rpm` or `zypper -y install package.rpm`
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput) PullDeps() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm) *bool {
 		if v == nil {
@@ -10491,7 +10978,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput) PullDeps
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required. An rpm package.
+// An rpm package. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput) Source() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource {
 		if v == nil {
@@ -10502,13 +10990,17 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmPtrOutput) Source()
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource struct {
-	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+	// Defaults to false. When false, files are
+	// subject to validations based on the file type: Remote: A checksum must be
+	// specified. Cloud Storage: An object generation number must be specified.
 	AllowInsecure *bool `pulumi:"allowInsecure"`
-	// A Cloud Storage object.
+	// A Cloud Storage object. Structure is
+	// documented below.
 	Gcs *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs `pulumi:"gcs"`
 	// A local path within the VM to use.
 	LocalPath *string `pulumi:"localPath"`
-	// A generic remote file.
+	// A generic remote file. Structure is
+	// documented below.
 	Remote *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote `pulumi:"remote"`
 }
 
@@ -10524,13 +11016,17 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceInput interface 
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs struct {
-	// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+	// Defaults to false. When false, files are
+	// subject to validations based on the file type: Remote: A checksum must be
+	// specified. Cloud Storage: An object generation number must be specified.
 	AllowInsecure pulumi.BoolPtrInput `pulumi:"allowInsecure"`
-	// A Cloud Storage object.
+	// A Cloud Storage object. Structure is
+	// documented below.
 	Gcs OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrInput `pulumi:"gcs"`
 	// A local path within the VM to use.
 	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
-	// A generic remote file.
+	// A generic remote file. Structure is
+	// documented below.
 	Remote OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrInput `pulumi:"remote"`
 }
 
@@ -10611,12 +11107,15 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput) ToOsP
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput)
 }
 
-// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+// Defaults to false. When false, files are
+// subject to validations based on the file type: Remote: A checksum must be
+// specified. Cloud Storage: An object generation number must be specified.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput) AllowInsecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource) *bool { return v.AllowInsecure }).(pulumi.BoolPtrOutput)
 }
 
-// A Cloud Storage object.
+// A Cloud Storage object. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput) Gcs() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs {
 		return v.Gcs
@@ -10628,7 +11127,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput) Local
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource) *string { return v.LocalPath }).(pulumi.StringPtrOutput)
 }
 
-// A generic remote file.
+// A generic remote file. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput) Remote() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote {
 		return v.Remote
@@ -10659,7 +11159,9 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) El
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceOutput)
 }
 
-// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+// Defaults to false. When false, files are
+// subject to validations based on the file type: Remote: A checksum must be
+// specified. Cloud Storage: An object generation number must be specified.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) AllowInsecure() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource) *bool {
 		if v == nil {
@@ -10669,7 +11171,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) Al
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A Cloud Storage object.
+// A Cloud Storage object. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) Gcs() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs {
 		if v == nil {
@@ -10689,7 +11192,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) Lo
 	}).(pulumi.StringPtrOutput)
 }
 
-// A generic remote file.
+// A generic remote file. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) Remote() OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource) *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote {
 		if v == nil {
@@ -10700,11 +11204,11 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourcePtrOutput) Re
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs struct {
-	// Required. Bucket of the Cloud Storage object.
+	// Bucket of the Cloud Storage object.
 	Bucket string `pulumi:"bucket"`
 	// Generation number of the Cloud Storage object.
 	Generation *int `pulumi:"generation"`
-	// Required. Name of the Cloud Storage object.
+	// Name of the Cloud Storage object.
 	Object string `pulumi:"object"`
 }
 
@@ -10720,11 +11224,11 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsInput interfa
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsArgs struct {
-	// Required. Bucket of the Cloud Storage object.
+	// Bucket of the Cloud Storage object.
 	Bucket pulumi.StringInput `pulumi:"bucket"`
 	// Generation number of the Cloud Storage object.
 	Generation pulumi.IntPtrInput `pulumi:"generation"`
-	// Required. Name of the Cloud Storage object.
+	// Name of the Cloud Storage object.
 	Object pulumi.StringInput `pulumi:"object"`
 }
 
@@ -10805,7 +11309,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput) To
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput)
 }
 
-// Required. Bucket of the Cloud Storage object.
+// Bucket of the Cloud Storage object.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs) string { return v.Bucket }).(pulumi.StringOutput)
 }
@@ -10815,7 +11319,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput) Ge
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs) *int { return v.Generation }).(pulumi.IntPtrOutput)
 }
 
-// Required. Name of the Cloud Storage object.
+// Name of the Cloud Storage object.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput) Object() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs) string { return v.Object }).(pulumi.StringOutput)
 }
@@ -10844,7 +11348,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput)
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsOutput)
 }
 
-// Required. Bucket of the Cloud Storage object.
+// Bucket of the Cloud Storage object.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs) *string {
 		if v == nil {
@@ -10864,7 +11368,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput)
 	}).(pulumi.IntPtrOutput)
 }
 
-// Required. Name of the Cloud Storage object.
+// Name of the Cloud Storage object.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput) Object() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs) *string {
 		if v == nil {
@@ -10877,7 +11381,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcsPtrOutput)
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum *string `pulumi:"sha256Checksum"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// URI from which to fetch the object. It should contain
+	// both the protocol and path following the format `{protocol}://{location}`.
 	Uri string `pulumi:"uri"`
 }
 
@@ -10895,7 +11400,8 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteInput inte
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteArgs struct {
 	// SHA256 checksum of the remote file.
 	Sha256Checksum pulumi.StringPtrInput `pulumi:"sha256Checksum"`
-	// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+	// URI from which to fetch the object. It should contain
+	// both the protocol and path following the format `{protocol}://{location}`.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -10983,7 +11489,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// URI from which to fetch the object. It should contain
+// both the protocol and path following the format `{protocol}://{location}`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemoteOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -11022,7 +11529,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+// URI from which to fetch the object. It should contain
+// both the protocol and path following the format `{protocol}://{location}`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote) *string {
 		if v == nil {
@@ -11033,7 +11541,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemotePtrOutp
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum struct {
-	// Required. Package name.
+	// Package name.
 	Name string `pulumi:"name"`
 }
 
@@ -11049,7 +11557,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumArgs struct {
-	// Required. Package name.
+	// Package name.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -11130,7 +11638,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput) ToOsPolicyA
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput)
 }
 
-// Required. Package name.
+// Package name.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -11159,7 +11667,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput) Elem() O
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumOutput)
 }
 
-// Required. Package name.
+// Package name.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum) *string {
 		if v == nil {
@@ -11170,7 +11678,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumPtrOutput) Name() p
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper struct {
-	// Required. Package name.
+	// Package name.
 	Name string `pulumi:"name"`
 }
 
@@ -11186,7 +11694,7 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperArgs struct {
-	// Required. Package name.
+	// Package name.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -11267,7 +11775,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput) ToOsPoli
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput)
 }
 
-// Required. Package name.
+// Package name.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -11296,7 +11804,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput) Elem(
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperOutput)
 }
 
-// Required. Package name.
+// Package name.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper) *string {
 		if v == nil {
@@ -11307,13 +11815,17 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypperPtrOutput) Name(
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceRepository struct {
-	// An Apt Repository.
+	// An Apt Repository. Structure is
+	// documented below.
 	Apt *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt `pulumi:"apt"`
-	// A Goo Repository.
+	// A Goo Repository. Structure is
+	// documented below.
 	Goo *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo `pulumi:"goo"`
-	// A Yum Repository.
+	// A Yum Repository. Structure is
+	// documented below.
 	Yum *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum `pulumi:"yum"`
-	// A Zypper Repository.
+	// A Zypper Repository. Structure is
+	// documented below.
 	Zypper *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper `pulumi:"zypper"`
 }
 
@@ -11329,13 +11841,17 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryInput interface {
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs struct {
-	// An Apt Repository.
+	// An Apt Repository. Structure is
+	// documented below.
 	Apt OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrInput `pulumi:"apt"`
-	// A Goo Repository.
+	// A Goo Repository. Structure is
+	// documented below.
 	Goo OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrInput `pulumi:"goo"`
-	// A Yum Repository.
+	// A Yum Repository. Structure is
+	// documented below.
 	Yum OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrInput `pulumi:"yum"`
-	// A Zypper Repository.
+	// A Zypper Repository. Structure is
+	// documented below.
 	Zypper OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrInput `pulumi:"zypper"`
 }
 
@@ -11416,28 +11932,32 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput) ToOsPol
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput)
 }
 
-// An Apt Repository.
+// An Apt Repository. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput) Apt() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepository) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt {
 		return v.Apt
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput)
 }
 
-// A Goo Repository.
+// A Goo Repository. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput) Goo() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepository) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo {
 		return v.Goo
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput)
 }
 
-// A Yum Repository.
+// A Yum Repository. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput) Yum() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepository) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum {
 		return v.Yum
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput)
 }
 
-// A Zypper Repository.
+// A Zypper Repository. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput) Zypper() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepository) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper {
 		return v.Zypper
@@ -11468,7 +11988,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput) Elem
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryOutput)
 }
 
-// An Apt Repository.
+// An Apt Repository. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput) Apt() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepository) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt {
 		if v == nil {
@@ -11478,7 +11999,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput) Apt(
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput)
 }
 
-// A Goo Repository.
+// A Goo Repository. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput) Goo() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepository) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo {
 		if v == nil {
@@ -11488,7 +12010,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput) Goo(
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput)
 }
 
-// A Yum Repository.
+// A Yum Repository. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput) Yum() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepository) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum {
 		if v == nil {
@@ -11498,7 +12021,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput) Yum(
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput)
 }
 
-// A Zypper Repository.
+// A Zypper Repository. Structure is
+// documented below.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput) Zypper() OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepository) *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper {
 		if v == nil {
@@ -11509,15 +12033,18 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryPtrOutput) Zypp
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt struct {
-	// Required. Type of archive files in this repository. Possible values: ARCHIVE_TYPE_UNSPECIFIED, DEB, DEB_SRC
+	// Type of archive files in this repository.
+	// Possible values are: `ARCHIVE_TYPE_UNSPECIFIED`, `DEB`, `DEB_SRC`.
 	ArchiveType string `pulumi:"archiveType"`
-	// Required. List of components for this repository. Must contain at least one item.
+	// List of components for this repository. Must
+	// contain at least one item.
 	Components []string `pulumi:"components"`
-	// Required. Distribution of this repository.
+	// Distribution of this repository.
 	Distribution string `pulumi:"distribution"`
-	// URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+	// URI of the key file for this repository. The agent
+	// maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
 	GpgKey *string `pulumi:"gpgKey"`
-	// Required. URI for this repository.
+	// URI for this repository.
 	Uri string `pulumi:"uri"`
 }
 
@@ -11533,15 +12060,18 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptInput interface
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs struct {
-	// Required. Type of archive files in this repository. Possible values: ARCHIVE_TYPE_UNSPECIFIED, DEB, DEB_SRC
+	// Type of archive files in this repository.
+	// Possible values are: `ARCHIVE_TYPE_UNSPECIFIED`, `DEB`, `DEB_SRC`.
 	ArchiveType pulumi.StringInput `pulumi:"archiveType"`
-	// Required. List of components for this repository. Must contain at least one item.
+	// List of components for this repository. Must
+	// contain at least one item.
 	Components pulumi.StringArrayInput `pulumi:"components"`
-	// Required. Distribution of this repository.
+	// Distribution of this repository.
 	Distribution pulumi.StringInput `pulumi:"distribution"`
-	// URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+	// URI of the key file for this repository. The agent
+	// maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
 	GpgKey pulumi.StringPtrInput `pulumi:"gpgKey"`
-	// Required. URI for this repository.
+	// URI for this repository.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -11622,27 +12152,30 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput) ToOs
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput)
 }
 
-// Required. Type of archive files in this repository. Possible values: ARCHIVE_TYPE_UNSPECIFIED, DEB, DEB_SRC
+// Type of archive files in this repository.
+// Possible values are: `ARCHIVE_TYPE_UNSPECIFIED`, `DEB`, `DEB_SRC`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput) ArchiveType() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) string { return v.ArchiveType }).(pulumi.StringOutput)
 }
 
-// Required. List of components for this repository. Must contain at least one item.
+// List of components for this repository. Must
+// contain at least one item.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput) Components() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) []string { return v.Components }).(pulumi.StringArrayOutput)
 }
 
-// Required. Distribution of this repository.
+// Distribution of this repository.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput) Distribution() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) string { return v.Distribution }).(pulumi.StringOutput)
 }
 
-// URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+// URI of the key file for this repository. The agent
+// maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput) GpgKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) *string { return v.GpgKey }).(pulumi.StringPtrOutput)
 }
 
-// Required. URI for this repository.
+// URI for this repository.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -11671,7 +12204,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) E
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptOutput)
 }
 
-// Required. Type of archive files in this repository. Possible values: ARCHIVE_TYPE_UNSPECIFIED, DEB, DEB_SRC
+// Type of archive files in this repository.
+// Possible values are: `ARCHIVE_TYPE_UNSPECIFIED`, `DEB`, `DEB_SRC`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) ArchiveType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) *string {
 		if v == nil {
@@ -11681,7 +12215,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) A
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. List of components for this repository. Must contain at least one item.
+// List of components for this repository. Must
+// contain at least one item.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) Components() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) []string {
 		if v == nil {
@@ -11691,7 +12226,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) C
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. Distribution of this repository.
+// Distribution of this repository.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) Distribution() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) *string {
 		if v == nil {
@@ -11701,7 +12236,8 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) D
 	}).(pulumi.StringPtrOutput)
 }
 
-// URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+// URI of the key file for this repository. The agent
+// maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) GpgKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) *string {
 		if v == nil {
@@ -11711,7 +12247,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) G
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI for this repository.
+// URI for this repository.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt) *string {
 		if v == nil {
@@ -11722,9 +12258,9 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptPtrOutput) U
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo struct {
-	// Required. The name of the repository.
+	// The name of the repository.
 	Name string `pulumi:"name"`
-	// Required. The url of the repository.
+	// The url of the repository.
 	Url string `pulumi:"url"`
 }
 
@@ -11740,9 +12276,9 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooInput interface
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooArgs struct {
-	// Required. The name of the repository.
+	// The name of the repository.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Required. The url of the repository.
+	// The url of the repository.
 	Url pulumi.StringInput `pulumi:"url"`
 }
 
@@ -11823,12 +12359,12 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput) ToOs
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput)
 }
 
-// Required. The name of the repository.
+// The name of the repository.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Required. The url of the repository.
+// The url of the repository.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -11857,7 +12393,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput) E
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooOutput)
 }
 
-// Required. The name of the repository.
+// The name of the repository.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo) *string {
 		if v == nil {
@@ -11867,7 +12403,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput) N
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The url of the repository.
+// The url of the repository.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo) *string {
 		if v == nil {
@@ -11878,13 +12414,16 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGooPtrOutput) U
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum struct {
-	// Required. The location of the repository directory.
+	// The location of the repository directory.
 	BaseUrl string `pulumi:"baseUrl"`
 	// The display name of the repository.
 	DisplayName *string `pulumi:"displayName"`
 	// URIs of GPG keys.
 	GpgKeys []string `pulumi:"gpgKeys"`
-	// Required. A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
+	// A one word, unique name for this repository. This is the
+	// `repo id` in the yum config file and also the `displayName` if
+	// `displayName` is omitted. This id is also used as the unique identifier
+	// when checking for resource conflicts.
 	Id string `pulumi:"id"`
 }
 
@@ -11900,13 +12439,16 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumInput interface
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumArgs struct {
-	// Required. The location of the repository directory.
+	// The location of the repository directory.
 	BaseUrl pulumi.StringInput `pulumi:"baseUrl"`
 	// The display name of the repository.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// URIs of GPG keys.
 	GpgKeys pulumi.StringArrayInput `pulumi:"gpgKeys"`
-	// Required. A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
+	// A one word, unique name for this repository. This is the
+	// `repo id` in the yum config file and also the `displayName` if
+	// `displayName` is omitted. This id is also used as the unique identifier
+	// when checking for resource conflicts.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -11987,7 +12529,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput) ToOs
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput)
 }
 
-// Required. The location of the repository directory.
+// The location of the repository directory.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput) BaseUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum) string { return v.BaseUrl }).(pulumi.StringOutput)
 }
@@ -12002,7 +12544,10 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput) GpgK
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum) []string { return v.GpgKeys }).(pulumi.StringArrayOutput)
 }
 
-// Required. A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
+// A one word, unique name for this repository. This is the
+// `repo id` in the yum config file and also the `displayName` if
+// `displayName` is omitted. This id is also used as the unique identifier
+// when checking for resource conflicts.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -12031,7 +12576,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput) E
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumOutput)
 }
 
-// Required. The location of the repository directory.
+// The location of the repository directory.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput) BaseUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum) *string {
 		if v == nil {
@@ -12061,7 +12606,10 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput) G
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
+// A one word, unique name for this repository. This is the
+// `repo id` in the yum config file and also the `displayName` if
+// `displayName` is omitted. This id is also used as the unique identifier
+// when checking for resource conflicts.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum) *string {
 		if v == nil {
@@ -12072,13 +12620,16 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYumPtrOutput) I
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper struct {
-	// Required. The location of the repository directory.
+	// The location of the repository directory.
 	BaseUrl string `pulumi:"baseUrl"`
 	// The display name of the repository.
 	DisplayName *string `pulumi:"displayName"`
 	// URIs of GPG keys.
 	GpgKeys []string `pulumi:"gpgKeys"`
-	// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+	// A one word, unique name for this repository. This is the
+	// `repo id` in the zypper config file and also the `displayName` if
+	// `displayName` is omitted. This id is also used as the unique identifier
+	// when checking for GuestPolicy conflicts.
 	Id string `pulumi:"id"`
 }
 
@@ -12094,13 +12645,16 @@ type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperInput interf
 }
 
 type OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperArgs struct {
-	// Required. The location of the repository directory.
+	// The location of the repository directory.
 	BaseUrl pulumi.StringInput `pulumi:"baseUrl"`
 	// The display name of the repository.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// URIs of GPG keys.
 	GpgKeys pulumi.StringArrayInput `pulumi:"gpgKeys"`
-	// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+	// A one word, unique name for this repository. This is the
+	// `repo id` in the zypper config file and also the `displayName` if
+	// `displayName` is omitted. This id is also used as the unique identifier
+	// when checking for GuestPolicy conflicts.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
@@ -12181,7 +12735,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput) T
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput)
 }
 
-// Required. The location of the repository directory.
+// The location of the repository directory.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput) BaseUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper) string { return v.BaseUrl }).(pulumi.StringOutput)
 }
@@ -12196,7 +12750,10 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput) G
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper) []string { return v.GpgKeys }).(pulumi.StringArrayOutput)
 }
 
-// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+// A one word, unique name for this repository. This is the
+// `repo id` in the zypper config file and also the `displayName` if
+// `displayName` is omitted. This id is also used as the unique identifier
+// when checking for GuestPolicy conflicts.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -12225,7 +12782,7 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput
 	}).(OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperOutput)
 }
 
-// Required. The location of the repository directory.
+// The location of the repository directory.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput) BaseUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper) *string {
 		if v == nil {
@@ -12255,7 +12812,10 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+// A one word, unique name for this repository. This is the
+// `repo id` in the zypper config file and also the `displayName` if
+// `displayName` is omitted. This id is also used as the unique identifier
+// when checking for GuestPolicy conflicts.
 func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper) *string {
 		if v == nil {
@@ -12266,9 +12826,15 @@ func (o OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypperPtrOutput
 }
 
 type OsPolicyAssignmentRollout struct {
-	// Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
+	// The maximum number (or percentage) of VMs
+	// per zone to disrupt at any given moment. Structure is
+	// documented below.
 	DisruptionBudget OsPolicyAssignmentRolloutDisruptionBudget `pulumi:"disruptionBudget"`
-	// Required. This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruptionBudget` at least until this duration of time has passed after configuration changes are applied.
+	// This determines the minimum duration of
+	// time to wait after the configuration changes are applied through the current
+	// rollout. A VM continues to count towards the `disruptionBudget` at least
+	// until this duration of time has passed after configuration changes are
+	// applied.
 	MinWaitDuration string `pulumi:"minWaitDuration"`
 }
 
@@ -12284,9 +12850,15 @@ type OsPolicyAssignmentRolloutInput interface {
 }
 
 type OsPolicyAssignmentRolloutArgs struct {
-	// Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
+	// The maximum number (or percentage) of VMs
+	// per zone to disrupt at any given moment. Structure is
+	// documented below.
 	DisruptionBudget OsPolicyAssignmentRolloutDisruptionBudgetInput `pulumi:"disruptionBudget"`
-	// Required. This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruptionBudget` at least until this duration of time has passed after configuration changes are applied.
+	// This determines the minimum duration of
+	// time to wait after the configuration changes are applied through the current
+	// rollout. A VM continues to count towards the `disruptionBudget` at least
+	// until this duration of time has passed after configuration changes are
+	// applied.
 	MinWaitDuration pulumi.StringInput `pulumi:"minWaitDuration"`
 }
 
@@ -12367,12 +12939,18 @@ func (o OsPolicyAssignmentRolloutOutput) ToOsPolicyAssignmentRolloutPtrOutputWit
 	}).(OsPolicyAssignmentRolloutPtrOutput)
 }
 
-// Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
+// The maximum number (or percentage) of VMs
+// per zone to disrupt at any given moment. Structure is
+// documented below.
 func (o OsPolicyAssignmentRolloutOutput) DisruptionBudget() OsPolicyAssignmentRolloutDisruptionBudgetOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentRollout) OsPolicyAssignmentRolloutDisruptionBudget { return v.DisruptionBudget }).(OsPolicyAssignmentRolloutDisruptionBudgetOutput)
 }
 
-// Required. This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruptionBudget` at least until this duration of time has passed after configuration changes are applied.
+// This determines the minimum duration of
+// time to wait after the configuration changes are applied through the current
+// rollout. A VM continues to count towards the `disruptionBudget` at least
+// until this duration of time has passed after configuration changes are
+// applied.
 func (o OsPolicyAssignmentRolloutOutput) MinWaitDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v OsPolicyAssignmentRollout) string { return v.MinWaitDuration }).(pulumi.StringOutput)
 }
@@ -12401,7 +12979,9 @@ func (o OsPolicyAssignmentRolloutPtrOutput) Elem() OsPolicyAssignmentRolloutOutp
 	}).(OsPolicyAssignmentRolloutOutput)
 }
 
-// Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
+// The maximum number (or percentage) of VMs
+// per zone to disrupt at any given moment. Structure is
+// documented below.
 func (o OsPolicyAssignmentRolloutPtrOutput) DisruptionBudget() OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentRollout) *OsPolicyAssignmentRolloutDisruptionBudget {
 		if v == nil {
@@ -12411,7 +12991,11 @@ func (o OsPolicyAssignmentRolloutPtrOutput) DisruptionBudget() OsPolicyAssignmen
 	}).(OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput)
 }
 
-// Required. This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruptionBudget` at least until this duration of time has passed after configuration changes are applied.
+// This determines the minimum duration of
+// time to wait after the configuration changes are applied through the current
+// rollout. A VM continues to count towards the `disruptionBudget` at least
+// until this duration of time has passed after configuration changes are
+// applied.
 func (o OsPolicyAssignmentRolloutPtrOutput) MinWaitDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OsPolicyAssignmentRollout) *string {
 		if v == nil {
@@ -12424,7 +13008,8 @@ func (o OsPolicyAssignmentRolloutPtrOutput) MinWaitDuration() pulumi.StringPtrOu
 type OsPolicyAssignmentRolloutDisruptionBudget struct {
 	// Specifies a fixed value.
 	Fixed *int `pulumi:"fixed"`
-	// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+	// Specifies the relative value defined as a percentage,
+	// which will be multiplied by a reference value.
 	//
 	// ***
 	Percent *int `pulumi:"percent"`
@@ -12444,7 +13029,8 @@ type OsPolicyAssignmentRolloutDisruptionBudgetInput interface {
 type OsPolicyAssignmentRolloutDisruptionBudgetArgs struct {
 	// Specifies a fixed value.
 	Fixed pulumi.IntPtrInput `pulumi:"fixed"`
-	// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+	// Specifies the relative value defined as a percentage,
+	// which will be multiplied by a reference value.
 	//
 	// ***
 	Percent pulumi.IntPtrInput `pulumi:"percent"`
@@ -12532,7 +13118,8 @@ func (o OsPolicyAssignmentRolloutDisruptionBudgetOutput) Fixed() pulumi.IntPtrOu
 	return o.ApplyT(func(v OsPolicyAssignmentRolloutDisruptionBudget) *int { return v.Fixed }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+// Specifies the relative value defined as a percentage,
+// which will be multiplied by a reference value.
 //
 // ***
 func (o OsPolicyAssignmentRolloutDisruptionBudgetOutput) Percent() pulumi.IntPtrOutput {
@@ -12573,7 +13160,8 @@ func (o OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput) Fixed() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
-// Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+// Specifies the relative value defined as a percentage,
+// which will be multiplied by a reference value.
 //
 // ***
 func (o OsPolicyAssignmentRolloutDisruptionBudgetPtrOutput) Percent() pulumi.IntPtrOutput {

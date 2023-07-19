@@ -90,11 +90,11 @@ def get_android_app_config(app_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:firebase/getAndroidAppConfig:getAndroidAppConfig', __args__, opts=opts, typ=GetAndroidAppConfigResult).value
 
     return AwaitableGetAndroidAppConfigResult(
-        app_id=__ret__.app_id,
-        config_file_contents=__ret__.config_file_contents,
-        config_filename=__ret__.config_filename,
-        id=__ret__.id,
-        project=__ret__.project)
+        app_id=pulumi.get(__ret__, 'app_id'),
+        config_file_contents=pulumi.get(__ret__, 'config_file_contents'),
+        config_filename=pulumi.get(__ret__, 'config_filename'),
+        id=pulumi.get(__ret__, 'id'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_android_app_config)

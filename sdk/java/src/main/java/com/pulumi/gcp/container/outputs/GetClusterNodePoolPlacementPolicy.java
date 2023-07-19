@@ -9,9 +9,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolPlacementPolicy {
+    private String tpuTopology;
     private String type;
 
     private GetClusterNodePoolPlacementPolicy() {}
+    public String tpuTopology() {
+        return this.tpuTopology;
+    }
     public String type() {
         return this.type;
     }
@@ -25,13 +29,20 @@ public final class GetClusterNodePoolPlacementPolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String tpuTopology;
         private String type;
         public Builder() {}
         public Builder(GetClusterNodePoolPlacementPolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.tpuTopology = defaults.tpuTopology;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder tpuTopology(String tpuTopology) {
+            this.tpuTopology = Objects.requireNonNull(tpuTopology);
+            return this;
+        }
         @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
@@ -39,6 +50,7 @@ public final class GetClusterNodePoolPlacementPolicy {
         }
         public GetClusterNodePoolPlacementPolicy build() {
             final var o = new GetClusterNodePoolPlacementPolicy();
+            o.tpuTopology = tpuTopology;
             o.type = type;
             return o;
         }

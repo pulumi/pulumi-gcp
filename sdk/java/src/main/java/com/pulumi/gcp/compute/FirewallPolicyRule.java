@@ -22,7 +22,7 @@ import javax.annotation.Nullable;
  * The Compute FirewallPolicyRule resource
  * 
  * ## Example Usage
- * ### Basic_fir_sec_rule_addr_groups
+ * ### Basic_fir_sec_rule
  * ```java
  * package generated_program;
  * 
@@ -38,7 +38,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.FirewallPolicyRule;
  * import com.pulumi.gcp.compute.FirewallPolicyRuleArgs;
  * import com.pulumi.gcp.compute.inputs.FirewallPolicyRuleMatchArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -59,24 +58,18 @@ import javax.annotation.Nullable;
  *             .items(&#34;208.80.154.224/32&#34;)
  *             .type(&#34;IPV4&#34;)
  *             .capacity(100)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var folder = new Folder(&#34;folder&#34;, FolderArgs.builder()        
  *             .displayName(&#34;policy&#34;)
  *             .parent(&#34;organizations/123456789&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var default_ = new FirewallPolicy(&#34;default&#34;, FirewallPolicyArgs.builder()        
  *             .parent(folder.id())
  *             .shortName(&#34;policy&#34;)
  *             .description(&#34;Resource created for Terraform acceptance testing&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var primary = new FirewallPolicyRule(&#34;primary&#34;, FirewallPolicyRuleArgs.builder()        
  *             .firewallPolicy(default_.name())
@@ -104,9 +97,7 @@ import javax.annotation.Nullable;
  *                 .destAddressGroups(basicGlobalNetworksecurityAddressGroup.id())
  *                 .build())
  *             .targetServiceAccounts(&#34;my@service-account.com&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

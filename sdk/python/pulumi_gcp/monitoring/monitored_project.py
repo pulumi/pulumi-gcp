@@ -19,11 +19,10 @@ class MonitoredProjectArgs:
         """
         The set of arguments for constructing a MonitoredProject resource.
         :param pulumi.Input[str] metrics_scope: Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-        :param pulumi.Input[str] name: Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
-               
                
                
                - - -
+        :param pulumi.Input[str] name: Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
         """
         pulumi.set(__self__, "metrics_scope", metrics_scope)
         if name is not None:
@@ -34,6 +33,9 @@ class MonitoredProjectArgs:
     def metrics_scope(self) -> pulumi.Input[str]:
         """
         Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
+
+
+        - - -
         """
         return pulumi.get(self, "metrics_scope")
 
@@ -46,10 +48,6 @@ class MonitoredProjectArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -68,11 +66,10 @@ class _MonitoredProjectState:
         Input properties used for looking up and filtering MonitoredProject resources.
         :param pulumi.Input[str] create_time: Output only. The time when this `MonitoredProject` was created.
         :param pulumi.Input[str] metrics_scope: Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-        :param pulumi.Input[str] name: Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
-               
                
                
                - - -
+        :param pulumi.Input[str] name: Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -98,6 +95,9 @@ class _MonitoredProjectState:
     def metrics_scope(self) -> Optional[pulumi.Input[str]]:
         """
         Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
+
+
+        - - -
         """
         return pulumi.get(self, "metrics_scope")
 
@@ -110,10 +110,6 @@ class _MonitoredProjectState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -131,21 +127,24 @@ class MonitoredProject(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Monitored Project allows you to set a project as monitored by a _metrics scope_, which is a term for a project used to group the metrics of multiple projects, potentially across multiple organizations.  This enables you to view these groups in the Monitoring page of the cloud console.
+        A [project being monitored](https://cloud.google.com/monitoring/settings/multiple-projects#create-multi) by a Metrics Scope.
 
-        For more information, see:
-        * [Understanding metrics scopes](https://cloud.google.com/monitoring/settings#concept-scope)
-        * [API notes](https://cloud.google.com/monitoring/settings/manage-api)
+        To get more information about MonitoredProject, see:
+
+        * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/locations.global.metricsScopes.projects)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/monitoring/settings/manage-api)
+
         ## Example Usage
-        ### Basic_monitored_project
-        A basic example of a monitoring monitored project
+        ### Monitoring Monitored Project Basic
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.monitoring.MonitoredProject("primary", metrics_scope="existing-metrics-scope-project")
+        primary = gcp.monitoring.MonitoredProject("primary", metrics_scope="my-project-name")
         basic = gcp.organizations.Project("basic",
-            project_id="my-monitored-project",
+            project_id="m-id",
             org_id="123456789")
         ```
 
@@ -154,21 +153,20 @@ class MonitoredProject(pulumi.CustomResource):
         MonitoredProject can be imported using any of these accepted formats
 
         ```sh
-         $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default locations/global/metricsScopes/{{metrics_scope}}/projects/{{name}}
+         $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default v1/locations/global/metricsScopes/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default {{metrics_scope}}/{{name}}
+         $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] metrics_scope: Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-        :param pulumi.Input[str] name: Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
-               
                
                
                - - -
+        :param pulumi.Input[str] name: Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
         """
         ...
     @overload
@@ -177,21 +175,24 @@ class MonitoredProject(pulumi.CustomResource):
                  args: MonitoredProjectArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Monitored Project allows you to set a project as monitored by a _metrics scope_, which is a term for a project used to group the metrics of multiple projects, potentially across multiple organizations.  This enables you to view these groups in the Monitoring page of the cloud console.
+        A [project being monitored](https://cloud.google.com/monitoring/settings/multiple-projects#create-multi) by a Metrics Scope.
 
-        For more information, see:
-        * [Understanding metrics scopes](https://cloud.google.com/monitoring/settings#concept-scope)
-        * [API notes](https://cloud.google.com/monitoring/settings/manage-api)
+        To get more information about MonitoredProject, see:
+
+        * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/locations.global.metricsScopes.projects)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/monitoring/settings/manage-api)
+
         ## Example Usage
-        ### Basic_monitored_project
-        A basic example of a monitoring monitored project
+        ### Monitoring Monitored Project Basic
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.monitoring.MonitoredProject("primary", metrics_scope="existing-metrics-scope-project")
+        primary = gcp.monitoring.MonitoredProject("primary", metrics_scope="my-project-name")
         basic = gcp.organizations.Project("basic",
-            project_id="my-monitored-project",
+            project_id="m-id",
             org_id="123456789")
         ```
 
@@ -200,11 +201,11 @@ class MonitoredProject(pulumi.CustomResource):
         MonitoredProject can be imported using any of these accepted formats
 
         ```sh
-         $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default locations/global/metricsScopes/{{metrics_scope}}/projects/{{name}}
+         $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default v1/locations/global/metricsScopes/{{name}}
         ```
 
         ```sh
-         $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default {{metrics_scope}}/{{name}}
+         $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default {{name}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -260,11 +261,10 @@ class MonitoredProject(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Output only. The time when this `MonitoredProject` was created.
         :param pulumi.Input[str] metrics_scope: Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
-        :param pulumi.Input[str] name: Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
-               
                
                
                - - -
+        :param pulumi.Input[str] name: Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -288,6 +288,9 @@ class MonitoredProject(pulumi.CustomResource):
     def metrics_scope(self) -> pulumi.Output[str]:
         """
         Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
+
+
+        - - -
         """
         return pulumi.get(self, "metrics_scope")
 
@@ -296,10 +299,6 @@ class MonitoredProject(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

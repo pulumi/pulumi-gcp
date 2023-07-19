@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -341,6 +342,7 @@ func NewBareMetalNodePool(ctx *pulumi.Context,
 	if args.NodePoolConfig == nil {
 		return nil, errors.New("invalid value for required argument 'NodePoolConfig'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource BareMetalNodePool
 	err := ctx.RegisterResource("gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool", name, args, &resource, opts...)
 	if err != nil {

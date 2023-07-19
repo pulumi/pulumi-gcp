@@ -20,14 +20,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
     public static final OsPolicyAssignmentOsPolicyResourceGroupResourceArgs Empty = new OsPolicyAssignmentOsPolicyResourceGroupResourceArgs();
 
     /**
-     * Exec resource
+     * Exec resource Structure is
+     * documented below.
      * 
      */
     @Import(name="exec")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs> exec;
 
     /**
-     * @return Exec resource
+     * @return Exec resource Structure is
+     * documented below.
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs>> exec() {
@@ -35,14 +37,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
     }
 
     /**
-     * File resource
+     * File resource Structure is
+     * documented below.
      * 
      */
     @Import(name="file")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs> file;
 
     /**
-     * @return File resource
+     * @return File resource Structure is
+     * documented below.
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs>> file() {
@@ -50,14 +54,26 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
     }
 
     /**
-     * Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
+     * The id of the resource with the following restrictions:
+     * 
+     * *   Must contain only lowercase letters, numbers, and hyphens.
+     * *   Must start with a letter.
+     * *   Must be between 1-63 characters.
+     * *   Must end with a number or a letter.
+     * *   Must be unique within the OS policy.
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
+     * @return The id of the resource with the following restrictions:
+     * 
+     * *   Must contain only lowercase letters, numbers, and hyphens.
+     * *   Must start with a letter.
+     * *   Must be between 1-63 characters.
+     * *   Must end with a number or a letter.
+     * *   Must be unique within the OS policy.
      * 
      */
     public Output<String> id() {
@@ -65,14 +81,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
     }
 
     /**
-     * Package resource
+     * Package resource Structure is
+     * documented below.
      * 
      */
     @Import(name="pkg")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs> pkg;
 
     /**
-     * @return Package resource
+     * @return Package resource Structure is
+     * documented below.
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourcePkgArgs>> pkg() {
@@ -80,14 +98,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
     }
 
     /**
-     * Package repository resource
+     * Package repository resource Structure is
+     * documented below.
      * 
      */
     @Import(name="repository")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs> repository;
 
     /**
-     * @return Package repository resource
+     * @return Package repository resource Structure is
+     * documented below.
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryArgs>> repository() {
@@ -123,7 +143,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
         }
 
         /**
-         * @param exec Exec resource
+         * @param exec Exec resource Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -134,7 +155,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
         }
 
         /**
-         * @param exec Exec resource
+         * @param exec Exec resource Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -144,7 +166,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
         }
 
         /**
-         * @param file File resource
+         * @param file File resource Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -155,7 +178,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
         }
 
         /**
-         * @param file File resource
+         * @param file File resource Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -165,7 +189,13 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
         }
 
         /**
-         * @param id Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
+         * @param id The id of the resource with the following restrictions:
+         * 
+         * *   Must contain only lowercase letters, numbers, and hyphens.
+         * *   Must start with a letter.
+         * *   Must be between 1-63 characters.
+         * *   Must end with a number or a letter.
+         * *   Must be unique within the OS policy.
          * 
          * @return builder
          * 
@@ -176,7 +206,13 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
         }
 
         /**
-         * @param id Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
+         * @param id The id of the resource with the following restrictions:
+         * 
+         * *   Must contain only lowercase letters, numbers, and hyphens.
+         * *   Must start with a letter.
+         * *   Must be between 1-63 characters.
+         * *   Must end with a number or a letter.
+         * *   Must be unique within the OS policy.
          * 
          * @return builder
          * 
@@ -186,7 +222,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
         }
 
         /**
-         * @param pkg Package resource
+         * @param pkg Package resource Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -197,7 +234,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
         }
 
         /**
-         * @param pkg Package resource
+         * @param pkg Package resource Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -207,7 +245,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
         }
 
         /**
-         * @param repository Package repository resource
+         * @param repository Package repository resource Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -218,7 +257,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceArgs extends c
         }
 
         /**
-         * @param repository Package repository resource
+         * @param repository Package repository resource Structure is
+         * documented below.
          * 
          * @return builder
          * 

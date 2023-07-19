@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const defaultProject = new gcp.organizations.Project("defaultProject", {
- *     projectId: "tf-test",
+ *     projectId: "my-project",
  *     orgId: "123456789",
  *     labels: {
  *         firebase: "enabled",

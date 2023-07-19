@@ -299,7 +299,7 @@ class FeatureMembership(pulumi.CustomResource):
             feature=feature.name,
             membership=membership.membership_id,
             configmanagement=gcp.gkehub.FeatureMembershipConfigmanagementArgs(
-                version="1.12.0",
+                version="1.15.1",
                 config_sync=gcp.gkehub.FeatureMembershipConfigmanagementConfigSyncArgs(
                     oci=gcp.gkehub.FeatureMembershipConfigmanagementConfigSyncOciArgs(
                         sync_repo="us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest",
@@ -455,7 +455,7 @@ class FeatureMembership(pulumi.CustomResource):
             feature=feature.name,
             membership=membership.membership_id,
             configmanagement=gcp.gkehub.FeatureMembershipConfigmanagementArgs(
-                version="1.12.0",
+                version="1.15.1",
                 config_sync=gcp.gkehub.FeatureMembershipConfigmanagementConfigSyncArgs(
                     oci=gcp.gkehub.FeatureMembershipConfigmanagementConfigSyncOciArgs(
                         sync_repo="us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest",

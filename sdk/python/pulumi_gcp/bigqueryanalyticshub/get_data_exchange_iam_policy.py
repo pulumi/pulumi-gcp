@@ -109,9 +109,9 @@ def get_data_exchange_iam_policy(data_exchange_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigqueryanalyticshub.get_data_exchange_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        data_exchange_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.bigqueryanalyticshub.get_data_exchange_iam_policy(project=google_bigquery_analytics_hub_data_exchange["data_exchange"]["project"],
+        location=google_bigquery_analytics_hub_data_exchange["data_exchange"]["location"],
+        data_exchange_id=google_bigquery_analytics_hub_data_exchange["data_exchange"]["data_exchange_id"])
     ```
 
 
@@ -129,12 +129,12 @@ def get_data_exchange_iam_policy(data_exchange_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:bigqueryanalyticshub/getDataExchangeIamPolicy:getDataExchangeIamPolicy', __args__, opts=opts, typ=GetDataExchangeIamPolicyResult).value
 
     return AwaitableGetDataExchangeIamPolicyResult(
-        data_exchange_id=__ret__.data_exchange_id,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        location=__ret__.location,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        data_exchange_id=pulumi.get(__ret__, 'data_exchange_id'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_data_exchange_iam_policy)
@@ -151,9 +151,9 @@ def get_data_exchange_iam_policy_output(data_exchange_id: Optional[pulumi.Input[
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigqueryanalyticshub.get_data_exchange_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        data_exchange_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.bigqueryanalyticshub.get_data_exchange_iam_policy(project=google_bigquery_analytics_hub_data_exchange["data_exchange"]["project"],
+        location=google_bigquery_analytics_hub_data_exchange["data_exchange"]["location"],
+        data_exchange_id=google_bigquery_analytics_hub_data_exchange["data_exchange"]["data_exchange_id"])
     ```
 
 

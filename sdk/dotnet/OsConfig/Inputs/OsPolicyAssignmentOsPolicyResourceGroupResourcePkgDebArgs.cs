@@ -13,13 +13,16 @@ namespace Pulumi.Gcp.OsConfig.Inputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update &amp;&amp; apt-get -y install package.deb`
+        /// Whether dependencies should also be installed. -
+        /// install when false: `dpkg -i package` - install when true: `apt-get update
+        /// &amp;&amp; apt-get -y install package.deb`
         /// </summary>
         [Input("pullDeps")]
         public Input<bool>? PullDeps { get; set; }
 
         /// <summary>
-        /// Required. A deb package.
+        /// A deb package. Structure is
+        /// documented below.
         /// </summary>
         [Input("source", required: true)]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceArgs> Source { get; set; } = null!;

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -145,6 +146,7 @@ func NewClientTlsPolicy(ctx *pulumi.Context,
 		args = &ClientTlsPolicyArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ClientTlsPolicy
 	err := ctx.RegisterResource("gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy", name, args, &resource, opts...)
 	if err != nil {

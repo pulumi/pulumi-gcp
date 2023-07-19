@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -83,7 +84,7 @@ type Reservation struct {
 	// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
 	Concurrency pulumi.IntPtrOutput `pulumi:"concurrency"`
 	// The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
-	Edition pulumi.StringPtrOutput `pulumi:"edition"`
+	Edition pulumi.StringOutput `pulumi:"edition"`
 	// If false, any query using this reservation will use idle slots from other reservations within
 	// the same admin project. If true, a query using this reservation will execute with the slot
 	// capacity specified above at most.
@@ -116,6 +117,7 @@ func NewReservation(ctx *pulumi.Context,
 	if args.SlotCapacity == nil {
 		return nil, errors.New("invalid value for required argument 'SlotCapacity'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Reservation
 	err := ctx.RegisterResource("gcp:bigquery/reservation:Reservation", name, args, &resource, opts...)
 	if err != nil {
@@ -361,8 +363,8 @@ func (o ReservationOutput) Concurrency() pulumi.IntPtrOutput {
 }
 
 // The edition type. Valid values are STANDARD, ENTERPRISE, ENTERPRISE_PLUS
-func (o ReservationOutput) Edition() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Reservation) pulumi.StringPtrOutput { return v.Edition }).(pulumi.StringPtrOutput)
+func (o ReservationOutput) Edition() pulumi.StringOutput {
+	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.Edition }).(pulumi.StringOutput)
 }
 
 // If false, any query using this reservation will use idle slots from other reservations within

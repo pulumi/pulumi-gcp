@@ -230,7 +230,7 @@ import javax.annotation.Nullable;
  *                     .targetUtilization(0.5)
  *                     .build())
  *                 .build())
- *             .noopOnDestroy(true)
+ *             .deleteServiceOnDestroy(true)
  *             .build());
  * 
  *         var appengineNegRegionNetworkEndpointGroup = new RegionNetworkEndpointGroup(&#34;appengineNegRegionNetworkEndpointGroup&#34;, RegionNetworkEndpointGroupArgs.builder()        

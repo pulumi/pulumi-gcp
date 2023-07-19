@@ -13,31 +13,42 @@ namespace Pulumi.Gcp.OsConfig.Inputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceFileGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A a file with this content. The size of the content is limited to 1024 characters.
+        /// A a file with this content. The size of the content
+        /// is limited to 1024 characters.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// A remote or local source.
+        /// A remote or local source. Structure is
+        /// documented below.
         /// </summary>
         [Input("file")]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGetArgs>? File { get; set; }
 
         /// <summary>
-        /// Required. The absolute path of the file within the VM.
+        /// The absolute path of the file within the VM.
         /// </summary>
         [Input("path", required: true)]
         public Input<string> Path { get; set; } = null!;
 
         /// <summary>
-        /// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+        /// Consists of three octal digits which represent, in
+        /// order, the permissions of the owner, group, and other users for the file
+        /// (similarly to the numeric mode used in the linux chmod utility). Each digit
+        /// represents a three bit number with the 4 bit corresponding to the read
+        /// permissions, the 2 bit corresponds to the write bit, and the one bit
+        /// corresponds to the execute permission. Default behavior is 755. Below are
+        /// some examples of permissions and their associated values: read, write, and
+        /// execute: 7 read and execute: 5 read and write: 6 read only: 4
         /// </summary>
         [Input("permissions")]
         public Input<string>? Permissions { get; set; }
 
         /// <summary>
-        /// Required. Desired state of the file. Possible values: OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED, COMPLIANT, NON_COMPLIANT, UNKNOWN, NO_OS_POLICIES_APPLICABLE
+        /// Desired state of the file. Possible values are:
+        /// `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`,
+        /// `CONTENTS_MATCH`.
         /// </summary>
         [Input("state", required: true)]
         public Input<string> State { get; set; } = null!;

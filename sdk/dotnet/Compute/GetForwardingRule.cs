@@ -155,6 +155,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string Name;
         public readonly string Network;
         public readonly string NetworkTier;
+        public readonly bool NoAutomateDnsZone;
         public readonly string PortRange;
         public readonly ImmutableArray<string> Ports;
         public readonly string? Project;
@@ -205,6 +206,8 @@ namespace Pulumi.Gcp.Compute
 
             string networkTier,
 
+            bool noAutomateDnsZone,
+
             string portRange,
 
             ImmutableArray<string> ports,
@@ -248,6 +251,7 @@ namespace Pulumi.Gcp.Compute
             Name = name;
             Network = network;
             NetworkTier = networkTier;
+            NoAutomateDnsZone = noAutomateDnsZone;
             PortRange = portRange;
             Ports = ports;
             Project = project;

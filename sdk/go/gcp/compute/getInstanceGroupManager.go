@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,6 +48,7 @@ import (
 //
 // ```
 func LookupInstanceGroupManager(ctx *pulumi.Context, args *LookupInstanceGroupManagerArgs, opts ...pulumi.InvokeOption) (*LookupInstanceGroupManagerResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupInstanceGroupManagerResult
 	err := ctx.Invoke("gcp:compute/getInstanceGroupManager:getInstanceGroupManager", args, &rv, opts...)
 	if err != nil {

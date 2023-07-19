@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func LookupSourceIamPolicy(ctx *pulumi.Context, args *LookupSourceIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupSourceIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSourceIamPolicyResult
 	err := ctx.Invoke("gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy", args, &rv, opts...)
 	if err != nil {

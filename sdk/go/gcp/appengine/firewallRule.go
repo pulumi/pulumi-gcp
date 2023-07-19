@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -122,6 +123,7 @@ func NewFirewallRule(ctx *pulumi.Context,
 	if args.SourceRange == nil {
 		return nil, errors.New("invalid value for required argument 'SourceRange'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FirewallRule
 	err := ctx.RegisterResource("gcp:appengine/firewallRule:FirewallRule", name, args, &resource, opts...)
 	if err != nil {

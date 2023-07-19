@@ -32,6 +32,7 @@ public final class GetGlobalForwardingRuleResult {
     private List<GetGlobalForwardingRuleMetadataFilter> metadataFilters;
     private String name;
     private String network;
+    private Boolean noAutomateDnsZone;
     private String portRange;
     private @Nullable String project;
     private String pscConnectionId;
@@ -84,6 +85,9 @@ public final class GetGlobalForwardingRuleResult {
     public String network() {
         return this.network;
     }
+    public Boolean noAutomateDnsZone() {
+        return this.noAutomateDnsZone;
+    }
     public String portRange() {
         return this.portRange;
     }
@@ -128,6 +132,7 @@ public final class GetGlobalForwardingRuleResult {
         private List<GetGlobalForwardingRuleMetadataFilter> metadataFilters;
         private String name;
         private String network;
+        private Boolean noAutomateDnsZone;
         private String portRange;
         private @Nullable String project;
         private String pscConnectionId;
@@ -151,6 +156,7 @@ public final class GetGlobalForwardingRuleResult {
     	      this.metadataFilters = defaults.metadataFilters;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
+    	      this.noAutomateDnsZone = defaults.noAutomateDnsZone;
     	      this.portRange = defaults.portRange;
     	      this.project = defaults.project;
     	      this.pscConnectionId = defaults.pscConnectionId;
@@ -229,6 +235,11 @@ public final class GetGlobalForwardingRuleResult {
             return this;
         }
         @CustomType.Setter
+        public Builder noAutomateDnsZone(Boolean noAutomateDnsZone) {
+            this.noAutomateDnsZone = Objects.requireNonNull(noAutomateDnsZone);
+            return this;
+        }
+        @CustomType.Setter
         public Builder portRange(String portRange) {
             this.portRange = Objects.requireNonNull(portRange);
             return this;
@@ -281,6 +292,7 @@ public final class GetGlobalForwardingRuleResult {
             o.metadataFilters = metadataFilters;
             o.name = name;
             o.network = network;
+            o.noAutomateDnsZone = noAutomateDnsZone;
             o.portRange = portRange;
             o.project = project;
             o.pscConnectionId = pscConnectionId;

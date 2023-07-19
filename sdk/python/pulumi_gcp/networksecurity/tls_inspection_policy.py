@@ -343,6 +343,13 @@ class TlsInspectionPolicy(pulumi.CustomResource):
                 algorithm="RSA_PKCS1_4096_SHA256",
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
+        ns_sa = gcp.projects.ServiceIdentity("nsSa", service="networksecurity.googleapis.com",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        tls_inspection_permission = gcp.certificateauthority.CaPoolIamMember("tlsInspectionPermission",
+            ca_pool=default_ca_pool.id,
+            role="roles/privateca.certificateManager",
+            member=ns_sa.email.apply(lambda email: f"serviceAccount:{email}"),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         default_tls_inspection_policy = gcp.networksecurity.TlsInspectionPolicy("defaultTlsInspectionPolicy",
             location="us-central1",
             ca_pool=default_ca_pool.id,
@@ -351,6 +358,7 @@ class TlsInspectionPolicy(pulumi.CustomResource):
                 depends_on=[
                     default_ca_pool,
                     default_authority,
+                    tls_inspection_permission,
                 ]))
         ```
 
@@ -454,6 +462,13 @@ class TlsInspectionPolicy(pulumi.CustomResource):
                 algorithm="RSA_PKCS1_4096_SHA256",
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
+        ns_sa = gcp.projects.ServiceIdentity("nsSa", service="networksecurity.googleapis.com",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        tls_inspection_permission = gcp.certificateauthority.CaPoolIamMember("tlsInspectionPermission",
+            ca_pool=default_ca_pool.id,
+            role="roles/privateca.certificateManager",
+            member=ns_sa.email.apply(lambda email: f"serviceAccount:{email}"),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         default_tls_inspection_policy = gcp.networksecurity.TlsInspectionPolicy("defaultTlsInspectionPolicy",
             location="us-central1",
             ca_pool=default_ca_pool.id,
@@ -462,6 +477,7 @@ class TlsInspectionPolicy(pulumi.CustomResource):
                 depends_on=[
                     default_ca_pool,
                     default_authority,
+                    tls_inspection_permission,
                 ]))
         ```
 

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -193,6 +194,7 @@ func NewAzureCluster(ctx *pulumi.Context,
 	if args.ResourceGroupId == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceGroupId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AzureCluster
 	err := ctx.RegisterResource("gcp:container/azureCluster:AzureCluster", name, args, &resource, opts...)
 	if err != nil {

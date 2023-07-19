@@ -10,14 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Monitoring
 {
     /// <summary>
-    /// Monitored Project allows you to set a project as monitored by a _metrics scope_, which is a term for a project used to group the metrics of multiple projects, potentially across multiple organizations.  This enables you to view these groups in the Monitoring page of the cloud console.
+    /// A [project being monitored](https://cloud.google.com/monitoring/settings/multiple-projects#create-multi) by a Metrics Scope.
     /// 
-    /// For more information, see:
-    /// * [Understanding metrics scopes](https://cloud.google.com/monitoring/settings#concept-scope)
-    /// * [API notes](https://cloud.google.com/monitoring/settings/manage-api)
+    /// To get more information about MonitoredProject, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/locations.global.metricsScopes.projects)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/monitoring/settings/manage-api)
+    /// 
     /// ## Example Usage
-    /// ### Basic_monitored_project
-    /// A basic example of a monitoring monitored project
+    /// ### Monitoring Monitored Project Basic
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -28,12 +31,12 @@ namespace Pulumi.Gcp.Monitoring
     /// {
     ///     var primary = new Gcp.Monitoring.MonitoredProject("primary", new()
     ///     {
-    ///         MetricsScope = "existing-metrics-scope-project",
+    ///         MetricsScope = "my-project-name",
     ///     });
     /// 
     ///     var basic = new Gcp.Organizations.Project("basic", new()
     ///     {
-    ///         ProjectId = "my-monitored-project",
+    ///         ProjectId = "m-id",
     ///         OrgId = "123456789",
     ///     });
     /// 
@@ -45,11 +48,11 @@ namespace Pulumi.Gcp.Monitoring
     /// MonitoredProject can be imported using any of these accepted formats
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default locations/global/metricsScopes/{{metrics_scope}}/projects/{{name}}
+    ///  $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default v1/locations/global/metricsScopes/{{name}}
     /// ```
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default {{metrics_scope}}/{{name}}
+    ///  $ pulumi import gcp:monitoring/monitoredProject:MonitoredProject default {{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:monitoring/monitoredProject:MonitoredProject")]
@@ -63,16 +66,15 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("metricsScope")]
         public Output<string> MetricsScope { get; private set; } = null!;
 
         /// <summary>
         /// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -125,16 +127,15 @@ namespace Pulumi.Gcp.Monitoring
     {
         /// <summary>
         /// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("metricsScope", required: true)]
         public Input<string> MetricsScope { get; set; } = null!;
 
         /// <summary>
         /// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -155,16 +156,15 @@ namespace Pulumi.Gcp.Monitoring
 
         /// <summary>
         /// Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("metricsScope")]
         public Input<string>? MetricsScope { get; set; }
 
         /// <summary>
         /// Immutable. The resource name of the `MonitoredProject`. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: `locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}`
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

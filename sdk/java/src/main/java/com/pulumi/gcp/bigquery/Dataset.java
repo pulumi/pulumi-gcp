@@ -666,6 +666,26 @@ public class Dataset extends com.pulumi.resources.CustomResource {
     public Output<String> selfLink() {
         return this.selfLink;
     }
+    /**
+     * Specifies the storage billing model for the dataset.
+     * Set this flag value to LOGICAL to use logical bytes for storage billing,
+     * or to PHYSICAL to use physical bytes instead.
+     * LOGICAL is the default if this flag isn&#39;t specified.
+     * 
+     */
+    @Export(name="storageBillingModel", type=String.class, parameters={})
+    private Output<String> storageBillingModel;
+
+    /**
+     * @return Specifies the storage billing model for the dataset.
+     * Set this flag value to LOGICAL to use logical bytes for storage billing,
+     * or to PHYSICAL to use physical bytes instead.
+     * LOGICAL is the default if this flag isn&#39;t specified.
+     * 
+     */
+    public Output<String> storageBillingModel() {
+        return this.storageBillingModel;
+    }
 
     /**
      *

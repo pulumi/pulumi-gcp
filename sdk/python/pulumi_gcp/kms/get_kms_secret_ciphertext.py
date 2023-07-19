@@ -104,10 +104,10 @@ def get_kms_secret_ciphertext(crypto_key: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext', __args__, opts=opts, typ=GetKMSSecretCiphertextResult).value
 
     return AwaitableGetKMSSecretCiphertextResult(
-        ciphertext=__ret__.ciphertext,
-        crypto_key=__ret__.crypto_key,
-        id=__ret__.id,
-        plaintext=__ret__.plaintext)
+        ciphertext=pulumi.get(__ret__, 'ciphertext'),
+        crypto_key=pulumi.get(__ret__, 'crypto_key'),
+        id=pulumi.get(__ret__, 'id'),
+        plaintext=pulumi.get(__ret__, 'plaintext'))
 
 
 @_utilities.lift_output_func(get_kms_secret_ciphertext)

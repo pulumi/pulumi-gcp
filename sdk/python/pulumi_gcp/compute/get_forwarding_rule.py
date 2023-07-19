@@ -22,7 +22,7 @@ class GetForwardingRuleResult:
     """
     A collection of values returned by getForwardingRule.
     """
-    def __init__(__self__, all_ports=None, allow_global_access=None, allow_psc_global_access=None, backend_service=None, base_forwarding_rule=None, creation_timestamp=None, description=None, id=None, ip_address=None, ip_protocol=None, is_mirroring_collector=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, port_range=None, ports=None, project=None, psc_connection_id=None, psc_connection_status=None, region=None, self_link=None, service_directory_registrations=None, service_label=None, service_name=None, source_ip_ranges=None, subnetwork=None, target=None):
+    def __init__(__self__, all_ports=None, allow_global_access=None, allow_psc_global_access=None, backend_service=None, base_forwarding_rule=None, creation_timestamp=None, description=None, id=None, ip_address=None, ip_protocol=None, is_mirroring_collector=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, name=None, network=None, network_tier=None, no_automate_dns_zone=None, port_range=None, ports=None, project=None, psc_connection_id=None, psc_connection_status=None, region=None, self_link=None, service_directory_registrations=None, service_label=None, service_name=None, source_ip_ranges=None, subnetwork=None, target=None):
         if all_ports and not isinstance(all_ports, bool):
             raise TypeError("Expected argument 'all_ports' to be a bool")
         pulumi.set(__self__, "all_ports", all_ports)
@@ -74,6 +74,9 @@ class GetForwardingRuleResult:
         if network_tier and not isinstance(network_tier, str):
             raise TypeError("Expected argument 'network_tier' to be a str")
         pulumi.set(__self__, "network_tier", network_tier)
+        if no_automate_dns_zone and not isinstance(no_automate_dns_zone, bool):
+            raise TypeError("Expected argument 'no_automate_dns_zone' to be a bool")
+        pulumi.set(__self__, "no_automate_dns_zone", no_automate_dns_zone)
         if port_range and not isinstance(port_range, str):
             raise TypeError("Expected argument 'port_range' to be a str")
         pulumi.set(__self__, "port_range", port_range)
@@ -203,6 +206,11 @@ class GetForwardingRuleResult:
         return pulumi.get(self, "network_tier")
 
     @property
+    @pulumi.getter(name="noAutomateDnsZone")
+    def no_automate_dns_zone(self) -> bool:
+        return pulumi.get(self, "no_automate_dns_zone")
+
+    @property
     @pulumi.getter(name="portRange")
     def port_range(self) -> str:
         return pulumi.get(self, "port_range")
@@ -291,6 +299,7 @@ class AwaitableGetForwardingRuleResult(GetForwardingRuleResult):
             name=self.name,
             network=self.network,
             network_tier=self.network_tier,
+            no_automate_dns_zone=self.no_automate_dns_zone,
             port_range=self.port_range,
             ports=self.ports,
             project=self.project,
@@ -340,36 +349,37 @@ def get_forwarding_rule(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getForwardingRule:getForwardingRule', __args__, opts=opts, typ=GetForwardingRuleResult).value
 
     return AwaitableGetForwardingRuleResult(
-        all_ports=__ret__.all_ports,
-        allow_global_access=__ret__.allow_global_access,
-        allow_psc_global_access=__ret__.allow_psc_global_access,
-        backend_service=__ret__.backend_service,
-        base_forwarding_rule=__ret__.base_forwarding_rule,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        id=__ret__.id,
-        ip_address=__ret__.ip_address,
-        ip_protocol=__ret__.ip_protocol,
-        is_mirroring_collector=__ret__.is_mirroring_collector,
-        label_fingerprint=__ret__.label_fingerprint,
-        labels=__ret__.labels,
-        load_balancing_scheme=__ret__.load_balancing_scheme,
-        name=__ret__.name,
-        network=__ret__.network,
-        network_tier=__ret__.network_tier,
-        port_range=__ret__.port_range,
-        ports=__ret__.ports,
-        project=__ret__.project,
-        psc_connection_id=__ret__.psc_connection_id,
-        psc_connection_status=__ret__.psc_connection_status,
-        region=__ret__.region,
-        self_link=__ret__.self_link,
-        service_directory_registrations=__ret__.service_directory_registrations,
-        service_label=__ret__.service_label,
-        service_name=__ret__.service_name,
-        source_ip_ranges=__ret__.source_ip_ranges,
-        subnetwork=__ret__.subnetwork,
-        target=__ret__.target)
+        all_ports=pulumi.get(__ret__, 'all_ports'),
+        allow_global_access=pulumi.get(__ret__, 'allow_global_access'),
+        allow_psc_global_access=pulumi.get(__ret__, 'allow_psc_global_access'),
+        backend_service=pulumi.get(__ret__, 'backend_service'),
+        base_forwarding_rule=pulumi.get(__ret__, 'base_forwarding_rule'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        ip_address=pulumi.get(__ret__, 'ip_address'),
+        ip_protocol=pulumi.get(__ret__, 'ip_protocol'),
+        is_mirroring_collector=pulumi.get(__ret__, 'is_mirroring_collector'),
+        label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
+        labels=pulumi.get(__ret__, 'labels'),
+        load_balancing_scheme=pulumi.get(__ret__, 'load_balancing_scheme'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        network_tier=pulumi.get(__ret__, 'network_tier'),
+        no_automate_dns_zone=pulumi.get(__ret__, 'no_automate_dns_zone'),
+        port_range=pulumi.get(__ret__, 'port_range'),
+        ports=pulumi.get(__ret__, 'ports'),
+        project=pulumi.get(__ret__, 'project'),
+        psc_connection_id=pulumi.get(__ret__, 'psc_connection_id'),
+        psc_connection_status=pulumi.get(__ret__, 'psc_connection_status'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        service_directory_registrations=pulumi.get(__ret__, 'service_directory_registrations'),
+        service_label=pulumi.get(__ret__, 'service_label'),
+        service_name=pulumi.get(__ret__, 'service_name'),
+        source_ip_ranges=pulumi.get(__ret__, 'source_ip_ranges'),
+        subnetwork=pulumi.get(__ret__, 'subnetwork'),
+        target=pulumi.get(__ret__, 'target'))
 
 
 @_utilities.lift_output_func(get_forwarding_rule)

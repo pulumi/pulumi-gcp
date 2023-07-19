@@ -109,9 +109,9 @@ def get_disk_iam_policy(name: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.compute.get_disk_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        zone=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.compute.get_disk_iam_policy(project=google_compute_disk["default"]["project"],
+        zone=google_compute_disk["default"]["zone"],
+        name=google_compute_disk["default"]["name"])
     ```
 
 
@@ -130,12 +130,12 @@ def get_disk_iam_policy(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getDiskIamPolicy:getDiskIamPolicy', __args__, opts=opts, typ=GetDiskIamPolicyResult).value
 
     return AwaitableGetDiskIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        name=__ret__.name,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project,
-        zone=__ret__.zone)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_disk_iam_policy)
@@ -152,9 +152,9 @@ def get_disk_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.compute.get_disk_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        zone=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.compute.get_disk_iam_policy(project=google_compute_disk["default"]["project"],
+        zone=google_compute_disk["default"]["zone"],
+        name=google_compute_disk["default"]["name"])
     ```
 
 

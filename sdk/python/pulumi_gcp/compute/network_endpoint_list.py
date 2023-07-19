@@ -251,12 +251,12 @@ class NetworkEndpointList(pulumi.CustomResource):
             network_endpoints=[
                 gcp.compute.NetworkEndpointListNetworkEndpointArgs(
                     instance=endpoint_instance1.name,
-                    port=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    port=google_compute_network_endpoint_group["neg"]["default_port"],
                     ip_address=endpoint_instance1.network_interfaces[0].network_ip,
                 ),
                 gcp.compute.NetworkEndpointListNetworkEndpointArgs(
                     instance=endpoint_instance2.name,
-                    port=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    port=google_compute_network_endpoint_group["neg"]["default_port"],
                     ip_address=endpoint_instance2.network_interfaces[0].network_ip,
                 ),
             ])
@@ -364,12 +364,12 @@ class NetworkEndpointList(pulumi.CustomResource):
             network_endpoints=[
                 gcp.compute.NetworkEndpointListNetworkEndpointArgs(
                     instance=endpoint_instance1.name,
-                    port=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    port=google_compute_network_endpoint_group["neg"]["default_port"],
                     ip_address=endpoint_instance1.network_interfaces[0].network_ip,
                 ),
                 gcp.compute.NetworkEndpointListNetworkEndpointArgs(
                     instance=endpoint_instance2.name,
-                    port=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    port=google_compute_network_endpoint_group["neg"]["default_port"],
                     ip_address=endpoint_instance2.network_interfaces[0].network_ip,
                 ),
             ])

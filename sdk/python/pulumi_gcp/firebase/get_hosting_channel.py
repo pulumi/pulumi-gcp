@@ -126,14 +126,14 @@ def get_hosting_channel(channel_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:firebase/getHostingChannel:getHostingChannel', __args__, opts=opts, typ=GetHostingChannelResult).value
 
     return AwaitableGetHostingChannelResult(
-        channel_id=__ret__.channel_id,
-        expire_time=__ret__.expire_time,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        retained_release_count=__ret__.retained_release_count,
-        site_id=__ret__.site_id,
-        ttl=__ret__.ttl)
+        channel_id=pulumi.get(__ret__, 'channel_id'),
+        expire_time=pulumi.get(__ret__, 'expire_time'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        retained_release_count=pulumi.get(__ret__, 'retained_release_count'),
+        site_id=pulumi.get(__ret__, 'site_id'),
+        ttl=pulumi.get(__ret__, 'ttl'))
 
 
 @_utilities.lift_output_func(get_hosting_channel)

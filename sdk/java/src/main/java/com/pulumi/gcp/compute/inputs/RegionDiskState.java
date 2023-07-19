@@ -24,6 +24,7 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A nested object resource
+     * Structure is documented below.
      * 
      */
     @Import(name="asyncPrimaryDisk")
@@ -31,6 +32,7 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A nested object resource
+     * Structure is documented below.
      * 
      */
     public Optional<Output<RegionDiskAsyncPrimaryDiskArgs>> asyncPrimaryDisk() {
@@ -563,6 +565,7 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param asyncPrimaryDisk A nested object resource
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -574,6 +577,7 @@ public final class RegionDiskState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param asyncPrimaryDisk A nested object resource
+         * Structure is documented below.
          * 
          * @return builder
          * 

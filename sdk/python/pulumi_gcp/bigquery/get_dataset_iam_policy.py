@@ -98,7 +98,7 @@ def get_dataset_iam_policy(dataset_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigquery.get_dataset_iam_policy(dataset_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.bigquery.get_dataset_iam_policy(dataset_id=google_bigquery_dataset["dataset"]["dataset_id"])
     ```
 
 
@@ -113,11 +113,11 @@ def get_dataset_iam_policy(dataset_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:bigquery/getDatasetIamPolicy:getDatasetIamPolicy', __args__, opts=opts, typ=GetDatasetIamPolicyResult).value
 
     return AwaitableGetDatasetIamPolicyResult(
-        dataset_id=__ret__.dataset_id,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        dataset_id=pulumi.get(__ret__, 'dataset_id'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_dataset_iam_policy)
@@ -133,7 +133,7 @@ def get_dataset_iam_policy_output(dataset_id: Optional[pulumi.Input[str]] = None
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigquery.get_dataset_iam_policy(dataset_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.bigquery.get_dataset_iam_policy(dataset_id=google_bigquery_dataset["dataset"]["dataset_id"])
     ```
 
 

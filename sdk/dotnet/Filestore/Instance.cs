@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Filestore
     ///     {
     ///         FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
     ///         {
-    ///             CapacityGb = 2660,
+    ///             CapacityGb = 1024,
     ///             Name = "share1",
     ///         },
     ///         Location = "us-central1-b",
@@ -50,7 +50,7 @@ namespace Pulumi.Gcp.Filestore
     ///                 Network = "default",
     ///             },
     ///         },
-    ///         Tier = "PREMIUM",
+    ///         Tier = "BASIC_HDD",
     ///     });
     /// 
     /// });
@@ -69,7 +69,7 @@ namespace Pulumi.Gcp.Filestore
     ///     {
     ///         FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
     ///         {
-    ///             CapacityGb = 2660,
+    ///             CapacityGb = 2560,
     ///             Name = "share1",
     ///             NfsExportOptions = new[]
     ///             {
@@ -139,7 +139,7 @@ namespace Pulumi.Gcp.Filestore
     ///         Tier = "ENTERPRISE",
     ///         FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
     ///         {
-    ///             CapacityGb = 2560,
+    ///             CapacityGb = 1024,
     ///             Name = "share1",
     ///         },
     ///         Networks = new[]

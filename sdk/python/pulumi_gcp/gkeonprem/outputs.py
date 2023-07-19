@@ -11,6 +11,36 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'BareMetalAdminClusterClusterOperations',
+    'BareMetalAdminClusterControlPlane',
+    'BareMetalAdminClusterControlPlaneApiServerArg',
+    'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig',
+    'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig',
+    'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig',
+    'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint',
+    'BareMetalAdminClusterFleet',
+    'BareMetalAdminClusterLoadBalancer',
+    'BareMetalAdminClusterLoadBalancerManualLbConfig',
+    'BareMetalAdminClusterLoadBalancerPortConfig',
+    'BareMetalAdminClusterLoadBalancerVipConfig',
+    'BareMetalAdminClusterMaintenanceConfig',
+    'BareMetalAdminClusterNetworkConfig',
+    'BareMetalAdminClusterNetworkConfigIslandModeCidr',
+    'BareMetalAdminClusterNodeAccessConfig',
+    'BareMetalAdminClusterNodeConfig',
+    'BareMetalAdminClusterProxy',
+    'BareMetalAdminClusterSecurityConfig',
+    'BareMetalAdminClusterSecurityConfigAuthorization',
+    'BareMetalAdminClusterSecurityConfigAuthorizationAdminUser',
+    'BareMetalAdminClusterStatus',
+    'BareMetalAdminClusterStatusCondition',
+    'BareMetalAdminClusterStorage',
+    'BareMetalAdminClusterStorageLvpNodeMountsConfig',
+    'BareMetalAdminClusterStorageLvpShareConfig',
+    'BareMetalAdminClusterStorageLvpShareConfigLvpConfig',
+    'BareMetalAdminClusterValidationCheck',
+    'BareMetalAdminClusterValidationCheckStatus',
+    'BareMetalAdminClusterValidationCheckStatusResult',
     'BareMetalClusterClusterOperations',
     'BareMetalClusterControlPlane',
     'BareMetalClusterControlPlaneApiServerArg',
@@ -102,6 +132,1397 @@ __all__ = [
     'VMwareNodePoolStatus',
     'VMwareNodePoolStatusCondition',
 ]
+
+@pulumi.output_type
+class BareMetalAdminClusterClusterOperations(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableApplicationLogs":
+            suggest = "enable_application_logs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BareMetalAdminClusterClusterOperations. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BareMetalAdminClusterClusterOperations.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BareMetalAdminClusterClusterOperations.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_application_logs: Optional[bool] = None):
+        """
+        :param bool enable_application_logs: Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
+        """
+        if enable_application_logs is not None:
+            pulumi.set(__self__, "enable_application_logs", enable_application_logs)
+
+    @property
+    @pulumi.getter(name="enableApplicationLogs")
+    def enable_application_logs(self) -> Optional[bool]:
+        """
+        Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
+        """
+        return pulumi.get(self, "enable_application_logs")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterControlPlane(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "controlPlaneNodePoolConfig":
+            suggest = "control_plane_node_pool_config"
+        elif key == "apiServerArgs":
+            suggest = "api_server_args"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BareMetalAdminClusterControlPlane. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BareMetalAdminClusterControlPlane.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BareMetalAdminClusterControlPlane.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 control_plane_node_pool_config: 'outputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig',
+                 api_server_args: Optional[Sequence['outputs.BareMetalAdminClusterControlPlaneApiServerArg']] = None):
+        """
+        :param 'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigArgs' control_plane_node_pool_config: Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
+               Structure is documented below.
+        :param Sequence['BareMetalAdminClusterControlPlaneApiServerArgArgs'] api_server_args: Customizes the default API server args. Only a subset of
+               customized flags are supported. Please refer to the API server
+               documentation below to know the exact format:
+               https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "control_plane_node_pool_config", control_plane_node_pool_config)
+        if api_server_args is not None:
+            pulumi.set(__self__, "api_server_args", api_server_args)
+
+    @property
+    @pulumi.getter(name="controlPlaneNodePoolConfig")
+    def control_plane_node_pool_config(self) -> 'outputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig':
+        """
+        Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "control_plane_node_pool_config")
+
+    @property
+    @pulumi.getter(name="apiServerArgs")
+    def api_server_args(self) -> Optional[Sequence['outputs.BareMetalAdminClusterControlPlaneApiServerArg']]:
+        """
+        Customizes the default API server args. Only a subset of
+        customized flags are supported. Please refer to the API server
+        documentation below to know the exact format:
+        https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+        Structure is documented below.
+        """
+        return pulumi.get(self, "api_server_args")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterControlPlaneApiServerArg(dict):
+    def __init__(__self__, *,
+                 argument: str,
+                 value: str):
+        """
+        :param str argument: The argument name as it appears on the API Server command line please make sure to remove the leading dashes.
+        :param str value: The value of the arg as it will be passed to the API Server command line.
+        """
+        pulumi.set(__self__, "argument", argument)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def argument(self) -> str:
+        """
+        The argument name as it appears on the API Server command line please make sure to remove the leading dashes.
+        """
+        return pulumi.get(self, "argument")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the arg as it will be passed to the API Server command line.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodePoolConfig":
+            suggest = "node_pool_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node_pool_config: 'outputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig'):
+        """
+        :param 'BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs' node_pool_config: The generic configuration for a node pool running the control plane.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "node_pool_config", node_pool_config)
+
+    @property
+    @pulumi.getter(name="nodePoolConfig")
+    def node_pool_config(self) -> 'outputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig':
+        """
+        The generic configuration for a node pool running the control plane.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "node_pool_config")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeConfigs":
+            suggest = "node_configs"
+        elif key == "operatingSystem":
+            suggest = "operating_system"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 labels: Optional[Mapping[str, str]] = None,
+                 node_configs: Optional[Sequence['outputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig']] = None,
+                 operating_system: Optional[str] = None,
+                 taints: Optional[Sequence['outputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint']] = None):
+        """
+        :param Mapping[str, str] labels: The map of Kubernetes labels (key/value pairs) to be applied to
+               each node. These will added in addition to any default label(s)
+               that Kubernetes may apply to the node. In case of conflict in
+               label keys, the applied set may differ depending on the Kubernetes
+               version -- it's best to assume the behavior is undefined and
+               conflicts should be avoided. For more information, including usage
+               and the valid values, see:
+               http://kubernetes.io/v1.1/docs/user-guide/labels.html
+               An object containing a list of "key": value pairs.
+               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param Sequence['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfigArgs'] node_configs: The list of machine addresses in the Bare Metal Node Pool.
+               Structure is documented below.
+        :param str operating_system: Specifies the nodes operating system (default: LINUX).
+        :param Sequence['BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaintArgs'] taints: The initial taints assigned to nodes of this node pool.
+               Structure is documented below.
+        """
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if node_configs is not None:
+            pulumi.set(__self__, "node_configs", node_configs)
+        if operating_system is not None:
+            pulumi.set(__self__, "operating_system", operating_system)
+        if taints is not None:
+            pulumi.set(__self__, "taints", taints)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        The map of Kubernetes labels (key/value pairs) to be applied to
+        each node. These will added in addition to any default label(s)
+        that Kubernetes may apply to the node. In case of conflict in
+        label keys, the applied set may differ depending on the Kubernetes
+        version -- it's best to assume the behavior is undefined and
+        conflicts should be avoided. For more information, including usage
+        and the valid values, see:
+        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        An object containing a list of "key": value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="nodeConfigs")
+    def node_configs(self) -> Optional[Sequence['outputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig']]:
+        """
+        The list of machine addresses in the Bare Metal Node Pool.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "node_configs")
+
+    @property
+    @pulumi.getter(name="operatingSystem")
+    def operating_system(self) -> Optional[str]:
+        """
+        Specifies the nodes operating system (default: LINUX).
+        """
+        return pulumi.get(self, "operating_system")
+
+    @property
+    @pulumi.getter
+    def taints(self) -> Optional[Sequence['outputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint']]:
+        """
+        The initial taints assigned to nodes of this node pool.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "taints")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeIp":
+            suggest = "node_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 labels: Optional[Mapping[str, str]] = None,
+                 node_ip: Optional[str] = None):
+        """
+        :param Mapping[str, str] labels: The map of Kubernetes labels (key/value pairs) to be applied to
+               each node. These will added in addition to any default label(s)
+               that Kubernetes may apply to the node. In case of conflict in
+               label keys, the applied set may differ depending on the Kubernetes
+               version -- it's best to assume the behavior is undefined and
+               conflicts should be avoided. For more information, including usage
+               and the valid values, see:
+               http://kubernetes.io/v1.1/docs/user-guide/labels.html
+               An object containing a list of "key": value pairs.
+               Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param str node_ip: The default IPv4 address for SSH access and Kubernetes node.
+               Example: 192.168.0.1
+        """
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if node_ip is not None:
+            pulumi.set(__self__, "node_ip", node_ip)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        The map of Kubernetes labels (key/value pairs) to be applied to
+        each node. These will added in addition to any default label(s)
+        that Kubernetes may apply to the node. In case of conflict in
+        label keys, the applied set may differ depending on the Kubernetes
+        version -- it's best to assume the behavior is undefined and
+        conflicts should be avoided. For more information, including usage
+        and the valid values, see:
+        http://kubernetes.io/v1.1/docs/user-guide/labels.html
+        An object containing a list of "key": value pairs.
+        Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="nodeIp")
+    def node_ip(self) -> Optional[str]:
+        """
+        The default IPv4 address for SSH access and Kubernetes node.
+        Example: 192.168.0.1
+        """
+        return pulumi.get(self, "node_ip")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint(dict):
+    def __init__(__self__, *,
+                 effect: Optional[str] = None,
+                 key: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str effect: Specifies the nodes operating system (default: LINUX).
+               Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+        :param str key: Key associated with the effect.
+        :param str value: Value associated with the effect.
+        """
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        """
+        Specifies the nodes operating system (default: LINUX).
+        Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        Key associated with the effect.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Value associated with the effect.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterFleet(dict):
+    def __init__(__self__, *,
+                 membership: Optional[str] = None):
+        """
+        :param str membership: (Output)
+               The name of the managed Hub Membership resource associated to this cluster.
+               Membership names are formatted as
+               `projects/<project-number>/locations/<location>/memberships/<cluster-id>`.
+        """
+        if membership is not None:
+            pulumi.set(__self__, "membership", membership)
+
+    @property
+    @pulumi.getter
+    def membership(self) -> Optional[str]:
+        """
+        (Output)
+        The name of the managed Hub Membership resource associated to this cluster.
+        Membership names are formatted as
+        `projects/<project-number>/locations/<location>/memberships/<cluster-id>`.
+        """
+        return pulumi.get(self, "membership")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterLoadBalancer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "portConfig":
+            suggest = "port_config"
+        elif key == "vipConfig":
+            suggest = "vip_config"
+        elif key == "manualLbConfig":
+            suggest = "manual_lb_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BareMetalAdminClusterLoadBalancer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BareMetalAdminClusterLoadBalancer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BareMetalAdminClusterLoadBalancer.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 port_config: 'outputs.BareMetalAdminClusterLoadBalancerPortConfig',
+                 vip_config: 'outputs.BareMetalAdminClusterLoadBalancerVipConfig',
+                 manual_lb_config: Optional['outputs.BareMetalAdminClusterLoadBalancerManualLbConfig'] = None):
+        """
+        :param 'BareMetalAdminClusterLoadBalancerPortConfigArgs' port_config: Specifies the load balancer ports.
+               Structure is documented below.
+        :param 'BareMetalAdminClusterLoadBalancerVipConfigArgs' vip_config: Specified the Bare Metal Load Balancer Config
+               Structure is documented below.
+        :param 'BareMetalAdminClusterLoadBalancerManualLbConfigArgs' manual_lb_config: A nested object resource
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "port_config", port_config)
+        pulumi.set(__self__, "vip_config", vip_config)
+        if manual_lb_config is not None:
+            pulumi.set(__self__, "manual_lb_config", manual_lb_config)
+
+    @property
+    @pulumi.getter(name="portConfig")
+    def port_config(self) -> 'outputs.BareMetalAdminClusterLoadBalancerPortConfig':
+        """
+        Specifies the load balancer ports.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "port_config")
+
+    @property
+    @pulumi.getter(name="vipConfig")
+    def vip_config(self) -> 'outputs.BareMetalAdminClusterLoadBalancerVipConfig':
+        """
+        Specified the Bare Metal Load Balancer Config
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vip_config")
+
+    @property
+    @pulumi.getter(name="manualLbConfig")
+    def manual_lb_config(self) -> Optional['outputs.BareMetalAdminClusterLoadBalancerManualLbConfig']:
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "manual_lb_config")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterLoadBalancerManualLbConfig(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Whether manual load balancing is enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether manual load balancing is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterLoadBalancerPortConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "controlPlaneLoadBalancerPort":
+            suggest = "control_plane_load_balancer_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BareMetalAdminClusterLoadBalancerPortConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BareMetalAdminClusterLoadBalancerPortConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BareMetalAdminClusterLoadBalancerPortConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 control_plane_load_balancer_port: int):
+        """
+        :param int control_plane_load_balancer_port: The port that control plane hosted load balancers will listen on.
+        """
+        pulumi.set(__self__, "control_plane_load_balancer_port", control_plane_load_balancer_port)
+
+    @property
+    @pulumi.getter(name="controlPlaneLoadBalancerPort")
+    def control_plane_load_balancer_port(self) -> int:
+        """
+        The port that control plane hosted load balancers will listen on.
+        """
+        return pulumi.get(self, "control_plane_load_balancer_port")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterLoadBalancerVipConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "controlPlaneVip":
+            suggest = "control_plane_vip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BareMetalAdminClusterLoadBalancerVipConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BareMetalAdminClusterLoadBalancerVipConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BareMetalAdminClusterLoadBalancerVipConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 control_plane_vip: str):
+        """
+        :param str control_plane_vip: The VIP which you previously set aside for the Kubernetes API of this Bare Metal Admin Cluster.
+        """
+        pulumi.set(__self__, "control_plane_vip", control_plane_vip)
+
+    @property
+    @pulumi.getter(name="controlPlaneVip")
+    def control_plane_vip(self) -> str:
+        """
+        The VIP which you previously set aside for the Kubernetes API of this Bare Metal Admin Cluster.
+        """
+        return pulumi.get(self, "control_plane_vip")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterMaintenanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maintenanceAddressCidrBlocks":
+            suggest = "maintenance_address_cidr_blocks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BareMetalAdminClusterMaintenanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BareMetalAdminClusterMaintenanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BareMetalAdminClusterMaintenanceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 maintenance_address_cidr_blocks: Sequence[str]):
+        """
+        :param Sequence[str] maintenance_address_cidr_blocks: All IPv4 address from these ranges will be placed into maintenance mode.
+               Nodes in maintenance mode will be cordoned and drained. When both of these
+               are true, the "baremetal.cluster.gke.io/maintenance" annotation will be set
+               on the node resource.
+        """
+        pulumi.set(__self__, "maintenance_address_cidr_blocks", maintenance_address_cidr_blocks)
+
+    @property
+    @pulumi.getter(name="maintenanceAddressCidrBlocks")
+    def maintenance_address_cidr_blocks(self) -> Sequence[str]:
+        """
+        All IPv4 address from these ranges will be placed into maintenance mode.
+        Nodes in maintenance mode will be cordoned and drained. When both of these
+        are true, the "baremetal.cluster.gke.io/maintenance" annotation will be set
+        on the node resource.
+        """
+        return pulumi.get(self, "maintenance_address_cidr_blocks")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterNetworkConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "islandModeCidr":
+            suggest = "island_mode_cidr"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BareMetalAdminClusterNetworkConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BareMetalAdminClusterNetworkConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BareMetalAdminClusterNetworkConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 island_mode_cidr: Optional['outputs.BareMetalAdminClusterNetworkConfigIslandModeCidr'] = None):
+        """
+        :param 'BareMetalAdminClusterNetworkConfigIslandModeCidrArgs' island_mode_cidr: A nested object resource
+               Structure is documented below.
+        """
+        if island_mode_cidr is not None:
+            pulumi.set(__self__, "island_mode_cidr", island_mode_cidr)
+
+    @property
+    @pulumi.getter(name="islandModeCidr")
+    def island_mode_cidr(self) -> Optional['outputs.BareMetalAdminClusterNetworkConfigIslandModeCidr']:
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "island_mode_cidr")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterNetworkConfigIslandModeCidr(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "podAddressCidrBlocks":
+            suggest = "pod_address_cidr_blocks"
+        elif key == "serviceAddressCidrBlocks":
+            suggest = "service_address_cidr_blocks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BareMetalAdminClusterNetworkConfigIslandModeCidr. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BareMetalAdminClusterNetworkConfigIslandModeCidr.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BareMetalAdminClusterNetworkConfigIslandModeCidr.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pod_address_cidr_blocks: Sequence[str],
+                 service_address_cidr_blocks: Sequence[str]):
+        """
+        :param Sequence[str] pod_address_cidr_blocks: All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
+        :param Sequence[str] service_address_cidr_blocks: All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
+        """
+        pulumi.set(__self__, "pod_address_cidr_blocks", pod_address_cidr_blocks)
+        pulumi.set(__self__, "service_address_cidr_blocks", service_address_cidr_blocks)
+
+    @property
+    @pulumi.getter(name="podAddressCidrBlocks")
+    def pod_address_cidr_blocks(self) -> Sequence[str]:
+        """
+        All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
+        """
+        return pulumi.get(self, "pod_address_cidr_blocks")
+
+    @property
+    @pulumi.getter(name="serviceAddressCidrBlocks")
+    def service_address_cidr_blocks(self) -> Sequence[str]:
+        """
+        All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
+        """
+        return pulumi.get(self, "service_address_cidr_blocks")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterNodeAccessConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "loginUser":
+            suggest = "login_user"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BareMetalAdminClusterNodeAccessConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BareMetalAdminClusterNodeAccessConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BareMetalAdminClusterNodeAccessConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 login_user: Optional[str] = None):
+        """
+        :param str login_user: LoginUser is the user name used to access node machines.
+               It defaults to "root" if not set.
+        """
+        if login_user is not None:
+            pulumi.set(__self__, "login_user", login_user)
+
+    @property
+    @pulumi.getter(name="loginUser")
+    def login_user(self) -> Optional[str]:
+        """
+        LoginUser is the user name used to access node machines.
+        It defaults to "root" if not set.
+        """
+        return pulumi.get(self, "login_user")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterNodeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxPodsPerNode":
+            suggest = "max_pods_per_node"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BareMetalAdminClusterNodeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BareMetalAdminClusterNodeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BareMetalAdminClusterNodeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_pods_per_node: Optional[int] = None):
+        """
+        :param int max_pods_per_node: The maximum number of pods a node can run. The size of the CIDR range
+               assigned to the node will be derived from this parameter.
+        """
+        if max_pods_per_node is not None:
+            pulumi.set(__self__, "max_pods_per_node", max_pods_per_node)
+
+    @property
+    @pulumi.getter(name="maxPodsPerNode")
+    def max_pods_per_node(self) -> Optional[int]:
+        """
+        The maximum number of pods a node can run. The size of the CIDR range
+        assigned to the node will be derived from this parameter.
+        """
+        return pulumi.get(self, "max_pods_per_node")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterProxy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "noProxies":
+            suggest = "no_proxies"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BareMetalAdminClusterProxy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BareMetalAdminClusterProxy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BareMetalAdminClusterProxy.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 uri: str,
+                 no_proxies: Optional[Sequence[str]] = None):
+        """
+        :param str uri: Specifies the address of your proxy server.
+               Examples: http://domain
+               WARNING: Do not provide credentials in the format
+               http://(username:password@)domain these will be rejected by the server.
+        :param Sequence[str] no_proxies: A list of IPs, hostnames, and domains that should skip the proxy.
+               Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+        """
+        pulumi.set(__self__, "uri", uri)
+        if no_proxies is not None:
+            pulumi.set(__self__, "no_proxies", no_proxies)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        Specifies the address of your proxy server.
+        Examples: http://domain
+        WARNING: Do not provide credentials in the format
+        http://(username:password@)domain these will be rejected by the server.
+        """
+        return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter(name="noProxies")
+    def no_proxies(self) -> Optional[Sequence[str]]:
+        """
+        A list of IPs, hostnames, and domains that should skip the proxy.
+        Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+        """
+        return pulumi.get(self, "no_proxies")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterSecurityConfig(dict):
+    def __init__(__self__, *,
+                 authorization: Optional['outputs.BareMetalAdminClusterSecurityConfigAuthorization'] = None):
+        """
+        :param 'BareMetalAdminClusterSecurityConfigAuthorizationArgs' authorization: Configures user access to the Bare Metal User cluster.
+               Structure is documented below.
+        """
+        if authorization is not None:
+            pulumi.set(__self__, "authorization", authorization)
+
+    @property
+    @pulumi.getter
+    def authorization(self) -> Optional['outputs.BareMetalAdminClusterSecurityConfigAuthorization']:
+        """
+        Configures user access to the Bare Metal User cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "authorization")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterSecurityConfigAuthorization(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminUsers":
+            suggest = "admin_users"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BareMetalAdminClusterSecurityConfigAuthorization. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BareMetalAdminClusterSecurityConfigAuthorization.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BareMetalAdminClusterSecurityConfigAuthorization.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 admin_users: Sequence['outputs.BareMetalAdminClusterSecurityConfigAuthorizationAdminUser']):
+        """
+        :param Sequence['BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs'] admin_users: Users that will be granted the cluster-admin role on the cluster, providing full access to the cluster.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "admin_users", admin_users)
+
+    @property
+    @pulumi.getter(name="adminUsers")
+    def admin_users(self) -> Sequence['outputs.BareMetalAdminClusterSecurityConfigAuthorizationAdminUser']:
+        """
+        Users that will be granted the cluster-admin role on the cluster, providing full access to the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "admin_users")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterSecurityConfigAuthorizationAdminUser(dict):
+    def __init__(__self__, *,
+                 username: str):
+        """
+        :param str username: The name of the user, e.g. `my-gcp-id@gmail.com`.
+        """
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        The name of the user, e.g. `my-gcp-id@gmail.com`.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterStatus(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorMessage":
+            suggest = "error_message"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BareMetalAdminClusterStatus. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BareMetalAdminClusterStatus.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BareMetalAdminClusterStatus.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 conditions: Optional[Sequence['outputs.BareMetalAdminClusterStatusCondition']] = None,
+                 error_message: Optional[str] = None):
+        """
+        :param Sequence['BareMetalAdminClusterStatusConditionArgs'] conditions: (Output)
+               ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+               Structure is documented below.
+        :param str error_message: (Output)
+               Human-friendly representation of the error message from the admin cluster
+               controller. The error message can be temporary as the admin cluster
+               controller creates a cluster or node pool. If the error message persists
+               for a longer period of time, it can be used to surface error message to
+               indicate real problems requiring user intervention.
+        """
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if error_message is not None:
+            pulumi.set(__self__, "error_message", error_message)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Optional[Sequence['outputs.BareMetalAdminClusterStatusCondition']]:
+        """
+        (Output)
+        ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> Optional[str]:
+        """
+        (Output)
+        Human-friendly representation of the error message from the admin cluster
+        controller. The error message can be temporary as the admin cluster
+        controller creates a cluster or node pool. If the error message persists
+        for a longer period of time, it can be used to surface error message to
+        indicate real problems requiring user intervention.
+        """
+        return pulumi.get(self, "error_message")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterStatusCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastTransitionTime":
+            suggest = "last_transition_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BareMetalAdminClusterStatusCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BareMetalAdminClusterStatusCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BareMetalAdminClusterStatusCondition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 last_transition_time: Optional[str] = None,
+                 message: Optional[str] = None,
+                 reason: Optional[str] = None,
+                 state: Optional[str] = None,
+                 type: Optional[str] = None):
+        """
+        :param str last_transition_time: (Output)
+               Last time the condition transit from one status to another.
+        :param str message: Human-readable message indicating details about last transition.
+        :param str reason: (Output)
+               A human-readable message of the check failure.
+        :param str state: (Output)
+               The lifecycle state of the condition.
+        :param str type: Type of the condition.
+               (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+        """
+        if last_transition_time is not None:
+            pulumi.set(__self__, "last_transition_time", last_transition_time)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="lastTransitionTime")
+    def last_transition_time(self) -> Optional[str]:
+        """
+        (Output)
+        Last time the condition transit from one status to another.
+        """
+        return pulumi.get(self, "last_transition_time")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        Human-readable message indicating details about last transition.
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[str]:
+        """
+        (Output)
+        A human-readable message of the check failure.
+        """
+        return pulumi.get(self, "reason")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        (Output)
+        The lifecycle state of the condition.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        Type of the condition.
+        (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterStorage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lvpNodeMountsConfig":
+            suggest = "lvp_node_mounts_config"
+        elif key == "lvpShareConfig":
+            suggest = "lvp_share_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BareMetalAdminClusterStorage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BareMetalAdminClusterStorage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BareMetalAdminClusterStorage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 lvp_node_mounts_config: 'outputs.BareMetalAdminClusterStorageLvpNodeMountsConfig',
+                 lvp_share_config: 'outputs.BareMetalAdminClusterStorageLvpShareConfig'):
+        """
+        :param 'BareMetalAdminClusterStorageLvpNodeMountsConfigArgs' lvp_node_mounts_config: Specifies the config for local PersistentVolumes backed
+               by mounted node disks. These disks need to be formatted and mounted by the
+               user, which can be done before or after cluster creation.
+               Structure is documented below.
+        :param 'BareMetalAdminClusterStorageLvpShareConfigArgs' lvp_share_config: Specifies the config for local PersistentVolumes backed by
+               subdirectories in a shared filesystem. These subdirectores are
+               automatically created during cluster creation.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "lvp_node_mounts_config", lvp_node_mounts_config)
+        pulumi.set(__self__, "lvp_share_config", lvp_share_config)
+
+    @property
+    @pulumi.getter(name="lvpNodeMountsConfig")
+    def lvp_node_mounts_config(self) -> 'outputs.BareMetalAdminClusterStorageLvpNodeMountsConfig':
+        """
+        Specifies the config for local PersistentVolumes backed
+        by mounted node disks. These disks need to be formatted and mounted by the
+        user, which can be done before or after cluster creation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "lvp_node_mounts_config")
+
+    @property
+    @pulumi.getter(name="lvpShareConfig")
+    def lvp_share_config(self) -> 'outputs.BareMetalAdminClusterStorageLvpShareConfig':
+        """
+        Specifies the config for local PersistentVolumes backed by
+        subdirectories in a shared filesystem. These subdirectores are
+        automatically created during cluster creation.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "lvp_share_config")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterStorageLvpNodeMountsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "storageClass":
+            suggest = "storage_class"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BareMetalAdminClusterStorageLvpNodeMountsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BareMetalAdminClusterStorageLvpNodeMountsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BareMetalAdminClusterStorageLvpNodeMountsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 path: str,
+                 storage_class: str):
+        """
+        :param str path: The host machine path.
+        :param str storage_class: The StorageClass name that PVs will be created with.
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "storage_class", storage_class)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        The host machine path.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> str:
+        """
+        The StorageClass name that PVs will be created with.
+        """
+        return pulumi.get(self, "storage_class")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterStorageLvpShareConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lvpConfig":
+            suggest = "lvp_config"
+        elif key == "sharedPathPvCount":
+            suggest = "shared_path_pv_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BareMetalAdminClusterStorageLvpShareConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BareMetalAdminClusterStorageLvpShareConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BareMetalAdminClusterStorageLvpShareConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 lvp_config: 'outputs.BareMetalAdminClusterStorageLvpShareConfigLvpConfig',
+                 shared_path_pv_count: Optional[int] = None):
+        """
+        :param 'BareMetalAdminClusterStorageLvpShareConfigLvpConfigArgs' lvp_config: Defines the machine path and storage class for the LVP Share.
+               Structure is documented below.
+        :param int shared_path_pv_count: The number of subdirectories to create under path.
+        """
+        pulumi.set(__self__, "lvp_config", lvp_config)
+        if shared_path_pv_count is not None:
+            pulumi.set(__self__, "shared_path_pv_count", shared_path_pv_count)
+
+    @property
+    @pulumi.getter(name="lvpConfig")
+    def lvp_config(self) -> 'outputs.BareMetalAdminClusterStorageLvpShareConfigLvpConfig':
+        """
+        Defines the machine path and storage class for the LVP Share.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "lvp_config")
+
+    @property
+    @pulumi.getter(name="sharedPathPvCount")
+    def shared_path_pv_count(self) -> Optional[int]:
+        """
+        The number of subdirectories to create under path.
+        """
+        return pulumi.get(self, "shared_path_pv_count")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterStorageLvpShareConfigLvpConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "storageClass":
+            suggest = "storage_class"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BareMetalAdminClusterStorageLvpShareConfigLvpConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BareMetalAdminClusterStorageLvpShareConfigLvpConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BareMetalAdminClusterStorageLvpShareConfigLvpConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 path: str,
+                 storage_class: str):
+        """
+        :param str path: The host machine path.
+        :param str storage_class: The StorageClass name that PVs will be created with.
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "storage_class", storage_class)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        The host machine path.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="storageClass")
+    def storage_class(self) -> str:
+        """
+        The StorageClass name that PVs will be created with.
+        """
+        return pulumi.get(self, "storage_class")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterValidationCheck(dict):
+    def __init__(__self__, *,
+                 options: Optional[str] = None,
+                 scenario: Optional[str] = None,
+                 statuses: Optional[Sequence['outputs.BareMetalAdminClusterValidationCheckStatus']] = None):
+        """
+        :param str options: (Output)
+               Options used for the validation check.
+        :param str scenario: (Output)
+               The scenario when the preflight checks were run..
+        :param Sequence['BareMetalAdminClusterValidationCheckStatusArgs'] statuses: (Output)
+               Specifies the detailed validation check status
+               Structure is documented below.
+        """
+        if options is not None:
+            pulumi.set(__self__, "options", options)
+        if scenario is not None:
+            pulumi.set(__self__, "scenario", scenario)
+        if statuses is not None:
+            pulumi.set(__self__, "statuses", statuses)
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional[str]:
+        """
+        (Output)
+        Options used for the validation check.
+        """
+        return pulumi.get(self, "options")
+
+    @property
+    @pulumi.getter
+    def scenario(self) -> Optional[str]:
+        """
+        (Output)
+        The scenario when the preflight checks were run..
+        """
+        return pulumi.get(self, "scenario")
+
+    @property
+    @pulumi.getter
+    def statuses(self) -> Optional[Sequence['outputs.BareMetalAdminClusterValidationCheckStatus']]:
+        """
+        (Output)
+        Specifies the detailed validation check status
+        Structure is documented below.
+        """
+        return pulumi.get(self, "statuses")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterValidationCheckStatus(dict):
+    def __init__(__self__, *,
+                 results: Optional[Sequence['outputs.BareMetalAdminClusterValidationCheckStatusResult']] = None):
+        """
+        :param Sequence['BareMetalAdminClusterValidationCheckStatusResultArgs'] results: (Output)
+               Individual checks which failed as part of the Preflight check execution.
+               Structure is documented below.
+        """
+        if results is not None:
+            pulumi.set(__self__, "results", results)
+
+    @property
+    @pulumi.getter
+    def results(self) -> Optional[Sequence['outputs.BareMetalAdminClusterValidationCheckStatusResult']]:
+        """
+        (Output)
+        Individual checks which failed as part of the Preflight check execution.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "results")
+
+
+@pulumi.output_type
+class BareMetalAdminClusterValidationCheckStatusResult(dict):
+    def __init__(__self__, *,
+                 category: Optional[str] = None,
+                 description: Optional[str] = None,
+                 details: Optional[str] = None,
+                 options: Optional[str] = None,
+                 reason: Optional[str] = None):
+        """
+        :param str category: (Output)
+               The category of the validation.
+        :param str description: A human readable description of this Bare Metal Admin Cluster.
+        :param str details: (Output)
+               Detailed failure information, which might be unformatted.
+        :param str options: (Output)
+               Options used for the validation check.
+        :param str reason: (Output)
+               A human-readable message of the check failure.
+        """
+        if category is not None:
+            pulumi.set(__self__, "category", category)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+
+    @property
+    @pulumi.getter
+    def category(self) -> Optional[str]:
+        """
+        (Output)
+        The category of the validation.
+        """
+        return pulumi.get(self, "category")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        A human readable description of this Bare Metal Admin Cluster.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[str]:
+        """
+        (Output)
+        Detailed failure information, which might be unformatted.
+        """
+        return pulumi.get(self, "details")
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional[str]:
+        """
+        (Output)
+        Options used for the validation check.
+        """
+        return pulumi.get(self, "options")
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[str]:
+        """
+        (Output)
+        A human-readable message of the check failure.
+        """
+        return pulumi.get(self, "reason")
+
 
 @pulumi.output_type
 class BareMetalClusterClusterOperations(dict):

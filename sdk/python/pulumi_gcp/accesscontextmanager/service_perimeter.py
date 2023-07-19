@@ -604,7 +604,7 @@ class ServicePerimeter(pulumi.CustomResource):
                 ingress_policies=[gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyArgs(
                     ingress_from=gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromArgs(
                         sources=[gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromSourceArgs(
-                            access_level=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                            access_level=google_access_context_manager_access_level["test-access"]["name"],
                         )],
                         identity_type="ANY_IDENTITY",
                     ),
@@ -851,7 +851,7 @@ class ServicePerimeter(pulumi.CustomResource):
                 ingress_policies=[gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyArgs(
                     ingress_from=gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromArgs(
                         sources=[gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromSourceArgs(
-                            access_level=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                            access_level=google_access_context_manager_access_level["test-access"]["name"],
                         )],
                         identity_type="ANY_IDENTITY",
                     ),

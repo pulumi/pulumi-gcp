@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -93,6 +94,7 @@ func NewKeystoresAliasesKeyCertFile(ctx *pulumi.Context,
 		"password",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource KeystoresAliasesKeyCertFile
 	err := ctx.RegisterResource("gcp:apigee/keystoresAliasesKeyCertFile:KeystoresAliasesKeyCertFile", name, args, &resource, opts...)
 	if err != nil {

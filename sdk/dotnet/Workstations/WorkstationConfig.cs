@@ -449,7 +449,7 @@ namespace Pulumi.Gcp.Workstations
     /// 
     ///     var defaultKeyRing = new Gcp.Kms.KeyRing("defaultKeyRing", new()
     ///     {
-    ///         Location = "global",
+    ///         Location = "us-central1",
     ///     }, new CustomResourceOptions
     ///     {
     ///         Provider = google_beta,

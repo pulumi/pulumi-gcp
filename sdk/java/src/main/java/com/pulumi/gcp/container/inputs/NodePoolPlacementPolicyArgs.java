@@ -7,11 +7,28 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class NodePoolPlacementPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final NodePoolPlacementPolicyArgs Empty = new NodePoolPlacementPolicyArgs();
+
+    /**
+     * The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
+     * 
+     */
+    @Import(name="tpuTopology")
+    private @Nullable Output<String> tpuTopology;
+
+    /**
+     * @return The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
+     * 
+     */
+    public Optional<Output<String>> tpuTopology() {
+        return Optional.ofNullable(this.tpuTopology);
+    }
 
     /**
      * The type of the policy. Supports a single value: COMPACT.
@@ -35,6 +52,7 @@ public final class NodePoolPlacementPolicyArgs extends com.pulumi.resources.Reso
     private NodePoolPlacementPolicyArgs() {}
 
     private NodePoolPlacementPolicyArgs(NodePoolPlacementPolicyArgs $) {
+        this.tpuTopology = $.tpuTopology;
         this.type = $.type;
     }
 
@@ -54,6 +72,27 @@ public final class NodePoolPlacementPolicyArgs extends com.pulumi.resources.Reso
 
         public Builder(NodePoolPlacementPolicyArgs defaults) {
             $ = new NodePoolPlacementPolicyArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param tpuTopology The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tpuTopology(@Nullable Output<String> tpuTopology) {
+            $.tpuTopology = tpuTopology;
+            return this;
+        }
+
+        /**
+         * @param tpuTopology The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tpuTopology(String tpuTopology) {
+            return tpuTopology(Output.of(tpuTopology));
         }
 
         /**

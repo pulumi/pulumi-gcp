@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,6 +37,48 @@ import (
 //			_, err = serviceAccount.NewKey(ctx, "mykey", &serviceAccount.KeyArgs{
 //				ServiceAccountId: myaccount.Name,
 //				PublicKeyType:    pulumi.String("TYPE_X509_PEM_FILE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Creating And Regularly Rotating A Key
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
+//	"github.com/pulumi/pulumi-time/sdk/v1/go/time"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			myaccount, err := serviceAccount.NewAccount(ctx, "myaccount", &serviceAccount.AccountArgs{
+//				AccountId:   pulumi.String("myaccount"),
+//				DisplayName: pulumi.String("My Service Account"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			mykeyRotation, err := index.NewTime_rotating(ctx, "mykeyRotation", &index.Time_rotatingArgs{
+//				RotationDays: 30,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = serviceAccount.NewKey(ctx, "mykey", &serviceAccount.KeyArgs{
+//				ServiceAccountId: myaccount.Name,
+//				Keepers: pulumi.AnyMap{
+//					"rotation_time": mykeyRotation.RotationRfc3339,
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -100,6 +143,7 @@ func NewKey(ctx *pulumi.Context,
 		"privateKey",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Key
 	err := ctx.RegisterResource("gcp:serviceAccount/key:Key", name, args, &resource, opts...)
 	if err != nil {

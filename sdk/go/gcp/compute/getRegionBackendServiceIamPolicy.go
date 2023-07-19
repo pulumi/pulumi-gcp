@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func LookupRegionBackendServiceIamPolicy(ctx *pulumi.Context, args *LookupRegionBackendServiceIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupRegionBackendServiceIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegionBackendServiceIamPolicyResult
 	err := ctx.Invoke("gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy", args, &rv, opts...)
 	if err != nil {

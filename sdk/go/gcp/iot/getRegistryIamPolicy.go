@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupRegistryIamPolicy(ctx *pulumi.Context, args *LookupRegistryIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupRegistryIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegistryIamPolicyResult
 	err := ctx.Invoke("gcp:iot/getRegistryIamPolicy:getRegistryIamPolicy", args, &rv, opts...)
 	if err != nil {

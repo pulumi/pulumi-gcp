@@ -5,8 +5,11 @@ package com.pulumi.gcp.clouddeploy.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs extends com.pulumi.resources.ResourceArgs {
@@ -29,6 +32,21 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
     }
 
     /**
+     * Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
+     * 
+     */
+    @Import(name="disablePodOverprovisioning")
+    private @Nullable Output<Boolean> disablePodOverprovisioning;
+
+    /**
+     * @return Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
+     * 
+     */
+    public Optional<Output<Boolean>> disablePodOverprovisioning() {
+        return Optional.ofNullable(this.disablePodOverprovisioning);
+    }
+
+    /**
      * Required. Name of the Kubernetes Service.
      * 
      */
@@ -47,6 +65,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
 
     private DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs $) {
         this.deployment = $.deployment;
+        this.disablePodOverprovisioning = $.disablePodOverprovisioning;
         this.service = $.service;
     }
 
@@ -87,6 +106,27 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
          */
         public Builder deployment(String deployment) {
             return deployment(Output.of(deployment));
+        }
+
+        /**
+         * @param disablePodOverprovisioning Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disablePodOverprovisioning(@Nullable Output<Boolean> disablePodOverprovisioning) {
+            $.disablePodOverprovisioning = disablePodOverprovisioning;
+            return this;
+        }
+
+        /**
+         * @param disablePodOverprovisioning Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disablePodOverprovisioning(Boolean disablePodOverprovisioning) {
+            return disablePodOverprovisioning(Output.of(disablePodOverprovisioning));
         }
 
         /**

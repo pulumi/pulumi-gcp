@@ -17,6 +17,8 @@ __all__ = [
     'DenyPolicyRuleDenyRuleArgs',
     'DenyPolicyRuleDenyRuleDenialConditionArgs',
     'WorkforcePoolProviderOidcArgs',
+    'WorkforcePoolProviderOidcClientSecretArgs',
+    'WorkforcePoolProviderOidcClientSecretValueArgs',
     'WorkforcePoolProviderOidcWebSsoConfigArgs',
     'WorkforcePoolProviderSamlArgs',
     'WorkloadIdentityPoolProviderAwsArgs',
@@ -424,15 +426,20 @@ class WorkforcePoolProviderOidcArgs:
     def __init__(__self__, *,
                  client_id: pulumi.Input[str],
                  issuer_uri: pulumi.Input[str],
+                 client_secret: Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretArgs']] = None,
                  web_sso_config: Optional[pulumi.Input['WorkforcePoolProviderOidcWebSsoConfigArgs']] = None):
         """
         :param pulumi.Input[str] client_id: The client ID. Must match the audience claim of the JWT issued by the identity provider.
         :param pulumi.Input[str] issuer_uri: The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
+        :param pulumi.Input['WorkforcePoolProviderOidcClientSecretArgs'] client_secret: The optional client secret. Required to enable Authorization Code flow for web sign-in.
+               Structure is documented below.
         :param pulumi.Input['WorkforcePoolProviderOidcWebSsoConfigArgs'] web_sso_config: Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
                Structure is documented below.
         """
         pulumi.set(__self__, "client_id", client_id)
         pulumi.set(__self__, "issuer_uri", issuer_uri)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
         if web_sso_config is not None:
             pulumi.set(__self__, "web_sso_config", web_sso_config)
 
@@ -461,6 +468,19 @@ class WorkforcePoolProviderOidcArgs:
         pulumi.set(self, "issuer_uri", value)
 
     @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretArgs']]:
+        """
+        The optional client secret. Required to enable Authorization Code flow for web sign-in.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretArgs']]):
+        pulumi.set(self, "client_secret", value)
+
+    @property
     @pulumi.getter(name="webSsoConfig")
     def web_sso_config(self) -> Optional[pulumi.Input['WorkforcePoolProviderOidcWebSsoConfigArgs']]:
         """
@@ -475,17 +495,87 @@ class WorkforcePoolProviderOidcArgs:
 
 
 @pulumi.input_type
+class WorkforcePoolProviderOidcClientSecretArgs:
+    def __init__(__self__, *,
+                 value: Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretValueArgs']] = None):
+        """
+        :param pulumi.Input['WorkforcePoolProviderOidcClientSecretValueArgs'] value: The value of the client secret.
+               Structure is documented below.
+        """
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretValueArgs']]:
+        """
+        The value of the client secret.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['WorkforcePoolProviderOidcClientSecretValueArgs']]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class WorkforcePoolProviderOidcClientSecretValueArgs:
+    def __init__(__self__, *,
+                 plain_text: pulumi.Input[str],
+                 thumbprint: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] plain_text: The plain text of the client secret value.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[str] thumbprint: (Output)
+               A thumbprint to represent the current client secret value.
+        """
+        pulumi.set(__self__, "plain_text", plain_text)
+        if thumbprint is not None:
+            pulumi.set(__self__, "thumbprint", thumbprint)
+
+    @property
+    @pulumi.getter(name="plainText")
+    def plain_text(self) -> pulumi.Input[str]:
+        """
+        The plain text of the client secret value.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "plain_text")
+
+    @plain_text.setter
+    def plain_text(self, value: pulumi.Input[str]):
+        pulumi.set(self, "plain_text", value)
+
+    @property
+    @pulumi.getter
+    def thumbprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        A thumbprint to represent the current client secret value.
+        """
+        return pulumi.get(self, "thumbprint")
+
+    @thumbprint.setter
+    def thumbprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "thumbprint", value)
+
+
+@pulumi.input_type
 class WorkforcePoolProviderOidcWebSsoConfigArgs:
     def __init__(__self__, *,
                  assertion_claims_behavior: pulumi.Input[str],
                  response_type: pulumi.Input[str]):
         """
         :param pulumi.Input[str] assertion_claims_behavior: The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
+               * MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
                * ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
-               Possible values are: `ONLY_ID_TOKEN_CLAIMS`.
+               Possible values are: `MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS`, `ONLY_ID_TOKEN_CLAIMS`.
         :param pulumi.Input[str] response_type: The Response Type to request for in the OIDC Authorization Request for web sign-in.
+               The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.
+               * CODE: The `response_type=code` selection uses the Authorization Code Flow for web sign-in. Requires a configured client secret.
                * ID_TOKEN: The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
-               Possible values are: `ID_TOKEN`.
+               Possible values are: `CODE`, `ID_TOKEN`.
         """
         pulumi.set(__self__, "assertion_claims_behavior", assertion_claims_behavior)
         pulumi.set(__self__, "response_type", response_type)
@@ -495,8 +585,9 @@ class WorkforcePoolProviderOidcWebSsoConfigArgs:
     def assertion_claims_behavior(self) -> pulumi.Input[str]:
         """
         The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
+        * MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
         * ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
-        Possible values are: `ONLY_ID_TOKEN_CLAIMS`.
+        Possible values are: `MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS`, `ONLY_ID_TOKEN_CLAIMS`.
         """
         return pulumi.get(self, "assertion_claims_behavior")
 
@@ -509,8 +600,10 @@ class WorkforcePoolProviderOidcWebSsoConfigArgs:
     def response_type(self) -> pulumi.Input[str]:
         """
         The Response Type to request for in the OIDC Authorization Request for web sign-in.
+        The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.
+        * CODE: The `response_type=code` selection uses the Authorization Code Flow for web sign-in. Requires a configured client secret.
         * ID_TOKEN: The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
-        Possible values are: `ID_TOKEN`.
+        Possible values are: `CODE`, `ID_TOKEN`.
         """
         return pulumi.get(self, "response_type")
 

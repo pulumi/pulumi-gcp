@@ -112,10 +112,10 @@ def get_kms_key_ring(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:kms/getKMSKeyRing:getKMSKeyRing', __args__, opts=opts, typ=GetKMSKeyRingResult).value
 
     return AwaitableGetKMSKeyRingResult(
-        id=__ret__.id,
-        location=__ret__.location,
-        name=__ret__.name,
-        project=__ret__.project)
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_kms_key_ring)

@@ -76,5 +76,5 @@ def get_uptime_check_i_ps(opts: Optional[pulumi.InvokeOptions] = None) -> Awaita
     __ret__ = pulumi.runtime.invoke('gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs', __args__, opts=opts, typ=GetUptimeCheckIPsResult).value
 
     return AwaitableGetUptimeCheckIPsResult(
-        id=__ret__.id,
-        uptime_check_ips=__ret__.uptime_check_ips)
+        id=pulumi.get(__ret__, 'id'),
+        uptime_check_ips=pulumi.get(__ret__, 'uptime_check_ips'))

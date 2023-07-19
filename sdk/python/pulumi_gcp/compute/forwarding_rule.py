@@ -29,6 +29,7 @@ class ForwardingRuleArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_tier: Optional[pulumi.Input[str]] = None,
+                 no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -150,6 +151,7 @@ class ForwardingRuleArgs:
                If `IPAddress` is specified, this value must be equal to the
                networkTier of the Address.
                Possible values are: `PREMIUM`, `STANDARD`.
+        :param pulumi.Input[bool] no_automate_dns_zone: This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
         :param pulumi.Input[str] port_range: This field can only be used:
                * If `IPProtocol` is one of TCP, UDP, or SCTP.
                * By backend service-based network load balancers, target pool-based
@@ -246,6 +248,8 @@ class ForwardingRuleArgs:
             pulumi.set(__self__, "network", network)
         if network_tier is not None:
             pulumi.set(__self__, "network_tier", network_tier)
+        if no_automate_dns_zone is not None:
+            pulumi.set(__self__, "no_automate_dns_zone", no_automate_dns_zone)
         if port_range is not None:
             pulumi.set(__self__, "port_range", port_range)
         if ports is not None:
@@ -519,6 +523,18 @@ class ForwardingRuleArgs:
         pulumi.set(self, "network_tier", value)
 
     @property
+    @pulumi.getter(name="noAutomateDnsZone")
+    def no_automate_dns_zone(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+        """
+        return pulumi.get(self, "no_automate_dns_zone")
+
+    @no_automate_dns_zone.setter
+    def no_automate_dns_zone(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_automate_dns_zone", value)
+
+    @property
     @pulumi.getter(name="portRange")
     def port_range(self) -> Optional[pulumi.Input[str]]:
         """
@@ -706,6 +722,7 @@ class _ForwardingRuleState:
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_tier: Optional[pulumi.Input[str]] = None,
+                 no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -835,6 +852,7 @@ class _ForwardingRuleState:
                If `IPAddress` is specified, this value must be equal to the
                networkTier of the Address.
                Possible values are: `PREMIUM`, `STANDARD`.
+        :param pulumi.Input[bool] no_automate_dns_zone: This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
         :param pulumi.Input[str] port_range: This field can only be used:
                * If `IPProtocol` is one of TCP, UDP, or SCTP.
                * By backend service-based network load balancers, target pool-based
@@ -942,6 +960,8 @@ class _ForwardingRuleState:
             pulumi.set(__self__, "network", network)
         if network_tier is not None:
             pulumi.set(__self__, "network_tier", network_tier)
+        if no_automate_dns_zone is not None:
+            pulumi.set(__self__, "no_automate_dns_zone", no_automate_dns_zone)
         if port_range is not None:
             pulumi.set(__self__, "port_range", port_range)
         if ports is not None:
@@ -1260,6 +1280,18 @@ class _ForwardingRuleState:
         pulumi.set(self, "network_tier", value)
 
     @property
+    @pulumi.getter(name="noAutomateDnsZone")
+    def no_automate_dns_zone(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+        """
+        return pulumi.get(self, "no_automate_dns_zone")
+
+    @no_automate_dns_zone.setter
+    def no_automate_dns_zone(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_automate_dns_zone", value)
+
+    @property
     @pulumi.getter(name="portRange")
     def port_range(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1495,6 +1527,7 @@ class ForwardingRule(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_tier: Optional[pulumi.Input[str]] = None,
+                 no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -1687,6 +1720,7 @@ class ForwardingRule(pulumi.CustomResource):
                If `IPAddress` is specified, this value must be equal to the
                networkTier of the Address.
                Possible values are: `PREMIUM`, `STANDARD`.
+        :param pulumi.Input[bool] no_automate_dns_zone: This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
         :param pulumi.Input[str] port_range: This field can only be used:
                * If `IPProtocol` is one of TCP, UDP, or SCTP.
                * By backend service-based network load balancers, target pool-based
@@ -1861,6 +1895,7 @@ class ForwardingRule(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  network_tier: Optional[pulumi.Input[str]] = None,
+                 no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -1892,6 +1927,7 @@ class ForwardingRule(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
             __props__.__dict__["network_tier"] = network_tier
+            __props__.__dict__["no_automate_dns_zone"] = no_automate_dns_zone
             __props__.__dict__["port_range"] = port_range
             __props__.__dict__["ports"] = ports
             __props__.__dict__["project"] = project
@@ -1934,6 +1970,7 @@ class ForwardingRule(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             network_tier: Optional[pulumi.Input[str]] = None,
+            no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
             port_range: Optional[pulumi.Input[str]] = None,
             ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -2068,6 +2105,7 @@ class ForwardingRule(pulumi.CustomResource):
                If `IPAddress` is specified, this value must be equal to the
                networkTier of the Address.
                Possible values are: `PREMIUM`, `STANDARD`.
+        :param pulumi.Input[bool] no_automate_dns_zone: This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
         :param pulumi.Input[str] port_range: This field can only be used:
                * If `IPProtocol` is one of TCP, UDP, or SCTP.
                * By backend service-based network load balancers, target pool-based
@@ -2163,6 +2201,7 @@ class ForwardingRule(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
         __props__.__dict__["network_tier"] = network_tier
+        __props__.__dict__["no_automate_dns_zone"] = no_automate_dns_zone
         __props__.__dict__["port_range"] = port_range
         __props__.__dict__["ports"] = ports
         __props__.__dict__["project"] = project
@@ -2403,6 +2442,14 @@ class ForwardingRule(pulumi.CustomResource):
         Possible values are: `PREMIUM`, `STANDARD`.
         """
         return pulumi.get(self, "network_tier")
+
+    @property
+    @pulumi.getter(name="noAutomateDnsZone")
+    def no_automate_dns_zone(self) -> pulumi.Output[Optional[bool]]:
+        """
+        This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
+        """
+        return pulumi.get(self, "no_automate_dns_zone")
 
     @property
     @pulumi.getter(name="portRange")

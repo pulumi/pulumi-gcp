@@ -101,7 +101,19 @@ def get_connection_iam_policy(location: Optional[str] = None,
                               project: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetConnectionIamPolicyResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves the current IAM policy data for connection
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.cloudbuildv2.get_connection_iam_policy(project=google_cloudbuildv2_connection["my-connection"]["project"],
+        location=google_cloudbuildv2_connection["my-connection"]["location"],
+        name=google_cloudbuildv2_connection["my-connection"]["name"])
+    ```
+
 
     :param str name: Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.
@@ -115,12 +127,12 @@ def get_connection_iam_policy(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:cloudbuildv2/getConnectionIamPolicy:getConnectionIamPolicy', __args__, opts=opts, typ=GetConnectionIamPolicyResult).value
 
     return AwaitableGetConnectionIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        location=__ret__.location,
-        name=__ret__.name,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        name=pulumi.get(__ret__, 'name'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_connection_iam_policy)
@@ -129,7 +141,19 @@ def get_connection_iam_policy_output(location: Optional[pulumi.Input[Optional[st
                                      project: Optional[pulumi.Input[Optional[str]]] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionIamPolicyResult]:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves the current IAM policy data for connection
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.cloudbuildv2.get_connection_iam_policy(project=google_cloudbuildv2_connection["my-connection"]["project"],
+        location=google_cloudbuildv2_connection["my-connection"]["location"],
+        name=google_cloudbuildv2_connection["my-connection"]["name"])
+    ```
+
 
     :param str name: Used to find the parent resource to bind the IAM policy to
     :param str project: The ID of the project in which the resource belongs.

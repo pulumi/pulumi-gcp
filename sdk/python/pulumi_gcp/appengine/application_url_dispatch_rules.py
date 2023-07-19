@@ -141,7 +141,7 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
             env_variables={
                 "port": "8080",
             },
-            noop_on_destroy=True)
+            delete_service_on_destroy=True)
         web_service = gcp.appengine.ApplicationUrlDispatchRules("webService", dispatch_rules=[
             gcp.appengine.ApplicationUrlDispatchRulesDispatchRuleArgs(
                 domain="*",
@@ -210,7 +210,7 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
             env_variables={
                 "port": "8080",
             },
-            noop_on_destroy=True)
+            delete_service_on_destroy=True)
         web_service = gcp.appengine.ApplicationUrlDispatchRules("webService", dispatch_rules=[
             gcp.appengine.ApplicationUrlDispatchRulesDispatchRuleArgs(
                 domain="*",

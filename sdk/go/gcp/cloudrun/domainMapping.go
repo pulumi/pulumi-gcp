@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -128,6 +129,7 @@ func NewDomainMapping(ctx *pulumi.Context,
 	if args.Spec == nil {
 		return nil, errors.New("invalid value for required argument 'Spec'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DomainMapping
 	err := ctx.RegisterResource("gcp:cloudrun/domainMapping:DomainMapping", name, args, &resource, opts...)
 	if err != nil {

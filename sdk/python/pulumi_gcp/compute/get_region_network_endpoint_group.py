@@ -213,20 +213,20 @@ def get_region_network_endpoint_group(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getRegionNetworkEndpointGroup:getRegionNetworkEndpointGroup', __args__, opts=opts, typ=GetRegionNetworkEndpointGroupResult).value
 
     return AwaitableGetRegionNetworkEndpointGroupResult(
-        app_engines=__ret__.app_engines,
-        cloud_functions=__ret__.cloud_functions,
-        cloud_runs=__ret__.cloud_runs,
-        description=__ret__.description,
-        id=__ret__.id,
-        name=__ret__.name,
-        network=__ret__.network,
-        network_endpoint_type=__ret__.network_endpoint_type,
-        project=__ret__.project,
-        psc_target_service=__ret__.psc_target_service,
-        region=__ret__.region,
-        self_link=__ret__.self_link,
-        serverless_deployments=__ret__.serverless_deployments,
-        subnetwork=__ret__.subnetwork)
+        app_engines=pulumi.get(__ret__, 'app_engines'),
+        cloud_functions=pulumi.get(__ret__, 'cloud_functions'),
+        cloud_runs=pulumi.get(__ret__, 'cloud_runs'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        network_endpoint_type=pulumi.get(__ret__, 'network_endpoint_type'),
+        project=pulumi.get(__ret__, 'project'),
+        psc_target_service=pulumi.get(__ret__, 'psc_target_service'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        serverless_deployments=pulumi.get(__ret__, 'serverless_deployments'),
+        subnetwork=pulumi.get(__ret__, 'subnetwork'))
 
 
 @_utilities.lift_output_func(get_region_network_endpoint_group)

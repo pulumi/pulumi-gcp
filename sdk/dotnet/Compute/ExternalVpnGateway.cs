@@ -170,6 +170,13 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.ExternalVpnGatewayInterface>> Interfaces { get; private set; } = null!;
 
         /// <summary>
+        /// The fingerprint used for optimistic locking of this resource.  Used
+        /// internally during updates.
+        /// </summary>
+        [Output("labelFingerprint")]
+        public Output<string> LabelFingerprint { get; private set; } = null!;
+
+        /// <summary>
         /// Labels for the external VPN gateway resource.
         /// </summary>
         [Output("labels")]
@@ -342,6 +349,13 @@ namespace Pulumi.Gcp.Compute
             get => _interfaces ?? (_interfaces = new InputList<Inputs.ExternalVpnGatewayInterfaceGetArgs>());
             set => _interfaces = value;
         }
+
+        /// <summary>
+        /// The fingerprint used for optimistic locking of this resource.  Used
+        /// internally during updates.
+        /// </summary>
+        [Input("labelFingerprint")]
+        public Input<string>? LabelFingerprint { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

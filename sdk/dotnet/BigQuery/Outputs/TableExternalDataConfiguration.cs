@@ -68,6 +68,14 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly int? MaxBadRecords;
         /// <summary>
+        /// Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
+        /// </summary>
+        public readonly string? MetadataCacheMode;
+        /// <summary>
+        /// Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
+        /// </summary>
+        public readonly string? ObjectMetadata;
+        /// <summary>
         /// When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
         /// </summary>
         public readonly string? ReferenceFileSchemaUri;
@@ -91,7 +99,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// in Bigquery's public API documentation for supported formats. To use "GOOGLE_SHEETS"
         /// the `scopes` must include "https://www.googleapis.com/auth/drive.readonly".
         /// </summary>
-        public readonly string SourceFormat;
+        public readonly string? SourceFormat;
         /// <summary>
         /// A list of the fully-qualified URIs that point to
         /// your data in Google Cloud.
@@ -118,11 +126,15 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
             int? maxBadRecords,
 
+            string? metadataCacheMode,
+
+            string? objectMetadata,
+
             string? referenceFileSchemaUri,
 
             string? schema,
 
-            string sourceFormat,
+            string? sourceFormat,
 
             ImmutableArray<string> sourceUris)
         {
@@ -135,6 +147,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
             HivePartitioningOptions = hivePartitioningOptions;
             IgnoreUnknownValues = ignoreUnknownValues;
             MaxBadRecords = maxBadRecords;
+            MetadataCacheMode = metadataCacheMode;
+            ObjectMetadata = objectMetadata;
             ReferenceFileSchemaUri = referenceFileSchemaUri;
             Schema = schema;
             SourceFormat = sourceFormat;

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -288,6 +289,7 @@ func NewUptimeCheckConfig(ctx *pulumi.Context,
 	if args.Timeout == nil {
 		return nil, errors.New("invalid value for required argument 'Timeout'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource UptimeCheckConfig
 	err := ctx.RegisterResource("gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig", name, args, &resource, opts...)
 	if err != nil {

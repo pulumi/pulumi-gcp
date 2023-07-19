@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -190,6 +191,7 @@ func NewPolicyTagIamPolicy(ctx *pulumi.Context,
 	if args.PolicyTag == nil {
 		return nil, errors.New("invalid value for required argument 'PolicyTag'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PolicyTagIamPolicy
 	err := ctx.RegisterResource("gcp:datacatalog/policyTagIamPolicy:PolicyTagIamPolicy", name, args, &resource, opts...)
 	if err != nil {

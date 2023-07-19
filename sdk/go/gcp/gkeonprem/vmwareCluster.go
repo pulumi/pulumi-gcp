@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -437,6 +438,7 @@ func NewVMwareCluster(ctx *pulumi.Context,
 	if args.OnPremVersion == nil {
 		return nil, errors.New("invalid value for required argument 'OnPremVersion'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource VMwareCluster
 	err := ctx.RegisterResource("gcp:gkeonprem/vMwareCluster:VMwareCluster", name, args, &resource, opts...)
 	if err != nil {

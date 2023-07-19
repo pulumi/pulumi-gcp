@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func GetKeyRingIamPolicy(ctx *pulumi.Context, args *GetKeyRingIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetKeyRingIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKeyRingIamPolicyResult
 	err := ctx.Invoke("gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy", args, &rv, opts...)
 	if err != nil {

@@ -334,6 +334,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The configuration of a trigger that creates a build whenever an event from Repo API is received.
+     * Structure is documented below.
      * 
      */
     @Import(name="repositoryEventConfig")
@@ -341,6 +342,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The configuration of a trigger that creates a build whenever an event from Repo API is received.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<TriggerRepositoryEventConfigArgs>> repositoryEventConfig() {
@@ -953,6 +955,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param repositoryEventConfig The configuration of a trigger that creates a build whenever an event from Repo API is received.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -964,6 +967,7 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param repositoryEventConfig The configuration of a trigger that creates a build whenever an event from Repo API is received.
+         * Structure is documented below.
          * 
          * @return builder
          * 

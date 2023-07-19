@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -190,6 +191,7 @@ func NewTagKeyIamPolicy(ctx *pulumi.Context,
 	if args.TagKey == nil {
 		return nil, errors.New("invalid value for required argument 'TagKey'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TagKeyIamPolicy
 	err := ctx.RegisterResource("gcp:tags/tagKeyIamPolicy:TagKeyIamPolicy", name, args, &resource, opts...)
 	if err != nil {

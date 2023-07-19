@@ -306,6 +306,7 @@ __all__ = [
     'RegionPerInstanceConfigPreservedStateExternalIpIpAddress',
     'RegionPerInstanceConfigPreservedStateInternalIp',
     'RegionPerInstanceConfigPreservedStateInternalIpIpAddress',
+    'RegionSecurityPolicyDdosProtectionConfig',
     'RegionUrlMapDefaultRouteAction',
     'RegionUrlMapDefaultRouteActionCorsPolicy',
     'RegionUrlMapDefaultRouteActionFaultInjectionPolicy',
@@ -21060,6 +21061,49 @@ class RegionPerInstanceConfigPreservedStateInternalIpIpAddress(dict):
         The URL of the reservation for this IP address.
         """
         return pulumi.get(self, "address")
+
+
+@pulumi.output_type
+class RegionSecurityPolicyDdosProtectionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ddosProtection":
+            suggest = "ddos_protection"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegionSecurityPolicyDdosProtectionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegionSecurityPolicyDdosProtectionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegionSecurityPolicyDdosProtectionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ddos_protection: str):
+        """
+        :param str ddos_protection: Google Cloud Armor offers the following options to help protect systems against DDoS attacks:
+               - STANDARD: basic always-on protection for network load balancers, protocol forwarding, or VMs with public IP addresses.
+               - ADVANCED: additional protections for Managed Protection Plus subscribers who use network load balancers, protocol forwarding, or VMs with public IP addresses.
+               - ADVANCED_PREVIEW: flag to enable the security policy in preview mode.
+               Possible values are: `ADVANCED`, `ADVANCED_PREVIEW`, `STANDARD`.
+        """
+        pulumi.set(__self__, "ddos_protection", ddos_protection)
+
+    @property
+    @pulumi.getter(name="ddosProtection")
+    def ddos_protection(self) -> str:
+        """
+        Google Cloud Armor offers the following options to help protect systems against DDoS attacks:
+        - STANDARD: basic always-on protection for network load balancers, protocol forwarding, or VMs with public IP addresses.
+        - ADVANCED: additional protections for Managed Protection Plus subscribers who use network load balancers, protocol forwarding, or VMs with public IP addresses.
+        - ADVANCED_PREVIEW: flag to enable the security policy in preview mode.
+        Possible values are: `ADVANCED`, `ADVANCED_PREVIEW`, `STANDARD`.
+        """
+        return pulumi.get(self, "ddos_protection")
 
 
 @pulumi.output_type

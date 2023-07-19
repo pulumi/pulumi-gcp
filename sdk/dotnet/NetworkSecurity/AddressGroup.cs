@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkSecurity
 {
     /// <summary>
+    /// AddressGroup is a resource that specifies how a collection of IP/DNS used in Firewall Policy.
+    /// 
+    /// To get more information about AddressGroup, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-security/rest/v1beta1/organizations.locations.addressGroups)
+    /// * How-to Guides
+    ///     * [Use AddressGroups](https://cloud.google.com/vpc/docs/use-address-groups-firewall-policies)
+    /// 
     /// ## Example Usage
     /// ### Network Security Address Groups Basic
     /// 
@@ -23,17 +31,14 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// {
     ///     var @default = new Gcp.NetworkSecurity.AddressGroup("default", new()
     ///     {
-    ///         Parent = "projects/my-project-name",
-    ///         Location = "us-central1",
-    ///         Type = "IPV4",
     ///         Capacity = 100,
     ///         Items = new[]
     ///         {
     ///             "208.80.154.224/32",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Location = "us-central1",
+    ///         Parent = "projects/my-project-name",
+    ///         Type = "IPV4",
     ///     });
     /// 
     /// });
@@ -50,17 +55,14 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// {
     ///     var @default = new Gcp.NetworkSecurity.AddressGroup("default", new()
     ///     {
-    ///         Parent = "organizations/123456789",
-    ///         Location = "us-central1",
-    ///         Type = "IPV4",
     ///         Capacity = 100,
     ///         Items = new[]
     ///         {
     ///             "208.80.154.224/32",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Location = "us-central1",
+    ///         Parent = "organizations/123456789",
+    ///         Type = "IPV4",
     ///     });
     /// 
     /// });
@@ -77,18 +79,15 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// {
     ///     var @default = new Gcp.NetworkSecurity.AddressGroup("default", new()
     ///     {
-    ///         Parent = "projects/my-project-name",
-    ///         Location = "us-central1",
-    ///         Description = "my description",
-    ///         Type = "IPV4",
     ///         Capacity = 100,
+    ///         Description = "my description",
     ///         Items = new[]
     ///         {
     ///             "208.80.154.224/32",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
+    ///         Location = "us-central1",
+    ///         Parent = "projects/my-project-name",
+    ///         Type = "IPV4",
     ///     });
     /// 
     /// });

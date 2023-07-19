@@ -8,10 +8,67 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // ## Example Usage
+// ### Vmware Engine Network Legacy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/vmwareengine"
+//	"github.com/pulumi/pulumi-time/sdk/v1/go/time"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			acceptanceProject, err := organizations.NewProject(ctx, "acceptanceProject", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("vmw-proj"),
+//				OrgId:          pulumi.String("123456789"),
+//				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			wait60Seconds, err := index.NewTime_sleep(ctx, "wait60Seconds", &index.Time_sleepArgs{
+//				CreateDuration: "60s",
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				acceptanceProject,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			acceptanceService, err := projects.NewService(ctx, "acceptanceService", &projects.ServiceArgs{
+//				Project: acceptanceProject.ProjectId,
+//				Service: pulumi.String("vmwareengine.googleapis.com"),
+//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+//				wait60Seconds,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vmwareengine.NewNetwork(ctx, "vmw-engine-network", &vmwareengine.NetworkArgs{
+//				Project:     acceptanceService.Project,
+//				Location:    pulumi.String("us-west1"),
+//				Type:        pulumi.String("LEGACY"),
+//				Description: pulumi.String("VMwareEngine legacy network sample"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -74,6 +131,7 @@ func NewNetwork(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Network
 	err := ctx.RegisterResource("gcp:vmwareengine/network:Network", name, args, &resource, opts...)
 	if err != nil {

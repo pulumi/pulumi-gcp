@@ -187,17 +187,17 @@ def get_ssl_policy(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getSSLPolicy:getSSLPolicy', __args__, opts=opts, typ=GetSSLPolicyResult).value
 
     return AwaitableGetSSLPolicyResult(
-        creation_timestamp=__ret__.creation_timestamp,
-        custom_features=__ret__.custom_features,
-        description=__ret__.description,
-        enabled_features=__ret__.enabled_features,
-        fingerprint=__ret__.fingerprint,
-        id=__ret__.id,
-        min_tls_version=__ret__.min_tls_version,
-        name=__ret__.name,
-        profile=__ret__.profile,
-        project=__ret__.project,
-        self_link=__ret__.self_link)
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        custom_features=pulumi.get(__ret__, 'custom_features'),
+        description=pulumi.get(__ret__, 'description'),
+        enabled_features=pulumi.get(__ret__, 'enabled_features'),
+        fingerprint=pulumi.get(__ret__, 'fingerprint'),
+        id=pulumi.get(__ret__, 'id'),
+        min_tls_version=pulumi.get(__ret__, 'min_tls_version'),
+        name=pulumi.get(__ret__, 'name'),
+        profile=pulumi.get(__ret__, 'profile'),
+        project=pulumi.get(__ret__, 'project'),
+        self_link=pulumi.get(__ret__, 'self_link'))
 
 
 @_utilities.lift_output_func(get_ssl_policy)

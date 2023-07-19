@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -82,6 +83,7 @@ func NewSubAccount(ctx *pulumi.Context,
 	if args.MasterBillingAccount == nil {
 		return nil, errors.New("invalid value for required argument 'MasterBillingAccount'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SubAccount
 	err := ctx.RegisterResource("gcp:billing/subAccount:SubAccount", name, args, &resource, opts...)
 	if err != nil {

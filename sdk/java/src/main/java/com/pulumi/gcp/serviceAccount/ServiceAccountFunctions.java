@@ -187,6 +187,92 @@ public final class ServiceAccountFunctions {
      * For more information see
      * [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
      * 
+     * ## Example Usage
+     * 
+     * To allow `service_A` to impersonate `service_B`, grant the [Service Account Token Creator](https://cloud.google.com/iam/docs/service-accounts#the_service_account_token_creator_role) on B to A.
+     * 
+     * In the IAM policy below, `service_A` is given the Token Creator role impersonate `service_B`
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceAccount.IAMBinding;
+     * import com.pulumi.gcp.serviceAccount.IAMBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var token_creator_iam = new IAMBinding(&#34;token-creator-iam&#34;, IAMBindingArgs.builder()        
+     *             .members(&#34;serviceAccount:service_A@projectA.iam.gserviceaccount.com&#34;)
+     *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
+     *             .serviceAccountId(&#34;projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * Once the IAM permissions are set, you can apply the new token to a provider bootstrapped with it.  Any resources that references the aliased provider will run as the new identity.
+     * 
+     * In the example below, `gcp.organizations.Project` will run as `service_B`.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.serviceAccount.ServiceAccountFunctions;
+     * import com.pulumi.gcp.serviceAccount.inputs.GetAccountAccessTokenArgs;
+     * import com.pulumi.pulumi.providers.google;
+     * import com.pulumi.pulumi.providers.ProviderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultClientConfig = OrganizationsFunctions.getClientConfig();
+     * 
+     *         final var defaultAccountAccessToken = ServiceAccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
+     *             .targetServiceAccount(&#34;service_B@projectB.iam.gserviceaccount.com&#34;)
+     *             .scopes(            
+     *                 &#34;userinfo-email&#34;,
+     *                 &#34;cloud-platform&#34;)
+     *             .lifetime(&#34;300s&#34;)
+     *             .build());
+     * 
+     *         var impersonated = new Provider(&#34;impersonated&#34;, ProviderArgs.builder()        
+     *             .accessToken(defaultAccountAccessToken.applyValue(getAccountAccessTokenResult -&gt; getAccountAccessTokenResult.accessToken()))
+     *             .build());
+     * 
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         ctx.export(&#34;target-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *     }
+     * }
+     * ```
+     * 
+     * &gt; *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
+     * 
      */
     public static Output<GetAccountAccessTokenResult> getAccountAccessToken(GetAccountAccessTokenArgs args) {
         return getAccountAccessToken(args, InvokeOptions.Empty);
@@ -196,6 +282,92 @@ public final class ServiceAccountFunctions {
      * 
      * For more information see
      * [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
+     * 
+     * ## Example Usage
+     * 
+     * To allow `service_A` to impersonate `service_B`, grant the [Service Account Token Creator](https://cloud.google.com/iam/docs/service-accounts#the_service_account_token_creator_role) on B to A.
+     * 
+     * In the IAM policy below, `service_A` is given the Token Creator role impersonate `service_B`
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceAccount.IAMBinding;
+     * import com.pulumi.gcp.serviceAccount.IAMBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var token_creator_iam = new IAMBinding(&#34;token-creator-iam&#34;, IAMBindingArgs.builder()        
+     *             .members(&#34;serviceAccount:service_A@projectA.iam.gserviceaccount.com&#34;)
+     *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
+     *             .serviceAccountId(&#34;projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * Once the IAM permissions are set, you can apply the new token to a provider bootstrapped with it.  Any resources that references the aliased provider will run as the new identity.
+     * 
+     * In the example below, `gcp.organizations.Project` will run as `service_B`.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.serviceAccount.ServiceAccountFunctions;
+     * import com.pulumi.gcp.serviceAccount.inputs.GetAccountAccessTokenArgs;
+     * import com.pulumi.pulumi.providers.google;
+     * import com.pulumi.pulumi.providers.ProviderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultClientConfig = OrganizationsFunctions.getClientConfig();
+     * 
+     *         final var defaultAccountAccessToken = ServiceAccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
+     *             .targetServiceAccount(&#34;service_B@projectB.iam.gserviceaccount.com&#34;)
+     *             .scopes(            
+     *                 &#34;userinfo-email&#34;,
+     *                 &#34;cloud-platform&#34;)
+     *             .lifetime(&#34;300s&#34;)
+     *             .build());
+     * 
+     *         var impersonated = new Provider(&#34;impersonated&#34;, ProviderArgs.builder()        
+     *             .accessToken(defaultAccountAccessToken.applyValue(getAccountAccessTokenResult -&gt; getAccountAccessTokenResult.accessToken()))
+     *             .build());
+     * 
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         ctx.export(&#34;target-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *     }
+     * }
+     * ```
+     * 
+     * &gt; *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
      * 
      */
     public static CompletableFuture<GetAccountAccessTokenResult> getAccountAccessTokenPlain(GetAccountAccessTokenPlainArgs args) {
@@ -207,6 +379,92 @@ public final class ServiceAccountFunctions {
      * For more information see
      * [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
      * 
+     * ## Example Usage
+     * 
+     * To allow `service_A` to impersonate `service_B`, grant the [Service Account Token Creator](https://cloud.google.com/iam/docs/service-accounts#the_service_account_token_creator_role) on B to A.
+     * 
+     * In the IAM policy below, `service_A` is given the Token Creator role impersonate `service_B`
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceAccount.IAMBinding;
+     * import com.pulumi.gcp.serviceAccount.IAMBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var token_creator_iam = new IAMBinding(&#34;token-creator-iam&#34;, IAMBindingArgs.builder()        
+     *             .members(&#34;serviceAccount:service_A@projectA.iam.gserviceaccount.com&#34;)
+     *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
+     *             .serviceAccountId(&#34;projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * Once the IAM permissions are set, you can apply the new token to a provider bootstrapped with it.  Any resources that references the aliased provider will run as the new identity.
+     * 
+     * In the example below, `gcp.organizations.Project` will run as `service_B`.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.serviceAccount.ServiceAccountFunctions;
+     * import com.pulumi.gcp.serviceAccount.inputs.GetAccountAccessTokenArgs;
+     * import com.pulumi.pulumi.providers.google;
+     * import com.pulumi.pulumi.providers.ProviderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultClientConfig = OrganizationsFunctions.getClientConfig();
+     * 
+     *         final var defaultAccountAccessToken = ServiceAccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
+     *             .targetServiceAccount(&#34;service_B@projectB.iam.gserviceaccount.com&#34;)
+     *             .scopes(            
+     *                 &#34;userinfo-email&#34;,
+     *                 &#34;cloud-platform&#34;)
+     *             .lifetime(&#34;300s&#34;)
+     *             .build());
+     * 
+     *         var impersonated = new Provider(&#34;impersonated&#34;, ProviderArgs.builder()        
+     *             .accessToken(defaultAccountAccessToken.applyValue(getAccountAccessTokenResult -&gt; getAccountAccessTokenResult.accessToken()))
+     *             .build());
+     * 
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         ctx.export(&#34;target-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *     }
+     * }
+     * ```
+     * 
+     * &gt; *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
+     * 
      */
     public static Output<GetAccountAccessTokenResult> getAccountAccessToken(GetAccountAccessTokenArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:serviceAccount/getAccountAccessToken:getAccountAccessToken", TypeShape.of(GetAccountAccessTokenResult.class), args, Utilities.withVersion(options));
@@ -216,6 +474,92 @@ public final class ServiceAccountFunctions {
      * 
      * For more information see
      * [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
+     * 
+     * ## Example Usage
+     * 
+     * To allow `service_A` to impersonate `service_B`, grant the [Service Account Token Creator](https://cloud.google.com/iam/docs/service-accounts#the_service_account_token_creator_role) on B to A.
+     * 
+     * In the IAM policy below, `service_A` is given the Token Creator role impersonate `service_B`
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceAccount.IAMBinding;
+     * import com.pulumi.gcp.serviceAccount.IAMBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var token_creator_iam = new IAMBinding(&#34;token-creator-iam&#34;, IAMBindingArgs.builder()        
+     *             .members(&#34;serviceAccount:service_A@projectA.iam.gserviceaccount.com&#34;)
+     *             .role(&#34;roles/iam.serviceAccountTokenCreator&#34;)
+     *             .serviceAccountId(&#34;projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * Once the IAM permissions are set, you can apply the new token to a provider bootstrapped with it.  Any resources that references the aliased provider will run as the new identity.
+     * 
+     * In the example below, `gcp.organizations.Project` will run as `service_B`.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.serviceAccount.ServiceAccountFunctions;
+     * import com.pulumi.gcp.serviceAccount.inputs.GetAccountAccessTokenArgs;
+     * import com.pulumi.pulumi.providers.google;
+     * import com.pulumi.pulumi.providers.ProviderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var defaultClientConfig = OrganizationsFunctions.getClientConfig();
+     * 
+     *         final var defaultAccountAccessToken = ServiceAccountFunctions.getAccountAccessToken(GetAccountAccessTokenArgs.builder()
+     *             .targetServiceAccount(&#34;service_B@projectB.iam.gserviceaccount.com&#34;)
+     *             .scopes(            
+     *                 &#34;userinfo-email&#34;,
+     *                 &#34;cloud-platform&#34;)
+     *             .lifetime(&#34;300s&#34;)
+     *             .build());
+     * 
+     *         var impersonated = new Provider(&#34;impersonated&#34;, ProviderArgs.builder()        
+     *             .accessToken(defaultAccountAccessToken.applyValue(getAccountAccessTokenResult -&gt; getAccountAccessTokenResult.accessToken()))
+     *             .build());
+     * 
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         ctx.export(&#34;target-email&#34;, me.applyValue(getClientOpenIdUserInfoResult -&gt; getClientOpenIdUserInfoResult.email()));
+     *     }
+     * }
+     * ```
+     * 
+     * &gt; *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
      * 
      */
     public static CompletableFuture<GetAccountAccessTokenResult> getAccountAccessTokenPlain(GetAccountAccessTokenPlainArgs args, InvokeOptions options) {

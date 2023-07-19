@@ -33,10 +33,10 @@ namespace Pulumi.Gcp.Filestore
     ///     var instance = new Gcp.Filestore.Instance("instance", new()
     ///     {
     ///         Location = "us-central1-b",
-    ///         Tier = "BASIC_SSD",
+    ///         Tier = "BASIC_HDD",
     ///         FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
     ///         {
-    ///             CapacityGb = 2560,
+    ///             CapacityGb = 1024,
     ///             Name = "share1",
     ///         },
     ///         Networks = new[]
@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.Filestore
     ///     var backup = new Gcp.Filestore.Backup("backup", new()
     ///     {
     ///         Location = "us-central1",
+    ///         Description = "This is a filestore backup for the test instance",
     ///         SourceInstance = instance.Id,
     ///         SourceFileShare = "share1",
-    ///         Description = "This is a filestore backup for the test instance",
     ///         Labels = 
     ///         {
     ///             { "files", "label1" },

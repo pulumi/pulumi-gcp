@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -114,6 +115,7 @@ func NewDataStoreIndex(ctx *pulumi.Context,
 	if args.Kind == nil {
 		return nil, errors.New("invalid value for required argument 'Kind'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DataStoreIndex
 	err := ctx.RegisterResource("gcp:datastore/dataStoreIndex:DataStoreIndex", name, args, &resource, opts...)
 	if err != nil {

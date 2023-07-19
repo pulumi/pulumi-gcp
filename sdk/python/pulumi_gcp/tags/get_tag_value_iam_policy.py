@@ -89,7 +89,7 @@ def get_tag_value_iam_policy(tag_value: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.tags.get_tag_value_iam_policy(tag_value=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.tags.get_tag_value_iam_policy(tag_value=google_tags_tag_value["value"]["name"])
     ```
 
 
@@ -101,10 +101,10 @@ def get_tag_value_iam_policy(tag_value: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:tags/getTagValueIamPolicy:getTagValueIamPolicy', __args__, opts=opts, typ=GetTagValueIamPolicyResult).value
 
     return AwaitableGetTagValueIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        tag_value=__ret__.tag_value)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        tag_value=pulumi.get(__ret__, 'tag_value'))
 
 
 @_utilities.lift_output_func(get_tag_value_iam_policy)
@@ -119,7 +119,7 @@ def get_tag_value_iam_policy_output(tag_value: Optional[pulumi.Input[str]] = Non
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.tags.get_tag_value_iam_policy(tag_value=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.tags.get_tag_value_iam_policy(tag_value=google_tags_tag_value["value"]["name"])
     ```
 
 

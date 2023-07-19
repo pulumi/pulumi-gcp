@@ -14,19 +14,23 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceRepository
     {
         /// <summary>
-        /// An Apt Repository.
+        /// An Apt Repository. Structure is
+        /// documented below.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt? Apt;
         /// <summary>
-        /// A Goo Repository.
+        /// A Goo Repository. Structure is
+        /// documented below.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo? Goo;
         /// <summary>
-        /// A Yum Repository.
+        /// A Yum Repository. Structure is
+        /// documented below.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum? Yum;
         /// <summary>
-        /// A Zypper Repository.
+        /// A Zypper Repository. Structure is
+        /// documented below.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper? Zypper;
 

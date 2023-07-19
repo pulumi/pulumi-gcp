@@ -40,7 +40,7 @@ import * as utilities from "../utilities";
  *     envVariables: {
  *         port: "8080",
  *     },
- *     noopOnDestroy: true,
+ *     deleteServiceOnDestroy: true,
  * });
  * const webService = new gcp.appengine.ApplicationUrlDispatchRules("webService", {dispatchRules: [
  *     {

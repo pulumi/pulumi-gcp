@@ -4,6 +4,22 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Retrieves the current IAM policy data for connection
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.cloudbuildv2.getConnectionIamPolicy({
+ *     project: google_cloudbuildv2_connection["my-connection"].project,
+ *     location: google_cloudbuildv2_connection["my-connection"].location,
+ *     name: google_cloudbuildv2_connection["my-connection"].name,
+ * });
+ * ```
+ */
 export function getConnectionIamPolicy(args: GetConnectionIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionIamPolicyResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -51,6 +67,22 @@ export interface GetConnectionIamPolicyResult {
     readonly policyData: string;
     readonly project: string;
 }
+/**
+ * Retrieves the current IAM policy data for connection
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.cloudbuildv2.getConnectionIamPolicy({
+ *     project: google_cloudbuildv2_connection["my-connection"].project,
+ *     location: google_cloudbuildv2_connection["my-connection"].location,
+ *     name: google_cloudbuildv2_connection["my-connection"].name,
+ * });
+ * ```
+ */
 export function getConnectionIamPolicyOutput(args: GetConnectionIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionIamPolicyResult> {
     return pulumi.output(args).apply((a: any) => getConnectionIamPolicy(a, opts))
 }

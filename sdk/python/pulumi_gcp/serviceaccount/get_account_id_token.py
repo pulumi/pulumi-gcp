@@ -129,12 +129,12 @@ def get_account_id_token(delegates: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getAccountIdToken:getAccountIdToken', __args__, opts=opts, typ=GetAccountIdTokenResult).value
 
     return AwaitableGetAccountIdTokenResult(
-        delegates=__ret__.delegates,
-        id=__ret__.id,
-        id_token=__ret__.id_token,
-        include_email=__ret__.include_email,
-        target_audience=__ret__.target_audience,
-        target_service_account=__ret__.target_service_account)
+        delegates=pulumi.get(__ret__, 'delegates'),
+        id=pulumi.get(__ret__, 'id'),
+        id_token=pulumi.get(__ret__, 'id_token'),
+        include_email=pulumi.get(__ret__, 'include_email'),
+        target_audience=pulumi.get(__ret__, 'target_audience'),
+        target_service_account=pulumi.get(__ret__, 'target_service_account'))
 
 
 @_utilities.lift_output_func(get_account_id_token)

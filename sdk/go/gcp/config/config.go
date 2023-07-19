@@ -4,9 +4,12 @@
 package config
 
 import (
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
+
+var _ = internal.GetEnvOrDefault
 
 func GetAccessApprovalCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:accessApprovalCustomEndpoint")
@@ -218,6 +221,9 @@ func GetFirebaseCustomEndpoint(ctx *pulumi.Context) string {
 func GetFirebaseDatabaseCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:firebaseDatabaseCustomEndpoint")
 }
+func GetFirebaseExtensionsCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:firebaseExtensionsCustomEndpoint")
+}
 func GetFirebaseHostingCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:firebaseHostingCustomEndpoint")
 }
@@ -329,10 +335,13 @@ func GetProject(ctx *pulumi.Context) string {
 		return v
 	}
 	var value string
-	if d := getEnvOrDefault(nil, nil, "GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, nil, "GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT"); d != nil {
 		value = d.(string)
 	}
 	return value
+}
+func GetPublicCaCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:publicCaCustomEndpoint")
 }
 func GetPubsubCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:pubsubCustomEndpoint")
@@ -352,7 +361,7 @@ func GetRegion(ctx *pulumi.Context) string {
 		return v
 	}
 	var value string
-	if d := getEnvOrDefault(nil, nil, "GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, nil, "GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION"); d != nil {
 		value = d.(string)
 	}
 	return value
@@ -447,7 +456,7 @@ func GetZone(ctx *pulumi.Context) string {
 		return v
 	}
 	var value string
-	if d := getEnvOrDefault(nil, nil, "GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, nil, "GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE"); d != nil {
 		value = d.(string)
 	}
 	return value

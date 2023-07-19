@@ -144,13 +144,13 @@ def get_vpn_gateway(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getVPNGateway:getVPNGateway', __args__, opts=opts, typ=GetVPNGatewayResult).value
 
     return AwaitableGetVPNGatewayResult(
-        description=__ret__.description,
-        id=__ret__.id,
-        name=__ret__.name,
-        network=__ret__.network,
-        project=__ret__.project,
-        region=__ret__.region,
-        self_link=__ret__.self_link)
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'))
 
 
 @_utilities.lift_output_func(get_vpn_gateway)

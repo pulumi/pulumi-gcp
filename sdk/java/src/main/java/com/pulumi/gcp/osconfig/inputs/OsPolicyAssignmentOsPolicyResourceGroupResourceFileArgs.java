@@ -17,14 +17,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs exten
     public static final OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs Empty = new OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs();
 
     /**
-     * A a file with this content. The size of the content is limited to 1024 characters.
+     * A a file with this content. The size of the content
+     * is limited to 1024 characters.
      * 
      */
     @Import(name="content")
     private @Nullable Output<String> content;
 
     /**
-     * @return A a file with this content. The size of the content is limited to 1024 characters.
+     * @return A a file with this content. The size of the content
+     * is limited to 1024 characters.
      * 
      */
     public Optional<Output<String>> content() {
@@ -32,14 +34,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs exten
     }
 
     /**
-     * A remote or local source.
+     * A remote or local source. Structure is
+     * documented below.
      * 
      */
     @Import(name="file")
     private @Nullable Output<OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs> file;
 
     /**
-     * @return A remote or local source.
+     * @return A remote or local source. Structure is
+     * documented below.
      * 
      */
     public Optional<Output<OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileArgs>> file() {
@@ -47,14 +51,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs exten
     }
 
     /**
-     * Required. The absolute path of the file within the VM.
+     * The absolute path of the file within the VM.
      * 
      */
     @Import(name="path", required=true)
     private Output<String> path;
 
     /**
-     * @return Required. The absolute path of the file within the VM.
+     * @return The absolute path of the file within the VM.
      * 
      */
     public Output<String> path() {
@@ -62,14 +66,28 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs exten
     }
 
     /**
-     * Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+     * Consists of three octal digits which represent, in
+     * order, the permissions of the owner, group, and other users for the file
+     * (similarly to the numeric mode used in the linux chmod utility). Each digit
+     * represents a three bit number with the 4 bit corresponding to the read
+     * permissions, the 2 bit corresponds to the write bit, and the one bit
+     * corresponds to the execute permission. Default behavior is 755. Below are
+     * some examples of permissions and their associated values: read, write, and
+     * execute: 7 read and execute: 5 read and write: 6 read only: 4
      * 
      */
     @Import(name="permissions")
     private @Nullable Output<String> permissions;
 
     /**
-     * @return Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+     * @return Consists of three octal digits which represent, in
+     * order, the permissions of the owner, group, and other users for the file
+     * (similarly to the numeric mode used in the linux chmod utility). Each digit
+     * represents a three bit number with the 4 bit corresponding to the read
+     * permissions, the 2 bit corresponds to the write bit, and the one bit
+     * corresponds to the execute permission. Default behavior is 755. Below are
+     * some examples of permissions and their associated values: read, write, and
+     * execute: 7 read and execute: 5 read and write: 6 read only: 4
      * 
      */
     public Optional<Output<String>> permissions() {
@@ -77,14 +95,18 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs exten
     }
 
     /**
-     * Required. Desired state of the file. Possible values: OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED, COMPLIANT, NON_COMPLIANT, UNKNOWN, NO_OS_POLICIES_APPLICABLE
+     * Desired state of the file. Possible values are:
+     * `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`,
+     * `CONTENTS_MATCH`.
      * 
      */
     @Import(name="state", required=true)
     private Output<String> state;
 
     /**
-     * @return Required. Desired state of the file. Possible values: OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED, COMPLIANT, NON_COMPLIANT, UNKNOWN, NO_OS_POLICIES_APPLICABLE
+     * @return Desired state of the file. Possible values are:
+     * `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`,
+     * `CONTENTS_MATCH`.
      * 
      */
     public Output<String> state() {
@@ -120,7 +142,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs exten
         }
 
         /**
-         * @param content A a file with this content. The size of the content is limited to 1024 characters.
+         * @param content A a file with this content. The size of the content
+         * is limited to 1024 characters.
          * 
          * @return builder
          * 
@@ -131,7 +154,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs exten
         }
 
         /**
-         * @param content A a file with this content. The size of the content is limited to 1024 characters.
+         * @param content A a file with this content. The size of the content
+         * is limited to 1024 characters.
          * 
          * @return builder
          * 
@@ -141,7 +165,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs exten
         }
 
         /**
-         * @param file A remote or local source.
+         * @param file A remote or local source. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -152,7 +177,8 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs exten
         }
 
         /**
-         * @param file A remote or local source.
+         * @param file A remote or local source. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -162,7 +188,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs exten
         }
 
         /**
-         * @param path Required. The absolute path of the file within the VM.
+         * @param path The absolute path of the file within the VM.
          * 
          * @return builder
          * 
@@ -173,7 +199,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs exten
         }
 
         /**
-         * @param path Required. The absolute path of the file within the VM.
+         * @param path The absolute path of the file within the VM.
          * 
          * @return builder
          * 
@@ -183,7 +209,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs exten
         }
 
         /**
-         * @param permissions Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+         * @param permissions Consists of three octal digits which represent, in
+         * order, the permissions of the owner, group, and other users for the file
+         * (similarly to the numeric mode used in the linux chmod utility). Each digit
+         * represents a three bit number with the 4 bit corresponding to the read
+         * permissions, the 2 bit corresponds to the write bit, and the one bit
+         * corresponds to the execute permission. Default behavior is 755. Below are
+         * some examples of permissions and their associated values: read, write, and
+         * execute: 7 read and execute: 5 read and write: 6 read only: 4
          * 
          * @return builder
          * 
@@ -194,7 +227,14 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs exten
         }
 
         /**
-         * @param permissions Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+         * @param permissions Consists of three octal digits which represent, in
+         * order, the permissions of the owner, group, and other users for the file
+         * (similarly to the numeric mode used in the linux chmod utility). Each digit
+         * represents a three bit number with the 4 bit corresponding to the read
+         * permissions, the 2 bit corresponds to the write bit, and the one bit
+         * corresponds to the execute permission. Default behavior is 755. Below are
+         * some examples of permissions and their associated values: read, write, and
+         * execute: 7 read and execute: 5 read and write: 6 read only: 4
          * 
          * @return builder
          * 
@@ -204,7 +244,9 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs exten
         }
 
         /**
-         * @param state Required. Desired state of the file. Possible values: OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED, COMPLIANT, NON_COMPLIANT, UNKNOWN, NO_OS_POLICIES_APPLICABLE
+         * @param state Desired state of the file. Possible values are:
+         * `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`,
+         * `CONTENTS_MATCH`.
          * 
          * @return builder
          * 
@@ -215,7 +257,9 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFileArgs exten
         }
 
         /**
-         * @param state Required. Desired state of the file. Possible values: OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED, COMPLIANT, NON_COMPLIANT, UNKNOWN, NO_OS_POLICIES_APPLICABLE
+         * @param state Desired state of the file. Possible values are:
+         * `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`,
+         * `CONTENTS_MATCH`.
          * 
          * @return builder
          * 

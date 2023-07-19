@@ -6,9 +6,16 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolPlacementPolicy {
+    /**
+     * @return The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
+     * 
+     */
+    private @Nullable String tpuTopology;
     /**
      * @return The type of the policy. Supports a single value: COMPACT.
      * Specifying COMPACT placement policy type places node pool&#39;s nodes in a closer
@@ -18,6 +25,13 @@ public final class NodePoolPlacementPolicy {
     private String type;
 
     private NodePoolPlacementPolicy() {}
+    /**
+     * @return The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
+     * 
+     */
+    public Optional<String> tpuTopology() {
+        return Optional.ofNullable(this.tpuTopology);
+    }
     /**
      * @return The type of the policy. Supports a single value: COMPACT.
      * Specifying COMPACT placement policy type places node pool&#39;s nodes in a closer
@@ -37,13 +51,20 @@ public final class NodePoolPlacementPolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String tpuTopology;
         private String type;
         public Builder() {}
         public Builder(NodePoolPlacementPolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.tpuTopology = defaults.tpuTopology;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder tpuTopology(@Nullable String tpuTopology) {
+            this.tpuTopology = tpuTopology;
+            return this;
+        }
         @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
@@ -51,6 +72,7 @@ public final class NodePoolPlacementPolicy {
         }
         public NodePoolPlacementPolicy build() {
             final var o = new NodePoolPlacementPolicy();
+            o.tpuTopology = tpuTopology;
             o.type = type;
             return o;
         }

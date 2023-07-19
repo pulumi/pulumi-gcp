@@ -109,9 +109,9 @@ def get_service_iam_policy(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.cloudrun.get_service_iam_policy(location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        service=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.cloudrun.get_service_iam_policy(location=google_cloud_run_service["default"]["location"],
+        project=google_cloud_run_service["default"]["project"],
+        service=google_cloud_run_service["default"]["name"])
     ```
 
 
@@ -128,12 +128,12 @@ def get_service_iam_policy(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:cloudrun/getServiceIamPolicy:getServiceIamPolicy', __args__, opts=opts, typ=GetServiceIamPolicyResult).value
 
     return AwaitableGetServiceIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        location=__ret__.location,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project,
-        service=__ret__.service)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'),
+        service=pulumi.get(__ret__, 'service'))
 
 
 @_utilities.lift_output_func(get_service_iam_policy)
@@ -150,9 +150,9 @@ def get_service_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.cloudrun.get_service_iam_policy(location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        service=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.cloudrun.get_service_iam_policy(location=google_cloud_run_service["default"]["location"],
+        project=google_cloud_run_service["default"]["project"],
+        service=google_cloud_run_service["default"]["name"])
     ```
 
 

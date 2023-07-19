@@ -113,10 +113,10 @@ def get_default_service_account(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount', __args__, opts=opts, typ=GetDefaultServiceAccountResult).value
 
     return AwaitableGetDefaultServiceAccountResult(
-        email=__ret__.email,
-        id=__ret__.id,
-        member=__ret__.member,
-        project=__ret__.project)
+        email=pulumi.get(__ret__, 'email'),
+        id=pulumi.get(__ret__, 'id'),
+        member=pulumi.get(__ret__, 'member'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_default_service_account)

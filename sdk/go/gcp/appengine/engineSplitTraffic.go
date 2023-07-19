@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -68,6 +69,7 @@ func NewEngineSplitTraffic(ctx *pulumi.Context,
 	if args.Split == nil {
 		return nil, errors.New("invalid value for required argument 'Split'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EngineSplitTraffic
 	err := ctx.RegisterResource("gcp:appengine/engineSplitTraffic:EngineSplitTraffic", name, args, &resource, opts...)
 	if err != nil {

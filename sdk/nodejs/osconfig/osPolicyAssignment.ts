@@ -7,11 +7,27 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Represents an OSPolicyAssignment resource.
+ * ## OS policy assignment is an API resource that is used to apply a set of OS policies to a dynamically targeted group of Compute Engine VM instances.
+ *
+ * # google\_os\_config\_os\_policy\_assignment
+ *
+ * OS policy assignment is an API resource that is used to apply a set of OS
+ * policies to a dynamically targeted group of Compute Engine VM instances. An OS
+ * policy is used to define the desired state configuration for a Compute Engine VM
+ * instance through a set of configuration resources that provide capabilities such
+ * as installing or removing software packages, or executing a script. For more
+ * information about the OS policy resource definitions and examples, see
+ * [OS policy and OS policy assignment](https://cloud.google.com/compute/docs/os-configuration-management/working-with-os-policies).
+ *
+ * To get more information about OSPolicyAssignment, see:
+ *
+ * *   [API documentation](https://cloud.google.com/compute/docs/osconfig/rest/v1/projects.locations.osPolicyAssignments)
+ * *   How-to Guides
+ *     *   [Official Documentation](https://cloud.google.com/compute/docs/os-configuration-management/create-os-policy-assignment)
  *
  * ## Example Usage
- * ### Fixed_os_policy_assignment
- * An example of an osconfig os policy assignment with fixed rollout disruption budget
+ * ### Os Config Os Policy Assignment Basic
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -35,7 +51,7 @@ import * as utilities from "../utilities";
  *             osVersion: "8.*",
  *         }],
  *     },
- *     location: "us-west1-a",
+ *     location: "us-central1-a",
  *     osPolicies: [{
  *         allowNoResourceGroupMatch: false,
  *         description: "A test os policy",
@@ -46,23 +62,52 @@ import * as utilities from "../utilities";
  *                 osShortName: "centos",
  *                 osVersion: "8.*",
  *             }],
- *             resources: [{
- *                 id: "apt",
- *                 pkg: {
- *                     apt: {
- *                         name: "bazel",
+ *             resources: [
+ *                 {
+ *                     id: "apt-to-yum",
+ *                     repository: {
+ *                         apt: {
+ *                             archiveType: "DEB",
+ *                             components: ["doc"],
+ *                             distribution: "debian",
+ *                             gpgKey: ".gnupg/pubring.kbx",
+ *                             uri: "https://atl.mirrors.clouvider.net/debian",
+ *                         },
  *                     },
- *                     desiredState: "INSTALLED",
  *                 },
- *             }],
+ *                 {
+ *                     exec: {
+ *                         enforce: {
+ *                             args: ["arg1"],
+ *                             file: {
+ *                                 allowInsecure: true,
+ *                                 remote: {
+ *                                     sha256Checksum: "c7938fed83afdccbb0e86a2a2e4cad7d5035012ca3214b4a61268393635c3063",
+ *                                     uri: "https://www.example.com/script.sh",
+ *                                 },
+ *                             },
+ *                             interpreter: "SHELL",
+ *                             outputFilePath: "$HOME/out",
+ *                         },
+ *                         validate: {
+ *                             args: ["arg1"],
+ *                             file: {
+ *                                 localPath: "$HOME/script.sh",
+ *                             },
+ *                             interpreter: "SHELL",
+ *                             outputFilePath: "$HOME/out",
+ *                         },
+ *                     },
+ *                     id: "exec1",
+ *                 },
+ *             ],
  *         }],
  *     }],
- *     project: "my-project-name",
  *     rollout: {
  *         disruptionBudget: {
- *             fixed: 1,
+ *             percent: 100,
  *         },
- *         minWaitDuration: "3.5s",
+ *         minWaitDuration: "3s",
  *     },
  * });
  * ```
@@ -112,26 +157,32 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
     }
 
     /**
-     * Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
+     * Output only. Indicates that this revision has been successfully
+     * rolled out in this zone and new VMs will be assigned OS policies from this
+     * revision. For a given OS policy assignment, there is only one revision with
+     * a value of `true` for this field.
      */
     public /*out*/ readonly baseline!: pulumi.Output<boolean>;
     /**
-     * Output only. Indicates that this revision deletes the OS policy assignment.
+     * Output only. Indicates that this revision deletes the OS policy
+     * assignment.
      */
     public /*out*/ readonly deleted!: pulumi.Output<boolean>;
     /**
-     * Policy description. Length of the description is limited to 1024 characters.
+     * Policy description. Length of the description is
+     * limited to 1024 characters.
      *
-     * (Optional)
-     * OS policy assignment description. Length of the description is limited to 1024 characters.
+     * description is limited to 1024 characters.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
+     * The etag for this OS policy assignment. If this is provided on
+     * update, it must match the server's etag.
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * Required. Filter to select VMs.
+     * Filter to select VMs. Structure is
+     * documented below.
      */
     public readonly instanceFilter!: pulumi.Output<outputs.osconfig.OsPolicyAssignmentInstanceFilter>;
     /**
@@ -143,39 +194,50 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Required. List of OS policies to be applied to the VMs.
+     * List of OS policies to be applied to the VMs.
+     * Structure is documented below.
      */
     public readonly osPolicies!: pulumi.Output<outputs.osconfig.OsPolicyAssignmentOsPolicy[]>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rolloutState` is one of: * IN_PROGRESS * CANCELLING
+     * Output only. Indicates that reconciliation is in progress
+     * for the revision. This value is `true` when the `rolloutState` is one of:
      */
     public /*out*/ readonly reconciling!: pulumi.Output<boolean>;
     /**
-     * Output only. The timestamp that the revision was created.
+     * Output only. The timestamp that the revision was
+     * created.
      */
     public /*out*/ readonly revisionCreateTime!: pulumi.Output<string>;
     /**
-     * Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
+     * Output only. The assignment revision ID A new revision is
+     * committed whenever a rollout is triggered for a OS policy assignment
      */
     public /*out*/ readonly revisionId!: pulumi.Output<string>;
     /**
-     * Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instanceFilter - osPolicies 3) OSPolicyAssignment is deleted.
+     * Rollout to deploy the OS policy assignment. A rollout
+     * is triggered in the following situations: 1) OSPolicyAssignment is created.
+     * 2) OSPolicyAssignment is updated and the update contains changes to one of
+     * the following fields: - instanceFilter - osPolicies 3) OSPolicyAssignment
+     * is deleted. Structure is documented below.
      */
     public readonly rollout!: pulumi.Output<outputs.osconfig.OsPolicyAssignmentRollout>;
     /**
-     * Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
+     * Output only. OS policy assignment rollout state
      */
     public /*out*/ readonly rolloutState!: pulumi.Output<string>;
     /**
-     * Set to true to skip awaiting rollout during resource creation and update.
+     * Set to true to skip awaiting rollout
+     * during resource creation and update.
      */
     public readonly skipAwaitRollout!: pulumi.Output<boolean | undefined>;
     /**
-     * Output only. Server generated unique id for the OS policy assignment resource.
+     * Output only. Server generated unique id for the OS policy assignment
+     * resource.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
 
@@ -249,26 +311,32 @@ export class OsPolicyAssignment extends pulumi.CustomResource {
  */
 export interface OsPolicyAssignmentState {
     /**
-     * Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
+     * Output only. Indicates that this revision has been successfully
+     * rolled out in this zone and new VMs will be assigned OS policies from this
+     * revision. For a given OS policy assignment, there is only one revision with
+     * a value of `true` for this field.
      */
     baseline?: pulumi.Input<boolean>;
     /**
-     * Output only. Indicates that this revision deletes the OS policy assignment.
+     * Output only. Indicates that this revision deletes the OS policy
+     * assignment.
      */
     deleted?: pulumi.Input<boolean>;
     /**
-     * Policy description. Length of the description is limited to 1024 characters.
+     * Policy description. Length of the description is
+     * limited to 1024 characters.
      *
-     * (Optional)
-     * OS policy assignment description. Length of the description is limited to 1024 characters.
+     * description is limited to 1024 characters.
      */
     description?: pulumi.Input<string>;
     /**
-     * The etag for this OS policy assignment. If this is provided on update, it must match the server's etag.
+     * The etag for this OS policy assignment. If this is provided on
+     * update, it must match the server's etag.
      */
     etag?: pulumi.Input<string>;
     /**
-     * Required. Filter to select VMs.
+     * Filter to select VMs. Structure is
+     * documented below.
      */
     instanceFilter?: pulumi.Input<inputs.osconfig.OsPolicyAssignmentInstanceFilter>;
     /**
@@ -280,39 +348,50 @@ export interface OsPolicyAssignmentState {
      */
     name?: pulumi.Input<string>;
     /**
-     * Required. List of OS policies to be applied to the VMs.
+     * List of OS policies to be applied to the VMs.
+     * Structure is documented below.
      */
     osPolicies?: pulumi.Input<pulumi.Input<inputs.osconfig.OsPolicyAssignmentOsPolicy>[]>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
-     * Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rolloutState` is one of: * IN_PROGRESS * CANCELLING
+     * Output only. Indicates that reconciliation is in progress
+     * for the revision. This value is `true` when the `rolloutState` is one of:
      */
     reconciling?: pulumi.Input<boolean>;
     /**
-     * Output only. The timestamp that the revision was created.
+     * Output only. The timestamp that the revision was
+     * created.
      */
     revisionCreateTime?: pulumi.Input<string>;
     /**
-     * Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
+     * Output only. The assignment revision ID A new revision is
+     * committed whenever a rollout is triggered for a OS policy assignment
      */
     revisionId?: pulumi.Input<string>;
     /**
-     * Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instanceFilter - osPolicies 3) OSPolicyAssignment is deleted.
+     * Rollout to deploy the OS policy assignment. A rollout
+     * is triggered in the following situations: 1) OSPolicyAssignment is created.
+     * 2) OSPolicyAssignment is updated and the update contains changes to one of
+     * the following fields: - instanceFilter - osPolicies 3) OSPolicyAssignment
+     * is deleted. Structure is documented below.
      */
     rollout?: pulumi.Input<inputs.osconfig.OsPolicyAssignmentRollout>;
     /**
-     * Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
+     * Output only. OS policy assignment rollout state
      */
     rolloutState?: pulumi.Input<string>;
     /**
-     * Set to true to skip awaiting rollout during resource creation and update.
+     * Set to true to skip awaiting rollout
+     * during resource creation and update.
      */
     skipAwaitRollout?: pulumi.Input<boolean>;
     /**
-     * Output only. Server generated unique id for the OS policy assignment resource.
+     * Output only. Server generated unique id for the OS policy assignment
+     * resource.
      */
     uid?: pulumi.Input<string>;
 }
@@ -322,14 +401,15 @@ export interface OsPolicyAssignmentState {
  */
 export interface OsPolicyAssignmentArgs {
     /**
-     * Policy description. Length of the description is limited to 1024 characters.
+     * Policy description. Length of the description is
+     * limited to 1024 characters.
      *
-     * (Optional)
-     * OS policy assignment description. Length of the description is limited to 1024 characters.
+     * description is limited to 1024 characters.
      */
     description?: pulumi.Input<string>;
     /**
-     * Required. Filter to select VMs.
+     * Filter to select VMs. Structure is
+     * documented below.
      */
     instanceFilter: pulumi.Input<inputs.osconfig.OsPolicyAssignmentInstanceFilter>;
     /**
@@ -341,19 +421,26 @@ export interface OsPolicyAssignmentArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * Required. List of OS policies to be applied to the VMs.
+     * List of OS policies to be applied to the VMs.
+     * Structure is documented below.
      */
     osPolicies: pulumi.Input<pulumi.Input<inputs.osconfig.OsPolicyAssignmentOsPolicy>[]>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
-     * Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instanceFilter - osPolicies 3) OSPolicyAssignment is deleted.
+     * Rollout to deploy the OS policy assignment. A rollout
+     * is triggered in the following situations: 1) OSPolicyAssignment is created.
+     * 2) OSPolicyAssignment is updated and the update contains changes to one of
+     * the following fields: - instanceFilter - osPolicies 3) OSPolicyAssignment
+     * is deleted. Structure is documented below.
      */
     rollout: pulumi.Input<inputs.osconfig.OsPolicyAssignmentRollout>;
     /**
-     * Set to true to skip awaiting rollout during resource creation and update.
+     * Set to true to skip awaiting rollout
+     * during resource creation and update.
      */
     skipAwaitRollout?: pulumi.Input<boolean>;
 }

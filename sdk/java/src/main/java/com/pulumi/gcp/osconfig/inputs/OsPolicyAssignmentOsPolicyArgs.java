@@ -19,14 +19,20 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
     public static final OsPolicyAssignmentOsPolicyArgs Empty = new OsPolicyAssignmentOsPolicyArgs();
 
     /**
-     * This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
+     * This flag determines the OS
+     * policy compliance status when none of the resource groups within the policy
+     * are applicable for a VM. Set this value to `true` if the policy needs to be
+     * reported as compliant even if the policy has nothing to validate or enforce.
      * 
      */
     @Import(name="allowNoResourceGroupMatch")
     private @Nullable Output<Boolean> allowNoResourceGroupMatch;
 
     /**
-     * @return This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
+     * @return This flag determines the OS
+     * policy compliance status when none of the resource groups within the policy
+     * are applicable for a VM. Set this value to `true` if the policy needs to be
+     * reported as compliant even if the policy has nothing to validate or enforce.
      * 
      */
     public Optional<Output<Boolean>> allowNoResourceGroupMatch() {
@@ -34,14 +40,16 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Policy description. Length of the description is limited to 1024 characters.
+     * Policy description. Length of the description is
+     * limited to 1024 characters.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Policy description. Length of the description is limited to 1024 characters.
+     * @return Policy description. Length of the description is
+     * limited to 1024 characters.
      * 
      */
     public Optional<Output<String>> description() {
@@ -49,14 +57,26 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
+     * The id of the OS policy with the following restrictions:
+     * 
+     * *   Must contain only lowercase letters, numbers, and hyphens.
+     * *   Must start with a letter.
+     * *   Must be between 1-63 characters.
+     * *   Must end with a number or a letter.
+     * *   Must be unique within the assignment.
      * 
      */
     @Import(name="id", required=true)
     private Output<String> id;
 
     /**
-     * @return Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
+     * @return The id of the OS policy with the following restrictions:
+     * 
+     * *   Must contain only lowercase letters, numbers, and hyphens.
+     * *   Must start with a letter.
+     * *   Must be between 1-63 characters.
+     * *   Must end with a number or a letter.
+     * *   Must be unique within the assignment.
      * 
      */
     public Output<String> id() {
@@ -64,14 +84,16 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Required. Policy mode Possible values: MODE_UNSPECIFIED, VALIDATION, ENFORCEMENT
+     * Policy mode Possible values are: `MODE_UNSPECIFIED`,
+     * `VALIDATION`, `ENFORCEMENT`.
      * 
      */
     @Import(name="mode", required=true)
     private Output<String> mode;
 
     /**
-     * @return Required. Policy mode Possible values: MODE_UNSPECIFIED, VALIDATION, ENFORCEMENT
+     * @return Policy mode Possible values are: `MODE_UNSPECIFIED`,
+     * `VALIDATION`, `ENFORCEMENT`.
      * 
      */
     public Output<String> mode() {
@@ -79,14 +101,26 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
+     * List of resource groups for the policy. For a
+     * particular VM, resource groups are evaluated in the order specified and the
+     * first resource group that is applicable is selected and the rest are
+     * ignored. If none of the resource groups are applicable for a VM, the VM is
+     * considered to be non-compliant w.r.t this policy. This behavior can be
+     * toggled by the flag `allow_no_resource_group_match` Structure is
+     * documented below.
      * 
      */
     @Import(name="resourceGroups", required=true)
     private Output<List<OsPolicyAssignmentOsPolicyResourceGroupArgs>> resourceGroups;
 
     /**
-     * @return Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
+     * @return List of resource groups for the policy. For a
+     * particular VM, resource groups are evaluated in the order specified and the
+     * first resource group that is applicable is selected and the rest are
+     * ignored. If none of the resource groups are applicable for a VM, the VM is
+     * considered to be non-compliant w.r.t this policy. This behavior can be
+     * toggled by the flag `allow_no_resource_group_match` Structure is
+     * documented below.
      * 
      */
     public Output<List<OsPolicyAssignmentOsPolicyResourceGroupArgs>> resourceGroups() {
@@ -122,7 +156,10 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param allowNoResourceGroupMatch This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
+         * @param allowNoResourceGroupMatch This flag determines the OS
+         * policy compliance status when none of the resource groups within the policy
+         * are applicable for a VM. Set this value to `true` if the policy needs to be
+         * reported as compliant even if the policy has nothing to validate or enforce.
          * 
          * @return builder
          * 
@@ -133,7 +170,10 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param allowNoResourceGroupMatch This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
+         * @param allowNoResourceGroupMatch This flag determines the OS
+         * policy compliance status when none of the resource groups within the policy
+         * are applicable for a VM. Set this value to `true` if the policy needs to be
+         * reported as compliant even if the policy has nothing to validate or enforce.
          * 
          * @return builder
          * 
@@ -143,7 +183,8 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param description Policy description. Length of the description is limited to 1024 characters.
+         * @param description Policy description. Length of the description is
+         * limited to 1024 characters.
          * 
          * @return builder
          * 
@@ -154,7 +195,8 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param description Policy description. Length of the description is limited to 1024 characters.
+         * @param description Policy description. Length of the description is
+         * limited to 1024 characters.
          * 
          * @return builder
          * 
@@ -164,7 +206,13 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param id Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
+         * @param id The id of the OS policy with the following restrictions:
+         * 
+         * *   Must contain only lowercase letters, numbers, and hyphens.
+         * *   Must start with a letter.
+         * *   Must be between 1-63 characters.
+         * *   Must end with a number or a letter.
+         * *   Must be unique within the assignment.
          * 
          * @return builder
          * 
@@ -175,7 +223,13 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param id Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
+         * @param id The id of the OS policy with the following restrictions:
+         * 
+         * *   Must contain only lowercase letters, numbers, and hyphens.
+         * *   Must start with a letter.
+         * *   Must be between 1-63 characters.
+         * *   Must end with a number or a letter.
+         * *   Must be unique within the assignment.
          * 
          * @return builder
          * 
@@ -185,7 +239,8 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param mode Required. Policy mode Possible values: MODE_UNSPECIFIED, VALIDATION, ENFORCEMENT
+         * @param mode Policy mode Possible values are: `MODE_UNSPECIFIED`,
+         * `VALIDATION`, `ENFORCEMENT`.
          * 
          * @return builder
          * 
@@ -196,7 +251,8 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param mode Required. Policy mode Possible values: MODE_UNSPECIFIED, VALIDATION, ENFORCEMENT
+         * @param mode Policy mode Possible values are: `MODE_UNSPECIFIED`,
+         * `VALIDATION`, `ENFORCEMENT`.
          * 
          * @return builder
          * 
@@ -206,7 +262,13 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param resourceGroups Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
+         * @param resourceGroups List of resource groups for the policy. For a
+         * particular VM, resource groups are evaluated in the order specified and the
+         * first resource group that is applicable is selected and the rest are
+         * ignored. If none of the resource groups are applicable for a VM, the VM is
+         * considered to be non-compliant w.r.t this policy. This behavior can be
+         * toggled by the flag `allow_no_resource_group_match` Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -217,7 +279,13 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param resourceGroups Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
+         * @param resourceGroups List of resource groups for the policy. For a
+         * particular VM, resource groups are evaluated in the order specified and the
+         * first resource group that is applicable is selected and the rest are
+         * ignored. If none of the resource groups are applicable for a VM, the VM is
+         * considered to be non-compliant w.r.t this policy. This behavior can be
+         * toggled by the flag `allow_no_resource_group_match` Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -227,7 +295,13 @@ public final class OsPolicyAssignmentOsPolicyArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param resourceGroups Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
+         * @param resourceGroups List of resource groups for the policy. For a
+         * particular VM, resource groups are evaluated in the order specified and the
+         * first resource group that is applicable is selected and the rest are
+         * ignored. If none of the resource groups are applicable for a VM, the VM is
+         * considered to be non-compliant w.r.t this policy. This behavior can be
+         * toggled by the flag `allow_no_resource_group_match` Structure is
+         * documented below.
          * 
          * @return builder
          * 

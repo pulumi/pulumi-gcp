@@ -95,9 +95,6 @@ namespace Pulumi.Gcp.Compute
     ///             "us-central1-a",
     ///             "us-central1-f",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var secondary = new Gcp.Compute.RegionDisk("secondary", new()
@@ -114,9 +111,6 @@ namespace Pulumi.Gcp.Compute
     ///             "us-east1-b",
     ///             "us-east1-c",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -190,6 +184,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Output("asyncPrimaryDisk")]
         public Output<Outputs.RegionDiskAsyncPrimaryDisk?> AsyncPrimaryDisk { get; private set; } = null!;
@@ -441,6 +436,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Input("asyncPrimaryDisk")]
         public Input<Inputs.RegionDiskAsyncPrimaryDiskArgs>? AsyncPrimaryDisk { get; set; }
@@ -621,6 +617,7 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// A nested object resource
+        /// Structure is documented below.
         /// </summary>
         [Input("asyncPrimaryDisk")]
         public Input<Inputs.RegionDiskAsyncPrimaryDiskGetArgs>? AsyncPrimaryDisk { get; set; }

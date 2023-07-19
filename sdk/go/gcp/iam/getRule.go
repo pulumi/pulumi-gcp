@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -37,6 +38,7 @@ import (
 //
 // ```
 func GetRule(ctx *pulumi.Context, args *GetRuleArgs, opts ...pulumi.InvokeOption) (*GetRuleResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRuleResult
 	err := ctx.Invoke("gcp:iam/getRule:getRule", args, &rv, opts...)
 	if err != nil {

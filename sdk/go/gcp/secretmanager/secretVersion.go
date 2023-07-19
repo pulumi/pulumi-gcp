@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -108,6 +109,7 @@ func NewSecretVersion(ctx *pulumi.Context,
 		"secretData",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SecretVersion
 	err := ctx.RegisterResource("gcp:secretmanager/secretVersion:SecretVersion", name, args, &resource, opts...)
 	if err != nil {

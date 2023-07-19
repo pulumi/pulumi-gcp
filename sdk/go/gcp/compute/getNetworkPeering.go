@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -65,6 +66,7 @@ import (
 //
 // ```
 func LookupNetworkPeering(ctx *pulumi.Context, args *LookupNetworkPeeringArgs, opts ...pulumi.InvokeOption) (*LookupNetworkPeeringResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupNetworkPeeringResult
 	err := ctx.Invoke("gcp:compute/getNetworkPeering:getNetworkPeering", args, &rv, opts...)
 	if err != nil {

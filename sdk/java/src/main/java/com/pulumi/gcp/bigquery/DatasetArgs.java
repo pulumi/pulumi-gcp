@@ -341,6 +341,27 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Specifies the storage billing model for the dataset.
+     * Set this flag value to LOGICAL to use logical bytes for storage billing,
+     * or to PHYSICAL to use physical bytes instead.
+     * LOGICAL is the default if this flag isn&#39;t specified.
+     * 
+     */
+    @Import(name="storageBillingModel")
+    private @Nullable Output<String> storageBillingModel;
+
+    /**
+     * @return Specifies the storage billing model for the dataset.
+     * Set this flag value to LOGICAL to use logical bytes for storage billing,
+     * or to PHYSICAL to use physical bytes instead.
+     * LOGICAL is the default if this flag isn&#39;t specified.
+     * 
+     */
+    public Optional<Output<String>> storageBillingModel() {
+        return Optional.ofNullable(this.storageBillingModel);
+    }
+
     private DatasetArgs() {}
 
     private DatasetArgs(DatasetArgs $) {
@@ -358,6 +379,7 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
         this.location = $.location;
         this.maxTimeTravelHours = $.maxTimeTravelHours;
         this.project = $.project;
+        this.storageBillingModel = $.storageBillingModel;
     }
 
     public static Builder builder() {
@@ -791,6 +813,33 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param storageBillingModel Specifies the storage billing model for the dataset.
+         * Set this flag value to LOGICAL to use logical bytes for storage billing,
+         * or to PHYSICAL to use physical bytes instead.
+         * LOGICAL is the default if this flag isn&#39;t specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageBillingModel(@Nullable Output<String> storageBillingModel) {
+            $.storageBillingModel = storageBillingModel;
+            return this;
+        }
+
+        /**
+         * @param storageBillingModel Specifies the storage billing model for the dataset.
+         * Set this flag value to LOGICAL to use logical bytes for storage billing,
+         * or to PHYSICAL to use physical bytes instead.
+         * LOGICAL is the default if this flag isn&#39;t specified.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder storageBillingModel(String storageBillingModel) {
+            return storageBillingModel(Output.of(storageBillingModel));
         }
 
         public DatasetArgs build() {

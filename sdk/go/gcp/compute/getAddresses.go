@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -14,6 +15,7 @@ import (
 // the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and
 // [aggregated lsit](https://cloud.google.com/compute/docs/reference/rest/v1/addresses/aggregatedList) documentation.
 func GetAddresses(ctx *pulumi.Context, args *GetAddressesArgs, opts ...pulumi.InvokeOption) (*GetAddressesResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAddressesResult
 	err := ctx.Invoke("gcp:compute/getAddresses:getAddresses", args, &rv, opts...)
 	if err != nil {

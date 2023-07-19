@@ -4,12 +4,20 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class AwsClusterNetworking {
+    /**
+     * @return Disable the per node pool subnet security group rules on the control plane security group. When set to true, you must also provide one or more security groups that ensure node pools are able to send requests to the control plane on TCP/443 and TCP/8132. Failure to do so may result in unavailable node pools.
+     * 
+     */
+    private @Nullable Boolean perNodePoolSgRulesDisabled;
     /**
      * @return All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
      * 
@@ -29,6 +37,13 @@ public final class AwsClusterNetworking {
     private String vpcId;
 
     private AwsClusterNetworking() {}
+    /**
+     * @return Disable the per node pool subnet security group rules on the control plane security group. When set to true, you must also provide one or more security groups that ensure node pools are able to send requests to the control plane on TCP/443 and TCP/8132. Failure to do so may result in unavailable node pools.
+     * 
+     */
+    public Optional<Boolean> perNodePoolSgRulesDisabled() {
+        return Optional.ofNullable(this.perNodePoolSgRulesDisabled);
+    }
     /**
      * @return All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
      * 
@@ -62,17 +77,24 @@ public final class AwsClusterNetworking {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Boolean perNodePoolSgRulesDisabled;
         private List<String> podAddressCidrBlocks;
         private List<String> serviceAddressCidrBlocks;
         private String vpcId;
         public Builder() {}
         public Builder(AwsClusterNetworking defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.perNodePoolSgRulesDisabled = defaults.perNodePoolSgRulesDisabled;
     	      this.podAddressCidrBlocks = defaults.podAddressCidrBlocks;
     	      this.serviceAddressCidrBlocks = defaults.serviceAddressCidrBlocks;
     	      this.vpcId = defaults.vpcId;
         }
 
+        @CustomType.Setter
+        public Builder perNodePoolSgRulesDisabled(@Nullable Boolean perNodePoolSgRulesDisabled) {
+            this.perNodePoolSgRulesDisabled = perNodePoolSgRulesDisabled;
+            return this;
+        }
         @CustomType.Setter
         public Builder podAddressCidrBlocks(List<String> podAddressCidrBlocks) {
             this.podAddressCidrBlocks = Objects.requireNonNull(podAddressCidrBlocks);
@@ -96,6 +118,7 @@ public final class AwsClusterNetworking {
         }
         public AwsClusterNetworking build() {
             final var o = new AwsClusterNetworking();
+            o.perNodePoolSgRulesDisabled = perNodePoolSgRulesDisabled;
             o.podAddressCidrBlocks = podAddressCidrBlocks;
             o.serviceAddressCidrBlocks = serviceAddressCidrBlocks;
             o.vpcId = vpcId;

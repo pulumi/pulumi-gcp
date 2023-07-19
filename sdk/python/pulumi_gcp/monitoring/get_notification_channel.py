@@ -231,18 +231,18 @@ def get_notification_channel(display_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:monitoring/getNotificationChannel:getNotificationChannel', __args__, opts=opts, typ=GetNotificationChannelResult).value
 
     return AwaitableGetNotificationChannelResult(
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        enabled=__ret__.enabled,
-        force_delete=__ret__.force_delete,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        project=__ret__.project,
-        sensitive_labels=__ret__.sensitive_labels,
-        type=__ret__.type,
-        user_labels=__ret__.user_labels,
-        verification_status=__ret__.verification_status)
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        enabled=pulumi.get(__ret__, 'enabled'),
+        force_delete=pulumi.get(__ret__, 'force_delete'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        sensitive_labels=pulumi.get(__ret__, 'sensitive_labels'),
+        type=pulumi.get(__ret__, 'type'),
+        user_labels=pulumi.get(__ret__, 'user_labels'),
+        verification_status=pulumi.get(__ret__, 'verification_status'))
 
 
 @_utilities.lift_output_func(get_notification_channel)

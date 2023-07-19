@@ -147,15 +147,15 @@ def get_organization_policy(constraint: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:projects/getOrganizationPolicy:getOrganizationPolicy', __args__, opts=opts, typ=GetOrganizationPolicyResult).value
 
     return AwaitableGetOrganizationPolicyResult(
-        boolean_policies=__ret__.boolean_policies,
-        constraint=__ret__.constraint,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        list_policies=__ret__.list_policies,
-        project=__ret__.project,
-        restore_policies=__ret__.restore_policies,
-        update_time=__ret__.update_time,
-        version=__ret__.version)
+        boolean_policies=pulumi.get(__ret__, 'boolean_policies'),
+        constraint=pulumi.get(__ret__, 'constraint'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        list_policies=pulumi.get(__ret__, 'list_policies'),
+        project=pulumi.get(__ret__, 'project'),
+        restore_policies=pulumi.get(__ret__, 'restore_policies'),
+        update_time=pulumi.get(__ret__, 'update_time'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_organization_policy)

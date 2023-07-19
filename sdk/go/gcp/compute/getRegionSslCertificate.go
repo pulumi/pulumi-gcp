@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -41,6 +42,7 @@ import (
 //
 // ```
 func LookupRegionSslCertificate(ctx *pulumi.Context, args *LookupRegionSslCertificateArgs, opts ...pulumi.InvokeOption) (*LookupRegionSslCertificateResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegionSslCertificateResult
 	err := ctx.Invoke("gcp:compute/getRegionSslCertificate:getRegionSslCertificate", args, &rv, opts...)
 	if err != nil {

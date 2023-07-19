@@ -5,6 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * The GatewaySecurityPolicyRule resource is in a nested collection within a GatewaySecurityPolicy and represents
+ * a traffic matching condition and associated action to perform.
+ *
+ * To get more information about GatewaySecurityPolicyRule, see:
+ *
+ * * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies.rules)
+ *
  * ## Example Usage
  * ### Network Security Gateway Security Policy Rules Basic
  *
@@ -15,8 +22,6 @@ import * as utilities from "../utilities";
  * const defaultGatewaySecurityPolicy = new gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", {
  *     location: "us-central1",
  *     description: "gateway security policy created to be used as reference by the rule.",
- * }, {
- *     provider: google_beta,
  * });
  * const defaultGatewaySecurityPolicyRule = new gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", {
  *     location: "us-central1",
@@ -26,8 +31,6 @@ import * as utilities from "../utilities";
  *     priority: 0,
  *     sessionMatcher: "host() == 'example.com'",
  *     basicProfile: "ALLOW",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Network Security Gateway Security Policy Rules Advanced
@@ -39,8 +42,6 @@ import * as utilities from "../utilities";
  * const defaultGatewaySecurityPolicy = new gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", {
  *     location: "us-central1",
  *     description: "gateway security policy created to be used as reference by the rule.",
- * }, {
- *     provider: google_beta,
  * });
  * const defaultGatewaySecurityPolicyRule = new gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule", {
  *     location: "us-central1",
@@ -52,8 +53,6 @@ import * as utilities from "../utilities";
  *     applicationMatcher: "request.method == 'POST'",
  *     tlsInspectionEnabled: false,
  *     basicProfile: "ALLOW",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

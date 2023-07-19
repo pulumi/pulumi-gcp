@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -44,6 +45,7 @@ import (
 //
 // ```
 func GetProjectCmekSettings(ctx *pulumi.Context, args *GetProjectCmekSettingsArgs, opts ...pulumi.InvokeOption) (*GetProjectCmekSettingsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectCmekSettingsResult
 	err := ctx.Invoke("gcp:logging/getProjectCmekSettings:getProjectCmekSettings", args, &rv, opts...)
 	if err != nil {

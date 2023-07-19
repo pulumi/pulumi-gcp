@@ -20,6 +20,7 @@ __all__ = [
     'DatabaseInstanceSettingsAdvancedMachineFeaturesArgs',
     'DatabaseInstanceSettingsBackupConfigurationArgs',
     'DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs',
+    'DatabaseInstanceSettingsDataCacheConfigArgs',
     'DatabaseInstanceSettingsDatabaseFlagArgs',
     'DatabaseInstanceSettingsDenyMaintenancePeriodArgs',
     'DatabaseInstanceSettingsInsightsConfigArgs',
@@ -488,6 +489,7 @@ class DatabaseInstanceSettingsArgs:
                  backup_configuration: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationArgs']] = None,
                  collation: Optional[pulumi.Input[str]] = None,
                  connector_enforcement: Optional[pulumi.Input[str]] = None,
+                 data_cache_config: Optional[pulumi.Input['DatabaseInstanceSettingsDataCacheConfigArgs']] = None,
                  database_flags: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  deny_maintenance_period: Optional[pulumi.Input['DatabaseInstanceSettingsDenyMaintenancePeriodArgs']] = None,
@@ -495,6 +497,7 @@ class DatabaseInstanceSettingsArgs:
                  disk_autoresize_limit: Optional[pulumi.Input[int]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
+                 edition: Optional[pulumi.Input[str]] = None,
                  insights_config: Optional[pulumi.Input['DatabaseInstanceSettingsInsightsConfigArgs']] = None,
                  ip_configuration: Optional[pulumi.Input['DatabaseInstanceSettingsIpConfigurationArgs']] = None,
                  location_preference: Optional[pulumi.Input['DatabaseInstanceSettingsLocationPreferenceArgs']] = None,
@@ -523,6 +526,7 @@ class DatabaseInstanceSettingsArgs:
         :param pulumi.Input[int] disk_autoresize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         :param pulumi.Input[int] disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
         :param pulumi.Input[str] disk_type: The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
+        :param pulumi.Input[str] edition: The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
         :param pulumi.Input[str] pricing_plan: Pricing plan for this instance, can only be `PER_USE`.
         :param pulumi.Input[str] time_zone: The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: A set of key/value user label pairs to assign to the instance.
@@ -542,6 +546,8 @@ class DatabaseInstanceSettingsArgs:
             pulumi.set(__self__, "collation", collation)
         if connector_enforcement is not None:
             pulumi.set(__self__, "connector_enforcement", connector_enforcement)
+        if data_cache_config is not None:
+            pulumi.set(__self__, "data_cache_config", data_cache_config)
         if database_flags is not None:
             pulumi.set(__self__, "database_flags", database_flags)
         if deletion_protection_enabled is not None:
@@ -556,6 +562,8 @@ class DatabaseInstanceSettingsArgs:
             pulumi.set(__self__, "disk_size", disk_size)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
+        if edition is not None:
+            pulumi.set(__self__, "edition", edition)
         if insights_config is not None:
             pulumi.set(__self__, "insights_config", insights_config)
         if ip_configuration is not None:
@@ -673,6 +681,15 @@ class DatabaseInstanceSettingsArgs:
         pulumi.set(self, "connector_enforcement", value)
 
     @property
+    @pulumi.getter(name="dataCacheConfig")
+    def data_cache_config(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsDataCacheConfigArgs']]:
+        return pulumi.get(self, "data_cache_config")
+
+    @data_cache_config.setter
+    def data_cache_config(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsDataCacheConfigArgs']]):
+        pulumi.set(self, "data_cache_config", value)
+
+    @property
     @pulumi.getter(name="databaseFlags")
     def database_flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsDatabaseFlagArgs']]]]:
         return pulumi.get(self, "database_flags")
@@ -746,6 +763,18 @@ class DatabaseInstanceSettingsArgs:
     @disk_type.setter
     def disk_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_type", value)
+
+    @property
+    @pulumi.getter
+    def edition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+        """
+        return pulumi.get(self, "edition")
+
+    @edition.setter
+    def edition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edition", value)
 
     @property
     @pulumi.getter(name="insightsConfig")
@@ -1055,6 +1084,31 @@ class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs:
     @retention_unit.setter
     def retention_unit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "retention_unit", value)
+
+
+@pulumi.input_type
+class DatabaseInstanceSettingsDataCacheConfigArgs:
+    def __init__(__self__, *,
+                 data_cache_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] data_cache_enabled: Whether data cache is enabled for the instance. Defaults to `false`
+               Can only be used with MYSQL.
+        """
+        if data_cache_enabled is not None:
+            pulumi.set(__self__, "data_cache_enabled", data_cache_enabled)
+
+    @property
+    @pulumi.getter(name="dataCacheEnabled")
+    def data_cache_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether data cache is enabled for the instance. Defaults to `false`
+        Can only be used with MYSQL.
+        """
+        return pulumi.get(self, "data_cache_enabled")
+
+    @data_cache_enabled.setter
+    def data_cache_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "data_cache_enabled", value)
 
 
 @pulumi.input_type

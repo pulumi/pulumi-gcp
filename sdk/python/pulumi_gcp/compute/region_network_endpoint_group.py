@@ -653,7 +653,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                     target_utilization=0.5,
                 ),
             ),
-            noop_on_destroy=True)
+            delete_service_on_destroy=True)
         # App Engine Example
         appengine_neg_region_network_endpoint_group = gcp.compute.RegionNetworkEndpointGroup("appengineNegRegionNetworkEndpointGroup",
             network_endpoint_type="SERVERLESS",
@@ -851,7 +851,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                     target_utilization=0.5,
                 ),
             ),
-            noop_on_destroy=True)
+            delete_service_on_destroy=True)
         # App Engine Example
         appengine_neg_region_network_endpoint_group = gcp.compute.RegionNetworkEndpointGroup("appengineNegRegionNetworkEndpointGroup",
             network_endpoint_type="SERVERLESS",

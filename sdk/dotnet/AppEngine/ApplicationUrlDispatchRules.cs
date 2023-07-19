@@ -63,7 +63,7 @@ namespace Pulumi.Gcp.AppEngine
     ///         {
     ///             { "port", "8080" },
     ///         },
-    ///         NoopOnDestroy = true,
+    ///         DeleteServiceOnDestroy = true,
     ///     });
     /// 
     ///     var webService = new Gcp.AppEngine.ApplicationUrlDispatchRules("webService", new()

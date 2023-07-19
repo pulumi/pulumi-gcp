@@ -179,16 +179,16 @@ def get_instance_group(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getInstanceGroup:getInstanceGroup', __args__, opts=opts, typ=GetInstanceGroupResult).value
 
     return AwaitableGetInstanceGroupResult(
-        description=__ret__.description,
-        id=__ret__.id,
-        instances=__ret__.instances,
-        name=__ret__.name,
-        named_ports=__ret__.named_ports,
-        network=__ret__.network,
-        project=__ret__.project,
-        self_link=__ret__.self_link,
-        size=__ret__.size,
-        zone=__ret__.zone)
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        instances=pulumi.get(__ret__, 'instances'),
+        name=pulumi.get(__ret__, 'name'),
+        named_ports=pulumi.get(__ret__, 'named_ports'),
+        network=pulumi.get(__ret__, 'network'),
+        project=pulumi.get(__ret__, 'project'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        size=pulumi.get(__ret__, 'size'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_instance_group)

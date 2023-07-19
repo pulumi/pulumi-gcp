@@ -94,7 +94,7 @@ def get_client(brand: Optional[str] = None,
 
     project = gcp.organizations.get_project(project_id="foobar")
     project_client = gcp.iap.get_client(brand=f"projects/{project.number}/brands/[BRAND_NUMBER]",
-        client_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+        client_id=foo["apps"]["googleusercontent"]["com"])
     ```
 
 
@@ -108,11 +108,11 @@ def get_client(brand: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:iap/getClient:getClient', __args__, opts=opts, typ=GetClientResult).value
 
     return AwaitableGetClientResult(
-        brand=__ret__.brand,
-        client_id=__ret__.client_id,
-        display_name=__ret__.display_name,
-        id=__ret__.id,
-        secret=__ret__.secret)
+        brand=pulumi.get(__ret__, 'brand'),
+        client_id=pulumi.get(__ret__, 'client_id'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        id=pulumi.get(__ret__, 'id'),
+        secret=pulumi.get(__ret__, 'secret'))
 
 
 @_utilities.lift_output_func(get_client)
@@ -130,7 +130,7 @@ def get_client_output(brand: Optional[pulumi.Input[str]] = None,
 
     project = gcp.organizations.get_project(project_id="foobar")
     project_client = gcp.iap.get_client(brand=f"projects/{project.number}/brands/[BRAND_NUMBER]",
-        client_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+        client_id=foo["apps"]["googleusercontent"]["com"])
     ```
 
 

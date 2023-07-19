@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Beta only: The Cloudbuildv2 Repository resource
+ * The Cloudbuildv2 Repository resource
  *
  * ## Example Usage
  * ### Ghe
@@ -19,28 +19,20 @@ import * as utilities from "../utilities";
  *     replication: {
  *         automatic: true,
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const private_key_secret_version = new gcp.secretmanager.SecretVersion("private-key-secret-version", {
  *     secret: private_key_secret.id,
  *     secretData: fs.readFileSync("private-key.pem"),
- * }, {
- *     provider: google_beta,
  * });
  * const webhook_secret_secret = new gcp.secretmanager.Secret("webhook-secret-secret", {
  *     secretId: "github-token-secret",
  *     replication: {
  *         automatic: true,
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const webhook_secret_secret_version = new gcp.secretmanager.SecretVersion("webhook-secret-secret-version", {
  *     secret: webhook_secret_secret.id,
  *     secretData: "<webhook-secret-data>",
- * }, {
- *     provider: google_beta,
  * });
  * const p4sa-secretAccessor = gcp.organizations.getIAMPolicy({
  *     bindings: [{
@@ -51,14 +43,10 @@ import * as utilities from "../utilities";
  * const policy_pk = new gcp.secretmanager.SecretIamPolicy("policy-pk", {
  *     secretId: private_key_secret.secretId,
  *     policyData: p4sa_secretAccessor.then(p4sa_secretAccessor => p4sa_secretAccessor.policyData),
- * }, {
- *     provider: google_beta,
  * });
  * const policy_whs = new gcp.secretmanager.SecretIamPolicy("policy-whs", {
  *     secretId: webhook_secret_secret.secretId,
  *     policyData: p4sa_secretAccessor.then(p4sa_secretAccessor => p4sa_secretAccessor.policyData),
- * }, {
- *     provider: google_beta,
  * });
  * const my_connection = new gcp.cloudbuildv2.Connection("my-connection", {
  *     location: "us-central1",
@@ -71,7 +59,6 @@ import * as utilities from "../utilities";
  *         appInstallationId: 300,
  *     },
  * }, {
- *     provider: google_beta,
  *     dependsOn: [
  *         policy_pk,
  *         policy_whs,
@@ -81,8 +68,6 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     parentConnection: my_connection.id,
  *     remoteUri: "https://ghe.com/hashicorp/terraform-provider-google.git",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Repository In GitHub Connection
@@ -97,14 +82,10 @@ import * as utilities from "../utilities";
  *     replication: {
  *         automatic: true,
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const github_token_secret_version = new gcp.secretmanager.SecretVersion("github-token-secret-version", {
  *     secret: github_token_secret.id,
  *     secretData: fs.readFileSync("my-github-token.txt"),
- * }, {
- *     provider: google_beta,
  * });
  * const p4sa-secretAccessor = gcp.organizations.getIAMPolicy({
  *     bindings: [{
@@ -115,8 +96,6 @@ import * as utilities from "../utilities";
  * const policy = new gcp.secretmanager.SecretIamPolicy("policy", {
  *     secretId: github_token_secret.secretId,
  *     policyData: p4sa_secretAccessor.then(p4sa_secretAccessor => p4sa_secretAccessor.policyData),
- * }, {
- *     provider: google_beta,
  * });
  * const my_connection = new gcp.cloudbuildv2.Connection("my-connection", {
  *     location: "us-west1",
@@ -126,15 +105,11 @@ import * as utilities from "../utilities";
  *             oauthTokenSecretVersion: github_token_secret_version.id,
  *         },
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const my_repository = new gcp.cloudbuildv2.Repository("my-repository", {
  *     location: "us-west1",
  *     parentConnection: my_connection.name,
  *     remoteUri: "https://github.com/myuser/myrepo.git",
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

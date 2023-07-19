@@ -6,9 +6,12 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodePoolPlacementPolicy {
+    private @Nullable String tpuTopology;
     /**
      * @return Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
      * `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
@@ -17,6 +20,9 @@ public final class ClusterNodePoolPlacementPolicy {
     private String type;
 
     private ClusterNodePoolPlacementPolicy() {}
+    public Optional<String> tpuTopology() {
+        return Optional.ofNullable(this.tpuTopology);
+    }
     /**
      * @return Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
      * `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
@@ -35,13 +41,20 @@ public final class ClusterNodePoolPlacementPolicy {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String tpuTopology;
         private String type;
         public Builder() {}
         public Builder(ClusterNodePoolPlacementPolicy defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.tpuTopology = defaults.tpuTopology;
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
+        public Builder tpuTopology(@Nullable String tpuTopology) {
+            this.tpuTopology = tpuTopology;
+            return this;
+        }
         @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
@@ -49,6 +62,7 @@ public final class ClusterNodePoolPlacementPolicy {
         }
         public ClusterNodePoolPlacementPolicy build() {
             final var o = new ClusterNodePoolPlacementPolicy();
+            o.tpuTopology = tpuTopology;
             o.type = type;
             return o;
         }

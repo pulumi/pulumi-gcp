@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,7 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
-//				Location: pulumi.String("us-central1"),
+//				Location: pulumi.String("us-east1"),
 //				Tier:     pulumi.String("ENTERPRISE"),
 //				FileShares: &filestore.InstanceFileSharesArgs{
 //					CapacityGb: pulumi.Int(1024),
@@ -56,7 +57,7 @@ import (
 //			}
 //			_, err = filestore.NewSnapshot(ctx, "snapshot", &filestore.SnapshotArgs{
 //				Instance: instance.Name,
-//				Location: pulumi.String("us-central1"),
+//				Location: pulumi.String("us-east1"),
 //			})
 //			if err != nil {
 //				return err
@@ -81,7 +82,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			instance, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
-//				Location: pulumi.String("us-central1"),
+//				Location: pulumi.String("us-west1"),
 //				Tier:     pulumi.String("ENTERPRISE"),
 //				FileShares: &filestore.InstanceFileSharesArgs{
 //					CapacityGb: pulumi.Int(1024),
@@ -101,7 +102,7 @@ import (
 //			}
 //			_, err = filestore.NewSnapshot(ctx, "snapshot", &filestore.SnapshotArgs{
 //				Instance:    instance.Name,
-//				Location:    pulumi.String("us-central1"),
+//				Location:    pulumi.String("us-west1"),
 //				Description: pulumi.String("Snapshot of test-instance-for-snapshot"),
 //				Labels: pulumi.StringMap{
 //					"my_label": pulumi.String("value"),
@@ -182,6 +183,7 @@ func NewSnapshot(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Snapshot
 	err := ctx.RegisterResource("gcp:filestore/snapshot:Snapshot", name, args, &resource, opts...)
 	if err != nil {

@@ -176,6 +176,7 @@ __all__ = [
     'ClusterReleaseChannelArgs',
     'ClusterResourceUsageExportConfigArgs',
     'ClusterResourceUsageExportConfigBigqueryDestinationArgs',
+    'ClusterSecurityPostureConfigArgs',
     'ClusterServiceExternalIpsConfigArgs',
     'ClusterTpuConfigArgs',
     'ClusterVerticalPodAutoscalingArgs',
@@ -881,11 +882,13 @@ class AwsClusterControlPlaneMainVolumeArgs:
                  iops: Optional[pulumi.Input[int]] = None,
                  kms_key_arn: Optional[pulumi.Input[str]] = None,
                  size_gib: Optional[pulumi.Input[int]] = None,
+                 throughput: Optional[pulumi.Input[int]] = None,
                  volume_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] iops: Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
         :param pulumi.Input[str] kms_key_arn: Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
         :param pulumi.Input[int] size_gib: Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+        :param pulumi.Input[int] throughput: Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
         :param pulumi.Input[str] volume_type: Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
         """
         if iops is not None:
@@ -894,6 +897,8 @@ class AwsClusterControlPlaneMainVolumeArgs:
             pulumi.set(__self__, "kms_key_arn", kms_key_arn)
         if size_gib is not None:
             pulumi.set(__self__, "size_gib", size_gib)
+        if throughput is not None:
+            pulumi.set(__self__, "throughput", throughput)
         if volume_type is not None:
             pulumi.set(__self__, "volume_type", volume_type)
 
@@ -932,6 +937,18 @@ class AwsClusterControlPlaneMainVolumeArgs:
     @size_gib.setter
     def size_gib(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size_gib", value)
+
+    @property
+    @pulumi.getter
+    def throughput(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+        """
+        return pulumi.get(self, "throughput")
+
+    @throughput.setter
+    def throughput(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "throughput", value)
 
     @property
     @pulumi.getter(name="volumeType")
@@ -989,11 +1006,13 @@ class AwsClusterControlPlaneRootVolumeArgs:
                  iops: Optional[pulumi.Input[int]] = None,
                  kms_key_arn: Optional[pulumi.Input[str]] = None,
                  size_gib: Optional[pulumi.Input[int]] = None,
+                 throughput: Optional[pulumi.Input[int]] = None,
                  volume_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] iops: Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
         :param pulumi.Input[str] kms_key_arn: Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
         :param pulumi.Input[int] size_gib: Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+        :param pulumi.Input[int] throughput: Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
         :param pulumi.Input[str] volume_type: Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
         """
         if iops is not None:
@@ -1002,6 +1021,8 @@ class AwsClusterControlPlaneRootVolumeArgs:
             pulumi.set(__self__, "kms_key_arn", kms_key_arn)
         if size_gib is not None:
             pulumi.set(__self__, "size_gib", size_gib)
+        if throughput is not None:
+            pulumi.set(__self__, "throughput", throughput)
         if volume_type is not None:
             pulumi.set(__self__, "volume_type", volume_type)
 
@@ -1040,6 +1061,18 @@ class AwsClusterControlPlaneRootVolumeArgs:
     @size_gib.setter
     def size_gib(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size_gib", value)
+
+    @property
+    @pulumi.getter
+    def throughput(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+        """
+        return pulumi.get(self, "throughput")
+
+    @throughput.setter
+    def throughput(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "throughput", value)
 
     @property
     @pulumi.getter(name="volumeType")
@@ -1166,17 +1199,21 @@ class AwsClusterNetworkingArgs:
     def __init__(__self__, *,
                  pod_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
                  service_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 vpc_id: pulumi.Input[str]):
+                 vpc_id: pulumi.Input[str],
+                 per_node_pool_sg_rules_disabled: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_address_cidr_blocks: All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_address_cidr_blocks: All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
         :param pulumi.Input[str] vpc_id: The VPC associated with the cluster. All component clusters (i.e. control plane and node pools) run on a single VPC. This field cannot be changed after creation.
                
                - - -
+        :param pulumi.Input[bool] per_node_pool_sg_rules_disabled: Disable the per node pool subnet security group rules on the control plane security group. When set to true, you must also provide one or more security groups that ensure node pools are able to send requests to the control plane on TCP/443 and TCP/8132. Failure to do so may result in unavailable node pools.
         """
         pulumi.set(__self__, "pod_address_cidr_blocks", pod_address_cidr_blocks)
         pulumi.set(__self__, "service_address_cidr_blocks", service_address_cidr_blocks)
         pulumi.set(__self__, "vpc_id", vpc_id)
+        if per_node_pool_sg_rules_disabled is not None:
+            pulumi.set(__self__, "per_node_pool_sg_rules_disabled", per_node_pool_sg_rules_disabled)
 
     @property
     @pulumi.getter(name="podAddressCidrBlocks")
@@ -1215,6 +1252,18 @@ class AwsClusterNetworkingArgs:
     @vpc_id.setter
     def vpc_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "vpc_id", value)
+
+    @property
+    @pulumi.getter(name="perNodePoolSgRulesDisabled")
+    def per_node_pool_sg_rules_disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable the per node pool subnet security group rules on the control plane security group. When set to true, you must also provide one or more security groups that ensure node pools are able to send requests to the control plane on TCP/443 and TCP/8132. Failure to do so may result in unavailable node pools.
+        """
+        return pulumi.get(self, "per_node_pool_sg_rules_disabled")
+
+    @per_node_pool_sg_rules_disabled.setter
+    def per_node_pool_sg_rules_disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "per_node_pool_sg_rules_disabled", value)
 
 
 @pulumi.input_type
@@ -1650,11 +1699,13 @@ class AwsNodePoolConfigRootVolumeArgs:
                  iops: Optional[pulumi.Input[int]] = None,
                  kms_key_arn: Optional[pulumi.Input[str]] = None,
                  size_gib: Optional[pulumi.Input[int]] = None,
+                 throughput: Optional[pulumi.Input[int]] = None,
                  volume_type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] iops: Optional. The number of I/O operations per second (IOPS) to provision for GP3 volume.
         :param pulumi.Input[str] kms_key_arn: Optional. The Amazon Resource Name (ARN) of the Customer Managed Key (CMK) used to encrypt AWS EBS volumes. If not specified, the default Amazon managed key associated to the AWS region where this cluster runs will be used.
         :param pulumi.Input[int] size_gib: Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
+        :param pulumi.Input[int] throughput: Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
         :param pulumi.Input[str] volume_type: Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
         """
         if iops is not None:
@@ -1663,6 +1714,8 @@ class AwsNodePoolConfigRootVolumeArgs:
             pulumi.set(__self__, "kms_key_arn", kms_key_arn)
         if size_gib is not None:
             pulumi.set(__self__, "size_gib", size_gib)
+        if throughput is not None:
+            pulumi.set(__self__, "throughput", throughput)
         if volume_type is not None:
             pulumi.set(__self__, "volume_type", volume_type)
 
@@ -1701,6 +1754,18 @@ class AwsNodePoolConfigRootVolumeArgs:
     @size_gib.setter
     def size_gib(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size_gib", value)
+
+    @property
+    @pulumi.getter
+    def throughput(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+        """
+        return pulumi.get(self, "throughput")
+
+    @throughput.setter
+    def throughput(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "throughput", value)
 
     @property
     @pulumi.getter(name="volumeType")
@@ -3523,6 +3588,9 @@ class ClusterBinaryAuthorizationArgs:
 
         not.
         """
+        warnings.warn("""Deprecated in favor of evaluation_mode.""", DeprecationWarning)
+        pulumi.log.warn("""enabled is deprecated: Deprecated in favor of evaluation_mode.""")
+
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -5258,13 +5326,9 @@ class ClusterNodeConfigArgs:
         :param pulumi.Input['ClusterNodeConfigShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance options. Structure is documented below.
         :param pulumi.Input['ClusterNodeConfigSoleTenantConfigArgs'] sole_tenant_config: Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
                
-               sole_tenant_config {
-               node_affinity {
-               key = "compute.googleapis.com/node-group-name"
-               operator = "IN"
-               values = ["node-group-name"]
-               }
-               }
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[bool] spot: A boolean that represents whether the underlying node VMs are spot.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
                for more information. Defaults to false.
@@ -5735,13 +5799,9 @@ class ClusterNodeConfigArgs:
         """
         Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
 
-        sole_tenant_config {
-        node_affinity {
-        key = "compute.googleapis.com/node-group-name"
-        operator = "IN"
-        values = ["node-group-name"]
-        }
-        }
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "sole_tenant_config")
 
@@ -7210,13 +7270,9 @@ class ClusterNodePoolNodeConfigArgs:
         :param pulumi.Input['ClusterNodePoolNodeConfigShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance options. Structure is documented below.
         :param pulumi.Input['ClusterNodePoolNodeConfigSoleTenantConfigArgs'] sole_tenant_config: Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
                
-               sole_tenant_config {
-               node_affinity {
-               key = "compute.googleapis.com/node-group-name"
-               operator = "IN"
-               values = ["node-group-name"]
-               }
-               }
+               ```python
+               import pulumi
+               ```
         :param pulumi.Input[bool] spot: A boolean that represents whether the underlying node VMs are spot.
                See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
                for more information. Defaults to false.
@@ -7687,13 +7743,9 @@ class ClusterNodePoolNodeConfigArgs:
         """
         Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `node_affinity` structure is documented below.
 
-        sole_tenant_config {
-        node_affinity {
-        key = "compute.googleapis.com/node-group-name"
-        operator = "IN"
-        values = ["node-group-name"]
-        }
-        }
+        ```python
+        import pulumi
+        ```
         """
         return pulumi.get(self, "sole_tenant_config")
 
@@ -8417,12 +8469,15 @@ class ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs:
 @pulumi.input_type
 class ClusterNodePoolPlacementPolicyArgs:
     def __init__(__self__, *,
-                 type: pulumi.Input[str]):
+                 type: pulumi.Input[str],
+                 tpu_topology: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
                `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
         """
         pulumi.set(__self__, "type", type)
+        if tpu_topology is not None:
+            pulumi.set(__self__, "tpu_topology", tpu_topology)
 
     @property
     @pulumi.getter
@@ -8436,6 +8491,15 @@ class ClusterNodePoolPlacementPolicyArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="tpuTopology")
+    def tpu_topology(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tpu_topology")
+
+    @tpu_topology.setter
+    def tpu_topology(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tpu_topology", value)
 
 
 @pulumi.input_type
@@ -9110,6 +9174,45 @@ class ClusterResourceUsageExportConfigBigqueryDestinationArgs:
     @dataset_id.setter
     def dataset_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "dataset_id", value)
+
+
+@pulumi.input_type
+class ClusterSecurityPostureConfigArgs:
+    def __init__(__self__, *,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 vulnerability_mode: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] mode: Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED` and `BASIC`.
+        :param pulumi.Input[str] vulnerability_mode: Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED` and `VULNERABILITY_BASIC`.
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if vulnerability_mode is not None:
+            pulumi.set(__self__, "vulnerability_mode", vulnerability_mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED` and `BASIC`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter(name="vulnerabilityMode")
+    def vulnerability_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED` and `VULNERABILITY_BASIC`.
+        """
+        return pulumi.get(self, "vulnerability_mode")
+
+    @vulnerability_mode.setter
+    def vulnerability_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vulnerability_mode", value)
 
 
 @pulumi.input_type
@@ -10343,13 +10446,17 @@ class NodePoolNodeConfigWorkloadMetadataConfigArgs:
 @pulumi.input_type
 class NodePoolPlacementPolicyArgs:
     def __init__(__self__, *,
-                 type: pulumi.Input[str]):
+                 type: pulumi.Input[str],
+                 tpu_topology: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] type: The type of the policy. Supports a single value: COMPACT.
                Specifying COMPACT placement policy type places node pool's nodes in a closer
                physical proximity in order to reduce network latency between nodes.
+        :param pulumi.Input[str] tpu_topology: The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
         """
         pulumi.set(__self__, "type", type)
+        if tpu_topology is not None:
+            pulumi.set(__self__, "tpu_topology", tpu_topology)
 
     @property
     @pulumi.getter
@@ -10364,6 +10471,18 @@ class NodePoolPlacementPolicyArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="tpuTopology")
+    def tpu_topology(self) -> Optional[pulumi.Input[str]]:
+        """
+        The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
+        """
+        return pulumi.get(self, "tpu_topology")
+
+    @tpu_topology.setter
+    def tpu_topology(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tpu_topology", value)
 
 
 @pulumi.input_type

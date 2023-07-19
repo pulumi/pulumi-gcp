@@ -4632,6 +4632,14 @@ export namespace bigquery {
          */
         maxBadRecords?: number;
         /**
+         * Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
+         */
+        metadataCacheMode?: string;
+        /**
+         * Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `objectMetadata` is set, `sourceFormat` should be omitted.
+         */
+        objectMetadata?: string;
+        /**
          * When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
          */
         referenceFileSchemaUri?: string;
@@ -4655,7 +4663,7 @@ export namespace bigquery {
          * in Bigquery's public API documentation for supported formats. To use "GOOGLE_SHEETS"
          * the `scopes` must include "https://www.googleapis.com/auth/drive.readonly".
          */
-        sourceFormat: string;
+        sourceFormat?: string;
         /**
          * A list of the fully-qualified URIs that point to
          * your data in Google Cloud.
@@ -7520,7 +7528,7 @@ export namespace certificatemanager {
          */
         authorizationAttemptInfos: outputs.certificatemanager.CertificateManagedAuthorizationAttemptInfo[];
         /**
-         * Authorizations that will be used for performing domain authorization
+         * Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
          */
         dnsAuthorizations?: string[];
         /**
@@ -7528,6 +7536,12 @@ export namespace certificatemanager {
          * Wildcard domains are only supported with DNS challenge resolution
          */
         domains?: string[];
+        /**
+         * The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*&#47;locations/*&#47;certificateIssuanceConfigs/*.
+         * If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+         * Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+         */
+        issuanceConfig?: string;
         /**
          * (Output)
          * Information about issues with provisioning this Managed Certificate.
@@ -8621,6 +8635,10 @@ export namespace cloudbuild {
          * Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
          */
         repoType: string;
+        /**
+         * The fully qualified resource name of the Repo API repository. The fully qualified resource name of the Repo API repository.
+         * If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+         */
         repository?: string;
         /**
          * The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
@@ -8782,6 +8800,10 @@ export namespace cloudbuild {
          * Possible values are: `UNKNOWN`, `CLOUD_SOURCE_REPOSITORIES`, `GITHUB`, `BITBUCKET_SERVER`.
          */
         repoType: string;
+        /**
+         * The qualified resource name of the Repo API repository.
+         * Either uri or repository can be specified and is required.
+         */
         repository?: string;
         /**
          * The URI of the repo.
@@ -8932,6 +8954,68 @@ export namespace cloudbuildv2 {
         service: string;
     }
 
+    export interface ConnectionGitlabConfig {
+        /**
+         * Required. A GitLab personal access token with the `api` scope access.
+         */
+        authorizerCredential: outputs.cloudbuildv2.ConnectionGitlabConfigAuthorizerCredential;
+        /**
+         * The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
+         */
+        hostUri: string;
+        /**
+         * Required. A GitLab personal access token with the minimum `readApi` scope access.
+         */
+        readAuthorizerCredential: outputs.cloudbuildv2.ConnectionGitlabConfigReadAuthorizerCredential;
+        /**
+         * Output only. Version of the GitLab Enterprise server running on the `hostUri`.
+         */
+        serverVersion: string;
+        /**
+         * Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
+         */
+        serviceDirectoryConfig?: outputs.cloudbuildv2.ConnectionGitlabConfigServiceDirectoryConfig;
+        /**
+         * SSL certificate to use for requests to GitLab Enterprise.
+         */
+        sslCa?: string;
+        /**
+         * Required. Immutable. SecretManager resource containing the webhook secret of a GitLab Enterprise project, formatted as `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        webhookSecretSecretVersion: string;
+    }
+
+    export interface ConnectionGitlabConfigAuthorizerCredential {
+        /**
+         * Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        userTokenSecretVersion: string;
+        /**
+         * Output only. The username associated to this token.
+         */
+        username: string;
+    }
+
+    export interface ConnectionGitlabConfigReadAuthorizerCredential {
+        /**
+         * Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        userTokenSecretVersion: string;
+        /**
+         * Output only. The username associated to this token.
+         *
+         * - - -
+         */
+        username: string;
+    }
+
+    export interface ConnectionGitlabConfigServiceDirectoryConfig {
+        /**
+         * Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+         */
+        service: string;
+    }
+
     export interface ConnectionIAMBindingCondition {
         description?: string;
         expression: string;
@@ -8990,6 +9074,10 @@ export namespace clouddeploy {
 
     export interface DeliveryPipelineSerialPipelineStage {
         /**
+         * Optional. The deploy parameters to use for the target in this stage.
+         */
+        deployParameters?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageDeployParameter[];
+        /**
          * Skaffold profiles to use when rendering the manifest for this stage's `Target`.
          */
         profiles?: string[];
@@ -9003,9 +9091,20 @@ export namespace clouddeploy {
         targetId?: string;
     }
 
+    export interface DeliveryPipelineSerialPipelineStageDeployParameter {
+        /**
+         * Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are applied to all targets (including child targets of a multi-target).
+         */
+        matchTargetLabels?: {[key: string]: string};
+        /**
+         * Required. Values are deploy parameters in key-value pairs.
+         */
+        values: {[key: string]: string};
+    }
+
     export interface DeliveryPipelineSerialPipelineStageStrategy {
         /**
-         * (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+         * Canary deployment strategy provides progressive percentage based deployments to a Target.
          */
         canary?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyCanary;
         /**
@@ -9117,6 +9216,10 @@ export namespace clouddeploy {
          * Required. Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
          */
         deployment: string;
+        /**
+         * Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
+         */
+        disablePodOverprovisioning?: boolean;
         /**
          * Required. Name of the Kubernetes Service.
          */
@@ -9528,7 +9631,7 @@ export namespace cloudfunctionsv2 {
          * Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is
          * supplied the value is interpreted as bytes.
          */
-        availableMemory?: string;
+        availableMemory: string;
         /**
          * Environment variables that shall be available during function execution.
          */
@@ -9548,7 +9651,7 @@ export namespace cloudfunctionsv2 {
          * The limit on the maximum number of function instances that may coexist at a
          * given time.
          */
-        maxInstanceCount?: number;
+        maxInstanceCount: number;
         /**
          * Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
          */
@@ -9581,7 +9684,7 @@ export namespace cloudfunctionsv2 {
          * can be terminated if the function is not completed at the end of the
          * timeout period. Defaults to 60 seconds.
          */
-        timeoutSeconds?: number;
+        timeoutSeconds: number;
         /**
          * (Output)
          * URI of the Service deployed.
@@ -11155,7 +11258,18 @@ export namespace cloudrunv2 {
 
     export interface JobTemplate {
         /**
-         * KRM-style labels for the resource.
+         * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+         * Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+         * All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
+         * This field follows Kubernetes annotations' namespacing, limits, and rules.
+         */
+        annotations?: {[key: string]: string};
+        /**
+         * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter,
+         * or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or
+         * https://cloud.google.com/run/docs/configuring/labels.
+         * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+         * All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
          */
         labels?: {[key: string]: string};
         /**
@@ -11653,7 +11767,10 @@ export namespace cloudrunv2 {
 
     export interface ServiceTemplate {
         /**
-         * KRM-style annotations for the resource.
+         * Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects.
+         * Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+         * All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
+         * This field follows Kubernetes annotations' namespacing, limits, and rules.
          */
         annotations?: {[key: string]: string};
         /**
@@ -11671,7 +11788,10 @@ export namespace cloudrunv2 {
          */
         executionEnvironment?: string;
         /**
-         * KRM-style labels for the resource.
+         * Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc.
+         * For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels.
+         * Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected.
+         * All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
          */
         labels?: {[key: string]: string};
         /**
@@ -20360,6 +20480,17 @@ export namespace compute {
         address?: string;
     }
 
+    export interface RegionSecurityPolicyDdosProtectionConfig {
+        /**
+         * Google Cloud Armor offers the following options to help protect systems against DDoS attacks:
+         * - STANDARD: basic always-on protection for network load balancers, protocol forwarding, or VMs with public IP addresses.
+         * - ADVANCED: additional protections for Managed Protection Plus subscribers who use network load balancers, protocol forwarding, or VMs with public IP addresses.
+         * - ADVANCED_PREVIEW: flag to enable the security policy in preview mode.
+         * Possible values are: `ADVANCED`, `ADVANCED_PREVIEW`, `STANDARD`.
+         */
+        ddosProtection: string;
+    }
+
     export interface RegionUrlMapDefaultRouteAction {
         /**
          * The specification for allowing client side cross-origin requests. Please see
@@ -25240,6 +25371,10 @@ export namespace container {
          */
         sizeGib: number;
         /**
+         * Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+         */
+        throughput: number;
+        /**
          * Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
          */
         volumeType: string;
@@ -25269,6 +25404,10 @@ export namespace container {
          * Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
          */
         sizeGib: number;
+        /**
+         * Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+         */
+        throughput: number;
         /**
          * Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
          */
@@ -25308,6 +25447,10 @@ export namespace container {
     }
 
     export interface AwsClusterNetworking {
+        /**
+         * Disable the per node pool subnet security group rules on the control plane security group. When set to true, you must also provide one or more security groups that ensure node pools are able to send requests to the control plane on TCP/443 and TCP/8132. Failure to do so may result in unavailable node pools.
+         */
+        perNodePoolSgRulesDisabled?: boolean;
         /**
          * All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation.
          */
@@ -25449,6 +25592,10 @@ export namespace container {
          * Optional. The size of the volume, in GiBs. When unspecified, a default value is provided. See the specific reference in the parent resource.
          */
         sizeGib: number;
+        /**
+         * Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+         */
+        throughput: number;
         /**
          * Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
          */
@@ -26677,13 +26824,9 @@ export namespace container {
         /**
          * Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
          *
-         * soleTenantConfig {
-         * nodeAffinity {
-         * key = "compute.googleapis.com/node-group-name"
-         * operator = "IN"
-         * values = ["node-group-name"]
-         * }
-         * }
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         soleTenantConfig?: outputs.container.ClusterNodeConfigSoleTenantConfig;
         /**
@@ -27249,13 +27392,9 @@ export namespace container {
         /**
          * Allows specifying multiple [node affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity) useful for running workloads on [sole tenant nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/sole-tenancy). `nodeAffinity` structure is documented below.
          *
-         * soleTenantConfig {
-         * nodeAffinity {
-         * key = "compute.googleapis.com/node-group-name"
-         * operator = "IN"
-         * values = ["node-group-name"]
-         * }
-         * }
+         * ```typescript
+         * import * as pulumi from "@pulumi/pulumi";
+         * ```
          */
         soleTenantConfig?: outputs.container.ClusterNodePoolNodeConfigSoleTenantConfig;
         /**
@@ -27493,6 +27632,7 @@ export namespace container {
     }
 
     export interface ClusterNodePoolPlacementPolicy {
+        tpuTopology?: string;
         /**
          * Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
          * `SYSTEM_ONLY` (Only system components are monitored and logged) is only available in GKE versions 1.15 and later.
@@ -27705,6 +27845,17 @@ export namespace container {
 
     export interface ClusterResourceUsageExportConfigBigqueryDestination {
         datasetId: string;
+    }
+
+    export interface ClusterSecurityPostureConfig {
+        /**
+         * Sets the mode of the Kubernetes security posture API's off-cluster features. Available options include `DISABLED` and `BASIC`.
+         */
+        mode: string;
+        /**
+         * Sets the mode of the Kubernetes security posture API's workload vulnerability scanning. Available options include `VULNERABILITY_DISABLED` and `VULNERABILITY_BASIC`.
+         */
+        vulnerabilityMode: string;
     }
 
     export interface ClusterServiceExternalIpsConfig {
@@ -28310,6 +28461,7 @@ export namespace container {
     }
 
     export interface GetClusterNodePoolPlacementPolicy {
+        tpuTopology: string;
         type: string;
     }
 
@@ -28385,6 +28537,11 @@ export namespace container {
 
     export interface GetClusterResourceUsageExportConfigBigqueryDestination {
         datasetId: string;
+    }
+
+    export interface GetClusterSecurityPostureConfig {
+        mode: string;
+        vulnerabilityMode: string;
     }
 
     export interface GetClusterServiceExternalIpsConfig {
@@ -28596,6 +28753,10 @@ export namespace container {
     }
 
     export interface NodePoolPlacementPolicy {
+        /**
+         * The [TPU placement topology](https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies) for pod slice node pool.
+         */
+        tpuTopology?: string;
         /**
          * The type of the policy. Supports a single value: COMPACT.
          * Specifying COMPACT placement policy type places node pool's nodes in a closer
@@ -40400,6 +40561,112 @@ export namespace filestore {
 }
 
 export namespace firebase {
+    export interface ExtensionsInstanceConfig {
+        /**
+         * List of extension events selected by consumer that extension is allowed to
+         * emit, identified by their types.
+         */
+        allowedEventTypes?: string[];
+        /**
+         * (Output)
+         * The time at which the Extension Instance Config was created.
+         */
+        createTime: string;
+        /**
+         * Fully qualified Eventarc resource name that consumers should use for event triggers.
+         */
+        eventarcChannel: string;
+        /**
+         * The ref of the Extension from the Registry (e.g. publisher-id/awesome-extension)
+         */
+        extensionRef: string;
+        /**
+         * The version of the Extension from the Registry (e.g. 1.0.3). If left blank, latest is assumed.
+         */
+        extensionVersion: string;
+        /**
+         * (Output)
+         * The unique identifier for this configuration.
+         */
+        name: string;
+        /**
+         * Environment variables that may be configured for the Extension
+         */
+        params: {[key: string]: string};
+        /**
+         * (Output)
+         * Postinstall instructions to be shown for this Extension, with
+         * template strings representing function and parameter values substituted
+         * with actual values. These strings include: ${param:FOO},
+         * ${function:myFunc.url},
+         * ${function:myFunc.name}, and ${function:myFunc.location}
+         *
+         * - - -
+         */
+        populatedPostinstallContent: string;
+        /**
+         * Params whose values are only available at deployment time.
+         * Unlike other params, these will not be set as environment variables on
+         * functions.
+         */
+        systemParams: {[key: string]: string};
+    }
+
+    export interface ExtensionsInstanceErrorStatus {
+        /**
+         * The status code, which should be an enum value of google.rpc.Code.
+         */
+        code?: number;
+        /**
+         * A list of messages that carry the error details.
+         */
+        details?: {[key: string]: any}[];
+        /**
+         * A developer-facing error message, which should be in English.
+         */
+        message?: string;
+    }
+
+    export interface ExtensionsInstanceRuntimeData {
+        /**
+         * The fatal error state for the extension instance
+         * Structure is documented below.
+         */
+        fatalError?: outputs.firebase.ExtensionsInstanceRuntimeDataFatalError;
+        /**
+         * The processing state for the extension instance
+         * Structure is documented below.
+         */
+        processingState?: outputs.firebase.ExtensionsInstanceRuntimeDataProcessingState;
+        /**
+         * The time of the last state update.
+         */
+        stateUpdateTime?: string;
+    }
+
+    export interface ExtensionsInstanceRuntimeDataFatalError {
+        /**
+         * The error message. This is set by the extension developer to give
+         * more detail on why the extension is unusable and must be re-installed
+         * or reconfigured.
+         */
+        errorMessage?: string;
+    }
+
+    export interface ExtensionsInstanceRuntimeDataProcessingState {
+        /**
+         * Details about the processing. e.g. This could include the type of
+         * processing in progress or it could list errors or failures.
+         * This information will be shown in the console on the detail page
+         * for the extension instance.
+         */
+        detailMessage?: string;
+        /**
+         * The processing state of the extension instance.
+         */
+        state?: string;
+    }
+
     export interface HostingVersionConfig {
         /**
          * An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
@@ -41199,6 +41466,10 @@ export namespace gkehub {
     }
 
     export interface FeatureSpec {
+        /**
+         * Fleet Observability feature spec.
+         * Structure is documented below.
+         */
         fleetobservability?: outputs.gkehub.FeatureSpecFleetobservability;
         /**
          * Multicluster Ingress-specific spec.
@@ -41309,6 +41580,398 @@ export namespace gkehub {
 }
 
 export namespace gkeonprem {
+    export interface BareMetalAdminClusterClusterOperations {
+        /**
+         * Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
+         */
+        enableApplicationLogs?: boolean;
+    }
+
+    export interface BareMetalAdminClusterControlPlane {
+        /**
+         * Customizes the default API server args. Only a subset of
+         * customized flags are supported. Please refer to the API server
+         * documentation below to know the exact format:
+         * https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+         * Structure is documented below.
+         */
+        apiServerArgs?: outputs.gkeonprem.BareMetalAdminClusterControlPlaneApiServerArg[];
+        /**
+         * Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
+         * Structure is documented below.
+         */
+        controlPlaneNodePoolConfig: outputs.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig;
+    }
+
+    export interface BareMetalAdminClusterControlPlaneApiServerArg {
+        /**
+         * The argument name as it appears on the API Server command line please make sure to remove the leading dashes.
+         */
+        argument: string;
+        /**
+         * The value of the arg as it will be passed to the API Server command line.
+         */
+        value: string;
+    }
+
+    export interface BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig {
+        /**
+         * The generic configuration for a node pool running the control plane.
+         * Structure is documented below.
+         */
+        nodePoolConfig: outputs.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig;
+    }
+
+    export interface BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig {
+        /**
+         * The map of Kubernetes labels (key/value pairs) to be applied to
+         * each node. These will added in addition to any default label(s)
+         * that Kubernetes may apply to the node. In case of conflict in
+         * label keys, the applied set may differ depending on the Kubernetes
+         * version -- it's best to assume the behavior is undefined and
+         * conflicts should be avoided. For more information, including usage
+         * and the valid values, see:
+         * http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * An object containing a list of "key": value pairs.
+         * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         */
+        labels?: {[key: string]: string};
+        /**
+         * The list of machine addresses in the Bare Metal Node Pool.
+         * Structure is documented below.
+         */
+        nodeConfigs?: outputs.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig[];
+        /**
+         * Specifies the nodes operating system (default: LINUX).
+         */
+        operatingSystem?: string;
+        /**
+         * The initial taints assigned to nodes of this node pool.
+         * Structure is documented below.
+         */
+        taints?: outputs.gkeonprem.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint[];
+    }
+
+    export interface BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigNodeConfig {
+        /**
+         * The map of Kubernetes labels (key/value pairs) to be applied to
+         * each node. These will added in addition to any default label(s)
+         * that Kubernetes may apply to the node. In case of conflict in
+         * label keys, the applied set may differ depending on the Kubernetes
+         * version -- it's best to assume the behavior is undefined and
+         * conflicts should be avoided. For more information, including usage
+         * and the valid values, see:
+         * http://kubernetes.io/v1.1/docs/user-guide/labels.html
+         * An object containing a list of "key": value pairs.
+         * Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         */
+        labels?: {[key: string]: string};
+        /**
+         * The default IPv4 address for SSH access and Kubernetes node.
+         * Example: 192.168.0.1
+         */
+        nodeIp?: string;
+    }
+
+    export interface BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigTaint {
+        /**
+         * Specifies the nodes operating system (default: LINUX).
+         * Possible values are: `EFFECT_UNSPECIFIED`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
+         */
+        effect?: string;
+        /**
+         * Key associated with the effect.
+         */
+        key?: string;
+        /**
+         * Value associated with the effect.
+         */
+        value?: string;
+    }
+
+    export interface BareMetalAdminClusterFleet {
+        /**
+         * (Output)
+         * The name of the managed Hub Membership resource associated to this cluster.
+         * Membership names are formatted as
+         * `projects/<project-number>/locations/<location>/memberships/<cluster-id>`.
+         */
+        membership: string;
+    }
+
+    export interface BareMetalAdminClusterLoadBalancer {
+        /**
+         * A nested object resource
+         * Structure is documented below.
+         */
+        manualLbConfig?: outputs.gkeonprem.BareMetalAdminClusterLoadBalancerManualLbConfig;
+        /**
+         * Specifies the load balancer ports.
+         * Structure is documented below.
+         */
+        portConfig: outputs.gkeonprem.BareMetalAdminClusterLoadBalancerPortConfig;
+        /**
+         * Specified the Bare Metal Load Balancer Config
+         * Structure is documented below.
+         */
+        vipConfig: outputs.gkeonprem.BareMetalAdminClusterLoadBalancerVipConfig;
+    }
+
+    export interface BareMetalAdminClusterLoadBalancerManualLbConfig {
+        /**
+         * Whether manual load balancing is enabled.
+         */
+        enabled: boolean;
+    }
+
+    export interface BareMetalAdminClusterLoadBalancerPortConfig {
+        /**
+         * The port that control plane hosted load balancers will listen on.
+         */
+        controlPlaneLoadBalancerPort: number;
+    }
+
+    export interface BareMetalAdminClusterLoadBalancerVipConfig {
+        /**
+         * The VIP which you previously set aside for the Kubernetes API of this Bare Metal Admin Cluster.
+         */
+        controlPlaneVip: string;
+    }
+
+    export interface BareMetalAdminClusterMaintenanceConfig {
+        /**
+         * All IPv4 address from these ranges will be placed into maintenance mode.
+         * Nodes in maintenance mode will be cordoned and drained. When both of these
+         * are true, the "baremetal.cluster.gke.io/maintenance" annotation will be set
+         * on the node resource.
+         */
+        maintenanceAddressCidrBlocks: string[];
+    }
+
+    export interface BareMetalAdminClusterNetworkConfig {
+        /**
+         * A nested object resource
+         * Structure is documented below.
+         */
+        islandModeCidr?: outputs.gkeonprem.BareMetalAdminClusterNetworkConfigIslandModeCidr;
+    }
+
+    export interface BareMetalAdminClusterNetworkConfigIslandModeCidr {
+        /**
+         * All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
+         */
+        podAddressCidrBlocks: string[];
+        /**
+         * All services in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation.
+         */
+        serviceAddressCidrBlocks: string[];
+    }
+
+    export interface BareMetalAdminClusterNodeAccessConfig {
+        /**
+         * LoginUser is the user name used to access node machines.
+         * It defaults to "root" if not set.
+         */
+        loginUser?: string;
+    }
+
+    export interface BareMetalAdminClusterNodeConfig {
+        /**
+         * The maximum number of pods a node can run. The size of the CIDR range
+         * assigned to the node will be derived from this parameter.
+         */
+        maxPodsPerNode?: number;
+    }
+
+    export interface BareMetalAdminClusterProxy {
+        /**
+         * A list of IPs, hostnames, and domains that should skip the proxy.
+         * Examples: ["127.0.0.1", "example.com", ".corp", "localhost"].
+         */
+        noProxies?: string[];
+        /**
+         * Specifies the address of your proxy server.
+         * Examples: http://domain
+         * WARNING: Do not provide credentials in the format
+         * http://(username:password@)domain these will be rejected by the server.
+         */
+        uri: string;
+    }
+
+    export interface BareMetalAdminClusterSecurityConfig {
+        /**
+         * Configures user access to the Bare Metal User cluster.
+         * Structure is documented below.
+         */
+        authorization?: outputs.gkeonprem.BareMetalAdminClusterSecurityConfigAuthorization;
+    }
+
+    export interface BareMetalAdminClusterSecurityConfigAuthorization {
+        /**
+         * Users that will be granted the cluster-admin role on the cluster, providing full access to the cluster.
+         * Structure is documented below.
+         */
+        adminUsers: outputs.gkeonprem.BareMetalAdminClusterSecurityConfigAuthorizationAdminUser[];
+    }
+
+    export interface BareMetalAdminClusterSecurityConfigAuthorizationAdminUser {
+        /**
+         * The name of the user, e.g. `my-gcp-id@gmail.com`.
+         */
+        username: string;
+    }
+
+    export interface BareMetalAdminClusterStatus {
+        /**
+         * (Output)
+         * ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+         * Structure is documented below.
+         */
+        conditions: outputs.gkeonprem.BareMetalAdminClusterStatusCondition[];
+        /**
+         * (Output)
+         * Human-friendly representation of the error message from the admin cluster
+         * controller. The error message can be temporary as the admin cluster
+         * controller creates a cluster or node pool. If the error message persists
+         * for a longer period of time, it can be used to surface error message to
+         * indicate real problems requiring user intervention.
+         */
+        errorMessage: string;
+    }
+
+    export interface BareMetalAdminClusterStatusCondition {
+        /**
+         * (Output)
+         * Last time the condition transit from one status to another.
+         */
+        lastTransitionTime: string;
+        /**
+         * Human-readable message indicating details about last transition.
+         */
+        message?: string;
+        /**
+         * (Output)
+         * A human-readable message of the check failure.
+         */
+        reason?: string;
+        /**
+         * (Output)
+         * The lifecycle state of the condition.
+         */
+        state: string;
+        /**
+         * Type of the condition.
+         * (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+         */
+        type?: string;
+    }
+
+    export interface BareMetalAdminClusterStorage {
+        /**
+         * Specifies the config for local PersistentVolumes backed
+         * by mounted node disks. These disks need to be formatted and mounted by the
+         * user, which can be done before or after cluster creation.
+         * Structure is documented below.
+         */
+        lvpNodeMountsConfig: outputs.gkeonprem.BareMetalAdminClusterStorageLvpNodeMountsConfig;
+        /**
+         * Specifies the config for local PersistentVolumes backed by
+         * subdirectories in a shared filesystem. These subdirectores are
+         * automatically created during cluster creation.
+         * Structure is documented below.
+         */
+        lvpShareConfig: outputs.gkeonprem.BareMetalAdminClusterStorageLvpShareConfig;
+    }
+
+    export interface BareMetalAdminClusterStorageLvpNodeMountsConfig {
+        /**
+         * The host machine path.
+         */
+        path: string;
+        /**
+         * The StorageClass name that PVs will be created with.
+         */
+        storageClass: string;
+    }
+
+    export interface BareMetalAdminClusterStorageLvpShareConfig {
+        /**
+         * Defines the machine path and storage class for the LVP Share.
+         * Structure is documented below.
+         */
+        lvpConfig: outputs.gkeonprem.BareMetalAdminClusterStorageLvpShareConfigLvpConfig;
+        /**
+         * The number of subdirectories to create under path.
+         */
+        sharedPathPvCount?: number;
+    }
+
+    export interface BareMetalAdminClusterStorageLvpShareConfigLvpConfig {
+        /**
+         * The host machine path.
+         */
+        path: string;
+        /**
+         * The StorageClass name that PVs will be created with.
+         */
+        storageClass: string;
+    }
+
+    export interface BareMetalAdminClusterValidationCheck {
+        /**
+         * (Output)
+         * Options used for the validation check.
+         */
+        options: string;
+        /**
+         * (Output)
+         * The scenario when the preflight checks were run..
+         */
+        scenario: string;
+        /**
+         * (Output)
+         * Specifies the detailed validation check status
+         * Structure is documented below.
+         */
+        statuses: outputs.gkeonprem.BareMetalAdminClusterValidationCheckStatus[];
+    }
+
+    export interface BareMetalAdminClusterValidationCheckStatus {
+        /**
+         * (Output)
+         * Individual checks which failed as part of the Preflight check execution.
+         * Structure is documented below.
+         */
+        results: outputs.gkeonprem.BareMetalAdminClusterValidationCheckStatusResult[];
+    }
+
+    export interface BareMetalAdminClusterValidationCheckStatusResult {
+        /**
+         * (Output)
+         * The category of the validation.
+         */
+        category: string;
+        /**
+         * A human readable description of this Bare Metal Admin Cluster.
+         */
+        description: string;
+        /**
+         * (Output)
+         * Detailed failure information, which might be unformatted.
+         */
+        details: string;
+        /**
+         * (Output)
+         * Options used for the validation check.
+         */
+        options: string;
+        /**
+         * (Output)
+         * A human-readable message of the check failure.
+         */
+        reason: string;
+    }
+
     export interface BareMetalClusterClusterOperations {
         /**
          * Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
@@ -43203,6 +43866,11 @@ export namespace iam {
          */
         clientId: string;
         /**
+         * The optional client secret. Required to enable Authorization Code flow for web sign-in.
+         * Structure is documented below.
+         */
+        clientSecret?: outputs.iam.WorkforcePoolProviderOidcClientSecret;
+        /**
          * The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
          */
         issuerUri: string;
@@ -43213,17 +43881,41 @@ export namespace iam {
         webSsoConfig: outputs.iam.WorkforcePoolProviderOidcWebSsoConfig;
     }
 
+    export interface WorkforcePoolProviderOidcClientSecret {
+        /**
+         * The value of the client secret.
+         * Structure is documented below.
+         */
+        value?: outputs.iam.WorkforcePoolProviderOidcClientSecretValue;
+    }
+
+    export interface WorkforcePoolProviderOidcClientSecretValue {
+        /**
+         * The plain text of the client secret value.
+         * **Note**: This property is sensitive and will not be displayed in the plan.
+         */
+        plainText: string;
+        /**
+         * (Output)
+         * A thumbprint to represent the current client secret value.
+         */
+        thumbprint: string;
+    }
+
     export interface WorkforcePoolProviderOidcWebSsoConfig {
         /**
          * The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
+         * * MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
          * * ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
-         * Possible values are: `ONLY_ID_TOKEN_CLAIMS`.
+         * Possible values are: `MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS`, `ONLY_ID_TOKEN_CLAIMS`.
          */
         assertionClaimsBehavior: string;
         /**
          * The Response Type to request for in the OIDC Authorization Request for web sign-in.
+         * The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.
+         * * CODE: The `response_type=code` selection uses the Authorization Code Flow for web sign-in. Requires a configured client secret.
          * * ID_TOKEN: The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
-         * Possible values are: `ID_TOKEN`.
+         * Possible values are: `CODE`, `ID_TOKEN`.
          */
         responseType: string;
     }
@@ -49107,157 +49799,231 @@ export namespace osconfig {
 
     export interface OsPolicyAssignmentInstanceFilter {
         /**
-         * Target all VMs in the project. If true, no other criteria is permitted.
+         * Target all VMs in the project. If true, no other criteria
+         * is permitted.
          */
         all?: boolean;
         /**
-         * List of label sets used for VM exclusion. If the list has more than one label set, the VM is excluded if any of the label sets are applicable for the VM.
+         * List of label sets used for VM exclusion. If
+         * the list has more than one label set, the VM is excluded if any of the label
+         * sets are applicable for the VM. Structure is
+         * documented below.
          */
         exclusionLabels?: outputs.osconfig.OsPolicyAssignmentInstanceFilterExclusionLabel[];
         /**
-         * List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
+         * List of label sets used for VM inclusion. If
+         * the list has more than one `LabelSet`, the VM is included if any of the
+         * label sets are applicable for the VM. Structure is
+         * documented below.
          */
         inclusionLabels?: outputs.osconfig.OsPolicyAssignmentInstanceFilterInclusionLabel[];
         /**
-         * List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
+         * List of inventories to select VMs. A VM is
+         * selected if its inventory data matches at least one of the following
+         * inventories. Structure is documented below.
          */
         inventories?: outputs.osconfig.OsPolicyAssignmentInstanceFilterInventory[];
     }
 
     export interface OsPolicyAssignmentInstanceFilterExclusionLabel {
         /**
-         * Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+         * Labels are identified by key/value pairs in this map.
+         * A VM should contain all the key/value pairs specified in this map to be
+         * selected.
          */
         labels?: {[key: string]: string};
     }
 
     export interface OsPolicyAssignmentInstanceFilterInclusionLabel {
         /**
-         * Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected.
+         * Labels are identified by key/value pairs in this map.
+         * A VM should contain all the key/value pairs specified in this map to be
+         * selected.
          */
         labels?: {[key: string]: string};
     }
 
     export interface OsPolicyAssignmentInstanceFilterInventory {
         /**
-         * Required. The OS short name
+         * The OS short name
          */
         osShortName: string;
         /**
-         * The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+         * The OS version Prefix matches are supported if
+         * asterisk(*) is provided as the last character. For example, to match all
+         * versions with a major version of `7`, specify the following value for this
+         * field `7.*` An empty string matches all OS versions.
          */
         osVersion?: string;
     }
 
     export interface OsPolicyAssignmentOsPolicy {
         /**
-         * This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
+         * This flag determines the OS
+         * policy compliance status when none of the resource groups within the policy
+         * are applicable for a VM. Set this value to `true` if the policy needs to be
+         * reported as compliant even if the policy has nothing to validate or enforce.
          */
         allowNoResourceGroupMatch?: boolean;
         /**
-         * Policy description. Length of the description is limited to 1024 characters.
+         * Policy description. Length of the description is
+         * limited to 1024 characters.
          */
         description?: string;
         /**
-         * Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
+         * The id of the OS policy with the following restrictions:
+         *
+         * *   Must contain only lowercase letters, numbers, and hyphens.
+         * *   Must start with a letter.
+         * *   Must be between 1-63 characters.
+         * *   Must end with a number or a letter.
+         * *   Must be unique within the assignment.
          */
         id: string;
         /**
-         * Required. Policy mode Possible values: MODE_UNSPECIFIED, VALIDATION, ENFORCEMENT
+         * Policy mode Possible values are: `MODE_UNSPECIFIED`,
+         * `VALIDATION`, `ENFORCEMENT`.
          */
         mode: string;
         /**
-         * Required. List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allowNoResourceGroupMatch`
+         * List of resource groups for the policy. For a
+         * particular VM, resource groups are evaluated in the order specified and the
+         * first resource group that is applicable is selected and the rest are
+         * ignored. If none of the resource groups are applicable for a VM, the VM is
+         * considered to be non-compliant w.r.t this policy. This behavior can be
+         * toggled by the flag `allowNoResourceGroupMatch` Structure is
+         * documented below.
          */
         resourceGroups: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroup[];
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroup {
         /**
-         * List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally.
+         * List of inventory filters for the resource
+         * group. The resources in this resource group are applied to the target VM if
+         * it satisfies at least one of the following inventory filters. For example,
+         * to apply this resource group to VMs running either `RHEL` or `CentOS`
+         * operating systems, specify 2 items for the list with following values:
+         * inventory_filters[0].os_short_name='rhel' and
+         * inventory_filters[1].os_short_name='centos' If the list is empty, this
+         * resource group will be applied to the target VM unconditionally. Structure
+         * is documented below.
          */
         inventoryFilters?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter[];
         /**
-         * Required. List of resources configured for this resource group. The resources are executed in the exact order specified here.
+         * List of resources configured for this resource
+         * group. The resources are executed in the exact order specified here.
+         * Structure is documented below.
          */
         resources: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResource[];
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter {
         /**
-         * Required. The OS short name
+         * The OS short name
          */
         osShortName: string;
         /**
-         * The OS version Prefix matches are supported if asterisk(*) is provided as the last character. For example, to match all versions with a major version of `7`, specify the following value for this field `7.*` An empty string matches all OS versions.
+         * The OS version Prefix matches are supported if
+         * asterisk(*) is provided as the last character. For example, to match all
+         * versions with a major version of `7`, specify the following value for this
+         * field `7.*` An empty string matches all OS versions.
          */
         osVersion?: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResource {
         /**
-         * Exec resource
+         * Exec resource Structure is
+         * documented below.
          */
         exec?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExec;
         /**
-         * File resource
+         * File resource Structure is
+         * documented below.
          */
         file?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFile;
         /**
-         * Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
+         * The id of the resource with the following restrictions:
+         *
+         * *   Must contain only lowercase letters, numbers, and hyphens.
+         * *   Must start with a letter.
+         * *   Must be between 1-63 characters.
+         * *   Must end with a number or a letter.
+         * *   Must be unique within the OS policy.
          */
         id: string;
         /**
-         * Package resource
+         * Package resource Structure is
+         * documented below.
          */
         pkg?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkg;
         /**
-         * Package repository resource
+         * Package repository resource Structure is
+         * documented below.
          */
         repository?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepository;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceExec {
         /**
-         * What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
+         * What to run to bring this resource into the desired
+         * state. An exit code of 100 indicates "success", any other exit code
+         * indicates a failure running enforce. Structure is
+         * documented below.
          */
         enforce?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce;
         /**
-         * Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+         * What to run to validate this resource is in the
+         * desired state. An exit code of 100 indicates "in desired state", and exit
+         * code of 101 indicates "not in desired state". Any other exit code indicates
+         * a failure running validate. Structure is
+         * documented below.
          */
         validate: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce {
         /**
-         * Optional arguments to pass to the source during execution.
+         * Optional arguments to pass to the source during
+         * execution.
          */
         args?: string[];
         /**
-         * A remote or local file.
+         * A remote or local file. Structure is
+         * documented below.
          */
         file?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile;
         /**
-         * Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+         * The script interpreter to use. Possible values
+         * are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
          */
         interpreter: string;
         /**
-         * Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+         * Only recorded for enforce Exec. Path to an
+         * output file (that is created by this Exec) whose content will be recorded in
+         * OSPolicyResourceCompliance after a successful run. Absence or failure to
+         * read this file will result in this ExecResource being non-compliant. Output
+         * file size is limited to 100K bytes.
          */
         outputFilePath?: string;
         /**
-         * An inline script. The size of the script is limited to 1024 characters.
+         * An inline script. The size of the script is limited to
+         * 1024 characters.
          */
         script?: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile {
         /**
-         * Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+         * Defaults to false. When false, files are
+         * subject to validations based on the file type: Remote: A checksum must be
+         * specified. Cloud Storage: An object generation number must be specified.
          */
         allowInsecure?: boolean;
         /**
-         * A Cloud Storage object.
+         * A Cloud Storage object. Structure is
+         * documented below.
          */
         gcs?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs;
         /**
@@ -49265,14 +50031,15 @@ export namespace osconfig {
          */
         localPath?: string;
         /**
-         * A generic remote file.
+         * A generic remote file. Structure is
+         * documented below.
          */
         remote?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileGcs {
         /**
-         * Required. Bucket of the Cloud Storage object.
+         * Bucket of the Cloud Storage object.
          */
         bucket: string;
         /**
@@ -49280,7 +50047,7 @@ export namespace osconfig {
          */
         generation?: number;
         /**
-         * Required. Name of the Cloud Storage object.
+         * Name of the Cloud Storage object.
          */
         object: string;
     }
@@ -49291,41 +50058,53 @@ export namespace osconfig {
          */
         sha256Checksum?: string;
         /**
-         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         * URI from which to fetch the object. It should contain
+         * both the protocol and path following the format `{protocol}://{location}`.
          */
         uri: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate {
         /**
-         * Optional arguments to pass to the source during execution.
+         * Optional arguments to pass to the source during
+         * execution.
          */
         args?: string[];
         /**
-         * A remote or local file.
+         * A remote or local file. Structure is
+         * documented below.
          */
         file?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile;
         /**
-         * Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+         * The script interpreter to use. Possible values
+         * are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
          */
         interpreter: string;
         /**
-         * Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+         * Only recorded for enforce Exec. Path to an
+         * output file (that is created by this Exec) whose content will be recorded in
+         * OSPolicyResourceCompliance after a successful run. Absence or failure to
+         * read this file will result in this ExecResource being non-compliant. Output
+         * file size is limited to 100K bytes.
          */
         outputFilePath?: string;
         /**
-         * An inline script. The size of the script is limited to 1024 characters.
+         * An inline script. The size of the script is limited to
+         * 1024 characters.
          */
         script?: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile {
         /**
-         * Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+         * Defaults to false. When false, files are
+         * subject to validations based on the file type: Remote: A checksum must be
+         * specified. Cloud Storage: An object generation number must be specified.
          */
         allowInsecure?: boolean;
         /**
-         * A Cloud Storage object.
+         * A Cloud Storage object. Structure is
+         * documented below.
          */
         gcs?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs;
         /**
@@ -49333,14 +50112,15 @@ export namespace osconfig {
          */
         localPath?: string;
         /**
-         * A generic remote file.
+         * A generic remote file. Structure is
+         * documented below.
          */
         remote?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileGcs {
         /**
-         * Required. Bucket of the Cloud Storage object.
+         * Bucket of the Cloud Storage object.
          */
         bucket: string;
         /**
@@ -49348,7 +50128,7 @@ export namespace osconfig {
          */
         generation?: number;
         /**
-         * Required. Name of the Cloud Storage object.
+         * Name of the Cloud Storage object.
          */
         object: string;
     }
@@ -49359,41 +50139,56 @@ export namespace osconfig {
          */
         sha256Checksum?: string;
         /**
-         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         * URI from which to fetch the object. It should contain
+         * both the protocol and path following the format `{protocol}://{location}`.
          */
         uri: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
         /**
-         * A a file with this content. The size of the content is limited to 1024 characters.
+         * A a file with this content. The size of the content
+         * is limited to 1024 characters.
          */
         content?: string;
         /**
-         * A remote or local source.
+         * A remote or local source. Structure is
+         * documented below.
          */
         file?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile;
         /**
-         * Required. The absolute path of the file within the VM.
+         * The absolute path of the file within the VM.
          */
         path: string;
         /**
-         * Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
+         * Consists of three octal digits which represent, in
+         * order, the permissions of the owner, group, and other users for the file
+         * (similarly to the numeric mode used in the linux chmod utility). Each digit
+         * represents a three bit number with the 4 bit corresponding to the read
+         * permissions, the 2 bit corresponds to the write bit, and the one bit
+         * corresponds to the execute permission. Default behavior is 755. Below are
+         * some examples of permissions and their associated values: read, write, and
+         * execute: 7 read and execute: 5 read and write: 6 read only: 4
          */
         permissions: string;
         /**
-         * Required. Desired state of the file. Possible values: OS_POLICY_COMPLIANCE_STATE_UNSPECIFIED, COMPLIANT, NON_COMPLIANT, UNKNOWN, NO_OS_POLICIES_APPLICABLE
+         * Desired state of the file. Possible values are:
+         * `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`,
+         * `CONTENTS_MATCH`.
          */
         state: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile {
         /**
-         * Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+         * Defaults to false. When false, files are
+         * subject to validations based on the file type: Remote: A checksum must be
+         * specified. Cloud Storage: An object generation number must be specified.
          */
         allowInsecure?: boolean;
         /**
-         * A Cloud Storage object.
+         * A Cloud Storage object. Structure is
+         * documented below.
          */
         gcs?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs;
         /**
@@ -49401,14 +50196,15 @@ export namespace osconfig {
          */
         localPath?: string;
         /**
-         * A generic remote file.
+         * A generic remote file. Structure is
+         * documented below.
          */
         remote?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileGcs {
         /**
-         * Required. Bucket of the Cloud Storage object.
+         * Bucket of the Cloud Storage object.
          */
         bucket: string;
         /**
@@ -49416,7 +50212,7 @@ export namespace osconfig {
          */
         generation?: number;
         /**
-         * Required. Name of the Cloud Storage object.
+         * Name of the Cloud Storage object.
          */
         object: string;
     }
@@ -49427,71 +50223,87 @@ export namespace osconfig {
          */
         sha256Checksum?: string;
         /**
-         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         * URI from which to fetch the object. It should contain
+         * both the protocol and path following the format `{protocol}://{location}`.
          */
         uri: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkg {
         /**
-         * A package managed by Apt.
+         * A package managed by Apt. Structure is
+         * documented below.
          */
         apt?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt;
         /**
-         * A deb package file.
+         * A deb package file. Structure is
+         * documented below.
          */
         deb?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb;
         /**
-         * Required. The desired state the agent should maintain for this package. Possible values: DESIRED_STATE_UNSPECIFIED, INSTALLED, REMOVED
+         * The desired state the agent should maintain for
+         * this package. Possible values are: `DESIRED_STATE_UNSPECIFIED`, `INSTALLED`,
+         * `REMOVED`.
          */
         desiredState: string;
         /**
-         * A package managed by GooGet.
+         * A package managed by GooGet. Structure is
+         * documented below.
          */
         googet?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget;
         /**
-         * An MSI package.
+         * An MSI package. Structure is
+         * documented below.
          */
         msi?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi;
         /**
-         * An rpm package file.
+         * An rpm package file. Structure is
+         * documented below.
          */
         rpm?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm;
         /**
-         * A package managed by YUM.
+         * A package managed by YUM. Structure is
+         * documented below.
          */
         yum?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum;
         /**
-         * A package managed by Zypper.
+         * A package managed by Zypper. Structure is
+         * documented below.
          */
         zypper?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt {
         /**
-         * Required. Package name.
+         * Package name.
          */
         name: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb {
         /**
-         * Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update && apt-get -y install package.deb`
+         * Whether dependencies should also be installed. -
+         * install when false: `dpkg -i package` - install when true: `apt-get update
+         * && apt-get -y install package.deb`
          */
         pullDeps?: boolean;
         /**
-         * Required. A deb package.
+         * A deb package. Structure is
+         * documented below.
          */
         source: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSource {
         /**
-         * Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+         * Defaults to false. When false, files are
+         * subject to validations based on the file type: Remote: A checksum must be
+         * specified. Cloud Storage: An object generation number must be specified.
          */
         allowInsecure?: boolean;
         /**
-         * A Cloud Storage object.
+         * A Cloud Storage object. Structure is
+         * documented below.
          */
         gcs?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs;
         /**
@@ -49499,14 +50311,15 @@ export namespace osconfig {
          */
         localPath?: string;
         /**
-         * A generic remote file.
+         * A generic remote file. Structure is
+         * documented below.
          */
         remote?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceRemote;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDebSourceGcs {
         /**
-         * Required. Bucket of the Cloud Storage object.
+         * Bucket of the Cloud Storage object.
          */
         bucket: string;
         /**
@@ -49514,7 +50327,7 @@ export namespace osconfig {
          */
         generation?: number;
         /**
-         * Required. Name of the Cloud Storage object.
+         * Name of the Cloud Storage object.
          */
         object: string;
     }
@@ -49525,36 +50338,43 @@ export namespace osconfig {
          */
         sha256Checksum?: string;
         /**
-         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         * URI from which to fetch the object. It should contain
+         * both the protocol and path following the format `{protocol}://{location}`.
          */
         uri: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget {
         /**
-         * Required. Package name.
+         * Package name.
          */
         name: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
         /**
-         * Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
+         * Additional properties to use during installation.
+         * This should be in the format of Property=Setting. Appended to the defaults
+         * of `ACTION=INSTALL REBOOT=ReallySuppress`.
          */
         properties?: string[];
         /**
-         * Required. The MSI package.
+         * The MSI package. Structure is
+         * documented below.
          */
         source: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource {
         /**
-         * Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+         * Defaults to false. When false, files are
+         * subject to validations based on the file type: Remote: A checksum must be
+         * specified. Cloud Storage: An object generation number must be specified.
          */
         allowInsecure?: boolean;
         /**
-         * A Cloud Storage object.
+         * A Cloud Storage object. Structure is
+         * documented below.
          */
         gcs?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs;
         /**
@@ -49562,14 +50382,15 @@ export namespace osconfig {
          */
         localPath?: string;
         /**
-         * A generic remote file.
+         * A generic remote file. Structure is
+         * documented below.
          */
         remote?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemote;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceGcs {
         /**
-         * Required. Bucket of the Cloud Storage object.
+         * Bucket of the Cloud Storage object.
          */
         bucket: string;
         /**
@@ -49577,7 +50398,7 @@ export namespace osconfig {
          */
         generation?: number;
         /**
-         * Required. Name of the Cloud Storage object.
+         * Name of the Cloud Storage object.
          */
         object: string;
     }
@@ -49588,29 +50409,36 @@ export namespace osconfig {
          */
         sha256Checksum?: string;
         /**
-         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         * URI from which to fetch the object. It should contain
+         * both the protocol and path following the format `{protocol}://{location}`.
          */
         uri: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm {
         /**
-         * Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+         * Whether dependencies should also be installed. -
+         * install when false: `rpm --upgrade --replacepkgs package.rpm` - install when
+         * true: `yum -y install package.rpm` or `zypper -y install package.rpm`
          */
         pullDeps?: boolean;
         /**
-         * Required. An rpm package.
+         * An rpm package. Structure is
+         * documented below.
          */
         source: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource {
         /**
-         * Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+         * Defaults to false. When false, files are
+         * subject to validations based on the file type: Remote: A checksum must be
+         * specified. Cloud Storage: An object generation number must be specified.
          */
         allowInsecure?: boolean;
         /**
-         * A Cloud Storage object.
+         * A Cloud Storage object. Structure is
+         * documented below.
          */
         gcs?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs;
         /**
@@ -49618,14 +50446,15 @@ export namespace osconfig {
          */
         localPath?: string;
         /**
-         * A generic remote file.
+         * A generic remote file. Structure is
+         * documented below.
          */
         remote?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs {
         /**
-         * Required. Bucket of the Cloud Storage object.
+         * Bucket of the Cloud Storage object.
          */
         bucket: string;
         /**
@@ -49633,7 +50462,7 @@ export namespace osconfig {
          */
         generation?: number;
         /**
-         * Required. Name of the Cloud Storage object.
+         * Name of the Cloud Storage object.
          */
         object: string;
     }
@@ -49644,81 +50473,89 @@ export namespace osconfig {
          */
         sha256Checksum?: string;
         /**
-         * Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`.
+         * URI from which to fetch the object. It should contain
+         * both the protocol and path following the format `{protocol}://{location}`.
          */
         uri: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum {
         /**
-         * Required. Package name.
+         * Package name.
          */
         name: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper {
         /**
-         * Required. Package name.
+         * Package name.
          */
         name: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceRepository {
         /**
-         * An Apt Repository.
+         * An Apt Repository. Structure is
+         * documented below.
          */
         apt?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt;
         /**
-         * A Goo Repository.
+         * A Goo Repository. Structure is
+         * documented below.
          */
         goo?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo;
         /**
-         * A Yum Repository.
+         * A Yum Repository. Structure is
+         * documented below.
          */
         yum?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum;
         /**
-         * A Zypper Repository.
+         * A Zypper Repository. Structure is
+         * documented below.
          */
         zypper?: outputs.osconfig.OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt {
         /**
-         * Required. Type of archive files in this repository. Possible values: ARCHIVE_TYPE_UNSPECIFIED, DEB, DEB_SRC
+         * Type of archive files in this repository.
+         * Possible values are: `ARCHIVE_TYPE_UNSPECIFIED`, `DEB`, `DEB_SRC`.
          */
         archiveType: string;
         /**
-         * Required. List of components for this repository. Must contain at least one item.
+         * List of components for this repository. Must
+         * contain at least one item.
          */
         components: string[];
         /**
-         * Required. Distribution of this repository.
+         * Distribution of this repository.
          */
         distribution: string;
         /**
-         * URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
+         * URI of the key file for this repository. The agent
+         * maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg`.
          */
         gpgKey?: string;
         /**
-         * Required. URI for this repository.
+         * URI for this repository.
          */
         uri: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo {
         /**
-         * Required. The name of the repository.
+         * The name of the repository.
          */
         name: string;
         /**
-         * Required. The url of the repository.
+         * The url of the repository.
          */
         url: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum {
         /**
-         * Required. The location of the repository directory.
+         * The location of the repository directory.
          */
         baseUrl: string;
         /**
@@ -49730,14 +50567,17 @@ export namespace osconfig {
          */
         gpgKeys?: string[];
         /**
-         * Required. A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
+         * A one word, unique name for this repository. This is the
+         * `repo id` in the yum config file and also the `displayName` if
+         * `displayName` is omitted. This id is also used as the unique identifier
+         * when checking for resource conflicts.
          */
         id: string;
     }
 
     export interface OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper {
         /**
-         * Required. The location of the repository directory.
+         * The location of the repository directory.
          */
         baseUrl: string;
         /**
@@ -49749,18 +50589,27 @@ export namespace osconfig {
          */
         gpgKeys?: string[];
         /**
-         * Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `displayName` if `displayName` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts.
+         * A one word, unique name for this repository. This is the
+         * `repo id` in the zypper config file and also the `displayName` if
+         * `displayName` is omitted. This id is also used as the unique identifier
+         * when checking for GuestPolicy conflicts.
          */
         id: string;
     }
 
     export interface OsPolicyAssignmentRollout {
         /**
-         * Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
+         * The maximum number (or percentage) of VMs
+         * per zone to disrupt at any given moment. Structure is
+         * documented below.
          */
         disruptionBudget: outputs.osconfig.OsPolicyAssignmentRolloutDisruptionBudget;
         /**
-         * Required. This determines the minimum duration of time to wait after the configuration changes are applied through the current rollout. A VM continues to count towards the `disruptionBudget` at least until this duration of time has passed after configuration changes are applied.
+         * This determines the minimum duration of
+         * time to wait after the configuration changes are applied through the current
+         * rollout. A VM continues to count towards the `disruptionBudget` at least
+         * until this duration of time has passed after configuration changes are
+         * applied.
          */
         minWaitDuration: string;
     }
@@ -49771,9 +50620,10 @@ export namespace osconfig {
          */
         fixed?: number;
         /**
-         * Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
+         * Specifies the relative value defined as a percentage,
+         * which will be multiplied by a reference value.
          *
-         * - - -
+         * --------------------------------------------------------------------------------
          */
         percent?: number;
     }
@@ -51017,10 +51867,8 @@ export namespace redis {
          */
         scheduleDeadlineTime: string;
         /**
-         * (Output)
-         * Output only. The start time of any upcoming scheduled maintenance for this instance.
-         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-         * resolution and up to nine fractional digits.
+         * Required. Start time of the window in UTC time.
+         * Structure is documented below.
          */
         startTime: string;
     }
@@ -51167,7 +52015,7 @@ export namespace secretmanager {
          */
         automatic?: boolean;
         /**
-         * The Secret will automatically be replicated without any restrictions.
+         * The Secret will be replicated to the regions specified by the user.
          * Structure is documented below.
          */
         userManaged?: outputs.secretmanager.SecretReplicationUserManaged;
@@ -51572,6 +52420,7 @@ export namespace sql {
          * Specifies if connections must use Cloud SQL connectors.
          */
         connectorEnforcement: string;
+        dataCacheConfig?: outputs.sql.DatabaseInstanceSettingsDataCacheConfig;
         databaseFlags?: outputs.sql.DatabaseInstanceSettingsDatabaseFlag[];
         deletionProtectionEnabled?: boolean;
         denyMaintenancePeriod?: outputs.sql.DatabaseInstanceSettingsDenyMaintenancePeriod;
@@ -51591,6 +52440,10 @@ export namespace sql {
          * The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
          */
         diskType?: string;
+        /**
+         * The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+         */
+        edition?: string;
         insightsConfig?: outputs.sql.DatabaseInstanceSettingsInsightsConfig;
         ipConfiguration: outputs.sql.DatabaseInstanceSettingsIpConfiguration;
         locationPreference: outputs.sql.DatabaseInstanceSettingsLocationPreference;
@@ -51676,6 +52529,14 @@ export namespace sql {
          * The unit that 'retained_backups' represents. Defaults to `COUNT`.
          */
         retentionUnit?: string;
+    }
+
+    export interface DatabaseInstanceSettingsDataCacheConfig {
+        /**
+         * Whether data cache is enabled for the instance. Defaults to `false`
+         * Can only be used with MYSQL.
+         */
+        dataCacheEnabled?: boolean;
     }
 
     export interface DatabaseInstanceSettingsDatabaseFlag {
@@ -51936,6 +52797,7 @@ export namespace sql {
         backupConfigurations: outputs.sql.GetDatabaseInstanceSettingBackupConfiguration[];
         collation: string;
         connectorEnforcement: string;
+        dataCacheConfigs: outputs.sql.GetDatabaseInstanceSettingDataCacheConfig[];
         databaseFlags: outputs.sql.GetDatabaseInstanceSettingDatabaseFlag[];
         deletionProtectionEnabled: boolean;
         denyMaintenancePeriods: outputs.sql.GetDatabaseInstanceSettingDenyMaintenancePeriod[];
@@ -51943,6 +52805,7 @@ export namespace sql {
         diskAutoresizeLimit: number;
         diskSize: number;
         diskType: string;
+        edition: string;
         insightsConfigs: outputs.sql.GetDatabaseInstanceSettingInsightsConfig[];
         ipConfigurations: outputs.sql.GetDatabaseInstanceSettingIpConfiguration[];
         locationPreferences: outputs.sql.GetDatabaseInstanceSettingLocationPreference[];
@@ -51977,6 +52840,10 @@ export namespace sql {
     export interface GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting {
         retainedBackups: number;
         retentionUnit: string;
+    }
+
+    export interface GetDatabaseInstanceSettingDataCacheConfig {
+        dataCacheEnabled: boolean;
     }
 
     export interface GetDatabaseInstanceSettingDatabaseFlag {
@@ -52133,6 +53000,7 @@ export namespace sql {
         backupConfigurations: outputs.sql.GetDatabaseInstancesInstanceSettingBackupConfiguration[];
         collation: string;
         connectorEnforcement: string;
+        dataCacheConfigs: outputs.sql.GetDatabaseInstancesInstanceSettingDataCacheConfig[];
         databaseFlags: outputs.sql.GetDatabaseInstancesInstanceSettingDatabaseFlag[];
         deletionProtectionEnabled: boolean;
         denyMaintenancePeriods: outputs.sql.GetDatabaseInstancesInstanceSettingDenyMaintenancePeriod[];
@@ -52140,6 +53008,7 @@ export namespace sql {
         diskAutoresizeLimit: number;
         diskSize: number;
         diskType: string;
+        edition: string;
         insightsConfigs: outputs.sql.GetDatabaseInstancesInstanceSettingInsightsConfig[];
         ipConfigurations: outputs.sql.GetDatabaseInstancesInstanceSettingIpConfiguration[];
         locationPreferences: outputs.sql.GetDatabaseInstancesInstanceSettingLocationPreference[];
@@ -52177,6 +53046,10 @@ export namespace sql {
     export interface GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting {
         retainedBackups: number;
         retentionUnit: string;
+    }
+
+    export interface GetDatabaseInstancesInstanceSettingDataCacheConfig {
+        dataCacheEnabled: boolean;
     }
 
     export interface GetDatabaseInstancesInstanceSettingDatabaseFlag {
@@ -53352,6 +54225,14 @@ export namespace vertex {
          * * NONE: No normalization type is specified.
          */
         featureNormType?: string;
+        /**
+         * Index data is split into equal parts to be processed. These are called "shards".
+         * The shard size must be specified when creating an index. The value must be one of the followings:
+         * * SHARD_SIZE_SMALL: Small (2GB)
+         * * SHARD_SIZE_MEDIUM: Medium (20GB)
+         * * SHARD_SIZE_LARGE: Large (50GB)
+         */
+        shardSize: string;
     }
 
     export interface AiIndexMetadataConfigAlgorithmConfig {
@@ -53429,6 +54310,7 @@ export namespace vertex {
         dimensions: number;
         distanceMeasureType: string;
         featureNormType: string;
+        shardSize: string;
     }
 
     export interface GetAiIndexMetadataConfigAlgorithmConfig {

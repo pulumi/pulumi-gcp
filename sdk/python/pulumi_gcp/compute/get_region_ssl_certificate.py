@@ -179,18 +179,18 @@ def get_region_ssl_certificate(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getRegionSslCertificate:getRegionSslCertificate', __args__, opts=opts, typ=GetRegionSslCertificateResult).value
 
     return AwaitableGetRegionSslCertificateResult(
-        certificate=__ret__.certificate,
-        certificate_id=__ret__.certificate_id,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        expire_time=__ret__.expire_time,
-        id=__ret__.id,
-        name=__ret__.name,
-        name_prefix=__ret__.name_prefix,
-        private_key=__ret__.private_key,
-        project=__ret__.project,
-        region=__ret__.region,
-        self_link=__ret__.self_link)
+        certificate=pulumi.get(__ret__, 'certificate'),
+        certificate_id=pulumi.get(__ret__, 'certificate_id'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        expire_time=pulumi.get(__ret__, 'expire_time'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        name_prefix=pulumi.get(__ret__, 'name_prefix'),
+        private_key=pulumi.get(__ret__, 'private_key'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'))
 
 
 @_utilities.lift_output_func(get_region_ssl_certificate)

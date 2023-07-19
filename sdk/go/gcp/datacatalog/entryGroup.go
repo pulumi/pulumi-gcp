@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -113,6 +114,7 @@ func NewEntryGroup(ctx *pulumi.Context,
 	if args.EntryGroupId == nil {
 		return nil, errors.New("invalid value for required argument 'EntryGroupId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EntryGroup
 	err := ctx.RegisterResource("gcp:datacatalog/entryGroup:EntryGroup", name, args, &resource, opts...)
 	if err != nil {

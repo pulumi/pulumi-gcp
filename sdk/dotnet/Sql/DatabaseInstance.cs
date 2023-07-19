@@ -118,6 +118,32 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// });
     /// ```
+    /// ### ENTERPRISE_PLUS Instance with data_cache_config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var main = new Gcp.Sql.DatabaseInstance("main", new()
+    ///     {
+    ///         DatabaseVersion = "MYSQL_8_0_31",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             DataCacheConfig = new Gcp.Sql.Inputs.DatabaseInstanceSettingsDataCacheConfigArgs
+    ///             {
+    ///                 DataCacheEnabled = true,
+    ///             },
+    ///             Edition = "ENTERPRISE_PLUS",
+    ///             Tier = "db-perf-optimized-N-2",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

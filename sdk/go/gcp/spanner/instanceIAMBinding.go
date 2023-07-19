@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -195,6 +196,7 @@ func NewInstanceIAMBinding(ctx *pulumi.Context,
 	if args.Role == nil {
 		return nil, errors.New("invalid value for required argument 'Role'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource InstanceIAMBinding
 	err := ctx.RegisterResource("gcp:spanner/instanceIAMBinding:InstanceIAMBinding", name, args, &resource, opts...)
 	if err != nil {

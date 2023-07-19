@@ -22,7 +22,7 @@ class GetGlobalForwardingRuleResult:
     """
     A collection of values returned by getGlobalForwardingRule.
     """
-    def __init__(__self__, allow_psc_global_access=None, base_forwarding_rule=None, description=None, id=None, ip_address=None, ip_protocol=None, ip_version=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, port_range=None, project=None, psc_connection_id=None, psc_connection_status=None, self_link=None, source_ip_ranges=None, target=None):
+    def __init__(__self__, allow_psc_global_access=None, base_forwarding_rule=None, description=None, id=None, ip_address=None, ip_protocol=None, ip_version=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, no_automate_dns_zone=None, port_range=None, project=None, psc_connection_id=None, psc_connection_status=None, self_link=None, source_ip_ranges=None, target=None):
         if allow_psc_global_access and not isinstance(allow_psc_global_access, bool):
             raise TypeError("Expected argument 'allow_psc_global_access' to be a bool")
         pulumi.set(__self__, "allow_psc_global_access", allow_psc_global_access)
@@ -62,6 +62,9 @@ class GetGlobalForwardingRuleResult:
         if network and not isinstance(network, str):
             raise TypeError("Expected argument 'network' to be a str")
         pulumi.set(__self__, "network", network)
+        if no_automate_dns_zone and not isinstance(no_automate_dns_zone, bool):
+            raise TypeError("Expected argument 'no_automate_dns_zone' to be a bool")
+        pulumi.set(__self__, "no_automate_dns_zone", no_automate_dns_zone)
         if port_range and not isinstance(port_range, str):
             raise TypeError("Expected argument 'port_range' to be a str")
         pulumi.set(__self__, "port_range", port_range)
@@ -153,6 +156,11 @@ class GetGlobalForwardingRuleResult:
         return pulumi.get(self, "network")
 
     @property
+    @pulumi.getter(name="noAutomateDnsZone")
+    def no_automate_dns_zone(self) -> bool:
+        return pulumi.get(self, "no_automate_dns_zone")
+
+    @property
     @pulumi.getter(name="portRange")
     def port_range(self) -> str:
         return pulumi.get(self, "port_range")
@@ -207,6 +215,7 @@ class AwaitableGetGlobalForwardingRuleResult(GetGlobalForwardingRuleResult):
             metadata_filters=self.metadata_filters,
             name=self.name,
             network=self.network,
+            no_automate_dns_zone=self.no_automate_dns_zone,
             port_range=self.port_range,
             project=self.project,
             psc_connection_id=self.psc_connection_id,
@@ -245,26 +254,27 @@ def get_global_forwarding_rule(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getGlobalForwardingRule:getGlobalForwardingRule', __args__, opts=opts, typ=GetGlobalForwardingRuleResult).value
 
     return AwaitableGetGlobalForwardingRuleResult(
-        allow_psc_global_access=__ret__.allow_psc_global_access,
-        base_forwarding_rule=__ret__.base_forwarding_rule,
-        description=__ret__.description,
-        id=__ret__.id,
-        ip_address=__ret__.ip_address,
-        ip_protocol=__ret__.ip_protocol,
-        ip_version=__ret__.ip_version,
-        label_fingerprint=__ret__.label_fingerprint,
-        labels=__ret__.labels,
-        load_balancing_scheme=__ret__.load_balancing_scheme,
-        metadata_filters=__ret__.metadata_filters,
-        name=__ret__.name,
-        network=__ret__.network,
-        port_range=__ret__.port_range,
-        project=__ret__.project,
-        psc_connection_id=__ret__.psc_connection_id,
-        psc_connection_status=__ret__.psc_connection_status,
-        self_link=__ret__.self_link,
-        source_ip_ranges=__ret__.source_ip_ranges,
-        target=__ret__.target)
+        allow_psc_global_access=pulumi.get(__ret__, 'allow_psc_global_access'),
+        base_forwarding_rule=pulumi.get(__ret__, 'base_forwarding_rule'),
+        description=pulumi.get(__ret__, 'description'),
+        id=pulumi.get(__ret__, 'id'),
+        ip_address=pulumi.get(__ret__, 'ip_address'),
+        ip_protocol=pulumi.get(__ret__, 'ip_protocol'),
+        ip_version=pulumi.get(__ret__, 'ip_version'),
+        label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
+        labels=pulumi.get(__ret__, 'labels'),
+        load_balancing_scheme=pulumi.get(__ret__, 'load_balancing_scheme'),
+        metadata_filters=pulumi.get(__ret__, 'metadata_filters'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        no_automate_dns_zone=pulumi.get(__ret__, 'no_automate_dns_zone'),
+        port_range=pulumi.get(__ret__, 'port_range'),
+        project=pulumi.get(__ret__, 'project'),
+        psc_connection_id=pulumi.get(__ret__, 'psc_connection_id'),
+        psc_connection_status=pulumi.get(__ret__, 'psc_connection_status'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        source_ip_ranges=pulumi.get(__ret__, 'source_ip_ranges'),
+        target=pulumi.get(__ret__, 'target'))
 
 
 @_utilities.lift_output_func(get_global_forwarding_rule)

@@ -18,6 +18,11 @@ namespace Pulumi.Gcp.Iam.Outputs
         /// </summary>
         public readonly string ClientId;
         /// <summary>
+        /// The optional client secret. Required to enable Authorization Code flow for web sign-in.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.WorkforcePoolProviderOidcClientSecret? ClientSecret;
+        /// <summary>
         /// The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
         /// </summary>
         public readonly string IssuerUri;
@@ -31,11 +36,14 @@ namespace Pulumi.Gcp.Iam.Outputs
         private WorkforcePoolProviderOidc(
             string clientId,
 
+            Outputs.WorkforcePoolProviderOidcClientSecret? clientSecret,
+
             string issuerUri,
 
             Outputs.WorkforcePoolProviderOidcWebSsoConfig? webSsoConfig)
         {
             ClientId = clientId;
+            ClientSecret = clientSecret;
             IssuerUri = issuerUri;
             WebSsoConfig = webSsoConfig;
         }

@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func LookupMetastoreFederationIamPolicy(ctx *pulumi.Context, args *LookupMetastoreFederationIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupMetastoreFederationIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupMetastoreFederationIamPolicyResult
 	err := ctx.Invoke("gcp:dataproc/getMetastoreFederationIamPolicy:getMetastoreFederationIamPolicy", args, &rv, opts...)
 	if err != nil {

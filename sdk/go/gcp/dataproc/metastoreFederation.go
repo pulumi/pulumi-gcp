@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -183,6 +184,7 @@ func NewMetastoreFederation(ctx *pulumi.Context,
 	if args.Version == nil {
 		return nil, errors.New("invalid value for required argument 'Version'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource MetastoreFederation
 	err := ctx.RegisterResource("gcp:dataproc/metastoreFederation:MetastoreFederation", name, args, &resource, opts...)
 	if err != nil {

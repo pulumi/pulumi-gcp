@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -97,6 +98,7 @@ import (
 //
 // ```
 func LookupResourcesSearchAll(ctx *pulumi.Context, args *LookupResourcesSearchAllArgs, opts ...pulumi.InvokeOption) (*LookupResourcesSearchAllResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupResourcesSearchAllResult
 	err := ctx.Invoke("gcp:cloudasset/getResourcesSearchAll:getResourcesSearchAll", args, &rv, opts...)
 	if err != nil {

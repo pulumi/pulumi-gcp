@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -418,7 +419,7 @@ import (
 //				return err
 //			}
 //			defaultKeyRing, err := kms.NewKeyRing(ctx, "defaultKeyRing", &kms.KeyRingArgs{
-//				Location: pulumi.String("global"),
+//				Location: pulumi.String("us-central1"),
 //			}, pulumi.Provider(google_beta))
 //			if err != nil {
 //				return err
@@ -559,6 +560,7 @@ func NewWorkstationConfig(ctx *pulumi.Context,
 	if args.WorkstationConfigId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkstationConfigId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkstationConfig
 	err := ctx.RegisterResource("gcp:workstations/workstationConfig:WorkstationConfig", name, args, &resource, opts...)
 	if err != nil {

@@ -290,7 +290,7 @@ export class Instance extends pulumi.CustomResource {
      * Upcoming maintenance schedule.
      * Structure is documented below.
      */
-    public readonly maintenanceSchedule!: pulumi.Output<outputs.redis.InstanceMaintenanceSchedule | undefined>;
+    public /*out*/ readonly maintenanceSchedule!: pulumi.Output<outputs.redis.InstanceMaintenanceSchedule>;
     /**
      * Redis memory size in GiB.
      *
@@ -468,7 +468,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["locationId"] = args ? args.locationId : undefined;
             resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
-            resourceInputs["maintenanceSchedule"] = args ? args.maintenanceSchedule : undefined;
             resourceInputs["memorySizeGb"] = args ? args.memorySizeGb : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["persistenceConfig"] = args ? args.persistenceConfig : undefined;
@@ -486,6 +485,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["currentLocationId"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
+            resourceInputs["maintenanceSchedule"] = undefined /*out*/;
             resourceInputs["nodes"] = undefined /*out*/;
             resourceInputs["persistenceIamIdentity"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
@@ -757,11 +757,6 @@ export interface InstanceArgs {
      * Structure is documented below.
      */
     maintenancePolicy?: pulumi.Input<inputs.redis.InstanceMaintenancePolicy>;
-    /**
-     * Upcoming maintenance schedule.
-     * Structure is documented below.
-     */
-    maintenanceSchedule?: pulumi.Input<inputs.redis.InstanceMaintenanceSchedule>;
     /**
      * Redis memory size in GiB.
      *

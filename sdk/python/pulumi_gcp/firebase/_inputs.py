@@ -10,11 +10,375 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'ExtensionsInstanceConfigArgs',
+    'ExtensionsInstanceErrorStatusArgs',
+    'ExtensionsInstanceRuntimeDataArgs',
+    'ExtensionsInstanceRuntimeDataFatalErrorArgs',
+    'ExtensionsInstanceRuntimeDataProcessingStateArgs',
     'HostingVersionConfigArgs',
     'HostingVersionConfigRedirectArgs',
     'HostingVersionConfigRewriteArgs',
     'HostingVersionConfigRewriteRunArgs',
 ]
+
+@pulumi.input_type
+class ExtensionsInstanceConfigArgs:
+    def __init__(__self__, *,
+                 extension_ref: pulumi.Input[str],
+                 params: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+                 allowed_event_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 eventarc_channel: Optional[pulumi.Input[str]] = None,
+                 extension_version: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 populated_postinstall_content: Optional[pulumi.Input[str]] = None,
+                 system_params: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] extension_ref: The ref of the Extension from the Registry (e.g. publisher-id/awesome-extension)
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] params: Environment variables that may be configured for the Extension
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_event_types: List of extension events selected by consumer that extension is allowed to
+               emit, identified by their types.
+        :param pulumi.Input[str] create_time: (Output)
+               The time at which the Extension Instance Config was created.
+        :param pulumi.Input[str] eventarc_channel: Fully qualified Eventarc resource name that consumers should use for event triggers.
+        :param pulumi.Input[str] extension_version: The version of the Extension from the Registry (e.g. 1.0.3). If left blank, latest is assumed.
+        :param pulumi.Input[str] name: (Output)
+               The unique identifier for this configuration.
+        :param pulumi.Input[str] populated_postinstall_content: (Output)
+               Postinstall instructions to be shown for this Extension, with
+               template strings representing function and parameter values substituted
+               with actual values. These strings include: ${param:FOO},
+               ${function:myFunc.url},
+               ${function:myFunc.name}, and ${function:myFunc.location}
+               
+               - - -
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] system_params: Params whose values are only available at deployment time.
+               Unlike other params, these will not be set as environment variables on
+               functions.
+        """
+        pulumi.set(__self__, "extension_ref", extension_ref)
+        pulumi.set(__self__, "params", params)
+        if allowed_event_types is not None:
+            pulumi.set(__self__, "allowed_event_types", allowed_event_types)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if eventarc_channel is not None:
+            pulumi.set(__self__, "eventarc_channel", eventarc_channel)
+        if extension_version is not None:
+            pulumi.set(__self__, "extension_version", extension_version)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if populated_postinstall_content is not None:
+            pulumi.set(__self__, "populated_postinstall_content", populated_postinstall_content)
+        if system_params is not None:
+            pulumi.set(__self__, "system_params", system_params)
+
+    @property
+    @pulumi.getter(name="extensionRef")
+    def extension_ref(self) -> pulumi.Input[str]:
+        """
+        The ref of the Extension from the Registry (e.g. publisher-id/awesome-extension)
+        """
+        return pulumi.get(self, "extension_ref")
+
+    @extension_ref.setter
+    def extension_ref(self, value: pulumi.Input[str]):
+        pulumi.set(self, "extension_ref", value)
+
+    @property
+    @pulumi.getter
+    def params(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+        """
+        Environment variables that may be configured for the Extension
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        pulumi.set(self, "params", value)
+
+    @property
+    @pulumi.getter(name="allowedEventTypes")
+    def allowed_event_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of extension events selected by consumer that extension is allowed to
+        emit, identified by their types.
+        """
+        return pulumi.get(self, "allowed_event_types")
+
+    @allowed_event_types.setter
+    def allowed_event_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_event_types", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The time at which the Extension Instance Config was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="eventarcChannel")
+    def eventarc_channel(self) -> Optional[pulumi.Input[str]]:
+        """
+        Fully qualified Eventarc resource name that consumers should use for event triggers.
+        """
+        return pulumi.get(self, "eventarc_channel")
+
+    @eventarc_channel.setter
+    def eventarc_channel(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "eventarc_channel", value)
+
+    @property
+    @pulumi.getter(name="extensionVersion")
+    def extension_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the Extension from the Registry (e.g. 1.0.3). If left blank, latest is assumed.
+        """
+        return pulumi.get(self, "extension_version")
+
+    @extension_version.setter
+    def extension_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "extension_version", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The unique identifier for this configuration.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="populatedPostinstallContent")
+    def populated_postinstall_content(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Postinstall instructions to be shown for this Extension, with
+        template strings representing function and parameter values substituted
+        with actual values. These strings include: ${param:FOO},
+        ${function:myFunc.url},
+        ${function:myFunc.name}, and ${function:myFunc.location}
+
+        - - -
+        """
+        return pulumi.get(self, "populated_postinstall_content")
+
+    @populated_postinstall_content.setter
+    def populated_postinstall_content(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "populated_postinstall_content", value)
+
+    @property
+    @pulumi.getter(name="systemParams")
+    def system_params(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Params whose values are only available at deployment time.
+        Unlike other params, these will not be set as environment variables on
+        functions.
+        """
+        return pulumi.get(self, "system_params")
+
+    @system_params.setter
+    def system_params(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "system_params", value)
+
+
+@pulumi.input_type
+class ExtensionsInstanceErrorStatusArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[int]] = None,
+                 details: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]] = None,
+                 message: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] code: The status code, which should be an enum value of google.rpc.Code.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]] details: A list of messages that carry the error details.
+        :param pulumi.Input[str] message: A developer-facing error message, which should be in English.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[int]]:
+        """
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]:
+        """
+        A list of messages that carry the error details.
+        """
+        return pulumi.get(self, "details")
+
+    @details.setter
+    def details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, Any]]]]]):
+        pulumi.set(self, "details", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        A developer-facing error message, which should be in English.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+
+@pulumi.input_type
+class ExtensionsInstanceRuntimeDataArgs:
+    def __init__(__self__, *,
+                 fatal_error: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArgs']] = None,
+                 processing_state: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArgs']] = None,
+                 state_update_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArgs'] fatal_error: The fatal error state for the extension instance
+               Structure is documented below.
+        :param pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArgs'] processing_state: The processing state for the extension instance
+               Structure is documented below.
+        :param pulumi.Input[str] state_update_time: The time of the last state update.
+        """
+        if fatal_error is not None:
+            pulumi.set(__self__, "fatal_error", fatal_error)
+        if processing_state is not None:
+            pulumi.set(__self__, "processing_state", processing_state)
+        if state_update_time is not None:
+            pulumi.set(__self__, "state_update_time", state_update_time)
+
+    @property
+    @pulumi.getter(name="fatalError")
+    def fatal_error(self) -> Optional[pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArgs']]:
+        """
+        The fatal error state for the extension instance
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fatal_error")
+
+    @fatal_error.setter
+    def fatal_error(self, value: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataFatalErrorArgs']]):
+        pulumi.set(self, "fatal_error", value)
+
+    @property
+    @pulumi.getter(name="processingState")
+    def processing_state(self) -> Optional[pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArgs']]:
+        """
+        The processing state for the extension instance
+        Structure is documented below.
+        """
+        return pulumi.get(self, "processing_state")
+
+    @processing_state.setter
+    def processing_state(self, value: Optional[pulumi.Input['ExtensionsInstanceRuntimeDataProcessingStateArgs']]):
+        pulumi.set(self, "processing_state", value)
+
+    @property
+    @pulumi.getter(name="stateUpdateTime")
+    def state_update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time of the last state update.
+        """
+        return pulumi.get(self, "state_update_time")
+
+    @state_update_time.setter
+    def state_update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state_update_time", value)
+
+
+@pulumi.input_type
+class ExtensionsInstanceRuntimeDataFatalErrorArgs:
+    def __init__(__self__, *,
+                 error_message: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] error_message: The error message. This is set by the extension developer to give
+               more detail on why the extension is unusable and must be re-installed
+               or reconfigured.
+        """
+        if error_message is not None:
+            pulumi.set(__self__, "error_message", error_message)
+
+    @property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        The error message. This is set by the extension developer to give
+        more detail on why the extension is unusable and must be re-installed
+        or reconfigured.
+        """
+        return pulumi.get(self, "error_message")
+
+    @error_message.setter
+    def error_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "error_message", value)
+
+
+@pulumi.input_type
+class ExtensionsInstanceRuntimeDataProcessingStateArgs:
+    def __init__(__self__, *,
+                 detail_message: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] detail_message: Details about the processing. e.g. This could include the type of
+               processing in progress or it could list errors or failures.
+               This information will be shown in the console on the detail page
+               for the extension instance.
+        :param pulumi.Input[str] state: The processing state of the extension instance.
+        """
+        if detail_message is not None:
+            pulumi.set(__self__, "detail_message", detail_message)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="detailMessage")
+    def detail_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Details about the processing. e.g. This could include the type of
+        processing in progress or it could list errors or failures.
+        This information will be shown in the console on the detail page
+        for the extension instance.
+        """
+        return pulumi.get(self, "detail_message")
+
+    @detail_message.setter
+    def detail_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "detail_message", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The processing state of the extension instance.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
 
 @pulumi.input_type
 class HostingVersionConfigArgs:

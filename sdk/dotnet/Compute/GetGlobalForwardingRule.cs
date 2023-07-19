@@ -135,6 +135,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetGlobalForwardingRuleMetadataFilterResult> MetadataFilters;
         public readonly string Name;
         public readonly string Network;
+        public readonly bool NoAutomateDnsZone;
         public readonly string PortRange;
         public readonly string? Project;
         public readonly string PscConnectionId;
@@ -171,6 +172,8 @@ namespace Pulumi.Gcp.Compute
 
             string network,
 
+            bool noAutomateDnsZone,
+
             string portRange,
 
             string? project,
@@ -198,6 +201,7 @@ namespace Pulumi.Gcp.Compute
             MetadataFilters = metadataFilters;
             Name = name;
             Network = network;
+            NoAutomateDnsZone = noAutomateDnsZone;
             PortRange = portRange;
             Project = project;
             PscConnectionId = pscConnectionId;

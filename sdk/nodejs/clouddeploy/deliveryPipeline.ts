@@ -31,6 +31,12 @@ import * as utilities from "../utilities";
  *     serialPipeline: {
  *         stages: [
  *             {
+ *                 deployParameters: [{
+ *                     values: {
+ *                         deployParameterKey: "deployParameterValue",
+ *                     },
+ *                     matchTargetLabels: {},
+ *                 }],
  *                 profiles: [
  *                     "example-profile-one",
  *                     "example-profile-two",
@@ -68,6 +74,12 @@ import * as utilities from "../utilities";
  *     serialPipeline: {
  *         stages: [
  *             {
+ *                 deployParameters: [{
+ *                     values: {
+ *                         deployParameterKey: "deployParameterValue",
+ *                     },
+ *                     matchTargetLabels: {},
+ *                 }],
  *                 profiles: [
  *                     "example-profile-one",
  *                     "example-profile-two",
@@ -105,6 +117,12 @@ import * as utilities from "../utilities";
  *     serialPipeline: {
  *         stages: [
  *             {
+ *                 deployParameters: [{
+ *                     values: {
+ *                         deployParameterKey: "deployParameterValue",
+ *                     },
+ *                     matchTargetLabels: {},
+ *                 }],
  *                 profiles: [
  *                     "example-profile-one",
  *                     "example-profile-two",
@@ -142,6 +160,12 @@ import * as utilities from "../utilities";
  *     serialPipeline: {
  *         stages: [
  *             {
+ *                 deployParameters: [{
+ *                     matchTargetLabels: {},
+ *                     values: {
+ *                         deployParameterKey: "deployParameterValue",
+ *                     },
+ *                 }],
  *                 profiles: [
  *                     "example-profile-one",
  *                     "example-profile-two",
@@ -177,6 +201,12 @@ import * as utilities from "../utilities";
  *     serialPipeline: {
  *         stages: [
  *             {
+ *                 deployParameters: [{
+ *                     values: {
+ *                         deployParameterKey: "deployParameterValue",
+ *                     },
+ *                     matchTargetLabels: {},
+ *                 }],
  *                 profiles: [
  *                     "example-profile-one",
  *                     "example-profile-two",

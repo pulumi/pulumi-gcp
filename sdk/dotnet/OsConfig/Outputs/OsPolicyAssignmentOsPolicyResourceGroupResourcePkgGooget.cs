@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget
     {
         /// <summary>
-        /// Required. Package name.
+        /// Package name.
         /// </summary>
         public readonly string Name;
 

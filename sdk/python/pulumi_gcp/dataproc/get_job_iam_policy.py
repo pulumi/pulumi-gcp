@@ -108,7 +108,7 @@ def get_job_iam_policy(job_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataproc.get_job_iam_policy(job_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    policy = gcp.dataproc.get_job_iam_policy(job_id=google_dataproc_job["pyspark"]["reference"][0]["job_id"],
         region="us-central1")
     ```
 
@@ -123,12 +123,12 @@ def get_job_iam_policy(job_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:dataproc/getJobIamPolicy:getJobIamPolicy', __args__, opts=opts, typ=GetJobIamPolicyResult).value
 
     return AwaitableGetJobIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        job_id=__ret__.job_id,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project,
-        region=__ret__.region)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        job_id=pulumi.get(__ret__, 'job_id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'))
 
 
 @_utilities.lift_output_func(get_job_iam_policy)
@@ -145,7 +145,7 @@ def get_job_iam_policy_output(job_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataproc.get_job_iam_policy(job_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+    policy = gcp.dataproc.get_job_iam_policy(job_id=google_dataproc_job["pyspark"]["reference"][0]["job_id"],
         region="us-central1")
     ```
 

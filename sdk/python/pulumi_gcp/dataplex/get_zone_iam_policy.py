@@ -119,10 +119,10 @@ def get_zone_iam_policy(dataplex_zone: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataplex.get_zone_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        lake=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        dataplex_zone=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.dataplex.get_zone_iam_policy(project=google_dataplex_zone["example"]["project"],
+        location=google_dataplex_zone["example"]["location"],
+        lake=google_dataplex_zone["example"]["lake"],
+        dataplex_zone=google_dataplex_zone["example"]["name"])
     ```
 
 
@@ -139,13 +139,13 @@ def get_zone_iam_policy(dataplex_zone: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:dataplex/getZoneIamPolicy:getZoneIamPolicy', __args__, opts=opts, typ=GetZoneIamPolicyResult).value
 
     return AwaitableGetZoneIamPolicyResult(
-        dataplex_zone=__ret__.dataplex_zone,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        lake=__ret__.lake,
-        location=__ret__.location,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        dataplex_zone=pulumi.get(__ret__, 'dataplex_zone'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        lake=pulumi.get(__ret__, 'lake'),
+        location=pulumi.get(__ret__, 'location'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_zone_iam_policy)
@@ -163,10 +163,10 @@ def get_zone_iam_policy_output(dataplex_zone: Optional[pulumi.Input[str]] = None
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataplex.get_zone_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        lake=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        dataplex_zone=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.dataplex.get_zone_iam_policy(project=google_dataplex_zone["example"]["project"],
+        location=google_dataplex_zone["example"]["location"],
+        lake=google_dataplex_zone["example"]["lake"],
+        dataplex_zone=google_dataplex_zone["example"]["name"])
     ```
 
 

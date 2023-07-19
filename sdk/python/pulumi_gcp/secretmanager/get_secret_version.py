@@ -163,15 +163,15 @@ def get_secret_version(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:secretmanager/getSecretVersion:getSecretVersion', __args__, opts=opts, typ=GetSecretVersionResult).value
 
     return AwaitableGetSecretVersionResult(
-        create_time=__ret__.create_time,
-        destroy_time=__ret__.destroy_time,
-        enabled=__ret__.enabled,
-        id=__ret__.id,
-        name=__ret__.name,
-        project=__ret__.project,
-        secret=__ret__.secret,
-        secret_data=__ret__.secret_data,
-        version=__ret__.version)
+        create_time=pulumi.get(__ret__, 'create_time'),
+        destroy_time=pulumi.get(__ret__, 'destroy_time'),
+        enabled=pulumi.get(__ret__, 'enabled'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        secret=pulumi.get(__ret__, 'secret'),
+        secret_data=pulumi.get(__ret__, 'secret_data'),
+        version=pulumi.get(__ret__, 'version'))
 
 
 @_utilities.lift_output_func(get_secret_version)

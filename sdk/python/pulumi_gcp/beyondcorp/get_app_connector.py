@@ -141,14 +141,14 @@ def get_app_connector(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:beyondcorp/getAppConnector:getAppConnector', __args__, opts=opts, typ=GetAppConnectorResult).value
 
     return AwaitableGetAppConnectorResult(
-        display_name=__ret__.display_name,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        principal_infos=__ret__.principal_infos,
-        project=__ret__.project,
-        region=__ret__.region,
-        state=__ret__.state)
+        display_name=pulumi.get(__ret__, 'display_name'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        principal_infos=pulumi.get(__ret__, 'principal_infos'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'),
+        state=pulumi.get(__ret__, 'state'))
 
 
 @_utilities.lift_output_func(get_app_connector)

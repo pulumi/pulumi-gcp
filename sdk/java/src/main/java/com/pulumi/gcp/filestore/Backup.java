@@ -54,9 +54,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
  *             .location(&#34;us-central1-b&#34;)
- *             .tier(&#34;BASIC_SSD&#34;)
+ *             .tier(&#34;BASIC_HDD&#34;)
  *             .fileShares(InstanceFileSharesArgs.builder()
- *                 .capacityGb(2560)
+ *                 .capacityGb(1024)
  *                 .name(&#34;share1&#34;)
  *                 .build())
  *             .networks(InstanceNetworkArgs.builder()
@@ -68,9 +68,9 @@ import javax.annotation.Nullable;
  * 
  *         var backup = new Backup(&#34;backup&#34;, BackupArgs.builder()        
  *             .location(&#34;us-central1&#34;)
+ *             .description(&#34;This is a filestore backup for the test instance&#34;)
  *             .sourceInstance(instance.id())
  *             .sourceFileShare(&#34;share1&#34;)
- *             .description(&#34;This is a filestore backup for the test instance&#34;)
  *             .labels(Map.ofEntries(
  *                 Map.entry(&#34;files&#34;, &#34;label1&#34;),
  *                 Map.entry(&#34;other-label&#34;, &#34;label2&#34;)

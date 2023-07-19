@@ -121,11 +121,11 @@ def get_project_service(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:projects/getProjectService:getProjectService', __args__, opts=opts, typ=GetProjectServiceResult).value
 
     return AwaitableGetProjectServiceResult(
-        disable_dependent_services=__ret__.disable_dependent_services,
-        disable_on_destroy=__ret__.disable_on_destroy,
-        id=__ret__.id,
-        project=__ret__.project,
-        service=__ret__.service)
+        disable_dependent_services=pulumi.get(__ret__, 'disable_dependent_services'),
+        disable_on_destroy=pulumi.get(__ret__, 'disable_on_destroy'),
+        id=pulumi.get(__ret__, 'id'),
+        project=pulumi.get(__ret__, 'project'),
+        service=pulumi.get(__ret__, 'service'))
 
 
 @_utilities.lift_output_func(get_project_service)

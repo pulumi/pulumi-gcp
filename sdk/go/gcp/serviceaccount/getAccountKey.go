@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -48,6 +49,7 @@ import (
 //
 // ```
 func GetAccountKey(ctx *pulumi.Context, args *GetAccountKeyArgs, opts ...pulumi.InvokeOption) (*GetAccountKeyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountKeyResult
 	err := ctx.Invoke("gcp:serviceAccount/getAccountKey:getAccountKey", args, &rv, opts...)
 	if err != nil {

@@ -77,6 +77,23 @@ import * as utilities from "../utilities";
  *     dependsOn: [privateVpcConnection],
  * });
  * ```
+ * ### ENTERPRISE_PLUS Instance with dataCacheConfig
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const main = new gcp.sql.DatabaseInstance("main", {
+ *     databaseVersion: "MYSQL_8_0_31",
+ *     settings: {
+ *         dataCacheConfig: {
+ *             dataCacheEnabled: true,
+ *         },
+ *         edition: "ENTERPRISE_PLUS",
+ *         tier: "db-perf-optimized-N-2",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

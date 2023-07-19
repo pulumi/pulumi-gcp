@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func LookupApiIamPolicy(ctx *pulumi.Context, args *LookupApiIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupApiIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupApiIamPolicyResult
 	err := ctx.Invoke("gcp:apigateway/getApiIamPolicy:getApiIamPolicy", args, &rv, opts...)
 	if err != nil {

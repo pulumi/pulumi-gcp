@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,6 +21,94 @@ import (
 //   - [Official Documentation](https://firebase.google.com/)
 //
 // ## Example Usage
+// ### Firebase Web App Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/firebase"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultProject, err := organizations.NewProject(ctx, "defaultProject", &organizations.ProjectArgs{
+//				ProjectId: pulumi.String("my-project"),
+//				OrgId:     pulumi.String("123456789"),
+//				Labels: pulumi.StringMap{
+//					"firebase": pulumi.String("enabled"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebase.NewProject(ctx, "defaultFirebase/projectProject", &firebase.ProjectArgs{
+//				Project: defaultProject.ProjectId,
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			basicWebApp, err := firebase.NewWebApp(ctx, "basicWebApp", &firebase.WebAppArgs{
+//				Project:        defaultProject.ProjectId,
+//				DisplayName:    pulumi.String("Display Name Basic"),
+//				DeletionPolicy: pulumi.String("DELETE"),
+//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+//				defaultFirebase / projectProject,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			basicWebAppConfig := firebase.GetWebAppConfigOutput(ctx, firebase.GetWebAppConfigOutputArgs{
+//				WebAppId: basicWebApp.AppId,
+//			}, nil)
+//			defaultBucket, err := storage.NewBucket(ctx, "defaultBucket", &storage.BucketArgs{
+//				Location: pulumi.String("US"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = storage.NewBucketObject(ctx, "defaultBucketObject", &storage.BucketObjectArgs{
+//				Bucket: defaultBucket.Name,
+//				Content: pulumi.All(basicWebApp.AppId, basicWebAppConfig, basicWebAppConfig, "TODO: Lookup", "TODO: Lookup", "TODO: Lookup", "TODO: Lookup").ApplyT(func(_args []interface{}) (string, error) {
+//					appId := _args[0].(string)
+//					basicWebAppConfig := _args[1].(firebase.GetWebAppConfigResult)
+//					basicWebAppConfig1 := _args[2].(firebase.GetWebAppConfigResult)
+//					s := _args[3].(*string)
+//					s1 := _args[4].(*string)
+//					s2 := _args[5].(*string)
+//					s3 := _args[6].(*string)
+//					var _zero string
+//					tmpJSON0, err := json.Marshal(map[string]interface{}{
+//						"appId":             appId,
+//						"apiKey":            basicWebAppConfig.ApiKey,
+//						"authDomain":        basicWebAppConfig1.AuthDomain,
+//						"databaseURL":       s,
+//						"storageBucket":     s1,
+//						"messagingSenderId": s2,
+//						"measurementId":     s3,
+//					})
+//					if err != nil {
+//						return _zero, err
+//					}
+//					json0 := string(tmpJSON0)
+//					return json0, nil
+//				}).(pulumi.StringOutput),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -87,6 +176,7 @@ func NewWebApp(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WebApp
 	err := ctx.RegisterResource("gcp:firebase/webApp:WebApp", name, args, &resource, opts...)
 	if err != nil {

@@ -8,12 +8,13 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Starts and stops asynchronous persistent disk replication. For more information
 // see [the official documentation](https://cloud.google.com/compute/docs/disks/async-pd/about)
-// and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/disks).
+// and the [API](https://cloud.google.com/compute/docs/reference/rest/v1/disks).
 //
 // ## Example Usage
 //
@@ -86,6 +87,7 @@ func NewDiskAsyncReplication(ctx *pulumi.Context,
 	if args.SecondaryDisk == nil {
 		return nil, errors.New("invalid value for required argument 'SecondaryDisk'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DiskAsyncReplication
 	err := ctx.RegisterResource("gcp:compute/diskAsyncReplication:DiskAsyncReplication", name, args, &resource, opts...)
 	if err != nil {

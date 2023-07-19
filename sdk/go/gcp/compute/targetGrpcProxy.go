@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -100,6 +101,7 @@ func NewTargetGrpcProxy(ctx *pulumi.Context,
 		args = &TargetGrpcProxyArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TargetGrpcProxy
 	err := ctx.RegisterResource("gcp:compute/targetGrpcProxy:TargetGrpcProxy", name, args, &resource, opts...)
 	if err != nil {

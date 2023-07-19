@@ -92,7 +92,7 @@ namespace Pulumi.Gcp.Tags
     /// 
     ///     var binding = new Gcp.Tags.LocationTagBinding("binding", new()
     ///     {
-    ///         Location = "us-central1",
+    ///         Location = "us-central1-a",
     ///         Parent = project.Number.Apply(number =&gt; $"//compute.googleapis.com/projects/{number}/zones/us-central1-a/instances/{google_compute_instance.Instance.Instance_id}"),
     ///         TagValue = @value.Name.Apply(name =&gt; $"tagValues/{name}"),
     ///     });

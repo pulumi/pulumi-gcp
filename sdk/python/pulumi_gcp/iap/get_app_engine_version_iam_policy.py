@@ -119,10 +119,10 @@ def get_app_engine_version_iam_policy(app_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.iap.get_app_engine_version_iam_policy(app_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        service=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        version_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.iap.get_app_engine_version_iam_policy(app_id=google_app_engine_standard_app_version["version"]["project"],
+        project=google_app_engine_standard_app_version["version"]["project"],
+        service=google_app_engine_standard_app_version["version"]["service"],
+        version_id=google_app_engine_standard_app_version["version"]["version_id"])
     ```
 
 
@@ -141,13 +141,13 @@ def get_app_engine_version_iam_policy(app_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:iap/getAppEngineVersionIamPolicy:getAppEngineVersionIamPolicy', __args__, opts=opts, typ=GetAppEngineVersionIamPolicyResult).value
 
     return AwaitableGetAppEngineVersionIamPolicyResult(
-        app_id=__ret__.app_id,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project,
-        service=__ret__.service,
-        version_id=__ret__.version_id)
+        app_id=pulumi.get(__ret__, 'app_id'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'),
+        service=pulumi.get(__ret__, 'service'),
+        version_id=pulumi.get(__ret__, 'version_id'))
 
 
 @_utilities.lift_output_func(get_app_engine_version_iam_policy)
@@ -165,10 +165,10 @@ def get_app_engine_version_iam_policy_output(app_id: Optional[pulumi.Input[str]]
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.iap.get_app_engine_version_iam_policy(app_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        service=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        version_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.iap.get_app_engine_version_iam_policy(app_id=google_app_engine_standard_app_version["version"]["project"],
+        project=google_app_engine_standard_app_version["version"]["project"],
+        service=google_app_engine_standard_app_version["version"]["service"],
+        version_id=google_app_engine_standard_app_version["version"]["version_id"])
     ```
 
 

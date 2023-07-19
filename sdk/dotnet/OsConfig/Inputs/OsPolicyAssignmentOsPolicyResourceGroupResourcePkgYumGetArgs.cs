@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYumGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Package name.
+        /// Package name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

@@ -33,6 +33,10 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         [Input("repoType", required: true)]
         public Input<string> RepoType { get; set; } = null!;
 
+        /// <summary>
+        /// The fully qualified resource name of the Repo API repository. The fully qualified resource name of the Repo API repository.
+        /// If unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to read the specified path.
+        /// </summary>
         [Input("repository")]
         public Input<string>? Repository { get; set; }
 

@@ -7,11 +7,20 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ClusterNodePoolPlacementPolicyArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterNodePoolPlacementPolicyArgs Empty = new ClusterNodePoolPlacementPolicyArgs();
+
+    @Import(name="tpuTopology")
+    private @Nullable Output<String> tpuTopology;
+
+    public Optional<Output<String>> tpuTopology() {
+        return Optional.ofNullable(this.tpuTopology);
+    }
 
     /**
      * Telemetry integration for the cluster. Supported values (`ENABLED, DISABLED, SYSTEM_ONLY`);
@@ -33,6 +42,7 @@ public final class ClusterNodePoolPlacementPolicyArgs extends com.pulumi.resourc
     private ClusterNodePoolPlacementPolicyArgs() {}
 
     private ClusterNodePoolPlacementPolicyArgs(ClusterNodePoolPlacementPolicyArgs $) {
+        this.tpuTopology = $.tpuTopology;
         this.type = $.type;
     }
 
@@ -52,6 +62,15 @@ public final class ClusterNodePoolPlacementPolicyArgs extends com.pulumi.resourc
 
         public Builder(ClusterNodePoolPlacementPolicyArgs defaults) {
             $ = new ClusterNodePoolPlacementPolicyArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder tpuTopology(@Nullable Output<String> tpuTopology) {
+            $.tpuTopology = tpuTopology;
+            return this;
+        }
+
+        public Builder tpuTopology(String tpuTopology) {
+            return tpuTopology(Output.of(tpuTopology));
         }
 
         /**

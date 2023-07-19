@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
  *             .fileShares(InstanceFileSharesArgs.builder()
- *                 .capacityGb(2660)
+ *                 .capacityGb(1024)
  *                 .name(&#34;share1&#34;)
  *                 .build())
  *             .location(&#34;us-central1-b&#34;)
@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *                 .modes(&#34;MODE_IPV4&#34;)
  *                 .network(&#34;default&#34;)
  *                 .build())
- *             .tier(&#34;PREMIUM&#34;)
+ *             .tier(&#34;BASIC_HDD&#34;)
  *             .build());
  * 
  *     }
@@ -96,7 +96,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
  *             .fileShares(InstanceFileSharesArgs.builder()
- *                 .capacityGb(2660)
+ *                 .capacityGb(2560)
  *                 .name(&#34;share1&#34;)
  *                 .nfsExportOptions(                
  *                     InstanceFileSharesNfsExportOptionArgs.builder()
@@ -164,7 +164,7 @@ import javax.annotation.Nullable;
  *             .location(&#34;us-central1&#34;)
  *             .tier(&#34;ENTERPRISE&#34;)
  *             .fileShares(InstanceFileSharesArgs.builder()
- *                 .capacityGb(2560)
+ *                 .capacityGb(1024)
  *                 .name(&#34;share1&#34;)
  *                 .build())
  *             .networks(InstanceNetworkArgs.builder()

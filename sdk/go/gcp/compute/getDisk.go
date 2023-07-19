@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -50,6 +51,7 @@ import (
 //
 // ```
 func LookupDisk(ctx *pulumi.Context, args *LookupDiskArgs, opts ...pulumi.InvokeOption) (*LookupDiskResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDiskResult
 	err := ctx.Invoke("gcp:compute/getDisk:getDisk", args, &rv, opts...)
 	if err != nil {
@@ -101,6 +103,7 @@ type LookupDiskResult struct {
 	PhysicalBlockSizeBytes int      `pulumi:"physicalBlockSizeBytes"`
 	Project                *string  `pulumi:"project"`
 	ProvisionedIops        int      `pulumi:"provisionedIops"`
+	ProvisionedThroughput  int      `pulumi:"provisionedThroughput"`
 	ResourcePolicies       []string `pulumi:"resourcePolicies"`
 	// The URI of the created resource.
 	SelfLink string `pulumi:"selfLink"`
@@ -262,6 +265,10 @@ func (o LookupDiskResultOutput) Project() pulumi.StringPtrOutput {
 
 func (o LookupDiskResultOutput) ProvisionedIops() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDiskResult) int { return v.ProvisionedIops }).(pulumi.IntOutput)
+}
+
+func (o LookupDiskResultOutput) ProvisionedThroughput() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupDiskResult) int { return v.ProvisionedThroughput }).(pulumi.IntOutput)
 }
 
 func (o LookupDiskResultOutput) ResourcePolicies() pulumi.StringArrayOutput {

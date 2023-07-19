@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -94,6 +95,7 @@ func NewOrganizationFeed(ctx *pulumi.Context,
 	if args.OrgId == nil {
 		return nil, errors.New("invalid value for required argument 'OrgId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource OrganizationFeed
 	err := ctx.RegisterResource("gcp:cloudasset/organizationFeed:OrganizationFeed", name, args, &resource, opts...)
 	if err != nil {

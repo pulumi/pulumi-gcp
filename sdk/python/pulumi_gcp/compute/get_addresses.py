@@ -132,11 +132,11 @@ def get_addresses(filter: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getAddresses:getAddresses', __args__, opts=opts, typ=GetAddressesResult).value
 
     return AwaitableGetAddressesResult(
-        addresses=__ret__.addresses,
-        filter=__ret__.filter,
-        id=__ret__.id,
-        project=__ret__.project,
-        region=__ret__.region)
+        addresses=pulumi.get(__ret__, 'addresses'),
+        filter=pulumi.get(__ret__, 'filter'),
+        id=pulumi.get(__ret__, 'id'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'))
 
 
 @_utilities.lift_output_func(get_addresses)

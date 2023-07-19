@@ -10,26 +10,26 @@ import java.util.Objects;
 @CustomType
 public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo {
     /**
-     * @return Required. The name of the repository.
+     * @return The name of the repository.
      * 
      */
     private String name;
     /**
-     * @return Required. The url of the repository.
+     * @return The url of the repository.
      * 
      */
     private String url;
 
     private OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo() {}
     /**
-     * @return Required. The name of the repository.
+     * @return The name of the repository.
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return Required. The url of the repository.
+     * @return The url of the repository.
      * 
      */
     public String url() {

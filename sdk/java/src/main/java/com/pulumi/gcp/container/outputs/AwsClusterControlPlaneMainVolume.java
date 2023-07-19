@@ -28,6 +28,11 @@ public final class AwsClusterControlPlaneMainVolume {
      */
     private @Nullable Integer sizeGib;
     /**
+     * @return Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+     * 
+     */
+    private @Nullable Integer throughput;
+    /**
      * @return Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
      * 
      */
@@ -56,6 +61,13 @@ public final class AwsClusterControlPlaneMainVolume {
         return Optional.ofNullable(this.sizeGib);
     }
     /**
+     * @return Optional. The throughput to provision for the volume, in MiB/s. Only valid if the volume type is GP3.
+     * 
+     */
+    public Optional<Integer> throughput() {
+        return Optional.ofNullable(this.throughput);
+    }
+    /**
      * @return Optional. Type of the EBS volume. When unspecified, it defaults to GP2 volume. Possible values: VOLUME_TYPE_UNSPECIFIED, GP2, GP3
      * 
      */
@@ -75,6 +87,7 @@ public final class AwsClusterControlPlaneMainVolume {
         private @Nullable Integer iops;
         private @Nullable String kmsKeyArn;
         private @Nullable Integer sizeGib;
+        private @Nullable Integer throughput;
         private @Nullable String volumeType;
         public Builder() {}
         public Builder(AwsClusterControlPlaneMainVolume defaults) {
@@ -82,6 +95,7 @@ public final class AwsClusterControlPlaneMainVolume {
     	      this.iops = defaults.iops;
     	      this.kmsKeyArn = defaults.kmsKeyArn;
     	      this.sizeGib = defaults.sizeGib;
+    	      this.throughput = defaults.throughput;
     	      this.volumeType = defaults.volumeType;
         }
 
@@ -101,6 +115,11 @@ public final class AwsClusterControlPlaneMainVolume {
             return this;
         }
         @CustomType.Setter
+        public Builder throughput(@Nullable Integer throughput) {
+            this.throughput = throughput;
+            return this;
+        }
+        @CustomType.Setter
         public Builder volumeType(@Nullable String volumeType) {
             this.volumeType = volumeType;
             return this;
@@ -110,6 +129,7 @@ public final class AwsClusterControlPlaneMainVolume {
             o.iops = iops;
             o.kmsKeyArn = kmsKeyArn;
             o.sizeGib = sizeGib;
+            o.throughput = throughput;
             o.volumeType = volumeType;
             return o;
         }

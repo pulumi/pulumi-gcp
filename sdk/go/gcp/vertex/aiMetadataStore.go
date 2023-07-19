@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -96,6 +97,7 @@ func NewAiMetadataStore(ctx *pulumi.Context,
 		args = &AiMetadataStoreArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AiMetadataStore
 	err := ctx.RegisterResource("gcp:vertex/aiMetadataStore:AiMetadataStore", name, args, &resource, opts...)
 	if err != nil {

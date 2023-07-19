@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -39,6 +40,7 @@ import (
 //
 // ```
 func LookupAttestorIamPolicy(ctx *pulumi.Context, args *LookupAttestorIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAttestorIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAttestorIamPolicyResult
 	err := ctx.Invoke("gcp:binaryauthorization/getAttestorIamPolicy:getAttestorIamPolicy", args, &rv, opts...)
 	if err != nil {

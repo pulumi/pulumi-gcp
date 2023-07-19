@@ -5,6 +5,7 @@ package com.pulumi.gcp.clouddeploy.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineStageDeployParameterArgs;
 import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineStageStrategyArgs;
 import java.lang.String;
 import java.util.List;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class DeliveryPipelineSerialPipelineStageArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DeliveryPipelineSerialPipelineStageArgs Empty = new DeliveryPipelineSerialPipelineStageArgs();
+
+    /**
+     * Optional. The deploy parameters to use for the target in this stage.
+     * 
+     */
+    @Import(name="deployParameters")
+    private @Nullable Output<List<DeliveryPipelineSerialPipelineStageDeployParameterArgs>> deployParameters;
+
+    /**
+     * @return Optional. The deploy parameters to use for the target in this stage.
+     * 
+     */
+    public Optional<Output<List<DeliveryPipelineSerialPipelineStageDeployParameterArgs>>> deployParameters() {
+        return Optional.ofNullable(this.deployParameters);
+    }
 
     /**
      * Skaffold profiles to use when rendering the manifest for this stage&#39;s `Target`.
@@ -65,6 +81,7 @@ public final class DeliveryPipelineSerialPipelineStageArgs extends com.pulumi.re
     private DeliveryPipelineSerialPipelineStageArgs() {}
 
     private DeliveryPipelineSerialPipelineStageArgs(DeliveryPipelineSerialPipelineStageArgs $) {
+        this.deployParameters = $.deployParameters;
         this.profiles = $.profiles;
         this.strategy = $.strategy;
         this.targetId = $.targetId;
@@ -86,6 +103,37 @@ public final class DeliveryPipelineSerialPipelineStageArgs extends com.pulumi.re
 
         public Builder(DeliveryPipelineSerialPipelineStageArgs defaults) {
             $ = new DeliveryPipelineSerialPipelineStageArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deployParameters Optional. The deploy parameters to use for the target in this stage.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployParameters(@Nullable Output<List<DeliveryPipelineSerialPipelineStageDeployParameterArgs>> deployParameters) {
+            $.deployParameters = deployParameters;
+            return this;
+        }
+
+        /**
+         * @param deployParameters Optional. The deploy parameters to use for the target in this stage.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployParameters(List<DeliveryPipelineSerialPipelineStageDeployParameterArgs> deployParameters) {
+            return deployParameters(Output.of(deployParameters));
+        }
+
+        /**
+         * @param deployParameters Optional. The deploy parameters to use for the target in this stage.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deployParameters(DeliveryPipelineSerialPipelineStageDeployParameterArgs... deployParameters) {
+            return deployParameters(List.of(deployParameters));
         }
 
         /**

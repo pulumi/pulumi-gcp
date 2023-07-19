@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -548,6 +549,7 @@ func NewRegionHealthCheck(ctx *pulumi.Context,
 		args = &RegionHealthCheckArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource RegionHealthCheck
 	err := ctx.RegisterResource("gcp:compute/regionHealthCheck:RegionHealthCheck", name, args, &resource, opts...)
 	if err != nil {

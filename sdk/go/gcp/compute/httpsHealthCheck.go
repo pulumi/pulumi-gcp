@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -130,6 +131,7 @@ func NewHttpsHealthCheck(ctx *pulumi.Context,
 		args = &HttpsHealthCheckArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource HttpsHealthCheck
 	err := ctx.RegisterResource("gcp:compute/httpsHealthCheck:HttpsHealthCheck", name, args, &resource, opts...)
 	if err != nil {

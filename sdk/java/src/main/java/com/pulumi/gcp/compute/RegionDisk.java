@@ -109,7 +109,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.RegionDisk;
  * import com.pulumi.gcp.compute.RegionDiskArgs;
  * import com.pulumi.gcp.compute.inputs.RegionDiskAsyncPrimaryDiskArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -130,9 +129,7 @@ import javax.annotation.Nullable;
  *             .replicaZones(            
  *                 &#34;us-central1-a&#34;,
  *                 &#34;us-central1-f&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var secondary = new RegionDisk(&#34;secondary&#34;, RegionDiskArgs.builder()        
  *             .type(&#34;pd-ssd&#34;)
@@ -144,9 +141,7 @@ import javax.annotation.Nullable;
  *             .replicaZones(            
  *                 &#34;us-east1-b&#34;,
  *                 &#34;us-east1-c&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -223,6 +218,7 @@ import javax.annotation.Nullable;
 public class RegionDisk extends com.pulumi.resources.CustomResource {
     /**
      * A nested object resource
+     * Structure is documented below.
      * 
      */
     @Export(name="asyncPrimaryDisk", type=RegionDiskAsyncPrimaryDisk.class, parameters={})
@@ -230,6 +226,7 @@ public class RegionDisk extends com.pulumi.resources.CustomResource {
 
     /**
      * @return A nested object resource
+     * Structure is documented below.
      * 
      */
     public Output<Optional<RegionDiskAsyncPrimaryDisk>> asyncPrimaryDisk() {

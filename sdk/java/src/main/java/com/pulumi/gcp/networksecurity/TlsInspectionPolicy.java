@@ -44,6 +44,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
  * import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
+ * import com.pulumi.gcp.projects.ServiceIdentity;
+ * import com.pulumi.gcp.projects.ServiceIdentityArgs;
+ * import com.pulumi.gcp.certificateauthority.CaPoolIamMember;
+ * import com.pulumi.gcp.certificateauthority.CaPoolIamMemberArgs;
  * import com.pulumi.gcp.networksecurity.TlsInspectionPolicy;
  * import com.pulumi.gcp.networksecurity.TlsInspectionPolicyArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -123,6 +127,20 @@ import javax.annotation.Nullable;
  *                 .provider(google_beta)
  *                 .build());
  * 
+ *         var nsSa = new ServiceIdentity(&#34;nsSa&#34;, ServiceIdentityArgs.builder()        
+ *             .service(&#34;networksecurity.googleapis.com&#34;)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var tlsInspectionPermission = new CaPoolIamMember(&#34;tlsInspectionPermission&#34;, CaPoolIamMemberArgs.builder()        
+ *             .caPool(defaultCaPool.id())
+ *             .role(&#34;roles/privateca.certificateManager&#34;)
+ *             .member(nsSa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
  *         var defaultTlsInspectionPolicy = new TlsInspectionPolicy(&#34;defaultTlsInspectionPolicy&#34;, TlsInspectionPolicyArgs.builder()        
  *             .location(&#34;us-central1&#34;)
  *             .caPool(defaultCaPool.id())
@@ -131,7 +149,8 @@ import javax.annotation.Nullable;
  *                 .provider(google_beta)
  *                 .dependsOn(                
  *                     defaultCaPool,
- *                     defaultAuthority)
+ *                     defaultAuthority,
+ *                     tlsInspectionPermission)
  *                 .build());
  * 
  *     }

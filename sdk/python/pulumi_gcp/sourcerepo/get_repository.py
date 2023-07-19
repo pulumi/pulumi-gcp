@@ -119,12 +119,12 @@ def get_repository(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:sourcerepo/getRepository:getRepository', __args__, opts=opts, typ=GetRepositoryResult).value
 
     return AwaitableGetRepositoryResult(
-        id=__ret__.id,
-        name=__ret__.name,
-        project=__ret__.project,
-        pubsub_configs=__ret__.pubsub_configs,
-        size=__ret__.size,
-        url=__ret__.url)
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        pubsub_configs=pulumi.get(__ret__, 'pubsub_configs'),
+        size=pulumi.get(__ret__, 'size'),
+        url=pulumi.get(__ret__, 'url'))
 
 
 @_utilities.lift_output_func(get_repository)

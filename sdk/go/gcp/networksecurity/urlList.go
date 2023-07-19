@@ -8,9 +8,18 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// UrlList proto helps users to set reusable, independently manageable lists of hosts, host patterns, URLs, URL patterns.
+//
+// To get more information about UrlLists, see:
+//
+// * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.urlLists)
+// * How-to Guides
+//   - Use UrlLists
+//
 // ## Example Usage
 // ### Network Security Url Lists Basic
 //
@@ -31,7 +40,7 @@ import (
 //				Values: pulumi.StringArray{
 //					pulumi.String("www.example.com"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -55,14 +64,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := networksecurity.NewUrlList(ctx, "default", &networksecurity.UrlListArgs{
-//				Location:    pulumi.String("us-central1"),
 //				Description: pulumi.String("my description"),
+//				Location:    pulumi.String("us-central1"),
 //				Values: pulumi.StringArray{
 //					pulumi.String("www.example.com"),
 //					pulumi.String("about.example.com"),
 //					pulumi.String("github.com/example-org/*"),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -133,6 +142,7 @@ func NewUrlList(ctx *pulumi.Context,
 	if args.Values == nil {
 		return nil, errors.New("invalid value for required argument 'Values'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource UrlList
 	err := ctx.RegisterResource("gcp:networksecurity/urlList:UrlList", name, args, &resource, opts...)
 	if err != nil {

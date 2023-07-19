@@ -18,7 +18,7 @@ public final class SecretReplication {
      */
     private @Nullable Boolean automatic;
     /**
-     * @return The Secret will automatically be replicated without any restrictions.
+     * @return The Secret will be replicated to the regions specified by the user.
      * Structure is documented below.
      * 
      */
@@ -33,7 +33,7 @@ public final class SecretReplication {
         return Optional.ofNullable(this.automatic);
     }
     /**
-     * @return The Secret will automatically be replicated without any restrictions.
+     * @return The Secret will be replicated to the regions specified by the user.
      * Structure is documented below.
      * 
      */

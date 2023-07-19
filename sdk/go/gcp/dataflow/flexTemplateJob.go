@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -210,6 +211,7 @@ func NewFlexTemplateJob(ctx *pulumi.Context,
 	if args.ContainerSpecGcsPath == nil {
 		return nil, errors.New("invalid value for required argument 'ContainerSpecGcsPath'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FlexTemplateJob
 	err := ctx.RegisterResource("gcp:dataflow/flexTemplateJob:FlexTemplateJob", name, args, &resource, opts...)
 	if err != nil {

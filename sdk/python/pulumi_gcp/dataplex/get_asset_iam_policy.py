@@ -129,11 +129,11 @@ def get_asset_iam_policy(asset: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataplex.get_asset_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        lake=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        dataplex_zone=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        asset=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.dataplex.get_asset_iam_policy(project=google_dataplex_asset["example"]["project"],
+        location=google_dataplex_asset["example"]["location"],
+        lake=google_dataplex_asset["example"]["lake"],
+        dataplex_zone=google_dataplex_asset["example"]["dataplex_zone"],
+        asset=google_dataplex_asset["example"]["name"])
     ```
 
 
@@ -151,14 +151,14 @@ def get_asset_iam_policy(asset: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:dataplex/getAssetIamPolicy:getAssetIamPolicy', __args__, opts=opts, typ=GetAssetIamPolicyResult).value
 
     return AwaitableGetAssetIamPolicyResult(
-        asset=__ret__.asset,
-        dataplex_zone=__ret__.dataplex_zone,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        lake=__ret__.lake,
-        location=__ret__.location,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        asset=pulumi.get(__ret__, 'asset'),
+        dataplex_zone=pulumi.get(__ret__, 'dataplex_zone'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        lake=pulumi.get(__ret__, 'lake'),
+        location=pulumi.get(__ret__, 'location'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_asset_iam_policy)
@@ -177,11 +177,11 @@ def get_asset_iam_policy_output(asset: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dataplex.get_asset_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        lake=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        dataplex_zone=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        asset=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.dataplex.get_asset_iam_policy(project=google_dataplex_asset["example"]["project"],
+        location=google_dataplex_asset["example"]["location"],
+        lake=google_dataplex_asset["example"]["lake"],
+        dataplex_zone=google_dataplex_asset["example"]["dataplex_zone"],
+        asset=google_dataplex_asset["example"]["name"])
     ```
 
 

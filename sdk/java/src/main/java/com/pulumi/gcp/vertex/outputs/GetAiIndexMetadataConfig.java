@@ -17,6 +17,7 @@ public final class GetAiIndexMetadataConfig {
     private Integer dimensions;
     private String distanceMeasureType;
     private String featureNormType;
+    private String shardSize;
 
     private GetAiIndexMetadataConfig() {}
     public List<GetAiIndexMetadataConfigAlgorithmConfig> algorithmConfigs() {
@@ -34,6 +35,9 @@ public final class GetAiIndexMetadataConfig {
     public String featureNormType() {
         return this.featureNormType;
     }
+    public String shardSize() {
+        return this.shardSize;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -49,6 +53,7 @@ public final class GetAiIndexMetadataConfig {
         private Integer dimensions;
         private String distanceMeasureType;
         private String featureNormType;
+        private String shardSize;
         public Builder() {}
         public Builder(GetAiIndexMetadataConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -57,6 +62,7 @@ public final class GetAiIndexMetadataConfig {
     	      this.dimensions = defaults.dimensions;
     	      this.distanceMeasureType = defaults.distanceMeasureType;
     	      this.featureNormType = defaults.featureNormType;
+    	      this.shardSize = defaults.shardSize;
         }
 
         @CustomType.Setter
@@ -87,6 +93,11 @@ public final class GetAiIndexMetadataConfig {
             this.featureNormType = Objects.requireNonNull(featureNormType);
             return this;
         }
+        @CustomType.Setter
+        public Builder shardSize(String shardSize) {
+            this.shardSize = Objects.requireNonNull(shardSize);
+            return this;
+        }
         public GetAiIndexMetadataConfig build() {
             final var o = new GetAiIndexMetadataConfig();
             o.algorithmConfigs = algorithmConfigs;
@@ -94,6 +105,7 @@ public final class GetAiIndexMetadataConfig {
             o.dimensions = dimensions;
             o.distanceMeasureType = distanceMeasureType;
             o.featureNormType = featureNormType;
+            o.shardSize = shardSize;
             return o;
         }
     }

@@ -214,21 +214,21 @@ def get_connector(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:vpcaccess/getConnector:getConnector', __args__, opts=opts, typ=GetConnectorResult).value
 
     return AwaitableGetConnectorResult(
-        connected_projects=__ret__.connected_projects,
-        id=__ret__.id,
-        ip_cidr_range=__ret__.ip_cidr_range,
-        machine_type=__ret__.machine_type,
-        max_instances=__ret__.max_instances,
-        max_throughput=__ret__.max_throughput,
-        min_instances=__ret__.min_instances,
-        min_throughput=__ret__.min_throughput,
-        name=__ret__.name,
-        network=__ret__.network,
-        project=__ret__.project,
-        region=__ret__.region,
-        self_link=__ret__.self_link,
-        state=__ret__.state,
-        subnets=__ret__.subnets)
+        connected_projects=pulumi.get(__ret__, 'connected_projects'),
+        id=pulumi.get(__ret__, 'id'),
+        ip_cidr_range=pulumi.get(__ret__, 'ip_cidr_range'),
+        machine_type=pulumi.get(__ret__, 'machine_type'),
+        max_instances=pulumi.get(__ret__, 'max_instances'),
+        max_throughput=pulumi.get(__ret__, 'max_throughput'),
+        min_instances=pulumi.get(__ret__, 'min_instances'),
+        min_throughput=pulumi.get(__ret__, 'min_throughput'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'),
+        state=pulumi.get(__ret__, 'state'),
+        subnets=pulumi.get(__ret__, 'subnets'))
 
 
 @_utilities.lift_output_func(get_connector)

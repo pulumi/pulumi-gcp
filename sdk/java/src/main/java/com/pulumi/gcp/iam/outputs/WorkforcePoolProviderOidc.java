@@ -4,6 +4,7 @@
 package com.pulumi.gcp.iam.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.iam.outputs.WorkforcePoolProviderOidcClientSecret;
 import com.pulumi.gcp.iam.outputs.WorkforcePoolProviderOidcWebSsoConfig;
 import java.lang.String;
 import java.util.Objects;
@@ -17,6 +18,12 @@ public final class WorkforcePoolProviderOidc {
      * 
      */
     private String clientId;
+    /**
+     * @return The optional client secret. Required to enable Authorization Code flow for web sign-in.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable WorkforcePoolProviderOidcClientSecret clientSecret;
     /**
      * @return The OIDC issuer URI. Must be a valid URI using the &#39;https&#39; scheme.
      * 
@@ -36,6 +43,14 @@ public final class WorkforcePoolProviderOidc {
      */
     public String clientId() {
         return this.clientId;
+    }
+    /**
+     * @return The optional client secret. Required to enable Authorization Code flow for web sign-in.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<WorkforcePoolProviderOidcClientSecret> clientSecret() {
+        return Optional.ofNullable(this.clientSecret);
     }
     /**
      * @return The OIDC issuer URI. Must be a valid URI using the &#39;https&#39; scheme.
@@ -63,12 +78,14 @@ public final class WorkforcePoolProviderOidc {
     @CustomType.Builder
     public static final class Builder {
         private String clientId;
+        private @Nullable WorkforcePoolProviderOidcClientSecret clientSecret;
         private String issuerUri;
         private @Nullable WorkforcePoolProviderOidcWebSsoConfig webSsoConfig;
         public Builder() {}
         public Builder(WorkforcePoolProviderOidc defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientId = defaults.clientId;
+    	      this.clientSecret = defaults.clientSecret;
     	      this.issuerUri = defaults.issuerUri;
     	      this.webSsoConfig = defaults.webSsoConfig;
         }
@@ -76,6 +93,11 @@ public final class WorkforcePoolProviderOidc {
         @CustomType.Setter
         public Builder clientId(String clientId) {
             this.clientId = Objects.requireNonNull(clientId);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder clientSecret(@Nullable WorkforcePoolProviderOidcClientSecret clientSecret) {
+            this.clientSecret = clientSecret;
             return this;
         }
         @CustomType.Setter
@@ -91,6 +113,7 @@ public final class WorkforcePoolProviderOidc {
         public WorkforcePoolProviderOidc build() {
             final var o = new WorkforcePoolProviderOidc();
             o.clientId = clientId;
+            o.clientSecret = clientSecret;
             o.issuerUri = issuerUri;
             o.webSsoConfig = webSsoConfig;
             return o;

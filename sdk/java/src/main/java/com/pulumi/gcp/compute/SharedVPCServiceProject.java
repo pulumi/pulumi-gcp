@@ -72,16 +72,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject")
 public class SharedVPCServiceProject extends com.pulumi.resources.CustomResource {
     /**
-     * The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
-     * Possible values are: &#34;ABANDON&#34;.
+     * The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: &#34;ABANDON&#34;.
      * 
      */
     @Export(name="deletionPolicy", type=String.class, parameters={})
     private Output</* @Nullable */ String> deletionPolicy;
 
     /**
-     * @return The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted.
-     * Possible values are: &#34;ABANDON&#34;.
+     * @return The deletion policy for the shared VPC service. Setting ABANDON allows the resource to be abandoned rather than deleted. Possible values are: &#34;ABANDON&#34;.
      * 
      */
     public Output<Optional<String>> deletionPolicy() {

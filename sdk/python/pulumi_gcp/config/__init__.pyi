@@ -150,6 +150,8 @@ firebaseCustomEndpoint: Optional[str]
 
 firebaseDatabaseCustomEndpoint: Optional[str]
 
+firebaseExtensionsCustomEndpoint: Optional[str]
+
 firebaseHostingCustomEndpoint: Optional[str]
 
 firebaseStorageCustomEndpoint: Optional[str]
@@ -221,6 +223,8 @@ osLoginCustomEndpoint: Optional[str]
 privatecaCustomEndpoint: Optional[str]
 
 project: Optional[str]
+
+publicCaCustomEndpoint: Optional[str]
 
 pubsubCustomEndpoint: Optional[str]
 

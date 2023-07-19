@@ -14,23 +14,31 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce
     {
         /// <summary>
-        /// Optional arguments to pass to the source during execution.
+        /// Optional arguments to pass to the source during
+        /// execution.
         /// </summary>
         public readonly ImmutableArray<string> Args;
         /// <summary>
-        /// A remote or local file.
+        /// A remote or local file. Structure is
+        /// documented below.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFile? File;
         /// <summary>
-        /// Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+        /// The script interpreter to use. Possible values
+        /// are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
         /// </summary>
         public readonly string Interpreter;
         /// <summary>
-        /// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+        /// Only recorded for enforce Exec. Path to an
+        /// output file (that is created by this Exec) whose content will be recorded in
+        /// OSPolicyResourceCompliance after a successful run. Absence or failure to
+        /// read this file will result in this ExecResource being non-compliant. Output
+        /// file size is limited to 100K bytes.
         /// </summary>
         public readonly string? OutputFilePath;
         /// <summary>
-        /// An inline script. The size of the script is limited to 1024 characters.
+        /// An inline script. The size of the script is limited to
+        /// 1024 characters.
         /// </summary>
         public readonly string? Script;
 

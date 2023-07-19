@@ -94,6 +94,75 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Target Http Proxy Http Keep Alive Timeout
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HttpHealthCheck;
+ * import com.pulumi.gcp.compute.HttpHealthCheckArgs;
+ * import com.pulumi.gcp.compute.BackendService;
+ * import com.pulumi.gcp.compute.BackendServiceArgs;
+ * import com.pulumi.gcp.compute.URLMap;
+ * import com.pulumi.gcp.compute.URLMapArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapHostRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.URLMapPathMatcherArgs;
+ * import com.pulumi.gcp.compute.TargetHttpProxy;
+ * import com.pulumi.gcp.compute.TargetHttpProxyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultHttpHealthCheck = new HttpHealthCheck(&#34;defaultHttpHealthCheck&#34;, HttpHealthCheckArgs.builder()        
+ *             .requestPath(&#34;/&#34;)
+ *             .checkIntervalSec(1)
+ *             .timeoutSec(1)
+ *             .build());
+ * 
+ *         var defaultBackendService = new BackendService(&#34;defaultBackendService&#34;, BackendServiceArgs.builder()        
+ *             .portName(&#34;http&#34;)
+ *             .protocol(&#34;HTTP&#34;)
+ *             .timeoutSec(10)
+ *             .loadBalancingScheme(&#34;EXTERNAL_MANAGED&#34;)
+ *             .healthChecks(defaultHttpHealthCheck.id())
+ *             .build());
+ * 
+ *         var defaultURLMap = new URLMap(&#34;defaultURLMap&#34;, URLMapArgs.builder()        
+ *             .defaultService(defaultBackendService.id())
+ *             .hostRules(URLMapHostRuleArgs.builder()
+ *                 .hosts(&#34;mysite.com&#34;)
+ *                 .pathMatcher(&#34;allpaths&#34;)
+ *                 .build())
+ *             .pathMatchers(URLMapPathMatcherArgs.builder()
+ *                 .name(&#34;allpaths&#34;)
+ *                 .defaultService(defaultBackendService.id())
+ *                 .pathRules(URLMapPathMatcherPathRuleArgs.builder()
+ *                     .paths(&#34;/*&#34;)
+ *                     .service(defaultBackendService.id())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultTargetHttpProxy = new TargetHttpProxy(&#34;defaultTargetHttpProxy&#34;, TargetHttpProxyArgs.builder()        
+ *             .httpKeepAliveTimeoutSec(610)
+ *             .urlMap(defaultURLMap.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Target Http Proxy Https Redirect
  * ```java
  * package generated_program;
@@ -180,6 +249,30 @@ public class TargetHttpProxy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Specifies how long to keep a connection open, after completing a response,
+     * while there is no matching traffic (in seconds). If an HTTP keepalive is
+     * not specified, a default value (610 seconds) will be used. For Global
+     * external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
+     * the maximum allowed value is 1200 seconds. For Global external HTTP(S)
+     * load balancer (classic), this option is not available publicly.
+     * 
+     */
+    @Export(name="httpKeepAliveTimeoutSec", type=Integer.class, parameters={})
+    private Output</* @Nullable */ Integer> httpKeepAliveTimeoutSec;
+
+    /**
+     * @return Specifies how long to keep a connection open, after completing a response,
+     * while there is no matching traffic (in seconds). If an HTTP keepalive is
+     * not specified, a default value (610 seconds) will be used. For Global
+     * external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
+     * the maximum allowed value is 1200 seconds. For Global external HTTP(S)
+     * load balancer (classic), this option is not available publicly.
+     * 
+     */
+    public Output<Optional<Integer>> httpKeepAliveTimeoutSec() {
+        return Codegen.optional(this.httpKeepAliveTimeoutSec);
     }
     /**
      * Name of the resource. Provided by the client when the resource is

@@ -445,6 +445,7 @@ class AiIndex(pulumi.CustomResource):
                 config=gcp.vertex.AiIndexMetadataConfigArgs(
                     dimensions=2,
                     approximate_neighbors_count=150,
+                    shard_size="SHARD_SIZE_SMALL",
                     distance_measure_type="DOT_PRODUCT_DISTANCE",
                     algorithm_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigArgs(
                         tree_ah_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs(
@@ -483,6 +484,7 @@ class AiIndex(pulumi.CustomResource):
                 contents_delta_uri=bucket.name.apply(lambda name: f"gs://{name}/contents"),
                 config=gcp.vertex.AiIndexMetadataConfigArgs(
                     dimensions=2,
+                    shard_size="SHARD_SIZE_LARGE",
                     distance_measure_type="COSINE_DISTANCE",
                     feature_norm_type="UNIT_L2_NORM",
                     algorithm_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigArgs(
@@ -572,6 +574,7 @@ class AiIndex(pulumi.CustomResource):
                 config=gcp.vertex.AiIndexMetadataConfigArgs(
                     dimensions=2,
                     approximate_neighbors_count=150,
+                    shard_size="SHARD_SIZE_SMALL",
                     distance_measure_type="DOT_PRODUCT_DISTANCE",
                     algorithm_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigArgs(
                         tree_ah_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigTreeAhConfigArgs(
@@ -610,6 +613,7 @@ class AiIndex(pulumi.CustomResource):
                 contents_delta_uri=bucket.name.apply(lambda name: f"gs://{name}/contents"),
                 config=gcp.vertex.AiIndexMetadataConfigArgs(
                     dimensions=2,
+                    shard_size="SHARD_SIZE_LARGE",
                     distance_measure_type="COSINE_DISTANCE",
                     feature_norm_type="UNIT_L2_NORM",
                     algorithm_config=gcp.vertex.AiIndexMetadataConfigAlgorithmConfigArgs(

@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  * The Compute FirewallPolicyRule resource
  *
  * ## Example Usage
- * ### Basic_fir_sec_rule_addr_groups
+ * ### Basic_fir_sec_rule
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -22,21 +22,15 @@ import * as utilities from "../utilities";
  *     items: ["208.80.154.224/32"],
  *     type: "IPV4",
  *     capacity: 100,
- * }, {
- *     provider: google_beta,
  * });
  * const folder = new gcp.organizations.Folder("folder", {
  *     displayName: "policy",
  *     parent: "organizations/123456789",
- * }, {
- *     provider: google_beta,
  * });
  * const _default = new gcp.compute.FirewallPolicy("default", {
  *     parent: folder.id,
  *     shortName: "policy",
  *     description: "Resource created for Terraform acceptance testing",
- * }, {
- *     provider: google_beta,
  * });
  * const primary = new gcp.compute.FirewallPolicyRule("primary", {
  *     firewallPolicy: _default.name,
@@ -65,8 +59,6 @@ import * as utilities from "../utilities";
  *         destAddressGroups: [basicGlobalNetworksecurityAddressGroup.id],
  *     },
  *     targetServiceAccounts: ["my@service-account.com"],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

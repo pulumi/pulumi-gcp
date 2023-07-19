@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -321,6 +322,7 @@ func NewBackendService(ctx *pulumi.Context,
 		args = &BackendServiceArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource BackendService
 	err := ctx.RegisterResource("gcp:compute/backendService:BackendService", name, args, &resource, opts...)
 	if err != nil {

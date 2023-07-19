@@ -99,8 +99,8 @@ def get_environment_iam_policy(env_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.apigee.get_environment_iam_policy(org_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        env_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.apigee.get_environment_iam_policy(org_id=google_apigee_environment["apigee_environment"]["org_id"],
+        env_id=google_apigee_environment["apigee_environment"]["name"])
     ```
 
 
@@ -113,11 +113,11 @@ def get_environment_iam_policy(env_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:apigee/getEnvironmentIamPolicy:getEnvironmentIamPolicy', __args__, opts=opts, typ=GetEnvironmentIamPolicyResult).value
 
     return AwaitableGetEnvironmentIamPolicyResult(
-        env_id=__ret__.env_id,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        org_id=__ret__.org_id,
-        policy_data=__ret__.policy_data)
+        env_id=pulumi.get(__ret__, 'env_id'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        org_id=pulumi.get(__ret__, 'org_id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'))
 
 
 @_utilities.lift_output_func(get_environment_iam_policy)
@@ -133,8 +133,8 @@ def get_environment_iam_policy_output(env_id: Optional[pulumi.Input[str]] = None
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.apigee.get_environment_iam_policy(org_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        env_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.apigee.get_environment_iam_policy(org_id=google_apigee_environment["apigee_environment"]["org_id"],
+        env_id=google_apigee_environment["apigee_environment"]["name"])
     ```
 
 

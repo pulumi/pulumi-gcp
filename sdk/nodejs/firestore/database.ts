@@ -19,6 +19,64 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/firestore/docs/)
  *
  * ## Example Usage
+ * ### Firestore Database
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumi/time";
+ *
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "my-project",
+ *     orgId: "123456789",
+ * });
+ * const wait60Seconds = new time.index.Time_sleep("wait60Seconds", {createDuration: "60s"}, {
+ *     dependsOn: [project],
+ * });
+ * const firestore = new gcp.projects.Service("firestore", {
+ *     project: project.projectId,
+ *     service: "firestore.googleapis.com",
+ * }, {
+ *     dependsOn: [wait60Seconds],
+ * });
+ * const database = new gcp.firestore.Database("database", {
+ *     project: project.projectId,
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     concurrencyMode: "OPTIMISTIC",
+ *     appEngineIntegrationMode: "DISABLED",
+ * }, {
+ *     dependsOn: [firestore],
+ * });
+ * ```
+ * ### Firestore Database Datastore Mode
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumi/time";
+ *
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "my-project",
+ *     orgId: "123456789",
+ * });
+ * const wait60Seconds = new time.index.Time_sleep("wait60Seconds", {createDuration: "60s"}, {
+ *     dependsOn: [project],
+ * });
+ * const firestore = new gcp.projects.Service("firestore", {
+ *     project: project.projectId,
+ *     service: "firestore.googleapis.com",
+ * }, {
+ *     dependsOn: [wait60Seconds],
+ * });
+ * const datastoreModeDatabase = new gcp.firestore.Database("datastoreModeDatabase", {
+ *     project: project.projectId,
+ *     locationId: "nam5",
+ *     type: "DATASTORE_MODE",
+ * }, {
+ *     dependsOn: [firestore],
+ * });
+ * ```
  *
  * ## Import
  *

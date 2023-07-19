@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func LookupHostingChannel(ctx *pulumi.Context, args *LookupHostingChannelArgs, opts ...pulumi.InvokeOption) (*LookupHostingChannelResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupHostingChannelResult
 	err := ctx.Invoke("gcp:firebase/getHostingChannel:getHostingChannel", args, &rv, opts...)
 	if err != nil {

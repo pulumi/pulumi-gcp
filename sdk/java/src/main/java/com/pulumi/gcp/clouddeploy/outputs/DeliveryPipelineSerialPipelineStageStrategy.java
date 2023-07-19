@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DeliveryPipelineSerialPipelineStageStrategy {
     /**
-     * @return (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+     * @return Canary deployment strategy provides progressive percentage based deployments to a Target.
      * 
      */
     private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanary canary;
@@ -25,7 +25,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategy {
 
     private DeliveryPipelineSerialPipelineStageStrategy() {}
     /**
-     * @return (Beta only) Canary deployment strategy provides progressive percentage based deployments to a Target.
+     * @return Canary deployment strategy provides progressive percentage based deployments to a Target.
      * 
      */
     public Optional<DeliveryPipelineSerialPipelineStageStrategyCanary> canary() {

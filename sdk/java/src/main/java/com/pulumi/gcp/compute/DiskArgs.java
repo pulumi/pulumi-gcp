@@ -26,6 +26,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * A nested object resource
+     * Structure is documented below.
      * 
      */
     @Import(name="asyncPrimaryDisk")
@@ -33,6 +34,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return A nested object resource
+     * Structure is documented below.
      * 
      */
     public Optional<Output<DiskAsyncPrimaryDiskArgs>> asyncPrimaryDisk() {
@@ -280,7 +282,8 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Indicates how many IOPS must be provisioned for the disk.
-     * Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+     * Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+     * allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you&#39;ll need to manually delete and recreate it
      * 
      */
     @Import(name="provisionedIops")
@@ -288,11 +291,31 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Indicates how many IOPS must be provisioned for the disk.
-     * Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+     * Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+     * allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you&#39;ll need to manually delete and recreate it
      * 
      */
     public Optional<Output<Integer>> provisionedIops() {
         return Optional.ofNullable(this.provisionedIops);
+    }
+
+    /**
+     * Indicates how much Throughput must be provisioned for the disk.
+     * Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+     * allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you&#39;ll need to manually delete and recreate it
+     * 
+     */
+    @Import(name="provisionedThroughput")
+    private @Nullable Output<Integer> provisionedThroughput;
+
+    /**
+     * @return Indicates how much Throughput must be provisioned for the disk.
+     * Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+     * allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you&#39;ll need to manually delete and recreate it
+     * 
+     */
+    public Optional<Output<Integer>> provisionedThroughput() {
+        return Optional.ofNullable(this.provisionedThroughput);
     }
 
     /**
@@ -493,6 +516,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         this.physicalBlockSizeBytes = $.physicalBlockSizeBytes;
         this.project = $.project;
         this.provisionedIops = $.provisionedIops;
+        this.provisionedThroughput = $.provisionedThroughput;
         this.resourcePolicies = $.resourcePolicies;
         this.size = $.size;
         this.snapshot = $.snapshot;
@@ -523,6 +547,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param asyncPrimaryDisk A nested object resource
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -534,6 +559,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param asyncPrimaryDisk A nested object resource
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -871,7 +897,8 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param provisionedIops Indicates how many IOPS must be provisioned for the disk.
-         * Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+         * Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+         * allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you&#39;ll need to manually delete and recreate it
          * 
          * @return builder
          * 
@@ -883,13 +910,39 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param provisionedIops Indicates how many IOPS must be provisioned for the disk.
-         * Note: Update currently only supported by hyperdisk skus, allowing for an update of IOPS every 4 hours
+         * Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+         * allows for an update of IOPS every 4 hours. To update your hyperdisk more frequently, you&#39;ll need to manually delete and recreate it
          * 
          * @return builder
          * 
          */
         public Builder provisionedIops(Integer provisionedIops) {
             return provisionedIops(Output.of(provisionedIops));
+        }
+
+        /**
+         * @param provisionedThroughput Indicates how much Throughput must be provisioned for the disk.
+         * Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+         * allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you&#39;ll need to manually delete and recreate it
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedThroughput(@Nullable Output<Integer> provisionedThroughput) {
+            $.provisionedThroughput = provisionedThroughput;
+            return this;
+        }
+
+        /**
+         * @param provisionedThroughput Indicates how much Throughput must be provisioned for the disk.
+         * Note: Updating currently is only supported by hyperdisk skus without the need to delete and recreate the disk, hyperdisk
+         * allows for an update of Throughput every 4 hours. To update your hyperdisk more frequently, you&#39;ll need to manually delete and recreate it
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedThroughput(Integer provisionedThroughput) {
+            return provisionedThroughput(Output.of(provisionedThroughput));
         }
 
         /**

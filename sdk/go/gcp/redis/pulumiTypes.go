@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type InstanceMaintenancePolicy struct {
 	// (Output)
@@ -506,10 +509,8 @@ type InstanceMaintenanceSchedule struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
 	ScheduleDeadlineTime *string `pulumi:"scheduleDeadlineTime"`
-	// (Output)
-	// Output only. The start time of any upcoming scheduled maintenance for this instance.
-	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-	// resolution and up to nine fractional digits.
+	// Required. Start time of the window in UTC time.
+	// Structure is documented below.
 	StartTime *string `pulumi:"startTime"`
 }
 
@@ -536,10 +537,8 @@ type InstanceMaintenanceScheduleArgs struct {
 	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
 	// resolution and up to nine fractional digits.
 	ScheduleDeadlineTime pulumi.StringPtrInput `pulumi:"scheduleDeadlineTime"`
-	// (Output)
-	// Output only. The start time of any upcoming scheduled maintenance for this instance.
-	// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-	// resolution and up to nine fractional digits.
+	// Required. Start time of the window in UTC time.
+	// Structure is documented below.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 }
 
@@ -637,10 +636,8 @@ func (o InstanceMaintenanceScheduleOutput) ScheduleDeadlineTime() pulumi.StringP
 	return o.ApplyT(func(v InstanceMaintenanceSchedule) *string { return v.ScheduleDeadlineTime }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
-// Output only. The start time of any upcoming scheduled maintenance for this instance.
-// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-// resolution and up to nine fractional digits.
+// Required. Start time of the window in UTC time.
+// Structure is documented below.
 func (o InstanceMaintenanceScheduleOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceMaintenanceSchedule) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
@@ -696,10 +693,8 @@ func (o InstanceMaintenanceSchedulePtrOutput) ScheduleDeadlineTime() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Output)
-// Output only. The start time of any upcoming scheduled maintenance for this instance.
-// A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
-// resolution and up to nine fractional digits.
+// Required. Start time of the window in UTC time.
+// Structure is documented below.
 func (o InstanceMaintenanceSchedulePtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceMaintenanceSchedule) *string {
 		if v == nil {

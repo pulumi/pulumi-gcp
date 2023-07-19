@@ -475,6 +475,13 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
                  tls_inspection_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        The GatewaySecurityPolicyRule resource is in a nested collection within a GatewaySecurityPolicy and represents
+        a traffic matching condition and associated action to perform.
+
+        To get more information about GatewaySecurityPolicyRule, see:
+
+        * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies.rules)
+
         ## Example Usage
         ### Network Security Gateway Security Policy Rules Basic
 
@@ -484,8 +491,7 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
 
         default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy",
             location="us-central1",
-            description="gateway security policy created to be used as reference by the rule.",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            description="gateway security policy created to be used as reference by the rule.")
         default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
             location="us-central1",
             gateway_security_policy=default_gateway_security_policy.name,
@@ -493,8 +499,7 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
             description="my description",
             priority=0,
             session_matcher="host() == 'example.com'",
-            basic_profile="ALLOW",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            basic_profile="ALLOW")
         ```
         ### Network Security Gateway Security Policy Rules Advanced
 
@@ -504,8 +509,7 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
 
         default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy",
             location="us-central1",
-            description="gateway security policy created to be used as reference by the rule.",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            description="gateway security policy created to be used as reference by the rule.")
         default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
             location="us-central1",
             gateway_security_policy=default_gateway_security_policy.name,
@@ -515,8 +519,7 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
             session_matcher="host() == 'example.com'",
             application_matcher="request.method == 'POST'",
             tls_inspection_enabled=False,
-            basic_profile="ALLOW",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            basic_profile="ALLOW")
         ```
 
         ## Import
@@ -563,6 +566,13 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
                  args: GatewaySecurityPolicyRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The GatewaySecurityPolicyRule resource is in a nested collection within a GatewaySecurityPolicy and represents
+        a traffic matching condition and associated action to perform.
+
+        To get more information about GatewaySecurityPolicyRule, see:
+
+        * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies.rules)
+
         ## Example Usage
         ### Network Security Gateway Security Policy Rules Basic
 
@@ -572,8 +582,7 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
 
         default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy",
             location="us-central1",
-            description="gateway security policy created to be used as reference by the rule.",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            description="gateway security policy created to be used as reference by the rule.")
         default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
             location="us-central1",
             gateway_security_policy=default_gateway_security_policy.name,
@@ -581,8 +590,7 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
             description="my description",
             priority=0,
             session_matcher="host() == 'example.com'",
-            basic_profile="ALLOW",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            basic_profile="ALLOW")
         ```
         ### Network Security Gateway Security Policy Rules Advanced
 
@@ -592,8 +600,7 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
 
         default_gateway_security_policy = gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy",
             location="us-central1",
-            description="gateway security policy created to be used as reference by the rule.",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            description="gateway security policy created to be used as reference by the rule.")
         default_gateway_security_policy_rule = gcp.networksecurity.GatewaySecurityPolicyRule("defaultGatewaySecurityPolicyRule",
             location="us-central1",
             gateway_security_policy=default_gateway_security_policy.name,
@@ -603,8 +610,7 @@ class GatewaySecurityPolicyRule(pulumi.CustomResource):
             session_matcher="host() == 'example.com'",
             application_matcher="request.method == 'POST'",
             tls_inspection_enabled=False,
-            basic_profile="ALLOW",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            basic_profile="ALLOW")
         ```
 
         ## Import

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuildV2
 {
     /// <summary>
-    /// Beta only: The Cloudbuildv2 Connection resource
+    /// The Cloudbuildv2 Connection resource
     /// 
     /// ## Example Usage
     /// ### Ghe
@@ -30,18 +30,12 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///         {
     ///             Automatic = true,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var private_key_secret_version = new Gcp.SecretManager.SecretVersion("private-key-secret-version", new()
     ///     {
     ///         Secret = private_key_secret.Id,
     ///         SecretData = File.ReadAllText("private-key.pem"),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var webhook_secret_secret = new Gcp.SecretManager.Secret("webhook-secret-secret", new()
@@ -51,18 +45,12 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///         {
     ///             Automatic = true,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var webhook_secret_secret_version = new Gcp.SecretManager.SecretVersion("webhook-secret-secret-version", new()
     ///     {
     ///         Secret = webhook_secret_secret.Id,
     ///         SecretData = "&lt;webhook-secret-data&gt;",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var p4sa_secretAccessor = Gcp.Organizations.GetIAMPolicy.Invoke(new()
@@ -84,18 +72,12 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///     {
     ///         SecretId = private_key_secret.SecretId,
     ///         PolicyData = p4sa_secretAccessor.Apply(p4sa_secretAccessor =&gt; p4sa_secretAccessor.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData)),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var policy_whs = new Gcp.SecretManager.SecretIamPolicy("policy-whs", new()
     ///     {
     ///         SecretId = webhook_secret_secret.SecretId,
     ///         PolicyData = p4sa_secretAccessor.Apply(p4sa_secretAccessor =&gt; p4sa_secretAccessor.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData)),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var my_connection = new Gcp.CloudBuildV2.Connection("my-connection", new()
@@ -112,7 +94,6 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
-    ///         Provider = google_beta,
     ///         DependsOn = new[]
     ///         {
     ///             policy_pk,
@@ -140,18 +121,12 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///         {
     ///             Automatic = true,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var github_token_secret_version = new Gcp.SecretManager.SecretVersion("github-token-secret-version", new()
     ///     {
     ///         Secret = github_token_secret.Id,
     ///         SecretData = File.ReadAllText("my-github-token.txt"),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var p4sa_secretAccessor = Gcp.Organizations.GetIAMPolicy.Invoke(new()
@@ -173,9 +148,6 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///     {
     ///         SecretId = github_token_secret.SecretId,
     ///         PolicyData = p4sa_secretAccessor.Apply(p4sa_secretAccessor =&gt; p4sa_secretAccessor.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData)),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var my_connection = new Gcp.CloudBuildV2.Connection("my-connection", new()
@@ -189,9 +161,6 @@ namespace Pulumi.Gcp.CloudBuildV2
     ///                 OauthTokenSecretVersion = github_token_secret_version.Id,
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -253,6 +222,12 @@ namespace Pulumi.Gcp.CloudBuildV2
         public Output<Outputs.ConnectionGithubEnterpriseConfig?> GithubEnterpriseConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+        /// </summary>
+        [Output("gitlabConfig")]
+        public Output<Outputs.ConnectionGitlabConfig?> GitlabConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. Installation state of the Connection.
         /// </summary>
         [Output("installationStates")]
@@ -266,10 +241,6 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -369,6 +340,12 @@ namespace Pulumi.Gcp.CloudBuildV2
         public Input<Inputs.ConnectionGithubEnterpriseConfigArgs>? GithubEnterpriseConfig { get; set; }
 
         /// <summary>
+        /// Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+        /// </summary>
+        [Input("gitlabConfig")]
+        public Input<Inputs.ConnectionGitlabConfigArgs>? GitlabConfig { get; set; }
+
+        /// <summary>
         /// The location for the resource
         /// </summary>
         [Input("location", required: true)]
@@ -376,10 +353,6 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -440,6 +413,12 @@ namespace Pulumi.Gcp.CloudBuildV2
         [Input("githubEnterpriseConfig")]
         public Input<Inputs.ConnectionGithubEnterpriseConfigGetArgs>? GithubEnterpriseConfig { get; set; }
 
+        /// <summary>
+        /// Configuration for connections to gitlab.com or an instance of GitLab Enterprise.
+        /// </summary>
+        [Input("gitlabConfig")]
+        public Input<Inputs.ConnectionGitlabConfigGetArgs>? GitlabConfig { get; set; }
+
         [Input("installationStates")]
         private InputList<Inputs.ConnectionInstallationStateGetArgs>? _installationStates;
 
@@ -460,10 +439,6 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -7,10 +7,12 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 func LookupAppleApp(ctx *pulumi.Context, args *LookupAppleAppArgs, opts ...pulumi.InvokeOption) (*LookupAppleAppResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAppleAppResult
 	err := ctx.Invoke("gcp:firebase/getAppleApp:getAppleApp", args, &rv, opts...)
 	if err != nil {

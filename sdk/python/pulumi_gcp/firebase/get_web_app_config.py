@@ -178,16 +178,16 @@ def get_web_app_config(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:firebase/getWebAppConfig:getWebAppConfig', __args__, opts=opts, typ=GetWebAppConfigResult).value
 
     return AwaitableGetWebAppConfigResult(
-        api_key=__ret__.api_key,
-        auth_domain=__ret__.auth_domain,
-        database_url=__ret__.database_url,
-        id=__ret__.id,
-        location_id=__ret__.location_id,
-        measurement_id=__ret__.measurement_id,
-        messaging_sender_id=__ret__.messaging_sender_id,
-        project=__ret__.project,
-        storage_bucket=__ret__.storage_bucket,
-        web_app_id=__ret__.web_app_id)
+        api_key=pulumi.get(__ret__, 'api_key'),
+        auth_domain=pulumi.get(__ret__, 'auth_domain'),
+        database_url=pulumi.get(__ret__, 'database_url'),
+        id=pulumi.get(__ret__, 'id'),
+        location_id=pulumi.get(__ret__, 'location_id'),
+        measurement_id=pulumi.get(__ret__, 'measurement_id'),
+        messaging_sender_id=pulumi.get(__ret__, 'messaging_sender_id'),
+        project=pulumi.get(__ret__, 'project'),
+        storage_bucket=pulumi.get(__ret__, 'storage_bucket'),
+        web_app_id=pulumi.get(__ret__, 'web_app_id'))
 
 
 @_utilities.lift_output_func(get_web_app_config)

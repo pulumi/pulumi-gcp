@@ -89,7 +89,7 @@ import * as utilities from "../utilities";
  *     feature: feature.name,
  *     membership: membership.membershipId,
  *     configmanagement: {
- *         version: "1.12.0",
+ *         version: "1.15.1",
  *         configSync: {
  *             oci: {
  *                 syncRepo: "us-central1-docker.pkg.dev/sample-project/config-repo/config-sync-gke:latest",

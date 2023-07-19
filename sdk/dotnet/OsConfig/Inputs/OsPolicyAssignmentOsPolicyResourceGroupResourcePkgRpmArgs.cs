@@ -13,13 +13,16 @@ namespace Pulumi.Gcp.OsConfig.Inputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+        /// Whether dependencies should also be installed. -
+        /// install when false: `rpm --upgrade --replacepkgs package.rpm` - install when
+        /// true: `yum -y install package.rpm` or `zypper -y install package.rpm`
         /// </summary>
         [Input("pullDeps")]
         public Input<bool>? PullDeps { get; set; }
 
         /// <summary>
-        /// Required. An rpm package.
+        /// An rpm package. Structure is
+        /// documented below.
         /// </summary>
         [Input("source", required: true)]
         public Input<Inputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceArgs> Source { get; set; } = null!;

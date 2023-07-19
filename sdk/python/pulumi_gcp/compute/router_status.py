@@ -148,13 +148,13 @@ def router_status(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/routerStatus:RouterStatus', __args__, opts=opts, typ=RouterStatusResult).value
 
     return AwaitableRouterStatusResult(
-        best_routes=__ret__.best_routes,
-        best_routes_for_routers=__ret__.best_routes_for_routers,
-        id=__ret__.id,
-        name=__ret__.name,
-        network=__ret__.network,
-        project=__ret__.project,
-        region=__ret__.region)
+        best_routes=pulumi.get(__ret__, 'best_routes'),
+        best_routes_for_routers=pulumi.get(__ret__, 'best_routes_for_routers'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'))
 
 
 @_utilities.lift_output_func(router_status)

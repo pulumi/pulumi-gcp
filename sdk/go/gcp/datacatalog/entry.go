@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -125,7 +126,45 @@ import (
 //				LinkedResource:      pulumi.String("my/linked/resource"),
 //				DisplayName:         pulumi.String("my custom type entry"),
 //				Description:         pulumi.String("a custom type entry for a user specified system"),
-//				Schema:              pulumi.String("{\n  \"columns\": [\n    {\n      \"column\": \"first_name\",\n      \"description\": \"First name\",\n      \"mode\": \"REQUIRED\",\n      \"type\": \"STRING\"\n    },\n    {\n      \"column\": \"last_name\",\n      \"description\": \"Last name\",\n      \"mode\": \"REQUIRED\",\n      \"type\": \"STRING\"\n    },\n    {\n      \"column\": \"address\",\n      \"description\": \"Address\",\n      \"mode\": \"REPEATED\",\n      \"subcolumns\": [\n        {\n          \"column\": \"city\",\n          \"description\": \"City\",\n          \"mode\": \"NULLABLE\",\n          \"type\": \"STRING\"\n        },\n        {\n          \"column\": \"state\",\n          \"description\": \"State\",\n          \"mode\": \"NULLABLE\",\n          \"type\": \"STRING\"\n        }\n      ],\n      \"type\": \"RECORD\"\n    }\n  ]\n}\n"),
+//				Schema: pulumi.String(`{
+//	  "columns": [
+//	    {
+//	      "column": "first_name",
+//	      "description": "First name",
+//	      "mode": "REQUIRED",
+//	      "type": "STRING"
+//	    },
+//	    {
+//	      "column": "last_name",
+//	      "description": "Last name",
+//	      "mode": "REQUIRED",
+//	      "type": "STRING"
+//	    },
+//	    {
+//	      "column": "address",
+//	      "description": "Address",
+//	      "mode": "REPEATED",
+//	      "subcolumns": [
+//	        {
+//	          "column": "city",
+//	          "description": "City",
+//	          "mode": "NULLABLE",
+//	          "type": "STRING"
+//	        },
+//	        {
+//	          "column": "state",
+//	          "description": "State",
+//	          "mode": "NULLABLE",
+//	          "type": "STRING"
+//	        }
+//	      ],
+//	      "type": "RECORD"
+//	    }
+//	  ]
+//	}
+//
+// `),
+//
 //			})
 //			if err != nil {
 //				return err
@@ -216,6 +255,7 @@ func NewEntry(ctx *pulumi.Context,
 	if args.EntryId == nil {
 		return nil, errors.New("invalid value for required argument 'EntryId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Entry
 	err := ctx.RegisterResource("gcp:datacatalog/entry:Entry", name, args, &resource, opts...)
 	if err != nil {

@@ -115,10 +115,10 @@ def get_tensorflow_versions(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:tpu/getTensorflowVersions:getTensorflowVersions', __args__, opts=opts, typ=GetTensorflowVersionsResult).value
 
     return AwaitableGetTensorflowVersionsResult(
-        id=__ret__.id,
-        project=__ret__.project,
-        versions=__ret__.versions,
-        zone=__ret__.zone)
+        id=pulumi.get(__ret__, 'id'),
+        project=pulumi.get(__ret__, 'project'),
+        versions=pulumi.get(__ret__, 'versions'),
+        zone=pulumi.get(__ret__, 'zone'))
 
 
 @_utilities.lift_output_func(get_tensorflow_versions)

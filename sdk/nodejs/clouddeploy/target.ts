@@ -22,6 +22,7 @@ import * as utilities from "../utilities";
  *         my_first_annotation: "example-annotation-1",
  *         my_second_annotation: "example-annotation-2",
  *     },
+ *     deployParameters: {},
  *     description: "multi-target description",
  *     executionConfigs: [{
  *         usages: [
@@ -58,6 +59,7 @@ import * as utilities from "../utilities";
  *         my_first_annotation: "example-annotation-1",
  *         my_second_annotation: "example-annotation-2",
  *     },
+ *     deployParameters: {},
  *     description: "basic description",
  *     executionConfigs: [{
  *         usages: [
@@ -89,6 +91,9 @@ import * as utilities from "../utilities";
  *     annotations: {
  *         my_first_annotation: "example-annotation-1",
  *         my_second_annotation: "example-annotation-2",
+ *     },
+ *     deployParameters: {
+ *         deployParameterKey: "deployParameterValue",
  *     },
  *     description: "basic description",
  *     gke: {
@@ -160,6 +165,10 @@ export class Target extends pulumi.CustomResource {
      * Output only. Time at which the `Target` was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Optional. The deploy parameters to use for this target.
+     */
+    public readonly deployParameters!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Optional. Description of the `Target`. Max length is 255 characters.
      */
@@ -237,6 +246,7 @@ export class Target extends pulumi.CustomResource {
             resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["anthosCluster"] = state ? state.anthosCluster : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["deployParameters"] = state ? state.deployParameters : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["executionConfigs"] = state ? state.executionConfigs : undefined;
@@ -258,6 +268,7 @@ export class Target extends pulumi.CustomResource {
             }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["anthosCluster"] = args ? args.anthosCluster : undefined;
+            resourceInputs["deployParameters"] = args ? args.deployParameters : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["executionConfigs"] = args ? args.executionConfigs : undefined;
             resourceInputs["gke"] = args ? args.gke : undefined;
@@ -295,6 +306,10 @@ export interface TargetState {
      * Output only. Time at which the `Target` was created.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Optional. The deploy parameters to use for this target.
+     */
+    deployParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Optional. Description of the `Target`. Max length is 255 characters.
      */
@@ -369,6 +384,10 @@ export interface TargetArgs {
      * Information specifying an Anthos Cluster.
      */
     anthosCluster?: pulumi.Input<inputs.clouddeploy.TargetAnthosCluster>;
+    /**
+     * Optional. The deploy parameters to use for this target.
+     */
+    deployParameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Optional. Description of the `Target`. Max length is 255 characters.
      */

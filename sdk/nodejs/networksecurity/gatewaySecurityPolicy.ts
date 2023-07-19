@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * The GatewaySecurityPolicy resource contains a collection of GatewaySecurityPolicyRules and associated metadata.
+ *
+ * To get more information about GatewaySecurityPolicy, see:
+ *
+ * * [API documentation](https://cloud.google.com/secure-web-proxy/docs/reference/network-security/rest/v1/projects.locations.gatewaySecurityPolicies)
+ *
  * ## Example Usage
  * ### Network Security Gateway Security Policy Basic
  *
@@ -13,10 +19,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.networksecurity.GatewaySecurityPolicy("default", {
- *     location: "us-central1",
  *     description: "my description",
- * }, {
- *     provider: google_beta,
+ *     location: "us-central1",
  * });
  * ```
  * ### Network Security Gateway Security Policy Tls Inspection Basic
@@ -86,6 +90,16 @@ import * as utilities from "../utilities";
  * }, {
  *     provider: google_beta,
  * });
+ * const nsSa = new gcp.projects.ServiceIdentity("nsSa", {service: "networksecurity.googleapis.com"}, {
+ *     provider: google_beta,
+ * });
+ * const tlsInspectionPermission = new gcp.certificateauthority.CaPoolIamMember("tlsInspectionPermission", {
+ *     caPool: defaultCaPool.id,
+ *     role: "roles/privateca.certificateManager",
+ *     member: pulumi.interpolate`serviceAccount:${nsSa.email}`,
+ * }, {
+ *     provider: google_beta,
+ * });
  * const defaultTlsInspectionPolicy = new gcp.networksecurity.TlsInspectionPolicy("defaultTlsInspectionPolicy", {
  *     location: "us-central1",
  *     caPool: defaultCaPool.id,
@@ -94,6 +108,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [
  *         defaultCaPool,
  *         defaultAuthority,
+ *         tlsInspectionPermission,
  *     ],
  * });
  * const defaultGatewaySecurityPolicy = new gcp.networksecurity.GatewaySecurityPolicy("defaultGatewaySecurityPolicy", {

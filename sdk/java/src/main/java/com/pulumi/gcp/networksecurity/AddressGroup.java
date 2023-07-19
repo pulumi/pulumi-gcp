@@ -18,6 +18,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * AddressGroup is a resource that specifies how a collection of IP/DNS used in Firewall Policy.
+ * 
+ * To get more information about AddressGroup, see:
+ * 
+ * * [API documentation](https://cloud.google.com/traffic-director/docs/reference/network-security/rest/v1beta1/organizations.locations.addressGroups)
+ * * How-to Guides
+ *     * [Use AddressGroups](https://cloud.google.com/vpc/docs/use-address-groups-firewall-policies)
+ * 
  * ## Example Usage
  * ### Network Security Address Groups Basic
  * ```java
@@ -28,7 +36,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.networksecurity.AddressGroup;
  * import com.pulumi.gcp.networksecurity.AddressGroupArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -43,14 +50,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new AddressGroup(&#34;default&#34;, AddressGroupArgs.builder()        
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .type(&#34;IPV4&#34;)
  *             .capacity(&#34;100&#34;)
  *             .items(&#34;208.80.154.224/32&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .location(&#34;us-central1&#34;)
+ *             .parent(&#34;projects/my-project-name&#34;)
+ *             .type(&#34;IPV4&#34;)
+ *             .build());
  * 
  *     }
  * }
@@ -64,7 +69,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.networksecurity.AddressGroup;
  * import com.pulumi.gcp.networksecurity.AddressGroupArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -79,14 +83,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new AddressGroup(&#34;default&#34;, AddressGroupArgs.builder()        
- *             .parent(&#34;organizations/123456789&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .type(&#34;IPV4&#34;)
  *             .capacity(&#34;100&#34;)
  *             .items(&#34;208.80.154.224/32&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .location(&#34;us-central1&#34;)
+ *             .parent(&#34;organizations/123456789&#34;)
+ *             .type(&#34;IPV4&#34;)
+ *             .build());
  * 
  *     }
  * }
@@ -100,7 +102,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.networksecurity.AddressGroup;
  * import com.pulumi.gcp.networksecurity.AddressGroupArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -115,15 +116,13 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new AddressGroup(&#34;default&#34;, AddressGroupArgs.builder()        
- *             .parent(&#34;projects/my-project-name&#34;)
- *             .location(&#34;us-central1&#34;)
- *             .description(&#34;my description&#34;)
- *             .type(&#34;IPV4&#34;)
  *             .capacity(&#34;100&#34;)
+ *             .description(&#34;my description&#34;)
  *             .items(&#34;208.80.154.224/32&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .location(&#34;us-central1&#34;)
+ *             .parent(&#34;projects/my-project-name&#34;)
+ *             .type(&#34;IPV4&#34;)
+ *             .build());
  * 
  *     }
  * }

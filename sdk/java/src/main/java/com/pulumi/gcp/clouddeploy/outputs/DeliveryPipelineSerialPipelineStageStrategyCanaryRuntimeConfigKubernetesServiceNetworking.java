@@ -4,8 +4,11 @@
 package com.pulumi.gcp.clouddeploy.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking {
@@ -14,6 +17,11 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
      * 
      */
     private String deployment;
+    /**
+     * @return Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
+     * 
+     */
+    private @Nullable Boolean disablePodOverprovisioning;
     /**
      * @return Required. Name of the Kubernetes Service.
      * 
@@ -27,6 +35,13 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
      */
     public String deployment() {
         return this.deployment;
+    }
+    /**
+     * @return Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster.
+     * 
+     */
+    public Optional<Boolean> disablePodOverprovisioning() {
+        return Optional.ofNullable(this.disablePodOverprovisioning);
     }
     /**
      * @return Required. Name of the Kubernetes Service.
@@ -46,17 +61,24 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
     @CustomType.Builder
     public static final class Builder {
         private String deployment;
+        private @Nullable Boolean disablePodOverprovisioning;
         private String service;
         public Builder() {}
         public Builder(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.deployment = defaults.deployment;
+    	      this.disablePodOverprovisioning = defaults.disablePodOverprovisioning;
     	      this.service = defaults.service;
         }
 
         @CustomType.Setter
         public Builder deployment(String deployment) {
             this.deployment = Objects.requireNonNull(deployment);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disablePodOverprovisioning(@Nullable Boolean disablePodOverprovisioning) {
+            this.disablePodOverprovisioning = disablePodOverprovisioning;
             return this;
         }
         @CustomType.Setter
@@ -67,6 +89,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
         public DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking build() {
             final var o = new DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking();
             o.deployment = deployment;
+            o.disablePodOverprovisioning = disablePodOverprovisioning;
             o.service = service;
             return o;
         }

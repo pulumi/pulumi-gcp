@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -50,6 +51,7 @@ import (
 //
 // ```
 func GetProjectService(ctx *pulumi.Context, args *GetProjectServiceArgs, opts ...pulumi.InvokeOption) (*GetProjectServiceResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetProjectServiceResult
 	err := ctx.Invoke("gcp:projects/getProjectService:getProjectService", args, &rv, opts...)
 	if err != nil {

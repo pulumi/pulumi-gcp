@@ -12,6 +12,10 @@ namespace Pulumi.Gcp.GkeHub.Inputs
 
     public sealed class FeatureSpecArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Fleet Observability feature spec.
+        /// Structure is documented below.
+        /// </summary>
         [Input("fleetobservability")]
         public Input<Inputs.FeatureSpecFleetobservabilityArgs>? Fleetobservability { get; set; }
 

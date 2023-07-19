@@ -337,18 +337,12 @@ namespace Pulumi.Gcp.CloudBuild
     ///                 OauthTokenSecretVersion = "projects/my-project/secrets/github-pat-secret/versions/latest",
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var my_repository = new Gcp.CloudBuildV2.Repository("my-repository", new()
     ///     {
     ///         ParentConnection = my_connection.Id,
     ///         RemoteUri = "https://github.com/myuser/my-repo.git",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var repo_trigger = new Gcp.CloudBuild.Trigger("repo-trigger", new()
@@ -363,9 +357,6 @@ namespace Pulumi.Gcp.CloudBuild
     ///             },
     ///         },
     ///         Filename = "cloudbuild.yaml",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -478,26 +469,15 @@ namespace Pulumi.Gcp.CloudBuild
     ///                 OauthTokenSecretVersion = "projects/my-project/secrets/github-pat-secret/versions/latest",
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var my_repository = new Gcp.CloudBuildV2.Repository("my-repository", new()
     ///     {
     ///         ParentConnection = my_connection.Id,
     ///         RemoteUri = "https://github.com/myuser/my-repo.git",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var mytopic = new Gcp.PubSub.Topic("mytopic", new()
-    ///     {
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
+    ///     var mytopic = new Gcp.PubSub.Topic("mytopic");
     /// 
     ///     var pubsub_with_repo_trigger = new Gcp.CloudBuild.Trigger("pubsub-with-repo-trigger", new()
     ///     {
@@ -519,9 +499,6 @@ namespace Pulumi.Gcp.CloudBuild
     ///             Revision = "refs/heads/main",
     ///             RepoType = "GITHUB",
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -686,6 +663,7 @@ namespace Pulumi.Gcp.CloudBuild
 
         /// <summary>
         /// The configuration of a trigger that creates a build whenever an event from Repo API is received.
+        /// Structure is documented below.
         /// </summary>
         [Output("repositoryEventConfig")]
         public Output<Outputs.TriggerRepositoryEventConfig?> RepositoryEventConfig { get; private set; } = null!;
@@ -937,6 +915,7 @@ namespace Pulumi.Gcp.CloudBuild
 
         /// <summary>
         /// The configuration of a trigger that creates a build whenever an event from Repo API is received.
+        /// Structure is documented below.
         /// </summary>
         [Input("repositoryEventConfig")]
         public Input<Inputs.TriggerRepositoryEventConfigArgs>? RepositoryEventConfig { get; set; }
@@ -1162,6 +1141,7 @@ namespace Pulumi.Gcp.CloudBuild
 
         /// <summary>
         /// The configuration of a trigger that creates a build whenever an event from Repo API is received.
+        /// Structure is documented below.
         /// </summary>
         [Input("repositoryEventConfig")]
         public Input<Inputs.TriggerRepositoryEventConfigGetArgs>? RepositoryEventConfig { get; set; }

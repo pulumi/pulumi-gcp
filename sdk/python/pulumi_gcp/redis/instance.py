@@ -26,7 +26,6 @@ class InstanceArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']] = None,
-                 maintenance_schedule: Optional[pulumi.Input['InstanceMaintenanceScheduleArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  persistence_config: Optional[pulumi.Input['InstancePersistenceConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -68,8 +67,6 @@ class InstanceArgs:
                zonal failures. If [alternativeLocationId] is also provided, it must
                be different from [locationId].
         :param pulumi.Input['InstanceMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for an instance.
-               Structure is documented below.
-        :param pulumi.Input['InstanceMaintenanceScheduleArgs'] maintenance_schedule: Upcoming maintenance schedule.
                Structure is documented below.
         :param pulumi.Input[str] name: The ID of the instance or a fully qualified identifier for the instance.
         :param pulumi.Input['InstancePersistenceConfigArgs'] persistence_config: Persistence configuration for an instance.
@@ -132,8 +129,6 @@ class InstanceArgs:
             pulumi.set(__self__, "location_id", location_id)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
-        if maintenance_schedule is not None:
-            pulumi.set(__self__, "maintenance_schedule", maintenance_schedule)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if persistence_config is not None:
@@ -296,19 +291,6 @@ class InstanceArgs:
     @maintenance_policy.setter
     def maintenance_policy(self, value: Optional[pulumi.Input['InstanceMaintenancePolicyArgs']]):
         pulumi.set(self, "maintenance_policy", value)
-
-    @property
-    @pulumi.getter(name="maintenanceSchedule")
-    def maintenance_schedule(self) -> Optional[pulumi.Input['InstanceMaintenanceScheduleArgs']]:
-        """
-        Upcoming maintenance schedule.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "maintenance_schedule")
-
-    @maintenance_schedule.setter
-    def maintenance_schedule(self, value: Optional[pulumi.Input['InstanceMaintenanceScheduleArgs']]):
-        pulumi.set(self, "maintenance_schedule", value)
 
     @property
     @pulumi.getter
@@ -1162,7 +1144,6 @@ class Instance(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']]] = None,
-                 maintenance_schedule: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']]] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  persistence_config: Optional[pulumi.Input[pulumi.InputType['InstancePersistenceConfigArgs']]] = None,
@@ -1363,8 +1344,6 @@ class Instance(pulumi.CustomResource):
                zonal failures. If [alternativeLocationId] is also provided, it must
                be different from [locationId].
         :param pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']] maintenance_policy: Maintenance policy for an instance.
-               Structure is documented below.
-        :param pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']] maintenance_schedule: Upcoming maintenance schedule.
                Structure is documented below.
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
                
@@ -1603,7 +1582,6 @@ class Instance(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenancePolicyArgs']]] = None,
-                 maintenance_schedule: Optional[pulumi.Input[pulumi.InputType['InstanceMaintenanceScheduleArgs']]] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  persistence_config: Optional[pulumi.Input[pulumi.InputType['InstancePersistenceConfigArgs']]] = None,
@@ -1635,7 +1613,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location_id"] = location_id
             __props__.__dict__["maintenance_policy"] = maintenance_policy
-            __props__.__dict__["maintenance_schedule"] = maintenance_schedule
             if memory_size_gb is None and not opts.urn:
                 raise TypeError("Missing required property 'memory_size_gb'")
             __props__.__dict__["memory_size_gb"] = memory_size_gb
@@ -1655,6 +1632,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["current_location_id"] = None
             __props__.__dict__["host"] = None
+            __props__.__dict__["maintenance_schedule"] = None
             __props__.__dict__["nodes"] = None
             __props__.__dict__["persistence_iam_identity"] = None
             __props__.__dict__["port"] = None
@@ -1979,7 +1957,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maintenanceSchedule")
-    def maintenance_schedule(self) -> pulumi.Output[Optional['outputs.InstanceMaintenanceSchedule']]:
+    def maintenance_schedule(self) -> pulumi.Output['outputs.InstanceMaintenanceSchedule']:
         """
         Upcoming maintenance schedule.
         Structure is documented below.

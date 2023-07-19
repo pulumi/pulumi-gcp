@@ -91,9 +91,9 @@ def get_groups(parent: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:cloudidentity/getGroups:getGroups', __args__, opts=opts, typ=GetGroupsResult).value
 
     return AwaitableGetGroupsResult(
-        groups=__ret__.groups,
-        id=__ret__.id,
-        parent=__ret__.parent)
+        groups=pulumi.get(__ret__, 'groups'),
+        id=pulumi.get(__ret__, 'id'),
+        parent=pulumi.get(__ret__, 'parent'))
 
 
 @_utilities.lift_output_func(get_groups)

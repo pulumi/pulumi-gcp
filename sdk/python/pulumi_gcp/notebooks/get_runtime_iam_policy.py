@@ -109,9 +109,9 @@ def get_runtime_iam_policy(location: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.notebooks.get_runtime_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        runtime_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.notebooks.get_runtime_iam_policy(project=google_notebooks_runtime["runtime"]["project"],
+        location=google_notebooks_runtime["runtime"]["location"],
+        runtime_name=google_notebooks_runtime["runtime"]["name"])
     ```
 
 
@@ -128,12 +128,12 @@ def get_runtime_iam_policy(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:notebooks/getRuntimeIamPolicy:getRuntimeIamPolicy', __args__, opts=opts, typ=GetRuntimeIamPolicyResult).value
 
     return AwaitableGetRuntimeIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        location=__ret__.location,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project,
-        runtime_name=__ret__.runtime_name)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'),
+        runtime_name=pulumi.get(__ret__, 'runtime_name'))
 
 
 @_utilities.lift_output_func(get_runtime_iam_policy)
@@ -150,9 +150,9 @@ def get_runtime_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.notebooks.get_runtime_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        runtime_name=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.notebooks.get_runtime_iam_policy(project=google_notebooks_runtime["runtime"]["project"],
+        location=google_notebooks_runtime["runtime"]["location"],
+        runtime_name=google_notebooks_runtime["runtime"]["name"])
     ```
 
 

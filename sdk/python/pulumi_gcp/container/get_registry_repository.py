@@ -103,10 +103,10 @@ def get_registry_repository(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:container/getRegistryRepository:getRegistryRepository', __args__, opts=opts, typ=GetRegistryRepositoryResult).value
 
     return AwaitableGetRegistryRepositoryResult(
-        id=__ret__.id,
-        project=__ret__.project,
-        region=__ret__.region,
-        repository_url=__ret__.repository_url)
+        id=pulumi.get(__ret__, 'id'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'),
+        repository_url=pulumi.get(__ret__, 'repository_url'))
 
 
 @_utilities.lift_output_func(get_registry_repository)

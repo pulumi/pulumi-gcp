@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -105,6 +106,7 @@ func NewAzureClient(ctx *pulumi.Context,
 	if args.TenantId == nil {
 		return nil, errors.New("invalid value for required argument 'TenantId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AzureClient
 	err := ctx.RegisterResource("gcp:container/azureClient:AzureClient", name, args, &resource, opts...)
 	if err != nil {

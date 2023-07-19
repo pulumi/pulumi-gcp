@@ -105,8 +105,8 @@ def get_client_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getClientConfig:getClientConfig', __args__, opts=opts, typ=GetClientConfigResult).value
 
     return AwaitableGetClientConfigResult(
-        access_token=__ret__.access_token,
-        id=__ret__.id,
-        project=__ret__.project,
-        region=__ret__.region,
-        zone=__ret__.zone)
+        access_token=pulumi.get(__ret__, 'access_token'),
+        id=pulumi.get(__ret__, 'id'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'),
+        zone=pulumi.get(__ret__, 'zone'))

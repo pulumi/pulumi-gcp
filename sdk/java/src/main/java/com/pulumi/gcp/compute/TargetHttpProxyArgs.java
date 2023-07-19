@@ -6,6 +6,7 @@ package com.pulumi.gcp.compute;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,6 +30,31 @@ public final class TargetHttpProxyArgs extends com.pulumi.resources.ResourceArgs
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Specifies how long to keep a connection open, after completing a response,
+     * while there is no matching traffic (in seconds). If an HTTP keepalive is
+     * not specified, a default value (610 seconds) will be used. For Global
+     * external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
+     * the maximum allowed value is 1200 seconds. For Global external HTTP(S)
+     * load balancer (classic), this option is not available publicly.
+     * 
+     */
+    @Import(name="httpKeepAliveTimeoutSec")
+    private @Nullable Output<Integer> httpKeepAliveTimeoutSec;
+
+    /**
+     * @return Specifies how long to keep a connection open, after completing a response,
+     * while there is no matching traffic (in seconds). If an HTTP keepalive is
+     * not specified, a default value (610 seconds) will be used. For Global
+     * external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
+     * the maximum allowed value is 1200 seconds. For Global external HTTP(S)
+     * load balancer (classic), this option is not available publicly.
+     * 
+     */
+    public Optional<Output<Integer>> httpKeepAliveTimeoutSec() {
+        return Optional.ofNullable(this.httpKeepAliveTimeoutSec);
     }
 
     /**
@@ -117,6 +143,7 @@ public final class TargetHttpProxyArgs extends com.pulumi.resources.ResourceArgs
 
     private TargetHttpProxyArgs(TargetHttpProxyArgs $) {
         this.description = $.description;
+        this.httpKeepAliveTimeoutSec = $.httpKeepAliveTimeoutSec;
         this.name = $.name;
         this.project = $.project;
         this.proxyBind = $.proxyBind;
@@ -160,6 +187,37 @@ public final class TargetHttpProxyArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param httpKeepAliveTimeoutSec Specifies how long to keep a connection open, after completing a response,
+         * while there is no matching traffic (in seconds). If an HTTP keepalive is
+         * not specified, a default value (610 seconds) will be used. For Global
+         * external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
+         * the maximum allowed value is 1200 seconds. For Global external HTTP(S)
+         * load balancer (classic), this option is not available publicly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpKeepAliveTimeoutSec(@Nullable Output<Integer> httpKeepAliveTimeoutSec) {
+            $.httpKeepAliveTimeoutSec = httpKeepAliveTimeoutSec;
+            return this;
+        }
+
+        /**
+         * @param httpKeepAliveTimeoutSec Specifies how long to keep a connection open, after completing a response,
+         * while there is no matching traffic (in seconds). If an HTTP keepalive is
+         * not specified, a default value (610 seconds) will be used. For Global
+         * external HTTP(S) load balancer, the minimum allowed value is 5 seconds and
+         * the maximum allowed value is 1200 seconds. For Global external HTTP(S)
+         * load balancer (classic), this option is not available publicly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder httpKeepAliveTimeoutSec(Integer httpKeepAliveTimeoutSec) {
+            return httpKeepAliveTimeoutSec(Output.of(httpKeepAliveTimeoutSec));
         }
 
         /**

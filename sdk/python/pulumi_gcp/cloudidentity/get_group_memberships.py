@@ -91,9 +91,9 @@ def get_group_memberships(group: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:cloudidentity/getGroupMemberships:getGroupMemberships', __args__, opts=opts, typ=GetGroupMembershipsResult).value
 
     return AwaitableGetGroupMembershipsResult(
-        group=__ret__.group,
-        id=__ret__.id,
-        memberships=__ret__.memberships)
+        group=pulumi.get(__ret__, 'group'),
+        id=pulumi.get(__ret__, 'id'),
+        memberships=pulumi.get(__ret__, 'memberships'))
 
 
 @_utilities.lift_output_func(get_group_memberships)

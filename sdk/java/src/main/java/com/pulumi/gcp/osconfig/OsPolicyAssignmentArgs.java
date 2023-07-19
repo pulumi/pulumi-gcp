@@ -21,20 +21,20 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
     public static final OsPolicyAssignmentArgs Empty = new OsPolicyAssignmentArgs();
 
     /**
-     * Policy description. Length of the description is limited to 1024 characters.
+     * Policy description. Length of the description is
+     * limited to 1024 characters.
      * 
-     * (Optional)
-     * OS policy assignment description. Length of the description is limited to 1024 characters.
+     * description is limited to 1024 characters.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Policy description. Length of the description is limited to 1024 characters.
+     * @return Policy description. Length of the description is
+     * limited to 1024 characters.
      * 
-     * (Optional)
-     * OS policy assignment description. Length of the description is limited to 1024 characters.
+     * description is limited to 1024 characters.
      * 
      */
     public Optional<Output<String>> description() {
@@ -42,14 +42,16 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Required. Filter to select VMs.
+     * Filter to select VMs. Structure is
+     * documented below.
      * 
      */
     @Import(name="instanceFilter", required=true)
     private Output<OsPolicyAssignmentInstanceFilterArgs> instanceFilter;
 
     /**
-     * @return Required. Filter to select VMs.
+     * @return Filter to select VMs. Structure is
+     * documented below.
      * 
      */
     public Output<OsPolicyAssignmentInstanceFilterArgs> instanceFilter() {
@@ -87,14 +89,16 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Required. List of OS policies to be applied to the VMs.
+     * List of OS policies to be applied to the VMs.
+     * Structure is documented below.
      * 
      */
     @Import(name="osPolicies", required=true)
     private Output<List<OsPolicyAssignmentOsPolicyArgs>> osPolicies;
 
     /**
-     * @return Required. List of OS policies to be applied to the VMs.
+     * @return List of OS policies to be applied to the VMs.
+     * Structure is documented below.
      * 
      */
     public Output<List<OsPolicyAssignmentOsPolicyArgs>> osPolicies() {
@@ -102,14 +106,16 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -117,14 +123,22 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
+     * Rollout to deploy the OS policy assignment. A rollout
+     * is triggered in the following situations: 1) OSPolicyAssignment is created.
+     * 2) OSPolicyAssignment is updated and the update contains changes to one of
+     * the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+     * is deleted. Structure is documented below.
      * 
      */
     @Import(name="rollout", required=true)
     private Output<OsPolicyAssignmentRolloutArgs> rollout;
 
     /**
-     * @return Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
+     * @return Rollout to deploy the OS policy assignment. A rollout
+     * is triggered in the following situations: 1) OSPolicyAssignment is created.
+     * 2) OSPolicyAssignment is updated and the update contains changes to one of
+     * the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+     * is deleted. Structure is documented below.
      * 
      */
     public Output<OsPolicyAssignmentRolloutArgs> rollout() {
@@ -132,14 +146,16 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Set to true to skip awaiting rollout during resource creation and update.
+     * Set to true to skip awaiting rollout
+     * during resource creation and update.
      * 
      */
     @Import(name="skipAwaitRollout")
     private @Nullable Output<Boolean> skipAwaitRollout;
 
     /**
-     * @return Set to true to skip awaiting rollout during resource creation and update.
+     * @return Set to true to skip awaiting rollout
+     * during resource creation and update.
      * 
      */
     public Optional<Output<Boolean>> skipAwaitRollout() {
@@ -178,10 +194,10 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param description Policy description. Length of the description is limited to 1024 characters.
+         * @param description Policy description. Length of the description is
+         * limited to 1024 characters.
          * 
-         * (Optional)
-         * OS policy assignment description. Length of the description is limited to 1024 characters.
+         * description is limited to 1024 characters.
          * 
          * @return builder
          * 
@@ -192,10 +208,10 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param description Policy description. Length of the description is limited to 1024 characters.
+         * @param description Policy description. Length of the description is
+         * limited to 1024 characters.
          * 
-         * (Optional)
-         * OS policy assignment description. Length of the description is limited to 1024 characters.
+         * description is limited to 1024 characters.
          * 
          * @return builder
          * 
@@ -205,7 +221,8 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param instanceFilter Required. Filter to select VMs.
+         * @param instanceFilter Filter to select VMs. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -216,7 +233,8 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param instanceFilter Required. Filter to select VMs.
+         * @param instanceFilter Filter to select VMs. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -268,7 +286,8 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param osPolicies Required. List of OS policies to be applied to the VMs.
+         * @param osPolicies List of OS policies to be applied to the VMs.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -279,7 +298,8 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param osPolicies Required. List of OS policies to be applied to the VMs.
+         * @param osPolicies List of OS policies to be applied to the VMs.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -289,7 +309,8 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param osPolicies Required. List of OS policies to be applied to the VMs.
+         * @param osPolicies List of OS policies to be applied to the VMs.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -299,7 +320,8 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -310,7 +332,8 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -320,7 +343,11 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param rollout Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
+         * @param rollout Rollout to deploy the OS policy assignment. A rollout
+         * is triggered in the following situations: 1) OSPolicyAssignment is created.
+         * 2) OSPolicyAssignment is updated and the update contains changes to one of
+         * the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+         * is deleted. Structure is documented below.
          * 
          * @return builder
          * 
@@ -331,7 +358,11 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param rollout Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
+         * @param rollout Rollout to deploy the OS policy assignment. A rollout
+         * is triggered in the following situations: 1) OSPolicyAssignment is created.
+         * 2) OSPolicyAssignment is updated and the update contains changes to one of
+         * the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+         * is deleted. Structure is documented below.
          * 
          * @return builder
          * 
@@ -341,7 +372,8 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param skipAwaitRollout Set to true to skip awaiting rollout during resource creation and update.
+         * @param skipAwaitRollout Set to true to skip awaiting rollout
+         * during resource creation and update.
          * 
          * @return builder
          * 
@@ -352,7 +384,8 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param skipAwaitRollout Set to true to skip awaiting rollout during resource creation and update.
+         * @param skipAwaitRollout Set to true to skip awaiting rollout
+         * during resource creation and update.
          * 
          * @return builder
          * 

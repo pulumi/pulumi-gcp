@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -431,6 +432,7 @@ func NewPatchDeployment(ctx *pulumi.Context,
 	if args.PatchDeploymentId == nil {
 		return nil, errors.New("invalid value for required argument 'PatchDeploymentId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PatchDeployment
 	err := ctx.RegisterResource("gcp:osconfig/patchDeployment:PatchDeployment", name, args, &resource, opts...)
 	if err != nil {

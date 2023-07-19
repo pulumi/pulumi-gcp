@@ -109,9 +109,9 @@ def get_connection_iam_policy(connection_id: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigquery.get_connection_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        connection_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.bigquery.get_connection_iam_policy(project=google_bigquery_connection["connection"]["project"],
+        location=google_bigquery_connection["connection"]["location"],
+        connection_id=google_bigquery_connection["connection"]["connection_id"])
     ```
 
 
@@ -135,12 +135,12 @@ def get_connection_iam_policy(connection_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:bigquery/getConnectionIamPolicy:getConnectionIamPolicy', __args__, opts=opts, typ=GetConnectionIamPolicyResult).value
 
     return AwaitableGetConnectionIamPolicyResult(
-        connection_id=__ret__.connection_id,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        location=__ret__.location,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        connection_id=pulumi.get(__ret__, 'connection_id'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_connection_iam_policy)
@@ -157,9 +157,9 @@ def get_connection_iam_policy_output(connection_id: Optional[pulumi.Input[str]] 
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.bigquery.get_connection_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        location=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        connection_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.bigquery.get_connection_iam_policy(project=google_bigquery_connection["connection"]["project"],
+        location=google_bigquery_connection["connection"]["location"],
+        connection_id=google_bigquery_connection["connection"]["connection_id"])
     ```
 
 

@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type AccessBoundaryPolicyRule struct {
 	// An access boundary rule in an IAM policy.
@@ -1075,6 +1078,9 @@ func (o DenyPolicyRuleDenyRuleDenialConditionPtrOutput) Title() pulumi.StringPtr
 type WorkforcePoolProviderOidc struct {
 	// The client ID. Must match the audience claim of the JWT issued by the identity provider.
 	ClientId string `pulumi:"clientId"`
+	// The optional client secret. Required to enable Authorization Code flow for web sign-in.
+	// Structure is documented below.
+	ClientSecret *WorkforcePoolProviderOidcClientSecret `pulumi:"clientSecret"`
 	// The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
 	IssuerUri string `pulumi:"issuerUri"`
 	// Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
@@ -1096,6 +1102,9 @@ type WorkforcePoolProviderOidcInput interface {
 type WorkforcePoolProviderOidcArgs struct {
 	// The client ID. Must match the audience claim of the JWT issued by the identity provider.
 	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// The optional client secret. Required to enable Authorization Code flow for web sign-in.
+	// Structure is documented below.
+	ClientSecret WorkforcePoolProviderOidcClientSecretPtrInput `pulumi:"clientSecret"`
 	// The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
 	IssuerUri pulumi.StringInput `pulumi:"issuerUri"`
 	// Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
@@ -1185,6 +1194,12 @@ func (o WorkforcePoolProviderOidcOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkforcePoolProviderOidc) string { return v.ClientId }).(pulumi.StringOutput)
 }
 
+// The optional client secret. Required to enable Authorization Code flow for web sign-in.
+// Structure is documented below.
+func (o WorkforcePoolProviderOidcOutput) ClientSecret() WorkforcePoolProviderOidcClientSecretPtrOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderOidc) *WorkforcePoolProviderOidcClientSecret { return v.ClientSecret }).(WorkforcePoolProviderOidcClientSecretPtrOutput)
+}
+
 // The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
 func (o WorkforcePoolProviderOidcOutput) IssuerUri() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkforcePoolProviderOidc) string { return v.IssuerUri }).(pulumi.StringOutput)
@@ -1230,6 +1245,17 @@ func (o WorkforcePoolProviderOidcPtrOutput) ClientId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The optional client secret. Required to enable Authorization Code flow for web sign-in.
+// Structure is documented below.
+func (o WorkforcePoolProviderOidcPtrOutput) ClientSecret() WorkforcePoolProviderOidcClientSecretPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderOidc) *WorkforcePoolProviderOidcClientSecret {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(WorkforcePoolProviderOidcClientSecretPtrOutput)
+}
+
 // The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
 func (o WorkforcePoolProviderOidcPtrOutput) IssuerUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkforcePoolProviderOidc) *string {
@@ -1251,14 +1277,324 @@ func (o WorkforcePoolProviderOidcPtrOutput) WebSsoConfig() WorkforcePoolProvider
 	}).(WorkforcePoolProviderOidcWebSsoConfigPtrOutput)
 }
 
+type WorkforcePoolProviderOidcClientSecret struct {
+	// The value of the client secret.
+	// Structure is documented below.
+	Value *WorkforcePoolProviderOidcClientSecretValue `pulumi:"value"`
+}
+
+// WorkforcePoolProviderOidcClientSecretInput is an input type that accepts WorkforcePoolProviderOidcClientSecretArgs and WorkforcePoolProviderOidcClientSecretOutput values.
+// You can construct a concrete instance of `WorkforcePoolProviderOidcClientSecretInput` via:
+//
+//	WorkforcePoolProviderOidcClientSecretArgs{...}
+type WorkforcePoolProviderOidcClientSecretInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolProviderOidcClientSecretOutput() WorkforcePoolProviderOidcClientSecretOutput
+	ToWorkforcePoolProviderOidcClientSecretOutputWithContext(context.Context) WorkforcePoolProviderOidcClientSecretOutput
+}
+
+type WorkforcePoolProviderOidcClientSecretArgs struct {
+	// The value of the client secret.
+	// Structure is documented below.
+	Value WorkforcePoolProviderOidcClientSecretValuePtrInput `pulumi:"value"`
+}
+
+func (WorkforcePoolProviderOidcClientSecretArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolProviderOidcClientSecret)(nil)).Elem()
+}
+
+func (i WorkforcePoolProviderOidcClientSecretArgs) ToWorkforcePoolProviderOidcClientSecretOutput() WorkforcePoolProviderOidcClientSecretOutput {
+	return i.ToWorkforcePoolProviderOidcClientSecretOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolProviderOidcClientSecretArgs) ToWorkforcePoolProviderOidcClientSecretOutputWithContext(ctx context.Context) WorkforcePoolProviderOidcClientSecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderOidcClientSecretOutput)
+}
+
+func (i WorkforcePoolProviderOidcClientSecretArgs) ToWorkforcePoolProviderOidcClientSecretPtrOutput() WorkforcePoolProviderOidcClientSecretPtrOutput {
+	return i.ToWorkforcePoolProviderOidcClientSecretPtrOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolProviderOidcClientSecretArgs) ToWorkforcePoolProviderOidcClientSecretPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderOidcClientSecretPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderOidcClientSecretOutput).ToWorkforcePoolProviderOidcClientSecretPtrOutputWithContext(ctx)
+}
+
+// WorkforcePoolProviderOidcClientSecretPtrInput is an input type that accepts WorkforcePoolProviderOidcClientSecretArgs, WorkforcePoolProviderOidcClientSecretPtr and WorkforcePoolProviderOidcClientSecretPtrOutput values.
+// You can construct a concrete instance of `WorkforcePoolProviderOidcClientSecretPtrInput` via:
+//
+//	        WorkforcePoolProviderOidcClientSecretArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkforcePoolProviderOidcClientSecretPtrInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolProviderOidcClientSecretPtrOutput() WorkforcePoolProviderOidcClientSecretPtrOutput
+	ToWorkforcePoolProviderOidcClientSecretPtrOutputWithContext(context.Context) WorkforcePoolProviderOidcClientSecretPtrOutput
+}
+
+type workforcePoolProviderOidcClientSecretPtrType WorkforcePoolProviderOidcClientSecretArgs
+
+func WorkforcePoolProviderOidcClientSecretPtr(v *WorkforcePoolProviderOidcClientSecretArgs) WorkforcePoolProviderOidcClientSecretPtrInput {
+	return (*workforcePoolProviderOidcClientSecretPtrType)(v)
+}
+
+func (*workforcePoolProviderOidcClientSecretPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolProviderOidcClientSecret)(nil)).Elem()
+}
+
+func (i *workforcePoolProviderOidcClientSecretPtrType) ToWorkforcePoolProviderOidcClientSecretPtrOutput() WorkforcePoolProviderOidcClientSecretPtrOutput {
+	return i.ToWorkforcePoolProviderOidcClientSecretPtrOutputWithContext(context.Background())
+}
+
+func (i *workforcePoolProviderOidcClientSecretPtrType) ToWorkforcePoolProviderOidcClientSecretPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderOidcClientSecretPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderOidcClientSecretPtrOutput)
+}
+
+type WorkforcePoolProviderOidcClientSecretOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolProviderOidcClientSecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolProviderOidcClientSecret)(nil)).Elem()
+}
+
+func (o WorkforcePoolProviderOidcClientSecretOutput) ToWorkforcePoolProviderOidcClientSecretOutput() WorkforcePoolProviderOidcClientSecretOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderOidcClientSecretOutput) ToWorkforcePoolProviderOidcClientSecretOutputWithContext(ctx context.Context) WorkforcePoolProviderOidcClientSecretOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderOidcClientSecretOutput) ToWorkforcePoolProviderOidcClientSecretPtrOutput() WorkforcePoolProviderOidcClientSecretPtrOutput {
+	return o.ToWorkforcePoolProviderOidcClientSecretPtrOutputWithContext(context.Background())
+}
+
+func (o WorkforcePoolProviderOidcClientSecretOutput) ToWorkforcePoolProviderOidcClientSecretPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderOidcClientSecretPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkforcePoolProviderOidcClientSecret) *WorkforcePoolProviderOidcClientSecret {
+		return &v
+	}).(WorkforcePoolProviderOidcClientSecretPtrOutput)
+}
+
+// The value of the client secret.
+// Structure is documented below.
+func (o WorkforcePoolProviderOidcClientSecretOutput) Value() WorkforcePoolProviderOidcClientSecretValuePtrOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderOidcClientSecret) *WorkforcePoolProviderOidcClientSecretValue {
+		return v.Value
+	}).(WorkforcePoolProviderOidcClientSecretValuePtrOutput)
+}
+
+type WorkforcePoolProviderOidcClientSecretPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolProviderOidcClientSecretPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolProviderOidcClientSecret)(nil)).Elem()
+}
+
+func (o WorkforcePoolProviderOidcClientSecretPtrOutput) ToWorkforcePoolProviderOidcClientSecretPtrOutput() WorkforcePoolProviderOidcClientSecretPtrOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderOidcClientSecretPtrOutput) ToWorkforcePoolProviderOidcClientSecretPtrOutputWithContext(ctx context.Context) WorkforcePoolProviderOidcClientSecretPtrOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderOidcClientSecretPtrOutput) Elem() WorkforcePoolProviderOidcClientSecretOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderOidcClientSecret) WorkforcePoolProviderOidcClientSecret {
+		if v != nil {
+			return *v
+		}
+		var ret WorkforcePoolProviderOidcClientSecret
+		return ret
+	}).(WorkforcePoolProviderOidcClientSecretOutput)
+}
+
+// The value of the client secret.
+// Structure is documented below.
+func (o WorkforcePoolProviderOidcClientSecretPtrOutput) Value() WorkforcePoolProviderOidcClientSecretValuePtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderOidcClientSecret) *WorkforcePoolProviderOidcClientSecretValue {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(WorkforcePoolProviderOidcClientSecretValuePtrOutput)
+}
+
+type WorkforcePoolProviderOidcClientSecretValue struct {
+	// The plain text of the client secret value.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	PlainText string `pulumi:"plainText"`
+	// (Output)
+	// A thumbprint to represent the current client secret value.
+	Thumbprint *string `pulumi:"thumbprint"`
+}
+
+// WorkforcePoolProviderOidcClientSecretValueInput is an input type that accepts WorkforcePoolProviderOidcClientSecretValueArgs and WorkforcePoolProviderOidcClientSecretValueOutput values.
+// You can construct a concrete instance of `WorkforcePoolProviderOidcClientSecretValueInput` via:
+//
+//	WorkforcePoolProviderOidcClientSecretValueArgs{...}
+type WorkforcePoolProviderOidcClientSecretValueInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolProviderOidcClientSecretValueOutput() WorkforcePoolProviderOidcClientSecretValueOutput
+	ToWorkforcePoolProviderOidcClientSecretValueOutputWithContext(context.Context) WorkforcePoolProviderOidcClientSecretValueOutput
+}
+
+type WorkforcePoolProviderOidcClientSecretValueArgs struct {
+	// The plain text of the client secret value.
+	// **Note**: This property is sensitive and will not be displayed in the plan.
+	PlainText pulumi.StringInput `pulumi:"plainText"`
+	// (Output)
+	// A thumbprint to represent the current client secret value.
+	Thumbprint pulumi.StringPtrInput `pulumi:"thumbprint"`
+}
+
+func (WorkforcePoolProviderOidcClientSecretValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolProviderOidcClientSecretValue)(nil)).Elem()
+}
+
+func (i WorkforcePoolProviderOidcClientSecretValueArgs) ToWorkforcePoolProviderOidcClientSecretValueOutput() WorkforcePoolProviderOidcClientSecretValueOutput {
+	return i.ToWorkforcePoolProviderOidcClientSecretValueOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolProviderOidcClientSecretValueArgs) ToWorkforcePoolProviderOidcClientSecretValueOutputWithContext(ctx context.Context) WorkforcePoolProviderOidcClientSecretValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderOidcClientSecretValueOutput)
+}
+
+func (i WorkforcePoolProviderOidcClientSecretValueArgs) ToWorkforcePoolProviderOidcClientSecretValuePtrOutput() WorkforcePoolProviderOidcClientSecretValuePtrOutput {
+	return i.ToWorkforcePoolProviderOidcClientSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolProviderOidcClientSecretValueArgs) ToWorkforcePoolProviderOidcClientSecretValuePtrOutputWithContext(ctx context.Context) WorkforcePoolProviderOidcClientSecretValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderOidcClientSecretValueOutput).ToWorkforcePoolProviderOidcClientSecretValuePtrOutputWithContext(ctx)
+}
+
+// WorkforcePoolProviderOidcClientSecretValuePtrInput is an input type that accepts WorkforcePoolProviderOidcClientSecretValueArgs, WorkforcePoolProviderOidcClientSecretValuePtr and WorkforcePoolProviderOidcClientSecretValuePtrOutput values.
+// You can construct a concrete instance of `WorkforcePoolProviderOidcClientSecretValuePtrInput` via:
+//
+//	        WorkforcePoolProviderOidcClientSecretValueArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkforcePoolProviderOidcClientSecretValuePtrInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolProviderOidcClientSecretValuePtrOutput() WorkforcePoolProviderOidcClientSecretValuePtrOutput
+	ToWorkforcePoolProviderOidcClientSecretValuePtrOutputWithContext(context.Context) WorkforcePoolProviderOidcClientSecretValuePtrOutput
+}
+
+type workforcePoolProviderOidcClientSecretValuePtrType WorkforcePoolProviderOidcClientSecretValueArgs
+
+func WorkforcePoolProviderOidcClientSecretValuePtr(v *WorkforcePoolProviderOidcClientSecretValueArgs) WorkforcePoolProviderOidcClientSecretValuePtrInput {
+	return (*workforcePoolProviderOidcClientSecretValuePtrType)(v)
+}
+
+func (*workforcePoolProviderOidcClientSecretValuePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolProviderOidcClientSecretValue)(nil)).Elem()
+}
+
+func (i *workforcePoolProviderOidcClientSecretValuePtrType) ToWorkforcePoolProviderOidcClientSecretValuePtrOutput() WorkforcePoolProviderOidcClientSecretValuePtrOutput {
+	return i.ToWorkforcePoolProviderOidcClientSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (i *workforcePoolProviderOidcClientSecretValuePtrType) ToWorkforcePoolProviderOidcClientSecretValuePtrOutputWithContext(ctx context.Context) WorkforcePoolProviderOidcClientSecretValuePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolProviderOidcClientSecretValuePtrOutput)
+}
+
+type WorkforcePoolProviderOidcClientSecretValueOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolProviderOidcClientSecretValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolProviderOidcClientSecretValue)(nil)).Elem()
+}
+
+func (o WorkforcePoolProviderOidcClientSecretValueOutput) ToWorkforcePoolProviderOidcClientSecretValueOutput() WorkforcePoolProviderOidcClientSecretValueOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderOidcClientSecretValueOutput) ToWorkforcePoolProviderOidcClientSecretValueOutputWithContext(ctx context.Context) WorkforcePoolProviderOidcClientSecretValueOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderOidcClientSecretValueOutput) ToWorkforcePoolProviderOidcClientSecretValuePtrOutput() WorkforcePoolProviderOidcClientSecretValuePtrOutput {
+	return o.ToWorkforcePoolProviderOidcClientSecretValuePtrOutputWithContext(context.Background())
+}
+
+func (o WorkforcePoolProviderOidcClientSecretValueOutput) ToWorkforcePoolProviderOidcClientSecretValuePtrOutputWithContext(ctx context.Context) WorkforcePoolProviderOidcClientSecretValuePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkforcePoolProviderOidcClientSecretValue) *WorkforcePoolProviderOidcClientSecretValue {
+		return &v
+	}).(WorkforcePoolProviderOidcClientSecretValuePtrOutput)
+}
+
+// The plain text of the client secret value.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o WorkforcePoolProviderOidcClientSecretValueOutput) PlainText() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderOidcClientSecretValue) string { return v.PlainText }).(pulumi.StringOutput)
+}
+
+// (Output)
+// A thumbprint to represent the current client secret value.
+func (o WorkforcePoolProviderOidcClientSecretValueOutput) Thumbprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkforcePoolProviderOidcClientSecretValue) *string { return v.Thumbprint }).(pulumi.StringPtrOutput)
+}
+
+type WorkforcePoolProviderOidcClientSecretValuePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolProviderOidcClientSecretValuePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolProviderOidcClientSecretValue)(nil)).Elem()
+}
+
+func (o WorkforcePoolProviderOidcClientSecretValuePtrOutput) ToWorkforcePoolProviderOidcClientSecretValuePtrOutput() WorkforcePoolProviderOidcClientSecretValuePtrOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderOidcClientSecretValuePtrOutput) ToWorkforcePoolProviderOidcClientSecretValuePtrOutputWithContext(ctx context.Context) WorkforcePoolProviderOidcClientSecretValuePtrOutput {
+	return o
+}
+
+func (o WorkforcePoolProviderOidcClientSecretValuePtrOutput) Elem() WorkforcePoolProviderOidcClientSecretValueOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderOidcClientSecretValue) WorkforcePoolProviderOidcClientSecretValue {
+		if v != nil {
+			return *v
+		}
+		var ret WorkforcePoolProviderOidcClientSecretValue
+		return ret
+	}).(WorkforcePoolProviderOidcClientSecretValueOutput)
+}
+
+// The plain text of the client secret value.
+// **Note**: This property is sensitive and will not be displayed in the plan.
+func (o WorkforcePoolProviderOidcClientSecretValuePtrOutput) PlainText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderOidcClientSecretValue) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PlainText
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// A thumbprint to represent the current client secret value.
+func (o WorkforcePoolProviderOidcClientSecretValuePtrOutput) Thumbprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolProviderOidcClientSecretValue) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Thumbprint
+	}).(pulumi.StringPtrOutput)
+}
+
 type WorkforcePoolProviderOidcWebSsoConfig struct {
 	// The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
+	// * MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
 	// * ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
-	//   Possible values are: `ONLY_ID_TOKEN_CLAIMS`.
+	//   Possible values are: `MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS`, `ONLY_ID_TOKEN_CLAIMS`.
 	AssertionClaimsBehavior string `pulumi:"assertionClaimsBehavior"`
 	// The Response Type to request for in the OIDC Authorization Request for web sign-in.
+	// The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.
+	// * CODE: The `response_type=code` selection uses the Authorization Code Flow for web sign-in. Requires a configured client secret.
 	// * ID_TOKEN: The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
-	//   Possible values are: `ID_TOKEN`.
+	//   Possible values are: `CODE`, `ID_TOKEN`.
 	ResponseType string `pulumi:"responseType"`
 }
 
@@ -1275,12 +1611,15 @@ type WorkforcePoolProviderOidcWebSsoConfigInput interface {
 
 type WorkforcePoolProviderOidcWebSsoConfigArgs struct {
 	// The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
+	// * MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
 	// * ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
-	//   Possible values are: `ONLY_ID_TOKEN_CLAIMS`.
+	//   Possible values are: `MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS`, `ONLY_ID_TOKEN_CLAIMS`.
 	AssertionClaimsBehavior pulumi.StringInput `pulumi:"assertionClaimsBehavior"`
 	// The Response Type to request for in the OIDC Authorization Request for web sign-in.
+	// The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.
+	// * CODE: The `response_type=code` selection uses the Authorization Code Flow for web sign-in. Requires a configured client secret.
 	// * ID_TOKEN: The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
-	//   Possible values are: `ID_TOKEN`.
+	//   Possible values are: `CODE`, `ID_TOKEN`.
 	ResponseType pulumi.StringInput `pulumi:"responseType"`
 }
 
@@ -1362,15 +1701,18 @@ func (o WorkforcePoolProviderOidcWebSsoConfigOutput) ToWorkforcePoolProviderOidc
 }
 
 // The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
+//   - MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
 //   - ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
-//     Possible values are: `ONLY_ID_TOKEN_CLAIMS`.
+//     Possible values are: `MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS`, `ONLY_ID_TOKEN_CLAIMS`.
 func (o WorkforcePoolProviderOidcWebSsoConfigOutput) AssertionClaimsBehavior() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkforcePoolProviderOidcWebSsoConfig) string { return v.AssertionClaimsBehavior }).(pulumi.StringOutput)
 }
 
 // The Response Type to request for in the OIDC Authorization Request for web sign-in.
+// The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.
+//   - CODE: The `response_type=code` selection uses the Authorization Code Flow for web sign-in. Requires a configured client secret.
 //   - ID_TOKEN: The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
-//     Possible values are: `ID_TOKEN`.
+//     Possible values are: `CODE`, `ID_TOKEN`.
 func (o WorkforcePoolProviderOidcWebSsoConfigOutput) ResponseType() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkforcePoolProviderOidcWebSsoConfig) string { return v.ResponseType }).(pulumi.StringOutput)
 }
@@ -1400,8 +1742,9 @@ func (o WorkforcePoolProviderOidcWebSsoConfigPtrOutput) Elem() WorkforcePoolProv
 }
 
 // The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
+//   - MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS: Merge the UserInfo Endpoint Claims with ID Token Claims, preferring UserInfo Claim Values for the same Claim Name. This option is available only for the Authorization Code Flow.
 //   - ONLY_ID_TOKEN_CLAIMS: Only include ID Token Claims.
-//     Possible values are: `ONLY_ID_TOKEN_CLAIMS`.
+//     Possible values are: `MERGE_USER_INFO_OVER_ID_TOKEN_CLAIMS`, `ONLY_ID_TOKEN_CLAIMS`.
 func (o WorkforcePoolProviderOidcWebSsoConfigPtrOutput) AssertionClaimsBehavior() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkforcePoolProviderOidcWebSsoConfig) *string {
 		if v == nil {
@@ -1412,8 +1755,10 @@ func (o WorkforcePoolProviderOidcWebSsoConfigPtrOutput) AssertionClaimsBehavior(
 }
 
 // The Response Type to request for in the OIDC Authorization Request for web sign-in.
+// The `CODE` Response Type is recommended to avoid the Implicit Flow, for security reasons.
+//   - CODE: The `response_type=code` selection uses the Authorization Code Flow for web sign-in. Requires a configured client secret.
 //   - ID_TOKEN: The `response_type=id_token` selection uses the Implicit Flow for web sign-in.
-//     Possible values are: `ID_TOKEN`.
+//     Possible values are: `CODE`, `ID_TOKEN`.
 func (o WorkforcePoolProviderOidcWebSsoConfigPtrOutput) ResponseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkforcePoolProviderOidcWebSsoConfig) *string {
 		if v == nil {
@@ -2428,6 +2773,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleDenyRuleDenialConditionPtrInput)(nil)).Elem(), DenyPolicyRuleDenyRuleDenialConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderOidcInput)(nil)).Elem(), WorkforcePoolProviderOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderOidcPtrInput)(nil)).Elem(), WorkforcePoolProviderOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderOidcClientSecretInput)(nil)).Elem(), WorkforcePoolProviderOidcClientSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderOidcClientSecretPtrInput)(nil)).Elem(), WorkforcePoolProviderOidcClientSecretArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderOidcClientSecretValueInput)(nil)).Elem(), WorkforcePoolProviderOidcClientSecretValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderOidcClientSecretValuePtrInput)(nil)).Elem(), WorkforcePoolProviderOidcClientSecretValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderOidcWebSsoConfigInput)(nil)).Elem(), WorkforcePoolProviderOidcWebSsoConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderOidcWebSsoConfigPtrInput)(nil)).Elem(), WorkforcePoolProviderOidcWebSsoConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderSamlInput)(nil)).Elem(), WorkforcePoolProviderSamlArgs{})
@@ -2456,6 +2805,10 @@ func init() {
 	pulumi.RegisterOutputType(DenyPolicyRuleDenyRuleDenialConditionPtrOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderOidcOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderOidcPtrOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolProviderOidcClientSecretOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolProviderOidcClientSecretPtrOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolProviderOidcClientSecretValueOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolProviderOidcClientSecretValuePtrOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderOidcWebSsoConfigOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderOidcWebSsoConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderSamlOutput{})

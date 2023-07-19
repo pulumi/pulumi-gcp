@@ -101,10 +101,10 @@ def get_supported_database_flags(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags', __args__, opts=opts, typ=GetSupportedDatabaseFlagsResult).value
 
     return AwaitableGetSupportedDatabaseFlagsResult(
-        id=__ret__.id,
-        location=__ret__.location,
-        project=__ret__.project,
-        supported_database_flags=__ret__.supported_database_flags)
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        project=pulumi.get(__ret__, 'project'),
+        supported_database_flags=pulumi.get(__ret__, 'supported_database_flags'))
 
 
 @_utilities.lift_output_func(get_supported_database_flags)

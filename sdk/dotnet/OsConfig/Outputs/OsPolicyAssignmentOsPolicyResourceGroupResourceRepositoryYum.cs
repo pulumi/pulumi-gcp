@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum
     {
         /// <summary>
-        /// Required. The location of the repository directory.
+        /// The location of the repository directory.
         /// </summary>
         public readonly string BaseUrl;
         /// <summary>
@@ -26,7 +26,10 @@ namespace Pulumi.Gcp.OsConfig.Outputs
         /// </summary>
         public readonly ImmutableArray<string> GpgKeys;
         /// <summary>
-        /// Required. A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for resource conflicts.
+        /// A one word, unique name for this repository. This is the
+        /// `repo id` in the yum config file and also the `display_name` if
+        /// `display_name` is omitted. This id is also used as the unique identifier
+        /// when checking for resource conflicts.
         /// </summary>
         public readonly string Id;
 

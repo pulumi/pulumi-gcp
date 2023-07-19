@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -127,6 +128,7 @@ func NewPrivateConnection(ctx *pulumi.Context,
 	if args.VpcPeeringConfig == nil {
 		return nil, errors.New("invalid value for required argument 'VpcPeeringConfig'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource PrivateConnection
 	err := ctx.RegisterResource("gcp:datastream/privateConnection:PrivateConnection", name, args, &resource, opts...)
 	if err != nil {

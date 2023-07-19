@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func GetCryptoKeyIamPolicy(ctx *pulumi.Context, args *GetCryptoKeyIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetCryptoKeyIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCryptoKeyIamPolicyResult
 	err := ctx.Invoke("gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy", args, &rv, opts...)
 	if err != nil {

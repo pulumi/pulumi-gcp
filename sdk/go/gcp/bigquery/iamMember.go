@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -330,6 +331,7 @@ func NewIamMember(ctx *pulumi.Context,
 	if args.TableId == nil {
 		return nil, errors.New("invalid value for required argument 'TableId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource IamMember
 	err := ctx.RegisterResource("gcp:bigquery/iamMember:IamMember", name, args, &resource, opts...)
 	if err != nil {

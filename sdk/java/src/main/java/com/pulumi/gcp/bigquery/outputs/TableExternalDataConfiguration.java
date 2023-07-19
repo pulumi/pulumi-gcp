@@ -82,6 +82,16 @@ public final class TableExternalDataConfiguration {
      */
     private @Nullable Integer maxBadRecords;
     /**
+     * @return Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
+     * 
+     */
+    private @Nullable String metadataCacheMode;
+    /**
+     * @return Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
+     * 
+     */
+    private @Nullable String objectMetadata;
+    /**
      * @return When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
      * 
      */
@@ -108,7 +118,7 @@ public final class TableExternalDataConfiguration {
      * the `scopes` must include &#34;https://www.googleapis.com/auth/drive.readonly&#34;.
      * 
      */
-    private String sourceFormat;
+    private @Nullable String sourceFormat;
     /**
      * @return A list of the fully-qualified URIs that point to
      * your data in Google Cloud.
@@ -199,6 +209,20 @@ public final class TableExternalDataConfiguration {
         return Optional.ofNullable(this.maxBadRecords);
     }
     /**
+     * @return Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
+     * 
+     */
+    public Optional<String> metadataCacheMode() {
+        return Optional.ofNullable(this.metadataCacheMode);
+    }
+    /**
+     * @return Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
+     * 
+     */
+    public Optional<String> objectMetadata() {
+        return Optional.ofNullable(this.objectMetadata);
+    }
+    /**
      * @return When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
      * 
      */
@@ -229,8 +253,8 @@ public final class TableExternalDataConfiguration {
      * the `scopes` must include &#34;https://www.googleapis.com/auth/drive.readonly&#34;.
      * 
      */
-    public String sourceFormat() {
-        return this.sourceFormat;
+    public Optional<String> sourceFormat() {
+        return Optional.ofNullable(this.sourceFormat);
     }
     /**
      * @return A list of the fully-qualified URIs that point to
@@ -259,9 +283,11 @@ public final class TableExternalDataConfiguration {
         private @Nullable TableExternalDataConfigurationHivePartitioningOptions hivePartitioningOptions;
         private @Nullable Boolean ignoreUnknownValues;
         private @Nullable Integer maxBadRecords;
+        private @Nullable String metadataCacheMode;
+        private @Nullable String objectMetadata;
         private @Nullable String referenceFileSchemaUri;
         private @Nullable String schema;
-        private String sourceFormat;
+        private @Nullable String sourceFormat;
         private List<String> sourceUris;
         public Builder() {}
         public Builder(TableExternalDataConfiguration defaults) {
@@ -275,6 +301,8 @@ public final class TableExternalDataConfiguration {
     	      this.hivePartitioningOptions = defaults.hivePartitioningOptions;
     	      this.ignoreUnknownValues = defaults.ignoreUnknownValues;
     	      this.maxBadRecords = defaults.maxBadRecords;
+    	      this.metadataCacheMode = defaults.metadataCacheMode;
+    	      this.objectMetadata = defaults.objectMetadata;
     	      this.referenceFileSchemaUri = defaults.referenceFileSchemaUri;
     	      this.schema = defaults.schema;
     	      this.sourceFormat = defaults.sourceFormat;
@@ -327,6 +355,16 @@ public final class TableExternalDataConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder metadataCacheMode(@Nullable String metadataCacheMode) {
+            this.metadataCacheMode = metadataCacheMode;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder objectMetadata(@Nullable String objectMetadata) {
+            this.objectMetadata = objectMetadata;
+            return this;
+        }
+        @CustomType.Setter
         public Builder referenceFileSchemaUri(@Nullable String referenceFileSchemaUri) {
             this.referenceFileSchemaUri = referenceFileSchemaUri;
             return this;
@@ -337,8 +375,8 @@ public final class TableExternalDataConfiguration {
             return this;
         }
         @CustomType.Setter
-        public Builder sourceFormat(String sourceFormat) {
-            this.sourceFormat = Objects.requireNonNull(sourceFormat);
+        public Builder sourceFormat(@Nullable String sourceFormat) {
+            this.sourceFormat = sourceFormat;
             return this;
         }
         @CustomType.Setter
@@ -360,6 +398,8 @@ public final class TableExternalDataConfiguration {
             o.hivePartitioningOptions = hivePartitioningOptions;
             o.ignoreUnknownValues = ignoreUnknownValues;
             o.maxBadRecords = maxBadRecords;
+            o.metadataCacheMode = metadataCacheMode;
+            o.objectMetadata = objectMetadata;
             o.referenceFileSchemaUri = referenceFileSchemaUri;
             o.schema = schema;
             o.sourceFormat = sourceFormat;

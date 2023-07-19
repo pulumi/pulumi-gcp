@@ -99,8 +99,8 @@ def get_topic_iam_policy(project: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.pubsub.get_topic_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        topic=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.pubsub.get_topic_iam_policy(project=google_pubsub_topic["example"]["project"],
+        topic=google_pubsub_topic["example"]["name"])
     ```
 
 
@@ -115,11 +115,11 @@ def get_topic_iam_policy(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:pubsub/getTopicIamPolicy:getTopicIamPolicy', __args__, opts=opts, typ=GetTopicIamPolicyResult).value
 
     return AwaitableGetTopicIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project,
-        topic=__ret__.topic)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'),
+        topic=pulumi.get(__ret__, 'topic'))
 
 
 @_utilities.lift_output_func(get_topic_iam_policy)
@@ -135,8 +135,8 @@ def get_topic_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] =
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.pubsub.get_topic_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        topic=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.pubsub.get_topic_iam_policy(project=google_pubsub_topic["example"]["project"],
+        topic=google_pubsub_topic["example"]["name"])
     ```
 
 

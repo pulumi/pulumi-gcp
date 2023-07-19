@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -91,6 +92,7 @@ func NewAiDataset(ctx *pulumi.Context,
 	if args.MetadataSchemaUri == nil {
 		return nil, errors.New("invalid value for required argument 'MetadataSchemaUri'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AiDataset
 	err := ctx.RegisterResource("gcp:vertex/aiDataset:AiDataset", name, args, &resource, opts...)
 	if err != nil {

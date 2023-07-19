@@ -104,11 +104,11 @@ def get_backend_service_iam_policy(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getBackendServiceIamPolicy:getBackendServiceIamPolicy', __args__, opts=opts, typ=GetBackendServiceIamPolicyResult).value
 
     return AwaitableGetBackendServiceIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        name=__ret__.name,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_backend_service_iam_policy)

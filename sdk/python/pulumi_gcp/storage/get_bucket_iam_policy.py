@@ -89,7 +89,7 @@ def get_bucket_iam_policy(bucket: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.storage.get_bucket_iam_policy(bucket=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.storage.get_bucket_iam_policy(bucket=google_storage_bucket["default"]["name"])
     ```
 
 
@@ -101,10 +101,10 @@ def get_bucket_iam_policy(bucket: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:storage/getBucketIamPolicy:getBucketIamPolicy', __args__, opts=opts, typ=GetBucketIamPolicyResult).value
 
     return AwaitableGetBucketIamPolicyResult(
-        bucket=__ret__.bucket,
-        etag=__ret__.etag,
-        id=__ret__.id,
-        policy_data=__ret__.policy_data)
+        bucket=pulumi.get(__ret__, 'bucket'),
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        policy_data=pulumi.get(__ret__, 'policy_data'))
 
 
 @_utilities.lift_output_func(get_bucket_iam_policy)
@@ -119,7 +119,7 @@ def get_bucket_iam_policy_output(bucket: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.storage.get_bucket_iam_policy(bucket=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.storage.get_bucket_iam_policy(bucket=google_storage_bucket["default"]["name"])
     ```
 
 

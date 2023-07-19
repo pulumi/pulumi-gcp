@@ -14,62 +14,78 @@ import javax.annotation.Nullable;
 @CustomType
 public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate {
     /**
-     * @return Optional arguments to pass to the source during execution.
+     * @return Optional arguments to pass to the source during
+     * execution.
      * 
      */
     private @Nullable List<String> args;
     /**
-     * @return A remote or local file.
+     * @return A remote or local file. Structure is
+     * documented below.
      * 
      */
     private @Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile file;
     /**
-     * @return Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+     * @return The script interpreter to use. Possible values
+     * are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
      * 
      */
     private String interpreter;
     /**
-     * @return Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+     * @return Only recorded for enforce Exec. Path to an
+     * output file (that is created by this Exec) whose content will be recorded in
+     * OSPolicyResourceCompliance after a successful run. Absence or failure to
+     * read this file will result in this ExecResource being non-compliant. Output
+     * file size is limited to 100K bytes.
      * 
      */
     private @Nullable String outputFilePath;
     /**
-     * @return An inline script. The size of the script is limited to 1024 characters.
+     * @return An inline script. The size of the script is limited to
+     * 1024 characters.
      * 
      */
     private @Nullable String script;
 
     private OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate() {}
     /**
-     * @return Optional arguments to pass to the source during execution.
+     * @return Optional arguments to pass to the source during
+     * execution.
      * 
      */
     public List<String> args() {
         return this.args == null ? List.of() : this.args;
     }
     /**
-     * @return A remote or local file.
+     * @return A remote or local file. Structure is
+     * documented below.
      * 
      */
     public Optional<OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile> file() {
         return Optional.ofNullable(this.file);
     }
     /**
-     * @return Required. The script interpreter to use. Possible values: INTERPRETER_UNSPECIFIED, NONE, SHELL, POWERSHELL
+     * @return The script interpreter to use. Possible values
+     * are: `INTERPRETER_UNSPECIFIED`, `NONE`, `SHELL`, `POWERSHELL`.
      * 
      */
     public String interpreter() {
         return this.interpreter;
     }
     /**
-     * @return Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
+     * @return Only recorded for enforce Exec. Path to an
+     * output file (that is created by this Exec) whose content will be recorded in
+     * OSPolicyResourceCompliance after a successful run. Absence or failure to
+     * read this file will result in this ExecResource being non-compliant. Output
+     * file size is limited to 100K bytes.
      * 
      */
     public Optional<String> outputFilePath() {
         return Optional.ofNullable(this.outputFilePath);
     }
     /**
-     * @return An inline script. The size of the script is limited to 1024 characters.
+     * @return An inline script. The size of the script is limited to
+     * 1024 characters.
      * 
      */
     public Optional<String> script() {

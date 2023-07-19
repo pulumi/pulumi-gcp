@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -123,6 +124,7 @@ func NewBucketAccessControl(ctx *pulumi.Context,
 	if args.Entity == nil {
 		return nil, errors.New("invalid value for required argument 'Entity'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource BucketAccessControl
 	err := ctx.RegisterResource("gcp:storage/bucketAccessControl:BucketAccessControl", name, args, &resource, opts...)
 	if err != nil {

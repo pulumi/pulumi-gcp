@@ -122,11 +122,11 @@ def get_testable_permissions(custom_support_level: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:iam/getTestablePermissions:getTestablePermissions', __args__, opts=opts, typ=GetTestablePermissionsResult).value
 
     return AwaitableGetTestablePermissionsResult(
-        custom_support_level=__ret__.custom_support_level,
-        full_resource_name=__ret__.full_resource_name,
-        id=__ret__.id,
-        permissions=__ret__.permissions,
-        stages=__ret__.stages)
+        custom_support_level=pulumi.get(__ret__, 'custom_support_level'),
+        full_resource_name=pulumi.get(__ret__, 'full_resource_name'),
+        id=pulumi.get(__ret__, 'id'),
+        permissions=pulumi.get(__ret__, 'permissions'),
+        stages=pulumi.get(__ret__, 'stages'))
 
 
 @_utilities.lift_output_func(get_testable_permissions)

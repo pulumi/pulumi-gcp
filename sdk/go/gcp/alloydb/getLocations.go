@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -36,6 +37,7 @@ import (
 //
 // ```
 func GetLocations(ctx *pulumi.Context, args *GetLocationsArgs, opts ...pulumi.InvokeOption) (*GetLocationsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLocationsResult
 	err := ctx.Invoke("gcp:alloydb/getLocations:getLocations", args, &rv, opts...)
 	if err != nil {

@@ -14,23 +14,33 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResource
     {
         /// <summary>
-        /// Exec resource
+        /// Exec resource Structure is
+        /// documented below.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExec? Exec;
         /// <summary>
-        /// File resource
+        /// File resource Structure is
+        /// documented below.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceFile? File;
         /// <summary>
-        /// Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
+        /// The id of the resource with the following restrictions:
+        /// 
+        /// *   Must contain only lowercase letters, numbers, and hyphens.
+        /// *   Must start with a letter.
+        /// *   Must be between 1-63 characters.
+        /// *   Must end with a number or a letter.
+        /// *   Must be unique within the OS policy.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Package resource
+        /// Package resource Structure is
+        /// documented below.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkg? Pkg;
         /// <summary>
-        /// Package repository resource
+        /// Package repository resource Structure is
+        /// documented below.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceRepository? Repository;
 

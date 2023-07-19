@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -90,6 +91,7 @@ func NewWorkstationIamPolicy(ctx *pulumi.Context,
 	if args.WorkstationId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkstationId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkstationIamPolicy
 	err := ctx.RegisterResource("gcp:workstations/workstationIamPolicy:WorkstationIamPolicy", name, args, &resource, opts...)
 	if err != nil {

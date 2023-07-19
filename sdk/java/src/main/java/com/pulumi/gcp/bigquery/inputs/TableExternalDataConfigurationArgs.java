@@ -194,6 +194,36 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
     }
 
     /**
+     * Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
+     * 
+     */
+    @Import(name="metadataCacheMode")
+    private @Nullable Output<String> metadataCacheMode;
+
+    /**
+     * @return Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
+     * 
+     */
+    public Optional<Output<String>> metadataCacheMode() {
+        return Optional.ofNullable(this.metadataCacheMode);
+    }
+
+    /**
+     * Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
+     * 
+     */
+    @Import(name="objectMetadata")
+    private @Nullable Output<String> objectMetadata;
+
+    /**
+     * @return Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
+     * 
+     */
+    public Optional<Output<String>> objectMetadata() {
+        return Optional.ofNullable(this.objectMetadata);
+    }
+
+    /**
      * When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
      * 
      */
@@ -250,8 +280,8 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
      * the `scopes` must include &#34;https://www.googleapis.com/auth/drive.readonly&#34;.
      * 
      */
-    @Import(name="sourceFormat", required=true)
-    private Output<String> sourceFormat;
+    @Import(name="sourceFormat")
+    private @Nullable Output<String> sourceFormat;
 
     /**
      * @return The data format. Please see sourceFormat under
@@ -260,8 +290,8 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
      * the `scopes` must include &#34;https://www.googleapis.com/auth/drive.readonly&#34;.
      * 
      */
-    public Output<String> sourceFormat() {
-        return this.sourceFormat;
+    public Optional<Output<String>> sourceFormat() {
+        return Optional.ofNullable(this.sourceFormat);
     }
 
     /**
@@ -293,6 +323,8 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
         this.hivePartitioningOptions = $.hivePartitioningOptions;
         this.ignoreUnknownValues = $.ignoreUnknownValues;
         this.maxBadRecords = $.maxBadRecords;
+        this.metadataCacheMode = $.metadataCacheMode;
+        this.objectMetadata = $.objectMetadata;
         this.referenceFileSchemaUri = $.referenceFileSchemaUri;
         this.schema = $.schema;
         this.sourceFormat = $.sourceFormat;
@@ -543,6 +575,48 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
         }
 
         /**
+         * @param metadataCacheMode Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadataCacheMode(@Nullable Output<String> metadataCacheMode) {
+            $.metadataCacheMode = metadataCacheMode;
+            return this;
+        }
+
+        /**
+         * @param metadataCacheMode Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadataCacheMode(String metadataCacheMode) {
+            return metadataCacheMode(Output.of(metadataCacheMode));
+        }
+
+        /**
+         * @param objectMetadata Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objectMetadata(@Nullable Output<String> objectMetadata) {
+            $.objectMetadata = objectMetadata;
+            return this;
+        }
+
+        /**
+         * @param objectMetadata Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objectMetadata(String objectMetadata) {
+            return objectMetadata(Output.of(objectMetadata));
+        }
+
+        /**
          * @param referenceFileSchemaUri When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
          * 
          * @return builder
@@ -613,7 +687,7 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
          * @return builder
          * 
          */
-        public Builder sourceFormat(Output<String> sourceFormat) {
+        public Builder sourceFormat(@Nullable Output<String> sourceFormat) {
             $.sourceFormat = sourceFormat;
             return this;
         }
@@ -667,7 +741,6 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
 
         public TableExternalDataConfigurationArgs build() {
             $.autodetect = Objects.requireNonNull($.autodetect, "expected parameter 'autodetect' to be non-null");
-            $.sourceFormat = Objects.requireNonNull($.sourceFormat, "expected parameter 'sourceFormat' to be non-null");
             $.sourceUris = Objects.requireNonNull($.sourceUris, "expected parameter 'sourceUris' to be non-null");
             return $;
         }

@@ -191,16 +191,16 @@ def get_istio_canonical_service(canonical_service: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService', __args__, opts=opts, typ=GetIstioCanonicalServiceResult).value
 
     return AwaitableGetIstioCanonicalServiceResult(
-        canonical_service=__ret__.canonical_service,
-        canonical_service_namespace=__ret__.canonical_service_namespace,
-        display_name=__ret__.display_name,
-        id=__ret__.id,
-        mesh_uid=__ret__.mesh_uid,
-        name=__ret__.name,
-        project=__ret__.project,
-        service_id=__ret__.service_id,
-        telemetries=__ret__.telemetries,
-        user_labels=__ret__.user_labels)
+        canonical_service=pulumi.get(__ret__, 'canonical_service'),
+        canonical_service_namespace=pulumi.get(__ret__, 'canonical_service_namespace'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        id=pulumi.get(__ret__, 'id'),
+        mesh_uid=pulumi.get(__ret__, 'mesh_uid'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        service_id=pulumi.get(__ret__, 'service_id'),
+        telemetries=pulumi.get(__ret__, 'telemetries'),
+        user_labels=pulumi.get(__ret__, 'user_labels'))
 
 
 @_utilities.lift_output_func(get_istio_canonical_service)

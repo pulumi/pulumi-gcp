@@ -160,14 +160,14 @@ def get_account(account_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:serviceAccount/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult).value
 
     return AwaitableGetAccountResult(
-        account_id=__ret__.account_id,
-        display_name=__ret__.display_name,
-        email=__ret__.email,
-        id=__ret__.id,
-        member=__ret__.member,
-        name=__ret__.name,
-        project=__ret__.project,
-        unique_id=__ret__.unique_id)
+        account_id=pulumi.get(__ret__, 'account_id'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        email=pulumi.get(__ret__, 'email'),
+        id=pulumi.get(__ret__, 'id'),
+        member=pulumi.get(__ret__, 'member'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        unique_id=pulumi.get(__ret__, 'unique_id'))
 
 
 @_utilities.lift_output_func(get_account)

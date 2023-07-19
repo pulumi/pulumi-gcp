@@ -2886,6 +2886,9 @@ class CertificateCertificateDescriptionArgs:
         Describes some of the technical fields in a certificate.
         Structure is documented below.
         """
+        warnings.warn("""Deprecated in favor of `x509_description`.""", DeprecationWarning)
+        pulumi.log.warn("""config_values is deprecated: Deprecated in favor of `x509_description`.""")
+
         return pulumi.get(self, "config_values")
 
     @config_values.setter

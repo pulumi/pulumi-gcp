@@ -21,6 +21,7 @@ __all__ = [
     'DatabaseInstanceSettingsAdvancedMachineFeatures',
     'DatabaseInstanceSettingsBackupConfiguration',
     'DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings',
+    'DatabaseInstanceSettingsDataCacheConfig',
     'DatabaseInstanceSettingsDatabaseFlag',
     'DatabaseInstanceSettingsDenyMaintenancePeriod',
     'DatabaseInstanceSettingsInsightsConfig',
@@ -44,6 +45,7 @@ __all__ = [
     'GetDatabaseInstanceSettingAdvancedMachineFeatureResult',
     'GetDatabaseInstanceSettingBackupConfigurationResult',
     'GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult',
+    'GetDatabaseInstanceSettingDataCacheConfigResult',
     'GetDatabaseInstanceSettingDatabaseFlagResult',
     'GetDatabaseInstanceSettingDenyMaintenancePeriodResult',
     'GetDatabaseInstanceSettingInsightsConfigResult',
@@ -64,6 +66,7 @@ __all__ = [
     'GetDatabaseInstancesInstanceSettingAdvancedMachineFeatureResult',
     'GetDatabaseInstancesInstanceSettingBackupConfigurationResult',
     'GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSettingResult',
+    'GetDatabaseInstancesInstanceSettingDataCacheConfigResult',
     'GetDatabaseInstancesInstanceSettingDatabaseFlagResult',
     'GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodResult',
     'GetDatabaseInstancesInstanceSettingInsightsConfigResult',
@@ -550,6 +553,8 @@ class DatabaseInstanceSettings(dict):
             suggest = "backup_configuration"
         elif key == "connectorEnforcement":
             suggest = "connector_enforcement"
+        elif key == "dataCacheConfig":
+            suggest = "data_cache_config"
         elif key == "databaseFlags":
             suggest = "database_flags"
         elif key == "deletionProtectionEnabled":
@@ -603,6 +608,7 @@ class DatabaseInstanceSettings(dict):
                  backup_configuration: Optional['outputs.DatabaseInstanceSettingsBackupConfiguration'] = None,
                  collation: Optional[str] = None,
                  connector_enforcement: Optional[str] = None,
+                 data_cache_config: Optional['outputs.DatabaseInstanceSettingsDataCacheConfig'] = None,
                  database_flags: Optional[Sequence['outputs.DatabaseInstanceSettingsDatabaseFlag']] = None,
                  deletion_protection_enabled: Optional[bool] = None,
                  deny_maintenance_period: Optional['outputs.DatabaseInstanceSettingsDenyMaintenancePeriod'] = None,
@@ -610,6 +616,7 @@ class DatabaseInstanceSettings(dict):
                  disk_autoresize_limit: Optional[int] = None,
                  disk_size: Optional[int] = None,
                  disk_type: Optional[str] = None,
+                 edition: Optional[str] = None,
                  insights_config: Optional['outputs.DatabaseInstanceSettingsInsightsConfig'] = None,
                  ip_configuration: Optional['outputs.DatabaseInstanceSettingsIpConfiguration'] = None,
                  location_preference: Optional['outputs.DatabaseInstanceSettingsLocationPreference'] = None,
@@ -638,6 +645,7 @@ class DatabaseInstanceSettings(dict):
         :param int disk_autoresize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         :param int disk_size: The size of data disk, in GB. Size of a running instance cannot be reduced but can be increased. The minimum value is 10GB.
         :param str disk_type: The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
+        :param str edition: The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
         :param str pricing_plan: Pricing plan for this instance, can only be `PER_USE`.
         :param str time_zone: The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
         :param Mapping[str, str] user_labels: A set of key/value user label pairs to assign to the instance.
@@ -657,6 +665,8 @@ class DatabaseInstanceSettings(dict):
             pulumi.set(__self__, "collation", collation)
         if connector_enforcement is not None:
             pulumi.set(__self__, "connector_enforcement", connector_enforcement)
+        if data_cache_config is not None:
+            pulumi.set(__self__, "data_cache_config", data_cache_config)
         if database_flags is not None:
             pulumi.set(__self__, "database_flags", database_flags)
         if deletion_protection_enabled is not None:
@@ -671,6 +681,8 @@ class DatabaseInstanceSettings(dict):
             pulumi.set(__self__, "disk_size", disk_size)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
+        if edition is not None:
+            pulumi.set(__self__, "edition", edition)
         if insights_config is not None:
             pulumi.set(__self__, "insights_config", insights_config)
         if ip_configuration is not None:
@@ -756,6 +768,11 @@ class DatabaseInstanceSettings(dict):
         return pulumi.get(self, "connector_enforcement")
 
     @property
+    @pulumi.getter(name="dataCacheConfig")
+    def data_cache_config(self) -> Optional['outputs.DatabaseInstanceSettingsDataCacheConfig']:
+        return pulumi.get(self, "data_cache_config")
+
+    @property
     @pulumi.getter(name="databaseFlags")
     def database_flags(self) -> Optional[Sequence['outputs.DatabaseInstanceSettingsDatabaseFlag']]:
         return pulumi.get(self, "database_flags")
@@ -801,6 +818,14 @@ class DatabaseInstanceSettings(dict):
         The type of data disk: PD_SSD or PD_HDD. Defaults to `PD_SSD`.
         """
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter
+    def edition(self) -> Optional[str]:
+        """
+        The edition of the instance, can be `ENTERPRISE` or `ENTERPRISE_PLUS`.
+        """
+        return pulumi.get(self, "edition")
 
     @property
     @pulumi.getter(name="insightsConfig")
@@ -1087,6 +1112,44 @@ class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings(dict):
         The unit that 'retained_backups' represents. Defaults to `COUNT`.
         """
         return pulumi.get(self, "retention_unit")
+
+
+@pulumi.output_type
+class DatabaseInstanceSettingsDataCacheConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataCacheEnabled":
+            suggest = "data_cache_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceSettingsDataCacheConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceSettingsDataCacheConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceSettingsDataCacheConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_cache_enabled: Optional[bool] = None):
+        """
+        :param bool data_cache_enabled: Whether data cache is enabled for the instance. Defaults to `false`
+               Can only be used with MYSQL.
+        """
+        if data_cache_enabled is not None:
+            pulumi.set(__self__, "data_cache_enabled", data_cache_enabled)
+
+    @property
+    @pulumi.getter(name="dataCacheEnabled")
+    def data_cache_enabled(self) -> Optional[bool]:
+        """
+        Whether data cache is enabled for the instance. Defaults to `false`
+        Can only be used with MYSQL.
+        """
+        return pulumi.get(self, "data_cache_enabled")
 
 
 @pulumi.output_type
@@ -2220,6 +2283,7 @@ class GetDatabaseInstanceSettingResult(dict):
                  backup_configurations: Sequence['outputs.GetDatabaseInstanceSettingBackupConfigurationResult'],
                  collation: str,
                  connector_enforcement: str,
+                 data_cache_configs: Sequence['outputs.GetDatabaseInstanceSettingDataCacheConfigResult'],
                  database_flags: Sequence['outputs.GetDatabaseInstanceSettingDatabaseFlagResult'],
                  deletion_protection_enabled: bool,
                  deny_maintenance_periods: Sequence['outputs.GetDatabaseInstanceSettingDenyMaintenancePeriodResult'],
@@ -2227,6 +2291,7 @@ class GetDatabaseInstanceSettingResult(dict):
                  disk_autoresize_limit: int,
                  disk_size: int,
                  disk_type: str,
+                 edition: str,
                  insights_configs: Sequence['outputs.GetDatabaseInstanceSettingInsightsConfigResult'],
                  ip_configurations: Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationResult'],
                  location_preferences: Sequence['outputs.GetDatabaseInstanceSettingLocationPreferenceResult'],
@@ -2245,6 +2310,7 @@ class GetDatabaseInstanceSettingResult(dict):
         pulumi.set(__self__, "backup_configurations", backup_configurations)
         pulumi.set(__self__, "collation", collation)
         pulumi.set(__self__, "connector_enforcement", connector_enforcement)
+        pulumi.set(__self__, "data_cache_configs", data_cache_configs)
         pulumi.set(__self__, "database_flags", database_flags)
         pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         pulumi.set(__self__, "deny_maintenance_periods", deny_maintenance_periods)
@@ -2252,6 +2318,7 @@ class GetDatabaseInstanceSettingResult(dict):
         pulumi.set(__self__, "disk_autoresize_limit", disk_autoresize_limit)
         pulumi.set(__self__, "disk_size", disk_size)
         pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "edition", edition)
         pulumi.set(__self__, "insights_configs", insights_configs)
         pulumi.set(__self__, "ip_configurations", ip_configurations)
         pulumi.set(__self__, "location_preferences", location_preferences)
@@ -2300,6 +2367,11 @@ class GetDatabaseInstanceSettingResult(dict):
         return pulumi.get(self, "connector_enforcement")
 
     @property
+    @pulumi.getter(name="dataCacheConfigs")
+    def data_cache_configs(self) -> Sequence['outputs.GetDatabaseInstanceSettingDataCacheConfigResult']:
+        return pulumi.get(self, "data_cache_configs")
+
+    @property
     @pulumi.getter(name="databaseFlags")
     def database_flags(self) -> Sequence['outputs.GetDatabaseInstanceSettingDatabaseFlagResult']:
         return pulumi.get(self, "database_flags")
@@ -2333,6 +2405,11 @@ class GetDatabaseInstanceSettingResult(dict):
     @pulumi.getter(name="diskType")
     def disk_type(self) -> str:
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter
+    def edition(self) -> str:
+        return pulumi.get(self, "edition")
 
     @property
     @pulumi.getter(name="insightsConfigs")
@@ -2485,6 +2562,18 @@ class GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult(
     @pulumi.getter(name="retentionUnit")
     def retention_unit(self) -> str:
         return pulumi.get(self, "retention_unit")
+
+
+@pulumi.output_type
+class GetDatabaseInstanceSettingDataCacheConfigResult(dict):
+    def __init__(__self__, *,
+                 data_cache_enabled: bool):
+        pulumi.set(__self__, "data_cache_enabled", data_cache_enabled)
+
+    @property
+    @pulumi.getter(name="dataCacheEnabled")
+    def data_cache_enabled(self) -> bool:
+        return pulumi.get(self, "data_cache_enabled")
 
 
 @pulumi.output_type
@@ -3185,6 +3274,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
                  backup_configurations: Sequence['outputs.GetDatabaseInstancesInstanceSettingBackupConfigurationResult'],
                  collation: str,
                  connector_enforcement: str,
+                 data_cache_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingDataCacheConfigResult'],
                  database_flags: Sequence['outputs.GetDatabaseInstancesInstanceSettingDatabaseFlagResult'],
                  deletion_protection_enabled: bool,
                  deny_maintenance_periods: Sequence['outputs.GetDatabaseInstancesInstanceSettingDenyMaintenancePeriodResult'],
@@ -3192,6 +3282,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
                  disk_autoresize_limit: int,
                  disk_size: int,
                  disk_type: str,
+                 edition: str,
                  insights_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingInsightsConfigResult'],
                  ip_configurations: Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationResult'],
                  location_preferences: Sequence['outputs.GetDatabaseInstancesInstanceSettingLocationPreferenceResult'],
@@ -3213,6 +3304,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         pulumi.set(__self__, "backup_configurations", backup_configurations)
         pulumi.set(__self__, "collation", collation)
         pulumi.set(__self__, "connector_enforcement", connector_enforcement)
+        pulumi.set(__self__, "data_cache_configs", data_cache_configs)
         pulumi.set(__self__, "database_flags", database_flags)
         pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         pulumi.set(__self__, "deny_maintenance_periods", deny_maintenance_periods)
@@ -3220,6 +3312,7 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         pulumi.set(__self__, "disk_autoresize_limit", disk_autoresize_limit)
         pulumi.set(__self__, "disk_size", disk_size)
         pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "edition", edition)
         pulumi.set(__self__, "insights_configs", insights_configs)
         pulumi.set(__self__, "ip_configurations", ip_configurations)
         pulumi.set(__self__, "location_preferences", location_preferences)
@@ -3268,6 +3361,11 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
         return pulumi.get(self, "connector_enforcement")
 
     @property
+    @pulumi.getter(name="dataCacheConfigs")
+    def data_cache_configs(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingDataCacheConfigResult']:
+        return pulumi.get(self, "data_cache_configs")
+
+    @property
     @pulumi.getter(name="databaseFlags")
     def database_flags(self) -> Sequence['outputs.GetDatabaseInstancesInstanceSettingDatabaseFlagResult']:
         return pulumi.get(self, "database_flags")
@@ -3301,6 +3399,11 @@ class GetDatabaseInstancesInstanceSettingResult(dict):
     @pulumi.getter(name="diskType")
     def disk_type(self) -> str:
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter
+    def edition(self) -> str:
+        return pulumi.get(self, "edition")
 
     @property
     @pulumi.getter(name="insightsConfigs")
@@ -3456,6 +3559,18 @@ class GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetti
     @pulumi.getter(name="retentionUnit")
     def retention_unit(self) -> str:
         return pulumi.get(self, "retention_unit")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceSettingDataCacheConfigResult(dict):
+    def __init__(__self__, *,
+                 data_cache_enabled: bool):
+        pulumi.set(__self__, "data_cache_enabled", data_cache_enabled)
+
+    @property
+    @pulumi.getter(name="dataCacheEnabled")
+    def data_cache_enabled(self) -> bool:
+        return pulumi.get(self, "data_cache_enabled")
 
 
 @pulumi.output_type

@@ -15,6 +15,10 @@ __all__ = [
     'ConnectionGithubConfigAuthorizerCredential',
     'ConnectionGithubEnterpriseConfig',
     'ConnectionGithubEnterpriseConfigServiceDirectoryConfig',
+    'ConnectionGitlabConfig',
+    'ConnectionGitlabConfigAuthorizerCredential',
+    'ConnectionGitlabConfigReadAuthorizerCredential',
+    'ConnectionGitlabConfigServiceDirectoryConfig',
     'ConnectionIAMBindingCondition',
     'ConnectionIAMMemberCondition',
     'ConnectionInstallationState',
@@ -253,6 +257,239 @@ class ConnectionGithubEnterpriseConfig(dict):
 
 @pulumi.output_type
 class ConnectionGithubEnterpriseConfigServiceDirectoryConfig(dict):
+    def __init__(__self__, *,
+                 service: str):
+        """
+        :param str service: Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+        """
+        pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+        """
+        return pulumi.get(self, "service")
+
+
+@pulumi.output_type
+class ConnectionGitlabConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorizerCredential":
+            suggest = "authorizer_credential"
+        elif key == "readAuthorizerCredential":
+            suggest = "read_authorizer_credential"
+        elif key == "webhookSecretSecretVersion":
+            suggest = "webhook_secret_secret_version"
+        elif key == "hostUri":
+            suggest = "host_uri"
+        elif key == "serverVersion":
+            suggest = "server_version"
+        elif key == "serviceDirectoryConfig":
+            suggest = "service_directory_config"
+        elif key == "sslCa":
+            suggest = "ssl_ca"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionGitlabConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionGitlabConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionGitlabConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authorizer_credential: 'outputs.ConnectionGitlabConfigAuthorizerCredential',
+                 read_authorizer_credential: 'outputs.ConnectionGitlabConfigReadAuthorizerCredential',
+                 webhook_secret_secret_version: str,
+                 host_uri: Optional[str] = None,
+                 server_version: Optional[str] = None,
+                 service_directory_config: Optional['outputs.ConnectionGitlabConfigServiceDirectoryConfig'] = None,
+                 ssl_ca: Optional[str] = None):
+        """
+        :param 'ConnectionGitlabConfigAuthorizerCredentialArgs' authorizer_credential: Required. A GitLab personal access token with the `api` scope access.
+        :param 'ConnectionGitlabConfigReadAuthorizerCredentialArgs' read_authorizer_credential: Required. A GitLab personal access token with the minimum `read_api` scope access.
+        :param str webhook_secret_secret_version: Required. Immutable. SecretManager resource containing the webhook secret of a GitLab Enterprise project, formatted as `projects/*/secrets/*/versions/*`.
+        :param str host_uri: The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
+        :param str server_version: Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+        :param 'ConnectionGitlabConfigServiceDirectoryConfigArgs' service_directory_config: Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
+        :param str ssl_ca: SSL certificate to use for requests to GitLab Enterprise.
+        """
+        pulumi.set(__self__, "authorizer_credential", authorizer_credential)
+        pulumi.set(__self__, "read_authorizer_credential", read_authorizer_credential)
+        pulumi.set(__self__, "webhook_secret_secret_version", webhook_secret_secret_version)
+        if host_uri is not None:
+            pulumi.set(__self__, "host_uri", host_uri)
+        if server_version is not None:
+            pulumi.set(__self__, "server_version", server_version)
+        if service_directory_config is not None:
+            pulumi.set(__self__, "service_directory_config", service_directory_config)
+        if ssl_ca is not None:
+            pulumi.set(__self__, "ssl_ca", ssl_ca)
+
+    @property
+    @pulumi.getter(name="authorizerCredential")
+    def authorizer_credential(self) -> 'outputs.ConnectionGitlabConfigAuthorizerCredential':
+        """
+        Required. A GitLab personal access token with the `api` scope access.
+        """
+        return pulumi.get(self, "authorizer_credential")
+
+    @property
+    @pulumi.getter(name="readAuthorizerCredential")
+    def read_authorizer_credential(self) -> 'outputs.ConnectionGitlabConfigReadAuthorizerCredential':
+        """
+        Required. A GitLab personal access token with the minimum `read_api` scope access.
+        """
+        return pulumi.get(self, "read_authorizer_credential")
+
+    @property
+    @pulumi.getter(name="webhookSecretSecretVersion")
+    def webhook_secret_secret_version(self) -> str:
+        """
+        Required. Immutable. SecretManager resource containing the webhook secret of a GitLab Enterprise project, formatted as `projects/*/secrets/*/versions/*`.
+        """
+        return pulumi.get(self, "webhook_secret_secret_version")
+
+    @property
+    @pulumi.getter(name="hostUri")
+    def host_uri(self) -> Optional[str]:
+        """
+        The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
+        """
+        return pulumi.get(self, "host_uri")
+
+    @property
+    @pulumi.getter(name="serverVersion")
+    def server_version(self) -> Optional[str]:
+        """
+        Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+        """
+        return pulumi.get(self, "server_version")
+
+    @property
+    @pulumi.getter(name="serviceDirectoryConfig")
+    def service_directory_config(self) -> Optional['outputs.ConnectionGitlabConfigServiceDirectoryConfig']:
+        """
+        Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
+        """
+        return pulumi.get(self, "service_directory_config")
+
+    @property
+    @pulumi.getter(name="sslCa")
+    def ssl_ca(self) -> Optional[str]:
+        """
+        SSL certificate to use for requests to GitLab Enterprise.
+        """
+        return pulumi.get(self, "ssl_ca")
+
+
+@pulumi.output_type
+class ConnectionGitlabConfigAuthorizerCredential(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "userTokenSecretVersion":
+            suggest = "user_token_secret_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionGitlabConfigAuthorizerCredential. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionGitlabConfigAuthorizerCredential.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionGitlabConfigAuthorizerCredential.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 user_token_secret_version: str,
+                 username: Optional[str] = None):
+        """
+        :param str user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+        :param str username: Output only. The username associated to this token.
+        """
+        pulumi.set(__self__, "user_token_secret_version", user_token_secret_version)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="userTokenSecretVersion")
+    def user_token_secret_version(self) -> str:
+        """
+        Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+        """
+        return pulumi.get(self, "user_token_secret_version")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        Output only. The username associated to this token.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class ConnectionGitlabConfigReadAuthorizerCredential(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "userTokenSecretVersion":
+            suggest = "user_token_secret_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionGitlabConfigReadAuthorizerCredential. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionGitlabConfigReadAuthorizerCredential.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionGitlabConfigReadAuthorizerCredential.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 user_token_secret_version: str,
+                 username: Optional[str] = None):
+        """
+        :param str user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+        :param str username: Output only. The username associated to this token.
+               
+               - - -
+        """
+        pulumi.set(__self__, "user_token_secret_version", user_token_secret_version)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="userTokenSecretVersion")
+    def user_token_secret_version(self) -> str:
+        """
+        Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
+        """
+        return pulumi.get(self, "user_token_secret_version")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        Output only. The username associated to this token.
+
+        - - -
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class ConnectionGitlabConfigServiceDirectoryConfig(dict):
     def __init__(__self__, *,
                  service: str):
         """

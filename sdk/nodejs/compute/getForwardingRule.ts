@@ -77,6 +77,7 @@ export interface GetForwardingRuleResult {
     readonly name: string;
     readonly network: string;
     readonly networkTier: string;
+    readonly noAutomateDnsZone: boolean;
     readonly portRange: string;
     readonly ports: string[];
     readonly project?: string;

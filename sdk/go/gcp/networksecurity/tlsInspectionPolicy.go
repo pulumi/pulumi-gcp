@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,8 +20,11 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/certificateauthority"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -90,6 +94,22 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			nsSa, err := projects.NewServiceIdentity(ctx, "nsSa", &projects.ServiceIdentityArgs{
+//				Service: pulumi.String("networksecurity.googleapis.com"),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			tlsInspectionPermission, err := certificateauthority.NewCaPoolIamMember(ctx, "tlsInspectionPermission", &certificateauthority.CaPoolIamMemberArgs{
+//				CaPool: defaultCaPool.ID(),
+//				Role:   pulumi.String("roles/privateca.certificateManager"),
+//				Member: nsSa.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
 //			_, err = networksecurity.NewTlsInspectionPolicy(ctx, "defaultTlsInspectionPolicy", &networksecurity.TlsInspectionPolicyArgs{
 //				Location:           pulumi.String("us-central1"),
 //				CaPool:             defaultCaPool.ID(),
@@ -97,6 +117,7 @@ import (
 //			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
 //				defaultCaPool,
 //				defaultAuthority,
+//				tlsInspectionPermission,
 //			}))
 //			if err != nil {
 //				return err
@@ -162,6 +183,7 @@ func NewTlsInspectionPolicy(ctx *pulumi.Context,
 	if args.CaPool == nil {
 		return nil, errors.New("invalid value for required argument 'CaPool'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TlsInspectionPolicy
 	err := ctx.RegisterResource("gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy", name, args, &resource, opts...)
 	if err != nil {

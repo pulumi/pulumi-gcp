@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -138,6 +139,7 @@ func NewGlobalNetworkEndpointGroup(ctx *pulumi.Context,
 	if args.NetworkEndpointType == nil {
 		return nil, errors.New("invalid value for required argument 'NetworkEndpointType'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GlobalNetworkEndpointGroup
 	err := ctx.RegisterResource("gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup", name, args, &resource, opts...)
 	if err != nil {

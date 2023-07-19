@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -47,6 +48,7 @@ import (
 //
 // ```
 func LookupRegionNetworkEndpointGroup(ctx *pulumi.Context, args *LookupRegionNetworkEndpointGroupArgs, opts ...pulumi.InvokeOption) (*LookupRegionNetworkEndpointGroupResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRegionNetworkEndpointGroupResult
 	err := ctx.Invoke("gcp:compute/getRegionNetworkEndpointGroup:getRegionNetworkEndpointGroup", args, &rv, opts...)
 	if err != nil {

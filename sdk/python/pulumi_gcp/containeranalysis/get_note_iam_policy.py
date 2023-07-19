@@ -99,8 +99,8 @@ def get_note_iam_policy(note: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.containeranalysis.get_note_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        note=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.containeranalysis.get_note_iam_policy(project=google_container_analysis_note["note"]["project"],
+        note=google_container_analysis_note["note"]["name"])
     ```
 
 
@@ -115,11 +115,11 @@ def get_note_iam_policy(note: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:containeranalysis/getNoteIamPolicy:getNoteIamPolicy', __args__, opts=opts, typ=GetNoteIamPolicyResult).value
 
     return AwaitableGetNoteIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        note=__ret__.note,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        note=pulumi.get(__ret__, 'note'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_note_iam_policy)
@@ -135,8 +135,8 @@ def get_note_iam_policy_output(note: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.containeranalysis.get_note_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        note=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.containeranalysis.get_note_iam_policy(project=google_container_analysis_note["note"]["project"],
+        note=google_container_analysis_note["note"]["name"])
     ```
 
 

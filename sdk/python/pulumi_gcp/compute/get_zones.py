@@ -105,11 +105,11 @@ def get_zones(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getZones:getZones', __args__, opts=opts, typ=GetZonesResult).value
 
     return AwaitableGetZonesResult(
-        id=__ret__.id,
-        names=__ret__.names,
-        project=__ret__.project,
-        region=__ret__.region,
-        status=__ret__.status)
+        id=pulumi.get(__ret__, 'id'),
+        names=pulumi.get(__ret__, 'names'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'),
+        status=pulumi.get(__ret__, 'status'))
 
 
 @_utilities.lift_output_func(get_zones)

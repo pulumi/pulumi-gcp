@@ -337,6 +337,13 @@ export class Dataset extends pulumi.CustomResource {
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * Specifies the storage billing model for the dataset.
+     * Set this flag value to LOGICAL to use logical bytes for storage billing,
+     * or to PHYSICAL to use physical bytes instead.
+     * LOGICAL is the default if this flag isn't specified.
+     */
+    public readonly storageBillingModel!: pulumi.Output<string>;
 
     /**
      * Create a Dataset resource with the given unique name, arguments, and options.
@@ -369,6 +376,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["maxTimeTravelHours"] = state ? state.maxTimeTravelHours : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
+            resourceInputs["storageBillingModel"] = state ? state.storageBillingModel : undefined;
         } else {
             const args = argsOrState as DatasetArgs | undefined;
             if ((!args || args.datasetId === undefined) && !opts.urn) {
@@ -388,6 +396,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["maxTimeTravelHours"] = args ? args.maxTimeTravelHours : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["storageBillingModel"] = args ? args.storageBillingModel : undefined;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
@@ -532,6 +541,13 @@ export interface DatasetState {
      * The URI of the created resource.
      */
     selfLink?: pulumi.Input<string>;
+    /**
+     * Specifies the storage billing model for the dataset.
+     * Set this flag value to LOGICAL to use logical bytes for storage billing,
+     * or to PHYSICAL to use physical bytes instead.
+     * LOGICAL is the default if this flag isn't specified.
+     */
+    storageBillingModel?: pulumi.Input<string>;
 }
 
 /**
@@ -650,4 +666,11 @@ export interface DatasetArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Specifies the storage billing model for the dataset.
+     * Set this flag value to LOGICAL to use logical bytes for storage billing,
+     * or to PHYSICAL to use physical bytes instead.
+     * LOGICAL is the default if this flag isn't specified.
+     */
+    storageBillingModel?: pulumi.Input<string>;
 }

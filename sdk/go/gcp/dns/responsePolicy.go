@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -165,6 +166,7 @@ func NewResponsePolicy(ctx *pulumi.Context,
 	if args.ResponsePolicyName == nil {
 		return nil, errors.New("invalid value for required argument 'ResponsePolicyName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ResponsePolicy
 	err := ctx.RegisterResource("gcp:dns/responsePolicy:ResponsePolicy", name, args, &resource, opts...)
 	if err != nil {

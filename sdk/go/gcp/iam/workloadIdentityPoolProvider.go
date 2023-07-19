@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -381,6 +382,7 @@ func NewWorkloadIdentityPoolProvider(ctx *pulumi.Context,
 	if args.WorkloadIdentityPoolProviderId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkloadIdentityPoolProviderId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource WorkloadIdentityPoolProvider
 	err := ctx.RegisterResource("gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider", name, args, &resource, opts...)
 	if err != nil {

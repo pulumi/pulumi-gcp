@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -194,6 +195,7 @@ func NewTableIamPolicy(ctx *pulumi.Context,
 	if args.Table == nil {
 		return nil, errors.New("invalid value for required argument 'Table'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TableIamPolicy
 	err := ctx.RegisterResource("gcp:bigtable/tableIamPolicy:TableIamPolicy", name, args, &resource, opts...)
 	if err != nil {

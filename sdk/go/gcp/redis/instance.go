@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -378,7 +379,7 @@ type Instance struct {
 	MaintenancePolicy InstanceMaintenancePolicyPtrOutput `pulumi:"maintenancePolicy"`
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
-	MaintenanceSchedule InstanceMaintenanceSchedulePtrOutput `pulumi:"maintenanceSchedule"`
+	MaintenanceSchedule InstanceMaintenanceScheduleOutput `pulumi:"maintenanceSchedule"`
 	// Redis memory size in GiB.
 	//
 	// ***
@@ -472,6 +473,7 @@ func NewInstance(ctx *pulumi.Context,
 		"authString",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Instance
 	err := ctx.RegisterResource("gcp:redis/instance:Instance", name, args, &resource, opts...)
 	if err != nil {
@@ -795,9 +797,6 @@ type instanceArgs struct {
 	// Maintenance policy for an instance.
 	// Structure is documented below.
 	MaintenancePolicy *InstanceMaintenancePolicy `pulumi:"maintenancePolicy"`
-	// Upcoming maintenance schedule.
-	// Structure is documented below.
-	MaintenanceSchedule *InstanceMaintenanceSchedule `pulumi:"maintenanceSchedule"`
 	// Redis memory size in GiB.
 	//
 	// ***
@@ -892,9 +891,6 @@ type InstanceArgs struct {
 	// Maintenance policy for an instance.
 	// Structure is documented below.
 	MaintenancePolicy InstanceMaintenancePolicyPtrInput
-	// Upcoming maintenance schedule.
-	// Structure is documented below.
-	MaintenanceSchedule InstanceMaintenanceSchedulePtrInput
 	// Redis memory size in GiB.
 	//
 	// ***
@@ -1131,8 +1127,8 @@ func (o InstanceOutput) MaintenancePolicy() InstanceMaintenancePolicyPtrOutput {
 
 // Upcoming maintenance schedule.
 // Structure is documented below.
-func (o InstanceOutput) MaintenanceSchedule() InstanceMaintenanceSchedulePtrOutput {
-	return o.ApplyT(func(v *Instance) InstanceMaintenanceSchedulePtrOutput { return v.MaintenanceSchedule }).(InstanceMaintenanceSchedulePtrOutput)
+func (o InstanceOutput) MaintenanceSchedule() InstanceMaintenanceScheduleOutput {
+	return o.ApplyT(func(v *Instance) InstanceMaintenanceScheduleOutput { return v.MaintenanceSchedule }).(InstanceMaintenanceScheduleOutput)
 }
 
 // Redis memory size in GiB.

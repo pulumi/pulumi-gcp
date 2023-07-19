@@ -161,16 +161,16 @@ def get_router(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getRouter:getRouter', __args__, opts=opts, typ=GetRouterResult).value
 
     return AwaitableGetRouterResult(
-        bgps=__ret__.bgps,
-        creation_timestamp=__ret__.creation_timestamp,
-        description=__ret__.description,
-        encrypted_interconnect_router=__ret__.encrypted_interconnect_router,
-        id=__ret__.id,
-        name=__ret__.name,
-        network=__ret__.network,
-        project=__ret__.project,
-        region=__ret__.region,
-        self_link=__ret__.self_link)
+        bgps=pulumi.get(__ret__, 'bgps'),
+        creation_timestamp=pulumi.get(__ret__, 'creation_timestamp'),
+        description=pulumi.get(__ret__, 'description'),
+        encrypted_interconnect_router=pulumi.get(__ret__, 'encrypted_interconnect_router'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'),
+        self_link=pulumi.get(__ret__, 'self_link'))
 
 
 @_utilities.lift_output_func(get_router)

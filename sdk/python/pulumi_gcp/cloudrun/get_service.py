@@ -152,15 +152,15 @@ def get_service(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:cloudrun/getService:getService', __args__, opts=opts, typ=GetServiceResult).value
 
     return AwaitableGetServiceResult(
-        autogenerate_revision_name=__ret__.autogenerate_revision_name,
-        id=__ret__.id,
-        location=__ret__.location,
-        metadatas=__ret__.metadatas,
-        name=__ret__.name,
-        project=__ret__.project,
-        statuses=__ret__.statuses,
-        templates=__ret__.templates,
-        traffics=__ret__.traffics)
+        autogenerate_revision_name=pulumi.get(__ret__, 'autogenerate_revision_name'),
+        id=pulumi.get(__ret__, 'id'),
+        location=pulumi.get(__ret__, 'location'),
+        metadatas=pulumi.get(__ret__, 'metadatas'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        statuses=pulumi.get(__ret__, 'statuses'),
+        templates=pulumi.get(__ret__, 'templates'),
+        traffics=pulumi.get(__ret__, 'traffics'))
 
 
 @_utilities.lift_output_func(get_service)

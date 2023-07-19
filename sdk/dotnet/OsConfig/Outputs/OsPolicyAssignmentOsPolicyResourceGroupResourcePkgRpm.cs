@@ -14,11 +14,14 @@ namespace Pulumi.Gcp.OsConfig.Outputs
     public sealed class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm
     {
         /// <summary>
-        /// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
+        /// Whether dependencies should also be installed. -
+        /// install when false: `rpm --upgrade --replacepkgs package.rpm` - install when
+        /// true: `yum -y install package.rpm` or `zypper -y install package.rpm`
         /// </summary>
         public readonly bool? PullDeps;
         /// <summary>
-        /// Required. An rpm package.
+        /// An rpm package. Structure is
+        /// documented below.
         /// </summary>
         public readonly Outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource Source;
 

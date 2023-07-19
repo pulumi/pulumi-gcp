@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -40,6 +41,7 @@ import (
 //
 // ```
 func LookupRuntimeIamPolicy(ctx *pulumi.Context, args *LookupRuntimeIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupRuntimeIamPolicyResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRuntimeIamPolicyResult
 	err := ctx.Invoke("gcp:notebooks/getRuntimeIamPolicy:getRuntimeIamPolicy", args, &rv, opts...)
 	if err != nil {

@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
         private InputList<string>? _dnsAuthorizations;
 
         /// <summary>
-        /// Authorizations that will be used for performing domain authorization
+        /// Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
         /// </summary>
         public InputList<string> DnsAuthorizations
         {
@@ -54,6 +54,14 @@ namespace Pulumi.Gcp.CertificateManager.Inputs
             get => _domains ?? (_domains = new InputList<string>());
             set => _domains = value;
         }
+
+        /// <summary>
+        /// The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
+        /// If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+        /// Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+        /// </summary>
+        [Input("issuanceConfig")]
+        public Input<string>? IssuanceConfig { get; set; }
 
         [Input("provisioningIssues")]
         private InputList<Inputs.CertificateManagedProvisioningIssueGetArgs>? _provisioningIssues;

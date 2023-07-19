@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute
     /// The Compute NetworkFirewallPolicyRule resource
     /// 
     /// ## Example Usage
-    /// ### Regional_net_sec_rule
+    /// ### Regional
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,9 +33,6 @@ namespace Pulumi.Gcp.Compute
     ///         },
     ///         Type = "IPV4",
     ///         Capacity = 100,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var basicRegionalNetworkFirewallPolicy = new Gcp.Compute.RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy", new()
@@ -43,17 +40,9 @@ namespace Pulumi.Gcp.Compute
     ///         Description = "Sample regional network firewall policy",
     ///         Project = "my-project-name",
     ///         Region = "us-west1",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var basicNetwork = new Gcp.Compute.Network("basicNetwork", new()
-    ///     {
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
-    ///     });
+    ///     var basicNetwork = new Gcp.Compute.Network("basicNetwork");
     /// 
     ///     var basicKey = new Gcp.Tags.TagKey("basicKey", new()
     ///     {
@@ -65,9 +54,6 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             { "network", basicNetwork.Name.Apply(name =&gt; $"my-project-name/{name}") },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var basicValue = new Gcp.Tags.TagValue("basicValue", new()
@@ -75,9 +61,6 @@ namespace Pulumi.Gcp.Compute
     ///         Description = "For valuename resources.",
     ///         Parent = basicKey.Name.Apply(name =&gt; $"tagKeys/{name}"),
     ///         ShortName = "tagvalue",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var primary = new Gcp.Compute.RegionNetworkFirewallPolicyRule("primary", new()
@@ -132,9 +115,6 @@ namespace Pulumi.Gcp.Compute
     ///                 basicRegionalNetworksecurityAddressGroup.Id,
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -164,7 +144,7 @@ namespace Pulumi.Gcp.Compute
     public partial class RegionNetworkFirewallPolicyRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         /// </summary>
         [Output("action")]
         public Output<string> Action { get; private set; } = null!;
@@ -300,7 +280,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class RegionNetworkFirewallPolicyRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         /// </summary>
         [Input("action", required: true)]
         public Input<string> Action { get; set; } = null!;
@@ -398,7 +378,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class RegionNetworkFirewallPolicyRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

@@ -114,12 +114,12 @@ def get_environment(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:composer/getEnvironment:getEnvironment', __args__, opts=opts, typ=GetEnvironmentResult).value
 
     return AwaitableGetEnvironmentResult(
-        configs=__ret__.configs,
-        id=__ret__.id,
-        labels=__ret__.labels,
-        name=__ret__.name,
-        project=__ret__.project,
-        region=__ret__.region)
+        configs=pulumi.get(__ret__, 'configs'),
+        id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
+        name=pulumi.get(__ret__, 'name'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'))
 
 
 @_utilities.lift_output_func(get_environment)

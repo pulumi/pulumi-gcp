@@ -99,8 +99,8 @@ def get_managed_zone_iam_policy(managed_zone: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dns.get_managed_zone_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        managed_zone=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.dns.get_managed_zone_iam_policy(project=google_dns_managed_zone["default"]["project"],
+        managed_zone=google_dns_managed_zone["default"]["name"])
     ```
 
 
@@ -115,11 +115,11 @@ def get_managed_zone_iam_policy(managed_zone: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:dns/getManagedZoneIamPolicy:getManagedZoneIamPolicy', __args__, opts=opts, typ=GetManagedZoneIamPolicyResult).value
 
     return AwaitableGetManagedZoneIamPolicyResult(
-        etag=__ret__.etag,
-        id=__ret__.id,
-        managed_zone=__ret__.managed_zone,
-        policy_data=__ret__.policy_data,
-        project=__ret__.project)
+        etag=pulumi.get(__ret__, 'etag'),
+        id=pulumi.get(__ret__, 'id'),
+        managed_zone=pulumi.get(__ret__, 'managed_zone'),
+        policy_data=pulumi.get(__ret__, 'policy_data'),
+        project=pulumi.get(__ret__, 'project'))
 
 
 @_utilities.lift_output_func(get_managed_zone_iam_policy)
@@ -135,8 +135,8 @@ def get_managed_zone_iam_policy_output(managed_zone: Optional[pulumi.Input[str]]
     import pulumi
     import pulumi_gcp as gcp
 
-    policy = gcp.dns.get_managed_zone_iam_policy(project=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
-        managed_zone=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+    policy = gcp.dns.get_managed_zone_iam_policy(project=google_dns_managed_zone["default"]["project"],
+        managed_zone=google_dns_managed_zone["default"]["name"])
     ```
 
 

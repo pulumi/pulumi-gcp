@@ -82,5 +82,5 @@ def get_client_open_id_user_info(opts: Optional[pulumi.InvokeOptions] = None) ->
     __ret__ = pulumi.runtime.invoke('gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo', __args__, opts=opts, typ=GetClientOpenIdUserInfoResult).value
 
     return AwaitableGetClientOpenIdUserInfoResult(
-        email=__ret__.email,
-        id=__ret__.id)
+        email=pulumi.get(__ret__, 'email'),
+        id=pulumi.get(__ret__, 'id'))

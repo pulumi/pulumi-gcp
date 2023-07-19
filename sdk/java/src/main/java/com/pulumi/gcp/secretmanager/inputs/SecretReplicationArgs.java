@@ -32,7 +32,7 @@ public final class SecretReplicationArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The Secret will automatically be replicated without any restrictions.
+     * The Secret will be replicated to the regions specified by the user.
      * Structure is documented below.
      * 
      */
@@ -40,7 +40,7 @@ public final class SecretReplicationArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<SecretReplicationUserManagedArgs> userManaged;
 
     /**
-     * @return The Secret will automatically be replicated without any restrictions.
+     * @return The Secret will be replicated to the regions specified by the user.
      * Structure is documented below.
      * 
      */
@@ -95,7 +95,7 @@ public final class SecretReplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param userManaged The Secret will automatically be replicated without any restrictions.
+         * @param userManaged The Secret will be replicated to the regions specified by the user.
          * Structure is documented below.
          * 
          * @return builder
@@ -107,7 +107,7 @@ public final class SecretReplicationArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param userManaged The Secret will automatically be replicated without any restrictions.
+         * @param userManaged The Secret will be replicated to the regions specified by the user.
          * Structure is documented below.
          * 
          * @return builder

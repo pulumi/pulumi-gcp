@@ -112,6 +112,29 @@ public final class AiIndexMetadataConfigArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.featureNormType);
     }
 
+    /**
+     * Index data is split into equal parts to be processed. These are called &#34;shards&#34;.
+     * The shard size must be specified when creating an index. The value must be one of the followings:
+     * * SHARD_SIZE_SMALL: Small (2GB)
+     * * SHARD_SIZE_MEDIUM: Medium (20GB)
+     * * SHARD_SIZE_LARGE: Large (50GB)
+     * 
+     */
+    @Import(name="shardSize")
+    private @Nullable Output<String> shardSize;
+
+    /**
+     * @return Index data is split into equal parts to be processed. These are called &#34;shards&#34;.
+     * The shard size must be specified when creating an index. The value must be one of the followings:
+     * * SHARD_SIZE_SMALL: Small (2GB)
+     * * SHARD_SIZE_MEDIUM: Medium (20GB)
+     * * SHARD_SIZE_LARGE: Large (50GB)
+     * 
+     */
+    public Optional<Output<String>> shardSize() {
+        return Optional.ofNullable(this.shardSize);
+    }
+
     private AiIndexMetadataConfigArgs() {}
 
     private AiIndexMetadataConfigArgs(AiIndexMetadataConfigArgs $) {
@@ -120,6 +143,7 @@ public final class AiIndexMetadataConfigArgs extends com.pulumi.resources.Resour
         this.dimensions = $.dimensions;
         this.distanceMeasureType = $.distanceMeasureType;
         this.featureNormType = $.featureNormType;
+        this.shardSize = $.shardSize;
     }
 
     public static Builder builder() {
@@ -263,6 +287,35 @@ public final class AiIndexMetadataConfigArgs extends com.pulumi.resources.Resour
          */
         public Builder featureNormType(String featureNormType) {
             return featureNormType(Output.of(featureNormType));
+        }
+
+        /**
+         * @param shardSize Index data is split into equal parts to be processed. These are called &#34;shards&#34;.
+         * The shard size must be specified when creating an index. The value must be one of the followings:
+         * * SHARD_SIZE_SMALL: Small (2GB)
+         * * SHARD_SIZE_MEDIUM: Medium (20GB)
+         * * SHARD_SIZE_LARGE: Large (50GB)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shardSize(@Nullable Output<String> shardSize) {
+            $.shardSize = shardSize;
+            return this;
+        }
+
+        /**
+         * @param shardSize Index data is split into equal parts to be processed. These are called &#34;shards&#34;.
+         * The shard size must be specified when creating an index. The value must be one of the followings:
+         * * SHARD_SIZE_SMALL: Small (2GB)
+         * * SHARD_SIZE_MEDIUM: Medium (20GB)
+         * * SHARD_SIZE_LARGE: Large (50GB)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder shardSize(String shardSize) {
+            return shardSize(Output.of(shardSize));
         }
 
         public AiIndexMetadataConfigArgs build() {

@@ -8,10 +8,11 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Beta only: The Cloudbuildv2 Repository resource
+// The Cloudbuildv2 Repository resource
 //
 // ## Example Usage
 // ### Ghe
@@ -44,14 +45,14 @@ import (
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Automatic: pulumi.Bool(true),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretVersion(ctx, "private-key-secret-version", &secretmanager.SecretVersionArgs{
 //				Secret:     private_key_secret.ID(),
 //				SecretData: readFileOrPanic("private-key.pem"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -60,14 +61,14 @@ import (
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Automatic: pulumi.Bool(true),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretVersion(ctx, "webhook-secret-secret-version", &secretmanager.SecretVersionArgs{
 //				Secret:     webhook_secret_secret.ID(),
 //				SecretData: pulumi.String("<webhook-secret-data>"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -87,14 +88,14 @@ import (
 //			_, err = secretmanager.NewSecretIamPolicy(ctx, "policy-pk", &secretmanager.SecretIamPolicyArgs{
 //				SecretId:   private_key_secret.SecretId,
 //				PolicyData: *pulumi.String(p4sa_secretAccessor.PolicyData),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretIamPolicy(ctx, "policy-whs", &secretmanager.SecretIamPolicyArgs{
 //				SecretId:   webhook_secret_secret.SecretId,
 //				PolicyData: *pulumi.String(p4sa_secretAccessor.PolicyData),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -108,7 +109,7 @@ import (
 //					AppSlug:                    pulumi.String("gcb-app"),
 //					AppInstallationId:          pulumi.Int(300),
 //				},
-//			}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+//			}, pulumi.DependsOn([]pulumi.Resource{
 //				policy_pk,
 //				policy_whs,
 //			}))
@@ -119,7 +120,7 @@ import (
 //				Location:         pulumi.String("us-central1"),
 //				ParentConnection: my_connection.ID(),
 //				RemoteUri:        pulumi.String("https://ghe.com/hashicorp/terraform-provider-google.git"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -159,14 +160,14 @@ import (
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Automatic: pulumi.Bool(true),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = secretmanager.NewSecretVersion(ctx, "github-token-secret-version", &secretmanager.SecretVersionArgs{
 //				Secret:     github_token_secret.ID(),
 //				SecretData: readFileOrPanic("my-github-token.txt"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -186,7 +187,7 @@ import (
 //			_, err = secretmanager.NewSecretIamPolicy(ctx, "policy", &secretmanager.SecretIamPolicyArgs{
 //				SecretId:   github_token_secret.SecretId,
 //				PolicyData: *pulumi.String(p4sa_secretAccessor.PolicyData),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -198,7 +199,7 @@ import (
 //						OauthTokenSecretVersion: github_token_secret_version.ID(),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -206,7 +207,7 @@ import (
 //				Location:         pulumi.String("us-west1"),
 //				ParentConnection: my_connection.Name,
 //				RemoteUri:        pulumi.String("https://github.com/myuser/myrepo.git"),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -275,6 +276,7 @@ func NewRepository(ctx *pulumi.Context,
 	if args.RemoteUri == nil {
 		return nil, errors.New("invalid value for required argument 'RemoteUri'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Repository
 	err := ctx.RegisterResource("gcp:cloudbuildv2/repository:Repository", name, args, &resource, opts...)
 	if err != nil {

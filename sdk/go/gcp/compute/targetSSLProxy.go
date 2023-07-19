@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -99,6 +100,7 @@ func NewTargetSSLProxy(ctx *pulumi.Context,
 	if args.BackendService == nil {
 		return nil, errors.New("invalid value for required argument 'BackendService'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TargetSSLProxy
 	err := ctx.RegisterResource("gcp:compute/targetSSLProxy:TargetSSLProxy", name, args, &resource, opts...)
 	if err != nil {

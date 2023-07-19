@@ -21,14 +21,20 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     public static final OsPolicyAssignmentState Empty = new OsPolicyAssignmentState();
 
     /**
-     * Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
+     * Output only. Indicates that this revision has been successfully
+     * rolled out in this zone and new VMs will be assigned OS policies from this
+     * revision. For a given OS policy assignment, there is only one revision with
+     * a value of `true` for this field.
      * 
      */
     @Import(name="baseline")
     private @Nullable Output<Boolean> baseline;
 
     /**
-     * @return Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
+     * @return Output only. Indicates that this revision has been successfully
+     * rolled out in this zone and new VMs will be assigned OS policies from this
+     * revision. For a given OS policy assignment, there is only one revision with
+     * a value of `true` for this field.
      * 
      */
     public Optional<Output<Boolean>> baseline() {
@@ -36,14 +42,16 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Output only. Indicates that this revision deletes the OS policy assignment.
+     * Output only. Indicates that this revision deletes the OS policy
+     * assignment.
      * 
      */
     @Import(name="deleted")
     private @Nullable Output<Boolean> deleted;
 
     /**
-     * @return Output only. Indicates that this revision deletes the OS policy assignment.
+     * @return Output only. Indicates that this revision deletes the OS policy
+     * assignment.
      * 
      */
     public Optional<Output<Boolean>> deleted() {
@@ -51,20 +59,20 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Policy description. Length of the description is limited to 1024 characters.
+     * Policy description. Length of the description is
+     * limited to 1024 characters.
      * 
-     * (Optional)
-     * OS policy assignment description. Length of the description is limited to 1024 characters.
+     * description is limited to 1024 characters.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Policy description. Length of the description is limited to 1024 characters.
+     * @return Policy description. Length of the description is
+     * limited to 1024 characters.
      * 
-     * (Optional)
-     * OS policy assignment description. Length of the description is limited to 1024 characters.
+     * description is limited to 1024 characters.
      * 
      */
     public Optional<Output<String>> description() {
@@ -72,14 +80,16 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The etag for this OS policy assignment. If this is provided on update, it must match the server&#39;s etag.
+     * The etag for this OS policy assignment. If this is provided on
+     * update, it must match the server&#39;s etag.
      * 
      */
     @Import(name="etag")
     private @Nullable Output<String> etag;
 
     /**
-     * @return The etag for this OS policy assignment. If this is provided on update, it must match the server&#39;s etag.
+     * @return The etag for this OS policy assignment. If this is provided on
+     * update, it must match the server&#39;s etag.
      * 
      */
     public Optional<Output<String>> etag() {
@@ -87,14 +97,16 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Required. Filter to select VMs.
+     * Filter to select VMs. Structure is
+     * documented below.
      * 
      */
     @Import(name="instanceFilter")
     private @Nullable Output<OsPolicyAssignmentInstanceFilterArgs> instanceFilter;
 
     /**
-     * @return Required. Filter to select VMs.
+     * @return Filter to select VMs. Structure is
+     * documented below.
      * 
      */
     public Optional<Output<OsPolicyAssignmentInstanceFilterArgs>> instanceFilter() {
@@ -132,14 +144,16 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Required. List of OS policies to be applied to the VMs.
+     * List of OS policies to be applied to the VMs.
+     * Structure is documented below.
      * 
      */
     @Import(name="osPolicies")
     private @Nullable Output<List<OsPolicyAssignmentOsPolicyArgs>> osPolicies;
 
     /**
-     * @return Required. List of OS policies to be applied to the VMs.
+     * @return List of OS policies to be applied to the VMs.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<OsPolicyAssignmentOsPolicyArgs>>> osPolicies() {
@@ -147,14 +161,16 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -162,14 +178,16 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+     * Output only. Indicates that reconciliation is in progress
+     * for the revision. This value is `true` when the `rollout_state` is one of:
      * 
      */
     @Import(name="reconciling")
     private @Nullable Output<Boolean> reconciling;
 
     /**
-     * @return Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+     * @return Output only. Indicates that reconciliation is in progress
+     * for the revision. This value is `true` when the `rollout_state` is one of:
      * 
      */
     public Optional<Output<Boolean>> reconciling() {
@@ -177,14 +195,16 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Output only. The timestamp that the revision was created.
+     * Output only. The timestamp that the revision was
+     * created.
      * 
      */
     @Import(name="revisionCreateTime")
     private @Nullable Output<String> revisionCreateTime;
 
     /**
-     * @return Output only. The timestamp that the revision was created.
+     * @return Output only. The timestamp that the revision was
+     * created.
      * 
      */
     public Optional<Output<String>> revisionCreateTime() {
@@ -192,14 +212,16 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
+     * Output only. The assignment revision ID A new revision is
+     * committed whenever a rollout is triggered for a OS policy assignment
      * 
      */
     @Import(name="revisionId")
     private @Nullable Output<String> revisionId;
 
     /**
-     * @return Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
+     * @return Output only. The assignment revision ID A new revision is
+     * committed whenever a rollout is triggered for a OS policy assignment
      * 
      */
     public Optional<Output<String>> revisionId() {
@@ -207,14 +229,22 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
+     * Rollout to deploy the OS policy assignment. A rollout
+     * is triggered in the following situations: 1) OSPolicyAssignment is created.
+     * 2) OSPolicyAssignment is updated and the update contains changes to one of
+     * the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+     * is deleted. Structure is documented below.
      * 
      */
     @Import(name="rollout")
     private @Nullable Output<OsPolicyAssignmentRolloutArgs> rollout;
 
     /**
-     * @return Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
+     * @return Rollout to deploy the OS policy assignment. A rollout
+     * is triggered in the following situations: 1) OSPolicyAssignment is created.
+     * 2) OSPolicyAssignment is updated and the update contains changes to one of
+     * the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+     * is deleted. Structure is documented below.
      * 
      */
     public Optional<Output<OsPolicyAssignmentRolloutArgs>> rollout() {
@@ -222,14 +252,14 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
+     * Output only. OS policy assignment rollout state
      * 
      */
     @Import(name="rolloutState")
     private @Nullable Output<String> rolloutState;
 
     /**
-     * @return Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
+     * @return Output only. OS policy assignment rollout state
      * 
      */
     public Optional<Output<String>> rolloutState() {
@@ -237,14 +267,16 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Set to true to skip awaiting rollout during resource creation and update.
+     * Set to true to skip awaiting rollout
+     * during resource creation and update.
      * 
      */
     @Import(name="skipAwaitRollout")
     private @Nullable Output<Boolean> skipAwaitRollout;
 
     /**
-     * @return Set to true to skip awaiting rollout during resource creation and update.
+     * @return Set to true to skip awaiting rollout
+     * during resource creation and update.
      * 
      */
     public Optional<Output<Boolean>> skipAwaitRollout() {
@@ -252,14 +284,16 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Output only. Server generated unique id for the OS policy assignment resource.
+     * Output only. Server generated unique id for the OS policy assignment
+     * resource.
      * 
      */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
     /**
-     * @return Output only. Server generated unique id for the OS policy assignment resource.
+     * @return Output only. Server generated unique id for the OS policy assignment
+     * resource.
      * 
      */
     public Optional<Output<String>> uid() {
@@ -306,7 +340,10 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param baseline Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
+         * @param baseline Output only. Indicates that this revision has been successfully
+         * rolled out in this zone and new VMs will be assigned OS policies from this
+         * revision. For a given OS policy assignment, there is only one revision with
+         * a value of `true` for this field.
          * 
          * @return builder
          * 
@@ -317,7 +354,10 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param baseline Output only. Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
+         * @param baseline Output only. Indicates that this revision has been successfully
+         * rolled out in this zone and new VMs will be assigned OS policies from this
+         * revision. For a given OS policy assignment, there is only one revision with
+         * a value of `true` for this field.
          * 
          * @return builder
          * 
@@ -327,7 +367,8 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param deleted Output only. Indicates that this revision deletes the OS policy assignment.
+         * @param deleted Output only. Indicates that this revision deletes the OS policy
+         * assignment.
          * 
          * @return builder
          * 
@@ -338,7 +379,8 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param deleted Output only. Indicates that this revision deletes the OS policy assignment.
+         * @param deleted Output only. Indicates that this revision deletes the OS policy
+         * assignment.
          * 
          * @return builder
          * 
@@ -348,10 +390,10 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description Policy description. Length of the description is limited to 1024 characters.
+         * @param description Policy description. Length of the description is
+         * limited to 1024 characters.
          * 
-         * (Optional)
-         * OS policy assignment description. Length of the description is limited to 1024 characters.
+         * description is limited to 1024 characters.
          * 
          * @return builder
          * 
@@ -362,10 +404,10 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param description Policy description. Length of the description is limited to 1024 characters.
+         * @param description Policy description. Length of the description is
+         * limited to 1024 characters.
          * 
-         * (Optional)
-         * OS policy assignment description. Length of the description is limited to 1024 characters.
+         * description is limited to 1024 characters.
          * 
          * @return builder
          * 
@@ -375,7 +417,8 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param etag The etag for this OS policy assignment. If this is provided on update, it must match the server&#39;s etag.
+         * @param etag The etag for this OS policy assignment. If this is provided on
+         * update, it must match the server&#39;s etag.
          * 
          * @return builder
          * 
@@ -386,7 +429,8 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param etag The etag for this OS policy assignment. If this is provided on update, it must match the server&#39;s etag.
+         * @param etag The etag for this OS policy assignment. If this is provided on
+         * update, it must match the server&#39;s etag.
          * 
          * @return builder
          * 
@@ -396,7 +440,8 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param instanceFilter Required. Filter to select VMs.
+         * @param instanceFilter Filter to select VMs. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -407,7 +452,8 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param instanceFilter Required. Filter to select VMs.
+         * @param instanceFilter Filter to select VMs. Structure is
+         * documented below.
          * 
          * @return builder
          * 
@@ -459,7 +505,8 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param osPolicies Required. List of OS policies to be applied to the VMs.
+         * @param osPolicies List of OS policies to be applied to the VMs.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -470,7 +517,8 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param osPolicies Required. List of OS policies to be applied to the VMs.
+         * @param osPolicies List of OS policies to be applied to the VMs.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -480,7 +528,8 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param osPolicies Required. List of OS policies to be applied to the VMs.
+         * @param osPolicies List of OS policies to be applied to the VMs.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -490,7 +539,8 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -501,7 +551,8 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -511,7 +562,8 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param reconciling Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+         * @param reconciling Output only. Indicates that reconciliation is in progress
+         * for the revision. This value is `true` when the `rollout_state` is one of:
          * 
          * @return builder
          * 
@@ -522,7 +574,8 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param reconciling Output only. Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING
+         * @param reconciling Output only. Indicates that reconciliation is in progress
+         * for the revision. This value is `true` when the `rollout_state` is one of:
          * 
          * @return builder
          * 
@@ -532,7 +585,8 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param revisionCreateTime Output only. The timestamp that the revision was created.
+         * @param revisionCreateTime Output only. The timestamp that the revision was
+         * created.
          * 
          * @return builder
          * 
@@ -543,7 +597,8 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param revisionCreateTime Output only. The timestamp that the revision was created.
+         * @param revisionCreateTime Output only. The timestamp that the revision was
+         * created.
          * 
          * @return builder
          * 
@@ -553,7 +608,8 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param revisionId Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
+         * @param revisionId Output only. The assignment revision ID A new revision is
+         * committed whenever a rollout is triggered for a OS policy assignment
          * 
          * @return builder
          * 
@@ -564,7 +620,8 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param revisionId Output only. The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
+         * @param revisionId Output only. The assignment revision ID A new revision is
+         * committed whenever a rollout is triggered for a OS policy assignment
          * 
          * @return builder
          * 
@@ -574,7 +631,11 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param rollout Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
+         * @param rollout Rollout to deploy the OS policy assignment. A rollout
+         * is triggered in the following situations: 1) OSPolicyAssignment is created.
+         * 2) OSPolicyAssignment is updated and the update contains changes to one of
+         * the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+         * is deleted. Structure is documented below.
          * 
          * @return builder
          * 
@@ -585,7 +646,11 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param rollout Required. Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
+         * @param rollout Rollout to deploy the OS policy assignment. A rollout
+         * is triggered in the following situations: 1) OSPolicyAssignment is created.
+         * 2) OSPolicyAssignment is updated and the update contains changes to one of
+         * the following fields: - instance_filter - os_policies 3) OSPolicyAssignment
+         * is deleted. Structure is documented below.
          * 
          * @return builder
          * 
@@ -595,7 +660,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param rolloutState Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
+         * @param rolloutState Output only. OS policy assignment rollout state
          * 
          * @return builder
          * 
@@ -606,7 +671,7 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param rolloutState Output only. OS policy assignment rollout state Possible values: ROLLOUT_STATE_UNSPECIFIED, IN_PROGRESS, CANCELLING, CANCELLED, SUCCEEDED
+         * @param rolloutState Output only. OS policy assignment rollout state
          * 
          * @return builder
          * 
@@ -616,7 +681,8 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param skipAwaitRollout Set to true to skip awaiting rollout during resource creation and update.
+         * @param skipAwaitRollout Set to true to skip awaiting rollout
+         * during resource creation and update.
          * 
          * @return builder
          * 
@@ -627,7 +693,8 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param skipAwaitRollout Set to true to skip awaiting rollout during resource creation and update.
+         * @param skipAwaitRollout Set to true to skip awaiting rollout
+         * during resource creation and update.
          * 
          * @return builder
          * 
@@ -637,7 +704,8 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param uid Output only. Server generated unique id for the OS policy assignment resource.
+         * @param uid Output only. Server generated unique id for the OS policy assignment
+         * resource.
          * 
          * @return builder
          * 
@@ -648,7 +716,8 @@ public final class OsPolicyAssignmentState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param uid Output only. Server generated unique id for the OS policy assignment resource.
+         * @param uid Output only. Server generated unique id for the OS policy assignment
+         * resource.
          * 
          * @return builder
          * 

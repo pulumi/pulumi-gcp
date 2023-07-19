@@ -195,17 +195,17 @@ def get_subnetwork(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getSubnetwork:getSubnetwork', __args__, opts=opts, typ=GetSubnetworkResult).value
 
     return AwaitableGetSubnetworkResult(
-        description=__ret__.description,
-        gateway_address=__ret__.gateway_address,
-        id=__ret__.id,
-        ip_cidr_range=__ret__.ip_cidr_range,
-        name=__ret__.name,
-        network=__ret__.network,
-        private_ip_google_access=__ret__.private_ip_google_access,
-        project=__ret__.project,
-        region=__ret__.region,
-        secondary_ip_ranges=__ret__.secondary_ip_ranges,
-        self_link=__ret__.self_link)
+        description=pulumi.get(__ret__, 'description'),
+        gateway_address=pulumi.get(__ret__, 'gateway_address'),
+        id=pulumi.get(__ret__, 'id'),
+        ip_cidr_range=pulumi.get(__ret__, 'ip_cidr_range'),
+        name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
+        private_ip_google_access=pulumi.get(__ret__, 'private_ip_google_access'),
+        project=pulumi.get(__ret__, 'project'),
+        region=pulumi.get(__ret__, 'region'),
+        secondary_ip_ranges=pulumi.get(__ret__, 'secondary_ip_ranges'),
+        self_link=pulumi.get(__ret__, 'self_link'))
 
 
 @_utilities.lift_output_func(get_subnetwork)

@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.CertificateManagedAuthorizationAttemptInfo> AuthorizationAttemptInfos;
         /// <summary>
-        /// Authorizations that will be used for performing domain authorization
+        /// Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
         /// </summary>
         public readonly ImmutableArray<string> DnsAuthorizations;
         /// <summary>
@@ -32,6 +32,12 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
         /// Wildcard domains are only supported with DNS challenge resolution
         /// </summary>
         public readonly ImmutableArray<string> Domains;
+        /// <summary>
+        /// The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
+        /// If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
+        /// Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
+        /// </summary>
+        public readonly string? IssuanceConfig;
         /// <summary>
         /// (Output)
         /// Information about issues with provisioning this Managed Certificate.
@@ -52,6 +58,8 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
 
             ImmutableArray<string> domains,
 
+            string? issuanceConfig,
+
             ImmutableArray<Outputs.CertificateManagedProvisioningIssue> provisioningIssues,
 
             string? state)
@@ -59,6 +67,7 @@ namespace Pulumi.Gcp.CertificateManager.Outputs
             AuthorizationAttemptInfos = authorizationAttemptInfos;
             DnsAuthorizations = dnsAuthorizations;
             Domains = domains;
+            IssuanceConfig = issuanceConfig;
             ProvisioningIssues = provisioningIssues;
             State = state;
         }
