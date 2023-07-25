@@ -2038,6 +2038,12 @@
                                 "hive_partitioning_options": {
                                     "maxItemsOne": true
                                 },
+                                "json_options": {
+                                    "maxItemsOne": true
+                                },
+                                "parquet_options": {
+                                    "maxItemsOne": true
+                                },
                                 "source_uris": {
                                     "maxItemsOne": false
                                 }
@@ -8122,6 +8128,9 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "gpu_driver_installation_config": {
+                                                "maxItemsOne": true
+                                            },
                                             "gpu_sharing_config": {
                                                 "maxItemsOne": true
                                             }
@@ -8237,6 +8246,9 @@
                                                 "maxItemsOne": false,
                                                 "elem": {
                                                     "fields": {
+                                                        "gpu_driver_installation_config": {
+                                                            "maxItemsOne": true
+                                                        },
                                                         "gpu_sharing_config": {
                                                             "maxItemsOne": true
                                                         }
@@ -8486,6 +8498,9 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "gpu_driver_installation_config": {
+                                                "maxItemsOne": true
+                                            },
                                             "gpu_sharing_config": {
                                                 "maxItemsOne": true
                                             }
@@ -15245,6 +15260,57 @@
                     }
                 }
             },
+            "google_looker_instance": {
+                "current": "gcp:looker/instance:Instance",
+                "majorVersion": 6,
+                "fields": {
+                    "admin_settings": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "allowed_email_domains": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "deny_maintenance_period": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "end_date": {
+                                    "maxItemsOne": true
+                                },
+                                "start_date": {
+                                    "maxItemsOne": true
+                                },
+                                "time": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "encryption_config": {
+                        "maxItemsOne": true
+                    },
+                    "maintenance_window": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "start_time": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "oauth_config": {
+                        "maxItemsOne": true
+                    },
+                    "user_metadata": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "google_memcache_instance": {
                 "current": "gcp:memcache/instance:Instance",
                 "majorVersion": 6,
@@ -21984,6 +22050,9 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "gpu_driver_installation_config": {
+                                                "maxItemsOne": false
+                                            },
                                             "gpu_sharing_config": {
                                                 "maxItemsOne": false
                                             }
@@ -22099,6 +22168,9 @@
                                                 "maxItemsOne": false,
                                                 "elem": {
                                                     "fields": {
+                                                        "gpu_driver_installation_config": {
+                                                            "maxItemsOne": false
+                                                        },
                                                         "gpu_sharing_config": {
                                                             "maxItemsOne": false
                                                         }
@@ -24387,6 +24459,7 @@
             "gcp:logging/projectBucketConfig:ProjectBucketConfig": 0,
             "gcp:logging/projectExclusion:ProjectExclusion": 0,
             "gcp:logging/projectSink:ProjectSink": 0,
+            "gcp:looker/instance:Instance": 0,
             "gcp:memcache/instance:Instance": 0,
             "gcp:ml/engineModel:EngineModel": 0,
             "gcp:monitoring/alertPolicy:AlertPolicy": 0,
@@ -25408,6 +25481,7 @@
             "gcp:logging/projectBucketConfig:ProjectBucketConfig": "google_logging_project_bucket_config",
             "gcp:logging/projectExclusion:ProjectExclusion": "google_logging_project_exclusion",
             "gcp:logging/projectSink:ProjectSink": "google_logging_project_sink",
+            "gcp:looker/instance:Instance": "google_looker_instance",
             "gcp:memcache/instance:Instance": "google_memcache_instance",
             "gcp:ml/engineModel:EngineModel": "google_ml_engine_model",
             "gcp:monitoring/alertPolicy:AlertPolicy": "google_monitoring_alert_policy",
@@ -26496,6 +26570,7 @@
                 "authorizedNetwork": "authorized_network",
                 "billingType": "billing_type",
                 "caCertificate": "ca_certificate",
+                "disableVpcPeering": "disable_vpc_peering",
                 "displayName": "display_name",
                 "projectId": "project_id",
                 "runtimeDatabaseEncryptionKeyName": "runtime_database_encryption_key_name",
@@ -27113,9 +27188,11 @@
                 "googleSheetsOptions": "google_sheets_options",
                 "hivePartitioningOptions": "hive_partitioning_options",
                 "ignoreUnknownValues": "ignore_unknown_values",
+                "jsonOptions": "json_options",
                 "maxBadRecords": "max_bad_records",
                 "metadataCacheMode": "metadata_cache_mode",
                 "objectMetadata": "object_metadata",
+                "parquetOptions": "parquet_options",
                 "referenceFileSchemaUri": "reference_file_schema_uri",
                 "sourceFormat": "source_format",
                 "sourceUris": "source_uris"
@@ -27135,6 +27212,10 @@
             "gcp:bigquery/TableExternalDataConfigurationHivePartitioningOptions:TableExternalDataConfigurationHivePartitioningOptions": {
                 "requirePartitionFilter": "require_partition_filter",
                 "sourceUriPrefix": "source_uri_prefix"
+            },
+            "gcp:bigquery/TableExternalDataConfigurationParquetOptions:TableExternalDataConfigurationParquetOptions": {
+                "enableListInference": "enable_list_inference",
+                "enumAsString": "enum_as_string"
             },
             "gcp:bigquery/TableMaterializedView:TableMaterializedView": {
                 "enableRefresh": "enable_refresh",
@@ -27411,6 +27492,7 @@
                 "policyData": "policy_data"
             },
             "gcp:bigtable/table:Table": {
+                "changeStreamRetention": "change_stream_retention",
                 "columnFamilies": "column_family",
                 "deletionProtection": "deletion_protection",
                 "instanceName": "instance_name",
@@ -31518,6 +31600,7 @@
                 "asyncPrimaryDisk": "async_primary_disk",
                 "creationTimestamp": "creation_timestamp",
                 "diskEncryptionKey": "disk_encryption_key",
+                "enableConfidentialCompute": "enable_confidential_compute",
                 "guestOsFeatures": "guest_os_features",
                 "labelFingerprint": "label_fingerprint",
                 "lastAttachTimestamp": "last_attach_timestamp",
@@ -31775,6 +31858,7 @@
                 "asyncPrimaryDisks": "async_primary_disk",
                 "creationTimestamp": "creation_timestamp",
                 "diskEncryptionKeys": "disk_encryption_key",
+                "enableConfidentialCompute": "enable_confidential_compute",
                 "guestOsFeatures": "guest_os_features",
                 "labelFingerprint": "label_fingerprint",
                 "lastAttachTimestamp": "last_attach_timestamp",
@@ -31924,6 +32008,7 @@
                 "imageEncryptionKeySha256": "image_encryption_key_sha256",
                 "imageId": "image_id",
                 "labelFingerprint": "label_fingerprint",
+                "mostRecent": "most_recent",
                 "selfLink": "self_link",
                 "sourceDisk": "source_disk",
                 "sourceDiskEncryptionKeySha256": "source_disk_encryption_key_sha256",
@@ -33787,8 +33872,12 @@
                 "localSsdCount": "local_ssd_count"
             },
             "gcp:container/ClusterNodeConfigGuestAccelerator:ClusterNodeConfigGuestAccelerator": {
+                "gpuDriverInstallationConfig": "gpu_driver_installation_config",
                 "gpuPartitionSize": "gpu_partition_size",
                 "gpuSharingConfig": "gpu_sharing_config"
+            },
+            "gcp:container/ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig:ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig": {
+                "gpuDriverVersion": "gpu_driver_version"
             },
             "gcp:container/ClusterNodeConfigGuestAcceleratorGpuSharingConfig:ClusterNodeConfigGuestAcceleratorGpuSharingConfig": {
                 "gpuSharingStrategy": "gpu_sharing_strategy",
@@ -33895,8 +33984,12 @@
                 "localSsdCount": "local_ssd_count"
             },
             "gcp:container/ClusterNodePoolNodeConfigGuestAccelerator:ClusterNodePoolNodeConfigGuestAccelerator": {
+                "gpuDriverInstallationConfig": "gpu_driver_installation_config",
                 "gpuPartitionSize": "gpu_partition_size",
                 "gpuSharingConfig": "gpu_sharing_config"
+            },
+            "gcp:container/ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig:ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig": {
+                "gpuDriverVersion": "gpu_driver_version"
             },
             "gcp:container/ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig:ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig": {
                 "gpuSharingStrategy": "gpu_sharing_strategy",
@@ -34035,8 +34128,12 @@
                 "localSsdCount": "local_ssd_count"
             },
             "gcp:container/NodePoolNodeConfigGuestAccelerator:NodePoolNodeConfigGuestAccelerator": {
+                "gpuDriverInstallationConfig": "gpu_driver_installation_config",
                 "gpuPartitionSize": "gpu_partition_size",
                 "gpuSharingConfig": "gpu_sharing_config"
+            },
+            "gcp:container/NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig:NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig": {
+                "gpuDriverVersion": "gpu_driver_version"
             },
             "gcp:container/NodePoolNodeConfigGuestAcceleratorGpuSharingConfig:NodePoolNodeConfigGuestAcceleratorGpuSharingConfig": {
                 "gpuSharingStrategy": "gpu_sharing_strategy",
@@ -34439,8 +34536,12 @@
                 "localSsdCount": "local_ssd_count"
             },
             "gcp:container/getClusterNodeConfigGuestAccelerator:getClusterNodeConfigGuestAccelerator": {
+                "gpuDriverInstallationConfigs": "gpu_driver_installation_config",
                 "gpuPartitionSize": "gpu_partition_size",
                 "gpuSharingConfigs": "gpu_sharing_config"
+            },
+            "gcp:container/getClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig:getClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig": {
+                "gpuDriverVersion": "gpu_driver_version"
             },
             "gcp:container/getClusterNodeConfigGuestAcceleratorGpuSharingConfig:getClusterNodeConfigGuestAcceleratorGpuSharingConfig": {
                 "gpuSharingStrategy": "gpu_sharing_strategy",
@@ -34550,8 +34651,12 @@
                 "localSsdCount": "local_ssd_count"
             },
             "gcp:container/getClusterNodePoolNodeConfigGuestAccelerator:getClusterNodePoolNodeConfigGuestAccelerator": {
+                "gpuDriverInstallationConfigs": "gpu_driver_installation_config",
                 "gpuPartitionSize": "gpu_partition_size",
                 "gpuSharingConfigs": "gpu_sharing_config"
+            },
+            "gcp:container/getClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig:getClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig": {
+                "gpuDriverVersion": "gpu_driver_version"
             },
             "gcp:container/getClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig:getClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig": {
                 "gpuSharingStrategy": "gpu_sharing_strategy",
@@ -37801,7 +37906,8 @@
                 "backupConfig": "backup_config",
                 "backupSchedule": "backup_schedule",
                 "protectedPodCount": "protected_pod_count",
-                "retentionPolicy": "retention_policy"
+                "retentionPolicy": "retention_policy",
+                "stateReason": "state_reason"
             },
             "gcp:gkebackup/backupPlanIamPolicy:BackupPlanIamPolicy": {
                 "policyData": "policy_data"
@@ -38380,6 +38486,7 @@
                 "policyData": "policy_data"
             },
             "gcp:healthcare/fhirStore:FhirStore": {
+                "complexDataTypeReferenceParsing": "complex_data_type_reference_parsing",
                 "disableReferentialIntegrity": "disable_referential_integrity",
                 "disableResourceVersioning": "disable_resource_versioning",
                 "enableHistoryImport": "enable_history_import",
@@ -38823,6 +38930,7 @@
                 "impersonateServiceAccountDelegates": "impersonate_service_account_delegates",
                 "kmsCustomEndpoint": "kms_custom_endpoint",
                 "loggingCustomEndpoint": "logging_custom_endpoint",
+                "lookerCustomEndpoint": "looker_custom_endpoint",
                 "memcacheCustomEndpoint": "memcache_custom_endpoint",
                 "mlEngineCustomEndpoint": "ml_engine_custom_endpoint",
                 "monitoringCustomEndpoint": "monitoring_custom_endpoint",
@@ -39168,6 +39276,51 @@
                 "bigqueryOptions": "bigquery_options",
                 "uniqueWriterIdentity": "unique_writer_identity",
                 "writerIdentity": "writer_identity"
+            },
+            "gcp:looker/InstanceAdminSettings:InstanceAdminSettings": {
+                "allowedEmailDomains": "allowed_email_domains"
+            },
+            "gcp:looker/InstanceDenyMaintenancePeriod:InstanceDenyMaintenancePeriod": {
+                "endDate": "end_date",
+                "startDate": "start_date"
+            },
+            "gcp:looker/InstanceEncryptionConfig:InstanceEncryptionConfig": {
+                "kmsKeyName": "kms_key_name",
+                "kmsKeyNameVersion": "kms_key_name_version",
+                "kmsKeyState": "kms_key_state"
+            },
+            "gcp:looker/InstanceMaintenanceWindow:InstanceMaintenanceWindow": {
+                "dayOfWeek": "day_of_week",
+                "startTime": "start_time"
+            },
+            "gcp:looker/InstanceOauthConfig:InstanceOauthConfig": {
+                "clientId": "client_id",
+                "clientSecret": "client_secret"
+            },
+            "gcp:looker/InstanceUserMetadata:InstanceUserMetadata": {
+                "additionalDeveloperUserCount": "additional_developer_user_count",
+                "additionalStandardUserCount": "additional_standard_user_count",
+                "additionalViewerUserCount": "additional_viewer_user_count"
+            },
+            "gcp:looker/instance:Instance": {
+                "adminSettings": "admin_settings",
+                "consumerNetwork": "consumer_network",
+                "createTime": "create_time",
+                "denyMaintenancePeriod": "deny_maintenance_period",
+                "egressPublicIp": "egress_public_ip",
+                "encryptionConfig": "encryption_config",
+                "ingressPrivateIp": "ingress_private_ip",
+                "ingressPublicIp": "ingress_public_ip",
+                "lookerUri": "looker_uri",
+                "lookerVersion": "looker_version",
+                "maintenanceWindow": "maintenance_window",
+                "oauthConfig": "oauth_config",
+                "platformEdition": "platform_edition",
+                "privateIpEnabled": "private_ip_enabled",
+                "publicIpEnabled": "public_ip_enabled",
+                "reservedRange": "reserved_range",
+                "updateTime": "update_time",
+                "userMetadata": "user_metadata"
             },
             "gcp:memcache/InstanceMaintenancePolicy:InstanceMaintenancePolicy": {
                 "createTime": "create_time",
@@ -42555,6 +42708,7 @@
             "impersonateServiceAccountDelegates": "impersonate_service_account_delegates",
             "kmsCustomEndpoint": "kms_custom_endpoint",
             "loggingCustomEndpoint": "logging_custom_endpoint",
+            "lookerCustomEndpoint": "looker_custom_endpoint",
             "memcacheCustomEndpoint": "memcache_custom_endpoint",
             "mlEngineCustomEndpoint": "ml_engine_custom_endpoint",
             "monitoringCustomEndpoint": "monitoring_custom_endpoint",
