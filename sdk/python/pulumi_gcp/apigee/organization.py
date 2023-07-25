@@ -21,6 +21,7 @@ class OrganizationArgs:
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  billing_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_vpc_peering: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input['OrganizationPropertiesArgs']] = None,
                  retention: Optional[pulumi.Input[str]] = None,
@@ -38,6 +39,11 @@ class OrganizationArgs:
                Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
         :param pulumi.Input[str] billing_type: Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
         :param pulumi.Input[str] description: Description of the Apigee organization.
+        :param pulumi.Input[bool] disable_vpc_peering: Flag that specifies whether the VPC Peering through Private Google Access should be
+               disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+               on the consumer project is not provided, in which case the flag should be set to `true`.
+               Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+               of any Apigee runtime instance and can be updated only when there are no runtime instances.
         :param pulumi.Input[str] display_name: The display name of the Apigee organization.
         :param pulumi.Input['OrganizationPropertiesArgs'] properties: Properties defined in the Apigee organization profile.
                Structure is documented below.
@@ -64,6 +70,8 @@ class OrganizationArgs:
             pulumi.set(__self__, "billing_type", billing_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disable_vpc_peering is not None:
+            pulumi.set(__self__, "disable_vpc_peering", disable_vpc_peering)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if properties is not None:
@@ -139,6 +147,22 @@ class OrganizationArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="disableVpcPeering")
+    def disable_vpc_peering(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag that specifies whether the VPC Peering through Private Google Access should be
+        disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+        on the consumer project is not provided, in which case the flag should be set to `true`.
+        Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+        of any Apigee runtime instance and can be updated only when there are no runtime instances.
+        """
+        return pulumi.get(self, "disable_vpc_peering")
+
+    @disable_vpc_peering.setter
+    def disable_vpc_peering(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_vpc_peering", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -221,6 +245,7 @@ class _OrganizationState:
                  billing_type: Optional[pulumi.Input[str]] = None,
                  ca_certificate: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_vpc_peering: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
@@ -240,6 +265,11 @@ class _OrganizationState:
         :param pulumi.Input[str] ca_certificate: Output only. Base64-encoded public certificate for the root CA of the Apigee organization.
                Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
         :param pulumi.Input[str] description: Description of the Apigee organization.
+        :param pulumi.Input[bool] disable_vpc_peering: Flag that specifies whether the VPC Peering through Private Google Access should be
+               disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+               on the consumer project is not provided, in which case the flag should be set to `true`.
+               Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+               of any Apigee runtime instance and can be updated only when there are no runtime instances.
         :param pulumi.Input[str] display_name: The display name of the Apigee organization.
         :param pulumi.Input[str] name: Name of the property.
         :param pulumi.Input[str] project_id: The project ID associated with the Apigee organization.
@@ -276,6 +306,8 @@ class _OrganizationState:
             pulumi.set(__self__, "ca_certificate", ca_certificate)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disable_vpc_peering is not None:
+            pulumi.set(__self__, "disable_vpc_peering", disable_vpc_peering)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if name is not None:
@@ -367,6 +399,22 @@ class _OrganizationState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="disableVpcPeering")
+    def disable_vpc_peering(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag that specifies whether the VPC Peering through Private Google Access should be
+        disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+        on the consumer project is not provided, in which case the flag should be set to `true`.
+        Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+        of any Apigee runtime instance and can be updated only when there are no runtime instances.
+        """
+        return pulumi.get(self, "disable_vpc_peering")
+
+    @disable_vpc_peering.setter
+    def disable_vpc_peering(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_vpc_peering", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -489,6 +537,7 @@ class Organization(pulumi.CustomResource):
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  billing_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_vpc_peering: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['OrganizationPropertiesArgs']]] = None,
@@ -529,6 +578,19 @@ class Organization(pulumi.CustomResource):
             authorized_network=apigee_network.id,
             opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
         ```
+        ### Apigee Organization Cloud Basic Disable Vpc Peering
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        current = gcp.organizations.get_client_config()
+        org = gcp.apigee.Organization("org",
+            description="Terraform-provisioned basic Apigee Org without VPC Peering.",
+            analytics_region="us-central1",
+            project_id=current.project,
+            disable_vpc_peering=True)
+        ```
         ### Apigee Organization Cloud Full
 
         ```python
@@ -568,6 +630,32 @@ class Organization(pulumi.CustomResource):
                     apigee_sa_keyuser,
                 ]))
         ```
+        ### Apigee Organization Cloud Full Disable Vpc Peering
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        current = gcp.organizations.get_client_config()
+        apigee_keyring = gcp.kms.KeyRing("apigeeKeyring", location="us-central1")
+        apigee_key = gcp.kms.CryptoKey("apigeeKey", key_ring=apigee_keyring.id)
+        apigee_sa = gcp.projects.ServiceIdentity("apigeeSa",
+            project=google_project["project"]["project_id"],
+            service=google_project_service["apigee"]["service"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        apigee_sa_keyuser = gcp.kms.CryptoKeyIAMBinding("apigeeSaKeyuser",
+            crypto_key_id=apigee_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            members=[apigee_sa.email.apply(lambda email: f"serviceAccount:{email}")])
+        org = gcp.apigee.Organization("org",
+            analytics_region="us-central1",
+            display_name="apigee-org",
+            description="Terraform-provisioned Apigee Org without VPC Peering.",
+            project_id=current.project,
+            disable_vpc_peering=True,
+            runtime_database_encryption_key_name=apigee_key.id,
+            opts=pulumi.ResourceOptions(depends_on=[apigee_sa_keyuser]))
+        ```
 
         ## Import
 
@@ -589,6 +677,11 @@ class Organization(pulumi.CustomResource):
                Valid only when `RuntimeType` is set to CLOUD. The value can be updated only when there are no runtime instances. For example: "default".
         :param pulumi.Input[str] billing_type: Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
         :param pulumi.Input[str] description: Description of the Apigee organization.
+        :param pulumi.Input[bool] disable_vpc_peering: Flag that specifies whether the VPC Peering through Private Google Access should be
+               disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+               on the consumer project is not provided, in which case the flag should be set to `true`.
+               Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+               of any Apigee runtime instance and can be updated only when there are no runtime instances.
         :param pulumi.Input[str] display_name: The display name of the Apigee organization.
         :param pulumi.Input[str] project_id: The project ID associated with the Apigee organization.
                
@@ -649,6 +742,19 @@ class Organization(pulumi.CustomResource):
             authorized_network=apigee_network.id,
             opts=pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
         ```
+        ### Apigee Organization Cloud Basic Disable Vpc Peering
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        current = gcp.organizations.get_client_config()
+        org = gcp.apigee.Organization("org",
+            description="Terraform-provisioned basic Apigee Org without VPC Peering.",
+            analytics_region="us-central1",
+            project_id=current.project,
+            disable_vpc_peering=True)
+        ```
         ### Apigee Organization Cloud Full
 
         ```python
@@ -688,6 +794,32 @@ class Organization(pulumi.CustomResource):
                     apigee_sa_keyuser,
                 ]))
         ```
+        ### Apigee Organization Cloud Full Disable Vpc Peering
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        current = gcp.organizations.get_client_config()
+        apigee_keyring = gcp.kms.KeyRing("apigeeKeyring", location="us-central1")
+        apigee_key = gcp.kms.CryptoKey("apigeeKey", key_ring=apigee_keyring.id)
+        apigee_sa = gcp.projects.ServiceIdentity("apigeeSa",
+            project=google_project["project"]["project_id"],
+            service=google_project_service["apigee"]["service"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        apigee_sa_keyuser = gcp.kms.CryptoKeyIAMBinding("apigeeSaKeyuser",
+            crypto_key_id=apigee_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            members=[apigee_sa.email.apply(lambda email: f"serviceAccount:{email}")])
+        org = gcp.apigee.Organization("org",
+            analytics_region="us-central1",
+            display_name="apigee-org",
+            description="Terraform-provisioned Apigee Org without VPC Peering.",
+            project_id=current.project,
+            disable_vpc_peering=True,
+            runtime_database_encryption_key_name=apigee_key.id,
+            opts=pulumi.ResourceOptions(depends_on=[apigee_sa_keyuser]))
+        ```
 
         ## Import
 
@@ -720,6 +852,7 @@ class Organization(pulumi.CustomResource):
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  billing_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disable_vpc_peering: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['OrganizationPropertiesArgs']]] = None,
@@ -739,6 +872,7 @@ class Organization(pulumi.CustomResource):
             __props__.__dict__["authorized_network"] = authorized_network
             __props__.__dict__["billing_type"] = billing_type
             __props__.__dict__["description"] = description
+            __props__.__dict__["disable_vpc_peering"] = disable_vpc_peering
             __props__.__dict__["display_name"] = display_name
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
@@ -767,6 +901,7 @@ class Organization(pulumi.CustomResource):
             billing_type: Optional[pulumi.Input[str]] = None,
             ca_certificate: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            disable_vpc_peering: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
@@ -791,6 +926,11 @@ class Organization(pulumi.CustomResource):
         :param pulumi.Input[str] ca_certificate: Output only. Base64-encoded public certificate for the root CA of the Apigee organization.
                Valid only when `RuntimeType` is CLOUD. A base64-encoded string.
         :param pulumi.Input[str] description: Description of the Apigee organization.
+        :param pulumi.Input[bool] disable_vpc_peering: Flag that specifies whether the VPC Peering through Private Google Access should be
+               disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+               on the consumer project is not provided, in which case the flag should be set to `true`.
+               Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+               of any Apigee runtime instance and can be updated only when there are no runtime instances.
         :param pulumi.Input[str] display_name: The display name of the Apigee organization.
         :param pulumi.Input[str] name: Name of the property.
         :param pulumi.Input[str] project_id: The project ID associated with the Apigee organization.
@@ -825,6 +965,7 @@ class Organization(pulumi.CustomResource):
         __props__.__dict__["billing_type"] = billing_type
         __props__.__dict__["ca_certificate"] = ca_certificate
         __props__.__dict__["description"] = description
+        __props__.__dict__["disable_vpc_peering"] = disable_vpc_peering
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["name"] = name
         __props__.__dict__["project_id"] = project_id
@@ -885,6 +1026,18 @@ class Organization(pulumi.CustomResource):
         Description of the Apigee organization.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="disableVpcPeering")
+    def disable_vpc_peering(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Flag that specifies whether the VPC Peering through Private Google Access should be
+        disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+        on the consumer project is not provided, in which case the flag should be set to `true`.
+        Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+        of any Apigee runtime instance and can be updated only when there are no runtime instances.
+        """
+        return pulumi.get(self, "disable_vpc_peering")
 
     @property
     @pulumi.getter(name="displayName")

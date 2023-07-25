@@ -38,6 +38,7 @@ import * as utilities from "../utilities";
  *             family: "family-second",
  *         },
  *     ],
+ *     changeStreamRetention: "24h0m0s",
  * });
  * ```
  *
@@ -88,13 +89,17 @@ export class Table extends pulumi.CustomResource {
     }
 
     /**
+     * Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+     *
+     * -----
+     */
+    public readonly changeStreamRetention!: pulumi.Output<string>;
+    /**
      * A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
      */
     public readonly columnFamilies!: pulumi.Output<outputs.bigtable.TableColumnFamily[] | undefined>;
     /**
      * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
-     *
-     * -----
      */
     public readonly deletionProtection!: pulumi.Output<string>;
     /**
@@ -130,6 +135,7 @@ export class Table extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TableState | undefined;
+            resourceInputs["changeStreamRetention"] = state ? state.changeStreamRetention : undefined;
             resourceInputs["columnFamilies"] = state ? state.columnFamilies : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["instanceName"] = state ? state.instanceName : undefined;
@@ -141,6 +147,7 @@ export class Table extends pulumi.CustomResource {
             if ((!args || args.instanceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceName'");
             }
+            resourceInputs["changeStreamRetention"] = args ? args.changeStreamRetention : undefined;
             resourceInputs["columnFamilies"] = args ? args.columnFamilies : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["instanceName"] = args ? args.instanceName : undefined;
@@ -158,13 +165,17 @@ export class Table extends pulumi.CustomResource {
  */
 export interface TableState {
     /**
+     * Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+     *
+     * -----
+     */
+    changeStreamRetention?: pulumi.Input<string>;
+    /**
      * A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
      */
     columnFamilies?: pulumi.Input<pulumi.Input<inputs.bigtable.TableColumnFamily>[]>;
     /**
      * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
-     *
-     * -----
      */
     deletionProtection?: pulumi.Input<string>;
     /**
@@ -193,13 +204,17 @@ export interface TableState {
  */
 export interface TableArgs {
     /**
+     * Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+     *
+     * -----
+     */
+    changeStreamRetention?: pulumi.Input<string>;
+    /**
      * A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
      */
     columnFamilies?: pulumi.Input<pulumi.Input<inputs.bigtable.TableColumnFamily>[]>;
     /**
      * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
-     *
-     * -----
      */
     deletionProtection?: pulumi.Input<string>;
     /**

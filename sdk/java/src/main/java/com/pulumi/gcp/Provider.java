@@ -568,6 +568,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> loggingCustomEndpoint() {
         return Codegen.optional(this.loggingCustomEndpoint);
     }
+    @Export(name="lookerCustomEndpoint", type=String.class, parameters={})
+    private Output</* @Nullable */ String> lookerCustomEndpoint;
+
+    public Output<Optional<String>> lookerCustomEndpoint() {
+        return Codegen.optional(this.lookerCustomEndpoint);
+    }
     @Export(name="memcacheCustomEndpoint", type=String.class, parameters={})
     private Output</* @Nullable */ String> memcacheCustomEndpoint;
 

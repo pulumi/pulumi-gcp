@@ -487,12 +487,52 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.get_project()
         default_network = gcp.compute.Network("defaultNetwork")
         default_cluster = gcp.alloydb.Cluster("defaultCluster",
             cluster_id="alloydb-cluster",
             location="us-central1",
-            network=default_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"))
+            network=default_network.id)
+        project = gcp.organizations.get_project()
+        ```
+        ### Alloydb Cluster Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default")
+        full = gcp.alloydb.Cluster("full",
+            cluster_id="alloydb-cluster-full",
+            location="us-central1",
+            network=default.id,
+            initial_user=gcp.alloydb.ClusterInitialUserArgs(
+                user="alloydb-cluster-full",
+                password="alloydb-cluster-full",
+            ),
+            automated_backup_policy=gcp.alloydb.ClusterAutomatedBackupPolicyArgs(
+                location="us-central1",
+                backup_window="1800s",
+                enabled=True,
+                weekly_schedule=gcp.alloydb.ClusterAutomatedBackupPolicyWeeklyScheduleArgs(
+                    days_of_weeks=["MONDAY"],
+                    start_times=[gcp.alloydb.ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs(
+                        hours=23,
+                        minutes=0,
+                        seconds=0,
+                        nanos=0,
+                    )],
+                ),
+                quantity_based_retention=gcp.alloydb.ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs(
+                    count=1,
+                ),
+                labels={
+                    "test": "alloydb-cluster-full",
+                },
+            ),
+            labels={
+                "test": "alloydb-cluster-full",
+            })
+        project = gcp.organizations.get_project()
         ```
 
         ## Import
@@ -562,12 +602,52 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.get_project()
         default_network = gcp.compute.Network("defaultNetwork")
         default_cluster = gcp.alloydb.Cluster("defaultCluster",
             cluster_id="alloydb-cluster",
             location="us-central1",
-            network=default_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"))
+            network=default_network.id)
+        project = gcp.organizations.get_project()
+        ```
+        ### Alloydb Cluster Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default")
+        full = gcp.alloydb.Cluster("full",
+            cluster_id="alloydb-cluster-full",
+            location="us-central1",
+            network=default.id,
+            initial_user=gcp.alloydb.ClusterInitialUserArgs(
+                user="alloydb-cluster-full",
+                password="alloydb-cluster-full",
+            ),
+            automated_backup_policy=gcp.alloydb.ClusterAutomatedBackupPolicyArgs(
+                location="us-central1",
+                backup_window="1800s",
+                enabled=True,
+                weekly_schedule=gcp.alloydb.ClusterAutomatedBackupPolicyWeeklyScheduleArgs(
+                    days_of_weeks=["MONDAY"],
+                    start_times=[gcp.alloydb.ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs(
+                        hours=23,
+                        minutes=0,
+                        seconds=0,
+                        nanos=0,
+                    )],
+                ),
+                quantity_based_retention=gcp.alloydb.ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs(
+                    count=1,
+                ),
+                labels={
+                    "test": "alloydb-cluster-full",
+                },
+            ),
+            labels={
+                "test": "alloydb-cluster-full",
+            })
+        project = gcp.organizations.get_project()
         ```
 
         ## Import

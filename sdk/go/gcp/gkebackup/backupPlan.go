@@ -314,6 +314,10 @@ type BackupPlan struct {
 	// RetentionPolicy governs lifecycle of Backups created under this plan.
 	// Structure is documented below.
 	RetentionPolicy BackupPlanRetentionPolicyPtrOutput `pulumi:"retentionPolicy"`
+	// The State of the BackupPlan.
+	State pulumi.StringOutput `pulumi:"state"`
+	// Detailed description of why BackupPlan is in its current state.
+	StateReason pulumi.StringOutput `pulumi:"stateReason"`
 	// Server generated, unique identifier of UUID format.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 }
@@ -394,6 +398,10 @@ type backupPlanState struct {
 	// RetentionPolicy governs lifecycle of Backups created under this plan.
 	// Structure is documented below.
 	RetentionPolicy *BackupPlanRetentionPolicy `pulumi:"retentionPolicy"`
+	// The State of the BackupPlan.
+	State *string `pulumi:"state"`
+	// Detailed description of why BackupPlan is in its current state.
+	StateReason *string `pulumi:"stateReason"`
 	// Server generated, unique identifier of UUID format.
 	Uid *string `pulumi:"uid"`
 }
@@ -439,6 +447,10 @@ type BackupPlanState struct {
 	// RetentionPolicy governs lifecycle of Backups created under this plan.
 	// Structure is documented below.
 	RetentionPolicy BackupPlanRetentionPolicyPtrInput
+	// The State of the BackupPlan.
+	State pulumi.StringPtrInput
+	// Detailed description of why BackupPlan is in its current state.
+	StateReason pulumi.StringPtrInput
 	// Server generated, unique identifier of UUID format.
 	Uid pulumi.StringPtrInput
 }
@@ -677,6 +689,16 @@ func (o BackupPlanOutput) ProtectedPodCount() pulumi.IntOutput {
 // Structure is documented below.
 func (o BackupPlanOutput) RetentionPolicy() BackupPlanRetentionPolicyPtrOutput {
 	return o.ApplyT(func(v *BackupPlan) BackupPlanRetentionPolicyPtrOutput { return v.RetentionPolicy }).(BackupPlanRetentionPolicyPtrOutput)
+}
+
+// The State of the BackupPlan.
+func (o BackupPlanOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Detailed description of why BackupPlan is in its current state.
+func (o BackupPlanOutput) StateReason() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupPlan) pulumi.StringOutput { return v.StateReason }).(pulumi.StringOutput)
 }
 
 // Server generated, unique identifier of UUID format.

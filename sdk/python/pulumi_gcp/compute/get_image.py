@@ -21,7 +21,7 @@ class GetImageResult:
     """
     A collection of values returned by getImage.
     """
-    def __init__(__self__, archive_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, family=None, filter=None, id=None, image_encryption_key_sha256=None, image_id=None, label_fingerprint=None, labels=None, licenses=None, name=None, project=None, self_link=None, source_disk=None, source_disk_encryption_key_sha256=None, source_disk_id=None, source_image_id=None, status=None):
+    def __init__(__self__, archive_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, family=None, filter=None, id=None, image_encryption_key_sha256=None, image_id=None, label_fingerprint=None, labels=None, licenses=None, most_recent=None, name=None, project=None, self_link=None, source_disk=None, source_disk_encryption_key_sha256=None, source_disk_id=None, source_image_id=None, status=None):
         if archive_size_bytes and not isinstance(archive_size_bytes, int):
             raise TypeError("Expected argument 'archive_size_bytes' to be a int")
         pulumi.set(__self__, "archive_size_bytes", archive_size_bytes)
@@ -58,6 +58,9 @@ class GetImageResult:
         if licenses and not isinstance(licenses, list):
             raise TypeError("Expected argument 'licenses' to be a list")
         pulumi.set(__self__, "licenses", licenses)
+        if most_recent and not isinstance(most_recent, bool):
+            raise TypeError("Expected argument 'most_recent' to be a bool")
+        pulumi.set(__self__, "most_recent", most_recent)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -179,6 +182,11 @@ class GetImageResult:
         return pulumi.get(self, "licenses")
 
     @property
+    @pulumi.getter(name="mostRecent")
+    def most_recent(self) -> Optional[bool]:
+        return pulumi.get(self, "most_recent")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -260,6 +268,7 @@ class AwaitableGetImageResult(GetImageResult):
             label_fingerprint=self.label_fingerprint,
             labels=self.labels,
             licenses=self.licenses,
+            most_recent=self.most_recent,
             name=self.name,
             project=self.project,
             self_link=self.self_link,
@@ -272,6 +281,7 @@ class AwaitableGetImageResult(GetImageResult):
 
 def get_image(family: Optional[str] = None,
               filter: Optional[str] = None,
+              most_recent: Optional[bool] = None,
               name: Optional[str] = None,
               project: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageResult:
@@ -297,11 +307,14 @@ def get_image(family: Optional[str] = None,
 
 
     :param str family: The family name of the image.
+    :param bool most_recent: A boolean to indicate either to take to most recent image if your filter
+           returns more than one image.
     :param str name: , `family` or `filter` - (Required) The name of a specific image or a family.
            Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
            the corresponding image. If `family` is specified, it will return the latest image
            that is part of an image family and is not deprecated. If you specify `filter`, your
-           filter must return exactly one image. Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
+           filter must return exactly one image unless you use `most_recent`.
+           Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
            
            - - -
     :param str project: The project in which the resource belongs. If it is not
@@ -311,6 +324,7 @@ def get_image(family: Optional[str] = None,
     __args__ = dict()
     __args__['family'] = family
     __args__['filter'] = filter
+    __args__['mostRecent'] = most_recent
     __args__['name'] = name
     __args__['project'] = project
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -329,6 +343,7 @@ def get_image(family: Optional[str] = None,
         label_fingerprint=pulumi.get(__ret__, 'label_fingerprint'),
         labels=pulumi.get(__ret__, 'labels'),
         licenses=pulumi.get(__ret__, 'licenses'),
+        most_recent=pulumi.get(__ret__, 'most_recent'),
         name=pulumi.get(__ret__, 'name'),
         project=pulumi.get(__ret__, 'project'),
         self_link=pulumi.get(__ret__, 'self_link'),
@@ -342,6 +357,7 @@ def get_image(family: Optional[str] = None,
 @_utilities.lift_output_func(get_image)
 def get_image_output(family: Optional[pulumi.Input[Optional[str]]] = None,
                      filter: Optional[pulumi.Input[Optional[str]]] = None,
+                     most_recent: Optional[pulumi.Input[Optional[bool]]] = None,
                      name: Optional[pulumi.Input[Optional[str]]] = None,
                      project: Optional[pulumi.Input[Optional[str]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageResult]:
@@ -367,11 +383,14 @@ def get_image_output(family: Optional[pulumi.Input[Optional[str]]] = None,
 
 
     :param str family: The family name of the image.
+    :param bool most_recent: A boolean to indicate either to take to most recent image if your filter
+           returns more than one image.
     :param str name: , `family` or `filter` - (Required) The name of a specific image or a family.
            Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
            the corresponding image. If `family` is specified, it will return the latest image
            that is part of an image family and is not deprecated. If you specify `filter`, your
-           filter must return exactly one image. Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
+           filter must return exactly one image unless you use `most_recent`.
+           Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
            
            - - -
     :param str project: The project in which the resource belongs. If it is not

@@ -144,6 +144,8 @@ if typing.TYPE_CHECKING:
     kms = __kms
     import pulumi_gcp.logging as __logging
     logging = __logging
+    import pulumi_gcp.looker as __looker
+    looker = __looker
     import pulumi_gcp.memcache as __memcache
     memcache = __memcache
     import pulumi_gcp.ml as __ml
@@ -282,6 +284,7 @@ else:
     iot = _utilities.lazy_import('pulumi_gcp.iot')
     kms = _utilities.lazy_import('pulumi_gcp.kms')
     logging = _utilities.lazy_import('pulumi_gcp.logging')
+    looker = _utilities.lazy_import('pulumi_gcp.looker')
     memcache = _utilities.lazy_import('pulumi_gcp.memcache')
     ml = _utilities.lazy_import('pulumi_gcp.ml')
     monitoring = _utilities.lazy_import('pulumi_gcp.monitoring')
@@ -4919,6 +4922,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.logging",
   "classes": {
    "gcp:logging/projectSink:ProjectSink": "ProjectSink"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "looker/instance",
+  "fqn": "pulumi_gcp.looker",
+  "classes": {
+   "gcp:looker/instance:Instance": "Instance"
   }
  },
  {

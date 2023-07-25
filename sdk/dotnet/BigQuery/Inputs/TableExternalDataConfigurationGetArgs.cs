@@ -78,6 +78,13 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         public Input<bool>? IgnoreUnknownValues { get; set; }
 
         /// <summary>
+        /// Additional properties to set if
+        /// `source_format` is set to "JSON". Structure is documented below.
+        /// </summary>
+        [Input("jsonOptions")]
+        public Input<Inputs.TableExternalDataConfigurationJsonOptionsGetArgs>? JsonOptions { get; set; }
+
+        /// <summary>
         /// The maximum number of bad records that
         /// BigQuery can ignore when reading data.
         /// </summary>
@@ -95,6 +102,13 @@ namespace Pulumi.Gcp.BigQuery.Inputs
         /// </summary>
         [Input("objectMetadata")]
         public Input<string>? ObjectMetadata { get; set; }
+
+        /// <summary>
+        /// Additional properties to set if
+        /// `source_format` is set to "PARQUET". Structure is documented below.
+        /// </summary>
+        [Input("parquetOptions")]
+        public Input<Inputs.TableExternalDataConfigurationParquetOptionsGetArgs>? ParquetOptions { get; set; }
 
         /// <summary>
         /// When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.

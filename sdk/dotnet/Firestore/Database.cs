@@ -10,8 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Firestore
 {
     /// <summary>
-    /// A Cloud Firestore Database. Currently only one database is allowed per
-    /// Cloud project; this database must have a `database_id` of '(default)'.
+    /// A Cloud Firestore Database.
     /// 
     /// If you wish to use Firestore with App Engine, use the
     /// `gcp.appengine.Application`
@@ -24,7 +23,7 @@ namespace Pulumi.Gcp.Firestore
     ///     * [Official Documentation](https://cloud.google.com/firestore/docs/)
     /// 
     /// ## Example Usage
-    /// ### Firestore Database
+    /// ### Firestore Default Database
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -69,8 +68,6 @@ namespace Pulumi.Gcp.Firestore
     ///         Project = project.ProjectId,
     ///         LocationId = "nam5",
     ///         Type = "FIRESTORE_NATIVE",
-    ///         ConcurrencyMode = "OPTIMISTIC",
-    ///         AppEngineIntegrationMode = "DISABLED",
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn = new[]
@@ -81,7 +78,7 @@ namespace Pulumi.Gcp.Firestore
     /// 
     /// });
     /// ```
-    /// ### Firestore Database Datastore Mode
+    /// ### Firestore Database
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -96,6 +93,7 @@ namespace Pulumi.Gcp.Firestore
     ///     {
     ///         ProjectId = "my-project",
     ///         OrgId = "123456789",
+    ///         BillingAccount = "000000-0000000-0000000-000000",
     ///     });
     /// 
     ///     var wait60Seconds = new Time.Index.Time_sleep("wait60Seconds", new()
@@ -121,11 +119,71 @@ namespace Pulumi.Gcp.Firestore
     ///         },
     ///     });
     /// 
-    ///     var datastoreModeDatabase = new Gcp.Firestore.Database("datastoreModeDatabase", new()
+    ///     var database = new Gcp.Firestore.Database("database", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         LocationId = "nam5",
+    ///         Type = "FIRESTORE_NATIVE",
+    ///         ConcurrencyMode = "OPTIMISTIC",
+    ///         AppEngineIntegrationMode = "DISABLED",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             firestore,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Firestore Database In Datastore Mode
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Time = Pulumi.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = new Gcp.Organizations.Project("project", new()
+    ///     {
+    ///         ProjectId = "my-project",
+    ///         OrgId = "123456789",
+    ///         BillingAccount = "000000-0000000-0000000-000000",
+    ///     });
+    /// 
+    ///     var wait60Seconds = new Time.Index.Time_sleep("wait60Seconds", new()
+    ///     {
+    ///         CreateDuration = "60s",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             project,
+    ///         },
+    ///     });
+    /// 
+    ///     var firestore = new Gcp.Projects.Service("firestore", new()
+    ///     {
+    ///         Project = project.ProjectId,
+    ///         ServiceName = "firestore.googleapis.com",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             wait60Seconds,
+    ///         },
+    ///     });
+    /// 
+    ///     var database = new Gcp.Firestore.Database("database", new()
     ///     {
     ///         Project = project.ProjectId,
     ///         LocationId = "nam5",
     ///         Type = "DATASTORE_MODE",
+    ///         ConcurrencyMode = "OPTIMISTIC",
+    ///         AppEngineIntegrationMode = "DISABLED",
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn = new[]

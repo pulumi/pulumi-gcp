@@ -33,6 +33,7 @@ export function getImage(args?: GetImageArgs, opts?: pulumi.InvokeOptions): Prom
     return pulumi.runtime.invoke("gcp:compute/getImage:getImage", {
         "family": args.family,
         "filter": args.filter,
+        "mostRecent": args.mostRecent,
         "name": args.name,
         "project": args.project,
     }, opts);
@@ -48,11 +49,17 @@ export interface GetImageArgs {
     family?: string;
     filter?: string;
     /**
+     * A boolean to indicate either to take to most recent image if your filter
+     * returns more than one image.
+     */
+    mostRecent?: boolean;
+    /**
      * , `family` or `filter` - (Required) The name of a specific image or a family.
      * Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
      * the corresponding image. If `family` is specified, it will return the latest image
      * that is part of an image family and is not deprecated. If you specify `filter`, your
-     * filter must return exactly one image. Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
+     * filter must return exactly one image unless you use `mostRecent`.
+     * Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
      *
      * - - -
      */
@@ -116,6 +123,7 @@ export interface GetImageResult {
      * A list of applicable license URI.
      */
     readonly licenses: string[];
+    readonly mostRecent?: boolean;
     /**
      * The name of the image.
      */
@@ -184,11 +192,17 @@ export interface GetImageOutputArgs {
     family?: pulumi.Input<string>;
     filter?: pulumi.Input<string>;
     /**
+     * A boolean to indicate either to take to most recent image if your filter
+     * returns more than one image.
+     */
+    mostRecent?: pulumi.Input<boolean>;
+    /**
      * , `family` or `filter` - (Required) The name of a specific image or a family.
      * Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
      * the corresponding image. If `family` is specified, it will return the latest image
      * that is part of an image family and is not deprecated. If you specify `filter`, your
-     * filter must return exactly one image. Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
+     * filter must return exactly one image unless you use `mostRecent`.
+     * Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
      *
      * - - -
      */

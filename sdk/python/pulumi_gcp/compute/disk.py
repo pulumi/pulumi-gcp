@@ -19,6 +19,7 @@ class DiskArgs:
                  async_primary_disk: Optional[pulumi.Input['DiskAsyncPrimaryDiskArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']] = None,
+                 enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
@@ -54,6 +55,8 @@ class DiskArgs:
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
+        :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
+               required when setting to true
         :param pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
@@ -139,6 +142,8 @@ class DiskArgs:
             pulumi.set(__self__, "description", description)
         if disk_encryption_key is not None:
             pulumi.set(__self__, "disk_encryption_key", disk_encryption_key)
+        if enable_confidential_compute is not None:
+            pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         if guest_os_features is not None:
             pulumi.set(__self__, "guest_os_features", guest_os_features)
         if image is not None:
@@ -227,6 +232,19 @@ class DiskArgs:
     @disk_encryption_key.setter
     def disk_encryption_key(self, value: Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']]):
         pulumi.set(self, "disk_encryption_key", value)
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
+        required when setting to true
+        """
+        return pulumi.get(self, "enable_confidential_compute")
+
+    @enable_confidential_compute.setter
+    def enable_confidential_compute(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_confidential_compute", value)
 
     @property
     @pulumi.getter(name="guestOsFeatures")
@@ -526,6 +544,7 @@ class _DiskState:
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']] = None,
+                 enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
@@ -570,6 +589,8 @@ class _DiskState:
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
+        :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
+               required when setting to true
         :param pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
@@ -678,6 +699,8 @@ class _DiskState:
             pulumi.set(__self__, "description", description)
         if disk_encryption_key is not None:
             pulumi.set(__self__, "disk_encryption_key", disk_encryption_key)
+        if enable_confidential_compute is not None:
+            pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         if guest_os_features is not None:
             pulumi.set(__self__, "guest_os_features", guest_os_features)
         if image is not None:
@@ -794,6 +817,19 @@ class _DiskState:
     @disk_encryption_key.setter
     def disk_encryption_key(self, value: Optional[pulumi.Input['DiskDiskEncryptionKeyArgs']]):
         pulumi.set(self, "disk_encryption_key", value)
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
+        required when setting to true
+        """
+        return pulumi.get(self, "enable_confidential_compute")
+
+    @enable_confidential_compute.setter
+    def enable_confidential_compute(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_confidential_compute", value)
 
     @property
     @pulumi.getter(name="guestOsFeatures")
@@ -1203,6 +1239,7 @@ class Disk(pulumi.CustomResource):
                  async_primary_disk: Optional[pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArgs']]] = None,
+                 enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
@@ -1343,6 +1380,8 @@ class Disk(pulumi.CustomResource):
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
+        :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
+               required when setting to true
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
@@ -1550,6 +1589,7 @@ class Disk(pulumi.CustomResource):
                  async_primary_disk: Optional[pulumi.Input[pulumi.InputType['DiskAsyncPrimaryDiskArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArgs']]] = None,
+                 enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
@@ -1581,6 +1621,7 @@ class Disk(pulumi.CustomResource):
             __props__.__dict__["async_primary_disk"] = async_primary_disk
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_encryption_key"] = disk_encryption_key
+            __props__.__dict__["enable_confidential_compute"] = enable_confidential_compute
             __props__.__dict__["guest_os_features"] = guest_os_features
             __props__.__dict__["image"] = image
             if interface is not None and not opts.urn:
@@ -1626,6 +1667,7 @@ class Disk(pulumi.CustomResource):
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['DiskDiskEncryptionKeyArgs']]] = None,
+            enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
             guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]]] = None,
             image: Optional[pulumi.Input[str]] = None,
             interface: Optional[pulumi.Input[str]] = None,
@@ -1675,6 +1717,8 @@ class Disk(pulumi.CustomResource):
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
+        :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
+               required when setting to true
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
@@ -1783,6 +1827,7 @@ class Disk(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
         __props__.__dict__["disk_encryption_key"] = disk_encryption_key
+        __props__.__dict__["enable_confidential_compute"] = enable_confidential_compute
         __props__.__dict__["guest_os_features"] = guest_os_features
         __props__.__dict__["image"] = image
         __props__.__dict__["interface"] = interface
@@ -1854,6 +1899,15 @@ class Disk(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "disk_encryption_key")
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> pulumi.Output[bool]:
+        """
+        Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
+        required when setting to true
+        """
+        return pulumi.get(self, "enable_confidential_compute")
 
     @property
     @pulumi.getter(name="guestOsFeatures")

@@ -50,7 +50,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var connector = new Connector(&#34;connector&#34;, ConnectorArgs.builder()        
- *             .ipCidrRange(&#34;10.8.0.0/28&#34;)
+ *             .ipCidrRange(&#34;10.18.0.0/28&#34;)
+ *             .maxInstances(3)
+ *             .minInstances(2)
  *             .network(&#34;default&#34;)
  *             .build());
  * 
@@ -99,6 +101,8 @@ import javax.annotation.Nullable;
  *                 .name(customTestSubnetwork.name())
  *                 .build())
  *             .machineType(&#34;e2-standard-4&#34;)
+ *             .minInstances(2)
+ *             .maxInstances(3)
  *             .build());
  * 
  *     }
@@ -185,18 +189,18 @@ public class Connector extends com.pulumi.resources.CustomResource {
         return this.maxInstances;
     }
     /**
-     * Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
+     * Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
      * 
      */
     @Export(name="maxThroughput", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> maxThroughput;
+    private Output<Integer> maxThroughput;
 
     /**
-     * @return Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
+     * @return Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
      * 
      */
-    public Output<Optional<Integer>> maxThroughput() {
-        return Codegen.optional(this.maxThroughput);
+    public Output<Integer> maxThroughput() {
+        return this.maxThroughput;
     }
     /**
      * Minimum value of instances in autoscaling group underlying the connector.
@@ -217,14 +221,14 @@ public class Connector extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="minThroughput", type=Integer.class, parameters={})
-    private Output</* @Nullable */ Integer> minThroughput;
+    private Output<Integer> minThroughput;
 
     /**
      * @return Minimum throughput of the connector in Mbps. Default and min is 200.
      * 
      */
-    public Output<Optional<Integer>> minThroughput() {
-        return Codegen.optional(this.minThroughput);
+    public Output<Integer> minThroughput() {
+        return this.minThroughput;
     }
     /**
      * The name of the resource (Max 25 characters).

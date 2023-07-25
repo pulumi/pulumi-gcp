@@ -120,8 +120,8 @@ class InstanceClusterArgs:
                `cluster_id`) will cause the provider to delete/recreate the entire
                `bigtable.Instance` resource. If these values are changing, use a new
                `cluster_id`.
-        :param pulumi.Input[int] num_nodes: The number of nodes in your Cloud Bigtable cluster.
-               Required, with a minimum of `1` for each cluster in an instance.
+        :param pulumi.Input[int] num_nodes: The number of nodes in the cluster.
+               If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
         :param pulumi.Input[str] storage_type: The storage type to use. One of `"SSD"` or
                `"HDD"`. Defaults to `"SSD"`.
         :param pulumi.Input[str] zone: The zone to create the Cloud Bigtable cluster in. If it not
@@ -189,8 +189,8 @@ class InstanceClusterArgs:
     @pulumi.getter(name="numNodes")
     def num_nodes(self) -> Optional[pulumi.Input[int]]:
         """
-        The number of nodes in your Cloud Bigtable cluster.
-        Required, with a minimum of `1` for each cluster in an instance.
+        The number of nodes in the cluster.
+        If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
         """
         return pulumi.get(self, "num_nodes")
 

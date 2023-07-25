@@ -28,6 +28,7 @@ import * as utilities from "../utilities";
  * const _default = new gcp.healthcare.FhirStore("default", {
  *     dataset: dataset.id,
  *     version: "R4",
+ *     complexDataTypeReferenceParsing: "DISABLED",
  *     enableUpdateCreate: false,
  *     disableReferentialIntegrity: false,
  *     disableResourceVersioning: false,
@@ -171,6 +172,11 @@ export class FhirStore extends pulumi.CustomResource {
     }
 
     /**
+     * Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+     * Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
+     */
+    public readonly complexDataTypeReferenceParsing!: pulumi.Output<string>;
+    /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
      *
@@ -273,6 +279,7 @@ export class FhirStore extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FhirStoreState | undefined;
+            resourceInputs["complexDataTypeReferenceParsing"] = state ? state.complexDataTypeReferenceParsing : undefined;
             resourceInputs["dataset"] = state ? state.dataset : undefined;
             resourceInputs["disableReferentialIntegrity"] = state ? state.disableReferentialIntegrity : undefined;
             resourceInputs["disableResourceVersioning"] = state ? state.disableResourceVersioning : undefined;
@@ -290,6 +297,7 @@ export class FhirStore extends pulumi.CustomResource {
             if ((!args || args.dataset === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dataset'");
             }
+            resourceInputs["complexDataTypeReferenceParsing"] = args ? args.complexDataTypeReferenceParsing : undefined;
             resourceInputs["dataset"] = args ? args.dataset : undefined;
             resourceInputs["disableReferentialIntegrity"] = args ? args.disableReferentialIntegrity : undefined;
             resourceInputs["disableResourceVersioning"] = args ? args.disableResourceVersioning : undefined;
@@ -312,6 +320,11 @@ export class FhirStore extends pulumi.CustomResource {
  * Input properties used for looking up and filtering FhirStore resources.
  */
 export interface FhirStoreState {
+    /**
+     * Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+     * Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
+     */
+    complexDataTypeReferenceParsing?: pulumi.Input<string>;
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'
@@ -407,6 +420,11 @@ export interface FhirStoreState {
  * The set of arguments for constructing a FhirStore resource.
  */
 export interface FhirStoreArgs {
+    /**
+     * Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+     * Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
+     */
+    complexDataTypeReferenceParsing?: pulumi.Input<string>;
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * 'projects/{project}/locations/{location}/datasets/{dataset}'

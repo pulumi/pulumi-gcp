@@ -81,16 +81,16 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The number of nodes in your Cloud Bigtable cluster.
-     * Required, with a minimum of `1` for each cluster in an instance.
+     * The number of nodes in the cluster.
+     * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
      * 
      */
     @Import(name="numNodes")
     private @Nullable Output<Integer> numNodes;
 
     /**
-     * @return The number of nodes in your Cloud Bigtable cluster.
-     * Required, with a minimum of `1` for each cluster in an instance.
+     * @return The number of nodes in the cluster.
+     * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
      * 
      */
     public Optional<Output<Integer>> numNodes() {
@@ -244,8 +244,8 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param numNodes The number of nodes in your Cloud Bigtable cluster.
-         * Required, with a minimum of `1` for each cluster in an instance.
+         * @param numNodes The number of nodes in the cluster.
+         * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
          * 
          * @return builder
          * 
@@ -256,8 +256,8 @@ public final class InstanceClusterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param numNodes The number of nodes in your Cloud Bigtable cluster.
-         * Required, with a minimum of `1` for each cluster in an instance.
+         * @param numNodes The number of nodes in the cluster.
+         * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
          * 
          * @return builder
          * 

@@ -59,21 +59,22 @@ import javax.annotation.Nullable;
  *             .description(&#34;Magic&#34;)
  *             .serviceAccount(testAccount.id())
  *             .sourceContents(&#34;&#34;&#34;
- * # This is a sample workflow, feel free to replace it with your source code
+ * # This is a sample workflow. You can replace it with your source code.
  * #
  * # This workflow does the following:
  * # - reads current time and date information from an external API and stores
- * #   the response in CurrentDateTime variable
+ * #   the response in currentTime variable
  * # - retrieves a list of Wikipedia articles related to the day of the week
- * #   from CurrentDateTime
+ * #   from currentTime
  * # - returns the list of articles as an output of the workflow
- * # FYI, In terraform you need to escape the $$ or it will cause errors.
+ * #
+ * # Note: In Terraform you need to escape the $$ or it will cause errors.
  * 
  * - getCurrentTime:
  *     call: http.get
  *     args:
- *         url: https://us-central1-workflowsample.cloudfunctions.net/datetime
- *     result: CurrentDateTime
+ *         url: https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam
+ *     result: currentTime
  * - readWikipedia:
  *     call: http.get
  *     args:
@@ -81,10 +82,10 @@ import javax.annotation.Nullable;
  *         query:
  *             action: opensearch
  *             search: %s
- *     result: WikiResult
+ *     result: wikiResult
  * - returnOutput:
  *     return: %s
- * &#34;, CurrentDateTime.body().dayOfTheWeek(),WikiResult.body()[1]))
+ * &#34;, currentTime.body().dayOfWeek(),wikiResult.body()[1]))
  *             .build());
  * 
  *     }

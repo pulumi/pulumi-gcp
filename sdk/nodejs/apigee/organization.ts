@@ -43,6 +43,20 @@ import * as utilities from "../utilities";
  *     dependsOn: [apigeeVpcConnection],
  * });
  * ```
+ * ### Apigee Organization Cloud Basic Disable Vpc Peering
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const current = gcp.organizations.getClientConfig({});
+ * const org = new gcp.apigee.Organization("org", {
+ *     description: "Terraform-provisioned basic Apigee Org without VPC Peering.",
+ *     analyticsRegion: "us-central1",
+ *     projectId: current.then(current => current.project),
+ *     disableVpcPeering: true,
+ * });
+ * ```
  * ### Apigee Organization Cloud Full
  *
  * ```typescript
@@ -87,6 +101,37 @@ import * as utilities from "../utilities";
  *         apigeeVpcConnection,
  *         apigeeSaKeyuser,
  *     ],
+ * });
+ * ```
+ * ### Apigee Organization Cloud Full Disable Vpc Peering
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const current = gcp.organizations.getClientConfig({});
+ * const apigeeKeyring = new gcp.kms.KeyRing("apigeeKeyring", {location: "us-central1"});
+ * const apigeeKey = new gcp.kms.CryptoKey("apigeeKey", {keyRing: apigeeKeyring.id});
+ * const apigeeSa = new gcp.projects.ServiceIdentity("apigeeSa", {
+ *     project: google_project.project.project_id,
+ *     service: google_project_service.apigee.service,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const apigeeSaKeyuser = new gcp.kms.CryptoKeyIAMBinding("apigeeSaKeyuser", {
+ *     cryptoKeyId: apigeeKey.id,
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     members: [pulumi.interpolate`serviceAccount:${apigeeSa.email}`],
+ * });
+ * const org = new gcp.apigee.Organization("org", {
+ *     analyticsRegion: "us-central1",
+ *     displayName: "apigee-org",
+ *     description: "Terraform-provisioned Apigee Org without VPC Peering.",
+ *     projectId: current.then(current => current.project),
+ *     disableVpcPeering: true,
+ *     runtimeDatabaseEncryptionKeyName: apigeeKey.id,
+ * }, {
+ *     dependsOn: [apigeeSaKeyuser],
  * });
  * ```
  *
@@ -158,6 +203,14 @@ export class Organization extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Flag that specifies whether the VPC Peering through Private Google Access should be
+     * disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+     * on the consumer project is not provided, in which case the flag should be set to `true`.
+     * Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+     * of any Apigee runtime instance and can be updated only when there are no runtime instances.
+     */
+    public readonly disableVpcPeering!: pulumi.Output<boolean | undefined>;
+    /**
      * The display name of the Apigee organization.
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
@@ -224,6 +277,7 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["billingType"] = state ? state.billingType : undefined;
             resourceInputs["caCertificate"] = state ? state.caCertificate : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["disableVpcPeering"] = state ? state.disableVpcPeering : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
@@ -241,6 +295,7 @@ export class Organization extends pulumi.CustomResource {
             resourceInputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
             resourceInputs["billingType"] = args ? args.billingType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["disableVpcPeering"] = args ? args.disableVpcPeering : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
@@ -288,6 +343,14 @@ export interface OrganizationState {
      * Description of the Apigee organization.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Flag that specifies whether the VPC Peering through Private Google Access should be
+     * disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+     * on the consumer project is not provided, in which case the flag should be set to `true`.
+     * Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+     * of any Apigee runtime instance and can be updated only when there are no runtime instances.
+     */
+    disableVpcPeering?: pulumi.Input<boolean>;
     /**
      * The display name of the Apigee organization.
      */
@@ -359,6 +422,14 @@ export interface OrganizationArgs {
      * Description of the Apigee organization.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Flag that specifies whether the VPC Peering through Private Google Access should be
+     * disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+     * on the consumer project is not provided, in which case the flag should be set to `true`.
+     * Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+     * of any Apigee runtime instance and can be updated only when there are no runtime instances.
+     */
+    disableVpcPeering?: pulumi.Input<boolean>;
     /**
      * The display name of the Apigee organization.
      */

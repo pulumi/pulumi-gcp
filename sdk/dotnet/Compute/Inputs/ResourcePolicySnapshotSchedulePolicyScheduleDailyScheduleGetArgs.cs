@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The number of days between snapshots.
+        /// Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
         /// </summary>
         [Input("daysInCycle", required: true)]
         public Input<int> DaysInCycle { get; set; } = null!;

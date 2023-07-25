@@ -17,6 +17,7 @@ __all__ = ['TableArgs', 'Table']
 class TableArgs:
     def __init__(__self__, *,
                  instance_name: pulumi.Input[str],
+                 change_stream_retention: Optional[pulumi.Input[str]] = None,
                  column_families: Optional[pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]]] = None,
                  deletion_protection: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -25,10 +26,11 @@ class TableArgs:
         """
         The set of arguments for constructing a Table resource.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
-        :param pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
-        :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
+        :param pulumi.Input[str] change_stream_retention: Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
                
                -----
+        :param pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+        :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
         :param pulumi.Input[str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
@@ -37,6 +39,8 @@ class TableArgs:
                to delete/recreate the entire `bigtable.Table` resource.
         """
         pulumi.set(__self__, "instance_name", instance_name)
+        if change_stream_retention is not None:
+            pulumi.set(__self__, "change_stream_retention", change_stream_retention)
         if column_families is not None:
             pulumi.set(__self__, "column_families", column_families)
         if deletion_protection is not None:
@@ -61,6 +65,20 @@ class TableArgs:
         pulumi.set(self, "instance_name", value)
 
     @property
+    @pulumi.getter(name="changeStreamRetention")
+    def change_stream_retention(self) -> Optional[pulumi.Input[str]]:
+        """
+        Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+
+        -----
+        """
+        return pulumi.get(self, "change_stream_retention")
+
+    @change_stream_retention.setter
+    def change_stream_retention(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "change_stream_retention", value)
+
+    @property
     @pulumi.getter(name="columnFamilies")
     def column_families(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]]]:
         """
@@ -77,8 +95,6 @@ class TableArgs:
     def deletion_protection(self) -> Optional[pulumi.Input[str]]:
         """
         A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
-
-        -----
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -129,6 +145,7 @@ class TableArgs:
 @pulumi.input_type
 class _TableState:
     def __init__(__self__, *,
+                 change_stream_retention: Optional[pulumi.Input[str]] = None,
                  column_families: Optional[pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]]] = None,
                  deletion_protection: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -137,10 +154,11 @@ class _TableState:
                  split_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Table resources.
-        :param pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
-        :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
+        :param pulumi.Input[str] change_stream_retention: Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
                
                -----
+        :param pulumi.Input[Sequence[pulumi.Input['TableColumnFamilyArgs']]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+        :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -149,6 +167,8 @@ class _TableState:
                !> **Warning:** Modifying the `split_keys` of an existing table will cause the provider
                to delete/recreate the entire `bigtable.Table` resource.
         """
+        if change_stream_retention is not None:
+            pulumi.set(__self__, "change_stream_retention", change_stream_retention)
         if column_families is not None:
             pulumi.set(__self__, "column_families", column_families)
         if deletion_protection is not None:
@@ -161,6 +181,20 @@ class _TableState:
             pulumi.set(__self__, "project", project)
         if split_keys is not None:
             pulumi.set(__self__, "split_keys", split_keys)
+
+    @property
+    @pulumi.getter(name="changeStreamRetention")
+    def change_stream_retention(self) -> Optional[pulumi.Input[str]]:
+        """
+        Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+
+        -----
+        """
+        return pulumi.get(self, "change_stream_retention")
+
+    @change_stream_retention.setter
+    def change_stream_retention(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "change_stream_retention", value)
 
     @property
     @pulumi.getter(name="columnFamilies")
@@ -179,8 +213,6 @@ class _TableState:
     def deletion_protection(self) -> Optional[pulumi.Input[str]]:
         """
         A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
-
-        -----
         """
         return pulumi.get(self, "deletion_protection")
 
@@ -245,6 +277,7 @@ class Table(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 change_stream_retention: Optional[pulumi.Input[str]] = None,
                  column_families: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -283,7 +316,8 @@ class Table(pulumi.CustomResource):
                 gcp.bigtable.TableColumnFamilyArgs(
                     family="family-second",
                 ),
-            ])
+            ],
+            change_stream_retention="24h0m0s")
         ```
 
         ## Import
@@ -306,10 +340,11 @@ class Table(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
-        :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
+        :param pulumi.Input[str] change_stream_retention: Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
                
                -----
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+        :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -355,7 +390,8 @@ class Table(pulumi.CustomResource):
                 gcp.bigtable.TableColumnFamilyArgs(
                     family="family-second",
                 ),
-            ])
+            ],
+            change_stream_retention="24h0m0s")
         ```
 
         ## Import
@@ -391,6 +427,7 @@ class Table(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 change_stream_retention: Optional[pulumi.Input[str]] = None,
                  column_families: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]]] = None,
                  deletion_protection: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
@@ -406,6 +443,7 @@ class Table(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TableArgs.__new__(TableArgs)
 
+            __props__.__dict__["change_stream_retention"] = change_stream_retention
             __props__.__dict__["column_families"] = column_families
             __props__.__dict__["deletion_protection"] = deletion_protection
             if instance_name is None and not opts.urn:
@@ -424,6 +462,7 @@ class Table(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            change_stream_retention: Optional[pulumi.Input[str]] = None,
             column_families: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]]] = None,
             deletion_protection: Optional[pulumi.Input[str]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
@@ -437,10 +476,11 @@ class Table(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
-        :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
+        :param pulumi.Input[str] change_stream_retention: Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
                
                -----
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
+        :param pulumi.Input[str] deletion_protection: A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
         :param pulumi.Input[str] name: The name of the table. Must be 1-50 characters and must only contain hyphens, underscores, periods, letters and numbers.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
@@ -453,6 +493,7 @@ class Table(pulumi.CustomResource):
 
         __props__ = _TableState.__new__(_TableState)
 
+        __props__.__dict__["change_stream_retention"] = change_stream_retention
         __props__.__dict__["column_families"] = column_families
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["instance_name"] = instance_name
@@ -460,6 +501,16 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["split_keys"] = split_keys
         return Table(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="changeStreamRetention")
+    def change_stream_retention(self) -> pulumi.Output[str]:
+        """
+        Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+
+        -----
+        """
+        return pulumi.get(self, "change_stream_retention")
 
     @property
     @pulumi.getter(name="columnFamilies")
@@ -474,8 +525,6 @@ class Table(pulumi.CustomResource):
     def deletion_protection(self) -> pulumi.Output[str]:
         """
         A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
-
-        -----
         """
         return pulumi.get(self, "deletion_protection")
 

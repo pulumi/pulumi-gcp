@@ -8,6 +8,8 @@ import com.pulumi.gcp.bigquery.outputs.TableExternalDataConfigurationAvroOptions
 import com.pulumi.gcp.bigquery.outputs.TableExternalDataConfigurationCsvOptions;
 import com.pulumi.gcp.bigquery.outputs.TableExternalDataConfigurationGoogleSheetsOptions;
 import com.pulumi.gcp.bigquery.outputs.TableExternalDataConfigurationHivePartitioningOptions;
+import com.pulumi.gcp.bigquery.outputs.TableExternalDataConfigurationJsonOptions;
+import com.pulumi.gcp.bigquery.outputs.TableExternalDataConfigurationParquetOptions;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -76,6 +78,12 @@ public final class TableExternalDataConfiguration {
      */
     private @Nullable Boolean ignoreUnknownValues;
     /**
+     * @return Additional properties to set if
+     * `source_format` is set to &#34;JSON&#34;. Structure is documented below.
+     * 
+     */
+    private @Nullable TableExternalDataConfigurationJsonOptions jsonOptions;
+    /**
      * @return The maximum number of bad records that
      * BigQuery can ignore when reading data.
      * 
@@ -91,6 +99,12 @@ public final class TableExternalDataConfiguration {
      * 
      */
     private @Nullable String objectMetadata;
+    /**
+     * @return Additional properties to set if
+     * `source_format` is set to &#34;PARQUET&#34;. Structure is documented below.
+     * 
+     */
+    private @Nullable TableExternalDataConfigurationParquetOptions parquetOptions;
     /**
      * @return When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
      * 
@@ -201,6 +215,14 @@ public final class TableExternalDataConfiguration {
         return Optional.ofNullable(this.ignoreUnknownValues);
     }
     /**
+     * @return Additional properties to set if
+     * `source_format` is set to &#34;JSON&#34;. Structure is documented below.
+     * 
+     */
+    public Optional<TableExternalDataConfigurationJsonOptions> jsonOptions() {
+        return Optional.ofNullable(this.jsonOptions);
+    }
+    /**
      * @return The maximum number of bad records that
      * BigQuery can ignore when reading data.
      * 
@@ -221,6 +243,14 @@ public final class TableExternalDataConfiguration {
      */
     public Optional<String> objectMetadata() {
         return Optional.ofNullable(this.objectMetadata);
+    }
+    /**
+     * @return Additional properties to set if
+     * `source_format` is set to &#34;PARQUET&#34;. Structure is documented below.
+     * 
+     */
+    public Optional<TableExternalDataConfigurationParquetOptions> parquetOptions() {
+        return Optional.ofNullable(this.parquetOptions);
     }
     /**
      * @return When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
@@ -282,9 +312,11 @@ public final class TableExternalDataConfiguration {
         private @Nullable TableExternalDataConfigurationGoogleSheetsOptions googleSheetsOptions;
         private @Nullable TableExternalDataConfigurationHivePartitioningOptions hivePartitioningOptions;
         private @Nullable Boolean ignoreUnknownValues;
+        private @Nullable TableExternalDataConfigurationJsonOptions jsonOptions;
         private @Nullable Integer maxBadRecords;
         private @Nullable String metadataCacheMode;
         private @Nullable String objectMetadata;
+        private @Nullable TableExternalDataConfigurationParquetOptions parquetOptions;
         private @Nullable String referenceFileSchemaUri;
         private @Nullable String schema;
         private @Nullable String sourceFormat;
@@ -300,9 +332,11 @@ public final class TableExternalDataConfiguration {
     	      this.googleSheetsOptions = defaults.googleSheetsOptions;
     	      this.hivePartitioningOptions = defaults.hivePartitioningOptions;
     	      this.ignoreUnknownValues = defaults.ignoreUnknownValues;
+    	      this.jsonOptions = defaults.jsonOptions;
     	      this.maxBadRecords = defaults.maxBadRecords;
     	      this.metadataCacheMode = defaults.metadataCacheMode;
     	      this.objectMetadata = defaults.objectMetadata;
+    	      this.parquetOptions = defaults.parquetOptions;
     	      this.referenceFileSchemaUri = defaults.referenceFileSchemaUri;
     	      this.schema = defaults.schema;
     	      this.sourceFormat = defaults.sourceFormat;
@@ -350,6 +384,11 @@ public final class TableExternalDataConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder jsonOptions(@Nullable TableExternalDataConfigurationJsonOptions jsonOptions) {
+            this.jsonOptions = jsonOptions;
+            return this;
+        }
+        @CustomType.Setter
         public Builder maxBadRecords(@Nullable Integer maxBadRecords) {
             this.maxBadRecords = maxBadRecords;
             return this;
@@ -362,6 +401,11 @@ public final class TableExternalDataConfiguration {
         @CustomType.Setter
         public Builder objectMetadata(@Nullable String objectMetadata) {
             this.objectMetadata = objectMetadata;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder parquetOptions(@Nullable TableExternalDataConfigurationParquetOptions parquetOptions) {
+            this.parquetOptions = parquetOptions;
             return this;
         }
         @CustomType.Setter
@@ -397,9 +441,11 @@ public final class TableExternalDataConfiguration {
             o.googleSheetsOptions = googleSheetsOptions;
             o.hivePartitioningOptions = hivePartitioningOptions;
             o.ignoreUnknownValues = ignoreUnknownValues;
+            o.jsonOptions = jsonOptions;
             o.maxBadRecords = maxBadRecords;
             o.metadataCacheMode = metadataCacheMode;
             o.objectMetadata = objectMetadata;
+            o.parquetOptions = parquetOptions;
             o.referenceFileSchemaUri = referenceFileSchemaUri;
             o.schema = schema;
             o.sourceFormat = sourceFormat;

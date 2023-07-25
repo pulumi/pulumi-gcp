@@ -5,8 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * A Cloud Firestore Database. Currently only one database is allowed per
- * Cloud project; this database must have a `databaseId` of '(default)'.
+ * A Cloud Firestore Database.
  *
  * If you wish to use Firestore with App Engine, use the
  * `gcp.appengine.Application`
@@ -19,7 +18,7 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/firestore/docs/)
  *
  * ## Example Usage
- * ### Firestore Database
+ * ### Firestore Default Database
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -43,13 +42,11 @@ import * as utilities from "../utilities";
  *     project: project.projectId,
  *     locationId: "nam5",
  *     type: "FIRESTORE_NATIVE",
- *     concurrencyMode: "OPTIMISTIC",
- *     appEngineIntegrationMode: "DISABLED",
  * }, {
  *     dependsOn: [firestore],
  * });
  * ```
- * ### Firestore Database Datastore Mode
+ * ### Firestore Database
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -59,6 +56,7 @@ import * as utilities from "../utilities";
  * const project = new gcp.organizations.Project("project", {
  *     projectId: "my-project",
  *     orgId: "123456789",
+ *     billingAccount: "000000-0000000-0000000-000000",
  * });
  * const wait60Seconds = new time.index.Time_sleep("wait60Seconds", {createDuration: "60s"}, {
  *     dependsOn: [project],
@@ -69,10 +67,43 @@ import * as utilities from "../utilities";
  * }, {
  *     dependsOn: [wait60Seconds],
  * });
- * const datastoreModeDatabase = new gcp.firestore.Database("datastoreModeDatabase", {
+ * const database = new gcp.firestore.Database("database", {
+ *     project: project.projectId,
+ *     locationId: "nam5",
+ *     type: "FIRESTORE_NATIVE",
+ *     concurrencyMode: "OPTIMISTIC",
+ *     appEngineIntegrationMode: "DISABLED",
+ * }, {
+ *     dependsOn: [firestore],
+ * });
+ * ```
+ * ### Firestore Database In Datastore Mode
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as time from "@pulumi/time";
+ *
+ * const project = new gcp.organizations.Project("project", {
+ *     projectId: "my-project",
+ *     orgId: "123456789",
+ *     billingAccount: "000000-0000000-0000000-000000",
+ * });
+ * const wait60Seconds = new time.index.Time_sleep("wait60Seconds", {createDuration: "60s"}, {
+ *     dependsOn: [project],
+ * });
+ * const firestore = new gcp.projects.Service("firestore", {
+ *     project: project.projectId,
+ *     service: "firestore.googleapis.com",
+ * }, {
+ *     dependsOn: [wait60Seconds],
+ * });
+ * const database = new gcp.firestore.Database("database", {
  *     project: project.projectId,
  *     locationId: "nam5",
  *     type: "DATASTORE_MODE",
+ *     concurrencyMode: "OPTIMISTIC",
+ *     appEngineIntegrationMode: "DISABLED",
  * }, {
  *     dependsOn: [firestore],
  * });

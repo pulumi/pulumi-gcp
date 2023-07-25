@@ -15,14 +15,14 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs
     public static final ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs Empty = new ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs();
 
     /**
-     * The number of days between snapshots.
+     * Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
      * 
      */
     @Import(name="daysInCycle", required=true)
     private Output<Integer> daysInCycle;
 
     /**
-     * @return The number of days between snapshots.
+     * @return Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
      * 
      */
     public Output<Integer> daysInCycle() {
@@ -74,7 +74,7 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs
         }
 
         /**
-         * @param daysInCycle The number of days between snapshots.
+         * @param daysInCycle Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
          * 
          * @return builder
          * 
@@ -85,7 +85,7 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs
         }
 
         /**
-         * @param daysInCycle The number of days between snapshots.
+         * @param daysInCycle Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
          * 
          * @return builder
          * 

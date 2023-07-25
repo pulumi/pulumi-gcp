@@ -291,6 +291,9 @@ namespace Pulumi.Gcp
         [Output("loggingCustomEndpoint")]
         public Output<string?> LoggingCustomEndpoint { get; private set; } = null!;
 
+        [Output("lookerCustomEndpoint")]
+        public Output<string?> LookerCustomEndpoint { get; private set; } = null!;
+
         [Output("memcacheCustomEndpoint")]
         public Output<string?> MemcacheCustomEndpoint { get; private set; } = null!;
 
@@ -743,6 +746,9 @@ namespace Pulumi.Gcp
 
         [Input("loggingCustomEndpoint")]
         public Input<string>? LoggingCustomEndpoint { get; set; }
+
+        [Input("lookerCustomEndpoint")]
+        public Input<string>? LookerCustomEndpoint { get; set; }
 
         [Input("memcacheCustomEndpoint")]
         public Input<string>? MemcacheCustomEndpoint { get; set; }

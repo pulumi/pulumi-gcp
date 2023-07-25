@@ -48,12 +48,13 @@ import (
 //				return err
 //			}
 //			_, err = healthcare.NewFhirStore(ctx, "default", &healthcare.FhirStoreArgs{
-//				Dataset:                     dataset.ID(),
-//				Version:                     pulumi.String("R4"),
-//				EnableUpdateCreate:          pulumi.Bool(false),
-//				DisableReferentialIntegrity: pulumi.Bool(false),
-//				DisableResourceVersioning:   pulumi.Bool(false),
-//				EnableHistoryImport:         pulumi.Bool(false),
+//				Dataset:                         dataset.ID(),
+//				Version:                         pulumi.String("R4"),
+//				ComplexDataTypeReferenceParsing: pulumi.String("DISABLED"),
+//				EnableUpdateCreate:              pulumi.Bool(false),
+//				DisableReferentialIntegrity:     pulumi.Bool(false),
+//				DisableResourceVersioning:       pulumi.Bool(false),
+//				EnableHistoryImport:             pulumi.Bool(false),
 //				NotificationConfig: &healthcare.FhirStoreNotificationConfigArgs{
 //					PubsubTopic: topic.ID(),
 //				},
@@ -259,6 +260,9 @@ import (
 type FhirStore struct {
 	pulumi.CustomResourceState
 
+	// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+	// Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
+	ComplexDataTypeReferenceParsing pulumi.StringOutput `pulumi:"complexDataTypeReferenceParsing"`
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
 	//
@@ -358,6 +362,9 @@ func GetFhirStore(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FhirStore resources.
 type fhirStoreState struct {
+	// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+	// Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
+	ComplexDataTypeReferenceParsing *string `pulumi:"complexDataTypeReferenceParsing"`
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
 	//
@@ -425,6 +432,9 @@ type fhirStoreState struct {
 }
 
 type FhirStoreState struct {
+	// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+	// Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
+	ComplexDataTypeReferenceParsing pulumi.StringPtrInput
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
 	//
@@ -496,6 +506,9 @@ func (FhirStoreState) ElementType() reflect.Type {
 }
 
 type fhirStoreArgs struct {
+	// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+	// Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
+	ComplexDataTypeReferenceParsing *string `pulumi:"complexDataTypeReferenceParsing"`
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
 	//
@@ -562,6 +575,9 @@ type fhirStoreArgs struct {
 
 // The set of arguments for constructing a FhirStore resource.
 type FhirStoreArgs struct {
+	// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+	// Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
+	ComplexDataTypeReferenceParsing pulumi.StringPtrInput
 	// Identifies the dataset addressed by this request. Must be in the format
 	// 'projects/{project}/locations/{location}/datasets/{dataset}'
 	//
@@ -711,6 +727,12 @@ func (o FhirStoreOutput) ToFhirStoreOutput() FhirStoreOutput {
 
 func (o FhirStoreOutput) ToFhirStoreOutputWithContext(ctx context.Context) FhirStoreOutput {
 	return o
+}
+
+// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+// Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
+func (o FhirStoreOutput) ComplexDataTypeReferenceParsing() pulumi.StringOutput {
+	return o.ApplyT(func(v *FhirStore) pulumi.StringOutput { return v.ComplexDataTypeReferenceParsing }).(pulumi.StringOutput)
 }
 
 // Identifies the dataset addressed by this request. Must be in the format

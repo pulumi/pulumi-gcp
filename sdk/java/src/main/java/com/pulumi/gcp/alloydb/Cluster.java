@@ -43,11 +43,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.compute.Network;
  * import com.pulumi.gcp.alloydb.Cluster;
  * import com.pulumi.gcp.alloydb.ClusterArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -61,36 +61,35 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
- * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;);
  * 
  *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
  *             .clusterId(&#34;alloydb-cluster&#34;)
  *             .location(&#34;us-central1&#34;)
- *             .network(defaultNetwork.name().applyValue(name -&gt; String.format(&#34;projects/%s/global/networks/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()),name)))
+ *             .network(defaultNetwork.id())
  *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
  * 
  *     }
  * }
  * ```
  * ### Alloydb Cluster Full
- * 
  * ```java
  * package generated_program;
  * 
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.compute.Network;
  * import com.pulumi.gcp.alloydb.Cluster;
  * import com.pulumi.gcp.alloydb.ClusterArgs;
- * import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyArgs;
- * import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs;
- * import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyWeeklyScheduleArgs;
  * import com.pulumi.gcp.alloydb.inputs.ClusterInitialUserArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyWeeklyScheduleArgs;
+ * import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -104,38 +103,38 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
- * 
  *         var default_ = new Network(&#34;default&#34;);
  * 
  *         var full = new Cluster(&#34;full&#34;, ClusterArgs.builder()        
+ *             .clusterId(&#34;alloydb-cluster-full&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .network(default_.id())
+ *             .initialUser(ClusterInitialUserArgs.builder()
+ *                 .user(&#34;alloydb-cluster-full&#34;)
+ *                 .password(&#34;alloydb-cluster-full&#34;)
+ *                 .build())
  *             .automatedBackupPolicy(ClusterAutomatedBackupPolicyArgs.builder()
+ *                 .location(&#34;us-central1&#34;)
  *                 .backupWindow(&#34;1800s&#34;)
  *                 .enabled(true)
- *                 .labels(Map.of(&#34;test&#34;, &#34;alloydb-cluster-full&#34;))
- *                 .location(&#34;us-central1&#34;)
- *                 .quantityBasedRetention(ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs.builder()
- *                     .count(1)
- *                     .build())
  *                 .weeklySchedule(ClusterAutomatedBackupPolicyWeeklyScheduleArgs.builder()
- *                     .daysOfWeek(&#34;MONDAY&#34;)
+ *                     .daysOfWeeks(&#34;MONDAY&#34;)
  *                     .startTimes(ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs.builder()
  *                         .hours(23)
  *                         .minutes(0)
- *                         .nanos(0)
  *                         .seconds(0)
+ *                         .nanos(0)
  *                         .build())
  *                     .build())
- *                 .build())
- *             .clusterId(&#34;alloydb-cluster-full&#34;)
- *             .initialUser(ClusterInitialUserArgs.builder()
- *                 .password(&#34;alloydb-cluster-full&#34;)
- *                 .user(&#34;alloydb-cluster-full&#34;)
+ *                 .quantityBasedRetention(ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs.builder()
+ *                     .count(1)
+ *                     .build())
+ *                 .labels(Map.of(&#34;test&#34;, &#34;alloydb-cluster-full&#34;))
  *                 .build())
  *             .labels(Map.of(&#34;test&#34;, &#34;alloydb-cluster-full&#34;))
- *             .location(&#34;us-central1&#34;)
- *             .network(default_.name().applyValue(name -&gt; String.format(&#34;projects/%s/global/networks/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()),name)))
  *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
  * 
  *     }
  * }

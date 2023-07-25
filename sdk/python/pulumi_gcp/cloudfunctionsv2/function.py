@@ -417,7 +417,6 @@ class Function(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        # [START functions_v2_basic_gcs]
         source_bucket = gcp.storage.Bucket("source-bucket",
             location="US",
             uniform_bucket_level_access=True)
@@ -503,7 +502,6 @@ class Function(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        # [START functions_v2_basic_auditlogs]
         # This example follows the examples shown in this Google Cloud Community blog post
         # https://medium.com/google-cloud/applying-a-path-pattern-when-filtering-in-eventarc-f06b937b4c34
         # and the docs:
@@ -651,7 +649,6 @@ class Function(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        # [START functions_v2_basic_gcs]
         source_bucket = gcp.storage.Bucket("source-bucket",
             location="US",
             uniform_bucket_level_access=True)
@@ -737,7 +734,6 @@ class Function(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        # [START functions_v2_basic_auditlogs]
         # This example follows the examples shown in this Google Cloud Community blog post
         # https://medium.com/google-cloud/applying-a-path-pattern-when-filtering-in-eventarc-f06b937b4c34
         # and the docs:

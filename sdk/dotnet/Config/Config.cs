@@ -690,6 +690,13 @@ namespace Pulumi.Gcp
             set => _loggingCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _lookerCustomEndpoint = new __Value<string?>(() => __config.Get("lookerCustomEndpoint"));
+        public static string? LookerCustomEndpoint
+        {
+            get => _lookerCustomEndpoint.Get();
+            set => _lookerCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _memcacheCustomEndpoint = new __Value<string?>(() => __config.Get("memcacheCustomEndpoint"));
         public static string? MemcacheCustomEndpoint
         {

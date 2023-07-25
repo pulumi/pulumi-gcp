@@ -101,6 +101,7 @@ const (
 	gcpKMS                      = "Kms"                      // KMS resources
 	gcpKubernetes               = "Container"                // Kubernetes Engine resources
 	gcpLogging                  = "Logging"                  // Logging resources
+	gcpLooker                   = "Looker"                   // Looker resources
 	gcpMachingLearning          = "ML"                       // Machine Learning
 	gcpMemcache                 = "Memcache"                 // Memcache resources
 	gcpMonitoring               = "Monitoring"               // Monitoring resources
@@ -199,6 +200,7 @@ var moduleMapping = map[string]string{
 	"healthcare":                      gcpHealthcare,
 	"iam":                             gcpIAM,
 	"iap":                             gcpIAP,
+	"looker":                          gcpLooker,
 	"identity_platform":               gcpIdentityPlatform,
 	"cloudiot":                        gcpIot,
 	"kms":                             gcpKMS,

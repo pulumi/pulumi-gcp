@@ -300,7 +300,7 @@ class GetInstanceResult:
     @pulumi.getter(name="minCpuPlatform")
     def min_cpu_platform(self) -> str:
         """
-        The minimum CPU platform specified for the VM instance.
+        The minimum CPU platform specified for the VM instance. Set to "AUTOMATIC" to remove a previously-set value.
         """
         return pulumi.get(self, "min_cpu_platform")
 

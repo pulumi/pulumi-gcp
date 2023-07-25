@@ -40,8 +40,8 @@ namespace Pulumi.Gcp.BigTable.Inputs
         public Input<string>? KmsKeyName { get; set; }
 
         /// <summary>
-        /// The number of nodes in your Cloud Bigtable cluster.
-        /// Required, with a minimum of `1` for each cluster in an instance.
+        /// The number of nodes in the cluster.
+        /// If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
         /// </summary>
         [Input("numNodes")]
         public Input<int>? NumNodes { get; set; }

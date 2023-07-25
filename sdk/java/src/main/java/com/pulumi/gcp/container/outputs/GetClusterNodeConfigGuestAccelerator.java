@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigGuestAcceleratorGpuSharingConfig;
 import java.lang.Integer;
 import java.lang.String;
@@ -13,6 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetClusterNodeConfigGuestAccelerator {
     private Integer count;
+    private List<GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig> gpuDriverInstallationConfigs;
     private String gpuPartitionSize;
     private List<GetClusterNodeConfigGuestAcceleratorGpuSharingConfig> gpuSharingConfigs;
     private String type;
@@ -20,6 +22,9 @@ public final class GetClusterNodeConfigGuestAccelerator {
     private GetClusterNodeConfigGuestAccelerator() {}
     public Integer count() {
         return this.count;
+    }
+    public List<GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig> gpuDriverInstallationConfigs() {
+        return this.gpuDriverInstallationConfigs;
     }
     public String gpuPartitionSize() {
         return this.gpuPartitionSize;
@@ -41,6 +46,7 @@ public final class GetClusterNodeConfigGuestAccelerator {
     @CustomType.Builder
     public static final class Builder {
         private Integer count;
+        private List<GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig> gpuDriverInstallationConfigs;
         private String gpuPartitionSize;
         private List<GetClusterNodeConfigGuestAcceleratorGpuSharingConfig> gpuSharingConfigs;
         private String type;
@@ -48,6 +54,7 @@ public final class GetClusterNodeConfigGuestAccelerator {
         public Builder(GetClusterNodeConfigGuestAccelerator defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.count = defaults.count;
+    	      this.gpuDriverInstallationConfigs = defaults.gpuDriverInstallationConfigs;
     	      this.gpuPartitionSize = defaults.gpuPartitionSize;
     	      this.gpuSharingConfigs = defaults.gpuSharingConfigs;
     	      this.type = defaults.type;
@@ -57,6 +64,14 @@ public final class GetClusterNodeConfigGuestAccelerator {
         public Builder count(Integer count) {
             this.count = Objects.requireNonNull(count);
             return this;
+        }
+        @CustomType.Setter
+        public Builder gpuDriverInstallationConfigs(List<GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig> gpuDriverInstallationConfigs) {
+            this.gpuDriverInstallationConfigs = Objects.requireNonNull(gpuDriverInstallationConfigs);
+            return this;
+        }
+        public Builder gpuDriverInstallationConfigs(GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig... gpuDriverInstallationConfigs) {
+            return gpuDriverInstallationConfigs(List.of(gpuDriverInstallationConfigs));
         }
         @CustomType.Setter
         public Builder gpuPartitionSize(String gpuPartitionSize) {
@@ -79,6 +94,7 @@ public final class GetClusterNodeConfigGuestAccelerator {
         public GetClusterNodeConfigGuestAccelerator build() {
             final var o = new GetClusterNodeConfigGuestAccelerator();
             o.count = count;
+            o.gpuDriverInstallationConfigs = gpuDriverInstallationConfigs;
             o.gpuPartitionSize = gpuPartitionSize;
             o.gpuSharingConfigs = gpuSharingConfigs;
             o.type = type;

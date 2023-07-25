@@ -826,6 +826,8 @@
         "logging/projectBucketConfig.ts",
         "logging/projectExclusion.ts",
         "logging/projectSink.ts",
+        "looker/index.ts",
+        "looker/instance.ts",
         "memcache/index.ts",
         "memcache/instance.ts",
         "ml/engineModel.ts",

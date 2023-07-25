@@ -114,7 +114,7 @@ public final class GetInstanceResult {
     private String metadataFingerprint;
     private String metadataStartupScript;
     /**
-     * @return The minimum CPU platform specified for the VM instance.
+     * @return The minimum CPU platform specified for the VM instance. Set to &#34;AUTOMATIC&#34; to remove a previously-set value.
      * 
      */
     private String minCpuPlatform;
@@ -302,7 +302,7 @@ public final class GetInstanceResult {
         return this.metadataStartupScript;
     }
     /**
-     * @return The minimum CPU platform specified for the VM instance.
+     * @return The minimum CPU platform specified for the VM instance. Set to &#34;AUTOMATIC&#34; to remove a previously-set value.
      * 
      */
     public String minCpuPlatform() {

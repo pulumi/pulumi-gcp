@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * // [START functions_v2_basic_gcs]
  * const source_bucket = new gcp.storage.Bucket("source-bucket", {
  *     location: "US",
  *     uniformBucketLevelAccess: true,
@@ -119,7 +118,6 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * // [START functions_v2_basic_auditlogs]
  * // This example follows the examples shown in this Google Cloud Community blog post
  * // https://medium.com/google-cloud/applying-a-path-pattern-when-filtering-in-eventarc-f06b937b4c34
  * // and the docs:

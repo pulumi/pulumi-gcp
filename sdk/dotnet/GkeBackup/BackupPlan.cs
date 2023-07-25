@@ -339,6 +339,18 @@ namespace Pulumi.Gcp.GkeBackup
         public Output<Outputs.BackupPlanRetentionPolicy?> RetentionPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// The State of the BackupPlan.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Detailed description of why BackupPlan is in its current state.
+        /// </summary>
+        [Output("stateReason")]
+        public Output<string> StateReason { get; private set; } = null!;
+
+        /// <summary>
         /// Server generated, unique identifier of UUID format.
         /// </summary>
         [Output("uid")]
@@ -570,6 +582,18 @@ namespace Pulumi.Gcp.GkeBackup
         /// </summary>
         [Input("retentionPolicy")]
         public Input<Inputs.BackupPlanRetentionPolicyGetArgs>? RetentionPolicy { get; set; }
+
+        /// <summary>
+        /// The State of the BackupPlan.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// Detailed description of why BackupPlan is in its current state.
+        /// </summary>
+        [Input("stateReason")]
+        public Input<string>? StateReason { get; set; }
 
         /// <summary>
         /// Server generated, unique identifier of UUID format.

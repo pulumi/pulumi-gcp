@@ -65,6 +65,8 @@ __all__ = [
     'TableExternalDataConfigurationCsvOptions',
     'TableExternalDataConfigurationGoogleSheetsOptions',
     'TableExternalDataConfigurationHivePartitioningOptions',
+    'TableExternalDataConfigurationJsonOptions',
+    'TableExternalDataConfigurationParquetOptions',
     'TableMaterializedView',
     'TableRangePartitioning',
     'TableRangePartitioningRange',
@@ -3677,12 +3679,16 @@ class TableExternalDataConfiguration(dict):
             suggest = "hive_partitioning_options"
         elif key == "ignoreUnknownValues":
             suggest = "ignore_unknown_values"
+        elif key == "jsonOptions":
+            suggest = "json_options"
         elif key == "maxBadRecords":
             suggest = "max_bad_records"
         elif key == "metadataCacheMode":
             suggest = "metadata_cache_mode"
         elif key == "objectMetadata":
             suggest = "object_metadata"
+        elif key == "parquetOptions":
+            suggest = "parquet_options"
         elif key == "referenceFileSchemaUri":
             suggest = "reference_file_schema_uri"
         elif key == "sourceFormat":
@@ -3709,9 +3715,11 @@ class TableExternalDataConfiguration(dict):
                  google_sheets_options: Optional['outputs.TableExternalDataConfigurationGoogleSheetsOptions'] = None,
                  hive_partitioning_options: Optional['outputs.TableExternalDataConfigurationHivePartitioningOptions'] = None,
                  ignore_unknown_values: Optional[bool] = None,
+                 json_options: Optional['outputs.TableExternalDataConfigurationJsonOptions'] = None,
                  max_bad_records: Optional[int] = None,
                  metadata_cache_mode: Optional[str] = None,
                  object_metadata: Optional[str] = None,
+                 parquet_options: Optional['outputs.TableExternalDataConfigurationParquetOptions'] = None,
                  reference_file_schema_uri: Optional[str] = None,
                  schema: Optional[str] = None,
                  source_format: Optional[str] = None):
@@ -3743,10 +3751,14 @@ class TableExternalDataConfiguration(dict):
                extra columns are treated as bad records, and if there are too
                many bad records, an invalid error is returned in the job result.
                The default value is false.
+        :param 'TableExternalDataConfigurationJsonOptionsArgs' json_options: Additional properties to set if
+               `source_format` is set to "JSON". Structure is documented below.
         :param int max_bad_records: The maximum number of bad records that
                BigQuery can ignore when reading data.
         :param str metadata_cache_mode: Metadata Cache Mode for the table. Set this to enable caching of metadata from external data source. Valid values are `AUTOMATIC` and `MANUAL`.
         :param str object_metadata: Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
+        :param 'TableExternalDataConfigurationParquetOptionsArgs' parquet_options: Additional properties to set if
+               `source_format` is set to "PARQUET". Structure is documented below.
         :param str reference_file_schema_uri: When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
         :param str schema: A JSON schema for the external table. Schema is required
                for CSV and JSON formats if autodetect is not on. Schema is disallowed
@@ -3780,12 +3792,16 @@ class TableExternalDataConfiguration(dict):
             pulumi.set(__self__, "hive_partitioning_options", hive_partitioning_options)
         if ignore_unknown_values is not None:
             pulumi.set(__self__, "ignore_unknown_values", ignore_unknown_values)
+        if json_options is not None:
+            pulumi.set(__self__, "json_options", json_options)
         if max_bad_records is not None:
             pulumi.set(__self__, "max_bad_records", max_bad_records)
         if metadata_cache_mode is not None:
             pulumi.set(__self__, "metadata_cache_mode", metadata_cache_mode)
         if object_metadata is not None:
             pulumi.set(__self__, "object_metadata", object_metadata)
+        if parquet_options is not None:
+            pulumi.set(__self__, "parquet_options", parquet_options)
         if reference_file_schema_uri is not None:
             pulumi.set(__self__, "reference_file_schema_uri", reference_file_schema_uri)
         if schema is not None:
@@ -3884,6 +3900,15 @@ class TableExternalDataConfiguration(dict):
         return pulumi.get(self, "ignore_unknown_values")
 
     @property
+    @pulumi.getter(name="jsonOptions")
+    def json_options(self) -> Optional['outputs.TableExternalDataConfigurationJsonOptions']:
+        """
+        Additional properties to set if
+        `source_format` is set to "JSON". Structure is documented below.
+        """
+        return pulumi.get(self, "json_options")
+
+    @property
     @pulumi.getter(name="maxBadRecords")
     def max_bad_records(self) -> Optional[int]:
         """
@@ -3907,6 +3932,15 @@ class TableExternalDataConfiguration(dict):
         Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
         """
         return pulumi.get(self, "object_metadata")
+
+    @property
+    @pulumi.getter(name="parquetOptions")
+    def parquet_options(self) -> Optional['outputs.TableExternalDataConfigurationParquetOptions']:
+        """
+        Additional properties to set if
+        `source_format` is set to "PARQUET". Structure is documented below.
+        """
+        return pulumi.get(self, "parquet_options")
 
     @property
     @pulumi.getter(name="referenceFileSchemaUri")
@@ -4258,6 +4292,75 @@ class TableExternalDataConfigurationHivePartitioningOptions(dict):
         Note that when `mode` is set to `CUSTOM`, you must encode the partition key schema within the `source_uri_prefix` by setting `source_uri_prefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
         """
         return pulumi.get(self, "source_uri_prefix")
+
+
+@pulumi.output_type
+class TableExternalDataConfigurationJsonOptions(dict):
+    def __init__(__self__, *,
+                 encoding: Optional[str] = None):
+        """
+        :param str encoding: The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
+        """
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[str]:
+        """
+        The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
+        """
+        return pulumi.get(self, "encoding")
+
+
+@pulumi.output_type
+class TableExternalDataConfigurationParquetOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableListInference":
+            suggest = "enable_list_inference"
+        elif key == "enumAsString":
+            suggest = "enum_as_string"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TableExternalDataConfigurationParquetOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TableExternalDataConfigurationParquetOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TableExternalDataConfigurationParquetOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_list_inference: Optional[bool] = None,
+                 enum_as_string: Optional[bool] = None):
+        """
+        :param bool enable_list_inference: Indicates whether to use schema inference specifically for Parquet LIST logical type.
+        :param bool enum_as_string: Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
+        """
+        if enable_list_inference is not None:
+            pulumi.set(__self__, "enable_list_inference", enable_list_inference)
+        if enum_as_string is not None:
+            pulumi.set(__self__, "enum_as_string", enum_as_string)
+
+    @property
+    @pulumi.getter(name="enableListInference")
+    def enable_list_inference(self) -> Optional[bool]:
+        """
+        Indicates whether to use schema inference specifically for Parquet LIST logical type.
+        """
+        return pulumi.get(self, "enable_list_inference")
+
+    @property
+    @pulumi.getter(name="enumAsString")
+    def enum_as_string(self) -> Optional[bool]:
+        """
+        Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
+        """
+        return pulumi.get(self, "enum_as_string")
 
 
 @pulumi.output_type

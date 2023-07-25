@@ -198,6 +198,8 @@ kmsCustomEndpoint: Optional[str]
 
 loggingCustomEndpoint: Optional[str]
 
+lookerCustomEndpoint: Optional[str]
+
 memcacheCustomEndpoint: Optional[str]
 
 mlEngineCustomEndpoint: Optional[str]

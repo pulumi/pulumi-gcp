@@ -79,9 +79,10 @@ type LookupDiskResult struct {
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// The optional description of this resource.
-	Description        string                     `pulumi:"description"`
-	DiskEncryptionKeys []GetDiskDiskEncryptionKey `pulumi:"diskEncryptionKeys"`
-	GuestOsFeatures    []GetDiskGuestOsFeature    `pulumi:"guestOsFeatures"`
+	Description               string                     `pulumi:"description"`
+	DiskEncryptionKeys        []GetDiskDiskEncryptionKey `pulumi:"diskEncryptionKeys"`
+	EnableConfidentialCompute bool                       `pulumi:"enableConfidentialCompute"`
+	GuestOsFeatures           []GetDiskGuestOsFeature    `pulumi:"guestOsFeatures"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The image from which to initialize this disk.
@@ -201,6 +202,10 @@ func (o LookupDiskResultOutput) Description() pulumi.StringOutput {
 
 func (o LookupDiskResultOutput) DiskEncryptionKeys() GetDiskDiskEncryptionKeyArrayOutput {
 	return o.ApplyT(func(v LookupDiskResult) []GetDiskDiskEncryptionKey { return v.DiskEncryptionKeys }).(GetDiskDiskEncryptionKeyArrayOutput)
+}
+
+func (o LookupDiskResultOutput) EnableConfidentialCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDiskResult) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }
 
 func (o LookupDiskResultOutput) GuestOsFeatures() GetDiskGuestOsFeatureArrayOutput {

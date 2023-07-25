@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class NodePoolNodeConfigGuestAccelerator
     {
         public readonly int Count;
+        public readonly Outputs.NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig? GpuDriverInstallationConfig;
         public readonly string? GpuPartitionSize;
         public readonly Outputs.NodePoolNodeConfigGuestAcceleratorGpuSharingConfig? GpuSharingConfig;
         /// <summary>
@@ -27,6 +28,8 @@ namespace Pulumi.Gcp.Container.Outputs
         private NodePoolNodeConfigGuestAccelerator(
             int count,
 
+            Outputs.NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig? gpuDriverInstallationConfig,
+
             string? gpuPartitionSize,
 
             Outputs.NodePoolNodeConfigGuestAcceleratorGpuSharingConfig? gpuSharingConfig,
@@ -34,6 +37,7 @@ namespace Pulumi.Gcp.Container.Outputs
             string type)
         {
             Count = count;
+            GpuDriverInstallationConfig = gpuDriverInstallationConfig;
             GpuPartitionSize = gpuPartitionSize;
             GpuSharingConfig = gpuSharingConfig;
             Type = type;

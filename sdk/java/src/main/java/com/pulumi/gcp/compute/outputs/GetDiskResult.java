@@ -32,6 +32,7 @@ public final class GetDiskResult {
      */
     private String description;
     private List<GetDiskDiskEncryptionKey> diskEncryptionKeys;
+    private Boolean enableConfidentialCompute;
     private List<GetDiskGuestOsFeature> guestOsFeatures;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -161,6 +162,9 @@ public final class GetDiskResult {
     }
     public List<GetDiskDiskEncryptionKey> diskEncryptionKeys() {
         return this.diskEncryptionKeys;
+    }
+    public Boolean enableConfidentialCompute() {
+        return this.enableConfidentialCompute;
     }
     public List<GetDiskGuestOsFeature> guestOsFeatures() {
         return this.guestOsFeatures;
@@ -340,6 +344,7 @@ public final class GetDiskResult {
         private String creationTimestamp;
         private String description;
         private List<GetDiskDiskEncryptionKey> diskEncryptionKeys;
+        private Boolean enableConfidentialCompute;
         private List<GetDiskGuestOsFeature> guestOsFeatures;
         private String id;
         private String image;
@@ -375,6 +380,7 @@ public final class GetDiskResult {
     	      this.creationTimestamp = defaults.creationTimestamp;
     	      this.description = defaults.description;
     	      this.diskEncryptionKeys = defaults.diskEncryptionKeys;
+    	      this.enableConfidentialCompute = defaults.enableConfidentialCompute;
     	      this.guestOsFeatures = defaults.guestOsFeatures;
     	      this.id = defaults.id;
     	      this.image = defaults.image;
@@ -430,6 +436,11 @@ public final class GetDiskResult {
         }
         public Builder diskEncryptionKeys(GetDiskDiskEncryptionKey... diskEncryptionKeys) {
             return diskEncryptionKeys(List.of(diskEncryptionKeys));
+        }
+        @CustomType.Setter
+        public Builder enableConfidentialCompute(Boolean enableConfidentialCompute) {
+            this.enableConfidentialCompute = Objects.requireNonNull(enableConfidentialCompute);
+            return this;
         }
         @CustomType.Setter
         public Builder guestOsFeatures(List<GetDiskGuestOsFeature> guestOsFeatures) {
@@ -595,6 +606,7 @@ public final class GetDiskResult {
             o.creationTimestamp = creationTimestamp;
             o.description = description;
             o.diskEncryptionKeys = diskEncryptionKeys;
+            o.enableConfidentialCompute = enableConfidentialCompute;
             o.guestOsFeatures = guestOsFeatures;
             o.id = id;
             o.image = image;

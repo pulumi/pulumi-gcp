@@ -48,22 +48,23 @@ import (
 //				Region:         pulumi.String("us-central1"),
 //				Description:    pulumi.String("Magic"),
 //				ServiceAccount: testAccount.ID(),
-//				SourceContents: pulumi.String(fmt.Sprintf(`# This is a sample workflow, feel free to replace it with your source code
+//				SourceContents: pulumi.String(fmt.Sprintf(`# This is a sample workflow. You can replace it with your source code.
 //
 // #
 // # This workflow does the following:
 // # - reads current time and date information from an external API and stores
-// #   the response in CurrentDateTime variable
+// #   the response in currentTime variable
 // # - retrieves a list of Wikipedia articles related to the day of the week
-// #   from CurrentDateTime
+// #   from currentTime
 // # - returns the list of articles as an output of the workflow
-// # FYI, In terraform you need to escape the $$ or it will cause errors.
+// #
+// # Note: In Terraform you need to escape the $$ or it will cause errors.
 //
 //   - getCurrentTime:
 //     call: http.get
 //     args:
-//     url: https://us-central1-workflowsample.cloudfunctions.net/datetime
-//     result: CurrentDateTime
+//     url: https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam
+//     result: currentTime
 //   - readWikipedia:
 //     call: http.get
 //     args:
@@ -71,11 +72,11 @@ import (
 //     query:
 //     action: opensearch
 //     search: %v
-//     result: WikiResult
+//     result: wikiResult
 //   - returnOutput:
 //     return: %v
 //
-// `, CurrentDateTime.Body.DayOfTheWeek, WikiResult.Body[1])),
+// `, currentTime.Body.DayOfWeek, wikiResult.Body[1])),
 //
 //			})
 //			if err != nil {

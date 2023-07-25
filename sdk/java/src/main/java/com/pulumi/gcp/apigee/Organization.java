@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.apigee.OrganizationArgs;
 import com.pulumi.gcp.apigee.inputs.OrganizationState;
 import com.pulumi.gcp.apigee.outputs.OrganizationProperties;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -78,6 +79,41 @@ import javax.annotation.Nullable;
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(apigeeVpcConnection)
  *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Apigee Organization Cloud Basic Disable Vpc Peering
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.apigee.Organization;
+ * import com.pulumi.gcp.apigee.OrganizationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var current = OrganizationsFunctions.getClientConfig();
+ * 
+ *         var org = new Organization(&#34;org&#34;, OrganizationArgs.builder()        
+ *             .description(&#34;Terraform-provisioned basic Apigee Org without VPC Peering.&#34;)
+ *             .analyticsRegion(&#34;us-central1&#34;)
+ *             .projectId(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
+ *             .disableVpcPeering(true)
+ *             .build());
  * 
  *     }
  * }
@@ -168,6 +204,75 @@ import javax.annotation.Nullable;
  *                 .dependsOn(                
  *                     apigeeVpcConnection,
  *                     apigeeSaKeyuser)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Apigee Organization Cloud Full Disable Vpc Peering
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.kms.KeyRing;
+ * import com.pulumi.gcp.kms.KeyRingArgs;
+ * import com.pulumi.gcp.kms.CryptoKey;
+ * import com.pulumi.gcp.kms.CryptoKeyArgs;
+ * import com.pulumi.gcp.projects.ServiceIdentity;
+ * import com.pulumi.gcp.projects.ServiceIdentityArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+ * import com.pulumi.gcp.apigee.Organization;
+ * import com.pulumi.gcp.apigee.OrganizationArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var current = OrganizationsFunctions.getClientConfig();
+ * 
+ *         var apigeeKeyring = new KeyRing(&#34;apigeeKeyring&#34;, KeyRingArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *         var apigeeKey = new CryptoKey(&#34;apigeeKey&#34;, CryptoKeyArgs.builder()        
+ *             .keyRing(apigeeKeyring.id())
+ *             .build());
+ * 
+ *         var apigeeSa = new ServiceIdentity(&#34;apigeeSa&#34;, ServiceIdentityArgs.builder()        
+ *             .project(google_project.project().project_id())
+ *             .service(google_project_service.apigee().service())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var apigeeSaKeyuser = new CryptoKeyIAMBinding(&#34;apigeeSaKeyuser&#34;, CryptoKeyIAMBindingArgs.builder()        
+ *             .cryptoKeyId(apigeeKey.id())
+ *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
+ *             .members(apigeeSa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .build());
+ * 
+ *         var org = new Organization(&#34;org&#34;, OrganizationArgs.builder()        
+ *             .analyticsRegion(&#34;us-central1&#34;)
+ *             .displayName(&#34;apigee-org&#34;)
+ *             .description(&#34;Terraform-provisioned Apigee Org without VPC Peering.&#34;)
+ *             .projectId(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.project()))
+ *             .disableVpcPeering(true)
+ *             .runtimeDatabaseEncryptionKeyName(apigeeKey.id())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(apigeeSaKeyuser)
  *                 .build());
  * 
  *     }
@@ -278,6 +383,28 @@ public class Organization extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
+    }
+    /**
+     * Flag that specifies whether the VPC Peering through Private Google Access should be
+     * disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+     * on the consumer project is not provided, in which case the flag should be set to `true`.
+     * Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+     * of any Apigee runtime instance and can be updated only when there are no runtime instances.
+     * 
+     */
+    @Export(name="disableVpcPeering", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> disableVpcPeering;
+
+    /**
+     * @return Flag that specifies whether the VPC Peering through Private Google Access should be
+     * disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+     * on the consumer project is not provided, in which case the flag should be set to `true`.
+     * Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+     * of any Apigee runtime instance and can be updated only when there are no runtime instances.
+     * 
+     */
+    public Output<Optional<Boolean>> disableVpcPeering() {
+        return Codegen.optional(this.disableVpcPeering);
     }
     /**
      * The display name of the Apigee organization.

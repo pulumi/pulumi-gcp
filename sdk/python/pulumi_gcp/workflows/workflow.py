@@ -453,29 +453,30 @@ class Workflow(pulumi.CustomResource):
             region="us-central1",
             description="Magic",
             service_account=test_account.id,
-            source_contents=f\"\"\"# This is a sample workflow, feel free to replace it with your source code
+            source_contents=f\"\"\"# This is a sample workflow. You can replace it with your source code.
         #
         # This workflow does the following:
         # - reads current time and date information from an external API and stores
-        #   the response in CurrentDateTime variable
+        #   the response in currentTime variable
         # - retrieves a list of Wikipedia articles related to the day of the week
-        #   from CurrentDateTime
+        #   from currentTime
         # - returns the list of articles as an output of the workflow
-        # FYI, In terraform you need to escape the $$ or it will cause errors.
+        #
+        # Note: In Terraform you need to escape the $$ or it will cause errors.
 
         - getCurrentTime:
             call: http.get
             args:
-                url: https://us-central1-workflowsample.cloudfunctions.net/datetime
-            result: CurrentDateTime
+                url: https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam
+            result: currentTime
         - readWikipedia:
             call: http.get
             args:
                 url: https://en.wikipedia.org/w/api.php
                 query:
                     action: opensearch
-                    search: {current_date_time["body"]["dayOfTheWeek"]}
-            result: WikiResult
+                    search: {current_time["body"]["dayOfWeek"]}
+            result: wikiResult
         - returnOutput:
             return: {wiki_result["body"]}
         \"\"\")
@@ -535,29 +536,30 @@ class Workflow(pulumi.CustomResource):
             region="us-central1",
             description="Magic",
             service_account=test_account.id,
-            source_contents=f\"\"\"# This is a sample workflow, feel free to replace it with your source code
+            source_contents=f\"\"\"# This is a sample workflow. You can replace it with your source code.
         #
         # This workflow does the following:
         # - reads current time and date information from an external API and stores
-        #   the response in CurrentDateTime variable
+        #   the response in currentTime variable
         # - retrieves a list of Wikipedia articles related to the day of the week
-        #   from CurrentDateTime
+        #   from currentTime
         # - returns the list of articles as an output of the workflow
-        # FYI, In terraform you need to escape the $$ or it will cause errors.
+        #
+        # Note: In Terraform you need to escape the $$ or it will cause errors.
 
         - getCurrentTime:
             call: http.get
             args:
-                url: https://us-central1-workflowsample.cloudfunctions.net/datetime
-            result: CurrentDateTime
+                url: https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam
+            result: currentTime
         - readWikipedia:
             call: http.get
             args:
                 url: https://en.wikipedia.org/w/api.php
                 query:
                     action: opensearch
-                    search: {current_date_time["body"]["dayOfTheWeek"]}
-            result: WikiResult
+                    search: {current_time["body"]["dayOfWeek"]}
+            result: wikiResult
         - returnOutput:
             return: {wiki_result["body"]}
         \"\"\")

@@ -118,6 +118,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly impersonateServiceAccount!: pulumi.Output<string | undefined>;
     public readonly kmsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly loggingCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly lookerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly memcacheCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly mlEngineCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly monitoringCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -270,6 +271,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["impersonateServiceAccountDelegates"] = pulumi.output(args ? args.impersonateServiceAccountDelegates : undefined).apply(JSON.stringify);
             resourceInputs["kmsCustomEndpoint"] = args ? args.kmsCustomEndpoint : undefined;
             resourceInputs["loggingCustomEndpoint"] = args ? args.loggingCustomEndpoint : undefined;
+            resourceInputs["lookerCustomEndpoint"] = args ? args.lookerCustomEndpoint : undefined;
             resourceInputs["memcacheCustomEndpoint"] = args ? args.memcacheCustomEndpoint : undefined;
             resourceInputs["mlEngineCustomEndpoint"] = args ? args.mlEngineCustomEndpoint : undefined;
             resourceInputs["monitoringCustomEndpoint"] = args ? args.monitoringCustomEndpoint : undefined;
@@ -422,6 +424,7 @@ export interface ProviderArgs {
     impersonateServiceAccountDelegates?: pulumi.Input<pulumi.Input<string>[]>;
     kmsCustomEndpoint?: pulumi.Input<string>;
     loggingCustomEndpoint?: pulumi.Input<string>;
+    lookerCustomEndpoint?: pulumi.Input<string>;
     memcacheCustomEndpoint?: pulumi.Input<string>;
     mlEngineCustomEndpoint?: pulumi.Input<string>;
     monitoringCustomEndpoint?: pulumi.Input<string>;

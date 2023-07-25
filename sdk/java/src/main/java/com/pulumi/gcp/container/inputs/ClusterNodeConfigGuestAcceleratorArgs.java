@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -30,6 +31,21 @@ public final class ClusterNodeConfigGuestAcceleratorArgs extends com.pulumi.reso
      */
     public Output<Integer> count() {
         return this.count;
+    }
+
+    /**
+     * Configuration for auto installation of GPU driver. Structure is documented below.
+     * 
+     */
+    @Import(name="gpuDriverInstallationConfig")
+    private @Nullable Output<ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs> gpuDriverInstallationConfig;
+
+    /**
+     * @return Configuration for auto installation of GPU driver. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs>> gpuDriverInstallationConfig() {
+        return Optional.ofNullable(this.gpuDriverInstallationConfig);
     }
 
     /**
@@ -81,6 +97,7 @@ public final class ClusterNodeConfigGuestAcceleratorArgs extends com.pulumi.reso
 
     private ClusterNodeConfigGuestAcceleratorArgs(ClusterNodeConfigGuestAcceleratorArgs $) {
         this.count = $.count;
+        this.gpuDriverInstallationConfig = $.gpuDriverInstallationConfig;
         this.gpuPartitionSize = $.gpuPartitionSize;
         this.gpuSharingConfig = $.gpuSharingConfig;
         this.type = $.type;
@@ -123,6 +140,27 @@ public final class ClusterNodeConfigGuestAcceleratorArgs extends com.pulumi.reso
          */
         public Builder count(Integer count) {
             return count(Output.of(count));
+        }
+
+        /**
+         * @param gpuDriverInstallationConfig Configuration for auto installation of GPU driver. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpuDriverInstallationConfig(@Nullable Output<ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs> gpuDriverInstallationConfig) {
+            $.gpuDriverInstallationConfig = gpuDriverInstallationConfig;
+            return this;
+        }
+
+        /**
+         * @param gpuDriverInstallationConfig Configuration for auto installation of GPU driver. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gpuDriverInstallationConfig(ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs gpuDriverInstallationConfig) {
+            return gpuDriverInstallationConfig(Output.of(gpuDriverInstallationConfig));
         }
 
         /**

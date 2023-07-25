@@ -137,7 +137,7 @@ export interface GetInstanceResult {
     readonly metadataFingerprint: string;
     readonly metadataStartupScript: string;
     /**
-     * The minimum CPU platform specified for the VM instance.
+     * The minimum CPU platform specified for the VM instance. Set to "AUTOMATIC" to remove a previously-set value.
      */
     readonly minCpuPlatform: string;
     readonly name?: string;

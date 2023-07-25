@@ -41,6 +41,7 @@ namespace Pulumi.Gcp.Healthcare
     ///     {
     ///         Dataset = dataset.Id,
     ///         Version = "R4",
+    ///         ComplexDataTypeReferenceParsing = "DISABLED",
     ///         EnableUpdateCreate = false,
     ///         DisableReferentialIntegrity = false,
     ///         DisableResourceVersioning = false,
@@ -228,6 +229,13 @@ namespace Pulumi.Gcp.Healthcare
     public partial class FhirStore : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+        /// Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
+        /// </summary>
+        [Output("complexDataTypeReferenceParsing")]
+        public Output<string> ComplexDataTypeReferenceParsing { get; private set; } = null!;
+
+        /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
         /// 'projects/{project}/locations/{location}/datasets/{dataset}'
         /// 
@@ -387,6 +395,13 @@ namespace Pulumi.Gcp.Healthcare
     public sealed class FhirStoreArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+        /// Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
+        /// </summary>
+        [Input("complexDataTypeReferenceParsing")]
+        public Input<string>? ComplexDataTypeReferenceParsing { get; set; }
+
+        /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
         /// 'projects/{project}/locations/{location}/datasets/{dataset}'
         /// 
@@ -519,6 +534,13 @@ namespace Pulumi.Gcp.Healthcare
 
     public sealed class FhirStoreState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+        /// Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
+        /// </summary>
+        [Input("complexDataTypeReferenceParsing")]
+        public Input<string>? ComplexDataTypeReferenceParsing { get; set; }
+
         /// <summary>
         /// Identifies the dataset addressed by this request. Must be in the format
         /// 'projects/{project}/locations/{location}/datasets/{dataset}'

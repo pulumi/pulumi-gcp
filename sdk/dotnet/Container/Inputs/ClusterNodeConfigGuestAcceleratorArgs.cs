@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<int> Count { get; set; } = null!;
 
         /// <summary>
+        /// Configuration for auto installation of GPU driver. Structure is documented below.
+        /// </summary>
+        [Input("gpuDriverInstallationConfig")]
+        public Input<Inputs.ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs>? GpuDriverInstallationConfig { get; set; }
+
+        /// <summary>
         /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
         /// </summary>
         [Input("gpuPartitionSize")]

@@ -6,6 +6,7 @@ package com.pulumi.gcp.apigee;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.apigee.inputs.OrganizationPropertiesArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -78,6 +79,29 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
+    }
+
+    /**
+     * Flag that specifies whether the VPC Peering through Private Google Access should be
+     * disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+     * on the consumer project is not provided, in which case the flag should be set to `true`.
+     * Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+     * of any Apigee runtime instance and can be updated only when there are no runtime instances.
+     * 
+     */
+    @Import(name="disableVpcPeering")
+    private @Nullable Output<Boolean> disableVpcPeering;
+
+    /**
+     * @return Flag that specifies whether the VPC Peering through Private Google Access should be
+     * disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+     * on the consumer project is not provided, in which case the flag should be set to `true`.
+     * Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+     * of any Apigee runtime instance and can be updated only when there are no runtime instances.
+     * 
+     */
+    public Optional<Output<Boolean>> disableVpcPeering() {
+        return Optional.ofNullable(this.disableVpcPeering);
     }
 
     /**
@@ -203,6 +227,7 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
         this.authorizedNetwork = $.authorizedNetwork;
         this.billingType = $.billingType;
         this.description = $.description;
+        this.disableVpcPeering = $.disableVpcPeering;
         this.displayName = $.displayName;
         this.projectId = $.projectId;
         this.properties = $.properties;
@@ -315,6 +340,35 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param disableVpcPeering Flag that specifies whether the VPC Peering through Private Google Access should be
+         * disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+         * on the consumer project is not provided, in which case the flag should be set to `true`.
+         * Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+         * of any Apigee runtime instance and can be updated only when there are no runtime instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableVpcPeering(@Nullable Output<Boolean> disableVpcPeering) {
+            $.disableVpcPeering = disableVpcPeering;
+            return this;
+        }
+
+        /**
+         * @param disableVpcPeering Flag that specifies whether the VPC Peering through Private Google Access should be
+         * disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+         * on the consumer project is not provided, in which case the flag should be set to `true`.
+         * Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+         * of any Apigee runtime instance and can be updated only when there are no runtime instances.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableVpcPeering(Boolean disableVpcPeering) {
+            return disableVpcPeering(Output.of(disableVpcPeering));
         }
 
         /**

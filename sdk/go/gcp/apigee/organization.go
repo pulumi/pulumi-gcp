@@ -80,6 +80,39 @@ import (
 //	}
 //
 // ```
+// ### Apigee Organization Cloud Basic Disable Vpc Peering
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigee"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := organizations.GetClientConfig(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apigee.NewOrganization(ctx, "org", &apigee.OrganizationArgs{
+//				Description:       pulumi.String("Terraform-provisioned basic Apigee Org without VPC Peering."),
+//				AnalyticsRegion:   pulumi.String("us-central1"),
+//				ProjectId:         *pulumi.String(current.Project),
+//				DisableVpcPeering: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Apigee Organization Cloud Full
 //
 // ```go
@@ -178,6 +211,78 @@ import (
 //	}
 //
 // ```
+// ### Apigee Organization Cloud Full Disable Vpc Peering
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/apigee"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := organizations.GetClientConfig(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			apigeeKeyring, err := kms.NewKeyRing(ctx, "apigeeKeyring", &kms.KeyRingArgs{
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeKey, err := kms.NewCryptoKey(ctx, "apigeeKey", &kms.CryptoKeyArgs{
+//				KeyRing: apigeeKeyring.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			apigeeSa, err := projects.NewServiceIdentity(ctx, "apigeeSa", &projects.ServiceIdentityArgs{
+//				Project: pulumi.Any(google_project.Project.Project_id),
+//				Service: pulumi.Any(google_project_service.Apigee.Service),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			apigeeSaKeyuser, err := kms.NewCryptoKeyIAMBinding(ctx, "apigeeSaKeyuser", &kms.CryptoKeyIAMBindingArgs{
+//				CryptoKeyId: apigeeKey.ID(),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Members: pulumi.StringArray{
+//					apigeeSa.Email.ApplyT(func(email string) (string, error) {
+//						return fmt.Sprintf("serviceAccount:%v", email), nil
+//					}).(pulumi.StringOutput),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = apigee.NewOrganization(ctx, "org", &apigee.OrganizationArgs{
+//				AnalyticsRegion:                  pulumi.String("us-central1"),
+//				DisplayName:                      pulumi.String("apigee-org"),
+//				Description:                      pulumi.String("Terraform-provisioned Apigee Org without VPC Peering."),
+//				ProjectId:                        *pulumi.String(current.Project),
+//				DisableVpcPeering:                pulumi.Bool(true),
+//				RuntimeDatabaseEncryptionKeyName: apigeeKey.ID(),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				apigeeSaKeyuser,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -212,6 +317,12 @@ type Organization struct {
 	CaCertificate pulumi.StringOutput `pulumi:"caCertificate"`
 	// Description of the Apigee organization.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Flag that specifies whether the VPC Peering through Private Google Access should be
+	// disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+	// on the consumer project is not provided, in which case the flag should be set to `true`.
+	// Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+	// of any Apigee runtime instance and can be updated only when there are no runtime instances.
+	DisableVpcPeering pulumi.BoolPtrOutput `pulumi:"disableVpcPeering"`
 	// The display name of the Apigee organization.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Name of the property.
@@ -292,6 +403,12 @@ type organizationState struct {
 	CaCertificate *string `pulumi:"caCertificate"`
 	// Description of the Apigee organization.
 	Description *string `pulumi:"description"`
+	// Flag that specifies whether the VPC Peering through Private Google Access should be
+	// disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+	// on the consumer project is not provided, in which case the flag should be set to `true`.
+	// Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+	// of any Apigee runtime instance and can be updated only when there are no runtime instances.
+	DisableVpcPeering *bool `pulumi:"disableVpcPeering"`
 	// The display name of the Apigee organization.
 	DisplayName *string `pulumi:"displayName"`
 	// Name of the property.
@@ -340,6 +457,12 @@ type OrganizationState struct {
 	CaCertificate pulumi.StringPtrInput
 	// Description of the Apigee organization.
 	Description pulumi.StringPtrInput
+	// Flag that specifies whether the VPC Peering through Private Google Access should be
+	// disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+	// on the consumer project is not provided, in which case the flag should be set to `true`.
+	// Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+	// of any Apigee runtime instance and can be updated only when there are no runtime instances.
+	DisableVpcPeering pulumi.BoolPtrInput
 	// The display name of the Apigee organization.
 	DisplayName pulumi.StringPtrInput
 	// Name of the property.
@@ -387,6 +510,12 @@ type organizationArgs struct {
 	BillingType *string `pulumi:"billingType"`
 	// Description of the Apigee organization.
 	Description *string `pulumi:"description"`
+	// Flag that specifies whether the VPC Peering through Private Google Access should be
+	// disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+	// on the consumer project is not provided, in which case the flag should be set to `true`.
+	// Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+	// of any Apigee runtime instance and can be updated only when there are no runtime instances.
+	DisableVpcPeering *bool `pulumi:"disableVpcPeering"`
 	// The display name of the Apigee organization.
 	DisplayName *string `pulumi:"displayName"`
 	// The project ID associated with the Apigee organization.
@@ -426,6 +555,12 @@ type OrganizationArgs struct {
 	BillingType pulumi.StringPtrInput
 	// Description of the Apigee organization.
 	Description pulumi.StringPtrInput
+	// Flag that specifies whether the VPC Peering through Private Google Access should be
+	// disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+	// on the consumer project is not provided, in which case the flag should be set to `true`.
+	// Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+	// of any Apigee runtime instance and can be updated only when there are no runtime instances.
+	DisableVpcPeering pulumi.BoolPtrInput
 	// The display name of the Apigee organization.
 	DisplayName pulumi.StringPtrInput
 	// The project ID associated with the Apigee organization.
@@ -571,6 +706,15 @@ func (o OrganizationOutput) CaCertificate() pulumi.StringOutput {
 // Description of the Apigee organization.
 func (o OrganizationOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Flag that specifies whether the VPC Peering through Private Google Access should be
+// disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+// on the consumer project is not provided, in which case the flag should be set to `true`.
+// Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+// of any Apigee runtime instance and can be updated only when there are no runtime instances.
+func (o OrganizationOutput) DisableVpcPeering() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Organization) pulumi.BoolPtrOutput { return v.DisableVpcPeering }).(pulumi.BoolPtrOutput)
 }
 
 // The display name of the Apigee organization.

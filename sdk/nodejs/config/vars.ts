@@ -761,6 +761,14 @@ Object.defineProperty(exports, "loggingCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const lookerCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "lookerCustomEndpoint", {
+    get() {
+        return __config.get("lookerCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const memcacheCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "memcacheCustomEndpoint", {
     get() {

@@ -296,6 +296,9 @@ public final class Config {
     public Optional<String> loggingCustomEndpoint() {
         return Codegen.stringProp("loggingCustomEndpoint").config(config).get();
     }
+    public Optional<String> lookerCustomEndpoint() {
+        return Codegen.stringProp("lookerCustomEndpoint").config(config).get();
+    }
     public Optional<String> memcacheCustomEndpoint() {
         return Codegen.stringProp("memcacheCustomEndpoint").config(config).get();
     }

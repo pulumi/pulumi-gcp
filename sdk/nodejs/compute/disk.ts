@@ -170,6 +170,11 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly diskEncryptionKey!: pulumi.Output<outputs.compute.DiskDiskEncryptionKey | undefined>;
     /**
+     * Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
+     * required when setting to true
+     */
+    public readonly enableConfidentialCompute!: pulumi.Output<boolean>;
+    /**
      * A list of features to enable on the guest operating system.
      * Applicable only for bootable disks.
      * Structure is documented below.
@@ -369,6 +374,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["diskEncryptionKey"] = state ? state.diskEncryptionKey : undefined;
+            resourceInputs["enableConfidentialCompute"] = state ? state.enableConfidentialCompute : undefined;
             resourceInputs["guestOsFeatures"] = state ? state.guestOsFeatures : undefined;
             resourceInputs["image"] = state ? state.image : undefined;
             resourceInputs["interface"] = state ? state.interface : undefined;
@@ -401,6 +407,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["asyncPrimaryDisk"] = args ? args.asyncPrimaryDisk : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["diskEncryptionKey"] = args ? args.diskEncryptionKey : undefined;
+            resourceInputs["enableConfidentialCompute"] = args ? args.enableConfidentialCompute : undefined;
             resourceInputs["guestOsFeatures"] = args ? args.guestOsFeatures : undefined;
             resourceInputs["image"] = args ? args.image : undefined;
             resourceInputs["interface"] = args ? args.interface : undefined;
@@ -466,6 +473,11 @@ export interface DiskState {
      * Structure is documented below.
      */
     diskEncryptionKey?: pulumi.Input<inputs.compute.DiskDiskEncryptionKey>;
+    /**
+     * Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
+     * required when setting to true
+     */
+    enableConfidentialCompute?: pulumi.Input<boolean>;
     /**
      * A list of features to enable on the guest operating system.
      * Applicable only for bootable disks.
@@ -677,6 +689,11 @@ export interface DiskArgs {
      * Structure is documented below.
      */
     diskEncryptionKey?: pulumi.Input<inputs.compute.DiskDiskEncryptionKey>;
+    /**
+     * Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
+     * required when setting to true
+     */
+    enableConfidentialCompute?: pulumi.Input<boolean>;
     /**
      * A list of features to enable on the guest operating system.
      * Applicable only for bootable disks.

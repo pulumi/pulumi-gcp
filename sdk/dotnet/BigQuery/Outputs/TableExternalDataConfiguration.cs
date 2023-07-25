@@ -63,6 +63,11 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// </summary>
         public readonly bool? IgnoreUnknownValues;
         /// <summary>
+        /// Additional properties to set if
+        /// `source_format` is set to "JSON". Structure is documented below.
+        /// </summary>
+        public readonly Outputs.TableExternalDataConfigurationJsonOptions? JsonOptions;
+        /// <summary>
         /// The maximum number of bad records that
         /// BigQuery can ignore when reading data.
         /// </summary>
@@ -75,6 +80,11 @@ namespace Pulumi.Gcp.BigQuery.Outputs
         /// Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `object_metadata` is set, `source_format` should be omitted.
         /// </summary>
         public readonly string? ObjectMetadata;
+        /// <summary>
+        /// Additional properties to set if
+        /// `source_format` is set to "PARQUET". Structure is documented below.
+        /// </summary>
+        public readonly Outputs.TableExternalDataConfigurationParquetOptions? ParquetOptions;
         /// <summary>
         /// When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
         /// </summary>
@@ -124,11 +134,15 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
             bool? ignoreUnknownValues,
 
+            Outputs.TableExternalDataConfigurationJsonOptions? jsonOptions,
+
             int? maxBadRecords,
 
             string? metadataCacheMode,
 
             string? objectMetadata,
+
+            Outputs.TableExternalDataConfigurationParquetOptions? parquetOptions,
 
             string? referenceFileSchemaUri,
 
@@ -146,9 +160,11 @@ namespace Pulumi.Gcp.BigQuery.Outputs
             GoogleSheetsOptions = googleSheetsOptions;
             HivePartitioningOptions = hivePartitioningOptions;
             IgnoreUnknownValues = ignoreUnknownValues;
+            JsonOptions = jsonOptions;
             MaxBadRecords = maxBadRecords;
             MetadataCacheMode = metadataCacheMode;
             ObjectMetadata = objectMetadata;
+            ParquetOptions = parquetOptions;
             ReferenceFileSchemaUri = referenceFileSchemaUri;
             Schema = schema;
             SourceFormat = sourceFormat;

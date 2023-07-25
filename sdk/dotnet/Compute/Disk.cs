@@ -189,6 +189,13 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.DiskDiskEncryptionKey?> DiskEncryptionKey { get; private set; } = null!;
 
         /// <summary>
+        /// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
+        /// required when setting to true
+        /// </summary>
+        [Output("enableConfidentialCompute")]
+        public Output<bool> EnableConfidentialCompute { get; private set; } = null!;
+
+        /// <summary>
         /// A list of features to enable on the guest operating system.
         /// Applicable only for bootable disks.
         /// Structure is documented below.
@@ -497,6 +504,13 @@ namespace Pulumi.Gcp.Compute
         [Input("diskEncryptionKey")]
         public Input<Inputs.DiskDiskEncryptionKeyArgs>? DiskEncryptionKey { get; set; }
 
+        /// <summary>
+        /// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
+        /// required when setting to true
+        /// </summary>
+        [Input("enableConfidentialCompute")]
+        public Input<bool>? EnableConfidentialCompute { get; set; }
+
         [Input("guestOsFeatures")]
         private InputList<Inputs.DiskGuestOsFeatureArgs>? _guestOsFeatures;
 
@@ -736,6 +750,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("diskEncryptionKey")]
         public Input<Inputs.DiskDiskEncryptionKeyGetArgs>? DiskEncryptionKey { get; set; }
+
+        /// <summary>
+        /// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
+        /// required when setting to true
+        /// </summary>
+        [Input("enableConfidentialCompute")]
+        public Input<bool>? EnableConfidentialCompute { get; set; }
 
         [Input("guestOsFeatures")]
         private InputList<Inputs.DiskGuestOsFeatureGetArgs>? _guestOsFeatures;

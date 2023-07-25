@@ -32,7 +32,42 @@ import (
 //
 // import (
 //
-//	"fmt"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/alloydb"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = alloydb.NewCluster(ctx, "defaultCluster", &alloydb.ClusterArgs{
+//				ClusterId: pulumi.String("alloydb-cluster"),
+//				Location:  pulumi.String("us-central1"),
+//				Network:   defaultNetwork.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Alloydb Cluster Full
+//
+// ```go
+// package main
+//
+// import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/alloydb"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
@@ -43,21 +78,50 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			_, err := compute.NewNetwork(ctx, "default", nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = alloydb.NewCluster(ctx, "defaultCluster", &alloydb.ClusterArgs{
-//				ClusterId: pulumi.String("alloydb-cluster"),
+//			_, err = alloydb.NewCluster(ctx, "full", &alloydb.ClusterArgs{
+//				ClusterId: pulumi.String("alloydb-cluster-full"),
 //				Location:  pulumi.String("us-central1"),
-//				Network: defaultNetwork.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("projects/%v/global/networks/%v", project.Number, name), nil
-//				}).(pulumi.StringOutput),
+//				Network:   _default.ID(),
+//				InitialUser: &alloydb.ClusterInitialUserArgs{
+//					User:     pulumi.String("alloydb-cluster-full"),
+//					Password: pulumi.String("alloydb-cluster-full"),
+//				},
+//				AutomatedBackupPolicy: &alloydb.ClusterAutomatedBackupPolicyArgs{
+//					Location:     pulumi.String("us-central1"),
+//					BackupWindow: pulumi.String("1800s"),
+//					Enabled:      pulumi.Bool(true),
+//					WeeklySchedule: &alloydb.ClusterAutomatedBackupPolicyWeeklyScheduleArgs{
+//						DaysOfWeeks: pulumi.StringArray{
+//							pulumi.String("MONDAY"),
+//						},
+//						StartTimes: alloydb.ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArray{
+//							&alloydb.ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs{
+//								Hours:   pulumi.Int(23),
+//								Minutes: pulumi.Int(0),
+//								Seconds: pulumi.Int(0),
+//								Nanos:   pulumi.Int(0),
+//							},
+//						},
+//					},
+//					QuantityBasedRetention: &alloydb.ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs{
+//						Count: pulumi.Int(1),
+//					},
+//					Labels: pulumi.StringMap{
+//						"test": pulumi.String("alloydb-cluster-full"),
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"test": pulumi.String("alloydb-cluster-full"),
+//				},
 //			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.LookupProject(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}

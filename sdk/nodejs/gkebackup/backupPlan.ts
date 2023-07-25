@@ -268,6 +268,14 @@ export class BackupPlan extends pulumi.CustomResource {
      */
     public readonly retentionPolicy!: pulumi.Output<outputs.gkebackup.BackupPlanRetentionPolicy | undefined>;
     /**
+     * The State of the BackupPlan.
+     */
+    public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Detailed description of why BackupPlan is in its current state.
+     */
+    public /*out*/ readonly stateReason!: pulumi.Output<string>;
+    /**
      * Server generated, unique identifier of UUID format.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
@@ -297,6 +305,8 @@ export class BackupPlan extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["protectedPodCount"] = state ? state.protectedPodCount : undefined;
             resourceInputs["retentionPolicy"] = state ? state.retentionPolicy : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["stateReason"] = state ? state.stateReason : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
         } else {
             const args = argsOrState as BackupPlanArgs | undefined;
@@ -318,6 +328,8 @@ export class BackupPlan extends pulumi.CustomResource {
             resourceInputs["retentionPolicy"] = args ? args.retentionPolicy : undefined;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["protectedPodCount"] = undefined /*out*/;
+            resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateReason"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -394,6 +406,14 @@ export interface BackupPlanState {
      * Structure is documented below.
      */
     retentionPolicy?: pulumi.Input<inputs.gkebackup.BackupPlanRetentionPolicy>;
+    /**
+     * The State of the BackupPlan.
+     */
+    state?: pulumi.Input<string>;
+    /**
+     * Detailed description of why BackupPlan is in its current state.
+     */
+    stateReason?: pulumi.Input<string>;
     /**
      * Server generated, unique identifier of UUID format.
      */

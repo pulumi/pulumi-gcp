@@ -5,7 +5,7 @@ go 1.19
 require (
 	github.com/hashicorp/terraform-provider-google-beta v0.0.0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.14.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.54.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.54.1
 	github.com/pulumi/pulumi/pkg/v3 v3.75.0
 	github.com/pulumi/pulumi/sdk/v3 v3.75.0
 )
@@ -18,14 +18,14 @@ replace (
 
 require (
 	bitbucket.org/creachadair/stringset v0.0.8 // indirect
-	cloud.google.com/go v0.110.0 // indirect
-	cloud.google.com/go/bigtable v1.17.0 // indirect
+	cloud.google.com/go v0.110.2 // indirect
+	cloud.google.com/go/bigtable v1.19.0 // indirect
 	cloud.google.com/go/compute v1.19.3 // indirect
 	cloud.google.com/go/compute/metadata v0.2.3 // indirect
-	cloud.google.com/go/iam v0.13.0 // indirect
+	cloud.google.com/go/iam v1.1.0 // indirect
 	cloud.google.com/go/kms v1.10.1 // indirect
 	cloud.google.com/go/logging v1.7.0 // indirect
-	cloud.google.com/go/longrunning v0.4.1 // indirect
+	cloud.google.com/go/longrunning v0.5.0 // indirect
 	cloud.google.com/go/storage v1.29.0 // indirect
 	github.com/AlecAivazis/survey/v2 v2.0.5 // indirect
 	github.com/Azure/azure-sdk-for-go v66.0.0+incompatible // indirect

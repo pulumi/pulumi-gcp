@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfigGuestAcceleratorGpuSharingConfig;
 import java.lang.Integer;
 import java.lang.String;
@@ -14,6 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NodePoolNodeConfigGuestAccelerator {
     private Integer count;
+    private @Nullable NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig gpuDriverInstallationConfig;
     private @Nullable String gpuPartitionSize;
     private @Nullable NodePoolNodeConfigGuestAcceleratorGpuSharingConfig gpuSharingConfig;
     /**
@@ -27,6 +29,9 @@ public final class NodePoolNodeConfigGuestAccelerator {
     private NodePoolNodeConfigGuestAccelerator() {}
     public Integer count() {
         return this.count;
+    }
+    public Optional<NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig> gpuDriverInstallationConfig() {
+        return Optional.ofNullable(this.gpuDriverInstallationConfig);
     }
     public Optional<String> gpuPartitionSize() {
         return Optional.ofNullable(this.gpuPartitionSize);
@@ -54,6 +59,7 @@ public final class NodePoolNodeConfigGuestAccelerator {
     @CustomType.Builder
     public static final class Builder {
         private Integer count;
+        private @Nullable NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig gpuDriverInstallationConfig;
         private @Nullable String gpuPartitionSize;
         private @Nullable NodePoolNodeConfigGuestAcceleratorGpuSharingConfig gpuSharingConfig;
         private String type;
@@ -61,6 +67,7 @@ public final class NodePoolNodeConfigGuestAccelerator {
         public Builder(NodePoolNodeConfigGuestAccelerator defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.count = defaults.count;
+    	      this.gpuDriverInstallationConfig = defaults.gpuDriverInstallationConfig;
     	      this.gpuPartitionSize = defaults.gpuPartitionSize;
     	      this.gpuSharingConfig = defaults.gpuSharingConfig;
     	      this.type = defaults.type;
@@ -69,6 +76,11 @@ public final class NodePoolNodeConfigGuestAccelerator {
         @CustomType.Setter
         public Builder count(Integer count) {
             this.count = Objects.requireNonNull(count);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gpuDriverInstallationConfig(@Nullable NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig gpuDriverInstallationConfig) {
+            this.gpuDriverInstallationConfig = gpuDriverInstallationConfig;
             return this;
         }
         @CustomType.Setter
@@ -89,6 +101,7 @@ public final class NodePoolNodeConfigGuestAccelerator {
         public NodePoolNodeConfigGuestAccelerator build() {
             final var o = new NodePoolNodeConfigGuestAccelerator();
             o.count = count;
+            o.gpuDriverInstallationConfig = gpuDriverInstallationConfig;
             o.gpuPartitionSize = gpuPartitionSize;
             o.gpuSharingConfig = gpuSharingConfig;
             o.type = type;

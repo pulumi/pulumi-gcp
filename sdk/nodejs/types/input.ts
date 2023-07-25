@@ -4489,6 +4489,11 @@ export namespace bigquery {
          */
         ignoreUnknownValues?: pulumi.Input<boolean>;
         /**
+         * Additional properties to set if
+         * `sourceFormat` is set to "JSON". Structure is documented below.
+         */
+        jsonOptions?: pulumi.Input<inputs.bigquery.TableExternalDataConfigurationJsonOptions>;
+        /**
          * The maximum number of bad records that
          * BigQuery can ignore when reading data.
          */
@@ -4501,6 +4506,11 @@ export namespace bigquery {
          * Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `objectMetadata` is set, `sourceFormat` should be omitted.
          */
         objectMetadata?: pulumi.Input<string>;
+        /**
+         * Additional properties to set if
+         * `sourceFormat` is set to "PARQUET". Structure is documented below.
+         */
+        parquetOptions?: pulumi.Input<inputs.bigquery.TableExternalDataConfigurationParquetOptions>;
         /**
          * When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
          */
@@ -4625,6 +4635,24 @@ export namespace bigquery {
          * Note that when `mode` is set to `CUSTOM`, you must encode the partition key schema within the `sourceUriPrefix` by setting `sourceUriPrefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
          */
         sourceUriPrefix?: pulumi.Input<string>;
+    }
+
+    export interface TableExternalDataConfigurationJsonOptions {
+        /**
+         * The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
+         */
+        encoding?: pulumi.Input<string>;
+    }
+
+    export interface TableExternalDataConfigurationParquetOptions {
+        /**
+         * Indicates whether to use schema inference specifically for Parquet LIST logical type.
+         */
+        enableListInference?: pulumi.Input<boolean>;
+        /**
+         * Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
+         */
+        enumAsString?: pulumi.Input<boolean>;
     }
 
     export interface TableMaterializedView {
@@ -4838,8 +4866,8 @@ export namespace bigtable {
          */
         kmsKeyName?: pulumi.Input<string>;
         /**
-         * The number of nodes in your Cloud Bigtable cluster.
-         * Required, with a minimum of `1` for each cluster in an instance.
+         * The number of nodes in the cluster.
+         * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
          */
         numNodes?: pulumi.Input<number>;
         /**
@@ -19449,7 +19477,7 @@ export namespace compute {
 
     export interface ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
         /**
-         * The number of days between snapshots.
+         * Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
          */
         daysInCycle: pulumi.Input<number>;
         /**
@@ -24053,6 +24081,10 @@ export namespace container {
          */
         count: pulumi.Input<number>;
         /**
+         * Configuration for auto installation of GPU driver. Structure is documented below.
+         */
+        gpuDriverInstallationConfig?: pulumi.Input<inputs.container.ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig>;
+        /**
          * Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
          */
         gpuPartitionSize?: pulumi.Input<string>;
@@ -24064,6 +24096,18 @@ export namespace container {
          * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
          */
         type: pulumi.Input<string>;
+    }
+
+    export interface ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+        /**
+         * Mode for how the GPU driver is installed.
+         * Accepted values are:
+         * * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+         * * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
+         * * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
+         * * `"LATEST"`: "Latest" GPU driver in COS.
+         */
+        gpuDriverVersion: pulumi.Input<string>;
     }
 
     export interface ClusterNodeConfigGuestAcceleratorGpuSharingConfig {
@@ -24621,6 +24665,10 @@ export namespace container {
          */
         count: pulumi.Input<number>;
         /**
+         * Configuration for auto installation of GPU driver. Structure is documented below.
+         */
+        gpuDriverInstallationConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig>;
+        /**
          * Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
          */
         gpuPartitionSize?: pulumi.Input<string>;
@@ -24632,6 +24680,18 @@ export namespace container {
          * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
          */
         type: pulumi.Input<string>;
+    }
+
+    export interface ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+        /**
+         * Mode for how the GPU driver is installed.
+         * Accepted values are:
+         * * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+         * * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
+         * * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
+         * * `"LATEST"`: "Latest" GPU driver in COS.
+         */
+        gpuDriverVersion: pulumi.Input<string>;
     }
 
     export interface ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
@@ -25188,6 +25248,7 @@ export namespace container {
 
     export interface NodePoolNodeConfigGuestAccelerator {
         count: pulumi.Input<number>;
+        gpuDriverInstallationConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig>;
         gpuPartitionSize?: pulumi.Input<string>;
         gpuSharingConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigGuestAcceleratorGpuSharingConfig>;
         /**
@@ -25196,6 +25257,10 @@ export namespace container {
          * physical proximity in order to reduce network latency between nodes.
          */
         type: pulumi.Input<string>;
+    }
+
+    export interface NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+        gpuDriverVersion: pulumi.Input<string>;
     }
 
     export interface NodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
@@ -41405,6 +41470,167 @@ export namespace logging {
          * A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
          */
         name: pulumi.Input<string>;
+    }
+}
+
+export namespace looker {
+    export interface InstanceAdminSettings {
+        allowedEmailDomains?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface InstanceDenyMaintenancePeriod {
+        /**
+         * Required. Start date of the deny maintenance period
+         * Structure is documented below.
+         */
+        endDate: pulumi.Input<inputs.looker.InstanceDenyMaintenancePeriodEndDate>;
+        /**
+         * Required. Start date of the deny maintenance period
+         * Structure is documented below.
+         */
+        startDate: pulumi.Input<inputs.looker.InstanceDenyMaintenancePeriodStartDate>;
+        /**
+         * Required. Start time of the window in UTC time.
+         * Structure is documented below.
+         */
+        time: pulumi.Input<inputs.looker.InstanceDenyMaintenancePeriodTime>;
+    }
+
+    export interface InstanceDenyMaintenancePeriodEndDate {
+        /**
+         * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+         * to specify a year by itself or a year and month where the day isn't significant.
+         */
+        day?: pulumi.Input<number>;
+        /**
+         * Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+         * month and day.
+         */
+        month?: pulumi.Input<number>;
+        /**
+         * Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+         * a year.
+         */
+        year?: pulumi.Input<number>;
+    }
+
+    export interface InstanceDenyMaintenancePeriodStartDate {
+        /**
+         * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+         * to specify a year by itself or a year and month where the day isn't significant.
+         */
+        day?: pulumi.Input<number>;
+        /**
+         * Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+         * month and day.
+         */
+        month?: pulumi.Input<number>;
+        /**
+         * Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+         * a year.
+         */
+        year?: pulumi.Input<number>;
+    }
+
+    export interface InstanceDenyMaintenancePeriodTime {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23.
+         */
+        hours?: pulumi.Input<number>;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
+        minutes?: pulumi.Input<number>;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59.
+         */
+        seconds?: pulumi.Input<number>;
+    }
+
+    export interface InstanceEncryptionConfig {
+        /**
+         * Name of the customer managed encryption key (CMEK) in KMS.
+         */
+        kmsKeyName?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Full name and version of the CMEK key currently in use to encrypt Looker data.
+         */
+        kmsKeyNameVersion?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Status of the customer managed encryption key (CMEK) in KMS.
+         */
+        kmsKeyState?: pulumi.Input<string>;
+    }
+
+    export interface InstanceMaintenanceWindow {
+        /**
+         * Required. Day of the week for this MaintenanceWindow (in UTC).
+         * - MONDAY: Monday
+         * - TUESDAY: Tuesday
+         * - WEDNESDAY: Wednesday
+         * - THURSDAY: Thursday
+         * - FRIDAY: Friday
+         * - SATURDAY: Saturday
+         * - SUNDAY: Sunday
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+         */
+        dayOfWeek: pulumi.Input<string>;
+        /**
+         * Required. Start time of the window in UTC time.
+         * Structure is documented below.
+         */
+        startTime: pulumi.Input<inputs.looker.InstanceMaintenanceWindowStartTime>;
+    }
+
+    export interface InstanceMaintenanceWindowStartTime {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23.
+         */
+        hours?: pulumi.Input<number>;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
+        minutes?: pulumi.Input<number>;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59.
+         */
+        seconds?: pulumi.Input<number>;
+    }
+
+    export interface InstanceOauthConfig {
+        /**
+         * The client ID for the Oauth config.
+         */
+        clientId: pulumi.Input<string>;
+        /**
+         * The client secret for the Oauth config.
+         */
+        clientSecret: pulumi.Input<string>;
+    }
+
+    export interface InstanceUserMetadata {
+        /**
+         * Number of additional Developer Users to allocate to the Looker Instance.
+         */
+        additionalDeveloperUserCount?: pulumi.Input<number>;
+        /**
+         * Number of additional Standard Users to allocate to the Looker Instance.
+         */
+        additionalStandardUserCount?: pulumi.Input<number>;
+        /**
+         * Number of additional Viewer Users to allocate to the Looker Instance.
+         */
+        additionalViewerUserCount?: pulumi.Input<number>;
     }
 }
 

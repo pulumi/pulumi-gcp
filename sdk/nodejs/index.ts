@@ -80,6 +80,7 @@ import * as identityplatform from "./identityplatform";
 import * as iot from "./iot";
 import * as kms from "./kms";
 import * as logging from "./logging";
+import * as looker from "./looker";
 import * as memcache from "./memcache";
 import * as ml from "./ml";
 import * as monitoring from "./monitoring";
@@ -185,6 +186,7 @@ export {
     iot,
     kms,
     logging,
+    looker,
     memcache,
     ml,
     monitoring,

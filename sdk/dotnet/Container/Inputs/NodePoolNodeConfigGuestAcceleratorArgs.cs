@@ -15,6 +15,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("count", required: true)]
         public Input<int> Count { get; set; } = null!;
 
+        [Input("gpuDriverInstallationConfig")]
+        public Input<Inputs.NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs>? GpuDriverInstallationConfig { get; set; }
+
         [Input("gpuPartitionSize")]
         public Input<string>? GpuPartitionSize { get; set; }
 

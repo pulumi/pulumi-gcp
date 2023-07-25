@@ -26,13 +26,54 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const project = gcp.organizations.getProject({});
  * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
  * const defaultCluster = new gcp.alloydb.Cluster("defaultCluster", {
  *     clusterId: "alloydb-cluster",
  *     location: "us-central1",
- *     network: pulumi.all([project, defaultNetwork.name]).apply(([project, name]) => `projects/${project.number}/global/networks/${name}`),
+ *     network: defaultNetwork.id,
  * });
+ * const project = gcp.organizations.getProject({});
+ * ```
+ * ### Alloydb Cluster Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {});
+ * const full = new gcp.alloydb.Cluster("full", {
+ *     clusterId: "alloydb-cluster-full",
+ *     location: "us-central1",
+ *     network: _default.id,
+ *     initialUser: {
+ *         user: "alloydb-cluster-full",
+ *         password: "alloydb-cluster-full",
+ *     },
+ *     automatedBackupPolicy: {
+ *         location: "us-central1",
+ *         backupWindow: "1800s",
+ *         enabled: true,
+ *         weeklySchedule: {
+ *             daysOfWeeks: ["MONDAY"],
+ *             startTimes: [{
+ *                 hours: 23,
+ *                 minutes: 0,
+ *                 seconds: 0,
+ *                 nanos: 0,
+ *             }],
+ *         },
+ *         quantityBasedRetention: {
+ *             count: 1,
+ *         },
+ *         labels: {
+ *             test: "alloydb-cluster-full",
+ *         },
+ *     },
+ *     labels: {
+ *         test: "alloydb-cluster-full",
+ *     },
+ * });
+ * const project = gcp.organizations.getProject({});
  * ```
  *
  * ## Import

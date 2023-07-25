@@ -21,6 +21,23 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
     public static final FhirStoreState Empty = new FhirStoreState();
 
     /**
+     * Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+     * Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
+     * 
+     */
+    @Import(name="complexDataTypeReferenceParsing")
+    private @Nullable Output<String> complexDataTypeReferenceParsing;
+
+    /**
+     * @return Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+     * Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
+     * 
+     */
+    public Optional<Output<String>> complexDataTypeReferenceParsing() {
+        return Optional.ofNullable(this.complexDataTypeReferenceParsing);
+    }
+
+    /**
      * Identifies the dataset addressed by this request. Must be in the format
      * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;
      * 
@@ -283,6 +300,7 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
     private FhirStoreState() {}
 
     private FhirStoreState(FhirStoreState $) {
+        this.complexDataTypeReferenceParsing = $.complexDataTypeReferenceParsing;
         this.dataset = $.dataset;
         this.disableReferentialIntegrity = $.disableReferentialIntegrity;
         this.disableResourceVersioning = $.disableResourceVersioning;
@@ -313,6 +331,29 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(FhirStoreState defaults) {
             $ = new FhirStoreState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param complexDataTypeReferenceParsing Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+         * Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder complexDataTypeReferenceParsing(@Nullable Output<String> complexDataTypeReferenceParsing) {
+            $.complexDataTypeReferenceParsing = complexDataTypeReferenceParsing;
+            return this;
+        }
+
+        /**
+         * @param complexDataTypeReferenceParsing Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+         * Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder complexDataTypeReferenceParsing(String complexDataTypeReferenceParsing) {
+            return complexDataTypeReferenceParsing(Output.of(complexDataTypeReferenceParsing));
         }
 
         /**

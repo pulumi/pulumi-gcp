@@ -167,6 +167,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string Description;
         public readonly ImmutableArray<Outputs.GetDiskDiskEncryptionKeyResult> DiskEncryptionKeys;
+        public readonly bool EnableConfidentialCompute;
         public readonly ImmutableArray<Outputs.GetDiskGuestOsFeatureResult> GuestOsFeatures;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -269,6 +270,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetDiskDiskEncryptionKeyResult> diskEncryptionKeys,
 
+            bool enableConfidentialCompute,
+
             ImmutableArray<Outputs.GetDiskGuestOsFeatureResult> guestOsFeatures,
 
             string id,
@@ -329,6 +332,7 @@ namespace Pulumi.Gcp.Compute
             CreationTimestamp = creationTimestamp;
             Description = description;
             DiskEncryptionKeys = diskEncryptionKeys;
+            EnableConfidentialCompute = enableConfidentialCompute;
             GuestOsFeatures = guestOsFeatures;
             Id = id;
             Image = image;

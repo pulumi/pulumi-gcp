@@ -107,6 +107,23 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
+     * required when setting to true
+     * 
+     */
+    @Import(name="enableConfidentialCompute")
+    private @Nullable Output<Boolean> enableConfidentialCompute;
+
+    /**
+     * @return Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
+     * required when setting to true
+     * 
+     */
+    public Optional<Output<Boolean>> enableConfidentialCompute() {
+        return Optional.ofNullable(this.enableConfidentialCompute);
+    }
+
+    /**
      * A list of features to enable on the guest operating system.
      * Applicable only for bootable disks.
      * Structure is documented below.
@@ -668,6 +685,7 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
         this.diskEncryptionKey = $.diskEncryptionKey;
+        this.enableConfidentialCompute = $.enableConfidentialCompute;
         this.guestOsFeatures = $.guestOsFeatures;
         this.image = $.image;
         this.interface_ = $.interface_;
@@ -819,6 +837,29 @@ public final class DiskState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder diskEncryptionKey(DiskDiskEncryptionKeyArgs diskEncryptionKey) {
             return diskEncryptionKey(Output.of(diskEncryptionKey));
+        }
+
+        /**
+         * @param enableConfidentialCompute Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
+         * required when setting to true
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableConfidentialCompute(@Nullable Output<Boolean> enableConfidentialCompute) {
+            $.enableConfidentialCompute = enableConfidentialCompute;
+            return this;
+        }
+
+        /**
+         * @param enableConfidentialCompute Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
+         * required when setting to true
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableConfidentialCompute(Boolean enableConfidentialCompute) {
+            return enableConfidentialCompute(Output.of(enableConfidentialCompute));
         }
 
         /**
