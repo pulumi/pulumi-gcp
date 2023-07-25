@@ -307,8 +307,8 @@ type InstanceCluster struct {
 	// `bigtable.Instance` resource. If these values are changing, use a new
 	// `clusterId`.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
-	// The number of nodes in your Cloud Bigtable cluster.
-	// Required, with a minimum of `1` for each cluster in an instance.
+	// The number of nodes in the cluster.
+	// If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
 	NumNodes *int `pulumi:"numNodes"`
 	// The storage type to use. One of `"SSD"` or
 	// `"HDD"`. Defaults to `"SSD"`.
@@ -346,8 +346,8 @@ type InstanceClusterArgs struct {
 	// `bigtable.Instance` resource. If these values are changing, use a new
 	// `clusterId`.
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
-	// The number of nodes in your Cloud Bigtable cluster.
-	// Required, with a minimum of `1` for each cluster in an instance.
+	// The number of nodes in the cluster.
+	// If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
 	NumNodes pulumi.IntPtrInput `pulumi:"numNodes"`
 	// The storage type to use. One of `"SSD"` or
 	// `"HDD"`. Defaults to `"SSD"`.
@@ -433,8 +433,8 @@ func (o InstanceClusterOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceCluster) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
 }
 
-// The number of nodes in your Cloud Bigtable cluster.
-// Required, with a minimum of `1` for each cluster in an instance.
+// The number of nodes in the cluster.
+// If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
 func (o InstanceClusterOutput) NumNodes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceCluster) *int { return v.NumNodes }).(pulumi.IntPtrOutput)
 }

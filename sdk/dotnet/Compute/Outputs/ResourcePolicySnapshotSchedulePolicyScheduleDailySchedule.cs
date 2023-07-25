@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule
     {
         /// <summary>
-        /// The number of days between snapshots.
+        /// Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
         /// </summary>
         public readonly int DaysInCycle;
         /// <summary>

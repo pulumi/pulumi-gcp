@@ -27,7 +27,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // [START functions_v2_basic_gcs]
     ///     var source_bucket = new Gcp.Storage.Bucket("source-bucket", new()
     ///     {
     ///         Location = "US",
@@ -175,7 +174,6 @@ namespace Pulumi.Gcp.CloudFunctionsV2
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // [START functions_v2_basic_auditlogs]
     ///     // This example follows the examples shown in this Google Cloud Community blog post
     ///     // https://medium.com/google-cloud/applying-a-path-pattern-when-filtering-in-eventarc-f06b937b4c34
     ///     // and the docs:

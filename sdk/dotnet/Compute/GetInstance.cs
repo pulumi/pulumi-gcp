@@ -224,7 +224,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string MetadataFingerprint;
         public readonly string MetadataStartupScript;
         /// <summary>
-        /// The minimum CPU platform specified for the VM instance.
+        /// The minimum CPU platform specified for the VM instance. Set to "AUTOMATIC" to remove a previously-set value.
         /// </summary>
         public readonly string MinCpuPlatform;
         public readonly string? Name;

@@ -16,6 +16,11 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Response Policy Rule is a selector that applies its behavior to queries that match the selector.
+ * Selectors are DNS names, which may be wildcards or exact matches.
+ * Each DNS query subject to a Response Policy matches at most one ResponsePolicyRule,
+ * as identified by the dns_name field with the longest matching suffix.
+ * 
  * ## Example Usage
  * ### Dns Response Policy Rule Basic
  * ```java
@@ -32,7 +37,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dns.ResponsePolicyRule;
  * import com.pulumi.gcp.dns.ResponsePolicyRuleArgs;
  * import com.pulumi.gcp.dns.inputs.ResponsePolicyRuleLocalDataArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -48,15 +52,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var network_1 = new Network(&#34;network-1&#34;, NetworkArgs.builder()        
  *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var network_2 = new Network(&#34;network-2&#34;, NetworkArgs.builder()        
  *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var response_policy = new ResponsePolicy(&#34;response-policy&#34;, ResponsePolicyArgs.builder()        
  *             .responsePolicyName(&#34;example-response-policy&#34;)
@@ -67,9 +67,7 @@ import javax.annotation.Nullable;
  *                 ResponsePolicyNetworkArgs.builder()
  *                     .networkUrl(network_2.id())
  *                     .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var example_response_policy_rule = new ResponsePolicyRule(&#34;example-response-policy-rule&#34;, ResponsePolicyRuleArgs.builder()        
  *             .responsePolicy(response_policy.responsePolicyName())
@@ -83,9 +81,7 @@ import javax.annotation.Nullable;
  *                     .rrdatas(&#34;192.0.2.91&#34;)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }
@@ -111,14 +107,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:dns/responsePolicyRule:ResponsePolicyRule")
 public class ResponsePolicyRule extends com.pulumi.resources.CustomResource {
     /**
-     * Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and &#39;bypassResponsePolicy&#39;
+     * Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and
+     * &#39;bypassResponsePolicy&#39;
      * 
      */
     @Export(name="behavior", type=String.class, parameters={})
     private Output</* @Nullable */ String> behavior;
 
     /**
-     * @return Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and &#39;bypassResponsePolicy&#39;
+     * @return Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and
+     * &#39;bypassResponsePolicy&#39;
      * 
      */
     public Output<Optional<String>> behavior() {

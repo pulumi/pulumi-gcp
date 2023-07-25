@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly int Count;
         /// <summary>
+        /// Configuration for auto installation of GPU driver. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig? GpuDriverInstallationConfig;
+        /// <summary>
         /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
         /// </summary>
         public readonly string? GpuPartitionSize;
@@ -34,6 +38,8 @@ namespace Pulumi.Gcp.Container.Outputs
         private ClusterNodeConfigGuestAccelerator(
             int count,
 
+            Outputs.ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig? gpuDriverInstallationConfig,
+
             string? gpuPartitionSize,
 
             Outputs.ClusterNodeConfigGuestAcceleratorGpuSharingConfig? gpuSharingConfig,
@@ -41,6 +47,7 @@ namespace Pulumi.Gcp.Container.Outputs
             string type)
         {
             Count = count;
+            GpuDriverInstallationConfig = gpuDriverInstallationConfig;
             GpuPartitionSize = gpuPartitionSize;
             GpuSharingConfig = gpuSharingConfig;
             Type = type;

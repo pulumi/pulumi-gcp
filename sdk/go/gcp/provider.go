@@ -109,6 +109,7 @@ type Provider struct {
 	ImpersonateServiceAccount              pulumi.StringPtrOutput `pulumi:"impersonateServiceAccount"`
 	KmsCustomEndpoint                      pulumi.StringPtrOutput `pulumi:"kmsCustomEndpoint"`
 	LoggingCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"loggingCustomEndpoint"`
+	LookerCustomEndpoint                   pulumi.StringPtrOutput `pulumi:"lookerCustomEndpoint"`
 	MemcacheCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"memcacheCustomEndpoint"`
 	MlEngineCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"mlEngineCustomEndpoint"`
 	MonitoringCustomEndpoint               pulumi.StringPtrOutput `pulumi:"monitoringCustomEndpoint"`
@@ -283,6 +284,7 @@ type providerArgs struct {
 	ImpersonateServiceAccountDelegates     []string          `pulumi:"impersonateServiceAccountDelegates"`
 	KmsCustomEndpoint                      *string           `pulumi:"kmsCustomEndpoint"`
 	LoggingCustomEndpoint                  *string           `pulumi:"loggingCustomEndpoint"`
+	LookerCustomEndpoint                   *string           `pulumi:"lookerCustomEndpoint"`
 	MemcacheCustomEndpoint                 *string           `pulumi:"memcacheCustomEndpoint"`
 	MlEngineCustomEndpoint                 *string           `pulumi:"mlEngineCustomEndpoint"`
 	MonitoringCustomEndpoint               *string           `pulumi:"monitoringCustomEndpoint"`
@@ -429,6 +431,7 @@ type ProviderArgs struct {
 	ImpersonateServiceAccountDelegates     pulumi.StringArrayInput
 	KmsCustomEndpoint                      pulumi.StringPtrInput
 	LoggingCustomEndpoint                  pulumi.StringPtrInput
+	LookerCustomEndpoint                   pulumi.StringPtrInput
 	MemcacheCustomEndpoint                 pulumi.StringPtrInput
 	MlEngineCustomEndpoint                 pulumi.StringPtrInput
 	MonitoringCustomEndpoint               pulumi.StringPtrInput
@@ -878,6 +881,10 @@ func (o ProviderOutput) KmsCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) LoggingCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.LoggingCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) LookerCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.LookerCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) MemcacheCustomEndpoint() pulumi.StringPtrOutput {

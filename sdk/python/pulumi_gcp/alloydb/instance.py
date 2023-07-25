@@ -575,12 +575,11 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.get_project()
         default_network = gcp.compute.Network("defaultNetwork")
         default_cluster = gcp.alloydb.Cluster("defaultCluster",
             cluster_id="alloydb-cluster",
             location="us-central1",
-            network=default_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"),
+            network=default_network.id,
             initial_user=gcp.alloydb.ClusterInitialUserArgs(
                 password="alloydb-cluster",
             ))
@@ -601,6 +600,7 @@ class Instance(pulumi.CustomResource):
                 cpu_count=2,
             ),
             opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+        project = gcp.organizations.get_project()
         ```
 
         ## Import
@@ -664,12 +664,11 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.get_project()
         default_network = gcp.compute.Network("defaultNetwork")
         default_cluster = gcp.alloydb.Cluster("defaultCluster",
             cluster_id="alloydb-cluster",
             location="us-central1",
-            network=default_network.name.apply(lambda name: f"projects/{project.number}/global/networks/{name}"),
+            network=default_network.id,
             initial_user=gcp.alloydb.ClusterInitialUserArgs(
                 password="alloydb-cluster",
             ))
@@ -690,6 +689,7 @@ class Instance(pulumi.CustomResource):
                 cpu_count=2,
             ),
             opts=pulumi.ResourceOptions(depends_on=[vpc_connection]))
+        project = gcp.organizations.get_project()
         ```
 
         ## Import

@@ -234,6 +234,36 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The State of the BackupPlan.
+     * 
+     */
+    @Import(name="state")
+    private @Nullable Output<String> state;
+
+    /**
+     * @return The State of the BackupPlan.
+     * 
+     */
+    public Optional<Output<String>> state() {
+        return Optional.ofNullable(this.state);
+    }
+
+    /**
+     * Detailed description of why BackupPlan is in its current state.
+     * 
+     */
+    @Import(name="stateReason")
+    private @Nullable Output<String> stateReason;
+
+    /**
+     * @return Detailed description of why BackupPlan is in its current state.
+     * 
+     */
+    public Optional<Output<String>> stateReason() {
+        return Optional.ofNullable(this.stateReason);
+    }
+
+    /**
      * Server generated, unique identifier of UUID format.
      * 
      */
@@ -263,6 +293,8 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
         this.project = $.project;
         this.protectedPodCount = $.protectedPodCount;
         this.retentionPolicy = $.retentionPolicy;
+        this.state = $.state;
+        this.stateReason = $.stateReason;
         this.uid = $.uid;
     }
 
@@ -566,6 +598,48 @@ public final class BackupPlanState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder retentionPolicy(BackupPlanRetentionPolicyArgs retentionPolicy) {
             return retentionPolicy(Output.of(retentionPolicy));
+        }
+
+        /**
+         * @param state The State of the BackupPlan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(@Nullable Output<String> state) {
+            $.state = state;
+            return this;
+        }
+
+        /**
+         * @param state The State of the BackupPlan.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder state(String state) {
+            return state(Output.of(state));
+        }
+
+        /**
+         * @param stateReason Detailed description of why BackupPlan is in its current state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stateReason(@Nullable Output<String> stateReason) {
+            $.stateReason = stateReason;
+            return this;
+        }
+
+        /**
+         * @param stateReason Detailed description of why BackupPlan is in its current state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stateReason(String stateReason) {
+            return stateReason(Output.of(stateReason));
         }
 
         /**

@@ -197,6 +197,9 @@ type Disk struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey DiskDiskEncryptionKeyPtrOutput `pulumi:"diskEncryptionKey"`
+	// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
+	// required when setting to true
+	EnableConfidentialCompute pulumi.BoolOutput `pulumi:"enableConfidentialCompute"`
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
 	// Structure is documented below.
@@ -375,6 +378,9 @@ type diskState struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey *DiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
+	// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
+	// required when setting to true
+	EnableConfidentialCompute *bool `pulumi:"enableConfidentialCompute"`
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
 	// Structure is documented below.
@@ -524,6 +530,9 @@ type DiskState struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey DiskDiskEncryptionKeyPtrInput
+	// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
+	// required when setting to true
+	EnableConfidentialCompute pulumi.BoolPtrInput
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
 	// Structure is documented below.
@@ -675,6 +684,9 @@ type diskArgs struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey *DiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
+	// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
+	// required when setting to true
+	EnableConfidentialCompute *bool `pulumi:"enableConfidentialCompute"`
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
 	// Structure is documented below.
@@ -794,6 +806,9 @@ type DiskArgs struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey DiskDiskEncryptionKeyPtrInput
+	// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
+	// required when setting to true
+	EnableConfidentialCompute pulumi.BoolPtrInput
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
 	// Structure is documented below.
@@ -1010,6 +1025,12 @@ func (o DiskOutput) Description() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o DiskOutput) DiskEncryptionKey() DiskDiskEncryptionKeyPtrOutput {
 	return o.ApplyT(func(v *Disk) DiskDiskEncryptionKeyPtrOutput { return v.DiskEncryptionKey }).(DiskDiskEncryptionKeyPtrOutput)
+}
+
+// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
+// required when setting to true
+func (o DiskOutput) EnableConfidentialCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Disk) pulumi.BoolOutput { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }
 
 // A list of features to enable on the guest operating system.

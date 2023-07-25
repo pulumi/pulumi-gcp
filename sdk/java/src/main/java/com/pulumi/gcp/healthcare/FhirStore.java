@@ -65,6 +65,7 @@ import javax.annotation.Nullable;
  *         var default_ = new FhirStore(&#34;default&#34;, FhirStoreArgs.builder()        
  *             .dataset(dataset.id())
  *             .version(&#34;R4&#34;)
+ *             .complexDataTypeReferenceParsing(&#34;DISABLED&#34;)
  *             .enableUpdateCreate(false)
  *             .disableReferentialIntegrity(false)
  *             .disableResourceVersioning(false)
@@ -269,6 +270,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:healthcare/fhirStore:FhirStore")
 public class FhirStore extends com.pulumi.resources.CustomResource {
+    /**
+     * Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+     * Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
+     * 
+     */
+    @Export(name="complexDataTypeReferenceParsing", type=String.class, parameters={})
+    private Output<String> complexDataTypeReferenceParsing;
+
+    /**
+     * @return Enable parsing of references within complex FHIR data types such as Extensions. If this value is set to ENABLED, then features like referential integrity and Bundle reference rewriting apply to all references. If this flag has not been specified the behavior of the FHIR store will not change, references in complex data types will not be parsed. New stores will have this value set to ENABLED by default after a notification period. Warning: turning on this flag causes processing existing resources to fail if they contain references to non-existent resources.
+     * Possible values are: `COMPLEX_DATA_TYPE_REFERENCE_PARSING_UNSPECIFIED`, `DISABLED`, `ENABLED`.
+     * 
+     */
+    public Output<String> complexDataTypeReferenceParsing() {
+        return this.complexDataTypeReferenceParsing;
+    }
     /**
      * Identifies the dataset addressed by this request. Must be in the format
      * &#39;projects/{project}/locations/{location}/datasets/{dataset}&#39;

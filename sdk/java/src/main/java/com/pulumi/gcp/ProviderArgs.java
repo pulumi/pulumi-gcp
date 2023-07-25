@@ -677,6 +677,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.loggingCustomEndpoint);
     }
 
+    @Import(name="lookerCustomEndpoint")
+    private @Nullable Output<String> lookerCustomEndpoint;
+
+    public Optional<Output<String>> lookerCustomEndpoint() {
+        return Optional.ofNullable(this.lookerCustomEndpoint);
+    }
+
     @Import(name="memcacheCustomEndpoint")
     private @Nullable Output<String> memcacheCustomEndpoint;
 
@@ -1110,6 +1117,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.impersonateServiceAccountDelegates = $.impersonateServiceAccountDelegates;
         this.kmsCustomEndpoint = $.kmsCustomEndpoint;
         this.loggingCustomEndpoint = $.loggingCustomEndpoint;
+        this.lookerCustomEndpoint = $.lookerCustomEndpoint;
         this.memcacheCustomEndpoint = $.memcacheCustomEndpoint;
         this.mlEngineCustomEndpoint = $.mlEngineCustomEndpoint;
         this.monitoringCustomEndpoint = $.monitoringCustomEndpoint;
@@ -2026,6 +2034,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder loggingCustomEndpoint(String loggingCustomEndpoint) {
             return loggingCustomEndpoint(Output.of(loggingCustomEndpoint));
+        }
+
+        public Builder lookerCustomEndpoint(@Nullable Output<String> lookerCustomEndpoint) {
+            $.lookerCustomEndpoint = lookerCustomEndpoint;
+            return this;
+        }
+
+        public Builder lookerCustomEndpoint(String lookerCustomEndpoint) {
+            return lookerCustomEndpoint(Output.of(lookerCustomEndpoint));
         }
 
         public Builder memcacheCustomEndpoint(@Nullable Output<String> memcacheCustomEndpoint) {

@@ -18,6 +18,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Response Policy is a collection of selectors that apply to queries
+ * made against one or more Virtual Private Cloud networks.
+ * 
  * ## Example Usage
  * ### Dns Response Policy Basic
  * ```java
@@ -42,7 +45,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.dns.ResponsePolicyArgs;
  * import com.pulumi.gcp.dns.inputs.ResponsePolicyNetworkArgs;
  * import com.pulumi.gcp.dns.inputs.ResponsePolicyGkeClusterArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -58,15 +60,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var network_1 = new Network(&#34;network-1&#34;, NetworkArgs.builder()        
  *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var network_2 = new Network(&#34;network-2&#34;, NetworkArgs.builder()        
  *             .autoCreateSubnetworks(false)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var subnetwork_1 = new Subnetwork(&#34;subnetwork-1&#34;, SubnetworkArgs.builder()        
  *             .network(network_1.name())
@@ -82,9 +80,7 @@ import javax.annotation.Nullable;
  *                     .rangeName(&#34;svc&#34;)
  *                     .ipCidrRange(&#34;10.0.32.0/22&#34;)
  *                     .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var cluster_1 = new Cluster(&#34;cluster-1&#34;, ClusterArgs.builder()        
  *             .location(&#34;us-central1-c&#34;)
@@ -108,9 +104,7 @@ import javax.annotation.Nullable;
  *                 .clusterSecondaryRangeName(subnetwork_1.secondaryIpRanges().applyValue(secondaryIpRanges -&gt; secondaryIpRanges[0].rangeName()))
  *                 .servicesSecondaryRangeName(subnetwork_1.secondaryIpRanges().applyValue(secondaryIpRanges -&gt; secondaryIpRanges[1].rangeName()))
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var example_response_policy = new ResponsePolicy(&#34;example-response-policy&#34;, ResponsePolicyArgs.builder()        
  *             .responsePolicyName(&#34;example-response-policy&#34;)
@@ -124,9 +118,7 @@ import javax.annotation.Nullable;
  *             .gkeClusters(ResponsePolicyGkeClusterArgs.builder()
  *                 .gkeClusterName(cluster_1.id())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

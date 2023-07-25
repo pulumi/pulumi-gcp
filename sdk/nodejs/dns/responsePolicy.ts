@@ -7,6 +7,9 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A Response Policy is a collection of selectors that apply to queries
+ * made against one or more Virtual Private Cloud networks.
+ *
  * ## Example Usage
  * ### Dns Response Policy Basic
  *
@@ -14,12 +17,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network_1 = new gcp.compute.Network("network-1", {autoCreateSubnetworks: false}, {
- *     provider: google_beta,
- * });
- * const network_2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false}, {
- *     provider: google_beta,
- * });
+ * const network_1 = new gcp.compute.Network("network-1", {autoCreateSubnetworks: false});
+ * const network_2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false});
  * const subnetwork_1 = new gcp.compute.Subnetwork("subnetwork-1", {
  *     network: network_1.name,
  *     ipCidrRange: "10.0.36.0/24",
@@ -35,8 +34,6 @@ import * as utilities from "../utilities";
  *             ipCidrRange: "10.0.32.0/22",
  *         },
  *     ],
- * }, {
- *     provider: google_beta,
  * });
  * const cluster_1 = new gcp.container.Cluster("cluster-1", {
  *     location: "us-central1-c",
@@ -60,8 +57,6 @@ import * as utilities from "../utilities";
  *         clusterSecondaryRangeName: subnetwork_1.secondaryIpRanges.apply(secondaryIpRanges => secondaryIpRanges[0].rangeName),
  *         servicesSecondaryRangeName: subnetwork_1.secondaryIpRanges.apply(secondaryIpRanges => secondaryIpRanges[1].rangeName),
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const example_response_policy = new gcp.dns.ResponsePolicy("example-response-policy", {
  *     responsePolicyName: "example-response-policy",
@@ -76,8 +71,6 @@ import * as utilities from "../utilities";
  *     gkeClusters: [{
  *         gkeClusterName: cluster_1.id,
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

@@ -108,7 +108,7 @@ type LookupInstanceResult struct {
 	// The unique fingerprint of the metadata.
 	MetadataFingerprint   string `pulumi:"metadataFingerprint"`
 	MetadataStartupScript string `pulumi:"metadataStartupScript"`
-	// The minimum CPU platform specified for the VM instance.
+	// The minimum CPU platform specified for the VM instance. Set to "AUTOMATIC" to remove a previously-set value.
 	MinCpuPlatform string  `pulumi:"minCpuPlatform"`
 	Name           *string `pulumi:"name"`
 	// The networks attached to the instance. Structure is documented below.
@@ -290,7 +290,7 @@ func (o LookupInstanceResultOutput) MetadataStartupScript() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.MetadataStartupScript }).(pulumi.StringOutput)
 }
 
-// The minimum CPU platform specified for the VM instance.
+// The minimum CPU platform specified for the VM instance. Set to "AUTOMATIC" to remove a previously-set value.
 func (o LookupInstanceResultOutput) MinCpuPlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
 }

@@ -33,21 +33,79 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
     ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork");
     /// 
     ///     var defaultCluster = new Gcp.Alloydb.Cluster("defaultCluster", new()
     ///     {
     ///         ClusterId = "alloydb-cluster",
     ///         Location = "us-central1",
-    ///         Network = Output.Tuple(project, defaultNetwork.Name).Apply(values =&gt;
-    ///         {
-    ///             var project = values.Item1;
-    ///             var name = values.Item2;
-    ///             return $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/global/networks/{name}";
-    ///         }),
+    ///         Network = defaultNetwork.Id,
     ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    /// });
+    /// ```
+    /// ### Alloydb Cluster Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default");
+    /// 
+    ///     var full = new Gcp.Alloydb.Cluster("full", new()
+    ///     {
+    ///         ClusterId = "alloydb-cluster-full",
+    ///         Location = "us-central1",
+    ///         Network = @default.Id,
+    ///         InitialUser = new Gcp.Alloydb.Inputs.ClusterInitialUserArgs
+    ///         {
+    ///             User = "alloydb-cluster-full",
+    ///             Password = "alloydb-cluster-full",
+    ///         },
+    ///         AutomatedBackupPolicy = new Gcp.Alloydb.Inputs.ClusterAutomatedBackupPolicyArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///             BackupWindow = "1800s",
+    ///             Enabled = true,
+    ///             WeeklySchedule = new Gcp.Alloydb.Inputs.ClusterAutomatedBackupPolicyWeeklyScheduleArgs
+    ///             {
+    ///                 DaysOfWeeks = new[]
+    ///                 {
+    ///                     "MONDAY",
+    ///                 },
+    ///                 StartTimes = new[]
+    ///                 {
+    ///                     new Gcp.Alloydb.Inputs.ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs
+    ///                     {
+    ///                         Hours = 23,
+    ///                         Minutes = 0,
+    ///                         Seconds = 0,
+    ///                         Nanos = 0,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             QuantityBasedRetention = new Gcp.Alloydb.Inputs.ClusterAutomatedBackupPolicyQuantityBasedRetentionArgs
+    ///             {
+    ///                 Count = 1,
+    ///             },
+    ///             Labels = 
+    ///             {
+    ///                 { "test", "alloydb-cluster-full" },
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "test", "alloydb-cluster-full" },
+    ///         },
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
     /// });
     /// ```

@@ -26480,7 +26480,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs:
                  days_in_cycle: pulumi.Input[int],
                  start_time: pulumi.Input[str]):
         """
-        :param pulumi.Input[int] days_in_cycle: The number of days between snapshots.
+        :param pulumi.Input[int] days_in_cycle: Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
         :param pulumi.Input[str] start_time: This must be in UTC format that resolves to one of
                00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example,
                both 13:00-5 and 08:00 are valid.
@@ -26492,7 +26492,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs:
     @pulumi.getter(name="daysInCycle")
     def days_in_cycle(self) -> pulumi.Input[int]:
         """
-        The number of days between snapshots.
+        Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
         """
         return pulumi.get(self, "days_in_cycle")
 

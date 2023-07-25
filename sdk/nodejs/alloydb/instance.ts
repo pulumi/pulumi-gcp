@@ -22,12 +22,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const project = gcp.organizations.getProject({});
  * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
  * const defaultCluster = new gcp.alloydb.Cluster("defaultCluster", {
  *     clusterId: "alloydb-cluster",
  *     location: "us-central1",
- *     network: pulumi.all([project, defaultNetwork.name]).apply(([project, name]) => `projects/${project.number}/global/networks/${name}`),
+ *     network: defaultNetwork.id,
  *     initialUser: {
  *         password: "alloydb-cluster",
  *     },
@@ -53,6 +52,7 @@ import * as utilities from "../utilities";
  * }, {
  *     dependsOn: [vpcConnection],
  * });
+ * const project = gcp.organizations.getProject({});
  * ```
  *
  * ## Import

@@ -29,20 +29,13 @@ namespace Pulumi.Gcp.Alloydb
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var project = Gcp.Organizations.GetProject.Invoke();
-    /// 
     ///     var defaultNetwork = new Gcp.Compute.Network("defaultNetwork");
     /// 
     ///     var defaultCluster = new Gcp.Alloydb.Cluster("defaultCluster", new()
     ///     {
     ///         ClusterId = "alloydb-cluster",
     ///         Location = "us-central1",
-    ///         Network = Output.Tuple(project, defaultNetwork.Name).Apply(values =&gt;
-    ///         {
-    ///             var project = values.Item1;
-    ///             var name = values.Item2;
-    ///             return $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/global/networks/{name}";
-    ///         }),
+    ///         Network = defaultNetwork.Id,
     ///         InitialUser = new Gcp.Alloydb.Inputs.ClusterInitialUserArgs
     ///         {
     ///             Password = "alloydb-cluster",
@@ -83,6 +76,8 @@ namespace Pulumi.Gcp.Alloydb
     ///             vpcConnection,
     ///         },
     ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
     /// });
     /// ```

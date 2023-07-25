@@ -121,6 +121,7 @@ __all__ = [
     'ClusterNodeConfigEphemeralStorageLocalSsdConfigArgs',
     'ClusterNodeConfigGcfsConfigArgs',
     'ClusterNodeConfigGuestAcceleratorArgs',
+    'ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs',
     'ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs',
     'ClusterNodeConfigGvnicArgs',
     'ClusterNodeConfigKubeletConfigArgs',
@@ -149,6 +150,7 @@ __all__ = [
     'ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs',
     'ClusterNodePoolNodeConfigGcfsConfigArgs',
     'ClusterNodePoolNodeConfigGuestAcceleratorArgs',
+    'ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs',
     'ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs',
     'ClusterNodePoolNodeConfigGvnicArgs',
     'ClusterNodePoolNodeConfigKubeletConfigArgs',
@@ -191,6 +193,7 @@ __all__ = [
     'NodePoolNodeConfigEphemeralStorageLocalSsdConfigArgs',
     'NodePoolNodeConfigGcfsConfigArgs',
     'NodePoolNodeConfigGuestAcceleratorArgs',
+    'NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs',
     'NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs',
     'NodePoolNodeConfigGvnicArgs',
     'NodePoolNodeConfigKubeletConfigArgs',
@@ -5962,16 +5965,20 @@ class ClusterNodeConfigGuestAcceleratorArgs:
     def __init__(__self__, *,
                  count: pulumi.Input[int],
                  type: pulumi.Input[str],
+                 gpu_driver_installation_config: Optional[pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs']] = None,
                  gpu_partition_size: Optional[pulumi.Input[str]] = None,
                  gpu_sharing_config: Optional[pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs']] = None):
         """
         :param pulumi.Input[int] count: The number of the guest accelerator cards exposed to this instance.
         :param pulumi.Input[str] type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        :param pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs'] gpu_driver_installation_config: Configuration for auto installation of GPU driver. Structure is documented below.
         :param pulumi.Input[str] gpu_partition_size: Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
         :param pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs'] gpu_sharing_config: Configuration for GPU sharing. Structure is documented below.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
+        if gpu_driver_installation_config is not None:
+            pulumi.set(__self__, "gpu_driver_installation_config", gpu_driver_installation_config)
         if gpu_partition_size is not None:
             pulumi.set(__self__, "gpu_partition_size", gpu_partition_size)
         if gpu_sharing_config is not None:
@@ -6002,6 +6009,18 @@ class ClusterNodeConfigGuestAcceleratorArgs:
         pulumi.set(self, "type", value)
 
     @property
+    @pulumi.getter(name="gpuDriverInstallationConfig")
+    def gpu_driver_installation_config(self) -> Optional[pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs']]:
+        """
+        Configuration for auto installation of GPU driver. Structure is documented below.
+        """
+        return pulumi.get(self, "gpu_driver_installation_config")
+
+    @gpu_driver_installation_config.setter
+    def gpu_driver_installation_config(self, value: Optional[pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs']]):
+        pulumi.set(self, "gpu_driver_installation_config", value)
+
+    @property
     @pulumi.getter(name="gpuPartitionSize")
     def gpu_partition_size(self) -> Optional[pulumi.Input[str]]:
         """
@@ -6024,6 +6043,38 @@ class ClusterNodeConfigGuestAcceleratorArgs:
     @gpu_sharing_config.setter
     def gpu_sharing_config(self, value: Optional[pulumi.Input['ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs']]):
         pulumi.set(self, "gpu_sharing_config", value)
+
+
+@pulumi.input_type
+class ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs:
+    def __init__(__self__, *,
+                 gpu_driver_version: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] gpu_driver_version: Mode for how the GPU driver is installed.
+               Accepted values are:
+               * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+               * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
+               * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
+               * `"LATEST"`: "Latest" GPU driver in COS.
+        """
+        pulumi.set(__self__, "gpu_driver_version", gpu_driver_version)
+
+    @property
+    @pulumi.getter(name="gpuDriverVersion")
+    def gpu_driver_version(self) -> pulumi.Input[str]:
+        """
+        Mode for how the GPU driver is installed.
+        Accepted values are:
+        * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+        * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
+        * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
+        * `"LATEST"`: "Latest" GPU driver in COS.
+        """
+        return pulumi.get(self, "gpu_driver_version")
+
+    @gpu_driver_version.setter
+    def gpu_driver_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "gpu_driver_version", value)
 
 
 @pulumi.input_type
@@ -7906,16 +7957,20 @@ class ClusterNodePoolNodeConfigGuestAcceleratorArgs:
     def __init__(__self__, *,
                  count: pulumi.Input[int],
                  type: pulumi.Input[str],
+                 gpu_driver_installation_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs']] = None,
                  gpu_partition_size: Optional[pulumi.Input[str]] = None,
                  gpu_sharing_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs']] = None):
         """
         :param pulumi.Input[int] count: The number of the guest accelerator cards exposed to this instance.
         :param pulumi.Input[str] type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        :param pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs'] gpu_driver_installation_config: Configuration for auto installation of GPU driver. Structure is documented below.
         :param pulumi.Input[str] gpu_partition_size: Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
         :param pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs'] gpu_sharing_config: Configuration for GPU sharing. Structure is documented below.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
+        if gpu_driver_installation_config is not None:
+            pulumi.set(__self__, "gpu_driver_installation_config", gpu_driver_installation_config)
         if gpu_partition_size is not None:
             pulumi.set(__self__, "gpu_partition_size", gpu_partition_size)
         if gpu_sharing_config is not None:
@@ -7946,6 +8001,18 @@ class ClusterNodePoolNodeConfigGuestAcceleratorArgs:
         pulumi.set(self, "type", value)
 
     @property
+    @pulumi.getter(name="gpuDriverInstallationConfig")
+    def gpu_driver_installation_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs']]:
+        """
+        Configuration for auto installation of GPU driver. Structure is documented below.
+        """
+        return pulumi.get(self, "gpu_driver_installation_config")
+
+    @gpu_driver_installation_config.setter
+    def gpu_driver_installation_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs']]):
+        pulumi.set(self, "gpu_driver_installation_config", value)
+
+    @property
     @pulumi.getter(name="gpuPartitionSize")
     def gpu_partition_size(self) -> Optional[pulumi.Input[str]]:
         """
@@ -7968,6 +8035,38 @@ class ClusterNodePoolNodeConfigGuestAcceleratorArgs:
     @gpu_sharing_config.setter
     def gpu_sharing_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs']]):
         pulumi.set(self, "gpu_sharing_config", value)
+
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs:
+    def __init__(__self__, *,
+                 gpu_driver_version: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] gpu_driver_version: Mode for how the GPU driver is installed.
+               Accepted values are:
+               * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+               * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
+               * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
+               * `"LATEST"`: "Latest" GPU driver in COS.
+        """
+        pulumi.set(__self__, "gpu_driver_version", gpu_driver_version)
+
+    @property
+    @pulumi.getter(name="gpuDriverVersion")
+    def gpu_driver_version(self) -> pulumi.Input[str]:
+        """
+        Mode for how the GPU driver is installed.
+        Accepted values are:
+        * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+        * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
+        * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
+        * `"LATEST"`: "Latest" GPU driver in COS.
+        """
+        return pulumi.get(self, "gpu_driver_version")
+
+    @gpu_driver_version.setter
+    def gpu_driver_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "gpu_driver_version", value)
 
 
 @pulumi.input_type
@@ -10067,6 +10166,7 @@ class NodePoolNodeConfigGuestAcceleratorArgs:
     def __init__(__self__, *,
                  count: pulumi.Input[int],
                  type: pulumi.Input[str],
+                 gpu_driver_installation_config: Optional[pulumi.Input['NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs']] = None,
                  gpu_partition_size: Optional[pulumi.Input[str]] = None,
                  gpu_sharing_config: Optional[pulumi.Input['NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs']] = None):
         """
@@ -10076,6 +10176,8 @@ class NodePoolNodeConfigGuestAcceleratorArgs:
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "type", type)
+        if gpu_driver_installation_config is not None:
+            pulumi.set(__self__, "gpu_driver_installation_config", gpu_driver_installation_config)
         if gpu_partition_size is not None:
             pulumi.set(__self__, "gpu_partition_size", gpu_partition_size)
         if gpu_sharing_config is not None:
@@ -10105,6 +10207,15 @@ class NodePoolNodeConfigGuestAcceleratorArgs:
         pulumi.set(self, "type", value)
 
     @property
+    @pulumi.getter(name="gpuDriverInstallationConfig")
+    def gpu_driver_installation_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs']]:
+        return pulumi.get(self, "gpu_driver_installation_config")
+
+    @gpu_driver_installation_config.setter
+    def gpu_driver_installation_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs']]):
+        pulumi.set(self, "gpu_driver_installation_config", value)
+
+    @property
     @pulumi.getter(name="gpuPartitionSize")
     def gpu_partition_size(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "gpu_partition_size")
@@ -10121,6 +10232,22 @@ class NodePoolNodeConfigGuestAcceleratorArgs:
     @gpu_sharing_config.setter
     def gpu_sharing_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs']]):
         pulumi.set(self, "gpu_sharing_config", value)
+
+
+@pulumi.input_type
+class NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs:
+    def __init__(__self__, *,
+                 gpu_driver_version: pulumi.Input[str]):
+        pulumi.set(__self__, "gpu_driver_version", gpu_driver_version)
+
+    @property
+    @pulumi.getter(name="gpuDriverVersion")
+    def gpu_driver_version(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "gpu_driver_version")
+
+    @gpu_driver_version.setter
+    def gpu_driver_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "gpu_driver_version", value)
 
 
 @pulumi.input_type

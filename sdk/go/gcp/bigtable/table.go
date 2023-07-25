@@ -58,6 +58,7 @@ import (
 //						Family: pulumi.String("family-second"),
 //					},
 //				},
+//				ChangeStreamRetention: pulumi.String("24h0m0s"),
 //			})
 //			if err != nil {
 //				return err
@@ -94,11 +95,13 @@ import (
 type Table struct {
 	pulumi.CustomResourceState
 
+	// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+	//
+	// ***
+	ChangeStreamRetention pulumi.StringOutput `pulumi:"changeStreamRetention"`
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies TableColumnFamilyArrayOutput `pulumi:"columnFamilies"`
 	// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
-	//
-	// ***
 	DeletionProtection pulumi.StringOutput `pulumi:"deletionProtection"`
 	// The name of the Bigtable instance.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
@@ -146,11 +149,13 @@ func GetTable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Table resources.
 type tableState struct {
+	// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+	//
+	// ***
+	ChangeStreamRetention *string `pulumi:"changeStreamRetention"`
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies []TableColumnFamily `pulumi:"columnFamilies"`
 	// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
-	//
-	// ***
 	DeletionProtection *string `pulumi:"deletionProtection"`
 	// The name of the Bigtable instance.
 	InstanceName *string `pulumi:"instanceName"`
@@ -166,11 +171,13 @@ type tableState struct {
 }
 
 type TableState struct {
+	// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+	//
+	// ***
+	ChangeStreamRetention pulumi.StringPtrInput
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies TableColumnFamilyArrayInput
 	// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
-	//
-	// ***
 	DeletionProtection pulumi.StringPtrInput
 	// The name of the Bigtable instance.
 	InstanceName pulumi.StringPtrInput
@@ -190,11 +197,13 @@ func (TableState) ElementType() reflect.Type {
 }
 
 type tableArgs struct {
+	// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+	//
+	// ***
+	ChangeStreamRetention *string `pulumi:"changeStreamRetention"`
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies []TableColumnFamily `pulumi:"columnFamilies"`
 	// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
-	//
-	// ***
 	DeletionProtection *string `pulumi:"deletionProtection"`
 	// The name of the Bigtable instance.
 	InstanceName string `pulumi:"instanceName"`
@@ -211,11 +220,13 @@ type tableArgs struct {
 
 // The set of arguments for constructing a Table resource.
 type TableArgs struct {
+	// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+	//
+	// ***
+	ChangeStreamRetention pulumi.StringPtrInput
 	// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 	ColumnFamilies TableColumnFamilyArrayInput
 	// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
-	//
-	// ***
 	DeletionProtection pulumi.StringPtrInput
 	// The name of the Bigtable instance.
 	InstanceName pulumi.StringInput
@@ -317,14 +328,19 @@ func (o TableOutput) ToTableOutputWithContext(ctx context.Context) TableOutput {
 	return o
 }
 
+// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+//
+// ***
+func (o TableOutput) ChangeStreamRetention() pulumi.StringOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.ChangeStreamRetention }).(pulumi.StringOutput)
+}
+
 // A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
 func (o TableOutput) ColumnFamilies() TableColumnFamilyArrayOutput {
 	return o.ApplyT(func(v *Table) TableColumnFamilyArrayOutput { return v.ColumnFamilies }).(TableColumnFamilyArrayOutput)
 }
 
 // A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
-//
-// ***
 func (o TableOutput) DeletionProtection() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.DeletionProtection }).(pulumi.StringOutput)
 }

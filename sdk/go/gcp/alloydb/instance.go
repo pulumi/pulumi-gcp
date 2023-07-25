@@ -28,8 +28,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/alloydb"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/compute"
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/organizations"
@@ -40,10 +38,6 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			project, err := organizations.LookupProject(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
 //			defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
 //			if err != nil {
 //				return err
@@ -51,9 +45,7 @@ import (
 //			defaultCluster, err := alloydb.NewCluster(ctx, "defaultCluster", &alloydb.ClusterArgs{
 //				ClusterId: pulumi.String("alloydb-cluster"),
 //				Location:  pulumi.String("us-central1"),
-//				Network: defaultNetwork.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("projects/%v/global/networks/%v", project.Number, name), nil
-//				}).(pulumi.StringOutput),
+//				Network:   defaultNetwork.ID(),
 //				InitialUser: &alloydb.ClusterInitialUserArgs{
 //					Password: pulumi.String("alloydb-cluster"),
 //				},
@@ -90,6 +82,10 @@ import (
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				vpcConnection,
 //			}))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = organizations.LookupProject(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}

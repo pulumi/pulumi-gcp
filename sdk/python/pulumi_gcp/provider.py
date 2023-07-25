@@ -109,6 +109,7 @@ class ProviderArgs:
                  impersonate_service_account_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  logging_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 looker_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  memcache_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  ml_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  monitoring_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -348,6 +349,8 @@ class ProviderArgs:
             pulumi.set(__self__, "kms_custom_endpoint", kms_custom_endpoint)
         if logging_custom_endpoint is not None:
             pulumi.set(__self__, "logging_custom_endpoint", logging_custom_endpoint)
+        if looker_custom_endpoint is not None:
+            pulumi.set(__self__, "looker_custom_endpoint", looker_custom_endpoint)
         if memcache_custom_endpoint is not None:
             pulumi.set(__self__, "memcache_custom_endpoint", memcache_custom_endpoint)
         if ml_engine_custom_endpoint is not None:
@@ -1298,6 +1301,15 @@ class ProviderArgs:
         pulumi.set(self, "logging_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="lookerCustomEndpoint")
+    def looker_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "looker_custom_endpoint")
+
+    @looker_custom_endpoint.setter
+    def looker_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "looker_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="memcacheCustomEndpoint")
     def memcache_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "memcache_custom_endpoint")
@@ -1829,6 +1841,7 @@ class Provider(pulumi.ProviderResource):
                  impersonate_service_account_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  logging_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 looker_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  memcache_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  ml_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  monitoring_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2008,6 +2021,7 @@ class Provider(pulumi.ProviderResource):
                  impersonate_service_account_delegates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  kms_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  logging_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 looker_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  memcache_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  ml_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  monitoring_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2159,6 +2173,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["impersonate_service_account_delegates"] = pulumi.Output.from_input(impersonate_service_account_delegates).apply(pulumi.runtime.to_json) if impersonate_service_account_delegates is not None else None
             __props__.__dict__["kms_custom_endpoint"] = kms_custom_endpoint
             __props__.__dict__["logging_custom_endpoint"] = logging_custom_endpoint
+            __props__.__dict__["looker_custom_endpoint"] = looker_custom_endpoint
             __props__.__dict__["memcache_custom_endpoint"] = memcache_custom_endpoint
             __props__.__dict__["ml_engine_custom_endpoint"] = ml_engine_custom_endpoint
             __props__.__dict__["monitoring_custom_endpoint"] = monitoring_custom_endpoint
@@ -2673,6 +2688,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="loggingCustomEndpoint")
     def logging_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "logging_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="lookerCustomEndpoint")
+    def looker_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "looker_custom_endpoint")
 
     @property
     @pulumi.getter(name="memcacheCustomEndpoint")

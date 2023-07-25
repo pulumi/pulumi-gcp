@@ -10,6 +10,11 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dns
 {
     /// <summary>
+    /// A Response Policy Rule is a selector that applies its behavior to queries that match the selector.
+    /// Selectors are DNS names, which may be wildcards or exact matches.
+    /// Each DNS query subject to a Response Policy matches at most one ResponsePolicyRule,
+    /// as identified by the dns_name field with the longest matching suffix.
+    /// 
     /// ## Example Usage
     /// ### Dns Response Policy Rule Basic
     /// 
@@ -24,17 +29,11 @@ namespace Pulumi.Gcp.Dns
     ///     var network_1 = new Gcp.Compute.Network("network-1", new()
     ///     {
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var network_2 = new Gcp.Compute.Network("network-2", new()
     ///     {
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var response_policy = new Gcp.Dns.ResponsePolicy("response-policy", new()
@@ -51,9 +50,6 @@ namespace Pulumi.Gcp.Dns
     ///                 NetworkUrl = network_2.Id,
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var example_response_policy_rule = new Gcp.Dns.ResponsePolicyRule("example-response-policy-rule", new()
@@ -77,9 +73,6 @@ namespace Pulumi.Gcp.Dns
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -105,7 +98,8 @@ namespace Pulumi.Gcp.Dns
     public partial class ResponsePolicyRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
+        /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and
+        /// 'bypassResponsePolicy'
         /// </summary>
         [Output("behavior")]
         public Output<string?> Behavior { get; private set; } = null!;
@@ -193,7 +187,8 @@ namespace Pulumi.Gcp.Dns
     public sealed class ResponsePolicyRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
+        /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and
+        /// 'bypassResponsePolicy'
         /// </summary>
         [Input("behavior")]
         public Input<string>? Behavior { get; set; }
@@ -243,7 +238,8 @@ namespace Pulumi.Gcp.Dns
     public sealed class ResponsePolicyRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
+        /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and
+        /// 'bypassResponsePolicy'
         /// </summary>
         [Input("behavior")]
         public Input<string>? Behavior { get; set; }

@@ -374,6 +374,10 @@ class ResourcePolicy(pulumi.CustomResource):
         """
         A policy that can be attached to a resource to specify or schedule actions on that resource.
 
+        To get more information about ResourcePolicy, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/resourcePolicies)
+
         ## Example Usage
         ### Resource Policy Basic
 
@@ -563,6 +567,10 @@ class ResourcePolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A policy that can be attached to a resource to specify or schedule actions on that resource.
+
+        To get more information about ResourcePolicy, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/resourcePolicies)
 
         ## Example Usage
         ### Resource Policy Basic

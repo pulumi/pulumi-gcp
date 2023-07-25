@@ -38,8 +38,8 @@ public final class InstanceCluster {
      */
     private @Nullable String kmsKeyName;
     /**
-     * @return The number of nodes in your Cloud Bigtable cluster.
-     * Required, with a minimum of `1` for each cluster in an instance.
+     * @return The number of nodes in the cluster.
+     * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
      * 
      */
     private @Nullable Integer numNodes;
@@ -89,8 +89,8 @@ public final class InstanceCluster {
         return Optional.ofNullable(this.kmsKeyName);
     }
     /**
-     * @return The number of nodes in your Cloud Bigtable cluster.
-     * Required, with a minimum of `1` for each cluster in an instance.
+     * @return The number of nodes in the cluster.
+     * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
      * 
      */
     public Optional<Integer> numNodes() {

@@ -66,6 +66,28 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
+    /// ### Apigee Organization Cloud Basic Disable Vpc Peering
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var current = Gcp.Organizations.GetClientConfig.Invoke();
+    /// 
+    ///     var org = new Gcp.Apigee.Organization("org", new()
+    ///     {
+    ///         Description = "Terraform-provisioned basic Apigee Org without VPC Peering.",
+    ///         AnalyticsRegion = "us-central1",
+    ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
+    ///         DisableVpcPeering = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Apigee Organization Cloud Full
     /// 
     /// ```csharp
@@ -146,6 +168,65 @@ namespace Pulumi.Gcp.Apigee
     /// 
     /// });
     /// ```
+    /// ### Apigee Organization Cloud Full Disable Vpc Peering
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var current = Gcp.Organizations.GetClientConfig.Invoke();
+    /// 
+    ///     var apigeeKeyring = new Gcp.Kms.KeyRing("apigeeKeyring", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var apigeeKey = new Gcp.Kms.CryptoKey("apigeeKey", new()
+    ///     {
+    ///         KeyRing = apigeeKeyring.Id,
+    ///     });
+    /// 
+    ///     var apigeeSa = new Gcp.Projects.ServiceIdentity("apigeeSa", new()
+    ///     {
+    ///         Project = google_project.Project.Project_id,
+    ///         Service = google_project_service.Apigee.Service,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var apigeeSaKeyuser = new Gcp.Kms.CryptoKeyIAMBinding("apigeeSaKeyuser", new()
+    ///     {
+    ///         CryptoKeyId = apigeeKey.Id,
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Members = new[]
+    ///         {
+    ///             apigeeSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///         },
+    ///     });
+    /// 
+    ///     var org = new Gcp.Apigee.Organization("org", new()
+    ///     {
+    ///         AnalyticsRegion = "us-central1",
+    ///         DisplayName = "apigee-org",
+    ///         Description = "Terraform-provisioned Apigee Org without VPC Peering.",
+    ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
+    ///         DisableVpcPeering = true,
+    ///         RuntimeDatabaseEncryptionKeyName = apigeeKey.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             apigeeSaKeyuser,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -200,6 +281,16 @@ namespace Pulumi.Gcp.Apigee
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Flag that specifies whether the VPC Peering through Private Google Access should be
+        /// disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+        /// on the consumer project is not provided, in which case the flag should be set to `true`.
+        /// Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+        /// of any Apigee runtime instance and can be updated only when there are no runtime instances.
+        /// </summary>
+        [Output("disableVpcPeering")]
+        public Output<bool?> DisableVpcPeering { get; private set; } = null!;
 
         /// <summary>
         /// The display name of the Apigee organization.
@@ -337,6 +428,16 @@ namespace Pulumi.Gcp.Apigee
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Flag that specifies whether the VPC Peering through Private Google Access should be
+        /// disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+        /// on the consumer project is not provided, in which case the flag should be set to `true`.
+        /// Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+        /// of any Apigee runtime instance and can be updated only when there are no runtime instances.
+        /// </summary>
+        [Input("disableVpcPeering")]
+        public Input<bool>? DisableVpcPeering { get; set; }
+
+        /// <summary>
         /// The display name of the Apigee organization.
         /// </summary>
         [Input("displayName")]
@@ -432,6 +533,16 @@ namespace Pulumi.Gcp.Apigee
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Flag that specifies whether the VPC Peering through Private Google Access should be
+        /// disabled between the consumer network and Apigee. Required if an `authorizedNetwork`
+        /// on the consumer project is not provided, in which case the flag should be set to `true`.
+        /// Valid only when `RuntimeType` is set to CLOUD. The value must be set before the creation
+        /// of any Apigee runtime instance and can be updated only when there are no runtime instances.
+        /// </summary>
+        [Input("disableVpcPeering")]
+        public Input<bool>? DisableVpcPeering { get; set; }
 
         /// <summary>
         /// The display name of the Apigee organization.

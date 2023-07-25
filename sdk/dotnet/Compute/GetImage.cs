@@ -109,11 +109,19 @@ namespace Pulumi.Gcp.Compute
         public string? Filter { get; set; }
 
         /// <summary>
+        /// A boolean to indicate either to take to most recent image if your filter
+        /// returns more than one image.
+        /// </summary>
+        [Input("mostRecent")]
+        public bool? MostRecent { get; set; }
+
+        /// <summary>
         /// , `family` or `filter` - (Required) The name of a specific image or a family.
         /// Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
         /// the corresponding image. If `family` is specified, it will return the latest image
         /// that is part of an image family and is not deprecated. If you specify `filter`, your
-        /// filter must return exactly one image. Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
+        /// filter must return exactly one image unless you use `most_recent`.
+        /// Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
         /// 
         /// - - -
         /// </summary>
@@ -146,11 +154,19 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Filter { get; set; }
 
         /// <summary>
+        /// A boolean to indicate either to take to most recent image if your filter
+        /// returns more than one image.
+        /// </summary>
+        [Input("mostRecent")]
+        public Input<bool>? MostRecent { get; set; }
+
+        /// <summary>
         /// , `family` or `filter` - (Required) The name of a specific image or a family.
         /// Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
         /// the corresponding image. If `family` is specified, it will return the latest image
         /// that is part of an image family and is not deprecated. If you specify `filter`, your
-        /// filter must return exactly one image. Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
+        /// filter must return exactly one image unless you use `most_recent`.
+        /// Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
         /// 
         /// - - -
         /// </summary>
@@ -222,6 +238,7 @@ namespace Pulumi.Gcp.Compute
         /// A list of applicable license URI.
         /// </summary>
         public readonly ImmutableArray<string> Licenses;
+        public readonly bool? MostRecent;
         /// <summary>
         /// The name of the image.
         /// </summary>
@@ -280,6 +297,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<string> licenses,
 
+            bool? mostRecent,
+
             string name,
 
             string project,
@@ -308,6 +327,7 @@ namespace Pulumi.Gcp.Compute
             LabelFingerprint = labelFingerprint;
             Labels = labels;
             Licenses = licenses;
+            MostRecent = mostRecent;
             Name = name;
             Project = project;
             SelfLink = selfLink;

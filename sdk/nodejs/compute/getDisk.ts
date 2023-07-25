@@ -73,6 +73,7 @@ export interface GetDiskResult {
      */
     readonly description: string;
     readonly diskEncryptionKeys: outputs.compute.GetDiskDiskEncryptionKey[];
+    readonly enableConfidentialCompute: boolean;
     readonly guestOsFeatures: outputs.compute.GetDiskGuestOsFeature[];
     /**
      * The provider-assigned unique ID for this managed resource.

@@ -218,6 +218,8 @@ class _BackupPlanState:
                  project: Optional[pulumi.Input[str]] = None,
                  protected_pod_count: Optional[pulumi.Input[int]] = None,
                  retention_policy: Optional[pulumi.Input['BackupPlanRetentionPolicyArgs']] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 state_reason: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering BackupPlan resources.
@@ -250,6 +252,8 @@ class _BackupPlanState:
         :param pulumi.Input[int] protected_pod_count: The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
         :param pulumi.Input['BackupPlanRetentionPolicyArgs'] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
                Structure is documented below.
+        :param pulumi.Input[str] state: The State of the BackupPlan.
+        :param pulumi.Input[str] state_reason: Detailed description of why BackupPlan is in its current state.
         :param pulumi.Input[str] uid: Server generated, unique identifier of UUID format.
         """
         if backup_config is not None:
@@ -276,6 +280,10 @@ class _BackupPlanState:
             pulumi.set(__self__, "protected_pod_count", protected_pod_count)
         if retention_policy is not None:
             pulumi.set(__self__, "retention_policy", retention_policy)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if state_reason is not None:
+            pulumi.set(__self__, "state_reason", state_reason)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
 
@@ -439,6 +447,30 @@ class _BackupPlanState:
     @retention_policy.setter
     def retention_policy(self, value: Optional[pulumi.Input['BackupPlanRetentionPolicyArgs']]):
         pulumi.set(self, "retention_policy", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The State of the BackupPlan.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="stateReason")
+    def state_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        Detailed description of why BackupPlan is in its current state.
+        """
+        return pulumi.get(self, "state_reason")
+
+    @state_reason.setter
+    def state_reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state_reason", value)
 
     @property
     @pulumi.getter
@@ -870,6 +902,8 @@ class BackupPlan(pulumi.CustomResource):
             __props__.__dict__["retention_policy"] = retention_policy
             __props__.__dict__["etag"] = None
             __props__.__dict__["protected_pod_count"] = None
+            __props__.__dict__["state"] = None
+            __props__.__dict__["state_reason"] = None
             __props__.__dict__["uid"] = None
         super(BackupPlan, __self__).__init__(
             'gcp:gkebackup/backupPlan:BackupPlan',
@@ -893,6 +927,8 @@ class BackupPlan(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             protected_pod_count: Optional[pulumi.Input[int]] = None,
             retention_policy: Optional[pulumi.Input[pulumi.InputType['BackupPlanRetentionPolicyArgs']]] = None,
+            state: Optional[pulumi.Input[str]] = None,
+            state_reason: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None) -> 'BackupPlan':
         """
         Get an existing BackupPlan resource's state with the given name, id, and optional extra
@@ -930,6 +966,8 @@ class BackupPlan(pulumi.CustomResource):
         :param pulumi.Input[int] protected_pod_count: The number of Kubernetes Pods backed up in the last successful Backup created via this BackupPlan.
         :param pulumi.Input[pulumi.InputType['BackupPlanRetentionPolicyArgs']] retention_policy: RetentionPolicy governs lifecycle of Backups created under this plan.
                Structure is documented below.
+        :param pulumi.Input[str] state: The State of the BackupPlan.
+        :param pulumi.Input[str] state_reason: Detailed description of why BackupPlan is in its current state.
         :param pulumi.Input[str] uid: Server generated, unique identifier of UUID format.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -948,6 +986,8 @@ class BackupPlan(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["protected_pod_count"] = protected_pod_count
         __props__.__dict__["retention_policy"] = retention_policy
+        __props__.__dict__["state"] = state
+        __props__.__dict__["state_reason"] = state_reason
         __props__.__dict__["uid"] = uid
         return BackupPlan(resource_name, opts=opts, __props__=__props__)
 
@@ -1063,6 +1103,22 @@ class BackupPlan(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "retention_policy")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The State of the BackupPlan.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="stateReason")
+    def state_reason(self) -> pulumi.Output[str]:
+        """
+        Detailed description of why BackupPlan is in its current state.
+        """
+        return pulumi.get(self, "state_reason")
 
     @property
     @pulumi.getter

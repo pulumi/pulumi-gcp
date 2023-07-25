@@ -12,6 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Response Policy is a collection of selectors that apply to queries
+// made against one or more Virtual Private Cloud networks.
+//
 // ## Example Usage
 // ### Dns Response Policy Basic
 //
@@ -31,13 +34,13 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := compute.NewNetwork(ctx, "network-1", &compute.NetworkArgs{
 //				AutoCreateSubnetworks: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = compute.NewNetwork(ctx, "network-2", &compute.NetworkArgs{
 //				AutoCreateSubnetworks: pulumi.Bool(false),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -56,7 +59,7 @@ import (
 //						IpCidrRange: pulumi.String("10.0.32.0/22"),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -86,7 +89,7 @@ import (
 //						return &secondaryIpRanges[1].RangeName, nil
 //					}).(pulumi.StringPtrOutput),
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -105,7 +108,7 @@ import (
 //						GkeClusterName: cluster_1.ID(),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

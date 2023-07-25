@@ -35,8 +35,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.OrganizationsFunctions;
- * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.compute.Network;
  * import com.pulumi.gcp.alloydb.Cluster;
  * import com.pulumi.gcp.alloydb.ClusterArgs;
@@ -48,6 +46,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.alloydb.Instance;
  * import com.pulumi.gcp.alloydb.InstanceArgs;
  * import com.pulumi.gcp.alloydb.inputs.InstanceMachineConfigArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -62,14 +62,12 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var project = OrganizationsFunctions.getProject();
- * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;);
  * 
  *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
  *             .clusterId(&#34;alloydb-cluster&#34;)
  *             .location(&#34;us-central1&#34;)
- *             .network(defaultNetwork.name().applyValue(name -&gt; String.format(&#34;projects/%s/global/networks/%s&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number()),name)))
+ *             .network(defaultNetwork.id())
  *             .initialUser(ClusterInitialUserArgs.builder()
  *                 .password(&#34;alloydb-cluster&#34;)
  *                 .build())
@@ -98,6 +96,8 @@ import javax.annotation.Nullable;
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(vpcConnection)
  *                 .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
  * 
  *     }
  * }

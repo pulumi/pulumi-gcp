@@ -393,6 +393,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('loggingCustomEndpoint')
 
     @property
+    def looker_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('lookerCustomEndpoint')
+
+    @property
     def memcache_custom_endpoint(self) -> Optional[str]:
         return __config__.get('memcacheCustomEndpoint')
 

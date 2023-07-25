@@ -69,6 +69,7 @@ import javax.annotation.Nullable;
  *                 TableColumnFamilyArgs.builder()
  *                     .family(&#34;family-second&#34;)
  *                     .build())
+ *             .changeStreamRetention(&#34;24h0m0s&#34;)
  *             .build());
  * 
  *     }
@@ -97,6 +98,24 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:bigtable/table:Table")
 public class Table extends com.pulumi.resources.CustomResource {
     /**
+     * Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+     * 
+     * ***
+     * 
+     */
+    @Export(name="changeStreamRetention", type=String.class, parameters={})
+    private Output<String> changeStreamRetention;
+
+    /**
+     * @return Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+     * 
+     * ***
+     * 
+     */
+    public Output<String> changeStreamRetention() {
+        return this.changeStreamRetention;
+    }
+    /**
      * A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
      * 
      */
@@ -113,16 +132,12 @@ public class Table extends com.pulumi.resources.CustomResource {
     /**
      * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
      * 
-     * ***
-     * 
      */
     @Export(name="deletionProtection", type=String.class, parameters={})
     private Output<String> deletionProtection;
 
     /**
      * @return A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
-     * 
-     * ***
      * 
      */
     public Output<String> deletionProtection() {

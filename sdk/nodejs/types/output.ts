@@ -4627,6 +4627,11 @@ export namespace bigquery {
          */
         ignoreUnknownValues?: boolean;
         /**
+         * Additional properties to set if
+         * `sourceFormat` is set to "JSON". Structure is documented below.
+         */
+        jsonOptions?: outputs.bigquery.TableExternalDataConfigurationJsonOptions;
+        /**
          * The maximum number of bad records that
          * BigQuery can ignore when reading data.
          */
@@ -4639,6 +4644,11 @@ export namespace bigquery {
          * Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `objectMetadata` is set, `sourceFormat` should be omitted.
          */
         objectMetadata?: string;
+        /**
+         * Additional properties to set if
+         * `sourceFormat` is set to "PARQUET". Structure is documented below.
+         */
+        parquetOptions?: outputs.bigquery.TableExternalDataConfigurationParquetOptions;
         /**
          * When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
          */
@@ -4763,6 +4773,24 @@ export namespace bigquery {
          * Note that when `mode` is set to `CUSTOM`, you must encode the partition key schema within the `sourceUriPrefix` by setting `sourceUriPrefix` to `gs://bucket/path_to_table/{key1:TYPE1}/{key2:TYPE2}/{key3:TYPE3}`.
          */
         sourceUriPrefix?: string;
+    }
+
+    export interface TableExternalDataConfigurationJsonOptions {
+        /**
+         * The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
+         */
+        encoding?: string;
+    }
+
+    export interface TableExternalDataConfigurationParquetOptions {
+        /**
+         * Indicates whether to use schema inference specifically for Parquet LIST logical type.
+         */
+        enableListInference?: boolean;
+        /**
+         * Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
+         */
+        enumAsString?: boolean;
     }
 
     export interface TableMaterializedView {
@@ -4979,8 +5007,8 @@ export namespace bigtable {
          */
         kmsKeyName: string;
         /**
-         * The number of nodes in your Cloud Bigtable cluster.
-         * Required, with a minimum of `1` for each cluster in an instance.
+         * The number of nodes in the cluster.
+         * If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
          */
         numNodes: number;
         /**
@@ -22224,7 +22252,7 @@ export namespace compute {
 
     export interface ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
         /**
-         * The number of days between snapshots.
+         * Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
          */
         daysInCycle: number;
         /**
@@ -26892,6 +26920,10 @@ export namespace container {
          */
         count: number;
         /**
+         * Configuration for auto installation of GPU driver. Structure is documented below.
+         */
+        gpuDriverInstallationConfig?: outputs.container.ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig;
+        /**
          * Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
          */
         gpuPartitionSize?: string;
@@ -26903,6 +26935,18 @@ export namespace container {
          * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
          */
         type: string;
+    }
+
+    export interface ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+        /**
+         * Mode for how the GPU driver is installed.
+         * Accepted values are:
+         * * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+         * * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
+         * * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
+         * * `"LATEST"`: "Latest" GPU driver in COS.
+         */
+        gpuDriverVersion: string;
     }
 
     export interface ClusterNodeConfigGuestAcceleratorGpuSharingConfig {
@@ -27460,6 +27504,10 @@ export namespace container {
          */
         count: number;
         /**
+         * Configuration for auto installation of GPU driver. Structure is documented below.
+         */
+        gpuDriverInstallationConfig?: outputs.container.ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig;
+        /**
          * Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
          */
         gpuPartitionSize?: string;
@@ -27471,6 +27519,18 @@ export namespace container {
          * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
          */
         type: string;
+    }
+
+    export interface ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+        /**
+         * Mode for how the GPU driver is installed.
+         * Accepted values are:
+         * * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+         * * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
+         * * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
+         * * `"LATEST"`: "Latest" GPU driver in COS.
+         */
+        gpuDriverVersion: string;
     }
 
     export interface ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
@@ -28212,9 +28272,14 @@ export namespace container {
 
     export interface GetClusterNodeConfigGuestAccelerator {
         count: number;
+        gpuDriverInstallationConfigs: outputs.container.GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig[];
         gpuPartitionSize: string;
         gpuSharingConfigs: outputs.container.GetClusterNodeConfigGuestAcceleratorGpuSharingConfig[];
         type: string;
+    }
+
+    export interface GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+        gpuDriverVersion: string;
     }
 
     export interface GetClusterNodeConfigGuestAcceleratorGpuSharingConfig {
@@ -28396,9 +28461,14 @@ export namespace container {
 
     export interface GetClusterNodePoolNodeConfigGuestAccelerator {
         count: number;
+        gpuDriverInstallationConfigs: outputs.container.GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig[];
         gpuPartitionSize: string;
         gpuSharingConfigs: outputs.container.GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig[];
         type: string;
+    }
+
+    export interface GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+        gpuDriverVersion: string;
     }
 
     export interface GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
@@ -28683,6 +28753,7 @@ export namespace container {
 
     export interface NodePoolNodeConfigGuestAccelerator {
         count: number;
+        gpuDriverInstallationConfig?: outputs.container.NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig;
         gpuPartitionSize?: string;
         gpuSharingConfig?: outputs.container.NodePoolNodeConfigGuestAcceleratorGpuSharingConfig;
         /**
@@ -28691,6 +28762,10 @@ export namespace container {
          * physical proximity in order to reduce network latency between nodes.
          */
         type: string;
+    }
+
+    export interface NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+        gpuDriverVersion: string;
     }
 
     export interface NodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
@@ -45152,6 +45227,168 @@ export namespace logging {
          * A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
          */
         name: string;
+    }
+
+}
+
+export namespace looker {
+    export interface InstanceAdminSettings {
+        allowedEmailDomains?: string[];
+    }
+
+    export interface InstanceDenyMaintenancePeriod {
+        /**
+         * Required. Start date of the deny maintenance period
+         * Structure is documented below.
+         */
+        endDate: outputs.looker.InstanceDenyMaintenancePeriodEndDate;
+        /**
+         * Required. Start date of the deny maintenance period
+         * Structure is documented below.
+         */
+        startDate: outputs.looker.InstanceDenyMaintenancePeriodStartDate;
+        /**
+         * Required. Start time of the window in UTC time.
+         * Structure is documented below.
+         */
+        time: outputs.looker.InstanceDenyMaintenancePeriodTime;
+    }
+
+    export interface InstanceDenyMaintenancePeriodEndDate {
+        /**
+         * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+         * to specify a year by itself or a year and month where the day isn't significant.
+         */
+        day?: number;
+        /**
+         * Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+         * month and day.
+         */
+        month?: number;
+        /**
+         * Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+         * a year.
+         */
+        year?: number;
+    }
+
+    export interface InstanceDenyMaintenancePeriodStartDate {
+        /**
+         * Day of a month. Must be from 1 to 31 and valid for the year and month, or 0
+         * to specify a year by itself or a year and month where the day isn't significant.
+         */
+        day?: number;
+        /**
+         * Month of a year. Must be from 1 to 12, or 0 to specify a year without a
+         * month and day.
+         */
+        month?: number;
+        /**
+         * Year of the date. Must be from 1 to 9999, or 0 to specify a date without
+         * a year.
+         */
+        year?: number;
+    }
+
+    export interface InstanceDenyMaintenancePeriodTime {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23.
+         */
+        hours?: number;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
+        minutes?: number;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
+        nanos?: number;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59.
+         */
+        seconds?: number;
+    }
+
+    export interface InstanceEncryptionConfig {
+        /**
+         * Name of the customer managed encryption key (CMEK) in KMS.
+         */
+        kmsKeyName?: string;
+        /**
+         * (Output)
+         * Full name and version of the CMEK key currently in use to encrypt Looker data.
+         */
+        kmsKeyNameVersion: string;
+        /**
+         * (Output)
+         * Status of the customer managed encryption key (CMEK) in KMS.
+         */
+        kmsKeyState: string;
+    }
+
+    export interface InstanceMaintenanceWindow {
+        /**
+         * Required. Day of the week for this MaintenanceWindow (in UTC).
+         * - MONDAY: Monday
+         * - TUESDAY: Tuesday
+         * - WEDNESDAY: Wednesday
+         * - THURSDAY: Thursday
+         * - FRIDAY: Friday
+         * - SATURDAY: Saturday
+         * - SUNDAY: Sunday
+         * Possible values are: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+         */
+        dayOfWeek: string;
+        /**
+         * Required. Start time of the window in UTC time.
+         * Structure is documented below.
+         */
+        startTime: outputs.looker.InstanceMaintenanceWindowStartTime;
+    }
+
+    export interface InstanceMaintenanceWindowStartTime {
+        /**
+         * Hours of day in 24 hour format. Should be from 0 to 23.
+         */
+        hours?: number;
+        /**
+         * Minutes of hour of day. Must be from 0 to 59.
+         */
+        minutes?: number;
+        /**
+         * Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+         */
+        nanos?: number;
+        /**
+         * Seconds of minutes of the time. Must normally be from 0 to 59.
+         */
+        seconds?: number;
+    }
+
+    export interface InstanceOauthConfig {
+        /**
+         * The client ID for the Oauth config.
+         */
+        clientId: string;
+        /**
+         * The client secret for the Oauth config.
+         */
+        clientSecret: string;
+    }
+
+    export interface InstanceUserMetadata {
+        /**
+         * Number of additional Developer Users to allocate to the Looker Instance.
+         */
+        additionalDeveloperUserCount?: number;
+        /**
+         * Number of additional Standard Users to allocate to the Looker Instance.
+         */
+        additionalStandardUserCount?: number;
+        /**
+         * Number of additional Viewer Users to allocate to the Looker Instance.
+         */
+        additionalViewerUserCount?: number;
     }
 
 }

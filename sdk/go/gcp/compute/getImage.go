@@ -65,11 +65,15 @@ type LookupImageArgs struct {
 	// The family name of the image.
 	Family *string `pulumi:"family"`
 	Filter *string `pulumi:"filter"`
+	// A boolean to indicate either to take to most recent image if your filter
+	// returns more than one image.
+	MostRecent *bool `pulumi:"mostRecent"`
 	// , `family` or `filter` - (Required) The name of a specific image or a family.
 	// Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
 	// the corresponding image. If `family` is specified, it will return the latest image
 	// that is part of an image family and is not deprecated. If you specify `filter`, your
-	// filter must return exactly one image. Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
+	// filter must return exactly one image unless you use `mostRecent`.
+	// Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
 	//
 	// ***
 	Name *string `pulumi:"name"`
@@ -105,7 +109,8 @@ type LookupImageResult struct {
 	// A map of labels applied to this image.
 	Labels map[string]string `pulumi:"labels"`
 	// A list of applicable license URI.
-	Licenses []string `pulumi:"licenses"`
+	Licenses   []string `pulumi:"licenses"`
+	MostRecent *bool    `pulumi:"mostRecent"`
 	// The name of the image.
 	Name    string `pulumi:"name"`
 	Project string `pulumi:"project"`
@@ -143,11 +148,15 @@ type LookupImageOutputArgs struct {
 	// The family name of the image.
 	Family pulumi.StringPtrInput `pulumi:"family"`
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// A boolean to indicate either to take to most recent image if your filter
+	// returns more than one image.
+	MostRecent pulumi.BoolPtrInput `pulumi:"mostRecent"`
 	// , `family` or `filter` - (Required) The name of a specific image or a family.
 	// Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
 	// the corresponding image. If `family` is specified, it will return the latest image
 	// that is part of an image family and is not deprecated. If you specify `filter`, your
-	// filter must return exactly one image. Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
+	// filter must return exactly one image unless you use `mostRecent`.
+	// Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
 	//
 	// ***
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -235,6 +244,10 @@ func (o LookupImageResultOutput) Labels() pulumi.StringMapOutput {
 // A list of applicable license URI.
 func (o LookupImageResultOutput) Licenses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupImageResult) []string { return v.Licenses }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupImageResultOutput) MostRecent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v LookupImageResult) *bool { return v.MostRecent }).(pulumi.BoolPtrOutput)
 }
 
 // The name of the image.

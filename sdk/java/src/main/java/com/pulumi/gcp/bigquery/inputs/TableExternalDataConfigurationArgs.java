@@ -9,6 +9,8 @@ import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationAvroOptionsA
 import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationCsvOptionsArgs;
 import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationGoogleSheetsOptionsArgs;
 import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationHivePartitioningOptionsArgs;
+import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationJsonOptionsArgs;
+import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationParquetOptionsArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -177,6 +179,23 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
     }
 
     /**
+     * Additional properties to set if
+     * `source_format` is set to &#34;JSON&#34;. Structure is documented below.
+     * 
+     */
+    @Import(name="jsonOptions")
+    private @Nullable Output<TableExternalDataConfigurationJsonOptionsArgs> jsonOptions;
+
+    /**
+     * @return Additional properties to set if
+     * `source_format` is set to &#34;JSON&#34;. Structure is documented below.
+     * 
+     */
+    public Optional<Output<TableExternalDataConfigurationJsonOptionsArgs>> jsonOptions() {
+        return Optional.ofNullable(this.jsonOptions);
+    }
+
+    /**
      * The maximum number of bad records that
      * BigQuery can ignore when reading data.
      * 
@@ -221,6 +240,23 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
      */
     public Optional<Output<String>> objectMetadata() {
         return Optional.ofNullable(this.objectMetadata);
+    }
+
+    /**
+     * Additional properties to set if
+     * `source_format` is set to &#34;PARQUET&#34;. Structure is documented below.
+     * 
+     */
+    @Import(name="parquetOptions")
+    private @Nullable Output<TableExternalDataConfigurationParquetOptionsArgs> parquetOptions;
+
+    /**
+     * @return Additional properties to set if
+     * `source_format` is set to &#34;PARQUET&#34;. Structure is documented below.
+     * 
+     */
+    public Optional<Output<TableExternalDataConfigurationParquetOptionsArgs>> parquetOptions() {
+        return Optional.ofNullable(this.parquetOptions);
     }
 
     /**
@@ -322,9 +358,11 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
         this.googleSheetsOptions = $.googleSheetsOptions;
         this.hivePartitioningOptions = $.hivePartitioningOptions;
         this.ignoreUnknownValues = $.ignoreUnknownValues;
+        this.jsonOptions = $.jsonOptions;
         this.maxBadRecords = $.maxBadRecords;
         this.metadataCacheMode = $.metadataCacheMode;
         this.objectMetadata = $.objectMetadata;
+        this.parquetOptions = $.parquetOptions;
         this.referenceFileSchemaUri = $.referenceFileSchemaUri;
         this.schema = $.schema;
         this.sourceFormat = $.sourceFormat;
@@ -552,6 +590,29 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
         }
 
         /**
+         * @param jsonOptions Additional properties to set if
+         * `source_format` is set to &#34;JSON&#34;. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jsonOptions(@Nullable Output<TableExternalDataConfigurationJsonOptionsArgs> jsonOptions) {
+            $.jsonOptions = jsonOptions;
+            return this;
+        }
+
+        /**
+         * @param jsonOptions Additional properties to set if
+         * `source_format` is set to &#34;JSON&#34;. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder jsonOptions(TableExternalDataConfigurationJsonOptionsArgs jsonOptions) {
+            return jsonOptions(Output.of(jsonOptions));
+        }
+
+        /**
          * @param maxBadRecords The maximum number of bad records that
          * BigQuery can ignore when reading data.
          * 
@@ -614,6 +675,29 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
          */
         public Builder objectMetadata(String objectMetadata) {
             return objectMetadata(Output.of(objectMetadata));
+        }
+
+        /**
+         * @param parquetOptions Additional properties to set if
+         * `source_format` is set to &#34;PARQUET&#34;. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parquetOptions(@Nullable Output<TableExternalDataConfigurationParquetOptionsArgs> parquetOptions) {
+            $.parquetOptions = parquetOptions;
+            return this;
+        }
+
+        /**
+         * @param parquetOptions Additional properties to set if
+         * `source_format` is set to &#34;PARQUET&#34;. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parquetOptions(TableExternalDataConfigurationParquetOptionsArgs parquetOptions) {
+            return parquetOptions(Output.of(parquetOptions));
         }
 
         /**

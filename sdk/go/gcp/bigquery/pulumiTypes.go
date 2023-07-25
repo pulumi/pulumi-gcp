@@ -9449,6 +9449,9 @@ type TableExternalDataConfiguration struct {
 	// many bad records, an invalid error is returned in the job result.
 	// The default value is false.
 	IgnoreUnknownValues *bool `pulumi:"ignoreUnknownValues"`
+	// Additional properties to set if
+	// `sourceFormat` is set to "JSON". Structure is documented below.
+	JsonOptions *TableExternalDataConfigurationJsonOptions `pulumi:"jsonOptions"`
 	// The maximum number of bad records that
 	// BigQuery can ignore when reading data.
 	MaxBadRecords *int `pulumi:"maxBadRecords"`
@@ -9456,6 +9459,9 @@ type TableExternalDataConfiguration struct {
 	MetadataCacheMode *string `pulumi:"metadataCacheMode"`
 	// Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `objectMetadata` is set, `sourceFormat` should be omitted.
 	ObjectMetadata *string `pulumi:"objectMetadata"`
+	// Additional properties to set if
+	// `sourceFormat` is set to "PARQUET". Structure is documented below.
+	ParquetOptions *TableExternalDataConfigurationParquetOptions `pulumi:"parquetOptions"`
 	// When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
 	ReferenceFileSchemaUri *string `pulumi:"referenceFileSchemaUri"`
 	// A JSON schema for the external table. Schema is required
@@ -9525,6 +9531,9 @@ type TableExternalDataConfigurationArgs struct {
 	// many bad records, an invalid error is returned in the job result.
 	// The default value is false.
 	IgnoreUnknownValues pulumi.BoolPtrInput `pulumi:"ignoreUnknownValues"`
+	// Additional properties to set if
+	// `sourceFormat` is set to "JSON". Structure is documented below.
+	JsonOptions TableExternalDataConfigurationJsonOptionsPtrInput `pulumi:"jsonOptions"`
 	// The maximum number of bad records that
 	// BigQuery can ignore when reading data.
 	MaxBadRecords pulumi.IntPtrInput `pulumi:"maxBadRecords"`
@@ -9532,6 +9541,9 @@ type TableExternalDataConfigurationArgs struct {
 	MetadataCacheMode pulumi.StringPtrInput `pulumi:"metadataCacheMode"`
 	// Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `objectMetadata` is set, `sourceFormat` should be omitted.
 	ObjectMetadata pulumi.StringPtrInput `pulumi:"objectMetadata"`
+	// Additional properties to set if
+	// `sourceFormat` is set to "PARQUET". Structure is documented below.
+	ParquetOptions TableExternalDataConfigurationParquetOptionsPtrInput `pulumi:"parquetOptions"`
 	// When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
 	ReferenceFileSchemaUri pulumi.StringPtrInput `pulumi:"referenceFileSchemaUri"`
 	// A JSON schema for the external table. Schema is required
@@ -9696,6 +9708,14 @@ func (o TableExternalDataConfigurationOutput) IgnoreUnknownValues() pulumi.BoolP
 	return o.ApplyT(func(v TableExternalDataConfiguration) *bool { return v.IgnoreUnknownValues }).(pulumi.BoolPtrOutput)
 }
 
+// Additional properties to set if
+// `sourceFormat` is set to "JSON". Structure is documented below.
+func (o TableExternalDataConfigurationOutput) JsonOptions() TableExternalDataConfigurationJsonOptionsPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfiguration) *TableExternalDataConfigurationJsonOptions {
+		return v.JsonOptions
+	}).(TableExternalDataConfigurationJsonOptionsPtrOutput)
+}
+
 // The maximum number of bad records that
 // BigQuery can ignore when reading data.
 func (o TableExternalDataConfigurationOutput) MaxBadRecords() pulumi.IntPtrOutput {
@@ -9710,6 +9730,14 @@ func (o TableExternalDataConfigurationOutput) MetadataCacheMode() pulumi.StringP
 // Object Metadata is used to create Object Tables. Object Tables contain a listing of objects (with their metadata) found at the sourceUris. If `objectMetadata` is set, `sourceFormat` should be omitted.
 func (o TableExternalDataConfigurationOutput) ObjectMetadata() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TableExternalDataConfiguration) *string { return v.ObjectMetadata }).(pulumi.StringPtrOutput)
+}
+
+// Additional properties to set if
+// `sourceFormat` is set to "PARQUET". Structure is documented below.
+func (o TableExternalDataConfigurationOutput) ParquetOptions() TableExternalDataConfigurationParquetOptionsPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfiguration) *TableExternalDataConfigurationParquetOptions {
+		return v.ParquetOptions
+	}).(TableExternalDataConfigurationParquetOptionsPtrOutput)
 }
 
 // When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
@@ -9867,6 +9895,17 @@ func (o TableExternalDataConfigurationPtrOutput) IgnoreUnknownValues() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Additional properties to set if
+// `sourceFormat` is set to "JSON". Structure is documented below.
+func (o TableExternalDataConfigurationPtrOutput) JsonOptions() TableExternalDataConfigurationJsonOptionsPtrOutput {
+	return o.ApplyT(func(v *TableExternalDataConfiguration) *TableExternalDataConfigurationJsonOptions {
+		if v == nil {
+			return nil
+		}
+		return v.JsonOptions
+	}).(TableExternalDataConfigurationJsonOptionsPtrOutput)
+}
+
 // The maximum number of bad records that
 // BigQuery can ignore when reading data.
 func (o TableExternalDataConfigurationPtrOutput) MaxBadRecords() pulumi.IntPtrOutput {
@@ -9896,6 +9935,17 @@ func (o TableExternalDataConfigurationPtrOutput) ObjectMetadata() pulumi.StringP
 		}
 		return v.ObjectMetadata
 	}).(pulumi.StringPtrOutput)
+}
+
+// Additional properties to set if
+// `sourceFormat` is set to "PARQUET". Structure is documented below.
+func (o TableExternalDataConfigurationPtrOutput) ParquetOptions() TableExternalDataConfigurationParquetOptionsPtrOutput {
+	return o.ApplyT(func(v *TableExternalDataConfiguration) *TableExternalDataConfigurationParquetOptions {
+		if v == nil {
+			return nil
+		}
+		return v.ParquetOptions
+	}).(TableExternalDataConfigurationParquetOptionsPtrOutput)
 }
 
 // When creating an external table, the user can provide a reference file with the table schema. This is enabled for the following formats: AVRO, PARQUET, ORC.
@@ -10786,6 +10836,299 @@ func (o TableExternalDataConfigurationHivePartitioningOptionsPtrOutput) SourceUr
 		}
 		return v.SourceUriPrefix
 	}).(pulumi.StringPtrOutput)
+}
+
+type TableExternalDataConfigurationJsonOptions struct {
+	// The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
+	Encoding *string `pulumi:"encoding"`
+}
+
+// TableExternalDataConfigurationJsonOptionsInput is an input type that accepts TableExternalDataConfigurationJsonOptionsArgs and TableExternalDataConfigurationJsonOptionsOutput values.
+// You can construct a concrete instance of `TableExternalDataConfigurationJsonOptionsInput` via:
+//
+//	TableExternalDataConfigurationJsonOptionsArgs{...}
+type TableExternalDataConfigurationJsonOptionsInput interface {
+	pulumi.Input
+
+	ToTableExternalDataConfigurationJsonOptionsOutput() TableExternalDataConfigurationJsonOptionsOutput
+	ToTableExternalDataConfigurationJsonOptionsOutputWithContext(context.Context) TableExternalDataConfigurationJsonOptionsOutput
+}
+
+type TableExternalDataConfigurationJsonOptionsArgs struct {
+	// The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
+	Encoding pulumi.StringPtrInput `pulumi:"encoding"`
+}
+
+func (TableExternalDataConfigurationJsonOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableExternalDataConfigurationJsonOptions)(nil)).Elem()
+}
+
+func (i TableExternalDataConfigurationJsonOptionsArgs) ToTableExternalDataConfigurationJsonOptionsOutput() TableExternalDataConfigurationJsonOptionsOutput {
+	return i.ToTableExternalDataConfigurationJsonOptionsOutputWithContext(context.Background())
+}
+
+func (i TableExternalDataConfigurationJsonOptionsArgs) ToTableExternalDataConfigurationJsonOptionsOutputWithContext(ctx context.Context) TableExternalDataConfigurationJsonOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationJsonOptionsOutput)
+}
+
+func (i TableExternalDataConfigurationJsonOptionsArgs) ToTableExternalDataConfigurationJsonOptionsPtrOutput() TableExternalDataConfigurationJsonOptionsPtrOutput {
+	return i.ToTableExternalDataConfigurationJsonOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i TableExternalDataConfigurationJsonOptionsArgs) ToTableExternalDataConfigurationJsonOptionsPtrOutputWithContext(ctx context.Context) TableExternalDataConfigurationJsonOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationJsonOptionsOutput).ToTableExternalDataConfigurationJsonOptionsPtrOutputWithContext(ctx)
+}
+
+// TableExternalDataConfigurationJsonOptionsPtrInput is an input type that accepts TableExternalDataConfigurationJsonOptionsArgs, TableExternalDataConfigurationJsonOptionsPtr and TableExternalDataConfigurationJsonOptionsPtrOutput values.
+// You can construct a concrete instance of `TableExternalDataConfigurationJsonOptionsPtrInput` via:
+//
+//	        TableExternalDataConfigurationJsonOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TableExternalDataConfigurationJsonOptionsPtrInput interface {
+	pulumi.Input
+
+	ToTableExternalDataConfigurationJsonOptionsPtrOutput() TableExternalDataConfigurationJsonOptionsPtrOutput
+	ToTableExternalDataConfigurationJsonOptionsPtrOutputWithContext(context.Context) TableExternalDataConfigurationJsonOptionsPtrOutput
+}
+
+type tableExternalDataConfigurationJsonOptionsPtrType TableExternalDataConfigurationJsonOptionsArgs
+
+func TableExternalDataConfigurationJsonOptionsPtr(v *TableExternalDataConfigurationJsonOptionsArgs) TableExternalDataConfigurationJsonOptionsPtrInput {
+	return (*tableExternalDataConfigurationJsonOptionsPtrType)(v)
+}
+
+func (*tableExternalDataConfigurationJsonOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableExternalDataConfigurationJsonOptions)(nil)).Elem()
+}
+
+func (i *tableExternalDataConfigurationJsonOptionsPtrType) ToTableExternalDataConfigurationJsonOptionsPtrOutput() TableExternalDataConfigurationJsonOptionsPtrOutput {
+	return i.ToTableExternalDataConfigurationJsonOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *tableExternalDataConfigurationJsonOptionsPtrType) ToTableExternalDataConfigurationJsonOptionsPtrOutputWithContext(ctx context.Context) TableExternalDataConfigurationJsonOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationJsonOptionsPtrOutput)
+}
+
+type TableExternalDataConfigurationJsonOptionsOutput struct{ *pulumi.OutputState }
+
+func (TableExternalDataConfigurationJsonOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableExternalDataConfigurationJsonOptions)(nil)).Elem()
+}
+
+func (o TableExternalDataConfigurationJsonOptionsOutput) ToTableExternalDataConfigurationJsonOptionsOutput() TableExternalDataConfigurationJsonOptionsOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationJsonOptionsOutput) ToTableExternalDataConfigurationJsonOptionsOutputWithContext(ctx context.Context) TableExternalDataConfigurationJsonOptionsOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationJsonOptionsOutput) ToTableExternalDataConfigurationJsonOptionsPtrOutput() TableExternalDataConfigurationJsonOptionsPtrOutput {
+	return o.ToTableExternalDataConfigurationJsonOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o TableExternalDataConfigurationJsonOptionsOutput) ToTableExternalDataConfigurationJsonOptionsPtrOutputWithContext(ctx context.Context) TableExternalDataConfigurationJsonOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableExternalDataConfigurationJsonOptions) *TableExternalDataConfigurationJsonOptions {
+		return &v
+	}).(TableExternalDataConfigurationJsonOptionsPtrOutput)
+}
+
+// The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
+func (o TableExternalDataConfigurationJsonOptionsOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfigurationJsonOptions) *string { return v.Encoding }).(pulumi.StringPtrOutput)
+}
+
+type TableExternalDataConfigurationJsonOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (TableExternalDataConfigurationJsonOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableExternalDataConfigurationJsonOptions)(nil)).Elem()
+}
+
+func (o TableExternalDataConfigurationJsonOptionsPtrOutput) ToTableExternalDataConfigurationJsonOptionsPtrOutput() TableExternalDataConfigurationJsonOptionsPtrOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationJsonOptionsPtrOutput) ToTableExternalDataConfigurationJsonOptionsPtrOutputWithContext(ctx context.Context) TableExternalDataConfigurationJsonOptionsPtrOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationJsonOptionsPtrOutput) Elem() TableExternalDataConfigurationJsonOptionsOutput {
+	return o.ApplyT(func(v *TableExternalDataConfigurationJsonOptions) TableExternalDataConfigurationJsonOptions {
+		if v != nil {
+			return *v
+		}
+		var ret TableExternalDataConfigurationJsonOptions
+		return ret
+	}).(TableExternalDataConfigurationJsonOptionsOutput)
+}
+
+// The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE, and UTF-32LE. The default value is UTF-8.
+func (o TableExternalDataConfigurationJsonOptionsPtrOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableExternalDataConfigurationJsonOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Encoding
+	}).(pulumi.StringPtrOutput)
+}
+
+type TableExternalDataConfigurationParquetOptions struct {
+	// Indicates whether to use schema inference specifically for Parquet LIST logical type.
+	EnableListInference *bool `pulumi:"enableListInference"`
+	// Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
+	EnumAsString *bool `pulumi:"enumAsString"`
+}
+
+// TableExternalDataConfigurationParquetOptionsInput is an input type that accepts TableExternalDataConfigurationParquetOptionsArgs and TableExternalDataConfigurationParquetOptionsOutput values.
+// You can construct a concrete instance of `TableExternalDataConfigurationParquetOptionsInput` via:
+//
+//	TableExternalDataConfigurationParquetOptionsArgs{...}
+type TableExternalDataConfigurationParquetOptionsInput interface {
+	pulumi.Input
+
+	ToTableExternalDataConfigurationParquetOptionsOutput() TableExternalDataConfigurationParquetOptionsOutput
+	ToTableExternalDataConfigurationParquetOptionsOutputWithContext(context.Context) TableExternalDataConfigurationParquetOptionsOutput
+}
+
+type TableExternalDataConfigurationParquetOptionsArgs struct {
+	// Indicates whether to use schema inference specifically for Parquet LIST logical type.
+	EnableListInference pulumi.BoolPtrInput `pulumi:"enableListInference"`
+	// Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
+	EnumAsString pulumi.BoolPtrInput `pulumi:"enumAsString"`
+}
+
+func (TableExternalDataConfigurationParquetOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableExternalDataConfigurationParquetOptions)(nil)).Elem()
+}
+
+func (i TableExternalDataConfigurationParquetOptionsArgs) ToTableExternalDataConfigurationParquetOptionsOutput() TableExternalDataConfigurationParquetOptionsOutput {
+	return i.ToTableExternalDataConfigurationParquetOptionsOutputWithContext(context.Background())
+}
+
+func (i TableExternalDataConfigurationParquetOptionsArgs) ToTableExternalDataConfigurationParquetOptionsOutputWithContext(ctx context.Context) TableExternalDataConfigurationParquetOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationParquetOptionsOutput)
+}
+
+func (i TableExternalDataConfigurationParquetOptionsArgs) ToTableExternalDataConfigurationParquetOptionsPtrOutput() TableExternalDataConfigurationParquetOptionsPtrOutput {
+	return i.ToTableExternalDataConfigurationParquetOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i TableExternalDataConfigurationParquetOptionsArgs) ToTableExternalDataConfigurationParquetOptionsPtrOutputWithContext(ctx context.Context) TableExternalDataConfigurationParquetOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationParquetOptionsOutput).ToTableExternalDataConfigurationParquetOptionsPtrOutputWithContext(ctx)
+}
+
+// TableExternalDataConfigurationParquetOptionsPtrInput is an input type that accepts TableExternalDataConfigurationParquetOptionsArgs, TableExternalDataConfigurationParquetOptionsPtr and TableExternalDataConfigurationParquetOptionsPtrOutput values.
+// You can construct a concrete instance of `TableExternalDataConfigurationParquetOptionsPtrInput` via:
+//
+//	        TableExternalDataConfigurationParquetOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TableExternalDataConfigurationParquetOptionsPtrInput interface {
+	pulumi.Input
+
+	ToTableExternalDataConfigurationParquetOptionsPtrOutput() TableExternalDataConfigurationParquetOptionsPtrOutput
+	ToTableExternalDataConfigurationParquetOptionsPtrOutputWithContext(context.Context) TableExternalDataConfigurationParquetOptionsPtrOutput
+}
+
+type tableExternalDataConfigurationParquetOptionsPtrType TableExternalDataConfigurationParquetOptionsArgs
+
+func TableExternalDataConfigurationParquetOptionsPtr(v *TableExternalDataConfigurationParquetOptionsArgs) TableExternalDataConfigurationParquetOptionsPtrInput {
+	return (*tableExternalDataConfigurationParquetOptionsPtrType)(v)
+}
+
+func (*tableExternalDataConfigurationParquetOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableExternalDataConfigurationParquetOptions)(nil)).Elem()
+}
+
+func (i *tableExternalDataConfigurationParquetOptionsPtrType) ToTableExternalDataConfigurationParquetOptionsPtrOutput() TableExternalDataConfigurationParquetOptionsPtrOutput {
+	return i.ToTableExternalDataConfigurationParquetOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *tableExternalDataConfigurationParquetOptionsPtrType) ToTableExternalDataConfigurationParquetOptionsPtrOutputWithContext(ctx context.Context) TableExternalDataConfigurationParquetOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalDataConfigurationParquetOptionsPtrOutput)
+}
+
+type TableExternalDataConfigurationParquetOptionsOutput struct{ *pulumi.OutputState }
+
+func (TableExternalDataConfigurationParquetOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableExternalDataConfigurationParquetOptions)(nil)).Elem()
+}
+
+func (o TableExternalDataConfigurationParquetOptionsOutput) ToTableExternalDataConfigurationParquetOptionsOutput() TableExternalDataConfigurationParquetOptionsOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationParquetOptionsOutput) ToTableExternalDataConfigurationParquetOptionsOutputWithContext(ctx context.Context) TableExternalDataConfigurationParquetOptionsOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationParquetOptionsOutput) ToTableExternalDataConfigurationParquetOptionsPtrOutput() TableExternalDataConfigurationParquetOptionsPtrOutput {
+	return o.ToTableExternalDataConfigurationParquetOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o TableExternalDataConfigurationParquetOptionsOutput) ToTableExternalDataConfigurationParquetOptionsPtrOutputWithContext(ctx context.Context) TableExternalDataConfigurationParquetOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableExternalDataConfigurationParquetOptions) *TableExternalDataConfigurationParquetOptions {
+		return &v
+	}).(TableExternalDataConfigurationParquetOptionsPtrOutput)
+}
+
+// Indicates whether to use schema inference specifically for Parquet LIST logical type.
+func (o TableExternalDataConfigurationParquetOptionsOutput) EnableListInference() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfigurationParquetOptions) *bool { return v.EnableListInference }).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
+func (o TableExternalDataConfigurationParquetOptionsOutput) EnumAsString() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TableExternalDataConfigurationParquetOptions) *bool { return v.EnumAsString }).(pulumi.BoolPtrOutput)
+}
+
+type TableExternalDataConfigurationParquetOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (TableExternalDataConfigurationParquetOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableExternalDataConfigurationParquetOptions)(nil)).Elem()
+}
+
+func (o TableExternalDataConfigurationParquetOptionsPtrOutput) ToTableExternalDataConfigurationParquetOptionsPtrOutput() TableExternalDataConfigurationParquetOptionsPtrOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationParquetOptionsPtrOutput) ToTableExternalDataConfigurationParquetOptionsPtrOutputWithContext(ctx context.Context) TableExternalDataConfigurationParquetOptionsPtrOutput {
+	return o
+}
+
+func (o TableExternalDataConfigurationParquetOptionsPtrOutput) Elem() TableExternalDataConfigurationParquetOptionsOutput {
+	return o.ApplyT(func(v *TableExternalDataConfigurationParquetOptions) TableExternalDataConfigurationParquetOptions {
+		if v != nil {
+			return *v
+		}
+		var ret TableExternalDataConfigurationParquetOptions
+		return ret
+	}).(TableExternalDataConfigurationParquetOptionsOutput)
+}
+
+// Indicates whether to use schema inference specifically for Parquet LIST logical type.
+func (o TableExternalDataConfigurationParquetOptionsPtrOutput) EnableListInference() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TableExternalDataConfigurationParquetOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableListInference
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
+func (o TableExternalDataConfigurationParquetOptionsPtrOutput) EnumAsString() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TableExternalDataConfigurationParquetOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnumAsString
+	}).(pulumi.BoolPtrOutput)
 }
 
 type TableMaterializedView struct {
@@ -11797,6 +12140,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationGoogleSheetsOptionsPtrInput)(nil)).Elem(), TableExternalDataConfigurationGoogleSheetsOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationHivePartitioningOptionsInput)(nil)).Elem(), TableExternalDataConfigurationHivePartitioningOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationHivePartitioningOptionsPtrInput)(nil)).Elem(), TableExternalDataConfigurationHivePartitioningOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationJsonOptionsInput)(nil)).Elem(), TableExternalDataConfigurationJsonOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationJsonOptionsPtrInput)(nil)).Elem(), TableExternalDataConfigurationJsonOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationParquetOptionsInput)(nil)).Elem(), TableExternalDataConfigurationParquetOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationParquetOptionsPtrInput)(nil)).Elem(), TableExternalDataConfigurationParquetOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableMaterializedViewInput)(nil)).Elem(), TableMaterializedViewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableMaterializedViewPtrInput)(nil)).Elem(), TableMaterializedViewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableRangePartitioningInput)(nil)).Elem(), TableRangePartitioningArgs{})
@@ -11915,6 +12262,10 @@ func init() {
 	pulumi.RegisterOutputType(TableExternalDataConfigurationGoogleSheetsOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationHivePartitioningOptionsOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationHivePartitioningOptionsPtrOutput{})
+	pulumi.RegisterOutputType(TableExternalDataConfigurationJsonOptionsOutput{})
+	pulumi.RegisterOutputType(TableExternalDataConfigurationJsonOptionsPtrOutput{})
+	pulumi.RegisterOutputType(TableExternalDataConfigurationParquetOptionsOutput{})
+	pulumi.RegisterOutputType(TableExternalDataConfigurationParquetOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TableMaterializedViewOutput{})
 	pulumi.RegisterOutputType(TableMaterializedViewPtrOutput{})
 	pulumi.RegisterOutputType(TableRangePartitioningOutput{})

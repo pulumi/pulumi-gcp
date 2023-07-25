@@ -18,6 +18,25 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
     public static final TableArgs Empty = new TableArgs();
 
     /**
+     * Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+     * 
+     * ***
+     * 
+     */
+    @Import(name="changeStreamRetention")
+    private @Nullable Output<String> changeStreamRetention;
+
+    /**
+     * @return Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<String>> changeStreamRetention() {
+        return Optional.ofNullable(this.changeStreamRetention);
+    }
+
+    /**
      * A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
      * 
      */
@@ -35,16 +54,12 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
      * 
-     * ***
-     * 
      */
     @Import(name="deletionProtection")
     private @Nullable Output<String> deletionProtection;
 
     /**
      * @return A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> deletionProtection() {
@@ -120,6 +135,7 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
     private TableArgs() {}
 
     private TableArgs(TableArgs $) {
+        this.changeStreamRetention = $.changeStreamRetention;
         this.columnFamilies = $.columnFamilies;
         this.deletionProtection = $.deletionProtection;
         this.instanceName = $.instanceName;
@@ -144,6 +160,31 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(TableArgs defaults) {
             $ = new TableArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param changeStreamRetention Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder changeStreamRetention(@Nullable Output<String> changeStreamRetention) {
+            $.changeStreamRetention = changeStreamRetention;
+            return this;
+        }
+
+        /**
+         * @param changeStreamRetention Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder changeStreamRetention(String changeStreamRetention) {
+            return changeStreamRetention(Output.of(changeStreamRetention));
         }
 
         /**
@@ -180,8 +221,6 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param deletionProtection A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -192,8 +231,6 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param deletionProtection A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
-         * 
-         * ***
          * 
          * @return builder
          * 

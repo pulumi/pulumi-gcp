@@ -58,6 +58,7 @@ namespace Pulumi.Gcp.BigTable
     ///                 Family = "family-second",
     ///             },
     ///         },
+    ///         ChangeStreamRetention = "24h0m0s",
     ///     });
     /// 
     /// });
@@ -85,6 +86,14 @@ namespace Pulumi.Gcp.BigTable
     public partial class Table : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+        /// 
+        /// -----
+        /// </summary>
+        [Output("changeStreamRetention")]
+        public Output<string> ChangeStreamRetention { get; private set; } = null!;
+
+        /// <summary>
         /// A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.
         /// </summary>
         [Output("columnFamilies")]
@@ -92,8 +101,6 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
-        /// 
-        /// -----
         /// </summary>
         [Output("deletionProtection")]
         public Output<string> DeletionProtection { get; private set; } = null!;
@@ -171,6 +178,14 @@ namespace Pulumi.Gcp.BigTable
 
     public sealed class TableArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+        /// 
+        /// -----
+        /// </summary>
+        [Input("changeStreamRetention")]
+        public Input<string>? ChangeStreamRetention { get; set; }
+
         [Input("columnFamilies")]
         private InputList<Inputs.TableColumnFamilyArgs>? _columnFamilies;
 
@@ -185,8 +200,6 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
-        /// 
-        /// -----
         /// </summary>
         [Input("deletionProtection")]
         public Input<string>? DeletionProtection { get; set; }
@@ -232,6 +245,14 @@ namespace Pulumi.Gcp.BigTable
 
     public sealed class TableState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Duration to retain change stream data for the table. Set to 0 to disable. Must be between 1 and 7 days.
+        /// 
+        /// -----
+        /// </summary>
+        [Input("changeStreamRetention")]
+        public Input<string>? ChangeStreamRetention { get; set; }
+
         [Input("columnFamilies")]
         private InputList<Inputs.TableColumnFamilyGetArgs>? _columnFamilies;
 
@@ -246,8 +267,6 @@ namespace Pulumi.Gcp.BigTable
 
         /// <summary>
         /// A field to make the table protected against data loss i.e. when set to PROTECTED, deleting the table, the column families in the table, and the instance containing the table would be prohibited. If not provided, deletion protection will be set to UNPROTECTED.
-        /// 
-        /// -----
         /// </summary>
         [Input("deletionProtection")]
         public Input<string>? DeletionProtection { get; set; }

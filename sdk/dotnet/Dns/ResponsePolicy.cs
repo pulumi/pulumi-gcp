@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dns
 {
     /// <summary>
+    /// A Response Policy is a collection of selectors that apply to queries
+    /// made against one or more Virtual Private Cloud networks.
+    /// 
     /// ## Example Usage
     /// ### Dns Response Policy Basic
     /// 
@@ -24,17 +27,11 @@ namespace Pulumi.Gcp.Dns
     ///     var network_1 = new Gcp.Compute.Network("network-1", new()
     ///     {
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var network_2 = new Gcp.Compute.Network("network-2", new()
     ///     {
     ///         AutoCreateSubnetworks = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var subnetwork_1 = new Gcp.Compute.Subnetwork("subnetwork-1", new()
@@ -56,9 +53,6 @@ namespace Pulumi.Gcp.Dns
     ///                 IpCidrRange = "10.0.32.0/22",
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var cluster_1 = new Gcp.Container.Cluster("cluster-1", new()
@@ -88,9 +82,6 @@ namespace Pulumi.Gcp.Dns
     ///             ClusterSecondaryRangeName = subnetwork_1.SecondaryIpRanges.Apply(secondaryIpRanges =&gt; secondaryIpRanges[0].RangeName),
     ///             ServicesSecondaryRangeName = subnetwork_1.SecondaryIpRanges.Apply(secondaryIpRanges =&gt; secondaryIpRanges[1].RangeName),
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var example_response_policy = new Gcp.Dns.ResponsePolicy("example-response-policy", new()
@@ -114,9 +105,6 @@ namespace Pulumi.Gcp.Dns
     ///                 GkeClusterName = cluster_1.Id,
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

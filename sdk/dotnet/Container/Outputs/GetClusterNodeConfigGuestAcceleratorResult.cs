@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class GetClusterNodeConfigGuestAcceleratorResult
     {
         public readonly int Count;
+        public readonly ImmutableArray<Outputs.GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigResult> GpuDriverInstallationConfigs;
         public readonly string GpuPartitionSize;
         public readonly ImmutableArray<Outputs.GetClusterNodeConfigGuestAcceleratorGpuSharingConfigResult> GpuSharingConfigs;
         public readonly string Type;
@@ -22,6 +23,8 @@ namespace Pulumi.Gcp.Container.Outputs
         private GetClusterNodeConfigGuestAcceleratorResult(
             int count,
 
+            ImmutableArray<Outputs.GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigResult> gpuDriverInstallationConfigs,
+
             string gpuPartitionSize,
 
             ImmutableArray<Outputs.GetClusterNodeConfigGuestAcceleratorGpuSharingConfigResult> gpuSharingConfigs,
@@ -29,6 +32,7 @@ namespace Pulumi.Gcp.Container.Outputs
             string type)
         {
             Count = count;
+            GpuDriverInstallationConfigs = gpuDriverInstallationConfigs;
             GpuPartitionSize = gpuPartitionSize;
             GpuSharingConfigs = gpuSharingConfigs;
             Type = type;

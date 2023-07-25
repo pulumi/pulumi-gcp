@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -38,11 +39,29 @@ public final class GetImageArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * A boolean to indicate either to take to most recent image if your filter
+     * returns more than one image.
+     * 
+     */
+    @Import(name="mostRecent")
+    private @Nullable Output<Boolean> mostRecent;
+
+    /**
+     * @return A boolean to indicate either to take to most recent image if your filter
+     * returns more than one image.
+     * 
+     */
+    public Optional<Output<Boolean>> mostRecent() {
+        return Optional.ofNullable(this.mostRecent);
+    }
+
+    /**
      * , `family` or `filter` - (Required) The name of a specific image or a family.
      * Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
      * the corresponding image. If `family` is specified, it will return the latest image
      * that is part of an image family and is not deprecated. If you specify `filter`, your
-     * filter must return exactly one image. Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
+     * filter must return exactly one image unless you use `most_recent`.
+     * Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
      * 
      * ***
      * 
@@ -55,7 +74,8 @@ public final class GetImageArgs extends com.pulumi.resources.InvokeArgs {
      * Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
      * the corresponding image. If `family` is specified, it will return the latest image
      * that is part of an image family and is not deprecated. If you specify `filter`, your
-     * filter must return exactly one image. Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
+     * filter must return exactly one image unless you use `most_recent`.
+     * Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
      * 
      * ***
      * 
@@ -88,6 +108,7 @@ public final class GetImageArgs extends com.pulumi.resources.InvokeArgs {
     private GetImageArgs(GetImageArgs $) {
         this.family = $.family;
         this.filter = $.filter;
+        this.mostRecent = $.mostRecent;
         this.name = $.name;
         this.project = $.project;
     }
@@ -141,11 +162,35 @@ public final class GetImageArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
+         * @param mostRecent A boolean to indicate either to take to most recent image if your filter
+         * returns more than one image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mostRecent(@Nullable Output<Boolean> mostRecent) {
+            $.mostRecent = mostRecent;
+            return this;
+        }
+
+        /**
+         * @param mostRecent A boolean to indicate either to take to most recent image if your filter
+         * returns more than one image.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mostRecent(Boolean mostRecent) {
+            return mostRecent(Output.of(mostRecent));
+        }
+
+        /**
          * @param name , `family` or `filter` - (Required) The name of a specific image or a family.
          * Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
          * the corresponding image. If `family` is specified, it will return the latest image
          * that is part of an image family and is not deprecated. If you specify `filter`, your
-         * filter must return exactly one image. Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
+         * filter must return exactly one image unless you use `most_recent`.
+         * Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
          * 
          * ***
          * 
@@ -162,7 +207,8 @@ public final class GetImageArgs extends com.pulumi.resources.InvokeArgs {
          * Exactly one of `name`, `family` or `filter` must be specified. If `name` is specified, it will fetch
          * the corresponding image. If `family` is specified, it will return the latest image
          * that is part of an image family and is not deprecated. If you specify `filter`, your
-         * filter must return exactly one image. Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
+         * filter must return exactly one image unless you use `most_recent`.
+         * Filter syntax can be found [here](https://cloud.google.com/compute/docs/reference/rest/v1/images/list) in the filter section.
          * 
          * ***
          * 

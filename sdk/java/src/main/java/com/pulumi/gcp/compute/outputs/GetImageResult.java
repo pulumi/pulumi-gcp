@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -72,6 +73,7 @@ public final class GetImageResult {
      * 
      */
     private List<String> licenses;
+    private @Nullable Boolean mostRecent;
     /**
      * @return The name of the image.
      * 
@@ -194,6 +196,9 @@ public final class GetImageResult {
     public List<String> licenses() {
         return this.licenses;
     }
+    public Optional<Boolean> mostRecent() {
+        return Optional.ofNullable(this.mostRecent);
+    }
     /**
      * @return The name of the image.
      * 
@@ -270,6 +275,7 @@ public final class GetImageResult {
         private String labelFingerprint;
         private Map<String,String> labels;
         private List<String> licenses;
+        private @Nullable Boolean mostRecent;
         private String name;
         private String project;
         private String selfLink;
@@ -293,6 +299,7 @@ public final class GetImageResult {
     	      this.labelFingerprint = defaults.labelFingerprint;
     	      this.labels = defaults.labels;
     	      this.licenses = defaults.licenses;
+    	      this.mostRecent = defaults.mostRecent;
     	      this.name = defaults.name;
     	      this.project = defaults.project;
     	      this.selfLink = defaults.selfLink;
@@ -367,6 +374,11 @@ public final class GetImageResult {
             return licenses(List.of(licenses));
         }
         @CustomType.Setter
+        public Builder mostRecent(@Nullable Boolean mostRecent) {
+            this.mostRecent = mostRecent;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
@@ -420,6 +432,7 @@ public final class GetImageResult {
             o.labelFingerprint = labelFingerprint;
             o.labels = labels;
             o.licenses = licenses;
+            o.mostRecent = mostRecent;
             o.name = name;
             o.project = project;
             o.selfLink = selfLink;

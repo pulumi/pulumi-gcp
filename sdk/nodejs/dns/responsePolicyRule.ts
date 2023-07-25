@@ -7,6 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A Response Policy Rule is a selector that applies its behavior to queries that match the selector.
+ * Selectors are DNS names, which may be wildcards or exact matches.
+ * Each DNS query subject to a Response Policy matches at most one ResponsePolicyRule,
+ * as identified by the dnsName field with the longest matching suffix.
+ *
  * ## Example Usage
  * ### Dns Response Policy Rule Basic
  *
@@ -14,12 +19,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const network_1 = new gcp.compute.Network("network-1", {autoCreateSubnetworks: false}, {
- *     provider: google_beta,
- * });
- * const network_2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false}, {
- *     provider: google_beta,
- * });
+ * const network_1 = new gcp.compute.Network("network-1", {autoCreateSubnetworks: false});
+ * const network_2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false});
  * const response_policy = new gcp.dns.ResponsePolicy("response-policy", {
  *     responsePolicyName: "example-response-policy",
  *     networks: [
@@ -30,8 +31,6 @@ import * as utilities from "../utilities";
  *             networkUrl: network_2.id,
  *         },
  *     ],
- * }, {
- *     provider: google_beta,
  * });
  * const example_response_policy_rule = new gcp.dns.ResponsePolicyRule("example-response-policy-rule", {
  *     responsePolicy: response_policy.responsePolicyName,
@@ -45,8 +44,6 @@ import * as utilities from "../utilities";
  *             rrdatas: ["192.0.2.91"],
  *         }],
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *
@@ -95,7 +92,8 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
     }
 
     /**
-     * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
+     * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and
+     * 'bypassResponsePolicy'
      */
     public readonly behavior!: pulumi.Output<string | undefined>;
     /**
@@ -172,7 +170,8 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
  */
 export interface ResponsePolicyRuleState {
     /**
-     * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
+     * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and
+     * 'bypassResponsePolicy'
      */
     behavior?: pulumi.Input<string>;
     /**
@@ -208,7 +207,8 @@ export interface ResponsePolicyRuleState {
  */
 export interface ResponsePolicyRuleArgs {
     /**
-     * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
+     * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and
+     * 'bypassResponsePolicy'
      */
     behavior?: pulumi.Input<string>;
     /**

@@ -510,6 +510,34 @@ public class BackupPlan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.retentionPolicy);
     }
     /**
+     * The State of the BackupPlan.
+     * 
+     */
+    @Export(name="state", type=String.class, parameters={})
+    private Output<String> state;
+
+    /**
+     * @return The State of the BackupPlan.
+     * 
+     */
+    public Output<String> state() {
+        return this.state;
+    }
+    /**
+     * Detailed description of why BackupPlan is in its current state.
+     * 
+     */
+    @Export(name="stateReason", type=String.class, parameters={})
+    private Output<String> stateReason;
+
+    /**
+     * @return Detailed description of why BackupPlan is in its current state.
+     * 
+     */
+    public Output<String> stateReason() {
+        return this.stateReason;
+    }
+    /**
      * Server generated, unique identifier of UUID format.
      * 
      */

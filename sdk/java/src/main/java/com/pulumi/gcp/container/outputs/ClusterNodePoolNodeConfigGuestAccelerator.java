@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig;
 import java.lang.Integer;
 import java.lang.String;
@@ -18,6 +19,11 @@ public final class ClusterNodePoolNodeConfigGuestAccelerator {
      * 
      */
     private Integer count;
+    /**
+     * @return Configuration for auto installation of GPU driver. Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig gpuDriverInstallationConfig;
     /**
      * @return Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
      * 
@@ -41,6 +47,13 @@ public final class ClusterNodePoolNodeConfigGuestAccelerator {
      */
     public Integer count() {
         return this.count;
+    }
+    /**
+     * @return Configuration for auto installation of GPU driver. Structure is documented below.
+     * 
+     */
+    public Optional<ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig> gpuDriverInstallationConfig() {
+        return Optional.ofNullable(this.gpuDriverInstallationConfig);
     }
     /**
      * @return Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
@@ -74,6 +87,7 @@ public final class ClusterNodePoolNodeConfigGuestAccelerator {
     @CustomType.Builder
     public static final class Builder {
         private Integer count;
+        private @Nullable ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig gpuDriverInstallationConfig;
         private @Nullable String gpuPartitionSize;
         private @Nullable ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig gpuSharingConfig;
         private String type;
@@ -81,6 +95,7 @@ public final class ClusterNodePoolNodeConfigGuestAccelerator {
         public Builder(ClusterNodePoolNodeConfigGuestAccelerator defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.count = defaults.count;
+    	      this.gpuDriverInstallationConfig = defaults.gpuDriverInstallationConfig;
     	      this.gpuPartitionSize = defaults.gpuPartitionSize;
     	      this.gpuSharingConfig = defaults.gpuSharingConfig;
     	      this.type = defaults.type;
@@ -89,6 +104,11 @@ public final class ClusterNodePoolNodeConfigGuestAccelerator {
         @CustomType.Setter
         public Builder count(Integer count) {
             this.count = Objects.requireNonNull(count);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gpuDriverInstallationConfig(@Nullable ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig gpuDriverInstallationConfig) {
+            this.gpuDriverInstallationConfig = gpuDriverInstallationConfig;
             return this;
         }
         @CustomType.Setter
@@ -109,6 +129,7 @@ public final class ClusterNodePoolNodeConfigGuestAccelerator {
         public ClusterNodePoolNodeConfigGuestAccelerator build() {
             final var o = new ClusterNodePoolNodeConfigGuestAccelerator();
             o.count = count;
+            o.gpuDriverInstallationConfig = gpuDriverInstallationConfig;
             o.gpuPartitionSize = gpuPartitionSize;
             o.gpuSharingConfig = gpuSharingConfig;
             o.type = type;

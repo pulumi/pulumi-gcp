@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
     /**
-     * @return The number of days between snapshots.
+     * @return Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
      * 
      */
     private Integer daysInCycle;
@@ -25,7 +25,7 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
 
     private ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule() {}
     /**
-     * @return The number of days between snapshots.
+     * @return Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
      * 
      */
     public Integer daysInCycle() {

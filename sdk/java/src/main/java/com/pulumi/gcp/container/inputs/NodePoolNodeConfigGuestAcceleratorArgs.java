@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -22,6 +23,13 @@ public final class NodePoolNodeConfigGuestAcceleratorArgs extends com.pulumi.res
 
     public Output<Integer> count() {
         return this.count;
+    }
+
+    @Import(name="gpuDriverInstallationConfig")
+    private @Nullable Output<NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs> gpuDriverInstallationConfig;
+
+    public Optional<Output<NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs>> gpuDriverInstallationConfig() {
+        return Optional.ofNullable(this.gpuDriverInstallationConfig);
     }
 
     @Import(name="gpuPartitionSize")
@@ -61,6 +69,7 @@ public final class NodePoolNodeConfigGuestAcceleratorArgs extends com.pulumi.res
 
     private NodePoolNodeConfigGuestAcceleratorArgs(NodePoolNodeConfigGuestAcceleratorArgs $) {
         this.count = $.count;
+        this.gpuDriverInstallationConfig = $.gpuDriverInstallationConfig;
         this.gpuPartitionSize = $.gpuPartitionSize;
         this.gpuSharingConfig = $.gpuSharingConfig;
         this.type = $.type;
@@ -91,6 +100,15 @@ public final class NodePoolNodeConfigGuestAcceleratorArgs extends com.pulumi.res
 
         public Builder count(Integer count) {
             return count(Output.of(count));
+        }
+
+        public Builder gpuDriverInstallationConfig(@Nullable Output<NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs> gpuDriverInstallationConfig) {
+            $.gpuDriverInstallationConfig = gpuDriverInstallationConfig;
+            return this;
+        }
+
+        public Builder gpuDriverInstallationConfig(NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs gpuDriverInstallationConfig) {
+            return gpuDriverInstallationConfig(Output.of(gpuDriverInstallationConfig));
         }
 
         public Builder gpuPartitionSize(@Nullable Output<String> gpuPartitionSize) {

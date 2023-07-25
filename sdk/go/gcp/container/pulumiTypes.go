@@ -19357,6 +19357,8 @@ func (o ClusterNodeConfigGcfsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 type ClusterNodeConfigGuestAccelerator struct {
 	// The number of the guest accelerator cards exposed to this instance.
 	Count int `pulumi:"count"`
+	// Configuration for auto installation of GPU driver. Structure is documented below.
+	GpuDriverInstallationConfig *ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig `pulumi:"gpuDriverInstallationConfig"`
 	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
 	GpuPartitionSize *string `pulumi:"gpuPartitionSize"`
 	// Configuration for GPU sharing. Structure is documented below.
@@ -19379,6 +19381,8 @@ type ClusterNodeConfigGuestAcceleratorInput interface {
 type ClusterNodeConfigGuestAcceleratorArgs struct {
 	// The number of the guest accelerator cards exposed to this instance.
 	Count pulumi.IntInput `pulumi:"count"`
+	// Configuration for auto installation of GPU driver. Structure is documented below.
+	GpuDriverInstallationConfig ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrInput `pulumi:"gpuDriverInstallationConfig"`
 	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
 	GpuPartitionSize pulumi.StringPtrInput `pulumi:"gpuPartitionSize"`
 	// Configuration for GPU sharing. Structure is documented below.
@@ -19443,6 +19447,13 @@ func (o ClusterNodeConfigGuestAcceleratorOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodeConfigGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
 }
 
+// Configuration for auto installation of GPU driver. Structure is documented below.
+func (o ClusterNodeConfigGuestAcceleratorOutput) GpuDriverInstallationConfig() ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigGuestAccelerator) *ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+		return v.GpuDriverInstallationConfig
+	}).(ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput)
+}
+
 // Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
 func (o ClusterNodeConfigGuestAcceleratorOutput) GpuPartitionSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfigGuestAccelerator) *string { return v.GpuPartitionSize }).(pulumi.StringPtrOutput)
@@ -19478,6 +19489,163 @@ func (o ClusterNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) C
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodeConfigGuestAccelerator {
 		return vs[0].([]ClusterNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(ClusterNodeConfigGuestAcceleratorOutput)
+}
+
+type ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig struct {
+	// Mode for how the GPU driver is installed.
+	// Accepted values are:
+	// * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+	// * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
+	// * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
+	// * `"LATEST"`: "Latest" GPU driver in COS.
+	GpuDriverVersion string `pulumi:"gpuDriverVersion"`
+}
+
+// ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput is an input type that accepts ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs and ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput` via:
+//
+//	ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{...}
+type ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput() ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput
+	ToClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(context.Context) ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput
+}
+
+type ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs struct {
+	// Mode for how the GPU driver is installed.
+	// Accepted values are:
+	// * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+	// * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
+	// * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
+	// * `"LATEST"`: "Latest" GPU driver in COS.
+	GpuDriverVersion pulumi.StringInput `pulumi:"gpuDriverVersion"`
+}
+
+func (ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ToClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput() ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return i.ToClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ToClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(ctx context.Context) ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput)
+}
+
+func (i ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ToClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput() ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return i.ToClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ToClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput).ToClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrInput is an input type that accepts ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs, ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtr and ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrInput` via:
+//
+//	        ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput() ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput
+	ToClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(context.Context) ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput
+}
+
+type clusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrType ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs
+
+func ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtr(v *ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrInput {
+	return (*clusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrType)(v)
+}
+
+func (*clusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
+}
+
+func (i *clusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrType) ToClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput() ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return i.ToClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrType) ToClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput)
+}
+
+type ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ToClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput() ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ToClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(ctx context.Context) ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ToClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput() ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return o.ToClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ToClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig) *ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+		return &v
+	}).(ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput)
+}
+
+// Mode for how the GPU driver is installed.
+// Accepted values are:
+// * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+// * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
+// * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
+// * `"LATEST"`: "Latest" GPU driver in COS.
+func (o ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) GpuDriverVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig) string { return v.GpuDriverVersion }).(pulumi.StringOutput)
+}
+
+type ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput) ToClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput() ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput) ToClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput) Elem() ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig) ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig
+		return ret
+	}).(ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput)
+}
+
+// Mode for how the GPU driver is installed.
+// Accepted values are:
+// * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+// * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
+// * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
+// * `"LATEST"`: "Latest" GPU driver in COS.
+func (o ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput) GpuDriverVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GpuDriverVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterNodeConfigGuestAcceleratorGpuSharingConfig struct {
@@ -25023,6 +25191,8 @@ func (o ClusterNodePoolNodeConfigGcfsConfigPtrOutput) Enabled() pulumi.BoolPtrOu
 type ClusterNodePoolNodeConfigGuestAccelerator struct {
 	// The number of the guest accelerator cards exposed to this instance.
 	Count int `pulumi:"count"`
+	// Configuration for auto installation of GPU driver. Structure is documented below.
+	GpuDriverInstallationConfig *ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig `pulumi:"gpuDriverInstallationConfig"`
 	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
 	GpuPartitionSize *string `pulumi:"gpuPartitionSize"`
 	// Configuration for GPU sharing. Structure is documented below.
@@ -25045,6 +25215,8 @@ type ClusterNodePoolNodeConfigGuestAcceleratorInput interface {
 type ClusterNodePoolNodeConfigGuestAcceleratorArgs struct {
 	// The number of the guest accelerator cards exposed to this instance.
 	Count pulumi.IntInput `pulumi:"count"`
+	// Configuration for auto installation of GPU driver. Structure is documented below.
+	GpuDriverInstallationConfig ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrInput `pulumi:"gpuDriverInstallationConfig"`
 	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
 	GpuPartitionSize pulumi.StringPtrInput `pulumi:"gpuPartitionSize"`
 	// Configuration for GPU sharing. Structure is documented below.
@@ -25109,6 +25281,13 @@ func (o ClusterNodePoolNodeConfigGuestAcceleratorOutput) Count() pulumi.IntOutpu
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
 }
 
+// Configuration for auto installation of GPU driver. Structure is documented below.
+func (o ClusterNodePoolNodeConfigGuestAcceleratorOutput) GpuDriverInstallationConfig() ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigGuestAccelerator) *ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+		return v.GpuDriverInstallationConfig
+	}).(ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput)
+}
+
 // Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
 func (o ClusterNodePoolNodeConfigGuestAcceleratorOutput) GpuPartitionSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfigGuestAccelerator) *string { return v.GpuPartitionSize }).(pulumi.StringPtrOutput)
@@ -25144,6 +25323,165 @@ func (o ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.Int
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodePoolNodeConfigGuestAccelerator {
 		return vs[0].([]ClusterNodePoolNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(ClusterNodePoolNodeConfigGuestAcceleratorOutput)
+}
+
+type ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig struct {
+	// Mode for how the GPU driver is installed.
+	// Accepted values are:
+	// * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+	// * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
+	// * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
+	// * `"LATEST"`: "Latest" GPU driver in COS.
+	GpuDriverVersion string `pulumi:"gpuDriverVersion"`
+}
+
+// ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput is an input type that accepts ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs and ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput` via:
+//
+//	ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{...}
+type ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput() ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput
+	ToClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(context.Context) ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput
+}
+
+type ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs struct {
+	// Mode for how the GPU driver is installed.
+	// Accepted values are:
+	// * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+	// * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
+	// * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
+	// * `"LATEST"`: "Latest" GPU driver in COS.
+	GpuDriverVersion pulumi.StringInput `pulumi:"gpuDriverVersion"`
+}
+
+func (ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ToClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput() ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return i.ToClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ToClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput)
+}
+
+func (i ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ToClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput() ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return i.ToClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ToClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput).ToClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrInput is an input type that accepts ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs, ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtr and ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrInput` via:
+//
+//	        ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput() ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput
+	ToClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(context.Context) ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput
+}
+
+type clusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrType ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs
+
+func ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtr(v *ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrInput {
+	return (*clusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrType)(v)
+}
+
+func (*clusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
+}
+
+func (i *clusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrType) ToClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput() ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return i.ToClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrType) ToClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ToClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput() ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ToClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ToClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput() ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return o.ToClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ToClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig) *ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+		return &v
+	}).(ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput)
+}
+
+// Mode for how the GPU driver is installed.
+// Accepted values are:
+// * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+// * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
+// * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
+// * `"LATEST"`: "Latest" GPU driver in COS.
+func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) GpuDriverVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig) string {
+		return v.GpuDriverVersion
+	}).(pulumi.StringOutput)
+}
+
+type ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput) ToClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput() ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput) ToClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput) Elem() ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig) ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig
+		return ret
+	}).(ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput)
+}
+
+// Mode for how the GPU driver is installed.
+// Accepted values are:
+// * `"GPU_DRIVER_VERSION_UNSPECIFIED"`: Default value is to not install any GPU driver.
+// * `"INSTALLATION_DISABLED"`: Disable GPU driver auto installation and needs manual installation.
+// * `"DEFAULT"`: "Default" GPU driver in COS and Ubuntu.
+// * `"LATEST"`: "Latest" GPU driver in COS.
+func (o ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput) GpuDriverVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GpuDriverVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig struct {
@@ -32397,9 +32735,10 @@ func (o NodePoolNodeConfigGcfsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 type NodePoolNodeConfigGuestAccelerator struct {
-	Count            int                                                 `pulumi:"count"`
-	GpuPartitionSize *string                                             `pulumi:"gpuPartitionSize"`
-	GpuSharingConfig *NodePoolNodeConfigGuestAcceleratorGpuSharingConfig `pulumi:"gpuSharingConfig"`
+	Count                       int                                                            `pulumi:"count"`
+	GpuDriverInstallationConfig *NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig `pulumi:"gpuDriverInstallationConfig"`
+	GpuPartitionSize            *string                                                        `pulumi:"gpuPartitionSize"`
+	GpuSharingConfig            *NodePoolNodeConfigGuestAcceleratorGpuSharingConfig            `pulumi:"gpuSharingConfig"`
 	// The type of the policy. Supports a single value: COMPACT.
 	// Specifying COMPACT placement policy type places node pool's nodes in a closer
 	// physical proximity in order to reduce network latency between nodes.
@@ -32418,9 +32757,10 @@ type NodePoolNodeConfigGuestAcceleratorInput interface {
 }
 
 type NodePoolNodeConfigGuestAcceleratorArgs struct {
-	Count            pulumi.IntInput                                            `pulumi:"count"`
-	GpuPartitionSize pulumi.StringPtrInput                                      `pulumi:"gpuPartitionSize"`
-	GpuSharingConfig NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrInput `pulumi:"gpuSharingConfig"`
+	Count                       pulumi.IntInput                                                       `pulumi:"count"`
+	GpuDriverInstallationConfig NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrInput `pulumi:"gpuDriverInstallationConfig"`
+	GpuPartitionSize            pulumi.StringPtrInput                                                 `pulumi:"gpuPartitionSize"`
+	GpuSharingConfig            NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrInput            `pulumi:"gpuSharingConfig"`
 	// The type of the policy. Supports a single value: COMPACT.
 	// Specifying COMPACT placement policy type places node pool's nodes in a closer
 	// physical proximity in order to reduce network latency between nodes.
@@ -32482,6 +32822,12 @@ func (o NodePoolNodeConfigGuestAcceleratorOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
 }
 
+func (o NodePoolNodeConfigGuestAcceleratorOutput) GpuDriverInstallationConfig() NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigGuestAccelerator) *NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+		return v.GpuDriverInstallationConfig
+	}).(NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput)
+}
+
 func (o NodePoolNodeConfigGuestAcceleratorOutput) GpuPartitionSize() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfigGuestAccelerator) *string { return v.GpuPartitionSize }).(pulumi.StringPtrOutput)
 }
@@ -32517,6 +32863,141 @@ func (o NodePoolNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolNodeConfigGuestAccelerator {
 		return vs[0].([]NodePoolNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(NodePoolNodeConfigGuestAcceleratorOutput)
+}
+
+type NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig struct {
+	GpuDriverVersion string `pulumi:"gpuDriverVersion"`
+}
+
+// NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput is an input type that accepts NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs and NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput` via:
+//
+//	NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{...}
+type NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput() NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput
+	ToNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(context.Context) NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput
+}
+
+type NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs struct {
+	GpuDriverVersion pulumi.StringInput `pulumi:"gpuDriverVersion"`
+}
+
+func (NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ToNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput() NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return i.ToNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ToNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput)
+}
+
+func (i NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ToNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput() NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return i.ToNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ToNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput).ToNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(ctx)
+}
+
+// NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrInput is an input type that accepts NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs, NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtr and NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrInput` via:
+//
+//	        NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput() NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput
+	ToNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(context.Context) NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput
+}
+
+type nodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrType NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs
+
+func NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtr(v *NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrInput {
+	return (*nodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrType)(v)
+}
+
+func (*nodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
+}
+
+func (i *nodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrType) ToNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput() NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return i.ToNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrType) ToNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput)
+}
+
+type NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ToNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput() NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ToNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ToNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput() NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return o.ToNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ToNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig) *NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+		return &v
+	}).(NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput)
+}
+
+func (o NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) GpuDriverVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig) string {
+		return v.GpuDriverVersion
+	}).(pulumi.StringOutput)
+}
+
+type NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput) ToNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput() NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput) ToNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput) Elem() NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig) NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig
+		return ret
+	}).(NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput)
+}
+
+func (o NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput) GpuDriverVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GpuDriverVersion
+	}).(pulumi.StringPtrOutput)
 }
 
 type NodePoolNodeConfigGuestAcceleratorGpuSharingConfig struct {
@@ -40504,10 +40985,11 @@ func (o GetClusterNodeConfigGcfsConfigArrayOutput) Index(i pulumi.IntInput) GetC
 }
 
 type GetClusterNodeConfigGuestAccelerator struct {
-	Count             int                                                    `pulumi:"count"`
-	GpuPartitionSize  string                                                 `pulumi:"gpuPartitionSize"`
-	GpuSharingConfigs []GetClusterNodeConfigGuestAcceleratorGpuSharingConfig `pulumi:"gpuSharingConfigs"`
-	Type              string                                                 `pulumi:"type"`
+	Count                        int                                                               `pulumi:"count"`
+	GpuDriverInstallationConfigs []GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig `pulumi:"gpuDriverInstallationConfigs"`
+	GpuPartitionSize             string                                                            `pulumi:"gpuPartitionSize"`
+	GpuSharingConfigs            []GetClusterNodeConfigGuestAcceleratorGpuSharingConfig            `pulumi:"gpuSharingConfigs"`
+	Type                         string                                                            `pulumi:"type"`
 }
 
 // GetClusterNodeConfigGuestAcceleratorInput is an input type that accepts GetClusterNodeConfigGuestAcceleratorArgs and GetClusterNodeConfigGuestAcceleratorOutput values.
@@ -40522,10 +41004,11 @@ type GetClusterNodeConfigGuestAcceleratorInput interface {
 }
 
 type GetClusterNodeConfigGuestAcceleratorArgs struct {
-	Count             pulumi.IntInput                                                `pulumi:"count"`
-	GpuPartitionSize  pulumi.StringInput                                             `pulumi:"gpuPartitionSize"`
-	GpuSharingConfigs GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayInput `pulumi:"gpuSharingConfigs"`
-	Type              pulumi.StringInput                                             `pulumi:"type"`
+	Count                        pulumi.IntInput                                                           `pulumi:"count"`
+	GpuDriverInstallationConfigs GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayInput `pulumi:"gpuDriverInstallationConfigs"`
+	GpuPartitionSize             pulumi.StringInput                                                        `pulumi:"gpuPartitionSize"`
+	GpuSharingConfigs            GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayInput            `pulumi:"gpuSharingConfigs"`
+	Type                         pulumi.StringInput                                                        `pulumi:"type"`
 }
 
 func (GetClusterNodeConfigGuestAcceleratorArgs) ElementType() reflect.Type {
@@ -40583,6 +41066,12 @@ func (o GetClusterNodeConfigGuestAcceleratorOutput) Count() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClusterNodeConfigGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
 }
 
+func (o GetClusterNodeConfigGuestAcceleratorOutput) GpuDriverInstallationConfigs() GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigGuestAccelerator) []GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+		return v.GpuDriverInstallationConfigs
+	}).(GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput)
+}
+
 func (o GetClusterNodeConfigGuestAcceleratorOutput) GpuPartitionSize() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodeConfigGuestAccelerator) string { return v.GpuPartitionSize }).(pulumi.StringOutput)
 }
@@ -40615,6 +41104,102 @@ func (o GetClusterNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigGuestAccelerator {
 		return vs[0].([]GetClusterNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(GetClusterNodeConfigGuestAcceleratorOutput)
+}
+
+type GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig struct {
+	GpuDriverVersion string `pulumi:"gpuDriverVersion"`
+}
+
+// GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput is an input type that accepts GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs and GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput` via:
+//
+//	GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{...}
+type GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput() GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput
+	ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(context.Context) GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput
+}
+
+type GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs struct {
+	GpuDriverVersion pulumi.StringInput `pulumi:"gpuDriverVersion"`
+}
+
+func (GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput() GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return i.ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput)
+}
+
+// GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayInput is an input type that accepts GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray and GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayInput` via:
+//
+//	GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray{ GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{...} }
+type GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput() GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput
+	ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput
+}
+
+type GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray []GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput
+
+func (GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray) ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput() GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput {
+	return i.ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray) ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput)
+}
+
+type GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput() GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) GpuDriverVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig) string {
+		return v.GpuDriverVersion
+	}).(pulumi.StringOutput)
+}
+
+type GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput) ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput() GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput) ToGetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+		return vs[0].([]GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfig)[vs[1].(int)]
+	}).(GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput)
 }
 
 type GetClusterNodeConfigGuestAcceleratorGpuSharingConfig struct {
@@ -43587,10 +44172,11 @@ func (o GetClusterNodePoolNodeConfigGcfsConfigArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetClusterNodePoolNodeConfigGuestAccelerator struct {
-	Count             int                                                            `pulumi:"count"`
-	GpuPartitionSize  string                                                         `pulumi:"gpuPartitionSize"`
-	GpuSharingConfigs []GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig `pulumi:"gpuSharingConfigs"`
-	Type              string                                                         `pulumi:"type"`
+	Count                        int                                                                       `pulumi:"count"`
+	GpuDriverInstallationConfigs []GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig `pulumi:"gpuDriverInstallationConfigs"`
+	GpuPartitionSize             string                                                                    `pulumi:"gpuPartitionSize"`
+	GpuSharingConfigs            []GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig            `pulumi:"gpuSharingConfigs"`
+	Type                         string                                                                    `pulumi:"type"`
 }
 
 // GetClusterNodePoolNodeConfigGuestAcceleratorInput is an input type that accepts GetClusterNodePoolNodeConfigGuestAcceleratorArgs and GetClusterNodePoolNodeConfigGuestAcceleratorOutput values.
@@ -43605,10 +44191,11 @@ type GetClusterNodePoolNodeConfigGuestAcceleratorInput interface {
 }
 
 type GetClusterNodePoolNodeConfigGuestAcceleratorArgs struct {
-	Count             pulumi.IntInput                                                        `pulumi:"count"`
-	GpuPartitionSize  pulumi.StringInput                                                     `pulumi:"gpuPartitionSize"`
-	GpuSharingConfigs GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayInput `pulumi:"gpuSharingConfigs"`
-	Type              pulumi.StringInput                                                     `pulumi:"type"`
+	Count                        pulumi.IntInput                                                                   `pulumi:"count"`
+	GpuDriverInstallationConfigs GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayInput `pulumi:"gpuDriverInstallationConfigs"`
+	GpuPartitionSize             pulumi.StringInput                                                                `pulumi:"gpuPartitionSize"`
+	GpuSharingConfigs            GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayInput            `pulumi:"gpuSharingConfigs"`
+	Type                         pulumi.StringInput                                                                `pulumi:"type"`
 }
 
 func (GetClusterNodePoolNodeConfigGuestAcceleratorArgs) ElementType() reflect.Type {
@@ -43666,6 +44253,12 @@ func (o GetClusterNodePoolNodeConfigGuestAcceleratorOutput) Count() pulumi.IntOu
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfigGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
 }
 
+func (o GetClusterNodePoolNodeConfigGuestAcceleratorOutput) GpuDriverInstallationConfigs() GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigGuestAccelerator) []GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+		return v.GpuDriverInstallationConfigs
+	}).(GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput)
+}
+
 func (o GetClusterNodePoolNodeConfigGuestAcceleratorOutput) GpuPartitionSize() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfigGuestAccelerator) string { return v.GpuPartitionSize }).(pulumi.StringOutput)
 }
@@ -43698,6 +44291,102 @@ func (o GetClusterNodePoolNodeConfigGuestAcceleratorArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigGuestAccelerator {
 		return vs[0].([]GetClusterNodePoolNodeConfigGuestAccelerator)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigGuestAcceleratorOutput)
+}
+
+type GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig struct {
+	GpuDriverVersion string `pulumi:"gpuDriverVersion"`
+}
+
+// GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput is an input type that accepts GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs and GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput` via:
+//
+//	GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{...}
+type GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput() GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput
+	ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(context.Context) GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput
+}
+
+type GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs struct {
+	GpuDriverVersion pulumi.StringInput `pulumi:"gpuDriverVersion"`
+}
+
+func (GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput() GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return i.ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs) ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput)
+}
+
+// GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayInput is an input type that accepts GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray and GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayInput` via:
+//
+//	GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray{ GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{...} }
+type GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput() GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput
+	ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray []GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput
+
+func (GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray) ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput() GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray) ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput() GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput) GpuDriverVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig) string {
+		return v.GpuDriverVersion
+	}).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput) ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput() GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput) ToGetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig {
+		return vs[0].([]GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput)
 }
 
 type GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig struct {
@@ -47151,6 +47840,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGcfsConfigPtrInput)(nil)).Elem(), ClusterNodeConfigGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGuestAcceleratorInput)(nil)).Elem(), ClusterNodeConfigGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGuestAcceleratorArrayInput)(nil)).Elem(), ClusterNodeConfigGuestAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput)(nil)).Elem(), ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrInput)(nil)).Elem(), ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGuestAcceleratorGpuSharingConfigInput)(nil)).Elem(), ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrInput)(nil)).Elem(), ClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeConfigGvnicInput)(nil)).Elem(), ClusterNodeConfigGvnicArgs{})
@@ -47207,6 +47898,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGcfsConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGuestAcceleratorInput)(nil)).Elem(), ClusterNodePoolNodeConfigGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGuestAcceleratorArrayInput)(nil)).Elem(), ClusterNodePoolNodeConfigGuestAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigGvnicInput)(nil)).Elem(), ClusterNodePoolNodeConfigGvnicArgs{})
@@ -47291,6 +47984,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGcfsConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigGcfsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGuestAcceleratorInput)(nil)).Elem(), NodePoolNodeConfigGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGuestAcceleratorArrayInput)(nil)).Elem(), NodePoolNodeConfigGuestAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput)(nil)).Elem(), NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGuestAcceleratorGpuSharingConfigInput)(nil)).Elem(), NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigGvnicInput)(nil)).Elem(), NodePoolNodeConfigGvnicArgs{})
@@ -47431,6 +48126,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGcfsConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigGcfsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorArrayInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuSharingConfigInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayInput)(nil)).Elem(), GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeConfigGvnicInput)(nil)).Elem(), GetClusterNodeConfigGvnicArgs{})
@@ -47487,6 +48184,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGcfsConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGcfsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGuestAcceleratorInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGuestAcceleratorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGuestAcceleratorArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGuestAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigGvnicInput)(nil)).Elem(), GetClusterNodePoolNodeConfigGvnicArgs{})
@@ -47773,6 +48472,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodeConfigGcfsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigGvnicOutput{})
@@ -47829,6 +48530,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGcfsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGvnicOutput{})
@@ -47913,6 +48616,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolNodeConfigGcfsConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigGuestAcceleratorGpuSharingConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigGvnicOutput{})
@@ -48053,6 +48758,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodeConfigGcfsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorGpuSharingConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGvnicOutput{})
@@ -48109,6 +48816,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGcfsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGvnicOutput{})

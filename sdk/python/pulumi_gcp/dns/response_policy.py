@@ -224,6 +224,9 @@ class ResponsePolicy(pulumi.CustomResource):
                  response_policy_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A Response Policy is a collection of selectors that apply to queries
+        made against one or more Virtual Private Cloud networks.
+
         ## Example Usage
         ### Dns Response Policy Basic
 
@@ -231,10 +234,8 @@ class ResponsePolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
+        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
         subnetwork_1 = gcp.compute.Subnetwork("subnetwork-1",
             network=network_1.name,
             ip_cidr_range="10.0.36.0/24",
@@ -249,8 +250,7 @@ class ResponsePolicy(pulumi.CustomResource):
                     range_name="svc",
                     ip_cidr_range="10.0.32.0/22",
                 ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ])
         cluster_1 = gcp.container.Cluster("cluster-1",
             location="us-central1-c",
             initial_node_count=1,
@@ -272,8 +272,7 @@ class ResponsePolicy(pulumi.CustomResource):
             ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(
                 cluster_secondary_range_name=subnetwork_1.secondary_ip_ranges[0].range_name,
                 services_secondary_range_name=subnetwork_1.secondary_ip_ranges[1].range_name,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         example_response_policy = gcp.dns.ResponsePolicy("example-response-policy",
             response_policy_name="example-response-policy",
             networks=[
@@ -286,8 +285,7 @@ class ResponsePolicy(pulumi.CustomResource):
             ],
             gke_clusters=[gcp.dns.ResponsePolicyGkeClusterArgs(
                 gke_cluster_name=cluster_1.id,
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
 
         ## Import
@@ -327,6 +325,9 @@ class ResponsePolicy(pulumi.CustomResource):
                  args: ResponsePolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Response Policy is a collection of selectors that apply to queries
+        made against one or more Virtual Private Cloud networks.
+
         ## Example Usage
         ### Dns Response Policy Basic
 
@@ -334,10 +335,8 @@ class ResponsePolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        network_1 = gcp.compute.Network("network-1", auto_create_subnetworks=False)
+        network_2 = gcp.compute.Network("network-2", auto_create_subnetworks=False)
         subnetwork_1 = gcp.compute.Subnetwork("subnetwork-1",
             network=network_1.name,
             ip_cidr_range="10.0.36.0/24",
@@ -352,8 +351,7 @@ class ResponsePolicy(pulumi.CustomResource):
                     range_name="svc",
                     ip_cidr_range="10.0.32.0/22",
                 ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ])
         cluster_1 = gcp.container.Cluster("cluster-1",
             location="us-central1-c",
             initial_node_count=1,
@@ -375,8 +373,7 @@ class ResponsePolicy(pulumi.CustomResource):
             ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(
                 cluster_secondary_range_name=subnetwork_1.secondary_ip_ranges[0].range_name,
                 services_secondary_range_name=subnetwork_1.secondary_ip_ranges[1].range_name,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         example_response_policy = gcp.dns.ResponsePolicy("example-response-policy",
             response_policy_name="example-response-policy",
             networks=[
@@ -389,8 +386,7 @@ class ResponsePolicy(pulumi.CustomResource):
             ],
             gke_clusters=[gcp.dns.ResponsePolicyGkeClusterArgs(
                 gke_cluster_name=cluster_1.id,
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
 
         ## Import
