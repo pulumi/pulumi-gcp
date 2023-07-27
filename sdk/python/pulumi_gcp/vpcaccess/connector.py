@@ -32,7 +32,7 @@ class ConnectorArgs:
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         :param pulumi.Input[str] machine_type: Machine type of VM Instance underlying connector. Default is e2-micro
         :param pulumi.Input[int] max_instances: Maximum value of instances in autoscaling group underlying the connector.
-        :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
+        :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
         :param pulumi.Input[int] min_instances: Minimum value of instances in autoscaling group underlying the connector.
         :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
         :param pulumi.Input[str] name: The name of the resource (Max 25 characters).
@@ -109,7 +109,7 @@ class ConnectorArgs:
     @pulumi.getter(name="maxThroughput")
     def max_throughput(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
+        Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
         """
         return pulumi.get(self, "max_throughput")
 
@@ -230,7 +230,7 @@ class _ConnectorState:
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         :param pulumi.Input[str] machine_type: Machine type of VM Instance underlying connector. Default is e2-micro
         :param pulumi.Input[int] max_instances: Maximum value of instances in autoscaling group underlying the connector.
-        :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
+        :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
         :param pulumi.Input[int] min_instances: Minimum value of instances in autoscaling group underlying the connector.
         :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
         :param pulumi.Input[str] name: The name of the resource (Max 25 characters).
@@ -327,7 +327,7 @@ class _ConnectorState:
     @pulumi.getter(name="maxThroughput")
     def max_throughput(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
+        Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
         """
         return pulumi.get(self, "max_throughput")
 
@@ -483,9 +483,7 @@ class Connector(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         connector = gcp.vpcaccess.Connector("connector",
-            ip_cidr_range="10.18.0.0/28",
-            max_instances=3,
-            min_instances=2,
+            ip_cidr_range="10.8.0.0/28",
             network="default")
         ```
         ### Vpc Access Connector Shared Vpc
@@ -503,9 +501,7 @@ class Connector(pulumi.CustomResource):
             subnet=gcp.vpcaccess.ConnectorSubnetArgs(
                 name=custom_test_subnetwork.name,
             ),
-            machine_type="e2-standard-4",
-            min_instances=2,
-            max_instances=3)
+            machine_type="e2-standard-4")
         ```
 
         ## Import
@@ -533,7 +529,7 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         :param pulumi.Input[str] machine_type: Machine type of VM Instance underlying connector. Default is e2-micro
         :param pulumi.Input[int] max_instances: Maximum value of instances in autoscaling group underlying the connector.
-        :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
+        :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
         :param pulumi.Input[int] min_instances: Minimum value of instances in autoscaling group underlying the connector.
         :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
         :param pulumi.Input[str] name: The name of the resource (Max 25 characters).
@@ -570,9 +566,7 @@ class Connector(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         connector = gcp.vpcaccess.Connector("connector",
-            ip_cidr_range="10.18.0.0/28",
-            max_instances=3,
-            min_instances=2,
+            ip_cidr_range="10.8.0.0/28",
             network="default")
         ```
         ### Vpc Access Connector Shared Vpc
@@ -590,9 +584,7 @@ class Connector(pulumi.CustomResource):
             subnet=gcp.vpcaccess.ConnectorSubnetArgs(
                 name=custom_test_subnetwork.name,
             ),
-            machine_type="e2-standard-4",
-            min_instances=2,
-            max_instances=3)
+            machine_type="e2-standard-4")
         ```
 
         ## Import
@@ -699,7 +691,7 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         :param pulumi.Input[str] machine_type: Machine type of VM Instance underlying connector. Default is e2-micro
         :param pulumi.Input[int] max_instances: Maximum value of instances in autoscaling group underlying the connector.
-        :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
+        :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
         :param pulumi.Input[int] min_instances: Minimum value of instances in autoscaling group underlying the connector.
         :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
         :param pulumi.Input[str] name: The name of the resource (Max 25 characters).
@@ -769,9 +761,9 @@ class Connector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="maxThroughput")
-    def max_throughput(self) -> pulumi.Output[int]:
+    def max_throughput(self) -> pulumi.Output[Optional[int]]:
         """
-        Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
+        Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
         """
         return pulumi.get(self, "max_throughput")
 
@@ -785,7 +777,7 @@ class Connector(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="minThroughput")
-    def min_throughput(self) -> pulumi.Output[int]:
+    def min_throughput(self) -> pulumi.Output[Optional[int]]:
         """
         Minimum throughput of the connector in Mbps. Default and min is 200.
         """

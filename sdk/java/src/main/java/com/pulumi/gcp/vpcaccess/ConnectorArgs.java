@@ -63,14 +63,14 @@ public final class ConnectorArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
+     * Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
      * 
      */
     @Import(name="maxThroughput")
     private @Nullable Output<Integer> maxThroughput;
 
     /**
-     * @return Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
+     * @return Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
      * 
      */
     public Optional<Output<Integer>> maxThroughput() {
@@ -288,7 +288,7 @@ public final class ConnectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxThroughput Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
+         * @param maxThroughput Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class ConnectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxThroughput Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
+         * @param maxThroughput Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 300.
          * 
          * @return builder
          * 
