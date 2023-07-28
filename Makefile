@@ -96,6 +96,7 @@ install_plugins:
 	pulumi plugin install resource random 4.8.2
 	pulumi plugin install resource kubernetes 3.20.0
 	pulumi plugin install resource tls 4.6.0
+	pulumi plugin install resource http 0.0.1
 
 lint_provider: provider
 	cd provider && golangci-lint run -c ../.golangci.yml
