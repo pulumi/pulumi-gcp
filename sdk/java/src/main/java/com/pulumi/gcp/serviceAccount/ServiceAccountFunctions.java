@@ -581,6 +581,45 @@ public final class ServiceAccountFunctions {
      * 
      *   Note: to use the following, you must grant `target_service_account` the
      *   `roles/iam.serviceAccountTokenCreator` role on itself.
+     * ### Invoking Cloud Run Endpoint
+     * 
+     *   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceAccount.ServiceAccountFunctions;
+     * import com.pulumi.gcp.serviceAccount.inputs.GetAccountIdTokenArgs;
+     * import com.pulumi.http.HttpFunctions;
+     * import com.pulumi.http.inputs.GetHttpArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var oidc = ServiceAccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
+     *             .targetAudience(&#34;https://your.cloud.run.app/&#34;)
+     *             .build());
+     * 
+     *         final var cloudrun = HttpFunctions.getHttp(GetHttpArgs.builder()
+     *             .url(&#34;https://your.cloud.run.app/&#34;)
+     *             .requestHeaders(Map.of(&#34;Authorization&#34;, String.format(&#34;Bearer %s&#34;, oidc.applyValue(getAccountIdTokenResult -&gt; getAccountIdTokenResult.idToken()))))
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudRunResponse&#34;, cloudrun.applyValue(getHttpResult -&gt; getHttpResult.body()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAccountIdTokenResult> getAccountIdToken(GetAccountIdTokenArgs args) {
@@ -602,6 +641,45 @@ public final class ServiceAccountFunctions {
      * 
      *   Note: to use the following, you must grant `target_service_account` the
      *   `roles/iam.serviceAccountTokenCreator` role on itself.
+     * ### Invoking Cloud Run Endpoint
+     * 
+     *   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceAccount.ServiceAccountFunctions;
+     * import com.pulumi.gcp.serviceAccount.inputs.GetAccountIdTokenArgs;
+     * import com.pulumi.http.HttpFunctions;
+     * import com.pulumi.http.inputs.GetHttpArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var oidc = ServiceAccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
+     *             .targetAudience(&#34;https://your.cloud.run.app/&#34;)
+     *             .build());
+     * 
+     *         final var cloudrun = HttpFunctions.getHttp(GetHttpArgs.builder()
+     *             .url(&#34;https://your.cloud.run.app/&#34;)
+     *             .requestHeaders(Map.of(&#34;Authorization&#34;, String.format(&#34;Bearer %s&#34;, oidc.applyValue(getAccountIdTokenResult -&gt; getAccountIdTokenResult.idToken()))))
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudRunResponse&#34;, cloudrun.applyValue(getHttpResult -&gt; getHttpResult.body()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccountIdTokenResult> getAccountIdTokenPlain(GetAccountIdTokenPlainArgs args) {
@@ -623,6 +701,45 @@ public final class ServiceAccountFunctions {
      * 
      *   Note: to use the following, you must grant `target_service_account` the
      *   `roles/iam.serviceAccountTokenCreator` role on itself.
+     * ### Invoking Cloud Run Endpoint
+     * 
+     *   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceAccount.ServiceAccountFunctions;
+     * import com.pulumi.gcp.serviceAccount.inputs.GetAccountIdTokenArgs;
+     * import com.pulumi.http.HttpFunctions;
+     * import com.pulumi.http.inputs.GetHttpArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var oidc = ServiceAccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
+     *             .targetAudience(&#34;https://your.cloud.run.app/&#34;)
+     *             .build());
+     * 
+     *         final var cloudrun = HttpFunctions.getHttp(GetHttpArgs.builder()
+     *             .url(&#34;https://your.cloud.run.app/&#34;)
+     *             .requestHeaders(Map.of(&#34;Authorization&#34;, String.format(&#34;Bearer %s&#34;, oidc.applyValue(getAccountIdTokenResult -&gt; getAccountIdTokenResult.idToken()))))
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudRunResponse&#34;, cloudrun.applyValue(getHttpResult -&gt; getHttpResult.body()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static Output<GetAccountIdTokenResult> getAccountIdToken(GetAccountIdTokenArgs args, InvokeOptions options) {
@@ -644,6 +761,45 @@ public final class ServiceAccountFunctions {
      * 
      *   Note: to use the following, you must grant `target_service_account` the
      *   `roles/iam.serviceAccountTokenCreator` role on itself.
+     * ### Invoking Cloud Run Endpoint
+     * 
+     *   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.serviceAccount.ServiceAccountFunctions;
+     * import com.pulumi.gcp.serviceAccount.inputs.GetAccountIdTokenArgs;
+     * import com.pulumi.http.HttpFunctions;
+     * import com.pulumi.http.inputs.GetHttpArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var oidc = ServiceAccountFunctions.getAccountIdToken(GetAccountIdTokenArgs.builder()
+     *             .targetAudience(&#34;https://your.cloud.run.app/&#34;)
+     *             .build());
+     * 
+     *         final var cloudrun = HttpFunctions.getHttp(GetHttpArgs.builder()
+     *             .url(&#34;https://your.cloud.run.app/&#34;)
+     *             .requestHeaders(Map.of(&#34;Authorization&#34;, String.format(&#34;Bearer %s&#34;, oidc.applyValue(getAccountIdTokenResult -&gt; getAccountIdTokenResult.idToken()))))
+     *             .build());
+     * 
+     *         ctx.export(&#34;cloudRunResponse&#34;, cloudrun.applyValue(getHttpResult -&gt; getHttpResult.body()));
+     *     }
+     * }
+     * ```
      * 
      */
     public static CompletableFuture<GetAccountIdTokenResult> getAccountIdTokenPlain(GetAccountIdTokenPlainArgs args, InvokeOptions options) {

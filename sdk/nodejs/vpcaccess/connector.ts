@@ -23,9 +23,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const connector = new gcp.vpcaccess.Connector("connector", {
- *     ipCidrRange: "10.18.0.0/28",
- *     maxInstances: 3,
- *     minInstances: 2,
+ *     ipCidrRange: "10.8.0.0/28",
  *     network: "default",
  * });
  * ```
@@ -46,8 +44,6 @@ import * as utilities from "../utilities";
  *         name: customTestSubnetwork.name,
  *     },
  *     machineType: "e2-standard-4",
- *     minInstances: 2,
- *     maxInstances: 3,
  * });
  * ```
  *
@@ -116,9 +112,9 @@ export class Connector extends pulumi.CustomResource {
      */
     public readonly maxInstances!: pulumi.Output<number>;
     /**
-     * Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
+     * Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 300.
      */
-    public readonly maxThroughput!: pulumi.Output<number>;
+    public readonly maxThroughput!: pulumi.Output<number | undefined>;
     /**
      * Minimum value of instances in autoscaling group underlying the connector.
      */
@@ -126,7 +122,7 @@ export class Connector extends pulumi.CustomResource {
     /**
      * Minimum throughput of the connector in Mbps. Default and min is 200.
      */
-    public readonly minThroughput!: pulumi.Output<number>;
+    public readonly minThroughput!: pulumi.Output<number | undefined>;
     /**
      * The name of the resource (Max 25 characters).
      *
@@ -231,7 +227,7 @@ export interface ConnectorState {
      */
     maxInstances?: pulumi.Input<number>;
     /**
-     * Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
+     * Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 300.
      */
     maxThroughput?: pulumi.Input<number>;
     /**
@@ -294,7 +290,7 @@ export interface ConnectorArgs {
      */
     maxInstances?: pulumi.Input<number>;
     /**
-     * Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
+     * Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 300.
      */
     maxThroughput?: pulumi.Input<number>;
     /**

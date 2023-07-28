@@ -5,7 +5,7 @@ go 1.19
 require (
 	github.com/hashicorp/terraform-provider-google-beta v0.0.0
 	github.com/pulumi/pulumi-terraform-bridge/pf v0.14.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.54.1
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.54.2
 	github.com/pulumi/pulumi/pkg/v3 v3.75.0
 	github.com/pulumi/pulumi/sdk/v3 v3.75.0
 )
