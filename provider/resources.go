@@ -2027,6 +2027,24 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "iap_web_backend_service_iam.html.markdown",
 				},
 			},
+			"google_iap_web_region_backend_service_iam_binding": {
+				Tok: gcpResource(gcpIAP, "WebRegionBackendServiceIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_web_region_backend_service_iam.html.markdown",
+				},
+			},
+			"google_iap_web_region_backend_service_iam_member": {
+				Tok: gcpResource(gcpIAP, "WebRegionBackendServiceIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_web_region_backend_service_iam.html.markdown",
+				},
+			},
+			"google_iap_web_region_backend_service_iam_policy": {
+				Tok: gcpResource(gcpIAP, "WebRegionBackendServiceIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "iap_web_region_backend_service_iam.html.markdown",
+				},
+			},
 			"google_iap_web_iam_binding": {
 				Tok: gcpResource(gcpIAP, "WebIamBinding"),
 				Docs: &tfbridge.DocInfo{
@@ -2757,16 +2775,28 @@ func Provider() tfbridge.ProviderInfo {
 				Tok:  gcpResource(gcpDataPlex, "AssetIamPolicy"),
 				Docs: &tfbridge.DocInfo{Source: "dataplex_asset_iam.html.markdown"},
 			},
+			"google_dataplex_task_iam_binding": {
+				Tok:  gcpResource(gcpDataPlex, "TaskIamBinding"),
+				Docs: &tfbridge.DocInfo{Source: "dataplex_task_iam.html.markdown"},
+			},
+			"google_dataplex_task_iam_member": {
+				Tok:  gcpResource(gcpDataPlex, "TaskIamMember"),
+				Docs: &tfbridge.DocInfo{Source: "dataplex_task_iam.html.markdown"},
+			},
+			"google_dataplex_task_iam_policy": {
+				Tok:  gcpResource(gcpDataPlex, "TaskIamPolicy"),
+				Docs: &tfbridge.DocInfo{Source: "dataplex_task_iam.html.markdown"},
+			},
+			"google_dataplex_zone_iam_policy": {
+				Tok:  gcpResource(gcpDataPlex, "ZoneIamPolicy"),
+				Docs: &tfbridge.DocInfo{Source: "dataplex_zone_iam.html.markdown"},
+			},
 			"google_dataplex_zone_iam_binding": {
 				Tok:  gcpResource(gcpDataPlex, "ZoneIamBinding"),
 				Docs: &tfbridge.DocInfo{Source: "dataplex_zone_iam.html.markdown"},
 			},
 			"google_dataplex_zone_iam_member": {
 				Tok:  gcpResource(gcpDataPlex, "ZoneIamMember"),
-				Docs: &tfbridge.DocInfo{Source: "dataplex_zone_iam.html.markdown"},
-			},
-			"google_dataplex_zone_iam_policy": {
-				Tok:  gcpResource(gcpDataPlex, "ZoneIamPolicy"),
 				Docs: &tfbridge.DocInfo{Source: "dataplex_zone_iam.html.markdown"},
 			},
 
