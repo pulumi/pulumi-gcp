@@ -225,6 +225,10 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * The security policy associated with this backend service.
+     */
+    public readonly securityPolicy!: pulumi.Output<string | undefined>;
+    /**
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -282,6 +286,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["protocol"] = state ? state.protocol : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["securityPolicy"] = state ? state.securityPolicy : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["sessionAffinity"] = state ? state.sessionAffinity : undefined;
             resourceInputs["subsetting"] = state ? state.subsetting : undefined;
@@ -310,6 +315,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["protocol"] = args ? args.protocol : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["securityPolicy"] = args ? args.securityPolicy : undefined;
             resourceInputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
             resourceInputs["subsetting"] = args ? args.subsetting : undefined;
             resourceInputs["timeoutSec"] = args ? args.timeoutSec : undefined;
@@ -481,6 +487,10 @@ export interface RegionBackendServiceState {
      */
     region?: pulumi.Input<string>;
     /**
+     * The security policy associated with this backend service.
+     */
+    securityPolicy?: pulumi.Input<string>;
+    /**
      * The URI of the created resource.
      */
     selfLink?: pulumi.Input<string>;
@@ -651,6 +661,10 @@ export interface RegionBackendServiceArgs {
      * If it is not provided, the provider region is used.
      */
     region?: pulumi.Input<string>;
+    /**
+     * The security policy associated with this backend service.
+     */
+    securityPolicy?: pulumi.Input<string>;
     /**
      * Type of session affinity to use. The default is NONE. Session affinity is
      * not applicable if the protocol is UDP.

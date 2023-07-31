@@ -56,7 +56,10 @@ class ServiceArgs:
                metadata. For more details, see:
                https://github.com/knative/serving/blob/main/docs/client-conventions.md#associate-modifications-with-revisions Cloud Run
                does not currently support referencing a build that is responsible for materializing the container image from source.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]] traffics: (Output)
+               Traffic specifies how to distribute traffic over a collection of Knative Revisions
+               and Configurations
+               Structure is documented below.
         """
         pulumi.set(__self__, "location", location)
         if autogenerate_revision_name is not None:
@@ -173,7 +176,10 @@ class ServiceArgs:
     @pulumi.getter
     def traffics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]]:
         """
-        Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+        (Output)
+        Traffic specifies how to distribute traffic over a collection of Knative Revisions
+        and Configurations
+        Structure is documented below.
         """
         return pulumi.get(self, "traffics")
 
@@ -228,7 +234,10 @@ class _ServiceState:
                metadata. For more details, see:
                https://github.com/knative/serving/blob/main/docs/client-conventions.md#associate-modifications-with-revisions Cloud Run
                does not currently support referencing a build that is responsible for materializing the container image from source.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]] traffics: (Output)
+               Traffic specifies how to distribute traffic over a collection of Knative Revisions
+               and Configurations
+               Structure is documented below.
         """
         if autogenerate_revision_name is not None:
             pulumi.set(__self__, "autogenerate_revision_name", autogenerate_revision_name)
@@ -361,7 +370,10 @@ class _ServiceState:
     @pulumi.getter
     def traffics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]]:
         """
-        Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+        (Output)
+        Traffic specifies how to distribute traffic over a collection of Knative Revisions
+        and Configurations
+        Structure is documented below.
         """
         return pulumi.get(self, "traffics")
 
@@ -663,7 +675,10 @@ class Service(pulumi.CustomResource):
                metadata. For more details, see:
                https://github.com/knative/serving/blob/main/docs/client-conventions.md#associate-modifications-with-revisions Cloud Run
                does not currently support referencing a build that is responsible for materializing the container image from source.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]] traffics: (Output)
+               Traffic specifies how to distribute traffic over a collection of Knative Revisions
+               and Configurations
+               Structure is documented below.
         """
         ...
     @overload
@@ -1017,7 +1032,10 @@ class Service(pulumi.CustomResource):
                metadata. For more details, see:
                https://github.com/knative/serving/blob/main/docs/client-conventions.md#associate-modifications-with-revisions Cloud Run
                does not currently support referencing a build that is responsible for materializing the container image from source.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]] traffics: Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceTrafficArgs']]]] traffics: (Output)
+               Traffic specifies how to distribute traffic over a collection of Knative Revisions
+               and Configurations
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1119,7 +1137,10 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def traffics(self) -> pulumi.Output[Sequence['outputs.ServiceTraffic']]:
         """
-        Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+        (Output)
+        Traffic specifies how to distribute traffic over a collection of Knative Revisions
+        and Configurations
+        Structure is documented below.
         """
         return pulumi.get(self, "traffics")
 

@@ -16,14 +16,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig
     public static final WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs Empty = new WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs();
 
     /**
-     * Optional. A target for the deployment.
+     * A target for the deployment.
      * 
      */
     @Import(name="namespacedGkeDeploymentTarget")
     private @Nullable Output<WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs> namespacedGkeDeploymentTarget;
 
     /**
-     * @return Optional. A target for the deployment.
+     * @return A target for the deployment.
      * 
      */
     public Optional<Output<WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs>> namespacedGkeDeploymentTarget() {
@@ -55,7 +55,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig
         }
 
         /**
-         * @param namespacedGkeDeploymentTarget Optional. A target for the deployment.
+         * @param namespacedGkeDeploymentTarget A target for the deployment.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig
         }
 
         /**
-         * @param namespacedGkeDeploymentTarget Optional. A target for the deployment.
+         * @param namespacedGkeDeploymentTarget A target for the deployment.
          * 
          * @return builder
          * 

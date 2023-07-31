@@ -17,14 +17,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
     public static final WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs Empty = new WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs();
 
     /**
-     * Optional. Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
+     * Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
      * 
      */
     @Import(name="consumeReservationType")
     private @Nullable Output<String> consumeReservationType;
 
     /**
-     * @return Optional. Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
+     * @return Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
      * 
      */
     public Optional<Output<String>> consumeReservationType() {
@@ -32,14 +32,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
     }
 
     /**
-     * Optional. Corresponds to the label key of reservation resource.
+     * Corresponds to the label key of reservation resource.
      * 
      */
     @Import(name="key")
     private @Nullable Output<String> key;
 
     /**
-     * @return Optional. Corresponds to the label key of reservation resource.
+     * @return Corresponds to the label key of reservation resource.
      * 
      */
     public Optional<Output<String>> key() {
@@ -47,14 +47,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
     }
 
     /**
-     * Optional. Corresponds to the label values of reservation resource.
+     * Corresponds to the label values of reservation resource.
      * 
      */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
     /**
-     * @return Optional. Corresponds to the label values of reservation resource.
+     * @return Corresponds to the label values of reservation resource.
      * 
      */
     public Optional<Output<List<String>>> values() {
@@ -88,7 +88,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param consumeReservationType Optional. Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
+         * @param consumeReservationType Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param consumeReservationType Optional. Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
+         * @param consumeReservationType Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param key Optional. Corresponds to the label key of reservation resource.
+         * @param key Corresponds to the label key of reservation resource.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param key Optional. Corresponds to the label key of reservation resource.
+         * @param key Corresponds to the label key of reservation resource.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param values Optional. Corresponds to the label values of reservation resource.
+         * @param values Corresponds to the label values of reservation resource.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param values Optional. Corresponds to the label values of reservation resource.
+         * @param values Corresponds to the label values of reservation resource.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
         }
 
         /**
-         * @param values Optional. Corresponds to the label values of reservation resource.
+         * @param values Corresponds to the label values of reservation resource.
          * 
          * @return builder
          * 

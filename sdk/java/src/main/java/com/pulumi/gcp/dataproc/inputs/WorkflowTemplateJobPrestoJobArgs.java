@@ -21,14 +21,14 @@ public final class WorkflowTemplateJobPrestoJobArgs extends com.pulumi.resources
     public static final WorkflowTemplateJobPrestoJobArgs Empty = new WorkflowTemplateJobPrestoJobArgs();
 
     /**
-     * Optional. Presto client tags to attach to this query
+     * Presto client tags to attach to this query
      * 
      */
     @Import(name="clientTags")
     private @Nullable Output<List<String>> clientTags;
 
     /**
-     * @return Optional. Presto client tags to attach to this query
+     * @return Presto client tags to attach to this query
      * 
      */
     public Optional<Output<List<String>>> clientTags() {
@@ -36,14 +36,14 @@ public final class WorkflowTemplateJobPrestoJobArgs extends com.pulumi.resources
     }
 
     /**
-     * Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+     * Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
      * 
      */
     @Import(name="continueOnFailure")
     private @Nullable Output<Boolean> continueOnFailure;
 
     /**
-     * @return Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+     * @return Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
      * 
      */
     public Optional<Output<Boolean>> continueOnFailure() {
@@ -51,14 +51,14 @@ public final class WorkflowTemplateJobPrestoJobArgs extends com.pulumi.resources
     }
 
     /**
-     * Optional. The runtime log config for job execution.
+     * The runtime log config for job execution.
      * 
      */
     @Import(name="loggingConfig")
     private @Nullable Output<WorkflowTemplateJobPrestoJobLoggingConfigArgs> loggingConfig;
 
     /**
-     * @return Optional. The runtime log config for job execution.
+     * @return The runtime log config for job execution.
      * 
      */
     public Optional<Output<WorkflowTemplateJobPrestoJobLoggingConfigArgs>> loggingConfig() {
@@ -66,14 +66,14 @@ public final class WorkflowTemplateJobPrestoJobArgs extends com.pulumi.resources
     }
 
     /**
-     * Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats
+     * The format in which query output will be displayed. See the Presto documentation for supported output formats
      * 
      */
     @Import(name="outputFormat")
     private @Nullable Output<String> outputFormat;
 
     /**
-     * @return Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats
+     * @return The format in which query output will be displayed. See the Presto documentation for supported output formats
      * 
      */
     public Optional<Output<String>> outputFormat() {
@@ -81,14 +81,14 @@ public final class WorkflowTemplateJobPrestoJobArgs extends com.pulumi.resources
     }
 
     /**
-     * Optional. A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+     * A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
      * 
      */
     @Import(name="properties")
     private @Nullable Output<Map<String,String>> properties;
 
     /**
-     * @return Optional. A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+     * @return A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
      * 
      */
     public Optional<Output<Map<String,String>>> properties() {
@@ -156,7 +156,7 @@ public final class WorkflowTemplateJobPrestoJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param clientTags Optional. Presto client tags to attach to this query
+         * @param clientTags Presto client tags to attach to this query
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class WorkflowTemplateJobPrestoJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param clientTags Optional. Presto client tags to attach to this query
+         * @param clientTags Presto client tags to attach to this query
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class WorkflowTemplateJobPrestoJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param clientTags Optional. Presto client tags to attach to this query
+         * @param clientTags Presto client tags to attach to this query
          * 
          * @return builder
          * 
@@ -187,7 +187,7 @@ public final class WorkflowTemplateJobPrestoJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param continueOnFailure Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+         * @param continueOnFailure Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class WorkflowTemplateJobPrestoJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param continueOnFailure Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+         * @param continueOnFailure Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class WorkflowTemplateJobPrestoJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param loggingConfig Optional. The runtime log config for job execution.
+         * @param loggingConfig The runtime log config for job execution.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class WorkflowTemplateJobPrestoJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param loggingConfig Optional. The runtime log config for job execution.
+         * @param loggingConfig The runtime log config for job execution.
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class WorkflowTemplateJobPrestoJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param outputFormat Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats
+         * @param outputFormat The format in which query output will be displayed. See the Presto documentation for supported output formats
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class WorkflowTemplateJobPrestoJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param outputFormat Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats
+         * @param outputFormat The format in which query output will be displayed. See the Presto documentation for supported output formats
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class WorkflowTemplateJobPrestoJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param properties Optional. A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+         * @param properties A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
          * 
          * @return builder
          * 
@@ -261,7 +261,7 @@ public final class WorkflowTemplateJobPrestoJobArgs extends com.pulumi.resources
         }
 
         /**
-         * @param properties Optional. A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+         * @param properties A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
          * 
          * @return builder
          * 

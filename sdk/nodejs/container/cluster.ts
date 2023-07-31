@@ -115,6 +115,12 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly addonsConfig!: pulumi.Output<outputs.container.ClusterAddonsConfig>;
     /**
+     * Enable NET_ADMIN for the cluster. Defaults to 
+     * `false`. This field should only be enabled for Autopilot clusters (`enableAutopilot`
+     * set to `true`).
+     */
+    public readonly allowNetAdmin!: pulumi.Output<boolean | undefined>;
+    /**
      * Configuration for the
      * [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
      * Structure is documented below.
@@ -219,6 +225,10 @@ export class Cluster extends pulumi.CustomResource {
      * Defaults to `false`
      */
     public readonly enableLegacyAbac!: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether multi-networking is enabled for this cluster.
+     */
+    public readonly enableMultiNetworking!: pulumi.Output<boolean | undefined>;
     /**
      * Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
      */
@@ -541,6 +551,7 @@ export class Cluster extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
             resourceInputs["addonsConfig"] = state ? state.addonsConfig : undefined;
+            resourceInputs["allowNetAdmin"] = state ? state.allowNetAdmin : undefined;
             resourceInputs["authenticatorGroupsConfig"] = state ? state.authenticatorGroupsConfig : undefined;
             resourceInputs["binaryAuthorization"] = state ? state.binaryAuthorization : undefined;
             resourceInputs["clusterAutoscaling"] = state ? state.clusterAutoscaling : undefined;
@@ -560,6 +571,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["enableKubernetesAlpha"] = state ? state.enableKubernetesAlpha : undefined;
             resourceInputs["enableL4IlbSubsetting"] = state ? state.enableL4IlbSubsetting : undefined;
             resourceInputs["enableLegacyAbac"] = state ? state.enableLegacyAbac : undefined;
+            resourceInputs["enableMultiNetworking"] = state ? state.enableMultiNetworking : undefined;
             resourceInputs["enableShieldedNodes"] = state ? state.enableShieldedNodes : undefined;
             resourceInputs["enableTpu"] = state ? state.enableTpu : undefined;
             resourceInputs["endpoint"] = state ? state.endpoint : undefined;
@@ -612,6 +624,7 @@ export class Cluster extends pulumi.CustomResource {
         } else {
             const args = argsOrState as ClusterArgs | undefined;
             resourceInputs["addonsConfig"] = args ? args.addonsConfig : undefined;
+            resourceInputs["allowNetAdmin"] = args ? args.allowNetAdmin : undefined;
             resourceInputs["authenticatorGroupsConfig"] = args ? args.authenticatorGroupsConfig : undefined;
             resourceInputs["binaryAuthorization"] = args ? args.binaryAuthorization : undefined;
             resourceInputs["clusterAutoscaling"] = args ? args.clusterAutoscaling : undefined;
@@ -631,6 +644,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["enableKubernetesAlpha"] = args ? args.enableKubernetesAlpha : undefined;
             resourceInputs["enableL4IlbSubsetting"] = args ? args.enableL4IlbSubsetting : undefined;
             resourceInputs["enableLegacyAbac"] = args ? args.enableLegacyAbac : undefined;
+            resourceInputs["enableMultiNetworking"] = args ? args.enableMultiNetworking : undefined;
             resourceInputs["enableShieldedNodes"] = args ? args.enableShieldedNodes : undefined;
             resourceInputs["enableTpu"] = args ? args.enableTpu : undefined;
             resourceInputs["gatewayApiConfig"] = args ? args.gatewayApiConfig : undefined;
@@ -695,6 +709,12 @@ export interface ClusterState {
      * Structure is documented below.
      */
     addonsConfig?: pulumi.Input<inputs.container.ClusterAddonsConfig>;
+    /**
+     * Enable NET_ADMIN for the cluster. Defaults to 
+     * `false`. This field should only be enabled for Autopilot clusters (`enableAutopilot`
+     * set to `true`).
+     */
+    allowNetAdmin?: pulumi.Input<boolean>;
     /**
      * Configuration for the
      * [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
@@ -800,6 +820,10 @@ export interface ClusterState {
      * Defaults to `false`
      */
     enableLegacyAbac?: pulumi.Input<boolean>;
+    /**
+     * Whether multi-networking is enabled for this cluster.
+     */
+    enableMultiNetworking?: pulumi.Input<boolean>;
     /**
      * Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
      */
@@ -1119,6 +1143,12 @@ export interface ClusterArgs {
      */
     addonsConfig?: pulumi.Input<inputs.container.ClusterAddonsConfig>;
     /**
+     * Enable NET_ADMIN for the cluster. Defaults to 
+     * `false`. This field should only be enabled for Autopilot clusters (`enableAutopilot`
+     * set to `true`).
+     */
+    allowNetAdmin?: pulumi.Input<boolean>;
+    /**
      * Configuration for the
      * [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
      * Structure is documented below.
@@ -1223,6 +1253,10 @@ export interface ClusterArgs {
      * Defaults to `false`
      */
     enableLegacyAbac?: pulumi.Input<boolean>;
+    /**
+     * Whether multi-networking is enabled for this cluster.
+     */
+    enableMultiNetworking?: pulumi.Input<boolean>;
     /**
      * Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
      */

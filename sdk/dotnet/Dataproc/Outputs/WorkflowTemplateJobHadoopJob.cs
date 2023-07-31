@@ -14,23 +14,23 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class WorkflowTemplateJobHadoopJob
     {
         /// <summary>
-        /// Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
+        /// HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
         /// </summary>
         public readonly ImmutableArray<string> ArchiveUris;
         /// <summary>
-        /// Optional. The arguments to pass to the driver. Do not include arguments, such as `-libjars` or `-Dfoo=bar`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        /// The arguments to pass to the driver. Do not include arguments, such as `-libjars` or `-Dfoo=bar`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
         /// </summary>
         public readonly ImmutableArray<string> Args;
         /// <summary>
-        /// Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+        /// HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
         /// </summary>
         public readonly ImmutableArray<string> FileUris;
         /// <summary>
-        /// Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
+        /// Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
         /// </summary>
         public readonly ImmutableArray<string> JarFileUris;
         /// <summary>
-        /// Optional. The runtime log config for job execution.
+        /// The runtime log config for job execution.
         /// </summary>
         public readonly Outputs.WorkflowTemplateJobHadoopJobLoggingConfig? LoggingConfig;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string? MainJarFileUri;
         /// <summary>
-        /// Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
+        /// A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Properties;
 

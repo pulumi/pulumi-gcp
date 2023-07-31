@@ -14,63 +14,63 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class WorkflowTemplatePlacementManagedClusterConfig
     {
         /// <summary>
-        /// Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
+        /// Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig? AutoscalingConfig;
         /// <summary>
-        /// Optional. Encryption settings for the cluster.
+        /// Encryption settings for the cluster.
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig? EncryptionConfig;
         /// <summary>
-        /// Optional. Port/endpoint configuration for this cluster
+        /// Port/endpoint configuration for this cluster
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigEndpointConfig? EndpointConfig;
         /// <summary>
-        /// Optional. The shared Compute Engine config settings for all instances in a cluster.
+        /// The shared Compute Engine config settings for all instances in a cluster.
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig? GceClusterConfig;
         /// <summary>
-        /// Optional. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gce_cluster_config`, `master_config`, `worker_config`, `secondary_worker_config`, and `autoscaling_config`.
+        /// The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gce_cluster_config`, `master_config`, `worker_config`, `secondary_worker_config`, and `autoscaling_config`.
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig? GkeClusterConfig;
         /// <summary>
-        /// Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
+        /// Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
         /// </summary>
         public readonly ImmutableArray<Outputs.WorkflowTemplatePlacementManagedClusterConfigInitializationAction> InitializationActions;
         /// <summary>
-        /// Optional. Lifecycle setting for the cluster.
+        /// Lifecycle setting for the cluster.
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig? LifecycleConfig;
         /// <summary>
-        /// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+        /// The Compute Engine config settings for additional worker instances in a cluster.
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfig? MasterConfig;
         /// <summary>
-        /// Optional. Metastore configuration.
+        /// Metastore configuration.
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig? MetastoreConfig;
         /// <summary>
-        /// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+        /// The Compute Engine config settings for additional worker instances in a cluster.
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig? SecondaryWorkerConfig;
         /// <summary>
-        /// Optional. Security settings for the cluster.
+        /// Security settings for the cluster.
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigSecurityConfig? SecurityConfig;
         /// <summary>
-        /// Optional. The config settings for software inside the cluster.
+        /// The config settings for software inside the cluster.
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig? SoftwareConfig;
         /// <summary>
-        /// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+        /// A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
         /// </summary>
         public readonly string? StagingBucket;
         /// <summary>
-        /// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
+        /// A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
         /// </summary>
         public readonly string? TempBucket;
         /// <summary>
-        /// Optional. The Compute Engine config settings for additional worker instances in a cluster.
+        /// The Compute Engine config settings for additional worker instances in a cluster.
         /// 
         /// - - -
         /// </summary>

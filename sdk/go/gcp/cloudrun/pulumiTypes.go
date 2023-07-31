@@ -1681,6 +1681,11 @@ type ServiceStatus struct {
 	// metadata.generation and the Ready condition's status is True or False.
 	ObservedGeneration *int `pulumi:"observedGeneration"`
 	// (Output)
+	// Traffic specifies how to distribute traffic over a collection of Knative Revisions
+	// and Configurations
+	// Structure is documented below.
+	Traffics []ServiceStatusTraffic `pulumi:"traffics"`
+	// (Output)
 	// URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
 	// and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
 	// but may not contain anything else (e.g. basic auth, url path, etc.)
@@ -1719,6 +1724,11 @@ type ServiceStatusArgs struct {
 	// Clients polling for completed reconciliation should poll until observedGeneration =
 	// metadata.generation and the Ready condition's status is True or False.
 	ObservedGeneration pulumi.IntPtrInput `pulumi:"observedGeneration"`
+	// (Output)
+	// Traffic specifies how to distribute traffic over a collection of Knative Revisions
+	// and Configurations
+	// Structure is documented below.
+	Traffics ServiceStatusTrafficArrayInput `pulumi:"traffics"`
 	// (Output)
 	// URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
 	// and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
@@ -1807,6 +1817,14 @@ func (o ServiceStatusOutput) LatestReadyRevisionName() pulumi.StringPtrOutput {
 // metadata.generation and the Ready condition's status is True or False.
 func (o ServiceStatusOutput) ObservedGeneration() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceStatus) *int { return v.ObservedGeneration }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Traffic specifies how to distribute traffic over a collection of Knative Revisions
+// and Configurations
+// Structure is documented below.
+func (o ServiceStatusOutput) Traffics() ServiceStatusTrafficArrayOutput {
+	return o.ApplyT(func(v ServiceStatus) []ServiceStatusTraffic { return v.Traffics }).(ServiceStatusTrafficArrayOutput)
 }
 
 // (Output)
@@ -1971,6 +1989,157 @@ func (o ServiceStatusConditionArrayOutput) Index(i pulumi.IntInput) ServiceStatu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceStatusCondition {
 		return vs[0].([]ServiceStatusCondition)[vs[1].(int)]
 	}).(ServiceStatusConditionOutput)
+}
+
+type ServiceStatusTraffic struct {
+	// LatestRevision may be optionally provided to indicate that the latest ready
+	// Revision of the Configuration should be used for this traffic target. When
+	// provided LatestRevision must be true if RevisionName is empty; it must be
+	// false when RevisionName is non-empty.
+	LatestRevision *bool `pulumi:"latestRevision"`
+	// Percent specifies percent of the traffic to this Revision or Configuration.
+	Percent *int `pulumi:"percent"`
+	// RevisionName of a specific revision to which to send this portion of traffic.
+	RevisionName *string `pulumi:"revisionName"`
+	// Tag is optionally used to expose a dedicated url for referencing this target exclusively.
+	Tag *string `pulumi:"tag"`
+	// (Output)
+	// URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+	// and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+	// but may not contain anything else (e.g. basic auth, url path, etc.)
+	Url *string `pulumi:"url"`
+}
+
+// ServiceStatusTrafficInput is an input type that accepts ServiceStatusTrafficArgs and ServiceStatusTrafficOutput values.
+// You can construct a concrete instance of `ServiceStatusTrafficInput` via:
+//
+//	ServiceStatusTrafficArgs{...}
+type ServiceStatusTrafficInput interface {
+	pulumi.Input
+
+	ToServiceStatusTrafficOutput() ServiceStatusTrafficOutput
+	ToServiceStatusTrafficOutputWithContext(context.Context) ServiceStatusTrafficOutput
+}
+
+type ServiceStatusTrafficArgs struct {
+	// LatestRevision may be optionally provided to indicate that the latest ready
+	// Revision of the Configuration should be used for this traffic target. When
+	// provided LatestRevision must be true if RevisionName is empty; it must be
+	// false when RevisionName is non-empty.
+	LatestRevision pulumi.BoolPtrInput `pulumi:"latestRevision"`
+	// Percent specifies percent of the traffic to this Revision or Configuration.
+	Percent pulumi.IntPtrInput `pulumi:"percent"`
+	// RevisionName of a specific revision to which to send this portion of traffic.
+	RevisionName pulumi.StringPtrInput `pulumi:"revisionName"`
+	// Tag is optionally used to expose a dedicated url for referencing this target exclusively.
+	Tag pulumi.StringPtrInput `pulumi:"tag"`
+	// (Output)
+	// URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+	// and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+	// but may not contain anything else (e.g. basic auth, url path, etc.)
+	Url pulumi.StringPtrInput `pulumi:"url"`
+}
+
+func (ServiceStatusTrafficArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceStatusTraffic)(nil)).Elem()
+}
+
+func (i ServiceStatusTrafficArgs) ToServiceStatusTrafficOutput() ServiceStatusTrafficOutput {
+	return i.ToServiceStatusTrafficOutputWithContext(context.Background())
+}
+
+func (i ServiceStatusTrafficArgs) ToServiceStatusTrafficOutputWithContext(ctx context.Context) ServiceStatusTrafficOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceStatusTrafficOutput)
+}
+
+// ServiceStatusTrafficArrayInput is an input type that accepts ServiceStatusTrafficArray and ServiceStatusTrafficArrayOutput values.
+// You can construct a concrete instance of `ServiceStatusTrafficArrayInput` via:
+//
+//	ServiceStatusTrafficArray{ ServiceStatusTrafficArgs{...} }
+type ServiceStatusTrafficArrayInput interface {
+	pulumi.Input
+
+	ToServiceStatusTrafficArrayOutput() ServiceStatusTrafficArrayOutput
+	ToServiceStatusTrafficArrayOutputWithContext(context.Context) ServiceStatusTrafficArrayOutput
+}
+
+type ServiceStatusTrafficArray []ServiceStatusTrafficInput
+
+func (ServiceStatusTrafficArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceStatusTraffic)(nil)).Elem()
+}
+
+func (i ServiceStatusTrafficArray) ToServiceStatusTrafficArrayOutput() ServiceStatusTrafficArrayOutput {
+	return i.ToServiceStatusTrafficArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceStatusTrafficArray) ToServiceStatusTrafficArrayOutputWithContext(ctx context.Context) ServiceStatusTrafficArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceStatusTrafficArrayOutput)
+}
+
+type ServiceStatusTrafficOutput struct{ *pulumi.OutputState }
+
+func (ServiceStatusTrafficOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceStatusTraffic)(nil)).Elem()
+}
+
+func (o ServiceStatusTrafficOutput) ToServiceStatusTrafficOutput() ServiceStatusTrafficOutput {
+	return o
+}
+
+func (o ServiceStatusTrafficOutput) ToServiceStatusTrafficOutputWithContext(ctx context.Context) ServiceStatusTrafficOutput {
+	return o
+}
+
+// LatestRevision may be optionally provided to indicate that the latest ready
+// Revision of the Configuration should be used for this traffic target. When
+// provided LatestRevision must be true if RevisionName is empty; it must be
+// false when RevisionName is non-empty.
+func (o ServiceStatusTrafficOutput) LatestRevision() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceStatusTraffic) *bool { return v.LatestRevision }).(pulumi.BoolPtrOutput)
+}
+
+// Percent specifies percent of the traffic to this Revision or Configuration.
+func (o ServiceStatusTrafficOutput) Percent() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceStatusTraffic) *int { return v.Percent }).(pulumi.IntPtrOutput)
+}
+
+// RevisionName of a specific revision to which to send this portion of traffic.
+func (o ServiceStatusTrafficOutput) RevisionName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceStatusTraffic) *string { return v.RevisionName }).(pulumi.StringPtrOutput)
+}
+
+// Tag is optionally used to expose a dedicated url for referencing this target exclusively.
+func (o ServiceStatusTrafficOutput) Tag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceStatusTraffic) *string { return v.Tag }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+// and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+// but may not contain anything else (e.g. basic auth, url path, etc.)
+func (o ServiceStatusTrafficOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceStatusTraffic) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+type ServiceStatusTrafficArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceStatusTrafficArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceStatusTraffic)(nil)).Elem()
+}
+
+func (o ServiceStatusTrafficArrayOutput) ToServiceStatusTrafficArrayOutput() ServiceStatusTrafficArrayOutput {
+	return o
+}
+
+func (o ServiceStatusTrafficArrayOutput) ToServiceStatusTrafficArrayOutputWithContext(ctx context.Context) ServiceStatusTrafficArrayOutput {
+	return o
+}
+
+func (o ServiceStatusTrafficArrayOutput) Index(i pulumi.IntInput) ServiceStatusTrafficOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceStatusTraffic {
+		return vs[0].([]ServiceStatusTraffic)[vs[1].(int)]
+	}).(ServiceStatusTrafficOutput)
 }
 
 type ServiceTemplate struct {
@@ -7241,6 +7410,7 @@ type GetServiceStatus struct {
 	LatestCreatedRevisionName string                      `pulumi:"latestCreatedRevisionName"`
 	LatestReadyRevisionName   string                      `pulumi:"latestReadyRevisionName"`
 	ObservedGeneration        int                         `pulumi:"observedGeneration"`
+	Traffics                  []GetServiceStatusTraffic   `pulumi:"traffics"`
 	Url                       string                      `pulumi:"url"`
 }
 
@@ -7260,6 +7430,7 @@ type GetServiceStatusArgs struct {
 	LatestCreatedRevisionName pulumi.StringInput                  `pulumi:"latestCreatedRevisionName"`
 	LatestReadyRevisionName   pulumi.StringInput                  `pulumi:"latestReadyRevisionName"`
 	ObservedGeneration        pulumi.IntInput                     `pulumi:"observedGeneration"`
+	Traffics                  GetServiceStatusTrafficArrayInput   `pulumi:"traffics"`
 	Url                       pulumi.StringInput                  `pulumi:"url"`
 }
 
@@ -7328,6 +7499,10 @@ func (o GetServiceStatusOutput) LatestReadyRevisionName() pulumi.StringOutput {
 
 func (o GetServiceStatusOutput) ObservedGeneration() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceStatus) int { return v.ObservedGeneration }).(pulumi.IntOutput)
+}
+
+func (o GetServiceStatusOutput) Traffics() GetServiceStatusTrafficArrayOutput {
+	return o.ApplyT(func(v GetServiceStatus) []GetServiceStatusTraffic { return v.Traffics }).(GetServiceStatusTrafficArrayOutput)
 }
 
 func (o GetServiceStatusOutput) Url() pulumi.StringOutput {
@@ -7464,6 +7639,124 @@ func (o GetServiceStatusConditionArrayOutput) Index(i pulumi.IntInput) GetServic
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceStatusCondition {
 		return vs[0].([]GetServiceStatusCondition)[vs[1].(int)]
 	}).(GetServiceStatusConditionOutput)
+}
+
+type GetServiceStatusTraffic struct {
+	LatestRevision bool   `pulumi:"latestRevision"`
+	Percent        int    `pulumi:"percent"`
+	RevisionName   string `pulumi:"revisionName"`
+	Tag            string `pulumi:"tag"`
+	Url            string `pulumi:"url"`
+}
+
+// GetServiceStatusTrafficInput is an input type that accepts GetServiceStatusTrafficArgs and GetServiceStatusTrafficOutput values.
+// You can construct a concrete instance of `GetServiceStatusTrafficInput` via:
+//
+//	GetServiceStatusTrafficArgs{...}
+type GetServiceStatusTrafficInput interface {
+	pulumi.Input
+
+	ToGetServiceStatusTrafficOutput() GetServiceStatusTrafficOutput
+	ToGetServiceStatusTrafficOutputWithContext(context.Context) GetServiceStatusTrafficOutput
+}
+
+type GetServiceStatusTrafficArgs struct {
+	LatestRevision pulumi.BoolInput   `pulumi:"latestRevision"`
+	Percent        pulumi.IntInput    `pulumi:"percent"`
+	RevisionName   pulumi.StringInput `pulumi:"revisionName"`
+	Tag            pulumi.StringInput `pulumi:"tag"`
+	Url            pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetServiceStatusTrafficArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceStatusTraffic)(nil)).Elem()
+}
+
+func (i GetServiceStatusTrafficArgs) ToGetServiceStatusTrafficOutput() GetServiceStatusTrafficOutput {
+	return i.ToGetServiceStatusTrafficOutputWithContext(context.Background())
+}
+
+func (i GetServiceStatusTrafficArgs) ToGetServiceStatusTrafficOutputWithContext(ctx context.Context) GetServiceStatusTrafficOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceStatusTrafficOutput)
+}
+
+// GetServiceStatusTrafficArrayInput is an input type that accepts GetServiceStatusTrafficArray and GetServiceStatusTrafficArrayOutput values.
+// You can construct a concrete instance of `GetServiceStatusTrafficArrayInput` via:
+//
+//	GetServiceStatusTrafficArray{ GetServiceStatusTrafficArgs{...} }
+type GetServiceStatusTrafficArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceStatusTrafficArrayOutput() GetServiceStatusTrafficArrayOutput
+	ToGetServiceStatusTrafficArrayOutputWithContext(context.Context) GetServiceStatusTrafficArrayOutput
+}
+
+type GetServiceStatusTrafficArray []GetServiceStatusTrafficInput
+
+func (GetServiceStatusTrafficArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceStatusTraffic)(nil)).Elem()
+}
+
+func (i GetServiceStatusTrafficArray) ToGetServiceStatusTrafficArrayOutput() GetServiceStatusTrafficArrayOutput {
+	return i.ToGetServiceStatusTrafficArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceStatusTrafficArray) ToGetServiceStatusTrafficArrayOutputWithContext(ctx context.Context) GetServiceStatusTrafficArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceStatusTrafficArrayOutput)
+}
+
+type GetServiceStatusTrafficOutput struct{ *pulumi.OutputState }
+
+func (GetServiceStatusTrafficOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceStatusTraffic)(nil)).Elem()
+}
+
+func (o GetServiceStatusTrafficOutput) ToGetServiceStatusTrafficOutput() GetServiceStatusTrafficOutput {
+	return o
+}
+
+func (o GetServiceStatusTrafficOutput) ToGetServiceStatusTrafficOutputWithContext(ctx context.Context) GetServiceStatusTrafficOutput {
+	return o
+}
+
+func (o GetServiceStatusTrafficOutput) LatestRevision() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceStatusTraffic) bool { return v.LatestRevision }).(pulumi.BoolOutput)
+}
+
+func (o GetServiceStatusTrafficOutput) Percent() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceStatusTraffic) int { return v.Percent }).(pulumi.IntOutput)
+}
+
+func (o GetServiceStatusTrafficOutput) RevisionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceStatusTraffic) string { return v.RevisionName }).(pulumi.StringOutput)
+}
+
+func (o GetServiceStatusTrafficOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceStatusTraffic) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+func (o GetServiceStatusTrafficOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceStatusTraffic) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetServiceStatusTrafficArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceStatusTrafficArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceStatusTraffic)(nil)).Elem()
+}
+
+func (o GetServiceStatusTrafficArrayOutput) ToGetServiceStatusTrafficArrayOutput() GetServiceStatusTrafficArrayOutput {
+	return o
+}
+
+func (o GetServiceStatusTrafficArrayOutput) ToGetServiceStatusTrafficArrayOutputWithContext(ctx context.Context) GetServiceStatusTrafficArrayOutput {
+	return o
+}
+
+func (o GetServiceStatusTrafficArrayOutput) Index(i pulumi.IntInput) GetServiceStatusTrafficOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceStatusTraffic {
+		return vs[0].([]GetServiceStatusTraffic)[vs[1].(int)]
+	}).(GetServiceStatusTrafficOutput)
 }
 
 type GetServiceTemplate struct {
@@ -10668,6 +10961,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceStatusArrayInput)(nil)).Elem(), ServiceStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceStatusConditionInput)(nil)).Elem(), ServiceStatusConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceStatusConditionArrayInput)(nil)).Elem(), ServiceStatusConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceStatusTrafficInput)(nil)).Elem(), ServiceStatusTrafficArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceStatusTrafficArrayInput)(nil)).Elem(), ServiceStatusTrafficArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateInput)(nil)).Elem(), ServiceTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplatePtrInput)(nil)).Elem(), ServiceTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateMetadataInput)(nil)).Elem(), ServiceTemplateMetadataArgs{})
@@ -10732,6 +11027,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceStatusArrayInput)(nil)).Elem(), GetServiceStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceStatusConditionInput)(nil)).Elem(), GetServiceStatusConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceStatusConditionArrayInput)(nil)).Elem(), GetServiceStatusConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceStatusTrafficInput)(nil)).Elem(), GetServiceStatusTrafficArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceStatusTrafficArrayInput)(nil)).Elem(), GetServiceStatusTrafficArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateInput)(nil)).Elem(), GetServiceTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateArrayInput)(nil)).Elem(), GetServiceTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateMetadataInput)(nil)).Elem(), GetServiceTemplateMetadataArgs{})
@@ -10810,6 +11107,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceStatusArrayOutput{})
 	pulumi.RegisterOutputType(ServiceStatusConditionOutput{})
 	pulumi.RegisterOutputType(ServiceStatusConditionArrayOutput{})
+	pulumi.RegisterOutputType(ServiceStatusTrafficOutput{})
+	pulumi.RegisterOutputType(ServiceStatusTrafficArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateOutput{})
 	pulumi.RegisterOutputType(ServiceTemplatePtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateMetadataOutput{})
@@ -10874,6 +11173,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceStatusArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceStatusConditionOutput{})
 	pulumi.RegisterOutputType(GetServiceStatusConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceStatusTrafficOutput{})
+	pulumi.RegisterOutputType(GetServiceStatusTrafficArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateMetadataOutput{})

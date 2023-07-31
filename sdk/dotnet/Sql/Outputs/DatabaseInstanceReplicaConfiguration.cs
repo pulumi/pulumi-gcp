@@ -43,6 +43,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// If the field is set to true the replica will be designated as a failover replica.
         /// If the master instance fails, the replica instance will be promoted as
         /// the new master instance.
+        /// &gt; **NOTE:** Not supported for Postgres database.
         /// </summary>
         public readonly bool? FailoverTarget;
         /// <summary>

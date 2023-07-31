@@ -20,14 +20,14 @@ public final class WorkflowTemplateJobSparkSqlJobArgs extends com.pulumi.resourc
     public static final WorkflowTemplateJobSparkSqlJobArgs Empty = new WorkflowTemplateJobSparkSqlJobArgs();
 
     /**
-     * Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * HCFS URIs of jar files to be added to the Spark CLASSPATH.
      * 
      */
     @Import(name="jarFileUris")
     private @Nullable Output<List<String>> jarFileUris;
 
     /**
-     * @return Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+     * @return HCFS URIs of jar files to be added to the Spark CLASSPATH.
      * 
      */
     public Optional<Output<List<String>>> jarFileUris() {
@@ -35,14 +35,14 @@ public final class WorkflowTemplateJobSparkSqlJobArgs extends com.pulumi.resourc
     }
 
     /**
-     * Optional. The runtime log config for job execution.
+     * The runtime log config for job execution.
      * 
      */
     @Import(name="loggingConfig")
     private @Nullable Output<WorkflowTemplateJobSparkSqlJobLoggingConfigArgs> loggingConfig;
 
     /**
-     * @return Optional. The runtime log config for job execution.
+     * @return The runtime log config for job execution.
      * 
      */
     public Optional<Output<WorkflowTemplateJobSparkSqlJobLoggingConfigArgs>> loggingConfig() {
@@ -50,14 +50,14 @@ public final class WorkflowTemplateJobSparkSqlJobArgs extends com.pulumi.resourc
     }
 
     /**
-     * Optional. A mapping of property names to values, used to configure Spark SQL&#39;s SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+     * A mapping of property names to values, used to configure Spark SQL&#39;s SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
      * 
      */
     @Import(name="properties")
     private @Nullable Output<Map<String,String>> properties;
 
     /**
-     * @return Optional. A mapping of property names to values, used to configure Spark SQL&#39;s SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+     * @return A mapping of property names to values, used to configure Spark SQL&#39;s SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
      * 
      */
     public Optional<Output<Map<String,String>>> properties() {
@@ -95,14 +95,14 @@ public final class WorkflowTemplateJobSparkSqlJobArgs extends com.pulumi.resourc
     }
 
     /**
-     * Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name=&#34;value&#34;;`).
+     * Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name=&#34;value&#34;;`).
      * 
      */
     @Import(name="scriptVariables")
     private @Nullable Output<Map<String,String>> scriptVariables;
 
     /**
-     * @return Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name=&#34;value&#34;;`).
+     * @return Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name=&#34;value&#34;;`).
      * 
      */
     public Optional<Output<Map<String,String>>> scriptVariables() {
@@ -139,7 +139,7 @@ public final class WorkflowTemplateJobSparkSqlJobArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param jarFileUris Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+         * @param jarFileUris HCFS URIs of jar files to be added to the Spark CLASSPATH.
          * 
          * @return builder
          * 
@@ -150,7 +150,7 @@ public final class WorkflowTemplateJobSparkSqlJobArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param jarFileUris Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+         * @param jarFileUris HCFS URIs of jar files to be added to the Spark CLASSPATH.
          * 
          * @return builder
          * 
@@ -160,7 +160,7 @@ public final class WorkflowTemplateJobSparkSqlJobArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param jarFileUris Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+         * @param jarFileUris HCFS URIs of jar files to be added to the Spark CLASSPATH.
          * 
          * @return builder
          * 
@@ -170,7 +170,7 @@ public final class WorkflowTemplateJobSparkSqlJobArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param loggingConfig Optional. The runtime log config for job execution.
+         * @param loggingConfig The runtime log config for job execution.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class WorkflowTemplateJobSparkSqlJobArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param loggingConfig Optional. The runtime log config for job execution.
+         * @param loggingConfig The runtime log config for job execution.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class WorkflowTemplateJobSparkSqlJobArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param properties Optional. A mapping of property names to values, used to configure Spark SQL&#39;s SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+         * @param properties A mapping of property names to values, used to configure Spark SQL&#39;s SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class WorkflowTemplateJobSparkSqlJobArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param properties Optional. A mapping of property names to values, used to configure Spark SQL&#39;s SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+         * @param properties A mapping of property names to values, used to configure Spark SQL&#39;s SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class WorkflowTemplateJobSparkSqlJobArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param scriptVariables Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name=&#34;value&#34;;`).
+         * @param scriptVariables Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name=&#34;value&#34;;`).
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class WorkflowTemplateJobSparkSqlJobArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param scriptVariables Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name=&#34;value&#34;;`).
+         * @param scriptVariables Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name=&#34;value&#34;;`).
          * 
          * @return builder
          * 

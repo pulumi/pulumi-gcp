@@ -113,6 +113,11 @@ namespace Pulumi.Gcp.Healthcare
     ///                     SchemaConfig = new Gcp.Healthcare.Inputs.FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs
     ///                     {
     ///                         RecursiveStructureDepth = 3,
+    ///                         LastUpdatedPartitionConfig = new Gcp.Healthcare.Inputs.FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs
+    ///                         {
+    ///                             Type = "HOUR",
+    ///                             ExpirationMs = "1000000",
+    ///                         },
     ///                     },
     ///                 },
     ///             },

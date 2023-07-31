@@ -149,6 +149,18 @@ import * as utilities from "../utilities";
  *         automatic: true,
  *     },
  * });
+ * const secret_version_data = new gcp.secretmanager.SecretVersion("secret-version-data", {
+ *     secret: secret.name,
+ *     secretData: "secret-data",
+ * });
+ * const project = gcp.organizations.getProject({});
+ * const secret_access = new gcp.secretmanager.SecretIamMember("secret-access", {
+ *     secretId: secret.id,
+ *     role: "roles/secretmanager.secretAccessor",
+ *     member: project.then(project => `serviceAccount:${project.number}-compute@developer.gserviceaccount.com`),
+ * }, {
+ *     dependsOn: [secret],
+ * });
  * const _default = new gcp.cloudrunv2.Job("default", {
  *     location: "us-central1",
  *     template: {
@@ -174,18 +186,11 @@ import * as utilities from "../utilities";
  *             }],
  *         },
  *     },
- * });
- * const project = gcp.organizations.getProject({});
- * const secret_version_data = new gcp.secretmanager.SecretVersion("secret-version-data", {
- *     secret: secret.name,
- *     secretData: "secret-data",
- * });
- * const secret_access = new gcp.secretmanager.SecretIamMember("secret-access", {
- *     secretId: secret.id,
- *     role: "roles/secretmanager.secretAccessor",
- *     member: project.then(project => `serviceAccount:${project.number}-compute@developer.gserviceaccount.com`),
  * }, {
- *     dependsOn: [secret],
+ *     dependsOn: [
+ *         secret_version_data,
+ *         secret_access,
+ *     ],
  * });
  * ```
  * ### Cloudrunv2 Job Emptydir

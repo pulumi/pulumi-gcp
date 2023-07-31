@@ -2273,6 +2273,332 @@ func (o WebIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type WebRegionBackendServiceIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// WebRegionBackendServiceIamBindingConditionInput is an input type that accepts WebRegionBackendServiceIamBindingConditionArgs and WebRegionBackendServiceIamBindingConditionOutput values.
+// You can construct a concrete instance of `WebRegionBackendServiceIamBindingConditionInput` via:
+//
+//	WebRegionBackendServiceIamBindingConditionArgs{...}
+type WebRegionBackendServiceIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToWebRegionBackendServiceIamBindingConditionOutput() WebRegionBackendServiceIamBindingConditionOutput
+	ToWebRegionBackendServiceIamBindingConditionOutputWithContext(context.Context) WebRegionBackendServiceIamBindingConditionOutput
+}
+
+type WebRegionBackendServiceIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (WebRegionBackendServiceIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebRegionBackendServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (i WebRegionBackendServiceIamBindingConditionArgs) ToWebRegionBackendServiceIamBindingConditionOutput() WebRegionBackendServiceIamBindingConditionOutput {
+	return i.ToWebRegionBackendServiceIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i WebRegionBackendServiceIamBindingConditionArgs) ToWebRegionBackendServiceIamBindingConditionOutputWithContext(ctx context.Context) WebRegionBackendServiceIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebRegionBackendServiceIamBindingConditionOutput)
+}
+
+func (i WebRegionBackendServiceIamBindingConditionArgs) ToWebRegionBackendServiceIamBindingConditionPtrOutput() WebRegionBackendServiceIamBindingConditionPtrOutput {
+	return i.ToWebRegionBackendServiceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i WebRegionBackendServiceIamBindingConditionArgs) ToWebRegionBackendServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) WebRegionBackendServiceIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebRegionBackendServiceIamBindingConditionOutput).ToWebRegionBackendServiceIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// WebRegionBackendServiceIamBindingConditionPtrInput is an input type that accepts WebRegionBackendServiceIamBindingConditionArgs, WebRegionBackendServiceIamBindingConditionPtr and WebRegionBackendServiceIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `WebRegionBackendServiceIamBindingConditionPtrInput` via:
+//
+//	        WebRegionBackendServiceIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type WebRegionBackendServiceIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToWebRegionBackendServiceIamBindingConditionPtrOutput() WebRegionBackendServiceIamBindingConditionPtrOutput
+	ToWebRegionBackendServiceIamBindingConditionPtrOutputWithContext(context.Context) WebRegionBackendServiceIamBindingConditionPtrOutput
+}
+
+type webRegionBackendServiceIamBindingConditionPtrType WebRegionBackendServiceIamBindingConditionArgs
+
+func WebRegionBackendServiceIamBindingConditionPtr(v *WebRegionBackendServiceIamBindingConditionArgs) WebRegionBackendServiceIamBindingConditionPtrInput {
+	return (*webRegionBackendServiceIamBindingConditionPtrType)(v)
+}
+
+func (*webRegionBackendServiceIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebRegionBackendServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (i *webRegionBackendServiceIamBindingConditionPtrType) ToWebRegionBackendServiceIamBindingConditionPtrOutput() WebRegionBackendServiceIamBindingConditionPtrOutput {
+	return i.ToWebRegionBackendServiceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *webRegionBackendServiceIamBindingConditionPtrType) ToWebRegionBackendServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) WebRegionBackendServiceIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebRegionBackendServiceIamBindingConditionPtrOutput)
+}
+
+type WebRegionBackendServiceIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (WebRegionBackendServiceIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebRegionBackendServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (o WebRegionBackendServiceIamBindingConditionOutput) ToWebRegionBackendServiceIamBindingConditionOutput() WebRegionBackendServiceIamBindingConditionOutput {
+	return o
+}
+
+func (o WebRegionBackendServiceIamBindingConditionOutput) ToWebRegionBackendServiceIamBindingConditionOutputWithContext(ctx context.Context) WebRegionBackendServiceIamBindingConditionOutput {
+	return o
+}
+
+func (o WebRegionBackendServiceIamBindingConditionOutput) ToWebRegionBackendServiceIamBindingConditionPtrOutput() WebRegionBackendServiceIamBindingConditionPtrOutput {
+	return o.ToWebRegionBackendServiceIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o WebRegionBackendServiceIamBindingConditionOutput) ToWebRegionBackendServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) WebRegionBackendServiceIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebRegionBackendServiceIamBindingCondition) *WebRegionBackendServiceIamBindingCondition {
+		return &v
+	}).(WebRegionBackendServiceIamBindingConditionPtrOutput)
+}
+
+func (o WebRegionBackendServiceIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebRegionBackendServiceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o WebRegionBackendServiceIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v WebRegionBackendServiceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o WebRegionBackendServiceIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v WebRegionBackendServiceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type WebRegionBackendServiceIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (WebRegionBackendServiceIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebRegionBackendServiceIamBindingCondition)(nil)).Elem()
+}
+
+func (o WebRegionBackendServiceIamBindingConditionPtrOutput) ToWebRegionBackendServiceIamBindingConditionPtrOutput() WebRegionBackendServiceIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o WebRegionBackendServiceIamBindingConditionPtrOutput) ToWebRegionBackendServiceIamBindingConditionPtrOutputWithContext(ctx context.Context) WebRegionBackendServiceIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o WebRegionBackendServiceIamBindingConditionPtrOutput) Elem() WebRegionBackendServiceIamBindingConditionOutput {
+	return o.ApplyT(func(v *WebRegionBackendServiceIamBindingCondition) WebRegionBackendServiceIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret WebRegionBackendServiceIamBindingCondition
+		return ret
+	}).(WebRegionBackendServiceIamBindingConditionOutput)
+}
+
+func (o WebRegionBackendServiceIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebRegionBackendServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WebRegionBackendServiceIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebRegionBackendServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WebRegionBackendServiceIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebRegionBackendServiceIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type WebRegionBackendServiceIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// WebRegionBackendServiceIamMemberConditionInput is an input type that accepts WebRegionBackendServiceIamMemberConditionArgs and WebRegionBackendServiceIamMemberConditionOutput values.
+// You can construct a concrete instance of `WebRegionBackendServiceIamMemberConditionInput` via:
+//
+//	WebRegionBackendServiceIamMemberConditionArgs{...}
+type WebRegionBackendServiceIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToWebRegionBackendServiceIamMemberConditionOutput() WebRegionBackendServiceIamMemberConditionOutput
+	ToWebRegionBackendServiceIamMemberConditionOutputWithContext(context.Context) WebRegionBackendServiceIamMemberConditionOutput
+}
+
+type WebRegionBackendServiceIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (WebRegionBackendServiceIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebRegionBackendServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (i WebRegionBackendServiceIamMemberConditionArgs) ToWebRegionBackendServiceIamMemberConditionOutput() WebRegionBackendServiceIamMemberConditionOutput {
+	return i.ToWebRegionBackendServiceIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i WebRegionBackendServiceIamMemberConditionArgs) ToWebRegionBackendServiceIamMemberConditionOutputWithContext(ctx context.Context) WebRegionBackendServiceIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebRegionBackendServiceIamMemberConditionOutput)
+}
+
+func (i WebRegionBackendServiceIamMemberConditionArgs) ToWebRegionBackendServiceIamMemberConditionPtrOutput() WebRegionBackendServiceIamMemberConditionPtrOutput {
+	return i.ToWebRegionBackendServiceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i WebRegionBackendServiceIamMemberConditionArgs) ToWebRegionBackendServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) WebRegionBackendServiceIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebRegionBackendServiceIamMemberConditionOutput).ToWebRegionBackendServiceIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// WebRegionBackendServiceIamMemberConditionPtrInput is an input type that accepts WebRegionBackendServiceIamMemberConditionArgs, WebRegionBackendServiceIamMemberConditionPtr and WebRegionBackendServiceIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `WebRegionBackendServiceIamMemberConditionPtrInput` via:
+//
+//	        WebRegionBackendServiceIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type WebRegionBackendServiceIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToWebRegionBackendServiceIamMemberConditionPtrOutput() WebRegionBackendServiceIamMemberConditionPtrOutput
+	ToWebRegionBackendServiceIamMemberConditionPtrOutputWithContext(context.Context) WebRegionBackendServiceIamMemberConditionPtrOutput
+}
+
+type webRegionBackendServiceIamMemberConditionPtrType WebRegionBackendServiceIamMemberConditionArgs
+
+func WebRegionBackendServiceIamMemberConditionPtr(v *WebRegionBackendServiceIamMemberConditionArgs) WebRegionBackendServiceIamMemberConditionPtrInput {
+	return (*webRegionBackendServiceIamMemberConditionPtrType)(v)
+}
+
+func (*webRegionBackendServiceIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebRegionBackendServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (i *webRegionBackendServiceIamMemberConditionPtrType) ToWebRegionBackendServiceIamMemberConditionPtrOutput() WebRegionBackendServiceIamMemberConditionPtrOutput {
+	return i.ToWebRegionBackendServiceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *webRegionBackendServiceIamMemberConditionPtrType) ToWebRegionBackendServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) WebRegionBackendServiceIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebRegionBackendServiceIamMemberConditionPtrOutput)
+}
+
+type WebRegionBackendServiceIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (WebRegionBackendServiceIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebRegionBackendServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (o WebRegionBackendServiceIamMemberConditionOutput) ToWebRegionBackendServiceIamMemberConditionOutput() WebRegionBackendServiceIamMemberConditionOutput {
+	return o
+}
+
+func (o WebRegionBackendServiceIamMemberConditionOutput) ToWebRegionBackendServiceIamMemberConditionOutputWithContext(ctx context.Context) WebRegionBackendServiceIamMemberConditionOutput {
+	return o
+}
+
+func (o WebRegionBackendServiceIamMemberConditionOutput) ToWebRegionBackendServiceIamMemberConditionPtrOutput() WebRegionBackendServiceIamMemberConditionPtrOutput {
+	return o.ToWebRegionBackendServiceIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o WebRegionBackendServiceIamMemberConditionOutput) ToWebRegionBackendServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) WebRegionBackendServiceIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebRegionBackendServiceIamMemberCondition) *WebRegionBackendServiceIamMemberCondition {
+		return &v
+	}).(WebRegionBackendServiceIamMemberConditionPtrOutput)
+}
+
+func (o WebRegionBackendServiceIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WebRegionBackendServiceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o WebRegionBackendServiceIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v WebRegionBackendServiceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o WebRegionBackendServiceIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v WebRegionBackendServiceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type WebRegionBackendServiceIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (WebRegionBackendServiceIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebRegionBackendServiceIamMemberCondition)(nil)).Elem()
+}
+
+func (o WebRegionBackendServiceIamMemberConditionPtrOutput) ToWebRegionBackendServiceIamMemberConditionPtrOutput() WebRegionBackendServiceIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o WebRegionBackendServiceIamMemberConditionPtrOutput) ToWebRegionBackendServiceIamMemberConditionPtrOutputWithContext(ctx context.Context) WebRegionBackendServiceIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o WebRegionBackendServiceIamMemberConditionPtrOutput) Elem() WebRegionBackendServiceIamMemberConditionOutput {
+	return o.ApplyT(func(v *WebRegionBackendServiceIamMemberCondition) WebRegionBackendServiceIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret WebRegionBackendServiceIamMemberCondition
+		return ret
+	}).(WebRegionBackendServiceIamMemberConditionOutput)
+}
+
+func (o WebRegionBackendServiceIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebRegionBackendServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WebRegionBackendServiceIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebRegionBackendServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WebRegionBackendServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WebRegionBackendServiceIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type WebTypeAppEngingIamBindingCondition struct {
 	// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
 	//
@@ -3062,6 +3388,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WebIamBindingConditionPtrInput)(nil)).Elem(), WebIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebIamMemberConditionInput)(nil)).Elem(), WebIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebIamMemberConditionPtrInput)(nil)).Elem(), WebIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebRegionBackendServiceIamBindingConditionInput)(nil)).Elem(), WebRegionBackendServiceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebRegionBackendServiceIamBindingConditionPtrInput)(nil)).Elem(), WebRegionBackendServiceIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebRegionBackendServiceIamMemberConditionInput)(nil)).Elem(), WebRegionBackendServiceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WebRegionBackendServiceIamMemberConditionPtrInput)(nil)).Elem(), WebRegionBackendServiceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeAppEngingIamBindingConditionInput)(nil)).Elem(), WebTypeAppEngingIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeAppEngingIamBindingConditionPtrInput)(nil)).Elem(), WebTypeAppEngingIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebTypeAppEngingIamMemberConditionInput)(nil)).Elem(), WebTypeAppEngingIamMemberConditionArgs{})
@@ -3094,6 +3424,10 @@ func init() {
 	pulumi.RegisterOutputType(WebIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(WebIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(WebIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(WebRegionBackendServiceIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(WebRegionBackendServiceIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(WebRegionBackendServiceIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(WebRegionBackendServiceIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(WebTypeAppEngingIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(WebTypeAppEngingIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(WebTypeAppEngingIamMemberConditionOutput{})

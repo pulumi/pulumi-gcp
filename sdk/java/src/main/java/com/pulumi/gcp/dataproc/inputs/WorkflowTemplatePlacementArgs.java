@@ -17,14 +17,14 @@ public final class WorkflowTemplatePlacementArgs extends com.pulumi.resources.Re
     public static final WorkflowTemplatePlacementArgs Empty = new WorkflowTemplatePlacementArgs();
 
     /**
-     * Optional. A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+     * A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
      * 
      */
     @Import(name="clusterSelector")
     private @Nullable Output<WorkflowTemplatePlacementClusterSelectorArgs> clusterSelector;
 
     /**
-     * @return Optional. A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+     * @return A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
      * 
      */
     public Optional<Output<WorkflowTemplatePlacementClusterSelectorArgs>> clusterSelector() {
@@ -72,7 +72,7 @@ public final class WorkflowTemplatePlacementArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param clusterSelector Optional. A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+         * @param clusterSelector A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class WorkflowTemplatePlacementArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param clusterSelector Optional. A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+         * @param clusterSelector A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
          * 
          * @return builder
          * 

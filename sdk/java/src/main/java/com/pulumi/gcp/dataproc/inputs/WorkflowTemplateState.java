@@ -67,26 +67,26 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+     * The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
      * 
      * (Optional)
-     * Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+     * The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
      * 
      * (Optional)
-     * Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
+     * The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
      * 
      */
     @Import(name="labels")
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+     * @return The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
      * 
      * (Optional)
-     * Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+     * The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
      * 
      * (Optional)
-     * Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
+     * The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
      * 
      */
     public Optional<Output<Map<String,String>>> labels() {
@@ -124,14 +124,14 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+     * Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
      * 
      */
     @Import(name="parameters")
     private @Nullable Output<List<WorkflowTemplateParameterArgs>> parameters;
 
     /**
-     * @return Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+     * @return Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
      * 
      */
     public Optional<Output<List<WorkflowTemplateParameterArgs>>> parameters() {
@@ -184,7 +184,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Optional. Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+     * Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
      * 
      * @deprecated
      * version is not useful as a configurable field, and will be removed in the future.
@@ -195,7 +195,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Integer> version;
 
     /**
-     * @return Optional. Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+     * @return Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
      * 
      * @deprecated
      * version is not useful as a configurable field, and will be removed in the future.
@@ -314,13 +314,13 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param labels Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+         * @param labels The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
          * 
          * (Optional)
-         * Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+         * The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
          * 
          * (Optional)
-         * Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
+         * The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
          * 
          * @return builder
          * 
@@ -331,13 +331,13 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param labels Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+         * @param labels The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
          * 
          * (Optional)
-         * Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
+         * The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance. Label **keys** must contain 1 to 63 characters, and must conform to (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a template.
          * 
          * (Optional)
-         * Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
+         * The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
          * 
          * @return builder
          * 
@@ -389,7 +389,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param parameters Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+         * @param parameters Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
          * 
          * @return builder
          * 
@@ -400,7 +400,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param parameters Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+         * @param parameters Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
          * 
          * @return builder
          * 
@@ -410,7 +410,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param parameters Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
+         * @param parameters Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
          * 
          * @return builder
          * 
@@ -483,7 +483,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param version Optional. Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+         * @param version Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
          * 
          * @return builder
          * 
@@ -498,7 +498,7 @@ public final class WorkflowTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param version Optional. Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
+         * @param version Used to perform a consistent read-modify-write. This field should be left blank for a `CreateWorkflowTemplate` request. It is required for an `UpdateWorkflowTemplate` request, and must match the current server version. A typical update template flow would fetch the current template with a `GetWorkflowTemplate` request, which will return the current template with the `version` field filled in with the current server version. The user updates other fields in the template, then returns it as part of the `UpdateWorkflowTemplate` request.
          * 
          * @return builder
          * 

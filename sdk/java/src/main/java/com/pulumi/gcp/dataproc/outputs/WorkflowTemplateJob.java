@@ -23,57 +23,57 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkflowTemplateJob {
     /**
-     * @return Optional. Job is a Hadoop job.
+     * @return Job is a Hadoop job.
      * 
      */
     private @Nullable WorkflowTemplateJobHadoopJob hadoopJob;
     /**
-     * @return Optional. Job is a Hive job.
+     * @return Job is a Hive job.
      * 
      */
     private @Nullable WorkflowTemplateJobHiveJob hiveJob;
     /**
-     * @return Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+     * @return The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
      * 
      */
     private @Nullable Map<String,String> labels;
     /**
-     * @return Optional. Job is a Pig job.
+     * @return Job is a Pig job.
      * 
      */
     private @Nullable WorkflowTemplateJobPigJob pigJob;
     /**
-     * @return Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
+     * @return The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
      * 
      */
     private @Nullable List<String> prerequisiteStepIds;
     /**
-     * @return Optional. Job is a Presto job.
+     * @return Job is a Presto job.
      * 
      */
     private @Nullable WorkflowTemplateJobPrestoJob prestoJob;
     /**
-     * @return Optional. Job is a PySpark job.
+     * @return Job is a PySpark job.
      * 
      */
     private @Nullable WorkflowTemplateJobPysparkJob pysparkJob;
     /**
-     * @return Optional. Job scheduling configuration.
+     * @return Job scheduling configuration.
      * 
      */
     private @Nullable WorkflowTemplateJobScheduling scheduling;
     /**
-     * @return Optional. Job is a Spark job.
+     * @return Job is a Spark job.
      * 
      */
     private @Nullable WorkflowTemplateJobSparkJob sparkJob;
     /**
-     * @return Optional. Job is a SparkR job.
+     * @return Job is a SparkR job.
      * 
      */
     private @Nullable WorkflowTemplateJobSparkRJob sparkRJob;
     /**
-     * @return Optional. Job is a SparkSql job.
+     * @return Job is a SparkSql job.
      * 
      */
     private @Nullable WorkflowTemplateJobSparkSqlJob sparkSqlJob;
@@ -85,77 +85,77 @@ public final class WorkflowTemplateJob {
 
     private WorkflowTemplateJob() {}
     /**
-     * @return Optional. Job is a Hadoop job.
+     * @return Job is a Hadoop job.
      * 
      */
     public Optional<WorkflowTemplateJobHadoopJob> hadoopJob() {
         return Optional.ofNullable(this.hadoopJob);
     }
     /**
-     * @return Optional. Job is a Hive job.
+     * @return Job is a Hive job.
      * 
      */
     public Optional<WorkflowTemplateJobHiveJob> hiveJob() {
         return Optional.ofNullable(this.hiveJob);
     }
     /**
-     * @return Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+     * @return The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
      * 
      */
     public Map<String,String> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
-     * @return Optional. Job is a Pig job.
+     * @return Job is a Pig job.
      * 
      */
     public Optional<WorkflowTemplateJobPigJob> pigJob() {
         return Optional.ofNullable(this.pigJob);
     }
     /**
-     * @return Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
+     * @return The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
      * 
      */
     public List<String> prerequisiteStepIds() {
         return this.prerequisiteStepIds == null ? List.of() : this.prerequisiteStepIds;
     }
     /**
-     * @return Optional. Job is a Presto job.
+     * @return Job is a Presto job.
      * 
      */
     public Optional<WorkflowTemplateJobPrestoJob> prestoJob() {
         return Optional.ofNullable(this.prestoJob);
     }
     /**
-     * @return Optional. Job is a PySpark job.
+     * @return Job is a PySpark job.
      * 
      */
     public Optional<WorkflowTemplateJobPysparkJob> pysparkJob() {
         return Optional.ofNullable(this.pysparkJob);
     }
     /**
-     * @return Optional. Job scheduling configuration.
+     * @return Job scheduling configuration.
      * 
      */
     public Optional<WorkflowTemplateJobScheduling> scheduling() {
         return Optional.ofNullable(this.scheduling);
     }
     /**
-     * @return Optional. Job is a Spark job.
+     * @return Job is a Spark job.
      * 
      */
     public Optional<WorkflowTemplateJobSparkJob> sparkJob() {
         return Optional.ofNullable(this.sparkJob);
     }
     /**
-     * @return Optional. Job is a SparkR job.
+     * @return Job is a SparkR job.
      * 
      */
     public Optional<WorkflowTemplateJobSparkRJob> sparkRJob() {
         return Optional.ofNullable(this.sparkRJob);
     }
     /**
-     * @return Optional. Job is a SparkSql job.
+     * @return Job is a SparkSql job.
      * 
      */
     public Optional<WorkflowTemplateJobSparkSqlJob> sparkSqlJob() {

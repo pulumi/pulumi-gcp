@@ -10,6 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Compute
 {
     /// <summary>
+    /// Represents a Regional SSL policy. SSL policies give you the ability to control the
+    /// features of SSL that your SSL proxy or HTTPS load balancer negotiates.
+    /// 
+    /// To get more information about RegionSslPolicy, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionSslPolicies)
+    /// * How-to Guides
+    ///     * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
+    /// 
     /// ## Import
     /// 
     /// RegionSslPolicy can be imported using any of these accepted formats

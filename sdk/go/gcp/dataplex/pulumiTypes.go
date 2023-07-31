@@ -8435,6 +8435,2982 @@ func (o LakeMetastoreStatusArrayOutput) Index(i pulumi.IntInput) LakeMetastoreSt
 	}).(LakeMetastoreStatusOutput)
 }
 
+type TaskExecutionSpec struct {
+	// The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
+	Args map[string]string `pulumi:"args"`
+	// The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
+	//
+	// ***
+	KmsKey *string `pulumi:"kmsKey"`
+	// The maximum duration after which the job execution is expired. A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
+	MaxJobExecutionLifetime *string `pulumi:"maxJobExecutionLifetime"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
+	// Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
+	ServiceAccount string `pulumi:"serviceAccount"`
+}
+
+// TaskExecutionSpecInput is an input type that accepts TaskExecutionSpecArgs and TaskExecutionSpecOutput values.
+// You can construct a concrete instance of `TaskExecutionSpecInput` via:
+//
+//	TaskExecutionSpecArgs{...}
+type TaskExecutionSpecInput interface {
+	pulumi.Input
+
+	ToTaskExecutionSpecOutput() TaskExecutionSpecOutput
+	ToTaskExecutionSpecOutputWithContext(context.Context) TaskExecutionSpecOutput
+}
+
+type TaskExecutionSpecArgs struct {
+	// The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
+	Args pulumi.StringMapInput `pulumi:"args"`
+	// The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
+	//
+	// ***
+	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
+	// The maximum duration after which the job execution is expired. A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
+	MaxJobExecutionLifetime pulumi.StringPtrInput `pulumi:"maxJobExecutionLifetime"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
+	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
+}
+
+func (TaskExecutionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskExecutionSpec)(nil)).Elem()
+}
+
+func (i TaskExecutionSpecArgs) ToTaskExecutionSpecOutput() TaskExecutionSpecOutput {
+	return i.ToTaskExecutionSpecOutputWithContext(context.Background())
+}
+
+func (i TaskExecutionSpecArgs) ToTaskExecutionSpecOutputWithContext(ctx context.Context) TaskExecutionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskExecutionSpecOutput)
+}
+
+func (i TaskExecutionSpecArgs) ToTaskExecutionSpecPtrOutput() TaskExecutionSpecPtrOutput {
+	return i.ToTaskExecutionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i TaskExecutionSpecArgs) ToTaskExecutionSpecPtrOutputWithContext(ctx context.Context) TaskExecutionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskExecutionSpecOutput).ToTaskExecutionSpecPtrOutputWithContext(ctx)
+}
+
+// TaskExecutionSpecPtrInput is an input type that accepts TaskExecutionSpecArgs, TaskExecutionSpecPtr and TaskExecutionSpecPtrOutput values.
+// You can construct a concrete instance of `TaskExecutionSpecPtrInput` via:
+//
+//	        TaskExecutionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type TaskExecutionSpecPtrInput interface {
+	pulumi.Input
+
+	ToTaskExecutionSpecPtrOutput() TaskExecutionSpecPtrOutput
+	ToTaskExecutionSpecPtrOutputWithContext(context.Context) TaskExecutionSpecPtrOutput
+}
+
+type taskExecutionSpecPtrType TaskExecutionSpecArgs
+
+func TaskExecutionSpecPtr(v *TaskExecutionSpecArgs) TaskExecutionSpecPtrInput {
+	return (*taskExecutionSpecPtrType)(v)
+}
+
+func (*taskExecutionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskExecutionSpec)(nil)).Elem()
+}
+
+func (i *taskExecutionSpecPtrType) ToTaskExecutionSpecPtrOutput() TaskExecutionSpecPtrOutput {
+	return i.ToTaskExecutionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *taskExecutionSpecPtrType) ToTaskExecutionSpecPtrOutputWithContext(ctx context.Context) TaskExecutionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskExecutionSpecPtrOutput)
+}
+
+type TaskExecutionSpecOutput struct{ *pulumi.OutputState }
+
+func (TaskExecutionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskExecutionSpec)(nil)).Elem()
+}
+
+func (o TaskExecutionSpecOutput) ToTaskExecutionSpecOutput() TaskExecutionSpecOutput {
+	return o
+}
+
+func (o TaskExecutionSpecOutput) ToTaskExecutionSpecOutputWithContext(ctx context.Context) TaskExecutionSpecOutput {
+	return o
+}
+
+func (o TaskExecutionSpecOutput) ToTaskExecutionSpecPtrOutput() TaskExecutionSpecPtrOutput {
+	return o.ToTaskExecutionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o TaskExecutionSpecOutput) ToTaskExecutionSpecPtrOutputWithContext(ctx context.Context) TaskExecutionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskExecutionSpec) *TaskExecutionSpec {
+		return &v
+	}).(TaskExecutionSpecPtrOutput)
+}
+
+// The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
+func (o TaskExecutionSpecOutput) Args() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TaskExecutionSpec) map[string]string { return v.Args }).(pulumi.StringMapOutput)
+}
+
+// The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
+//
+// ***
+func (o TaskExecutionSpecOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskExecutionSpec) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
+}
+
+// The maximum duration after which the job execution is expired. A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
+func (o TaskExecutionSpecOutput) MaxJobExecutionLifetime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskExecutionSpec) *string { return v.MaxJobExecutionLifetime }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
+func (o TaskExecutionSpecOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskExecutionSpec) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+// Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
+func (o TaskExecutionSpecOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskExecutionSpec) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+type TaskExecutionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (TaskExecutionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskExecutionSpec)(nil)).Elem()
+}
+
+func (o TaskExecutionSpecPtrOutput) ToTaskExecutionSpecPtrOutput() TaskExecutionSpecPtrOutput {
+	return o
+}
+
+func (o TaskExecutionSpecPtrOutput) ToTaskExecutionSpecPtrOutputWithContext(ctx context.Context) TaskExecutionSpecPtrOutput {
+	return o
+}
+
+func (o TaskExecutionSpecPtrOutput) Elem() TaskExecutionSpecOutput {
+	return o.ApplyT(func(v *TaskExecutionSpec) TaskExecutionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret TaskExecutionSpec
+		return ret
+	}).(TaskExecutionSpecOutput)
+}
+
+// The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
+func (o TaskExecutionSpecPtrOutput) Args() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TaskExecutionSpec) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringMapOutput)
+}
+
+// The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
+//
+// ***
+func (o TaskExecutionSpecPtrOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskExecutionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum duration after which the job execution is expired. A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
+func (o TaskExecutionSpecPtrOutput) MaxJobExecutionLifetime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskExecutionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxJobExecutionLifetime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
+func (o TaskExecutionSpecPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskExecutionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
+func (o TaskExecutionSpecPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskExecutionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+type TaskExecutionStatus struct {
+	// (Output)
+	// latest job execution.
+	// Structure is documented below.
+	LatestJobs []TaskExecutionStatusLatestJob `pulumi:"latestJobs"`
+	// (Output)
+	// Last update time of the status.
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
+// TaskExecutionStatusInput is an input type that accepts TaskExecutionStatusArgs and TaskExecutionStatusOutput values.
+// You can construct a concrete instance of `TaskExecutionStatusInput` via:
+//
+//	TaskExecutionStatusArgs{...}
+type TaskExecutionStatusInput interface {
+	pulumi.Input
+
+	ToTaskExecutionStatusOutput() TaskExecutionStatusOutput
+	ToTaskExecutionStatusOutputWithContext(context.Context) TaskExecutionStatusOutput
+}
+
+type TaskExecutionStatusArgs struct {
+	// (Output)
+	// latest job execution.
+	// Structure is documented below.
+	LatestJobs TaskExecutionStatusLatestJobArrayInput `pulumi:"latestJobs"`
+	// (Output)
+	// Last update time of the status.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (TaskExecutionStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskExecutionStatus)(nil)).Elem()
+}
+
+func (i TaskExecutionStatusArgs) ToTaskExecutionStatusOutput() TaskExecutionStatusOutput {
+	return i.ToTaskExecutionStatusOutputWithContext(context.Background())
+}
+
+func (i TaskExecutionStatusArgs) ToTaskExecutionStatusOutputWithContext(ctx context.Context) TaskExecutionStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskExecutionStatusOutput)
+}
+
+// TaskExecutionStatusArrayInput is an input type that accepts TaskExecutionStatusArray and TaskExecutionStatusArrayOutput values.
+// You can construct a concrete instance of `TaskExecutionStatusArrayInput` via:
+//
+//	TaskExecutionStatusArray{ TaskExecutionStatusArgs{...} }
+type TaskExecutionStatusArrayInput interface {
+	pulumi.Input
+
+	ToTaskExecutionStatusArrayOutput() TaskExecutionStatusArrayOutput
+	ToTaskExecutionStatusArrayOutputWithContext(context.Context) TaskExecutionStatusArrayOutput
+}
+
+type TaskExecutionStatusArray []TaskExecutionStatusInput
+
+func (TaskExecutionStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaskExecutionStatus)(nil)).Elem()
+}
+
+func (i TaskExecutionStatusArray) ToTaskExecutionStatusArrayOutput() TaskExecutionStatusArrayOutput {
+	return i.ToTaskExecutionStatusArrayOutputWithContext(context.Background())
+}
+
+func (i TaskExecutionStatusArray) ToTaskExecutionStatusArrayOutputWithContext(ctx context.Context) TaskExecutionStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskExecutionStatusArrayOutput)
+}
+
+type TaskExecutionStatusOutput struct{ *pulumi.OutputState }
+
+func (TaskExecutionStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskExecutionStatus)(nil)).Elem()
+}
+
+func (o TaskExecutionStatusOutput) ToTaskExecutionStatusOutput() TaskExecutionStatusOutput {
+	return o
+}
+
+func (o TaskExecutionStatusOutput) ToTaskExecutionStatusOutputWithContext(ctx context.Context) TaskExecutionStatusOutput {
+	return o
+}
+
+// (Output)
+// latest job execution.
+// Structure is documented below.
+func (o TaskExecutionStatusOutput) LatestJobs() TaskExecutionStatusLatestJobArrayOutput {
+	return o.ApplyT(func(v TaskExecutionStatus) []TaskExecutionStatusLatestJob { return v.LatestJobs }).(TaskExecutionStatusLatestJobArrayOutput)
+}
+
+// (Output)
+// Last update time of the status.
+func (o TaskExecutionStatusOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskExecutionStatus) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type TaskExecutionStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (TaskExecutionStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaskExecutionStatus)(nil)).Elem()
+}
+
+func (o TaskExecutionStatusArrayOutput) ToTaskExecutionStatusArrayOutput() TaskExecutionStatusArrayOutput {
+	return o
+}
+
+func (o TaskExecutionStatusArrayOutput) ToTaskExecutionStatusArrayOutputWithContext(ctx context.Context) TaskExecutionStatusArrayOutput {
+	return o
+}
+
+func (o TaskExecutionStatusArrayOutput) Index(i pulumi.IntInput) TaskExecutionStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaskExecutionStatus {
+		return vs[0].([]TaskExecutionStatus)[vs[1].(int)]
+	}).(TaskExecutionStatusOutput)
+}
+
+type TaskExecutionStatusLatestJob struct {
+	// (Output)
+	// The time when the job ended.
+	EndTime *string `pulumi:"endTime"`
+	// (Output)
+	// Additional information about the current state.
+	Message *string `pulumi:"message"`
+	// (Output)
+	// The relative resource name of the job, of the form: projects/{project_number}/locations/{locationId}/lakes/{lakeId}/tasks/{taskId}/jobs/{jobId}.
+	Name *string `pulumi:"name"`
+	// (Output)
+	// The number of times the job has been retried (excluding the initial attempt).
+	RetryCount *int `pulumi:"retryCount"`
+	// (Output)
+	// The underlying service running a job.
+	Service *string `pulumi:"service"`
+	// (Output)
+	// The full resource name for the job run under a particular service.
+	ServiceJob *string `pulumi:"serviceJob"`
+	// The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
+	StartTime *string `pulumi:"startTime"`
+	// (Output)
+	// Execution state for the job.
+	State *string `pulumi:"state"`
+	// (Output)
+	// System generated globally unique ID for the job.
+	Uid *string `pulumi:"uid"`
+}
+
+// TaskExecutionStatusLatestJobInput is an input type that accepts TaskExecutionStatusLatestJobArgs and TaskExecutionStatusLatestJobOutput values.
+// You can construct a concrete instance of `TaskExecutionStatusLatestJobInput` via:
+//
+//	TaskExecutionStatusLatestJobArgs{...}
+type TaskExecutionStatusLatestJobInput interface {
+	pulumi.Input
+
+	ToTaskExecutionStatusLatestJobOutput() TaskExecutionStatusLatestJobOutput
+	ToTaskExecutionStatusLatestJobOutputWithContext(context.Context) TaskExecutionStatusLatestJobOutput
+}
+
+type TaskExecutionStatusLatestJobArgs struct {
+	// (Output)
+	// The time when the job ended.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// (Output)
+	// Additional information about the current state.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// (Output)
+	// The relative resource name of the job, of the form: projects/{project_number}/locations/{locationId}/lakes/{lakeId}/tasks/{taskId}/jobs/{jobId}.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// (Output)
+	// The number of times the job has been retried (excluding the initial attempt).
+	RetryCount pulumi.IntPtrInput `pulumi:"retryCount"`
+	// (Output)
+	// The underlying service running a job.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+	// (Output)
+	// The full resource name for the job run under a particular service.
+	ServiceJob pulumi.StringPtrInput `pulumi:"serviceJob"`
+	// The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// (Output)
+	// Execution state for the job.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// (Output)
+	// System generated globally unique ID for the job.
+	Uid pulumi.StringPtrInput `pulumi:"uid"`
+}
+
+func (TaskExecutionStatusLatestJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskExecutionStatusLatestJob)(nil)).Elem()
+}
+
+func (i TaskExecutionStatusLatestJobArgs) ToTaskExecutionStatusLatestJobOutput() TaskExecutionStatusLatestJobOutput {
+	return i.ToTaskExecutionStatusLatestJobOutputWithContext(context.Background())
+}
+
+func (i TaskExecutionStatusLatestJobArgs) ToTaskExecutionStatusLatestJobOutputWithContext(ctx context.Context) TaskExecutionStatusLatestJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskExecutionStatusLatestJobOutput)
+}
+
+// TaskExecutionStatusLatestJobArrayInput is an input type that accepts TaskExecutionStatusLatestJobArray and TaskExecutionStatusLatestJobArrayOutput values.
+// You can construct a concrete instance of `TaskExecutionStatusLatestJobArrayInput` via:
+//
+//	TaskExecutionStatusLatestJobArray{ TaskExecutionStatusLatestJobArgs{...} }
+type TaskExecutionStatusLatestJobArrayInput interface {
+	pulumi.Input
+
+	ToTaskExecutionStatusLatestJobArrayOutput() TaskExecutionStatusLatestJobArrayOutput
+	ToTaskExecutionStatusLatestJobArrayOutputWithContext(context.Context) TaskExecutionStatusLatestJobArrayOutput
+}
+
+type TaskExecutionStatusLatestJobArray []TaskExecutionStatusLatestJobInput
+
+func (TaskExecutionStatusLatestJobArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaskExecutionStatusLatestJob)(nil)).Elem()
+}
+
+func (i TaskExecutionStatusLatestJobArray) ToTaskExecutionStatusLatestJobArrayOutput() TaskExecutionStatusLatestJobArrayOutput {
+	return i.ToTaskExecutionStatusLatestJobArrayOutputWithContext(context.Background())
+}
+
+func (i TaskExecutionStatusLatestJobArray) ToTaskExecutionStatusLatestJobArrayOutputWithContext(ctx context.Context) TaskExecutionStatusLatestJobArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskExecutionStatusLatestJobArrayOutput)
+}
+
+type TaskExecutionStatusLatestJobOutput struct{ *pulumi.OutputState }
+
+func (TaskExecutionStatusLatestJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskExecutionStatusLatestJob)(nil)).Elem()
+}
+
+func (o TaskExecutionStatusLatestJobOutput) ToTaskExecutionStatusLatestJobOutput() TaskExecutionStatusLatestJobOutput {
+	return o
+}
+
+func (o TaskExecutionStatusLatestJobOutput) ToTaskExecutionStatusLatestJobOutputWithContext(ctx context.Context) TaskExecutionStatusLatestJobOutput {
+	return o
+}
+
+// (Output)
+// The time when the job ended.
+func (o TaskExecutionStatusLatestJobOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskExecutionStatusLatestJob) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Additional information about the current state.
+func (o TaskExecutionStatusLatestJobOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskExecutionStatusLatestJob) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The relative resource name of the job, of the form: projects/{project_number}/locations/{locationId}/lakes/{lakeId}/tasks/{taskId}/jobs/{jobId}.
+func (o TaskExecutionStatusLatestJobOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskExecutionStatusLatestJob) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The number of times the job has been retried (excluding the initial attempt).
+func (o TaskExecutionStatusLatestJobOutput) RetryCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TaskExecutionStatusLatestJob) *int { return v.RetryCount }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// The underlying service running a job.
+func (o TaskExecutionStatusLatestJobOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskExecutionStatusLatestJob) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The full resource name for the job run under a particular service.
+func (o TaskExecutionStatusLatestJobOutput) ServiceJob() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskExecutionStatusLatestJob) *string { return v.ServiceJob }).(pulumi.StringPtrOutput)
+}
+
+// The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
+func (o TaskExecutionStatusLatestJobOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskExecutionStatusLatestJob) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Execution state for the job.
+func (o TaskExecutionStatusLatestJobOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskExecutionStatusLatestJob) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// System generated globally unique ID for the job.
+func (o TaskExecutionStatusLatestJobOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskExecutionStatusLatestJob) *string { return v.Uid }).(pulumi.StringPtrOutput)
+}
+
+type TaskExecutionStatusLatestJobArrayOutput struct{ *pulumi.OutputState }
+
+func (TaskExecutionStatusLatestJobArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaskExecutionStatusLatestJob)(nil)).Elem()
+}
+
+func (o TaskExecutionStatusLatestJobArrayOutput) ToTaskExecutionStatusLatestJobArrayOutput() TaskExecutionStatusLatestJobArrayOutput {
+	return o
+}
+
+func (o TaskExecutionStatusLatestJobArrayOutput) ToTaskExecutionStatusLatestJobArrayOutputWithContext(ctx context.Context) TaskExecutionStatusLatestJobArrayOutput {
+	return o
+}
+
+func (o TaskExecutionStatusLatestJobArrayOutput) Index(i pulumi.IntInput) TaskExecutionStatusLatestJobOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaskExecutionStatusLatestJob {
+		return vs[0].([]TaskExecutionStatusLatestJob)[vs[1].(int)]
+	}).(TaskExecutionStatusLatestJobOutput)
+}
+
+type TaskIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// TaskIamBindingConditionInput is an input type that accepts TaskIamBindingConditionArgs and TaskIamBindingConditionOutput values.
+// You can construct a concrete instance of `TaskIamBindingConditionInput` via:
+//
+//	TaskIamBindingConditionArgs{...}
+type TaskIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToTaskIamBindingConditionOutput() TaskIamBindingConditionOutput
+	ToTaskIamBindingConditionOutputWithContext(context.Context) TaskIamBindingConditionOutput
+}
+
+type TaskIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (TaskIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskIamBindingCondition)(nil)).Elem()
+}
+
+func (i TaskIamBindingConditionArgs) ToTaskIamBindingConditionOutput() TaskIamBindingConditionOutput {
+	return i.ToTaskIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i TaskIamBindingConditionArgs) ToTaskIamBindingConditionOutputWithContext(ctx context.Context) TaskIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskIamBindingConditionOutput)
+}
+
+func (i TaskIamBindingConditionArgs) ToTaskIamBindingConditionPtrOutput() TaskIamBindingConditionPtrOutput {
+	return i.ToTaskIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i TaskIamBindingConditionArgs) ToTaskIamBindingConditionPtrOutputWithContext(ctx context.Context) TaskIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskIamBindingConditionOutput).ToTaskIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// TaskIamBindingConditionPtrInput is an input type that accepts TaskIamBindingConditionArgs, TaskIamBindingConditionPtr and TaskIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `TaskIamBindingConditionPtrInput` via:
+//
+//	        TaskIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type TaskIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToTaskIamBindingConditionPtrOutput() TaskIamBindingConditionPtrOutput
+	ToTaskIamBindingConditionPtrOutputWithContext(context.Context) TaskIamBindingConditionPtrOutput
+}
+
+type taskIamBindingConditionPtrType TaskIamBindingConditionArgs
+
+func TaskIamBindingConditionPtr(v *TaskIamBindingConditionArgs) TaskIamBindingConditionPtrInput {
+	return (*taskIamBindingConditionPtrType)(v)
+}
+
+func (*taskIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskIamBindingCondition)(nil)).Elem()
+}
+
+func (i *taskIamBindingConditionPtrType) ToTaskIamBindingConditionPtrOutput() TaskIamBindingConditionPtrOutput {
+	return i.ToTaskIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *taskIamBindingConditionPtrType) ToTaskIamBindingConditionPtrOutputWithContext(ctx context.Context) TaskIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskIamBindingConditionPtrOutput)
+}
+
+type TaskIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (TaskIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskIamBindingCondition)(nil)).Elem()
+}
+
+func (o TaskIamBindingConditionOutput) ToTaskIamBindingConditionOutput() TaskIamBindingConditionOutput {
+	return o
+}
+
+func (o TaskIamBindingConditionOutput) ToTaskIamBindingConditionOutputWithContext(ctx context.Context) TaskIamBindingConditionOutput {
+	return o
+}
+
+func (o TaskIamBindingConditionOutput) ToTaskIamBindingConditionPtrOutput() TaskIamBindingConditionPtrOutput {
+	return o.ToTaskIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o TaskIamBindingConditionOutput) ToTaskIamBindingConditionPtrOutputWithContext(ctx context.Context) TaskIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskIamBindingCondition) *TaskIamBindingCondition {
+		return &v
+	}).(TaskIamBindingConditionPtrOutput)
+}
+
+func (o TaskIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o TaskIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o TaskIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type TaskIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (TaskIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskIamBindingCondition)(nil)).Elem()
+}
+
+func (o TaskIamBindingConditionPtrOutput) ToTaskIamBindingConditionPtrOutput() TaskIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o TaskIamBindingConditionPtrOutput) ToTaskIamBindingConditionPtrOutputWithContext(ctx context.Context) TaskIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o TaskIamBindingConditionPtrOutput) Elem() TaskIamBindingConditionOutput {
+	return o.ApplyT(func(v *TaskIamBindingCondition) TaskIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret TaskIamBindingCondition
+		return ret
+	}).(TaskIamBindingConditionOutput)
+}
+
+func (o TaskIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TaskIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TaskIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type TaskIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// TaskIamMemberConditionInput is an input type that accepts TaskIamMemberConditionArgs and TaskIamMemberConditionOutput values.
+// You can construct a concrete instance of `TaskIamMemberConditionInput` via:
+//
+//	TaskIamMemberConditionArgs{...}
+type TaskIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToTaskIamMemberConditionOutput() TaskIamMemberConditionOutput
+	ToTaskIamMemberConditionOutputWithContext(context.Context) TaskIamMemberConditionOutput
+}
+
+type TaskIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (TaskIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskIamMemberCondition)(nil)).Elem()
+}
+
+func (i TaskIamMemberConditionArgs) ToTaskIamMemberConditionOutput() TaskIamMemberConditionOutput {
+	return i.ToTaskIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i TaskIamMemberConditionArgs) ToTaskIamMemberConditionOutputWithContext(ctx context.Context) TaskIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskIamMemberConditionOutput)
+}
+
+func (i TaskIamMemberConditionArgs) ToTaskIamMemberConditionPtrOutput() TaskIamMemberConditionPtrOutput {
+	return i.ToTaskIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i TaskIamMemberConditionArgs) ToTaskIamMemberConditionPtrOutputWithContext(ctx context.Context) TaskIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskIamMemberConditionOutput).ToTaskIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// TaskIamMemberConditionPtrInput is an input type that accepts TaskIamMemberConditionArgs, TaskIamMemberConditionPtr and TaskIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `TaskIamMemberConditionPtrInput` via:
+//
+//	        TaskIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type TaskIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToTaskIamMemberConditionPtrOutput() TaskIamMemberConditionPtrOutput
+	ToTaskIamMemberConditionPtrOutputWithContext(context.Context) TaskIamMemberConditionPtrOutput
+}
+
+type taskIamMemberConditionPtrType TaskIamMemberConditionArgs
+
+func TaskIamMemberConditionPtr(v *TaskIamMemberConditionArgs) TaskIamMemberConditionPtrInput {
+	return (*taskIamMemberConditionPtrType)(v)
+}
+
+func (*taskIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskIamMemberCondition)(nil)).Elem()
+}
+
+func (i *taskIamMemberConditionPtrType) ToTaskIamMemberConditionPtrOutput() TaskIamMemberConditionPtrOutput {
+	return i.ToTaskIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *taskIamMemberConditionPtrType) ToTaskIamMemberConditionPtrOutputWithContext(ctx context.Context) TaskIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskIamMemberConditionPtrOutput)
+}
+
+type TaskIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (TaskIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskIamMemberCondition)(nil)).Elem()
+}
+
+func (o TaskIamMemberConditionOutput) ToTaskIamMemberConditionOutput() TaskIamMemberConditionOutput {
+	return o
+}
+
+func (o TaskIamMemberConditionOutput) ToTaskIamMemberConditionOutputWithContext(ctx context.Context) TaskIamMemberConditionOutput {
+	return o
+}
+
+func (o TaskIamMemberConditionOutput) ToTaskIamMemberConditionPtrOutput() TaskIamMemberConditionPtrOutput {
+	return o.ToTaskIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o TaskIamMemberConditionOutput) ToTaskIamMemberConditionPtrOutputWithContext(ctx context.Context) TaskIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskIamMemberCondition) *TaskIamMemberCondition {
+		return &v
+	}).(TaskIamMemberConditionPtrOutput)
+}
+
+func (o TaskIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o TaskIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o TaskIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type TaskIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (TaskIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskIamMemberCondition)(nil)).Elem()
+}
+
+func (o TaskIamMemberConditionPtrOutput) ToTaskIamMemberConditionPtrOutput() TaskIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o TaskIamMemberConditionPtrOutput) ToTaskIamMemberConditionPtrOutputWithContext(ctx context.Context) TaskIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o TaskIamMemberConditionPtrOutput) Elem() TaskIamMemberConditionOutput {
+	return o.ApplyT(func(v *TaskIamMemberCondition) TaskIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret TaskIamMemberCondition
+		return ret
+	}).(TaskIamMemberConditionOutput)
+}
+
+func (o TaskIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TaskIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TaskIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type TaskNotebook struct {
+	// Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris []string `pulumi:"archiveUris"`
+	// Cloud Storage URIs of files to be placed in the working directory of each executor.
+	FileUris []string `pulumi:"fileUris"`
+	// Infrastructure specification for the execution.
+	// Structure is documented below.
+	InfrastructureSpec *TaskNotebookInfrastructureSpec `pulumi:"infrastructureSpec"`
+	// Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
+	Notebook string `pulumi:"notebook"`
+}
+
+// TaskNotebookInput is an input type that accepts TaskNotebookArgs and TaskNotebookOutput values.
+// You can construct a concrete instance of `TaskNotebookInput` via:
+//
+//	TaskNotebookArgs{...}
+type TaskNotebookInput interface {
+	pulumi.Input
+
+	ToTaskNotebookOutput() TaskNotebookOutput
+	ToTaskNotebookOutputWithContext(context.Context) TaskNotebookOutput
+}
+
+type TaskNotebookArgs struct {
+	// Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris pulumi.StringArrayInput `pulumi:"archiveUris"`
+	// Cloud Storage URIs of files to be placed in the working directory of each executor.
+	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
+	// Infrastructure specification for the execution.
+	// Structure is documented below.
+	InfrastructureSpec TaskNotebookInfrastructureSpecPtrInput `pulumi:"infrastructureSpec"`
+	// Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
+	Notebook pulumi.StringInput `pulumi:"notebook"`
+}
+
+func (TaskNotebookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskNotebook)(nil)).Elem()
+}
+
+func (i TaskNotebookArgs) ToTaskNotebookOutput() TaskNotebookOutput {
+	return i.ToTaskNotebookOutputWithContext(context.Background())
+}
+
+func (i TaskNotebookArgs) ToTaskNotebookOutputWithContext(ctx context.Context) TaskNotebookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskNotebookOutput)
+}
+
+func (i TaskNotebookArgs) ToTaskNotebookPtrOutput() TaskNotebookPtrOutput {
+	return i.ToTaskNotebookPtrOutputWithContext(context.Background())
+}
+
+func (i TaskNotebookArgs) ToTaskNotebookPtrOutputWithContext(ctx context.Context) TaskNotebookPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskNotebookOutput).ToTaskNotebookPtrOutputWithContext(ctx)
+}
+
+// TaskNotebookPtrInput is an input type that accepts TaskNotebookArgs, TaskNotebookPtr and TaskNotebookPtrOutput values.
+// You can construct a concrete instance of `TaskNotebookPtrInput` via:
+//
+//	        TaskNotebookArgs{...}
+//
+//	or:
+//
+//	        nil
+type TaskNotebookPtrInput interface {
+	pulumi.Input
+
+	ToTaskNotebookPtrOutput() TaskNotebookPtrOutput
+	ToTaskNotebookPtrOutputWithContext(context.Context) TaskNotebookPtrOutput
+}
+
+type taskNotebookPtrType TaskNotebookArgs
+
+func TaskNotebookPtr(v *TaskNotebookArgs) TaskNotebookPtrInput {
+	return (*taskNotebookPtrType)(v)
+}
+
+func (*taskNotebookPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskNotebook)(nil)).Elem()
+}
+
+func (i *taskNotebookPtrType) ToTaskNotebookPtrOutput() TaskNotebookPtrOutput {
+	return i.ToTaskNotebookPtrOutputWithContext(context.Background())
+}
+
+func (i *taskNotebookPtrType) ToTaskNotebookPtrOutputWithContext(ctx context.Context) TaskNotebookPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskNotebookPtrOutput)
+}
+
+type TaskNotebookOutput struct{ *pulumi.OutputState }
+
+func (TaskNotebookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskNotebook)(nil)).Elem()
+}
+
+func (o TaskNotebookOutput) ToTaskNotebookOutput() TaskNotebookOutput {
+	return o
+}
+
+func (o TaskNotebookOutput) ToTaskNotebookOutputWithContext(ctx context.Context) TaskNotebookOutput {
+	return o
+}
+
+func (o TaskNotebookOutput) ToTaskNotebookPtrOutput() TaskNotebookPtrOutput {
+	return o.ToTaskNotebookPtrOutputWithContext(context.Background())
+}
+
+func (o TaskNotebookOutput) ToTaskNotebookPtrOutputWithContext(ctx context.Context) TaskNotebookPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskNotebook) *TaskNotebook {
+		return &v
+	}).(TaskNotebookPtrOutput)
+}
+
+// Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o TaskNotebookOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TaskNotebook) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
+}
+
+// Cloud Storage URIs of files to be placed in the working directory of each executor.
+func (o TaskNotebookOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TaskNotebook) []string { return v.FileUris }).(pulumi.StringArrayOutput)
+}
+
+// Infrastructure specification for the execution.
+// Structure is documented below.
+func (o TaskNotebookOutput) InfrastructureSpec() TaskNotebookInfrastructureSpecPtrOutput {
+	return o.ApplyT(func(v TaskNotebook) *TaskNotebookInfrastructureSpec { return v.InfrastructureSpec }).(TaskNotebookInfrastructureSpecPtrOutput)
+}
+
+// Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
+func (o TaskNotebookOutput) Notebook() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskNotebook) string { return v.Notebook }).(pulumi.StringOutput)
+}
+
+type TaskNotebookPtrOutput struct{ *pulumi.OutputState }
+
+func (TaskNotebookPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskNotebook)(nil)).Elem()
+}
+
+func (o TaskNotebookPtrOutput) ToTaskNotebookPtrOutput() TaskNotebookPtrOutput {
+	return o
+}
+
+func (o TaskNotebookPtrOutput) ToTaskNotebookPtrOutputWithContext(ctx context.Context) TaskNotebookPtrOutput {
+	return o
+}
+
+func (o TaskNotebookPtrOutput) Elem() TaskNotebookOutput {
+	return o.ApplyT(func(v *TaskNotebook) TaskNotebook {
+		if v != nil {
+			return *v
+		}
+		var ret TaskNotebook
+		return ret
+	}).(TaskNotebookOutput)
+}
+
+// Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o TaskNotebookPtrOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TaskNotebook) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ArchiveUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Cloud Storage URIs of files to be placed in the working directory of each executor.
+func (o TaskNotebookPtrOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TaskNotebook) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Infrastructure specification for the execution.
+// Structure is documented below.
+func (o TaskNotebookPtrOutput) InfrastructureSpec() TaskNotebookInfrastructureSpecPtrOutput {
+	return o.ApplyT(func(v *TaskNotebook) *TaskNotebookInfrastructureSpec {
+		if v == nil {
+			return nil
+		}
+		return v.InfrastructureSpec
+	}).(TaskNotebookInfrastructureSpecPtrOutput)
+}
+
+// Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
+func (o TaskNotebookPtrOutput) Notebook() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskNotebook) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Notebook
+	}).(pulumi.StringPtrOutput)
+}
+
+type TaskNotebookInfrastructureSpec struct {
+	// Compute resources needed for a Task when using Dataproc Serverless.
+	// Structure is documented below.
+	Batch *TaskNotebookInfrastructureSpecBatch `pulumi:"batch"`
+	// Container Image Runtime Configuration.
+	// Structure is documented below.
+	ContainerImage *TaskNotebookInfrastructureSpecContainerImage `pulumi:"containerImage"`
+	// Vpc network.
+	// Structure is documented below.
+	VpcNetwork *TaskNotebookInfrastructureSpecVpcNetwork `pulumi:"vpcNetwork"`
+}
+
+// TaskNotebookInfrastructureSpecInput is an input type that accepts TaskNotebookInfrastructureSpecArgs and TaskNotebookInfrastructureSpecOutput values.
+// You can construct a concrete instance of `TaskNotebookInfrastructureSpecInput` via:
+//
+//	TaskNotebookInfrastructureSpecArgs{...}
+type TaskNotebookInfrastructureSpecInput interface {
+	pulumi.Input
+
+	ToTaskNotebookInfrastructureSpecOutput() TaskNotebookInfrastructureSpecOutput
+	ToTaskNotebookInfrastructureSpecOutputWithContext(context.Context) TaskNotebookInfrastructureSpecOutput
+}
+
+type TaskNotebookInfrastructureSpecArgs struct {
+	// Compute resources needed for a Task when using Dataproc Serverless.
+	// Structure is documented below.
+	Batch TaskNotebookInfrastructureSpecBatchPtrInput `pulumi:"batch"`
+	// Container Image Runtime Configuration.
+	// Structure is documented below.
+	ContainerImage TaskNotebookInfrastructureSpecContainerImagePtrInput `pulumi:"containerImage"`
+	// Vpc network.
+	// Structure is documented below.
+	VpcNetwork TaskNotebookInfrastructureSpecVpcNetworkPtrInput `pulumi:"vpcNetwork"`
+}
+
+func (TaskNotebookInfrastructureSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskNotebookInfrastructureSpec)(nil)).Elem()
+}
+
+func (i TaskNotebookInfrastructureSpecArgs) ToTaskNotebookInfrastructureSpecOutput() TaskNotebookInfrastructureSpecOutput {
+	return i.ToTaskNotebookInfrastructureSpecOutputWithContext(context.Background())
+}
+
+func (i TaskNotebookInfrastructureSpecArgs) ToTaskNotebookInfrastructureSpecOutputWithContext(ctx context.Context) TaskNotebookInfrastructureSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskNotebookInfrastructureSpecOutput)
+}
+
+func (i TaskNotebookInfrastructureSpecArgs) ToTaskNotebookInfrastructureSpecPtrOutput() TaskNotebookInfrastructureSpecPtrOutput {
+	return i.ToTaskNotebookInfrastructureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i TaskNotebookInfrastructureSpecArgs) ToTaskNotebookInfrastructureSpecPtrOutputWithContext(ctx context.Context) TaskNotebookInfrastructureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskNotebookInfrastructureSpecOutput).ToTaskNotebookInfrastructureSpecPtrOutputWithContext(ctx)
+}
+
+// TaskNotebookInfrastructureSpecPtrInput is an input type that accepts TaskNotebookInfrastructureSpecArgs, TaskNotebookInfrastructureSpecPtr and TaskNotebookInfrastructureSpecPtrOutput values.
+// You can construct a concrete instance of `TaskNotebookInfrastructureSpecPtrInput` via:
+//
+//	        TaskNotebookInfrastructureSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type TaskNotebookInfrastructureSpecPtrInput interface {
+	pulumi.Input
+
+	ToTaskNotebookInfrastructureSpecPtrOutput() TaskNotebookInfrastructureSpecPtrOutput
+	ToTaskNotebookInfrastructureSpecPtrOutputWithContext(context.Context) TaskNotebookInfrastructureSpecPtrOutput
+}
+
+type taskNotebookInfrastructureSpecPtrType TaskNotebookInfrastructureSpecArgs
+
+func TaskNotebookInfrastructureSpecPtr(v *TaskNotebookInfrastructureSpecArgs) TaskNotebookInfrastructureSpecPtrInput {
+	return (*taskNotebookInfrastructureSpecPtrType)(v)
+}
+
+func (*taskNotebookInfrastructureSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskNotebookInfrastructureSpec)(nil)).Elem()
+}
+
+func (i *taskNotebookInfrastructureSpecPtrType) ToTaskNotebookInfrastructureSpecPtrOutput() TaskNotebookInfrastructureSpecPtrOutput {
+	return i.ToTaskNotebookInfrastructureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *taskNotebookInfrastructureSpecPtrType) ToTaskNotebookInfrastructureSpecPtrOutputWithContext(ctx context.Context) TaskNotebookInfrastructureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskNotebookInfrastructureSpecPtrOutput)
+}
+
+type TaskNotebookInfrastructureSpecOutput struct{ *pulumi.OutputState }
+
+func (TaskNotebookInfrastructureSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskNotebookInfrastructureSpec)(nil)).Elem()
+}
+
+func (o TaskNotebookInfrastructureSpecOutput) ToTaskNotebookInfrastructureSpecOutput() TaskNotebookInfrastructureSpecOutput {
+	return o
+}
+
+func (o TaskNotebookInfrastructureSpecOutput) ToTaskNotebookInfrastructureSpecOutputWithContext(ctx context.Context) TaskNotebookInfrastructureSpecOutput {
+	return o
+}
+
+func (o TaskNotebookInfrastructureSpecOutput) ToTaskNotebookInfrastructureSpecPtrOutput() TaskNotebookInfrastructureSpecPtrOutput {
+	return o.ToTaskNotebookInfrastructureSpecPtrOutputWithContext(context.Background())
+}
+
+func (o TaskNotebookInfrastructureSpecOutput) ToTaskNotebookInfrastructureSpecPtrOutputWithContext(ctx context.Context) TaskNotebookInfrastructureSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskNotebookInfrastructureSpec) *TaskNotebookInfrastructureSpec {
+		return &v
+	}).(TaskNotebookInfrastructureSpecPtrOutput)
+}
+
+// Compute resources needed for a Task when using Dataproc Serverless.
+// Structure is documented below.
+func (o TaskNotebookInfrastructureSpecOutput) Batch() TaskNotebookInfrastructureSpecBatchPtrOutput {
+	return o.ApplyT(func(v TaskNotebookInfrastructureSpec) *TaskNotebookInfrastructureSpecBatch { return v.Batch }).(TaskNotebookInfrastructureSpecBatchPtrOutput)
+}
+
+// Container Image Runtime Configuration.
+// Structure is documented below.
+func (o TaskNotebookInfrastructureSpecOutput) ContainerImage() TaskNotebookInfrastructureSpecContainerImagePtrOutput {
+	return o.ApplyT(func(v TaskNotebookInfrastructureSpec) *TaskNotebookInfrastructureSpecContainerImage {
+		return v.ContainerImage
+	}).(TaskNotebookInfrastructureSpecContainerImagePtrOutput)
+}
+
+// Vpc network.
+// Structure is documented below.
+func (o TaskNotebookInfrastructureSpecOutput) VpcNetwork() TaskNotebookInfrastructureSpecVpcNetworkPtrOutput {
+	return o.ApplyT(func(v TaskNotebookInfrastructureSpec) *TaskNotebookInfrastructureSpecVpcNetwork { return v.VpcNetwork }).(TaskNotebookInfrastructureSpecVpcNetworkPtrOutput)
+}
+
+type TaskNotebookInfrastructureSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (TaskNotebookInfrastructureSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskNotebookInfrastructureSpec)(nil)).Elem()
+}
+
+func (o TaskNotebookInfrastructureSpecPtrOutput) ToTaskNotebookInfrastructureSpecPtrOutput() TaskNotebookInfrastructureSpecPtrOutput {
+	return o
+}
+
+func (o TaskNotebookInfrastructureSpecPtrOutput) ToTaskNotebookInfrastructureSpecPtrOutputWithContext(ctx context.Context) TaskNotebookInfrastructureSpecPtrOutput {
+	return o
+}
+
+func (o TaskNotebookInfrastructureSpecPtrOutput) Elem() TaskNotebookInfrastructureSpecOutput {
+	return o.ApplyT(func(v *TaskNotebookInfrastructureSpec) TaskNotebookInfrastructureSpec {
+		if v != nil {
+			return *v
+		}
+		var ret TaskNotebookInfrastructureSpec
+		return ret
+	}).(TaskNotebookInfrastructureSpecOutput)
+}
+
+// Compute resources needed for a Task when using Dataproc Serverless.
+// Structure is documented below.
+func (o TaskNotebookInfrastructureSpecPtrOutput) Batch() TaskNotebookInfrastructureSpecBatchPtrOutput {
+	return o.ApplyT(func(v *TaskNotebookInfrastructureSpec) *TaskNotebookInfrastructureSpecBatch {
+		if v == nil {
+			return nil
+		}
+		return v.Batch
+	}).(TaskNotebookInfrastructureSpecBatchPtrOutput)
+}
+
+// Container Image Runtime Configuration.
+// Structure is documented below.
+func (o TaskNotebookInfrastructureSpecPtrOutput) ContainerImage() TaskNotebookInfrastructureSpecContainerImagePtrOutput {
+	return o.ApplyT(func(v *TaskNotebookInfrastructureSpec) *TaskNotebookInfrastructureSpecContainerImage {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerImage
+	}).(TaskNotebookInfrastructureSpecContainerImagePtrOutput)
+}
+
+// Vpc network.
+// Structure is documented below.
+func (o TaskNotebookInfrastructureSpecPtrOutput) VpcNetwork() TaskNotebookInfrastructureSpecVpcNetworkPtrOutput {
+	return o.ApplyT(func(v *TaskNotebookInfrastructureSpec) *TaskNotebookInfrastructureSpecVpcNetwork {
+		if v == nil {
+			return nil
+		}
+		return v.VpcNetwork
+	}).(TaskNotebookInfrastructureSpecVpcNetworkPtrOutput)
+}
+
+type TaskNotebookInfrastructureSpecBatch struct {
+	// Total number of job executors. Executor Count should be between 2 and 100. [Default=2]
+	ExecutorsCount *int `pulumi:"executorsCount"`
+	// Max configurable executors. If maxExecutorsCount > executorsCount, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. [Default=1000]
+	MaxExecutorsCount *int `pulumi:"maxExecutorsCount"`
+}
+
+// TaskNotebookInfrastructureSpecBatchInput is an input type that accepts TaskNotebookInfrastructureSpecBatchArgs and TaskNotebookInfrastructureSpecBatchOutput values.
+// You can construct a concrete instance of `TaskNotebookInfrastructureSpecBatchInput` via:
+//
+//	TaskNotebookInfrastructureSpecBatchArgs{...}
+type TaskNotebookInfrastructureSpecBatchInput interface {
+	pulumi.Input
+
+	ToTaskNotebookInfrastructureSpecBatchOutput() TaskNotebookInfrastructureSpecBatchOutput
+	ToTaskNotebookInfrastructureSpecBatchOutputWithContext(context.Context) TaskNotebookInfrastructureSpecBatchOutput
+}
+
+type TaskNotebookInfrastructureSpecBatchArgs struct {
+	// Total number of job executors. Executor Count should be between 2 and 100. [Default=2]
+	ExecutorsCount pulumi.IntPtrInput `pulumi:"executorsCount"`
+	// Max configurable executors. If maxExecutorsCount > executorsCount, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. [Default=1000]
+	MaxExecutorsCount pulumi.IntPtrInput `pulumi:"maxExecutorsCount"`
+}
+
+func (TaskNotebookInfrastructureSpecBatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskNotebookInfrastructureSpecBatch)(nil)).Elem()
+}
+
+func (i TaskNotebookInfrastructureSpecBatchArgs) ToTaskNotebookInfrastructureSpecBatchOutput() TaskNotebookInfrastructureSpecBatchOutput {
+	return i.ToTaskNotebookInfrastructureSpecBatchOutputWithContext(context.Background())
+}
+
+func (i TaskNotebookInfrastructureSpecBatchArgs) ToTaskNotebookInfrastructureSpecBatchOutputWithContext(ctx context.Context) TaskNotebookInfrastructureSpecBatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskNotebookInfrastructureSpecBatchOutput)
+}
+
+func (i TaskNotebookInfrastructureSpecBatchArgs) ToTaskNotebookInfrastructureSpecBatchPtrOutput() TaskNotebookInfrastructureSpecBatchPtrOutput {
+	return i.ToTaskNotebookInfrastructureSpecBatchPtrOutputWithContext(context.Background())
+}
+
+func (i TaskNotebookInfrastructureSpecBatchArgs) ToTaskNotebookInfrastructureSpecBatchPtrOutputWithContext(ctx context.Context) TaskNotebookInfrastructureSpecBatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskNotebookInfrastructureSpecBatchOutput).ToTaskNotebookInfrastructureSpecBatchPtrOutputWithContext(ctx)
+}
+
+// TaskNotebookInfrastructureSpecBatchPtrInput is an input type that accepts TaskNotebookInfrastructureSpecBatchArgs, TaskNotebookInfrastructureSpecBatchPtr and TaskNotebookInfrastructureSpecBatchPtrOutput values.
+// You can construct a concrete instance of `TaskNotebookInfrastructureSpecBatchPtrInput` via:
+//
+//	        TaskNotebookInfrastructureSpecBatchArgs{...}
+//
+//	or:
+//
+//	        nil
+type TaskNotebookInfrastructureSpecBatchPtrInput interface {
+	pulumi.Input
+
+	ToTaskNotebookInfrastructureSpecBatchPtrOutput() TaskNotebookInfrastructureSpecBatchPtrOutput
+	ToTaskNotebookInfrastructureSpecBatchPtrOutputWithContext(context.Context) TaskNotebookInfrastructureSpecBatchPtrOutput
+}
+
+type taskNotebookInfrastructureSpecBatchPtrType TaskNotebookInfrastructureSpecBatchArgs
+
+func TaskNotebookInfrastructureSpecBatchPtr(v *TaskNotebookInfrastructureSpecBatchArgs) TaskNotebookInfrastructureSpecBatchPtrInput {
+	return (*taskNotebookInfrastructureSpecBatchPtrType)(v)
+}
+
+func (*taskNotebookInfrastructureSpecBatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskNotebookInfrastructureSpecBatch)(nil)).Elem()
+}
+
+func (i *taskNotebookInfrastructureSpecBatchPtrType) ToTaskNotebookInfrastructureSpecBatchPtrOutput() TaskNotebookInfrastructureSpecBatchPtrOutput {
+	return i.ToTaskNotebookInfrastructureSpecBatchPtrOutputWithContext(context.Background())
+}
+
+func (i *taskNotebookInfrastructureSpecBatchPtrType) ToTaskNotebookInfrastructureSpecBatchPtrOutputWithContext(ctx context.Context) TaskNotebookInfrastructureSpecBatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskNotebookInfrastructureSpecBatchPtrOutput)
+}
+
+type TaskNotebookInfrastructureSpecBatchOutput struct{ *pulumi.OutputState }
+
+func (TaskNotebookInfrastructureSpecBatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskNotebookInfrastructureSpecBatch)(nil)).Elem()
+}
+
+func (o TaskNotebookInfrastructureSpecBatchOutput) ToTaskNotebookInfrastructureSpecBatchOutput() TaskNotebookInfrastructureSpecBatchOutput {
+	return o
+}
+
+func (o TaskNotebookInfrastructureSpecBatchOutput) ToTaskNotebookInfrastructureSpecBatchOutputWithContext(ctx context.Context) TaskNotebookInfrastructureSpecBatchOutput {
+	return o
+}
+
+func (o TaskNotebookInfrastructureSpecBatchOutput) ToTaskNotebookInfrastructureSpecBatchPtrOutput() TaskNotebookInfrastructureSpecBatchPtrOutput {
+	return o.ToTaskNotebookInfrastructureSpecBatchPtrOutputWithContext(context.Background())
+}
+
+func (o TaskNotebookInfrastructureSpecBatchOutput) ToTaskNotebookInfrastructureSpecBatchPtrOutputWithContext(ctx context.Context) TaskNotebookInfrastructureSpecBatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskNotebookInfrastructureSpecBatch) *TaskNotebookInfrastructureSpecBatch {
+		return &v
+	}).(TaskNotebookInfrastructureSpecBatchPtrOutput)
+}
+
+// Total number of job executors. Executor Count should be between 2 and 100. [Default=2]
+func (o TaskNotebookInfrastructureSpecBatchOutput) ExecutorsCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TaskNotebookInfrastructureSpecBatch) *int { return v.ExecutorsCount }).(pulumi.IntPtrOutput)
+}
+
+// Max configurable executors. If maxExecutorsCount > executorsCount, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. [Default=1000]
+func (o TaskNotebookInfrastructureSpecBatchOutput) MaxExecutorsCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TaskNotebookInfrastructureSpecBatch) *int { return v.MaxExecutorsCount }).(pulumi.IntPtrOutput)
+}
+
+type TaskNotebookInfrastructureSpecBatchPtrOutput struct{ *pulumi.OutputState }
+
+func (TaskNotebookInfrastructureSpecBatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskNotebookInfrastructureSpecBatch)(nil)).Elem()
+}
+
+func (o TaskNotebookInfrastructureSpecBatchPtrOutput) ToTaskNotebookInfrastructureSpecBatchPtrOutput() TaskNotebookInfrastructureSpecBatchPtrOutput {
+	return o
+}
+
+func (o TaskNotebookInfrastructureSpecBatchPtrOutput) ToTaskNotebookInfrastructureSpecBatchPtrOutputWithContext(ctx context.Context) TaskNotebookInfrastructureSpecBatchPtrOutput {
+	return o
+}
+
+func (o TaskNotebookInfrastructureSpecBatchPtrOutput) Elem() TaskNotebookInfrastructureSpecBatchOutput {
+	return o.ApplyT(func(v *TaskNotebookInfrastructureSpecBatch) TaskNotebookInfrastructureSpecBatch {
+		if v != nil {
+			return *v
+		}
+		var ret TaskNotebookInfrastructureSpecBatch
+		return ret
+	}).(TaskNotebookInfrastructureSpecBatchOutput)
+}
+
+// Total number of job executors. Executor Count should be between 2 and 100. [Default=2]
+func (o TaskNotebookInfrastructureSpecBatchPtrOutput) ExecutorsCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TaskNotebookInfrastructureSpecBatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ExecutorsCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Max configurable executors. If maxExecutorsCount > executorsCount, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. [Default=1000]
+func (o TaskNotebookInfrastructureSpecBatchPtrOutput) MaxExecutorsCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TaskNotebookInfrastructureSpecBatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxExecutorsCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type TaskNotebookInfrastructureSpecContainerImage struct {
+	// Container image to use.
+	Image *string `pulumi:"image"`
+	// A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
+	JavaJars []string `pulumi:"javaJars"`
+	// Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties.
+	Properties map[string]string `pulumi:"properties"`
+	// A list of python packages to be installed. Valid formats include Cloud Storage URI to a PIP installable library. For example, gs://bucket-name/my/path/to/lib.tar.gz
+	PythonPackages []string `pulumi:"pythonPackages"`
+}
+
+// TaskNotebookInfrastructureSpecContainerImageInput is an input type that accepts TaskNotebookInfrastructureSpecContainerImageArgs and TaskNotebookInfrastructureSpecContainerImageOutput values.
+// You can construct a concrete instance of `TaskNotebookInfrastructureSpecContainerImageInput` via:
+//
+//	TaskNotebookInfrastructureSpecContainerImageArgs{...}
+type TaskNotebookInfrastructureSpecContainerImageInput interface {
+	pulumi.Input
+
+	ToTaskNotebookInfrastructureSpecContainerImageOutput() TaskNotebookInfrastructureSpecContainerImageOutput
+	ToTaskNotebookInfrastructureSpecContainerImageOutputWithContext(context.Context) TaskNotebookInfrastructureSpecContainerImageOutput
+}
+
+type TaskNotebookInfrastructureSpecContainerImageArgs struct {
+	// Container image to use.
+	Image pulumi.StringPtrInput `pulumi:"image"`
+	// A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
+	JavaJars pulumi.StringArrayInput `pulumi:"javaJars"`
+	// Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// A list of python packages to be installed. Valid formats include Cloud Storage URI to a PIP installable library. For example, gs://bucket-name/my/path/to/lib.tar.gz
+	PythonPackages pulumi.StringArrayInput `pulumi:"pythonPackages"`
+}
+
+func (TaskNotebookInfrastructureSpecContainerImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskNotebookInfrastructureSpecContainerImage)(nil)).Elem()
+}
+
+func (i TaskNotebookInfrastructureSpecContainerImageArgs) ToTaskNotebookInfrastructureSpecContainerImageOutput() TaskNotebookInfrastructureSpecContainerImageOutput {
+	return i.ToTaskNotebookInfrastructureSpecContainerImageOutputWithContext(context.Background())
+}
+
+func (i TaskNotebookInfrastructureSpecContainerImageArgs) ToTaskNotebookInfrastructureSpecContainerImageOutputWithContext(ctx context.Context) TaskNotebookInfrastructureSpecContainerImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskNotebookInfrastructureSpecContainerImageOutput)
+}
+
+func (i TaskNotebookInfrastructureSpecContainerImageArgs) ToTaskNotebookInfrastructureSpecContainerImagePtrOutput() TaskNotebookInfrastructureSpecContainerImagePtrOutput {
+	return i.ToTaskNotebookInfrastructureSpecContainerImagePtrOutputWithContext(context.Background())
+}
+
+func (i TaskNotebookInfrastructureSpecContainerImageArgs) ToTaskNotebookInfrastructureSpecContainerImagePtrOutputWithContext(ctx context.Context) TaskNotebookInfrastructureSpecContainerImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskNotebookInfrastructureSpecContainerImageOutput).ToTaskNotebookInfrastructureSpecContainerImagePtrOutputWithContext(ctx)
+}
+
+// TaskNotebookInfrastructureSpecContainerImagePtrInput is an input type that accepts TaskNotebookInfrastructureSpecContainerImageArgs, TaskNotebookInfrastructureSpecContainerImagePtr and TaskNotebookInfrastructureSpecContainerImagePtrOutput values.
+// You can construct a concrete instance of `TaskNotebookInfrastructureSpecContainerImagePtrInput` via:
+//
+//	        TaskNotebookInfrastructureSpecContainerImageArgs{...}
+//
+//	or:
+//
+//	        nil
+type TaskNotebookInfrastructureSpecContainerImagePtrInput interface {
+	pulumi.Input
+
+	ToTaskNotebookInfrastructureSpecContainerImagePtrOutput() TaskNotebookInfrastructureSpecContainerImagePtrOutput
+	ToTaskNotebookInfrastructureSpecContainerImagePtrOutputWithContext(context.Context) TaskNotebookInfrastructureSpecContainerImagePtrOutput
+}
+
+type taskNotebookInfrastructureSpecContainerImagePtrType TaskNotebookInfrastructureSpecContainerImageArgs
+
+func TaskNotebookInfrastructureSpecContainerImagePtr(v *TaskNotebookInfrastructureSpecContainerImageArgs) TaskNotebookInfrastructureSpecContainerImagePtrInput {
+	return (*taskNotebookInfrastructureSpecContainerImagePtrType)(v)
+}
+
+func (*taskNotebookInfrastructureSpecContainerImagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskNotebookInfrastructureSpecContainerImage)(nil)).Elem()
+}
+
+func (i *taskNotebookInfrastructureSpecContainerImagePtrType) ToTaskNotebookInfrastructureSpecContainerImagePtrOutput() TaskNotebookInfrastructureSpecContainerImagePtrOutput {
+	return i.ToTaskNotebookInfrastructureSpecContainerImagePtrOutputWithContext(context.Background())
+}
+
+func (i *taskNotebookInfrastructureSpecContainerImagePtrType) ToTaskNotebookInfrastructureSpecContainerImagePtrOutputWithContext(ctx context.Context) TaskNotebookInfrastructureSpecContainerImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskNotebookInfrastructureSpecContainerImagePtrOutput)
+}
+
+type TaskNotebookInfrastructureSpecContainerImageOutput struct{ *pulumi.OutputState }
+
+func (TaskNotebookInfrastructureSpecContainerImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskNotebookInfrastructureSpecContainerImage)(nil)).Elem()
+}
+
+func (o TaskNotebookInfrastructureSpecContainerImageOutput) ToTaskNotebookInfrastructureSpecContainerImageOutput() TaskNotebookInfrastructureSpecContainerImageOutput {
+	return o
+}
+
+func (o TaskNotebookInfrastructureSpecContainerImageOutput) ToTaskNotebookInfrastructureSpecContainerImageOutputWithContext(ctx context.Context) TaskNotebookInfrastructureSpecContainerImageOutput {
+	return o
+}
+
+func (o TaskNotebookInfrastructureSpecContainerImageOutput) ToTaskNotebookInfrastructureSpecContainerImagePtrOutput() TaskNotebookInfrastructureSpecContainerImagePtrOutput {
+	return o.ToTaskNotebookInfrastructureSpecContainerImagePtrOutputWithContext(context.Background())
+}
+
+func (o TaskNotebookInfrastructureSpecContainerImageOutput) ToTaskNotebookInfrastructureSpecContainerImagePtrOutputWithContext(ctx context.Context) TaskNotebookInfrastructureSpecContainerImagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskNotebookInfrastructureSpecContainerImage) *TaskNotebookInfrastructureSpecContainerImage {
+		return &v
+	}).(TaskNotebookInfrastructureSpecContainerImagePtrOutput)
+}
+
+// Container image to use.
+func (o TaskNotebookInfrastructureSpecContainerImageOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskNotebookInfrastructureSpecContainerImage) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
+func (o TaskNotebookInfrastructureSpecContainerImageOutput) JavaJars() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TaskNotebookInfrastructureSpecContainerImage) []string { return v.JavaJars }).(pulumi.StringArrayOutput)
+}
+
+// Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties.
+func (o TaskNotebookInfrastructureSpecContainerImageOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TaskNotebookInfrastructureSpecContainerImage) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// A list of python packages to be installed. Valid formats include Cloud Storage URI to a PIP installable library. For example, gs://bucket-name/my/path/to/lib.tar.gz
+func (o TaskNotebookInfrastructureSpecContainerImageOutput) PythonPackages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TaskNotebookInfrastructureSpecContainerImage) []string { return v.PythonPackages }).(pulumi.StringArrayOutput)
+}
+
+type TaskNotebookInfrastructureSpecContainerImagePtrOutput struct{ *pulumi.OutputState }
+
+func (TaskNotebookInfrastructureSpecContainerImagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskNotebookInfrastructureSpecContainerImage)(nil)).Elem()
+}
+
+func (o TaskNotebookInfrastructureSpecContainerImagePtrOutput) ToTaskNotebookInfrastructureSpecContainerImagePtrOutput() TaskNotebookInfrastructureSpecContainerImagePtrOutput {
+	return o
+}
+
+func (o TaskNotebookInfrastructureSpecContainerImagePtrOutput) ToTaskNotebookInfrastructureSpecContainerImagePtrOutputWithContext(ctx context.Context) TaskNotebookInfrastructureSpecContainerImagePtrOutput {
+	return o
+}
+
+func (o TaskNotebookInfrastructureSpecContainerImagePtrOutput) Elem() TaskNotebookInfrastructureSpecContainerImageOutput {
+	return o.ApplyT(func(v *TaskNotebookInfrastructureSpecContainerImage) TaskNotebookInfrastructureSpecContainerImage {
+		if v != nil {
+			return *v
+		}
+		var ret TaskNotebookInfrastructureSpecContainerImage
+		return ret
+	}).(TaskNotebookInfrastructureSpecContainerImageOutput)
+}
+
+// Container image to use.
+func (o TaskNotebookInfrastructureSpecContainerImagePtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskNotebookInfrastructureSpecContainerImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
+func (o TaskNotebookInfrastructureSpecContainerImagePtrOutput) JavaJars() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TaskNotebookInfrastructureSpecContainerImage) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JavaJars
+	}).(pulumi.StringArrayOutput)
+}
+
+// Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties.
+func (o TaskNotebookInfrastructureSpecContainerImagePtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TaskNotebookInfrastructureSpecContainerImage) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// A list of python packages to be installed. Valid formats include Cloud Storage URI to a PIP installable library. For example, gs://bucket-name/my/path/to/lib.tar.gz
+func (o TaskNotebookInfrastructureSpecContainerImagePtrOutput) PythonPackages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TaskNotebookInfrastructureSpecContainerImage) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PythonPackages
+	}).(pulumi.StringArrayOutput)
+}
+
+type TaskNotebookInfrastructureSpecVpcNetwork struct {
+	// The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used.
+	Network *string `pulumi:"network"`
+	// List of network tags to apply to the job.
+	NetworkTags []string `pulumi:"networkTags"`
+	// The Cloud VPC sub-network in which the job is run.
+	SubNetwork *string `pulumi:"subNetwork"`
+}
+
+// TaskNotebookInfrastructureSpecVpcNetworkInput is an input type that accepts TaskNotebookInfrastructureSpecVpcNetworkArgs and TaskNotebookInfrastructureSpecVpcNetworkOutput values.
+// You can construct a concrete instance of `TaskNotebookInfrastructureSpecVpcNetworkInput` via:
+//
+//	TaskNotebookInfrastructureSpecVpcNetworkArgs{...}
+type TaskNotebookInfrastructureSpecVpcNetworkInput interface {
+	pulumi.Input
+
+	ToTaskNotebookInfrastructureSpecVpcNetworkOutput() TaskNotebookInfrastructureSpecVpcNetworkOutput
+	ToTaskNotebookInfrastructureSpecVpcNetworkOutputWithContext(context.Context) TaskNotebookInfrastructureSpecVpcNetworkOutput
+}
+
+type TaskNotebookInfrastructureSpecVpcNetworkArgs struct {
+	// The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// List of network tags to apply to the job.
+	NetworkTags pulumi.StringArrayInput `pulumi:"networkTags"`
+	// The Cloud VPC sub-network in which the job is run.
+	SubNetwork pulumi.StringPtrInput `pulumi:"subNetwork"`
+}
+
+func (TaskNotebookInfrastructureSpecVpcNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskNotebookInfrastructureSpecVpcNetwork)(nil)).Elem()
+}
+
+func (i TaskNotebookInfrastructureSpecVpcNetworkArgs) ToTaskNotebookInfrastructureSpecVpcNetworkOutput() TaskNotebookInfrastructureSpecVpcNetworkOutput {
+	return i.ToTaskNotebookInfrastructureSpecVpcNetworkOutputWithContext(context.Background())
+}
+
+func (i TaskNotebookInfrastructureSpecVpcNetworkArgs) ToTaskNotebookInfrastructureSpecVpcNetworkOutputWithContext(ctx context.Context) TaskNotebookInfrastructureSpecVpcNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskNotebookInfrastructureSpecVpcNetworkOutput)
+}
+
+func (i TaskNotebookInfrastructureSpecVpcNetworkArgs) ToTaskNotebookInfrastructureSpecVpcNetworkPtrOutput() TaskNotebookInfrastructureSpecVpcNetworkPtrOutput {
+	return i.ToTaskNotebookInfrastructureSpecVpcNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i TaskNotebookInfrastructureSpecVpcNetworkArgs) ToTaskNotebookInfrastructureSpecVpcNetworkPtrOutputWithContext(ctx context.Context) TaskNotebookInfrastructureSpecVpcNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskNotebookInfrastructureSpecVpcNetworkOutput).ToTaskNotebookInfrastructureSpecVpcNetworkPtrOutputWithContext(ctx)
+}
+
+// TaskNotebookInfrastructureSpecVpcNetworkPtrInput is an input type that accepts TaskNotebookInfrastructureSpecVpcNetworkArgs, TaskNotebookInfrastructureSpecVpcNetworkPtr and TaskNotebookInfrastructureSpecVpcNetworkPtrOutput values.
+// You can construct a concrete instance of `TaskNotebookInfrastructureSpecVpcNetworkPtrInput` via:
+//
+//	        TaskNotebookInfrastructureSpecVpcNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type TaskNotebookInfrastructureSpecVpcNetworkPtrInput interface {
+	pulumi.Input
+
+	ToTaskNotebookInfrastructureSpecVpcNetworkPtrOutput() TaskNotebookInfrastructureSpecVpcNetworkPtrOutput
+	ToTaskNotebookInfrastructureSpecVpcNetworkPtrOutputWithContext(context.Context) TaskNotebookInfrastructureSpecVpcNetworkPtrOutput
+}
+
+type taskNotebookInfrastructureSpecVpcNetworkPtrType TaskNotebookInfrastructureSpecVpcNetworkArgs
+
+func TaskNotebookInfrastructureSpecVpcNetworkPtr(v *TaskNotebookInfrastructureSpecVpcNetworkArgs) TaskNotebookInfrastructureSpecVpcNetworkPtrInput {
+	return (*taskNotebookInfrastructureSpecVpcNetworkPtrType)(v)
+}
+
+func (*taskNotebookInfrastructureSpecVpcNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskNotebookInfrastructureSpecVpcNetwork)(nil)).Elem()
+}
+
+func (i *taskNotebookInfrastructureSpecVpcNetworkPtrType) ToTaskNotebookInfrastructureSpecVpcNetworkPtrOutput() TaskNotebookInfrastructureSpecVpcNetworkPtrOutput {
+	return i.ToTaskNotebookInfrastructureSpecVpcNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *taskNotebookInfrastructureSpecVpcNetworkPtrType) ToTaskNotebookInfrastructureSpecVpcNetworkPtrOutputWithContext(ctx context.Context) TaskNotebookInfrastructureSpecVpcNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskNotebookInfrastructureSpecVpcNetworkPtrOutput)
+}
+
+type TaskNotebookInfrastructureSpecVpcNetworkOutput struct{ *pulumi.OutputState }
+
+func (TaskNotebookInfrastructureSpecVpcNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskNotebookInfrastructureSpecVpcNetwork)(nil)).Elem()
+}
+
+func (o TaskNotebookInfrastructureSpecVpcNetworkOutput) ToTaskNotebookInfrastructureSpecVpcNetworkOutput() TaskNotebookInfrastructureSpecVpcNetworkOutput {
+	return o
+}
+
+func (o TaskNotebookInfrastructureSpecVpcNetworkOutput) ToTaskNotebookInfrastructureSpecVpcNetworkOutputWithContext(ctx context.Context) TaskNotebookInfrastructureSpecVpcNetworkOutput {
+	return o
+}
+
+func (o TaskNotebookInfrastructureSpecVpcNetworkOutput) ToTaskNotebookInfrastructureSpecVpcNetworkPtrOutput() TaskNotebookInfrastructureSpecVpcNetworkPtrOutput {
+	return o.ToTaskNotebookInfrastructureSpecVpcNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o TaskNotebookInfrastructureSpecVpcNetworkOutput) ToTaskNotebookInfrastructureSpecVpcNetworkPtrOutputWithContext(ctx context.Context) TaskNotebookInfrastructureSpecVpcNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskNotebookInfrastructureSpecVpcNetwork) *TaskNotebookInfrastructureSpecVpcNetwork {
+		return &v
+	}).(TaskNotebookInfrastructureSpecVpcNetworkPtrOutput)
+}
+
+// The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used.
+func (o TaskNotebookInfrastructureSpecVpcNetworkOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskNotebookInfrastructureSpecVpcNetwork) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// List of network tags to apply to the job.
+func (o TaskNotebookInfrastructureSpecVpcNetworkOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TaskNotebookInfrastructureSpecVpcNetwork) []string { return v.NetworkTags }).(pulumi.StringArrayOutput)
+}
+
+// The Cloud VPC sub-network in which the job is run.
+func (o TaskNotebookInfrastructureSpecVpcNetworkOutput) SubNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskNotebookInfrastructureSpecVpcNetwork) *string { return v.SubNetwork }).(pulumi.StringPtrOutput)
+}
+
+type TaskNotebookInfrastructureSpecVpcNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (TaskNotebookInfrastructureSpecVpcNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskNotebookInfrastructureSpecVpcNetwork)(nil)).Elem()
+}
+
+func (o TaskNotebookInfrastructureSpecVpcNetworkPtrOutput) ToTaskNotebookInfrastructureSpecVpcNetworkPtrOutput() TaskNotebookInfrastructureSpecVpcNetworkPtrOutput {
+	return o
+}
+
+func (o TaskNotebookInfrastructureSpecVpcNetworkPtrOutput) ToTaskNotebookInfrastructureSpecVpcNetworkPtrOutputWithContext(ctx context.Context) TaskNotebookInfrastructureSpecVpcNetworkPtrOutput {
+	return o
+}
+
+func (o TaskNotebookInfrastructureSpecVpcNetworkPtrOutput) Elem() TaskNotebookInfrastructureSpecVpcNetworkOutput {
+	return o.ApplyT(func(v *TaskNotebookInfrastructureSpecVpcNetwork) TaskNotebookInfrastructureSpecVpcNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret TaskNotebookInfrastructureSpecVpcNetwork
+		return ret
+	}).(TaskNotebookInfrastructureSpecVpcNetworkOutput)
+}
+
+// The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used.
+func (o TaskNotebookInfrastructureSpecVpcNetworkPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskNotebookInfrastructureSpecVpcNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of network tags to apply to the job.
+func (o TaskNotebookInfrastructureSpecVpcNetworkPtrOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TaskNotebookInfrastructureSpecVpcNetwork) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkTags
+	}).(pulumi.StringArrayOutput)
+}
+
+// The Cloud VPC sub-network in which the job is run.
+func (o TaskNotebookInfrastructureSpecVpcNetworkPtrOutput) SubNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskNotebookInfrastructureSpecVpcNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubNetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+type TaskSpark struct {
+	// Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris []string `pulumi:"archiveUris"`
+	// Cloud Storage URIs of files to be placed in the working directory of each executor.
+	FileUris []string `pulumi:"fileUris"`
+	// Infrastructure specification for the execution.
+	// Structure is documented below.
+	InfrastructureSpec *TaskSparkInfrastructureSpec `pulumi:"infrastructureSpec"`
+	// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris. The execution args are passed in as a sequence of named process arguments (--key=value).
+	MainClass *string `pulumi:"mainClass"`
+	// The Cloud Storage URI of the jar file that contains the main class. The execution args are passed in as a sequence of named process arguments (--key=value).
+	MainJarFileUri *string `pulumi:"mainJarFileUri"`
+	// The Gcloud Storage URI of the main Python file to use as the driver. Must be a .py file. The execution args are passed in as a sequence of named process arguments (--key=value).
+	PythonScriptFile *string `pulumi:"pythonScriptFile"`
+	// The query text. The execution args are used to declare a set of script variables (set key='value';).
+	SqlScript *string `pulumi:"sqlScript"`
+	// A reference to a query file. This can be the Cloud Storage URI of the query file or it can the path to a SqlScript Content. The execution args are used to declare a set of script variables (set key='value';).
+	SqlScriptFile *string `pulumi:"sqlScriptFile"`
+}
+
+// TaskSparkInput is an input type that accepts TaskSparkArgs and TaskSparkOutput values.
+// You can construct a concrete instance of `TaskSparkInput` via:
+//
+//	TaskSparkArgs{...}
+type TaskSparkInput interface {
+	pulumi.Input
+
+	ToTaskSparkOutput() TaskSparkOutput
+	ToTaskSparkOutputWithContext(context.Context) TaskSparkOutput
+}
+
+type TaskSparkArgs struct {
+	// Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris pulumi.StringArrayInput `pulumi:"archiveUris"`
+	// Cloud Storage URIs of files to be placed in the working directory of each executor.
+	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
+	// Infrastructure specification for the execution.
+	// Structure is documented below.
+	InfrastructureSpec TaskSparkInfrastructureSpecPtrInput `pulumi:"infrastructureSpec"`
+	// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris. The execution args are passed in as a sequence of named process arguments (--key=value).
+	MainClass pulumi.StringPtrInput `pulumi:"mainClass"`
+	// The Cloud Storage URI of the jar file that contains the main class. The execution args are passed in as a sequence of named process arguments (--key=value).
+	MainJarFileUri pulumi.StringPtrInput `pulumi:"mainJarFileUri"`
+	// The Gcloud Storage URI of the main Python file to use as the driver. Must be a .py file. The execution args are passed in as a sequence of named process arguments (--key=value).
+	PythonScriptFile pulumi.StringPtrInput `pulumi:"pythonScriptFile"`
+	// The query text. The execution args are used to declare a set of script variables (set key='value';).
+	SqlScript pulumi.StringPtrInput `pulumi:"sqlScript"`
+	// A reference to a query file. This can be the Cloud Storage URI of the query file or it can the path to a SqlScript Content. The execution args are used to declare a set of script variables (set key='value';).
+	SqlScriptFile pulumi.StringPtrInput `pulumi:"sqlScriptFile"`
+}
+
+func (TaskSparkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskSpark)(nil)).Elem()
+}
+
+func (i TaskSparkArgs) ToTaskSparkOutput() TaskSparkOutput {
+	return i.ToTaskSparkOutputWithContext(context.Background())
+}
+
+func (i TaskSparkArgs) ToTaskSparkOutputWithContext(ctx context.Context) TaskSparkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskSparkOutput)
+}
+
+func (i TaskSparkArgs) ToTaskSparkPtrOutput() TaskSparkPtrOutput {
+	return i.ToTaskSparkPtrOutputWithContext(context.Background())
+}
+
+func (i TaskSparkArgs) ToTaskSparkPtrOutputWithContext(ctx context.Context) TaskSparkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskSparkOutput).ToTaskSparkPtrOutputWithContext(ctx)
+}
+
+// TaskSparkPtrInput is an input type that accepts TaskSparkArgs, TaskSparkPtr and TaskSparkPtrOutput values.
+// You can construct a concrete instance of `TaskSparkPtrInput` via:
+//
+//	        TaskSparkArgs{...}
+//
+//	or:
+//
+//	        nil
+type TaskSparkPtrInput interface {
+	pulumi.Input
+
+	ToTaskSparkPtrOutput() TaskSparkPtrOutput
+	ToTaskSparkPtrOutputWithContext(context.Context) TaskSparkPtrOutput
+}
+
+type taskSparkPtrType TaskSparkArgs
+
+func TaskSparkPtr(v *TaskSparkArgs) TaskSparkPtrInput {
+	return (*taskSparkPtrType)(v)
+}
+
+func (*taskSparkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskSpark)(nil)).Elem()
+}
+
+func (i *taskSparkPtrType) ToTaskSparkPtrOutput() TaskSparkPtrOutput {
+	return i.ToTaskSparkPtrOutputWithContext(context.Background())
+}
+
+func (i *taskSparkPtrType) ToTaskSparkPtrOutputWithContext(ctx context.Context) TaskSparkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskSparkPtrOutput)
+}
+
+type TaskSparkOutput struct{ *pulumi.OutputState }
+
+func (TaskSparkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskSpark)(nil)).Elem()
+}
+
+func (o TaskSparkOutput) ToTaskSparkOutput() TaskSparkOutput {
+	return o
+}
+
+func (o TaskSparkOutput) ToTaskSparkOutputWithContext(ctx context.Context) TaskSparkOutput {
+	return o
+}
+
+func (o TaskSparkOutput) ToTaskSparkPtrOutput() TaskSparkPtrOutput {
+	return o.ToTaskSparkPtrOutputWithContext(context.Background())
+}
+
+func (o TaskSparkOutput) ToTaskSparkPtrOutputWithContext(ctx context.Context) TaskSparkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskSpark) *TaskSpark {
+		return &v
+	}).(TaskSparkPtrOutput)
+}
+
+// Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o TaskSparkOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TaskSpark) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
+}
+
+// Cloud Storage URIs of files to be placed in the working directory of each executor.
+func (o TaskSparkOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TaskSpark) []string { return v.FileUris }).(pulumi.StringArrayOutput)
+}
+
+// Infrastructure specification for the execution.
+// Structure is documented below.
+func (o TaskSparkOutput) InfrastructureSpec() TaskSparkInfrastructureSpecPtrOutput {
+	return o.ApplyT(func(v TaskSpark) *TaskSparkInfrastructureSpec { return v.InfrastructureSpec }).(TaskSparkInfrastructureSpecPtrOutput)
+}
+
+// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris. The execution args are passed in as a sequence of named process arguments (--key=value).
+func (o TaskSparkOutput) MainClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskSpark) *string { return v.MainClass }).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Storage URI of the jar file that contains the main class. The execution args are passed in as a sequence of named process arguments (--key=value).
+func (o TaskSparkOutput) MainJarFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskSpark) *string { return v.MainJarFileUri }).(pulumi.StringPtrOutput)
+}
+
+// The Gcloud Storage URI of the main Python file to use as the driver. Must be a .py file. The execution args are passed in as a sequence of named process arguments (--key=value).
+func (o TaskSparkOutput) PythonScriptFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskSpark) *string { return v.PythonScriptFile }).(pulumi.StringPtrOutput)
+}
+
+// The query text. The execution args are used to declare a set of script variables (set key='value';).
+func (o TaskSparkOutput) SqlScript() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskSpark) *string { return v.SqlScript }).(pulumi.StringPtrOutput)
+}
+
+// A reference to a query file. This can be the Cloud Storage URI of the query file or it can the path to a SqlScript Content. The execution args are used to declare a set of script variables (set key='value';).
+func (o TaskSparkOutput) SqlScriptFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskSpark) *string { return v.SqlScriptFile }).(pulumi.StringPtrOutput)
+}
+
+type TaskSparkPtrOutput struct{ *pulumi.OutputState }
+
+func (TaskSparkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskSpark)(nil)).Elem()
+}
+
+func (o TaskSparkPtrOutput) ToTaskSparkPtrOutput() TaskSparkPtrOutput {
+	return o
+}
+
+func (o TaskSparkPtrOutput) ToTaskSparkPtrOutputWithContext(ctx context.Context) TaskSparkPtrOutput {
+	return o
+}
+
+func (o TaskSparkPtrOutput) Elem() TaskSparkOutput {
+	return o.ApplyT(func(v *TaskSpark) TaskSpark {
+		if v != nil {
+			return *v
+		}
+		var ret TaskSpark
+		return ret
+	}).(TaskSparkOutput)
+}
+
+// Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o TaskSparkPtrOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TaskSpark) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ArchiveUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Cloud Storage URIs of files to be placed in the working directory of each executor.
+func (o TaskSparkPtrOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TaskSpark) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Infrastructure specification for the execution.
+// Structure is documented below.
+func (o TaskSparkPtrOutput) InfrastructureSpec() TaskSparkInfrastructureSpecPtrOutput {
+	return o.ApplyT(func(v *TaskSpark) *TaskSparkInfrastructureSpec {
+		if v == nil {
+			return nil
+		}
+		return v.InfrastructureSpec
+	}).(TaskSparkInfrastructureSpecPtrOutput)
+}
+
+// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris. The execution args are passed in as a sequence of named process arguments (--key=value).
+func (o TaskSparkPtrOutput) MainClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskSpark) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MainClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Storage URI of the jar file that contains the main class. The execution args are passed in as a sequence of named process arguments (--key=value).
+func (o TaskSparkPtrOutput) MainJarFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskSpark) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MainJarFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Gcloud Storage URI of the main Python file to use as the driver. Must be a .py file. The execution args are passed in as a sequence of named process arguments (--key=value).
+func (o TaskSparkPtrOutput) PythonScriptFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskSpark) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PythonScriptFile
+	}).(pulumi.StringPtrOutput)
+}
+
+// The query text. The execution args are used to declare a set of script variables (set key='value';).
+func (o TaskSparkPtrOutput) SqlScript() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskSpark) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlScript
+	}).(pulumi.StringPtrOutput)
+}
+
+// A reference to a query file. This can be the Cloud Storage URI of the query file or it can the path to a SqlScript Content. The execution args are used to declare a set of script variables (set key='value';).
+func (o TaskSparkPtrOutput) SqlScriptFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskSpark) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlScriptFile
+	}).(pulumi.StringPtrOutput)
+}
+
+type TaskSparkInfrastructureSpec struct {
+	// Compute resources needed for a Task when using Dataproc Serverless.
+	// Structure is documented below.
+	Batch *TaskSparkInfrastructureSpecBatch `pulumi:"batch"`
+	// Container Image Runtime Configuration.
+	// Structure is documented below.
+	ContainerImage *TaskSparkInfrastructureSpecContainerImage `pulumi:"containerImage"`
+	// Vpc network.
+	// Structure is documented below.
+	VpcNetwork *TaskSparkInfrastructureSpecVpcNetwork `pulumi:"vpcNetwork"`
+}
+
+// TaskSparkInfrastructureSpecInput is an input type that accepts TaskSparkInfrastructureSpecArgs and TaskSparkInfrastructureSpecOutput values.
+// You can construct a concrete instance of `TaskSparkInfrastructureSpecInput` via:
+//
+//	TaskSparkInfrastructureSpecArgs{...}
+type TaskSparkInfrastructureSpecInput interface {
+	pulumi.Input
+
+	ToTaskSparkInfrastructureSpecOutput() TaskSparkInfrastructureSpecOutput
+	ToTaskSparkInfrastructureSpecOutputWithContext(context.Context) TaskSparkInfrastructureSpecOutput
+}
+
+type TaskSparkInfrastructureSpecArgs struct {
+	// Compute resources needed for a Task when using Dataproc Serverless.
+	// Structure is documented below.
+	Batch TaskSparkInfrastructureSpecBatchPtrInput `pulumi:"batch"`
+	// Container Image Runtime Configuration.
+	// Structure is documented below.
+	ContainerImage TaskSparkInfrastructureSpecContainerImagePtrInput `pulumi:"containerImage"`
+	// Vpc network.
+	// Structure is documented below.
+	VpcNetwork TaskSparkInfrastructureSpecVpcNetworkPtrInput `pulumi:"vpcNetwork"`
+}
+
+func (TaskSparkInfrastructureSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskSparkInfrastructureSpec)(nil)).Elem()
+}
+
+func (i TaskSparkInfrastructureSpecArgs) ToTaskSparkInfrastructureSpecOutput() TaskSparkInfrastructureSpecOutput {
+	return i.ToTaskSparkInfrastructureSpecOutputWithContext(context.Background())
+}
+
+func (i TaskSparkInfrastructureSpecArgs) ToTaskSparkInfrastructureSpecOutputWithContext(ctx context.Context) TaskSparkInfrastructureSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskSparkInfrastructureSpecOutput)
+}
+
+func (i TaskSparkInfrastructureSpecArgs) ToTaskSparkInfrastructureSpecPtrOutput() TaskSparkInfrastructureSpecPtrOutput {
+	return i.ToTaskSparkInfrastructureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i TaskSparkInfrastructureSpecArgs) ToTaskSparkInfrastructureSpecPtrOutputWithContext(ctx context.Context) TaskSparkInfrastructureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskSparkInfrastructureSpecOutput).ToTaskSparkInfrastructureSpecPtrOutputWithContext(ctx)
+}
+
+// TaskSparkInfrastructureSpecPtrInput is an input type that accepts TaskSparkInfrastructureSpecArgs, TaskSparkInfrastructureSpecPtr and TaskSparkInfrastructureSpecPtrOutput values.
+// You can construct a concrete instance of `TaskSparkInfrastructureSpecPtrInput` via:
+//
+//	        TaskSparkInfrastructureSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type TaskSparkInfrastructureSpecPtrInput interface {
+	pulumi.Input
+
+	ToTaskSparkInfrastructureSpecPtrOutput() TaskSparkInfrastructureSpecPtrOutput
+	ToTaskSparkInfrastructureSpecPtrOutputWithContext(context.Context) TaskSparkInfrastructureSpecPtrOutput
+}
+
+type taskSparkInfrastructureSpecPtrType TaskSparkInfrastructureSpecArgs
+
+func TaskSparkInfrastructureSpecPtr(v *TaskSparkInfrastructureSpecArgs) TaskSparkInfrastructureSpecPtrInput {
+	return (*taskSparkInfrastructureSpecPtrType)(v)
+}
+
+func (*taskSparkInfrastructureSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskSparkInfrastructureSpec)(nil)).Elem()
+}
+
+func (i *taskSparkInfrastructureSpecPtrType) ToTaskSparkInfrastructureSpecPtrOutput() TaskSparkInfrastructureSpecPtrOutput {
+	return i.ToTaskSparkInfrastructureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *taskSparkInfrastructureSpecPtrType) ToTaskSparkInfrastructureSpecPtrOutputWithContext(ctx context.Context) TaskSparkInfrastructureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskSparkInfrastructureSpecPtrOutput)
+}
+
+type TaskSparkInfrastructureSpecOutput struct{ *pulumi.OutputState }
+
+func (TaskSparkInfrastructureSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskSparkInfrastructureSpec)(nil)).Elem()
+}
+
+func (o TaskSparkInfrastructureSpecOutput) ToTaskSparkInfrastructureSpecOutput() TaskSparkInfrastructureSpecOutput {
+	return o
+}
+
+func (o TaskSparkInfrastructureSpecOutput) ToTaskSparkInfrastructureSpecOutputWithContext(ctx context.Context) TaskSparkInfrastructureSpecOutput {
+	return o
+}
+
+func (o TaskSparkInfrastructureSpecOutput) ToTaskSparkInfrastructureSpecPtrOutput() TaskSparkInfrastructureSpecPtrOutput {
+	return o.ToTaskSparkInfrastructureSpecPtrOutputWithContext(context.Background())
+}
+
+func (o TaskSparkInfrastructureSpecOutput) ToTaskSparkInfrastructureSpecPtrOutputWithContext(ctx context.Context) TaskSparkInfrastructureSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskSparkInfrastructureSpec) *TaskSparkInfrastructureSpec {
+		return &v
+	}).(TaskSparkInfrastructureSpecPtrOutput)
+}
+
+// Compute resources needed for a Task when using Dataproc Serverless.
+// Structure is documented below.
+func (o TaskSparkInfrastructureSpecOutput) Batch() TaskSparkInfrastructureSpecBatchPtrOutput {
+	return o.ApplyT(func(v TaskSparkInfrastructureSpec) *TaskSparkInfrastructureSpecBatch { return v.Batch }).(TaskSparkInfrastructureSpecBatchPtrOutput)
+}
+
+// Container Image Runtime Configuration.
+// Structure is documented below.
+func (o TaskSparkInfrastructureSpecOutput) ContainerImage() TaskSparkInfrastructureSpecContainerImagePtrOutput {
+	return o.ApplyT(func(v TaskSparkInfrastructureSpec) *TaskSparkInfrastructureSpecContainerImage {
+		return v.ContainerImage
+	}).(TaskSparkInfrastructureSpecContainerImagePtrOutput)
+}
+
+// Vpc network.
+// Structure is documented below.
+func (o TaskSparkInfrastructureSpecOutput) VpcNetwork() TaskSparkInfrastructureSpecVpcNetworkPtrOutput {
+	return o.ApplyT(func(v TaskSparkInfrastructureSpec) *TaskSparkInfrastructureSpecVpcNetwork { return v.VpcNetwork }).(TaskSparkInfrastructureSpecVpcNetworkPtrOutput)
+}
+
+type TaskSparkInfrastructureSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (TaskSparkInfrastructureSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskSparkInfrastructureSpec)(nil)).Elem()
+}
+
+func (o TaskSparkInfrastructureSpecPtrOutput) ToTaskSparkInfrastructureSpecPtrOutput() TaskSparkInfrastructureSpecPtrOutput {
+	return o
+}
+
+func (o TaskSparkInfrastructureSpecPtrOutput) ToTaskSparkInfrastructureSpecPtrOutputWithContext(ctx context.Context) TaskSparkInfrastructureSpecPtrOutput {
+	return o
+}
+
+func (o TaskSparkInfrastructureSpecPtrOutput) Elem() TaskSparkInfrastructureSpecOutput {
+	return o.ApplyT(func(v *TaskSparkInfrastructureSpec) TaskSparkInfrastructureSpec {
+		if v != nil {
+			return *v
+		}
+		var ret TaskSparkInfrastructureSpec
+		return ret
+	}).(TaskSparkInfrastructureSpecOutput)
+}
+
+// Compute resources needed for a Task when using Dataproc Serverless.
+// Structure is documented below.
+func (o TaskSparkInfrastructureSpecPtrOutput) Batch() TaskSparkInfrastructureSpecBatchPtrOutput {
+	return o.ApplyT(func(v *TaskSparkInfrastructureSpec) *TaskSparkInfrastructureSpecBatch {
+		if v == nil {
+			return nil
+		}
+		return v.Batch
+	}).(TaskSparkInfrastructureSpecBatchPtrOutput)
+}
+
+// Container Image Runtime Configuration.
+// Structure is documented below.
+func (o TaskSparkInfrastructureSpecPtrOutput) ContainerImage() TaskSparkInfrastructureSpecContainerImagePtrOutput {
+	return o.ApplyT(func(v *TaskSparkInfrastructureSpec) *TaskSparkInfrastructureSpecContainerImage {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerImage
+	}).(TaskSparkInfrastructureSpecContainerImagePtrOutput)
+}
+
+// Vpc network.
+// Structure is documented below.
+func (o TaskSparkInfrastructureSpecPtrOutput) VpcNetwork() TaskSparkInfrastructureSpecVpcNetworkPtrOutput {
+	return o.ApplyT(func(v *TaskSparkInfrastructureSpec) *TaskSparkInfrastructureSpecVpcNetwork {
+		if v == nil {
+			return nil
+		}
+		return v.VpcNetwork
+	}).(TaskSparkInfrastructureSpecVpcNetworkPtrOutput)
+}
+
+type TaskSparkInfrastructureSpecBatch struct {
+	// Total number of job executors. Executor Count should be between 2 and 100. [Default=2]
+	ExecutorsCount *int `pulumi:"executorsCount"`
+	// Max configurable executors. If maxExecutorsCount > executorsCount, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. [Default=1000]
+	MaxExecutorsCount *int `pulumi:"maxExecutorsCount"`
+}
+
+// TaskSparkInfrastructureSpecBatchInput is an input type that accepts TaskSparkInfrastructureSpecBatchArgs and TaskSparkInfrastructureSpecBatchOutput values.
+// You can construct a concrete instance of `TaskSparkInfrastructureSpecBatchInput` via:
+//
+//	TaskSparkInfrastructureSpecBatchArgs{...}
+type TaskSparkInfrastructureSpecBatchInput interface {
+	pulumi.Input
+
+	ToTaskSparkInfrastructureSpecBatchOutput() TaskSparkInfrastructureSpecBatchOutput
+	ToTaskSparkInfrastructureSpecBatchOutputWithContext(context.Context) TaskSparkInfrastructureSpecBatchOutput
+}
+
+type TaskSparkInfrastructureSpecBatchArgs struct {
+	// Total number of job executors. Executor Count should be between 2 and 100. [Default=2]
+	ExecutorsCount pulumi.IntPtrInput `pulumi:"executorsCount"`
+	// Max configurable executors. If maxExecutorsCount > executorsCount, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. [Default=1000]
+	MaxExecutorsCount pulumi.IntPtrInput `pulumi:"maxExecutorsCount"`
+}
+
+func (TaskSparkInfrastructureSpecBatchArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskSparkInfrastructureSpecBatch)(nil)).Elem()
+}
+
+func (i TaskSparkInfrastructureSpecBatchArgs) ToTaskSparkInfrastructureSpecBatchOutput() TaskSparkInfrastructureSpecBatchOutput {
+	return i.ToTaskSparkInfrastructureSpecBatchOutputWithContext(context.Background())
+}
+
+func (i TaskSparkInfrastructureSpecBatchArgs) ToTaskSparkInfrastructureSpecBatchOutputWithContext(ctx context.Context) TaskSparkInfrastructureSpecBatchOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskSparkInfrastructureSpecBatchOutput)
+}
+
+func (i TaskSparkInfrastructureSpecBatchArgs) ToTaskSparkInfrastructureSpecBatchPtrOutput() TaskSparkInfrastructureSpecBatchPtrOutput {
+	return i.ToTaskSparkInfrastructureSpecBatchPtrOutputWithContext(context.Background())
+}
+
+func (i TaskSparkInfrastructureSpecBatchArgs) ToTaskSparkInfrastructureSpecBatchPtrOutputWithContext(ctx context.Context) TaskSparkInfrastructureSpecBatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskSparkInfrastructureSpecBatchOutput).ToTaskSparkInfrastructureSpecBatchPtrOutputWithContext(ctx)
+}
+
+// TaskSparkInfrastructureSpecBatchPtrInput is an input type that accepts TaskSparkInfrastructureSpecBatchArgs, TaskSparkInfrastructureSpecBatchPtr and TaskSparkInfrastructureSpecBatchPtrOutput values.
+// You can construct a concrete instance of `TaskSparkInfrastructureSpecBatchPtrInput` via:
+//
+//	        TaskSparkInfrastructureSpecBatchArgs{...}
+//
+//	or:
+//
+//	        nil
+type TaskSparkInfrastructureSpecBatchPtrInput interface {
+	pulumi.Input
+
+	ToTaskSparkInfrastructureSpecBatchPtrOutput() TaskSparkInfrastructureSpecBatchPtrOutput
+	ToTaskSparkInfrastructureSpecBatchPtrOutputWithContext(context.Context) TaskSparkInfrastructureSpecBatchPtrOutput
+}
+
+type taskSparkInfrastructureSpecBatchPtrType TaskSparkInfrastructureSpecBatchArgs
+
+func TaskSparkInfrastructureSpecBatchPtr(v *TaskSparkInfrastructureSpecBatchArgs) TaskSparkInfrastructureSpecBatchPtrInput {
+	return (*taskSparkInfrastructureSpecBatchPtrType)(v)
+}
+
+func (*taskSparkInfrastructureSpecBatchPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskSparkInfrastructureSpecBatch)(nil)).Elem()
+}
+
+func (i *taskSparkInfrastructureSpecBatchPtrType) ToTaskSparkInfrastructureSpecBatchPtrOutput() TaskSparkInfrastructureSpecBatchPtrOutput {
+	return i.ToTaskSparkInfrastructureSpecBatchPtrOutputWithContext(context.Background())
+}
+
+func (i *taskSparkInfrastructureSpecBatchPtrType) ToTaskSparkInfrastructureSpecBatchPtrOutputWithContext(ctx context.Context) TaskSparkInfrastructureSpecBatchPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskSparkInfrastructureSpecBatchPtrOutput)
+}
+
+type TaskSparkInfrastructureSpecBatchOutput struct{ *pulumi.OutputState }
+
+func (TaskSparkInfrastructureSpecBatchOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskSparkInfrastructureSpecBatch)(nil)).Elem()
+}
+
+func (o TaskSparkInfrastructureSpecBatchOutput) ToTaskSparkInfrastructureSpecBatchOutput() TaskSparkInfrastructureSpecBatchOutput {
+	return o
+}
+
+func (o TaskSparkInfrastructureSpecBatchOutput) ToTaskSparkInfrastructureSpecBatchOutputWithContext(ctx context.Context) TaskSparkInfrastructureSpecBatchOutput {
+	return o
+}
+
+func (o TaskSparkInfrastructureSpecBatchOutput) ToTaskSparkInfrastructureSpecBatchPtrOutput() TaskSparkInfrastructureSpecBatchPtrOutput {
+	return o.ToTaskSparkInfrastructureSpecBatchPtrOutputWithContext(context.Background())
+}
+
+func (o TaskSparkInfrastructureSpecBatchOutput) ToTaskSparkInfrastructureSpecBatchPtrOutputWithContext(ctx context.Context) TaskSparkInfrastructureSpecBatchPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskSparkInfrastructureSpecBatch) *TaskSparkInfrastructureSpecBatch {
+		return &v
+	}).(TaskSparkInfrastructureSpecBatchPtrOutput)
+}
+
+// Total number of job executors. Executor Count should be between 2 and 100. [Default=2]
+func (o TaskSparkInfrastructureSpecBatchOutput) ExecutorsCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TaskSparkInfrastructureSpecBatch) *int { return v.ExecutorsCount }).(pulumi.IntPtrOutput)
+}
+
+// Max configurable executors. If maxExecutorsCount > executorsCount, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. [Default=1000]
+func (o TaskSparkInfrastructureSpecBatchOutput) MaxExecutorsCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TaskSparkInfrastructureSpecBatch) *int { return v.MaxExecutorsCount }).(pulumi.IntPtrOutput)
+}
+
+type TaskSparkInfrastructureSpecBatchPtrOutput struct{ *pulumi.OutputState }
+
+func (TaskSparkInfrastructureSpecBatchPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskSparkInfrastructureSpecBatch)(nil)).Elem()
+}
+
+func (o TaskSparkInfrastructureSpecBatchPtrOutput) ToTaskSparkInfrastructureSpecBatchPtrOutput() TaskSparkInfrastructureSpecBatchPtrOutput {
+	return o
+}
+
+func (o TaskSparkInfrastructureSpecBatchPtrOutput) ToTaskSparkInfrastructureSpecBatchPtrOutputWithContext(ctx context.Context) TaskSparkInfrastructureSpecBatchPtrOutput {
+	return o
+}
+
+func (o TaskSparkInfrastructureSpecBatchPtrOutput) Elem() TaskSparkInfrastructureSpecBatchOutput {
+	return o.ApplyT(func(v *TaskSparkInfrastructureSpecBatch) TaskSparkInfrastructureSpecBatch {
+		if v != nil {
+			return *v
+		}
+		var ret TaskSparkInfrastructureSpecBatch
+		return ret
+	}).(TaskSparkInfrastructureSpecBatchOutput)
+}
+
+// Total number of job executors. Executor Count should be between 2 and 100. [Default=2]
+func (o TaskSparkInfrastructureSpecBatchPtrOutput) ExecutorsCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TaskSparkInfrastructureSpecBatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ExecutorsCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Max configurable executors. If maxExecutorsCount > executorsCount, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. [Default=1000]
+func (o TaskSparkInfrastructureSpecBatchPtrOutput) MaxExecutorsCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TaskSparkInfrastructureSpecBatch) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxExecutorsCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type TaskSparkInfrastructureSpecContainerImage struct {
+	// Container image to use.
+	Image *string `pulumi:"image"`
+	// A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
+	JavaJars []string `pulumi:"javaJars"`
+	// Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties.
+	Properties map[string]string `pulumi:"properties"`
+	// A list of python packages to be installed. Valid formats include Cloud Storage URI to a PIP installable library. For example, gs://bucket-name/my/path/to/lib.tar.gz
+	PythonPackages []string `pulumi:"pythonPackages"`
+}
+
+// TaskSparkInfrastructureSpecContainerImageInput is an input type that accepts TaskSparkInfrastructureSpecContainerImageArgs and TaskSparkInfrastructureSpecContainerImageOutput values.
+// You can construct a concrete instance of `TaskSparkInfrastructureSpecContainerImageInput` via:
+//
+//	TaskSparkInfrastructureSpecContainerImageArgs{...}
+type TaskSparkInfrastructureSpecContainerImageInput interface {
+	pulumi.Input
+
+	ToTaskSparkInfrastructureSpecContainerImageOutput() TaskSparkInfrastructureSpecContainerImageOutput
+	ToTaskSparkInfrastructureSpecContainerImageOutputWithContext(context.Context) TaskSparkInfrastructureSpecContainerImageOutput
+}
+
+type TaskSparkInfrastructureSpecContainerImageArgs struct {
+	// Container image to use.
+	Image pulumi.StringPtrInput `pulumi:"image"`
+	// A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
+	JavaJars pulumi.StringArrayInput `pulumi:"javaJars"`
+	// Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// A list of python packages to be installed. Valid formats include Cloud Storage URI to a PIP installable library. For example, gs://bucket-name/my/path/to/lib.tar.gz
+	PythonPackages pulumi.StringArrayInput `pulumi:"pythonPackages"`
+}
+
+func (TaskSparkInfrastructureSpecContainerImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskSparkInfrastructureSpecContainerImage)(nil)).Elem()
+}
+
+func (i TaskSparkInfrastructureSpecContainerImageArgs) ToTaskSparkInfrastructureSpecContainerImageOutput() TaskSparkInfrastructureSpecContainerImageOutput {
+	return i.ToTaskSparkInfrastructureSpecContainerImageOutputWithContext(context.Background())
+}
+
+func (i TaskSparkInfrastructureSpecContainerImageArgs) ToTaskSparkInfrastructureSpecContainerImageOutputWithContext(ctx context.Context) TaskSparkInfrastructureSpecContainerImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskSparkInfrastructureSpecContainerImageOutput)
+}
+
+func (i TaskSparkInfrastructureSpecContainerImageArgs) ToTaskSparkInfrastructureSpecContainerImagePtrOutput() TaskSparkInfrastructureSpecContainerImagePtrOutput {
+	return i.ToTaskSparkInfrastructureSpecContainerImagePtrOutputWithContext(context.Background())
+}
+
+func (i TaskSparkInfrastructureSpecContainerImageArgs) ToTaskSparkInfrastructureSpecContainerImagePtrOutputWithContext(ctx context.Context) TaskSparkInfrastructureSpecContainerImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskSparkInfrastructureSpecContainerImageOutput).ToTaskSparkInfrastructureSpecContainerImagePtrOutputWithContext(ctx)
+}
+
+// TaskSparkInfrastructureSpecContainerImagePtrInput is an input type that accepts TaskSparkInfrastructureSpecContainerImageArgs, TaskSparkInfrastructureSpecContainerImagePtr and TaskSparkInfrastructureSpecContainerImagePtrOutput values.
+// You can construct a concrete instance of `TaskSparkInfrastructureSpecContainerImagePtrInput` via:
+//
+//	        TaskSparkInfrastructureSpecContainerImageArgs{...}
+//
+//	or:
+//
+//	        nil
+type TaskSparkInfrastructureSpecContainerImagePtrInput interface {
+	pulumi.Input
+
+	ToTaskSparkInfrastructureSpecContainerImagePtrOutput() TaskSparkInfrastructureSpecContainerImagePtrOutput
+	ToTaskSparkInfrastructureSpecContainerImagePtrOutputWithContext(context.Context) TaskSparkInfrastructureSpecContainerImagePtrOutput
+}
+
+type taskSparkInfrastructureSpecContainerImagePtrType TaskSparkInfrastructureSpecContainerImageArgs
+
+func TaskSparkInfrastructureSpecContainerImagePtr(v *TaskSparkInfrastructureSpecContainerImageArgs) TaskSparkInfrastructureSpecContainerImagePtrInput {
+	return (*taskSparkInfrastructureSpecContainerImagePtrType)(v)
+}
+
+func (*taskSparkInfrastructureSpecContainerImagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskSparkInfrastructureSpecContainerImage)(nil)).Elem()
+}
+
+func (i *taskSparkInfrastructureSpecContainerImagePtrType) ToTaskSparkInfrastructureSpecContainerImagePtrOutput() TaskSparkInfrastructureSpecContainerImagePtrOutput {
+	return i.ToTaskSparkInfrastructureSpecContainerImagePtrOutputWithContext(context.Background())
+}
+
+func (i *taskSparkInfrastructureSpecContainerImagePtrType) ToTaskSparkInfrastructureSpecContainerImagePtrOutputWithContext(ctx context.Context) TaskSparkInfrastructureSpecContainerImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskSparkInfrastructureSpecContainerImagePtrOutput)
+}
+
+type TaskSparkInfrastructureSpecContainerImageOutput struct{ *pulumi.OutputState }
+
+func (TaskSparkInfrastructureSpecContainerImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskSparkInfrastructureSpecContainerImage)(nil)).Elem()
+}
+
+func (o TaskSparkInfrastructureSpecContainerImageOutput) ToTaskSparkInfrastructureSpecContainerImageOutput() TaskSparkInfrastructureSpecContainerImageOutput {
+	return o
+}
+
+func (o TaskSparkInfrastructureSpecContainerImageOutput) ToTaskSparkInfrastructureSpecContainerImageOutputWithContext(ctx context.Context) TaskSparkInfrastructureSpecContainerImageOutput {
+	return o
+}
+
+func (o TaskSparkInfrastructureSpecContainerImageOutput) ToTaskSparkInfrastructureSpecContainerImagePtrOutput() TaskSparkInfrastructureSpecContainerImagePtrOutput {
+	return o.ToTaskSparkInfrastructureSpecContainerImagePtrOutputWithContext(context.Background())
+}
+
+func (o TaskSparkInfrastructureSpecContainerImageOutput) ToTaskSparkInfrastructureSpecContainerImagePtrOutputWithContext(ctx context.Context) TaskSparkInfrastructureSpecContainerImagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskSparkInfrastructureSpecContainerImage) *TaskSparkInfrastructureSpecContainerImage {
+		return &v
+	}).(TaskSparkInfrastructureSpecContainerImagePtrOutput)
+}
+
+// Container image to use.
+func (o TaskSparkInfrastructureSpecContainerImageOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskSparkInfrastructureSpecContainerImage) *string { return v.Image }).(pulumi.StringPtrOutput)
+}
+
+// A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
+func (o TaskSparkInfrastructureSpecContainerImageOutput) JavaJars() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TaskSparkInfrastructureSpecContainerImage) []string { return v.JavaJars }).(pulumi.StringArrayOutput)
+}
+
+// Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties.
+func (o TaskSparkInfrastructureSpecContainerImageOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TaskSparkInfrastructureSpecContainerImage) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// A list of python packages to be installed. Valid formats include Cloud Storage URI to a PIP installable library. For example, gs://bucket-name/my/path/to/lib.tar.gz
+func (o TaskSparkInfrastructureSpecContainerImageOutput) PythonPackages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TaskSparkInfrastructureSpecContainerImage) []string { return v.PythonPackages }).(pulumi.StringArrayOutput)
+}
+
+type TaskSparkInfrastructureSpecContainerImagePtrOutput struct{ *pulumi.OutputState }
+
+func (TaskSparkInfrastructureSpecContainerImagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskSparkInfrastructureSpecContainerImage)(nil)).Elem()
+}
+
+func (o TaskSparkInfrastructureSpecContainerImagePtrOutput) ToTaskSparkInfrastructureSpecContainerImagePtrOutput() TaskSparkInfrastructureSpecContainerImagePtrOutput {
+	return o
+}
+
+func (o TaskSparkInfrastructureSpecContainerImagePtrOutput) ToTaskSparkInfrastructureSpecContainerImagePtrOutputWithContext(ctx context.Context) TaskSparkInfrastructureSpecContainerImagePtrOutput {
+	return o
+}
+
+func (o TaskSparkInfrastructureSpecContainerImagePtrOutput) Elem() TaskSparkInfrastructureSpecContainerImageOutput {
+	return o.ApplyT(func(v *TaskSparkInfrastructureSpecContainerImage) TaskSparkInfrastructureSpecContainerImage {
+		if v != nil {
+			return *v
+		}
+		var ret TaskSparkInfrastructureSpecContainerImage
+		return ret
+	}).(TaskSparkInfrastructureSpecContainerImageOutput)
+}
+
+// Container image to use.
+func (o TaskSparkInfrastructureSpecContainerImagePtrOutput) Image() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskSparkInfrastructureSpecContainerImage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Image
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
+func (o TaskSparkInfrastructureSpecContainerImagePtrOutput) JavaJars() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TaskSparkInfrastructureSpecContainerImage) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JavaJars
+	}).(pulumi.StringArrayOutput)
+}
+
+// Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties.
+func (o TaskSparkInfrastructureSpecContainerImagePtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TaskSparkInfrastructureSpecContainerImage) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// A list of python packages to be installed. Valid formats include Cloud Storage URI to a PIP installable library. For example, gs://bucket-name/my/path/to/lib.tar.gz
+func (o TaskSparkInfrastructureSpecContainerImagePtrOutput) PythonPackages() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TaskSparkInfrastructureSpecContainerImage) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PythonPackages
+	}).(pulumi.StringArrayOutput)
+}
+
+type TaskSparkInfrastructureSpecVpcNetwork struct {
+	// The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used.
+	Network *string `pulumi:"network"`
+	// List of network tags to apply to the job.
+	NetworkTags []string `pulumi:"networkTags"`
+	// The Cloud VPC sub-network in which the job is run.
+	SubNetwork *string `pulumi:"subNetwork"`
+}
+
+// TaskSparkInfrastructureSpecVpcNetworkInput is an input type that accepts TaskSparkInfrastructureSpecVpcNetworkArgs and TaskSparkInfrastructureSpecVpcNetworkOutput values.
+// You can construct a concrete instance of `TaskSparkInfrastructureSpecVpcNetworkInput` via:
+//
+//	TaskSparkInfrastructureSpecVpcNetworkArgs{...}
+type TaskSparkInfrastructureSpecVpcNetworkInput interface {
+	pulumi.Input
+
+	ToTaskSparkInfrastructureSpecVpcNetworkOutput() TaskSparkInfrastructureSpecVpcNetworkOutput
+	ToTaskSparkInfrastructureSpecVpcNetworkOutputWithContext(context.Context) TaskSparkInfrastructureSpecVpcNetworkOutput
+}
+
+type TaskSparkInfrastructureSpecVpcNetworkArgs struct {
+	// The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// List of network tags to apply to the job.
+	NetworkTags pulumi.StringArrayInput `pulumi:"networkTags"`
+	// The Cloud VPC sub-network in which the job is run.
+	SubNetwork pulumi.StringPtrInput `pulumi:"subNetwork"`
+}
+
+func (TaskSparkInfrastructureSpecVpcNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskSparkInfrastructureSpecVpcNetwork)(nil)).Elem()
+}
+
+func (i TaskSparkInfrastructureSpecVpcNetworkArgs) ToTaskSparkInfrastructureSpecVpcNetworkOutput() TaskSparkInfrastructureSpecVpcNetworkOutput {
+	return i.ToTaskSparkInfrastructureSpecVpcNetworkOutputWithContext(context.Background())
+}
+
+func (i TaskSparkInfrastructureSpecVpcNetworkArgs) ToTaskSparkInfrastructureSpecVpcNetworkOutputWithContext(ctx context.Context) TaskSparkInfrastructureSpecVpcNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskSparkInfrastructureSpecVpcNetworkOutput)
+}
+
+func (i TaskSparkInfrastructureSpecVpcNetworkArgs) ToTaskSparkInfrastructureSpecVpcNetworkPtrOutput() TaskSparkInfrastructureSpecVpcNetworkPtrOutput {
+	return i.ToTaskSparkInfrastructureSpecVpcNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i TaskSparkInfrastructureSpecVpcNetworkArgs) ToTaskSparkInfrastructureSpecVpcNetworkPtrOutputWithContext(ctx context.Context) TaskSparkInfrastructureSpecVpcNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskSparkInfrastructureSpecVpcNetworkOutput).ToTaskSparkInfrastructureSpecVpcNetworkPtrOutputWithContext(ctx)
+}
+
+// TaskSparkInfrastructureSpecVpcNetworkPtrInput is an input type that accepts TaskSparkInfrastructureSpecVpcNetworkArgs, TaskSparkInfrastructureSpecVpcNetworkPtr and TaskSparkInfrastructureSpecVpcNetworkPtrOutput values.
+// You can construct a concrete instance of `TaskSparkInfrastructureSpecVpcNetworkPtrInput` via:
+//
+//	        TaskSparkInfrastructureSpecVpcNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type TaskSparkInfrastructureSpecVpcNetworkPtrInput interface {
+	pulumi.Input
+
+	ToTaskSparkInfrastructureSpecVpcNetworkPtrOutput() TaskSparkInfrastructureSpecVpcNetworkPtrOutput
+	ToTaskSparkInfrastructureSpecVpcNetworkPtrOutputWithContext(context.Context) TaskSparkInfrastructureSpecVpcNetworkPtrOutput
+}
+
+type taskSparkInfrastructureSpecVpcNetworkPtrType TaskSparkInfrastructureSpecVpcNetworkArgs
+
+func TaskSparkInfrastructureSpecVpcNetworkPtr(v *TaskSparkInfrastructureSpecVpcNetworkArgs) TaskSparkInfrastructureSpecVpcNetworkPtrInput {
+	return (*taskSparkInfrastructureSpecVpcNetworkPtrType)(v)
+}
+
+func (*taskSparkInfrastructureSpecVpcNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskSparkInfrastructureSpecVpcNetwork)(nil)).Elem()
+}
+
+func (i *taskSparkInfrastructureSpecVpcNetworkPtrType) ToTaskSparkInfrastructureSpecVpcNetworkPtrOutput() TaskSparkInfrastructureSpecVpcNetworkPtrOutput {
+	return i.ToTaskSparkInfrastructureSpecVpcNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *taskSparkInfrastructureSpecVpcNetworkPtrType) ToTaskSparkInfrastructureSpecVpcNetworkPtrOutputWithContext(ctx context.Context) TaskSparkInfrastructureSpecVpcNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskSparkInfrastructureSpecVpcNetworkPtrOutput)
+}
+
+type TaskSparkInfrastructureSpecVpcNetworkOutput struct{ *pulumi.OutputState }
+
+func (TaskSparkInfrastructureSpecVpcNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskSparkInfrastructureSpecVpcNetwork)(nil)).Elem()
+}
+
+func (o TaskSparkInfrastructureSpecVpcNetworkOutput) ToTaskSparkInfrastructureSpecVpcNetworkOutput() TaskSparkInfrastructureSpecVpcNetworkOutput {
+	return o
+}
+
+func (o TaskSparkInfrastructureSpecVpcNetworkOutput) ToTaskSparkInfrastructureSpecVpcNetworkOutputWithContext(ctx context.Context) TaskSparkInfrastructureSpecVpcNetworkOutput {
+	return o
+}
+
+func (o TaskSparkInfrastructureSpecVpcNetworkOutput) ToTaskSparkInfrastructureSpecVpcNetworkPtrOutput() TaskSparkInfrastructureSpecVpcNetworkPtrOutput {
+	return o.ToTaskSparkInfrastructureSpecVpcNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o TaskSparkInfrastructureSpecVpcNetworkOutput) ToTaskSparkInfrastructureSpecVpcNetworkPtrOutputWithContext(ctx context.Context) TaskSparkInfrastructureSpecVpcNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskSparkInfrastructureSpecVpcNetwork) *TaskSparkInfrastructureSpecVpcNetwork {
+		return &v
+	}).(TaskSparkInfrastructureSpecVpcNetworkPtrOutput)
+}
+
+// The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used.
+func (o TaskSparkInfrastructureSpecVpcNetworkOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskSparkInfrastructureSpecVpcNetwork) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// List of network tags to apply to the job.
+func (o TaskSparkInfrastructureSpecVpcNetworkOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TaskSparkInfrastructureSpecVpcNetwork) []string { return v.NetworkTags }).(pulumi.StringArrayOutput)
+}
+
+// The Cloud VPC sub-network in which the job is run.
+func (o TaskSparkInfrastructureSpecVpcNetworkOutput) SubNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskSparkInfrastructureSpecVpcNetwork) *string { return v.SubNetwork }).(pulumi.StringPtrOutput)
+}
+
+type TaskSparkInfrastructureSpecVpcNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (TaskSparkInfrastructureSpecVpcNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskSparkInfrastructureSpecVpcNetwork)(nil)).Elem()
+}
+
+func (o TaskSparkInfrastructureSpecVpcNetworkPtrOutput) ToTaskSparkInfrastructureSpecVpcNetworkPtrOutput() TaskSparkInfrastructureSpecVpcNetworkPtrOutput {
+	return o
+}
+
+func (o TaskSparkInfrastructureSpecVpcNetworkPtrOutput) ToTaskSparkInfrastructureSpecVpcNetworkPtrOutputWithContext(ctx context.Context) TaskSparkInfrastructureSpecVpcNetworkPtrOutput {
+	return o
+}
+
+func (o TaskSparkInfrastructureSpecVpcNetworkPtrOutput) Elem() TaskSparkInfrastructureSpecVpcNetworkOutput {
+	return o.ApplyT(func(v *TaskSparkInfrastructureSpecVpcNetwork) TaskSparkInfrastructureSpecVpcNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret TaskSparkInfrastructureSpecVpcNetwork
+		return ret
+	}).(TaskSparkInfrastructureSpecVpcNetworkOutput)
+}
+
+// The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used.
+func (o TaskSparkInfrastructureSpecVpcNetworkPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskSparkInfrastructureSpecVpcNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of network tags to apply to the job.
+func (o TaskSparkInfrastructureSpecVpcNetworkPtrOutput) NetworkTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TaskSparkInfrastructureSpecVpcNetwork) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkTags
+	}).(pulumi.StringArrayOutput)
+}
+
+// The Cloud VPC sub-network in which the job is run.
+func (o TaskSparkInfrastructureSpecVpcNetworkPtrOutput) SubNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskSparkInfrastructureSpecVpcNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubNetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+type TaskTriggerSpec struct {
+	// Prevent the task from executing. This does not cancel already running tasks. It is intended to temporarily disable RECURRING tasks.
+	Disabled *bool `pulumi:"disabled"`
+	// Number of retry attempts before aborting. Set to zero to never attempt to retry a failed task.
+	MaxRetries *int `pulumi:"maxRetries"`
+	// Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
+	Schedule *string `pulumi:"schedule"`
+	// The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
+	StartTime *string `pulumi:"startTime"`
+	// Trigger type of the user-specified Task
+	// Possible values are: `ON_DEMAND`, `RECURRING`.
+	Type string `pulumi:"type"`
+}
+
+// TaskTriggerSpecInput is an input type that accepts TaskTriggerSpecArgs and TaskTriggerSpecOutput values.
+// You can construct a concrete instance of `TaskTriggerSpecInput` via:
+//
+//	TaskTriggerSpecArgs{...}
+type TaskTriggerSpecInput interface {
+	pulumi.Input
+
+	ToTaskTriggerSpecOutput() TaskTriggerSpecOutput
+	ToTaskTriggerSpecOutputWithContext(context.Context) TaskTriggerSpecOutput
+}
+
+type TaskTriggerSpecArgs struct {
+	// Prevent the task from executing. This does not cancel already running tasks. It is intended to temporarily disable RECURRING tasks.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// Number of retry attempts before aborting. Set to zero to never attempt to retry a failed task.
+	MaxRetries pulumi.IntPtrInput `pulumi:"maxRetries"`
+	// Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
+	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
+	// The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// Trigger type of the user-specified Task
+	// Possible values are: `ON_DEMAND`, `RECURRING`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (TaskTriggerSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskTriggerSpec)(nil)).Elem()
+}
+
+func (i TaskTriggerSpecArgs) ToTaskTriggerSpecOutput() TaskTriggerSpecOutput {
+	return i.ToTaskTriggerSpecOutputWithContext(context.Background())
+}
+
+func (i TaskTriggerSpecArgs) ToTaskTriggerSpecOutputWithContext(ctx context.Context) TaskTriggerSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskTriggerSpecOutput)
+}
+
+func (i TaskTriggerSpecArgs) ToTaskTriggerSpecPtrOutput() TaskTriggerSpecPtrOutput {
+	return i.ToTaskTriggerSpecPtrOutputWithContext(context.Background())
+}
+
+func (i TaskTriggerSpecArgs) ToTaskTriggerSpecPtrOutputWithContext(ctx context.Context) TaskTriggerSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskTriggerSpecOutput).ToTaskTriggerSpecPtrOutputWithContext(ctx)
+}
+
+// TaskTriggerSpecPtrInput is an input type that accepts TaskTriggerSpecArgs, TaskTriggerSpecPtr and TaskTriggerSpecPtrOutput values.
+// You can construct a concrete instance of `TaskTriggerSpecPtrInput` via:
+//
+//	        TaskTriggerSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type TaskTriggerSpecPtrInput interface {
+	pulumi.Input
+
+	ToTaskTriggerSpecPtrOutput() TaskTriggerSpecPtrOutput
+	ToTaskTriggerSpecPtrOutputWithContext(context.Context) TaskTriggerSpecPtrOutput
+}
+
+type taskTriggerSpecPtrType TaskTriggerSpecArgs
+
+func TaskTriggerSpecPtr(v *TaskTriggerSpecArgs) TaskTriggerSpecPtrInput {
+	return (*taskTriggerSpecPtrType)(v)
+}
+
+func (*taskTriggerSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskTriggerSpec)(nil)).Elem()
+}
+
+func (i *taskTriggerSpecPtrType) ToTaskTriggerSpecPtrOutput() TaskTriggerSpecPtrOutput {
+	return i.ToTaskTriggerSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *taskTriggerSpecPtrType) ToTaskTriggerSpecPtrOutputWithContext(ctx context.Context) TaskTriggerSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaskTriggerSpecPtrOutput)
+}
+
+type TaskTriggerSpecOutput struct{ *pulumi.OutputState }
+
+func (TaskTriggerSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskTriggerSpec)(nil)).Elem()
+}
+
+func (o TaskTriggerSpecOutput) ToTaskTriggerSpecOutput() TaskTriggerSpecOutput {
+	return o
+}
+
+func (o TaskTriggerSpecOutput) ToTaskTriggerSpecOutputWithContext(ctx context.Context) TaskTriggerSpecOutput {
+	return o
+}
+
+func (o TaskTriggerSpecOutput) ToTaskTriggerSpecPtrOutput() TaskTriggerSpecPtrOutput {
+	return o.ToTaskTriggerSpecPtrOutputWithContext(context.Background())
+}
+
+func (o TaskTriggerSpecOutput) ToTaskTriggerSpecPtrOutputWithContext(ctx context.Context) TaskTriggerSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskTriggerSpec) *TaskTriggerSpec {
+		return &v
+	}).(TaskTriggerSpecPtrOutput)
+}
+
+// Prevent the task from executing. This does not cancel already running tasks. It is intended to temporarily disable RECURRING tasks.
+func (o TaskTriggerSpecOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TaskTriggerSpec) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// Number of retry attempts before aborting. Set to zero to never attempt to retry a failed task.
+func (o TaskTriggerSpecOutput) MaxRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TaskTriggerSpec) *int { return v.MaxRetries }).(pulumi.IntPtrOutput)
+}
+
+// Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
+func (o TaskTriggerSpecOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskTriggerSpec) *string { return v.Schedule }).(pulumi.StringPtrOutput)
+}
+
+// The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
+func (o TaskTriggerSpecOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TaskTriggerSpec) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// Trigger type of the user-specified Task
+// Possible values are: `ON_DEMAND`, `RECURRING`.
+func (o TaskTriggerSpecOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v TaskTriggerSpec) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type TaskTriggerSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (TaskTriggerSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaskTriggerSpec)(nil)).Elem()
+}
+
+func (o TaskTriggerSpecPtrOutput) ToTaskTriggerSpecPtrOutput() TaskTriggerSpecPtrOutput {
+	return o
+}
+
+func (o TaskTriggerSpecPtrOutput) ToTaskTriggerSpecPtrOutputWithContext(ctx context.Context) TaskTriggerSpecPtrOutput {
+	return o
+}
+
+func (o TaskTriggerSpecPtrOutput) Elem() TaskTriggerSpecOutput {
+	return o.ApplyT(func(v *TaskTriggerSpec) TaskTriggerSpec {
+		if v != nil {
+			return *v
+		}
+		var ret TaskTriggerSpec
+		return ret
+	}).(TaskTriggerSpecOutput)
+}
+
+// Prevent the task from executing. This does not cancel already running tasks. It is intended to temporarily disable RECURRING tasks.
+func (o TaskTriggerSpecPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TaskTriggerSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Number of retry attempts before aborting. Set to zero to never attempt to retry a failed task.
+func (o TaskTriggerSpecPtrOutput) MaxRetries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TaskTriggerSpec) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxRetries
+	}).(pulumi.IntPtrOutput)
+}
+
+// Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
+func (o TaskTriggerSpecPtrOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskTriggerSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Schedule
+	}).(pulumi.StringPtrOutput)
+}
+
+// The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
+func (o TaskTriggerSpecPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskTriggerSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Trigger type of the user-specified Task
+// Possible values are: `ON_DEMAND`, `RECURRING`.
+func (o TaskTriggerSpecPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TaskTriggerSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type ZoneAssetStatus struct {
 	ActiveAssets                 *int `pulumi:"activeAssets"`
 	SecurityPolicyApplyingAssets *int `pulumi:"securityPolicyApplyingAssets"`
@@ -9714,6 +12690,38 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeMetastorePtrInput)(nil)).Elem(), LakeMetastoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeMetastoreStatusInput)(nil)).Elem(), LakeMetastoreStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LakeMetastoreStatusArrayInput)(nil)).Elem(), LakeMetastoreStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskExecutionSpecInput)(nil)).Elem(), TaskExecutionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskExecutionSpecPtrInput)(nil)).Elem(), TaskExecutionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskExecutionStatusInput)(nil)).Elem(), TaskExecutionStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskExecutionStatusArrayInput)(nil)).Elem(), TaskExecutionStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskExecutionStatusLatestJobInput)(nil)).Elem(), TaskExecutionStatusLatestJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskExecutionStatusLatestJobArrayInput)(nil)).Elem(), TaskExecutionStatusLatestJobArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskIamBindingConditionInput)(nil)).Elem(), TaskIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskIamBindingConditionPtrInput)(nil)).Elem(), TaskIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskIamMemberConditionInput)(nil)).Elem(), TaskIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskIamMemberConditionPtrInput)(nil)).Elem(), TaskIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskNotebookInput)(nil)).Elem(), TaskNotebookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskNotebookPtrInput)(nil)).Elem(), TaskNotebookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskNotebookInfrastructureSpecInput)(nil)).Elem(), TaskNotebookInfrastructureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskNotebookInfrastructureSpecPtrInput)(nil)).Elem(), TaskNotebookInfrastructureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskNotebookInfrastructureSpecBatchInput)(nil)).Elem(), TaskNotebookInfrastructureSpecBatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskNotebookInfrastructureSpecBatchPtrInput)(nil)).Elem(), TaskNotebookInfrastructureSpecBatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskNotebookInfrastructureSpecContainerImageInput)(nil)).Elem(), TaskNotebookInfrastructureSpecContainerImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskNotebookInfrastructureSpecContainerImagePtrInput)(nil)).Elem(), TaskNotebookInfrastructureSpecContainerImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskNotebookInfrastructureSpecVpcNetworkInput)(nil)).Elem(), TaskNotebookInfrastructureSpecVpcNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskNotebookInfrastructureSpecVpcNetworkPtrInput)(nil)).Elem(), TaskNotebookInfrastructureSpecVpcNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskSparkInput)(nil)).Elem(), TaskSparkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskSparkPtrInput)(nil)).Elem(), TaskSparkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskSparkInfrastructureSpecInput)(nil)).Elem(), TaskSparkInfrastructureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskSparkInfrastructureSpecPtrInput)(nil)).Elem(), TaskSparkInfrastructureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskSparkInfrastructureSpecBatchInput)(nil)).Elem(), TaskSparkInfrastructureSpecBatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskSparkInfrastructureSpecBatchPtrInput)(nil)).Elem(), TaskSparkInfrastructureSpecBatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskSparkInfrastructureSpecContainerImageInput)(nil)).Elem(), TaskSparkInfrastructureSpecContainerImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskSparkInfrastructureSpecContainerImagePtrInput)(nil)).Elem(), TaskSparkInfrastructureSpecContainerImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskSparkInfrastructureSpecVpcNetworkInput)(nil)).Elem(), TaskSparkInfrastructureSpecVpcNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskSparkInfrastructureSpecVpcNetworkPtrInput)(nil)).Elem(), TaskSparkInfrastructureSpecVpcNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskTriggerSpecInput)(nil)).Elem(), TaskTriggerSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TaskTriggerSpecPtrInput)(nil)).Elem(), TaskTriggerSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneAssetStatusInput)(nil)).Elem(), ZoneAssetStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneAssetStatusArrayInput)(nil)).Elem(), ZoneAssetStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ZoneDiscoverySpecInput)(nil)).Elem(), ZoneDiscoverySpecArgs{})
@@ -9844,6 +12852,38 @@ func init() {
 	pulumi.RegisterOutputType(LakeMetastorePtrOutput{})
 	pulumi.RegisterOutputType(LakeMetastoreStatusOutput{})
 	pulumi.RegisterOutputType(LakeMetastoreStatusArrayOutput{})
+	pulumi.RegisterOutputType(TaskExecutionSpecOutput{})
+	pulumi.RegisterOutputType(TaskExecutionSpecPtrOutput{})
+	pulumi.RegisterOutputType(TaskExecutionStatusOutput{})
+	pulumi.RegisterOutputType(TaskExecutionStatusArrayOutput{})
+	pulumi.RegisterOutputType(TaskExecutionStatusLatestJobOutput{})
+	pulumi.RegisterOutputType(TaskExecutionStatusLatestJobArrayOutput{})
+	pulumi.RegisterOutputType(TaskIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(TaskIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(TaskIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(TaskIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(TaskNotebookOutput{})
+	pulumi.RegisterOutputType(TaskNotebookPtrOutput{})
+	pulumi.RegisterOutputType(TaskNotebookInfrastructureSpecOutput{})
+	pulumi.RegisterOutputType(TaskNotebookInfrastructureSpecPtrOutput{})
+	pulumi.RegisterOutputType(TaskNotebookInfrastructureSpecBatchOutput{})
+	pulumi.RegisterOutputType(TaskNotebookInfrastructureSpecBatchPtrOutput{})
+	pulumi.RegisterOutputType(TaskNotebookInfrastructureSpecContainerImageOutput{})
+	pulumi.RegisterOutputType(TaskNotebookInfrastructureSpecContainerImagePtrOutput{})
+	pulumi.RegisterOutputType(TaskNotebookInfrastructureSpecVpcNetworkOutput{})
+	pulumi.RegisterOutputType(TaskNotebookInfrastructureSpecVpcNetworkPtrOutput{})
+	pulumi.RegisterOutputType(TaskSparkOutput{})
+	pulumi.RegisterOutputType(TaskSparkPtrOutput{})
+	pulumi.RegisterOutputType(TaskSparkInfrastructureSpecOutput{})
+	pulumi.RegisterOutputType(TaskSparkInfrastructureSpecPtrOutput{})
+	pulumi.RegisterOutputType(TaskSparkInfrastructureSpecBatchOutput{})
+	pulumi.RegisterOutputType(TaskSparkInfrastructureSpecBatchPtrOutput{})
+	pulumi.RegisterOutputType(TaskSparkInfrastructureSpecContainerImageOutput{})
+	pulumi.RegisterOutputType(TaskSparkInfrastructureSpecContainerImagePtrOutput{})
+	pulumi.RegisterOutputType(TaskSparkInfrastructureSpecVpcNetworkOutput{})
+	pulumi.RegisterOutputType(TaskSparkInfrastructureSpecVpcNetworkPtrOutput{})
+	pulumi.RegisterOutputType(TaskTriggerSpecOutput{})
+	pulumi.RegisterOutputType(TaskTriggerSpecPtrOutput{})
 	pulumi.RegisterOutputType(ZoneAssetStatusOutput{})
 	pulumi.RegisterOutputType(ZoneAssetStatusArrayOutput{})
 	pulumi.RegisterOutputType(ZoneDiscoverySpecOutput{})

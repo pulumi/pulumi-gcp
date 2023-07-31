@@ -16,14 +16,14 @@ public final class WorkflowTemplateJobSchedulingArgs extends com.pulumi.resource
     public static final WorkflowTemplateJobSchedulingArgs Empty = new WorkflowTemplateJobSchedulingArgs();
 
     /**
-     * Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window. Maximum value is 10.
+     * Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window. Maximum value is 10.
      * 
      */
     @Import(name="maxFailuresPerHour")
     private @Nullable Output<Integer> maxFailuresPerHour;
 
     /**
-     * @return Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window. Maximum value is 10.
+     * @return Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window. Maximum value is 10.
      * 
      */
     public Optional<Output<Integer>> maxFailuresPerHour() {
@@ -31,14 +31,14 @@ public final class WorkflowTemplateJobSchedulingArgs extends com.pulumi.resource
     }
 
     /**
-     * Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
+     * Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
      * 
      */
     @Import(name="maxFailuresTotal")
     private @Nullable Output<Integer> maxFailuresTotal;
 
     /**
-     * @return Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
+     * @return Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
      * 
      */
     public Optional<Output<Integer>> maxFailuresTotal() {
@@ -71,7 +71,7 @@ public final class WorkflowTemplateJobSchedulingArgs extends com.pulumi.resource
         }
 
         /**
-         * @param maxFailuresPerHour Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window. Maximum value is 10.
+         * @param maxFailuresPerHour Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window. Maximum value is 10.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class WorkflowTemplateJobSchedulingArgs extends com.pulumi.resource
         }
 
         /**
-         * @param maxFailuresPerHour Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window. Maximum value is 10.
+         * @param maxFailuresPerHour Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window. Maximum value is 10.
          * 
          * @return builder
          * 
@@ -92,7 +92,7 @@ public final class WorkflowTemplateJobSchedulingArgs extends com.pulumi.resource
         }
 
         /**
-         * @param maxFailuresTotal Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
+         * @param maxFailuresTotal Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class WorkflowTemplateJobSchedulingArgs extends com.pulumi.resource
         }
 
         /**
-         * @param maxFailuresTotal Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
+         * @param maxFailuresTotal Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
          * 
          * @return builder
          * 

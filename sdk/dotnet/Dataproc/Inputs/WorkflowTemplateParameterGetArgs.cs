@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class WorkflowTemplateParameterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Brief description of the parameter. Must not exceed 1024 characters.
+        /// Brief description of the parameter. Must not exceed 1024 characters.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Optional. Validation rules to be applied to this parameter's value.
+        /// Validation rules to be applied to this parameter's value.
         /// </summary>
         [Input("validation")]
         public Input<Inputs.WorkflowTemplateParameterValidationGetArgs>? Validation { get; set; }

@@ -14,19 +14,19 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class WorkflowTemplateJobPigJob
     {
         /// <summary>
-        /// Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+        /// Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
         /// </summary>
         public readonly bool? ContinueOnFailure;
         /// <summary>
-        /// Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
+        /// HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
         /// </summary>
         public readonly ImmutableArray<string> JarFileUris;
         /// <summary>
-        /// Optional. The runtime log config for job execution.
+        /// The runtime log config for job execution.
         /// </summary>
         public readonly Outputs.WorkflowTemplateJobPigJobLoggingConfig? LoggingConfig;
         /// <summary>
-        /// Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
+        /// A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Properties;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly Outputs.WorkflowTemplateJobPigJobQueryList? QueryList;
         /// <summary>
-        /// Optional. Mapping of query variable names to values (equivalent to the Pig command: `name=`).
+        /// Mapping of query variable names to values (equivalent to the Pig command: `name=`).
         /// </summary>
         public readonly ImmutableDictionary<string, string>? ScriptVariables;
 

@@ -18,14 +18,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
     public static final WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs Empty = new WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfigArgs();
 
     /**
-     * Optional. The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+     * The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
      * 
      */
     @Import(name="crossRealmTrustAdminServer")
     private @Nullable Output<String> crossRealmTrustAdminServer;
 
     /**
-     * @return Optional. The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+     * @return The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
      * 
      */
     public Optional<Output<String>> crossRealmTrustAdminServer() {
@@ -33,14 +33,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
     }
 
     /**
-     * Optional. The KDC (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+     * The KDC (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
      * 
      */
     @Import(name="crossRealmTrustKdc")
     private @Nullable Output<String> crossRealmTrustKdc;
 
     /**
-     * @return Optional. The KDC (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+     * @return The KDC (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
      * 
      */
     public Optional<Output<String>> crossRealmTrustKdc() {
@@ -48,14 +48,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
     }
 
     /**
-     * Optional. The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross realm trust.
+     * The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross realm trust.
      * 
      */
     @Import(name="crossRealmTrustRealm")
     private @Nullable Output<String> crossRealmTrustRealm;
 
     /**
-     * @return Optional. The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross realm trust.
+     * @return The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross realm trust.
      * 
      */
     public Optional<Output<String>> crossRealmTrustRealm() {
@@ -63,14 +63,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
     }
 
     /**
-     * Optional. The Cloud Storage URI of a KMS encrypted file containing the shared password between the on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.
+     * The Cloud Storage URI of a KMS encrypted file containing the shared password between the on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.
      * 
      */
     @Import(name="crossRealmTrustSharedPassword")
     private @Nullable Output<String> crossRealmTrustSharedPassword;
 
     /**
-     * @return Optional. The Cloud Storage URI of a KMS encrypted file containing the shared password between the on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.
+     * @return The Cloud Storage URI of a KMS encrypted file containing the shared password between the on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.
      * 
      */
     public Optional<Output<String>> crossRealmTrustSharedPassword() {
@@ -78,14 +78,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
     }
 
     /**
-     * Optional. Flag to indicate whether to Kerberize the cluster (default: false). Set this field to true to enable Kerberos on a cluster.
+     * Flag to indicate whether to Kerberize the cluster (default: false). Set this field to true to enable Kerberos on a cluster.
      * 
      */
     @Import(name="enableKerberos")
     private @Nullable Output<Boolean> enableKerberos;
 
     /**
-     * @return Optional. Flag to indicate whether to Kerberize the cluster (default: false). Set this field to true to enable Kerberos on a cluster.
+     * @return Flag to indicate whether to Kerberize the cluster (default: false). Set this field to true to enable Kerberos on a cluster.
      * 
      */
     public Optional<Output<Boolean>> enableKerberos() {
@@ -93,14 +93,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
     }
 
     /**
-     * Optional. The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC database.
+     * The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC database.
      * 
      */
     @Import(name="kdcDbKey")
     private @Nullable Output<String> kdcDbKey;
 
     /**
-     * @return Optional. The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC database.
+     * @return The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC database.
      * 
      */
     public Optional<Output<String>> kdcDbKey() {
@@ -108,14 +108,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
     }
 
     /**
-     * Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided key. For the self-signed certificate, this password is generated by Dataproc.
+     * The Cloud Storage URI of a KMS encrypted file containing the password to the user provided key. For the self-signed certificate, this password is generated by Dataproc.
      * 
      */
     @Import(name="keyPassword")
     private @Nullable Output<String> keyPassword;
 
     /**
-     * @return Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided key. For the self-signed certificate, this password is generated by Dataproc.
+     * @return The Cloud Storage URI of a KMS encrypted file containing the password to the user provided key. For the self-signed certificate, this password is generated by Dataproc.
      * 
      */
     public Optional<Output<String>> keyPassword() {
@@ -123,14 +123,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
     }
 
     /**
-     * Optional. The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+     * The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
      * 
      */
     @Import(name="keystore")
     private @Nullable Output<String> keystore;
 
     /**
-     * @return Optional. The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+     * @return The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
      * 
      */
     public Optional<Output<String>> keystore() {
@@ -138,14 +138,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
     }
 
     /**
-     * Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided keystore. For the self-signed certificate, this password is generated by Dataproc.
+     * The Cloud Storage URI of a KMS encrypted file containing the password to the user provided keystore. For the self-signed certificate, this password is generated by Dataproc.
      * 
      */
     @Import(name="keystorePassword")
     private @Nullable Output<String> keystorePassword;
 
     /**
-     * @return Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided keystore. For the self-signed certificate, this password is generated by Dataproc.
+     * @return The Cloud Storage URI of a KMS encrypted file containing the password to the user provided keystore. For the self-signed certificate, this password is generated by Dataproc.
      * 
      */
     public Optional<Output<String>> keystorePassword() {
@@ -153,14 +153,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
     }
 
     /**
-     * Optional. The uri of the KMS key used to encrypt various sensitive files.
+     * The uri of the KMS key used to encrypt various sensitive files.
      * 
      */
     @Import(name="kmsKey")
     private @Nullable Output<String> kmsKey;
 
     /**
-     * @return Optional. The uri of the KMS key used to encrypt various sensitive files.
+     * @return The uri of the KMS key used to encrypt various sensitive files.
      * 
      */
     public Optional<Output<String>> kmsKey() {
@@ -168,14 +168,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
     }
 
     /**
-     * Optional. The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of hostnames will be the realm.
+     * The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of hostnames will be the realm.
      * 
      */
     @Import(name="realm")
     private @Nullable Output<String> realm;
 
     /**
-     * @return Optional. The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of hostnames will be the realm.
+     * @return The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of hostnames will be the realm.
      * 
      */
     public Optional<Output<String>> realm() {
@@ -183,14 +183,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
     }
 
     /**
-     * Optional. The Cloud Storage URI of a KMS encrypted file containing the root principal password.
+     * The Cloud Storage URI of a KMS encrypted file containing the root principal password.
      * 
      */
     @Import(name="rootPrincipalPassword")
     private @Nullable Output<String> rootPrincipalPassword;
 
     /**
-     * @return Optional. The Cloud Storage URI of a KMS encrypted file containing the root principal password.
+     * @return The Cloud Storage URI of a KMS encrypted file containing the root principal password.
      * 
      */
     public Optional<Output<String>> rootPrincipalPassword() {
@@ -198,14 +198,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
     }
 
     /**
-     * Optional. The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies 0, then default value 10 will be used.
+     * The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies 0, then default value 10 will be used.
      * 
      */
     @Import(name="tgtLifetimeHours")
     private @Nullable Output<Integer> tgtLifetimeHours;
 
     /**
-     * @return Optional. The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies 0, then default value 10 will be used.
+     * @return The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies 0, then default value 10 will be used.
      * 
      */
     public Optional<Output<Integer>> tgtLifetimeHours() {
@@ -213,14 +213,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
     }
 
     /**
-     * Optional. The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+     * The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
      * 
      */
     @Import(name="truststore")
     private @Nullable Output<String> truststore;
 
     /**
-     * @return Optional. The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+     * @return The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
      * 
      */
     public Optional<Output<String>> truststore() {
@@ -228,14 +228,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
     }
 
     /**
-     * Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
+     * The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
      * 
      */
     @Import(name="truststorePassword")
     private @Nullable Output<String> truststorePassword;
 
     /**
-     * @return Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
+     * @return The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
      * 
      */
     public Optional<Output<String>> truststorePassword() {
@@ -281,7 +281,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param crossRealmTrustAdminServer Optional. The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+         * @param crossRealmTrustAdminServer The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param crossRealmTrustAdminServer Optional. The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+         * @param crossRealmTrustAdminServer The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
          * 
          * @return builder
          * 
@@ -302,7 +302,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param crossRealmTrustKdc Optional. The KDC (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+         * @param crossRealmTrustKdc The KDC (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
          * 
          * @return builder
          * 
@@ -313,7 +313,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param crossRealmTrustKdc Optional. The KDC (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+         * @param crossRealmTrustKdc The KDC (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
          * 
          * @return builder
          * 
@@ -323,7 +323,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param crossRealmTrustRealm Optional. The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross realm trust.
+         * @param crossRealmTrustRealm The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross realm trust.
          * 
          * @return builder
          * 
@@ -334,7 +334,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param crossRealmTrustRealm Optional. The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross realm trust.
+         * @param crossRealmTrustRealm The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross realm trust.
          * 
          * @return builder
          * 
@@ -344,7 +344,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param crossRealmTrustSharedPassword Optional. The Cloud Storage URI of a KMS encrypted file containing the shared password between the on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.
+         * @param crossRealmTrustSharedPassword The Cloud Storage URI of a KMS encrypted file containing the shared password between the on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.
          * 
          * @return builder
          * 
@@ -355,7 +355,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param crossRealmTrustSharedPassword Optional. The Cloud Storage URI of a KMS encrypted file containing the shared password between the on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.
+         * @param crossRealmTrustSharedPassword The Cloud Storage URI of a KMS encrypted file containing the shared password between the on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param enableKerberos Optional. Flag to indicate whether to Kerberize the cluster (default: false). Set this field to true to enable Kerberos on a cluster.
+         * @param enableKerberos Flag to indicate whether to Kerberize the cluster (default: false). Set this field to true to enable Kerberos on a cluster.
          * 
          * @return builder
          * 
@@ -376,7 +376,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param enableKerberos Optional. Flag to indicate whether to Kerberize the cluster (default: false). Set this field to true to enable Kerberos on a cluster.
+         * @param enableKerberos Flag to indicate whether to Kerberize the cluster (default: false). Set this field to true to enable Kerberos on a cluster.
          * 
          * @return builder
          * 
@@ -386,7 +386,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param kdcDbKey Optional. The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC database.
+         * @param kdcDbKey The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC database.
          * 
          * @return builder
          * 
@@ -397,7 +397,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param kdcDbKey Optional. The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC database.
+         * @param kdcDbKey The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC database.
          * 
          * @return builder
          * 
@@ -407,7 +407,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param keyPassword Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided key. For the self-signed certificate, this password is generated by Dataproc.
+         * @param keyPassword The Cloud Storage URI of a KMS encrypted file containing the password to the user provided key. For the self-signed certificate, this password is generated by Dataproc.
          * 
          * @return builder
          * 
@@ -418,7 +418,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param keyPassword Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided key. For the self-signed certificate, this password is generated by Dataproc.
+         * @param keyPassword The Cloud Storage URI of a KMS encrypted file containing the password to the user provided key. For the self-signed certificate, this password is generated by Dataproc.
          * 
          * @return builder
          * 
@@ -428,7 +428,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param keystore Optional. The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+         * @param keystore The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
          * 
          * @return builder
          * 
@@ -439,7 +439,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param keystore Optional. The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+         * @param keystore The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
          * 
          * @return builder
          * 
@@ -449,7 +449,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param keystorePassword Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided keystore. For the self-signed certificate, this password is generated by Dataproc.
+         * @param keystorePassword The Cloud Storage URI of a KMS encrypted file containing the password to the user provided keystore. For the self-signed certificate, this password is generated by Dataproc.
          * 
          * @return builder
          * 
@@ -460,7 +460,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param keystorePassword Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided keystore. For the self-signed certificate, this password is generated by Dataproc.
+         * @param keystorePassword The Cloud Storage URI of a KMS encrypted file containing the password to the user provided keystore. For the self-signed certificate, this password is generated by Dataproc.
          * 
          * @return builder
          * 
@@ -470,7 +470,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param kmsKey Optional. The uri of the KMS key used to encrypt various sensitive files.
+         * @param kmsKey The uri of the KMS key used to encrypt various sensitive files.
          * 
          * @return builder
          * 
@@ -481,7 +481,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param kmsKey Optional. The uri of the KMS key used to encrypt various sensitive files.
+         * @param kmsKey The uri of the KMS key used to encrypt various sensitive files.
          * 
          * @return builder
          * 
@@ -491,7 +491,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param realm Optional. The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of hostnames will be the realm.
+         * @param realm The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of hostnames will be the realm.
          * 
          * @return builder
          * 
@@ -502,7 +502,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param realm Optional. The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of hostnames will be the realm.
+         * @param realm The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of hostnames will be the realm.
          * 
          * @return builder
          * 
@@ -512,7 +512,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param rootPrincipalPassword Optional. The Cloud Storage URI of a KMS encrypted file containing the root principal password.
+         * @param rootPrincipalPassword The Cloud Storage URI of a KMS encrypted file containing the root principal password.
          * 
          * @return builder
          * 
@@ -523,7 +523,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param rootPrincipalPassword Optional. The Cloud Storage URI of a KMS encrypted file containing the root principal password.
+         * @param rootPrincipalPassword The Cloud Storage URI of a KMS encrypted file containing the root principal password.
          * 
          * @return builder
          * 
@@ -533,7 +533,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param tgtLifetimeHours Optional. The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies 0, then default value 10 will be used.
+         * @param tgtLifetimeHours The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies 0, then default value 10 will be used.
          * 
          * @return builder
          * 
@@ -544,7 +544,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param tgtLifetimeHours Optional. The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies 0, then default value 10 will be used.
+         * @param tgtLifetimeHours The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies 0, then default value 10 will be used.
          * 
          * @return builder
          * 
@@ -554,7 +554,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param truststore Optional. The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+         * @param truststore The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
          * 
          * @return builder
          * 
@@ -565,7 +565,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param truststore Optional. The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+         * @param truststore The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
          * 
          * @return builder
          * 
@@ -575,7 +575,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param truststorePassword Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
+         * @param truststorePassword The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
          * 
          * @return builder
          * 
@@ -586,7 +586,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
         }
 
         /**
-         * @param truststorePassword Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
+         * @param truststorePassword The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
          * 
          * @return builder
          * 

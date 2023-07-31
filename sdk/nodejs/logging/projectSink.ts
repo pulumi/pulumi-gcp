@@ -58,7 +58,8 @@ export class ProjectSink extends pulumi.CustomResource {
      * - `storage.googleapis.com/[GCS_BUCKET]`
      * - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
      * - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-     * - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+     * - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+     * - `logging.googleapis.com/projects/[PROJECT_ID]`
      *
      * The writer associated with the sink must have access to write to the above resource.
      */
@@ -162,7 +163,8 @@ export interface ProjectSinkState {
      * - `storage.googleapis.com/[GCS_BUCKET]`
      * - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
      * - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-     * - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+     * - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+     * - `logging.googleapis.com/projects/[PROJECT_ID]`
      *
      * The writer associated with the sink must have access to write to the above resource.
      */
@@ -223,7 +225,8 @@ export interface ProjectSinkArgs {
      * - `storage.googleapis.com/[GCS_BUCKET]`
      * - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
      * - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-     * - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+     * - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+     * - `logging.googleapis.com/projects/[PROJECT_ID]`
      *
      * The writer associated with the sink must have access to write to the above resource.
      */

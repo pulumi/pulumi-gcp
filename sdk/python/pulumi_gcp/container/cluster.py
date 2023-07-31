@@ -17,6 +17,7 @@ __all__ = ['ClusterArgs', 'Cluster']
 class ClusterArgs:
     def __init__(__self__, *,
                  addons_config: Optional[pulumi.Input['ClusterAddonsConfigArgs']] = None,
+                 allow_net_admin: Optional[pulumi.Input[bool]] = None,
                  authenticator_groups_config: Optional[pulumi.Input['ClusterAuthenticatorGroupsConfigArgs']] = None,
                  binary_authorization: Optional[pulumi.Input['ClusterBinaryAuthorizationArgs']] = None,
                  cluster_autoscaling: Optional[pulumi.Input['ClusterClusterAutoscalingArgs']] = None,
@@ -36,6 +37,7 @@ class ClusterArgs:
                  enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
                  enable_l4_ilb_subsetting: Optional[pulumi.Input[bool]] = None,
                  enable_legacy_abac: Optional[pulumi.Input[bool]] = None,
+                 enable_multi_networking: Optional[pulumi.Input[bool]] = None,
                  enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
                  gateway_api_config: Optional[pulumi.Input['ClusterGatewayApiConfigArgs']] = None,
@@ -82,6 +84,9 @@ class ClusterArgs:
         The set of arguments for constructing a Cluster resource.
         :param pulumi.Input['ClusterAddonsConfigArgs'] addons_config: The configuration for addons supported by GKE.
                Structure is documented below.
+        :param pulumi.Input[bool] allow_net_admin: Enable NET_ADMIN for the cluster. Defaults to 
+               `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
+               set to `true`).
         :param pulumi.Input['ClusterAuthenticatorGroupsConfigArgs'] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
@@ -128,6 +133,7 @@ class ClusterArgs:
                When enabled, identities in the system, including service accounts, nodes, and controllers,
                will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
                Defaults to `false`
+        :param pulumi.Input[bool] enable_multi_networking: Whether multi-networking is enabled for this cluster.
         :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
@@ -280,6 +286,8 @@ class ClusterArgs:
         """
         if addons_config is not None:
             pulumi.set(__self__, "addons_config", addons_config)
+        if allow_net_admin is not None:
+            pulumi.set(__self__, "allow_net_admin", allow_net_admin)
         if authenticator_groups_config is not None:
             pulumi.set(__self__, "authenticator_groups_config", authenticator_groups_config)
         if binary_authorization is not None:
@@ -321,6 +329,8 @@ class ClusterArgs:
             pulumi.set(__self__, "enable_l4_ilb_subsetting", enable_l4_ilb_subsetting)
         if enable_legacy_abac is not None:
             pulumi.set(__self__, "enable_legacy_abac", enable_legacy_abac)
+        if enable_multi_networking is not None:
+            pulumi.set(__self__, "enable_multi_networking", enable_multi_networking)
         if enable_shielded_nodes is not None:
             pulumi.set(__self__, "enable_shielded_nodes", enable_shielded_nodes)
         if enable_tpu is not None:
@@ -418,6 +428,20 @@ class ClusterArgs:
     @addons_config.setter
     def addons_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigArgs']]):
         pulumi.set(self, "addons_config", value)
+
+    @property
+    @pulumi.getter(name="allowNetAdmin")
+    def allow_net_admin(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable NET_ADMIN for the cluster. Defaults to 
+        `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
+        set to `true`).
+        """
+        return pulumi.get(self, "allow_net_admin")
+
+    @allow_net_admin.setter
+    def allow_net_admin(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_net_admin", value)
 
     @property
     @pulumi.getter(name="authenticatorGroupsConfig")
@@ -676,6 +700,18 @@ class ClusterArgs:
     @enable_legacy_abac.setter
     def enable_legacy_abac(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_legacy_abac", value)
+
+    @property
+    @pulumi.getter(name="enableMultiNetworking")
+    def enable_multi_networking(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether multi-networking is enabled for this cluster.
+        """
+        return pulumi.get(self, "enable_multi_networking")
+
+    @enable_multi_networking.setter
+    def enable_multi_networking(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_multi_networking", value)
 
     @property
     @pulumi.getter(name="enableShieldedNodes")
@@ -1293,6 +1329,7 @@ class ClusterArgs:
 class _ClusterState:
     def __init__(__self__, *,
                  addons_config: Optional[pulumi.Input['ClusterAddonsConfigArgs']] = None,
+                 allow_net_admin: Optional[pulumi.Input[bool]] = None,
                  authenticator_groups_config: Optional[pulumi.Input['ClusterAuthenticatorGroupsConfigArgs']] = None,
                  binary_authorization: Optional[pulumi.Input['ClusterBinaryAuthorizationArgs']] = None,
                  cluster_autoscaling: Optional[pulumi.Input['ClusterClusterAutoscalingArgs']] = None,
@@ -1312,6 +1349,7 @@ class _ClusterState:
                  enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
                  enable_l4_ilb_subsetting: Optional[pulumi.Input[bool]] = None,
                  enable_legacy_abac: Optional[pulumi.Input[bool]] = None,
+                 enable_multi_networking: Optional[pulumi.Input[bool]] = None,
                  enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
@@ -1365,6 +1403,9 @@ class _ClusterState:
         Input properties used for looking up and filtering Cluster resources.
         :param pulumi.Input['ClusterAddonsConfigArgs'] addons_config: The configuration for addons supported by GKE.
                Structure is documented below.
+        :param pulumi.Input[bool] allow_net_admin: Enable NET_ADMIN for the cluster. Defaults to 
+               `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
+               set to `true`).
         :param pulumi.Input['ClusterAuthenticatorGroupsConfigArgs'] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
@@ -1411,6 +1452,7 @@ class _ClusterState:
                When enabled, identities in the system, including service accounts, nodes, and controllers,
                will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
                Defaults to `false`
+        :param pulumi.Input[bool] enable_multi_networking: Whether multi-networking is enabled for this cluster.
         :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
@@ -1576,6 +1618,8 @@ class _ClusterState:
         """
         if addons_config is not None:
             pulumi.set(__self__, "addons_config", addons_config)
+        if allow_net_admin is not None:
+            pulumi.set(__self__, "allow_net_admin", allow_net_admin)
         if authenticator_groups_config is not None:
             pulumi.set(__self__, "authenticator_groups_config", authenticator_groups_config)
         if binary_authorization is not None:
@@ -1617,6 +1661,8 @@ class _ClusterState:
             pulumi.set(__self__, "enable_l4_ilb_subsetting", enable_l4_ilb_subsetting)
         if enable_legacy_abac is not None:
             pulumi.set(__self__, "enable_legacy_abac", enable_legacy_abac)
+        if enable_multi_networking is not None:
+            pulumi.set(__self__, "enable_multi_networking", enable_multi_networking)
         if enable_shielded_nodes is not None:
             pulumi.set(__self__, "enable_shielded_nodes", enable_shielded_nodes)
         if enable_tpu is not None:
@@ -1728,6 +1774,20 @@ class _ClusterState:
     @addons_config.setter
     def addons_config(self, value: Optional[pulumi.Input['ClusterAddonsConfigArgs']]):
         pulumi.set(self, "addons_config", value)
+
+    @property
+    @pulumi.getter(name="allowNetAdmin")
+    def allow_net_admin(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable NET_ADMIN for the cluster. Defaults to 
+        `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
+        set to `true`).
+        """
+        return pulumi.get(self, "allow_net_admin")
+
+    @allow_net_admin.setter
+    def allow_net_admin(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_net_admin", value)
 
     @property
     @pulumi.getter(name="authenticatorGroupsConfig")
@@ -1986,6 +2046,18 @@ class _ClusterState:
     @enable_legacy_abac.setter
     def enable_legacy_abac(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_legacy_abac", value)
+
+    @property
+    @pulumi.getter(name="enableMultiNetworking")
+    def enable_multi_networking(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether multi-networking is enabled for this cluster.
+        """
+        return pulumi.get(self, "enable_multi_networking")
+
+    @enable_multi_networking.setter
+    def enable_multi_networking(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_multi_networking", value)
 
     @property
     @pulumi.getter(name="enableShieldedNodes")
@@ -2693,6 +2765,7 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons_config: Optional[pulumi.Input[pulumi.InputType['ClusterAddonsConfigArgs']]] = None,
+                 allow_net_admin: Optional[pulumi.Input[bool]] = None,
                  authenticator_groups_config: Optional[pulumi.Input[pulumi.InputType['ClusterAuthenticatorGroupsConfigArgs']]] = None,
                  binary_authorization: Optional[pulumi.Input[pulumi.InputType['ClusterBinaryAuthorizationArgs']]] = None,
                  cluster_autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterClusterAutoscalingArgs']]] = None,
@@ -2712,6 +2785,7 @@ class Cluster(pulumi.CustomResource):
                  enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
                  enable_l4_ilb_subsetting: Optional[pulumi.Input[bool]] = None,
                  enable_legacy_abac: Optional[pulumi.Input[bool]] = None,
+                 enable_multi_networking: Optional[pulumi.Input[bool]] = None,
                  enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
                  gateway_api_config: Optional[pulumi.Input[pulumi.InputType['ClusterGatewayApiConfigArgs']]] = None,
@@ -2829,6 +2903,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ClusterAddonsConfigArgs']] addons_config: The configuration for addons supported by GKE.
                Structure is documented below.
+        :param pulumi.Input[bool] allow_net_admin: Enable NET_ADMIN for the cluster. Defaults to 
+               `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
+               set to `true`).
         :param pulumi.Input[pulumi.InputType['ClusterAuthenticatorGroupsConfigArgs']] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
@@ -2875,6 +2952,7 @@ class Cluster(pulumi.CustomResource):
                When enabled, identities in the system, including service accounts, nodes, and controllers,
                will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
                Defaults to `false`
+        :param pulumi.Input[bool] enable_multi_networking: Whether multi-networking is enabled for this cluster.
         :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
@@ -3117,6 +3195,7 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  addons_config: Optional[pulumi.Input[pulumi.InputType['ClusterAddonsConfigArgs']]] = None,
+                 allow_net_admin: Optional[pulumi.Input[bool]] = None,
                  authenticator_groups_config: Optional[pulumi.Input[pulumi.InputType['ClusterAuthenticatorGroupsConfigArgs']]] = None,
                  binary_authorization: Optional[pulumi.Input[pulumi.InputType['ClusterBinaryAuthorizationArgs']]] = None,
                  cluster_autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterClusterAutoscalingArgs']]] = None,
@@ -3136,6 +3215,7 @@ class Cluster(pulumi.CustomResource):
                  enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
                  enable_l4_ilb_subsetting: Optional[pulumi.Input[bool]] = None,
                  enable_legacy_abac: Optional[pulumi.Input[bool]] = None,
+                 enable_multi_networking: Optional[pulumi.Input[bool]] = None,
                  enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
                  gateway_api_config: Optional[pulumi.Input[pulumi.InputType['ClusterGatewayApiConfigArgs']]] = None,
@@ -3188,6 +3268,7 @@ class Cluster(pulumi.CustomResource):
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
             __props__.__dict__["addons_config"] = addons_config
+            __props__.__dict__["allow_net_admin"] = allow_net_admin
             __props__.__dict__["authenticator_groups_config"] = authenticator_groups_config
             __props__.__dict__["binary_authorization"] = binary_authorization
             __props__.__dict__["cluster_autoscaling"] = cluster_autoscaling
@@ -3210,6 +3291,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["enable_kubernetes_alpha"] = enable_kubernetes_alpha
             __props__.__dict__["enable_l4_ilb_subsetting"] = enable_l4_ilb_subsetting
             __props__.__dict__["enable_legacy_abac"] = enable_legacy_abac
+            __props__.__dict__["enable_multi_networking"] = enable_multi_networking
             __props__.__dict__["enable_shielded_nodes"] = enable_shielded_nodes
             __props__.__dict__["enable_tpu"] = enable_tpu
             __props__.__dict__["gateway_api_config"] = gateway_api_config
@@ -3270,6 +3352,7 @@ class Cluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             addons_config: Optional[pulumi.Input[pulumi.InputType['ClusterAddonsConfigArgs']]] = None,
+            allow_net_admin: Optional[pulumi.Input[bool]] = None,
             authenticator_groups_config: Optional[pulumi.Input[pulumi.InputType['ClusterAuthenticatorGroupsConfigArgs']]] = None,
             binary_authorization: Optional[pulumi.Input[pulumi.InputType['ClusterBinaryAuthorizationArgs']]] = None,
             cluster_autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterClusterAutoscalingArgs']]] = None,
@@ -3289,6 +3372,7 @@ class Cluster(pulumi.CustomResource):
             enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
             enable_l4_ilb_subsetting: Optional[pulumi.Input[bool]] = None,
             enable_legacy_abac: Optional[pulumi.Input[bool]] = None,
+            enable_multi_networking: Optional[pulumi.Input[bool]] = None,
             enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
             enable_tpu: Optional[pulumi.Input[bool]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
@@ -3347,6 +3431,9 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ClusterAddonsConfigArgs']] addons_config: The configuration for addons supported by GKE.
                Structure is documented below.
+        :param pulumi.Input[bool] allow_net_admin: Enable NET_ADMIN for the cluster. Defaults to 
+               `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
+               set to `true`).
         :param pulumi.Input[pulumi.InputType['ClusterAuthenticatorGroupsConfigArgs']] authenticator_groups_config: Configuration for the
                [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
                Structure is documented below.
@@ -3393,6 +3480,7 @@ class Cluster(pulumi.CustomResource):
                When enabled, identities in the system, including service accounts, nodes, and controllers,
                will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
                Defaults to `false`
+        :param pulumi.Input[bool] enable_multi_networking: Whether multi-networking is enabled for this cluster.
         :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
@@ -3561,6 +3649,7 @@ class Cluster(pulumi.CustomResource):
         __props__ = _ClusterState.__new__(_ClusterState)
 
         __props__.__dict__["addons_config"] = addons_config
+        __props__.__dict__["allow_net_admin"] = allow_net_admin
         __props__.__dict__["authenticator_groups_config"] = authenticator_groups_config
         __props__.__dict__["binary_authorization"] = binary_authorization
         __props__.__dict__["cluster_autoscaling"] = cluster_autoscaling
@@ -3580,6 +3669,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["enable_kubernetes_alpha"] = enable_kubernetes_alpha
         __props__.__dict__["enable_l4_ilb_subsetting"] = enable_l4_ilb_subsetting
         __props__.__dict__["enable_legacy_abac"] = enable_legacy_abac
+        __props__.__dict__["enable_multi_networking"] = enable_multi_networking
         __props__.__dict__["enable_shielded_nodes"] = enable_shielded_nodes
         __props__.__dict__["enable_tpu"] = enable_tpu
         __props__.__dict__["endpoint"] = endpoint
@@ -3639,6 +3729,16 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "addons_config")
+
+    @property
+    @pulumi.getter(name="allowNetAdmin")
+    def allow_net_admin(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable NET_ADMIN for the cluster. Defaults to 
+        `false`. This field should only be enabled for Autopilot clusters (`enable_autopilot`
+        set to `true`).
+        """
+        return pulumi.get(self, "allow_net_admin")
 
     @property
     @pulumi.getter(name="authenticatorGroupsConfig")
@@ -3821,6 +3921,14 @@ class Cluster(pulumi.CustomResource):
         Defaults to `false`
         """
         return pulumi.get(self, "enable_legacy_abac")
+
+    @property
+    @pulumi.getter(name="enableMultiNetworking")
+    def enable_multi_networking(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether multi-networking is enabled for this cluster.
+        """
+        return pulumi.get(self, "enable_multi_networking")
 
     @property
     @pulumi.getter(name="enableShieldedNodes")

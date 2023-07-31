@@ -101,6 +101,16 @@ namespace Pulumi.Gcp.Spanner
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
+        /// Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
+        /// "deletion_protection" attribute in the following ways: (1) "deletion_protection" only protects the database from
+        /// deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
+        /// interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
+        /// database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
+        /// </summary>
+        [Output("enableDropProtection")]
+        public Output<bool?> EnableDropProtection { get; private set; } = null!;
+
+        /// <summary>
         /// Encryption configuration for the database
         /// Structure is documented below.
         /// </summary>
@@ -223,6 +233,16 @@ namespace Pulumi.Gcp.Spanner
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
+        /// Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
+        /// "deletion_protection" attribute in the following ways: (1) "deletion_protection" only protects the database from
+        /// deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
+        /// interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
+        /// database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
+        /// </summary>
+        [Input("enableDropProtection")]
+        public Input<bool>? EnableDropProtection { get; set; }
+
+        /// <summary>
         /// Encryption configuration for the database
         /// Structure is documented below.
         /// </summary>
@@ -299,6 +319,16 @@ namespace Pulumi.Gcp.Spanner
         /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
+        /// Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
+        /// "deletion_protection" attribute in the following ways: (1) "deletion_protection" only protects the database from
+        /// deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
+        /// interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
+        /// database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
+        /// </summary>
+        [Input("enableDropProtection")]
+        public Input<bool>? EnableDropProtection { get; set; }
 
         /// <summary>
         /// Encryption configuration for the database

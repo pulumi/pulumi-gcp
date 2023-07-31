@@ -26,6 +26,7 @@ __all__ = [
     'FhirStoreStreamConfig',
     'FhirStoreStreamConfigBigqueryDestination',
     'FhirStoreStreamConfigBigqueryDestinationSchemaConfig',
+    'FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig',
     'Hl7StoreIamBindingCondition',
     'Hl7StoreIamMemberCondition',
     'Hl7StoreNotificationConfig',
@@ -553,6 +554,8 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfig(dict):
         suggest = None
         if key == "recursiveStructureDepth":
             suggest = "recursive_structure_depth"
+        elif key == "lastUpdatedPartitionConfig":
+            suggest = "last_updated_partition_config"
         elif key == "schemaType":
             suggest = "schema_type"
 
@@ -569,12 +572,15 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfig(dict):
 
     def __init__(__self__, *,
                  recursive_structure_depth: int,
+                 last_updated_partition_config: Optional['outputs.FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig'] = None,
                  schema_type: Optional[str] = None):
         """
         :param int recursive_structure_depth: The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
                resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called
                concept.concept but not concept.concept.concept. If not specified or set to 0, the server will use the default
                value 2. The maximum depth allowed is 5.
+        :param 'FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs' last_updated_partition_config: The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
+               Structure is documented below.
         :param str schema_type: Specifies the output schema type.
                * ANALYTICS: Analytics schema defined by the FHIR community.
                See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md.
@@ -584,6 +590,8 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfig(dict):
                Possible values are: `ANALYTICS`, `ANALYTICS_V2`, `LOSSLESS`.
         """
         pulumi.set(__self__, "recursive_structure_depth", recursive_structure_depth)
+        if last_updated_partition_config is not None:
+            pulumi.set(__self__, "last_updated_partition_config", last_updated_partition_config)
         if schema_type is not None:
             pulumi.set(__self__, "schema_type", schema_type)
 
@@ -599,6 +607,15 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfig(dict):
         return pulumi.get(self, "recursive_structure_depth")
 
     @property
+    @pulumi.getter(name="lastUpdatedPartitionConfig")
+    def last_updated_partition_config(self) -> Optional['outputs.FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig']:
+        """
+        The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "last_updated_partition_config")
+
+    @property
     @pulumi.getter(name="schemaType")
     def schema_type(self) -> Optional[str]:
         """
@@ -611,6 +628,55 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfig(dict):
         Possible values are: `ANALYTICS`, `ANALYTICS_V2`, `LOSSLESS`.
         """
         return pulumi.get(self, "schema_type")
+
+
+@pulumi.output_type
+class FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expirationMs":
+            suggest = "expiration_ms"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 type: str,
+                 expiration_ms: Optional[str] = None):
+        """
+        :param str type: Type of partitioning.
+               Possible values are: `PARTITION_TYPE_UNSPECIFIED`, `HOUR`, `DAY`, `MONTH`, `YEAR`.
+        :param str expiration_ms: Number of milliseconds for which to keep the storage for a partition.
+        """
+        pulumi.set(__self__, "type", type)
+        if expiration_ms is not None:
+            pulumi.set(__self__, "expiration_ms", expiration_ms)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of partitioning.
+        Possible values are: `PARTITION_TYPE_UNSPECIFIED`, `HOUR`, `DAY`, `MONTH`, `YEAR`.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="expirationMs")
+    def expiration_ms(self) -> Optional[str]:
+        """
+        Number of milliseconds for which to keep the storage for a partition.
+        """
+        return pulumi.get(self, "expiration_ms")
 
 
 @pulumi.output_type

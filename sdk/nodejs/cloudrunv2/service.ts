@@ -341,6 +341,12 @@ export class Service extends pulumi.CustomResource {
      */
     public /*out*/ readonly conditions!: pulumi.Output<outputs.cloudrunv2.ServiceCondition[]>;
     /**
+     * One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+     * string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+     * https://cloud.google.com/run/docs/configuring/custom-audiences.
+     */
+    public readonly customAudiences!: pulumi.Output<string[] | undefined>;
+    /**
      * User-provided description of the Service. This field currently has a 512-character limit.
      */
     public readonly description!: pulumi.Output<string | undefined>;
@@ -457,6 +463,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["client"] = state ? state.client : undefined;
             resourceInputs["clientVersion"] = state ? state.clientVersion : undefined;
             resourceInputs["conditions"] = state ? state.conditions : undefined;
+            resourceInputs["customAudiences"] = state ? state.customAudiences : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["generation"] = state ? state.generation : undefined;
@@ -485,6 +492,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["binaryAuthorization"] = args ? args.binaryAuthorization : undefined;
             resourceInputs["client"] = args ? args.client : undefined;
             resourceInputs["clientVersion"] = args ? args.clientVersion : undefined;
+            resourceInputs["customAudiences"] = args ? args.customAudiences : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["ingress"] = args ? args.ingress : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -546,6 +554,12 @@ export interface ServiceState {
      * Structure is documented below.
      */
     conditions?: pulumi.Input<pulumi.Input<inputs.cloudrunv2.ServiceCondition>[]>;
+    /**
+     * One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+     * string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+     * https://cloud.google.com/run/docs/configuring/custom-audiences.
+     */
+    customAudiences?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * User-provided description of the Service. This field currently has a 512-character limit.
      */
@@ -676,6 +690,12 @@ export interface ServiceArgs {
      * Arbitrary version identifier for the API client.
      */
     clientVersion?: pulumi.Input<string>;
+    /**
+     * One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
+     * string. The custom audiences are encoded in the token and used to authenticate requests. For more information, see
+     * https://cloud.google.com/run/docs/configuring/custom-audiences.
+     */
+    customAudiences?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * User-provided description of the Service. This field currently has a 512-character limit.
      */

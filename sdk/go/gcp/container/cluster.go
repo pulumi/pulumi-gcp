@@ -139,6 +139,10 @@ type Cluster struct {
 	// The configuration for addons supported by GKE.
 	// Structure is documented below.
 	AddonsConfig ClusterAddonsConfigOutput `pulumi:"addonsConfig"`
+	// Enable NET_ADMIN for the cluster. Defaults to
+	// `false`. This field should only be enabled for Autopilot clusters (`enableAutopilot`
+	// set to `true`).
+	AllowNetAdmin pulumi.BoolPtrOutput `pulumi:"allowNetAdmin"`
 	// Configuration for the
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
@@ -206,6 +210,8 @@ type Cluster struct {
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac pulumi.BoolPtrOutput `pulumi:"enableLegacyAbac"`
+	// Whether multi-networking is enabled for this cluster.
+	EnableMultiNetworking pulumi.BoolPtrOutput `pulumi:"enableMultiNetworking"`
 	// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
 	EnableShieldedNodes pulumi.BoolPtrOutput `pulumi:"enableShieldedNodes"`
 	// Whether to enable Cloud TPU resources in this cluster.
@@ -452,6 +458,10 @@ type clusterState struct {
 	// The configuration for addons supported by GKE.
 	// Structure is documented below.
 	AddonsConfig *ClusterAddonsConfig `pulumi:"addonsConfig"`
+	// Enable NET_ADMIN for the cluster. Defaults to
+	// `false`. This field should only be enabled for Autopilot clusters (`enableAutopilot`
+	// set to `true`).
+	AllowNetAdmin *bool `pulumi:"allowNetAdmin"`
 	// Configuration for the
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
@@ -519,6 +529,8 @@ type clusterState struct {
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac *bool `pulumi:"enableLegacyAbac"`
+	// Whether multi-networking is enabled for this cluster.
+	EnableMultiNetworking *bool `pulumi:"enableMultiNetworking"`
 	// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
 	EnableShieldedNodes *bool `pulumi:"enableShieldedNodes"`
 	// Whether to enable Cloud TPU resources in this cluster.
@@ -736,6 +748,10 @@ type ClusterState struct {
 	// The configuration for addons supported by GKE.
 	// Structure is documented below.
 	AddonsConfig ClusterAddonsConfigPtrInput
+	// Enable NET_ADMIN for the cluster. Defaults to
+	// `false`. This field should only be enabled for Autopilot clusters (`enableAutopilot`
+	// set to `true`).
+	AllowNetAdmin pulumi.BoolPtrInput
 	// Configuration for the
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
@@ -803,6 +819,8 @@ type ClusterState struct {
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac pulumi.BoolPtrInput
+	// Whether multi-networking is enabled for this cluster.
+	EnableMultiNetworking pulumi.BoolPtrInput
 	// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
 	EnableShieldedNodes pulumi.BoolPtrInput
 	// Whether to enable Cloud TPU resources in this cluster.
@@ -1024,6 +1042,10 @@ type clusterArgs struct {
 	// The configuration for addons supported by GKE.
 	// Structure is documented below.
 	AddonsConfig *ClusterAddonsConfig `pulumi:"addonsConfig"`
+	// Enable NET_ADMIN for the cluster. Defaults to
+	// `false`. This field should only be enabled for Autopilot clusters (`enableAutopilot`
+	// set to `true`).
+	AllowNetAdmin *bool `pulumi:"allowNetAdmin"`
 	// Configuration for the
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
@@ -1091,6 +1113,8 @@ type clusterArgs struct {
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac *bool `pulumi:"enableLegacyAbac"`
+	// Whether multi-networking is enabled for this cluster.
+	EnableMultiNetworking *bool `pulumi:"enableMultiNetworking"`
 	// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
 	EnableShieldedNodes *bool `pulumi:"enableShieldedNodes"`
 	// Whether to enable Cloud TPU resources in this cluster.
@@ -1289,6 +1313,10 @@ type ClusterArgs struct {
 	// The configuration for addons supported by GKE.
 	// Structure is documented below.
 	AddonsConfig ClusterAddonsConfigPtrInput
+	// Enable NET_ADMIN for the cluster. Defaults to
+	// `false`. This field should only be enabled for Autopilot clusters (`enableAutopilot`
+	// set to `true`).
+	AllowNetAdmin pulumi.BoolPtrInput
 	// Configuration for the
 	// [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 	// Structure is documented below.
@@ -1356,6 +1384,8 @@ type ClusterArgs struct {
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac pulumi.BoolPtrInput
+	// Whether multi-networking is enabled for this cluster.
+	EnableMultiNetworking pulumi.BoolPtrInput
 	// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
 	EnableShieldedNodes pulumi.BoolPtrInput
 	// Whether to enable Cloud TPU resources in this cluster.
@@ -1642,6 +1672,13 @@ func (o ClusterOutput) AddonsConfig() ClusterAddonsConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterAddonsConfigOutput { return v.AddonsConfig }).(ClusterAddonsConfigOutput)
 }
 
+// Enable NET_ADMIN for the cluster. Defaults to
+// `false`. This field should only be enabled for Autopilot clusters (`enableAutopilot`
+// set to `true`).
+func (o ClusterOutput) AllowNetAdmin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.AllowNetAdmin }).(pulumi.BoolPtrOutput)
+}
+
 // Configuration for the
 // [Google Groups for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control#groups-setup-gsuite) feature.
 // Structure is documented below.
@@ -1764,6 +1801,11 @@ func (o ClusterOutput) EnableL4IlbSubsetting() pulumi.BoolPtrOutput {
 // Defaults to `false`
 func (o ClusterOutput) EnableLegacyAbac() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.EnableLegacyAbac }).(pulumi.BoolPtrOutput)
+}
+
+// Whether multi-networking is enabled for this cluster.
+func (o ClusterOutput) EnableMultiNetworking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.EnableMultiNetworking }).(pulumi.BoolPtrOutput)
 }
 
 // Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.

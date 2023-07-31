@@ -161,14 +161,20 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+     * (Output)
+     * Traffic specifies how to distribute traffic over a collection of Knative Revisions
+     * and Configurations
+     * Structure is documented below.
      * 
      */
     @Import(name="traffics")
     private @Nullable Output<List<ServiceTrafficArgs>> traffics;
 
     /**
-     * @return Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+     * @return (Output)
+     * Traffic specifies how to distribute traffic over a collection of Knative Revisions
+     * and Configurations
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<ServiceTrafficArgs>>> traffics() {
@@ -382,7 +388,10 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param traffics Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+         * @param traffics (Output)
+         * Traffic specifies how to distribute traffic over a collection of Knative Revisions
+         * and Configurations
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -393,7 +402,10 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param traffics Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+         * @param traffics (Output)
+         * Traffic specifies how to distribute traffic over a collection of Knative Revisions
+         * and Configurations
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -403,7 +415,10 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param traffics Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+         * @param traffics (Output)
+         * Traffic specifies how to distribute traffic over a collection of Knative Revisions
+         * and Configurations
+         * Structure is documented below.
          * 
          * @return builder
          * 

@@ -14,11 +14,11 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget
     {
         /// <summary>
-        /// Optional. A namespace within the GKE cluster to deploy into.
+        /// A namespace within the GKE cluster to deploy into.
         /// </summary>
         public readonly string? ClusterNamespace;
         /// <summary>
-        /// Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+        /// The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
         /// </summary>
         public readonly string? TargetGkeCluster;
 

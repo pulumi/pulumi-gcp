@@ -14,15 +14,15 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity
     {
         /// <summary>
-        /// Optional. Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
+        /// Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
         /// </summary>
         public readonly string? ConsumeReservationType;
         /// <summary>
-        /// Optional. Corresponds to the label key of reservation resource.
+        /// Corresponds to the label key of reservation resource.
         /// </summary>
         public readonly string? Key;
         /// <summary>
-        /// Optional. Corresponds to the label values of reservation resource.
+        /// Corresponds to the label values of reservation resource.
         /// </summary>
         public readonly ImmutableArray<string> Values;
 

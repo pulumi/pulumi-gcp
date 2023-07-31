@@ -54,7 +54,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v6/go/gcp/serviceAccount"
-//	"github.com/pulumi/pulumi-time/sdk/v1/go/time"
+//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -68,8 +68,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			mykeyRotation, err := index.NewTime_rotating(ctx, "mykeyRotation", &index.Time_rotatingArgs{
-//				RotationDays: 30,
+//			mykeyRotation, err := time.NewRotating(ctx, "mykeyRotation", &time.RotatingArgs{
+//				RotationDays: pulumi.Int(30),
 //			})
 //			if err != nil {
 //				return err

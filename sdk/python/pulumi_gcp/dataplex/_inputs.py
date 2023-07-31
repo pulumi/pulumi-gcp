@@ -68,6 +68,22 @@ __all__ = [
     'LakeIamMemberConditionArgs',
     'LakeMetastoreArgs',
     'LakeMetastoreStatusArgs',
+    'TaskExecutionSpecArgs',
+    'TaskExecutionStatusArgs',
+    'TaskExecutionStatusLatestJobArgs',
+    'TaskIamBindingConditionArgs',
+    'TaskIamMemberConditionArgs',
+    'TaskNotebookArgs',
+    'TaskNotebookInfrastructureSpecArgs',
+    'TaskNotebookInfrastructureSpecBatchArgs',
+    'TaskNotebookInfrastructureSpecContainerImageArgs',
+    'TaskNotebookInfrastructureSpecVpcNetworkArgs',
+    'TaskSparkArgs',
+    'TaskSparkInfrastructureSpecArgs',
+    'TaskSparkInfrastructureSpecBatchArgs',
+    'TaskSparkInfrastructureSpecContainerImageArgs',
+    'TaskSparkInfrastructureSpecVpcNetworkArgs',
+    'TaskTriggerSpecArgs',
     'ZoneAssetStatusArgs',
     'ZoneDiscoverySpecArgs',
     'ZoneDiscoverySpecCsvOptionsArgs',
@@ -3174,6 +3190,1137 @@ class LakeMetastoreStatusArgs:
     @update_time.setter
     def update_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update_time", value)
+
+
+@pulumi.input_type
+class TaskExecutionSpecArgs:
+    def __init__(__self__, *,
+                 service_account: pulumi.Input[str],
+                 args: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 kms_key: Optional[pulumi.Input[str]] = None,
+                 max_job_execution_lifetime: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] service_account: Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] args: The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
+        :param pulumi.Input[str] kms_key: The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
+               
+               - - -
+        :param pulumi.Input[str] max_job_execution_lifetime: The maximum duration after which the job execution is expired. A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "service_account", service_account)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
+        if max_job_execution_lifetime is not None:
+            pulumi.set(__self__, "max_job_execution_lifetime", max_job_execution_lifetime)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Input[str]:
+        """
+        Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${taskId} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. An object containing a list of 'key': value pairs. Example: { 'name': 'wrench', 'mass': '1.3kg', 'count': '3' }.
+        """
+        return pulumi.get(self, "args")
+
+    @args.setter
+    def args(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "args", value)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{locationId}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
+
+        - - -
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key", value)
+
+    @property
+    @pulumi.getter(name="maxJobExecutionLifetime")
+    def max_job_execution_lifetime(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum duration after which the job execution is expired. A duration in seconds with up to nine fractional digits, ending with 's'. Example: '3.5s'.
+        """
+        return pulumi.get(self, "max_job_execution_lifetime")
+
+    @max_job_execution_lifetime.setter
+    def max_job_execution_lifetime(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_job_execution_lifetime", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+
+@pulumi.input_type
+class TaskExecutionStatusArgs:
+    def __init__(__self__, *,
+                 latest_jobs: Optional[pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusLatestJobArgs']]]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusLatestJobArgs']]] latest_jobs: (Output)
+               latest job execution.
+               Structure is documented below.
+        :param pulumi.Input[str] update_time: (Output)
+               Last update time of the status.
+        """
+        if latest_jobs is not None:
+            pulumi.set(__self__, "latest_jobs", latest_jobs)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="latestJobs")
+    def latest_jobs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusLatestJobArgs']]]]:
+        """
+        (Output)
+        latest job execution.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "latest_jobs")
+
+    @latest_jobs.setter
+    def latest_jobs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TaskExecutionStatusLatestJobArgs']]]]):
+        pulumi.set(self, "latest_jobs", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Last update time of the status.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
+
+
+@pulumi.input_type
+class TaskExecutionStatusLatestJobArgs:
+    def __init__(__self__, *,
+                 end_time: Optional[pulumi.Input[str]] = None,
+                 message: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 retry_count: Optional[pulumi.Input[int]] = None,
+                 service: Optional[pulumi.Input[str]] = None,
+                 service_job: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 uid: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] end_time: (Output)
+               The time when the job ended.
+        :param pulumi.Input[str] message: (Output)
+               Additional information about the current state.
+        :param pulumi.Input[str] name: (Output)
+               The relative resource name of the job, of the form: projects/{project_number}/locations/{locationId}/lakes/{lakeId}/tasks/{taskId}/jobs/{jobId}.
+        :param pulumi.Input[int] retry_count: (Output)
+               The number of times the job has been retried (excluding the initial attempt).
+        :param pulumi.Input[str] service: (Output)
+               The underlying service running a job.
+        :param pulumi.Input[str] service_job: (Output)
+               The full resource name for the job run under a particular service.
+        :param pulumi.Input[str] start_time: The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
+        :param pulumi.Input[str] state: (Output)
+               Execution state for the job.
+        :param pulumi.Input[str] uid: (Output)
+               System generated globally unique ID for the job.
+        """
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if retry_count is not None:
+            pulumi.set(__self__, "retry_count", retry_count)
+        if service is not None:
+            pulumi.set(__self__, "service", service)
+        if service_job is not None:
+            pulumi.set(__self__, "service_job", service_job)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The time when the job ended.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Additional information about the current state.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The relative resource name of the job, of the form: projects/{project_number}/locations/{locationId}/lakes/{lakeId}/tasks/{taskId}/jobs/{jobId}.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="retryCount")
+    def retry_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Output)
+        The number of times the job has been retried (excluding the initial attempt).
+        """
+        return pulumi.get(self, "retry_count")
+
+    @retry_count.setter
+    def retry_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retry_count", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The underlying service running a job.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service", value)
+
+    @property
+    @pulumi.getter(name="serviceJob")
+    def service_job(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The full resource name for the job run under a particular service.
+        """
+        return pulumi.get(self, "service_job")
+
+    @service_job.setter
+    def service_job(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_job", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Execution state for the job.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        System generated globally unique ID for the job.
+        """
+        return pulumi.get(self, "uid")
+
+    @uid.setter
+    def uid(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uid", value)
+
+
+@pulumi.input_type
+class TaskIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class TaskIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class TaskNotebookArgs:
+    def __init__(__self__, *,
+                 notebook: pulumi.Input[str],
+                 archive_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 infrastructure_spec: Optional[pulumi.Input['TaskNotebookInfrastructureSpecArgs']] = None):
+        """
+        :param pulumi.Input[str] notebook: Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] archive_uris: Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] file_uris: Cloud Storage URIs of files to be placed in the working directory of each executor.
+        :param pulumi.Input['TaskNotebookInfrastructureSpecArgs'] infrastructure_spec: Infrastructure specification for the execution.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "notebook", notebook)
+        if archive_uris is not None:
+            pulumi.set(__self__, "archive_uris", archive_uris)
+        if file_uris is not None:
+            pulumi.set(__self__, "file_uris", file_uris)
+        if infrastructure_spec is not None:
+            pulumi.set(__self__, "infrastructure_spec", infrastructure_spec)
+
+    @property
+    @pulumi.getter
+    def notebook(self) -> pulumi.Input[str]:
+        """
+        Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
+        """
+        return pulumi.get(self, "notebook")
+
+    @notebook.setter
+    def notebook(self, value: pulumi.Input[str]):
+        pulumi.set(self, "notebook", value)
+
+    @property
+    @pulumi.getter(name="archiveUris")
+    def archive_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        """
+        return pulumi.get(self, "archive_uris")
+
+    @archive_uris.setter
+    def archive_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "archive_uris", value)
+
+    @property
+    @pulumi.getter(name="fileUris")
+    def file_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Cloud Storage URIs of files to be placed in the working directory of each executor.
+        """
+        return pulumi.get(self, "file_uris")
+
+    @file_uris.setter
+    def file_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "file_uris", value)
+
+    @property
+    @pulumi.getter(name="infrastructureSpec")
+    def infrastructure_spec(self) -> Optional[pulumi.Input['TaskNotebookInfrastructureSpecArgs']]:
+        """
+        Infrastructure specification for the execution.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "infrastructure_spec")
+
+    @infrastructure_spec.setter
+    def infrastructure_spec(self, value: Optional[pulumi.Input['TaskNotebookInfrastructureSpecArgs']]):
+        pulumi.set(self, "infrastructure_spec", value)
+
+
+@pulumi.input_type
+class TaskNotebookInfrastructureSpecArgs:
+    def __init__(__self__, *,
+                 batch: Optional[pulumi.Input['TaskNotebookInfrastructureSpecBatchArgs']] = None,
+                 container_image: Optional[pulumi.Input['TaskNotebookInfrastructureSpecContainerImageArgs']] = None,
+                 vpc_network: Optional[pulumi.Input['TaskNotebookInfrastructureSpecVpcNetworkArgs']] = None):
+        """
+        :param pulumi.Input['TaskNotebookInfrastructureSpecBatchArgs'] batch: Compute resources needed for a Task when using Dataproc Serverless.
+               Structure is documented below.
+        :param pulumi.Input['TaskNotebookInfrastructureSpecContainerImageArgs'] container_image: Container Image Runtime Configuration.
+               Structure is documented below.
+        :param pulumi.Input['TaskNotebookInfrastructureSpecVpcNetworkArgs'] vpc_network: Vpc network.
+               Structure is documented below.
+        """
+        if batch is not None:
+            pulumi.set(__self__, "batch", batch)
+        if container_image is not None:
+            pulumi.set(__self__, "container_image", container_image)
+        if vpc_network is not None:
+            pulumi.set(__self__, "vpc_network", vpc_network)
+
+    @property
+    @pulumi.getter
+    def batch(self) -> Optional[pulumi.Input['TaskNotebookInfrastructureSpecBatchArgs']]:
+        """
+        Compute resources needed for a Task when using Dataproc Serverless.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "batch")
+
+    @batch.setter
+    def batch(self, value: Optional[pulumi.Input['TaskNotebookInfrastructureSpecBatchArgs']]):
+        pulumi.set(self, "batch", value)
+
+    @property
+    @pulumi.getter(name="containerImage")
+    def container_image(self) -> Optional[pulumi.Input['TaskNotebookInfrastructureSpecContainerImageArgs']]:
+        """
+        Container Image Runtime Configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "container_image")
+
+    @container_image.setter
+    def container_image(self, value: Optional[pulumi.Input['TaskNotebookInfrastructureSpecContainerImageArgs']]):
+        pulumi.set(self, "container_image", value)
+
+    @property
+    @pulumi.getter(name="vpcNetwork")
+    def vpc_network(self) -> Optional[pulumi.Input['TaskNotebookInfrastructureSpecVpcNetworkArgs']]:
+        """
+        Vpc network.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vpc_network")
+
+    @vpc_network.setter
+    def vpc_network(self, value: Optional[pulumi.Input['TaskNotebookInfrastructureSpecVpcNetworkArgs']]):
+        pulumi.set(self, "vpc_network", value)
+
+
+@pulumi.input_type
+class TaskNotebookInfrastructureSpecBatchArgs:
+    def __init__(__self__, *,
+                 executors_count: Optional[pulumi.Input[int]] = None,
+                 max_executors_count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] executors_count: Total number of job executors. Executor Count should be between 2 and 100. [Default=2]
+        :param pulumi.Input[int] max_executors_count: Max configurable executors. If maxExecutorsCount > executorsCount, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. [Default=1000]
+        """
+        if executors_count is not None:
+            pulumi.set(__self__, "executors_count", executors_count)
+        if max_executors_count is not None:
+            pulumi.set(__self__, "max_executors_count", max_executors_count)
+
+    @property
+    @pulumi.getter(name="executorsCount")
+    def executors_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Total number of job executors. Executor Count should be between 2 and 100. [Default=2]
+        """
+        return pulumi.get(self, "executors_count")
+
+    @executors_count.setter
+    def executors_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "executors_count", value)
+
+    @property
+    @pulumi.getter(name="maxExecutorsCount")
+    def max_executors_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Max configurable executors. If maxExecutorsCount > executorsCount, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. [Default=1000]
+        """
+        return pulumi.get(self, "max_executors_count")
+
+    @max_executors_count.setter
+    def max_executors_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_executors_count", value)
+
+
+@pulumi.input_type
+class TaskNotebookInfrastructureSpecContainerImageArgs:
+    def __init__(__self__, *,
+                 image: Optional[pulumi.Input[str]] = None,
+                 java_jars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 python_packages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] image: Container image to use.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] java_jars: A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] python_packages: A list of python packages to be installed. Valid formats include Cloud Storage URI to a PIP installable library. For example, gs://bucket-name/my/path/to/lib.tar.gz
+        """
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if java_jars is not None:
+            pulumi.set(__self__, "java_jars", java_jars)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if python_packages is not None:
+            pulumi.set(__self__, "python_packages", python_packages)
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[pulumi.Input[str]]:
+        """
+        Container image to use.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image", value)
+
+    @property
+    @pulumi.getter(name="javaJars")
+    def java_jars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
+        """
+        return pulumi.get(self, "java_jars")
+
+    @java_jars.setter
+    def java_jars(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "java_jars", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="pythonPackages")
+    def python_packages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of python packages to be installed. Valid formats include Cloud Storage URI to a PIP installable library. For example, gs://bucket-name/my/path/to/lib.tar.gz
+        """
+        return pulumi.get(self, "python_packages")
+
+    @python_packages.setter
+    def python_packages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "python_packages", value)
+
+
+@pulumi.input_type
+class TaskNotebookInfrastructureSpecVpcNetworkArgs:
+    def __init__(__self__, *,
+                 network: Optional[pulumi.Input[str]] = None,
+                 network_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sub_network: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] network: The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_tags: List of network tags to apply to the job.
+        :param pulumi.Input[str] sub_network: The Cloud VPC sub-network in which the job is run.
+        """
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if network_tags is not None:
+            pulumi.set(__self__, "network_tags", network_tags)
+        if sub_network is not None:
+            pulumi.set(__self__, "sub_network", sub_network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of network tags to apply to the job.
+        """
+        return pulumi.get(self, "network_tags")
+
+    @network_tags.setter
+    def network_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "network_tags", value)
+
+    @property
+    @pulumi.getter(name="subNetwork")
+    def sub_network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Cloud VPC sub-network in which the job is run.
+        """
+        return pulumi.get(self, "sub_network")
+
+    @sub_network.setter
+    def sub_network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sub_network", value)
+
+
+@pulumi.input_type
+class TaskSparkArgs:
+    def __init__(__self__, *,
+                 archive_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 infrastructure_spec: Optional[pulumi.Input['TaskSparkInfrastructureSpecArgs']] = None,
+                 main_class: Optional[pulumi.Input[str]] = None,
+                 main_jar_file_uri: Optional[pulumi.Input[str]] = None,
+                 python_script_file: Optional[pulumi.Input[str]] = None,
+                 sql_script: Optional[pulumi.Input[str]] = None,
+                 sql_script_file: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] archive_uris: Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] file_uris: Cloud Storage URIs of files to be placed in the working directory of each executor.
+        :param pulumi.Input['TaskSparkInfrastructureSpecArgs'] infrastructure_spec: Infrastructure specification for the execution.
+               Structure is documented below.
+        :param pulumi.Input[str] main_class: The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris. The execution args are passed in as a sequence of named process arguments (--key=value).
+        :param pulumi.Input[str] main_jar_file_uri: The Cloud Storage URI of the jar file that contains the main class. The execution args are passed in as a sequence of named process arguments (--key=value).
+        :param pulumi.Input[str] python_script_file: The Gcloud Storage URI of the main Python file to use as the driver. Must be a .py file. The execution args are passed in as a sequence of named process arguments (--key=value).
+        :param pulumi.Input[str] sql_script: The query text. The execution args are used to declare a set of script variables (set key='value';).
+        :param pulumi.Input[str] sql_script_file: A reference to a query file. This can be the Cloud Storage URI of the query file or it can the path to a SqlScript Content. The execution args are used to declare a set of script variables (set key='value';).
+        """
+        if archive_uris is not None:
+            pulumi.set(__self__, "archive_uris", archive_uris)
+        if file_uris is not None:
+            pulumi.set(__self__, "file_uris", file_uris)
+        if infrastructure_spec is not None:
+            pulumi.set(__self__, "infrastructure_spec", infrastructure_spec)
+        if main_class is not None:
+            pulumi.set(__self__, "main_class", main_class)
+        if main_jar_file_uri is not None:
+            pulumi.set(__self__, "main_jar_file_uri", main_jar_file_uri)
+        if python_script_file is not None:
+            pulumi.set(__self__, "python_script_file", python_script_file)
+        if sql_script is not None:
+            pulumi.set(__self__, "sql_script", sql_script)
+        if sql_script_file is not None:
+            pulumi.set(__self__, "sql_script_file", sql_script_file)
+
+    @property
+    @pulumi.getter(name="archiveUris")
+    def archive_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Cloud Storage URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        """
+        return pulumi.get(self, "archive_uris")
+
+    @archive_uris.setter
+    def archive_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "archive_uris", value)
+
+    @property
+    @pulumi.getter(name="fileUris")
+    def file_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Cloud Storage URIs of files to be placed in the working directory of each executor.
+        """
+        return pulumi.get(self, "file_uris")
+
+    @file_uris.setter
+    def file_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "file_uris", value)
+
+    @property
+    @pulumi.getter(name="infrastructureSpec")
+    def infrastructure_spec(self) -> Optional[pulumi.Input['TaskSparkInfrastructureSpecArgs']]:
+        """
+        Infrastructure specification for the execution.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "infrastructure_spec")
+
+    @infrastructure_spec.setter
+    def infrastructure_spec(self, value: Optional[pulumi.Input['TaskSparkInfrastructureSpecArgs']]):
+        pulumi.set(self, "infrastructure_spec", value)
+
+    @property
+    @pulumi.getter(name="mainClass")
+    def main_class(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris. The execution args are passed in as a sequence of named process arguments (--key=value).
+        """
+        return pulumi.get(self, "main_class")
+
+    @main_class.setter
+    def main_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "main_class", value)
+
+    @property
+    @pulumi.getter(name="mainJarFileUri")
+    def main_jar_file_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Cloud Storage URI of the jar file that contains the main class. The execution args are passed in as a sequence of named process arguments (--key=value).
+        """
+        return pulumi.get(self, "main_jar_file_uri")
+
+    @main_jar_file_uri.setter
+    def main_jar_file_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "main_jar_file_uri", value)
+
+    @property
+    @pulumi.getter(name="pythonScriptFile")
+    def python_script_file(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Gcloud Storage URI of the main Python file to use as the driver. Must be a .py file. The execution args are passed in as a sequence of named process arguments (--key=value).
+        """
+        return pulumi.get(self, "python_script_file")
+
+    @python_script_file.setter
+    def python_script_file(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "python_script_file", value)
+
+    @property
+    @pulumi.getter(name="sqlScript")
+    def sql_script(self) -> Optional[pulumi.Input[str]]:
+        """
+        The query text. The execution args are used to declare a set of script variables (set key='value';).
+        """
+        return pulumi.get(self, "sql_script")
+
+    @sql_script.setter
+    def sql_script(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sql_script", value)
+
+    @property
+    @pulumi.getter(name="sqlScriptFile")
+    def sql_script_file(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reference to a query file. This can be the Cloud Storage URI of the query file or it can the path to a SqlScript Content. The execution args are used to declare a set of script variables (set key='value';).
+        """
+        return pulumi.get(self, "sql_script_file")
+
+    @sql_script_file.setter
+    def sql_script_file(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sql_script_file", value)
+
+
+@pulumi.input_type
+class TaskSparkInfrastructureSpecArgs:
+    def __init__(__self__, *,
+                 batch: Optional[pulumi.Input['TaskSparkInfrastructureSpecBatchArgs']] = None,
+                 container_image: Optional[pulumi.Input['TaskSparkInfrastructureSpecContainerImageArgs']] = None,
+                 vpc_network: Optional[pulumi.Input['TaskSparkInfrastructureSpecVpcNetworkArgs']] = None):
+        """
+        :param pulumi.Input['TaskSparkInfrastructureSpecBatchArgs'] batch: Compute resources needed for a Task when using Dataproc Serverless.
+               Structure is documented below.
+        :param pulumi.Input['TaskSparkInfrastructureSpecContainerImageArgs'] container_image: Container Image Runtime Configuration.
+               Structure is documented below.
+        :param pulumi.Input['TaskSparkInfrastructureSpecVpcNetworkArgs'] vpc_network: Vpc network.
+               Structure is documented below.
+        """
+        if batch is not None:
+            pulumi.set(__self__, "batch", batch)
+        if container_image is not None:
+            pulumi.set(__self__, "container_image", container_image)
+        if vpc_network is not None:
+            pulumi.set(__self__, "vpc_network", vpc_network)
+
+    @property
+    @pulumi.getter
+    def batch(self) -> Optional[pulumi.Input['TaskSparkInfrastructureSpecBatchArgs']]:
+        """
+        Compute resources needed for a Task when using Dataproc Serverless.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "batch")
+
+    @batch.setter
+    def batch(self, value: Optional[pulumi.Input['TaskSparkInfrastructureSpecBatchArgs']]):
+        pulumi.set(self, "batch", value)
+
+    @property
+    @pulumi.getter(name="containerImage")
+    def container_image(self) -> Optional[pulumi.Input['TaskSparkInfrastructureSpecContainerImageArgs']]:
+        """
+        Container Image Runtime Configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "container_image")
+
+    @container_image.setter
+    def container_image(self, value: Optional[pulumi.Input['TaskSparkInfrastructureSpecContainerImageArgs']]):
+        pulumi.set(self, "container_image", value)
+
+    @property
+    @pulumi.getter(name="vpcNetwork")
+    def vpc_network(self) -> Optional[pulumi.Input['TaskSparkInfrastructureSpecVpcNetworkArgs']]:
+        """
+        Vpc network.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vpc_network")
+
+    @vpc_network.setter
+    def vpc_network(self, value: Optional[pulumi.Input['TaskSparkInfrastructureSpecVpcNetworkArgs']]):
+        pulumi.set(self, "vpc_network", value)
+
+
+@pulumi.input_type
+class TaskSparkInfrastructureSpecBatchArgs:
+    def __init__(__self__, *,
+                 executors_count: Optional[pulumi.Input[int]] = None,
+                 max_executors_count: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] executors_count: Total number of job executors. Executor Count should be between 2 and 100. [Default=2]
+        :param pulumi.Input[int] max_executors_count: Max configurable executors. If maxExecutorsCount > executorsCount, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. [Default=1000]
+        """
+        if executors_count is not None:
+            pulumi.set(__self__, "executors_count", executors_count)
+        if max_executors_count is not None:
+            pulumi.set(__self__, "max_executors_count", max_executors_count)
+
+    @property
+    @pulumi.getter(name="executorsCount")
+    def executors_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Total number of job executors. Executor Count should be between 2 and 100. [Default=2]
+        """
+        return pulumi.get(self, "executors_count")
+
+    @executors_count.setter
+    def executors_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "executors_count", value)
+
+    @property
+    @pulumi.getter(name="maxExecutorsCount")
+    def max_executors_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Max configurable executors. If maxExecutorsCount > executorsCount, then auto-scaling is enabled. Max Executor Count should be between 2 and 1000. [Default=1000]
+        """
+        return pulumi.get(self, "max_executors_count")
+
+    @max_executors_count.setter
+    def max_executors_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_executors_count", value)
+
+
+@pulumi.input_type
+class TaskSparkInfrastructureSpecContainerImageArgs:
+    def __init__(__self__, *,
+                 image: Optional[pulumi.Input[str]] = None,
+                 java_jars: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 python_packages: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] image: Container image to use.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] java_jars: A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] python_packages: A list of python packages to be installed. Valid formats include Cloud Storage URI to a PIP installable library. For example, gs://bucket-name/my/path/to/lib.tar.gz
+        """
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if java_jars is not None:
+            pulumi.set(__self__, "java_jars", java_jars)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if python_packages is not None:
+            pulumi.set(__self__, "python_packages", python_packages)
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[pulumi.Input[str]]:
+        """
+        Container image to use.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image", value)
+
+    @property
+    @pulumi.getter(name="javaJars")
+    def java_jars(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of Java JARS to add to the classpath. Valid input includes Cloud Storage URIs to Jar binaries. For example, gs://bucket-name/my/path/to/file.jar
+        """
+        return pulumi.get(self, "java_jars")
+
+    @java_jars.setter
+    def java_jars(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "java_jars", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Override to common configuration of open source components installed on the Dataproc cluster. The properties to set on daemon config files. Property keys are specified in prefix:property format, for example core:hadoop.tmp.dir. For more information, see Cluster properties.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="pythonPackages")
+    def python_packages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of python packages to be installed. Valid formats include Cloud Storage URI to a PIP installable library. For example, gs://bucket-name/my/path/to/lib.tar.gz
+        """
+        return pulumi.get(self, "python_packages")
+
+    @python_packages.setter
+    def python_packages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "python_packages", value)
+
+
+@pulumi.input_type
+class TaskSparkInfrastructureSpecVpcNetworkArgs:
+    def __init__(__self__, *,
+                 network: Optional[pulumi.Input[str]] = None,
+                 network_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sub_network: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] network: The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_tags: List of network tags to apply to the job.
+        :param pulumi.Input[str] sub_network: The Cloud VPC sub-network in which the job is run.
+        """
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if network_tags is not None:
+            pulumi.set(__self__, "network_tags", network_tags)
+        if sub_network is not None:
+            pulumi.set(__self__, "sub_network", sub_network)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="networkTags")
+    def network_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of network tags to apply to the job.
+        """
+        return pulumi.get(self, "network_tags")
+
+    @network_tags.setter
+    def network_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "network_tags", value)
+
+    @property
+    @pulumi.getter(name="subNetwork")
+    def sub_network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Cloud VPC sub-network in which the job is run.
+        """
+        return pulumi.get(self, "sub_network")
+
+    @sub_network.setter
+    def sub_network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sub_network", value)
+
+
+@pulumi.input_type
+class TaskTriggerSpecArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 max_retries: Optional[pulumi.Input[int]] = None,
+                 schedule: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: Trigger type of the user-specified Task
+               Possible values are: `ON_DEMAND`, `RECURRING`.
+        :param pulumi.Input[bool] disabled: Prevent the task from executing. This does not cancel already running tasks. It is intended to temporarily disable RECURRING tasks.
+        :param pulumi.Input[int] max_retries: Number of retry attempts before aborting. Set to zero to never attempt to retry a failed task.
+        :param pulumi.Input[str] schedule: Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
+        :param pulumi.Input[str] start_time: The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
+        """
+        pulumi.set(__self__, "type", type)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if max_retries is not None:
+            pulumi.set(__self__, "max_retries", max_retries)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Trigger type of the user-specified Task
+        Possible values are: `ON_DEMAND`, `RECURRING`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Prevent the task from executing. This does not cancel already running tasks. It is intended to temporarily disable RECURRING tasks.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="maxRetries")
+    def max_retries(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of retry attempts before aborting. Set to zero to never attempt to retry a failed task.
+        """
+        return pulumi.get(self, "max_retries")
+
+    @max_retries.setter
+    def max_retries(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_retries", value)
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: 'CRON_TZ=${IANA_TIME_ZONE}' or 'TZ=${IANA_TIME_ZONE}'. The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schedule", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
 
 
 @pulumi.input_type

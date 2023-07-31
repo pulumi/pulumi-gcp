@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class WorkflowTemplateParameter
     {
         /// <summary>
-        /// Optional. Brief description of the parameter. Must not exceed 1024 characters.
+        /// Brief description of the parameter. Must not exceed 1024 characters.
         /// </summary>
         public readonly string? Description;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Optional. Validation rules to be applied to this parameter's value.
+        /// Validation rules to be applied to this parameter's value.
         /// </summary>
         public readonly Outputs.WorkflowTemplateParameterValidation? Validation;
 

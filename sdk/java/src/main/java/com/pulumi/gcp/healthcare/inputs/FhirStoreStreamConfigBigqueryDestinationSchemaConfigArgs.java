@@ -5,6 +5,7 @@ package com.pulumi.gcp.healthcare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.healthcare.inputs.FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -15,6 +16,23 @@ import javax.annotation.Nullable;
 public final class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs Empty = new FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs();
+
+    /**
+     * The configuration for exported BigQuery tables to be partitioned by FHIR resource&#39;s last updated time column.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="lastUpdatedPartitionConfig")
+    private @Nullable Output<FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs> lastUpdatedPartitionConfig;
+
+    /**
+     * @return The configuration for exported BigQuery tables to be partitioned by FHIR resource&#39;s last updated time column.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs>> lastUpdatedPartitionConfig() {
+        return Optional.ofNullable(this.lastUpdatedPartitionConfig);
+    }
 
     /**
      * The depth for all recursive structures in the output analytics schema. For example, concept in the CodeSystem
@@ -67,6 +85,7 @@ public final class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs exte
     private FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs() {}
 
     private FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs(FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs $) {
+        this.lastUpdatedPartitionConfig = $.lastUpdatedPartitionConfig;
         this.recursiveStructureDepth = $.recursiveStructureDepth;
         this.schemaType = $.schemaType;
     }
@@ -87,6 +106,29 @@ public final class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs exte
 
         public Builder(FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs defaults) {
             $ = new FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param lastUpdatedPartitionConfig The configuration for exported BigQuery tables to be partitioned by FHIR resource&#39;s last updated time column.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastUpdatedPartitionConfig(@Nullable Output<FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs> lastUpdatedPartitionConfig) {
+            $.lastUpdatedPartitionConfig = lastUpdatedPartitionConfig;
+            return this;
+        }
+
+        /**
+         * @param lastUpdatedPartitionConfig The configuration for exported BigQuery tables to be partitioned by FHIR resource&#39;s last updated time column.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder lastUpdatedPartitionConfig(FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs lastUpdatedPartitionConfig) {
+            return lastUpdatedPartitionConfig(Output.of(lastUpdatedPartitionConfig));
         }
 
         /**

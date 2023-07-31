@@ -4,6 +4,8 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -12,6 +14,8 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolNetworkConfig {
+    private List<GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig> additionalNodeNetworkConfigs;
+    private List<GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig> additionalPodNetworkConfigs;
     private Boolean createPodRange;
     private Boolean enablePrivateNodes;
     private List<GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig> podCidrOverprovisionConfigs;
@@ -19,6 +23,12 @@ public final class GetClusterNodePoolNetworkConfig {
     private String podRange;
 
     private GetClusterNodePoolNetworkConfig() {}
+    public List<GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig> additionalNodeNetworkConfigs() {
+        return this.additionalNodeNetworkConfigs;
+    }
+    public List<GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig> additionalPodNetworkConfigs() {
+        return this.additionalPodNetworkConfigs;
+    }
     public Boolean createPodRange() {
         return this.createPodRange;
     }
@@ -44,6 +54,8 @@ public final class GetClusterNodePoolNetworkConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig> additionalNodeNetworkConfigs;
+        private List<GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig> additionalPodNetworkConfigs;
         private Boolean createPodRange;
         private Boolean enablePrivateNodes;
         private List<GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig> podCidrOverprovisionConfigs;
@@ -52,6 +64,8 @@ public final class GetClusterNodePoolNetworkConfig {
         public Builder() {}
         public Builder(GetClusterNodePoolNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalNodeNetworkConfigs = defaults.additionalNodeNetworkConfigs;
+    	      this.additionalPodNetworkConfigs = defaults.additionalPodNetworkConfigs;
     	      this.createPodRange = defaults.createPodRange;
     	      this.enablePrivateNodes = defaults.enablePrivateNodes;
     	      this.podCidrOverprovisionConfigs = defaults.podCidrOverprovisionConfigs;
@@ -59,6 +73,22 @@ public final class GetClusterNodePoolNetworkConfig {
     	      this.podRange = defaults.podRange;
         }
 
+        @CustomType.Setter
+        public Builder additionalNodeNetworkConfigs(List<GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig> additionalNodeNetworkConfigs) {
+            this.additionalNodeNetworkConfigs = Objects.requireNonNull(additionalNodeNetworkConfigs);
+            return this;
+        }
+        public Builder additionalNodeNetworkConfigs(GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig... additionalNodeNetworkConfigs) {
+            return additionalNodeNetworkConfigs(List.of(additionalNodeNetworkConfigs));
+        }
+        @CustomType.Setter
+        public Builder additionalPodNetworkConfigs(List<GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig> additionalPodNetworkConfigs) {
+            this.additionalPodNetworkConfigs = Objects.requireNonNull(additionalPodNetworkConfigs);
+            return this;
+        }
+        public Builder additionalPodNetworkConfigs(GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig... additionalPodNetworkConfigs) {
+            return additionalPodNetworkConfigs(List.of(additionalPodNetworkConfigs));
+        }
         @CustomType.Setter
         public Builder createPodRange(Boolean createPodRange) {
             this.createPodRange = Objects.requireNonNull(createPodRange);
@@ -89,6 +119,8 @@ public final class GetClusterNodePoolNetworkConfig {
         }
         public GetClusterNodePoolNetworkConfig build() {
             final var o = new GetClusterNodePoolNetworkConfig();
+            o.additionalNodeNetworkConfigs = additionalNodeNetworkConfigs;
+            o.additionalPodNetworkConfigs = additionalPodNetworkConfigs;
             o.createPodRange = createPodRange;
             o.enablePrivateNodes = enablePrivateNodes;
             o.podCidrOverprovisionConfigs = podCidrOverprovisionConfigs;

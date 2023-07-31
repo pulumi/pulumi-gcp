@@ -21,6 +21,7 @@ __all__ = [
     'ServiceMetadata',
     'ServiceStatus',
     'ServiceStatusCondition',
+    'ServiceStatusTraffic',
     'ServiceTemplate',
     'ServiceTemplateMetadata',
     'ServiceTemplateSpec',
@@ -53,6 +54,7 @@ __all__ = [
     'GetServiceMetadataResult',
     'GetServiceStatusResult',
     'GetServiceStatusConditionResult',
+    'GetServiceStatusTrafficResult',
     'GetServiceTemplateResult',
     'GetServiceTemplateMetadataResult',
     'GetServiceTemplateSpecResult',
@@ -770,6 +772,7 @@ class ServiceStatus(dict):
                  latest_created_revision_name: Optional[str] = None,
                  latest_ready_revision_name: Optional[str] = None,
                  observed_generation: Optional[int] = None,
+                 traffics: Optional[Sequence['outputs.ServiceStatusTraffic']] = None,
                  url: Optional[str] = None):
         """
         :param Sequence['ServiceStatusConditionArgs'] conditions: (Output)
@@ -788,6 +791,10 @@ class ServiceStatus(dict):
                controller.
                Clients polling for completed reconciliation should poll until observedGeneration =
                metadata.generation and the Ready condition's status is True or False.
+        :param Sequence['ServiceStatusTrafficArgs'] traffics: (Output)
+               Traffic specifies how to distribute traffic over a collection of Knative Revisions
+               and Configurations
+               Structure is documented below.
         :param str url: (Output)
                URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
                and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
@@ -801,6 +808,8 @@ class ServiceStatus(dict):
             pulumi.set(__self__, "latest_ready_revision_name", latest_ready_revision_name)
         if observed_generation is not None:
             pulumi.set(__self__, "observed_generation", observed_generation)
+        if traffics is not None:
+            pulumi.set(__self__, "traffics", traffics)
         if url is not None:
             pulumi.set(__self__, "url", url)
 
@@ -847,6 +856,17 @@ class ServiceStatus(dict):
         metadata.generation and the Ready condition's status is True or False.
         """
         return pulumi.get(self, "observed_generation")
+
+    @property
+    @pulumi.getter
+    def traffics(self) -> Optional[Sequence['outputs.ServiceStatusTraffic']]:
+        """
+        (Output)
+        Traffic specifies how to distribute traffic over a collection of Knative Revisions
+        and Configurations
+        Structure is documented below.
+        """
+        return pulumi.get(self, "traffics")
 
     @property
     @pulumi.getter
@@ -921,6 +941,104 @@ class ServiceStatusCondition(dict):
         Type of domain mapping condition.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class ServiceStatusTraffic(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "latestRevision":
+            suggest = "latest_revision"
+        elif key == "revisionName":
+            suggest = "revision_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceStatusTraffic. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceStatusTraffic.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceStatusTraffic.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 latest_revision: Optional[bool] = None,
+                 percent: Optional[int] = None,
+                 revision_name: Optional[str] = None,
+                 tag: Optional[str] = None,
+                 url: Optional[str] = None):
+        """
+        :param bool latest_revision: LatestRevision may be optionally provided to indicate that the latest ready
+               Revision of the Configuration should be used for this traffic target. When
+               provided LatestRevision must be true if RevisionName is empty; it must be
+               false when RevisionName is non-empty.
+        :param int percent: Percent specifies percent of the traffic to this Revision or Configuration.
+        :param str revision_name: RevisionName of a specific revision to which to send this portion of traffic.
+        :param str tag: Tag is optionally used to expose a dedicated url for referencing this target exclusively.
+        :param str url: (Output)
+               URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+               and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+               but may not contain anything else (e.g. basic auth, url path, etc.)
+        """
+        if latest_revision is not None:
+            pulumi.set(__self__, "latest_revision", latest_revision)
+        if percent is not None:
+            pulumi.set(__self__, "percent", percent)
+        if revision_name is not None:
+            pulumi.set(__self__, "revision_name", revision_name)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="latestRevision")
+    def latest_revision(self) -> Optional[bool]:
+        """
+        LatestRevision may be optionally provided to indicate that the latest ready
+        Revision of the Configuration should be used for this traffic target. When
+        provided LatestRevision must be true if RevisionName is empty; it must be
+        false when RevisionName is non-empty.
+        """
+        return pulumi.get(self, "latest_revision")
+
+    @property
+    @pulumi.getter
+    def percent(self) -> Optional[int]:
+        """
+        Percent specifies percent of the traffic to this Revision or Configuration.
+        """
+        return pulumi.get(self, "percent")
+
+    @property
+    @pulumi.getter(name="revisionName")
+    def revision_name(self) -> Optional[str]:
+        """
+        RevisionName of a specific revision to which to send this portion of traffic.
+        """
+        return pulumi.get(self, "revision_name")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> Optional[str]:
+        """
+        Tag is optionally used to expose a dedicated url for referencing this target exclusively.
+        """
+        return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter
+    def url(self) -> Optional[str]:
+        """
+        (Output)
+        URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
+        and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
+        but may not contain anything else (e.g. basic auth, url path, etc.)
+        """
+        return pulumi.get(self, "url")
 
 
 @pulumi.output_type
@@ -2953,11 +3071,13 @@ class GetServiceStatusResult(dict):
                  latest_created_revision_name: str,
                  latest_ready_revision_name: str,
                  observed_generation: int,
+                 traffics: Sequence['outputs.GetServiceStatusTrafficResult'],
                  url: str):
         pulumi.set(__self__, "conditions", conditions)
         pulumi.set(__self__, "latest_created_revision_name", latest_created_revision_name)
         pulumi.set(__self__, "latest_ready_revision_name", latest_ready_revision_name)
         pulumi.set(__self__, "observed_generation", observed_generation)
+        pulumi.set(__self__, "traffics", traffics)
         pulumi.set(__self__, "url", url)
 
     @property
@@ -2979,6 +3099,11 @@ class GetServiceStatusResult(dict):
     @pulumi.getter(name="observedGeneration")
     def observed_generation(self) -> int:
         return pulumi.get(self, "observed_generation")
+
+    @property
+    @pulumi.getter
+    def traffics(self) -> Sequence['outputs.GetServiceStatusTrafficResult']:
+        return pulumi.get(self, "traffics")
 
     @property
     @pulumi.getter
@@ -3017,6 +3142,46 @@ class GetServiceStatusConditionResult(dict):
     @pulumi.getter
     def type(self) -> str:
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetServiceStatusTrafficResult(dict):
+    def __init__(__self__, *,
+                 latest_revision: bool,
+                 percent: int,
+                 revision_name: str,
+                 tag: str,
+                 url: str):
+        pulumi.set(__self__, "latest_revision", latest_revision)
+        pulumi.set(__self__, "percent", percent)
+        pulumi.set(__self__, "revision_name", revision_name)
+        pulumi.set(__self__, "tag", tag)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter(name="latestRevision")
+    def latest_revision(self) -> bool:
+        return pulumi.get(self, "latest_revision")
+
+    @property
+    @pulumi.getter
+    def percent(self) -> int:
+        return pulumi.get(self, "percent")
+
+    @property
+    @pulumi.getter(name="revisionName")
+    def revision_name(self) -> str:
+        return pulumi.get(self, "revision_name")
+
+    @property
+    @pulumi.getter
+    def tag(self) -> str:
+        return pulumi.get(self, "tag")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        return pulumi.get(self, "url")
 
 
 @pulumi.output_type

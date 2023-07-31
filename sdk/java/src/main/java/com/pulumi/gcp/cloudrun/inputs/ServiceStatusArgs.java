@@ -6,6 +6,7 @@ package com.pulumi.gcp.cloudrun.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.cloudrun.inputs.ServiceStatusConditionArgs;
+import com.pulumi.gcp.cloudrun.inputs.ServiceStatusTrafficArgs;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -104,6 +105,27 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * (Output)
+     * Traffic specifies how to distribute traffic over a collection of Knative Revisions
+     * and Configurations
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="traffics")
+    private @Nullable Output<List<ServiceStatusTrafficArgs>> traffics;
+
+    /**
+     * @return (Output)
+     * Traffic specifies how to distribute traffic over a collection of Knative Revisions
+     * and Configurations
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<ServiceStatusTrafficArgs>>> traffics() {
+        return Optional.ofNullable(this.traffics);
+    }
+
+    /**
+     * (Output)
      * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
      * and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
      * but may not contain anything else (e.g. basic auth, url path, etc.)
@@ -130,6 +152,7 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
         this.latestCreatedRevisionName = $.latestCreatedRevisionName;
         this.latestReadyRevisionName = $.latestReadyRevisionName;
         this.observedGeneration = $.observedGeneration;
+        this.traffics = $.traffics;
         this.url = $.url;
     }
 
@@ -269,6 +292,46 @@ public final class ServiceStatusArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder observedGeneration(Integer observedGeneration) {
             return observedGeneration(Output.of(observedGeneration));
+        }
+
+        /**
+         * @param traffics (Output)
+         * Traffic specifies how to distribute traffic over a collection of Knative Revisions
+         * and Configurations
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder traffics(@Nullable Output<List<ServiceStatusTrafficArgs>> traffics) {
+            $.traffics = traffics;
+            return this;
+        }
+
+        /**
+         * @param traffics (Output)
+         * Traffic specifies how to distribute traffic over a collection of Knative Revisions
+         * and Configurations
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder traffics(List<ServiceStatusTrafficArgs> traffics) {
+            return traffics(Output.of(traffics));
+        }
+
+        /**
+         * @param traffics (Output)
+         * Traffic specifies how to distribute traffic over a collection of Knative Revisions
+         * and Configurations
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder traffics(ServiceStatusTrafficArgs... traffics) {
+            return traffics(List.of(traffics));
         }
 
         /**

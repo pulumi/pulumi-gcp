@@ -219,8 +219,8 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
      * Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
      * 
      */
-    @Import(name="scope", required=true)
-    private Output<String> scope;
+    @Import(name="scope")
+    private @Nullable Output<String> scope;
 
     /**
      * @return Immutable. Scope determines how configuration across multiple Gateway instances are merged.
@@ -229,8 +229,8 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
      * Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
      * 
      */
-    public Output<String> scope() {
-        return this.scope;
+    public Optional<Output<String>> scope() {
+        return Optional.ofNullable(this.scope);
     }
 
     /**
@@ -627,7 +627,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder scope(Output<String> scope) {
+        public Builder scope(@Nullable Output<String> scope) {
             $.scope = scope;
             return this;
         }
@@ -718,7 +718,6 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
 
         public GatewayArgs build() {
             $.ports = Objects.requireNonNull($.ports, "expected parameter 'ports' to be non-null");
-            $.scope = Objects.requireNonNull($.scope, "expected parameter 'scope' to be non-null");
             $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
             return $;
         }

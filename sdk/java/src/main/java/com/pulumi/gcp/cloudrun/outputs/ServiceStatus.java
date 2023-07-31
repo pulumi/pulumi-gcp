@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.cloudrun.outputs.ServiceStatusCondition;
+import com.pulumi.gcp.cloudrun.outputs.ServiceStatusTraffic;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -46,6 +47,14 @@ public final class ServiceStatus {
      * 
      */
     private @Nullable Integer observedGeneration;
+    /**
+     * @return (Output)
+     * Traffic specifies how to distribute traffic over a collection of Knative Revisions
+     * and Configurations
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<ServiceStatusTraffic> traffics;
     /**
      * @return (Output)
      * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
@@ -98,6 +107,16 @@ public final class ServiceStatus {
     }
     /**
      * @return (Output)
+     * Traffic specifies how to distribute traffic over a collection of Knative Revisions
+     * and Configurations
+     * Structure is documented below.
+     * 
+     */
+    public List<ServiceStatusTraffic> traffics() {
+        return this.traffics == null ? List.of() : this.traffics;
+    }
+    /**
+     * @return (Output)
      * URL displays the URL for accessing tagged traffic targets. URL is displayed in status,
      * and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname,
      * but may not contain anything else (e.g. basic auth, url path, etc.)
@@ -120,6 +139,7 @@ public final class ServiceStatus {
         private @Nullable String latestCreatedRevisionName;
         private @Nullable String latestReadyRevisionName;
         private @Nullable Integer observedGeneration;
+        private @Nullable List<ServiceStatusTraffic> traffics;
         private @Nullable String url;
         public Builder() {}
         public Builder(ServiceStatus defaults) {
@@ -128,6 +148,7 @@ public final class ServiceStatus {
     	      this.latestCreatedRevisionName = defaults.latestCreatedRevisionName;
     	      this.latestReadyRevisionName = defaults.latestReadyRevisionName;
     	      this.observedGeneration = defaults.observedGeneration;
+    	      this.traffics = defaults.traffics;
     	      this.url = defaults.url;
         }
 
@@ -155,6 +176,14 @@ public final class ServiceStatus {
             return this;
         }
         @CustomType.Setter
+        public Builder traffics(@Nullable List<ServiceStatusTraffic> traffics) {
+            this.traffics = traffics;
+            return this;
+        }
+        public Builder traffics(ServiceStatusTraffic... traffics) {
+            return traffics(List.of(traffics));
+        }
+        @CustomType.Setter
         public Builder url(@Nullable String url) {
             this.url = url;
             return this;
@@ -165,6 +194,7 @@ public final class ServiceStatus {
             o.latestCreatedRevisionName = latestCreatedRevisionName;
             o.latestReadyRevisionName = latestReadyRevisionName;
             o.observedGeneration = observedGeneration;
+            o.traffics = traffics;
             o.url = url;
             return o;
         }

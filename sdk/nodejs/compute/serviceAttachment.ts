@@ -131,6 +131,13 @@ export class ServiceAttachment extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
+     * If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
+     * If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
+     * For newly created service attachment, this boolean defaults to true.
+     */
+    public readonly reconcileConnections!: pulumi.Output<boolean | undefined>;
+    /**
      * URL of the region where the resource resides.
      */
     public readonly region!: pulumi.Output<string>;
@@ -168,6 +175,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["natSubnets"] = state ? state.natSubnets : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["reconcileConnections"] = state ? state.reconcileConnections : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["targetService"] = state ? state.targetService : undefined;
@@ -194,6 +202,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["natSubnets"] = args ? args.natSubnets : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["reconcileConnections"] = args ? args.reconcileConnections : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["targetService"] = args ? args.targetService : undefined;
             resourceInputs["connectedEndpoints"] = undefined /*out*/;
@@ -275,6 +284,13 @@ export interface ServiceAttachmentState {
      */
     project?: pulumi.Input<string>;
     /**
+     * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
+     * If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
+     * If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
+     * For newly created service attachment, this boolean defaults to true.
+     */
+    reconcileConnections?: pulumi.Input<boolean>;
+    /**
      * URL of the region where the resource resides.
      */
     region?: pulumi.Input<string>;
@@ -347,6 +363,13 @@ export interface ServiceAttachmentArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints.
+     * If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified .
+     * If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list.
+     * For newly created service attachment, this boolean defaults to true.
+     */
+    reconcileConnections?: pulumi.Input<boolean>;
     /**
      * URL of the region where the resource resides.
      */

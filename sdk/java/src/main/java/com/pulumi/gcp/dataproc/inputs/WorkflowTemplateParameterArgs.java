@@ -18,14 +18,14 @@ public final class WorkflowTemplateParameterArgs extends com.pulumi.resources.Re
     public static final WorkflowTemplateParameterArgs Empty = new WorkflowTemplateParameterArgs();
 
     /**
-     * Optional. Brief description of the parameter. Must not exceed 1024 characters.
+     * Brief description of the parameter. Must not exceed 1024 characters.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Optional. Brief description of the parameter. Must not exceed 1024 characters.
+     * @return Brief description of the parameter. Must not exceed 1024 characters.
      * 
      */
     public Optional<Output<String>> description() {
@@ -63,14 +63,14 @@ public final class WorkflowTemplateParameterArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Optional. Validation rules to be applied to this parameter&#39;s value.
+     * Validation rules to be applied to this parameter&#39;s value.
      * 
      */
     @Import(name="validation")
     private @Nullable Output<WorkflowTemplateParameterValidationArgs> validation;
 
     /**
-     * @return Optional. Validation rules to be applied to this parameter&#39;s value.
+     * @return Validation rules to be applied to this parameter&#39;s value.
      * 
      */
     public Optional<Output<WorkflowTemplateParameterValidationArgs>> validation() {
@@ -105,7 +105,7 @@ public final class WorkflowTemplateParameterArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param description Optional. Brief description of the parameter. Must not exceed 1024 characters.
+         * @param description Brief description of the parameter. Must not exceed 1024 characters.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class WorkflowTemplateParameterArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param description Optional. Brief description of the parameter. Must not exceed 1024 characters.
+         * @param description Brief description of the parameter. Must not exceed 1024 characters.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class WorkflowTemplateParameterArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param validation Optional. Validation rules to be applied to this parameter&#39;s value.
+         * @param validation Validation rules to be applied to this parameter&#39;s value.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class WorkflowTemplateParameterArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param validation Optional. Validation rules to be applied to this parameter&#39;s value.
+         * @param validation Validation rules to be applied to this parameter&#39;s value.
          * 
          * @return builder
          * 

@@ -14,47 +14,47 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class WorkflowTemplateJob
     {
         /// <summary>
-        /// Optional. Job is a Hadoop job.
+        /// Job is a Hadoop job.
         /// </summary>
         public readonly Outputs.WorkflowTemplateJobHadoopJob? HadoopJob;
         /// <summary>
-        /// Optional. Job is a Hive job.
+        /// Job is a Hive job.
         /// </summary>
         public readonly Outputs.WorkflowTemplateJobHiveJob? HiveJob;
         /// <summary>
-        /// Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+        /// The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>
-        /// Optional. Job is a Pig job.
+        /// Job is a Pig job.
         /// </summary>
         public readonly Outputs.WorkflowTemplateJobPigJob? PigJob;
         /// <summary>
-        /// Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
+        /// The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
         /// </summary>
         public readonly ImmutableArray<string> PrerequisiteStepIds;
         /// <summary>
-        /// Optional. Job is a Presto job.
+        /// Job is a Presto job.
         /// </summary>
         public readonly Outputs.WorkflowTemplateJobPrestoJob? PrestoJob;
         /// <summary>
-        /// Optional. Job is a PySpark job.
+        /// Job is a PySpark job.
         /// </summary>
         public readonly Outputs.WorkflowTemplateJobPysparkJob? PysparkJob;
         /// <summary>
-        /// Optional. Job scheduling configuration.
+        /// Job scheduling configuration.
         /// </summary>
         public readonly Outputs.WorkflowTemplateJobScheduling? Scheduling;
         /// <summary>
-        /// Optional. Job is a Spark job.
+        /// Job is a Spark job.
         /// </summary>
         public readonly Outputs.WorkflowTemplateJobSparkJob? SparkJob;
         /// <summary>
-        /// Optional. Job is a SparkR job.
+        /// Job is a SparkR job.
         /// </summary>
         public readonly Outputs.WorkflowTemplateJobSparkRJob? SparkRJob;
         /// <summary>
-        /// Optional. Job is a SparkSql job.
+        /// Job is a SparkSql job.
         /// </summary>
         public readonly Outputs.WorkflowTemplateJobSparkSqlJob? SparkSqlJob;
         /// <summary>

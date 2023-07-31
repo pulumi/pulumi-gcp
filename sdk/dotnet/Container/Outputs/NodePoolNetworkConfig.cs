@@ -14,6 +14,16 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class NodePoolNetworkConfig
     {
         /// <summary>
+        /// We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
+        /// Structure is documented below
+        /// </summary>
+        public readonly ImmutableArray<Outputs.NodePoolNetworkConfigAdditionalNodeNetworkConfig> AdditionalNodeNetworkConfigs;
+        /// <summary>
+        /// We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
+        /// Structure is documented below
+        /// </summary>
+        public readonly ImmutableArray<Outputs.NodePoolNetworkConfigAdditionalPodNetworkConfig> AdditionalPodNetworkConfigs;
+        /// <summary>
         /// Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
         /// </summary>
         public readonly bool? CreatePodRange;
@@ -33,6 +43,10 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private NodePoolNetworkConfig(
+            ImmutableArray<Outputs.NodePoolNetworkConfigAdditionalNodeNetworkConfig> additionalNodeNetworkConfigs,
+
+            ImmutableArray<Outputs.NodePoolNetworkConfigAdditionalPodNetworkConfig> additionalPodNetworkConfigs,
+
             bool? createPodRange,
 
             bool? enablePrivateNodes,
@@ -43,6 +57,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? podRange)
         {
+            AdditionalNodeNetworkConfigs = additionalNodeNetworkConfigs;
+            AdditionalPodNetworkConfigs = additionalPodNetworkConfigs;
             CreatePodRange = createPodRange;
             EnablePrivateNodes = enablePrivateNodes;
             PodCidrOverprovisionConfig = podCidrOverprovisionConfig;

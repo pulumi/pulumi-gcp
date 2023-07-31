@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _clientTags;
 
         /// <summary>
-        /// Optional. Presto client tags to attach to this query
+        /// Presto client tags to attach to this query
         /// </summary>
         public InputList<string> ClientTags
         {
@@ -25,19 +25,19 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         }
 
         /// <summary>
-        /// Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+        /// Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
         /// </summary>
         [Input("continueOnFailure")]
         public Input<bool>? ContinueOnFailure { get; set; }
 
         /// <summary>
-        /// Optional. The runtime log config for job execution.
+        /// The runtime log config for job execution.
         /// </summary>
         [Input("loggingConfig")]
         public Input<Inputs.WorkflowTemplateJobPrestoJobLoggingConfigGetArgs>? LoggingConfig { get; set; }
 
         /// <summary>
-        /// Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats
+        /// The format in which query output will be displayed. See the Presto documentation for supported output formats
         /// </summary>
         [Input("outputFormat")]
         public Input<string>? OutputFormat { get; set; }
@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputMap<string>? _properties;
 
         /// <summary>
-        /// Optional. A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+        /// A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
         /// </summary>
         public InputMap<string> Properties
         {

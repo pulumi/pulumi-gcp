@@ -18,14 +18,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigEndpointConfigAr
     public static final WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs Empty = new WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs();
 
     /**
-     * Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
+     * If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
      * 
      */
     @Import(name="enableHttpPortAccess")
     private @Nullable Output<Boolean> enableHttpPortAccess;
 
     /**
-     * @return Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
+     * @return If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
      * 
      */
     public Optional<Output<Boolean>> enableHttpPortAccess() {
@@ -73,7 +73,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigEndpointConfigAr
         }
 
         /**
-         * @param enableHttpPortAccess Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
+         * @param enableHttpPortAccess If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigEndpointConfigAr
         }
 
         /**
-         * @param enableHttpPortAccess Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
+         * @param enableHttpPortAccess If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
          * 
          * @return builder
          * 

@@ -20,9 +20,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * ## OS policy assignment is an API resource that is used to apply a set of OS policies to a dynamically targeted group of Compute Engine VM instances.
+ * ## subcategory: &#34;OS Config&#34;
  * 
- * # google\_os\_config\_os\_policy\_assignment
+ * description: |-
+ *     OS policy assignment is an API resource that is used to apply a set of OS policies to a dynamically targeted group of Compute Engine VM instances.
+ * ---
+ * 
+ * # gcp.osconfig.OsPolicyAssignment
  * 
  * OS policy assignment is an API resource that is used to apply a set of OS
  * policies to a dynamically targeted group of Compute Engine VM instances. An OS

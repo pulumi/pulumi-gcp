@@ -520,7 +520,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="scope", type=String.class, parameters={})
-    private Output<String> scope;
+    private Output</* @Nullable */ String> scope;
 
     /**
      * @return Immutable. Scope determines how configuration across multiple Gateway instances are merged.
@@ -529,8 +529,8 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
      * 
      */
-    public Output<String> scope() {
-        return this.scope;
+    public Output<Optional<String>> scope() {
+        return Codegen.optional(this.scope);
     }
     /**
      * Server-defined URL of this resource.

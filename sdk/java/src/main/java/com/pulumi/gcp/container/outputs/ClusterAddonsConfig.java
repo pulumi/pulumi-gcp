@@ -82,7 +82,7 @@ public final class ClusterAddonsConfig {
      */
     private @Nullable ClusterAddonsConfigGcpFilestoreCsiDriverConfig gcpFilestoreCsiDriverConfig;
     /**
-     * @return )) The status of the GCSFuse CSI driver addon,
+     * @return The status of the GCSFuse CSI driver addon,
      * which allows the usage of a gcs bucket as volumes.
      * It is disabled by default; set `enabled = true` to enable.
      * 
@@ -204,7 +204,7 @@ public final class ClusterAddonsConfig {
         return Optional.ofNullable(this.gcpFilestoreCsiDriverConfig);
     }
     /**
-     * @return )) The status of the GCSFuse CSI driver addon,
+     * @return The status of the GCSFuse CSI driver addon,
      * which allows the usage of a gcs bucket as volumes.
      * It is disabled by default; set `enabled = true` to enable.
      * 

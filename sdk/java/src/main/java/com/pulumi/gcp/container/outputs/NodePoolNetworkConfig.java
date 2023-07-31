@@ -4,15 +4,30 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.NodePoolNetworkConfigAdditionalNodeNetworkConfig;
+import com.pulumi.gcp.container.outputs.NodePoolNetworkConfigAdditionalPodNetworkConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNetworkConfigPodCidrOverprovisionConfig;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolNetworkConfig {
+    /**
+     * @return We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
+     * Structure is documented below
+     * 
+     */
+    private @Nullable List<NodePoolNetworkConfigAdditionalNodeNetworkConfig> additionalNodeNetworkConfigs;
+    /**
+     * @return We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
+     * Structure is documented below
+     * 
+     */
+    private @Nullable List<NodePoolNetworkConfigAdditionalPodNetworkConfig> additionalPodNetworkConfigs;
     /**
      * @return Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
      * 
@@ -36,6 +51,22 @@ public final class NodePoolNetworkConfig {
     private @Nullable String podRange;
 
     private NodePoolNetworkConfig() {}
+    /**
+     * @return We specify the additional node networks for this node pool using this list. Each node network corresponds to an additional interface.
+     * Structure is documented below
+     * 
+     */
+    public List<NodePoolNetworkConfigAdditionalNodeNetworkConfig> additionalNodeNetworkConfigs() {
+        return this.additionalNodeNetworkConfigs == null ? List.of() : this.additionalNodeNetworkConfigs;
+    }
+    /**
+     * @return We specify the additional pod networks for this node pool using this list. Each pod network corresponds to an additional alias IP range for the node.
+     * Structure is documented below
+     * 
+     */
+    public List<NodePoolNetworkConfigAdditionalPodNetworkConfig> additionalPodNetworkConfigs() {
+        return this.additionalPodNetworkConfigs == null ? List.of() : this.additionalPodNetworkConfigs;
+    }
     /**
      * @return Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified.
      * 
@@ -77,6 +108,8 @@ public final class NodePoolNetworkConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<NodePoolNetworkConfigAdditionalNodeNetworkConfig> additionalNodeNetworkConfigs;
+        private @Nullable List<NodePoolNetworkConfigAdditionalPodNetworkConfig> additionalPodNetworkConfigs;
         private @Nullable Boolean createPodRange;
         private @Nullable Boolean enablePrivateNodes;
         private @Nullable NodePoolNetworkConfigPodCidrOverprovisionConfig podCidrOverprovisionConfig;
@@ -85,6 +118,8 @@ public final class NodePoolNetworkConfig {
         public Builder() {}
         public Builder(NodePoolNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.additionalNodeNetworkConfigs = defaults.additionalNodeNetworkConfigs;
+    	      this.additionalPodNetworkConfigs = defaults.additionalPodNetworkConfigs;
     	      this.createPodRange = defaults.createPodRange;
     	      this.enablePrivateNodes = defaults.enablePrivateNodes;
     	      this.podCidrOverprovisionConfig = defaults.podCidrOverprovisionConfig;
@@ -92,6 +127,22 @@ public final class NodePoolNetworkConfig {
     	      this.podRange = defaults.podRange;
         }
 
+        @CustomType.Setter
+        public Builder additionalNodeNetworkConfigs(@Nullable List<NodePoolNetworkConfigAdditionalNodeNetworkConfig> additionalNodeNetworkConfigs) {
+            this.additionalNodeNetworkConfigs = additionalNodeNetworkConfigs;
+            return this;
+        }
+        public Builder additionalNodeNetworkConfigs(NodePoolNetworkConfigAdditionalNodeNetworkConfig... additionalNodeNetworkConfigs) {
+            return additionalNodeNetworkConfigs(List.of(additionalNodeNetworkConfigs));
+        }
+        @CustomType.Setter
+        public Builder additionalPodNetworkConfigs(@Nullable List<NodePoolNetworkConfigAdditionalPodNetworkConfig> additionalPodNetworkConfigs) {
+            this.additionalPodNetworkConfigs = additionalPodNetworkConfigs;
+            return this;
+        }
+        public Builder additionalPodNetworkConfigs(NodePoolNetworkConfigAdditionalPodNetworkConfig... additionalPodNetworkConfigs) {
+            return additionalPodNetworkConfigs(List.of(additionalPodNetworkConfigs));
+        }
         @CustomType.Setter
         public Builder createPodRange(@Nullable Boolean createPodRange) {
             this.createPodRange = createPodRange;
@@ -119,6 +170,8 @@ public final class NodePoolNetworkConfig {
         }
         public NodePoolNetworkConfig build() {
             final var o = new NodePoolNetworkConfig();
+            o.additionalNodeNetworkConfigs = additionalNodeNetworkConfigs;
+            o.additionalPodNetworkConfigs = additionalPodNetworkConfigs;
             o.createPodRange = createPodRange;
             o.enablePrivateNodes = enablePrivateNodes;
             o.podCidrOverprovisionConfig = podCidrOverprovisionConfig;

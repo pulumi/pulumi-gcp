@@ -283,7 +283,7 @@ export class Gateway extends pulumi.CustomResource {
      * a single coniguration to the proxy/load balancer.
      * Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
      */
-    public readonly scope!: pulumi.Output<string>;
+    public readonly scope!: pulumi.Output<string | undefined>;
     /**
      * Server-defined URL of this resource.
      */
@@ -344,9 +344,6 @@ export class Gateway extends pulumi.CustomResource {
             const args = argsOrState as GatewayArgs | undefined;
             if ((!args || args.ports === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ports'");
-            }
-            if ((!args || args.scope === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'scope'");
             }
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
@@ -544,7 +541,7 @@ export interface GatewayArgs {
      * a single coniguration to the proxy/load balancer.
      * Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
      */
-    scope: pulumi.Input<string>;
+    scope?: pulumi.Input<string>;
     /**
      * A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated.
      * If empty, TLS termination is disabled.

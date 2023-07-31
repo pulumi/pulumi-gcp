@@ -107,6 +107,14 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
+     * Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
+     * "deletion_protection" attribute in the following ways: (1) "deletion_protection" only protects the database from
+     * deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
+     * interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
+     * database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
+     */
+    public readonly enableDropProtection!: pulumi.Output<boolean | undefined>;
+    /**
      * Encryption configuration for the database
      * Structure is documented below.
      */
@@ -157,6 +165,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["databaseDialect"] = state ? state.databaseDialect : undefined;
             resourceInputs["ddls"] = state ? state.ddls : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
+            resourceInputs["enableDropProtection"] = state ? state.enableDropProtection : undefined;
             resourceInputs["encryptionConfig"] = state ? state.encryptionConfig : undefined;
             resourceInputs["instance"] = state ? state.instance : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -171,6 +180,7 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["databaseDialect"] = args ? args.databaseDialect : undefined;
             resourceInputs["ddls"] = args ? args.ddls : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
+            resourceInputs["enableDropProtection"] = args ? args.enableDropProtection : undefined;
             resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
             resourceInputs["instance"] = args ? args.instance : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -205,6 +215,14 @@ export interface DatabaseState {
      * in state, a `destroy` or `update` that would delete the instance will fail.
      */
     deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
+     * "deletion_protection" attribute in the following ways: (1) "deletion_protection" only protects the database from
+     * deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
+     * interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
+     * database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
+     */
+    enableDropProtection?: pulumi.Input<boolean>;
     /**
      * Encryption configuration for the database
      * Structure is documented below.
@@ -263,6 +281,14 @@ export interface DatabaseArgs {
      * in state, a `destroy` or `update` that would delete the instance will fail.
      */
     deletionProtection?: pulumi.Input<boolean>;
+    /**
+     * Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
+     * "deletion_protection" attribute in the following ways: (1) "deletion_protection" only protects the database from
+     * deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
+     * interfaces. (2) Setting "enableDropProtection" to true also prevents the deletion of the parent instance containing the
+     * database. "deletion_protection" attribute does not provide protection against the deletion of the parent instance.
+     */
+    enableDropProtection?: pulumi.Input<boolean>;
     /**
      * Encryption configuration for the database
      * Structure is documented below.

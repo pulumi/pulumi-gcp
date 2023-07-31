@@ -589,14 +589,20 @@ public class Service extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.template);
     }
     /**
-     * Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+     * (Output)
+     * Traffic specifies how to distribute traffic over a collection of Knative Revisions
+     * and Configurations
+     * Structure is documented below.
      * 
      */
     @Export(name="traffics", type=List.class, parameters={ServiceTraffic.class})
     private Output<List<ServiceTraffic>> traffics;
 
     /**
-     * @return Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations
+     * @return (Output)
+     * Traffic specifies how to distribute traffic over a collection of Knative Revisions
+     * and Configurations
+     * Structure is documented below.
      * 
      */
     public Output<List<ServiceTraffic>> traffics() {

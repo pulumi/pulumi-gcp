@@ -17,6 +17,7 @@ namespace Pulumi.Gcp.CloudRun.Outputs
         public readonly string LatestCreatedRevisionName;
         public readonly string LatestReadyRevisionName;
         public readonly int ObservedGeneration;
+        public readonly ImmutableArray<Outputs.GetServiceStatusTrafficResult> Traffics;
         public readonly string Url;
 
         [OutputConstructor]
@@ -29,12 +30,15 @@ namespace Pulumi.Gcp.CloudRun.Outputs
 
             int observedGeneration,
 
+            ImmutableArray<Outputs.GetServiceStatusTrafficResult> traffics,
+
             string url)
         {
             Conditions = conditions;
             LatestCreatedRevisionName = latestCreatedRevisionName;
             LatestReadyRevisionName = latestReadyRevisionName;
             ObservedGeneration = observedGeneration;
+            Traffics = traffics;
             Url = url;
         }
     }

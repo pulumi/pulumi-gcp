@@ -677,6 +677,10 @@ class FhirStore(pulumi.CustomResource):
                     dataset_uri=pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id).apply(lambda project, dataset_id: f"bq://{project}.{dataset_id}"),
                     schema_config=gcp.healthcare.FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs(
                         recursive_structure_depth=3,
+                        last_updated_partition_config=gcp.healthcare.FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs(
+                            type="HOUR",
+                            expiration_ms="1000000",
+                        ),
                     ),
                 ),
             )])
@@ -868,6 +872,10 @@ class FhirStore(pulumi.CustomResource):
                     dataset_uri=pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id).apply(lambda project, dataset_id: f"bq://{project}.{dataset_id}"),
                     schema_config=gcp.healthcare.FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs(
                         recursive_structure_depth=3,
+                        last_updated_partition_config=gcp.healthcare.FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs(
+                            type="HOUR",
+                            expiration_ms="1000000",
+                        ),
                     ),
                 ),
             )])

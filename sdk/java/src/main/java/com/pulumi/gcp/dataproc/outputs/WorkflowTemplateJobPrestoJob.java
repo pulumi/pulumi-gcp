@@ -17,27 +17,27 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkflowTemplateJobPrestoJob {
     /**
-     * @return Optional. Presto client tags to attach to this query
+     * @return Presto client tags to attach to this query
      * 
      */
     private @Nullable List<String> clientTags;
     /**
-     * @return Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+     * @return Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
      * 
      */
     private @Nullable Boolean continueOnFailure;
     /**
-     * @return Optional. The runtime log config for job execution.
+     * @return The runtime log config for job execution.
      * 
      */
     private @Nullable WorkflowTemplateJobPrestoJobLoggingConfig loggingConfig;
     /**
-     * @return Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats
+     * @return The format in which query output will be displayed. See the Presto documentation for supported output formats
      * 
      */
     private @Nullable String outputFormat;
     /**
-     * @return Optional. A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+     * @return A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
      * 
      */
     private @Nullable Map<String,String> properties;
@@ -54,35 +54,35 @@ public final class WorkflowTemplateJobPrestoJob {
 
     private WorkflowTemplateJobPrestoJob() {}
     /**
-     * @return Optional. Presto client tags to attach to this query
+     * @return Presto client tags to attach to this query
      * 
      */
     public List<String> clientTags() {
         return this.clientTags == null ? List.of() : this.clientTags;
     }
     /**
-     * @return Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+     * @return Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
      * 
      */
     public Optional<Boolean> continueOnFailure() {
         return Optional.ofNullable(this.continueOnFailure);
     }
     /**
-     * @return Optional. The runtime log config for job execution.
+     * @return The runtime log config for job execution.
      * 
      */
     public Optional<WorkflowTemplateJobPrestoJobLoggingConfig> loggingConfig() {
         return Optional.ofNullable(this.loggingConfig);
     }
     /**
-     * @return Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats
+     * @return The format in which query output will be displayed. See the Presto documentation for supported output formats
      * 
      */
     public Optional<String> outputFormat() {
         return Optional.ofNullable(this.outputFormat);
     }
     /**
-     * @return Optional. A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+     * @return A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
      * 
      */
     public Map<String,String> properties() {

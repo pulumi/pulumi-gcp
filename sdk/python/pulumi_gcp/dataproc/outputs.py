@@ -5530,17 +5530,17 @@ class WorkflowTemplateJob(dict):
                  spark_sql_job: Optional['outputs.WorkflowTemplateJobSparkSqlJob'] = None):
         """
         :param str step_id: Required. The step id. The id must be unique among all jobs within the template. The step id is used as prefix for job id, as job `goog-dataproc-workflow-step-id` label, and in field from other steps. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-        :param 'WorkflowTemplateJobHadoopJobArgs' hadoop_job: Optional. Job is a Hadoop job.
-        :param 'WorkflowTemplateJobHiveJobArgs' hive_job: Optional. Job is a Hive job.
-        :param Mapping[str, str] labels: Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
-        :param 'WorkflowTemplateJobPigJobArgs' pig_job: Optional. Job is a Pig job.
-        :param Sequence[str] prerequisite_step_ids: Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
-        :param 'WorkflowTemplateJobPrestoJobArgs' presto_job: Optional. Job is a Presto job.
-        :param 'WorkflowTemplateJobPysparkJobArgs' pyspark_job: Optional. Job is a PySpark job.
-        :param 'WorkflowTemplateJobSchedulingArgs' scheduling: Optional. Job scheduling configuration.
-        :param 'WorkflowTemplateJobSparkJobArgs' spark_job: Optional. Job is a Spark job.
-        :param 'WorkflowTemplateJobSparkRJobArgs' spark_r_job: Optional. Job is a SparkR job.
-        :param 'WorkflowTemplateJobSparkSqlJobArgs' spark_sql_job: Optional. Job is a SparkSql job.
+        :param 'WorkflowTemplateJobHadoopJobArgs' hadoop_job: Job is a Hadoop job.
+        :param 'WorkflowTemplateJobHiveJobArgs' hive_job: Job is a Hive job.
+        :param Mapping[str, str] labels: The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+        :param 'WorkflowTemplateJobPigJobArgs' pig_job: Job is a Pig job.
+        :param Sequence[str] prerequisite_step_ids: The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
+        :param 'WorkflowTemplateJobPrestoJobArgs' presto_job: Job is a Presto job.
+        :param 'WorkflowTemplateJobPysparkJobArgs' pyspark_job: Job is a PySpark job.
+        :param 'WorkflowTemplateJobSchedulingArgs' scheduling: Job scheduling configuration.
+        :param 'WorkflowTemplateJobSparkJobArgs' spark_job: Job is a Spark job.
+        :param 'WorkflowTemplateJobSparkRJobArgs' spark_r_job: Job is a SparkR job.
+        :param 'WorkflowTemplateJobSparkSqlJobArgs' spark_sql_job: Job is a SparkSql job.
         """
         pulumi.set(__self__, "step_id", step_id)
         if hadoop_job is not None:
@@ -5578,7 +5578,7 @@ class WorkflowTemplateJob(dict):
     @pulumi.getter(name="hadoopJob")
     def hadoop_job(self) -> Optional['outputs.WorkflowTemplateJobHadoopJob']:
         """
-        Optional. Job is a Hadoop job.
+        Job is a Hadoop job.
         """
         return pulumi.get(self, "hadoop_job")
 
@@ -5586,7 +5586,7 @@ class WorkflowTemplateJob(dict):
     @pulumi.getter(name="hiveJob")
     def hive_job(self) -> Optional['outputs.WorkflowTemplateJobHiveJob']:
         """
-        Optional. Job is a Hive job.
+        Job is a Hive job.
         """
         return pulumi.get(self, "hive_job")
 
@@ -5594,7 +5594,7 @@ class WorkflowTemplateJob(dict):
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
         """
-        Optional. The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
+        The labels to associate with this job. Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: {0,63} No more than 32 labels can be associated with a given job.
         """
         return pulumi.get(self, "labels")
 
@@ -5602,7 +5602,7 @@ class WorkflowTemplateJob(dict):
     @pulumi.getter(name="pigJob")
     def pig_job(self) -> Optional['outputs.WorkflowTemplateJobPigJob']:
         """
-        Optional. Job is a Pig job.
+        Job is a Pig job.
         """
         return pulumi.get(self, "pig_job")
 
@@ -5610,7 +5610,7 @@ class WorkflowTemplateJob(dict):
     @pulumi.getter(name="prerequisiteStepIds")
     def prerequisite_step_ids(self) -> Optional[Sequence[str]]:
         """
-        Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
+        The optional list of prerequisite job step_ids. If not specified, the job will start at the beginning of workflow.
         """
         return pulumi.get(self, "prerequisite_step_ids")
 
@@ -5618,7 +5618,7 @@ class WorkflowTemplateJob(dict):
     @pulumi.getter(name="prestoJob")
     def presto_job(self) -> Optional['outputs.WorkflowTemplateJobPrestoJob']:
         """
-        Optional. Job is a Presto job.
+        Job is a Presto job.
         """
         return pulumi.get(self, "presto_job")
 
@@ -5626,7 +5626,7 @@ class WorkflowTemplateJob(dict):
     @pulumi.getter(name="pysparkJob")
     def pyspark_job(self) -> Optional['outputs.WorkflowTemplateJobPysparkJob']:
         """
-        Optional. Job is a PySpark job.
+        Job is a PySpark job.
         """
         return pulumi.get(self, "pyspark_job")
 
@@ -5634,7 +5634,7 @@ class WorkflowTemplateJob(dict):
     @pulumi.getter
     def scheduling(self) -> Optional['outputs.WorkflowTemplateJobScheduling']:
         """
-        Optional. Job scheduling configuration.
+        Job scheduling configuration.
         """
         return pulumi.get(self, "scheduling")
 
@@ -5642,7 +5642,7 @@ class WorkflowTemplateJob(dict):
     @pulumi.getter(name="sparkJob")
     def spark_job(self) -> Optional['outputs.WorkflowTemplateJobSparkJob']:
         """
-        Optional. Job is a Spark job.
+        Job is a Spark job.
         """
         return pulumi.get(self, "spark_job")
 
@@ -5650,7 +5650,7 @@ class WorkflowTemplateJob(dict):
     @pulumi.getter(name="sparkRJob")
     def spark_r_job(self) -> Optional['outputs.WorkflowTemplateJobSparkRJob']:
         """
-        Optional. Job is a SparkR job.
+        Job is a SparkR job.
         """
         return pulumi.get(self, "spark_r_job")
 
@@ -5658,7 +5658,7 @@ class WorkflowTemplateJob(dict):
     @pulumi.getter(name="sparkSqlJob")
     def spark_sql_job(self) -> Optional['outputs.WorkflowTemplateJobSparkSqlJob']:
         """
-        Optional. Job is a SparkSql job.
+        Job is a SparkSql job.
         """
         return pulumi.get(self, "spark_sql_job")
 
@@ -5702,14 +5702,14 @@ class WorkflowTemplateJobHadoopJob(dict):
                  main_jar_file_uri: Optional[str] = None,
                  properties: Optional[Mapping[str, str]] = None):
         """
-        :param Sequence[str] archive_uris: Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
-        :param Sequence[str] args: Optional. The arguments to pass to the driver. Do not include arguments, such as `-libjars` or `-Dfoo=bar`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
-        :param Sequence[str] file_uris: Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
-        :param Sequence[str] jar_file_uris: Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
-        :param 'WorkflowTemplateJobHadoopJobLoggingConfigArgs' logging_config: Optional. The runtime log config for job execution.
+        :param Sequence[str] archive_uris: HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
+        :param Sequence[str] args: The arguments to pass to the driver. Do not include arguments, such as `-libjars` or `-Dfoo=bar`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        :param Sequence[str] file_uris: HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+        :param Sequence[str] jar_file_uris: Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
+        :param 'WorkflowTemplateJobHadoopJobLoggingConfigArgs' logging_config: The runtime log config for job execution.
         :param str main_class: The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`.
         :param str main_jar_file_uri: The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'
-        :param Mapping[str, str] properties: Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
+        :param Mapping[str, str] properties: A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
         """
         if archive_uris is not None:
             pulumi.set(__self__, "archive_uris", archive_uris)
@@ -5732,7 +5732,7 @@ class WorkflowTemplateJobHadoopJob(dict):
     @pulumi.getter(name="archiveUris")
     def archive_uris(self) -> Optional[Sequence[str]]:
         """
-        Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
+        HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
         """
         return pulumi.get(self, "archive_uris")
 
@@ -5740,7 +5740,7 @@ class WorkflowTemplateJobHadoopJob(dict):
     @pulumi.getter
     def args(self) -> Optional[Sequence[str]]:
         """
-        Optional. The arguments to pass to the driver. Do not include arguments, such as `-libjars` or `-Dfoo=bar`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        The arguments to pass to the driver. Do not include arguments, such as `-libjars` or `-Dfoo=bar`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
         """
         return pulumi.get(self, "args")
 
@@ -5748,7 +5748,7 @@ class WorkflowTemplateJobHadoopJob(dict):
     @pulumi.getter(name="fileUris")
     def file_uris(self) -> Optional[Sequence[str]]:
         """
-        Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+        HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
         """
         return pulumi.get(self, "file_uris")
 
@@ -5756,7 +5756,7 @@ class WorkflowTemplateJobHadoopJob(dict):
     @pulumi.getter(name="jarFileUris")
     def jar_file_uris(self) -> Optional[Sequence[str]]:
         """
-        Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
+        Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
         """
         return pulumi.get(self, "jar_file_uris")
 
@@ -5764,7 +5764,7 @@ class WorkflowTemplateJobHadoopJob(dict):
     @pulumi.getter(name="loggingConfig")
     def logging_config(self) -> Optional['outputs.WorkflowTemplateJobHadoopJobLoggingConfig']:
         """
-        Optional. The runtime log config for job execution.
+        The runtime log config for job execution.
         """
         return pulumi.get(self, "logging_config")
 
@@ -5788,7 +5788,7 @@ class WorkflowTemplateJobHadoopJob(dict):
     @pulumi.getter
     def properties(self) -> Optional[Mapping[str, str]]:
         """
-        Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
+        A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
         """
         return pulumi.get(self, "properties")
 
@@ -5864,12 +5864,12 @@ class WorkflowTemplateJobHiveJob(dict):
                  query_list: Optional['outputs.WorkflowTemplateJobHiveJobQueryList'] = None,
                  script_variables: Optional[Mapping[str, str]] = None):
         """
-        :param bool continue_on_failure: Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
-        :param Sequence[str] jar_file_uris: Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
-        :param Mapping[str, str] properties: Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
+        :param bool continue_on_failure: Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+        :param Sequence[str] jar_file_uris: HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
+        :param Mapping[str, str] properties: A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
         :param str query_file_uri: The HCFS URI of the script that contains Hive queries.
         :param 'WorkflowTemplateJobHiveJobQueryListArgs' query_list: A list of queries.
-        :param Mapping[str, str] script_variables: Optional. Mapping of query variable names to values (equivalent to the Hive command: `SET name="value";`).
+        :param Mapping[str, str] script_variables: Mapping of query variable names to values (equivalent to the Hive command: `SET name="value";`).
         """
         if continue_on_failure is not None:
             pulumi.set(__self__, "continue_on_failure", continue_on_failure)
@@ -5888,7 +5888,7 @@ class WorkflowTemplateJobHiveJob(dict):
     @pulumi.getter(name="continueOnFailure")
     def continue_on_failure(self) -> Optional[bool]:
         """
-        Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+        Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
         """
         return pulumi.get(self, "continue_on_failure")
 
@@ -5896,7 +5896,7 @@ class WorkflowTemplateJobHiveJob(dict):
     @pulumi.getter(name="jarFileUris")
     def jar_file_uris(self) -> Optional[Sequence[str]]:
         """
-        Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
+        HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
         """
         return pulumi.get(self, "jar_file_uris")
 
@@ -5904,7 +5904,7 @@ class WorkflowTemplateJobHiveJob(dict):
     @pulumi.getter
     def properties(self) -> Optional[Mapping[str, str]]:
         """
-        Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
+        A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
         """
         return pulumi.get(self, "properties")
 
@@ -5928,7 +5928,7 @@ class WorkflowTemplateJobHiveJob(dict):
     @pulumi.getter(name="scriptVariables")
     def script_variables(self) -> Optional[Mapping[str, str]]:
         """
-        Optional. Mapping of query variable names to values (equivalent to the Hive command: `SET name="value";`).
+        Mapping of query variable names to values (equivalent to the Hive command: `SET name="value";`).
         """
         return pulumi.get(self, "script_variables")
 
@@ -5989,13 +5989,13 @@ class WorkflowTemplateJobPigJob(dict):
                  query_list: Optional['outputs.WorkflowTemplateJobPigJobQueryList'] = None,
                  script_variables: Optional[Mapping[str, str]] = None):
         """
-        :param bool continue_on_failure: Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
-        :param Sequence[str] jar_file_uris: Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
-        :param 'WorkflowTemplateJobPigJobLoggingConfigArgs' logging_config: Optional. The runtime log config for job execution.
-        :param Mapping[str, str] properties: Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
+        :param bool continue_on_failure: Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+        :param Sequence[str] jar_file_uris: HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
+        :param 'WorkflowTemplateJobPigJobLoggingConfigArgs' logging_config: The runtime log config for job execution.
+        :param Mapping[str, str] properties: A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
         :param str query_file_uri: The HCFS URI of the script that contains the Pig queries.
         :param 'WorkflowTemplateJobPigJobQueryListArgs' query_list: A list of queries.
-        :param Mapping[str, str] script_variables: Optional. Mapping of query variable names to values (equivalent to the Pig command: `name=`).
+        :param Mapping[str, str] script_variables: Mapping of query variable names to values (equivalent to the Pig command: `name=`).
         """
         if continue_on_failure is not None:
             pulumi.set(__self__, "continue_on_failure", continue_on_failure)
@@ -6016,7 +6016,7 @@ class WorkflowTemplateJobPigJob(dict):
     @pulumi.getter(name="continueOnFailure")
     def continue_on_failure(self) -> Optional[bool]:
         """
-        Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+        Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
         """
         return pulumi.get(self, "continue_on_failure")
 
@@ -6024,7 +6024,7 @@ class WorkflowTemplateJobPigJob(dict):
     @pulumi.getter(name="jarFileUris")
     def jar_file_uris(self) -> Optional[Sequence[str]]:
         """
-        Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
+        HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
         """
         return pulumi.get(self, "jar_file_uris")
 
@@ -6032,7 +6032,7 @@ class WorkflowTemplateJobPigJob(dict):
     @pulumi.getter(name="loggingConfig")
     def logging_config(self) -> Optional['outputs.WorkflowTemplateJobPigJobLoggingConfig']:
         """
-        Optional. The runtime log config for job execution.
+        The runtime log config for job execution.
         """
         return pulumi.get(self, "logging_config")
 
@@ -6040,7 +6040,7 @@ class WorkflowTemplateJobPigJob(dict):
     @pulumi.getter
     def properties(self) -> Optional[Mapping[str, str]]:
         """
-        Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
+        A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
         """
         return pulumi.get(self, "properties")
 
@@ -6064,7 +6064,7 @@ class WorkflowTemplateJobPigJob(dict):
     @pulumi.getter(name="scriptVariables")
     def script_variables(self) -> Optional[Mapping[str, str]]:
         """
-        Optional. Mapping of query variable names to values (equivalent to the Pig command: `name=`).
+        Mapping of query variable names to values (equivalent to the Pig command: `name=`).
         """
         return pulumi.get(self, "script_variables")
 
@@ -6161,11 +6161,11 @@ class WorkflowTemplateJobPrestoJob(dict):
                  query_file_uri: Optional[str] = None,
                  query_list: Optional['outputs.WorkflowTemplateJobPrestoJobQueryList'] = None):
         """
-        :param Sequence[str] client_tags: Optional. Presto client tags to attach to this query
-        :param bool continue_on_failure: Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
-        :param 'WorkflowTemplateJobPrestoJobLoggingConfigArgs' logging_config: Optional. The runtime log config for job execution.
-        :param str output_format: Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats
-        :param Mapping[str, str] properties: Optional. A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+        :param Sequence[str] client_tags: Presto client tags to attach to this query
+        :param bool continue_on_failure: Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+        :param 'WorkflowTemplateJobPrestoJobLoggingConfigArgs' logging_config: The runtime log config for job execution.
+        :param str output_format: The format in which query output will be displayed. See the Presto documentation for supported output formats
+        :param Mapping[str, str] properties: A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
         :param str query_file_uri: The HCFS URI of the script that contains SQL queries.
         :param 'WorkflowTemplateJobPrestoJobQueryListArgs' query_list: A list of queries.
         """
@@ -6188,7 +6188,7 @@ class WorkflowTemplateJobPrestoJob(dict):
     @pulumi.getter(name="clientTags")
     def client_tags(self) -> Optional[Sequence[str]]:
         """
-        Optional. Presto client tags to attach to this query
+        Presto client tags to attach to this query
         """
         return pulumi.get(self, "client_tags")
 
@@ -6196,7 +6196,7 @@ class WorkflowTemplateJobPrestoJob(dict):
     @pulumi.getter(name="continueOnFailure")
     def continue_on_failure(self) -> Optional[bool]:
         """
-        Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+        Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
         """
         return pulumi.get(self, "continue_on_failure")
 
@@ -6204,7 +6204,7 @@ class WorkflowTemplateJobPrestoJob(dict):
     @pulumi.getter(name="loggingConfig")
     def logging_config(self) -> Optional['outputs.WorkflowTemplateJobPrestoJobLoggingConfig']:
         """
-        Optional. The runtime log config for job execution.
+        The runtime log config for job execution.
         """
         return pulumi.get(self, "logging_config")
 
@@ -6212,7 +6212,7 @@ class WorkflowTemplateJobPrestoJob(dict):
     @pulumi.getter(name="outputFormat")
     def output_format(self) -> Optional[str]:
         """
-        Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats
+        The format in which query output will be displayed. See the Presto documentation for supported output formats
         """
         return pulumi.get(self, "output_format")
 
@@ -6220,7 +6220,7 @@ class WorkflowTemplateJobPrestoJob(dict):
     @pulumi.getter
     def properties(self) -> Optional[Mapping[str, str]]:
         """
-        Optional. A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+        A mapping of property names to values. Used to set Presto (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
         """
         return pulumi.get(self, "properties")
 
@@ -6335,13 +6335,13 @@ class WorkflowTemplateJobPysparkJob(dict):
                  python_file_uris: Optional[Sequence[str]] = None):
         """
         :param str main_python_file_uri: Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
-        :param Sequence[str] archive_uris: Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
-        :param Sequence[str] args: Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
-        :param Sequence[str] file_uris: Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
-        :param Sequence[str] jar_file_uris: Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
-        :param 'WorkflowTemplateJobPysparkJobLoggingConfigArgs' logging_config: Optional. The runtime log config for job execution.
-        :param Mapping[str, str] properties: Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
-        :param Sequence[str] python_file_uris: Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+        :param Sequence[str] archive_uris: HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        :param Sequence[str] args: The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        :param Sequence[str] file_uris: HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+        :param Sequence[str] jar_file_uris: HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
+        :param 'WorkflowTemplateJobPysparkJobLoggingConfigArgs' logging_config: The runtime log config for job execution.
+        :param Mapping[str, str] properties: A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+        :param Sequence[str] python_file_uris: HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
         """
         pulumi.set(__self__, "main_python_file_uri", main_python_file_uri)
         if archive_uris is not None:
@@ -6371,7 +6371,7 @@ class WorkflowTemplateJobPysparkJob(dict):
     @pulumi.getter(name="archiveUris")
     def archive_uris(self) -> Optional[Sequence[str]]:
         """
-        Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
         """
         return pulumi.get(self, "archive_uris")
 
@@ -6379,7 +6379,7 @@ class WorkflowTemplateJobPysparkJob(dict):
     @pulumi.getter
     def args(self) -> Optional[Sequence[str]]:
         """
-        Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
         """
         return pulumi.get(self, "args")
 
@@ -6387,7 +6387,7 @@ class WorkflowTemplateJobPysparkJob(dict):
     @pulumi.getter(name="fileUris")
     def file_uris(self) -> Optional[Sequence[str]]:
         """
-        Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+        HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
         """
         return pulumi.get(self, "file_uris")
 
@@ -6395,7 +6395,7 @@ class WorkflowTemplateJobPysparkJob(dict):
     @pulumi.getter(name="jarFileUris")
     def jar_file_uris(self) -> Optional[Sequence[str]]:
         """
-        Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
+        HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
         """
         return pulumi.get(self, "jar_file_uris")
 
@@ -6403,7 +6403,7 @@ class WorkflowTemplateJobPysparkJob(dict):
     @pulumi.getter(name="loggingConfig")
     def logging_config(self) -> Optional['outputs.WorkflowTemplateJobPysparkJobLoggingConfig']:
         """
-        Optional. The runtime log config for job execution.
+        The runtime log config for job execution.
         """
         return pulumi.get(self, "logging_config")
 
@@ -6411,7 +6411,7 @@ class WorkflowTemplateJobPysparkJob(dict):
     @pulumi.getter
     def properties(self) -> Optional[Mapping[str, str]]:
         """
-        Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+        A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         """
         return pulumi.get(self, "properties")
 
@@ -6419,7 +6419,7 @@ class WorkflowTemplateJobPysparkJob(dict):
     @pulumi.getter(name="pythonFileUris")
     def python_file_uris(self) -> Optional[Sequence[str]]:
         """
-        Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+        HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
         """
         return pulumi.get(self, "python_file_uris")
 
@@ -6485,8 +6485,8 @@ class WorkflowTemplateJobScheduling(dict):
                  max_failures_per_hour: Optional[int] = None,
                  max_failures_total: Optional[int] = None):
         """
-        :param int max_failures_per_hour: Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window. Maximum value is 10.
-        :param int max_failures_total: Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
+        :param int max_failures_per_hour: Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window. Maximum value is 10.
+        :param int max_failures_total: Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
         """
         if max_failures_per_hour is not None:
             pulumi.set(__self__, "max_failures_per_hour", max_failures_per_hour)
@@ -6497,7 +6497,7 @@ class WorkflowTemplateJobScheduling(dict):
     @pulumi.getter(name="maxFailuresPerHour")
     def max_failures_per_hour(self) -> Optional[int]:
         """
-        Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window. Maximum value is 10.
+        Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window. Maximum value is 10.
         """
         return pulumi.get(self, "max_failures_per_hour")
 
@@ -6505,7 +6505,7 @@ class WorkflowTemplateJobScheduling(dict):
     @pulumi.getter(name="maxFailuresTotal")
     def max_failures_total(self) -> Optional[int]:
         """
-        Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
+        Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240
         """
         return pulumi.get(self, "max_failures_total")
 
@@ -6549,14 +6549,14 @@ class WorkflowTemplateJobSparkJob(dict):
                  main_jar_file_uri: Optional[str] = None,
                  properties: Optional[Mapping[str, str]] = None):
         """
-        :param Sequence[str] archive_uris: Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
-        :param Sequence[str] args: Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
-        :param Sequence[str] file_uris: Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
-        :param Sequence[str] jar_file_uris: Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
-        :param 'WorkflowTemplateJobSparkJobLoggingConfigArgs' logging_config: Optional. The runtime log config for job execution.
+        :param Sequence[str] archive_uris: HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        :param Sequence[str] args: The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        :param Sequence[str] file_uris: HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+        :param Sequence[str] jar_file_uris: HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
+        :param 'WorkflowTemplateJobSparkJobLoggingConfigArgs' logging_config: The runtime log config for job execution.
         :param str main_class: The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in `jar_file_uris`.
         :param str main_jar_file_uri: The HCFS URI of the jar file that contains the main class.
-        :param Mapping[str, str] properties: Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+        :param Mapping[str, str] properties: A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         """
         if archive_uris is not None:
             pulumi.set(__self__, "archive_uris", archive_uris)
@@ -6579,7 +6579,7 @@ class WorkflowTemplateJobSparkJob(dict):
     @pulumi.getter(name="archiveUris")
     def archive_uris(self) -> Optional[Sequence[str]]:
         """
-        Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
         """
         return pulumi.get(self, "archive_uris")
 
@@ -6587,7 +6587,7 @@ class WorkflowTemplateJobSparkJob(dict):
     @pulumi.getter
     def args(self) -> Optional[Sequence[str]]:
         """
-        Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
         """
         return pulumi.get(self, "args")
 
@@ -6595,7 +6595,7 @@ class WorkflowTemplateJobSparkJob(dict):
     @pulumi.getter(name="fileUris")
     def file_uris(self) -> Optional[Sequence[str]]:
         """
-        Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+        HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
         """
         return pulumi.get(self, "file_uris")
 
@@ -6603,7 +6603,7 @@ class WorkflowTemplateJobSparkJob(dict):
     @pulumi.getter(name="jarFileUris")
     def jar_file_uris(self) -> Optional[Sequence[str]]:
         """
-        Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
+        HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
         """
         return pulumi.get(self, "jar_file_uris")
 
@@ -6611,7 +6611,7 @@ class WorkflowTemplateJobSparkJob(dict):
     @pulumi.getter(name="loggingConfig")
     def logging_config(self) -> Optional['outputs.WorkflowTemplateJobSparkJobLoggingConfig']:
         """
-        Optional. The runtime log config for job execution.
+        The runtime log config for job execution.
         """
         return pulumi.get(self, "logging_config")
 
@@ -6635,7 +6635,7 @@ class WorkflowTemplateJobSparkJob(dict):
     @pulumi.getter
     def properties(self) -> Optional[Mapping[str, str]]:
         """
-        Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+        A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         """
         return pulumi.get(self, "properties")
 
@@ -6710,11 +6710,11 @@ class WorkflowTemplateJobSparkRJob(dict):
                  properties: Optional[Mapping[str, str]] = None):
         """
         :param str main_r_file_uri: Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
-        :param Sequence[str] archive_uris: Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
-        :param Sequence[str] args: Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
-        :param Sequence[str] file_uris: Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
-        :param 'WorkflowTemplateJobSparkRJobLoggingConfigArgs' logging_config: Optional. The runtime log config for job execution.
-        :param Mapping[str, str] properties: Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+        :param Sequence[str] archive_uris: HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        :param Sequence[str] args: The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        :param Sequence[str] file_uris: HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+        :param 'WorkflowTemplateJobSparkRJobLoggingConfigArgs' logging_config: The runtime log config for job execution.
+        :param Mapping[str, str] properties: A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         """
         pulumi.set(__self__, "main_r_file_uri", main_r_file_uri)
         if archive_uris is not None:
@@ -6740,7 +6740,7 @@ class WorkflowTemplateJobSparkRJob(dict):
     @pulumi.getter(name="archiveUris")
     def archive_uris(self) -> Optional[Sequence[str]]:
         """
-        Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
         """
         return pulumi.get(self, "archive_uris")
 
@@ -6748,7 +6748,7 @@ class WorkflowTemplateJobSparkRJob(dict):
     @pulumi.getter
     def args(self) -> Optional[Sequence[str]]:
         """
-        Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
         """
         return pulumi.get(self, "args")
 
@@ -6756,7 +6756,7 @@ class WorkflowTemplateJobSparkRJob(dict):
     @pulumi.getter(name="fileUris")
     def file_uris(self) -> Optional[Sequence[str]]:
         """
-        Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+        HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
         """
         return pulumi.get(self, "file_uris")
 
@@ -6764,7 +6764,7 @@ class WorkflowTemplateJobSparkRJob(dict):
     @pulumi.getter(name="loggingConfig")
     def logging_config(self) -> Optional['outputs.WorkflowTemplateJobSparkRJobLoggingConfig']:
         """
-        Optional. The runtime log config for job execution.
+        The runtime log config for job execution.
         """
         return pulumi.get(self, "logging_config")
 
@@ -6772,7 +6772,7 @@ class WorkflowTemplateJobSparkRJob(dict):
     @pulumi.getter
     def properties(self) -> Optional[Mapping[str, str]]:
         """
-        Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+        A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         """
         return pulumi.get(self, "properties")
 
@@ -6848,12 +6848,12 @@ class WorkflowTemplateJobSparkSqlJob(dict):
                  query_list: Optional['outputs.WorkflowTemplateJobSparkSqlJobQueryList'] = None,
                  script_variables: Optional[Mapping[str, str]] = None):
         """
-        :param Sequence[str] jar_file_uris: Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
-        :param 'WorkflowTemplateJobSparkSqlJobLoggingConfigArgs' logging_config: Optional. The runtime log config for job execution.
-        :param Mapping[str, str] properties: Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+        :param Sequence[str] jar_file_uris: HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        :param 'WorkflowTemplateJobSparkSqlJobLoggingConfigArgs' logging_config: The runtime log config for job execution.
+        :param Mapping[str, str] properties: A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
         :param str query_file_uri: The HCFS URI of the script that contains SQL queries.
         :param 'WorkflowTemplateJobSparkSqlJobQueryListArgs' query_list: A list of queries.
-        :param Mapping[str, str] script_variables: Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+        :param Mapping[str, str] script_variables: Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
         """
         if jar_file_uris is not None:
             pulumi.set(__self__, "jar_file_uris", jar_file_uris)
@@ -6872,7 +6872,7 @@ class WorkflowTemplateJobSparkSqlJob(dict):
     @pulumi.getter(name="jarFileUris")
     def jar_file_uris(self) -> Optional[Sequence[str]]:
         """
-        Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        HCFS URIs of jar files to be added to the Spark CLASSPATH.
         """
         return pulumi.get(self, "jar_file_uris")
 
@@ -6880,7 +6880,7 @@ class WorkflowTemplateJobSparkSqlJob(dict):
     @pulumi.getter(name="loggingConfig")
     def logging_config(self) -> Optional['outputs.WorkflowTemplateJobSparkSqlJobLoggingConfig']:
         """
-        Optional. The runtime log config for job execution.
+        The runtime log config for job execution.
         """
         return pulumi.get(self, "logging_config")
 
@@ -6888,7 +6888,7 @@ class WorkflowTemplateJobSparkSqlJob(dict):
     @pulumi.getter
     def properties(self) -> Optional[Mapping[str, str]]:
         """
-        Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+        A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
         """
         return pulumi.get(self, "properties")
 
@@ -6912,7 +6912,7 @@ class WorkflowTemplateJobSparkSqlJob(dict):
     @pulumi.getter(name="scriptVariables")
     def script_variables(self) -> Optional[Mapping[str, str]]:
         """
-        Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+        Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
         """
         return pulumi.get(self, "script_variables")
 
@@ -6981,8 +6981,8 @@ class WorkflowTemplateParameter(dict):
         """
         :param Sequence[str] fields: Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths. A field path is similar in syntax to a .sparkJob.args
         :param str name: Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
-        :param str description: Optional. Brief description of the parameter. Must not exceed 1024 characters.
-        :param 'WorkflowTemplateParameterValidationArgs' validation: Optional. Validation rules to be applied to this parameter's value.
+        :param str description: Brief description of the parameter. Must not exceed 1024 characters.
+        :param 'WorkflowTemplateParameterValidationArgs' validation: Validation rules to be applied to this parameter's value.
         """
         pulumi.set(__self__, "fields", fields)
         pulumi.set(__self__, "name", name)
@@ -7011,7 +7011,7 @@ class WorkflowTemplateParameter(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        Optional. Brief description of the parameter. Must not exceed 1024 characters.
+        Brief description of the parameter. Must not exceed 1024 characters.
         """
         return pulumi.get(self, "description")
 
@@ -7019,7 +7019,7 @@ class WorkflowTemplateParameter(dict):
     @pulumi.getter
     def validation(self) -> Optional['outputs.WorkflowTemplateParameterValidation']:
         """
-        Optional. Validation rules to be applied to this parameter's value.
+        Validation rules to be applied to this parameter's value.
         """
         return pulumi.get(self, "validation")
 
@@ -7116,7 +7116,7 @@ class WorkflowTemplatePlacement(dict):
                  cluster_selector: Optional['outputs.WorkflowTemplatePlacementClusterSelector'] = None,
                  managed_cluster: Optional['outputs.WorkflowTemplatePlacementManagedCluster'] = None):
         """
-        :param 'WorkflowTemplatePlacementClusterSelectorArgs' cluster_selector: Optional. A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+        :param 'WorkflowTemplatePlacementClusterSelectorArgs' cluster_selector: A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
         :param 'WorkflowTemplatePlacementManagedClusterArgs' managed_cluster: A cluster that is managed by the workflow.
         """
         if cluster_selector is not None:
@@ -7128,7 +7128,7 @@ class WorkflowTemplatePlacement(dict):
     @pulumi.getter(name="clusterSelector")
     def cluster_selector(self) -> Optional['outputs.WorkflowTemplatePlacementClusterSelector']:
         """
-        Optional. A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+        A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
         """
         return pulumi.get(self, "cluster_selector")
 
@@ -7165,7 +7165,7 @@ class WorkflowTemplatePlacementClusterSelector(dict):
                  zone: Optional[str] = None):
         """
         :param Mapping[str, str] cluster_labels: Required. The cluster labels. Cluster must have all labels to match.
-        :param str zone: Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster. If unspecified, the zone of the first cluster matching the selector is used.
+        :param str zone: The zone where workflow process executes. This parameter does not affect the selection of the cluster. If unspecified, the zone of the first cluster matching the selector is used.
         """
         pulumi.set(__self__, "cluster_labels", cluster_labels)
         if zone is not None:
@@ -7183,7 +7183,7 @@ class WorkflowTemplatePlacementClusterSelector(dict):
     @pulumi.getter
     def zone(self) -> Optional[str]:
         """
-        Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster. If unspecified, the zone of the first cluster matching the selector is used.
+        The zone where workflow process executes. This parameter does not affect the selection of the cluster. If unspecified, the zone of the first cluster matching the selector is used.
         """
         return pulumi.get(self, "zone")
 
@@ -7214,7 +7214,7 @@ class WorkflowTemplatePlacementManagedCluster(dict):
         """
         :param str cluster_name: Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix. The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
         :param 'WorkflowTemplatePlacementManagedClusterConfigArgs' config: Required. The cluster configuration.
-        :param Mapping[str, str] labels: Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
+        :param Mapping[str, str] labels: The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
         """
         pulumi.set(__self__, "cluster_name", cluster_name)
         pulumi.set(__self__, "config", config)
@@ -7241,7 +7241,7 @@ class WorkflowTemplatePlacementManagedCluster(dict):
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, str]]:
         """
-        Optional. The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
+        The labels to associate with this cluster. Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: {0,63} No more than 32 labels can be associated with a given cluster.
         """
         return pulumi.get(self, "labels")
 
@@ -7310,21 +7310,21 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
                  temp_bucket: Optional[str] = None,
                  worker_config: Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfig'] = None):
         """
-        :param 'WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs' autoscaling_config: Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs' encryption_config: Optional. Encryption settings for the cluster.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs' endpoint_config: Optional. Port/endpoint configuration for this cluster
-        :param 'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs' gce_cluster_config: Optional. The shared Compute Engine config settings for all instances in a cluster.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs' gke_cluster_config: Optional. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gce_cluster_config`, `master_config`, `worker_config`, `secondary_worker_config`, and `autoscaling_config`.
-        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs'] initialization_actions: Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
-        :param 'WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs' lifecycle_config: Optional. Lifecycle setting for the cluster.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs' master_config: Optional. The Compute Engine config settings for additional worker instances in a cluster.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs' metastore_config: Optional. Metastore configuration.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs' secondary_worker_config: Optional. The Compute Engine config settings for additional worker instances in a cluster.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs' security_config: Optional. Security settings for the cluster.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs' software_config: Optional. The config settings for software inside the cluster.
-        :param str staging_bucket: Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
-        :param str temp_bucket: Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs' worker_config: Optional. The Compute Engine config settings for additional worker instances in a cluster.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs' autoscaling_config: Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigEncryptionConfigArgs' encryption_config: Encryption settings for the cluster.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigEndpointConfigArgs' endpoint_config: Port/endpoint configuration for this cluster
+        :param 'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigArgs' gce_cluster_config: The shared Compute Engine config settings for all instances in a cluster.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigArgs' gke_cluster_config: The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gce_cluster_config`, `master_config`, `worker_config`, `secondary_worker_config`, and `autoscaling_config`.
+        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigInitializationActionArgs'] initialization_actions: Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
+        :param 'WorkflowTemplatePlacementManagedClusterConfigLifecycleConfigArgs' lifecycle_config: Lifecycle setting for the cluster.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigMasterConfigArgs' master_config: The Compute Engine config settings for additional worker instances in a cluster.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigMetastoreConfigArgs' metastore_config: Metastore configuration.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigArgs' secondary_worker_config: The Compute Engine config settings for additional worker instances in a cluster.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigSecurityConfigArgs' security_config: Security settings for the cluster.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigSoftwareConfigArgs' software_config: The config settings for software inside the cluster.
+        :param str staging_bucket: A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+        :param str temp_bucket: A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigArgs' worker_config: The Compute Engine config settings for additional worker instances in a cluster.
                
                - - -
         """
@@ -7363,7 +7363,7 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
     @pulumi.getter(name="autoscalingConfig")
     def autoscaling_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig']:
         """
-        Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
+        Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
         """
         return pulumi.get(self, "autoscaling_config")
 
@@ -7371,7 +7371,7 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
     @pulumi.getter(name="encryptionConfig")
     def encryption_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig']:
         """
-        Optional. Encryption settings for the cluster.
+        Encryption settings for the cluster.
         """
         return pulumi.get(self, "encryption_config")
 
@@ -7379,7 +7379,7 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
     @pulumi.getter(name="endpointConfig")
     def endpoint_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigEndpointConfig']:
         """
-        Optional. Port/endpoint configuration for this cluster
+        Port/endpoint configuration for this cluster
         """
         return pulumi.get(self, "endpoint_config")
 
@@ -7387,7 +7387,7 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
     @pulumi.getter(name="gceClusterConfig")
     def gce_cluster_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig']:
         """
-        Optional. The shared Compute Engine config settings for all instances in a cluster.
+        The shared Compute Engine config settings for all instances in a cluster.
         """
         return pulumi.get(self, "gce_cluster_config")
 
@@ -7395,7 +7395,7 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
     @pulumi.getter(name="gkeClusterConfig")
     def gke_cluster_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig']:
         """
-        Optional. The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gce_cluster_config`, `master_config`, `worker_config`, `secondary_worker_config`, and `autoscaling_config`.
+        The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. Setting this is considered mutually exclusive with Compute Engine-based options such as `gce_cluster_config`, `master_config`, `worker_config`, `secondary_worker_config`, and `autoscaling_config`.
         """
         return pulumi.get(self, "gke_cluster_config")
 
@@ -7403,7 +7403,7 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
     @pulumi.getter(name="initializationActions")
     def initialization_actions(self) -> Optional[Sequence['outputs.WorkflowTemplatePlacementManagedClusterConfigInitializationAction']]:
         """
-        Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
+        Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's `role` metadata to run an executable on a master or worker node, as shown below using `curl` (you can also use `wget`): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if ; then ... master specific actions ... else ... worker specific actions ... fi
         """
         return pulumi.get(self, "initialization_actions")
 
@@ -7411,7 +7411,7 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
     @pulumi.getter(name="lifecycleConfig")
     def lifecycle_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig']:
         """
-        Optional. Lifecycle setting for the cluster.
+        Lifecycle setting for the cluster.
         """
         return pulumi.get(self, "lifecycle_config")
 
@@ -7419,7 +7419,7 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
     @pulumi.getter(name="masterConfig")
     def master_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfig']:
         """
-        Optional. The Compute Engine config settings for additional worker instances in a cluster.
+        The Compute Engine config settings for additional worker instances in a cluster.
         """
         return pulumi.get(self, "master_config")
 
@@ -7427,7 +7427,7 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
     @pulumi.getter(name="metastoreConfig")
     def metastore_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig']:
         """
-        Optional. Metastore configuration.
+        Metastore configuration.
         """
         return pulumi.get(self, "metastore_config")
 
@@ -7435,7 +7435,7 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
     @pulumi.getter(name="secondaryWorkerConfig")
     def secondary_worker_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig']:
         """
-        Optional. The Compute Engine config settings for additional worker instances in a cluster.
+        The Compute Engine config settings for additional worker instances in a cluster.
         """
         return pulumi.get(self, "secondary_worker_config")
 
@@ -7443,7 +7443,7 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
     @pulumi.getter(name="securityConfig")
     def security_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigSecurityConfig']:
         """
-        Optional. Security settings for the cluster.
+        Security settings for the cluster.
         """
         return pulumi.get(self, "security_config")
 
@@ -7451,7 +7451,7 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
     @pulumi.getter(name="softwareConfig")
     def software_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig']:
         """
-        Optional. The config settings for software inside the cluster.
+        The config settings for software inside the cluster.
         """
         return pulumi.get(self, "software_config")
 
@@ -7459,7 +7459,7 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
     @pulumi.getter(name="stagingBucket")
     def staging_bucket(self) -> Optional[str]:
         """
-        Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
+        A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)).
         """
         return pulumi.get(self, "staging_bucket")
 
@@ -7467,7 +7467,7 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
     @pulumi.getter(name="tempBucket")
     def temp_bucket(self) -> Optional[str]:
         """
-        Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
+        A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket.
         """
         return pulumi.get(self, "temp_bucket")
 
@@ -7475,7 +7475,7 @@ class WorkflowTemplatePlacementManagedClusterConfig(dict):
     @pulumi.getter(name="workerConfig")
     def worker_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfig']:
         """
-        Optional. The Compute Engine config settings for additional worker instances in a cluster.
+        The Compute Engine config settings for additional worker instances in a cluster.
 
         - - -
         """
@@ -7487,7 +7487,7 @@ class WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig(dict):
     def __init__(__self__, *,
                  policy: Optional[str] = None):
         """
-        :param str policy: Optional. The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
+        :param str policy: The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
         """
         if policy is not None:
             pulumi.set(__self__, "policy", policy)
@@ -7496,7 +7496,7 @@ class WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig(dict):
     @pulumi.getter
     def policy(self) -> Optional[str]:
         """
-        Optional. The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
+        The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
         """
         return pulumi.get(self, "policy")
 
@@ -7523,7 +7523,7 @@ class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig(dict):
     def __init__(__self__, *,
                  gce_pd_kms_key_name: Optional[str] = None):
         """
-        :param str gce_pd_kms_key_name: Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
+        :param str gce_pd_kms_key_name: The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
         """
         if gce_pd_kms_key_name is not None:
             pulumi.set(__self__, "gce_pd_kms_key_name", gce_pd_kms_key_name)
@@ -7532,7 +7532,7 @@ class WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig(dict):
     @pulumi.getter(name="gcePdKmsKeyName")
     def gce_pd_kms_key_name(self) -> Optional[str]:
         """
-        Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
+        The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
         """
         return pulumi.get(self, "gce_pd_kms_key_name")
 
@@ -7562,7 +7562,7 @@ class WorkflowTemplatePlacementManagedClusterConfigEndpointConfig(dict):
                  enable_http_port_access: Optional[bool] = None,
                  http_ports: Optional[Mapping[str, str]] = None):
         """
-        :param bool enable_http_port_access: Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
+        :param bool enable_http_port_access: If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
         :param Mapping[str, str] http_ports: Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
         """
         if enable_http_port_access is not None:
@@ -7574,7 +7574,7 @@ class WorkflowTemplatePlacementManagedClusterConfigEndpointConfig(dict):
     @pulumi.getter(name="enableHttpPortAccess")
     def enable_http_port_access(self) -> Optional[bool]:
         """
-        Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
+        If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
         """
         return pulumi.get(self, "enable_http_port_access")
 
@@ -7632,18 +7632,18 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
                  tags: Optional[Sequence[str]] = None,
                  zone: Optional[str] = None):
         """
-        :param bool internal_ip_only: Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
+        :param bool internal_ip_only: If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
         :param Mapping[str, str] metadata: The Compute Engine metadata entries to add to all instances (see (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
-        :param str network: Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `network_uri` nor `subnetwork_uri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default` * `default`
-        :param 'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs' node_group_affinity: Optional. Node Group Affinity for sole-tenant clusters.
-        :param str private_ipv6_google_access: Optional. The type of IPv6 access for a cluster. Possible values: PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED, INHERIT_FROM_SUBNETWORK, OUTBOUND, BIDIRECTIONAL
-        :param 'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs' reservation_affinity: Optional. Reservation Affinity for consuming Zonal reservation.
-        :param str service_account: Optional. The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
-        :param Sequence[str] service_account_scopes: Optional. The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
-        :param 'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs' shielded_instance_config: Optional. Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
-        :param str subnetwork: Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
+        :param str network: The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `network_uri` nor `subnetwork_uri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default` * `default`
+        :param 'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinityArgs' node_group_affinity: Node Group Affinity for sole-tenant clusters.
+        :param str private_ipv6_google_access: The type of IPv6 access for a cluster. Possible values: PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED, INHERIT_FROM_SUBNETWORK, OUTBOUND, BIDIRECTIONAL
+        :param 'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs' reservation_affinity: Reservation Affinity for consuming Zonal reservation.
+        :param str service_account: The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+        :param Sequence[str] service_account_scopes: The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+        :param 'WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfigArgs' shielded_instance_config: Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+        :param str subnetwork: The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
         :param Sequence[str] tags: The Compute Engine tags to add to all instances (see (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
-        :param str zone: Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
+        :param str zone: The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
         """
         if internal_ip_only is not None:
             pulumi.set(__self__, "internal_ip_only", internal_ip_only)
@@ -7674,7 +7674,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
     @pulumi.getter(name="internalIpOnly")
     def internal_ip_only(self) -> Optional[bool]:
         """
-        Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
+        If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
         """
         return pulumi.get(self, "internal_ip_only")
 
@@ -7690,7 +7690,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
     @pulumi.getter
     def network(self) -> Optional[str]:
         """
-        Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `network_uri` nor `subnetwork_uri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default` * `default`
+        The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither `network_uri` nor `subnetwork_uri` is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see /regions/global/default` * `default`
         """
         return pulumi.get(self, "network")
 
@@ -7698,7 +7698,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
     @pulumi.getter(name="nodeGroupAffinity")
     def node_group_affinity(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity']:
         """
-        Optional. Node Group Affinity for sole-tenant clusters.
+        Node Group Affinity for sole-tenant clusters.
         """
         return pulumi.get(self, "node_group_affinity")
 
@@ -7706,7 +7706,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
     @pulumi.getter(name="privateIpv6GoogleAccess")
     def private_ipv6_google_access(self) -> Optional[str]:
         """
-        Optional. The type of IPv6 access for a cluster. Possible values: PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED, INHERIT_FROM_SUBNETWORK, OUTBOUND, BIDIRECTIONAL
+        The type of IPv6 access for a cluster. Possible values: PRIVATE_IPV6_GOOGLE_ACCESS_UNSPECIFIED, INHERIT_FROM_SUBNETWORK, OUTBOUND, BIDIRECTIONAL
         """
         return pulumi.get(self, "private_ipv6_google_access")
 
@@ -7714,7 +7714,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
     @pulumi.getter(name="reservationAffinity")
     def reservation_affinity(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity']:
         """
-        Optional. Reservation Affinity for consuming Zonal reservation.
+        Reservation Affinity for consuming Zonal reservation.
         """
         return pulumi.get(self, "reservation_affinity")
 
@@ -7722,7 +7722,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[str]:
         """
-        Optional. The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+        The (https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
         """
         return pulumi.get(self, "service_account")
 
@@ -7730,7 +7730,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
     @pulumi.getter(name="serviceAccountScopes")
     def service_account_scopes(self) -> Optional[Sequence[str]]:
         """
-        Optional. The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
+        The URIs of service account scopes to be included in Compute Engine instances. The following base set of scopes is always included: * https://www.googleapis.com/auth/cloud.useraccounts.readonly * https://www.googleapis.com/auth/devstorage.read_write * https://www.googleapis.com/auth/logging.write If no scopes are specified, the following defaults are also provided: * https://www.googleapis.com/auth/bigquery * https://www.googleapis.com/auth/bigtable.admin.table * https://www.googleapis.com/auth/bigtable.data * https://www.googleapis.com/auth/devstorage.full_control
         """
         return pulumi.get(self, "service_account_scopes")
 
@@ -7738,7 +7738,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
     @pulumi.getter(name="shieldedInstanceConfig")
     def shielded_instance_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig']:
         """
-        Optional. Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
+        Shielded Instance Config for clusters using [Compute Engine Shielded VMs](https://cloud.google.com/security/shielded-cloud/shielded-vm). Structure defined below.
         """
         return pulumi.get(self, "shielded_instance_config")
 
@@ -7746,7 +7746,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
     @pulumi.getter
     def subnetwork(self) -> Optional[str]:
         """
-        Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
+        The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network_uri. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects//regions/us-east1/subnetworks/sub0` * `sub0`
         """
         return pulumi.get(self, "subnetwork")
 
@@ -7762,7 +7762,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig(dict):
     @pulumi.getter
     def zone(self) -> Optional[str]:
         """
-        Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
+        The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` * `us-central1-f`
         """
         return pulumi.get(self, "zone")
 
@@ -7826,9 +7826,9 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAf
                  key: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
         """
-        :param str consume_reservation_type: Optional. Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
-        :param str key: Optional. Corresponds to the label key of reservation resource.
-        :param Sequence[str] values: Optional. Corresponds to the label values of reservation resource.
+        :param str consume_reservation_type: Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
+        :param str key: Corresponds to the label key of reservation resource.
+        :param Sequence[str] values: Corresponds to the label values of reservation resource.
         """
         if consume_reservation_type is not None:
             pulumi.set(__self__, "consume_reservation_type", consume_reservation_type)
@@ -7841,7 +7841,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAf
     @pulumi.getter(name="consumeReservationType")
     def consume_reservation_type(self) -> Optional[str]:
         """
-        Optional. Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
+        Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
         """
         return pulumi.get(self, "consume_reservation_type")
 
@@ -7849,7 +7849,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAf
     @pulumi.getter
     def key(self) -> Optional[str]:
         """
-        Optional. Corresponds to the label key of reservation resource.
+        Corresponds to the label key of reservation resource.
         """
         return pulumi.get(self, "key")
 
@@ -7857,7 +7857,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAf
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
         """
-        Optional. Corresponds to the label values of reservation resource.
+        Corresponds to the label values of reservation resource.
         """
         return pulumi.get(self, "values")
 
@@ -7890,9 +7890,9 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInsta
                  enable_secure_boot: Optional[bool] = None,
                  enable_vtpm: Optional[bool] = None):
         """
-        :param bool enable_integrity_monitoring: Optional. Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
-        :param bool enable_secure_boot: Optional. Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
-        :param bool enable_vtpm: Optional. Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+        :param bool enable_integrity_monitoring: Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+        :param bool enable_secure_boot: Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+        :param bool enable_vtpm: Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
         """
         if enable_integrity_monitoring is not None:
             pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
@@ -7905,7 +7905,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInsta
     @pulumi.getter(name="enableIntegrityMonitoring")
     def enable_integrity_monitoring(self) -> Optional[bool]:
         """
-        Optional. Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
+        Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
         """
         return pulumi.get(self, "enable_integrity_monitoring")
 
@@ -7913,7 +7913,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInsta
     @pulumi.getter(name="enableSecureBoot")
     def enable_secure_boot(self) -> Optional[bool]:
         """
-        Optional. Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
+        Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
         """
         return pulumi.get(self, "enable_secure_boot")
 
@@ -7921,7 +7921,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInsta
     @pulumi.getter(name="enableVtpm")
     def enable_vtpm(self) -> Optional[bool]:
         """
-        Optional. Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
+        Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
         """
         return pulumi.get(self, "enable_vtpm")
 
@@ -7948,7 +7948,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig(dict):
     def __init__(__self__, *,
                  namespaced_gke_deployment_target: Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget'] = None):
         """
-        :param 'WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs' namespaced_gke_deployment_target: Optional. A target for the deployment.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTargetArgs' namespaced_gke_deployment_target: A target for the deployment.
         """
         if namespaced_gke_deployment_target is not None:
             pulumi.set(__self__, "namespaced_gke_deployment_target", namespaced_gke_deployment_target)
@@ -7957,7 +7957,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig(dict):
     @pulumi.getter(name="namespacedGkeDeploymentTarget")
     def namespaced_gke_deployment_target(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget']:
         """
-        Optional. A target for the deployment.
+        A target for the deployment.
         """
         return pulumi.get(self, "namespaced_gke_deployment_target")
 
@@ -7987,8 +7987,8 @@ class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGke
                  cluster_namespace: Optional[str] = None,
                  target_gke_cluster: Optional[str] = None):
         """
-        :param str cluster_namespace: Optional. A namespace within the GKE cluster to deploy into.
-        :param str target_gke_cluster: Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+        :param str cluster_namespace: A namespace within the GKE cluster to deploy into.
+        :param str target_gke_cluster: The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
         """
         if cluster_namespace is not None:
             pulumi.set(__self__, "cluster_namespace", cluster_namespace)
@@ -7999,7 +7999,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGke
     @pulumi.getter(name="clusterNamespace")
     def cluster_namespace(self) -> Optional[str]:
         """
-        Optional. A namespace within the GKE cluster to deploy into.
+        A namespace within the GKE cluster to deploy into.
         """
         return pulumi.get(self, "cluster_namespace")
 
@@ -8007,7 +8007,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGke
     @pulumi.getter(name="targetGkeCluster")
     def target_gke_cluster(self) -> Optional[str]:
         """
-        Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
+        The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
         """
         return pulumi.get(self, "target_gke_cluster")
 
@@ -8038,7 +8038,7 @@ class WorkflowTemplatePlacementManagedClusterConfigInitializationAction(dict):
                  execution_timeout: Optional[str] = None):
         """
         :param str executable_file: Required. Cloud Storage URI of executable file.
-        :param str execution_timeout: Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
+        :param str execution_timeout: Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
         """
         if executable_file is not None:
             pulumi.set(__self__, "executable_file", executable_file)
@@ -8057,7 +8057,7 @@ class WorkflowTemplatePlacementManagedClusterConfigInitializationAction(dict):
     @pulumi.getter(name="executionTimeout")
     def execution_timeout(self) -> Optional[str]:
         """
-        Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
+        Amount of time executable has to complete. Default is 10 minutes (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)). Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
         """
         return pulumi.get(self, "execution_timeout")
 
@@ -8093,9 +8093,9 @@ class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig(dict):
                  idle_delete_ttl: Optional[str] = None,
                  idle_start_time: Optional[str] = None):
         """
-        :param str auto_delete_time: Optional. The time when cluster will be auto-deleted (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-        :param str auto_delete_ttl: Optional. The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
-        :param str idle_delete_ttl: Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json).
+        :param str auto_delete_time: The time when cluster will be auto-deleted (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        :param str auto_delete_ttl: The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        :param str idle_delete_ttl: The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json).
         :param str idle_start_time: Output only. The time when cluster became idle (most recent job finished) and became eligible for deletion due to idleness (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
         """
         if auto_delete_time is not None:
@@ -8111,7 +8111,7 @@ class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig(dict):
     @pulumi.getter(name="autoDeleteTime")
     def auto_delete_time(self) -> Optional[str]:
         """
-        Optional. The time when cluster will be auto-deleted (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        The time when cluster will be auto-deleted (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
         """
         return pulumi.get(self, "auto_delete_time")
 
@@ -8119,7 +8119,7 @@ class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig(dict):
     @pulumi.getter(name="autoDeleteTtl")
     def auto_delete_ttl(self) -> Optional[str]:
         """
-        Optional. The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        The lifetime duration of cluster. The cluster will be auto-deleted at the end of this period. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json)).
         """
         return pulumi.get(self, "auto_delete_ttl")
 
@@ -8127,7 +8127,7 @@ class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig(dict):
     @pulumi.getter(name="idleDeleteTtl")
     def idle_delete_ttl(self) -> Optional[str]:
         """
-        Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json).
+        The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of (https://developers.google.com/protocol-buffers/docs/proto3#json).
         """
         return pulumi.get(self, "idle_delete_ttl")
 
@@ -8183,16 +8183,16 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig(dict):
                  num_instances: Optional[int] = None,
                  preemptibility: Optional[str] = None):
         """
-        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs'] accelerators: Optional. The Compute Engine accelerator configuration for these instances.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs' disk_config: Optional. Disk option config settings.
-        :param str image: Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigMasterConfigAcceleratorArgs'] accelerators: The Compute Engine accelerator configuration for these instances.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfigArgs' disk_config: Disk option config settings.
+        :param str image: The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
         :param Sequence[str] instance_names: Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
         :param bool is_preemptible: Output only. Specifies that this instance group contains preemptible instances.
-        :param str machine_type: Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+        :param str machine_type: The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
         :param Sequence['WorkflowTemplatePlacementManagedClusterConfigMasterConfigManagedGroupConfigArgs'] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-        :param str min_cpu_platform: Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
-        :param int num_instances: Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
-        :param str preemptibility: Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+        :param str min_cpu_platform: Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+        :param int num_instances: The number of VM instances in the instance group. For master instance groups, must be set to 1.
+        :param str preemptibility: Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
         """
         if accelerators is not None:
             pulumi.set(__self__, "accelerators", accelerators)
@@ -8219,7 +8219,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig(dict):
     @pulumi.getter
     def accelerators(self) -> Optional[Sequence['outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigAccelerator']]:
         """
-        Optional. The Compute Engine accelerator configuration for these instances.
+        The Compute Engine accelerator configuration for these instances.
         """
         return pulumi.get(self, "accelerators")
 
@@ -8227,7 +8227,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig(dict):
     @pulumi.getter(name="diskConfig")
     def disk_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig']:
         """
-        Optional. Disk option config settings.
+        Disk option config settings.
         """
         return pulumi.get(self, "disk_config")
 
@@ -8235,7 +8235,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig(dict):
     @pulumi.getter
     def image(self) -> Optional[str]:
         """
-        Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+        The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
         """
         return pulumi.get(self, "image")
 
@@ -8259,7 +8259,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig(dict):
     @pulumi.getter(name="machineType")
     def machine_type(self) -> Optional[str]:
         """
-        Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+        The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
         """
         return pulumi.get(self, "machine_type")
 
@@ -8275,7 +8275,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig(dict):
     @pulumi.getter(name="minCpuPlatform")
     def min_cpu_platform(self) -> Optional[str]:
         """
-        Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+        Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
         """
         return pulumi.get(self, "min_cpu_platform")
 
@@ -8283,7 +8283,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig(dict):
     @pulumi.getter(name="numInstances")
     def num_instances(self) -> Optional[int]:
         """
-        Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+        The number of VM instances in the instance group. For master instance groups, must be set to 1.
         """
         return pulumi.get(self, "num_instances")
 
@@ -8291,7 +8291,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfig(dict):
     @pulumi.getter
     def preemptibility(self) -> Optional[str]:
         """
-        Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+        Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
         """
         return pulumi.get(self, "preemptibility")
 
@@ -8374,9 +8374,9 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig(dict):
                  boot_disk_type: Optional[str] = None,
                  num_local_ssds: Optional[int] = None):
         """
-        :param int boot_disk_size_gb: Optional. Size in GB of the boot disk (default is 500GB).
-        :param str boot_disk_type: Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
-        :param int num_local_ssds: Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        :param int boot_disk_size_gb: Size in GB of the boot disk (default is 500GB).
+        :param str boot_disk_type: Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+        :param int num_local_ssds: Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
         if boot_disk_size_gb is not None:
             pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
@@ -8389,7 +8389,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig(dict):
     @pulumi.getter(name="bootDiskSizeGb")
     def boot_disk_size_gb(self) -> Optional[int]:
         """
-        Optional. Size in GB of the boot disk (default is 500GB).
+        Size in GB of the boot disk (default is 500GB).
         """
         return pulumi.get(self, "boot_disk_size_gb")
 
@@ -8397,7 +8397,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig(dict):
     @pulumi.getter(name="bootDiskType")
     def boot_disk_type(self) -> Optional[str]:
         """
-        Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+        Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
         """
         return pulumi.get(self, "boot_disk_type")
 
@@ -8405,7 +8405,7 @@ class WorkflowTemplatePlacementManagedClusterConfigMasterConfigDiskConfig(dict):
     @pulumi.getter(name="numLocalSsds")
     def num_local_ssds(self) -> Optional[int]:
         """
-        Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
         return pulumi.get(self, "num_local_ssds")
 
@@ -8528,16 +8528,16 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
                  num_instances: Optional[int] = None,
                  preemptibility: Optional[str] = None):
         """
-        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs'] accelerators: Optional. The Compute Engine accelerator configuration for these instances.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs' disk_config: Optional. Disk option config settings.
-        :param str image: Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAcceleratorArgs'] accelerators: The Compute Engine accelerator configuration for these instances.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfigArgs' disk_config: Disk option config settings.
+        :param str image: The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
         :param Sequence[str] instance_names: Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
         :param bool is_preemptible: Output only. Specifies that this instance group contains preemptible instances.
-        :param str machine_type: Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+        :param str machine_type: The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
         :param Sequence['WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfigArgs'] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-        :param str min_cpu_platform: Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
-        :param int num_instances: Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
-        :param str preemptibility: Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+        :param str min_cpu_platform: Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+        :param int num_instances: The number of VM instances in the instance group. For master instance groups, must be set to 1.
+        :param str preemptibility: Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
         """
         if accelerators is not None:
             pulumi.set(__self__, "accelerators", accelerators)
@@ -8564,7 +8564,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
     @pulumi.getter
     def accelerators(self) -> Optional[Sequence['outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator']]:
         """
-        Optional. The Compute Engine accelerator configuration for these instances.
+        The Compute Engine accelerator configuration for these instances.
         """
         return pulumi.get(self, "accelerators")
 
@@ -8572,7 +8572,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
     @pulumi.getter(name="diskConfig")
     def disk_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig']:
         """
-        Optional. Disk option config settings.
+        Disk option config settings.
         """
         return pulumi.get(self, "disk_config")
 
@@ -8580,7 +8580,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
     @pulumi.getter
     def image(self) -> Optional[str]:
         """
-        Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+        The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
         """
         return pulumi.get(self, "image")
 
@@ -8604,7 +8604,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
     @pulumi.getter(name="machineType")
     def machine_type(self) -> Optional[str]:
         """
-        Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+        The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
         """
         return pulumi.get(self, "machine_type")
 
@@ -8620,7 +8620,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
     @pulumi.getter(name="minCpuPlatform")
     def min_cpu_platform(self) -> Optional[str]:
         """
-        Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+        Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
         """
         return pulumi.get(self, "min_cpu_platform")
 
@@ -8628,7 +8628,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
     @pulumi.getter(name="numInstances")
     def num_instances(self) -> Optional[int]:
         """
-        Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+        The number of VM instances in the instance group. For master instance groups, must be set to 1.
         """
         return pulumi.get(self, "num_instances")
 
@@ -8636,7 +8636,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig(dict):
     @pulumi.getter
     def preemptibility(self) -> Optional[str]:
         """
-        Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+        Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
         """
         return pulumi.get(self, "preemptibility")
 
@@ -8719,9 +8719,9 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConf
                  boot_disk_type: Optional[str] = None,
                  num_local_ssds: Optional[int] = None):
         """
-        :param int boot_disk_size_gb: Optional. Size in GB of the boot disk (default is 500GB).
-        :param str boot_disk_type: Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
-        :param int num_local_ssds: Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        :param int boot_disk_size_gb: Size in GB of the boot disk (default is 500GB).
+        :param str boot_disk_type: Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+        :param int num_local_ssds: Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
         if boot_disk_size_gb is not None:
             pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
@@ -8734,7 +8734,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConf
     @pulumi.getter(name="bootDiskSizeGb")
     def boot_disk_size_gb(self) -> Optional[int]:
         """
-        Optional. Size in GB of the boot disk (default is 500GB).
+        Size in GB of the boot disk (default is 500GB).
         """
         return pulumi.get(self, "boot_disk_size_gb")
 
@@ -8742,7 +8742,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConf
     @pulumi.getter(name="bootDiskType")
     def boot_disk_type(self) -> Optional[str]:
         """
-        Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+        Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
         """
         return pulumi.get(self, "boot_disk_type")
 
@@ -8750,7 +8750,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConf
     @pulumi.getter(name="numLocalSsds")
     def num_local_ssds(self) -> Optional[int]:
         """
-        Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
         return pulumi.get(self, "num_local_ssds")
 
@@ -8889,21 +8889,21 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig(
                  truststore: Optional[str] = None,
                  truststore_password: Optional[str] = None):
         """
-        :param str cross_realm_trust_admin_server: Optional. The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
-        :param str cross_realm_trust_kdc: Optional. The KDC (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
-        :param str cross_realm_trust_realm: Optional. The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross realm trust.
-        :param str cross_realm_trust_shared_password: Optional. The Cloud Storage URI of a KMS encrypted file containing the shared password between the on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.
-        :param bool enable_kerberos: Optional. Flag to indicate whether to Kerberize the cluster (default: false). Set this field to true to enable Kerberos on a cluster.
-        :param str kdc_db_key: Optional. The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC database.
-        :param str key_password: Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided key. For the self-signed certificate, this password is generated by Dataproc.
-        :param str keystore: Optional. The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
-        :param str keystore_password: Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided keystore. For the self-signed certificate, this password is generated by Dataproc.
-        :param str kms_key: Optional. The uri of the KMS key used to encrypt various sensitive files.
-        :param str realm: Optional. The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of hostnames will be the realm.
-        :param str root_principal_password: Optional. The Cloud Storage URI of a KMS encrypted file containing the root principal password.
-        :param int tgt_lifetime_hours: Optional. The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies 0, then default value 10 will be used.
-        :param str truststore: Optional. The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
-        :param str truststore_password: Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
+        :param str cross_realm_trust_admin_server: The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+        :param str cross_realm_trust_kdc: The KDC (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+        :param str cross_realm_trust_realm: The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross realm trust.
+        :param str cross_realm_trust_shared_password: The Cloud Storage URI of a KMS encrypted file containing the shared password between the on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.
+        :param bool enable_kerberos: Flag to indicate whether to Kerberize the cluster (default: false). Set this field to true to enable Kerberos on a cluster.
+        :param str kdc_db_key: The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC database.
+        :param str key_password: The Cloud Storage URI of a KMS encrypted file containing the password to the user provided key. For the self-signed certificate, this password is generated by Dataproc.
+        :param str keystore: The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+        :param str keystore_password: The Cloud Storage URI of a KMS encrypted file containing the password to the user provided keystore. For the self-signed certificate, this password is generated by Dataproc.
+        :param str kms_key: The uri of the KMS key used to encrypt various sensitive files.
+        :param str realm: The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of hostnames will be the realm.
+        :param str root_principal_password: The Cloud Storage URI of a KMS encrypted file containing the root principal password.
+        :param int tgt_lifetime_hours: The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies 0, then default value 10 will be used.
+        :param str truststore: The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+        :param str truststore_password: The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
         """
         if cross_realm_trust_admin_server is not None:
             pulumi.set(__self__, "cross_realm_trust_admin_server", cross_realm_trust_admin_server)
@@ -8940,7 +8940,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig(
     @pulumi.getter(name="crossRealmTrustAdminServer")
     def cross_realm_trust_admin_server(self) -> Optional[str]:
         """
-        Optional. The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+        The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
         """
         return pulumi.get(self, "cross_realm_trust_admin_server")
 
@@ -8948,7 +8948,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig(
     @pulumi.getter(name="crossRealmTrustKdc")
     def cross_realm_trust_kdc(self) -> Optional[str]:
         """
-        Optional. The KDC (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
+        The KDC (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
         """
         return pulumi.get(self, "cross_realm_trust_kdc")
 
@@ -8956,7 +8956,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig(
     @pulumi.getter(name="crossRealmTrustRealm")
     def cross_realm_trust_realm(self) -> Optional[str]:
         """
-        Optional. The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross realm trust.
+        The remote realm the Dataproc on-cluster KDC will trust, should the user enable cross realm trust.
         """
         return pulumi.get(self, "cross_realm_trust_realm")
 
@@ -8964,7 +8964,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig(
     @pulumi.getter(name="crossRealmTrustSharedPassword")
     def cross_realm_trust_shared_password(self) -> Optional[str]:
         """
-        Optional. The Cloud Storage URI of a KMS encrypted file containing the shared password between the on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.
+        The Cloud Storage URI of a KMS encrypted file containing the shared password between the on-cluster Kerberos realm and the remote trusted realm, in a cross realm trust relationship.
         """
         return pulumi.get(self, "cross_realm_trust_shared_password")
 
@@ -8972,7 +8972,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig(
     @pulumi.getter(name="enableKerberos")
     def enable_kerberos(self) -> Optional[bool]:
         """
-        Optional. Flag to indicate whether to Kerberize the cluster (default: false). Set this field to true to enable Kerberos on a cluster.
+        Flag to indicate whether to Kerberize the cluster (default: false). Set this field to true to enable Kerberos on a cluster.
         """
         return pulumi.get(self, "enable_kerberos")
 
@@ -8980,7 +8980,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig(
     @pulumi.getter(name="kdcDbKey")
     def kdc_db_key(self) -> Optional[str]:
         """
-        Optional. The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC database.
+        The Cloud Storage URI of a KMS encrypted file containing the master key of the KDC database.
         """
         return pulumi.get(self, "kdc_db_key")
 
@@ -8988,7 +8988,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig(
     @pulumi.getter(name="keyPassword")
     def key_password(self) -> Optional[str]:
         """
-        Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided key. For the self-signed certificate, this password is generated by Dataproc.
+        The Cloud Storage URI of a KMS encrypted file containing the password to the user provided key. For the self-signed certificate, this password is generated by Dataproc.
         """
         return pulumi.get(self, "key_password")
 
@@ -8996,7 +8996,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig(
     @pulumi.getter
     def keystore(self) -> Optional[str]:
         """
-        Optional. The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+        The Cloud Storage URI of the keystore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
         """
         return pulumi.get(self, "keystore")
 
@@ -9004,7 +9004,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig(
     @pulumi.getter(name="keystorePassword")
     def keystore_password(self) -> Optional[str]:
         """
-        Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided keystore. For the self-signed certificate, this password is generated by Dataproc.
+        The Cloud Storage URI of a KMS encrypted file containing the password to the user provided keystore. For the self-signed certificate, this password is generated by Dataproc.
         """
         return pulumi.get(self, "keystore_password")
 
@@ -9012,7 +9012,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig(
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> Optional[str]:
         """
-        Optional. The uri of the KMS key used to encrypt various sensitive files.
+        The uri of the KMS key used to encrypt various sensitive files.
         """
         return pulumi.get(self, "kms_key")
 
@@ -9020,7 +9020,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig(
     @pulumi.getter
     def realm(self) -> Optional[str]:
         """
-        Optional. The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of hostnames will be the realm.
+        The name of the on-cluster Kerberos realm. If not specified, the uppercased domain of hostnames will be the realm.
         """
         return pulumi.get(self, "realm")
 
@@ -9028,7 +9028,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig(
     @pulumi.getter(name="rootPrincipalPassword")
     def root_principal_password(self) -> Optional[str]:
         """
-        Optional. The Cloud Storage URI of a KMS encrypted file containing the root principal password.
+        The Cloud Storage URI of a KMS encrypted file containing the root principal password.
         """
         return pulumi.get(self, "root_principal_password")
 
@@ -9036,7 +9036,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig(
     @pulumi.getter(name="tgtLifetimeHours")
     def tgt_lifetime_hours(self) -> Optional[int]:
         """
-        Optional. The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies 0, then default value 10 will be used.
+        The lifetime of the ticket granting ticket, in hours. If not specified, or user specifies 0, then default value 10 will be used.
         """
         return pulumi.get(self, "tgt_lifetime_hours")
 
@@ -9044,7 +9044,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig(
     @pulumi.getter
     def truststore(self) -> Optional[str]:
         """
-        Optional. The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
+        The Cloud Storage URI of the truststore file used for SSL encryption. If not provided, Dataproc will provide a self-signed certificate.
         """
         return pulumi.get(self, "truststore")
 
@@ -9052,7 +9052,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig(
     @pulumi.getter(name="truststorePassword")
     def truststore_password(self) -> Optional[str]:
         """
-        Optional. The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
+        The Cloud Storage URI of a KMS encrypted file containing the password to the user provided truststore. For the self-signed certificate, this password is generated by Dataproc.
         """
         return pulumi.get(self, "truststore_password")
 
@@ -9083,8 +9083,24 @@ class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig(dict):
                  optional_components: Optional[Sequence[str]] = None,
                  properties: Optional[Mapping[str, str]] = None):
         """
-        :param str image_version: Optional. The version of software inside the cluster. It must be one of the supported (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
-        :param Mapping[str, str] properties: Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+        :param str image_version: The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the ["preview" version](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
+        :param Sequence[str] optional_components: The set of components to activate on the cluster.
+        :param Mapping[str, str] properties: The properties to set on daemon config files.
+               
+               Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings:
+               
+               * capacity-scheduler: `capacity-scheduler.xml`
+               * core: `core-site.xml`
+               * distcp: `distcp-default.xml`
+               * hdfs: `hdfs-site.xml`
+               * hive: `hive-site.xml`
+               * mapred: `mapred-site.xml`
+               * pig: `pig.properties`
+               * spark: `spark-defaults.conf`
+               * yarn: `yarn-site.xml`
+               
+               
+               For more information, see [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
         """
         if image_version is not None:
             pulumi.set(__self__, "image_version", image_version)
@@ -9097,20 +9113,38 @@ class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig(dict):
     @pulumi.getter(name="imageVersion")
     def image_version(self) -> Optional[str]:
         """
-        Optional. The version of software inside the cluster. It must be one of the supported (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
+        The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the ["preview" version](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
         """
         return pulumi.get(self, "image_version")
 
     @property
     @pulumi.getter(name="optionalComponents")
     def optional_components(self) -> Optional[Sequence[str]]:
+        """
+        The set of components to activate on the cluster.
+        """
         return pulumi.get(self, "optional_components")
 
     @property
     @pulumi.getter
     def properties(self) -> Optional[Mapping[str, str]]:
         """
-        Optional. The properties to set on daemon config files. Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings: * capacity-scheduler: `capacity-scheduler.xml` * core: `core-site.xml` * distcp: `distcp-default.xml` * hdfs: `hdfs-site.xml` * hive: `hive-site.xml` * mapred: `mapred-site.xml` * pig: `pig.properties` * spark: `spark-defaults.conf` * yarn: `yarn-site.xml` For more information, see (https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
+        The properties to set on daemon config files.
+
+        Property keys are specified in `prefix:property` format, for example `core:hadoop.tmp.dir`. The following are supported prefixes and their mappings:
+
+        * capacity-scheduler: `capacity-scheduler.xml`
+        * core: `core-site.xml`
+        * distcp: `distcp-default.xml`
+        * hdfs: `hdfs-site.xml`
+        * hive: `hive-site.xml`
+        * mapred: `mapred-site.xml`
+        * pig: `pig.properties`
+        * spark: `spark-defaults.conf`
+        * yarn: `yarn-site.xml`
+
+
+        For more information, see [Cluster properties](https://cloud.google.com/dataproc/docs/concepts/cluster-properties).
         """
         return pulumi.get(self, "properties")
 
@@ -9158,16 +9192,16 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig(dict):
                  num_instances: Optional[int] = None,
                  preemptibility: Optional[str] = None):
         """
-        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs'] accelerators: Optional. The Compute Engine accelerator configuration for these instances.
-        :param 'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs' disk_config: Optional. Disk option config settings.
-        :param str image: Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+        :param Sequence['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAcceleratorArgs'] accelerators: The Compute Engine accelerator configuration for these instances.
+        :param 'WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfigArgs' disk_config: Disk option config settings.
+        :param str image: The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
         :param Sequence[str] instance_names: Output only. The list of instance names. Dataproc derives the names from `cluster_name`, `num_instances`, and the instance group.
         :param bool is_preemptible: Output only. Specifies that this instance group contains preemptible instances.
-        :param str machine_type: Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+        :param str machine_type: The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
         :param Sequence['WorkflowTemplatePlacementManagedClusterConfigWorkerConfigManagedGroupConfigArgs'] managed_group_configs: Output only. The config for Compute Engine Instance Group Manager that manages this group. This is only used for preemptible instance groups.
-        :param str min_cpu_platform: Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
-        :param int num_instances: Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
-        :param str preemptibility: Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+        :param str min_cpu_platform: Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+        :param int num_instances: The number of VM instances in the instance group. For master instance groups, must be set to 1.
+        :param str preemptibility: Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
         """
         if accelerators is not None:
             pulumi.set(__self__, "accelerators", accelerators)
@@ -9194,7 +9228,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig(dict):
     @pulumi.getter
     def accelerators(self) -> Optional[Sequence['outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigAccelerator']]:
         """
-        Optional. The Compute Engine accelerator configuration for these instances.
+        The Compute Engine accelerator configuration for these instances.
         """
         return pulumi.get(self, "accelerators")
 
@@ -9202,7 +9236,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig(dict):
     @pulumi.getter(name="diskConfig")
     def disk_config(self) -> Optional['outputs.WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig']:
         """
-        Optional. Disk option config settings.
+        Disk option config settings.
         """
         return pulumi.get(self, "disk_config")
 
@@ -9210,7 +9244,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig(dict):
     @pulumi.getter
     def image(self) -> Optional[str]:
         """
-        Optional. The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
+        The Compute Engine image resource used for cluster instances. The URI can represent an image or image family. Image examples: * `https://www.googleapis.com/compute/beta/projects/` If the URI is unspecified, it will be inferred from `SoftwareConfig.image_version` or the system default.
         """
         return pulumi.get(self, "image")
 
@@ -9234,7 +9268,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig(dict):
     @pulumi.getter(name="machineType")
     def machine_type(self) -> Optional[str]:
         """
-        Optional. The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
+        The Compute Engine machine type used for cluster instances. A full URL, partial URI, or short name are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/(https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the machine type resource, for example, `n1-standard-2`.
         """
         return pulumi.get(self, "machine_type")
 
@@ -9250,7 +9284,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig(dict):
     @pulumi.getter(name="minCpuPlatform")
     def min_cpu_platform(self) -> Optional[str]:
         """
-        Optional. Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
+        Specifies the minimum cpu platform for the Instance Group. See (https://cloud.google.com/dataproc/docs/concepts/compute/dataproc-min-cpu).
         """
         return pulumi.get(self, "min_cpu_platform")
 
@@ -9258,7 +9292,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig(dict):
     @pulumi.getter(name="numInstances")
     def num_instances(self) -> Optional[int]:
         """
-        Optional. The number of VM instances in the instance group. For master instance groups, must be set to 1.
+        The number of VM instances in the instance group. For master instance groups, must be set to 1.
         """
         return pulumi.get(self, "num_instances")
 
@@ -9266,7 +9300,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfig(dict):
     @pulumi.getter
     def preemptibility(self) -> Optional[str]:
         """
-        Optional. Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
+        Specifies the preemptibility of the instance group. The default value for master and worker groups is `NON_PREEMPTIBLE`. This default cannot be changed. The default value for secondary instances is `PREEMPTIBLE`. Possible values: PREEMPTIBILITY_UNSPECIFIED, NON_PREEMPTIBLE, PREEMPTIBLE
         """
         return pulumi.get(self, "preemptibility")
 
@@ -9349,9 +9383,9 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig(dict):
                  boot_disk_type: Optional[str] = None,
                  num_local_ssds: Optional[int] = None):
         """
-        :param int boot_disk_size_gb: Optional. Size in GB of the boot disk (default is 500GB).
-        :param str boot_disk_type: Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
-        :param int num_local_ssds: Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        :param int boot_disk_size_gb: Size in GB of the boot disk (default is 500GB).
+        :param str boot_disk_type: Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+        :param int num_local_ssds: Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
         if boot_disk_size_gb is not None:
             pulumi.set(__self__, "boot_disk_size_gb", boot_disk_size_gb)
@@ -9364,7 +9398,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig(dict):
     @pulumi.getter(name="bootDiskSizeGb")
     def boot_disk_size_gb(self) -> Optional[int]:
         """
-        Optional. Size in GB of the boot disk (default is 500GB).
+        Size in GB of the boot disk (default is 500GB).
         """
         return pulumi.get(self, "boot_disk_size_gb")
 
@@ -9372,7 +9406,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig(dict):
     @pulumi.getter(name="bootDiskType")
     def boot_disk_type(self) -> Optional[str]:
         """
-        Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
+        Type of the boot disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
         """
         return pulumi.get(self, "boot_disk_type")
 
@@ -9380,7 +9414,7 @@ class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDiskConfig(dict):
     @pulumi.getter(name="numLocalSsds")
     def num_local_ssds(self) -> Optional[int]:
         """
-        Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
+        Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot disk is used to store runtime logs and (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html) data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk contains only basic config and installed binaries.
         """
         return pulumi.get(self, "num_local_ssds")
 

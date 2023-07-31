@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class WorkflowTemplateJobHiveJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+        /// Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
         /// </summary>
         [Input("continueOnFailure")]
         public Input<bool>? ContinueOnFailure { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _jarFileUris;
 
         /// <summary>
-        /// Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
+        /// HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
         /// </summary>
         public InputList<string> JarFileUris
         {
@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputMap<string>? _properties;
 
         /// <summary>
-        /// Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
+        /// A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
         /// </summary>
         public InputMap<string> Properties
         {
@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputMap<string>? _scriptVariables;
 
         /// <summary>
-        /// Optional. Mapping of query variable names to values (equivalent to the Hive command: `SET name="value";`).
+        /// Mapping of query variable names to values (equivalent to the Hive command: `SET name="value";`).
         /// </summary>
         public InputMap<string> ScriptVariables
         {

@@ -51,6 +51,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetClusterResult {
     private List<GetClusterAddonsConfig> addonsConfigs;
+    private Boolean allowNetAdmin;
     private List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs;
     private List<GetClusterBinaryAuthorization> binaryAuthorizations;
     private List<GetClusterClusterAutoscaling> clusterAutoscalings;
@@ -70,6 +71,7 @@ public final class GetClusterResult {
     private Boolean enableKubernetesAlpha;
     private Boolean enableL4IlbSubsetting;
     private Boolean enableLegacyAbac;
+    private Boolean enableMultiNetworking;
     private Boolean enableShieldedNodes;
     private Boolean enableTpu;
     private String endpoint;
@@ -129,6 +131,9 @@ public final class GetClusterResult {
     public List<GetClusterAddonsConfig> addonsConfigs() {
         return this.addonsConfigs;
     }
+    public Boolean allowNetAdmin() {
+        return this.allowNetAdmin;
+    }
     public List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs() {
         return this.authenticatorGroupsConfigs;
     }
@@ -185,6 +190,9 @@ public final class GetClusterResult {
     }
     public Boolean enableLegacyAbac() {
         return this.enableLegacyAbac;
+    }
+    public Boolean enableMultiNetworking() {
+        return this.enableMultiNetworking;
     }
     public Boolean enableShieldedNodes() {
         return this.enableShieldedNodes;
@@ -351,6 +359,7 @@ public final class GetClusterResult {
     @CustomType.Builder
     public static final class Builder {
         private List<GetClusterAddonsConfig> addonsConfigs;
+        private Boolean allowNetAdmin;
         private List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs;
         private List<GetClusterBinaryAuthorization> binaryAuthorizations;
         private List<GetClusterClusterAutoscaling> clusterAutoscalings;
@@ -370,6 +379,7 @@ public final class GetClusterResult {
         private Boolean enableKubernetesAlpha;
         private Boolean enableL4IlbSubsetting;
         private Boolean enableLegacyAbac;
+        private Boolean enableMultiNetworking;
         private Boolean enableShieldedNodes;
         private Boolean enableTpu;
         private String endpoint;
@@ -424,6 +434,7 @@ public final class GetClusterResult {
         public Builder(GetClusterResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.addonsConfigs = defaults.addonsConfigs;
+    	      this.allowNetAdmin = defaults.allowNetAdmin;
     	      this.authenticatorGroupsConfigs = defaults.authenticatorGroupsConfigs;
     	      this.binaryAuthorizations = defaults.binaryAuthorizations;
     	      this.clusterAutoscalings = defaults.clusterAutoscalings;
@@ -443,6 +454,7 @@ public final class GetClusterResult {
     	      this.enableKubernetesAlpha = defaults.enableKubernetesAlpha;
     	      this.enableL4IlbSubsetting = defaults.enableL4IlbSubsetting;
     	      this.enableLegacyAbac = defaults.enableLegacyAbac;
+    	      this.enableMultiNetworking = defaults.enableMultiNetworking;
     	      this.enableShieldedNodes = defaults.enableShieldedNodes;
     	      this.enableTpu = defaults.enableTpu;
     	      this.endpoint = defaults.endpoint;
@@ -502,6 +514,11 @@ public final class GetClusterResult {
         }
         public Builder addonsConfigs(GetClusterAddonsConfig... addonsConfigs) {
             return addonsConfigs(List.of(addonsConfigs));
+        }
+        @CustomType.Setter
+        public Builder allowNetAdmin(Boolean allowNetAdmin) {
+            this.allowNetAdmin = Objects.requireNonNull(allowNetAdmin);
+            return this;
         }
         @CustomType.Setter
         public Builder authenticatorGroupsConfigs(List<GetClusterAuthenticatorGroupsConfig> authenticatorGroupsConfigs) {
@@ -623,6 +640,11 @@ public final class GetClusterResult {
         @CustomType.Setter
         public Builder enableLegacyAbac(Boolean enableLegacyAbac) {
             this.enableLegacyAbac = Objects.requireNonNull(enableLegacyAbac);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableMultiNetworking(Boolean enableMultiNetworking) {
+            this.enableMultiNetworking = Objects.requireNonNull(enableMultiNetworking);
             return this;
         }
         @CustomType.Setter
@@ -956,6 +978,7 @@ public final class GetClusterResult {
         public GetClusterResult build() {
             final var o = new GetClusterResult();
             o.addonsConfigs = addonsConfigs;
+            o.allowNetAdmin = allowNetAdmin;
             o.authenticatorGroupsConfigs = authenticatorGroupsConfigs;
             o.binaryAuthorizations = binaryAuthorizations;
             o.clusterAutoscalings = clusterAutoscalings;
@@ -975,6 +998,7 @@ public final class GetClusterResult {
             o.enableKubernetesAlpha = enableKubernetesAlpha;
             o.enableL4IlbSubsetting = enableL4IlbSubsetting;
             o.enableLegacyAbac = enableLegacyAbac;
+            o.enableMultiNetworking = enableMultiNetworking;
             o.enableShieldedNodes = enableShieldedNodes;
             o.enableTpu = enableTpu;
             o.endpoint = endpoint;

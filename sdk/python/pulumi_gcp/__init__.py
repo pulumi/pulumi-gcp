@@ -3278,6 +3278,38 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dataplex/task",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/task:Task": "Task"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/taskIamBinding",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/taskIamBinding:TaskIamBinding": "TaskIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/taskIamMember",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/taskIamMember:TaskIamMember": "TaskIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataplex/taskIamPolicy",
+  "fqn": "pulumi_gcp.dataplex",
+  "classes": {
+   "gcp:dataplex/taskIamPolicy:TaskIamPolicy": "TaskIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dataplex/zone",
   "fqn": "pulumi_gcp.dataplex",
   "classes": {
@@ -4546,6 +4578,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.iap",
   "classes": {
    "gcp:iap/webIamPolicy:WebIamPolicy": "WebIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/webRegionBackendServiceIamBinding",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/webRegionBackendServiceIamBinding:WebRegionBackendServiceIamBinding": "WebRegionBackendServiceIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/webRegionBackendServiceIamMember",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/webRegionBackendServiceIamMember:WebRegionBackendServiceIamMember": "WebRegionBackendServiceIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iap/webRegionBackendServiceIamPolicy",
+  "fqn": "pulumi_gcp.iap",
+  "classes": {
+   "gcp:iap/webRegionBackendServiceIamPolicy:WebRegionBackendServiceIamPolicy": "WebRegionBackendServiceIamPolicy"
   }
  },
  {

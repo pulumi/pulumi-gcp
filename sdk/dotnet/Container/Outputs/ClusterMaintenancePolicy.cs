@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterMaintenancePolicyDailyMaintenanceWindow? DailyMaintenanceWindow;
         /// <summary>
-        /// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to three maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+        /// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterMaintenancePolicyMaintenanceExclusion> MaintenanceExclusions;
         /// <summary>

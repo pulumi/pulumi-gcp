@@ -34,7 +34,8 @@ type ProjectSink struct {
 	// - `storage.googleapis.com/[GCS_BUCKET]`
 	// - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
 	// - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-	// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]`
 	//
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringOutput `pulumi:"destination"`
@@ -104,7 +105,8 @@ type projectSinkState struct {
 	// - `storage.googleapis.com/[GCS_BUCKET]`
 	// - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
 	// - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-	// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]`
 	//
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination *string `pulumi:"destination"`
@@ -142,7 +144,8 @@ type ProjectSinkState struct {
 	// - `storage.googleapis.com/[GCS_BUCKET]`
 	// - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
 	// - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-	// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]`
 	//
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringPtrInput
@@ -184,7 +187,8 @@ type projectSinkArgs struct {
 	// - `storage.googleapis.com/[GCS_BUCKET]`
 	// - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
 	// - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-	// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]`
 	//
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination string `pulumi:"destination"`
@@ -220,7 +224,8 @@ type ProjectSinkArgs struct {
 	// - `storage.googleapis.com/[GCS_BUCKET]`
 	// - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
 	// - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-	// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]`
 	//
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringInput
@@ -347,7 +352,8 @@ func (o ProjectSinkOutput) Description() pulumi.StringPtrOutput {
 // - `storage.googleapis.com/[GCS_BUCKET]`
 // - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
 // - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+// - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+// - `logging.googleapis.com/projects/[PROJECT_ID]`
 //
 // The writer associated with the sink must have access to write to the above resource.
 func (o ProjectSinkOutput) Destination() pulumi.StringOutput {

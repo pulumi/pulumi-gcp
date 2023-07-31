@@ -21,14 +21,14 @@ public final class WorkflowTemplateJobPigJobArgs extends com.pulumi.resources.Re
     public static final WorkflowTemplateJobPigJobArgs Empty = new WorkflowTemplateJobPigJobArgs();
 
     /**
-     * Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+     * Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
      * 
      */
     @Import(name="continueOnFailure")
     private @Nullable Output<Boolean> continueOnFailure;
 
     /**
-     * @return Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+     * @return Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
      * 
      */
     public Optional<Output<Boolean>> continueOnFailure() {
@@ -36,14 +36,14 @@ public final class WorkflowTemplateJobPigJobArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
+     * HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
      * 
      */
     @Import(name="jarFileUris")
     private @Nullable Output<List<String>> jarFileUris;
 
     /**
-     * @return Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
+     * @return HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
      * 
      */
     public Optional<Output<List<String>>> jarFileUris() {
@@ -51,14 +51,14 @@ public final class WorkflowTemplateJobPigJobArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Optional. The runtime log config for job execution.
+     * The runtime log config for job execution.
      * 
      */
     @Import(name="loggingConfig")
     private @Nullable Output<WorkflowTemplateJobPigJobLoggingConfigArgs> loggingConfig;
 
     /**
-     * @return Optional. The runtime log config for job execution.
+     * @return The runtime log config for job execution.
      * 
      */
     public Optional<Output<WorkflowTemplateJobPigJobLoggingConfigArgs>> loggingConfig() {
@@ -66,14 +66,14 @@ public final class WorkflowTemplateJobPigJobArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
+     * A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
      * 
      */
     @Import(name="properties")
     private @Nullable Output<Map<String,String>> properties;
 
     /**
-     * @return Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
+     * @return A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
      * 
      */
     public Optional<Output<Map<String,String>>> properties() {
@@ -111,14 +111,14 @@ public final class WorkflowTemplateJobPigJobArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Optional. Mapping of query variable names to values (equivalent to the Pig command: `name=`).
+     * Mapping of query variable names to values (equivalent to the Pig command: `name=`).
      * 
      */
     @Import(name="scriptVariables")
     private @Nullable Output<Map<String,String>> scriptVariables;
 
     /**
-     * @return Optional. Mapping of query variable names to values (equivalent to the Pig command: `name=`).
+     * @return Mapping of query variable names to values (equivalent to the Pig command: `name=`).
      * 
      */
     public Optional<Output<Map<String,String>>> scriptVariables() {
@@ -156,7 +156,7 @@ public final class WorkflowTemplateJobPigJobArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param continueOnFailure Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+         * @param continueOnFailure Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class WorkflowTemplateJobPigJobArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param continueOnFailure Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+         * @param continueOnFailure Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class WorkflowTemplateJobPigJobArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param jarFileUris Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
+         * @param jarFileUris HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class WorkflowTemplateJobPigJobArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param jarFileUris Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
+         * @param jarFileUris HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class WorkflowTemplateJobPigJobArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param jarFileUris Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
+         * @param jarFileUris HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
          * 
          * @return builder
          * 
@@ -208,7 +208,7 @@ public final class WorkflowTemplateJobPigJobArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param loggingConfig Optional. The runtime log config for job execution.
+         * @param loggingConfig The runtime log config for job execution.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class WorkflowTemplateJobPigJobArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param loggingConfig Optional. The runtime log config for job execution.
+         * @param loggingConfig The runtime log config for job execution.
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class WorkflowTemplateJobPigJobArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param properties Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
+         * @param properties A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class WorkflowTemplateJobPigJobArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param properties Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
+         * @param properties A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class WorkflowTemplateJobPigJobArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param scriptVariables Optional. Mapping of query variable names to values (equivalent to the Pig command: `name=`).
+         * @param scriptVariables Mapping of query variable names to values (equivalent to the Pig command: `name=`).
          * 
          * @return builder
          * 
@@ -303,7 +303,7 @@ public final class WorkflowTemplateJobPigJobArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param scriptVariables Optional. Mapping of query variable names to values (equivalent to the Pig command: `name=`).
+         * @param scriptVariables Mapping of query variable names to values (equivalent to the Pig command: `name=`).
          * 
          * @return builder
          * 

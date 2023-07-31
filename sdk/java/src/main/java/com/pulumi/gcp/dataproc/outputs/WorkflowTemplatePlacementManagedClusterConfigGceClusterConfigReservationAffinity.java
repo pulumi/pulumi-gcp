@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity {
     /**
-     * @return Optional. Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
+     * @return Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
      * 
      */
     private @Nullable String consumeReservationType;
     /**
-     * @return Optional. Corresponds to the label key of reservation resource.
+     * @return Corresponds to the label key of reservation resource.
      * 
      */
     private @Nullable String key;
     /**
-     * @return Optional. Corresponds to the label values of reservation resource.
+     * @return Corresponds to the label values of reservation resource.
      * 
      */
     private @Nullable List<String> values;
 
     private WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinity() {}
     /**
-     * @return Optional. Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
+     * @return Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
      * 
      */
     public Optional<String> consumeReservationType() {
         return Optional.ofNullable(this.consumeReservationType);
     }
     /**
-     * @return Optional. Corresponds to the label key of reservation resource.
+     * @return Corresponds to the label key of reservation resource.
      * 
      */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
     /**
-     * @return Optional. Corresponds to the label values of reservation resource.
+     * @return Corresponds to the label values of reservation resource.
      * 
      */
     public List<String> values() {

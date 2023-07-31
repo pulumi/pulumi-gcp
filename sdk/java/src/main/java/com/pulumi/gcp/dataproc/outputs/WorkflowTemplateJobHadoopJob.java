@@ -15,27 +15,27 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkflowTemplateJobHadoopJob {
     /**
-     * @return Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
+     * @return HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
      * 
      */
     private @Nullable List<String> archiveUris;
     /**
-     * @return Optional. The arguments to pass to the driver. Do not include arguments, such as `-libjars` or `-Dfoo=bar`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+     * @return The arguments to pass to the driver. Do not include arguments, such as `-libjars` or `-Dfoo=bar`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
      * 
      */
     private @Nullable List<String> args;
     /**
-     * @return Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+     * @return HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
      * 
      */
     private @Nullable List<String> fileUris;
     /**
-     * @return Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
+     * @return Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
      * 
      */
     private @Nullable List<String> jarFileUris;
     /**
-     * @return Optional. The runtime log config for job execution.
+     * @return The runtime log config for job execution.
      * 
      */
     private @Nullable WorkflowTemplateJobHadoopJobLoggingConfig loggingConfig;
@@ -50,42 +50,42 @@ public final class WorkflowTemplateJobHadoopJob {
      */
     private @Nullable String mainJarFileUri;
     /**
-     * @return Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
+     * @return A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
      * 
      */
     private @Nullable Map<String,String> properties;
 
     private WorkflowTemplateJobHadoopJob() {}
     /**
-     * @return Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
+     * @return HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
      * 
      */
     public List<String> archiveUris() {
         return this.archiveUris == null ? List.of() : this.archiveUris;
     }
     /**
-     * @return Optional. The arguments to pass to the driver. Do not include arguments, such as `-libjars` or `-Dfoo=bar`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+     * @return The arguments to pass to the driver. Do not include arguments, such as `-libjars` or `-Dfoo=bar`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
      * 
      */
     public List<String> args() {
         return this.args == null ? List.of() : this.args;
     }
     /**
-     * @return Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+     * @return HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
      * 
      */
     public List<String> fileUris() {
         return this.fileUris == null ? List.of() : this.fileUris;
     }
     /**
-     * @return Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
+     * @return Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
      * 
      */
     public List<String> jarFileUris() {
         return this.jarFileUris == null ? List.of() : this.jarFileUris;
     }
     /**
-     * @return Optional. The runtime log config for job execution.
+     * @return The runtime log config for job execution.
      * 
      */
     public Optional<WorkflowTemplateJobHadoopJobLoggingConfig> loggingConfig() {
@@ -106,7 +106,7 @@ public final class WorkflowTemplateJobHadoopJob {
         return Optional.ofNullable(this.mainJarFileUri);
     }
     /**
-     * @return Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
+     * @return A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
      * 
      */
     public Map<String,String> properties() {

@@ -31,6 +31,15 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// </summary>
         public readonly Outputs.AlertPolicyConditionConditionMonitoringQueryLanguage? ConditionMonitoringQueryLanguage;
         /// <summary>
+        /// A Monitoring Query Language query that outputs a boolean stream
+        /// A condition type that allows alert policies to be defined using
+        /// Prometheus Query Language (PromQL).
+        /// The PrometheusQueryLanguageCondition message contains information
+        /// from a Prometheus alerting rule and its associated rule group.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.AlertPolicyConditionConditionPrometheusQueryLanguage? ConditionPrometheusQueryLanguage;
+        /// <summary>
         /// A condition that compares a time series against a
         /// threshold.
         /// Structure is documented below.
@@ -63,6 +72,8 @@ namespace Pulumi.Gcp.Monitoring.Outputs
 
             Outputs.AlertPolicyConditionConditionMonitoringQueryLanguage? conditionMonitoringQueryLanguage,
 
+            Outputs.AlertPolicyConditionConditionPrometheusQueryLanguage? conditionPrometheusQueryLanguage,
+
             Outputs.AlertPolicyConditionConditionThreshold? conditionThreshold,
 
             string displayName,
@@ -72,6 +83,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
             ConditionAbsent = conditionAbsent;
             ConditionMatchedLog = conditionMatchedLog;
             ConditionMonitoringQueryLanguage = conditionMonitoringQueryLanguage;
+            ConditionPrometheusQueryLanguage = conditionPrometheusQueryLanguage;
             ConditionThreshold = conditionThreshold;
             DisplayName = displayName;
             Name = name;

@@ -503,6 +503,21 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
     }
 
     /**
+     * The security policy associated with this backend service.
+     * 
+     */
+    @Import(name="securityPolicy")
+    private @Nullable Output<String> securityPolicy;
+
+    /**
+     * @return The security policy associated with this backend service.
+     * 
+     */
+    public Optional<Output<String>> securityPolicy() {
+        return Optional.ofNullable(this.securityPolicy);
+    }
+
+    /**
      * The URI of the created resource.
      * 
      */
@@ -597,6 +612,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
         this.project = $.project;
         this.protocol = $.protocol;
         this.region = $.region;
+        this.securityPolicy = $.securityPolicy;
         this.selfLink = $.selfLink;
         this.sessionAffinity = $.sessionAffinity;
         this.subsetting = $.subsetting;
@@ -1248,6 +1264,27 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param securityPolicy The security policy associated with this backend service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityPolicy(@Nullable Output<String> securityPolicy) {
+            $.securityPolicy = securityPolicy;
+            return this;
+        }
+
+        /**
+         * @param securityPolicy The security policy associated with this backend service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder securityPolicy(String securityPolicy) {
+            return securityPolicy(Output.of(securityPolicy));
         }
 
         /**

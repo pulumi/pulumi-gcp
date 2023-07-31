@@ -47,8 +47,7 @@ namespace Pulumi.Gcp.OsConfig.Inputs
 
         /// <summary>
         /// Desired state of the file. Possible values are:
-        /// `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`,
-        /// `CONTENTS_MATCH`.
+        /// `DESIRED_STATE_UNSPECIFIED`, `PRESENT`, `ABSENT`, `CONTENTS_MATCH`.
         /// </summary>
         [Input("state", required: true)]
         public Input<string> State { get; set; } = null!;

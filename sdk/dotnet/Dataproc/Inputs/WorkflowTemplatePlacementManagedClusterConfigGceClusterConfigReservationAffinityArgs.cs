@@ -13,13 +13,13 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigReservationAffinityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
+        /// Type of reservation to consume Possible values: TYPE_UNSPECIFIED, NO_RESERVATION, ANY_RESERVATION, SPECIFIC_RESERVATION
         /// </summary>
         [Input("consumeReservationType")]
         public Input<string>? ConsumeReservationType { get; set; }
 
         /// <summary>
-        /// Optional. Corresponds to the label key of reservation resource.
+        /// Corresponds to the label key of reservation resource.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _values;
 
         /// <summary>
-        /// Optional. Corresponds to the label values of reservation resource.
+        /// Corresponds to the label values of reservation resource.
         /// </summary>
         public InputList<string> Values
         {

@@ -15,27 +15,27 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkflowTemplateJobSparkJob {
     /**
-     * @return Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+     * @return HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
      * 
      */
     private @Nullable List<String> archiveUris;
     /**
-     * @return Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+     * @return The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
      * 
      */
     private @Nullable List<String> args;
     /**
-     * @return Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+     * @return HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
      * 
      */
     private @Nullable List<String> fileUris;
     /**
-     * @return Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
+     * @return HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
      * 
      */
     private @Nullable List<String> jarFileUris;
     /**
-     * @return Optional. The runtime log config for job execution.
+     * @return The runtime log config for job execution.
      * 
      */
     private @Nullable WorkflowTemplateJobSparkJobLoggingConfig loggingConfig;
@@ -50,42 +50,42 @@ public final class WorkflowTemplateJobSparkJob {
      */
     private @Nullable String mainJarFileUri;
     /**
-     * @return Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+     * @return A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
      * 
      */
     private @Nullable Map<String,String> properties;
 
     private WorkflowTemplateJobSparkJob() {}
     /**
-     * @return Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+     * @return HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
      * 
      */
     public List<String> archiveUris() {
         return this.archiveUris == null ? List.of() : this.archiveUris;
     }
     /**
-     * @return Optional. The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+     * @return The arguments to pass to the driver. Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
      * 
      */
     public List<String> args() {
         return this.args == null ? List.of() : this.args;
     }
     /**
-     * @return Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+     * @return HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
      * 
      */
     public List<String> fileUris() {
         return this.fileUris == null ? List.of() : this.fileUris;
     }
     /**
-     * @return Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
+     * @return HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
      * 
      */
     public List<String> jarFileUris() {
         return this.jarFileUris == null ? List.of() : this.jarFileUris;
     }
     /**
-     * @return Optional. The runtime log config for job execution.
+     * @return The runtime log config for job execution.
      * 
      */
     public Optional<WorkflowTemplateJobSparkJobLoggingConfig> loggingConfig() {
@@ -106,7 +106,7 @@ public final class WorkflowTemplateJobSparkJob {
         return Optional.ofNullable(this.mainJarFileUri);
     }
     /**
-     * @return Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+     * @return A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
      * 
      */
     public Map<String,String> properties() {

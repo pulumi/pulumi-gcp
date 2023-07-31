@@ -95,6 +95,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.healthcare.inputs.FhirStoreStreamConfigArgs;
  * import com.pulumi.gcp.healthcare.inputs.FhirStoreStreamConfigBigqueryDestinationArgs;
  * import com.pulumi.gcp.healthcare.inputs.FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs;
+ * import com.pulumi.gcp.healthcare.inputs.FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs;
  * import com.pulumi.gcp.pubsub.Topic;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -139,6 +140,10 @@ import javax.annotation.Nullable;
  *                     }))
  *                     .schemaConfig(FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs.builder()
  *                         .recursiveStructureDepth(3)
+ *                         .lastUpdatedPartitionConfig(FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs.builder()
+ *                             .type(&#34;HOUR&#34;)
+ *                             .expirationMs(1000000)
+ *                             .build())
  *                         .build())
  *                     .build())
  *                 .build())

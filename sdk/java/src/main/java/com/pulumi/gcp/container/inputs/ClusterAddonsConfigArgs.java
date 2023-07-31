@@ -170,7 +170,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * )) The status of the GCSFuse CSI driver addon,
+     * The status of the GCSFuse CSI driver addon,
      * which allows the usage of a gcs bucket as volumes.
      * It is disabled by default; set `enabled = true` to enable.
      * 
@@ -179,7 +179,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
     private @Nullable Output<ClusterAddonsConfigGcsFuseCsiDriverConfigArgs> gcsFuseCsiDriverConfig;
 
     /**
-     * @return )) The status of the GCSFuse CSI driver addon,
+     * @return The status of the GCSFuse CSI driver addon,
      * which allows the usage of a gcs bucket as volumes.
      * It is disabled by default; set `enabled = true` to enable.
      * 
@@ -515,7 +515,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param gcsFuseCsiDriverConfig )) The status of the GCSFuse CSI driver addon,
+         * @param gcsFuseCsiDriverConfig The status of the GCSFuse CSI driver addon,
          * which allows the usage of a gcs bucket as volumes.
          * It is disabled by default; set `enabled = true` to enable.
          * 
@@ -528,7 +528,7 @@ public final class ClusterAddonsConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param gcsFuseCsiDriverConfig )) The status of the GCSFuse CSI driver addon,
+         * @param gcsFuseCsiDriverConfig The status of the GCSFuse CSI driver addon,
          * which allows the usage of a gcs bucket as volumes.
          * It is disabled by default; set `enabled = true` to enable.
          * 

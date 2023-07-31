@@ -148,6 +148,7 @@ namespace Pulumi.Gcp.Container
     public sealed class GetClusterResult
     {
         public readonly ImmutableArray<Outputs.GetClusterAddonsConfigResult> AddonsConfigs;
+        public readonly bool AllowNetAdmin;
         public readonly ImmutableArray<Outputs.GetClusterAuthenticatorGroupsConfigResult> AuthenticatorGroupsConfigs;
         public readonly ImmutableArray<Outputs.GetClusterBinaryAuthorizationResult> BinaryAuthorizations;
         public readonly ImmutableArray<Outputs.GetClusterClusterAutoscalingResult> ClusterAutoscalings;
@@ -167,6 +168,7 @@ namespace Pulumi.Gcp.Container
         public readonly bool EnableKubernetesAlpha;
         public readonly bool EnableL4IlbSubsetting;
         public readonly bool EnableLegacyAbac;
+        public readonly bool EnableMultiNetworking;
         public readonly bool EnableShieldedNodes;
         public readonly bool EnableTpu;
         public readonly string Endpoint;
@@ -225,6 +227,8 @@ namespace Pulumi.Gcp.Container
         private GetClusterResult(
             ImmutableArray<Outputs.GetClusterAddonsConfigResult> addonsConfigs,
 
+            bool allowNetAdmin,
+
             ImmutableArray<Outputs.GetClusterAuthenticatorGroupsConfigResult> authenticatorGroupsConfigs,
 
             ImmutableArray<Outputs.GetClusterBinaryAuthorizationResult> binaryAuthorizations,
@@ -262,6 +266,8 @@ namespace Pulumi.Gcp.Container
             bool enableL4IlbSubsetting,
 
             bool enableLegacyAbac,
+
+            bool enableMultiNetworking,
 
             bool enableShieldedNodes,
 
@@ -364,6 +370,7 @@ namespace Pulumi.Gcp.Container
             ImmutableArray<Outputs.GetClusterWorkloadIdentityConfigResult> workloadIdentityConfigs)
         {
             AddonsConfigs = addonsConfigs;
+            AllowNetAdmin = allowNetAdmin;
             AuthenticatorGroupsConfigs = authenticatorGroupsConfigs;
             BinaryAuthorizations = binaryAuthorizations;
             ClusterAutoscalings = clusterAutoscalings;
@@ -383,6 +390,7 @@ namespace Pulumi.Gcp.Container
             EnableKubernetesAlpha = enableKubernetesAlpha;
             EnableL4IlbSubsetting = enableL4IlbSubsetting;
             EnableLegacyAbac = enableLegacyAbac;
+            EnableMultiNetworking = enableMultiNetworking;
             EnableShieldedNodes = enableShieldedNodes;
             EnableTpu = enableTpu;
             Endpoint = endpoint;

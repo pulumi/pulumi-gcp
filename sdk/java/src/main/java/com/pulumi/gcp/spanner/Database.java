@@ -150,6 +150,28 @@ public class Database extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.deletionProtection);
     }
     /**
+     * Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
+     * &#34;deletion_protection&#34; attribute in the following ways: (1) &#34;deletion_protection&#34; only protects the database from
+     * deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
+     * interfaces. (2) Setting &#34;enableDropProtection&#34; to true also prevents the deletion of the parent instance containing the
+     * database. &#34;deletion_protection&#34; attribute does not provide protection against the deletion of the parent instance.
+     * 
+     */
+    @Export(name="enableDropProtection", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> enableDropProtection;
+
+    /**
+     * @return Whether drop protection is enabled for this database. Defaults to false. Drop protection is different from the
+     * &#34;deletion_protection&#34; attribute in the following ways: (1) &#34;deletion_protection&#34; only protects the database from
+     * deletions in Terraform. whereas setting “enableDropProtection” to true protects the database from deletions in all
+     * interfaces. (2) Setting &#34;enableDropProtection&#34; to true also prevents the deletion of the parent instance containing the
+     * database. &#34;deletion_protection&#34; attribute does not provide protection against the deletion of the parent instance.
+     * 
+     */
+    public Output<Optional<Boolean>> enableDropProtection() {
+        return Codegen.optional(this.enableDropProtection);
+    }
+    /**
      * Encryption configuration for the database
      * Structure is documented below.
      * 

@@ -16,14 +16,14 @@ public final class WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfi
     public static final WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs Empty = new WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfigArgs();
 
     /**
-     * Optional. The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
+     * The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
      * 
      */
     @Import(name="policy")
     private @Nullable Output<String> policy;
 
     /**
-     * @return Optional. The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
+     * @return The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
      * 
      */
     public Optional<Output<String>> policy() {
@@ -55,7 +55,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfi
         }
 
         /**
-         * @param policy Optional. The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
+         * @param policy The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfi
         }
 
         /**
-         * @param policy Optional. The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
+         * @param policy The autoscaling policy used by the cluster. Only resource names including projectid and location (region) are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/` Note that the policy must be in the same project and Dataproc region.
          * 
          * @return builder
          * 

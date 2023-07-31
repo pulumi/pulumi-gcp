@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class WorkflowTemplateJobPigJobGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
+        /// Whether to continue executing queries if a query fails. The default value is `false`. Setting to `true` can be useful when executing independent parallel queries.
         /// </summary>
         [Input("continueOnFailure")]
         public Input<bool>? ContinueOnFailure { get; set; }
@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _jarFileUris;
 
         /// <summary>
-        /// Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
+        /// HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
         /// </summary>
         public InputList<string> JarFileUris
         {
@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         }
 
         /// <summary>
-        /// Optional. The runtime log config for job execution.
+        /// The runtime log config for job execution.
         /// </summary>
         [Input("loggingConfig")]
         public Input<Inputs.WorkflowTemplateJobPigJobLoggingConfigGetArgs>? LoggingConfig { get; set; }
@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputMap<string>? _properties;
 
         /// <summary>
-        /// Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
+        /// A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
         /// </summary>
         public InputMap<string> Properties
         {
@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputMap<string>? _scriptVariables;
 
         /// <summary>
-        /// Optional. Mapping of query variable names to values (equivalent to the Pig command: `name=`).
+        /// Mapping of query variable names to values (equivalent to the Pig command: `name=`).
         /// </summary>
         public InputMap<string> ScriptVariables
         {
