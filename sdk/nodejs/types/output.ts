@@ -44738,13 +44738,25 @@ export namespace iap {
 
     export interface WebRegionBackendServiceIamBindingCondition {
         description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: string;
     }
 
     export interface WebRegionBackendServiceIamMemberCondition {
         description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: string;
     }
 

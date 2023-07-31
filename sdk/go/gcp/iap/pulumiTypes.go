@@ -2275,8 +2275,10 @@ func (o WebIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 
 type WebRegionBackendServiceIamBindingCondition struct {
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 // WebRegionBackendServiceIamBindingConditionInput is an input type that accepts WebRegionBackendServiceIamBindingConditionArgs and WebRegionBackendServiceIamBindingConditionOutput values.
@@ -2292,8 +2294,10 @@ type WebRegionBackendServiceIamBindingConditionInput interface {
 
 type WebRegionBackendServiceIamBindingConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (WebRegionBackendServiceIamBindingConditionArgs) ElementType() reflect.Type {
@@ -2377,10 +2381,12 @@ func (o WebRegionBackendServiceIamBindingConditionOutput) Description() pulumi.S
 	return o.ApplyT(func(v WebRegionBackendServiceIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o WebRegionBackendServiceIamBindingConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v WebRegionBackendServiceIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o WebRegionBackendServiceIamBindingConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v WebRegionBackendServiceIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -2418,6 +2424,7 @@ func (o WebRegionBackendServiceIamBindingConditionPtrOutput) Description() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o WebRegionBackendServiceIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebRegionBackendServiceIamBindingCondition) *string {
 		if v == nil {
@@ -2427,6 +2434,7 @@ func (o WebRegionBackendServiceIamBindingConditionPtrOutput) Expression() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o WebRegionBackendServiceIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebRegionBackendServiceIamBindingCondition) *string {
 		if v == nil {
@@ -2438,8 +2446,10 @@ func (o WebRegionBackendServiceIamBindingConditionPtrOutput) Title() pulumi.Stri
 
 type WebRegionBackendServiceIamMemberCondition struct {
 	Description *string `pulumi:"description"`
-	Expression  string  `pulumi:"expression"`
-	Title       string  `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
 }
 
 // WebRegionBackendServiceIamMemberConditionInput is an input type that accepts WebRegionBackendServiceIamMemberConditionArgs and WebRegionBackendServiceIamMemberConditionOutput values.
@@ -2455,8 +2465,10 @@ type WebRegionBackendServiceIamMemberConditionInput interface {
 
 type WebRegionBackendServiceIamMemberConditionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Expression  pulumi.StringInput    `pulumi:"expression"`
-	Title       pulumi.StringInput    `pulumi:"title"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (WebRegionBackendServiceIamMemberConditionArgs) ElementType() reflect.Type {
@@ -2540,10 +2552,12 @@ func (o WebRegionBackendServiceIamMemberConditionOutput) Description() pulumi.St
 	return o.ApplyT(func(v WebRegionBackendServiceIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o WebRegionBackendServiceIamMemberConditionOutput) Expression() pulumi.StringOutput {
 	return o.ApplyT(func(v WebRegionBackendServiceIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o WebRegionBackendServiceIamMemberConditionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v WebRegionBackendServiceIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -2581,6 +2595,7 @@ func (o WebRegionBackendServiceIamMemberConditionPtrOutput) Description() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
+// Textual representation of an expression in Common Expression Language syntax.
 func (o WebRegionBackendServiceIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebRegionBackendServiceIamMemberCondition) *string {
 		if v == nil {
@@ -2590,6 +2605,7 @@ func (o WebRegionBackendServiceIamMemberConditionPtrOutput) Expression() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// A title for the expression, i.e. a short string describing its purpose.
 func (o WebRegionBackendServiceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WebRegionBackendServiceIamMemberCondition) *string {
 		if v == nil {

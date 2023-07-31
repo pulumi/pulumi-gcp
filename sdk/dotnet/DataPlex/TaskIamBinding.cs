@@ -9,27 +9,184 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.DataPlex
 {
+    /// <summary>
+    /// Three different resources help you manage your IAM policy for Dataplex Task. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.dataplex.TaskIamPolicy`: Authoritative. Sets the IAM policy for the task and replaces any existing policy already attached.
+    /// * `gcp.dataplex.TaskIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the task are preserved.
+    /// * `gcp.dataplex.TaskIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the task are preserved.
+    /// 
+    /// A data source can be used to retrieve policy data in advent you do not need creation
+    /// 
+    /// * `gcp.dataplex.TaskIamPolicy`: Retrieves the IAM policy for the task
+    /// 
+    /// &gt; **Note:** `gcp.dataplex.TaskIamPolicy` **cannot** be used in conjunction with `gcp.dataplex.TaskIamBinding` and `gcp.dataplex.TaskIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.dataplex.TaskIamBinding` resources **can be** used in conjunction with `gcp.dataplex.TaskIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## google\_dataplex\_task\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/viewer",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.DataPlex.TaskIamPolicy("policy", new()
+    ///     {
+    ///         Project = google_dataplex_task.Example.Project,
+    ///         Location = google_dataplex_task.Example.Location,
+    ///         Lake = google_dataplex_task.Example.Lake,
+    ///         TaskId = google_dataplex_task.Example.Task_id,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_dataplex\_task\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.DataPlex.TaskIamBinding("binding", new()
+    ///     {
+    ///         Project = google_dataplex_task.Example.Project,
+    ///         Location = google_dataplex_task.Example.Location,
+    ///         Lake = google_dataplex_task.Example.Lake,
+    ///         TaskId = google_dataplex_task.Example.Task_id,
+    ///         Role = "roles/viewer",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## google\_dataplex\_task\_iam\_member
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var member = new Gcp.DataPlex.TaskIamMember("member", new()
+    ///     {
+    ///         Project = google_dataplex_task.Example.Project,
+    ///         Location = google_dataplex_task.Example.Location,
+    ///         Lake = google_dataplex_task.Example.Lake,
+    ///         TaskId = google_dataplex_task.Example.Task_id,
+    ///         Role = "roles/viewer",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}} * {{project}}/{{location}}/{{lake}}/{{task_id}} * {{location}}/{{lake}}/{{task_id}} * {{task_id}} Any variables not passed in the import command will be taken from the provider configuration. Dataplex task IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:dataplex/taskIamBinding:TaskIamBinding editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}} roles/viewer user:jane@example.com"
+    /// ```
+    /// 
+    ///  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:dataplex/taskIamBinding:TaskIamBinding editor "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}} roles/viewer"
+    /// ```
+    /// 
+    ///  IAM policy imports use the identifier of the resource in question, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:dataplex/taskIamBinding:TaskIamBinding editor projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}
+    /// ```
+    /// 
+    ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+    /// 
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+    /// </summary>
     [GcpResourceType("gcp:dataplex/taskIamBinding:TaskIamBinding")]
     public partial class TaskIamBinding : global::Pulumi.CustomResource
     {
         [Output("condition")]
         public Output<Outputs.TaskIamBindingCondition?> Condition { get; private set; } = null!;
 
+        /// <summary>
+        /// (Computed) The etag of the IAM policy.
+        /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
 
+        /// <summary>
+        /// The lake in which the task will be created in.
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("lake")]
         public Output<string> Lake { get; private set; } = null!;
 
+        /// <summary>
+        /// The location in which the task will be created in.
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        /// 
+        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+        /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+        /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
+        /// <summary>
+        /// The role that should be applied. Only one
+        /// `gcp.dataplex.TaskIamBinding` can be used per role. Note that custom roles must be of the format
+        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
 
@@ -85,9 +242,17 @@ namespace Pulumi.Gcp.DataPlex
         [Input("condition")]
         public Input<Inputs.TaskIamBindingConditionArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// The lake in which the task will be created in.
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("lake", required: true)]
         public Input<string> Lake { get; set; } = null!;
 
+        /// <summary>
+        /// The location in which the task will be created in.
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
@@ -99,9 +264,30 @@ namespace Pulumi.Gcp.DataPlex
             set => _members = value;
         }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        /// 
+        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+        /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+        /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The role that should be applied. Only one
+        /// `gcp.dataplex.TaskIamBinding` can be used per role. Note that custom roles must be of the format
+        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
 
@@ -119,12 +305,23 @@ namespace Pulumi.Gcp.DataPlex
         [Input("condition")]
         public Input<Inputs.TaskIamBindingConditionGetArgs>? Condition { get; set; }
 
+        /// <summary>
+        /// (Computed) The etag of the IAM policy.
+        /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        /// <summary>
+        /// The lake in which the task will be created in.
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("lake")]
         public Input<string>? Lake { get; set; }
 
+        /// <summary>
+        /// The location in which the task will be created in.
+        /// Used to find the parent resource to bind the IAM policy to
+        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 
@@ -136,9 +333,30 @@ namespace Pulumi.Gcp.DataPlex
             set => _members = value;
         }
 
+        /// <summary>
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+        /// 
+        /// * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+        /// Each entry can have one of the following values:
+        /// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+        /// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+        /// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+        /// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+        /// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+        /// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+        /// * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+        /// * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+        /// * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The role that should be applied. Only one
+        /// `gcp.dataplex.TaskIamBinding` can be used per role. Note that custom roles must be of the format
+        /// `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }
 

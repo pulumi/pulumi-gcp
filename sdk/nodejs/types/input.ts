@@ -41005,13 +41005,25 @@ export namespace iap {
 
     export interface WebRegionBackendServiceIamBindingCondition {
         description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: pulumi.Input<string>;
     }
 
     export interface WebRegionBackendServiceIamMemberCondition {
         description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
         expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
         title: pulumi.Input<string>;
     }
 

@@ -6,6 +6,160 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * Three different resources help you manage your IAM policy for Identity-Aware Proxy WebRegionBackendService. Each of these resources serves a different use case:
+ *
+ * * `gcp.iap.WebRegionBackendServiceIamPolicy`: Authoritative. Sets the IAM policy for the webregionbackendservice and replaces any existing policy already attached.
+ * * `gcp.iap.WebRegionBackendServiceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the webregionbackendservice are preserved.
+ * * `gcp.iap.WebRegionBackendServiceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the webregionbackendservice are preserved.
+ *
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ *
+ * * `gcp.iap.WebRegionBackendServiceIamPolicy`: Retrieves the IAM policy for the webregionbackendservice
+ *
+ * > **Note:** `gcp.iap.WebRegionBackendServiceIamPolicy` **cannot** be used in conjunction with `gcp.iap.WebRegionBackendServiceIamBinding` and `gcp.iap.WebRegionBackendServiceIamMember` or they will fight over what your policy should be.
+ *
+ * > **Note:** `gcp.iap.WebRegionBackendServiceIamBinding` resources **can be** used in conjunction with `gcp.iap.WebRegionBackendServiceIamMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * > **Note:**  This resource supports IAM Conditions but they have some known limitations which can be found [here](https://cloud.google.com/iam/docs/conditions-overview#limitations). Please review this article if you are having issues with IAM Conditions.
+ *
+ * ## google\_iap\_web\_region\_backend\_service\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/iap.httpsResourceAccessor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.iap.WebRegionBackendServiceIamPolicy("policy", {
+ *     project: google_compute_region_backend_service["default"].project,
+ *     region: google_compute_region_backend_service["default"].region,
+ *     webRegionBackendService: google_compute_region_backend_service["default"].name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/iap.httpsResourceAccessor",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "expires_after_2019_12_31",
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         },
+ *     }],
+ * });
+ * const policy = new gcp.iap.WebRegionBackendServiceIamPolicy("policy", {
+ *     project: google_compute_region_backend_service["default"].project,
+ *     region: google_compute_region_backend_service["default"].region,
+ *     webRegionBackendService: google_compute_region_backend_service["default"].name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * ## google\_iap\_web\_region\_backend\_service\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.iap.WebRegionBackendServiceIamBinding("binding", {
+ *     project: google_compute_region_backend_service["default"].project,
+ *     region: google_compute_region_backend_service["default"].region,
+ *     webRegionBackendService: google_compute_region_backend_service["default"].name,
+ *     role: "roles/iap.httpsResourceAccessor",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.iap.WebRegionBackendServiceIamBinding("binding", {
+ *     project: google_compute_region_backend_service["default"].project,
+ *     region: google_compute_region_backend_service["default"].region,
+ *     webRegionBackendService: google_compute_region_backend_service["default"].name,
+ *     role: "roles/iap.httpsResourceAccessor",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ * ## google\_iap\_web\_region\_backend\_service\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.iap.WebRegionBackendServiceIamMember("member", {
+ *     project: google_compute_region_backend_service["default"].project,
+ *     region: google_compute_region_backend_service["default"].region,
+ *     webRegionBackendService: google_compute_region_backend_service["default"].name,
+ *     role: "roles/iap.httpsResourceAccessor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.iap.WebRegionBackendServiceIamMember("member", {
+ *     project: google_compute_region_backend_service["default"].project,
+ *     region: google_compute_region_backend_service["default"].region,
+ *     webRegionBackendService: google_compute_region_backend_service["default"].name,
+ *     role: "roles/iap.httpsResourceAccessor",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/iap_web/compute-{{region}}/services/{{name}} * {{project}}/{{region}}/{{name}} * {{region}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Identity-Aware Proxy webregionbackendservice IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:iap/webRegionBackendServiceIamMember:WebRegionBackendServiceIamMember editor "projects/{{project}}/iap_web/compute-{{region}}/services/{{web_region_backend_service}} roles/iap.httpsResourceAccessor user:jane@example.com"
+ * ```
+ *
+ *  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:iap/webRegionBackendServiceIamMember:WebRegionBackendServiceIamMember editor "projects/{{project}}/iap_web/compute-{{region}}/services/{{web_region_backend_service}} roles/iap.httpsResourceAccessor"
+ * ```
+ *
+ *  IAM policy imports use the identifier of the resource in question, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:iap/webRegionBackendServiceIamMember:WebRegionBackendServiceIamMember editor projects/{{project}}/iap_web/compute-{{region}}/services/{{web_region_backend_service}}
+ * ```
+ *
+ *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+ *
+ * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+ */
 export class WebRegionBackendServiceIamMember extends pulumi.CustomResource {
     /**
      * Get an existing WebRegionBackendServiceIamMember resource's state with the given name, ID, and optional extra
@@ -34,12 +188,43 @@ export class WebRegionBackendServiceIamMember extends pulumi.CustomResource {
         return obj['__pulumiType'] === WebRegionBackendServiceIamMember.__pulumiType;
     }
 
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     public readonly condition!: pulumi.Output<outputs.iap.WebRegionBackendServiceIamMemberCondition | undefined>;
+    /**
+     * (Computed) The etag of the IAM policy.
+     */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     public readonly member!: pulumi.Output<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+     *
+     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
+     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     * * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+     * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+     * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+     */
     public readonly project!: pulumi.Output<string>;
     public readonly region!: pulumi.Output<string>;
+    /**
+     * The role that should be applied. Only one
+     * `gcp.iap.WebRegionBackendServiceIamBinding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
     public readonly role!: pulumi.Output<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     public readonly webRegionBackendService!: pulumi.Output<string>;
 
     /**
@@ -90,12 +275,43 @@ export class WebRegionBackendServiceIamMember extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WebRegionBackendServiceIamMember resources.
  */
 export interface WebRegionBackendServiceIamMemberState {
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     condition?: pulumi.Input<inputs.iap.WebRegionBackendServiceIamMemberCondition>;
+    /**
+     * (Computed) The etag of the IAM policy.
+     */
     etag?: pulumi.Input<string>;
     member?: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+     *
+     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
+     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     * * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+     * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+     * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+     */
     project?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+    /**
+     * The role that should be applied. Only one
+     * `gcp.iap.WebRegionBackendServiceIamBinding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
     role?: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     webRegionBackendService?: pulumi.Input<string>;
 }
 
@@ -103,10 +319,38 @@ export interface WebRegionBackendServiceIamMemberState {
  * The set of arguments for constructing a WebRegionBackendServiceIamMember resource.
  */
 export interface WebRegionBackendServiceIamMemberArgs {
+    /**
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * Structure is documented below.
+     */
     condition?: pulumi.Input<inputs.iap.WebRegionBackendServiceIamMemberCondition>;
     member: pulumi.Input<string>;
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the project will be parsed from the identifier of the parent resource. If no project is provided in the parent identifier and no project is specified, the provider project is used.
+     *
+     * * `member/members` - (Required) Identities that will be granted the privilege in `role`.
+     * Each entry can have one of the following values:
+     * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+     * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+     * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+     * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+     * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+     * * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+     * * **projectOwner:projectid**: Owners of the given project. For example, "projectOwner:my-example-project"
+     * * **projectEditor:projectid**: Editors of the given project. For example, "projectEditor:my-example-project"
+     * * **projectViewer:projectid**: Viewers of the given project. For example, "projectViewer:my-example-project"
+     */
     project?: pulumi.Input<string>;
     region?: pulumi.Input<string>;
+    /**
+     * The role that should be applied. Only one
+     * `gcp.iap.WebRegionBackendServiceIamBinding` can be used per role. Note that custom roles must be of the format
+     * `[projects|organizations]/{parent-name}/roles/{role-name}`.
+     */
     role: pulumi.Input<string>;
+    /**
+     * Used to find the parent resource to bind the IAM policy to
+     */
     webRegionBackendService: pulumi.Input<string>;
 }

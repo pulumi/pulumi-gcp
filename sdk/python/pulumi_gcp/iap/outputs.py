@@ -608,6 +608,10 @@ class WebRegionBackendServiceIamBindingCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str title: A title for the expression, i.e. a short string describing its purpose.
+        """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -616,11 +620,17 @@ class WebRegionBackendServiceIamBindingCondition(dict):
     @property
     @pulumi.getter
     def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
         return pulumi.get(self, "expression")
 
     @property
     @pulumi.getter
     def title(self) -> str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
         return pulumi.get(self, "title")
 
     @property
@@ -635,6 +645,10 @@ class WebRegionBackendServiceIamMemberCondition(dict):
                  expression: str,
                  title: str,
                  description: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str title: A title for the expression, i.e. a short string describing its purpose.
+        """
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "title", title)
         if description is not None:
@@ -643,11 +657,17 @@ class WebRegionBackendServiceIamMemberCondition(dict):
     @property
     @pulumi.getter
     def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
         return pulumi.get(self, "expression")
 
     @property
     @pulumi.getter
     def title(self) -> str:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
         return pulumi.get(self, "title")
 
     @property
