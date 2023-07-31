@@ -1,0 +1,32 @@
+From 6350b630b46b5d9477a87dd0cf08c545b877c4cb Mon Sep 17 00:00:00 2001
+From: Aaron Friel <mayreply@aaronfriel.com>
+Date: Thu, 22 Jun 2023 16:38:12 -0700
+Subject: [PATCH 12/12] Remove duplicative resource token
+
+---
+ google-beta/provider/provider.go | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/google-beta/provider/provider.go b/google-beta/provider/provider.go
+index 9804a42cd..81eb53257 100644
+--- a/google-beta/provider/provider.go
++++ b/google-beta/provider/provider.go
+@@ -816,6 +816,15 @@ func Provider() *schema.Provider {
+ 
+ func DatasourceMap() map[string]*schema.Resource {
+ 	datasourceMap, _ := DatasourceMapWithErrors()
++
++	datasourcesToRemove := []string{
++		"google_organization_iam_policy",
++		"google_organization_iam_policy_legacy",
++	}
++	for _, datasourceToRemove := range datasourcesToRemove {
++		delete(datasourceMap, datasourceToRemove)
++	}
++
+ 	return datasourceMap
+ }
+ 
+-- 
+2.39.1
+
